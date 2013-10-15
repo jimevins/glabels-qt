@@ -1,0 +1,31 @@
+# My cmake build directory
+/build
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+#
+# Ignore artifacts from editors, patching, etc.
+#
+*~
+*.bak
+\#*\#
+.\#*
+.*.swp
+*.orig
+*.rej
+gmon.out
+core
+*.safe
+*.sav*
