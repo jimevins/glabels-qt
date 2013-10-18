@@ -38,7 +38,7 @@ namespace qtLabels
 		m_shadow_state      = false;
 		m_shadow_x          = 1.3;
 		m_shadow_y          = 1.3;
-		m_shadow_color_node = ColorNode( Color::black() );
+		m_shadow_color_node = ColorNode( QColor::fromRgb(0x000000) );
 		m_shadow_opacity    = 0.5;
 
 		m_selected_flag = false;

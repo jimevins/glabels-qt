@@ -244,7 +244,7 @@ namespace qtLabels
 		 */
 		Q_PROPERTY( ColorNode font_color_node READ font_color_node WRITE font_color_node );
 
-		virtual ColorNode font_color_node( void ) { return ColorNode( Color::none() ); }
+		virtual ColorNode font_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
 		virtual void font_color_node( const ColorNode &value ) { }
 		
 
@@ -306,7 +306,7 @@ namespace qtLabels
 		 */
 		Q_PROPERTY( ColorNode line_color_node READ line_color_node WRITE line_color_node );
 
-		virtual ColorNode line_color_node( void ) { return ColorNode( Color::none() ); }
+		virtual ColorNode line_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
 		virtual void line_color_node( const ColorNode &value ) { }
 		
 
@@ -315,7 +315,7 @@ namespace qtLabels
 		 */
 		Q_PROPERTY( ColorNode fill_color_node READ fill_color_node WRITE fill_color_node );
 
-		virtual ColorNode fill_color_node( void ) { return ColorNode( Color::none() ); }
+		virtual ColorNode fill_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
 		virtual void fill_color_node( const ColorNode &value ) { }
 		
 
@@ -355,7 +355,7 @@ namespace qtLabels
 		 */
 		Q_PROPERTY( ColorNode bc_color_node READ bc_color_node WRITE bc_color_node );
 
-		virtual ColorNode bc_color_node( void ) { return ColorNode( Color::none() ); }
+		virtual ColorNode bc_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
 		virtual void bc_color_node( const ColorNode &value ) { }
 		
 

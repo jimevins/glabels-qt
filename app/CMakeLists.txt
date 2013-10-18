@@ -5,7 +5,6 @@ project (app CXX)
 set (qtlabels_sources
   qtlabels_main.cpp
   BarcodeStyle.cpp
-  Color.cpp
   ColorNode.cpp
   LabelModel.cpp
   LabelModelItem.cpp

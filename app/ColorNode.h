@@ -22,8 +22,7 @@
 #define qtlabels_ColorNode_h
 
 #include <QString>
-
-#include "Color.h"
+#include <QColor>
 
 
 namespace qtLabels
@@ -34,25 +33,25 @@ namespace qtLabels
 
 	public:
 		ColorNode()
-			: m_field_flag(false), m_color(Color::none()), m_key("")
+			: m_field_flag(false), m_color(QColor::fromRgba(0x00000000)), m_key("")
 		{
 		}
 
 
-		ColorNode( bool field_flag, Color &color, QString &key )
+		ColorNode( bool field_flag, QColor &color, QString &key )
 			: m_field_flag(field_flag), m_color(color), m_key(key)
 		{
 		}
 
 
-		ColorNode( const Color &color )
+		ColorNode( const QColor &color )
 			: m_field_flag(false), m_color(color), m_key("")
 		{
 		}
 
 
 		ColorNode( QString &key )
-			: m_field_flag(true), m_color(Color::none()), m_key(key)
+			: m_field_flag(true), m_color(QColor::fromRgba(0x00000000)), m_key(key)
 		{
 		}
 
@@ -74,13 +73,13 @@ namespace qtLabels
 
 
 #if TODO
-		Color expand( MergeRecord? record )
+		QColor expand( MergeRecord? record )
 		{
 			if ( field_flag )
 			{
 				if ( record == null )
 				{
-					return Color.none();
+					return QColor.fromRgba(0x00000000);
 				}
 				else
 				{
@@ -95,12 +94,12 @@ namespace qtLabels
 						}
 						else
 						{
-							return Color.none();
+							return Color.fromRgba(0x00000000);
 						}
 					}
 					else
 					{
-						return Color.none();
+						return Color.fromRgba(0x00000000);
 					}
 				}
 			}
@@ -121,7 +120,7 @@ namespace qtLabels
 		/*
 		 * color property
 		 */
-		Color color( void ) { return m_color; }
+		QColor color( void ) { return m_color; }
 		
 
 		/*
@@ -132,7 +131,7 @@ namespace qtLabels
 
 	private:
 		bool    m_field_flag;
-		Color   m_color;
+		QColor  m_color;
 		QString m_key;
 
 	};
