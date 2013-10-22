@@ -2,25 +2,31 @@ cmake_minimum_required (VERSION 2.8)
 
 project (app CXX)
 
-set (qtlabels_sources
-  qtlabels_main.cpp
+set (glabels_sources
+  glabels_main.cpp
   BarcodeStyle.cpp
   ColorNode.cpp
   LabelModel.cpp
   LabelModelItem.cpp
   LabelRegion.cpp
+  MainWindow.cpp
   MergeField.cpp
   MergeRecord.cpp
   TextNode.cpp
 )
 
-set (qobject_headers
+set (glabels_qobject_headers
   LabelModel.h
   LabelModelItem.h
+  MainWindow.h
 )
 
-qt4_wrap_cpp (moc_sources ${qobject_headers})
+set (glabels_resource_files
+  images.qrc
+)
 
+qt4_wrap_cpp (glabels_moc_sources ${glabels_qobject_headers})
+qt4_add_resources(glabels_qrc_sources ${glabels_resource_files})
 
 include (${QT_USE_FILE})
 
@@ -31,11 +37,11 @@ include_directories (
 link_directories (
 )
 
-add_executable (qtlabels ${qtlabels_sources} ${moc_sources})
+add_executable (glabels-qt ${glabels_sources} ${glabels_moc_sources} ${glabels_qrc_sources})
 
-target_link_libraries (qtlabels
+target_link_libraries (glabels-qt
   ${QT_LIBRARIES}
 )
 
 
-install (TARGETS qtlabels RUNTIME DESTINATION bin)
+install (TARGETS glabels-qt RUNTIME DESTINATION bin)
