@@ -44,16 +44,69 @@ namespace gLabels
 
 
 	private slots:
-		void about();
+		void fileNew();
+		void fileOpen();
+		void fileSave();
+		void fileSaveAs();
+		void filePrint();
+		void fileProperties();
+		void fileTemplateDesigner();
+		void fileClose();
+		void fileExit();
+
+		void editUndo();
+		void editRedo();
+		void editCut();
+		void editCopy();
+		void editPaste();
+		void editDelete();
+		void editSelectAll();
+		void editUnSelectAll();
+		void editPreferences();
+
+		void viewZoomIn();
+		void viewZoomOut();
+		void viewZoom1to1();
+		void viewZoomToFit();
+
+		void helpAbout();
 
 
 	private:
 		void createActions();
 		void createMenus();
 
+		QMenu   *fileMenu;
+		QMenu   *editMenu;
+		QMenu   *viewMenu;
 		QMenu   *helpMenu;
 
-		QAction *aboutAction;
+		QAction *fileNewAction;
+		QAction *fileOpenAction;
+		QAction *fileSaveAction;
+		QAction *fileSaveAsAction;
+		QAction *filePrintAction;
+		QAction *filePropertiesAction;
+		QAction *fileTemplateDesignerAction;
+		QAction *fileCloseAction;
+		QAction *fileExitAction;
+
+		QAction *editUndoAction;
+		QAction *editRedoAction;
+		QAction *editCutAction;
+		QAction *editCopyAction;
+		QAction *editPasteAction;
+		QAction *editDeleteAction;
+		QAction *editSelectAllAction;
+		QAction *editUnSelectAllAction;
+		QAction *editPreferencesAction;
+
+		QAction *viewZoomInAction;
+		QAction *viewZoomOutAction;
+		QAction *viewZoom1to1Action;
+		QAction *viewZoomToFitAction;
+
+		QAction *helpAboutAction;
 
 	};
 
