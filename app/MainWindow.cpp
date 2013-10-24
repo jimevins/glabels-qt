@@ -25,6 +25,8 @@
 
 #include <iostream>
 
+#include "Icons.h"
+
 
 namespace gLabels
 {
@@ -157,6 +159,26 @@ namespace gLabels
 
 
 		/* View actions */
+		viewMainToolbarAction = new QAction( tr("Main Toolbar"), this );
+		viewMainToolbarAction->setCheckable( true );
+		viewMainToolbarAction->setStatusTip( tr("Change visibility of main toolbar in current window") );
+		connect( viewMainToolbarAction, SIGNAL(triggered()), this, SLOT(viewMainToolbar()) );
+
+		viewDrawingToolbarAction = new QAction( tr("Drawing Toolbar"), this );
+		viewDrawingToolbarAction->setCheckable( true );
+		viewDrawingToolbarAction->setStatusTip( tr("Change visibility of drawing toolbar in current window") );
+		connect( viewDrawingToolbarAction, SIGNAL(triggered()), this, SLOT(viewDrawingToolbar()) );
+
+		viewGridAction = new QAction( tr("Grid"), this );
+		viewGridAction->setCheckable( true );
+		viewGridAction->setStatusTip( tr("Change visibility of the grid in current window") );
+		connect( viewGridAction, SIGNAL(triggered()), this, SLOT(viewGrid()) );
+
+		viewMarkupAction = new QAction( tr("Markup"), this );
+		viewMarkupAction->setCheckable( true );
+		viewMarkupAction->setStatusTip( tr("Change visibility of markup lines in current window") );
+		connect( viewMarkupAction, SIGNAL(triggered()), this, SLOT(viewMarkup()) );
+
 		viewZoomInAction = new QAction( tr("Zoom &In"), this );
 		viewZoomInAction->setIcon( QIcon::fromTheme( "zoom-in" ) );
 		viewZoomInAction->setShortcut( QKeySequence::ZoomIn );
@@ -178,6 +200,13 @@ namespace gLabels
 		viewZoomToFitAction->setIcon( QIcon::fromTheme( "zoom-fit-best" ) );
 		viewZoomToFitAction->setStatusTip( tr("Set scale to fit window") );
 		connect( viewZoomToFitAction, SIGNAL(triggered()), this, SLOT(viewZoomToFit()) );
+
+
+		/* Object actions */
+		objectsArrowModeAction = new QAction( tr("Select Mode"), this );
+		objectsArrowModeAction->setIcon( Icons::Arrow() );
+		objectsArrowModeAction->setStatusTip( tr("Select, move and modify objects") );
+		connect( objectsArrowModeAction, SIGNAL(triggered()), this, SLOT(objectsArrowMode()) );
 
 
 		/* Help actions */
@@ -219,10 +248,19 @@ namespace gLabels
 		editMenu->addAction( editPreferencesAction );
 
 		viewMenu = menuBar()->addMenu( tr("&View") );
+		viewMenu->addAction( viewMainToolbarAction );
+		viewMenu->addAction( viewDrawingToolbarAction );
+		viewMenu->addSeparator();
+		viewMenu->addAction( viewGridAction );
+		viewMenu->addAction( viewMarkupAction );
+		viewMenu->addSeparator();
 		viewMenu->addAction( viewZoomInAction );
 		viewMenu->addAction( viewZoomOutAction );
 		viewMenu->addAction( viewZoom1to1Action );
 		viewMenu->addAction( viewZoomToFitAction );
+
+		objectsMenu = menuBar()->addMenu( tr("&Objects") );
+		objectsMenu->addAction( objectsArrowModeAction );
 
 		helpMenu = menuBar()->addMenu( tr("&Help") );
 		helpMenu->addAction( helpAboutAction );
@@ -337,6 +375,30 @@ namespace gLabels
 	}
 
 
+	void MainWindow::viewMainToolbar()
+	{
+		std::cout << "ACTION: edit->Main Toolbar" << std::endl;
+	}
+
+
+	void MainWindow::viewDrawingToolbar()
+	{
+		std::cout << "ACTION: edit->Drawing Toolbar" << std::endl;
+	}
+
+
+	void MainWindow::viewGrid()
+	{
+		std::cout << "ACTION: edit->Grid" << std::endl;
+	}
+
+
+	void MainWindow::viewMarkup()
+	{
+		std::cout << "ACTION: edit->Markup" << std::endl;
+	}
+
+
 	void MainWindow::viewZoomIn()
 	{
 		std::cout << "ACTION: edit->Zoom in" << std::endl;
@@ -358,6 +420,12 @@ namespace gLabels
 	void MainWindow::viewZoomToFit()
 	{
 		std::cout << "ACTION: edit->Zoom to fit" << std::endl;
+	}
+
+
+	void MainWindow::objectsArrowMode()
+	{
+		std::cout << "ACTION: objects->Select Mode" << std::endl;
 	}
 
 

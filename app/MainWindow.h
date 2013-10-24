@@ -64,10 +64,16 @@ namespace gLabels
 		void editUnSelectAll();
 		void editPreferences();
 
+		void viewMainToolbar();
+		void viewDrawingToolbar();
+		void viewGrid();
+		void viewMarkup();
 		void viewZoomIn();
 		void viewZoomOut();
 		void viewZoom1to1();
 		void viewZoomToFit();
+
+		void objectsArrowMode();
 
 		void helpAbout();
 
@@ -79,6 +85,7 @@ namespace gLabels
 		QMenu   *fileMenu;
 		QMenu   *editMenu;
 		QMenu   *viewMenu;
+		QMenu   *objectsMenu;
 		QMenu   *helpMenu;
 
 		QAction *fileNewAction;
@@ -101,10 +108,16 @@ namespace gLabels
 		QAction *editUnSelectAllAction;
 		QAction *editPreferencesAction;
 
+		QAction *viewMainToolbarAction;
+		QAction *viewDrawingToolbarAction;
+		QAction *viewGridAction;
+		QAction *viewMarkupAction;
 		QAction *viewZoomInAction;
 		QAction *viewZoomOutAction;
 		QAction *viewZoom1to1Action;
 		QAction *viewZoomToFitAction;
+
+		QAction *objectsArrowModeAction;
 
 		QAction *helpAboutAction;
 

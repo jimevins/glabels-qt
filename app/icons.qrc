@@ -1,0 +1,54 @@
+<!DOCTYPE RCC>
+
+<RCC version="1.0">
+<qresource>
+	<file>icons/16x16/actions/glabels-align-bottom.png</file>
+	<file>icons/16x16/actions/glabels-align-hcenter.png</file>
+	<file>icons/16x16/actions/glabels-align-left.png</file>
+	<file>icons/16x16/actions/glabels-align-right.png</file>
+	<file>icons/16x16/actions/glabels-align-top.png</file>
+	<file>icons/16x16/actions/glabels-align-vcenter.png</file>
+	<file>icons/16x16/actions/glabels-arrow.png</file>
+	<file>icons/16x16/actions/glabels-barcode.png</file>
+	<file>icons/16x16/actions/glabels-box.png</file>
+	<file>icons/16x16/actions/glabels-bucket-fill.png</file>
+	<file>icons/16x16/actions/glabels-center-horiz.png</file>
+	<file>icons/16x16/actions/glabels-center-vert.png</file>
+	<file>icons/16x16/actions/glabels-ellipse.png</file>
+	<file>icons/16x16/actions/glabels-flip-horiz.png</file>
+	<file>icons/16x16/actions/glabels-flip-vert.png</file>
+	<file>icons/16x16/actions/glabels-image.png</file>
+	<file>icons/16x16/actions/glabels-line.png</file>
+	<file>icons/16x16/actions/glabels-merge.png</file>
+	<file>icons/16x16/actions/glabels-object-properties.png</file>
+	<file>icons/16x16/actions/glabels-order-bottom.png</file>
+	<file>icons/16x16/actions/glabels-order-top.png</file>
+	<file>icons/16x16/actions/glabels-pencil.png</file>
+	<file>icons/16x16/actions/glabels-rotate-left.png</file>
+	<file>icons/16x16/actions/glabels-rotate-right.png</file>
+	<file>icons/16x16/actions/glabels-text.png</file>
+	<file>icons/16x16/apps/glabels.png</file>
+	<file>icons/24x24/actions/glabels-align-text-bottom.png</file>
+	<file>icons/24x24/actions/glabels-align-text-middle.png</file>
+	<file>icons/24x24/actions/glabels-align-text-top.png</file>
+	<file>icons/24x24/actions/glabels-arrow.png</file>
+	<file>icons/24x24/actions/glabels-barcode.png</file>
+	<file>icons/24x24/actions/glabels-box.png</file>
+	<file>icons/24x24/actions/glabels-bucket-fill.png</file>
+	<file>icons/24x24/actions/glabels-ellipse.png</file>
+	<file>icons/24x24/actions/glabels-hchain-broken.png</file>
+	<file>icons/24x24/actions/glabels-hchain.png</file>
+	<file>icons/24x24/actions/glabels-image.png</file>
+	<file>icons/24x24/actions/glabels-line.png</file>
+	<file>icons/24x24/actions/glabels-merge.png</file>
+	<file>icons/24x24/actions/glabels-object-properties.png</file>
+	<file>icons/24x24/actions/glabels-pencil.png</file>
+	<file>icons/24x24/actions/glabels-text.png</file>
+	<file>icons/24x24/actions/glabels-vchain-broken.png</file>
+	<file>icons/24x24/actions/glabels-vchain.png</file>
+	<file>icons/24x24/apps/glabels.png</file>
+	<file>icons/32x32/apps/glabels.png</file>
+	<file>icons/48x48/apps/glabels.png</file>
+	<file>icons/scalable/apps/glabels.svg</file>
+</qresource>
+</RCC>

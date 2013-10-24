@@ -22,6 +22,7 @@ set (glabels_qobject_headers
 )
 
 set (glabels_resource_files
+  icons.qrc
   images.qrc
 )
 
