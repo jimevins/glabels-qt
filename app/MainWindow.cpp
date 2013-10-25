@@ -208,6 +208,66 @@ namespace gLabels
 		objectsArrowModeAction->setStatusTip( tr("Select, move and modify objects") );
 		connect( objectsArrowModeAction, SIGNAL(triggered()), this, SLOT(objectsArrowMode()) );
 
+		objectsCreateTextAction = new QAction( tr("Text"), this );
+		objectsCreateTextAction->setIcon( Icons::Text() );
+		objectsCreateTextAction->setStatusTip( tr("Create text object") );
+		connect( objectsCreateTextAction, SIGNAL(triggered()), this, SLOT(objectsCreateText()) );
+
+		objectsCreateBoxAction = new QAction( tr("Box"), this );
+		objectsCreateBoxAction->setIcon( Icons::Box() );
+		objectsCreateBoxAction->setStatusTip( tr("Create box object") );
+		connect( objectsCreateBoxAction, SIGNAL(triggered()), this, SLOT(objectsCreateBox()) );
+
+		objectsCreateLineAction = new QAction( tr("Line"), this );
+		objectsCreateLineAction->setIcon( Icons::Line() );
+		objectsCreateLineAction->setStatusTip( tr("Create line object") );
+		connect( objectsCreateLineAction, SIGNAL(triggered()), this, SLOT(objectsCreateLine()) );
+
+		objectsCreateEllipseAction = new QAction( tr("Ellipse"), this );
+		objectsCreateEllipseAction->setIcon( Icons::Ellipse() );
+		objectsCreateEllipseAction->setStatusTip( tr("Create ellipse/circle object") );
+		connect( objectsCreateEllipseAction, SIGNAL(triggered()), this, SLOT(objectsCreateEllipse()) );
+
+		objectsCreateImageAction = new QAction( tr("Image"), this );
+		objectsCreateImageAction->setIcon( Icons::Image() );
+		objectsCreateImageAction->setStatusTip( tr("Create image object") );
+		connect( objectsCreateImageAction, SIGNAL(triggered()), this, SLOT(objectsCreateImage()) );
+
+		objectsCreateBarcodeAction = new QAction( tr("Barcode"), this );
+		objectsCreateBarcodeAction->setIcon( Icons::Barcode() );
+		objectsCreateBarcodeAction->setStatusTip( tr("Create barcode object") );
+		connect( objectsCreateBarcodeAction, SIGNAL(triggered()), this, SLOT(objectsCreateBarcode()) );
+
+		objectsOrderRaiseAction = new QAction( tr("Bring To Front"), this );
+		objectsOrderRaiseAction->setIcon( Icons::OrderTop() );
+		objectsOrderRaiseAction->setStatusTip( tr("Raise selection to top") );
+		connect( objectsOrderRaiseAction, SIGNAL(triggered()), this, SLOT(objectsOrderRaise()) );
+
+		objectsOrderLowerAction = new QAction( tr("Send To Back"), this );
+		objectsOrderLowerAction->setIcon( Icons::OrderBottom() );
+		objectsOrderLowerAction->setStatusTip( tr("Lower selection to bottom") );
+		connect( objectsOrderLowerAction, SIGNAL(triggered()), this, SLOT(objectsOrderLower()) );
+
+		objectsXformRotateLeftAction = new QAction( tr("Rotate Left"), this );
+		objectsXformRotateLeftAction->setIcon( Icons::RotateLeft() );
+		objectsXformRotateLeftAction->setStatusTip( tr("Rotate object(s) 90 degrees counter-clockwise") );
+		connect( objectsXformRotateLeftAction, SIGNAL(triggered()), this, SLOT(objectsXformRotateLeft()) );
+
+		objectsXformRotateRightAction = new QAction( tr("Rotate Right"), this );
+		objectsXformRotateRightAction->setIcon( Icons::RotateRight() );
+		objectsXformRotateRightAction->setStatusTip( tr("Rotate object(s) 90 degrees clockwise") );
+		connect( objectsXformRotateRightAction, SIGNAL(triggered()), this, SLOT(objectsXformRotateRight()) );
+
+		objectsXformFlipHorizAction = new QAction( tr("Flip Horizontally"), this );
+		objectsXformFlipHorizAction->setIcon( Icons::FlipHoriz() );
+		objectsXformFlipHorizAction->setStatusTip( tr("Flip object(s) horizontally") );
+		connect( objectsXformFlipHorizAction, SIGNAL(triggered()), this, SLOT(objectsXformFlipHoriz()) );
+
+		objectsXformFlipVertAction = new QAction( tr("Flip Vertically"), this );
+		objectsXformFlipVertAction->setIcon( Icons::FlipVert() );
+		objectsXformFlipVertAction->setStatusTip( tr("Flip object(s) vertically") );
+		connect( objectsXformFlipVertAction, SIGNAL(triggered()), this, SLOT(objectsXformFlipVert()) );
+
 
 		/* Help actions */
 		helpAboutAction = new QAction( tr("&About..."), this );
@@ -261,6 +321,21 @@ namespace gLabels
 
 		objectsMenu = menuBar()->addMenu( tr("&Objects") );
 		objectsMenu->addAction( objectsArrowModeAction );
+		objectsCreateMenu = objectsMenu->addMenu( tr("&Create") );
+		objectsCreateMenu->addAction( objectsCreateTextAction );
+		objectsCreateMenu->addAction( objectsCreateBoxAction );
+		objectsCreateMenu->addAction( objectsCreateLineAction );
+		objectsCreateMenu->addAction( objectsCreateEllipseAction );
+		objectsCreateMenu->addAction( objectsCreateImageAction );
+		objectsCreateMenu->addAction( objectsCreateBarcodeAction );
+		objectsOrderMenu = objectsMenu->addMenu( tr("&Order") );
+		objectsOrderMenu->addAction( objectsOrderRaiseAction );
+		objectsOrderMenu->addAction( objectsOrderLowerAction );
+		objectsXformMenu = objectsMenu->addMenu( tr("&Rotate/Flip") );
+		objectsXformMenu->addAction( objectsXformRotateLeftAction );
+		objectsXformMenu->addAction( objectsXformRotateRightAction );
+		objectsXformMenu->addAction( objectsXformFlipHorizAction );
+		objectsXformMenu->addAction( objectsXformFlipVertAction );
 
 		helpMenu = menuBar()->addMenu( tr("&Help") );
 		helpMenu->addAction( helpAboutAction );
@@ -429,6 +504,78 @@ namespace gLabels
 	}
 
 
+	void MainWindow::objectsCreateText()
+	{
+		std::cout << "ACTION: objects->Create->Text" << std::endl;
+	}
+
+
+	void MainWindow::objectsCreateBox()
+	{
+		std::cout << "ACTION: objects->Create->Box" << std::endl;
+	}
+
+
+	void MainWindow::objectsCreateLine()
+	{
+		std::cout << "ACTION: objects->Create->Line" << std::endl;
+	}
+
+
+	void MainWindow::objectsCreateEllipse()
+	{
+		std::cout << "ACTION: objects->Create->Ellipse" << std::endl;
+	}
+
+
+	void MainWindow::objectsCreateImage()
+	{
+		std::cout << "ACTION: objects->Create->Image" << std::endl;
+	}
+
+
+	void MainWindow::objectsCreateBarcode()
+	{
+		std::cout << "ACTION: objects->Create->Barcode" << std::endl;
+	}
+
+
+	void MainWindow::objectsOrderRaise()
+	{
+		std::cout << "ACTION: objects->Order->Bring to front" << std::endl;
+	}
+
+
+	void MainWindow::objectsOrderLower()
+	{
+		std::cout << "ACTION: objects->Order->Send to back" << std::endl;
+	}
+
+
+	void MainWindow::objectsXformRotateLeft()
+	{
+		std::cout << "ACTION: objects->Rotate/Flip->Rotate Left" << std::endl;
+	}
+
+
+	void MainWindow::objectsXformRotateRight()
+	{
+		std::cout << "ACTION: objects->Rotate/Flip->Rotate Right" << std::endl;
+	}
+
+
+	void MainWindow::objectsXformFlipHoriz()
+	{
+		std::cout << "ACTION: objects->Rotate/Flip->Flip Horizontally" << std::endl;
+	}
+
+
+	void MainWindow::objectsXformFlipVert()
+	{
+		std::cout << "ACTION: objects->Rotate/Flip->Flip Vertically" << std::endl;
+	}
+
+
 	void MainWindow::helpAbout()
 	{
 		QMessageBox aboutBox( QMessageBox::NoIcon,
@@ -448,3 +595,4 @@ namespace gLabels
 	}
 
 }
+

@@ -74,6 +74,18 @@ namespace gLabels
 		void viewZoomToFit();
 
 		void objectsArrowMode();
+		void objectsCreateText();
+		void objectsCreateBox();
+		void objectsCreateLine();
+		void objectsCreateEllipse();
+		void objectsCreateImage();
+		void objectsCreateBarcode();
+		void objectsOrderRaise();
+		void objectsOrderLower();
+		void objectsXformRotateLeft();
+		void objectsXformRotateRight();
+		void objectsXformFlipHoriz();
+		void objectsXformFlipVert();
 
 		void helpAbout();
 
@@ -86,6 +98,9 @@ namespace gLabels
 		QMenu   *editMenu;
 		QMenu   *viewMenu;
 		QMenu   *objectsMenu;
+		QMenu   *objectsCreateMenu;
+		QMenu   *objectsOrderMenu;
+		QMenu   *objectsXformMenu;
 		QMenu   *helpMenu;
 
 		QAction *fileNewAction;
@@ -118,6 +133,18 @@ namespace gLabels
 		QAction *viewZoomToFitAction;
 
 		QAction *objectsArrowModeAction;
+		QAction *objectsCreateTextAction;
+		QAction *objectsCreateBoxAction;
+		QAction *objectsCreateLineAction;
+		QAction *objectsCreateEllipseAction;
+		QAction *objectsCreateImageAction;
+		QAction *objectsCreateBarcodeAction;
+		QAction *objectsOrderRaiseAction;
+		QAction *objectsOrderLowerAction;
+		QAction *objectsXformRotateLeftAction;
+		QAction *objectsXformRotateRightAction;
+		QAction *objectsXformFlipHorizAction;
+		QAction *objectsXformFlipVertAction;
 
 		QAction *helpAboutAction;
 

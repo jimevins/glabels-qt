@@ -36,16 +36,12 @@
 	<file>icons/24x24/actions/glabels-box.png</file>
 	<file>icons/24x24/actions/glabels-bucket-fill.png</file>
 	<file>icons/24x24/actions/glabels-ellipse.png</file>
-	<file>icons/24x24/actions/glabels-hchain-broken.png</file>
-	<file>icons/24x24/actions/glabels-hchain.png</file>
 	<file>icons/24x24/actions/glabels-image.png</file>
 	<file>icons/24x24/actions/glabels-line.png</file>
 	<file>icons/24x24/actions/glabels-merge.png</file>
 	<file>icons/24x24/actions/glabels-object-properties.png</file>
 	<file>icons/24x24/actions/glabels-pencil.png</file>
 	<file>icons/24x24/actions/glabels-text.png</file>
-	<file>icons/24x24/actions/glabels-vchain-broken.png</file>
-	<file>icons/24x24/actions/glabels-vchain.png</file>
 	<file>icons/24x24/apps/glabels.png</file>
 	<file>icons/32x32/apps/glabels.png</file>
 	<file>icons/48x48/apps/glabels.png</file>
