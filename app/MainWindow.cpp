@@ -21,7 +21,8 @@
 #include "MainWindow.h"
 
 #include <QSettings>
-#include <QLabel>
+#include <QStatusBar>
+#include <QFrame>
 
 #include <iostream>
 
@@ -40,6 +41,7 @@ namespace gLabels
 		createActions();
 		createMenus();
 		createToolBars();
+		createStatusBar();
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
@@ -460,6 +462,27 @@ namespace gLabels
 		viewToolBar->addAction( viewZoomOutAction );
 		viewToolBar->addAction( viewZoom1to1Action );
 		viewToolBar->addAction( viewZoomToFitAction );
+	}
+
+
+	void MainWindow::createStatusBar()
+	{
+		zoomInfoLabel = new QLabel( " 999% " );
+		zoomInfoLabel->setAlignment( Qt::AlignHCenter );
+		zoomInfoLabel->setMinimumSize( zoomInfoLabel->sizeHint() );
+		zoomInfoLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+
+		cursorInfoLabel = new QLabel;
+		cursorInfoLabel->setIndent( 3 );
+		cursorInfoLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
+
+		statusBar()->addWidget( zoomInfoLabel );
+		statusBar()->addWidget( cursorInfoLabel, 1 );
+
+		updateZoomInfo( 1, false, false );
+		updateCursorInfo();
+
+		/* TODO: connect cursor and zoom signals to appropriate slots. */
 	}
 
 
@@ -919,6 +942,30 @@ namespace gLabels
 	{
 		Help::displayAbout( this );
 	}
+
+
+	void MainWindow::updateZoomInfo( double zoom, bool min_flag, bool max_flag )
+	{
+		zoomInfoLabel->setText( QString( " %1% " ).arg(100*zoom, 0, 'f', 0) );
+
+		viewZoomInAction->setEnabled( !max_flag );
+		viewZoomOutAction->setEnabled( !min_flag );
+	}
+
+
+	void MainWindow::updateCursorInfo( double x, double y )
+	{
+		/* TODO: convert x,y to locale units and set precision accordingly. */
+		cursorInfoLabel->setText( QString( "%1, %2" ).arg(x).arg(y) );
+	}
+
+
+	/* Clears cursor info.  E.g. when pointer exits view. */
+	void MainWindow::updateCursorInfo()
+	{
+		cursorInfoLabel->setText( "" );
+	}
+
 
 }
 

@@ -27,6 +27,7 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QToolBar>
+#include <QLabel>
 
 
 namespace gLabels
@@ -102,11 +103,16 @@ namespace gLabels
 		void helpContents();
 		void helpAbout();
 
+		void updateZoomInfo( double, bool, bool );
+		void updateCursorInfo();
+		void updateCursorInfo( double, double );
+
 
 	private:
 		void createActions();
 		void createMenus();
 		void createToolBars();
+		void createStatusBar();
 
 		void setDocVerbsEnabled( bool );
 		void setDocModifiedVerbsEnabled( bool );
@@ -133,6 +139,9 @@ namespace gLabels
 		QToolBar *objectsToolBar;
 		QToolBar *editToolBar;
 		QToolBar *viewToolBar;
+
+		QLabel *zoomInfoLabel;
+		QLabel *cursorInfoLabel;
 
 		QAction *fileNewAction;
 		QAction *fileOpenAction;
