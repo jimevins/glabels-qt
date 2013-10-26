@@ -86,7 +86,17 @@ namespace gLabels
 		void objectsXformRotateRight();
 		void objectsXformFlipHoriz();
 		void objectsXformFlipVert();
+		void objectsAlignLeft();
+		void objectsAlignHCenter();
+		void objectsAlignRight();
+		void objectsAlignTop();
+		void objectsAlignVCenter();
+		void objectsAlignBottom();
+		void objectsCenterHoriz();
+		void objectsCenterVert();
+		void objectsMergeProperties();
 
+		void helpContents();
 		void helpAbout();
 
 
@@ -101,6 +111,8 @@ namespace gLabels
 		QMenu   *objectsCreateMenu;
 		QMenu   *objectsOrderMenu;
 		QMenu   *objectsXformMenu;
+		QMenu   *objectsAlignMenu;
+		QMenu   *objectsCenterMenu;
 		QMenu   *helpMenu;
 
 		QAction *fileNewAction;
@@ -145,7 +157,17 @@ namespace gLabels
 		QAction *objectsXformRotateRightAction;
 		QAction *objectsXformFlipHorizAction;
 		QAction *objectsXformFlipVertAction;
+		QAction *objectsAlignLeftAction;
+		QAction *objectsAlignHCenterAction;
+		QAction *objectsAlignRightAction;
+		QAction *objectsAlignTopAction;
+		QAction *objectsAlignVCenterAction;
+		QAction *objectsAlignBottomAction;
+		QAction *objectsCenterHorizAction;
+		QAction *objectsCenterVertAction;
+		QAction *objectsMergePropertiesAction;
 
+		QAction *helpContentsAction;
 		QAction *helpAboutAction;
 
 	};

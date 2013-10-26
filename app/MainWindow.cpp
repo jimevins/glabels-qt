@@ -268,8 +268,59 @@ namespace gLabels
 		objectsXformFlipVertAction->setStatusTip( tr("Flip object(s) vertically") );
 		connect( objectsXformFlipVertAction, SIGNAL(triggered()), this, SLOT(objectsXformFlipVert()) );
 
+		objectsAlignLeftAction = new QAction( tr("Align Left"), this );
+		objectsAlignLeftAction->setIcon( Icons::AlignLeft() );
+		objectsAlignLeftAction->setStatusTip( tr("Align objects to left edges") );
+		connect( objectsAlignLeftAction, SIGNAL(triggered()), this, SLOT(objectsAlignLeft()) );
+
+		objectsAlignHCenterAction = new QAction( tr("Align Center"), this );
+		objectsAlignHCenterAction->setIcon( Icons::AlignHCenter() );
+		objectsAlignHCenterAction->setStatusTip( tr("Align objects to horizontal centers") );
+		connect( objectsAlignHCenterAction, SIGNAL(triggered()), this, SLOT(objectsAlignHCenter()) );
+
+		objectsAlignRightAction = new QAction( tr("Align Right"), this );
+		objectsAlignRightAction->setIcon( Icons::AlignRight() );
+		objectsAlignRightAction->setStatusTip( tr("Align objects to right edges") );
+		connect( objectsAlignRightAction, SIGNAL(triggered()), this, SLOT(objectsAlignRight()) );
+
+		objectsAlignTopAction = new QAction( tr("Align Top"), this );
+		objectsAlignTopAction->setIcon( Icons::AlignTop() );
+		objectsAlignTopAction->setStatusTip( tr("Align objects to top edges") );
+		connect( objectsAlignTopAction, SIGNAL(triggered()), this, SLOT(objectsAlignTop()) );
+
+		objectsAlignVCenterAction = new QAction( tr("Align Middle"), this );
+		objectsAlignVCenterAction->setIcon( Icons::AlignVCenter() );
+		objectsAlignVCenterAction->setStatusTip( tr("Align objects to vertical centers") );
+		connect( objectsAlignVCenterAction, SIGNAL(triggered()), this, SLOT(objectsAlignVCenter()) );
+
+		objectsAlignBottomAction = new QAction( tr("Align Bottom"), this );
+		objectsAlignBottomAction->setIcon( Icons::AlignBottom() );
+		objectsAlignBottomAction->setStatusTip( tr("Align objects to bottom edges") );
+		connect( objectsAlignBottomAction, SIGNAL(triggered()), this, SLOT(objectsAlignBottom()) );
+
+		objectsCenterHorizAction = new QAction( tr("Center Horizontally"), this );
+		objectsCenterHorizAction->setIcon( Icons::CenterHoriz() );
+		objectsCenterHorizAction->setStatusTip( tr("Horizontally center objects in label") );
+		connect( objectsCenterHorizAction, SIGNAL(triggered()), this, SLOT(objectsCenterHoriz()) );
+
+		objectsCenterVertAction = new QAction( tr("Center Vertically"), this );
+		objectsCenterVertAction->setIcon( Icons::CenterVert() );
+		objectsCenterVertAction->setStatusTip( tr("Vertically center objects in label") );
+		connect( objectsCenterVertAction, SIGNAL(triggered()), this, SLOT(objectsCenterVert()) );
+
+		objectsMergePropertiesAction = new QAction( tr("Merge Properties..."), this );
+		objectsMergePropertiesAction->setIcon( Icons::Merge() );
+		objectsMergePropertiesAction->setStatusTip( tr("Edit merge properties") );
+		connect( objectsMergePropertiesAction, SIGNAL(triggered()), this, SLOT(objectsMergeProperties()) );
+
 
 		/* Help actions */
+		helpContentsAction = new QAction( tr("&Contents..."), this );
+		helpContentsAction->setIcon( QIcon::fromTheme( "help-contents" ) );
+		helpContentsAction->setShortcut( QKeySequence::HelpContents );
+		helpContentsAction->setStatusTip( tr("Open gLabels manual") );
+		connect( helpContentsAction, SIGNAL(triggered()), this, SLOT(helpContents()) );
+
 		helpAboutAction = new QAction( tr("&About..."), this );
 		helpAboutAction->setIcon( QIcon::fromTheme( "help-about" ) );
 		helpAboutAction->setStatusTip( tr("About gLabels") );
@@ -328,6 +379,7 @@ namespace gLabels
 		objectsCreateMenu->addAction( objectsCreateEllipseAction );
 		objectsCreateMenu->addAction( objectsCreateImageAction );
 		objectsCreateMenu->addAction( objectsCreateBarcodeAction );
+		objectsMenu->addSeparator();
 		objectsOrderMenu = objectsMenu->addMenu( tr("&Order") );
 		objectsOrderMenu->addAction( objectsOrderRaiseAction );
 		objectsOrderMenu->addAction( objectsOrderLowerAction );
@@ -336,8 +388,22 @@ namespace gLabels
 		objectsXformMenu->addAction( objectsXformRotateRightAction );
 		objectsXformMenu->addAction( objectsXformFlipHorizAction );
 		objectsXformMenu->addAction( objectsXformFlipVertAction );
+		objectsAlignMenu = objectsMenu->addMenu( tr("&Alignment") );
+		objectsAlignMenu->addAction( objectsAlignLeftAction );
+		objectsAlignMenu->addAction( objectsAlignHCenterAction );
+		objectsAlignMenu->addAction( objectsAlignRightAction );
+		objectsAlignMenu->addSeparator();
+		objectsAlignMenu->addAction( objectsAlignTopAction );
+		objectsAlignMenu->addAction( objectsAlignVCenterAction );
+		objectsAlignMenu->addAction( objectsAlignBottomAction );
+		objectsCenterMenu = objectsMenu->addMenu( tr("Center") );
+		objectsCenterMenu->addAction( objectsCenterHorizAction );
+		objectsCenterMenu->addAction( objectsCenterVertAction );
+		objectsMenu->addSeparator();
+		objectsMenu->addAction( objectsMergePropertiesAction );
 
 		helpMenu = menuBar()->addMenu( tr("&Help") );
+		helpMenu->addAction( helpContentsAction );
 		helpMenu->addAction( helpAboutAction );
 	}
 
@@ -573,6 +639,66 @@ namespace gLabels
 	void MainWindow::objectsXformFlipVert()
 	{
 		std::cout << "ACTION: objects->Rotate/Flip->Flip Vertically" << std::endl;
+	}
+
+
+	void MainWindow::objectsAlignLeft()
+	{
+		std::cout << "ACTION: objects->Align->Left" << std::endl;
+	}
+
+
+	void MainWindow::objectsAlignHCenter()
+	{
+		std::cout << "ACTION: objects->Align->Center Horizontally" << std::endl;
+	}
+
+
+	void MainWindow::objectsAlignRight()
+	{
+		std::cout << "ACTION: objects->Align->Right" << std::endl;
+	}
+
+
+	void MainWindow::objectsAlignTop()
+	{
+		std::cout << "ACTION: objects->Align->Top" << std::endl;
+	}
+
+
+	void MainWindow::objectsAlignVCenter()
+	{
+		std::cout << "ACTION: objects->Align->Center Vertically" << std::endl;
+	}
+
+
+	void MainWindow::objectsAlignBottom()
+	{
+		std::cout << "ACTION: objects->Align->Bottom" << std::endl;
+	}
+
+
+	void MainWindow::objectsCenterHoriz()
+	{
+		std::cout << "ACTION: objects->Center->Horizontally" << std::endl;
+	}
+
+
+	void MainWindow::objectsCenterVert()
+	{
+		std::cout << "ACTION: objects->Center->Vertically" << std::endl;
+	}
+
+
+	void MainWindow::objectsMergeProperties()
+	{
+		std::cout << "ACTION: objects->Merge Properties..." << std::endl;
+	}
+
+
+	void MainWindow::helpContents()
+	{
+		std::cout << "ACTION: help->Contents" << std::endl;
 	}
 
 
