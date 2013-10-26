@@ -108,6 +108,12 @@ namespace gLabels
 		void createMenus();
 		void createToolBars();
 
+		void setDocVerbsEnabled( bool );
+		void setDocModifiedVerbsEnabled( bool );
+		void setPasteVerbsEnabled( bool );
+		void setSelectionVerbsEnabled( bool );
+		void setMultiSelectionVerbsEnabled( bool );
+
 		void readSettings();
 		void writeSettings();
 

@@ -41,6 +41,9 @@ namespace gLabels
 		createMenus();
 		createToolBars();
 
+		setDocVerbsEnabled( false );
+		setPasteVerbsEnabled( false );
+
 		readSettings();
 	}
 
@@ -457,6 +460,116 @@ namespace gLabels
 		viewToolBar->addAction( viewZoomOutAction );
 		viewToolBar->addAction( viewZoom1to1Action );
 		viewToolBar->addAction( viewZoomToFitAction );
+	}
+
+
+	/*
+	 * Set enabled state of actions associated with a document.
+	 */
+	void MainWindow::setDocVerbsEnabled( bool enabled )
+	{
+		filePropertiesAction->setEnabled( enabled );
+		fileSaveAction->setEnabled( enabled );
+		fileSaveAsAction->setEnabled( enabled );
+		filePrintAction->setEnabled( enabled );
+		fileCloseAction->setEnabled( enabled );
+		editUndoAction->setEnabled( enabled );
+		editRedoAction->setEnabled( enabled );
+		editCutAction->setEnabled( enabled );
+		editCopyAction->setEnabled( enabled );
+		editPasteAction->setEnabled( enabled );
+		editDeleteAction->setEnabled( enabled );
+		editSelectAllAction->setEnabled( enabled );
+		editUnSelectAllAction->setEnabled( enabled );
+		viewZoomInAction->setEnabled( enabled );
+		viewZoomOutAction->setEnabled( enabled );
+		viewZoom1to1Action->setEnabled( enabled );
+		viewZoomToFitAction->setEnabled( enabled );
+		viewGridAction->setEnabled( enabled );
+		viewMarkupAction->setEnabled( enabled );
+		objectsArrowModeAction->setEnabled( enabled );
+		objectsCreateMenu->setEnabled( enabled );
+		objectsCreateTextAction->setEnabled( enabled );
+		objectsCreateLineAction->setEnabled( enabled );
+		objectsCreateBoxAction->setEnabled( enabled );
+		objectsCreateEllipseAction->setEnabled( enabled );
+		objectsCreateImageAction->setEnabled( enabled );
+		objectsCreateBarcodeAction->setEnabled( enabled );
+		objectsOrderMenu->setEnabled( enabled );
+		objectsOrderRaiseAction->setEnabled( enabled );
+		objectsOrderLowerAction->setEnabled( enabled );
+		objectsXformMenu->setEnabled( enabled );
+		objectsXformRotateLeftAction->setEnabled( enabled );
+		objectsXformRotateRightAction->setEnabled( enabled );
+		objectsXformFlipHorizAction->setEnabled( enabled );
+		objectsXformFlipVertAction->setEnabled( enabled );
+		objectsAlignMenu->setEnabled( enabled );
+		objectsAlignLeftAction->setEnabled( enabled );
+		objectsAlignRightAction->setEnabled( enabled );
+		objectsAlignHCenterAction->setEnabled( enabled );
+		objectsAlignTopAction->setEnabled( enabled );
+		objectsAlignBottomAction->setEnabled( enabled );
+		objectsAlignVCenterAction->setEnabled( enabled );
+		objectsCenterMenu->setEnabled( enabled );
+		objectsCenterHorizAction->setEnabled( enabled );
+		objectsCenterVertAction->setEnabled( enabled );
+		objectsMergePropertiesAction->setEnabled( enabled );
+	}
+
+
+	/*
+	 * Set enabled state of actions associated with a document being modified since last save.
+	 */
+	void MainWindow::setDocModifiedVerbsEnabled( bool enabled )
+	{
+		fileSaveAction->setEnabled( enabled );
+	}
+
+
+	/*
+	 * Set enabled state of actions associated with data being available on clipboard.
+	 */
+	void MainWindow::setPasteVerbsEnabled( bool enabled )
+	{
+		editPasteAction->setEnabled( enabled );
+	}
+
+
+	/*
+	 * Set enabled state of actions associated with a non-empty selection.
+	 */
+	void MainWindow::setSelectionVerbsEnabled( bool enabled )
+	{
+		editCutAction->setEnabled( enabled );
+		editCopyAction->setEnabled( enabled );
+		editDeleteAction->setEnabled( enabled );
+		editUnSelectAllAction->setEnabled( enabled );
+		objectsOrderMenu->setEnabled( enabled );
+		objectsOrderRaiseAction->setEnabled( enabled );
+		objectsOrderLowerAction->setEnabled( enabled );
+		objectsXformMenu->setEnabled( enabled );
+		objectsXformRotateLeftAction->setEnabled( enabled );
+		objectsXformRotateRightAction->setEnabled( enabled );
+		objectsXformFlipHorizAction->setEnabled( enabled );
+		objectsXformFlipVertAction->setEnabled( enabled );
+		objectsCenterMenu->setEnabled( enabled );
+		objectsCenterHorizAction->setEnabled( enabled );
+		objectsCenterVertAction->setEnabled( enabled );
+	}
+
+
+	/*
+	 * Set enabled state of actions associated with a non-atomic selection.
+	 */
+	void MainWindow::setMultiSelectionVerbsEnabled( bool enabled )
+	{
+		objectsAlignMenu->setEnabled( enabled );
+		objectsAlignLeftAction->setEnabled( enabled );
+		objectsAlignRightAction->setEnabled( enabled );
+		objectsAlignHCenterAction->setEnabled( enabled );
+		objectsAlignTopAction->setEnabled( enabled );
+		objectsAlignBottomAction->setEnabled( enabled );
+		objectsAlignVCenterAction->setEnabled( enabled );
 	}
 
 
