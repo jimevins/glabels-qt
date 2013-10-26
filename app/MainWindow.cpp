@@ -20,6 +20,7 @@
 
 #include "MainWindow.h"
 
+#include <QSettings>
 #include <QLabel>
 
 #include <iostream>
@@ -39,12 +40,15 @@ namespace gLabels
 		createActions();
 		createMenus();
 		createToolBars();
+
+		readSettings();
 	}
 
 
 	void MainWindow::closeEvent( QCloseEvent *event )
 	{
 		std::cout << "CLOSE EVENT" << std::endl;
+		writeSettings();
 		event->accept();
 	}
 
@@ -162,27 +166,23 @@ namespace gLabels
 		/* View actions */
 		viewFileToolBarAction = new QAction( tr("File"), this );
 		viewFileToolBarAction->setCheckable( true );
-		viewFileToolBarAction->setChecked( true );
 		viewFileToolBarAction->setStatusTip( tr("Change visibility of file toolbar in current window") );
-		connect( viewFileToolBarAction, SIGNAL(triggered()), this, SLOT(viewFileToolBar()) );
+		connect( viewFileToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewFileToolBar(bool)) );
 
 		viewObjectsToolBarAction = new QAction( tr("Objects"), this );
 		viewObjectsToolBarAction->setCheckable( true );
-		viewObjectsToolBarAction->setChecked( true );
 		viewObjectsToolBarAction->setStatusTip( tr("Change visibility of objects toolbar in current window") );
-		connect( viewObjectsToolBarAction, SIGNAL(triggered()), this, SLOT(viewObjectsToolBar()) );
+		connect( viewObjectsToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewObjectsToolBar(bool)) );
 
 		viewEditToolBarAction = new QAction( tr("Edit"), this );
 		viewEditToolBarAction->setCheckable( true );
-		viewEditToolBarAction->setChecked( true );
 		viewEditToolBarAction->setStatusTip( tr("Change visibility of edit toolbar in current window") );
-		connect( viewEditToolBarAction, SIGNAL(triggered()), this, SLOT(viewEditToolBar()) );
+		connect( viewEditToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewEditToolBar(bool)) );
 
 		viewViewToolBarAction = new QAction( tr("View"), this );
 		viewViewToolBarAction->setCheckable( true );
-		viewViewToolBarAction->setChecked( true );
 		viewViewToolBarAction->setStatusTip( tr("Change visibility of view toolbar in current window") );
-		connect( viewViewToolBarAction, SIGNAL(triggered()), this, SLOT(viewViewToolBar()) );
+		connect( viewViewToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewViewToolBar(bool)) );
 
 		viewGridAction = new QAction( tr("Grid"), this );
 		viewGridAction->setCheckable( true );
@@ -434,7 +434,6 @@ namespace gLabels
 		fileToolBar->addAction( fileSaveAction );
 		fileToolBar->addSeparator();
 		fileToolBar->addAction( filePrintAction );
-		/* TODO: restore visibility from saved state. */
 
 		objectsToolBar = addToolBar( tr("&Objects") );
 		objectsToolBar->addAction( objectsArrowModeAction );
@@ -447,20 +446,53 @@ namespace gLabels
 		objectsToolBar->addAction( objectsCreateBarcodeAction );
 		objectsToolBar->addSeparator();
 		objectsToolBar->addAction( objectsMergePropertiesAction );
-		/* TODO: restore visibility from saved state. */
 
 		editToolBar = addToolBar( tr("&Edit") );
 		editToolBar->addAction( editCutAction );
 		editToolBar->addAction( editCopyAction );
 		editToolBar->addAction( editPasteAction );
-		/* TODO: restore visibility from saved state. */
 
 		viewToolBar = addToolBar( tr("&View") );
 		viewToolBar->addAction( viewZoomInAction );
 		viewToolBar->addAction( viewZoomOutAction );
 		viewToolBar->addAction( viewZoom1to1Action );
 		viewToolBar->addAction( viewZoomToFitAction );
-		/* TODO: restore visibility from saved state. */
+	}
+
+
+	void MainWindow::readSettings()
+	{
+		QSettings settings;
+
+		settings.beginGroup( "MainWindow" );
+		bool showFileToolBar    = settings.value( "showFileToolBar",    true ).toBool();
+		bool showObjectsToolBar = settings.value( "showObjectsToolBar", true ).toBool();
+		bool showEditToolBar    = settings.value( "showEditToolBar",    true ).toBool();
+		bool showViewToolBar    = settings.value( "showViewToolBar",    true ).toBool();
+		settings.endGroup();
+
+		viewFileToolBarAction->setChecked(    showFileToolBar );
+		viewObjectsToolBarAction->setChecked( showObjectsToolBar );
+		viewEditToolBarAction->setChecked(    showEditToolBar );
+		viewViewToolBarAction->setChecked(    showViewToolBar );
+
+		fileToolBar->setVisible(    showFileToolBar );
+		objectsToolBar->setVisible( showObjectsToolBar );
+		editToolBar->setVisible(    showEditToolBar );
+		viewToolBar->setVisible(    showViewToolBar );
+	}
+
+
+	void MainWindow::writeSettings()
+	{
+		QSettings settings;
+
+		settings.beginGroup( "MainWindow" );
+		settings.setValue( "showFileToolBar",    viewFileToolBarAction->isChecked() );
+		settings.setValue( "showObjectsToolBar", viewObjectsToolBarAction->isChecked() );
+		settings.setValue( "showEditToolBar",    viewEditToolBarAction->isChecked() );
+		settings.setValue( "showViewToolBar",    viewViewToolBarAction->isChecked() );
+		settings.endGroup();
 	}
 
 
@@ -572,31 +604,27 @@ namespace gLabels
 	}
 
 
-	void MainWindow::viewFileToolBar()
+	void MainWindow::viewFileToolBar( bool state )
 	{
-		fileToolBar->setVisible( viewFileToolBarAction->isChecked() );
-		/* TODO: save state. */
+		fileToolBar->setVisible( state );
 	}
 
 
-	void MainWindow::viewObjectsToolBar()
+	void MainWindow::viewObjectsToolBar( bool state )
 	{
-		objectsToolBar->setVisible( viewObjectsToolBarAction->isChecked() );
-		/* TODO: save state. */
+		objectsToolBar->setVisible( state );
 	}
 
 
-	void MainWindow::viewEditToolBar()
+	void MainWindow::viewEditToolBar( bool state )
 	{
-		editToolBar->setVisible( viewEditToolBarAction->isChecked() );
-		/* TODO: save state. */
+		editToolBar->setVisible( state );
 	}
 
 
-	void MainWindow::viewViewToolBar()
+	void MainWindow::viewViewToolBar( bool state )
 	{
-		viewToolBar->setVisible( viewViewToolBarAction->isChecked() );
-		/* TODO: save state. */
+		viewToolBar->setVisible( state );
 	}
 
 

@@ -65,10 +65,10 @@ namespace gLabels
 		void editUnSelectAll();
 		void editPreferences();
 
-		void viewFileToolBar();
-		void viewObjectsToolBar();
-		void viewEditToolBar();
-		void viewViewToolBar();
+		void viewFileToolBar( bool );
+		void viewObjectsToolBar( bool );
+		void viewEditToolBar( bool );
+		void viewViewToolBar( bool );
 		void viewGrid();
 		void viewMarkup();
 		void viewZoomIn();
@@ -107,6 +107,9 @@ namespace gLabels
 		void createActions();
 		void createMenus();
 		void createToolBars();
+
+		void readSettings();
+		void writeSettings();
 
 		QMenu   *fileMenu;
 		QMenu   *editMenu;

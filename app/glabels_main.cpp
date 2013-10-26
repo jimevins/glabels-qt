@@ -31,6 +31,10 @@ int main( int argc, char **argv )
 {
 	QApplication app( argc, argv );
 
+	QCoreApplication::setOrganizationName( "glabels.org" );
+	QCoreApplication::setOrganizationDomain( "glabels.org" );
+	QCoreApplication::setApplicationName( "glabels-qt" );
+
 	MainWindow mainWin;
 	mainWin.show();
 
