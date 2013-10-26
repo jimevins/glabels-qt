@@ -38,6 +38,7 @@ namespace gLabels
 
 		createActions();
 		createMenus();
+		createToolBars();
 	}
 
 
@@ -159,15 +160,29 @@ namespace gLabels
 
 
 		/* View actions */
-		viewMainToolbarAction = new QAction( tr("Main Toolbar"), this );
-		viewMainToolbarAction->setCheckable( true );
-		viewMainToolbarAction->setStatusTip( tr("Change visibility of main toolbar in current window") );
-		connect( viewMainToolbarAction, SIGNAL(triggered()), this, SLOT(viewMainToolbar()) );
+		viewFileToolBarAction = new QAction( tr("File"), this );
+		viewFileToolBarAction->setCheckable( true );
+		viewFileToolBarAction->setChecked( true );
+		viewFileToolBarAction->setStatusTip( tr("Change visibility of file toolbar in current window") );
+		connect( viewFileToolBarAction, SIGNAL(triggered()), this, SLOT(viewFileToolBar()) );
 
-		viewDrawingToolbarAction = new QAction( tr("Drawing Toolbar"), this );
-		viewDrawingToolbarAction->setCheckable( true );
-		viewDrawingToolbarAction->setStatusTip( tr("Change visibility of drawing toolbar in current window") );
-		connect( viewDrawingToolbarAction, SIGNAL(triggered()), this, SLOT(viewDrawingToolbar()) );
+		viewObjectsToolBarAction = new QAction( tr("Objects"), this );
+		viewObjectsToolBarAction->setCheckable( true );
+		viewObjectsToolBarAction->setChecked( true );
+		viewObjectsToolBarAction->setStatusTip( tr("Change visibility of objects toolbar in current window") );
+		connect( viewObjectsToolBarAction, SIGNAL(triggered()), this, SLOT(viewObjectsToolBar()) );
+
+		viewEditToolBarAction = new QAction( tr("Edit"), this );
+		viewEditToolBarAction->setCheckable( true );
+		viewEditToolBarAction->setChecked( true );
+		viewEditToolBarAction->setStatusTip( tr("Change visibility of edit toolbar in current window") );
+		connect( viewEditToolBarAction, SIGNAL(triggered()), this, SLOT(viewEditToolBar()) );
+
+		viewViewToolBarAction = new QAction( tr("View"), this );
+		viewViewToolBarAction->setCheckable( true );
+		viewViewToolBarAction->setChecked( true );
+		viewViewToolBarAction->setStatusTip( tr("Change visibility of view toolbar in current window") );
+		connect( viewViewToolBarAction, SIGNAL(triggered()), this, SLOT(viewViewToolBar()) );
 
 		viewGridAction = new QAction( tr("Grid"), this );
 		viewGridAction->setCheckable( true );
@@ -359,8 +374,11 @@ namespace gLabels
 		editMenu->addAction( editPreferencesAction );
 
 		viewMenu = menuBar()->addMenu( tr("&View") );
-		viewMenu->addAction( viewMainToolbarAction );
-		viewMenu->addAction( viewDrawingToolbarAction );
+		viewToolBarsMenu = viewMenu->addMenu( tr("Toolbars") );
+		viewToolBarsMenu->addAction( viewFileToolBarAction );
+		viewToolBarsMenu->addAction( viewObjectsToolBarAction );
+		viewToolBarsMenu->addAction( viewEditToolBarAction );
+		viewToolBarsMenu->addAction( viewViewToolBarAction );
 		viewMenu->addSeparator();
 		viewMenu->addAction( viewGridAction );
 		viewMenu->addAction( viewMarkupAction );
@@ -405,6 +423,44 @@ namespace gLabels
 		helpMenu = menuBar()->addMenu( tr("&Help") );
 		helpMenu->addAction( helpContentsAction );
 		helpMenu->addAction( helpAboutAction );
+	}
+
+
+	void MainWindow::createToolBars()
+	{
+		fileToolBar = addToolBar( tr("&File") );
+		fileToolBar->addAction( fileNewAction );
+		fileToolBar->addAction( fileOpenAction );
+		fileToolBar->addAction( fileSaveAction );
+		fileToolBar->addSeparator();
+		fileToolBar->addAction( filePrintAction );
+		/* TODO: restore visibility from saved state. */
+
+		objectsToolBar = addToolBar( tr("&Objects") );
+		objectsToolBar->addAction( objectsArrowModeAction );
+		objectsToolBar->addSeparator();
+		objectsToolBar->addAction( objectsCreateTextAction );
+		objectsToolBar->addAction( objectsCreateBoxAction );
+		objectsToolBar->addAction( objectsCreateLineAction );
+		objectsToolBar->addAction( objectsCreateEllipseAction );
+		objectsToolBar->addAction( objectsCreateImageAction );
+		objectsToolBar->addAction( objectsCreateBarcodeAction );
+		objectsToolBar->addSeparator();
+		objectsToolBar->addAction( objectsMergePropertiesAction );
+		/* TODO: restore visibility from saved state. */
+
+		editToolBar = addToolBar( tr("&Edit") );
+		editToolBar->addAction( editCutAction );
+		editToolBar->addAction( editCopyAction );
+		editToolBar->addAction( editPasteAction );
+		/* TODO: restore visibility from saved state. */
+
+		viewToolBar = addToolBar( tr("&View") );
+		viewToolBar->addAction( viewZoomInAction );
+		viewToolBar->addAction( viewZoomOutAction );
+		viewToolBar->addAction( viewZoom1to1Action );
+		viewToolBar->addAction( viewZoomToFitAction );
+		/* TODO: restore visibility from saved state. */
 	}
 
 
@@ -516,15 +572,31 @@ namespace gLabels
 	}
 
 
-	void MainWindow::viewMainToolbar()
+	void MainWindow::viewFileToolBar()
 	{
-		std::cout << "ACTION: edit->Main Toolbar" << std::endl;
+		fileToolBar->setVisible( viewFileToolBarAction->isChecked() );
+		/* TODO: save state. */
 	}
 
 
-	void MainWindow::viewDrawingToolbar()
+	void MainWindow::viewObjectsToolBar()
 	{
-		std::cout << "ACTION: edit->Drawing Toolbar" << std::endl;
+		objectsToolBar->setVisible( viewObjectsToolBarAction->isChecked() );
+		/* TODO: save state. */
+	}
+
+
+	void MainWindow::viewEditToolBar()
+	{
+		editToolBar->setVisible( viewEditToolBarAction->isChecked() );
+		/* TODO: save state. */
+	}
+
+
+	void MainWindow::viewViewToolBar()
+	{
+		viewToolBar->setVisible( viewViewToolBarAction->isChecked() );
+		/* TODO: save state. */
 	}
 
 

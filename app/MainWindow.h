@@ -26,6 +26,7 @@
 #include <QCloseEvent>
 #include <QMenuBar>
 #include <QMenu>
+#include <QToolBar>
 
 
 namespace gLabels
@@ -64,8 +65,10 @@ namespace gLabels
 		void editUnSelectAll();
 		void editPreferences();
 
-		void viewMainToolbar();
-		void viewDrawingToolbar();
+		void viewFileToolBar();
+		void viewObjectsToolBar();
+		void viewEditToolBar();
+		void viewViewToolBar();
 		void viewGrid();
 		void viewMarkup();
 		void viewZoomIn();
@@ -103,10 +106,12 @@ namespace gLabels
 	private:
 		void createActions();
 		void createMenus();
+		void createToolBars();
 
 		QMenu   *fileMenu;
 		QMenu   *editMenu;
 		QMenu   *viewMenu;
+		QMenu   *viewToolBarsMenu;
 		QMenu   *objectsMenu;
 		QMenu   *objectsCreateMenu;
 		QMenu   *objectsOrderMenu;
@@ -114,6 +119,11 @@ namespace gLabels
 		QMenu   *objectsAlignMenu;
 		QMenu   *objectsCenterMenu;
 		QMenu   *helpMenu;
+
+		QToolBar *fileToolBar;
+		QToolBar *objectsToolBar;
+		QToolBar *editToolBar;
+		QToolBar *viewToolBar;
 
 		QAction *fileNewAction;
 		QAction *fileOpenAction;
@@ -135,8 +145,10 @@ namespace gLabels
 		QAction *editUnSelectAllAction;
 		QAction *editPreferencesAction;
 
-		QAction *viewMainToolbarAction;
-		QAction *viewDrawingToolbarAction;
+		QAction *viewFileToolBarAction;
+		QAction *viewObjectsToolBarAction;
+		QAction *viewEditToolBarAction;
+		QAction *viewViewToolBarAction;
 		QAction *viewGridAction;
 		QAction *viewMarkupAction;
 		QAction *viewZoomInAction;
