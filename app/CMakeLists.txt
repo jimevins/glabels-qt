@@ -6,6 +6,7 @@ set (glabels_sources
   glabels_main.cpp
   BarcodeStyle.cpp
   ColorNode.cpp
+  Help.cpp
   LabelModel.cpp
   LabelModelItem.cpp
   LabelRegion.cpp

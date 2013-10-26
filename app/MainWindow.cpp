@@ -21,11 +21,11 @@
 #include "MainWindow.h"
 
 #include <QLabel>
-#include <QMessageBox>
 
 #include <iostream>
 
 #include "Icons.h"
+#include "Help.h"
 
 
 namespace gLabels
@@ -698,26 +698,13 @@ namespace gLabels
 
 	void MainWindow::helpContents()
 	{
-		std::cout << "ACTION: help->Contents" << std::endl;
+		Help::displayContents( this );
 	}
 
 
 	void MainWindow::helpAbout()
 	{
-		QMessageBox aboutBox( QMessageBox::NoIcon,
-				      tr("About gLabels"),
-				      tr("<h2>gLabels-qt</h2>"
-					 "<p>x.x.x</p>"
-					 "<p>A label and business card creation program.</p>"
-					 "<font size=\"smaller\">"
-					 "<p><a href=\"http://glabels.org\">Homepage</a></p>"
-					 "<p>Copyright &copy; 2013 Jim Evins <evins@snaught.com></p>"
-					 "</font>"),
-				      QMessageBox::Ok,
-				      this );
-		aboutBox.setIconPixmap( QPixmap( ":/images/glabels-logo.png" ) );
-
-		aboutBox.exec();
+		Help::displayAbout( this );
 	}
 
 }
