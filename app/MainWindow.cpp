@@ -167,22 +167,22 @@ namespace gLabels
 		viewFileToolBarAction = new QAction( tr("File"), this );
 		viewFileToolBarAction->setCheckable( true );
 		viewFileToolBarAction->setStatusTip( tr("Change visibility of file toolbar in current window") );
-		connect( viewFileToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewFileToolBar(bool)) );
+		connect( viewFileToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewFileToolBar(bool)) );
 
 		viewObjectsToolBarAction = new QAction( tr("Objects"), this );
 		viewObjectsToolBarAction->setCheckable( true );
 		viewObjectsToolBarAction->setStatusTip( tr("Change visibility of objects toolbar in current window") );
-		connect( viewObjectsToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewObjectsToolBar(bool)) );
+		connect( viewObjectsToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewObjectsToolBar(bool)) );
 
 		viewEditToolBarAction = new QAction( tr("Edit"), this );
 		viewEditToolBarAction->setCheckable( true );
 		viewEditToolBarAction->setStatusTip( tr("Change visibility of edit toolbar in current window") );
-		connect( viewEditToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewEditToolBar(bool)) );
+		connect( viewEditToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewEditToolBar(bool)) );
 
 		viewViewToolBarAction = new QAction( tr("View"), this );
 		viewViewToolBarAction->setCheckable( true );
 		viewViewToolBarAction->setStatusTip( tr("Change visibility of view toolbar in current window") );
-		connect( viewViewToolBarAction, SIGNAL(triggered(bool)), this, SLOT(viewViewToolBar(bool)) );
+		connect( viewViewToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewViewToolBar(bool)) );
 
 		viewGridAction = new QAction( tr("Grid"), this );
 		viewGridAction->setCheckable( true );
