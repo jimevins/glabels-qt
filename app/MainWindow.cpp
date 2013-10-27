@@ -62,31 +62,31 @@ namespace gLabels
 	{
 		/* File actions */
 		fileNewAction = new QAction( tr("&New..."), this );
-		fileNewAction->setIcon( QIcon::fromTheme( "document-new" ) );
+		fileNewAction->setIcon( QIcon::fromTheme( "document-new", Icons::Fallback::FileNew() ) );
 		fileNewAction->setShortcut( QKeySequence::New );
 		fileNewAction->setStatusTip( tr("Create a new file") );
 		connect( fileNewAction, SIGNAL(triggered()), this, SLOT(fileNew()) );
 
 		fileOpenAction = new QAction( tr("&Open..."), this );
-		fileOpenAction->setIcon( QIcon::fromTheme( "document-open" ) );
+		fileOpenAction->setIcon( QIcon::fromTheme( "document-open", Icons::Fallback::FileOpen() ) );
 		fileOpenAction->setShortcut( QKeySequence::Open );
 		fileOpenAction->setStatusTip( tr("Open a file") );
 		connect( fileOpenAction, SIGNAL(triggered()), this, SLOT(fileOpen()) );
 
 		fileSaveAction = new QAction( tr("&Save"), this );
-		fileSaveAction->setIcon( QIcon::fromTheme( "document-save" ) );
+		fileSaveAction->setIcon( QIcon::fromTheme( "document-save", Icons::Fallback::FileSave() ) );
 		fileSaveAction->setShortcut( QKeySequence::Save );
 		fileSaveAction->setStatusTip( tr("Save current file") );
 		connect( fileSaveAction, SIGNAL(triggered()), this, SLOT(fileSave()) );
 
 		fileSaveAsAction = new QAction( tr("Save &As..."), this );
-		fileSaveAsAction->setIcon( QIcon::fromTheme( "document-save-as" ) );
+		fileSaveAsAction->setIcon( QIcon::fromTheme( "document-save-as", Icons::Fallback::FileSaveAs() ) );
 		fileSaveAsAction->setShortcut( QKeySequence::SaveAs );
 		fileSaveAsAction->setStatusTip( tr("Save current file to a different name") );
 		connect( fileSaveAsAction, SIGNAL(triggered()), this, SLOT(fileSaveAs()) );
 
 		filePrintAction = new QAction( tr("&Print..."), this );
-		filePrintAction->setIcon( QIcon::fromTheme( "document-print" ) );
+		filePrintAction->setIcon( QIcon::fromTheme( "document-print", Icons::Fallback::FilePrint() ) );
 		filePrintAction->setShortcut( QKeySequence::Print );
 		filePrintAction->setStatusTip( tr("Print the current file") );
 		connect( filePrintAction, SIGNAL(triggered()), this, SLOT(filePrint()) );
@@ -127,19 +127,19 @@ namespace gLabels
 		connect( editRedoAction, SIGNAL(triggered()), this, SLOT(editRedo()) );
 
 		editCutAction = new QAction( tr("Cut"), this );
-		editCutAction->setIcon( QIcon::fromTheme( "edit-cut" ) );
+		editCutAction->setIcon( QIcon::fromTheme( "edit-cut", Icons::Fallback::EditCut() ) );
 		editCutAction->setShortcut( QKeySequence::Cut );
 		editCutAction->setStatusTip( tr("Cut the selection") );
 		connect( editCutAction, SIGNAL(triggered()), this, SLOT(editCut()) );
 
 		editCopyAction = new QAction( tr("&Copy"), this );
-		editCopyAction->setIcon( QIcon::fromTheme( "edit-copy" ) );
+		editCopyAction->setIcon( QIcon::fromTheme( "edit-copy", Icons::Fallback::EditCopy() ) );
 		editCopyAction->setShortcut( QKeySequence::Copy );
 		editCopyAction->setStatusTip( tr("Copy the selection") );
 		connect( editCopyAction, SIGNAL(triggered()), this, SLOT(editCopy()) );
 
 		editPasteAction = new QAction( tr("&Paste"), this );
-		editPasteAction->setIcon( QIcon::fromTheme( "edit-paste" ) );
+		editPasteAction->setIcon( QIcon::fromTheme( "edit-paste", Icons::Fallback::EditPaste() ) );
 		editPasteAction->setShortcut( QKeySequence::Paste );
 		editPasteAction->setStatusTip( tr("Paste the clipboard") );
 		connect( editPasteAction, SIGNAL(triggered()), this, SLOT(editPaste()) );
@@ -200,24 +200,24 @@ namespace gLabels
 		connect( viewMarkupAction, SIGNAL(triggered()), this, SLOT(viewMarkup()) );
 
 		viewZoomInAction = new QAction( tr("Zoom &In"), this );
-		viewZoomInAction->setIcon( QIcon::fromTheme( "zoom-in" ) );
+		viewZoomInAction->setIcon( QIcon::fromTheme( "zoom-in", Icons::Fallback::ZoomIn() ) );
 		viewZoomInAction->setShortcut( QKeySequence::ZoomIn );
 		viewZoomInAction->setStatusTip( tr("Increase magnification") );
 		connect( viewZoomInAction, SIGNAL(triggered()), this, SLOT(viewZoomIn()) );
 
 		viewZoomOutAction = new QAction( tr("Zoom &Out"), this );
-		viewZoomOutAction->setIcon( QIcon::fromTheme( "zoom-out" ) );
+		viewZoomOutAction->setIcon( QIcon::fromTheme( "zoom-out", Icons::Fallback::ZoomOut() ) );
 		viewZoomOutAction->setShortcut( QKeySequence::ZoomOut );
 		viewZoomOutAction->setStatusTip( tr("Decrease magnification") );
 		connect( viewZoomOutAction, SIGNAL(triggered()), this, SLOT(viewZoomOut()) );
 
 		viewZoom1to1Action = new QAction( tr("Zoom &1 to 1"), this );
-		viewZoom1to1Action->setIcon( QIcon::fromTheme( "zoom-original" ) );
+		viewZoom1to1Action->setIcon( QIcon::fromTheme( "zoom-original", Icons::Fallback::ZoomOriginal() ) );
 		viewZoom1to1Action->setStatusTip( tr("Restore scale to 100%") );
 		connect( viewZoom1to1Action, SIGNAL(triggered()), this, SLOT(viewZoom1to1()) );
 
 		viewZoomToFitAction = new QAction( tr("Zoom to &Fit"), this );
-		viewZoomToFitAction->setIcon( QIcon::fromTheme( "zoom-fit-best" ) );
+		viewZoomToFitAction->setIcon( QIcon::fromTheme( "zoom-fit-best", Icons::Fallback::ZoomBestFit() ) );
 		viewZoomToFitAction->setStatusTip( tr("Set scale to fit window") );
 		connect( viewZoomToFitAction, SIGNAL(triggered()), this, SLOT(viewZoomToFit()) );
 

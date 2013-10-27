@@ -306,6 +306,124 @@ namespace gLabels
 			}
 		};
 
+
+		/*
+		 * Fallback Icons.  These are fallbacks for icons that would normally come from the current theme,
+		 * if supported.  These icons are copied from the mate-icon-theme (GPL-v3 or CC-BY-SA-v3).
+		 */
+		namespace Fallback
+		{
+
+			class EditCopy : public QIcon
+			{
+			public:
+				EditCopy()
+				{
+					addFile( ":icons/24x24/actions/fallback-edit-copy.png" );
+				}
+			};
+
+			class EditCut : public QIcon
+			{
+			public:
+				EditCut()
+				{
+					addFile( ":icons/24x24/actions/fallback-edit-cut.png" );
+				}
+			};
+
+			class EditPaste : public QIcon
+			{
+			public:
+				EditPaste()
+				{
+					addFile( ":icons/24x24/actions/fallback-edit-paste.png" );
+				}
+			};
+
+			class FileNew : public QIcon
+			{
+			public:
+				FileNew()
+				{
+					addFile( ":icons/24x24/actions/fallback-file-new.png" );
+				}
+			};
+
+			class FileOpen : public QIcon
+			{
+			public:
+				FileOpen()
+				{
+					addFile( ":icons/24x24/actions/fallback-file-open.png" );
+				}
+			};
+
+			class FilePrint : public QIcon
+			{
+			public:
+				FilePrint()
+				{
+					addFile( ":icons/24x24/actions/fallback-file-print.png" );
+				}
+			};
+
+			class FileSave : public QIcon
+			{
+			public:
+				FileSave()
+				{
+					addFile( ":icons/24x24/actions/fallback-file-save.png" );
+				}
+			};
+
+			class FileSaveAs : public QIcon
+			{
+			public:
+				FileSaveAs()
+				{
+					addFile( ":icons/24x24/actions/fallback-file-save-as.png" );
+				}
+			};
+
+			class ZoomBestFit : public QIcon
+			{
+			public:
+				ZoomBestFit()
+				{
+					addFile( ":icons/24x24/actions/fallback-zoom-best-fit.png" );
+				}
+			};
+
+			class ZoomIn : public QIcon
+			{
+			public:
+				ZoomIn()
+				{
+					addFile( ":icons/24x24/actions/fallback-zoom-in.png" );
+				}
+			};
+
+			class ZoomOriginal : public QIcon
+			{
+			public:
+				ZoomOriginal()
+				{
+					addFile( ":icons/24x24/actions/fallback-zoom-original.png" );
+				}
+			};
+
+			class ZoomOut : public QIcon
+			{
+			public:
+				ZoomOut()
+				{
+					addFile( ":icons/24x24/actions/fallback-zoom-out.png" );
+				}
+			};
+
+		}
+
 	}
 }
 

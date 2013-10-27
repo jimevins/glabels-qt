@@ -42,6 +42,18 @@
 	<file>icons/24x24/actions/glabels-object-properties.png</file>
 	<file>icons/24x24/actions/glabels-pencil.png</file>
 	<file>icons/24x24/actions/glabels-text.png</file>
+	<file>icons/24x24/actions/fallback-edit-copy.png</file>
+	<file>icons/24x24/actions/fallback-edit-cut.png</file>
+	<file>icons/24x24/actions/fallback-edit-paste.png</file>
+	<file>icons/24x24/actions/fallback-file-new.png</file>
+	<file>icons/24x24/actions/fallback-file-open.png</file>
+	<file>icons/24x24/actions/fallback-file-print.png</file>
+	<file>icons/24x24/actions/fallback-file-save-as.png</file>
+	<file>icons/24x24/actions/fallback-file-save.png</file>
+	<file>icons/24x24/actions/fallback-zoom-best-fit.png</file>
+	<file>icons/24x24/actions/fallback-zoom-in.png</file>
+	<file>icons/24x24/actions/fallback-zoom-original.png</file>
+	<file>icons/24x24/actions/fallback-zoom-out.png</file>
 	<file>icons/24x24/apps/glabels.png</file>
 	<file>icons/32x32/apps/glabels.png</file>
 	<file>icons/48x48/apps/glabels.png</file>
