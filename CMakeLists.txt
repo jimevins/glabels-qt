@@ -1,11 +1,11 @@
 cmake_minimum_required (VERSION 2.8)
 
-project (qtLabels)
+project (glabels-qt)
 
 
-set (Package_Name "qtLabels")
-set (Short_Name   "qtLabels")
-set (Package_URL  "https://github.com/jimevins/qtLabels")
+set (Package_Name "glabels-qt")
+set (Short_Name   "glabels-qt")
+set (Package_URL  "https://github.com/jimevins/glabels-qt")
 
 set (Major_Version   "0")
 set (Minor_Version   "0")
@@ -26,4 +26,5 @@ add_definitions (-g)
 # Subdirectories
 #
 add_subdirectory (app)
+add_subdirectory (libglabels)
 
