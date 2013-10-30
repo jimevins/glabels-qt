@@ -1,4 +1,4 @@
-/*  Point.h
+/*  FrameRect.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,35 +18,49 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Point_h
-#define libglabels_Point_h
+#ifndef libglabels_FrameRect_h
+#define libglabels_FrameRect_h
+
+#include "Frame.h"
 
 
 namespace libglabels
 {
 
-	class Point
+	class FrameRect : public Frame
 	{
 	public:
-		Point() : mX(0), mY(0)
+		FrameRect( double  w,
+			   double  h,
+			   double  r,
+			   double  xWaste,
+			   double  yWaste,
+			   QString id = "0" )
+			: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
 		{
 		}
 
-		Point( double x, double y ) : mX(x), mY(y)
-		{
-		}
+		inline double w() const { return mW; }
+		inline double h() const { return mH; }
+		inline double r() const { return mR; }
+		inline double xWaste() const { return mXWaste; }
+		inline double yWaste() const { return mYWaste; }
 
-		inline double x() const { return mX; }
-		inline double y() const { return mY; }
 
-		static int compare( const Point &a, const Point &b );
+		void getSize( double *w, double *h ) const;
+		bool isSimilar( Frame *b ) const;
+		QString &getSizeDescription( Units *units ) const;
 
 
 	private:
-		double  mX;
-		double  mY;
+		double mW;
+		double mH;
+		double mR;
+		double mXWaste;
+		double mYWaste;
+
 	};
 
 }
 
-#endif // libglabels_Point_h
+#endif // libglabels_FrameRect_h

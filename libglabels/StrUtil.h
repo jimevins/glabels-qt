@@ -1,4 +1,4 @@
-/*  Point.cpp
+/*  StrUtil.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,37 +18,22 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Point.h"
+#ifndef libglabels_StrUtil_h
+#define libglabels_StrUtil_h
+
+#include <QString>
 
 
 namespace libglabels
 {
 
-	int Point::compare( const Point &a, const Point &b )
+	namespace StrUtil
 	{
-		if ( a.mY < b.mY )
-		{
-			return -1;
-		}
-		else if ( a.mY > b.mY )
-		{
-			return 1;
-		}
-		else
-		{
-			if ( a.mX < b.mX )
-			{
-				return -1;
-			}
-			else if ( a.mX > b.mX )
-			{
-				return 1;
-			}
-			else
-			{
-				return 0; /* hopefully 2 label frames won't have the same origin. */
-			}
-		}
+
+		QString &formatFraction( double x );
+
 	}
 
 }
+
+#endif // libglabels_StrUtil_h

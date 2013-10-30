@@ -9,6 +9,10 @@ set (libglabels_sources
   Units.cpp
   Point.cpp
   Layout.cpp
+  Markup.cpp
+  Frame.cpp
+  FrameRect.cpp
+  StrUtil.cpp
 )
 
 set (libglabels_qobject_headers

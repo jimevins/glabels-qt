@@ -1,4 +1,4 @@
-/*  Point.cpp
+/*  Markup.cpp
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,37 +18,5 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Point.h"
+#include "Markup.h"
 
-
-namespace libglabels
-{
-
-	int Point::compare( const Point &a, const Point &b )
-	{
-		if ( a.mY < b.mY )
-		{
-			return -1;
-		}
-		else if ( a.mY > b.mY )
-		{
-			return 1;
-		}
-		else
-		{
-			if ( a.mX < b.mX )
-			{
-				return -1;
-			}
-			else if ( a.mX > b.mX )
-			{
-				return 1;
-			}
-			else
-			{
-				return 0; /* hopefully 2 label frames won't have the same origin. */
-			}
-		}
-	}
-
-}
