@@ -12,6 +12,9 @@ set (libglabels_sources
   Markup.cpp
   Frame.cpp
   FrameRect.cpp
+  FrameCd.cpp
+  FrameRound.cpp
+  FrameEllipse.cpp
   StrUtil.cpp
 )
 
