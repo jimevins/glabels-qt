@@ -38,10 +38,8 @@ namespace libglabels
 	}
 
 
-	QString &Frame::getLayoutDescription() const
+	QString &Frame::layoutDescription()
 	{
-		QString description;
-
 		if ( mLayouts.size() == 1 )
 		{
 			Layout *layout = *mLayouts.begin();
@@ -51,16 +49,16 @@ namespace libglabels
 			 *              %2 = number of labels down a page,
 			 *              %3 = total number of labels on a page (sheet).
 			 */
-			description = QString( tr("%1 x %2 (%3 per sheet)") )
+			mLayoutDescription = QString( tr("%1 x %2 (%3 per sheet)") )
 				.arg(layout->nx()).arg(layout->ny()).arg(nLabels());
 		}
 		else
 		{
 			/* Translators: %1 is the total number of labels on a page (sheet). */
-			description = QString( tr("%1 per sheet") ).arg( nLabels() );
+			mLayoutDescription = QString( tr("%1 per sheet") ).arg( nLabels() );
 		}
 
-		return description;
+		return mLayoutDescription;
 	}
 
 
