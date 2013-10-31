@@ -41,31 +41,34 @@ namespace libglabels
 		Q_DECLARE_TR_FUNCTIONS(Frame)
 
 	protected:
-		Frame( const QString &id = "0" ) : mId(id)
+		Frame( const QString &id = "0" ) : mId(id), mNLabels(0), mLayoutDescription("")
 		{
 		}
 
 	public:
 		inline const QString &id() const { return mId; }
+		inline int nLabels() const { return mNLabels; }
+		inline const QString &layoutDescription() { return mLayoutDescription; }
 
-		int nLabels() const;
-		QString &layoutDescription();
 		std::vector<Point> getOrigins() const;
 
 		void addLayout( Layout *layout );
 		void addMarkup( Markup *markup );
 
-		virtual void getSize( double *w, double *h ) const = 0;
+		virtual double w() const = 0;
+		virtual double h() const = 0;
+
+		virtual const QString &sizeDescription( Units *units ) = 0;
 		virtual bool isSimilar( Frame *b ) const = 0;
-		virtual QString &getSizeDescription( Units *units ) const = 0;
 
 	private:
 		QString mId;
+		int     mNLabels;
+		QString mLayoutDescription;
 
 		std::list<Layout*> mLayouts;
 		std::list<Markup*> mMarkups;
 
-		QString mLayoutDescription;
 	};
 
 }

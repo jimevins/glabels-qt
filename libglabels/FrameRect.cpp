@@ -29,10 +29,27 @@
 namespace libglabels
 {
 
-	void FrameRect::getSize( double *w, double *h ) const
+	const QString &FrameRect::sizeDescription( Units *units )
 	{
-		*w = mW;
-		*h = mH;
+		if ( units->id() == "in" )
+		{
+			QString wStr = StrUtil::formatFraction( mW * units->unitsPerPoint() );
+			QString hStr = StrUtil::formatFraction( mH * units->unitsPerPoint() );
+
+			mSizeDescription = QString().sprintf( "%s x %s %s",
+							      wStr.toStdString().c_str(),
+							      hStr.toStdString().c_str(),
+							      units->name().toStdString().c_str() );
+		}
+		else
+		{
+			mSizeDescription = QString().sprintf( "%.5g x %.5g %s",
+							      mW * units->unitsPerPoint(),
+							      mH * units->unitsPerPoint(),
+							      units->name().toStdString().c_str() );
+		}
+
+		return mSizeDescription;
 	}
 
 
@@ -47,28 +64,6 @@ namespace libglabels
 			}
 		}
 		return false;
-	}
-
-
-	QString &FrameRect::getSizeDescription( Units *units ) const
-	{
-		if ( units->id() == "in" )
-		{
-			QString wStr = StrUtil::formatFraction( mW * units->unitsPerPoint() );
-			QString hStr = StrUtil::formatFraction( mH * units->unitsPerPoint() );
-
-			return QString().sprintf( "%s x %s %s",
-						  wStr.toStdString().c_str(),
-						  hStr.toStdString().c_str(),
-						  units->name().toStdString().c_str() );
-		}
-		else
-		{
-			return QString().sprintf( "%.5g x %.5g %s",
-						  mW * units->unitsPerPoint(),
-						  mH * units->unitsPerPoint(),
-						  units->name().toStdString().c_str() );
-		}
 	}
 
 }

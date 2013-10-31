@@ -24,44 +24,6 @@
 namespace libglabels
 {
 
-	int Frame::nLabels() const
-	{
-		int n = 0;
-
-		std::list<Layout*>::const_iterator it;
-		for ( it = mLayouts.begin(); it != mLayouts.end(); it++ )
-		{
-			n += (*it)->nx() * (*it)->ny();
-		}
-
-		return n;
-	}
-
-
-	QString &Frame::layoutDescription()
-	{
-		if ( mLayouts.size() == 1 )
-		{
-			Layout *layout = *mLayouts.begin();
-
-			/*
-			 * Translators: %1 = number of labels across a page,
-			 *              %2 = number of labels down a page,
-			 *              %3 = total number of labels on a page (sheet).
-			 */
-			mLayoutDescription = QString( tr("%1 x %2 (%3 per sheet)") )
-				.arg(layout->nx()).arg(layout->ny()).arg(nLabels());
-		}
-		else
-		{
-			/* Translators: %1 is the total number of labels on a page (sheet). */
-			mLayoutDescription = QString( tr("%1 per sheet") ).arg( nLabels() );
-		}
-
-		return mLayoutDescription;
-	}
-
-
 	std::vector<Point> Frame::getOrigins() const
 	{
 		std::vector<Point> origins( nLabels() );
@@ -87,6 +49,26 @@ namespace libglabels
 	void Frame::addLayout( Layout *layout )
 	{
 		mLayouts.push_back( layout );
+
+		// Update total number of labels
+		mNLabels += layout->nx() * layout->ny();
+
+		// Update layout description
+		if ( mLayouts.size() == 1 )
+		{
+			/*
+			 * Translators: %1 = number of labels across a page,
+			 *              %2 = number of labels down a page,
+			 *              %3 = total number of labels on a page (sheet).
+			 */
+			mLayoutDescription = QString( tr("%1 x %2 (%3 per sheet)") )
+				.arg(layout->nx()).arg(layout->ny()).arg(mNLabels);
+		}
+		else
+		{
+			/* Translators: %1 is the total number of labels on a page (sheet). */
+			mLayoutDescription = QString( tr("%1 per sheet") ).arg(mNLabels);
+		}
 	}
 
 

@@ -29,28 +29,6 @@
 namespace libglabels
 {
 
-	void FrameCd::getSize( double *w, double *h ) const
-	{
-		if ( mW == 0 )
-		{
-			*w = 2 * mR1;
-		}
-		else
-		{
-			*w = mW;
-		}
-
-		if ( mH == 0 )
-		{
-			*h = 2 * mR1;
-		}
-		else
-		{
-			*h = mH;
-		}
-	}
-
-
 	bool FrameCd::isSimilar( Frame *b ) const
 	{
 		if ( FrameCd *bCd = dynamic_cast<FrameCd*>(b) )
@@ -67,24 +45,26 @@ namespace libglabels
 	}
 
 
-	QString &FrameCd::getSizeDescription( Units *units ) const
+	const QString &FrameCd::sizeDescription( Units *units )
 	{
 		if ( units->id() == "in" )
 		{
 			QString dStr = StrUtil::formatFraction( 2 * mR1 * units->unitsPerPoint() );
 
-			return QString().sprintf( "%s %s %s",
-						  dStr.toStdString().c_str(),
-						  units->name().toStdString().c_str(),
-						  tr("diameter").toStdString().c_str() );
+			mSizeDescription = QString().sprintf( "%s %s %s",
+							      dStr.toStdString().c_str(),
+							      units->name().toStdString().c_str(),
+							      tr("diameter").toStdString().c_str() );
 		}
 		else
 		{
-			return QString().sprintf( "%.5g %s %s",
-						  2 * mR1 * units->unitsPerPoint(),
-						  units->name().toStdString().c_str(),
-						  tr("diameter").toStdString().c_str() );
+			mSizeDescription = QString().sprintf( "%.5g %s %s",
+							      2 * mR1 * units->unitsPerPoint(),
+							      units->name().toStdString().c_str(),
+							      tr("diameter").toStdString().c_str() );
 		}
+
+		return mSizeDescription;
 	}
 
 }

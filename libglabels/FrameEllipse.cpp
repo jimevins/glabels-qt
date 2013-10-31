@@ -29,13 +29,6 @@
 namespace libglabels
 {
 
-	void FrameEllipse::getSize( double *w, double *h ) const
-	{
-		*w = mW;
-		*h = mH;
-	}
-
-
 	bool FrameEllipse::isSimilar( Frame *b ) const
 	{
 		if ( FrameEllipse *bEllipse = dynamic_cast<FrameEllipse*>(b) )
@@ -50,24 +43,24 @@ namespace libglabels
 	}
 
 
-	QString &FrameEllipse::getSizeDescription( Units *units ) const
+	const QString &FrameEllipse::sizeDescription( Units *units )
 	{
 		if ( units->id() == "in" )
 		{
 			QString wStr = StrUtil::formatFraction( mW * units->unitsPerPoint() );
 			QString hStr = StrUtil::formatFraction( mH * units->unitsPerPoint() );
 
-			return QString().sprintf( "%s x %s %s",
-						  wStr.toStdString().c_str(),
-						  hStr.toStdString().c_str(),
-						  units->name().toStdString().c_str() );
+			mSizeDescription = QString().sprintf( "%s x %s %s",
+							      wStr.toStdString().c_str(),
+							      hStr.toStdString().c_str(),
+							      units->name().toStdString().c_str() );
 		}
 		else
 		{
-			return QString().sprintf( "%.5g x %.5g %s",
-						  mW * units->unitsPerPoint(),
-						  mH * units->unitsPerPoint(),
-						  units->name().toStdString().c_str() );
+			mSizeDescription = QString().sprintf( "%.5g x %.5g %s",
+							      mW * units->unitsPerPoint(),
+							      mH * units->unitsPerPoint(),
+							      units->name().toStdString().c_str() );
 		}
 	}
 

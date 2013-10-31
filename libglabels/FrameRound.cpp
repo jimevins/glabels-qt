@@ -29,13 +29,6 @@
 namespace libglabels
 {
 
-	void FrameRound::getSize( double *w, double *h ) const
-	{
-		*w = 2*mR;
-		*h = 2*mR;
-	}
-
-
 	bool FrameRound::isSimilar( Frame *b ) const
 	{
 		if ( FrameRound *bRound = dynamic_cast<FrameRound*>(b) )
@@ -49,24 +42,26 @@ namespace libglabels
 	}
 
 
-	QString &FrameRound::getSizeDescription( Units *units ) const
+	const QString &FrameRound::sizeDescription( Units *units )
 	{
 		if ( units->id() == "in" )
 		{
 			QString dStr = StrUtil::formatFraction( 2 * mR * units->unitsPerPoint() );
 
-			return QString().sprintf( "%s %s %s",
-						  dStr.toStdString().c_str(),
-						  units->name().toStdString().c_str(),
-						  tr("diameter").toStdString().c_str() );
+			mSizeDescription = QString().sprintf( "%s %s %s",
+							      dStr.toStdString().c_str(),
+							      units->name().toStdString().c_str(),
+							      tr("diameter").toStdString().c_str() );
 		}
 		else
 		{
-			return QString().sprintf( "%.5g %s %s",
-						  2 * mR * units->unitsPerPoint(),
-						  units->name().toStdString().c_str(),
-						  tr("diameter").toStdString().c_str() );
+			mSizeDescription = QString().sprintf( "%.5g %s %s",
+							      2 * mR * units->unitsPerPoint(),
+							      units->name().toStdString().c_str(),
+							      tr("diameter").toStdString().c_str() );
 		}
+
+		return mSizeDescription;
 	}
 
 }

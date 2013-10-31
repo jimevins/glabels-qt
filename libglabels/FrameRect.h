@@ -40,16 +40,15 @@ namespace libglabels
 		{
 		}
 
-		inline double w() const { return mW; }
-		inline double h() const { return mH; }
 		inline double r() const { return mR; }
 		inline double xWaste() const { return mXWaste; }
 		inline double yWaste() const { return mYWaste; }
 
+		double w() const { return mW; }
+		double h() const { return mH; }
 
-		void getSize( double *w, double *h ) const;
+		const QString &sizeDescription( Units *units );
 		bool isSimilar( Frame *b ) const;
-		QString &getSizeDescription( Units *units ) const;
 
 
 	private:
@@ -58,6 +57,8 @@ namespace libglabels
 		double mR;
 		double mXWaste;
 		double mYWaste;
+
+		QString mSizeDescription;
 
 	};
 
