@@ -29,19 +29,6 @@
 namespace libglabels
 {
 
-	bool FrameRound::isSimilar( Frame *b ) const
-	{
-		if ( FrameRound *bRound = dynamic_cast<FrameRound*>(b) )
-		{
-			if ( fabs( mR - bRound->mR ) <= Constants::EPSILON )
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
-
 	const QString &FrameRound::sizeDescription( Units *units )
 	{
 		if ( units->id() == "in" )
@@ -62,6 +49,19 @@ namespace libglabels
 		}
 
 		return mSizeDescription;
+	}
+
+
+	bool FrameRound::isSimilarTo( Frame *other ) const
+	{
+		if ( FrameRound *otherRound = dynamic_cast<FrameRound*>(other) )
+		{
+			if ( fabs( mR - otherRound->mR ) <= Constants::EPSILON )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -45,10 +45,16 @@ namespace libglabels
 		{
 		}
 
+		Frame( const Frame &other );
+
 	public:
+		virtual Frame *dup() const = 0;
+
 		inline const QString &id() const { return mId; }
 		inline int nLabels() const { return mNLabels; }
 		inline const QString &layoutDescription() { return mLayoutDescription; }
+		inline const std::list<Layout*> &layouts() { return mLayouts; }
+		inline const std::list<Markup*> &markups() { return mMarkups; }
 
 		std::vector<Point> getOrigins() const;
 
@@ -59,7 +65,8 @@ namespace libglabels
 		virtual double h() const = 0;
 
 		virtual const QString &sizeDescription( Units *units ) = 0;
-		virtual bool isSimilar( Frame *b ) const = 0;
+		virtual bool isSimilarTo( Frame *other ) const = 0;
+
 
 	private:
 		QString mId;

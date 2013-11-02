@@ -28,14 +28,14 @@
 namespace libglabels
 {
 
-	bool Layout::is_similar_to( const Layout &b )
+	bool Layout::isSimilarTo( const Layout *other )
 	{
-		return ( (mNx == b.mNx)                           &&
-			 (mNy == b.mNy)                           &&
-			 (fabs(mX0 - b.mX0) < Constants::EPSILON) &&
-			 (fabs(mY0 - b.mY0) < Constants::EPSILON) &&
-			 (fabs(mDx - b.mDx) < Constants::EPSILON) &&
-			 (fabs(mDy - b.mDy) < Constants::EPSILON) );
+		return ( (mNx == other->mNx)                           &&
+			 (mNy == other->mNy)                           &&
+			 (fabs(mX0 - other->mX0) < Constants::EPSILON) &&
+			 (fabs(mY0 - other->mY0) < Constants::EPSILON) &&
+			 (fabs(mDx - other->mDx) < Constants::EPSILON) &&
+			 (fabs(mDy - other->mDy) < Constants::EPSILON) );
 	}
 
 }

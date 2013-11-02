@@ -38,13 +38,20 @@ namespace libglabels
 		{
 		}
 
+		FrameEllipse( const FrameEllipse &other )
+			: mW(other.mW), mH(other.mH), mWaste(other.mWaste), Frame(other)
+		{
+		}
+
+		Frame *dup() const { return new FrameEllipse( *this ); }
+
 		inline double waste() const { return mWaste; }
 
 		double w() const { return mW; }
 		double h() const { return mH; }
 
 		const QString &sizeDescription( Units *units );
-		bool isSimilar( Frame *b ) const;
+		bool isSimilarTo( Frame *other ) const;
 
 
 	private:

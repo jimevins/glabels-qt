@@ -27,6 +27,8 @@ namespace libglabels
 
 	class Markup
 	{
+	public:
+		virtual Markup *dup() const = 0;
 	};
 
 
@@ -38,6 +40,8 @@ namespace libglabels
 		}
 
 		inline double size() const { return mSize; }
+
+		Markup *dup() const { return new MarkupMargin( mSize ); }
 
 	private:
 		double  mSize;
@@ -55,6 +59,8 @@ namespace libglabels
 		inline double y1() const { return mY1; }
 		inline double x2() const { return mX2; }
 		inline double y2() const { return mY2; }
+
+		Markup *dup() const { return new MarkupLine( mX1, mY1, mX2, mY2 ); }
 
 	private:
 		double  mX1;
@@ -78,6 +84,8 @@ namespace libglabels
 		inline double h() const { return mH; }
 		inline double r() const { return mR; }
 
+		Markup *dup() const { return new MarkupRect( mX1, mY1, mW, mH, mR ); }
+
 	private:
 		double  mX1;
 		double  mY1;
@@ -100,6 +108,8 @@ namespace libglabels
 		inline double w() const { return mW; }
 		inline double h() const { return mH; }
 
+		Markup *dup() const { return new MarkupEllipse( mX1, mY1, mW, mH ); }
+
 	private:
 		double  mX1;
 		double  mY1;
@@ -119,6 +129,8 @@ namespace libglabels
 		inline double x0() const { return mX0; }
 		inline double y0() const { return mY0; }
 		inline double r() const { return mR; }
+
+		Markup *dup() const { return new MarkupCircle( mX0, mY0, mR ); }
 
 	private:
 		double  mX0;

@@ -29,20 +29,6 @@
 namespace libglabels
 {
 
-	bool FrameEllipse::isSimilar( Frame *b ) const
-	{
-		if ( FrameEllipse *bEllipse = dynamic_cast<FrameEllipse*>(b) )
-		{
-			if ( (fabs( mW - bEllipse->mW ) <= Constants::EPSILON) &&
-			     (fabs( mH - bEllipse->mH ) <= Constants::EPSILON) )
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
-
 	const QString &FrameEllipse::sizeDescription( Units *units )
 	{
 		if ( units->id() == "in" )
@@ -62,6 +48,20 @@ namespace libglabels
 							      mH * units->unitsPerPoint(),
 							      units->name().toStdString().c_str() );
 		}
+	}
+
+
+	bool FrameEllipse::isSimilarTo( Frame *other ) const
+	{
+		if ( FrameEllipse *otherEllipse = dynamic_cast<FrameEllipse*>(other) )
+		{
+			if ( (fabs( mW - otherEllipse->mW ) <= Constants::EPSILON) &&
+			     (fabs( mH - otherEllipse->mH ) <= Constants::EPSILON) )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

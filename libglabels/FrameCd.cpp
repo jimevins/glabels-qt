@@ -29,22 +29,6 @@
 namespace libglabels
 {
 
-	bool FrameCd::isSimilar( Frame *b ) const
-	{
-		if ( FrameCd *bCd = dynamic_cast<FrameCd*>(b) )
-		{
-			if ( (fabs( mW  - bCd->mW )  <= Constants::EPSILON) &&
-			     (fabs( mH  - bCd->mH )  <= Constants::EPSILON) &&
-			     (fabs( mR1 - bCd->mR1 ) <= Constants::EPSILON) &&
-			     (fabs( mR2 - bCd->mR2 ) <= Constants::EPSILON) )
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
-
 	const QString &FrameCd::sizeDescription( Units *units )
 	{
 		if ( units->id() == "in" )
@@ -65,6 +49,22 @@ namespace libglabels
 		}
 
 		return mSizeDescription;
+	}
+
+
+	bool FrameCd::isSimilarTo( Frame *other ) const
+	{
+		if ( FrameCd *otherCd = dynamic_cast<FrameCd*>(other) )
+		{
+			if ( (fabs( mW  - otherCd->mW )  <= Constants::EPSILON) &&
+			     (fabs( mH  - otherCd->mH )  <= Constants::EPSILON) &&
+			     (fabs( mR1 - otherCd->mR1 ) <= Constants::EPSILON) &&
+			     (fabs( mR2 - otherCd->mR2 ) <= Constants::EPSILON) )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

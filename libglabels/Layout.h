@@ -33,6 +33,11 @@ namespace libglabels
 		{
 		}
 
+		Layout( const Layout &other )
+			: mNx(other.mNx), mNy(other.mNy), mX0(other.mX0), mY0(other.mY0), mDx(other.mDx), mDy(other.mDy)
+		{
+		}
+
 		inline int    nx() const { return mNx; }
 		inline int    ny() const { return mNy; }
 
@@ -42,7 +47,13 @@ namespace libglabels
 		inline double dx() const { return mDx; }
 		inline double dy() const { return mDy; }
 
-		bool is_similar_to( const Layout &b );
+		bool isSimilarTo( const Layout *other );
+
+		inline Layout *dup() const
+		{
+			Layout *other = new Layout( *this );
+			return other;
+		}
 
 
 	private:

@@ -53,18 +53,19 @@ namespace libglabels
 	}
 
 
-	bool FrameRect::isSimilar( Frame *b ) const
+	bool FrameRect::isSimilarTo( Frame *other ) const
 	{
-		if ( FrameRect *bRect = dynamic_cast<FrameRect*>(b) )
+		if ( FrameRect *otherRect = dynamic_cast<FrameRect*>(other) )
 		{
-			if ( (fabs( mW - bRect->mW ) <= Constants::EPSILON) &&
-			     (fabs( mH - bRect->mH ) <= Constants::EPSILON) )
+			if ( (fabs( mW - otherRect->mW ) <= Constants::EPSILON) &&
+			     (fabs( mH - otherRect->mH ) <= Constants::EPSILON) )
 			{
 				return true;
 			}
 		}
 		return false;
 	}
+
 
 }
 

@@ -40,6 +40,13 @@ namespace libglabels
 		{
 		}
 
+		FrameCd( const FrameCd &other )
+			: mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste), Frame(other)
+		{
+		}
+
+		Frame *dup() const { return new FrameCd( *this ); }
+
 		inline double r1() const { return mR1; }
 		inline double r2() const { return mR2; }
 		inline double waste() const { return mWaste; }
@@ -48,7 +55,7 @@ namespace libglabels
 		double h() const { return (mH == 0) ? 2*mR1 : mH; }
 
 		const QString &sizeDescription( Units *units );
-		bool isSimilar( Frame *b ) const;
+		bool isSimilarTo( Frame *other ) const;
 
 
 	private:

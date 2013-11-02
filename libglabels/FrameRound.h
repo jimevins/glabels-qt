@@ -37,6 +37,13 @@ namespace libglabels
 		{
 		}
 
+		FrameRound( const FrameRound &other )
+			: mR(other.mR), mWaste(other.mWaste), Frame(other)
+		{
+		}
+
+		Frame *dup() const { return new FrameRound( *this ); }
+
 		inline double r() const { return mR; }
 		inline double waste() const { return mWaste; }
 
@@ -44,7 +51,7 @@ namespace libglabels
 		double h() const { return 2*mR; }
 
 		const QString &sizeDescription( Units *units );
-		bool isSimilar( Frame *b ) const;
+		bool isSimilarTo( Frame *other ) const;
 
 
 	private:

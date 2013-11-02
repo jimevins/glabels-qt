@@ -24,6 +24,33 @@
 namespace libglabels
 {
 
+	Frame::Frame( const Frame &other )
+	{
+		mId = other.mId;
+		mNLabels = 0;
+
+		{
+			std::list<Layout*>::const_iterator it;
+
+			for ( it = other.mLayouts.begin(); it != other.mLayouts.end(); it++ )
+			{
+				Layout *layout = (*it)->dup();
+				addLayout( layout );
+			}
+		}
+		
+		{
+			std::list<Markup*>::const_iterator it;
+
+			for ( it = other.mMarkups.begin(); it != other.mMarkups.end(); it++ )
+			{
+				Markup *markup = (*it)->dup();
+				addMarkup( markup );
+			}
+		}
+	}
+
+
 	std::vector<Point> Frame::getOrigins() const
 	{
 		std::vector<Point> origins( nLabels() );

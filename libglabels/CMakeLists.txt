@@ -16,6 +16,7 @@ set (libglabels_sources
   FrameRound.cpp
   FrameEllipse.cpp
   StrUtil.cpp
+  Template.cpp
 )
 
 set (libglabels_qobject_headers
