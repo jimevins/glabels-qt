@@ -16,7 +16,7 @@ set (Package_Version "${Major_Version}.${Minor_Version}.${Bugfix_Version}")
 set (Unique_Package_Name ${Package_Name}-${API_Version})
 
 
-find_package(Qt4 REQUIRED)
+find_package(Qt4 4.8.4 REQUIRED QtCore QtGui QtXml)
 
 
 add_definitions (-g)

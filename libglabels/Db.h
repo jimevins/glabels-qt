@@ -48,7 +48,7 @@ namespace libglabels
 
 
 	public:
-		static Db *instance() { return new Db; }
+		static Db *instance() { static Db *db = new Db(); return db; }
 
 		static void registerPaper( Paper *paper );
 		static const Paper *lookupPaperFromName( const QString &name );

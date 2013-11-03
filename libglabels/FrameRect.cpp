@@ -37,16 +37,16 @@ namespace libglabels
 			QString hStr = StrUtil::formatFraction( mH * units->unitsPerPoint() );
 
 			mSizeDescription = QString().sprintf( "%s x %s %s",
-							      wStr.toStdString().c_str(),
-							      hStr.toStdString().c_str(),
-							      units->name().toStdString().c_str() );
+							      qPrintable(wStr),
+							      qPrintable(hStr),
+							      qPrintable(units->name()) );
 		}
 		else
 		{
 			mSizeDescription = QString().sprintf( "%.5g x %.5g %s",
 							      mW * units->unitsPerPoint(),
 							      mH * units->unitsPerPoint(),
-							      units->name().toStdString().c_str() );
+							      qPrintable(units->name()) );
 		}
 
 		return mSizeDescription;

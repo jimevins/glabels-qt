@@ -52,7 +52,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate paper ID: \"%s\".", paper->id().toStdString().c_str() );
+			qDebug( "Duplicate paper ID: \"%s\".", qPrintable(paper->id()) );
 		}
 	}
 
@@ -74,7 +74,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown paper name: \"%s\".", qPrintable(name) );
 		return NULL;
 	}
 
@@ -96,7 +96,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper ID: \"%s\".", id.toStdString().c_str() );
+		qDebug( "Unknown paper ID: \"%s\".", qPrintable(id) );
 		return NULL;
 	}
 
@@ -112,7 +112,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown paper name: \"%s\".", qPrintable(name) );
 		return mEmpty;
 	}
 
@@ -128,7 +128,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper id: \"%s\".", id.toStdString().c_str() );
+		qDebug( "Unknown paper id: \"%s\".", qPrintable(id) );
 		return mEmpty;
 	}
 
@@ -164,7 +164,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate category ID: \"%s\".", category->id().toStdString().c_str() );
+			qDebug( "Duplicate category ID: \"%s\".", qPrintable(category->id()) );
 		}
 	}
 
@@ -186,7 +186,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown category name: \"%s\".", qPrintable(name) );
 		return NULL;
 	}
 
@@ -208,7 +208,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category ID: \"%s\".", id.toStdString().c_str() );
+		qDebug( "Unknown category ID: \"%s\".", qPrintable(id) );
 		return NULL;
 	}
 
@@ -224,7 +224,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown category name: \"%s\".", qPrintable(name) );
 		return mEmpty;
 	}
 
@@ -240,7 +240,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category id: \"%s\".", id.toStdString().c_str() );
+		qDebug( "Unknown category id: \"%s\".", qPrintable(id) );
 		return mEmpty;
 	}
 
@@ -269,7 +269,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate vendor name: \"%s\".", vendor->name().toStdString().c_str() );
+			qDebug( "Duplicate vendor name: \"%s\".", qPrintable(vendor->name()) );
 		}
 	}
 
@@ -291,7 +291,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown vendor name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown vendor name: \"%s\".", qPrintable(name) );
 		return NULL;
 	}
 
@@ -307,7 +307,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown vendor name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown vendor name: \"%s\".", qPrintable(name) );
 		return mEmpty;
 	}
 
@@ -335,7 +335,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate template name: \"%s\".", tmplate->name().toStdString().c_str() );
+			qDebug( "Duplicate template name: \"%s\".", qPrintable(tmplate->name()) );
 		}
 	}
 
@@ -357,7 +357,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown template name: \"%s\".", name.toStdString().c_str() );
+		qDebug( "Unknown template name: \"%s\".", qPrintable(name) );
 		return NULL;
 	}
 
@@ -379,9 +379,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown template brand, part: \"%s\", \"%s\".",
-			brand.toStdString().c_str(),
-			part.toStdString().c_str() );
+		qDebug( "Unknown template brand, part: \"%s\", \"%s\".", qPrintable(brand), qPrintable(part) );
 		return NULL;
 	}
 
