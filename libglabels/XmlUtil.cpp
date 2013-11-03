@@ -152,7 +152,14 @@ namespace libglabels
 	QString  XmlUtil::getAttrI18n( const QDomElement &node, const QString &name, const QString &default_value )
 	{
 		// TODO: are translations done in a compatable way, so that we can use "_name" attributes?
-		return node.attribute( QString("_").append(name), default_value );
+		QString i18nString = node.attribute( QString("_").append(name), "" );
+
+		if ( i18nString == "" )
+		{
+			return node.attribute( name, default_value );
+		}
+
+		return i18nString;
 	}
 
 

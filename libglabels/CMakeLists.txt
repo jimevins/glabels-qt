@@ -18,7 +18,9 @@ set (libglabels_sources
   StrUtil.cpp
   Template.cpp
   Db.cpp
+  XmlCategoryParser.cpp
   XmlPaperParser.cpp
+  XmlVendorParser.cpp
   XmlUtil.cpp
 )
 

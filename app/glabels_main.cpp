@@ -26,6 +26,8 @@
 
 ////// TEMPORARY TESTING ////////
 #include "libglabels/XmlPaperParser.h"
+#include "libglabels/XmlCategoryParser.h"
+#include "libglabels/XmlVendorParser.h"
 /////////////////////////////////
 
 using namespace gLabels;
@@ -42,9 +44,23 @@ int main( int argc, char **argv )
 
 	Db::init();
 	////// TEMPORARY TESTING ////////
-	XmlPaperParser parser;
-	parser.readFile( "/usr/local/share/libglabels-3.0/templates/paper-sizes.xml" );
-	Db::printKnownPapers();
+	{
+		XmlPaperParser parser;
+		parser.readFile( "/usr/local/share/libglabels-3.0/templates/paper-sizes.xml" );
+		Db::printKnownPapers();
+	}
+
+	{
+		XmlCategoryParser parser;
+		parser.readFile( "/usr/local/share/libglabels-3.0/templates/categories.xml" );
+		Db::printKnownCategories();
+	}
+
+	{
+		XmlVendorParser parser;
+		parser.readFile( "/usr/local/share/libglabels-3.0/templates/vendors.xml" );
+		Db::printKnownVendors();
+	}
 	/////////////////////////////////
 
 	MainWindow mainWin;
