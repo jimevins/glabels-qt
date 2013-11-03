@@ -38,6 +38,7 @@ namespace libglabels
 
 	Db::Db()
 	{
+		// TODO
 	}
 
 
