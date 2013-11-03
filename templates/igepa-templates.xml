@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<Glabels-templates>
+
+  <Template brand="Igepa" part="EA-381x212" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="38.1mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="5" ny="13" x0="9.75mm" y0="10.7mm" dx="38.1mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-483x169" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="48.3mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="16" x0="8.4mm" y0="13.3mm" dx="48.3mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-485x254" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="48.5mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="10" x0="8mm" y0="21.5mm" dx="48.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-525x297" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="52.5mm" height="29.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="10" x0="0mm" y0="0mm" dx="52.5mm" dy="29.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-646x338" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="64.6mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="8.1mm" y0="13.3mm" dx="64.6mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x254" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="11" x0="0mm" y0="8.8mm" dx="70mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x320" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="32mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="0mm" y0="4.5mm" dx="70mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x350" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="8.5mm" dx="70mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x360" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="4.5mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x370" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="0.5mm" dx="70mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x410" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="5mm" dx="70mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x423" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="0.45mm" dx="70mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x508" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="5" x0="0mm" y0="21.5mm" dx="70mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-700x677" size="A4" _description="Floppy disk labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="70mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="4" x0="0mm" y0="13.1mm" dx="70mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-965x423" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="96.5mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="8.5mm" y0="21.6mm" dx="96.5mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-965x677" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="96.5mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="8.5mm" y0="13.1mm" dx="96.5mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x350" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="8.5mm" dx="105mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x370" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="0.5mm" dx="105mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x410" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="0mm" y0="5mm" dx="105mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x423" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="0mm" y0="0.45mm" dx="105mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x480" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="0mm" y0="4.5mm" dx="105mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x570" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="57mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="0mm" y0="6mm" dx="105mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x700" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="70mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="8.5mm" dx="105mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x740" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="74mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="0.5mm" dx="105mm" dy="74mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1050x1480" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="2" x0="0mm" y0="0.5mm" dx="105mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-2100x1480" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="2" x0="0mm" y0="0.5mm" dx="210mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-2100x2970" size="A4" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <Template brand="Igepa" part="EA-1900x380W" size="A4" _description="Lever Arch File Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="192mm" height="38mm" round="2.5mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="7" x0="9mm" y0="15.5mm" dx="192mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Igepa" part="EA-1900x610W" size="A4" _description="Lever Arch File Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="192mm" height="61mm" round="2.5mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="4" x0="9mm" y0="26.5mm" dx="192mm" dy="61mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <Template brand="Igepa" part="EA-CD-ROM2Q" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="58.5mm" hole="20.5mm" waste="0mm">
+      <Layout nx="1" ny="2" x0="46.5mm" y0="21.5mm" dx="117mm" dy="137mm"/>
+    </Label-cd>
+  </Template>
+
+</Glabels-templates>

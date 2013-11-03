@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+  <!--                                                                      -->
+  <!-- Maco US-Letter products                                              -->
+  <!--                                                                      -->
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+
+
+  <Template brand="Maco" part="LL5805" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="2.625in" height="1in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="10" x0="0.1875in" y0="0.5in" dx="2.75in" dy="1in"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <Template brand="Maco" part="ML-1225" size="US-Letter" _description="Round Labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="1.25in" waste="0pt">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="4" x0="0.21in" y0="0.425in" dx="2.75in" dy="2.515in"/>
+    </Label-round>
+  </Template>
+
+
+</Glabels-templates>
+
+
+
+

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+  <!--
+   *********************************************************************
+   *********************************************************************
+   Labels for the Brother QL-500/550/650 PC Label Printers
+      
+   These templates work with the Brother Linux Printer CUPS Driver.  It
+   is unknown if these work correctly with the foomatic print driver for
+   these printers.
+      
+   One difference from typical templates is that the template size is
+   not the actual media size - it is the size of the printable area,
+   which is smaller than the media size.  This is because (at least with
+   the Brother driver) coordinates are relative the corner of this area.
+      
+   *********************************************************************
+   *********************************************************************
+  -->
+
+  <Template brand="Brother" part="DK-11201" size="Other" width="25.91mm" height="83.90mm" _description="Standard Address Labels 29mm x 90mm">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://brother.ally.de/product/de/Etikettendrucker/Brother-DK-11201-QL-Adress-Etiketten-29x90-mm-Standard.html"/>
+    <Label-rectangle id="0" width="25.91mm" height="83.90mm" round="0" x_waste="0" y_waste="0">
+      <Markup-rect x1="-1.5mm" y1="-3mm" w="29mm" h="90mm" r="1.5mm" />
+      <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Brother" part="DK-11202" size="Other" width="58.93mm" height="93.20mm" _description="Shipping Labels 62mm x 100mm">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://brother.ally.de/product/de/Etikettendrucker/Brother-DK-11202-QL-Versand-Etiketten-62x100-mm.html"/>
+    <Label-rectangle id="0" width="58.93mm" height="93.20mm" round="0" x_waste="0" y_waste="0">
+      <Markup-rect x1="-1.5mm" y1="-3mm" w="62mm" h="100mm" r="1.5mm" />
+      <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Brother" part="DK-11204" size="Other" width="13.97mm" height="47.92mm" _description="Multi Purpose Labels 17mm x 54mm">
+    <Meta category="label"/>
+    <Meta product_url="http://brother.ally.de/product/de/Etikettendrucker/Brother-DK-11204-QL-Mehrzweck-Etiketten-17x54-mm.html"/>
+    <Label-rectangle id="0" width="13.97mm" height="47.92mm" round="0" x_waste="0" y_waste="0">
+      <Markup-rect x1="-1.5mm" y1="-3mm" w="17mm" h="54mm" r="1.5mm" />
+      <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Brother" part="DK-11208" size="Other" width="34.91mm"
+height="83.90mm" _description="Standard Address Labels 38mm x 90mm">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://brother.ally.de/product/de/Etikettendrucker/Brother-DK-11208-QL-Adress-Etiketten-38x90-mm-gross.html"/>
+    <Label-rectangle id="0" width="34.91mm" height="83.90mm" round="0"
+x_waste="0" y_waste="0">
+      <Markup-rect x1="-1.5mm" y1="-3mm" w="38mm" h="90mm" r="1.5mm" />
+      <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
+    </Label-rectangle>
+  </Template>
+
+
+</Glabels-templates>

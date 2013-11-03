@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 2.8)
 
 project (libglabels CXX)
 
+configure_file (Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h @ONLY)
+
 set (libglabels_sources
   Category.cpp
   Paper.cpp
@@ -37,6 +39,7 @@ include (${QT_USE_FILE})
 
 
 include_directories (
+  ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 link_directories (

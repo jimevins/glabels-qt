@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Ascom                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- Ascom was bought some years ago by Hovat.		-->
+  <!-- Label data are now available from the following URL:	-->
+  <!-- http://www.hovat.co.uk/office_templates.zip		-->
+
+  <!-- =================================================================== -->
+  <!-- Ascom A4/24/MKII: Rectangular Labels, 24 per sheet                  -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this the real part #? -->
+  <Template brand="Ascom" part="A4/24/MKII" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="181" height="96" round="10">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="8" x0="19" y0="36" dx="187" dy="96"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-236: Rectangular Labels, 1 per sheet   	           -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-236" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="200mm" height="287mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="5mm" y0="5mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Ascom" part="ABP-237" equiv="ABP-236"/>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-238: Rectangular Labels, 4 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-238" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="101mm" height="143.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="2" x0="4mm" y0="5mm" dx="101mm" dy="143.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-239: Rectangular Labels, 6 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-239" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="101mm" height="93mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="3" x0="4mm" y0="9mm" dx="101mm" dy="93mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-240: Rectangular Labels, 8 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-240" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99mm" height="68mm" round="0mm" x_waste="1.2mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="4" x0="5mm" y0="14mm" dx="102mm" dy="68mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-241: Rectangular Labels, 6 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-241" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="101mm" height="68mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="4" x0="4mm" y0="12.5mm" dx="101mm" dy="68mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-243: Rectangular Labels, 10 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-243" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99mm" height="57mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="6mm" y0="6mm" dx="99mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-244: Rectangular Labels, 12 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-244" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="63.5mm" height="72mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="4" x0="6.8mm" y0="4.5mm" dx="66.5mm" dy="72mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-251: Rectangular Labels, 16 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-251" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="47mm" height="66mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="4" ny="4" x0="11mm" y0="16.5mm" dx="47mm" dy="66mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-256: Rectangular Labels, 30 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-256" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="65.5mm" height="28mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="10" x0="6.5mm" y0="8.5mm" dx="65.5mm" dy="28mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-416: Rectangular Labels, 24 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-416" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="66.5mm" height="34mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="5.5mm" y0="12.5mm" dx="66.5mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-420: Rectangular Labels, 14 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-420" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="98.5mm" height="38mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="7" x0="5mm" y0="15.5mm" dx="101.5mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Ascom" part="ABP-421" equiv="ABP-420"/>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-422: Rectangular Labels, 16 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-422" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="98.5mm" height="34mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="8" x0="5mm" y0="12.5mm" dx="101.5mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Ascom" part="ABP-423" equiv="ABP-422"/>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-424: Rectangular Labels, 16 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-424" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="66mm" height="38mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="7" x0="6mm" y0="12.5mm" dx="66mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Ascom" part="ABP-425" equiv="ABP-424"/>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-426: Rectangular Labels, 70 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-426" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="38mm" height="19.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="5" ny="14" x0="5mm" y0="12mm" dx="40.5mm" dy="19.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-427: Rectangular Labels, 24 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-427" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="66mm" height="34mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="8" x0="6mm" y0="12.5mm" dx="66mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-428: Rectangular Labels, 80 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-428" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="38mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="5" ny="13" x0="5mm" y0="10.7mm" dx="40.5mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-501: Rectangular Labels, 10 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-501" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="52mm" round="0mm" x_waste="11.5mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="5" x0="23.5mm" y0="18.5mm" dx="93mm" dy="52mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-502: Rectangular Labels, 4 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-502" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="200mm" height="60mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="4" x0="5mm" y0="28.5mm" dx="200mm" dy="60mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-505: Rectangular Labels, 18 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-505" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="102mm" height="30mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="2" ny="9" x0="3mm" y0="13.5mm" dx="102mm" dy="30mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-507: Rectangular Labels, 12 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-507" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="76mm" height="46.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="6" x0="27.5mm" y0="9mm" dx="79mm" dy="46.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-508: Video Tape Spine Labels, 16 per sheet	           -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-508" size="A4" _description="Video Tape Spine Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="145mm" height="17mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="1" ny="16" x0="32.5mm" y0="14mm" dx="145mm" dy="17mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-509: Rectangular Labels, 12 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-509" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="88.5mm" height="42mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="6" x0="15mm" y0="22.5mm" dx="91.5mm" dy="42mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-510: Rectangular Labels, 84 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-510" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="46mm" height="12.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="4" ny="21" x0="6mm" y0="16mm" dx="50.7mm" dy="12.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-515: CD inlet, 2 per sheet		                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-515" size="A4" _description="CD Inlet">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="34mm" height="114mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="165.5mm" y0="17.5mm" dx="34mm" dy="149mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-518: Rectangular Labels, 24 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-518" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="76.5mm" height="21.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="2" ny="12" x0="21.5mm" y0="21.5mm" dx="76.5mm" dy="21.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Ascom ABP-519: Rectangular Labels, 36 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Ascom" part="ABP-519" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="24.75mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="12" x0="0mm" y0="0mm" dx="70mm" dy="24.75mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+</Glabels-templates>
+
+
+
+

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<Glabels-vendors>
+
+  <Vendor name="Agipa"		url="http://www.apli-agipa.com/"           		/>
+  <Vendor name="APLI"		url="http://www.apli.com/softwareyplantillas/apli_soft.aspx"/>
+  <Vendor name="Ascom"		url="http://www.hovat.co.uk/hovat_labelling.html"	/>
+  <Vendor name="Avery"		url="http://www.avery.com/"           			/>
+  <Vendor name="Brother"	url="http://www.brother-usa.com/"     			/>
+  <Vendor name="Dataline"	url="http://www.esselte-dataline.com/uk/"   		/>
+  <Vendor name="DECAdry"	url="http://www.decadry.com/"         			/>
+  <Vendor name="Desmat"		url="www.desmat.com/"	         			/>
+  <Vendor name="DataBecker"	url="http://www.databecker.de/shop/zubehoer/index.php"	/>
+  <Vendor name="Dymo"		url="http://global.dymo.com/"         			/>
+  <Vendor name="Endisch"	url="http://www.endihaft.de/en/"                        />
+  <Vendor name="Geha"		url="http://www.geha.de/index.php?id=1041"     		/>
+  <Vendor name="Great Gizmos"	url="http://www.greatgizmos.co.uk/product_ranges.html"	/>
+  <Vendor name="Hema"		url="http://hema.nl/nl-nl/winkel/kantoor/papier.aspx"	/>
+  <Vendor name="Hama"		url="http://www.hama.de/produkte/pc_+_notebook/buerobedarf/index.hsp"	/>
+  <Vendor name="Herma"		url="http://www.herma.de/"            			/>
+  <Vendor name="Igepa"		url="http://www.igepagroup.com/"                        />
+  <Vendor name="Impact"		url="http://www.impactlabel.com/"      			/>
+  <Vendor name="Kingdom"	url="http://www.kingdom.com/Kingdom-Label-Center-s/20.htm"/>
+  <Vendor name="Kores"		url="http://www.kores.com/products/"			/>
+  <Vendor name="JAC"		url="http://www.tagswiss.ch/deutsch/Etiketten/" 	/>
+  <Vendor name="Maco"		url="http://www.maco.com/"            			/>
+  <Vendor name="Memorex"	url="http://www.memorex.com/en-us/Accessories/Disc-Labeling/"/>
+  <Vendor name="Merax"		url="http://www.merax.com/"/>
+  <Vendor name="Meritline"      url="http://www.meritline.com/"        			/>
+  <Vendor name="Micro Application"      url="http://www.microapp.com/"        		/>
+  <Vendor name="Neato"          url="http://www.neato.com/"            			/>
+  <Vendor name="Netc"           url="http://netcllc.com/site/home.php"      		/>
+  <Vendor name="OfficeMax"      url="http://www.officemax.com/office-supplies/paper"	/>
+  <Vendor name="Online Labels"  url="http://www.onlinelabels.com/"    			/>
+  <Vendor name="PEARL"          url="http://www.pearl.de/"             			/>
+  <Vendor name="Pressit"        url="http://www.pressit.com/label-applicator-systems.html"/>
+  <Vendor name="Poundland"      url="http://www.poundland.co.uk/"			/>
+  <Vendor name="Q_CONNECT"      url="http://www.q-connect.com/"				/>
+  <Vendor name="Rayfilm"	url="http://www.rayfilm.cz/en/"                         />
+  <Vendor name="Ryman"          url="http://www.ryman.co.uk/"				/>
+  <Vendor name="Sanwa"	        url="http://www.sanwapaper.com/"             		/>
+  <Vendor name="Sattleford"     url="http://www.pearl.de/"             			/>
+  <Vendor name="SheetLabels"    url="http://www.sheet-labels.com/"             			/>
+  <Vendor name="Sigel"          url="http://www.sigel.de/de_de/"             		/>
+  <Vendor name="Southworth"     url="http://shop.southworth.com/cats.php?cat=1"		/>
+  <Vendor name="Staples"        url="http://www.staples.de/burobedarf-2"		/>
+  <Vendor name="Stomper"        url="http://www.cdstomper.com/"				/>
+  <Vendor name="Uline"          url="http://www.uline.com/"           			/>
+  <Vendor name="Viking"         url="http://www.viking.de/"           			/>
+  <Vendor name="Worldlabel"     url="http://www.worldlabel.com/"      			/>
+  <Vendor name="Your Design"    url="http://www.pearl.de/"             			/>
+  <Vendor name="Zweckform"      url="http://www.avery-zweckform.com/" 			/>
+
+</Glabels-vendors>

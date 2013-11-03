@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+  <!--                                                                      -->
+  <!-- DECAdry A4 products.                                                 -->
+  <!--                                                                      -->
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+
+  <!-- Decadry templates for Microsoft Word are available from the URL:     -->
+  <!-- http://195.13.14.169/en/freetemplates.htm 			    -->
+
+  <!-- =================================================================== -->
+  <!-- DECAdry DLW-1731: Mailing labels, 63.5 x 38.1 mm, 21 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="DECAdry" part="DLW-1731" size="A4" _description="Mailing labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="181.4" height="108.0" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="7" x0="21.2" y0="43.9" dx="187.2" dy="108.0"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="DECAdry" part="OLW-4731" equiv="DLW-1731"/>
+  <Template brand="DECAdry" part="OLW-7131" equiv="DLW-1731"/>
+
+
+  <!-- =================================================================== -->
+  <!-- DECAdry DLW-1734: Mailing Labels.                                   -->
+  <!-- =================================================================== -->
+  <Template brand="DECAdry" part="DLW-1734" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="99.1mm" height="67.7mm" round="2mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="4" x0="4.65mm" y0="13.1mm" dx="101.5mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="DECAdry" part="OLW-4734" equiv="DLW-1734"/>
+
+
+  <!-- =================================================================== -->
+  <!-- DECAdry DLW-1786: Mailing Labels.                                   -->
+  <!-- =================================================================== -->
+  <Template brand="DECAdry" part="DLW-1786" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="105mm" height="39mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="7" x0="0mm" y0="12mm" dx="105mm" dy="39mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="DECAdry" part="OLW-4786" equiv="DLW-1786"/>
+
+
+  <!-- =================================================================== -->
+  <!-- DECAdry DLW-1787: Mailing Labels.                                   -->
+  <!-- =================================================================== -->
+  <Template brand="DECAdry" part="DLW-1787" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="70mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="8.5mm" dx="70mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="DECAdry" part="OLW-4787" equiv="DLW-1787"/>
+
+
+  <!-- =================================================================== -->
+  <!-- DECAdry OCC-3342 Business Cards.                                    -->
+  <!-- =================================================================== -->
+  <Template brand="DECAdry" part="OCC-3342" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="240.945pt" height="153.071pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="2" ny="5" x0="42.5197pt" y0="38.2677pt" dx="269.291pt" dy="153.071pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="DECAdry" part="OCB-3327" equiv="OCC-3342"/>
+  <Template brand="DECAdry" part="SCW-2090" equiv="OCC-3342"/>
+  <Template brand="DECAdry" part="DAW-327"  equiv="OCC-3342"/>
+
+
+
+
+</Glabels-templates>
+
+
+
+

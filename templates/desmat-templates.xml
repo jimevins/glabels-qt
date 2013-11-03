@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+  <!--                                                                      -->
+  <!-- Desmat products			                                    -->
+  <!--                                                                      -->
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+
+
+  <!-- ============================================================ -->
+  <!-- Desmat A4ST-3CD - CD Labels, 3 per sheet                     -->
+  <!-- ============================================================ -->
+  <Template brand="Desmat" part="A4ST-3CD" size="A4" _description="CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.desmat.com/product.php?id=34"/>
+    <Label-cd id="0" radius="55mm" hole="15.5mm" waste="2mm">
+    <Markup-margin size="9mm"/>
+<!--    <Layout nx="1" ny="2" x0="9mm" y0="9.5mm" dx="120mm" dy="166.5mm"/>
+    <Layout nx="1" ny="1" x0="91mm" y0="93mm" dx="120mm" dy="120mm"/>  -->
+
+    <Layout nx="1" ny="2" x0="91.5mm" y0="9mm" dx="119.5mm" dy="166mm"/>
+    <Layout nx="1" ny="1" x0="9mm" y0="92mm" dx="120mm" dy="120mm"/>
+    </Label-cd>
+  </Template>
+
+
+</Glabels-templates>

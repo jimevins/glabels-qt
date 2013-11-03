@@ -1,0 +1,763 @@
+<?xml version="1.0"?>
+<Glabels-templates>
+
+  <Template brand="Endisch" part="6500012x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round12_e.html"/>
+    <Label-round id="0" radius="6mm" waste="0.6mm">
+      <Layout nx="13" ny="18" x0="9mm" y0="15mm" dx="15mm" dy="15mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500020x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round20_e.html"/>
+    <Label-round id="0" radius="10mm" waste="0.5mm">
+      <Layout nx="8" ny="12" x0="16.25mm" y0="14.75mm" dx="22.5mm" dy="22.5mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500024x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="12mm" waste="0.6mm">
+      <Layout nx="7" ny="10" x0="12mm" y0="15mm" dx="27mm" dy="27mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500030x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round30_e.html"/>
+    <Label-round id="0" radius="15mm" waste="0.5mm">
+      <Layout nx="6" ny="8" x0="8.75mm" y0="19.75mm" dx="32.5mm" dy="32.5mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500040x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round40_e.html"/>
+    <Label-round id="0" radius="20mm" waste="1.5mm">
+      <Layout nx="4" ny="6" x0="16mm" y0="13.5mm" dx="46mm" dy="46mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500050x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="25mm" waste="0.2mm">
+      <Layout nx="4" ny="5" x0="3.5mm" y0="21.5mm" dx="51mm" dy="51mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500060x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round60_e.html"/>
+    <Label-round id="0" radius="30mm" waste="1mm">
+      <Layout nx="3" ny="4" x0="mm8" y0="18mm" dx="67mm" dy="67mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6406342x" size="A4" _description="Elliptical labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Label-ellipse id="0" width="63.5mm" height="42.3mm" waste="0.8mm">
+      <Layout nx="3" ny="6" x0="7.21mm" y0="11mm" dx="66.04mm" dy="46.54mm"/>
+    </Label-ellipse>
+  </Template>
+
+  <Template brand="Endisch" part="6500067x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="33.75mm" waste="mm">
+      <Layout nx="3" ny="4" x0="1.75mm" y0="8.25mm" dx="69.5mm" dy="71mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500080x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="40mm" waste="1.5mm">
+      <Layout nx="2" ny="3" x0="20mm" y0="18.5mm" dx="90mm" dy="90mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500085x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round85_e.html"/>
+    <Label-round id="0" radius="42.5mm" waste="1.5mm">
+      <Layout nx="2" ny="3" x0="15mm" y0="11mm" dx="95mm" dy="95mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6500095x" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="47.5mm" waste="0.4mm">
+      <Layout nx="2" ny="3" x0="7.5mm" y0="4mm" dx="100mm" dy="97mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Endisch" part="6400080x" size="A4" _description="Elliptical labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/oval80_e.html"/>
+    <Label-ellipse id="0" width="80mm" height="47mm" waste="1.5mm">
+      <Layout nx="2" ny="5" x0="15mm" y0="11mm" dx="100mm" dy="57mm"/>
+    </Label-ellipse>
+  </Template>
+
+
+
+
+  <Template brand="Endisch" part="6502015x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="20mm" height="15mm" round="1.5mm" x_waste="0.8mm" y_waste="0.8mm">
+      <Layout nx="8" ny="15" x0="14.5mm" y0="15mm" dx="23mm" dy="18mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6502020x" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/20x20_e.html"/>
+    <Label-rectangle id="0" width="20mm" height="20mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="9" ny="14" x0="15mm" y0="8.5mm" dx="20mm" dy="20mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6502510x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="25.4mm" height="10mm" round="1.5mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="7" ny="27" x0="8.48mm" y0="13.5mm" dx="27.94mm" dy="10mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6502719x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/27x19_e.html"/>
+    <Label-rectangle id="0" width="27.5mm" height="19.05mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="7" ny="14" x0="8.75mm" y0="15.15mm" dx="27.5mm" dy="19.05mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6503333x" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Label-rectangle id="0" width="33mm" height="33mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="6" ny="8" x0="6mm" y0="16.5mm" dx="33mm" dy="33mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6503821x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/38x212_e.html"/>
+    <Label-rectangle id="0" width="38mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="5" ny="13" x0="10mm" y0="10.7mm" dx="38mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6404034x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="40mm" height="34mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="4" ny="8" x0="10mm" y0="12.5mm" dx="50mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6504816x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/485x169_e.html"/>
+    <Label-rectangle id="0" width="48.5mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="16" x0="8mm" y0="13.3mm" dx="48.5mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6504825x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/485x254_e.html"/>
+    <Label-rectangle id="0" width="48.5mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="11" x0="8mm" y0="8.8mm" dx="48.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6505050x" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Label-rectangle id="0" width="50mm" height="50mm" round="2mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="3" ny="5" x0="25mm" y0="13.5mm" dx="55mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6505221x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/525x212_e.html"/>
+    <Label-rectangle id="0" width="52.5mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="14" x0="0mm" y0="0mm" dx="52.5mm" dy="21.214mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6505225x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/525x254_e.html"/>
+    <Label-rectangle id="0" width="52.5mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="11" x0="0mm" y0="8.8mm" dx="52.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6505229x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/525x2967_e.html"/>
+    <Label-rectangle id="0" width="52.5mm" height="29.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="10" x0="0mm" y0="0mm" dx="52.5mm" dy="29.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6405334x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/53x34_e.html"/>
+    <Label-rectangle id="0" width="53mm" height="34mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="13mm" y0="12.5mm" dx="65.5mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="640638x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/63x85_e.html"/>
+    <Label-rectangle id="0" width="63.5mm" height="8.5mm" round="2mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="32" x0="7.21mm" y0="12.5mm" dx="66.04mm" dy="8.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6406329x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="63mm" height="29.67mm" round="2mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="7.21mm" y0="14.985mm" dx="66.04mm" dy="29.67mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6406333x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="63.5mm" height="33.9mm" round="3mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="7.21mm" y0="12.9mm" dx="66.04mm" dy="33.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6406338x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="63.5mm" height="38.1mm" round="3mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="7.21mm" y0="15.15mm" dx="66.04mm" dy="38.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6406346x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="63.5mm" height="46.6mm" round="3mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="6" x0="7.21mm" y0="8.7mm" dx="66.04mm" dy="46.6mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6506433x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/646x338_e.html"/>
+    <Label-rectangle id="0" width="64.6mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="8.1mm" y0="13.3mm" dx="64.6mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6406634x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/66x34_e.html"/>
+    <Label-rectangle id="0" width="66mm" height="34mm" round="2mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="4mm" y0="12.5mm" dx="68mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507016x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x169_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="17" x0="0mm" y0="4.85mm" dx="70mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507025x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x254_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="11" x0="0mm" y0="8.8mm" dx="70mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507029x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x2967_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="29.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="10" x0="0mm" y0="0mm" dx="70mm" dy="29.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507032x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x32_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="32mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="0mm" y0="4.5mm" dx="70mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507033x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x338_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="13.3mm" dx="70mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507035x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x35_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="8.5mm" dx="70mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507036x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x36_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="4.5mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507037x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x3708_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="0mm" dx="70mm" dy="37.125mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507041x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x41_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="5mm" dx="70mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507042x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x423_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="0mm" dx="70mm" dy="42.428mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507050x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x508_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="5" x0="0mm" y0="21.5mm" dx="70mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6507067x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/70x677_e.html"/>
+    <Label-rectangle id="0" width="70mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="4" x0="0mm" y0="13.1mm" dx="70mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6408232x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/82x32_e.html"/>
+    <Label-rectangle id="0" width="82mm" height="32mm" round="2mm" x_waste="2mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="16mm" y0="20.5mm" dx="96mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6408252x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/82x52_e.html"/>
+    <Label-rectangle id="0" width="82mm" height="52mm" round="2mm" x_waste="2mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="16mm" y0="18.5mm" dx="96mm" dy="52mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409039x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="90mm" height="39mm" round="2mm" x_waste="1.5mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="10mm" y0="12mm" dx="100mm" dy="39mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409595x" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Label-rectangle id="0" width="95mm" height="95mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="3" x0="7.5mm" y0="6mm" dx="100mm" dy="95mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409616x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/96x169_e.html"/>
+    <Label-rectangle id="0" width="96mm" height="16.9mm" round="2mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="16" x0="7.75mm" y0="13.3mm" dx="98.5mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6509711x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="97mm" height="11mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="25" x0="8mm" y0="11mm" dx="97mm" dy="11mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6509742x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/97x423_e.html"/>
+    <Label-rectangle id="0" width="97mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="8mm" y0="21.6mm" dx="97mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6509767x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/97x677_e.html"/>
+    <Label-rectangle id="0" width="97mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="8mm" y0="13.1mm" dx="97mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409852x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/98x52_e.html"/>
+    <Label-rectangle id="0" width="98mm" height="52mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="5mm" y0="18.5mm" dx="102mm" dy="52mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409933x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="33.9mm" round="3mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="4.63mm" y0="12.9mm" dx="101.64mm" dy="33.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409938x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="38.1mm" round="3mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="4.63mm" y0="15.15mm" dx="101.64mm" dy="38.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409942x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="42.3mm" round="3mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="4.63mm" y0="21.6mm" dx="101.64mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409957x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="57mm" round="3mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="4.63mm" y0="6mm" dx="101.64mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409963x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="63.5mm" round="3mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="4.63mm" y0="21.5mm" dx="101.64mm" dy="63.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6409967x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="67.7mm" round="3mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="4.63mm" y0="13.1mm" dx="101.64mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510150x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/1016x508_e.html"/>
+    <Label-rectangle id="0" width="101.6mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="3.4mm" y0="21.5mm" dx="101.6mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510533x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x338_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="13.3mm" dx="105mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510537x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x3708_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="0mm" dx="105mm" dy="37.125mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510541x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x41_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="0mm" y0="5mm" dx="105mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510542x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x423_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="0mm" y0="0mm" dx="105mm" dy="42.428mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510548x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x48_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="0mm" y0="4.5mm" dx="105mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510557x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x57_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="57mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="0mm" y0="6mm" dx="105mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510570x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x70_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="70mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="8.5mm" dx="105mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510572x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x72_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="72mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="9mm" dx="105mm" dy="72mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510574x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x74_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="0mm" dx="105mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510514x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x144_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="144mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="2" x0="0mm" y0="9mm" dx="105mm" dy="144mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6510518x" size="A4" _description="Labels A6">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x148_e.html"/>
+    <Label-rectangle id="0" width="105mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6414498x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/144x98_e.html"/>
+    <Label-rectangle id="0" width="98mm" height="144mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="2" x0="5mm" y0="4.5mm" dx="102mm" dy="144mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6414720x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/147x20_e.html"/>
+    <Label-rectangle id="0" width="147.3mm" height="20mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="13" x0="31.35mm" y0="18.5mm" dx="147.3mm" dy="20mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6519038x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/190x38_e.html"/>
+    <Label-rectangle id="0" width="192mm" height="38mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="7" x0="9mm" y0="15.5mm" dx="192mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6519061x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/190x61_e.html"/>
+    <Label-rectangle id="0" width="192mm" height="61mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="4" x0="9mm" y0="26.5mm" dx="192mm" dy="61mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6520029x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/200x297_e.html"/>
+    <Label-rectangle id="0" width="200mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="10mm" y0="0mm" dx="200mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6521074x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="4" x0="0mm" y0="0mm" dx="210mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6521099x" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="99mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="3" x0="0mm" y0="0mm" dx="210mm" dy="99mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6521018x" size="A4" _description="Labels A5">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/210x148_e.html"/>
+    <Label-rectangle id="0" width="210mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="2" x0="0mm" y0="0mm" dx="210mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="6521029x" size="A4" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/210x297_e.html"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Endisch" part="65420297" size="A3" _description="Labels A3">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="297mm" height="420mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="297mm" dy="420mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="SRA3450320" size="SRA3" _description="Labels SRA3">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="320mm" height="450mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="320mm" dy="450mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Endisch" part="B104147A5" size="A5" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="148mm" height="105mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="2" x0="0mm" y0="0mm" dx="148mm" dy="105mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="B200147A5" size="A5" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="148mm" height="200mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="10mm" y0="0mm" dx="148mm" dy="200mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Endisch" part="B210148A5" size="A5" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="148mm" height="210mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="148mm" dy="210mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- =================================================================== -->
+  <!-- DATA BECKER: Business Cards, 50 x 90 mm, 10 per sheet               -->
+  <!-- =================================================================== -->
+  <!-- TODO: What is the actual part #? -->
+  <Template brand="DataBecker" part="BC?" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="255" height="142" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="36" y0="69.890" dx="255" dy="142"/>
+    </Label-rectangle>
+  </Template>
+
+ 
+  <!-- ===================================================================-->
+  <!-- Data Becker CD/DVD Labels (face only), 2 per sheet                 -->
+  <!-- ===================================================================-->
+  <Template brand="DataBecker" part="0335" size="A4" _description="CD/DVD Labels Standard Format (face only)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="164.409" hole="58.1102" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="2" x0="133.228" y0="46.7716" dx="0" dy="419.527"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="DataBecker" part="0368" equiv="0335"/>
+
+
+  <!-- =================================================================== -->
+  <!-- DATA BECKER 0491 Business Cards, 50 x 90 mm, 10 per sheet           -->
+  <!-- =================================================================== -->
+  <Template brand="DataBecker" part="0491" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="90mm" height="50mm" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="12.5mm" y0="15mm" dx="94.55mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+ 
+  <!-- =================================================================== -->
+  <!-- DATA BECKER 0526 Address Labels.                                    -->
+  <!-- =================================================================== -->
+  <Template brand="DataBecker" part="0526" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="198.425pt" height="102.047pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="3" ny="8" x0="3.93386e-16pt" y0="15.5906pt" dx="198.425pt" dy="102.047pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- DATA BECKER 0562 CD Labels.                                         -->
+  <!-- =================================================================== -->
+  <Template brand="DataBecker" part="0562" size="A4" _description="CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="58mm" hole="20.6375mm" waste="2mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="5mm" y0="5mm" dx="120mm" dy="171mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="90mm" dx="120mm" dy="120mm"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- DATA BECKER 0598 Address Labels.                                    -->
+  <!-- =================================================================== -->
+  <Template brand="DataBecker" part="0598" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="274.961pt" height="119.906pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="2" ny="6" x0="23.2441pt" y0="65.1968pt" dx="274.961pt" dy="119.906pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- DATA BECKER 0599 Rectangular Labels.                                -->
+  <!-- =================================================================== -->
+
+  <Template brand="DataBecker" part="0599" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>
+

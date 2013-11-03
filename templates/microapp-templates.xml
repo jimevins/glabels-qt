@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- ******************************************************************** -->
+  <!-- Micro Application products                                           -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- Micro Application:  Standard Labels, 60.5mm x 29.6mm, 24 per sheet  -->
+  <!-- =================================================================== -->
+
+  <Template brand="Micro Application" part="5057" size="A4" _description="Standard Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.microapp.com/papier_etiquettes_standard_5057.html"/>
+    <Label-rectangle id="0" width="60.5mm" height="29.6mm" round="0mm" x_waste="1mm" y_waste="1mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="8" x0="12mm" y0="23mm" dx="62.5mm" dy="31.6mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>
+
+
+
+

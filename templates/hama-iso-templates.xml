@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- ******************************************************************** -->
+  <!-- Hama products.	                                                    -->
+  <!-- ******************************************************************** -->
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50150. Printable mousepad.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50150" size="A4" _description="Printable mousepad">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="189.5mm" height="249.4mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="10mm" y0="23.8mm" dx="199.5mm" dy="259.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50151. Round labels 40mm.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50151" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="20mm" waste="3mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="4" ny="6" x0="16mm" y0="16mm" dx="46mm" dy="46.5mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50390. Photo labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50390" size="A4" _description="Photo labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+    <Label-rectangle id="0" width="130mm" height="90mm" round="0mm" x_waste="40mm" y_waste="27.5mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="2" x0="40mm" y0="30.1mm" dx="210mm" dy="150mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hama" part="50392" equiv="50390"/>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50393. Photo labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50391" size="A4" _description="Photo labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+    <Label-rectangle id="0" width="151mm" height="100mm" round="0mm" x_waste="25mm" y_waste="24mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="2" x0="29mm" y0="24mm" dx="201mm" dy="149mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hama" part="50393" equiv="50391"/>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50400. Business cards.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50400" size="A4" _description="Business cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="85mm" height="55mm" round="0mm" x_waste="5mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="5" x0="13.5mm" y0="10.5mm" dx="95mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hama" part="50401" equiv="50400"/>
+  <Template brand="Hama" part="50405" equiv="50400"/>
+  <Template brand="Hama" part="50410" equiv="50400"/>
+  <Template brand="Hama" part="50415" equiv="50400"/>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50402. Business cards.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50402" size="A4" _description="Business cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="81mm" height="50.8mm" round="0mm" x_waste="8mm" y_waste="2mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="5" x0="16mm" y0="14.5mm" dx="97mm" dy="54.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hama" part="50403" equiv="50402"/>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50430. CD inlets.				                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50430" size="A4" _description="CD inlet">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="119.5mm" height="119.5mm" round="0mm" x_waste="10mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="45mm" y0="29.5mm" dx="139.5mm" dy="119.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hama" part="50431" equiv="50430"/>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50432. CD inlets.				                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50432-1" size="A4" _description="CD inlet (front)">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="151mm" height="121mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Markup-line x1="30mm" y1="0mm" x2="30mm" y2="121mm"/>
+      <Layout nx="1" ny="1" x0="30mm" y0="29.5mm" dx="151mm" dy="121mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hama" part="50432-2" size="A4" _description="CD inlet (back)">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="151mm" height="117.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Markup-line x1="6.5mm" y1="0mm" x2="6.5mm" y2="117.5mm"/>
+      <Markup-line x1="144.5mm" y1="0mm" x2="144.5mm" y2="117.5mm"/>
+      <Markup-rect x1="9.5mm" y1="3mm" w="132mm" h="111.5mm"/>
+      <Layout nx="1" ny="1" x0="30mm" y0="160mm" dx="151mm" dy="117.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50434. Zip disc inlets.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50434" size="A4" _description="Zip disc inlet">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="100mm" height="200mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-line x1="0mm" y1="10mm" x2="100mm" y2="10mm"/>
+      <Markup-line x1="0mm" y1="18mm" x2="100mm" y2="18mm"/>
+      <Markup-line x1="0mm" y1="116mm" x2="100mm" y2="116mm"/>
+      <Markup-rect x1="3mm" y1="21mm" w="94mm" h="92mm"/>
+      <Markup-rect x1="3mm" y1="119mm" w="94mm" h="78mm"/>
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="1" x0="55mm" y0="47.5mm" dx="100mm" dy="200mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50435. DVD inlets.				                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50435" size="A4" _description="DVD inlet">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="184mm" height="275mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-line x1="0mm" y1="130.5mm" x2="184mm" y2="130.5mm"/>
+      <Markup-line x1="0mm" y1="144.5mm" x2="184mm" y2="144.5mm"/>
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="1" x0="13mm" y0="12.5mm" dx="194mm" dy="285mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50436. VHS-C inlets.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50436" size="A4" _description="VHS-C inlet">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="98.5mm" height="91.5mm" round="0mm" x_waste="20mm" y_waste="20mm">
+      <Markup-margin size="0mm"/>
+      <Markup-line x1="15.5mm" y1="0mm" x2="15.5mm" y2="91.5mm"/>
+      <Markup-line x1="38.5mm" y1="0mm" x2="38.5mm" y2="91.5mm"/>
+      <Layout nx="1" ny="2" x0="55.75mm" y0="28.5mm" dx="138.5mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50437. Video-8 inlets.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50437" size="A4" _description="Video-8 inlet">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="155mm" height="98.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Markup-line x1="16mm" y1="0mm" x2="16mm" y2="98.5mm"/>
+      <Markup-line x1="32mm" y1="0mm" x2="32mm" y2="98.5mm"/>
+      <Markup-line x1="95mm" y1="0mm" x2="95mm" y2="98.5mm"/>
+      <Layout nx="1" ny="2" x0="23mm" y0="22.5mm" dx="155mm" dy="153.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50438. VHS inlets.				                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50438" size="A4" _description="VHS inlet">
+    <Meta category="card"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="189.5mm" height="256mm" round="0mm" x_waste="10.25mm" y_waste="20.5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="10.25mm" y0="20.5mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50440. Foldable Greeting cards.		                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50440" size="A4" _description="Greeting cards">
+    <Meta category="card"/>
+    <Meta category="foldable"/>
+    <Label-rectangle id="0" width="210mm" height="145mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="145mm"/>
+      <Layout nx="1" ny="2" x0="0mm" y0="0mm" dx="210mm" dy="145mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50450. Rectangular labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50450" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="0mm" dx="70mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50452. Rectangular labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50452" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="25.4mm" height="25.4mm" round="0mm" x_waste="2.5mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="6" ny="11" x0="15.8mm" y0="9mm" dx="30.4mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50455. Rectangular labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50455" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50460. Rectangular labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50460" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50465. Diskette labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50465" size="A4" _description="Diskette labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="70mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="5" x0="0mm" y0="21mm" dx="70mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50470. Zip disc labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50470" size="A4" _description="Zip disc labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="50mm" height="50mm" round="0mm" x_waste="5mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="5" x0="13.8mm" y0="23.8mm" dx="61.2mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50475. CD/DVD labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50475" size="A4" _description="CD/DVD labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="58.7mm" hole="19.5mm" waste="10mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="46mm" y0="16mm" dx="137.4mm" dy="147.8mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50480. Arch File labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50480" size="A4" _description="Arch File Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="190mm" height="38mm" round="0mm" x_waste="10mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="7" x0="10mm" y0="16mm" dx="210mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50485. Arch File labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50485" size="A4" _description="Arch File labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="190mm" height="58mm" round="0mm" x_waste="10mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="5" x0="10mm" y0="3.5mm" dx="210mm" dy="58mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50505. Rectangular labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50505" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50515. Rectangular labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50515" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50517. 1" Square labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50517" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Label-rectangle id="0" width="25.4mm" height="25.4mm" round="0mm" x_waste="2.5mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="6" ny="11" x0="16.2mm" y0="8.8mm" dx="30.42mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ==================================================================== -->
+  <!-- Hama 50520. Mini Disc labels.			                    -->
+  <!-- ==================================================================== -->
+  <Template brand="Hama" part="50520-1" size="A4" _description="Mini Disc labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="52.5mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="4" ny="8" x0="0mm" y0="0mm" dx="52.5mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>

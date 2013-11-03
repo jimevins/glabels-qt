@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Meritline                 -->
+  <!--                           -->
+  <!-- ************************* -->
+
+
+  <!-- ===================================================================-->
+  <!-- Meritline Mini CD/DVD Labels (face only), 5 per sheet              -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="176-020-001" size="US-Letter" _description="Mini-CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="110.5" hole="57.5" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="2" x0="48.4" y0="47.6" dx="299.5" dy="481.5"/>
+      <Layout nx="1" ny="1" x0="197.3" y0="289.5" dx="0" dy="0"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Meritline" part="176-019-001" equiv="176-020-001"/>
+  <Template brand="Meritline" part="176-009-001" equiv="176-020-001"/>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Address Labels, 30 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-002-001" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="2.625in" height="1in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="10" x0="0.1875in" y0="0.5in" dx="2.75in" dy="1in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Address Labels, 20 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-003-001" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="4in" height="1in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="10" x0="0.15625in" y0="0.5in" dx="4.1875in" dy="1in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Address Labels, 14 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-004-001" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="4in" height="1.333333333in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="7"
+              x0="0.15625in" y0="0.833333333in" dx="4.1875in" dy="1.333333333in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Shipping Labels, 10 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-005-001" size="US-Letter" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="4in" height="2in" round="0.125in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="2" ny="5" x0="0.1625in" y0="0.5in" dx="4.1875in" dy="2in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Shipping Labels, 6 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-006-001" size="US-Letter" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="4in" height="3.333333333in" round="0.125in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="2" ny="3" x0="0.15625in" y0="0.5in" dx="4.1875in" dy="3.333333333in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Return Address Labels, 80 per sheet		          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-008-001" size="US-Letter" _description="Return Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="1.75in" height="0.5in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="4" ny="20" x0="0.28125in" y0="0.5in" dx="2.0625in" dy="0.5in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Full Sheet Labels, 1 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-007-001" size="US-Letter" _description="Full Sheet Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="8.5in" height="11.in" round="0">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Address Labels, 12 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-010-001" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="4in" height="1.5in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="6" x0="0.1875in" y0="1in" dx="4.125in" dy="1.5in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Round Labels, 24 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-014-001" size="US-Letter" _description="Round Labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="0.8125in" waste="0pt">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="4" ny="6" x0="0.4157in" y0="0.549in" dx="2.0145in" dy="1.6554in"/>
+    </Label-round>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Diskette Labels, 9 per sheet			          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-009-001" size="US-Letter" _description="Diskette Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="2.75in" height="2.75in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="3" x0="0.125in" y0="0.5in" dx="2.75in" dy="3in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Video Tape Face Labels, 10 per sheet		          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-012-001" size="US-Letter"
+         _description="Video Tape Face Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="220" height="133" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="80" y0="60.5" dx="236" dy="133"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ===================================================================-->
+  <!-- Meritline Video Tape Spine Labels, 15 per sheet		          -->
+  <!-- ===================================================================-->
+  <Template brand="Meritline" part="177-013-001" size="US-Letter"
+        _description="Video Tape Spine Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="414" height="48" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="15" x0="99" y0="36" dx="0" dy="48"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>
+
+
+
+

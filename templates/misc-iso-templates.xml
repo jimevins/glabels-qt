@@ -1,0 +1,707 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+
+  <!-- ******************************************************************** -->
+  <!-- Misc. ISO sized products.                                            -->
+  <!-- ******************************************************************** -->
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Agipa                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Agipa 114036: Rectangulars Labels, 48.5 x 18.5 mm, 16 per A5 sheet  -->
+  <!-- =================================================================== -->
+  <Template brand="Agipa" part="114036" size="A5" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="18.5mm" height="48.5mm" round="10">
+      <Layout nx="7" ny="4" x0="4mm" y0="2mm" dx="20mm" dy="49mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Agipa 119488: Business Cards, 50 x 90 mm, 10 per sheet              -->
+  <!-- =================================================================== -->
+  <Template brand="Agipa" part="119488" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="255" height="142" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="43" y0="67" dx="255" dy="142"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- APLI                      -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ====================================================== -->
+  <!-- APLI 02793: Business Cards, 50,8 x 90 mm, 10 per sheet -->
+  <!-- ====================================================== -->
+  <Template brand="APLI" part="02793" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="255.118" height="144" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="42.5197" y0="62.3622" dx="255.118" dy="144"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- APLI 1999:  Mailing Labels, 9,9cm x 6,8cm, 8 per sheet              -->
+  <!-- =================================================================== -->
+  <Template brand="APLI" part="1999" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="281" height="193" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="4" x0="13" y0="21.890" dx="289" dy="194"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- APLI 01293:  General Labels.                                        -->
+  <!-- =================================================================== -->
+  <Template brand="APLI" part="01293" size="A4" _description="General Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="198.425pt" height="94.3937pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="3" ny="8" x0="0pt" y0="43.3701pt" dx="198.425pt" dy="94.3937pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- APLI 01271:  General Labels.                                        -->
+  <!-- =================================================================== -->
+  <Template brand="Apli" part="1271" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="30mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="3" ny="9" x0="0mm" y0="13.5mm" dx="70mm" dy="30mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Best Office               -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Best Office Self-adhesive labels.                                   -->
+  <!-- =================================================================== -->
+  <Template brand="Best Office" part="75753" size="A4" _description="Self-adhesive labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="4mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Biltema                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Biltema 23-756: Address labels, 63.50 x 71.98 mm, 12 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Biltem" part="23-756" size="A4" _description="Address labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="180" height="204.038" round="8.5">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="4" x0="20.84" y0="10" dx="187.08" dy="204.038"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Bruna                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Bruna 241301.  Mailing Labels.                                      -->
+  <!-- =================================================================== -->
+  <Template brand="Bruna" part="241301" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="198.425pt" height="102.047pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="3" ny="8" x0="0pt" y0="0pt" dx="198.425pt" dy="102.047pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Celcast                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Celcast IJ37: Fridge magnet (stickers), 52 x 90 mm, 10 per sheet    -->
+  <!-- =================================================================== -->
+  <Template brand="Celcast" part="IJ37" size="A4" _description="Fridge Magnet Stickers">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="255" height="147.5" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="43" y0="52.7" dx="255" dy="147.5"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Connect                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Connect KF10647 Mailing Labels..                                    -->
+  <!-- =================================================================== -->
+  <Template brand="Connect" part="KF10647" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="198.425pt" height="104.882pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="3" ny="8" x0="7.86772e-17pt" y0="11.3386pt" dx="198.425pt" dy="104.882pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Ednet                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Ednet BC: Business Cards, 51 x 89 mm, 10 per sheet                  -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this a real part #? -->
+  <Template brand="Ednet" part="BC" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="253" height="145" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="40" y0="59" dx="253" dy="145"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Ednet 45021: Inkjet/Laser Labels 70x37mm                            -->
+  <!-- =================================================================== -->
+  <Template brand="Ednet" part="45021" size="A4" _description="Inkjet/Laser Labels 70x37mm">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="198.425pt" height="104.882pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="3" ny="8" x0="0pt" y0="0pt" dx="198.425pt" dy="104.882pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Encre.com                 -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ===================================================================-->
+  <!-- Encre.com Business Cards, 10 per sheet                             -->
+  <!-- ===================================================================-->
+  <Template brand="Encre.com" part="BCV10" size="A4" _description="Business Cards">  
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="243.78" height="153.07">  
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="48.19" y0="42.50" dx="255.12" dy="157.32"/>  
+    </Label-rectangle> 
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Epson                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- EPSON Photo Stickers, 17 x 24 mm, 16 per sheet                      -->
+  <!-- =================================================================== -->
+  <Template brand="Epson" part="S041144" size="A6" _description="EPSON Photo Stickers 16">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="48" height="68" round="7">
+      <Markup-margin size="5"/>
+      <Layout nx="4" ny="4" x0="33" y0="59" dx="59.5" dy="79.5"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Fellows                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Fellows 04715 CD/DVD Labels (Face only).                            -->
+  <!-- =================================================================== -->
+  <Template brand="Fellows" part="04715" size="A4" _description="CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="166.5pt" hole="58.5pt" waste="9pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="2" x0="133.2pt" y0="50.4pt" dx="244.276pt" dy="363.6pt"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Hema                      -->
+  <!--                           -->
+  <!-- ************************* -->
+  <!-- TODO: Is this a typo of "Herma?" -->
+
+  <!-- =================================================================== -->
+  <!-- Hema Etiketten: 65 x 38 mm, 21 per sheet                            -->
+  <!-- =================================================================== -->
+  <!-- TODO: What is the actual part #? -->
+  <Template brand="Hema" part="Etiketten" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="178" height="108" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="7" x0="20" y0="49.890" dx="187" dy="107"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Impact                    -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ============================================================ -->
+  <!-- Impact LC33 Family: Rectangular Labels                       -->
+  <!-- ============================================================ -->
+  <Template brand="Impact" part="LC33" size="A4" description="Rectangular Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="70mm" height="25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3mm"/>
+      <Layout nx="3" ny="11" x0="0mm" y0="10mm" dx="70mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Kores                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Kores KPCV1: Business Cards, 50 x 90 mm, 10 per sheet              -->
+  <!-- =================================================================== -->
+  <Template brand="Kores" part="KPCV1" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="90mm" height="50mm" round="0">
+      <Markup-margin size="1mm"/>
+      <Layout nx="2" ny="5" x0="15mm" y0="24mm" dx="90mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- LeLabel                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ===================================================================-->
+  <!-- LeLabel 2001.018 CD/DVD Labels, 1 per sheet                        -->
+  <!-- ===================================================================-->
+  <Template brand="LeLabel" part="2001.018" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="168.08" hole="54.69" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="1" x0="128.556" y0="42.52" dx="0" dy="0"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Media Line                -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ===================================================================-->
+  <!-- Media Line CD/DVD Labels (face only), 2 per sheet                  -->
+  <!-- ===================================================================-->
+  <Template brand="MediaLine" part="760-50475 A4 CD" size="A4" _description="CD/DVD Labels (face only)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="166.5" hole="58.5" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="2" x0="133" y0="45" dx="0" dy="422"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Neato                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ===================================================================-->
+  <!-- Neato brand CD/DVD Labels (face only), 2 per sheet                 -->
+  <!-- ===================================================================-->
+  <!-- TODO: Is this the actual part #? -->
+  <Template brand="Neato" part="A4 CD" size="A4" _description="CD/DVD Labels (face only)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="166.5" hole="58.5" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="2" x0="125" y0="68.890" dx="0" dy="360"/>        
+    </Label-cd>                                                      
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Poundland                 -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Poundland 30 Labels.                                                -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this the actual part #? -->
+  <Template brand="Poundland" part="30" size="A4" _description="Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="184.252pt" height="72pt" round="8.50394pt" x_waste="4.25197pt" y_waste="0pt">
+      <Markup-margin size="7.08661pt"/>
+      <Layout nx="3" ny="10" x0="4.25197pt" y0="62.3622pt" dx="201.26pt" dy="72pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Pressit                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Pressit CD Labels.                                                  -->
+  <!-- =================================================================== -->
+  <Template brand="Pressit" part="50blank" size="A4" _description="CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="166.5pt" hole="58.5pt" waste="9pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="1" x0="30.096pt" y0="70.416pt" dx="351pt" dy="351pt"/>
+      <Layout nx="1" ny="1" x0="233.208pt" y0="440.712pt" dx="351pt" dy="351pt"/>
+    </Label-cd>
+  </Template>
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Q_CONNECT                 -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Q_CONNECT multi-purpose labels, 8 per sheet.                        -->
+  <!-- =================================================================== -->
+  <Template brand="Q-CONNECT" part="KF26055" size="A4" _description="Multi-Purpose Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="67.7mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="2" ny="4" x0="6mm" y0="13mm" dx="101.1mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Russian                   -->
+  <!--                           -->
+  <!-- ************************* -->
+  <!-- TODO: Is this the actual vendor? Or is this a generic for multiple
+       vendors? -->
+
+  <!-- =================================================================== -->
+  <!-- Russian A3 5x9 Business Cards.                                      -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this the actual part #? -->
+  <Template brand="Russian" part="A3 5x9" size="A3" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="90mm" height="50mm" round="0">
+      <Markup-margin size="5pt"/>
+      <Layout nx="3" ny="8" x0="14mm" y0="10mm" dx="90mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Russian A4 5x9 Business Cards.                                      -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this the actual part #? -->
+  <Template brand="Russian" part="A4 5x9" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="50mm" height="90mm" round="0">
+      <Markup-margin size="5pt"/>
+      <Layout nx="4" ny="3" x0="5mm" y0="13mm" dx="50mm" dy="90mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Ryman                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Ryman P14 Universal labels.                                         -->
+  <!-- =================================================================== -->
+  <Template brand="Ryman" part="P14" size="A4" _description="Universal Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="99.1mm" height="38.1mm" round="0.2mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="7" x0="4.2mm" y0="13.8mm" dx="102mm" dy="38.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Ryman Standard CD/DVD Labels.                                       -->
+  <!-- =================================================================== -->
+  <!-- Is this the actual part #? -->
+  <Template brand="Ryman" part="Standard CD/DVD" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="165.827pt" hole="58.1102pt" waste="9pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="2" x0="131.811pt" y0="60.6614pt" dx="245.622pt" dy="388.346pt"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Ryman 0215016061 CD/DVD Labels.                                     -->
+  <!-- =================================================================== -->
+  <Template brand="Ryman" part="0215016061" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="165.827pt" hole="24.0945pt" waste="8.50394pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="2" x0="131.811pt" y0="60.6614pt" dx="348.661pt" dy="388.346pt"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Sanwa                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Sanwa LB-CDRJP.  CD Labels.                                         -->
+  <!-- =================================================================== -->
+  <Template brand="Sanwa" part="LB-CDRJP" size="A4" _description="CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="167.244pt" hole="34.0pt" waste="9pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="2" x0="29.1969pt" y0="70.8661pt" dx="352.488pt" dy="367.087pt"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Sigel                     -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Sigel LA 505: CD/DVD Labels				           -->
+  <!-- =================================================================== -->
+  <Template brand="Sigel" part="LA 505" size="A4" _description="CD/DVD labels">
+    <Meta category="label"/>
+    <Meta category="media"/> 
+    <Label-cd id="0" radius="58.5mm" hole="8.5mm" waste="2mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="45mm" y0="20mm" dx="123.4mm" dy="123.4mm"/>
+      <Layout nx="1" ny="1" x0="45mm" y0="159mm" dx="123.4mm" dy="123.4mm"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Sigel LP 795: Business Cards, 55.0 x 85.0 mm          		   -->
+  <!-- =================================================================== -->
+  <Template brand="Sigel" part="LP 795" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="85mm" height="55mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="2" ny="5" x0="14mm" y0="10.5mm" dx="95mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Sigel LP 800/LP 801/LP 802: Business Cards, 55.0 x 85.0 mm          -->
+  <!-- =================================================================== -->
+  <Template brand="Sigel" part="LP 800" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="85.0mm" height="55.0mm" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="15.0mm" y0="10.0mm" dx="95.0mm" dy="55.0mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sigel" part="LP 801" equiv="LP 800"/>
+  <Template brand="Sigel" part="LP 802" equiv="LP 800"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Sigel DP 830/DP 930: Business Cards, 55.0 x 85.0 mm, 10 per sheet   -->
+  <!-- =================================================================== -->
+  <Template brand="Sigel" part="DP 830" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="240.9" height="155.9" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="40" y0="31" dx="269" dy="156"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Sigel DE 160: Bottle labels, 4 per sheet				   -->
+  <!-- =================================================================== -->
+  <Template brand="Sigel" part="DE 160" size="A4" _description="Bottle labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.sigel.de/en_gb/Workflow/Labels/118/1406-Labels+for+bottles%2C+to+design+and+customize"/>
+    <Label-rectangle id="0" width="80mm" height="120mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="2" x0="15mm" y0="19.5mm" dx="100mm" dy="138mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sigel" part="DP 930" equiv="DP 830"/>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Staples                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Staples EU Business Cards Supreme.                                  -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this the actual part #? -->
+  <Template brand="Staples" part="EU BC Supreme" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="240.945pt" height="155.906pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="9.07087pt"/>
+      <Layout nx="1" ny="5" x0="42.5197pt" y0="28.3465pt" dx="240.945pt" dy="155.906pt"/>
+      <Layout nx="1" ny="5" x0="311.811pt" y0="28.3465pt" dx="240.945pt" dy="155.906pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Staples STAP14 Mailing Labels.                                      -->
+  <!-- =================================================================== -->
+  <Template brand="Staples" part="STAP14" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99mm" height="38mm" round="2mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3mm"/>
+      <Layout nx="2" ny="7" x0="5mm" y0="15mm" dx="102mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Stomper                   -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- CD STOMPER PRO CD Label Refills, (Face Only) ISO Version            -->
+  <!-- =================================================================== -->
+  <!-- TODO: Is this the actual part #? -->
+  <Template brand="Stomper" part="PRO A4" size="A4" _description="PRO CD Labels 2-up (face only)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="166.5" hole="58" waste="10">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="1" x0="34.5" y0="47" dx="0" dy="0"/>
+      <Layout nx="1" ny="1" x0="223" y0="459" dx="0" dy="0"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Viking                    -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- ===================================================================-->
+  <!-- Viking 02204 Etiketten, 21 per sheet                               -->
+  <!-- ===================================================================-->
+  <Template brand="Viking" part="02204" size="A4" _description="Etiketten">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="198" height="120" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="7" x0="0" y0="0" dx="198" dy="120"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+</Glabels-templates>
+
+
+
+

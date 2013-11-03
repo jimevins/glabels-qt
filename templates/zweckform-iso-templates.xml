@@ -1,0 +1,289 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- Zweckform A4 products                                                -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 4761: Lever Arch File Labels, 192 x 61 mm, 4 per sheet    -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="4761" size="A4" _description="Lever Arch File Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="544.25" height="172.9" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="4" x0="25" y0="75" dx="544.25" dy="172.9"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3477: Adress labels                                       -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3477" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="7" x0="0mm" y0="4.93mm" dx="105mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3651: Rectangular Labels, 52 x 29.5 mm, 40 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3651" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="147.4016" height="83.6220" round="0">  
+      <Markup-margin size="5"/>
+      <Layout nx="4" ny="10" x0="2.834" y0="2.834" dx="147.4016" dy="83.6220"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ====================================================================-->
+  <!-- Zweckform 3654: CD Labels  2 per Template                              -->
+  <!-- ====================================================================-->
+  <Template brand="Zweckform" part="3654" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="165.78" hole="58.09" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="2" x0="131.78" y0="58.7998" dx="0" dy="387.97"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3659: Rectangular Labels, 97 x 42.125 mm, 12 per sheet    -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3659" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="274" height="120.5" round="0">  
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="6" x0="22.68" y0="60" dx="274" dy="120.5"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3669:  Rectangular Labels, 70 x 50.8mm, 15 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3669" size="A4" _description="QSL-Karten Etiketten 70mm x 50,8mm">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="198.425" height="144" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="5" x0="0" y0="61" dx="198.425" dy="144"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3688: Ordnerruecken Labels                                -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3688" size="A4" _description="File Back Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="544.252pt" height="172.913pt" round="0pt" waste="0pt">
+      <Markup-margin size="9.07087pt"/>
+      <Layout nx="1" ny="4" x0="28.3465pt" y0="76.5354pt" dx="544.252pt" dy="172.913pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 4732: Multi-purpose Stick+Lift labels                     -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="4732" size="A4" _description="Multi-purpose Stick+Lift Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="102.047pt" height="48.189pt" round="5.66929pt" waste="0pt">
+      <Markup-margin size="5.66929pt"/>
+      <Layout nx="5" ny="16" x0="31.1811pt" y0="36.8504pt" dx="107.717pt" dy="48.189pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 4746: Video Labels, 147,32 x 20 mm, 13 per sheet          -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="4746" size="A4" _description="Video Labels (back)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="416.6" height="56.6929" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="13" x0="88.8377" y0="52.2425" dx="416.6" dy="56.6929"/>
+    </Label-rectangle>
+  </Template>
+  
+  <!-- =================================================================== -->
+  <!-- Zweckform 4780: Allround Labels, 48,5 x 25,4 mm, 40 per sheet       -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="4780" size="A4" _description="Allround Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="137.48" height="72" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="4" ny="10" x0="23" y0="53.8898" dx="137.48" dy="72"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3474: Address Labels, 70 x 37 mm, 24 per sheet            -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3474" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="70mm" height="37mm" round="0">
+      <Markup-margin size="0"/>
+      <Layout nx="3" ny="8" x0="0" y0="0" dx="70mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3475: Address Labels, 70 x 30 mm, 24 per sheet            -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3475" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="198.570" height="102.121" round="0">
+      <Markup-margin size="0"/>
+      <Layout nx="3" ny="8" x0="0" y0="12.566" dx="198.570" dy="102.121"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3490: Rectangular Labels, 70 x 36 mm, 24 per sheet        -->
+  <!-- =================================================================== -->
+   <Template brand="Zweckform" part="3490" size="A4" _description="Rectangular Copier Labels">
+     <Meta category="label"/>
+     <Label-rectangle id="0" width="198.425" height="102.047" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="8" x0="" y0="12.557" dx="198.425" dy="102.047"/>
+     </Label-rectangle>
+   </Template>
+		      
+  <!-- =================================================================== -->
+  <!-- Zweckform 4781: Rectangular Labels, 97 x 42.3 mm, 12 per sheet      -->
+  <!-- =================================================================== -->
+   <Template brand="Zweckform" part="4781" size="A4" _description="Rectangular Copier Labels">
+     <Meta category="label"/>
+     <Label-rectangle id="0" width="274.960" height="119.905" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="6" x0="22.677" y0="61.030" dx="274.960" dy="119.905"/>
+     </Label-rectangle>
+   </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 6091: Correction and Cover, 64.6 x 33.8 mm, 24 per sheet  -->
+  <!-- =================================================================== -->
+   <Template brand="Zweckform" part="6091" size="A4" _description="Correction and Cover-up Labels">
+     <Meta category="label"/>
+     <Label-rectangle id="0" width="183.118" height="95.811" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="8" x0="22.961" y0="37.502" dx="183.118" dy="95.881"/>
+     </Label-rectangle>
+   </Template>
+   
+  <!-- =================================================================== -->
+  <!-- Zweckform 6015: CD Labels, 2 per Template                           -->
+  <!-- =================================================================== -->
+   <Template brand="Zweckform" part="6015" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+     <Label-cd id="0" radius="165.827" hole="58.110" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="2" x0="131.811" y0="60.746" dx="0" dy="388.346"/>
+     </Label-cd>
+   </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 6021: Allround Labels                                     -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="6021" size="A4" _description="Allround Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="130.392pt" height="47.9055pt" round="0pt" waste="0pt">
+      <Markup-margin size="5pt"/>
+      <Layout nx="4" ny="16" x0="24.0945pt" y0="39.6853pt" dx="136.913pt" dy="47.9055pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =============================================================== -->
+  <!-- Zweckform J8435: CD Inlets Booklet part                         -->
+  <!-- =============================================================== -->
+  <Template brand="Zweckform" part="J8435A" size="A4" _description="CD Booklet">
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="155mm" height="125mm" round="0">
+      <Markup-margin size="2mm"/>
+      <Markup-line x1="32mm" y1="0mm" x2="32mm" y2="125mm"/>
+      <Layout nx="1" ny="1" x0="27.5mm" y0="22mm" dx="155mm" dy="125mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Zweckform" part="32250A" equiv="J8435A"/>
+
+
+  <!-- =============================================================== -->
+  <!-- Zweckform J8435: CD Inlets Inlet part                           -->
+  <!-- =============================================================== -->
+  <Template brand="Zweckform" part="J8435B" size="A4" _description="CD Inlet">
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="155mm" height="122mm" round="0">
+      <Markup-margin size="2mm"/>
+      <Markup-line x1="8.5mm" y1="0mm" x2="8.5mm" y2="122mm"/>
+      <Markup-line x1="146.5mm" y1="0mm" x2="146.5mm" y2="122mm"/>
+      <Layout nx="1" ny="1" x0="27.5mm" y0="21mm" dx="155mm" dy="122mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Zweckform" part="32250B" equiv="J8435B"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 32010: Business Cards, 54.0 x 85.0 mm, 10 per sheet       -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="32010" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="240.94" height="153.07" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="40" y0="40" dx="269" dy="153"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ============================================================ -->
+  <!-- Avery 32015: Business Cards                                  -->
+  <!-- ============================================================ -->
+  <Template brand="Zweckform" part="32015" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm">
+      <Markup-margin size="5mm"/>
+      <Layout nx="2" ny="4" x0="17mm" y0="31.5mm" dx="91mm" dy="60mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 4760: File Labels, 192 x 38 mm, 7 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="4760" size="A4" _description="File Back Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="544.252pt" height="107.717pt" round="5.66929pt" waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="7" x0="25.5118pt" y0="43.7386pt" dx="544.252pt" dy="107.717pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 3348: Adress Labels.                                      -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="3348" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="189.921pt" height="107.717pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="3" ny="7" x0="5.66929pt" y0="56.6929pt" dx="198.425pt" dy="107.717pt"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>
+
+
+
+

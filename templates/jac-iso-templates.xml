@@ -1,0 +1,611 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- ******************************************************************** -->
+  <!-- JAC products.	                                                    -->
+  <!-- ******************************************************************** -->
+
+  <!-- ==================================================================== -->
+  <!-- JAC CD label sheet with rectangular labels.                          -->
+  <!-- ==================================================================== -->
+
+  <Template brand="JAC" part="987349-1" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="58mm" hole="20.8mm" waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="5.5mm" y0="5.5mm" dx="116mm" dy="169mm"/>
+      <Layout nx="1" ny="1" x0="87.5mm" y0="90mm" dx="116mm" dy="116mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="JAC" part="987349-2" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="34mm" round="1.2mm" x_waste="5mm" y_waste="1.5mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="1" ny="2" x0="133.5mm" y0="5.5mm" dx="80mm" dy="39mm"/>
+      <Layout nx="1" ny="2" x0="133mm" y0="216.5mm" dx="80mm" dy="39mm"/>
+      <Layout nx="1" ny="1" x0="5.5mm" y0="130mm" dx="80mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 117 CD labels.			                            -->
+  <!-- ******************************************************************** -->
+  <Template brand="JAC" part="117" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="58.5mm" hole="20mm" waste="5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="46.5mm" y0="21.5mm" dx="123.35mm" dy="137mm"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 3821 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="3821" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="38mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="5" ny="13" x0="10mm" y0="10.7mm" dx="38mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 4816 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="4816" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="48.3mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="4" ny="16" x0="8.4mm" y0="13.3mm" dx="48.3mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 4825 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="4825" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="48.3mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="4" ny="11" x0="8.4mm" y0="8.8mm" dx="48.3mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 5221 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="5221" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="52.2mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="4" ny="14" x0="0.6mm" y0="0mm" dx="52.2mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 5229 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="5229" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="52.5mm" height="29.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="4" ny="10" x0="0.6mm" y0="0mm" dx="52.5mm" dy="29.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 6339 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="6339" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="63mm" height="39.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="7" x0="10.5mm" y0="10.25mm" dx="63mm" dy="39.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 6633 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="6633" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="66mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="6mm" y0="13.3mm" dx="66mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7016 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7016" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="17" x0="0mm" y0="4.85mm" dx="70mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 6339 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7025" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="11" x0="0mm" y0="8.8mm" dx="70mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7029 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7029" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="29.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="10" x0="0mm" y0="0mm" dx="70mm" dy="29.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7032 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7032" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="32mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="9" x0="0mm" y0="4.5mm" dx="70mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7036 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7036" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="9mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7037 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7037" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="37.12mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="0mm" dx="70mm" dy="37.12mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7041 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7041" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="7" x0="0mm" y0="10mm" dx="70mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7042 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7042" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="42.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="7" x0="0mm" y0="0mm" dx="70mm" dy="42.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7050 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7050" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="5" x0="0mm" y0="21.5mm" dx="70mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 7067 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="7067" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="4" x0="0mm" y0="13.1mm" dx="70mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 8937 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="8937" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="89mm" height="37.12mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="8" x0="11mm" y0="0mm" dx="89mm" dy="37.12mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 9633 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="9633" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="96.5mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="8" x0="8.5mm" y0="13.3mm" dx="96.5mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 9642 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="9642" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="96.5mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="6" x0="8.5mm" y0="21.6mm" dx="96.5mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 9667 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="9667" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="96.5mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="4" x0="8.5mm" y0="13.1mm" dx="96.5mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10537 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10537" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="8" x0="0mm" y0="0.5mm" dx="105mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10541 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10541" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="7" x0="0mm" y0="10mm" dx="105mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10542 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10542" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="42.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="7" x0="0mm" y0="1.5mm" dx="105mm" dy="42.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10548 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10548" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="6" x0="0mm" y0="4.5mm" dx="105mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10557 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10557" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="57mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="0mm" y0="6mm" dx="105mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10570 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10570" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="70mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="4" x0="0mm" y0="8.5mm" dx="105mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 10574 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="10574" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="4" x0="0mm" y0="0mm" dx="105mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 70362 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="70362" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="4.5mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 70412 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="70412" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="7" x0="0mm" y0="5mm" dx="70mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- JAC 105148 rectangular labels.		                            -->
+  <!-- ******************************************************************** -->
+
+  <Template brand="JAC" part="105148" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="105mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC 210297, 210mm x 297mm, 1 per sheet               	           -->
+  <!-- ******************************************************************* -->
+
+  <Template brand="JAC" part="210297" size="A4" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-32 PVC labels, 54 per sheet			           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-32" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="16mm" waste="1.1mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="9" ny="6" x0="6mm" y0="10mm" dx="34.375mm" dy="34.85mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-50 PVC labels, 20 per sheet    	           	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-50" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="25mm" waste="0.9mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="5" ny="4" x0="6mm" y0="10mm" dx="64.25mm" dy="52.083mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-67 PVC labels, 12 per sheet 	              	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-67" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="33.5mm" waste="2mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="4" ny="3" x0="5.2mm" y0="11.05mm" dx="77mm" dy="71mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-100 PVC labels, 6 per sheet	               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-100" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="50mm" waste="3mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="3" ny="2" x0="3mm" y0="11.25mm" dx="107mm" dy="107.5mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-120 PVC labels, 4 per sheet	               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-120" size="Other" width="250mm" height="258mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="60mm" waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="2" x0="2.5mm" y0="10.5mm" dx="125mm" dy="125mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-147 PVC labels, 4 per sheet               		           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-147" size="Other" width="323mm" height="304.8mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Label-round id="0" radius="73.5mm" waste="2.5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="2" x0="3mm" y0="3.5mm" dx="152mm" dy="152mm"/>
+    </Label-round>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-2048 PVC labels, 48 per sheet               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-2048" size="Other" width="323mm" height="222.2mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="20mm" height="48mm" round="2.5mm" x_waste="2.5mm" y_waste="2.5mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="6" ny="4" x0="2.6mm" y0="12.6mm" dx="25mm" dy="53mm"/>
+      <Layout nx="6" ny="4" x0="164.1mm" y0="12.6mm" dx="25mm" dy="53mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-3070 PVC labels, 24 per sheet               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-3070" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="70mm" height="30mm" round="2.5mm" x_waste="2.4mm" y_waste="2.4mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="2" ny="6" x0="2.4mm" y0="15.1mm" dx="75mm" dy="35mm"/>
+      <Layout nx="2" ny="6" x0="163.9mm" y0="15.1mm" dx="75mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-3248 PVC labels, 32 per sheet               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-3248" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="32mm" height="48mm" round="2.5mm" x_waste="2mm" y_waste="2mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="4" ny="4" x0="2.3mm" y0="12.7mm" dx="37mm" dy="53mm"/>
+      <Layout nx="4" ny="4" x0="163.8mm" y0="12.7mm" dx="37mm" dy="53mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-32102 PVC labels, 16 per sheet               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-32102" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="32mm" height="102mm" round="2.5mm" x_waste="2.5mm" y_waste="2.5mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="4" ny="2" x0="2.5mm" y0="10.45mm" dx="37mm" dy="107mm"/>
+      <Layout nx="4" ny="2" x0="164mm" y0="10.4mm" dx="37mm" dy="107mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-68102 PVC labels, 8 per sheet               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-68102" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Label-ellipse id="0" width="68mm" height="102mm" waste="2.5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="4" ny="2" x0="5mm" y0="11.05mm" dx="78mm" dy="107mm"/>
+    </Label-ellipse>
+  </Template>
+
+  <!-- ******************************************************************* -->
+  <!-- JAC F-102150 PVC labels, 4 per sheet               	           -->
+  <!-- ******************************************************************* -->
+  <Template brand="JAC" part="F-102150" size="Other" width="323mm" height="222.25mm" _description="PVC labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Label-ellipse id="0" width="150mm" height="102mm" waste="2mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="2" x0="3.5mm" y0="10.75mm" dx="160.5mm" dy="107.2mm"/>
+    </Label-ellipse>
+  </Template>
+
+</Glabels-templates>

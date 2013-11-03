@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- Misc. non-standard sized products.                                   -->
+  <!-- ******************************************************************** -->
+
+
+  <!-- ******************************************************************** -->
+  <!-- Merax US-Letter products.                                            -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- Merax CD Labels                                                     -->
+  <!-- =================================================================== -->
+  <Template brand="Merax" part="CD Labels" size="US-Letter" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.merax.com/products/Labels/cddvd.html"/>
+    <Label-cd id="0" radius="166.5" hole="58.5" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="1" x0="33.75" y0="45" dx="0" dy="0"/>
+      <Layout nx="1" ny="1" x0="245.25" y0="411.75" dx="0" dy="0"/>
+    </Label-cd>
+  </Template>
+
+
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- OfficeMax                 -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- OfficeMax 86112: Multi-Purpose Labels, 2'' x 4'', 3 per sheet       -->
+  <!-- =================================================================== -->
+  <Template brand="OfficeMax" part="86112" size="Other" width="297pt" height="450pt"
+            _description="Multi-Purpose Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="288pt" height="144pt" round="9pt" waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="3" x0="4.5pt" y0="3.6pt" dx="288pt" dy="148.5pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+</Glabels-templates>

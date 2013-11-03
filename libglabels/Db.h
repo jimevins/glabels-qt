@@ -24,6 +24,7 @@
 
 #include <QCoreApplication>
 #include <QString>
+#include <QDir>
 
 #include "Paper.h"
 #include "Category.h"
@@ -82,17 +83,19 @@ namespace libglabels
 
 
 	private:
-		static void read_papers();
-		static void read_papers_from_dir( const QString &dirName );
+		static QDir systemTemplatesDir();
 
-		static void read_categories();
-		static void read_categories_from_dir( const QString &dirName );
+		static void readPapers();
+		static void readPapersFromDir( const QDir &dir );
 
-		static void read_vendors();
-		static void read_vendors_from_dir( const QString &dirName );
+		static void readCategories();
+		static void readCategoriesFromDir( const QDir &dir );
 
-		static void read_templates();
-		static void read_templates_from_dir( const QString &dirName );
+		static void readVendors();
+		static void readVendorsFromDir( const QDir &dir );
+
+		static void readTemplates();
+		static void readTemplatesFromDir( const QDir &dir );
 
 
 	private:

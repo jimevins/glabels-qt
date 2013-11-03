@@ -1,0 +1,1509 @@
+<?xml version="1.0"?>
+<Glabels-templates>
+
+  <Template brand="Rayfilm" part="3442" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3442&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="17.8mm" height="10mm" round="0.5mm" x_waste="0.2mm" y_waste="0mm">
+      <Layout nx="10" ny="27" x0="4.75mm" y0="13.5mm" dx="20.3mm" dy="10mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="2068" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2068&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="25mm" height="33mm" round="1.9mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="6" ny="7" x0="10mm" y0="15mm" dx="33mm" dy="39mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5042" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5042&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="25.4mm" height="10mm" round="1.03mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="7" ny="27" x0="8.6mm" y0="13.5mm" dx="27.9mm" dy="10mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5003" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5003&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="25.4mm" height="25.4mm" round="1.5mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="6" ny="11" x0="16.05mm" y0="8.8mm" dx="30.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3032" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3032&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="30mm" height="15mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="7" ny="19" x0="0mm" y0="6mm" dx="30mm" dy="15mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3032N" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3032N&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="30mm" height="15mm" round="2mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="6" ny="19" x0="5mm" y0="6mm" dx="34mm" dy="15mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3040" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3040&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="30mm" height="40mm" round="4.25mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="6" ny="7" x0="10mm" y0="8.5mm" dx="32mm" dy="40mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8002" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8002&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="30mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="7" ny="1" x0="0mm" y0="0mm" dx="30mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="2307" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2307&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="35mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="6" ny="8" x0="0mm" y0="8.5mm" dx="35mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="2370" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2370&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="35mm" height="45mm" round="0mm" x_waste="0.5mm" y_waste="1mm">
+      <Layout nx="5" ny="5" x0="11.5mm" y0="18mm" dx="38mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3501" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3501&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="35.6mm" height="16.9mm" round="0.88mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="5" ny="16" x0="11mm" y0="13.3mm" dx="38.1mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="4705" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4705&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="36mm" height="30mm" round="2mm" x_waste="1.5mm" y_waste="1.5mm">
+      <Layout nx="5" ny="8" x0="5mm" y0="6.45mm" dx="41mm" dy="36.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0102" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0102&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="38mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="5" ny="13" x0="10mm" y0="10.7mm" dx="38mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0102N" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0102N&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="38mm" height="21.2mm" round="2.46mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="5" ny="13" x0="5mm" y0="10.7mm" dx="40.5mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1325" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1325&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="40mm" height="46mm" round="4mm" x_waste="0.5mm" y_waste="0.8mm">
+      <Layout nx="5" ny="6" x0="2mm" y0="2mm" dx="41.5mm" dy="49.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="OP03" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=OP03&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="42mm" height="18mm" round="3.5mm" x_waste="1mm" y_waste="0.5mm">
+      <Layout nx="4" ny="14" x0="9mm" y0="1.05mm" dx="50mm" dy="21.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="6274" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=6274&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="43mm" height="135mm" round="0mm" x_waste="1.5mm" y_waste="1.5mm">
+      <Layout nx="4" ny="2" x0="11.5mm" y0="11mm" dx="48mm" dy="140mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="4567" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4567&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="44mm" height="12.7mm" round="1mm" x_waste="2mm" y_waste="0mm">
+      <Layout nx="4" ny="22" x0="5mm" y0="8.8mm" dx="52mm" dy="12.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1451" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1451&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="45mm" height="55mm" round="0mm" x_waste="2mm" y_waste="2mm">
+      <Layout nx="3" ny="4" x0="27.5mm" y0="23.5mm" dx="55mm" dy="65mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1426" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1426&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="45mm" height="68mm" round="4mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="4" ny="4" x0="9mm" y0="3.5mm" dx="49mm" dy="74mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="2645" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2645&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="45.7mm" height="21.2mm" round="4.25mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="4" ny="12" x0="9.7mm" y0="21.3mm" dx="48.3mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0201" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0201&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="48.5mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="17" x0="8mm" y0="4.85mm" dx="48.5mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="0203" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0203&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="48.5mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="11" x0="8mm" y0="8.8mm" dx="48.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0203N" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0203N&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="48.5mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="10" x0="8mm" y0="21.5mm" dx="48.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0234" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0234&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="48.5mm" height="31.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="9" x0="8mm" y0="8.1mm" dx="48.5mm" dy="31.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0241" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0241&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="49mm" height="49mm" round="0mm" x_waste="mm" y_waste="1mm">
+      <Layout nx="3" ny="5" x0="26.5mm" y0="16mm" dx="54mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="2626" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2626&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="50mm" height="50mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="5" x0="5mm" y0="23.5mm" dx="50mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8001" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8001&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="50mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="1" x0="5mm" y0="0mm" dx="50mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0302" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0302&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="13" x0="0mm" y0="10.7mm" dx="52.5mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0302N" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0302N&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="21.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="14" x0="0mm" y0="0mm" dx="52.5mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0303" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0303&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="11" x0="0mm" y0="8.8mm" dx="52.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0304" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0304&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="29.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="10" x0="0mm" y0="0mm" dx="52.5mm" dy="29.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0307" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0307&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="8" x0="0mm" y0="8.5mm" dx="52.5mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="0313" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0313&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="6" x0="0mm" y0="4.5mm" dx="52.5mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8017" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8017&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="59.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="5" x0="0mm" y0="0mm" dx="52.5mm" dy="59.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0331" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0331&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="74.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="4" x0="0mm" y0="0mm" dx="52.5mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8019" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8019&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="99mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="3" x0="0mm" y0="0mm" dx="52.5mm" dy="99mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8020" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8020&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="2" x0="0mm" y0="0mm" dx="52.5mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="7003" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=7003&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="52.5mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="1" x0="0mm" y0="0mm" dx="52.5mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5539" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5539&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="59mm" height="50mm" round="2.53mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="5" x0="14mm" y0="23.5mm" dx="61.5mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="CP02" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CP02&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="60mm" height="29mm" round="4.25mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="10" x0="15mm" y0="3.5mm" dx="60mm" dy="29mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="MIL3" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=MIL3&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="60mm" height="34mm" round="4.25mm" x_waste="0.7mm" y_waste="0.7mm">
+      <Layout nx="3" ny="7" x0="12mm" y0="20.5mm" dx="63mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0401" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0401&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="63.5mm" height="16.9mm" round="1.25mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="16" x0="7.25mm" y0="13.3mm" dx="66mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0437" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0437&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="63.5mm" height="29.6mm" round="1.5mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="7.25mm" y0="15.3mm" dx="66mm" dy="29.6mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="0410" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0410&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="63.5mm" height="38.1mm" round="2.85mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="7.2mm" y0="15.1mm" dx="66mm" dy="38.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0412" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0412&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="63.5mm" height="46.6mm" round="3.5mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="6" x0="7.2mm" y0="8.7mm" dx="66mm" dy="46.6mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0420" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0420&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="63.5mm" height="72mm" round="3.2mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="4" x0="7.2mm" y0="4.5mm" dx="66mm" dy="72mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="7001" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=7001&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="64mm" height="21mm" round="1.9mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="13" x0="9mm" y0="12mm" dx="64mm" dy="210mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5606" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5606&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="64mm" height="33.9mm" round="2mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="6.3mm" y0="12.9mm" dx="66.7mm" dy="33.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5853" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5853&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="64.6mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="8.1mm" y0="13.3mm" dx="64.6mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8023" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8023&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="65mm" height="142mm" round="3.1mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="2" x0="5mm" y0="6.5mm" dx="67.5mm" dy="142mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="7002" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=7002&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="66mm" height="70mm" round="4.95mm" x_waste="0.6mm" y_waste="0mm">
+      <Layout nx="3" ny="4" x0="4mm" y0="8.5mm" dx="68mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3739" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3739&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="68mm" height="50mm" round="2.5mm" x_waste="0mm" y_waste="1mm">
+      <Layout nx="3" ny="5" x0="3mm" y0="13.5mm" dx="68mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0502" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0502&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="15mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="19" x0="0mm" y0="6mm" dx="70mm" dy="15mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0501" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0501&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="17" x0="0mm" y0="4.85mm" dx="70mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="0503" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0503&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="11" x0="0mm" y0="8.8mm" dx="70mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0505" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0505&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="30mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="0mm" y0="13.5mm" dx="70mm" dy="30mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0552" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0552&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="32mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="0mm" y0="4.5mm" dx="70mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0553" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0553&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="13.3mm" dx="70mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0507" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0507&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="8.5mm" dx="70mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0527" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0527&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="4.5mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0508" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0508&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="0.95mm" dx="70mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0533" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0533&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="5mm" dx="70mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0511" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0511&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="42.42mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="0mm" dx="70mm" dy="42.42mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8011" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8011&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="6" x0="0mm" y0="4.5mm" dx="70mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0514" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0514&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="5" x0="0mm" y0="21.5mm" dx="70mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="8012" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8012&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="59.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="5" x0="0mm" y0="0mm" dx="70mm" dy="59.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0517" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0517&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="4" x0="0mm" y0="13.1mm" dx="70mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8013" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8013&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="4" x0="0mm" y0="0mm" dx="70mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8014" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8014&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="99mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="3" x0="0mm" y0="0mm" dx="70mm" dy="99mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8015" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8015&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="2" x0="0mm" y0="0mm" dx="70mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0523" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0523&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="70mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="1" x0="0mm" y0="0mm" dx="70mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="2936" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2936&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="80mm" height="47mm" round="4.25mm" x_waste="1mm" y_waste="0.5mm">
+      <Layout nx="2" ny="6" x0="22mm" y0="3.75mm" dx="86mm" dy="48.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="4869" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4869&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="89mm" height="127mm" round="4.45mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="2" ny="2" x0="13.5mm" y0="19mm" dx="94mm" dy="132mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8008" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8008&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="90mm" height="90mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="3" x0="15mm" y0="13.5mm" dx="90mm" dy="90mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0645" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0645&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="90mm" height="130mm" round="0mm" x_waste="2mm" y_waste="2mm">
+      <Layout nx="2" ny="2" x0="10mm" y0="13.5mm" dx="100mm" dy="140mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8038" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8038&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="92.5mm" height="26mm" round="0mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="10" x0="8.5mm" y0="18.5mm" dx="100.5mm" dy="26mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="8039" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8039&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="92.5mm" height="54mm" round="0mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="8.5mm" y0="13.5mm" dx="100.5mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3638" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3638&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="96mm" height="42.3mm" round="2.1mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="7.75mm" y0="21.6mm" dx="98.5mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3614" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3614&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="96mm" height="50.8mm" round="2.55mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="7.75mm" y0="21.5mm" dx="98.5mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3643" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3643&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="96mm" height="63.5mm" round="3.2mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="7.75mm" y0="21.5mm" dx="98.5mm" dy="63.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0711" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0711&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="97mm" height="42.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="8mm" y0="21.3mm" dx="97mm" dy="42.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0717" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0717&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="97mm" height="67.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="8mm" y0="13.1mm" dx="97mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0806" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0806&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="99.1mm" height="34mm" round="2.55mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="4.65mm" y0="12.5mm" dx="101.6mm" dy="34mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0810" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0810&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="99.1mm" height="38.1mm" round="2.85mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="4.7mm" y0="15.15mm" dx="101.6mm" dy="38.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0817" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0817&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="99.1mm" height="67.7mm" round="3.4mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="4.7mm" y0="13.1mm" dx="101.6mm" dy="67.7mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0841" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0841&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="99.1mm" height="68mm" round="3.4mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="4.7mm" y0="12.5mm" dx="101.6mm" dy="68mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0821" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0821&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="99.1mm" height="93.1mm" round="4.65mm" x_waste="0.7mm" y_waste="0mm">
+      <Layout nx="2" ny="3" x0="4.7mm" y0="8.85mm" dx="101.6mm" dy="93.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="1544" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1544&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="100mm" height="22mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="13" x0="5mm" y0="5.5mm" dx="100mm" dy="22mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1528" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1528&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="100mm" height="23mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="12" x0="5mm" y0="10.5mm" dx="100mm" dy="23mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="CP01" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CP01&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="103mm" height="29mm" round="4.25mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="9" x0="2mm" y0="18mm" dx="103mm" dy="29mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0901" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0901&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="17" x0="0mm" y0="4.85mm" dx="105mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0952" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0952&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="32mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="9" x0="0mm" y0="4.5mm" dx="105mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0953" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0953&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="13.3mm" dx="105mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0907" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0907&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="8.5mm" dx="105mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0908" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0908&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="37mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="8" x0="0mm" y0="0.5mm" dx="105mm" dy="37mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0933" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0933&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="0mm" y0="5mm" dx="105mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0911" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0911&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="42.42mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="0mm" y0="0.03mm" dx="105mm" dy="42.42mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0913" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0913&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="0mm" y0="4.5mm" dx="105mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="0929" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0929&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="49.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="0mm" y0="0mm" dx="105mm" dy="49.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0915" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0915&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="57mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="0mm" y0="6mm" dx="105mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8021" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8021&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="59.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="0mm" y0="0mm" dx="105mm" dy="59.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0918" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0918&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="70mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="8.5mm" dx="105mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0931" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0931&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="0mm" dx="105mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8022" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8022&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="99mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="3" x0="0mm" y0="0mm" dx="105mm" dy="99mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0922" size="A4" _description="Labels A6">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0922&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="0923" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0923&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="105mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="1" x0="0mm" y0="0mm" dx="105mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="7006" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=7006&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="150mm" height="100mm" round="0mm" x_waste="2mm" y_waste="2mm">
+      <Layout nx="1" ny="2" x0="30mm" y0="32mm" dx="150mm" dy="133mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="4969" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4969&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="178mm" height="127mm" round="6.35mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="1" ny="2" x0="13.5mm" y0="19.5mm" dx="178mm" dy="132mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8024" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8024&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="188mm" height="89mm" round="3.15mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="1" ny="3" x0="11mm" y0="11mm" dx="188mm" dy="93mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="3945" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3945&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="180mm" height="130mm" round="0mm" x_waste="2mm" y_waste="2mm">
+      <Layout nx="1" ny="2" x0="15mm" y0="13.5mm" dx="180mm" dy="140mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5409" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5409&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="190mm" height="38mm" round="1.9mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="7" x0="10mm" y0="15.5mm" dx="190mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="5473" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=5473&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="190mm" height="58mm" round="2.9mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="5" x0="10mm" y0="3.5mm" dx="190mm" dy="58mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1009" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1009&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="192mm" height="38mm" round="2.85mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="7" x0="9mm" y0="15.5mm" dx="192mm" dy="38mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1016" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1016&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="192mm" height="61mm" round="4.6mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="4" x0="9mm" y0="26.5mm" dx="192mm" dy="61mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="3244" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3244&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="200mm" height="22mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="13" x0="5mm" y0="5.5mm" dx="200mm" dy="22mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8003" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8003&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="16.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="17" x0="0mm" y0="4.85mm" dx="210mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8004" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8004&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="32mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="9" x0="0mm" y0="4.5mm" dx="210mm" dy="32mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8005" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8005&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="33.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="8" x0="0mm" y0="13.3mm" dx="210mm" dy="33.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8007" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8007&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="8" x0="0mm" y0="8.5mm" dx="210mm" dy="35mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="7004" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=7004&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="6" x0="0mm" y0="4.5mm" dx="210mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="1120" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1120&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="59.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="5" x0="0mm" y0="0mm" dx="210mm" dy="59.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1121" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1121&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="4" x0="0mm" y0="0mm" dx="210mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1124" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1124&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="99mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="3" x0="0mm" y0="0mm" dx="210mm" dy="99mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1122" size="A4" _description="Labels A5">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1122&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="2" x0="0mm" y0="0mm" dx="210mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1123" size="A4" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1123&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="1123A3" size="A3" _description="Labels A3">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1123A3&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="297mm" height="420mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="297mm" dy="420mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="SRA3" size="SRA3" _description="Labels SRA3">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="320mm" height="450mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="320mm" dy="450mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="1414K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1414K&amp;vzhled=1"/>
+    <Label-round id="0" radius="7mm" waste="0.3mm">
+      <Layout nx="13" ny="19" x0="5mm" y0="6.5mm" dx="15.5mm" dy="15mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="1818K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1818K&amp;vzhled=1"/>
+    <Label-round id="0" radius="9mm" waste="0.3mm">
+      <Layout nx="10" ny="15" x0="6mm" y0="6.5mm" dx="20mm" dy="19mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="2525K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=2525K&amp;vzhled=1"/>
+    <Label-round id="0" radius="12.5mm" waste="1mm">
+      <Layout nx="7" ny="10" x0="8.5mm" y0="10mm" dx="28mm" dy="28mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="3030K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=3030K&amp;vzhled=1"/>
+    <Label-round id="0" radius="15mm" waste="1mm">
+      <Layout nx="6" ny="9" x0="5mm" y0="1.5mm" dx="34mm" dy="33mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="4040K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4040K&amp;vzhled=1"/>
+    <Label-round id="0" radius="20mm" waste="1mm">
+      <Layout nx="4" ny="6" x0="10.75mm" y0="4.75mm" dx="49.5mm" dy="49.5mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="4545K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4545K&amp;vzhled=1"/>
+    <Label-round id="0" radius="22.5mm" waste="1mm">
+      <Layout nx="4" ny="6" x0="7.5mm" y0="6mm" dx="50mm" dy="48mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="6060K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=6060K&amp;vzhled=1"/>
+    <Label-round id="0" radius="30mm" waste="1mm">
+      <Layout nx="3" ny="4" x0="9mm" y0="13.5mm" dx="66mm" dy="70mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="9595K" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=9595K&amp;vzhled=1"/>
+    <Label-round id="0" radius="47.5mm" waste="0.2mm">
+      <Layout nx="2" ny="3" x0="8mm" y0="5mm" dx="99mm" dy="96mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Rayfilm" part="4525" size="A4" _description="Elliptical labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4525&amp;vzhled=1"/>
+    <Label-ellipse id="0" width="45mm" height="25mm" waste="mm">
+      <Layout nx="4" ny="10" x0="mm8" y0="8.02mm" dx="49.67mm" dy="28.44mm"/>
+    </Label-ellipse>
+  </Template>
+
+  <Template brand="Rayfilm" part="ELO1" size="A4" _description="Elliptical labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=EL01&amp;vzhled=1"/>
+    <Label-ellipse id="0" width="38.6mm" height="25.6mm" waste="1mm">
+      <Layout nx="4" ny="9" x0="19.55mm" y0="15.7mm" dx="44.1mm" dy="30mm"/>
+    </Label-ellipse>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="CD32" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD32&amp;vzhled=1"/>
+    <Label-cd id="0" radius="58mm" hole="20.5mm" waste="0mm">
+      <Layout nx="1" ny="2" x0="47mm" y0="16.3mm" dx="116mm" dy="148.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD13 (medium)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD13&amp;vzhled=1"/>
+    <Label-cd id="0" radius="58mm" hole="22mm" waste="1mm">
+      <Layout nx="1" ny="1" x0="83mm" y0="25mm" dx="116mm" dy="116mm"/>
+      <Layout nx="1" ny="1" x0="11mm" y0="156mm" dx="116mm" dy="116mm"/>
+    </Label-cd>
+  </Template>
+  <Template brand="Rayfilm" part="CD13 (box1)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="45mm" height="116mm" round="3.45mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="1" ny="1" x0="11mm" y0="25mm" dx="45mm" dy="116mm"/>
+      <Layout nx="1" ny="1" x0="154mm" y0="156mm" dx="45mm" dy="116mm"/>
+    </Label-rectangle>
+  </Template>
+  <Template brand="Rayfilm" part="CD13 (box2)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="6mm" height="116mm" round="0mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="1" ny="1" x0="67mm" y0="25mm" dx="6mm" dy="116mm"/>
+      <Layout nx="1" ny="1" x0="137mm" y0="156mm" dx="6mm" dy="116mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD02" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD02&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="22mm" waste="2mm">
+      <Layout nx="1" ny="2" x0="46mm" y0="25.5mm" dx="118mm" dy="128mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD03 (medium)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD03&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="22mm" waste="1mm">
+      <Layout nx="1" ny="1" x0="10.5mm" y0="24mm" dx="118mm" dy="118mm"/>
+      <Layout nx="1" ny="1" x0="81.5mm" y0="155mm" dx="118mm" dy="118mm"/>
+    </Label-cd>
+  </Template>
+  <Template brand="Rayfilm" part="CD03 (box1)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="45mm" height="116mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="154mm" y0="24mm" dx="45mm" dy="116mm"/>
+      <Layout nx="1" ny="1" x0="10.5mm" y0="155mm" dx="45mm" dy="116mm"/>
+    </Label-rectangle>
+  </Template>
+  <Template brand="Rayfilm" part="CD03 (box2)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="6mm" height="116mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="138.5mm" y0="24mm" dx="6mm" dy="116mm"/>
+      <Layout nx="1" ny="1" x0="65.5mm" y0="155mm" dx="6mm" dy="116mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD04 (medium)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD04&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="20.5mm" waste="2mm">
+      <Layout nx="1" ny="2" x0="46.5mm" y0="25mm" dx="118mm" dy="127mm"/>
+    </Label-cd>
+  </Template>
+  <Template brand="Rayfilm" part="CD04 (box)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="25mm" height="80mm" round="0mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="2" ny="1" x0="15mm" y0="108.5mm" dx="155mm" dy="80mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD05" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD05&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="18mm" waste="2mm">
+      <Layout nx="1" ny="2" x0="46mm" y0="20.5mm" dx="118mm" dy="138mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD06 (medium)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD06&amp;vzhled=1"/>
+    <Label-cd id="0" radius="58.5mm" hole="20.5mm" waste="1mm">
+      <Layout nx="1" ny="2" x0="46.5mm" y0="16mm" dx="148mm" dy="127mm"/>
+    </Label-cd>
+  </Template>
+  <Template brand="Rayfilm" part="CD06 (box)" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="7mm" height="119mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="1" x0="15.5mm" y0="15mm" dx="7mm" dy="119mm"/>
+      <Layout nx="3" ny="1" x0="173.5mm" y0="15mm" dx="7mm" dy="119mm"/>
+      <Layout nx="3" ny="1" x0="15.5mm" y0="163mm" dx="7mm" dy="119mm"/>
+      <Layout nx="3" ny="1" x0="173.5mm" y0="163mm" dx="7mm" dy="119mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD07" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD07&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="9mm" waste="2mm">
+      <Layout nx="1" ny="2" x0="46mm" y0="25.5mm" dx="118mm" dy="128mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD08" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD08&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="15mm" waste="2mm">
+      <Layout nx="1" ny="2" x0="46mm" y0="25.5mm" dx="118mm" dy="128mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD09" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD09&amp;vzhled=1"/>
+    <Label-cd id="0" radius="56.5mm" hole="18.5mm" waste="1mm">
+      <Layout nx="1" ny="2" x0="7mm" y0="10mm" dx="113mm" dy="164mm"/>
+      <Layout nx="1" ny="1" x0="90mm" y0="92mm" dx="113mm" dy="113mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CD12" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD12&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="11mm" waste="2mm">
+      <Layout nx="1" ny="2" x0="46mm" y0="25.5mm" dx="118mm" dy="128mm"/>
+    </Label-cd>
+  </Template>
+
+
+
+  <Template brand="Rayfilm" part="CD35" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD35&amp;vzhled=1"/>
+    <Label-cd id="0" radius="59mm" hole="9mm" waste="0mm">
+      <Layout nx="1" ny="2" x0="46mm" y0="15.25mm" dx="118mm" dy="148.5mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="CRD1" size="A4" _description="Business card CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CRD1&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="84mm" height="56mm" round="2.8mm" x_waste="1mm" y_waste="1mm">
+      <Markup-circle x0="42mm" y0="28mm" radius="9mm"/>
+      <Layout nx="2" ny="4" x0="18.5mm" y0="29mm" dx="89mm" dy="61mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="SCD1" size="A4" _description="Mini CD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=SCD1&amp;vzhled=1"/>
+    <Label-cd id="0" radius="39mm" hole="9mm" waste="1mm">
+      <Layout nx="2" ny="3" x0="17mm" y0="21.5mm" dx="98mm" dy="88mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Rayfilm" part="8042" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8042&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="85mm" height="140mm" round="mm" x_waste="1.5mm" y_waste="1.5mm">
+      <Layout nx="2" ny="2" x0="17.5mm" y0="6mm" dx="90mm" dy="145mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8010" size="A4" _description="Triangular labels">
+    <Meta category="label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8010&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="90mm" height="90mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-line x1="90mm" y1="0mm" x2="0mm" y2="90mm"/>
+      <Layout nx="2" ny="3" x0="15mm" y0="13.5mm" dx="90mm" dy="90mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="8026" size="A4" _description="Trapezoid labels">
+    <Meta category="label"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8026&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="67mm" height="84mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-line x1="0mm" y1="32mm" x2="67mm" y2="52mm"/>
+      <Layout nx="3" ny="3" x0="4.5mm" y0="22.5mm" dx="67mm" dy="84mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="VIZ1" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=VIZ1&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="180mm" height="50mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-line x1="90mm" y1="0mm" x2="90mm" y2="50mm"/>
+      <Layout nx="1" ny="5" x0="15mm" y0="23.5mm" dx="180mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="VIZ2" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=VIZ2&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="180mm" height="50mm" round="4mm" x_waste="0mm" y_waste="0mm">
+      <Markup-line x1="90mm" y1="0mm" x2="90mm" y2="50mm"/>
+      <Layout nx="1" ny="5" x0="15mm" y0="13.5mm" dx="180mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Rayfilm" part="VIZ3" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=VIZ3&amp;vzhled=1"/>
+    <Label-rectangle id="0" width="170mm" height="54mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-line x1="85mm" y1="0mm" x2="85mm" y2="54mm"/>
+      <Layout nx="1" ny="5" x0="20mm" y0="13.5mm" dx="170mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>

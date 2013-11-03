@@ -1,0 +1,745 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- ******************************************************************** -->
+  <!-- PEARL products                                                       -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Adress Labels, 70mm x 36mm, 24 per sheet                     -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="PE-8004" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-PE8004-2204.shtml"/>
+    <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="4.8mm" dx="70mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="PE-8014" equiv="PE-8004"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Round labels, d=40mm, 24 per sheet                           -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6085" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6085-2204.shtml"/>
+    <Label-round id="0" radius="20mm" waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="4" ny="6" x0="16mm" y0="13.5mm" dx="46mm" dy="46mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6585" equiv="VM-6085"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Adress Labels, 48.8mm x 25.4mm, 40 per sheet                 -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="PE-8008" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-PE8008-2204.shtml"/>
+    <Label-rectangle id="0" width="48.4mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="4" ny="10" x0="8mm" y0="21.5mm" dx="48.4mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="PE-8018" equiv="PE-8008"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Labels, 210mm x 297mm, 1 per sheet                           -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="PE-8007" size="A4" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-PE8007-2204.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="PE-8017" equiv="PE-8007"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Self-adhesive film, 210mm x 297mm, 1 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="PE-8350" size="A4" _description="Self-adhesive film weatherproof">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-PE8350-2010.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="PE-8352" equiv="PE-8350"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Self-adhesive film, 210mm x 297mm, 1 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="PE-8351" size="A4" _description="Self-adhesive film transparent">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-PE8351-2200.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="PE-894" equiv="PE-8351"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Application photos, 45mm x 55mm, 12 per sheet                -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-5040" size="A4" _description="Photo labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+
+    <Meta product_url="http://www.pearl.de/a-VM5040-2002.shtml"/>
+    <Label-rectangle id="0" width="45mm" height="55mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="4" x0="27mm" y0="22.5mm" dx="55mm" dy="65mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-5540" equiv="VM-5040"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Self-adhesive window film, 210mm x 297mm, 1 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-5081" size="A4" _description="Self-adhesive window film">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM5081-2200.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-5581" equiv="VM-5081"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Bottle labels, 100mm x 130mm, 4 per sheet                    -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-5217" size="A4" _description="Bottle labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM5217-2200.shtml"/>
+    <Label-rectangle id="0" width="100mm" height="130mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="2" x0="4.5mm" y0="14mm" dx="107mm" dy="130mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-5517" equiv="VM-5217"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Self-adhesive film, 210mm x 297mm, 1 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-5220" size="A4" _description="Self-adhesive film weatherproof">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM5220-2200.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-5720" equiv="VM-5220"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Floppy disk labels, 70mm x 70mm, 12 per sheet                -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-5221" size="A4" _description="Floppy disk labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM5221-2204.shtml"/>
+    <Label-rectangle id="0" width="70mm" height="70mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="4" x0="0mm" y0="8.5mm" dx="70mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-5721" equiv="VM-5221"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Address Labels, 25.4mm x 16.9mm, 102 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6083" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6083-2204.shtml"/>
+    <Label-rectangle id="0" width="25.4mm" height="16.9mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="7" ny="16" x0="9mm" y0="13mm" dx="27.9mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6583" equiv="VM-6083"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Labels, 105mm x 148 mm, 1 per sheet                          -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6096" size="A6" _description="Labels A6">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6096-2204.shtml"/>
+    <Label-rectangle id="0" width="105mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="105mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6596" equiv="VM-6096"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Labels, 148mm x 210 mm, 1 per sheet                          -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6097" size="A5" _description="Labels A5">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6097-2204.shtml"/>
+    <Label-rectangle id="0" width="148mm" height="210mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="148mm" dy="210mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6597" equiv="VM-6097"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Photo labels, 45mm x 55mm, 12 per sheet                      -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6102" size="A4" _description="Photo labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+    <Meta product_url="http://www.pearl.de/a-VM6102-2202.shtml"/>
+    <Label-rectangle id="0" width="45mm" height="55mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="4" x0="27mm" y0="23.5mm" dx="55mm" dy="65mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6502" equiv="VM-6102"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Photo labels, 210mm x 297mm, 1 per sheet                     -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6206" size="A4" _description="Photo labels semiglossy">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+    <Meta product_url="http://www.pearl.de/a-VM6206-2202.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6706" equiv="VM-6206"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Address Labels, 96.5mm x 42.3mm, 12 per sheet                -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6232" size="A4" _description="Address Labels (STAMPIT)">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6232-2201.shtml"/>
+    <Label-rectangle id="0" width="96.5mm" height="42.1mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="2" ny="6" x0="8.5mm" y0="21mm" dx="96.5mm" dy="42.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6732" equiv="VM-6232"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Address Labels, 105mm x 74mm, 8 per sheet                    -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6233" size="A4" _description="Address Labels (STAMPIT)">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6233-2204.shtml"/>
+    <Label-rectangle id="0" width="105mm" height="74mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="4" x0="0mm" y0="0.5mm" dx="105mm" dy="74mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6733" equiv="VM-6233"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Address Labels, 99.1mm x 57mm, 10 per sheet                  -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6234" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6234-2204.shtml"/>
+    <Label-rectangle id="0" width="99.1mm" height="57mm" round="2.5mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="5mm" y0="6mm" dx="102.1mm" dy="57mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6734" equiv="VM-6234"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Self-adhesive abels, 210mm x 297mm, 1 per sheet              -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6252" size="A4" _description="Self-adhesive labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6252-2202.shtml"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="0mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-6752" equiv="VM-6252"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: SD card labels, 20mm x 25mm, 90 per sheet                    -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6398" size="A4" _description="SD card labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6398-2204.shtml"/>
+    <Label-rectangle id="0" width="19.6mm" height="25mm" round="1.2mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="1.5mm"/>
+      <Layout nx="9" ny="10" x0="4.5mm" y0="10mm" dx="22.6mm" dy="28mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Address Labels, 105mm x 41mm, 14 per sheet                   -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-8005" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-PE8005-2204.shtml"/>
+    <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="7" x0="0mm" y0="5mm" dx="105mm" dy="41mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="PEARL" part="VM-8015" equiv="VM-8005"/>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Inlet for DVD boxes, 182mm x 276mm, 1 per sheet              -->
+  <!-- =================================================================== -->
+
+  <Template brand="PEARL" part="VM-6630" size="A4" _description="DVD inlet">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6630-2211.shtml"/>
+    <Label-rectangle id="0" width="182mm" height="276mm" round="0mm" x_waste="5mm" y_waste="5mm">
+    <Markup-rect x1="2mm" y1="2mm" w="178mm" h="128mm"/>
+    <Markup-rect x1="2mm" y1="146mm" w="178mm" h="128mm"/>
+    <Markup-line x1="0mm" y1="132mm" x2="182mm" y2="132mm"/>
+    <Markup-line x1="0mm" y1="144mm" x2="182mm" y2="144mm"/>
+      <Layout nx="1" ny="1" x0="14mm" y0="10.5mm" dx="192mm" dy="286mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Inlet for CD boxes (front), 120mm x 120mm, 1 per sheet       -->
+  <!-- =================================================================== -->
+
+  <Template brand="PEARL" part="VM-5513-1" size="A4" _description="CD inlet (front)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM5513-2214.shtml"/>
+    <Label-rectangle id="0" width="120mm" height="120mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="1" x0="61mm" y0="24mm" dx="130mm" dy="130mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- PEARL: Inlet for CD boxes (back), 150mm x 117.5mm, 1 per sheet      -->
+  <!-- =================================================================== -->
+
+  <Template brand="PEARL" part="VM-5513-2" size="A4" _description="CD inlet (back)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM5513-2214.shtml"/>
+    <Label-rectangle id="0" width="150mm" height="117.5mm" round="0mm" x_waste="5mm" y_waste="5mm">
+    <Markup-rect x1="8mm" y1="2mm" w="134mm" h="113.5mm"/>
+    <Markup-line x1="6mm" y1="0mm" x2="6mm" y2="117.5mm"/>
+    <Markup-line x1="144mm" y1="0mm" x2="144mm" y2="117.5mm"/>
+      <Layout nx="1" ny="1" x0="30.5mm" y0="154.5mm" dx="160mm" dy="127.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- Sattleford products                                                  -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-5019" size="A4" _description="Business cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.pearl.de/a-VM5019-2014.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="54.2mm" round="0mm" x_waste="5mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="13.5mm" y0="13.5mm" dx="95mm" dy="54.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-5519" equiv="VM-5019"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Passport photo labels, 45mm x 54mm, 12 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-5040" size="A4" _description="Passport photo labels glossy">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+    <Meta product_url="http://www.pearl.de/a-VM5040-2002.shtml"/>
+    <Label-rectangle id="0" width="45mm" height="54.5mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="4" x0="28mm" y0="24.5mm" dx="55mm" dy="64.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-5540" equiv="VM-5040"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Business cards, 86mm x 54mm, 10 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-5061" size="A4" _description="Business cards punched">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.pearl.de/a-VM5061-2014.shtml"/>
+    <Label-rectangle id="0" width="86mm" height="53.8mm" round="0mm" x_waste="2.5mm" y_waste="1mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="16.5mm" y0="10mm" dx="91mm" dy="55.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-5561" equiv="VM-5061"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6059" size="A4" _description="Business cards punched dull">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.pearl.de/a-VM6059-2013.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm" x_waste="5mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="16mm" y0="14mm" dx="95mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-6559" equiv="VM-6059"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6066" size="A4" _description="Business cards high glossy">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.pearl.de/a-VM6066-2013.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm" x_waste="5mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="5" x0="14mm" y0="13mm" dx="95mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-6566" equiv="VM-6066"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Name plates, 85mm x 54mm, 10 per sheet                  -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6067" size="A4" _description="Name plates">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6067-5026.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm" x_waste="5mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="15mm" y0="13mm" dx="95mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-6567" equiv="VM-6067"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Passport photo labels, 45mm x 55mm, 12 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6102" size="A4" _description="Passport photo labels glossy">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="photo"/>
+    <Meta product_url="http://www.pearl.de/a-VM6102-2202.shtml"/>
+    <Label-rectangle id="0" width="45mm" height="55mm" round="0mm" x_waste="5mm" y_waste="5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="4" x0="27mm" y0="23.5mm" dx="55mm" dy="65mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-6502" equiv="VM-6102"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Foldable business cards, 180mm x 50mm, 5 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6200" size="A4" _description="Business cards glossy, both sides printable">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta category="foldable"/>
+    <Meta product_url="http://www.pearl.de/a-VM6200-2013.shtml"/>
+    <Label-rectangle id="0" width="180mm" height="50mm" round="3mm" x_waste="0mm" y_waste="2.5mm">
+      <Markup-rect x1="3.2mm" y1="3.2mm" w="83.6mm" h="43.6mm"/>
+      <Markup-rect x1="93.2mm" y1="3.2mm" w="83.6mm" h="43.6mm"/>
+      <Markup-line x1="90mm" y1="0mm" x2="90mm" y2="50mm"/>
+      <Layout nx="1" ny="5" x0="15mm" y0="14mm" dx="180mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6253" size="A4" _description="Business cards punched glossy">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta product_url="http://www.pearl.de/a-VM6253-2013.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm" x_waste="1mm" y_waste="2.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="16.5mm" y0="6mm" dx="90mm" dy="55.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-6753" equiv="VM-6253"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Foldable business cards, 170mm x 54mm, 5 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6356" size="A4" _description="Foldable business cards glossy/dull">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta category="foldable"/>
+    <Meta product_url="http://www.pearl.de/a-VM6356-2013.shtml"/>
+    <Label-rectangle id="0" width="170mm" height="54mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-rect x1="3.2mm" y1="3.2mm" w="78.6mm" h="47.6mm"/>
+      <Markup-rect x1="88.2mm" y1="3.2mm" w="78.6mm" h="47.6mm"/>
+      <Markup-line x1="85mm" y1="0mm" x2="85mm" y2="54mm"/>
+      <Layout nx="1" ny="5" x0="20mm" y0="14mm" dx="170mm" dy="54mm"/>
+      <Layout nx="1" ny="5" x0="20mm" y0="14mm" dx="170mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Sattleford" part="VM-5856" equiv="VM-6356"/>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Foldable business cards, 180mm x 50mm, 5 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Sattleford" part="VM-6700" size="A4" _description="Foldable business cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta category="foldable"/>
+    <Meta product_url="http://www.pearl.de/a-VM6700-2013.shtml"/>
+    <Label-rectangle id="0" width="180mm" height="50mm" round="0mm" x_waste="0mm" y_waste="2.5mm">
+      <Markup-rect x1="3.2mm" y1="3.2mm" w="83.6mm" h="43.6mm"/>
+      <Markup-rect x1="93.2mm" y1="3.2mm" w="83.6mm" h="43.6mm"/>
+      <Markup-line x1="90mm" y1="0mm" x2="90mm" y2="50mm"/>
+      <Layout nx="1" ny="5" x0="15mm" y0="14mm" dx="180mm" dy="55mm"/>
+      <Layout nx="1" ny="5" x0="15mm" y0="14mm" dx="180mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Sattleford: Elliptical labels, 63.5mm x 42.3mm, 18 per sheet        -->
+  <!-- =================================================================== -->
+
+  <Template brand="Sattleford" part="VM-6084" size="A4" _description="Elliptical labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Meta product_url="http://www.pearl.de/a-VM6084-2204.shtml"/>
+    <Label-ellipse id="0" width="63.5mm" height="42.3mm" waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="3" ny="6" x0="7.25mm" y0="11.6mm" dx="66mm" dy="46.3mm"/>
+    </Label-ellipse>
+  </Template>
+
+  <!-- ******************************************************************** -->
+  <!-- Your Design products                                                 -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- Your Design: Membership cards, 85mm x 54.25mm, 8 per sheet          -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-5112" size="A4" _description="Membership cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta print="mirrored"/>
+    <Meta product_url="http://www.pearl.de/a-VM5112-2411.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="54.25mm" round="3.5mm" x_waste="7mm" y_waste="7.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="4" x0="12mm" y0="21mm" dx="100mm" dy="68.75mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Your Design" part="VM-5612" equiv="VM-5112"/>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: Membership cards, 85mm x 54.25mm, 8 per sheet          -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6310" size="A4" _description="Membership cards, both sides printable">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Meta print="mirrored"/>
+    <Meta product_url="http://www.pearl.de/a-VM6310-2013.shtml"/>
+    <Label-rectangle id="0" width="85mm" height="53.5mm" round="2.5mm" x_waste="7.5mm" y_waste="7.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="4" x0="12mm" y0="18mm" dx="100mm" dy="69mm"/>
+      <Layout nx="2" ny="4" x0="12mm" y0="18mm" dx="100mm" dy="69mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Your Design" part="VM-6810" equiv="VM-6310"/>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet          		   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6352" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6352-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="17.9mm" waste="1.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89.5mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6353" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6353-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="8.9mm" waste="1.5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6354" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6354-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="18mm" waste="1.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6355" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6355-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="8.9mm" waste="1.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 2 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6542" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6542-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="8.9mm" waste="3.175mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="46mm" y0="25mm" dx="123.75mm" dy="128mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 2 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6754" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6754-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="18mm" waste="3.175mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="46.5mm" y0="20.5mm" dx="123.75mm" dy="138mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6852" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6852-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="17.9mm" waste="1.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89.5mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="PEARL" part="VM-6853" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6853-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="8.9mm" waste="1.5mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
+  <!-- =================================================================== -->
+  <Template brand="Your Design" part="VM-6854" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.pearl.de/a-VM6854-2213.shtml"/>
+    <Label-cd id="0" radius="58.7mm" hole="18mm" waste="1.5mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="3mm" y0="3mm" dx="120.4mm" dy="173mm"/>
+      <Layout nx="1" ny="1" x0="89mm" y0="89mm" dx="120.4mm" dy="120.4mm"/>
+    </Label-cd>
+  </Template>
+
+</Glabels-templates>
+
+
+
+

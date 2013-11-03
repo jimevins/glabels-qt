@@ -20,7 +20,13 @@
 
 #include "Db.h"
 
+#include <QApplication>
 #include <iostream>
+
+#include "Config.h"
+#include "XmlPaperParser.h"
+#include "XmlCategoryParser.h"
+#include "XmlVendorParser.h"
 
 
 namespace libglabels
@@ -40,7 +46,10 @@ namespace libglabels
 
 	Db::Db()
 	{
-		// TODO
+		readPapers();
+		readCategories();
+		readVendors();
+		readTemplates();
 	}
 
 
@@ -499,52 +508,98 @@ namespace libglabels
 	}
 
 
-	void Db::read_papers()
+	QDir Db::systemTemplatesDir()
 	{
-		// TODO
+		QDir dir(QApplication::applicationDirPath());
+
+		if ( dir.dirName() == "bin" )
+		{
+			dir.cdUp();
+			dir.cd( "share" );
+			dir.cd( "libglabels-3.0" ); // TODO: install qt version
+		}
+		else
+		{
+			// Working out of build directory
+			dir.cd( Config::PROJECT_SOURCE_DIR );
+		}
+
+		dir.cd( "templates" );
+		return dir;
 	}
 
 
-	void Db::read_papers_from_dir( const QString &dirName )
+	void Db::readPapers()
 	{
-		// TODO
+		readPapersFromDir( systemTemplatesDir() );
 	}
 
 
-	void Db::read_categories()
+	void Db::readPapersFromDir( const QDir &dir )
 	{
-		// TODO
+		XmlPaperParser parser;
+
+		foreach ( QString fileName, dir.entryList( QDir::Files ) )
+		{
+			if ( fileName == "paper-sizes.xml" )
+			{
+				parser.readFile( dir.absoluteFilePath( fileName ) );
+			}
+		}
 	}
 
 
-	void Db::read_categories_from_dir( const QString &dirName )
+	void Db::readCategories()
 	{
-		// TODO
+		readCategoriesFromDir( systemTemplatesDir() );
 	}
 
 
-	void Db::read_vendors()
+	void Db::readCategoriesFromDir( const QDir &dir )
 	{
-		// TODO
+		XmlCategoryParser parser;
+
+		foreach ( QString fileName, dir.entryList( QDir::Files ) )
+		{
+			if ( fileName == "categories.xml" )
+			{
+				parser.readFile( dir.absoluteFilePath( fileName ) );
+			}
+		}
 	}
 
 
-	void Db::read_vendors_from_dir( const QString &dirName )
+	void Db::readVendors()
 	{
-		// TODO
+		readVendorsFromDir( systemTemplatesDir() );
 	}
 
 
-	void Db::read_templates()
+	void Db::readVendorsFromDir( const QDir &dir )
 	{
-		// TODO
+		XmlVendorParser parser;
+
+		foreach ( QString fileName, dir.entryList( QDir::Files ) )
+		{
+			if ( fileName == "vendors.xml" )
+			{
+				parser.readFile( dir.absoluteFilePath( fileName ) );
+			}
+		}
 	}
 
 
-	void Db::read_templates_from_dir( const QString &dirName )
+	void Db::readTemplates()
+	{
+		readTemplatesFromDir( systemTemplatesDir() );
+
+		// TODO: Read user directories
+	}
+
+
+	void Db::readTemplatesFromDir( const QDir &dir )
 	{
 		// TODO
 	}
-
 
 }

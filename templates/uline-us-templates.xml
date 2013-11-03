@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+  <!--                                                                      -->
+  <!-- Uline US-Letter products                                             -->
+  <!--                                                                      -->
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+
+
+  <Template brand="Uline" part="S-5044" size="US-Letter" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="8.5in" height="5.5in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="2" x0="0in" y0="0in" dx="0in" dy="5.5in"/>
+    </Label-rectangle>
+  </Template>
+
+
+</Glabels-templates>
+
+
+
+

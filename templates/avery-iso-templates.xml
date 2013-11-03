@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+  <!--                                                                      -->
+  <!-- Avery A4 products (and look-alikes)                                  -->
+  <!--                                                                      -->
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+
+
+  <!-- =================================================================== -->
+  <!-- Avery L4732 family: Mini Labels                                     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L4732" size="A4" _description="Mini Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="35.6mm" height="16.9mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="1mm"/>
+      <Layout nx="5" ny="16" x0="11mm" y0="13mm" dx="38.1mm" dy="16.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery L4770 family: Mini Labels                                     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L4770" size="A4" _description="Mini Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="45.7mm" height="25.4mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="1mm"/>
+      <Layout nx="4" ny="10" x0="10mm" y0="22mm" dx="48.5mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="J8654" equiv="L4770"/>
+  <Template brand="Avery" part="L6140" equiv="L4770"/>
+  <Template brand="Avery" part="L6145" equiv="L4770"/>
+  <Template brand="Avery" part="L7654" equiv="L4770"/>
+
+  <!-- =================================================================== -->
+  <!-- Avery L4785 family: Name Badges, 10 per sheet                       -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L4785" size="A4" _description="Self-Adhesive Name Badges (Acetate Silk)">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.avery.co.uk/avery/en_gb/Products/Naming/Self-Adhesive-Name-Badges/White-self-adhesive-name-badges_L4785_20.htm"/>
+    <Label-rectangle id="0" width="80mm" height="50mm" round="4mm" x_waste="7.5mm" y_waste="2.5mm">
+      <Markup-margin size="1mm"/>
+      <Layout nx="2" ny="5" x0="18mm" y0="13mm" dx="95mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L4784" equiv="L4785"/>
+  <Template brand="Avery" part="L4786" equiv="L4785"/>
+  <Template brand="Avery" part="L4787" equiv="L4785"/>
+
+  <!-- =================================================================== -->
+  <!-- Avery L6015 family: CD/DVD Labels, 2 per sheet                      -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L6015" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="165.827pt" hole="58.1102pt" waste="9.07087pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="2" x0="131.811pt" y0="60.6614pt" dx="349.795pt" dy="392.4pt"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 6121 family: Allround labels.                                 -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="6121" size="A4" _description="Allround labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="107.928pt" height="60.12pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="8.496pt"/>
+      <Layout nx="5" ny="13" x0="26.928pt" y0="29.736pt" dx="107.928pt" dy="60.12pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7160 family: Mailing labels, 63.5 x 38.1 mm, 21 per sheet     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7160" size="A4" _description="Mailing labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="181.4" height="108.0" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="7" x0="21.2" y0="43.9" dx="187.2" dy="108.0"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7160" equiv="7160"/>
+  <Template brand="Avery" part="J8160" equiv="7160"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7161 family: Mailing labels, 63.5 x 46.6 mm, 18 per sheet     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7161" size="A4" _description="Mailing labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="180.2" height="132.6" round="7">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="6" x0="21" y0="23" dx="186.9" dy="132.5"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7161" equiv="7161"/>
+  <Template brand="Avery" part="J8161" equiv="7161"/>
+
+
+  <!-- ================================================================== -->  
+  <!-- Avery 7162 family: Mailing labels, 99.1 x 33.9 mm, 16 per sheet    -->  
+  <!-- ================================================================== -->  
+  <Template brand="Avery" part="7162" size="A4" _description="Mailing labels">  
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="280.9" height="96.1" round="5">  
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="8" x0="11.3" y0="36.8" dx="290.5" dy="96.1"/>  
+    </Label-rectangle>  
+  </Template>
+
+  <Template brand="Avery" part="L7162" equiv="7162"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7163 family: Mailing labels, 99.1 x 38.1 mm, 14 per sheet     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7163" size="A4" _description="Mailing labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="280.9" height="108" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="7" x0="9.5" y0="43" dx="292" dy="108"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7163" equiv="7163"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7164 family: Address labels, 63.50 x 71.98 mm, 12 per sheet   -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7164" size="A4" _description="Address labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="180" height="204.038" round="8.5">
+      <Markup-margin size="5"/>
+      <Layout nx="3" ny="4" x0="20.84" y0="10" dx="187.08" dy="204.038"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7164" equiv="7164"/>
+  <Template brand="Avery" part="J8164" equiv="7164"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7165 family: Address labels                                   -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7165" size="A4" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="280.8pt" height="191.991pt" round="0pt" waste="0pt">
+      <Markup-margin size="5.66929pt"/>
+      <Layout nx="2" ny="4" x0="13.2378pt" y0="36.9638pt" dx="288.113pt" dy="191.991pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7165" equiv="7165"/>
+  <Template brand="Avery" part="J8165" equiv="7165"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7169 family: shipping labels, 99.1 x 139.0 mm, 4 per sheet    -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7169" size="A4" _description="Shipping labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="280.9" height="394.0" round="6">
+      <Markup-margin size="6"/>
+      <Layout nx="2" ny="2" x0="14.2" y0="20.0" dx="287.7" dy="394.0"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7169" equiv="7169"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7414 family: Business Cards, 52mm x 90mm, 10 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7414" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="255.1" height="147.4" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="42.51" y0="52.44" dx="255.1" dy="147.4"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7414" equiv="7414"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 7664 family: Diskette Labels, 70mm x 71.9 mm, 8 per sheet     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="7664" size="A4" _description="Diskette Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="70mm" height="71.9mm" round="2.5mm">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="4" x0="17mm" y0="5mm" dx="104.5mm" dy="72mm"/> 
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L7664" equiv="7664"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery L7676 family: CD/DVD Labels, 2 per sheet                      -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L7676" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="165.827pt" hole="24.9449pt" waste="5.66929pt">
+      <Markup-margin size="5.66929pt"/>
+      <Layout nx="1" ny="2" x0="131.811pt" y0="62.3622pt" dx="342.992pt" dy="388.346pt"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Avery J8157: Mailing Labels, 33 per sheet	                   -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="J8157" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="64mm" height="24.3mm" round="3mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="3" ny="11" x0="6.0mm" y0="14.0mm" dx="66.5mm" dy="24.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 8414 family: Business Cards, 50.8 x 87.0 mm, 10 per sheet     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="8414" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="246.6" height="144" round="0">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="42" y0="57.890" dx="264" dy="144"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="J8414" equiv="8414"/>
+
+
+  <!-- =============================================================== -->
+  <!-- Avery J8435: CD Inlets Booklet part                             -->
+  <!-- =============================================================== -->
+  <Template brand="Avery" part="8435A" size="A4" _description="CD Booklet">
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="155mm" height="125mm" round="0">
+      <Markup-margin size="2mm"/>
+      <Markup-line x1="32mm" y1="0mm" x2="32mm" y2="125mm"/>
+      <Layout nx="1" ny="1" x0="27.5mm" y0="22mm" dx="155mm" dy="125mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="J8435A" equiv="8435A"/>
+  <Template brand="Avery" part="32250A" equiv="8435A"/>
+
+
+  <!-- =============================================================== -->
+  <!-- Avery J8435: CD Inlets Inlet part                           -->
+  <!-- =============================================================== -->
+  <Template brand="Avery" part="8435B" size="A4" _description="CD Inlet">
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="155mm" height="122mm" round="0">
+      <Markup-margin size="2mm"/>
+      <Markup-line x1="8.5mm" y1="0mm" x2="8.5mm" y2="122mm"/>
+      <Markup-line x1="146.5mm" y1="0mm" x2="146.5mm" y2="122mm"/>
+      <Layout nx="1" ny="1" x0="27.5mm" y0="21mm" dx="155mm" dy="122mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="J8435B" equiv="8435B"/>
+  <Template brand="Avery" part="32250B" equiv="8435B"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 8651 family: Mailing labels, 38.1 x 21.2 mm, 65 per sheet     -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="8651" size="A4" _description="Mini Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="108" height="60.09" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="5" ny="13" x0="13.32" y0="30.90" dx="115.09" dy="60.09"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="L8651" equiv="8651"/>
+  <Template brand="Avery" part="J8651" equiv="8651"/>
+  <Template brand="Avery" part="J8551" equiv="8651"/>
+  <Template brand="Avery" part="L7651" equiv="8651"/>
+  <Template brand="Avery" part="L7551" equiv="8651"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 8658 family: Identification labels                            -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="8658" size="A4" _description="Identification Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="25.4mm" height="10mm" round="1mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="7" ny="27" x0="5mm" y0="13mm" dx="28.5mm" dy="10.14mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="J8658" equiv="8658" />
+  <Template brand="Avery" part="L8658" equiv="8658" />
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 8666 family: Diskette labels (face only), 70 x 52 mm, 10 per  -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="8666" size="A4" _description="Diskette labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="198.4" height="147.4" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="66" y0="53" dx="264" dy="147"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="J8666" equiv="8666" />
+
+
+  <!-- =============================================================== -->
+  <!-- Avery J8676A: CD/DVD Labels 2 per sheet                         -->
+  <!-- =============================================================== -->
+  <Template brand="Avery" part="8676" size="A4" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="166.5" hole="17" waste="5">
+      <Markup-margin size="5"/>
+      <Layout nx="1" ny="2" x0="130" y0="59.5" dx="0" dy="388"/>        
+    </Label-cd>
+  </Template>
+
+  <Template brand="Avery" part="J8676" equiv="8676" />
+
+
+  <!-- =============================================================== -->
+  <!-- Avery 18036 Mailing Labels, 70mm x 32mm, 27 per sheet           -->
+  <!-- =============================================================== -->
+  <Template brand="Avery" part="18036" size="A4" _description="Mailing Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="198" height="91" round="0">
+      <Markup-margin size="10"/>
+      <Layout nx="3" ny="9" x0="0" y0="13" dx="198" dy="91"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- ============================================================ -->
+  <!-- Avery 32015: Business Cards                                  -->
+  <!-- ============================================================ -->
+  <Template brand="Avery" part="32015" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm">
+      <Markup-margin size="5mm"/>
+      <Layout nx="2" ny="4" x0="17mm" y0="31.5mm" dx="91mm" dy="60mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="C32015" equiv="32015" />
+
+
+  <!-- ============================================================ -->
+  <!-- Avery 38931 Family: Rectangular Labels                       -->
+  <!-- ============================================================ -->
+  <Template brand="Avery" part="38931" size="A4" _description="Rectangular Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="70mm" height="25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3mm"/>
+      <Layout nx="3" ny="11" x0="0mm" y0="10mm" dx="70mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Avery" part="DL33" equiv="38931"/>
+  <Template brand="Avery" part="CR33" equiv="38931"/>
+  
+  
+  <!-- ============================================================ -->
+  <!-- Avery C32011-10: Business Cards		                    -->
+  <!-- ============================================================ -->
+  <Template brand="Avery" part="C32011-10" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="85mm" height="54mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="15mm" y0="13.5mm" dx="95mm" dy="54mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+</Glabels-templates>
+
+
+
+

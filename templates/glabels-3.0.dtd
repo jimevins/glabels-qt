@@ -1,0 +1,466 @@
+<!--
+  glabels-3.0.dtd
+
+  This file is a part of the glabels template database.
+ 
+  Copyright (c) 2001-2009 Jim Evins
+ 
+  Permission is hereby granted, free of charge, to any person
+  obtaining a copy of this software and associated documentation
+  files (the "Software"), to deal in the Software without
+  restriction, including without limitation the rights to use,
+  copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following
+  conditions:
+ 
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+ 
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- ENTITIES: primitive types used in element attributes                 -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+<!-- primitives -->
+<!ENTITY % BOOLEAN_TYPE       "(False | True | 0 | 1)">
+<!ENTITY % STRING_TYPE        "CDATA">
+<!ENTITY % LENGTH_TYPE        "CDATA"> <!-- %g (pt|in|mm|cm|pc) -->
+<!ENTITY % INT_TYPE           "CDATA"> <!-- %d | 0x%x | 0%o -->
+<!ENTITY % UINT_TYPE          "CDATA"> <!-- %u | 0x%x | 0%o -->
+<!ENTITY % FLOAT_TYPE         "CDATA"> <!-- %g -->
+
+<!-- Text related enumerations/types -->
+<!ENTITY % JUSTIFY_TYPE       "(Left | Right | Center)">
+<!ENTITY % VALIGN_TYPE        "(Top | Bottom | Center)">
+<!ENTITY % FONT_WEIGHT_TYPE   "(Regular | Bold)">
+
+<!-- Barcode related enumerations/types -->
+<!ENTITY % BC_BACKEND_TYPE    "CDATA">
+                              <!-- one of:
+                              "(built-in    |
+                                gnu-barcode |
+				zint        |
+				libiec16022 |
+				libqrencode")
+                               -->
+<!ENTITY % BC_STYLE_TYPE      "CDATA">
+                              <!-- one of:
+                              "(POSTNET    |
+                                POSTNET-5  |
+                                POSTNET-9  |
+                                POSTNET-11 |
+                                CEPNET     |
+                                EAN        |
+                                EAN-8      |
+                                EAN-8+2    |
+                                EAN-8+5    |
+                                EAN-13     |
+                                EAN-13+2   |
+                                EAN-13+5   |
+                                UPC        |
+                                UPC-A      |
+                                UPC-A+2    |
+                                UPC-A+5    |
+                                UPC-E      |
+                                UPC-E+2    |
+                                UPC-E+5    |
+                                ISBN       |
+                                ISBN+5     |
+                                Code39     |
+                                Code128    |
+                                Code128C   |
+                                Code128B   |
+                                I25        |
+                                CBR        |
+                                MSI        |
+                                PLS        |
+                                IEC16022)"
+                               -->
+
+<!-- Data encoding method -->
+<!ENTITY % DATA_ENCODING_TYPE "(None | Base64)">
+
+<!-- Inline file format type -->
+<!ENTITY % FILE_FORMAT_TYPE "(SVG)">
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Top-level glabels paper data base                                    -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Glabels-paper-sizes (Paper-size*)>
+<!ATTLIST Glabels-paper-sizes
+                 xmlns           %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Top-level glabels categories data base                               -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Glabels-categories (Category*)>
+<!ATTLIST Glabels-categories
+                 xmlns           %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Top-level glabels vendors data base                                  -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Glabels-vendors (Vendor*)>
+<!ATTLIST Glabels-vendors
+                 xmlns           %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Top-level glabels template data base                                 -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Glabels-templates (Template*)>
+<!ATTLIST Glabels-templates
+                 xmlns           %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Top-level glabels document                                           -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Glabels-document (Template, Objects+, Merge?, Data*)>
+<!ATTLIST Glabels-document
+                 xmlns           %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Paper size                                                           -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Paper-size EMPTY>
+<!ATTLIST Paper-size
+                 id              %STRING_TYPE;           #REQUIRED
+                 name            %STRING_TYPE;           #IMPLIED
+                 _name           %STRING_TYPE;           #IMPLIED
+                 pwg_size        %STRING_TYPE;           #REQUIRED
+                 width           %LENGTH_TYPE;           #REQUIRED
+                 height          %LENGTH_TYPE;           #REQUIRED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Category                                                             -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Category EMPTY>
+<!ATTLIST Category
+                 id              %STRING_TYPE;           #REQUIRED
+                 name            %STRING_TYPE;           #IMPLIED
+                 _name           %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Vendor                                                               -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Vendor EMPTY>
+<!ATTLIST Vendor
+                 name            %STRING_TYPE;           #REQUIRED
+                 url             %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Template Section                                                     -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ENTITY % label_element  "Label-rectangle | Label-round | Label-ellipse | Label-cd">
+<!ENTITY % markup_element "Markup-margin | Markup-line | Markup-circle | Markup-rect | Markup-ellipse">
+
+<!ELEMENT Template (Meta*, (%label_element;)*)>
+<!ATTLIST Template
+                 brand           %STRING_TYPE;           #REQUIRED
+                 part            %STRING_TYPE;           #REQUIRED
+                 name            %STRING_TYPE;           #IMPLIED
+                 equiv           %STRING_TYPE;           #IMPLIED
+                 size            %STRING_TYPE;           #IMPLIED
+                 width           %LENGTH_TYPE;           #IMPLIED
+                 height          %LENGTH_TYPE;           #IMPLIED
+                 description     %STRING_TYPE;           #IMPLIED
+                 _description    %STRING_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Meta EMPTY>
+<!ATTLIST Meta
+                 product_url     %STRING_TYPE;           #IMPLIED
+                 category        %STRING_TYPE;           #IMPLIED
+                 print           %STRING_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Label-rectangle ((%markup_element;)*, Layout+)>
+<!ATTLIST Label-rectangle
+                 id              %STRING_TYPE;           #REQUIRED
+                 width           %LENGTH_TYPE;           #REQUIRED
+                 height          %LENGTH_TYPE;           #REQUIRED
+                 round           %LENGTH_TYPE;           "0 pt"
+                 waste           %LENGTH_TYPE;           #IMPLIED
+                 x_waste         %LENGTH_TYPE;           #IMPLIED
+                 y_waste         %LENGTH_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Label-round ((%markup_element;)*, Layout+)>
+<!ATTLIST Label-round
+                 id              %STRING_TYPE;           #REQUIRED
+                 radius          %LENGTH_TYPE;           #REQUIRED
+                 waste           %LENGTH_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Label-ellipse ((%markup_element;)*, Layout+)>
+<!ATTLIST Label-ellipse
+                 id              %STRING_TYPE;           #REQUIRED
+                 width           %LENGTH_TYPE;           #REQUIRED
+                 height          %LENGTH_TYPE;           #REQUIRED
+                 waste           %LENGTH_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Label-cd ((%markup_element;)*, Layout+)>
+<!ATTLIST Label-cd
+                 id              %STRING_TYPE;           #REQUIRED
+                 radius          %LENGTH_TYPE;           #REQUIRED
+                 hole            %LENGTH_TYPE;           #REQUIRED
+                 width           %LENGTH_TYPE;           #IMPLIED
+                 height          %LENGTH_TYPE;           #IMPLIED
+                 waste           %LENGTH_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Markup-margin EMPTY>
+<!ATTLIST Markup-margin
+                 size            %LENGTH_TYPE;           #REQUIRED
+>
+
+<!ELEMENT Markup-line EMPTY>
+<!ATTLIST Markup-line
+                 x1              %LENGTH_TYPE;           #REQUIRED
+                 y1              %LENGTH_TYPE;           #REQUIRED
+                 x2              %LENGTH_TYPE;           #REQUIRED
+                 y2              %LENGTH_TYPE;           #REQUIRED
+>
+
+<!ELEMENT Markup-circle EMPTY>
+<!ATTLIST Markup-circle
+                 x0              %LENGTH_TYPE;           #REQUIRED
+                 y0              %LENGTH_TYPE;           #REQUIRED
+                 radius          %LENGTH_TYPE;           #REQUIRED
+>
+
+<!ELEMENT Markup-rect EMPTY>
+<!ATTLIST Markup-rect
+                 x1              %LENGTH_TYPE;           #REQUIRED
+                 y1              %LENGTH_TYPE;           #REQUIRED
+                 w               %LENGTH_TYPE;           #REQUIRED
+                 h               %LENGTH_TYPE;           #REQUIRED
+                 r               %LENGTH_TYPE;           "0 pt"
+>
+
+<!ELEMENT Markup-ellipse EMPTY>
+<!ATTLIST Markup-ellipse
+                 x1              %LENGTH_TYPE;           #REQUIRED
+                 y1              %LENGTH_TYPE;           #REQUIRED
+                 w               %LENGTH_TYPE;           #REQUIRED
+                 h               %LENGTH_TYPE;           #REQUIRED
+>
+
+<!ELEMENT Layout EMPTY>
+<!ATTLIST Layout
+                 nx              %UINT_TYPE;             #REQUIRED
+                 ny              %UINT_TYPE;             #REQUIRED
+                 x0              %LENGTH_TYPE;           "0 pt"
+                 y0              %LENGTH_TYPE;           "0 pt"
+                 dx              %LENGTH_TYPE;           "0 pt"
+                 dy              %LENGTH_TYPE;           "0 pt"
+>
+
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Objects Section                                                      -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ENTITY % object_class_element  "Object-text    |
+                                  Object-box     |
+                                  Object-line    |
+                                  Object-ellipse |
+                                  Object-image   |
+                                  Object-barcode"
+>
+
+<!ELEMENT Objects ((%object_class_element;)*)>
+<!ATTLIST Objects
+                 id              %STRING_TYPE;           #REQUIRED
+                 rotate          %BOOLEAN_TYPE;          #REQUIRED
+>
+
+<!ENTITY % position_attrs
+                 "x              %LENGTH_TYPE;           #REQUIRED
+                  y              %LENGTH_TYPE;           #REQUIRED"
+>
+
+<!ENTITY % size_attrs
+                 "w              %LENGTH_TYPE;           #REQUIRED
+                  h              %LENGTH_TYPE;           #REQUIRED"
+>
+
+<!ENTITY % line_attrs
+                 "line_width       %LENGTH_TYPE;          #IMPLIED
+                  line_color       %UINT_TYPE;            #IMPLIED
+                  line_color_field %STRING_TYPE;          #IMPLIED"
+>
+
+<!ENTITY % fill_attrs
+                 "fill_color       %UINT_TYPE;           #IMPLIED
+                  fill_color_field %STRING_TYPE;         #IMPLIED"
+>
+
+<!ENTITY % affine_attrs
+                 "a0              %FLOAT_TYPE;           #IMPLIED
+                  a1              %FLOAT_TYPE;           #IMPLIED
+                  a2              %FLOAT_TYPE;           #IMPLIED
+                  a3              %FLOAT_TYPE;           #IMPLIED
+                  a4              %FLOAT_TYPE;           #IMPLIED
+                  a5              %FLOAT_TYPE;           #IMPLIED"
+>
+
+<!ENTITY % shadow_attrs
+                 "shadow          %BOOLEAN_TYPE;         #IMPLIED
+                  shadow_x        %FLOAT_TYPE;           #IMPLIED
+                  shadow_y        %FLOAT_TYPE;           #IMPLIED
+                  shadow_color    %UINT_TYPE;            #IMPLIED
+                  shadow_opacity  %FLOAT_TYPE;           #IMPLIED"
+>
+
+<!ELEMENT Object-text (Span)>
+<!ATTLIST Object-text
+                 %position_attrs;
+                 %size_attrs;
+                 justify         %JUSTIFY_TYPE;          #REQUIRED
+                 valign          %VALIGN_TYPE;           #REQUIRED
+                 auto_shrink     %BOOLEAN_TYPE;          #IMPLIED
+                 %affine_attrs;
+                 %shadow_attrs;
+>
+
+<!ELEMENT Object-box EMPTY>
+<!ATTLIST Object-box
+                 %position_attrs;
+                 %size_attrs;
+                 %line_attrs;
+                 %fill_attrs;
+                 %affine_attrs;
+                 %shadow_attrs;
+>
+
+<!ELEMENT Object-ellipse EMPTY>
+<!ATTLIST Object-ellipse
+                 %position_attrs;
+                 %size_attrs;
+                 %line_attrs;
+                 %fill_attrs;
+                 %affine_attrs;
+                 %shadow_attrs;
+>
+
+<!ELEMENT Object-line EMPTY>
+<!ATTLIST Object-line
+                 %position_attrs;
+                 dx              %LENGTH_TYPE;           #REQUIRED
+                 dy              %LENGTH_TYPE;           #REQUIRED
+                 %line_attrs;
+                 %affine_attrs;
+                 %shadow_attrs;
+>
+
+<!ELEMENT Object-image EMPTY>
+<!ATTLIST Object-image
+                 %position_attrs;
+                 %size_attrs;
+                 src             %STRING_TYPE;           #IMPLIED
+                 field           %STRING_TYPE;           #IMPLIED
+                 embed           %BOOLEAN_TYPE;          #IMPLIED
+                 %affine_attrs;
+                 %shadow_attrs;
+>
+
+<!ELEMENT Object-barcode EMPTY>
+<!ATTLIST Object-barcode
+                 %position_attrs;
+                 %size_attrs;
+                 backend          %BC_BACKEND_TYPE;       #REQUIRED
+                 style            %BC_STYLE_TYPE;         #REQUIRED
+                 text             %BOOLEAN_TYPE;          #REQUIRED
+                 checksum         %BOOLEAN_TYPE;          #REQUIRED
+                 color            %UINT_TYPE;             #IMPLIED
+                 color_field      %STRING_TYPE;           #IMPLIED
+                 data             %STRING_TYPE;           #IMPLIED
+                 field            %STRING_TYPE;           #IMPLIED
+                 format           %UINT_TYPE;             #IMPLIED
+                 %affine_attrs;
+                 %shadow_attrs;
+>
+
+
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Merge Section                                                        -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Merge EMPTY>
+<!ATTLIST Merge
+                 type            %STRING_TYPE;           #REQUIRED
+                 src             %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Data Section                                                         -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ENTITY % data_element "Pixdata | File">
+
+<!ELEMENT Data (%data_element;)*>
+
+<!-- Inline Pixdata -->
+<!ELEMENT Pixdata (#PCDATA)>
+<!ATTLIST Pixdata
+                 name            %STRING_TYPE;           #REQUIRED
+                 encoding        %DATA_ENCODING_TYPE;    "Base64"
+>
+
+<!-- Inline File -->
+<!ELEMENT File (#PCDATA)>
+<!ATTLIST File
+                 name            %STRING_TYPE;           #REQUIRED
+                 format          %FILE_FORMAT_TYPE;      "SVG"
+>
+
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Text elements                                                        -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ENTITY % text_element "#PCDATA | Span | Field | NL">
+
+<!ELEMENT Span (%text_element;)*>
+<!ATTLIST Span
+                 font_family     %STRING_TYPE;           #IMPLIED
+                 font_size       %LENGTH_TYPE;           #IMPLIED
+                 font_weight     %FONT_WEIGHT_TYPE;      #IMPLIED
+                 font_italic     %BOOLEAN_TYPE;          #IMPLIED
+                 color           %UINT_TYPE;             #IMPLIED
+                 color_field     %STRING_TYPE;           #IMPLIED
+                 line_spacing    %LENGTH_TYPE;           #IMPLIED
+>
+
+<!ELEMENT Field EMPTY>
+<!ATTLIST Field
+                 name            %STRING_TYPE;           #REQUIRED
+>
+
+<!ELEMENT NL EMPTY>

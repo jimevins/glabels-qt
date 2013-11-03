@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+
+  <!-- ******************************************************************** -->
+  <!-- Sheetlabels products.	                                            -->
+  <!-- ******************************************************************** -->
+  
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Rectangular Labels, 4 per sheet	         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL1" size="US-Letter" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL1"/>
+    <Label-rectangle id="0" width="5.5in" height="2.25in" round="0.2in" x_waste="1in" y_waste="0.125in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="1" ny="4" x0="1.5in" y0="0.625in" dx="7.5in" dy="2.5in"/>
+    </Label-rectangle>
+  </Template>
+  
+  
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Rectangular Labels, 4 per sheet	         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL10" size="US-Letter" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL10"/>
+    <Label-rectangle id="0" width="109.5mm" height="50.8mm" round="5mm" x_waste="9mm" y_waste="9mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="4" x0="53.2mm" y0="12.7mm" dx="127.5mm" dy="68.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Address Labels, 20 per sheet	         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL100" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL100"/>
+    <Label-rectangle id="0" width="2.625in" height="1in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="10" x0="0.1875in" y0="0.5in" dx="2.75in" dy="1in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Address Labels, 14 per sheet        		   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL101" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL101"/>
+    <Label-rectangle id="0" width="4in" height="1.333333333in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="7"
+              x0="0.15625in" y0="0.833333333in" dx="4.1875in" dy="1.333333333in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Shipping Labels, 10 per sheet        		   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL102" size="US-Letter" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL102"/>
+    <Label-rectangle id="0" width="4in" height="2in" round="0.125in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="2" ny="5" x0="0.1625in" y0="0.5in" dx="4.1875in" dy="2in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Shipping Labels, 6 per sheet	         		   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL104" size="US-Letter" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL104"/>
+    <Label-rectangle id="0" width="4in" height="3.333333333in" round="0.125in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="2" ny="3" x0="0.15625in" y0="0.5in" dx="4.1875in" dy="3.333333333in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Return Address Labels, 80 per sheet        		   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL105" size="US-Letter" _description="Return Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+  <Meta product_url="http://www.sheet-labels.com/labels/SL105"/>
+    <Label-rectangle id="0" width="1.75in" height="0.5in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="4" ny="20" x0="0.28125in" y0="0.5in" dx="2.0625in" dy="0.5in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Round Labels, 12 per sheet	        		   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL108" size="US-Letter" _description="Round Labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL108"/>
+    <Label-round id="0" radius="1.25in" waste="0pt">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="4" x0="0.21in" y0="0.425in" dx="2.75in" dy="2.515in"/>
+    </Label-round>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Filing Labels, 30 per sheet	        		   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL109" size="US-Letter" _description="Filing Labels">
+    <Meta category="label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL109"/>
+    <Label-rectangle id="0" width="3.4375in" height="0.666666667in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="15" x0="0.53125in" y0="0.5in" dx="4in" dy="0.666666667in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: CD/DVD Labels (face only), 2 per sheet         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL110" size="US-Letter" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL110"/>
+    <Label-cd id="0" radius="166.5pt" hole="58.5pt" waste="9pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="2" x0="144pt" y0="36pt" dx="351pt" dy="396pt"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: CD/DVD Labels (face only), 3 per sheet         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL113" size="US-Letter" _description="CD/DVD Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL113"/>
+    <Label-cd id="0" radius="166.5pt" hole="58.5pt" waste="9pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="1" x0="0.7cm" y0="0.7cm" dx="0pt" dy="0cm"/>
+      <Layout nx="1" ny="1" x0="9.4cm" y0="8.25cm" dx="0pt" dy="0pt"/>
+      <Layout nx="1" ny="1" x0="0.7cm" y0="15.8cm" dx="0pt" dy="0cm"/>
+    </Label-cd>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Mailing Labels, 12 per sheet                           -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL116" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL116"/>
+    <Label-rectangle id="0" width="4in" height="1.5in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="6" x0="0.1875in" y0="1in" dx="4.125in" dy="1.5in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Diskette Labels, 2_3/4'' x 2_3/4'', 9 per sheet	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL121" size="US-Letter" _description="Diskette Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL121"/>
+    <Label-rectangle id="0" width="2.75in" height="2.75in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="3" ny="3" x0="0.125in" y0="0.5in" dx="2.75in" dy="3in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: CD/DVD Labels (face only), 2 per sheet         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL122" size="US-Letter"
+         _description="CD/DVD Labels (Disc Labels)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL122"/>
+    <Label-cd id="0" radius="2.3125in" hole="0.8125in" waste="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Markup-line x1="0" y1="2.3125in" x2="1.5in" y2="2.3125in"/>
+      <Markup-line x1="3.125in" y1="2.3125in" x2="4.625in" y2="2.3125in"/>
+      <Markup-line x1="2.3125in" y1="0" x2="2.3125in" y2="1.5in"/>
+      <Markup-line x1="2.3125in" y1="3.125in" x2="2.3125in" y2="4.625in"/>
+      <Layout nx="1" ny="2" x0="1.9375in" y0="0.6875in" dx="0" dy="5in"/>
+    </Label-cd>
+  </Template>
+  
+  
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Round Labels, 20 per sheet		         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL123" size="US-Letter" _description="Round Labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL123"/>
+    <Label-round id="0" radius="1in" waste="0.03in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="4" ny="5" x0="0.156in" y0="0.375in" dx="2.062in" dy="2.062in"/>
+    </Label-round>
+  </Template>
+  
+  
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Round Labels, 6 per sheet		         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL128" size="US-Letter" _description="Round Labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL128"/>
+    <Label-round id="0" radius="1.75in" waste="0in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="2" ny="3" x0="0.5in" y0="0.2in" dx="4in" dy="3.55in"/>
+    </Label-round>
+  </Template>
+  
+  
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Round Labels, 1 per sheet				   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL129" size="US-Letter" _description="Round Labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL129"/>
+    <Label-round id="0" radius="2.75in" waste="1.5in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="1" ny="1" x0="1.5in" y0="2.75in" dx="8.5in" dy="5.5in"/>
+    </Label-round>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: VCR Labels, 1_7/8'' x 3_1/16'', 10 per sheet 	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL302" size="US-Letter"
+         _description="Video Tape Face Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL302"/>
+    <Label-rectangle id="0" width="220" height="133" round="5">
+      <Markup-margin size="5"/>
+      <Layout nx="2" ny="5" x0="80" y0="60.5" dx="236" dy="133"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Mailing Labels, 10 per sheet                           -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL540" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL540"/>
+    <Label-rectangle id="0" width="4.25in" height="2in" round="0in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="5" x0="0in" y0="0.5in" dx="4.25in" dy="2in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: Address Labels, 1'' x 4'', 20 per sheet        	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL550" size="US-Letter" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL550"/>
+    <Label-rectangle id="0" width="4in" height="1in" round="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="10" x0="0.15625in" y0="0.5in" dx="4.1875in" dy="1in"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- SheetLabels: CD/DVD Labels (face only), 2 per sheet         	   -->
+  <!-- =================================================================== -->
+  <Template brand="SheetLabels" part="SL563" size="US-Letter"
+         _description="CD/DVD Labels (Disc Labels)">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Meta product_url="http://www.sheet-labels.com/labels/SL563"/>
+    <Label-cd id="0" radius="2.3125in" hole="0.8125in" waste="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Markup-line x1="0" y1="2.3125in" x2="1.5in" y2="2.3125in"/>
+      <Markup-line x1="3.125in" y1="2.3125in" x2="4.625in" y2="2.3125in"/>
+      <Markup-line x1="2.3125in" y1="0" x2="2.3125in" y2="1.5in"/>
+      <Markup-line x1="2.3125in" y1="3.125in" x2="2.3125in" y2="4.625in"/>
+      <Layout nx="1" ny="2" x0="1.9375in" y0="0.6875in" dx="0" dy="5in"/>
+    </Label-cd>
+  </Template>
+
+</Glabels-templates>
+

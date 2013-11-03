@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- ************************* -->
+  <!--                           -->
+  <!-- Dataline                  -->
+  <!--                           -->
+  <!-- ************************* -->
+
+  <!-- =================================================================== -->
+  <!-- Dataline 12426: CD/DVD labels, 2 per sheet 			   -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="12426" size="A4" _description="CD/DVD labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="59.5mm" hole="20.6375mm" waste="3.175mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="45.5mm" y0="20.5mm" dx="125.35mm" dy="137mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Dataline" part="12427" equiv="12426"/>
+
+
+  <!-- =================================================================== -->
+  <!-- Dataline 57125: Business Cards, 54.0 x 86.0 mm, 10 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="57125" size="A4" _description="Business Cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="86.00mm" height="54.00mm" round="0">
+      <Markup-margin size="0mm"/>
+      <Layout nx="2" ny="5" x0="16mm" y0="11mm" dx="91mm" dy="55.625mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Dataline 57126: Business Cards, 90.0 x 50.8 mm, 10 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="57126" size="A4" _description="Business cards">
+    <Meta category="card"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="90mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="2" ny="5" x0="15mm" y0="21.5mm" dx="90mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Dataline 57127: Membership Cards, 86.0 x 54.0 mm, 10 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="57127" size="A4" _description="Membership cards">
+    <Meta category="card"/>
+    <Label-rectangle id="0" width="86mm" height="54mm" round="0mm" x_waste="2.5mm" y_waste="0.7mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="5" x0="20.5mm" y0="10.5mm" dx="91mm" dy="55.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Dataline 57130: Shipping Labels, 199.6 x 289.1 mm, 1 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="57130" size="A4" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="199.6mm" height="289.1mm" round="0mm" x_waste="2mm" y_waste="2mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="5.2mm" y0="3.95mm" dx="203.6mm" dy="293.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Dataline 57131: Shipping Labels, 199.6 x 143.5 mm, 2 per sheet      -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="57131" size="A4" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="199.6mm" height="143.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="2" x0="5.2mm" y0="5mm" dx="199.6mm" dy="143.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Dataline 57132: Shipping Labels, 99.1 x 139 mm, 1 per sheet  	   -->
+  <!-- =================================================================== -->
+  <Template brand="Dataline" part="57132" size="A4" _description="Shipping Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="99.1mm" height="139mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="2" ny="2" x0="5.4mm" y0="9.5mm" dx="99.1mm" dy="139mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>
+
+
+
+

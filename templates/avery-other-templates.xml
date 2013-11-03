@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- Avery non-standard size products (not US-Letter/Legal or ISO)        -->
+  <!-- ******************************************************************** -->
+
+  <!-- =================================================================== -->
+  <!-- Avery 6141 family: File Folder Labels, 5/8'' x 2_3/4'', 7 per sheet -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="6141" size="Other" width="207pt" height="351pt"
+            _description="File Folder Labels">
+    <Meta category="label"/>
+    <Label-rectangle id="0" width="198pt" height="45pt" round="4.5pt" waste="0pt">
+      <Markup-margin size="4.5pt"/>
+      <Layout nx="1" ny="7" x0="4.5pt" y0="4.5pt" dx="198pt" dy="49.5pt"/>
+    </Label-rectangle>
+  </Template>
+
+
+</Glabels-templates>
