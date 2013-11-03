@@ -36,7 +36,7 @@ namespace
 namespace libglabels
 {
 
-	Units *Units::from_id( const QString &id )
+	Units *Units::fromId( const QString &id )
 	{
 		if ( id == "pt" )
 		{
@@ -136,5 +136,10 @@ namespace libglabels
 		return instance;
 	}
 
+
+	bool Units::isIdValid( QString id )
+	{
+		return ( (id == "pt") || (id == "in") || (id == "mm") || (id == "cm") || (id == "pc") || (id == "") );
+	}
 
 }

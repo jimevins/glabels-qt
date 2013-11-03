@@ -74,8 +74,7 @@ namespace libglabels
 
 	void XmlPaperParser::parseRootNode( const QDomElement &node )
 	{
-		QDomNode child = node;
-		while ( !child.isNull() )
+		for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 		{
 			if ( child.toElement().tagName() == "Paper-size" )
 			{
@@ -93,13 +92,13 @@ namespace libglabels
 
 	void XmlPaperParser::parsePaperSizeNode( const QDomElement &node )
 	{
-		QString id      = XmlUtil::getAttrString( node, "id", "" );
-		QString name    = XmlUtil::getAttrStringI18n( node, "name", "" );
+		QString id      = XmlUtil::getAttr( node, "id", "" );
+		QString name    = XmlUtil::getAttrI18n( node, "name", "" );
 
 		double  width   = XmlUtil::getAttrLength( node, "width", 0 );
 		double  height  = XmlUtil::getAttrLength( node, "height", 0 );
 
-		QString pwgSize = XmlUtil::getAttrString( node, "pwg_size", "" );
+		QString pwgSize = XmlUtil::getAttr( node, "pwg_size", "" );
 
 		Paper *paper = new Paper( id, name, width, height, pwgSize );
 		if ( paper != NULL )

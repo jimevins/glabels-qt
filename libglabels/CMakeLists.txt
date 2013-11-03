@@ -19,6 +19,7 @@ set (libglabels_sources
   Template.cpp
   Db.cpp
   XmlPaperParser.cpp
+  XmlUtil.cpp
 )
 
 set (libglabels_qobject_headers

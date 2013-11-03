@@ -34,14 +34,17 @@ include (${QT_USE_FILE})
 
 
 include_directories (
+  ${glabels_qt_SOURCE_DIR}
 )
 
 link_directories (
+  ${glabels_qt_SOURCE_DIR}/libglabels
 )
 
 add_executable (glabels-qt ${glabels_sources} ${glabels_moc_sources} ${glabels_qrc_sources})
 
 target_link_libraries (glabels-qt
+  libglabels
   ${QT_LIBRARIES}
 )
 

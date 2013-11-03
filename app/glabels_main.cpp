@@ -22,9 +22,14 @@
 #include <QApplication>
 
 #include "MainWindow.h"
+#include "libglabels/Db.h"
 
+////// TEMPORARY TESTING ////////
+#include "libglabels/XmlPaperParser.h"
+/////////////////////////////////
 
 using namespace gLabels;
+using namespace libglabels;
 
 
 int main( int argc, char **argv )
@@ -34,6 +39,13 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationName( "glabels.org" );
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-qt" );
+
+	Db::init();
+	////// TEMPORARY TESTING ////////
+	XmlPaperParser parser;
+	parser.readFile( "/usr/local/share/libglabels-3.0/templates/paper-sizes.xml" );
+	Db::printKnownPapers();
+	/////////////////////////////////
 
 	MainWindow mainWin;
 	mainWin.show();

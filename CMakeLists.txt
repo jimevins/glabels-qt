@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 
-project (glabels-qt)
+project (glabels_qt)
 
 
 set (Package_Name "glabels-qt")

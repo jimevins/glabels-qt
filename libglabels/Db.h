@@ -22,7 +22,7 @@
 #define libglabels_Db_h
 
 
-#include <QObject>
+#include <QCoreApplication>
 #include <QString>
 
 #include "Paper.h"
@@ -34,20 +34,16 @@
 namespace libglabels
 {
 
-	class Db : public QObject
+	class Db
 	{
-		Q_OBJECT
-
-
-	signals:
-		static void changed();
-
+		Q_DECLARE_TR_FUNCTIONS(Db)
 
 	private:
 		Db();
 
 
 	public:
+		static void init() { instance(); }
 		static Db *instance() { static Db *db = new Db(); return db; }
 
 		static void registerPaper( Paper *paper );
@@ -100,18 +96,18 @@ namespace libglabels
 
 
 	private:
-		static std::list<Paper *>    mPapers;
-		static std::list<QString>    mPaperIds;
-		static std::list<QString>    mPaperNames;
+		static std::list<Paper*>    mPapers;
+		static std::list<QString>   mPaperIds;
+		static std::list<QString>   mPaperNames;
 
-		static std::list<Category *> mCategories;
-		static std::list<QString>    mCategoryIds;
-		static std::list<QString>    mCategoryNames;
+		static std::list<Category*> mCategories;
+		static std::list<QString>   mCategoryIds;
+		static std::list<QString>   mCategoryNames;
 
-		static std::list<Vendor *>   mVendors;
-		static std::list<QString>    mVendorNames;
+		static std::list<Vendor*>   mVendors;
+		static std::list<QString>   mVendorNames;
 
-		static std::list<Template *> mTemplates;
+		static std::list<Template*> mTemplates;
 
 		static QString mEmpty;
 	};

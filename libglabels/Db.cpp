@@ -26,15 +26,17 @@
 namespace libglabels
 {
 
-	std::list<Paper *>    mPapers;
-	std::list<QString>    mPaperIds;
-	std::list<QString>    mPaperNames;
-	std::list<Category *> mCategories;
-	std::list<QString>    mCategoryIds;
-	std::list<QString>    mCategoryNames;
-	std::list<Vendor *>   mVendors;
-	std::list<QString>    mVendorNames;
-	std::list<Template *> mTemplates;
+	std::list<Paper*>    Db::mPapers;
+	std::list<QString>   Db::mPaperIds;
+	std::list<QString>   Db::mPaperNames;
+	std::list<Category*> Db::mCategories;
+	std::list<QString>   Db::mCategoryIds;
+	std::list<QString>   Db::mCategoryNames;
+	std::list<Vendor*>   Db::mVendors;
+	std::list<QString>   Db::mVendorNames;
+	std::list<Template*> Db::mTemplates;
+
+	QString Db::mEmpty = "";
 
 	Db::Db()
 	{
@@ -44,7 +46,7 @@ namespace libglabels
 
 	void Db::registerPaper( Paper *paper )
 	{
-		if ( lookupPaperFromId( paper->id() ) == NULL )
+		if ( !isPaperIdKnown( paper->id() ) )
 		{
 			mPapers.push_back( paper );
 			mPaperIds.push_back( paper->id() );
@@ -135,10 +137,10 @@ namespace libglabels
 
 	bool Db::isPaperIdKnown( const QString &id )
 	{
-		if ( !id.isNull() && !id.isEmpty() )
+		std::list<Paper*>::const_iterator it;
+		for ( it = mPapers.begin(); it != mPapers.end(); it++ )
 		{
-			const Paper *paper = lookupPaperFromId( id );
-			if ( paper != NULL )
+			if ( (*it)->id() == id )
 			{
 				return true;
 			}
@@ -156,7 +158,7 @@ namespace libglabels
 
 	void Db::registerCategory( Category *category )
 	{
-		if ( lookupCategoryFromId( category->id() ) == NULL )
+		if ( !isCategoryIdKnown( category->id() ) )
 		{
 			mCategories.push_back( category );
 			mCategoryIds.push_back( category->id() );
@@ -247,10 +249,10 @@ namespace libglabels
 
 	bool Db::isCategoryIdKnown( const QString &id )
 	{
-		if ( !id.isNull() && !id.isEmpty() )
+		std::list<Category*>::const_iterator it;
+		for ( it = mCategories.begin(); it != mCategories.end(); it++ )
 		{
-			const Category *category = lookupCategoryFromId( id );
-			if ( category != NULL )
+			if ( (*it)->id() == id )
 			{
 				return true;
 			}
@@ -262,7 +264,7 @@ namespace libglabels
 
 	void Db::registerVendor( Vendor *vendor )
 	{
-		if ( lookupVendorFromName( vendor->name() ) == NULL )
+		if ( !isVendorNameKnown( vendor->name() ) )
 		{
 			mVendors.push_back( vendor );
 			mVendorNames.push_back( vendor->name() );
@@ -314,10 +316,10 @@ namespace libglabels
 
 	bool Db::isVendorNameKnown( const QString &name )
 	{
-		if ( !name.isNull() && !name.isEmpty() )
+		std::list<Vendor*>::const_iterator it;
+		for ( it = mVendors.begin(); it != mVendors.end(); it++ )
 		{
-			const Vendor *vendor = lookupVendorFromName( name );
-			if ( vendor != NULL )
+			if ( (*it)->name() == name )
 			{
 				return true;
 			}
@@ -329,7 +331,7 @@ namespace libglabels
 
 	void Db::registerTemplate( Template *tmplate )
 	{
-		if ( lookupTemplateFromName( tmplate->name() ) == NULL )
+		if ( !isTemplateKnown( tmplate->brand(), tmplate->part() ) )
 		{
 			mTemplates.push_back( tmplate );
 		}
@@ -386,10 +388,10 @@ namespace libglabels
 
 	bool Db::isTemplateKnown( const QString &brand, const QString &part )
 	{
-		if ( !brand.isNull() && !brand.isEmpty() && !part.isNull() && part.isEmpty() )
+		std::list<Template*>::const_iterator it;
+		for ( it = mTemplates.begin(); it != mTemplates.end(); it++ )
 		{
-			const Template *tmplate = lookupTemplateFromBrandPart( brand, part );
-			if ( tmplate != NULL )
+			if ( ((*it)->brand() == brand) && ((*it)->part() == part) )
 			{
 				return true;
 			}
@@ -426,12 +428,13 @@ namespace libglabels
 		{
 			Paper *paper = *it;
 
-			std::cout << "paper " <<
-				"id='"    << paper->id().toStdString()   << "', " <<
-				"name='"  << paper->name().toStdString() << "', " <<
-				"width="  << paper->width()              << "pts, " <<
-				"height=" << paper->height()             << "pts" <<
-				std::endl;
+			std::cout << "paper "
+				  << "id='"      << qPrintable(paper->id())      << "', "
+				  << "name='"    << qPrintable(paper->name())    << "', "
+				  << "width="    << paper->width()               << "pts, "
+				  << "height="   << paper->height()              << "pts, "
+				  << "pwg_size=" << qPrintable(paper->pwgSize())
+				  << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -447,10 +450,10 @@ namespace libglabels
 		{
 			Category *category = *it;
 
-			std::cout << "category " <<
-				"id='"    << category->id().toStdString()   << "', " <<
-				"name='"  << category->name().toStdString() << "', " <<
-				std::endl;
+			std::cout << "category "
+				  << "id='"    << category->id().toStdString()   << "', "
+				  << "name='"  << category->name().toStdString() << "', "
+				  << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -466,10 +469,10 @@ namespace libglabels
 		{
 			Vendor *vendor = *it;
 
-			std::cout << "vendor " <<
-				"name='" << vendor->name().toStdString() << "', " <<
-				"url='"  << vendor->url().toStdString()  << "'" <<
-				std::endl;
+			std::cout << "vendor "
+				  << "name='" << vendor->name().toStdString() << "', "
+				  << "url='"  << vendor->url().toStdString()  << "'"
+				  << std::endl;
 		}
 
 		std::cout << std::endl;
@@ -485,11 +488,11 @@ namespace libglabels
 		{
 			Template *tmplate = *it;
 
-			std::cout << "template " <<
-				"brand='"       << tmplate->brand().toStdString()       << "', " <<
-				"part='"        << tmplate->part().toStdString()        << "', " <<
-				"description='" << tmplate->description().toStdString() << "'" <<
-				std::endl;
+			std::cout << "template "
+				  << "brand='"       << tmplate->brand().toStdString()       << "', "
+				  << "part='"        << tmplate->part().toStdString()        << "', "
+				  << "description='" << tmplate->description().toStdString() << "'"
+				  << std::endl;
 		}
 
 		std::cout << std::endl;

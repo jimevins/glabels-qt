@@ -23,6 +23,7 @@
 
 #include <QString>
 #include <QDomElement>
+#include <stdint.h>
 
 #include "Units.h"
 
@@ -38,16 +39,34 @@ namespace libglabels
 			mDefaultUnits = Units::point();
 		}
 
+	public:
+
 		static void init()
 		{
 			static XmlUtil *xmlUtil = new XmlUtil();
 		}
 
-	public:
+		static const Units *defaultUnits() { return mDefaultUnits; }
+		static void setDefaultUnits( Units *defaultUnits ) { mDefaultUnits = defaultUnits; }
 
-		static QString getAttrString( const QDomElement &node, const QString &name, const QString &default_val );
-		static QString getAttrStringI18n( const QDomElement &node, const QString &name, const QString &default_val );
-		static double   getAttrLength( const QDomElement &node, const QString &name, double default_val );
+		static QString  getAttr( const QDomElement &node, const QString &name, const char *default_value );
+		static QString  getAttr( const QDomElement &node, const QString &name, const QString &default_value );
+		static double   getAttr( const QDomElement &node, const QString &name, double default_value );
+		static bool     getAttr( const QDomElement &node, const QString &name, bool default_value );
+		static int      getAttr( const QDomElement &node, const QString &name, int default_value );
+		static uint32_t getAttr( const QDomElement &node, const QString &name, uint32_t default_value );
+
+		static QString  getAttrI18n( const QDomElement &node, const QString &name, const QString &default_value );
+		static double   getAttrLength( const QDomElement &node, const QString &name, double default_value );
+
+		static void     setAttr( const QDomElement &node, const QString &name, const char *value );
+		static void     setAttr( const QDomElement &node, const QString &name, const QString &value );
+		static void     setAttr( const QDomElement &node, const QString &name, double value );
+		static void     setAttr( const QDomElement &node, const QString &name, bool value );
+		static void     setAttr( const QDomElement &node, const QString &name, int value );
+		static void     setAttr( const QDomElement &node, const QString &name, uint32_t value );
+
+		static void     setAttrLength( const QDomElement &node, const QString &name, double value );
 
 	private:
 		static Units *mDefaultUnits;

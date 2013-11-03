@@ -53,7 +53,7 @@ namespace libglabels
 		inline double unitsPerPoint() const { return mUnitsPerPoint; }
 
 
-		static Units *from_id( const QString &id );
+		static Units *fromId( const QString &id );
 
 		static Units *point();
 
@@ -64,6 +64,8 @@ namespace libglabels
 		static Units *cm();
 
 		static Units *pica();
+
+		static bool isIdValid( QString id );
 
 
 	private:
