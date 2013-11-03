@@ -23,8 +23,9 @@
 
 #include <QCoreApplication>
 #include <QString>
+#include <QStringList>
+#include <QList>
 
-#include <list>
 #include <vector>
 
 #include "Units.h"
@@ -107,10 +108,10 @@ namespace libglabels
 		QString mEquivPart;
 		QString mName;
 
-		QString            mProductUrl;
-		std::list<QString> mCategoryIds;
+		QString        mProductUrl;
+		QStringList    mCategoryIds;
 
-		std::list<Frame*>  mFrames;
+		QList<Frame*>  mFrames;
 	};
 
 }

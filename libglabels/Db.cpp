@@ -32,15 +32,15 @@
 namespace libglabels
 {
 
-	std::list<Paper*>    Db::mPapers;
-	std::list<QString>   Db::mPaperIds;
-	std::list<QString>   Db::mPaperNames;
-	std::list<Category*> Db::mCategories;
-	std::list<QString>   Db::mCategoryIds;
-	std::list<QString>   Db::mCategoryNames;
-	std::list<Vendor*>   Db::mVendors;
-	std::list<QString>   Db::mVendorNames;
-	std::list<Template*> Db::mTemplates;
+	QList<Paper*>    Db::mPapers;
+	QStringList      Db::mPaperIds;
+	QStringList      Db::mPaperNames;
+	QList<Category*> Db::mCategories;
+	QStringList      Db::mCategoryIds;
+	QStringList      Db::mCategoryNames;
+	QList<Vendor*>   Db::mVendors;
+	QStringList      Db::mVendorNames;
+	QList<Template*> Db::mTemplates;
 
 	QString Db::mEmpty = "";
 
@@ -57,9 +57,9 @@ namespace libglabels
 	{
 		if ( !isPaperIdKnown( paper->id() ) )
 		{
-			mPapers.push_back( paper );
-			mPaperIds.push_back( paper->id() );
-			mPaperNames.push_back( paper->name() );
+			mPapers << paper;
+			mPaperIds << paper->id();
+			mPaperNames << paper->name();
 		}
 		else
 		{
@@ -73,15 +73,14 @@ namespace libglabels
 		if ( name.isNull() || name.isEmpty() )
 		{
 			qDebug( "NULL paper name." );
-			return mPapers.front();
+			return mPapers.first();
 		}
 
-		std::list<Paper*>::const_iterator it;
-		for ( it = mPapers.begin(); it != mPapers.end(); it++ )
+		foreach ( Paper *paper, mPapers )
 		{
-			if ( (*it)->name() == name )
+			if ( paper->name() == name )
 			{
-				return *it;
+				return paper;
 			}
 		}
 
@@ -95,15 +94,14 @@ namespace libglabels
 		if ( id.isNull() || id.isEmpty() )
 		{
 			qDebug( "NULL paper ID." );
-			return mPapers.front();
+			return mPapers.first();
 		}
 
-		std::list<Paper*>::const_iterator it;
-		for ( it = mPapers.begin(); it != mPapers.end(); it++ )
+		foreach ( Paper *paper, mPapers )
 		{
-			if ( (*it)->id() == id )
+			if ( paper->id() == id )
 			{
-				return *it;
+				return paper;
 			}
 		}
 
@@ -146,10 +144,9 @@ namespace libglabels
 
 	bool Db::isPaperIdKnown( const QString &id )
 	{
-		std::list<Paper*>::const_iterator it;
-		for ( it = mPapers.begin(); it != mPapers.end(); it++ )
+		foreach ( Paper *paper, mPapers )
 		{
-			if ( (*it)->id() == id )
+			if ( paper->id() == id )
 			{
 				return true;
 			}
@@ -169,9 +166,9 @@ namespace libglabels
 	{
 		if ( !isCategoryIdKnown( category->id() ) )
 		{
-			mCategories.push_back( category );
-			mCategoryIds.push_back( category->id() );
-			mCategoryNames.push_back( category->name() );
+			mCategories << category;
+			mCategoryIds << category->id();
+			mCategoryNames << category->name();
 		}
 		else
 		{
@@ -185,15 +182,14 @@ namespace libglabels
 		if ( name.isNull() || name.isEmpty() )
 		{
 			qDebug( "NULL category name." );
-			return mCategories.front();
+			return mCategories.first();
 		}
 
-		std::list<Category*>::const_iterator it;
-		for ( it = mCategories.begin(); it != mCategories.end(); it++ )
+		foreach ( Category *category, mCategories )
 		{
-			if ( (*it)->name() == name )
+			if ( category->name() == name )
 			{
-				return *it;
+				return category;
 			}
 		}
 
@@ -207,15 +203,14 @@ namespace libglabels
 		if ( id.isNull() || id.isEmpty() )
 		{
 			qDebug( "NULL category ID." );
-			return mCategories.front();
+			return mCategories.first();
 		}
 
-		std::list<Category*>::const_iterator it;
-		for ( it = mCategories.begin(); it != mCategories.end(); it++ )
+		foreach ( Category *category, mCategories )
 		{
-			if ( (*it)->id() == id )
+			if ( category->id() == id )
 			{
-				return *it;
+				return category;
 			}
 		}
 
@@ -258,10 +253,9 @@ namespace libglabels
 
 	bool Db::isCategoryIdKnown( const QString &id )
 	{
-		std::list<Category*>::const_iterator it;
-		for ( it = mCategories.begin(); it != mCategories.end(); it++ )
+		foreach ( Category *category, mCategories )
 		{
-			if ( (*it)->id() == id )
+			if ( category->id() == id )
 			{
 				return true;
 			}
@@ -275,8 +269,8 @@ namespace libglabels
 	{
 		if ( !isVendorNameKnown( vendor->name() ) )
 		{
-			mVendors.push_back( vendor );
-			mVendorNames.push_back( vendor->name() );
+			mVendors << vendor;
+			mVendorNames << vendor->name();
 		}
 		else
 		{
@@ -290,15 +284,14 @@ namespace libglabels
 		if ( name.isNull() || name.isEmpty() )
 		{
 			qDebug( "NULL vendor name." );
-			return mVendors.front();
+			return mVendors.first();
 		}
 
-		std::list<Vendor*>::const_iterator it;
-		for ( it = mVendors.begin(); it != mVendors.end(); it++ )
+		foreach ( Vendor *vendor, mVendors )
 		{
-			if ( (*it)->name() == name )
+			if ( vendor->name() == name )
 			{
-				return *it;
+				return vendor;
 			}
 		}
 
@@ -325,10 +318,9 @@ namespace libglabels
 
 	bool Db::isVendorNameKnown( const QString &name )
 	{
-		std::list<Vendor*>::const_iterator it;
-		for ( it = mVendors.begin(); it != mVendors.end(); it++ )
+		foreach ( Vendor *vendor, mVendors )
 		{
-			if ( (*it)->name() == name )
+			if ( vendor->name() == name )
 			{
 				return true;
 			}
@@ -342,7 +334,7 @@ namespace libglabels
 	{
 		if ( !isTemplateKnown( tmplate->brand(), tmplate->part() ) )
 		{
-			mTemplates.push_back( tmplate );
+			mTemplates << tmplate;
 		}
 		else
 		{
@@ -356,15 +348,14 @@ namespace libglabels
 		if ( name.isNull() || name.isEmpty() )
 		{
 			qDebug( "NULL template name." );
-			return mTemplates.front();
+			return mTemplates.first();
 		}
 
-		std::list<Template*>::const_iterator it;
-		for ( it = mTemplates.begin(); it != mTemplates.end(); it++ )
+		foreach ( Template *tmplate, mTemplates )
 		{
-			if ( (*it)->name() == name )
+			if ( tmplate->name() == name )
 			{
-				return *it;
+				return tmplate;
 			}
 		}
 
@@ -378,15 +369,14 @@ namespace libglabels
 		if ( brand.isNull() || brand.isEmpty() || part.isNull() || part.isEmpty() )
 		{
 			qDebug( "NULL template brand and/or part." );
-			return mTemplates.front();
+			return mTemplates.first();
 		}
 
-		std::list<Template*>::const_iterator it;
-		for ( it = mTemplates.begin(); it != mTemplates.end(); it++ )
+		foreach ( Template *tmplate, mTemplates )
 		{
-			if ( ((*it)->brand() == brand) && ((*it)->part() == part) )
+			if ( (tmplate->brand() == brand) && (tmplate->part() == part) )
 			{
-				return *it;
+				return tmplate;
 			}
 		}
 
@@ -397,10 +387,9 @@ namespace libglabels
 
 	bool Db::isTemplateKnown( const QString &brand, const QString &part )
 	{
-		std::list<Template*>::const_iterator it;
-		for ( it = mTemplates.begin(); it != mTemplates.end(); it++ )
+		foreach ( Template *tmplate, mTemplates )
 		{
-			if ( ((*it)->brand() == brand) && ((*it)->part() == part) )
+			if ( (tmplate->brand() == brand) && (tmplate->part() == part) )
 			{
 				return true;
 			}
@@ -432,11 +421,8 @@ namespace libglabels
 	{
 		std::cout << "KNOWN PAPERS:" << std::endl;
 
-		std::list<Paper*>::const_iterator it;
-		for ( it = mPapers.begin(); it != mPapers.end(); it++ )
+		foreach ( Paper *paper, mPapers )
 		{
-			Paper *paper = *it;
-
 			std::cout << "paper "
 				  << "id='"      << qPrintable(paper->id())      << "', "
 				  << "name='"    << qPrintable(paper->name())    << "', "
@@ -454,11 +440,8 @@ namespace libglabels
 	{
 		std::cout << "KNOWN CATEGORIES:" << std::endl;
 
-		std::list<Category*>::const_iterator it;
-		for ( it = mCategories.begin(); it != mCategories.end(); it++ )
+		foreach ( Category *category, mCategories )
 		{
-			Category *category = *it;
-
 			std::cout << "category "
 				  << "id='"    << category->id().toStdString()   << "', "
 				  << "name='"  << category->name().toStdString() << "', "
@@ -473,11 +456,8 @@ namespace libglabels
 	{
 		std::cout << "KNOWN VENDORS:" << std::endl;
 
-		std::list<Vendor*>::const_iterator it;
-		for ( it = mVendors.begin(); it != mVendors.end(); it++ )
+		foreach ( Vendor *vendor, mVendors )
 		{
-			Vendor *vendor = *it;
-
 			std::cout << "vendor "
 				  << "name='" << vendor->name().toStdString() << "', "
 				  << "url='"  << vendor->url().toStdString()  << "'"
@@ -492,11 +472,8 @@ namespace libglabels
 	{
 		std::cout << "KNOWN TEMPLATES:" << std::endl;
 
-		std::list<Template*>::const_iterator it;
-		for ( it = mTemplates.begin(); it != mTemplates.end(); it++ )
+		foreach ( Template *tmplate, mTemplates )
 		{
-			Template *tmplate = *it;
-
 			std::cout << "template "
 				  << "brand='"       << tmplate->brand().toStdString()       << "', "
 				  << "part='"        << tmplate->part().toStdString()        << "', "

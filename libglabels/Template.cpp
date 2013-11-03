@@ -36,22 +36,14 @@ namespace libglabels
 		mName        = other.mName;
 		mProductUrl  = other.mProductUrl;
 
+		foreach ( Frame *frame, other.mFrames )
 		{
-			std::list<Frame*>::const_iterator it;
-			for ( it = other.mFrames.begin(); it != other.mFrames.end(); it++ )
-			{
-				Frame *frame = (*it)->dup();
-
-				addFrame( frame );
-			}
+			addFrame( frame );
 		}
 
+		foreach ( QString categoryId, other.mCategoryIds )
 		{
-			std::list<QString>::const_iterator it;
-			for ( it = other.mCategoryIds.begin(); it != other.mCategoryIds.end(); it++ )
-			{
-				addCategory( *it );
-			}
+			addCategory( categoryId );
 		}
 	}
 
@@ -76,13 +68,13 @@ namespace libglabels
 
 	void Template::addCategory( const QString &categoryId )
 	{
-		mCategoryIds.push_back( categoryId );
+		mCategoryIds << categoryId;
 	}
 
 
 	void Template::addFrame( Frame *frame )
 	{
-		mFrames.push_back( frame );
+		mFrames << frame;
 	}
 
 
@@ -94,11 +86,9 @@ namespace libglabels
 
 	bool Template::hasCategory( const QString &categoryId ) const
 	{
-		std::list<QString>::const_iterator it;
-
-		for ( it = mCategoryIds.begin(); it != mCategoryIds.end(); it++ )
+		foreach ( QString testCategoryId, mCategoryIds )
 		{
-			if ( categoryId == *it )
+			if ( categoryId == testCategoryId )
 			{
 				return true;
 			}
@@ -119,22 +109,20 @@ namespace libglabels
 		}
 
 		// Are frames similar
-		Frame *frame1 = *(mFrames.begin());
-		Frame *frame2 = *(other.mFrames.begin());
+		Frame *frame1 = mFrames.first();
+		Frame *frame2 = other.mFrames.first();
 		if ( !frame1->isSimilarTo( frame2 ) )
 		{
 			return false;
 		}
 
 		// Are they layed out similarly?
-		std::list<Layout*>::const_iterator it1;
-		std::list<Layout*>::const_iterator it2;
-		for ( it1 = frame1->layouts().begin(); it1 != frame1->layouts().end(); it1++ )
+		foreach ( Layout *layout1, frame1->layouts() )
 		{
 			bool matchFound = false;
-			for ( it2 = frame2->layouts().begin(); it2 != frame2->layouts().end(); it2++ )
+			foreach ( Layout *layout2, frame2->layouts() )
 			{
-				if ( (*it1)->isSimilarTo(*it2) )
+				if ( layout1->isSimilarTo(layout2) )
 				{
 					matchFound = true;
 					break;

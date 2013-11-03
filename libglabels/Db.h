@@ -25,6 +25,7 @@
 #include <QCoreApplication>
 #include <QString>
 #include <QDir>
+#include <QList>
 
 #include "Paper.h"
 #include "Category.h"
@@ -99,18 +100,18 @@ namespace libglabels
 
 
 	private:
-		static std::list<Paper*>    mPapers;
-		static std::list<QString>   mPaperIds;
-		static std::list<QString>   mPaperNames;
+		static QList<Paper*>    mPapers;
+		static QStringList      mPaperIds;
+		static QStringList      mPaperNames;
 
-		static std::list<Category*> mCategories;
-		static std::list<QString>   mCategoryIds;
-		static std::list<QString>   mCategoryNames;
+		static QList<Category*> mCategories;
+		static QStringList      mCategoryIds;
+		static QStringList      mCategoryNames;
 
-		static std::list<Vendor*>   mVendors;
-		static std::list<QString>   mVendorNames;
+		static QList<Vendor*>   mVendors;
+		static QStringList      mVendorNames;
 
-		static std::list<Template*> mTemplates;
+		static QList<Template*> mTemplates;
 
 		static QString mEmpty;
 	};

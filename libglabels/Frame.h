@@ -23,8 +23,8 @@
 
 #include <QCoreApplication>
 #include <QString>
+#include <QList>
 
-#include <list>
 #include <vector>
 
 #include "Units.h"
@@ -53,8 +53,8 @@ namespace libglabels
 		inline const QString &id() const { return mId; }
 		inline int nLabels() const { return mNLabels; }
 		inline const QString &layoutDescription() { return mLayoutDescription; }
-		inline const std::list<Layout*> &layouts() { return mLayouts; }
-		inline const std::list<Markup*> &markups() { return mMarkups; }
+		inline const QList<Layout*> &layouts() { return mLayouts; }
+		inline const QList<Markup*> &markups() { return mMarkups; }
 
 		std::vector<Point> getOrigins() const;
 
@@ -73,8 +73,8 @@ namespace libglabels
 		int     mNLabels;
 		QString mLayoutDescription;
 
-		std::list<Layout*> mLayouts;
-		std::list<Markup*> mMarkups;
+		QList<Layout*> mLayouts;
+		QList<Markup*> mMarkups;
 
 	};
 

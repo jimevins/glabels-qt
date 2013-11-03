@@ -29,24 +29,14 @@ namespace libglabels
 		mId = other.mId;
 		mNLabels = 0;
 
+		foreach ( Layout *layout, mLayouts )
 		{
-			std::list<Layout*>::const_iterator it;
-
-			for ( it = other.mLayouts.begin(); it != other.mLayouts.end(); it++ )
-			{
-				Layout *layout = (*it)->dup();
-				addLayout( layout );
-			}
+			addLayout( layout->dup() );
 		}
 		
+		foreach ( Markup *markup, mMarkups )
 		{
-			std::list<Markup*>::const_iterator it;
-
-			for ( it = other.mMarkups.begin(); it != other.mMarkups.end(); it++ )
-			{
-				Markup *markup = (*it)->dup();
-				addMarkup( markup );
-			}
+			addMarkup( markup->dup() );
 		}
 	}
 
@@ -55,16 +45,13 @@ namespace libglabels
 	{
 		std::vector<Point> origins( nLabels() );
 
-		std::list<Layout*>::const_iterator it;
-		for ( it = mLayouts.begin(); it != mLayouts.end(); it++ )
+		foreach ( Layout *layout, mLayouts )
 		{
-			Layout *lo = *it;
-
-			for ( int iy = 0; iy < lo->ny(); iy++ )
+			for ( int iy = 0; iy < layout->ny(); iy++ )
 			{
-				for ( int ix = 0; ix < lo->nx(); ix++ )
+				for ( int ix = 0; ix < layout->nx(); ix++ )
 				{
-					origins.push_back( Point( ix*lo->dx() + lo->x0(), iy*lo->dy() + lo->y0() ) );
+					origins.push_back( Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() ) );
 				}
 			}
 		}
@@ -75,7 +62,7 @@ namespace libglabels
 
 	void Frame::addLayout( Layout *layout )
 	{
-		mLayouts.push_back( layout );
+		mLayouts << layout;
 
 		// Update total number of labels
 		mNLabels += layout->nx() * layout->ny();
@@ -101,7 +88,7 @@ namespace libglabels
 
 	void Frame::addMarkup( Markup *markup )
 	{
-		mMarkups.push_back( markup );
+		mMarkups << markup;
 	}
 
 }
