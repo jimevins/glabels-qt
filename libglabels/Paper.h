@@ -39,9 +39,9 @@ namespace libglabels
 		{
 		}
 
-		inline QString id() const { return mId; }
+		inline const QString &id() const { return mId; }
 
-		inline QString name() const { return mName; }
+		inline const QString &name() const { return mName; }
 
 		/* Width (in points) */
 		inline double width() const { return mWidth; }

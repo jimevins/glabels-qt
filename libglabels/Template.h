@@ -51,8 +51,10 @@ namespace libglabels
 			  mDescription(description),
 			  mPaperId(paperId),
 			  mPageWidth(pageWidth),
-			  mPageHeight(pageHeight)
+			  mPageHeight(pageHeight),
+			  mName("")
 		{
+			mName.append( brand ).append( " " ).append( part );
 		}
 
 		Template( const Template &other );
@@ -82,6 +84,8 @@ namespace libglabels
 
 		inline const QString &productUrl() const { return mProductUrl; }
 		inline void setProductUrl( const QString &value ) { mProductUrl = value; }
+
+		inline const QString &name() const { return mName; }
 
 		void addCategory( const QString &categoryId );
 		void addFrame( Frame *frame );

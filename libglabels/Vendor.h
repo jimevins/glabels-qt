@@ -35,9 +35,9 @@ namespace libglabels
 		{
 		}
 
-		inline QString name() const { return mName; }
+		inline const QString &name() const { return mName; }
 
-		inline QString url() const { return mUrl; }
+		inline const QString &url() const { return mUrl; }
 
 	private:
 		QString mName;

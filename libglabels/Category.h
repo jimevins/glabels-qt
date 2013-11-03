@@ -31,17 +31,16 @@ namespace libglabels
 	class Category
 	{
 	public:
-		Category( const QString &id, const QString &value ) : mId(id), mValue(value)
+		Category( const QString &id, const QString &name ) : mId(id), mName(name)
 		{
 		}
 
-		inline QString id() const { return mId; }
-
-		inline QString value() const { return mValue; }
+		inline const QString &id() const { return mId; }
+		inline const QString &name() const { return mName; }
 
 	private:
 		QString mId;
-		QString mValue;
+		QString mName;
 	};
 
 }
