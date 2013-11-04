@@ -20,6 +20,10 @@
 
 #include "Template.h"
 
+#include <iostream>
+
+#include "Db.h"
+
 
 namespace libglabels
 {
@@ -49,7 +53,7 @@ namespace libglabels
 
 
 	// Generic full page template
-	Template *Template::full_page( const QString &paperId )
+	Template *Template::fullPage( const QString &paperId )
 	{
 		// TODO
 		return NULL;
@@ -57,12 +61,28 @@ namespace libglabels
 
 
 	// From equivalent part number
-	Template *Template::from_equiv( const QString &brand,
-					const QString &part,
-					const QString &equiv_part )
+	Template *Template::fromEquiv( const QString &brand,
+				       const QString &part,
+				       const QString &equivPart )
 	{
-		// TODO
-		return NULL;
+		const Template *other = Db::lookupTemplateFromBrandPart( brand, equivPart );
+		if ( other != NULL )
+		{
+			Template *tmplate = other->dup();
+
+			tmplate->mPart      = part;
+			tmplate->mEquivPart = equivPart;
+
+			return tmplate;
+		}
+		else
+		{
+			std::cerr << "Error: cannot create equivalent template for "
+				  << qPrintable(brand) << ", " << qPrintable(equivPart)
+				  << ". Forward references not supported."
+				  << std::endl;
+			return NULL;
+		}
 	}
 
 

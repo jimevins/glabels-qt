@@ -23,6 +23,7 @@ set (libglabels_sources
   XmlCategoryParser.cpp
   XmlPaperParser.cpp
   XmlVendorParser.cpp
+  XmlTemplateParser.cpp
   XmlUtil.cpp
 )
 

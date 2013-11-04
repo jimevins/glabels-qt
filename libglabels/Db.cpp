@@ -27,6 +27,7 @@
 #include "XmlPaperParser.h"
 #include "XmlCategoryParser.h"
 #include "XmlVendorParser.h"
+#include "XmlTemplateParser.h"
 
 
 namespace libglabels
@@ -576,7 +577,15 @@ namespace libglabels
 
 	void Db::readTemplatesFromDir( const QDir &dir )
 	{
-		// TODO
+		QStringList filters;
+		filters << "*-templates.xml" << "*.template";
+
+		XmlTemplateParser parser;
+
+		foreach ( QString fileName, dir.entryList( filters, QDir::Files ) )
+		{
+			parser.readFile( dir.absoluteFilePath( fileName ) );
+		}
 	}
 
 }

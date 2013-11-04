@@ -64,12 +64,12 @@ namespace libglabels
 
 
 		// Generic full page template
-		static Template *full_page( const QString &paperId );
+		static Template *fullPage( const QString &paperId );
 
 		// From equivalent part number
-		static Template *from_equiv( const QString &brand,
-					     const QString &part,
-					     const QString &equiv_part );
+		static Template *fromEquiv( const QString &brand,
+					    const QString &part,
+					    const QString &equivPart );
 
 
 		inline const QString &brand() const { return mBrand; }
