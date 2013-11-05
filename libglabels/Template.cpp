@@ -23,6 +23,9 @@
 #include <iostream>
 
 #include "Db.h"
+#include "privateConstants.h"
+
+using namespace libglabels::Constants;
 
 
 namespace libglabels
@@ -95,6 +98,12 @@ namespace libglabels
 	void Template::addFrame( Frame *frame )
 	{
 		mFrames << frame;
+	}
+
+
+	void Template::initPreview()
+	{
+		mPreview = MiniPreviewPixmap( this, PREVIEW_PIXMAP_SIZE, PREVIEW_PIXMAP_SIZE );
 	}
 
 

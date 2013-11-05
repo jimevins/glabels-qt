@@ -35,10 +35,11 @@ namespace libglabels
 			    QString id = "0" )
 			: mR(r), mWaste(waste), Frame(id)
 		{
+			mPath.addEllipse( 0, 0, 2*mR, 2*mR );
 		}
 
 		FrameRound( const FrameRound &other )
-			: mR(other.mR), mWaste(other.mWaste), Frame(other)
+			: mR(other.mR), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
 		{
 		}
 
@@ -53,12 +54,17 @@ namespace libglabels
 		const QString &sizeDescription( Units *units );
 		bool isSimilarTo( Frame *other ) const;
 
+		const QPainterPath &path() const { return mPath; }
+
 
 	private:
 		double mR;
 		double mWaste;
 
 		QString mSizeDescription;
+
+		QPainterPath mPath;
+
 	};
 
 }

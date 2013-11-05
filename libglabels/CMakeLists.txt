@@ -25,6 +25,7 @@ set (libglabels_sources
   XmlVendorParser.cpp
   XmlTemplateParser.cpp
   XmlUtil.cpp
+  MiniPreviewPixmap.cpp
 )
 
 set (libglabels_qobject_headers

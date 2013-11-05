@@ -66,6 +66,5 @@ namespace libglabels
 		return false;
 	}
 
-
 }
 

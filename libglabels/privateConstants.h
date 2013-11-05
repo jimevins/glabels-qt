@@ -33,6 +33,7 @@ namespace libglabels
 
 	        const double EPSILON = 0.5;  /* Allowed error when comparing dimensions. (0.5pts ~= .007in ~= .2mm) */
 
+		const int PREVIEW_PIXMAP_SIZE = 72;
 	}
 
 }

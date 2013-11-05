@@ -24,8 +24,8 @@
 #include <QCoreApplication>
 #include <QString>
 #include <QList>
-
-#include <vector>
+#include <QPainterPath>
+#include <QVector>
 
 #include "Units.h"
 #include "Point.h"
@@ -56,7 +56,7 @@ namespace libglabels
 		inline const QList<Layout*> &layouts() { return mLayouts; }
 		inline const QList<Markup*> &markups() { return mMarkups; }
 
-		std::vector<Point> getOrigins() const;
+		QVector<Point> getOrigins() const;
 
 		void addLayout( Layout *layout );
 		void addMarkup( Markup *markup );
@@ -67,6 +67,8 @@ namespace libglabels
 		virtual const QString &sizeDescription( Units *units ) = 0;
 		virtual bool isSimilarTo( Frame *other ) const = 0;
 
+		virtual const QPainterPath &path() const = 0;
+
 
 	private:
 		QString mId;
@@ -75,7 +77,6 @@ namespace libglabels
 
 		QList<Layout*> mLayouts;
 		QList<Markup*> mMarkups;
-
 	};
 
 }

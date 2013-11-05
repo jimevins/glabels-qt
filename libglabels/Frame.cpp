@@ -41,9 +41,9 @@ namespace libglabels
 	}
 
 
-	std::vector<Point> Frame::getOrigins() const
+	QVector<Point> Frame::getOrigins() const
 	{
-		std::vector<Point> origins( nLabels() );
+		QVector<Point> origins( nLabels() );
 
 		foreach ( Layout *layout, mLayouts )
 		{
@@ -51,12 +51,14 @@ namespace libglabels
 			{
 				for ( int ix = 0; ix < layout->nx(); ix++ )
 				{
-					origins.push_back( Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() ) );
+					origins << Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() );
 				}
 			}
 		}
 
-		std::sort( origins.begin(), origins.end(), Point::compare );
+		qStableSort( origins.begin(), origins.end() );
+
+		return origins;
 	}
 
 

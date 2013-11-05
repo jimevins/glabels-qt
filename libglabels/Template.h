@@ -31,6 +31,7 @@
 #include "Units.h"
 #include "Point.h"
 #include "Frame.h"
+#include "MiniPreviewPixmap.h"
 
 
 namespace libglabels
@@ -91,6 +92,11 @@ namespace libglabels
 		void addCategory( const QString &categoryId );
 		void addFrame( Frame *frame );
 
+		void initPreview();
+		inline const MiniPreviewPixmap &preview() const { return mPreview; }
+
+		inline const QList<Frame*> &frames() const { return mFrames; }
+
 		bool operator==( const Template &other ) const;
 
 		bool hasCategory( const QString &categoryId ) const;
@@ -112,6 +118,8 @@ namespace libglabels
 		QStringList    mCategoryIds;
 
 		QList<Frame*>  mFrames;
+
+		MiniPreviewPixmap mPreview;
 	};
 
 }

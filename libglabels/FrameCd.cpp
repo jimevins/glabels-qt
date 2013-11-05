@@ -67,5 +67,25 @@ namespace libglabels
 		return false;
 	}
 
+
+	void FrameCd::initPath()
+	{
+		double xc = w()/2;
+		double yc = h()/2;
+
+		// Outer path (may be clipped in the case business card type CD)
+		double theta1 = acos( w() / (2*mR1) ) * 180/M_PI;
+		double theta2 = asin( h() / (2*mR1) ) * 180/M_PI;
+
+		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1, theta2 );
+		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, 180-theta1 );
+		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, 180+theta2 );
+		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, 360-theta1 );
+		mPath.closeSubpath();
+
+		// Inner path (hole)
+		mPath.addEllipse( xc-mR2, yc-mR2, 2*mR2, 2*mR2 );
+	}
+
 }
 

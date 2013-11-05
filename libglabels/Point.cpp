@@ -24,31 +24,17 @@
 namespace libglabels
 {
 
-	int Point::compare( const Point &a, const Point &b )
+	bool Point::operator<( const Point &other ) const
 	{
-		if ( a.mY < b.mY )
+		if ( mY < other.mY )
 		{
-			return -1;
+			return true;
 		}
-		else if ( a.mY > b.mY )
+		else if ( mY == other.mY )
 		{
-			return 1;
+			return mX < other.mX;
 		}
-		else
-		{
-			if ( a.mX < b.mX )
-			{
-				return -1;
-			}
-			else if ( a.mX > b.mX )
-			{
-				return 1;
-			}
-			else
-			{
-				return 0; /* hopefully 2 label frames won't have the same origin. */
-			}
-		}
+		return false;
 	}
 
 }

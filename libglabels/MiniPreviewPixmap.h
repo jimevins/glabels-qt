@@ -1,4 +1,4 @@
-/*  Point.h
+/*  MiniPreviewPixmap.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,35 +18,40 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Point_h
-#define libglabels_Point_h
+#ifndef libglabels_MiniPreviewPixmap_h
+#define libglabels_MiniPreviewPixmap_h
+
+
+#include <QPixmap>
+#include <QPainter>
 
 
 namespace libglabels
 {
+	class Template;  // Forward reference
+	class Frame;     // Forward reference
 
-	class Point
+
+	class MiniPreviewPixmap : public QPixmap
 	{
 	public:
-		Point() : mX(0), mY(0)
+		MiniPreviewPixmap()
 		{
 		}
 
-		Point( double x, double y ) : mX(x), mY(y)
+		MiniPreviewPixmap( const Template *tmplate, int width, int height )
+			: QPixmap( width, height )
 		{
+			draw( tmplate, width, height );
 		}
-
-		inline double x() const { return mX; }
-		inline double y() const { return mY; }
-
-		bool operator<( const Point &other ) const;
-
 
 	private:
-		double  mX;
-		double  mY;
+		void draw( const Template *tmplate, int width, int height );
+		void drawPaper( QPainter &painter, const Template *tmplate, double scale );
+		void drawLabelOutlines( QPainter &painter, const Template *tmplate, double scale );
+		void drawLabelOutline( QPainter &painter, const Frame *frame, double x0, double y0 );
 	};
 
 }
 
-#endif // libglabels_Point_h
+#endif // libglabels_MiniPreviewPixmap_h

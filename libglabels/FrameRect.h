@@ -38,11 +38,12 @@ namespace libglabels
 			   QString id = "0" )
 			: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
 		{
+			mPath.addRoundedRect( 0, 0, mW, mH, mR, mR );
 		}
 
 		FrameRect( const FrameRect &other )
 			: mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste), mYWaste(other.mYWaste),
-			  Frame(other)
+			  mPath(other.mPath), Frame(other)
 		{
 		}
 
@@ -58,6 +59,8 @@ namespace libglabels
 		const QString &sizeDescription( Units *units );
 		bool isSimilarTo( Frame *other ) const;
 
+		const QPainterPath &path() const { return mPath; }
+
 
 	private:
 		double mW;
@@ -67,6 +70,8 @@ namespace libglabels
 		double mYWaste;
 
 		QString mSizeDescription;
+
+		QPainterPath mPath;
 
 	};
 
