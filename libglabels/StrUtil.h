@@ -32,6 +32,8 @@ namespace libglabels
 
 		QString &formatFraction( double x );
 
+		int comparePartNames( const QString &s1, const QString &s2 );
+
 	}
 
 }

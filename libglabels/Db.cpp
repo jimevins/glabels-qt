@@ -24,10 +24,20 @@
 #include <iostream>
 
 #include "Config.h"
+#include "StrUtil.h"
 #include "XmlPaperParser.h"
 #include "XmlCategoryParser.h"
 #include "XmlVendorParser.h"
 #include "XmlTemplateParser.h"
+
+
+namespace
+{
+	bool partNameLessThan( const libglabels::Template *a, const libglabels::Template *b )
+	{
+		return libglabels::StrUtil::comparePartNames( a->name(), b->name() ) < 0;
+	}
+}
 
 
 namespace libglabels
@@ -573,6 +583,8 @@ namespace libglabels
 		readTemplatesFromDir( systemTemplatesDir() );
 
 		// TODO: Read user directories
+
+		qStableSort( mTemplates.begin(), mTemplates.end(), partNameLessThan );
 	}
 
 

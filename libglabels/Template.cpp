@@ -73,6 +73,9 @@ namespace libglabels
 			tmplate->mPart      = part;
 			tmplate->mEquivPart = equivPart;
 
+			tmplate->mName = "";
+			tmplate->mName.append( brand ).append( " " ).append( part );
+
 			return tmplate;
 		}
 		else

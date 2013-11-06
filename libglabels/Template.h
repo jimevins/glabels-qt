@@ -106,6 +106,7 @@ namespace libglabels
 		bool hasCategory( const QString &categoryId ) const;
 		bool isSimilarTo( const Template &other ) const;
 
+
 	private:
 		QString mBrand;
 		QString mPart;
