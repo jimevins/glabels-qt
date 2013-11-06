@@ -45,13 +45,14 @@ namespace libglabels
 	{
 		QVector<Point> origins( nLabels() );
 
+		int i = 0;
 		foreach ( Layout *layout, mLayouts )
 		{
 			for ( int iy = 0; iy < layout->ny(); iy++ )
 			{
 				for ( int ix = 0; ix < layout->nx(); ix++ )
 				{
-					origins << Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() );
+					origins[i++] = Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() );
 				}
 			}
 		}

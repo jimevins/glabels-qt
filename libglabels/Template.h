@@ -37,11 +37,15 @@
 namespace libglabels
 {
 
+	const int TEMPLATE_PREVIEW_SIZE = 80;
+
+
 	class Template
 	{
 		Q_DECLARE_TR_FUNCTIONS(Template)
 
 	public:
+
 		Template( const QString &brand,
 			  const QString &part,
 			  const QString &description,

@@ -1,4 +1,4 @@
-/*  privateConstants.h
+/*  TemplatePicker.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,22 +18,34 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_privateConstants_h
-#define libglabels_privateConstants_h
+#ifndef glabels_TemplatePicker_h
+#define glabels_TemplatePicker_h
+
+#include <QListWidget>
+
+#include <QList>
+
+#include "libglabels/Template.h"
 
 
-#include <QString>
-
-
-namespace libglabels
+namespace gLabels
 {
 
-	namespace Constants
+	class TemplatePicker : public QListWidget
 	{
+		Q_OBJECT
 
-	        const double EPSILON = 0.5;  /* Allowed error when comparing dimensions. (0.5pts ~= .007in ~= .2mm) */
-	}
+	public:
+		TemplatePicker( QWidget *parent = 0 );
+
+		void setTemplates( const QList <libglabels::Template*> &tmplates );
+
+
+	private:
+
+
+	};
 
 }
 
-#endif // libglabels_privateConstants_h
+#endif // glabels_TemplatePicker_h

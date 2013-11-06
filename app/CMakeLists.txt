@@ -13,6 +13,7 @@ set (glabels_sources
   MainWindow.cpp
   MergeField.cpp
   MergeRecord.cpp
+  TemplatePicker.cpp
   TextNode.cpp
 )
 
@@ -20,6 +21,7 @@ set (glabels_qobject_headers
   LabelModel.h
   LabelModelItem.h
   MainWindow.h
+  TemplatePicker.h
 )
 
 set (glabels_resource_files

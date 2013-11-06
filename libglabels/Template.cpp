@@ -23,9 +23,6 @@
 #include <iostream>
 
 #include "Db.h"
-#include "privateConstants.h"
-
-using namespace libglabels::Constants;
 
 
 namespace libglabels
@@ -103,7 +100,7 @@ namespace libglabels
 
 	void Template::initPreview()
 	{
-		mPreview = MiniPreviewPixmap( this, PREVIEW_PIXMAP_SIZE, PREVIEW_PIXMAP_SIZE );
+		mPreview = MiniPreviewPixmap( this, TEMPLATE_PREVIEW_SIZE, TEMPLATE_PREVIEW_SIZE );
 	}
 
 

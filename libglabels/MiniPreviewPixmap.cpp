@@ -40,10 +40,12 @@ namespace libglabels
 
 	void MiniPreviewPixmap::draw( const Template *tmplate, int width, int height )
 	{
+		fill( Qt::transparent );
+
 		QPainter painter( this );
 
 		painter.setBackgroundMode( Qt::TransparentMode );
-		painter.setRenderHint( QPainter::Antialiasing );
+		painter.setRenderHint( QPainter::Antialiasing, true );
 
 		double w = width - 1;
 		double h = height - 1;

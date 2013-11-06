@@ -43,10 +43,24 @@ namespace libglabels
 	private:
 		Db();
 
-
 	public:
 		static void init() { instance(); }
 		static Db *instance() { static Db *db = new Db(); return db; }
+
+
+		static const QList<Paper*>    &papers() { return mPapers; }
+		static const QStringList      &paperIds() { return mPaperIds; }
+		static const QStringList      &paperNames() { return mPaperNames; }
+
+		static const QList<Category*> &categories() { return mCategories; }
+		static const QStringList      &categoryIds() { return mCategoryIds; }
+		static const QStringList      &categoryNames() { return mCategoryNames; }
+
+		static const QList<Vendor*>   &vendors() { return mVendors; }
+		static const QStringList      &vendorNames() { return mVendorNames; }
+
+		static const QList<Template*> &templates() { return mTemplates; }
+
 
 		static void registerPaper( Paper *paper );
 		static const Paper *lookupPaperFromName( const QString &name );

@@ -28,15 +28,26 @@
 
 #include "Icons.h"
 #include "Help.h"
-
+///// TEMPORARY TESTING /////
+#include "TemplatePicker.h"
+#include "libglabels/Db.h"
+/////////////////////////////
 
 namespace gLabels
 {
 
 	MainWindow::MainWindow()
 	{
+/////////////// TEMPORARY TESTING ///////////////
+#if 0
 		QLabel *tmp = new QLabel( "Coming Soon..." );
+#else
+		TemplatePicker *tmp = new TemplatePicker();
+		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
+		tmp->setTemplates( tmplates );
+#endif
 		setCentralWidget( tmp );
+/////////////////////////////////////////////////
 
 		createActions();
 		createMenus();
