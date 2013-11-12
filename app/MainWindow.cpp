@@ -27,11 +27,8 @@
 #include <iostream>
 
 #include "Icons.h"
+#include "File.h"
 #include "Help.h"
-///// TEMPORARY TESTING /////
-#include "TemplatePicker.h"
-#include "libglabels/Db.h"
-/////////////////////////////
 
 namespace gLabels
 {
@@ -39,12 +36,8 @@ namespace gLabels
 	MainWindow::MainWindow()
 	{
 /////////////// TEMPORARY TESTING ///////////////
-#if 0
+#if 1
 		QLabel *tmp = new QLabel( "Coming Soon..." );
-#else
-		TemplatePicker *tmp = new TemplatePicker();
-		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
-		tmp->setTemplates( tmplates );
 #endif
 		setCentralWidget( tmp );
 /////////////////////////////////////////////////
@@ -645,7 +638,7 @@ namespace gLabels
 
 	void MainWindow::fileNew()
 	{
-		std::cout << "ACTION: file->New" << std::endl;
+		File::newLabel( this );
 	}
 
 
