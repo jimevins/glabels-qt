@@ -1,4 +1,4 @@
-/*  NewLabelDialog.h
+/*  TemplatePickerItem.cpp
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,27 +18,25 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_NewLabelDialog_h
-#define glabels_NewLabelDialog_h
+#include "TemplatePickerItem.h"
 
-#include "ui_NewLabelDialog.h"
+#include <QListWidgetItem>
+#include <QIcon>
+#include <QHBoxLayout>
 
 
 namespace gLabels
 {
 
-	class NewLabelDialog : public QDialog, public Ui_NewLabelDialog
+	TemplatePickerItem::TemplatePickerItem( libglabels::Template *tmplate,
+						QListWidget          *parent = 0 )
+		: QListWidgetItem(parent)
 	{
-		Q_OBJECT
+		mTmplate = tmplate;
 
-	public:
-		NewLabelDialog( QWidget *parent );
-
-	private slots:
-		void searchEntryTextChanged( const QString &text );
-
-	};
+		setIcon( QIcon(tmplate->preview()) );
+		setText( tmplate->name() );
+	}
 
 }
 
-#endif // glabels_NewLabelDialog_h

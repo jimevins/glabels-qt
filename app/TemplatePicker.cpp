@@ -20,8 +20,9 @@
 
 #include "TemplatePicker.h"
 
-#include <QListWidgetItem>
 #include <QIcon>
+
+#include "TemplatePickerItem.h"
 
 
 namespace gLabels
@@ -42,9 +43,28 @@ namespace gLabels
 	{
 		foreach (libglabels::Template *tmplate, tmplates)
 		{
-			QListWidgetItem *item = new QListWidgetItem( tmplate->name(), this );
-			item->setIcon( QIcon(tmplate->preview()) );
+			TemplatePickerItem *item = new TemplatePickerItem( tmplate, this );
 		}
 	}
+
+
+	void TemplatePicker::applyFilter( const QString &searchString )
+	{
+		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
+		{
+			TemplatePickerItem *tPitem = dynamic_cast<TemplatePickerItem *>(item);
+
+			if ( tPitem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) )
+			{
+				item->setHidden( false );
+
+			}
+			else
+			{
+				item->setHidden( true );
+			}
+		}
+	}
+
 }
 

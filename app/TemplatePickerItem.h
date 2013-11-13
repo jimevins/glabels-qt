@@ -1,6 +1,6 @@
-/*  glabels_main.cpp
+/*  TemplatePickerItem.h
  *
- *  Copyright (C) 2011  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,36 +18,32 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef glabels_TemplatePickerItem_h
+#define glabels_TemplatePickerItem_h
 
-#include <QApplication>
+#include <QListWidget>
 
-#include "MainWindow.h"
-#include "libglabels/Db.h"
+#include <QLabel>
 
-using namespace gLabels;
-using namespace libglabels;
+#include "libglabels/Template.h"
 
 
-int main( int argc, char **argv )
+namespace gLabels
 {
-	QApplication app( argc, argv );
 
-	QCoreApplication::setOrganizationName( "glabels.org" );
-	QCoreApplication::setOrganizationDomain( "glabels.org" );
-	QCoreApplication::setApplicationName( "glabels-qt" );
+	class TemplatePickerItem : public QListWidgetItem
+	{
 
-	Db::init();
-	////// TEMPORARY TESTING ////////
-#if 0
-	Db::printKnownPapers();
-	Db::printKnownCategories();
-	Db::printKnownVendors();
-	Db::printKnownTemplates();
-#endif
-	/////////////////////////////////
+	public:
+		TemplatePickerItem( libglabels::Template *tmplate, QListWidget *parent );
 
-	MainWindow mainWin;
-	mainWin.show();
+		inline const libglabels::Template *tmplate() const { return mTmplate; }
 
-	return app.exec();
+	private:
+		libglabels::Template *mTmplate;
+
+	};
+
 }
+
+#endif // glabels_TemplatePickerItem_h

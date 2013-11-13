@@ -32,6 +32,15 @@ namespace gLabels
 
 		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
 		templatePicker->setTemplates( tmplates );
+
+		connect( searchEntry, SIGNAL(textChanged(const QString &)),
+			 this, SLOT(searchEntryTextChanged(const QString &)) );
+	}
+
+
+	void NewLabelDialog::searchEntryTextChanged( const QString &text )
+	{
+		templatePicker->applyFilter( text );
 	}
 
 }

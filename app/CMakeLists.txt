@@ -15,6 +15,7 @@ set (glabels_sources
   MergeField.cpp
   MergeRecord.cpp
   TemplatePicker.cpp
+  TemplatePickerItem.cpp
   TextNode.cpp
   NewLabelDialog.cpp
 )
@@ -45,6 +46,7 @@ include (${QT_USE_FILE})
 
 include_directories (
   ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}
   ${glabels_qt_SOURCE_DIR}
 )
 

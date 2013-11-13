@@ -271,7 +271,7 @@
   <customwidget>
    <class>gLabels::TemplatePicker</class>
    <extends>QListWidget</extends>
-   <header>../../app/TemplatePicker.h</header>
+   <header>TemplatePicker.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

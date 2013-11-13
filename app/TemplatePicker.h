@@ -40,6 +40,8 @@ namespace gLabels
 
 		void setTemplates( const QList <libglabels::Template*> &tmplates );
 
+		void applyFilter( const QString &searchString );
+
 
 	private:
 
