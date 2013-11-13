@@ -28,6 +28,33 @@
 namespace libglabels
 {
 
+	Template::Template( const QString &brand,
+			    const QString &part,
+			    const QString &description,
+			    const QString &paperId,
+			    double         pageWidth = 0,
+			    double         pageHeight = 0 )
+		: mBrand(brand),
+		  mPart(part),
+		  mDescription(description),
+		  mPaperId(paperId),
+		  mPageWidth(pageWidth),
+		  mPageHeight(pageHeight),
+		  mIsSizeIso(false),
+		  mIsSizeUs(false),
+		  mName("")
+	{
+		mName.append( brand ).append( " " ).append( part );
+
+		if ( Db::isPaperIdKnown( paperId ) )
+		{
+			const Paper *paper = Db::lookupPaperFromId( paperId );
+			mIsSizeIso = paper->isSizeIso();
+			mIsSizeUs  = paper->isSizeUs();
+		}
+	}
+
+
 	Template::Template( const Template &other )
 	{
 		mBrand       = other.mBrand;
@@ -36,6 +63,8 @@ namespace libglabels
 		mPaperId     = other.mPaperId;
 		mPageWidth   = other.mPageWidth;
 		mPageHeight  = other.mPageHeight;
+		mIsSizeIso   = other.mIsSizeIso;
+		mIsSizeUs    = other.mIsSizeUs;
 		mEquivPart   = other.mEquivPart;
 		mName        = other.mName;
 		mProductUrl  = other.mProductUrl;

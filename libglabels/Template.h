@@ -50,18 +50,8 @@ namespace libglabels
 			  const QString &part,
 			  const QString &description,
 			  const QString &paperId,
-			  double         pageWidth = 0,
-			  double         pageHeight = 0 )
-			: mBrand(brand),
-			  mPart(part),
-			  mDescription(description),
-			  mPaperId(paperId),
-			  mPageWidth(pageWidth),
-			  mPageHeight(pageHeight),
-			  mName("")
-		{
-			mName.append( brand ).append( " " ).append( part );
-		}
+			  double         pageWidth,
+			  double         pageHeight );
 
 		Template( const Template &other );
 
@@ -84,6 +74,9 @@ namespace libglabels
 		inline const QString &paperId() const { return mPaperId; }
 		inline double pageWidth() const { return mPageWidth; }
 		inline double pageHeight() const { return mPageHeight; }
+		inline bool isSizeIso() const { return mIsSizeIso; }
+		inline bool isSizeUs() const { return mIsSizeUs; }
+		inline bool isSizeOther() const { return !mIsSizeIso && !mIsSizeUs; }
 
 		inline const QString &equivPart() const { return mEquivPart; }
 		inline void setEquivPart( const QString &value ) { mEquivPart = value; }
@@ -115,6 +108,8 @@ namespace libglabels
 		QString mPaperId;
 		double  mPageWidth;
 		double  mPageHeight;
+		bool    mIsSizeIso;
+		bool    mIsSizeUs;
 
 		QString mEquivPart;
 		QString mName;

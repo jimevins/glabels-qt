@@ -48,13 +48,17 @@ namespace gLabels
 	}
 
 
-	void TemplatePicker::applyFilter( const QString &searchString )
+	void TemplatePicker::applyFilter( const QString &searchString,
+					  bool isoMask, bool usMask, bool otherMask )
 	{
 		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 		{
-			TemplatePickerItem *tPitem = dynamic_cast<TemplatePickerItem *>(item);
+			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
 
-			if ( tPitem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) )
+			if ( tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) &&
+			     (isoMask == tItem->tmplate()->isSizeIso()) &&
+			     (usMask == tItem->tmplate()->isSizeUs()) &&
+			     (otherMask == tItem->tmplate()->isSizeOther()) )
 			{
 				item->setHidden( false );
 

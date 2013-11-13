@@ -52,6 +52,9 @@ namespace libglabels
 		/* PWG 5101.1-2002 size name */
 		inline QString pwgSize() const { return mPwgSize; }
 
+		inline bool isSizeIso() const { return mPwgSize.startsWith( "iso_" ); }
+		inline bool isSizeUs() const { return mPwgSize.startsWith( "na_" ); }
+
 	private:
 		QString mId;
 		QString mName;

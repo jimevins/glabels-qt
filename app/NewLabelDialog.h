@@ -36,6 +36,7 @@ namespace gLabels
 
 	private slots:
 		void searchEntryTextChanged( const QString &text );
+		void pageSizeRadioToggled( bool checked );
 
 	};
 

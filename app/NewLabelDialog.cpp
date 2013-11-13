@@ -30,17 +30,45 @@ namespace gLabels
 	{
 		setupUi( this );
 
+		// TODO: Set default based on locale
+		pageSizeIsoRadio->setChecked( true );
+
 		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
 		templatePicker->setTemplates( tmplates );
 
+		templatePicker->applyFilter( searchEntry->text(),
+					     pageSizeIsoRadio->isChecked(),
+					     pageSizeUsRadio->isChecked(),
+					     pageSizeOtherRadio->isChecked() );
+
 		connect( searchEntry, SIGNAL(textChanged(const QString &)),
 			 this, SLOT(searchEntryTextChanged(const QString &)) );
+
+		connect( pageSizeIsoRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
+		connect( pageSizeUsRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
+		connect( pageSizeOtherRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
+
 	}
 
 
 	void NewLabelDialog::searchEntryTextChanged( const QString &text )
 	{
-		templatePicker->applyFilter( text );
+		templatePicker->applyFilter( text,
+					     pageSizeIsoRadio->isChecked(),
+					     pageSizeUsRadio->isChecked(),
+					     pageSizeOtherRadio->isChecked() );
+	}
+
+
+	void NewLabelDialog::pageSizeRadioToggled( bool checked )
+	{
+		if ( checked )
+		{
+			templatePicker->applyFilter( searchEntry->text(),
+						     pageSizeIsoRadio->isChecked(),
+						     pageSizeUsRadio->isChecked(),
+						     pageSizeOtherRadio->isChecked() );
+		}
 	}
 
 }
