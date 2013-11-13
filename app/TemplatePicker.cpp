@@ -66,6 +66,7 @@ namespace gLabels
 			else
 			{
 				item->setHidden( true );
+				item->setSelected( false );
 			}
 		}
 	}
