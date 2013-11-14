@@ -18,6 +18,7 @@ set (glabels_sources
   TemplatePickerItem.cpp
   TextNode.cpp
   NewLabelDialog.cpp
+  SimplePreview.cpp
 )
 
 set (glabels_qobject_headers
@@ -26,6 +27,7 @@ set (glabels_qobject_headers
   MainWindow.h
   TemplatePicker.h
   NewLabelDialog.h
+  SimplePreview.h
 )
 
 set (glabels_forms

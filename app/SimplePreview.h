@@ -1,4 +1,4 @@
-/*  NewLabelDialog.h
+/*  SimplePreview.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,29 +18,39 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_NewLabelDialog_h
-#define glabels_NewLabelDialog_h
+#ifndef glabels_SimplePreview_h
+#define glabels_SimplePreview_h
 
-#include "ui_NewLabelDialog.h"
+#include <QGraphicsView>
+#include <QGraphicsScene>
+
+#include <QList>
+
+#include "libglabels/Template.h"
 
 
 namespace gLabels
 {
 
-	class NewLabelDialog : public QDialog, public Ui_NewLabelDialog
+	class SimplePreview : public QGraphicsView
 	{
 		Q_OBJECT
 
 	public:
-		NewLabelDialog( QWidget *parent );
+		SimplePreview( QWidget *parent );
 
-	private slots:
-		void searchEntryTextChanged( const QString &text );
-		void pageSizeRadioToggled( bool checked );
-		void templatePickerSelectionChanged();
+		void setTemplate( const libglabels::Template *tmplate );
+
+	private:
+		void clearScene();
+		void drawPaper( double pw, double ph );
+		void drawLabels( const libglabels::Template *tmplate );
+		void drawLabel( double x, double y, const QPainterPath &path );
+
+		QGraphicsScene *mScene;
 
 	};
 
 }
 
-#endif // glabels_NewLabelDialog_h
+#endif // glabels_SimplePreview_h

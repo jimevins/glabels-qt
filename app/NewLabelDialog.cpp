@@ -21,6 +21,7 @@
 #include "NewLabelDialog.h"
 
 #include "libglabels/Db.h"
+#include "TemplatePickerItem.h"
 
 
 namespace gLabels
@@ -48,6 +49,7 @@ namespace gLabels
 		connect( pageSizeUsRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
 		connect( pageSizeOtherRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
 
+		connect( templatePicker, SIGNAL(itemSelectionChanged()), this, SLOT(templatePickerSelectionChanged()) );
 	}
 
 
@@ -68,6 +70,24 @@ namespace gLabels
 						     pageSizeIsoRadio->isChecked(),
 						     pageSizeUsRadio->isChecked(),
 						     pageSizeOtherRadio->isChecked() );
+		}
+	}
+
+
+	void NewLabelDialog::templatePickerSelectionChanged()
+	{
+		QList<QListWidgetItem *> selectedItems = templatePicker->selectedItems();
+
+		if ( selectedItems.isEmpty() )
+		{
+			// Clear preview
+			simplePreview->setTemplate( NULL );
+		}
+		else
+		{
+			// Set template to preview
+			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(selectedItems.first());
+			simplePreview->setTemplate( tItem->tmplate() );
 		}
 	}
 

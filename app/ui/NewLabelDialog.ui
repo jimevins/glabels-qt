@@ -140,7 +140,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="QGraphicsView" name="previewGraphicsView">
+             <widget class="gLabels::SimplePreview" name="simplePreview">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -272,6 +272,11 @@
    <class>gLabels::TemplatePicker</class>
    <extends>QListWidget</extends>
    <header>TemplatePicker.h</header>
+  </customwidget>
+  <customwidget>
+   <class>gLabels::SimplePreview</class>
+   <extends>QGraphicsView</extends>
+   <header>SimplePreview.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
