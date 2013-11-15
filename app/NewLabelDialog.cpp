@@ -87,7 +87,42 @@ namespace gLabels
 		{
 			// Set template to preview
 			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(selectedItems.first());
-			simplePreview->setTemplate( tItem->tmplate() );
+			const libglabels::Template *tmplate = tItem->tmplate();
+			const libglabels::Frame *frame = tmplate->frames().first();
+
+			simplePreview->setTemplate( tmplate );
+
+			const libglabels::Vendor *vendor = libglabels::Db::lookupVendorFromName( tmplate->brand() );
+			if ( (vendor != NULL) && (vendor->url() != NULL) )
+			{
+				QString markup = "<a href='" + vendor->url() + "'>" + vendor->name() + "</a>";
+				vendorLabel->setText( markup );
+			}
+			else
+			{
+				vendorLabel->setText( tmplate->brand() );
+			}
+
+			if ( tmplate->productUrl() != NULL )
+			{
+				QString markup = "<a href='" + tmplate->productUrl() + "'>" + tmplate->part() + "</a>";
+				partLabel->setText( markup );
+			}
+			else
+			{
+				partLabel->setText( tmplate->part() );
+			}
+
+			descriptionLabel->setText( tmplate->description() );
+
+			QString pgSizeString = libglabels::Db::lookupPaperNameFromId( tmplate->paperId() );
+			pageSizeLabel->setText( pgSizeString );
+
+			QString labelSizeString = frame->sizeDescription( libglabels::Units::inch() );
+			labelSizeLabel->setText( labelSizeString );
+
+			QString layoutString = frame->layoutDescription();
+			layoutLabel->setText( layoutString );
 		}
 	}
 

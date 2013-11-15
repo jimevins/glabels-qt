@@ -29,24 +29,24 @@
 namespace libglabels
 {
 
-	const QString &FrameEllipse::sizeDescription( Units *units )
+	const QString FrameEllipse::sizeDescription( const Units *units ) const
 	{
 		if ( units->id() == "in" )
 		{
 			QString wStr = StrUtil::formatFraction( mW * units->unitsPerPoint() );
 			QString hStr = StrUtil::formatFraction( mH * units->unitsPerPoint() );
 
-			mSizeDescription = QString().sprintf( "%s x %s %s",
-							      qPrintable(wStr),
-							      qPrintable(hStr),
-							      qPrintable(units->name()) );
+			return QString().sprintf( "%s x %s %s",
+						  qPrintable(wStr),
+						  qPrintable(hStr),
+						  qPrintable(units->name()) );
 		}
 		else
 		{
-			mSizeDescription = QString().sprintf( "%.5g x %.5g %s",
-							      mW * units->unitsPerPoint(),
-							      mH * units->unitsPerPoint(),
-							      qPrintable(units->name()) );
+			return QString().sprintf( "%.5g x %.5g %s",
+						  mW * units->unitsPerPoint(),
+						  mH * units->unitsPerPoint(),
+						  qPrintable(units->name()) );
 		}
 	}
 

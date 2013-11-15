@@ -29,26 +29,24 @@
 namespace libglabels
 {
 
-	const QString &FrameRound::sizeDescription( Units *units )
+	const QString FrameRound::sizeDescription( const Units *units ) const
 	{
 		if ( units->id() == "in" )
 		{
 			QString dStr = StrUtil::formatFraction( 2 * mR * units->unitsPerPoint() );
 
-			mSizeDescription = QString().sprintf( "%s %s %s",
-							      qPrintable(dStr),
-							      qPrintable(units->name()),
-							      qPrintable(tr("diameter")) );
+			return QString().sprintf( "%s %s %s",
+						  qPrintable(dStr),
+						  qPrintable(units->name()),
+						  qPrintable(tr("diameter")) );
 		}
 		else
 		{
-			mSizeDescription = QString().sprintf( "%.5g %s %s",
-							      2 * mR * units->unitsPerPoint(),
-							      qPrintable(units->name()),
-							      qPrintable(tr("diameter")) );
+			return QString().sprintf( "%.5g %s %s",
+						  2 * mR * units->unitsPerPoint(),
+						  qPrintable(units->name()),
+						  qPrintable(tr("diameter")) );
 		}
-
-		return mSizeDescription;
 	}
 
 

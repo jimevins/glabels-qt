@@ -41,7 +41,7 @@ namespace libglabels
 	namespace StrUtil
 	{
 
-		QString &formatFraction( double x )
+		QString formatFraction( double x )
 		{
                         int i;
                         double product, remainder;

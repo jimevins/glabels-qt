@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1036</width>
-    <height>735</height>
+    <width>958</width>
+    <height>759</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -133,7 +133,7 @@
          <item>
           <widget class="QGroupBox" name="groupBox_3">
            <property name="title">
-            <string>Preview</string>
+            <string>Selection info</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -158,6 +158,129 @@
               </property>
              </widget>
             </item>
+            <item>
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Vendor:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="vendorLabel">
+                <property name="text">
+                 <string notr="true">TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Part #:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="partLabel">
+                <property name="text">
+                 <string notr="true">TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Description:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="descriptionLabel">
+                <property name="text">
+                 <string notr="true">TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Page size:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="pageSizeLabel">
+                <property name="text">
+                 <string notr="true">TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Label size:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLabel" name="labelSizeLabel">
+                <property name="text">
+                 <string notr="true">TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Layout:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLabel" name="layoutLabel">
+                <property name="text">
+                 <string notr="true">TextLabel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>Similar products:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QTextBrowser" name="similarBrowser">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>180</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="acceptDrops">
+                 <bool>false</bool>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="openLinks">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
            </layout>
           </widget>
          </item>
@@ -170,7 +293,7 @@
             </sizepolicy>
            </property>
            <property name="title">
-            <string>Label Orientation</string>
+            <string>Orientation</string>
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <property name="leftMargin">
@@ -253,19 +376,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>createButton</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>orientationNormalRadio</zorder>
-  <zorder>orientationRotatedRadio</zorder>
-  <zorder>label</zorder>
-  <zorder></zorder>
-  <zorder>label</zorder>
-  <zorder>groupBox_2</zorder>
-  <zorder>groupBox_3</zorder>
-  <zorder>templatePicker</zorder>
-  <zorder>searchEntry</zorder>
-  <zorder>groupBox</zorder>
-  <zorder>horizontalSpacer</zorder>
  </widget>
  <customwidgets>
   <customwidget>

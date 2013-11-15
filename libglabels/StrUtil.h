@@ -30,7 +30,7 @@ namespace libglabels
 	namespace StrUtil
 	{
 
-		QString &formatFraction( double x );
+		QString formatFraction( double x );
 
 		int comparePartNames( const QString &s1, const QString &s2 );
 

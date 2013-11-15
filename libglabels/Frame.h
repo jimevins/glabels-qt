@@ -52,9 +52,9 @@ namespace libglabels
 
 		inline const QString &id() const { return mId; }
 		inline int nLabels() const { return mNLabels; }
-		inline const QString &layoutDescription() { return mLayoutDescription; }
-		inline const QList<Layout*> &layouts() { return mLayouts; }
-		inline const QList<Markup*> &markups() { return mMarkups; }
+		inline const QString &layoutDescription() const { return mLayoutDescription; }
+		inline const QList<Layout*> &layouts() const { return mLayouts; }
+		inline const QList<Markup*> &markups() const { return mMarkups; }
 
 		QVector<Point> getOrigins() const;
 
@@ -64,7 +64,7 @@ namespace libglabels
 		virtual double w() const = 0;
 		virtual double h() const = 0;
 
-		virtual const QString &sizeDescription( Units *units ) = 0;
+		virtual const QString sizeDescription( const Units *units ) const = 0;
 		virtual bool isSimilarTo( Frame *other ) const = 0;
 
 		virtual const QPainterPath &path() const = 0;

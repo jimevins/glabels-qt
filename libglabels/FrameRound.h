@@ -51,7 +51,7 @@ namespace libglabels
 		double w() const { return 2*mR; }
 		double h() const { return 2*mR; }
 
-		const QString &sizeDescription( Units *units );
+		const QString sizeDescription( const Units *units ) const;
 		bool isSimilarTo( Frame *other ) const;
 
 		const QPainterPath &path() const { return mPath; }
@@ -60,8 +60,6 @@ namespace libglabels
 	private:
 		double mR;
 		double mWaste;
-
-		QString mSizeDescription;
 
 		QPainterPath mPath;
 
