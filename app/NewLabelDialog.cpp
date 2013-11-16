@@ -45,6 +45,8 @@ namespace gLabels
 		similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
 		similarBrowser->viewport()->setAutoFillBackground(false);
 
+		selectionStackedWidget->setCurrentIndex( 0 );
+
 		connect( searchEntry, SIGNAL(textChanged(const QString &)),
 			 this, SLOT(searchEntryTextChanged(const QString &)) );
 
@@ -83,11 +85,12 @@ namespace gLabels
 
 		if ( selectedItems.isEmpty() )
 		{
-			// Clear preview
-			simplePreview->setTemplate( NULL );
+			selectionStackedWidget->setCurrentIndex( 0 );
 		}
 		else
 		{
+			selectionStackedWidget->setCurrentIndex( 1 );
+
 			// Set template to preview
 			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(selectedItems.first());
 			const libglabels::Template *tmplate = tItem->tmplate();
