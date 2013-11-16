@@ -36,6 +36,8 @@ namespace gLabels
 
 		setIcon( QIcon(tmplate->preview()) );
 		setText( tmplate->name() );
+
+		setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
 	}
 
 }
