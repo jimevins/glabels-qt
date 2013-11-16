@@ -29,13 +29,15 @@ namespace
 {
         const QColor paperColor( 255, 255, 255 );
         const QColor paperOutlineColor( 0, 0, 0 );
+	const double paperOutlineWidthPixels = 1;
 
         const QColor shadowColor( 64, 64, 64 );
-	const double shadowOffset = 3;
-	const double shadowRadius = 12;
+	const double shadowOffsetPixels = 3;
+	const double shadowRadiusPixels = 12;
 
-        const QColor labelColor( 242, 242, 242 );
-        const QColor labelOutlineColor( 64, 64, 64 );
+        const QColor labelColor( 255, 255, 255 );
+        const QColor labelOutlineColor( 128, 128, 255 );
+	const double labelOutlineWidthPixels = 2;
 }
 
 
@@ -51,6 +53,7 @@ namespace gLabels
 		viewport()->setAutoFillBackground(false);
 
 		setFrameStyle( QFrame::NoFrame );
+		setRenderHints( QPainter::Antialiasing );
 	}
 
 
@@ -68,6 +71,8 @@ namespace gLabels
 
 			mScene->setSceneRect( x, y, w, h );
 			fitInView( x, y, w, h, Qt::KeepAspectRatio );
+
+			mScale = matrix().m11();
 
 			drawPaper( tmplate->pageWidth(), tmplate->pageHeight() );
 			drawLabels( tmplate );
@@ -89,11 +94,12 @@ namespace gLabels
 	{
 		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
-		shadowEffect->setOffset( shadowOffset );
-		shadowEffect->setBlurRadius( shadowRadius );
+		shadowEffect->setOffset( shadowOffsetPixels );
+		shadowEffect->setBlurRadius( shadowRadiusPixels );
 
 		QBrush brush( paperColor );
 		QPen pen( paperOutlineColor );
+		pen.setWidthF( paperOutlineWidthPixels / mScale );
 
 		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw, ph );
 		pageItem->setBrush( brush );
@@ -119,6 +125,7 @@ namespace gLabels
 	{
 		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
+		pen.setWidthF( labelOutlineWidthPixels / mScale );
 
 		QGraphicsPathItem *labelItem  = new QGraphicsPathItem( path );
 		labelItem->setBrush( brush );

@@ -48,6 +48,7 @@ namespace gLabels
 		void drawLabel( double x, double y, const QPainterPath &path );
 
 		QGraphicsScene *mScene;
+		double          mScale;
 
 	};
 
