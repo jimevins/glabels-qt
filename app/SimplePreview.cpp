@@ -22,6 +22,8 @@
 
 #include <QGraphicsRectItem>
 #include <QGraphicsDropShadowEffect>
+#include <iostream>
+
 
 namespace
 {
@@ -29,6 +31,8 @@ namespace
         const QColor paperOutlineColor( 0, 0, 0 );
 
         const QColor shadowColor( 64, 64, 64 );
+	const double shadowOffset = 3;
+	const double shadowRadius = 12;
 
         const QColor labelColor( 242, 242, 242 );
         const QColor labelOutlineColor( 64, 64, 64 );
@@ -56,6 +60,7 @@ namespace gLabels
 
 		if ( tmplate != NULL )
 		{
+			// Set scene up with a 5% margin around paper
 			double x = -0.05 * tmplate->pageWidth();
 			double y = -0.05 * tmplate->pageHeight();
 			double w = 1.10 * tmplate->pageWidth();
@@ -84,8 +89,8 @@ namespace gLabels
 	{
 		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
-		shadowEffect->setOffset( 0.005*pw );
-		shadowEffect->setBlurRadius( 0.035*pw );
+		shadowEffect->setOffset( shadowOffset );
+		shadowEffect->setBlurRadius( shadowRadius );
 
 		QBrush brush( paperColor );
 		QPen pen( paperOutlineColor );
