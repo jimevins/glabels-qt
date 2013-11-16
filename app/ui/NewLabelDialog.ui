@@ -245,9 +245,9 @@
                </widget>
               </item>
               <item row="6" column="0">
-               <widget class="QLabel" name="label_13">
+               <widget class="QLabel" name="similarLabel">
                 <property name="text">
-                 <string>Similar products:</string>
+                 <string>Similar to:</string>
                 </property>
                </widget>
               </item>
@@ -261,7 +261,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>180</width>
+                  <width>150</width>
                   <height>16777215</height>
                  </size>
                 </property>

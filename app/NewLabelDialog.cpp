@@ -42,6 +42,9 @@ namespace gLabels
 					     pageSizeUsRadio->isChecked(),
 					     pageSizeOtherRadio->isChecked() );
 
+		similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
+		similarBrowser->viewport()->setAutoFillBackground(false);
+
 		connect( searchEntry, SIGNAL(textChanged(const QString &)),
 			 this, SLOT(searchEntryTextChanged(const QString &)) );
 
@@ -123,6 +126,25 @@ namespace gLabels
 
 			QString layoutString = frame->layoutDescription();
 			layoutLabel->setText( layoutString );
+
+			QStringList list = libglabels::Db::getNameListOfSimilarTemplates( tmplate->name() );
+			if ( list.isEmpty() )
+			{
+				similarLabel->hide();
+				similarBrowser->hide();
+			}
+			else
+			{
+				similarLabel->show();
+				similarBrowser->show();
+
+				QString similarListString;
+				foreach ( QString name, list )
+				{
+					similarListString += name + "\n";
+				}
+				similarBrowser->setText( similarListString );
+			}
 		}
 	}
 

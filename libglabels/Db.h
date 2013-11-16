@@ -86,6 +86,7 @@ namespace libglabels
 		static const Template *lookupTemplateFromName( const QString &name );
 		static const Template *lookupTemplateFromBrandPart( const QString &brand, const QString &part );
 		static bool isTemplateKnown( const QString &brand, const QString &part );
+		static QStringList getNameListOfSimilarTemplates( const QString &name );
 
 		static void registerUserTemplate( Template *tmplate );
 		static void deleteUserTemplateByName( const QString &name );

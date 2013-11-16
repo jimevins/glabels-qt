@@ -156,19 +156,19 @@ namespace libglabels
 	}
 
 
-	bool Template::isSimilarTo( const Template &other ) const
+	bool Template::isSimilarTo( const Template *other ) const
 	{
 		// Does page size match?
-		if ( (mPaperId    != other.mPaperId)    ||
-		     (mPageWidth  != other.mPageWidth ) ||
-		     (mPageHeight != other.mPageHeight ) )
+		if ( (mPaperId    != other->mPaperId)    ||
+		     (mPageWidth  != other->mPageWidth ) ||
+		     (mPageHeight != other->mPageHeight ) )
 		{
 			return false;
 		}
 
 		// Are frames similar
 		Frame *frame1 = mFrames.first();
-		Frame *frame2 = other.mFrames.first();
+		Frame *frame2 = other->mFrames.first();
 		if ( !frame1->isSimilarTo( frame2 ) )
 		{
 			return false;

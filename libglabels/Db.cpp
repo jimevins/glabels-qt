@@ -411,6 +411,32 @@ namespace libglabels
 	}
 
 
+	QStringList Db::getNameListOfSimilarTemplates( const QString &name )
+	{
+		QStringList list;
+
+		const Template *tmplate1 = lookupTemplateFromName( name );
+		if ( tmplate1 == NULL )
+		{
+			qDebug( "Unknown template name: \"%s\".", qPrintable(name) );
+			return list;
+		}
+
+		foreach (const Template *tmplate2, mTemplates )
+		{
+			if ( tmplate1->name() != tmplate2->name() )
+			{
+				if ( tmplate1->isSimilarTo( tmplate2 ) )
+				{
+					list << tmplate2->name();
+				}
+			}
+		}
+
+		return list;
+	}
+
+
 	void Db::registerUserTemplate( Template *templat )
 	{
 		// TODO

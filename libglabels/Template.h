@@ -97,7 +97,7 @@ namespace libglabels
 		bool operator==( const Template &other ) const;
 
 		bool hasCategory( const QString &categoryId ) const;
-		bool isSimilarTo( const Template &other ) const;
+		bool isSimilarTo( const Template *other ) const;
 
 
 	private:
