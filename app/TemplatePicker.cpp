@@ -71,5 +71,20 @@ namespace gLabels
 		}
 	}
 
+
+	const libglabels::Template *TemplatePicker::selectedTemplate()
+	{
+		QList<QListWidgetItem *> items = selectedItems();
+		if ( items.isEmpty() )
+		{
+			return NULL;
+		}
+		else
+		{
+			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
+			return tItem->tmplate();
+		}
+	}
+
 }
 

@@ -20,6 +20,8 @@
 
 #include "NewLabelDialog.h"
 
+#include <iostream>
+
 #include "libglabels/Db.h"
 #include "TemplatePickerItem.h"
 
@@ -58,6 +60,9 @@ namespace gLabels
 
 		connect( orientationNormalRadio, SIGNAL(toggled(bool)), this, SLOT(orientationRadioToggled(bool)) );
 		connect( orientationRotatedRadio, SIGNAL(toggled(bool)), this, SLOT(orientationRadioToggled(bool)) );
+
+		connect( cancelButton, SIGNAL(clicked()), this, SLOT(close()) );
+		connect( createButton, SIGNAL(clicked()), this, SLOT(createButtonClicked()) );
 	}
 
 
@@ -86,19 +91,18 @@ namespace gLabels
 	{
 		orientationNormalRadio->setChecked( true );
 
-		QList<QListWidgetItem *> selectedItems = templatePicker->selectedItems();
+		const libglabels::Template *tmplate = templatePicker->selectedTemplate();
 
-		if ( selectedItems.isEmpty() )
+		if ( tmplate == NULL )
 		{
+			createButton->setEnabled( false );
 			selectionStackedWidget->setCurrentIndex( 0 );
 		}
 		else
 		{
+			createButton->setEnabled( true );
 			selectionStackedWidget->setCurrentIndex( 1 );
 
-			// Set template to preview
-			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(selectedItems.first());
-			const libglabels::Template *tmplate = tItem->tmplate();
 			const libglabels::Frame *frame = tmplate->frames().first();
 
 			simplePreview->setTemplate( tmplate );
@@ -168,5 +172,16 @@ namespace gLabels
 		}
 	}
 
+
+	void NewLabelDialog::createButtonClicked()
+	{
+		const libglabels::Template *tmplate = templatePicker->selectedTemplate();
+
+		std::cout << "TODO: create new label, template = '" << qPrintable(tmplate->name())
+			  << "', rotate = " << orientationRotatedRadio->isChecked()
+			  << std::endl;
+
+		close();
+	}
 
 }

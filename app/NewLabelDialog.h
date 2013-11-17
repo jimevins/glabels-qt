@@ -39,6 +39,7 @@ namespace gLabels
 		void pageSizeRadioToggled( bool checked );
 		void templatePickerSelectionChanged();
 		void orientationRadioToggled( bool checked );
+		void createButtonClicked();
 
 	};
 

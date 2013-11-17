@@ -42,9 +42,7 @@ namespace gLabels
 
 		void applyFilter( const QString &searchString, bool isoMask, bool usMask, bool otherMask );
 
-
-	private:
-
+		const libglabels::Template *selectedTemplate();
 
 	};
 
