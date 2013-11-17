@@ -40,15 +40,20 @@ namespace gLabels
 		SimplePreview( QWidget *parent );
 
 		void setTemplate( const libglabels::Template *tmplate );
+		void setRotate( bool rotateFlag );
 
 	private:
+		void update();
 		void clearScene();
 		void drawPaper( double pw, double ph );
-		void drawLabels( const libglabels::Template *tmplate );
+		void drawLabels();
 		void drawLabel( double x, double y, const QPainterPath &path );
+		void drawArrow();
 
-		QGraphicsScene *mScene;
-		double          mScale;
+		QGraphicsScene             *mScene;
+		double                      mScale;
+		const libglabels::Template *mTmplate;
+		bool                        mRotateFlag;
 
 	};
 

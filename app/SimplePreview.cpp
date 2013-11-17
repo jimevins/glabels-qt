@@ -27,24 +27,32 @@
 
 namespace
 {
-        const QColor paperColor( 255, 255, 255 );
-        const QColor paperOutlineColor( 0, 0, 0 );
-	const double paperOutlineWidthPixels = 1;
+        const QColor  paperColor( 255, 255, 255 );
+        const QColor  paperOutlineColor( 0, 0, 0 );
+	const double  paperOutlineWidthPixels = 1;
 
-        const QColor shadowColor( 64, 64, 64 );
-	const double shadowOffsetPixels = 3;
-	const double shadowRadiusPixels = 12;
+        const QColor  shadowColor( 64, 64, 64 );
+	const double  shadowOffsetPixels = 3;
+	const double  shadowRadiusPixels = 12;
 
-        const QColor labelColor( 255, 255, 255 );
-        const QColor labelOutlineColor( 128, 128, 255 );
-	const double labelOutlineWidthPixels = 2;
+        const QColor  labelColor( 255, 255, 255 );
+        const QColor  labelOutlineColor( 128, 128, 255 );
+	const double  labelOutlineWidthPixels = 2;
+
+	const QColor  arrowColor( 224, 224, 255 );
+	const double  arrowScale = 0.35;
+
+	const QColor  upColor( 224, 224, 255 );
+	const double  upScale    = 0.15;
+	const QString upFontFamily( "Sans" );
 }
 
 
 namespace gLabels
 {
 
-	SimplePreview::SimplePreview( QWidget *parent = 0 ) : QGraphicsView(parent)
+	SimplePreview::SimplePreview( QWidget *parent = 0 )
+		: mScale(1), mTmplate(NULL), mRotateFlag(false), QGraphicsView(parent)
 	{
 		mScene = new QGraphicsScene();
 		setScene( mScene );
@@ -59,23 +67,38 @@ namespace gLabels
 
 	void SimplePreview::setTemplate( const libglabels::Template *tmplate )
 	{
+		mTmplate = tmplate;
+		update();
+	}
+
+
+	void SimplePreview::setRotate( bool rotateFlag )
+	{
+		mRotateFlag = rotateFlag;
+		update();
+	}
+
+
+	void SimplePreview::update()
+	{
 		clearScene();
 
-		if ( tmplate != NULL )
+		if ( mTmplate != NULL )
 		{
 			// Set scene up with a 5% margin around paper
-			double x = -0.05 * tmplate->pageWidth();
-			double y = -0.05 * tmplate->pageHeight();
-			double w = 1.10 * tmplate->pageWidth();
-			double h = 1.10 * tmplate->pageHeight();
+			double x = -0.05 * mTmplate->pageWidth();
+			double y = -0.05 * mTmplate->pageHeight();
+			double w = 1.10 * mTmplate->pageWidth();
+			double h = 1.10 * mTmplate->pageHeight();
 
 			mScene->setSceneRect( x, y, w, h );
 			fitInView( x, y, w, h, Qt::KeepAspectRatio );
 
 			mScale = matrix().m11();
 
-			drawPaper( tmplate->pageWidth(), tmplate->pageHeight() );
-			drawLabels( tmplate );
+			drawPaper( mTmplate->pageWidth(), mTmplate->pageHeight() );
+			drawLabels();
+			drawArrow();
 		}
 	}
 
@@ -110,9 +133,9 @@ namespace gLabels
 	}
 
 
-	void SimplePreview::drawLabels( const libglabels::Template *tmplate )
+	void SimplePreview::drawLabels()
 	{
-		libglabels::Frame *frame = tmplate->frames().first();
+		libglabels::Frame *frame = mTmplate->frames().first();
 
 		foreach (libglabels::Point origin, frame->getOrigins() )
 		{
@@ -133,6 +156,57 @@ namespace gLabels
 		labelItem->setPos( x, y );
 
 		mScene->addItem( labelItem );
+	}
+
+
+	void SimplePreview::drawArrow()
+	{
+		libglabels::Frame *frame = mTmplate->frames().first();
+
+		double w = frame->w();
+		double h = frame->h();
+
+		if ( w != h )
+		{
+			double min = ( w < h ) ? w : h;
+
+			QPen pen( arrowColor );
+			pen.setWidthF( 0.25*min*arrowScale );
+			pen.setCapStyle( Qt::FlatCap );
+			pen.setJoinStyle( Qt::MiterJoin );
+
+			QBrush brush( upColor );
+
+			libglabels::Point origin = frame->getOrigins().first();
+			double x0 = origin.x();
+			double y0 = origin.y();
+
+			QPainterPath path;
+			path.moveTo( 0,                  min*arrowScale/3 );
+			path.lineTo( 0,                 -min*arrowScale   );
+			path.moveTo( -min*arrowScale/2, -min*arrowScale/2 );
+			path.lineTo( 0,                 -min*arrowScale   );
+			path.lineTo(  min*arrowScale/2, -min*arrowScale/2 );
+
+			QGraphicsPathItem *arrowItem = new QGraphicsPathItem( path );
+			arrowItem->setPen( pen );
+			arrowItem->setPos( x0+w/2, y0+h/2 );
+
+			QGraphicsSimpleTextItem *upItem = new QGraphicsSimpleTextItem( tr("Up") );
+			upItem->setBrush( brush );
+			upItem->setFont( QFont( upFontFamily, min*upScale, QFont::Bold ) );
+			QRectF rect = upItem->boundingRect();
+			upItem->setPos( x0+w/2-rect.width()/2, y0+h/2+min/8 );
+
+			if ( mRotateFlag )
+			{
+				arrowItem->setRotation( -90 );
+				upItem->setRotation( -90 );
+			}
+
+			mScene->addItem( arrowItem );
+			mScene->addItem( upItem );
+		}
 	}
 
 }
