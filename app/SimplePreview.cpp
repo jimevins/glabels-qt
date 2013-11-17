@@ -39,11 +39,11 @@ namespace
         const QColor  labelOutlineColor( 128, 128, 255 );
 	const double  labelOutlineWidthPixels = 2;
 
-	const QColor  arrowColor( 224, 224, 255 );
+	const QColor  arrowColor( 192, 192, 255, 128 );
 	const double  arrowScale = 0.35;
 
-	const QColor  upColor( 224, 224, 255 );
-	const double  upScale    = 0.15;
+	const QColor  upColor( 192, 192, 255, 128 );
+	const double  upScale = 0.15;
 	const QString upFontFamily( "Sans" );
 }
 
@@ -166,47 +166,51 @@ namespace gLabels
 		double w = frame->w();
 		double h = frame->h();
 
-		if ( w != h )
+		double min = ( w < h ) ? w : h;
+
+		QPen pen( arrowColor );
+		pen.setWidthF( 0.25*min*arrowScale );
+		pen.setCapStyle( Qt::FlatCap );
+		pen.setJoinStyle( Qt::MiterJoin );
+
+		QBrush brush( upColor );
+
+		libglabels::Point origin = frame->getOrigins().first();
+		double x0 = origin.x();
+		double y0 = origin.y();
+
+		QPainterPath path;
+		path.moveTo( 0,                  min*arrowScale/3 );
+		path.lineTo( 0,                 -min*arrowScale   );
+		path.moveTo( -min*arrowScale/2, -min*arrowScale/2 );
+		path.lineTo( 0,                 -min*arrowScale   );
+		path.lineTo(  min*arrowScale/2, -min*arrowScale/2 );
+
+		QGraphicsPathItem *arrowItem = new QGraphicsPathItem( path );
+		arrowItem->setPen( pen );
+		arrowItem->setPos( x0+w/2, y0+h/2 );
+		if ( mRotateFlag )
 		{
-			double min = ( w < h ) ? w : h;
-
-			QPen pen( arrowColor );
-			pen.setWidthF( 0.25*min*arrowScale );
-			pen.setCapStyle( Qt::FlatCap );
-			pen.setJoinStyle( Qt::MiterJoin );
-
-			QBrush brush( upColor );
-
-			libglabels::Point origin = frame->getOrigins().first();
-			double x0 = origin.x();
-			double y0 = origin.y();
-
-			QPainterPath path;
-			path.moveTo( 0,                  min*arrowScale/3 );
-			path.lineTo( 0,                 -min*arrowScale   );
-			path.moveTo( -min*arrowScale/2, -min*arrowScale/2 );
-			path.lineTo( 0,                 -min*arrowScale   );
-			path.lineTo(  min*arrowScale/2, -min*arrowScale/2 );
-
-			QGraphicsPathItem *arrowItem = new QGraphicsPathItem( path );
-			arrowItem->setPen( pen );
-			arrowItem->setPos( x0+w/2, y0+h/2 );
-
-			QGraphicsSimpleTextItem *upItem = new QGraphicsSimpleTextItem( tr("Up") );
-			upItem->setBrush( brush );
-			upItem->setFont( QFont( upFontFamily, min*upScale, QFont::Bold ) );
-			QRectF rect = upItem->boundingRect();
-			upItem->setPos( x0+w/2-rect.width()/2, y0+h/2+min/8 );
-
-			if ( mRotateFlag )
-			{
-				arrowItem->setRotation( -90 );
-				upItem->setRotation( -90 );
-			}
-
-			mScene->addItem( arrowItem );
-			mScene->addItem( upItem );
+			arrowItem->setRotation( 90 );
 		}
+
+		QGraphicsSimpleTextItem *upItem = new QGraphicsSimpleTextItem( tr("Up") );
+		upItem->setBrush( brush );
+		upItem->setFont( QFont( upFontFamily, min*upScale, QFont::Bold ) );
+		upItem->setPos( x0+w/2, y0+h/2 );
+		QRectF rect = upItem->boundingRect();
+		if ( mRotateFlag )
+		{
+			upItem->setPos( upItem->x()-min/8, upItem->y()-rect.width()/2 );
+			upItem->setRotation( 90 );
+		}
+		else
+		{
+			upItem->setPos( upItem->x()-rect.width()/2, upItem->y()+min/8 );
+		}
+
+		mScene->addItem( arrowItem );
+		mScene->addItem( upItem );
 	}
 
 }

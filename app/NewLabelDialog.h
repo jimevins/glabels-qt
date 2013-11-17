@@ -38,6 +38,7 @@ namespace gLabels
 		void searchEntryTextChanged( const QString &text );
 		void pageSizeRadioToggled( bool checked );
 		void templatePickerSelectionChanged();
+		void orientationRadioToggled( bool checked );
 
 	};
 

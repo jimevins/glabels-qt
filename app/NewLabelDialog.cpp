@@ -55,6 +55,9 @@ namespace gLabels
 		connect( pageSizeOtherRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
 
 		connect( templatePicker, SIGNAL(itemSelectionChanged()), this, SLOT(templatePickerSelectionChanged()) );
+
+		connect( orientationNormalRadio, SIGNAL(toggled(bool)), this, SLOT(orientationRadioToggled(bool)) );
+		connect( orientationRotatedRadio, SIGNAL(toggled(bool)), this, SLOT(orientationRadioToggled(bool)) );
 	}
 
 
@@ -81,6 +84,8 @@ namespace gLabels
 
 	void NewLabelDialog::templatePickerSelectionChanged()
 	{
+		orientationNormalRadio->setChecked( true );
+
 		QList<QListWidgetItem *> selectedItems = templatePicker->selectedItems();
 
 		if ( selectedItems.isEmpty() )
@@ -97,6 +102,7 @@ namespace gLabels
 			const libglabels::Frame *frame = tmplate->frames().first();
 
 			simplePreview->setTemplate( tmplate );
+			simplePreview->setRotate( false );
 
 			const libglabels::Vendor *vendor = libglabels::Db::lookupVendorFromName( tmplate->brand() );
 			if ( (vendor != NULL) && (vendor->url() != NULL) )
@@ -148,7 +154,19 @@ namespace gLabels
 				}
 				similarBrowser->setText( similarListString );
 			}
+
+			orientationGroupBox->setEnabled( frame->w() != frame->h() );
 		}
 	}
+
+
+	void NewLabelDialog::orientationRadioToggled( bool checked )
+	{
+		if ( checked )
+		{
+			simplePreview->setRotate( orientationRotatedRadio->isChecked() );
+		}
+	}
+
 
 }
