@@ -53,10 +53,13 @@ namespace libglabels
 	QStringList      Db::mVendorNames;
 	QList<Template*> Db::mTemplates;
 
+	QString Db::mPaperNameOther;
 	QString Db::mEmpty = "";
 
 	Db::Db()
 	{
+		mPaperNameOther = tr("Other");
+
 		readPapers();
 		readCategories();
 		readVendors();
@@ -141,6 +144,11 @@ namespace libglabels
 	{
 		if ( !id.isNull() && !id.isEmpty() )
 		{
+			if ( isPaperIdOther( id ) )
+			{
+				return mPaperNameOther;
+			}
+
 			const Paper *paper = lookupPaperFromId( id );
 			if ( paper != NULL )
 			{

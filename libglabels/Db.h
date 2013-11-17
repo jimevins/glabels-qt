@@ -128,6 +128,7 @@ namespace libglabels
 
 		static QList<Template*> mTemplates;
 
+		static QString mPaperNameOther;
 		static QString mEmpty;
 	};
 
