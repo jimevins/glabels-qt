@@ -25,7 +25,7 @@
 #include <QWidget>
 
 
-namespace gLabels
+namespace glabels
 {
 
 	namespace Help

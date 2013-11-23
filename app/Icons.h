@@ -24,7 +24,7 @@
 #include <QIcon>
 
 
-namespace gLabels
+namespace glabels
 {
 
 	namespace Icons

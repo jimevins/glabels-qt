@@ -26,7 +26,7 @@
 #include "TemplatePickerItem.h"
 
 
-namespace gLabels
+namespace glabels
 {
 
 	NewLabelDialog::NewLabelDialog( QWidget *parent = 0 )

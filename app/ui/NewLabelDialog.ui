@@ -123,7 +123,7 @@
         </layout>
        </item>
        <item>
-        <widget class="gLabels::TemplatePicker" name="templatePicker">
+        <widget class="glabels::TemplatePicker" name="templatePicker">
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
@@ -185,7 +185,7 @@
               <number>12</number>
              </property>
              <item>
-              <widget class="gLabels::SimplePreview" name="simplePreview">
+              <widget class="glabels::SimplePreview" name="simplePreview">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -441,12 +441,12 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>gLabels::TemplatePicker</class>
+   <class>glabels::TemplatePicker</class>
    <extends>QListWidget</extends>
    <header>TemplatePicker.h</header>
   </customwidget>
   <customwidget>
-   <class>gLabels::SimplePreview</class>
+   <class>glabels::SimplePreview</class>
    <extends>QGraphicsView</extends>
    <header>SimplePreview.h</header>
   </customwidget>

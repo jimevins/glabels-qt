@@ -29,7 +29,7 @@
 #include "libglabels/Template.h"
 
 
-namespace gLabels
+namespace glabels
 {
 
 	class SimplePreview : public QGraphicsView

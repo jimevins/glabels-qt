@@ -2,24 +2,24 @@
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
- *  This file is part of qtLabels.
+ *  This file is part of gLabels-qt.
  *
- *  qtLabels is free software: you can redistribute it and/or modify
+ *  gLabels-qt is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  qtLabels is distributed in the hope that it will be useful,
+ *  gLabels-qt is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with qtLabels.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef qtlabels_LabelModelItem_h
-#define qtlabels_LabelModelItem_h
+#ifndef glabels_LabelModelItem_h
+#define glabels_LabelModelItem_h
 
 #include <QObject>
 #include <QTransform>
@@ -33,7 +33,7 @@
 #include "MergeRecord.h"
 
 
-namespace qtLabels
+namespace glabels
 {
 
 	class LabelModelItem : public QObject
@@ -63,9 +63,9 @@ namespace qtLabels
 		/*
 		 * Selected Property.
 		 */
-		Q_PROPERTY( bool selected READ is_selected WRITE select RESET unselect )
+		Q_PROPERTY( bool selected READ isSelected WRITE select RESET unselect )
 
-		bool is_selected( void ) { return m_selected_flag; }
+		bool isSelected( void ) { return m_selected_flag; }
 		void select( bool value = true ) { m_selected_flag = value; }
 		void unselect( void ) { m_selected_flag = false; }
 
@@ -468,7 +468,7 @@ namespace qtLabels
 
 }
 
-#endif // qtlabels_LabelModelItem_h
+#endif // glabels_LabelModelItem_h
 
 ///////////////////////////////////////////////////////////////////////////////
 #if 0

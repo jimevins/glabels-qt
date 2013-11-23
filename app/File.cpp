@@ -23,7 +23,7 @@
 #include "NewLabelDialog.h"
 
 
-namespace gLabels
+namespace glabels
 {
 
 	namespace File

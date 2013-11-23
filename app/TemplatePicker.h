@@ -28,7 +28,7 @@
 #include "libglabels/Template.h"
 
 
-namespace gLabels
+namespace glabels
 {
 
 	class TemplatePicker : public QListWidget

@@ -25,7 +25,7 @@
 #include "TemplatePickerItem.h"
 
 
-namespace gLabels
+namespace glabels
 {
 
 	TemplatePicker::TemplatePicker( QWidget *parent ) : QListWidget(parent)

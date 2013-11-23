@@ -48,7 +48,7 @@ namespace
 }
 
 
-namespace gLabels
+namespace glabels
 {
 
 	SimplePreview::SimplePreview( QWidget *parent = 0 )

@@ -24,7 +24,7 @@
 #include "MainWindow.h"
 #include "libglabels/Db.h"
 
-using namespace gLabels;
+using namespace glabels;
 using namespace libglabels;
 
 

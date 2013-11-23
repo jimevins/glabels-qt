@@ -30,7 +30,7 @@
 #include <QLabel>
 
 
-namespace gLabels
+namespace glabels
 {
 
 	class MainWindow : public QMainWindow

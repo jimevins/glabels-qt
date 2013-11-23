@@ -30,7 +30,7 @@
 #include "File.h"
 #include "Help.h"
 
-namespace gLabels
+namespace glabels
 {
 
 	MainWindow::MainWindow()

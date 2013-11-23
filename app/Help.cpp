@@ -25,7 +25,7 @@
 #include <iostream>
 
 
-namespace gLabels
+namespace glabels
 {
 
 	namespace Help

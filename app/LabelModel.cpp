@@ -2,25 +2,25 @@
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
- *  This file is part of qtLabels.
+ *  This file is part of gLabels-qt.
  *
- *  qtLabels is free software: you can redistribute it and/or modify
+ *  gLabels-qt is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  qtLabels is distributed in the hope that it will be useful,
+ *  gLabels-qt is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with qtLabels.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "LabelModel.h"
 
-namespace qtLabels
+namespace glabels
 {
 
 	/**
@@ -34,64 +34,96 @@ namespace qtLabels
 	/**
 	 * Add item.
 	 */
-	void LabelModel::add_item( LabelModelItem &item )
+	void LabelModel::addItem( LabelModelItem *item )
 	{
-		m_item_list.push_back( &item );
+		mItemList << item;
+	}
+
+
+	void LabelModel::deleteItem( LabelModelItem *item )
+	{
+		mItemList.removeOne( item );
 	}
 
 
 	/**
 	 * Select item.
 	 */
-	void LabelModel::select_item( LabelModelItem &item )
+	void LabelModel::selectItem( LabelModelItem *item )
 	{
-		item.select();
+		item->select();
 
-		emit selection_changed();
+		emit selectionChanged();
 	}
 
 
 	/**
 	 * Unselect item.
 	 */
-	void LabelModel::unselect_item( LabelModelItem &item )
+	void LabelModel::unselectItem( LabelModelItem *item )
 	{
-		item.unselect();
+		item->unselect();
 
-		emit selection_changed();
+		emit selectionChanged();
 	}
 
 
 	/**
 	 * Select all items.
 	 */
-	void LabelModel::select_all( void )
+	void LabelModel::selectAll( void )
 	{
-		list<LabelModelItem*>::iterator i_item;
-
-		for ( i_item = m_item_list.begin(); i_item != m_item_list.end(); i_item++ )
+		foreach ( LabelModelItem *item, mItemList )
 		{
-			(*i_item)->select();
+			item->select();
 		}
 
-		emit selection_changed();
+		emit selectionChanged();
 	}
 
 
 	/**
 	 * Unselect item all items.
 	 */
-	void LabelModel::unselect_all( void )
+	void LabelModel::unselectAll( void )
 	{
-		list<LabelModelItem*>::iterator i_item;
-
-		for ( i_item = m_item_list.begin(); i_item != m_item_list.end(); i_item++ )
+		foreach ( LabelModelItem *item, mItemList )
 		{
-			(*i_item)->unselect();
+			item->unselect();
 		}
 
-		emit selection_changed();
+		emit selectionChanged();
 	}
+
+
+	QList<LabelModelItem *> LabelModel::getSelection()
+	{
+		QList<LabelModelItem*> selectedList;
+
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				selectedList << item;
+			}
+		}
+		
+	}
+
+
+	void LabelModel::deleteSelection()
+	{
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			deleteItem( item );
+		}
+
+		emit selectionChanged();
+	}
+
+
 
 }
 
@@ -468,7 +500,7 @@ namespace qtLabels
 		}
 
 
-		public void select_all()
+		public void selectAll()
 		{
 			foreach ( LabelObject object in object_list )
 			{
@@ -478,7 +510,7 @@ namespace qtLabels
 		}
 
 
-		public void unselect_all()
+		public void unselectAll()
 		{
 			foreach ( LabelObject object in object_list )
 			{

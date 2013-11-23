@@ -25,7 +25,7 @@
 #include <QHBoxLayout>
 
 
-namespace gLabels
+namespace glabels
 {
 
 	TemplatePickerItem::TemplatePickerItem( libglabels::Template *tmplate,

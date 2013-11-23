@@ -24,7 +24,7 @@
 #include "ui_NewLabelDialog.h"
 
 
-namespace gLabels
+namespace glabels
 {
 
 	class NewLabelDialog : public QDialog, public Ui_NewLabelDialog

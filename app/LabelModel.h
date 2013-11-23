@@ -2,33 +2,32 @@
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
- *  This file is part of qtLabels.
+ *  This file is part of gLabels-qt.
  *
- *  qtLabels is free software: you can redistribute it and/or modify
+ *  gLabels-qt is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  qtLabels is distributed in the hope that it will be useful,
+ *  gLabels-qt is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with qtLabels.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef qtlabels_LabelModel_h
-#define qtlabels_LabelModel_h
+#ifndef glabels_LabelModel_h
+#define glabels_LabelModel_h
 
-#include <QObject>
-#include <list>
+#include <QGraphicsScene>
+#include <QList>
 
 #include "LabelModelItem.h"
 
-using namespace std;
 
-namespace qtLabels
+namespace glabels
 {
 
 	class LabelModel : public QObject
@@ -40,28 +39,39 @@ namespace qtLabels
 		virtual ~LabelModel() {}
 
 	signals:
-		void selection_changed();
+		void selectionChanged();
 
 	public:
-		void add_item( LabelModelItem &item );
+		void addItem( LabelModelItem *item );
 
-		void select_item( LabelModelItem &item );
+		void deleteItem( LabelModelItem *item );
 
-		void unselect_item( LabelModelItem &item );
 
-		void select_all( void );
+		void selectItem( LabelModelItem *item );
 
-		void unselect_all( void );
+		void unselectItem( LabelModelItem *item );
+
+		void selectAll( void );
+
+		void unselectAll( void );
+
+
+		void deleteSelection();
 
 
 	private:
-		list<LabelModelItem*> m_item_list;
+
+		QList<LabelModelItem *> getSelection();
+
+		QList<LabelModelItem*> mItemList;
 		
 	};
 
 }
 
-#endif // qtlabels_LabelModel_h
+#endif // glabels_LabelModel_h
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 #if 0
