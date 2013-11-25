@@ -27,276 +27,152 @@ namespace glabels
 	/*
 	 * Default constructor.
 	 */
-	LabelModelItem::LabelModelItem()
+	LabelModelItem::LabelModelItem( QObject *parent = 0 ) : QObject(parent)
 	{
-		m_x0 = 0;
-		m_y0 = 0;
-		m_w  = 0;
-		m_h  = 0;
-		m_matrix = QTransform();
+		mX0 = 0;
+		mY0 = 0;
+		mW  = 0;
+		mH  = 0;
+		mMatrix = QTransform();
 
-		m_shadow_state      = false;
-		m_shadow_x          = 1.3;
-		m_shadow_y          = 1.3;
-		m_shadow_color_node = ColorNode( QColor::fromRgb(0x000000) );
-		m_shadow_opacity    = 0.5;
+		mShadowState     = false;
+		mShadowX         = 1.3;
+		mShadowY         = 1.3;
+		mShadowColorNode = ColorNode( QColor::fromRgb(0x000000) );
+		mShadowOpacity   = 0.5;
 
-		m_selected_flag = false;
+		mSelectedFlag = false;
 	}
 
 
-	void LabelModelItem::set_position( double x0,
-					   double y0 )
+	void LabelModelItem::setPosition( double x0, double y0 )
 	{
-		if ( ( m_x0 != x0 ) || ( m_y0 != y0 ) )
+		if ( ( mX0 != x0 ) || ( mY0 != y0 ) )
 		{
-			m_x0 = x0;
-			m_y0 = y0;
+			mX0 = x0;
+			mY0 = y0;
 
-			moved();
+			emit moved();
 		}
 	}
 
 
-	void LabelModelItem::set_position_relative( double dx,
-						    double dy )
+	void LabelModelItem::setPositionRelative( double dx, double dy )
 	{
 		if ( ( dx != 0 ) || ( dy != 0 ) )
 		{
-			m_x0 += dx;
-			m_y0 += dy;
+			mX0 += dx;
+			mY0 += dy;
 
-			moved();
+			emit moved();
 		}
 	}
 
 
-	void LabelModelItem::set_size( double w,
-				       double h )
+	void LabelModelItem::setSize( double w, double h )
 	{
-		m_w = w;
-		m_h = h;
+		mW = w;
+		mH = h;
 	}
 
 
-	void LabelModelItem::set_size_honor_aspect( double w,
-						    double h )
+	void LabelModelItem::setSizeHonorAspect( double w, double h )
 	{
-		double aspect_ratio = m_h / m_w;
+		double aspectRatio = mH / mW;
 
-		if ( h > (w * aspect_ratio) )
+		if ( h > (w * aspectRatio) )
 		{
-			h = w * aspect_ratio;
+			h = w * aspectRatio;
 		}
 		else
 		{
-			w = h / aspect_ratio;
+			w = h / aspectRatio;
 		}
 
-		if ( ( m_w != w ) || ( m_h != h ) )
+		if ( ( mW != w ) || ( mH != h ) )
 		{
-			m_w = w;
-			m_h = h;
+			mW = w;
+			mH = h;
 
-			changed();
+			emit changed();
 		}
 	}
 
 
-	void LabelModelItem::set_w_honor_aspect( double w )
+	void LabelModelItem::setWHonorAspect( double w )
 	{
-		double aspect_ratio = m_h / m_w;
-		double h = w * aspect_ratio;
+		double aspectRatio = mH / mW;
+		double h = w * aspectRatio;
 
-		if ( ( m_w != w ) || ( m_h != h ) )
+		if ( ( mW != w ) || ( mH != h ) )
 		{
-			m_w = w;
-			m_h = h;
+			mW = w;
+			mH = h;
 
-			changed();
+			emit changed();
 		}
 	}
 
 
-	void LabelModelItem::set_h_honor_aspect( double h )
+	void LabelModelItem::setHHonorAspect( double h )
 	{
-		double aspect_ratio = m_h / m_w;
-		double w = h / aspect_ratio;
+		double aspectRatio = mH / mW;
+		double w = h / aspectRatio;
 
-		if ( ( m_w != w ) || ( m_h != h ) )
+		if ( ( mW != w ) || ( mH != h ) )
 		{
-			m_w = w;
-			m_h = h;
+			mW = w;
+			mH = h;
 
-			changed();
+			emit changed();
 		}
 	}
 
 
-	LabelRegion LabelModelItem::get_extent()
+	LabelRegion LabelModelItem::getExtent()
 	{
-		QPointF a1(     - line_width()/2,     - line_width()/2 );
-		QPointF a2( m_w + line_width()/2,     - line_width()/2 );
-		QPointF a3( m_w + line_width()/2, m_h + line_width()/2 );
-		QPointF a4(     - line_width()/2, m_h + line_width()/2 );
+		QPointF a1(    - lineWidth()/2,    - lineWidth()/2 );
+		QPointF a2( mW + lineWidth()/2,    - lineWidth()/2 );
+		QPointF a3( mW + lineWidth()/2, mH + lineWidth()/2 );
+		QPointF a4(    - lineWidth()/2, mH + lineWidth()/2 );
 
-		a1 = m_matrix.map( a1 );
-		a2 = m_matrix.map( a2 );
-		a3 = m_matrix.map( a3 );
-		a4 = m_matrix.map( a4 );
+		a1 = mMatrix.map( a1 );
+		a2 = mMatrix.map( a2 );
+		a3 = mMatrix.map( a3 );
+		a4 = mMatrix.map( a4 );
 
 		LabelRegion region;
-		region.x1( std::min( a1.x(), std::min( a2.x(), std::min( a3.x(), a4.x() ) ) ) + m_x0 );
-		region.y1( std::min( a1.y(), std::min( a2.y(), std::min( a3.y(), a4.y() ) ) ) + m_y0 );
-		region.x2( std::max( a1.x(), std::max( a2.x(), std::max( a3.x(), a4.x() ) ) ) + m_x0 );
-		region.y2( std::max( a1.y(), std::max( a2.y(), std::max( a3.y(), a4.y() ) ) ) + m_y0 );
+		region.x1( std::min( a1.x(), std::min( a2.x(), std::min( a3.x(), a4.x() ) ) ) + mX0 );
+		region.y1( std::min( a1.y(), std::min( a2.y(), std::min( a3.y(), a4.y() ) ) ) + mY0 );
+		region.x2( std::max( a1.x(), std::max( a2.x(), std::max( a3.x(), a4.x() ) ) ) + mX0 );
+		region.y2( std::max( a1.y(), std::max( a2.y(), std::max( a3.y(), a4.y() ) ) ) + mY0 );
 
 		return region;
 	}
 
 
-	void LabelModelItem::rotate( double theta_degs )
+	void LabelModelItem::rotate( double thetaDegs )
 	{
-		if ( theta_degs != 0 )
+		if ( thetaDegs != 0 )
 		{
-			m_matrix = m_matrix.rotate( theta_degs );
-			changed();
+			mMatrix = mMatrix.rotate( thetaDegs );
+			emit changed();
 		}
 	}
 
 
-	void LabelModelItem::flip_horiz()
+	void LabelModelItem::flipHoriz()
 	{
-		m_matrix = m_matrix.scale( -1, 1 );
-		changed();
+		mMatrix = mMatrix.scale( -1, 1 );
+		emit changed();
 	}
 
 
-	void LabelModelItem::flip_vert()
+	void LabelModelItem::flipVert()
 	{
-		m_matrix = m_matrix.scale( 1, -1 );
-		changed();
+		mMatrix = mMatrix.scale( 1, -1 );
+		emit changed();
 	}
-
-
-	void LabelModelItem::draw( QPainter &qp, bool in_editor, const MergeRecord &record )
-	{
-		qp.save();
-		qp.translate( m_x0, m_y0 );
-
-		if ( m_shadow_state )
-		{
-			qp.save();
-			qp.translate( m_shadow_x, m_shadow_y );
-			qp.setTransform( m_matrix, true );
-			draw_shadow( qp, in_editor, record );
-			qp.restore();
-		}
-
-		qp.setTransform( m_matrix, true );
-		draw_object( qp, in_editor, record );
-
-		qp.restore();
-	}
-
-
-	void LabelModelItem::draw_selection_layer( QPainter &qp )
-	{
-		if ( m_selected_flag )
-		{
-			qp.save();
-			qp.translate( m_x0, m_y0 );
-			qp.setTransform( m_matrix, true );
-
-/* TODO:
-			if ( outline != null )
-			{
-				outline.draw( qp );
-			}
-
-			foreach( Handle handle in handles )
-			{
-				handle.draw( qp );
-			}
-*/
-
-			qp.restore();
-		}
-	}
-
-
-	bool LabelModelItem::is_located_at( QPainter &qp, double x_pixels, double y_pixels )
-	{
-		bool ret_val = false;
-
-		qp.save();
-		qp.translate( m_x0, m_y0 );
-		qp.setTransform( m_matrix, true );
-
-/* TODO:
-		double x = x_pixels;
-		double y = y_pixels;
-		qp.device_to_user( ref x, ref y );
-
-		bool ret_val = is_object_located_at( qp, x, y );
-
-		if ( (outline != null) && is_selected() )
-		{
-			if ( outline.in_stroke( qp, x, y ) )
-			{
-				ret_val = true;
-			}
-		}
-*/
-
-		qp.restore();
-
-		return ret_val;
-	}
-
-
-/* TODO:
-	Handle *LabelModelItem::handle_at( QPainter &qp, double x_pixels, double y_pixels )
-	{
-		Handle *ret_val = null;
-
-		qp.save();
-		qp.translate( x0, y0 );
-		qp.transform( matrix );
-
-		double x = x_pixels;
-		double y = y_pixels;
-		qp.device_to_user( ref x, ref y );
-
-		foreach( Handle handle in handles )
-		{
-			handle.cairo_path( qp );
-
-			if ( qp.in_fill( x, y ) )
-			{
-				ret_val = handle;
-				break;
-			}
-		}
-
-		qp.restore();
-
-		return ret_val;
-	}
-*/
 
 }
 
-
-///////////////////////////////////////////////////////////////////////////////
-#if 0
-
-		protected List<Handle> handles;
-		protected Outline?     outline;
-
-		/**
-		 * Parent label
-		 */
-		public weak Label parent { get; set; }
-
-#endif

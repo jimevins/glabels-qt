@@ -37,12 +37,16 @@ namespace glabels
 	void LabelModel::addItem( LabelModelItem *item )
 	{
 		mItemList << item;
+
+		emit itemAdded( item );
 	}
 
 
 	void LabelModel::deleteItem( LabelModelItem *item )
 	{
 		mItemList.removeOne( item );
+
+		emit itemDeleted( item );
 	}
 
 

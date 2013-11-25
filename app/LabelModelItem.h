@@ -44,7 +44,7 @@ namespace glabels
 		// Lifecycle Methods
 		///////////////////////////////////////////////////////////////
 	public:
-		LabelModelItem();
+		LabelModelItem( QObject *parent );
 		virtual ~LabelModelItem() {}
 
 
@@ -65,9 +65,9 @@ namespace glabels
 		 */
 		Q_PROPERTY( bool selected READ isSelected WRITE select RESET unselect )
 
-		bool isSelected( void ) { return m_selected_flag; }
-		void select( bool value = true ) { m_selected_flag = value; }
-		void unselect( void ) { m_selected_flag = false; }
+		bool isSelected( void ) { return mSelectedFlag; }
+		void select( bool value = true ) { mSelectedFlag = value; }
+		void unselect( void ) { mSelectedFlag = false; }
 
 
 		/*
@@ -75,10 +75,10 @@ namespace glabels
 		 */
 		Q_PROPERTY( double x0 READ x0 WRITE x0 );
 
-		double x0( void ) { return m_x0; }
+		double x0( void ) { return mX0; }
 		void x0( double value )
 		{
-			if ( m_x0 != value ) { m_x0 = value; emit moved(); }
+			if ( mX0 != value ) { mX0 = value; emit moved(); }
 		}
 		
 
@@ -87,10 +87,10 @@ namespace glabels
 		 */
 		Q_PROPERTY( double y0 READ y0 WRITE y0 );
 
-		double y0( void ) { return m_y0; }
+		double y0( void ) { return mY0; }
 		void y0( double value )
 		{
-			if ( m_y0 != value ) { m_y0 = value; emit moved(); }
+			if ( mY0 != value ) { mY0 = value; emit moved(); }
 		}
 		
 
@@ -99,10 +99,10 @@ namespace glabels
 		 */
 		Q_PROPERTY( double w  READ w  WRITE w );
 
-		double w( void ) { return m_w; }
+		double w( void ) { return mW; }
 		void w( double value )
 		{
-			if ( m_w != value ) { m_w = value; emit moved(); }
+			if ( mW != value ) { mW = value; emit moved(); }
 		}
 		
 
@@ -111,10 +111,10 @@ namespace glabels
 		 */
 		Q_PROPERTY( double h  READ h  WRITE h );
 
-		double h( void ) { return m_h; }
+		double h( void ) { return mH; }
 		void h( double value )
 		{
-			if ( m_h != value ) { m_h = value; emit moved(); }
+			if ( mH != value ) { mH = value; emit moved(); }
 		}
 
 
@@ -123,10 +123,10 @@ namespace glabels
 		 */
 		Q_PROPERTY( QTransform matrix READ matrix WRITE matrix );
 
-		QTransform matrix( void ) { return m_matrix; }
+		QTransform matrix( void ) { return mMatrix; }
 		void matrix( const QTransform &value )
 		{
-			if ( m_matrix != value ) { m_matrix = value; emit changed(); }
+			if ( mMatrix != value ) { mMatrix = value; emit changed(); }
 		}
 
 
@@ -135,58 +135,58 @@ namespace glabels
 		 */
 		Q_PROPERTY( bool shadow READ shadow WRITE shadow );
 
-		bool shadow( void ) { return m_shadow_state; }
+		bool shadow( void ) { return mShadowState; }
 		void shadow( bool value )
 		{
-			if ( m_shadow_state != value ) { m_shadow_state = value; emit changed(); }
+			if ( mShadowState != value ) { mShadowState = value; emit changed(); }
 		}
 
 
 		/*
 		 * Shadow x Offset Property
 		 */
-		Q_PROPERTY( double shadow_x READ shadow_x WRITE shadow_x );
+		Q_PROPERTY( double shadowX READ shadowX WRITE shadowX );
 
-		double shadow_x( void ) { return m_shadow_x; }
-		void shadow_x( double value )
+		double shadowX( void ) { return mShadowX; }
+		void shadowX( double value )
 		{
-			if ( m_shadow_x != value ) { m_shadow_x = value; emit changed(); }
+			if ( mShadowX != value ) { mShadowX = value; emit changed(); }
 		}
 		
 
 		/*
 		 * Shadow y Offset Property
 		 */
-		Q_PROPERTY( double shadow_y READ shadow_y WRITE shadow_y );
+		Q_PROPERTY( double shadowY READ shadowY WRITE shadowY );
 
-		double shadow_y( void ) { return m_shadow_y; }
-		void shadow_y( double value )
+		double shadowY( void ) { return mShadowY; }
+		void shadowY( double value )
 		{
-			if ( m_shadow_y != value ) { m_shadow_y = value; emit changed(); }
+			if ( mShadowY != value ) { mShadowY = value; emit changed(); }
 		}
 		
 
 		/*
 		 * Shadow opacity Property
 		 */
-		Q_PROPERTY( double shadow_opacity READ shadow_opacity WRITE shadow_opacity );
+		Q_PROPERTY( double shadowOpacity READ shadowOpacity WRITE shadowOpacity );
 
-		double shadow_opacity( void ) { return m_shadow_opacity; }
-		void shadow_opacity( double value )
+		double shadowOpacity( void ) { return mShadowOpacity; }
+		void shadowOpacity( double value )
 		{
-			if ( m_shadow_opacity != value ) { m_shadow_opacity = value; emit changed(); }
+			if ( mShadowOpacity != value ) { mShadowOpacity = value; emit changed(); }
 		}
 		
 
 		/*
 		 * Shadow Color Property
 		 */
-		Q_PROPERTY( ColorNode shadow_color_node READ shadow_color_node WRITE shadow_color_node );
+		Q_PROPERTY( ColorNode shadowColorNode READ shadowColorNode WRITE shadowColorNode );
 
-		ColorNode shadow_color_node( void ) { return m_shadow_color_node; }
-		void shadow_color_node( const ColorNode &value )
+		ColorNode shadowColorNode( void ) { return mShadowColorNode; }
+		void shadowColorNode( const ColorNode &value )
 		{
-			if ( m_shadow_color_node != value ) { m_shadow_color_node = value; emit changed(); }
+			if ( mShadowColorNode != value ) { mShadowColorNode = value; emit changed(); }
 		}
 		
 
@@ -195,84 +195,84 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		/*
-		 * Virtual Text Property: font_family
+		 * Virtual Text Property: fontFamily
 		 */
-		Q_PROPERTY( QString font_family READ font_family WRITE font_family );
+		Q_PROPERTY( QString fontFamily READ fontFamily WRITE fontFamily );
 
-		virtual QString font_family( void ) { return ""; }
-		virtual void font_family( const QString &value ) { }
+		virtual QString fontFamily( void ) { return ""; }
+		virtual void fontFamily( const QString &value ) { }
 
 
 		/*
-		 * Virtual Text Property: font_size
+		 * Virtual Text Property: fontSize
 		 */
-		Q_PROPERTY( double font_size READ font_size WRITE font_size );
+		Q_PROPERTY( double fontSize READ fontSize WRITE fontSize );
 
-		virtual double font_size( void ) { return 0; }
-		virtual void font_size( double value ) { }
+		virtual double fontSize( void ) { return 0; }
+		virtual void fontSize( double value ) { }
 
 
 		/*
-		 * Virtual Text Property: font_weight
+		 * Virtual Text Property: fontWeight
 		 */
-		Q_PROPERTY( QFont::Weight font_weight READ font_weight WRITE font_weight );
+		Q_PROPERTY( QFont::Weight fontWeight READ fontWeight WRITE fontWeight );
 
-		virtual QFont::Weight font_weight( void ) { return QFont::Normal; }
-		virtual void font_weight( QFont::Weight value ) { }
+		virtual QFont::Weight fontWeight( void ) { return QFont::Normal; }
+		virtual void fontWeight( QFont::Weight value ) { }
 
 
 		/*
-		 * Virtual Text Property: font_italic_flag
+		 * Virtual Text Property: fontItalicFlag
 		 */
-		Q_PROPERTY( bool font_italic_flag READ font_italic_flag WRITE font_italic_flag );
+		Q_PROPERTY( bool fontItalicFlag READ fontItalicFlag WRITE fontItalicFlag );
 
-		virtual bool font_italic_flag( void ) { return false; }
-		virtual void font_italic_flag( bool value ) { }
+		virtual bool fontItalicFlag( void ) { return false; }
+		virtual void fontItalicFlag( bool value ) { }
 
 
 		/*
-		 * Virtual Text Property: font_underline_flag
+		 * Virtual Text Property: fontUnderlineFlag
 		 */
-		Q_PROPERTY( bool font_underline_flag READ font_underline_flag WRITE font_underline_flag );
+		Q_PROPERTY( bool fontUnderlineFlag READ fontUnderlineFlag WRITE fontUnderlineFlag );
 
-		virtual bool font_underline_flag( void ) { return false; }
-		virtual void font_underline_flag( bool value ) { }
+		virtual bool fontUnderlineFlag( void ) { return false; }
+		virtual void fontUnderlineFlag( bool value ) { }
 
 
 		/*
-		 * Virtual Text Property: font_color_node
+		 * Virtual Text Property: fontColorNode
 		 */
-		Q_PROPERTY( ColorNode font_color_node READ font_color_node WRITE font_color_node );
+		Q_PROPERTY( ColorNode fontColorNode READ fontColorNode WRITE fontColorNode );
 
-		virtual ColorNode font_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
-		virtual void font_color_node( const ColorNode &value ) { }
+		virtual ColorNode fontColorNode( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
+		virtual void fontColorNode( const ColorNode &value ) { }
 		
 
 		/*
-		 * Virtual Text Property: text_halign
+		 * Virtual Text Property: textHAlign
 		 */
-		Q_PROPERTY( Qt::Alignment text_halign READ text_halign WRITE text_halign );
+		Q_PROPERTY( Qt::Alignment textHAlign READ textHAlign WRITE textHAlign );
 
-		virtual Qt::Alignment text_halign( void ) { return Qt::AlignLeft; }
-		virtual void text_halign( Qt::Alignment value ) { }
+		virtual Qt::Alignment textHAlign( void ) { return Qt::AlignLeft; }
+		virtual void textHAlign( Qt::Alignment value ) { }
 
 
 		/*
-		 * Virtual Text Property: text_valign
+		 * Virtual Text Property: textVAlign
 		 */
-		Q_PROPERTY( Qt::Alignment text_valign READ text_valign WRITE text_valign );
+		Q_PROPERTY( Qt::Alignment textVAlign READ textVAlign WRITE textVAlign );
 
-		virtual Qt::Alignment text_valign( void ) { return Qt::AlignTop; }
-		virtual void text_valign( Qt::Alignment value ) { }
+		virtual Qt::Alignment textVAlign( void ) { return Qt::AlignTop; }
+		virtual void textVAlign( Qt::Alignment value ) { }
 
 
 		/*
-		 * Virtual Text Property: text_line_spacing
+		 * Virtual Text Property: textLineSpacing
 		 */
-		Q_PROPERTY( double text_line_spacing READ text_line_spacing WRITE text_line_spacing );
+		Q_PROPERTY( double textLineSpacing READ textLineSpacing WRITE textLineSpacing );
 
-		virtual double text_line_spacing( void ) { return 0; }
-		virtual void text_line_spacing( double value ) { }
+		virtual double textLineSpacing( void ) { return 0; }
+		virtual void textLineSpacing( double value ) { }
 
 
 		///////////////////////////////////////////////////////////////
@@ -280,12 +280,12 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		/*
-		 * Virtual Image Property: filename_node
+		 * Virtual Image Property: filenameNode
 		 */
-		Q_PROPERTY( TextNode filename_node READ filename_node WRITE filename_node );
+		Q_PROPERTY( TextNode filenameNode READ filenameNode WRITE filenameNode );
 
-		virtual TextNode filename_node( void ) { return TextNode(); }
-		virtual void filename_node( const TextNode &value ) { }
+		virtual TextNode filenameNode( void ) { return TextNode(); }
+		virtual void filenameNode( const TextNode &value ) { }
 		
 
 		///////////////////////////////////////////////////////////////
@@ -293,30 +293,30 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		/*
-		 * Virtual Shape Property: line_width
+		 * Virtual Shape Property: lineWidth
 		 */
-		Q_PROPERTY( double line_width READ line_width WRITE line_width );
+		Q_PROPERTY( double lineWidth READ lineWidth WRITE lineWidth );
 
-		virtual double line_width( void ) { return 0; }
-		virtual void line_width( double value ) { }
+		virtual double lineWidth( void ) { return 0; }
+		virtual void lineWidth( double value ) { }
 
 
 		/*
-		 * Virtual Shape Property: line_color_node
+		 * Virtual Shape Property: lineColorNode
 		 */
-		Q_PROPERTY( ColorNode line_color_node READ line_color_node WRITE line_color_node );
+		Q_PROPERTY( ColorNode lineColorNode READ lineColorNode WRITE lineColorNode );
 
-		virtual ColorNode line_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
-		virtual void line_color_node( const ColorNode &value ) { }
+		virtual ColorNode lineColorNode( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
+		virtual void lineColorNode( const ColorNode &value ) { }
 		
 
 		/*
-		 * Virtual Shape Property: fill_color_node
+		 * Virtual Shape Property: fillColorNode
 		 */
-		Q_PROPERTY( ColorNode fill_color_node READ fill_color_node WRITE fill_color_node );
+		Q_PROPERTY( ColorNode fillColorNode READ fillColorNode WRITE fillColorNode );
 
-		virtual ColorNode fill_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
-		virtual void fill_color_node( const ColorNode &value ) { }
+		virtual ColorNode fillColorNode( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
+		virtual void fillColorNode( const ColorNode &value ) { }
 		
 
 		///////////////////////////////////////////////////////////////
@@ -324,160 +324,118 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		/*
-		 * Virtual Barcode Property: bc_data_node
+		 * Virtual Barcode Property: bcDataNode
 		 */
-		Q_PROPERTY( TextNode bc_data_node READ bc_data_node WRITE bc_data_node );
+		Q_PROPERTY( TextNode bcDataNode READ bcDataNode WRITE bcDataNode );
 
-		virtual TextNode bc_data_node( void ) { return TextNode(); }
-		virtual void bc_data_node( const TextNode &value ) { }
+		virtual TextNode bcDataNode( void ) { return TextNode(); }
+		virtual void bcDataNode( const TextNode &value ) { }
 		
 
 		/*
-		 * Virtual Barcode Property: bc_text_flag
+		 * Virtual Barcode Property: bcTextFlag
 		 */
-		Q_PROPERTY( bool bc_text_flag READ bc_text_flag WRITE bc_text_flag );
+		Q_PROPERTY( bool bcTextFlag READ bcTextFlag WRITE bcTextFlag );
 
-		virtual bool bc_text_flag( void ) { return false; }
-		virtual void bc_text_flag( bool value ) { }
+		virtual bool bcTextFlag( void ) { return false; }
+		virtual void bcTextFlag( bool value ) { }
 
 
 		/*
-		 * Virtual Barcode Property: bc_checksum_flag
+		 * Virtual Barcode Property: bcChecksumFlag
 		 */
-		Q_PROPERTY( bool bc_checksum_flag READ bc_checksum_flag WRITE bc_checksum_flag );
+		Q_PROPERTY( bool bcChecksumFlag READ bcChecksumFlag WRITE bcChecksumFlag );
 
-		virtual bool bc_checksum_flag( void ) { return false; }
-		virtual void bc_checksum_flag( bool value ) { }
+		virtual bool bcChecksumFlag( void ) { return false; }
+		virtual void bcChecksumFlag( bool value ) { }
 
 
 		/*
-		 * Virtual Barcode Property: bc_color_node
+		 * Virtual Barcode Property: bcColorNode
 		 */
-		Q_PROPERTY( ColorNode bc_color_node READ bc_color_node WRITE bc_color_node );
+		Q_PROPERTY( ColorNode bcColorNode READ bcColorNode WRITE bcColorNode );
 
-		virtual ColorNode bc_color_node( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
-		virtual void bc_color_node( const ColorNode &value ) { }
+		virtual ColorNode bcColorNode( void ) { return ColorNode( QColor::fromRgba(0x00000000) ); }
+		virtual void bcColorNode( const ColorNode &value ) { }
 		
 
 		/*
-		 * Virtual Barcode Property: bc_style
+		 * Virtual Barcode Property: bcStyle
 		 */
-		Q_PROPERTY( BarcodeStyle bc_style READ bc_style WRITE bc_style );
+		Q_PROPERTY( BarcodeStyle bcStyle READ bcStyle WRITE bcStyle );
 
-		virtual BarcodeStyle bc_style( void ) { return BarcodeStyle(); }
-		virtual void bc_style( const BarcodeStyle &value ) { }
+		virtual BarcodeStyle bcStyle( void ) { return BarcodeStyle(); }
+		virtual void bcStyle( const BarcodeStyle &value ) { }
 		
 
 		/*
-		 * Virtual Barcode Property: bc_format_digits
+		 * Virtual Barcode Property: bcFormatDigits
 		 */
-		Q_PROPERTY( int bc_format_digits READ bc_format_digits WRITE bc_format_digits );
+		Q_PROPERTY( int bcFormatDigits READ bcFormatDigits WRITE bcFormatDigits );
 
-		virtual int bc_format_digits( void ) { return false; }
-		virtual void bc_format_digits( int value ) { }
+		virtual int bcFormatDigits( void ) { return false; }
+		virtual void bcFormatDigits( int value ) { }
 
 
 		///////////////////////////////////////////////////////////////
 		// Capabilities (Overridden by concrete classes.)
 		///////////////////////////////////////////////////////////////
 	public:
-		virtual bool can_text()	{ return false;	}
+		virtual bool canText()	{ return false;	}
 
-		virtual bool can_fill()	{ return false;	}
+		virtual bool canFill()	{ return false;	}
 
-		virtual bool can_line_color() {	return false; }
+		virtual bool canLineColor() { return false; }
 
-		virtual bool can_line_width() {	return false; }
+		virtual bool canLineWidth() { return false; }
 
 
 		///////////////////////////////////////////////////////////////
 		// Position and Size methods
 		///////////////////////////////////////////////////////////////
 	public:
-		void set_position( double x0,
-				   double y0 );
+		void setPosition( double x0, double y0 );
 
-		void set_position_relative( double dx,
-					    double dy );
+		void setPositionRelative( double dx, double dy );
 
-		void set_size( double w,
-			       double h );
+		void setSize( double w, double h );
 
-		void set_size_honor_aspect( double w,
-					    double h );
+		void setSizeHonorAspect( double w, double h );
 
-		void set_w_honor_aspect( double w );
+		void setWHonorAspect( double w );
 
-		void set_h_honor_aspect( double h );
+		void setHHonorAspect( double h );
 
-		LabelRegion get_extent();
+		LabelRegion getExtent();
 
-		void rotate( double theta_degs );
+		void rotate( double thetaDegs );
 
-		void flip_horiz();
+		void flipHoriz();
 
-		void flip_vert();
-
-
-		///////////////////////////////////////////////////////////////
-		// Drawing Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		void draw( QPainter &qp, bool in_editor, const MergeRecord &record );
-
-		void draw_selection_layer( QPainter &qp );
-
-	protected:
-		virtual void draw_object( QPainter &qp, bool in_editor, MergeRecord record ) = 0;
-
-		virtual void draw_shadow( QPainter &qp, bool in_editor, MergeRecord record ) = 0;
-
-
-		///////////////////////////////////////////////////////////////
-		// Text location Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		bool is_located_at( QPainter &qp, double x_pixels, double y_pixels );
-
-		//Handle* handle_at(  QPainter &qp, double x_pixels, double y_pixels );
-
-	protected:
-		virtual bool is_object_located_at( QPainter &qp, double x, double y ) = 0;
+		void flipVert();
 
 
 		///////////////////////////////////////////////////////////////
 		// Private Members
 		///////////////////////////////////////////////////////////////
 	private:
-		bool       m_selected_flag;
+		bool       mSelectedFlag;
 
-		double     m_x0;
-		double     m_y0;
-		double     m_w;
-		double     m_h;
+		double     mX0;
+		double     mY0;
+		double     mW;
+		double     mH;
 
-		QTransform m_matrix;
+		QTransform mMatrix;
 
-		bool       m_shadow_state;
-		double     m_shadow_x;
-		double     m_shadow_y;
-		double     m_shadow_opacity;
-		ColorNode  m_shadow_color_node;
+		bool       mShadowState;
+		double     mShadowX;
+		double     mShadowY;
+		double     mShadowOpacity;
+		ColorNode  mShadowColorNode;
 
 	};
 
 }
 
 #endif // glabels_LabelModelItem_h
-
-///////////////////////////////////////////////////////////////////////////////
-#if 0
-		protected List<Handle> handles;
-		protected Outline?     outline;
-
-		/**
-		 * Parent label
-		 */
-		public weak Label parent { get; set; }
-
-#endif

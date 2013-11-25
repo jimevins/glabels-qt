@@ -21,7 +21,7 @@
 #ifndef glabels_LabelModel_h
 #define glabels_LabelModel_h
 
-#include <QGraphicsScene>
+#include <QObject>
 #include <QList>
 
 #include "LabelModelItem.h"
@@ -40,6 +40,8 @@ namespace glabels
 
 	signals:
 		void selectionChanged();
+		void itemAdded( LabelModelItem *item );
+		void itemDeleted( LabelModelItem *item );
 
 	public:
 		void addItem( LabelModelItem *item );
@@ -56,12 +58,13 @@ namespace glabels
 		void unselectAll( void );
 
 
+		QList<LabelModelItem *> getSelection();
+
+
 		void deleteSelection();
 
 
 	private:
-
-		QList<LabelModelItem *> getSelection();
 
 		QList<LabelModelItem*> mItemList;
 		
