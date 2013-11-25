@@ -20,13 +20,16 @@
 
 #include "LabelModel.h"
 
+#include <cmath>
+
+
 namespace glabels
 {
 
 	/**
 	 * Default constructor.
 	 */
-	LabelModel::LabelModel()
+	LabelModel::LabelModel() : mModified(true)
 	{
 	}
 
@@ -36,17 +39,46 @@ namespace glabels
 	 */
 	void LabelModel::addItem( LabelModelItem *item )
 	{
+		item->setParent( this );
 		mItemList << item;
 
+		connect( item, SIGNAL(changed()), this, SLOT(itemChanged(LabelModelItem*)) );
+		connect( item, SIGNAL(moved()), this, SLOT(itemMoved(LabelModelItem*)) );
+
+		mModified = true;
+
 		emit itemAdded( item );
+		emit changed();
+	}
+
+
+	void LabelModel::itemChanged( LabelModelItem *item )
+	{
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::itemMoved( LabelModelItem *item )
+	{
+		mModified = true;
+
+		emit changed();
 	}
 
 
 	void LabelModel::deleteItem( LabelModelItem *item )
 	{
+		item->unselect();
 		mItemList.removeOne( item );
 
+		disconnect( item, 0, this, 0 );
+
+		mModified = true;
+
 		emit itemDeleted( item );
+		emit changed();
 	}
 
 
@@ -75,7 +107,7 @@ namespace glabels
 	/**
 	 * Select all items.
 	 */
-	void LabelModel::selectAll( void )
+	void LabelModel::selectAll()
 	{
 		foreach ( LabelModelItem *item, mItemList )
 		{
@@ -89,7 +121,7 @@ namespace glabels
 	/**
 	 * Unselect item all items.
 	 */
-	void LabelModel::unselectAll( void )
+	void LabelModel::unselectAll()
 	{
 		foreach ( LabelModelItem *item, mItemList )
 		{
@@ -97,6 +129,64 @@ namespace glabels
 		}
 
 		emit selectionChanged();
+	}
+
+
+	void LabelModel::selectRegion( const LabelRegion &region )
+	{
+		double rX1 = std::min( region.x1(), region.x2() );
+		double rY1 = std::min( region.y1(), region.y2() );
+		double rX2 = std::max( region.x1(), region.x2() );
+		double rY2 = std::max( region.y1(), region.y2() );
+
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			LabelRegion itemExtent = item->getExtent();
+
+			if ( (itemExtent.x1() >= rX1) &&
+			     (itemExtent.x2() <= rX2) &&
+			     (itemExtent.y1() >= rY1) &&
+			     (itemExtent.y2() <= rY2) )
+			{
+				item->select();
+			}
+		}
+
+		emit selectionChanged();
+	}
+
+
+	bool LabelModel::isSelectionEmpty()
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
+	bool LabelModel::isSelectionAtomic()
+	{
+		int nSelected = 0;
+
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				nSelected++;
+				if ( nSelected > 1 )
+				{
+					return false;
+				}
+			}
+		}
+
+		return (nSelected == 1);
 	}
 
 
@@ -124,10 +214,10 @@ namespace glabels
 			deleteItem( item );
 		}
 
+		mModified = true;
+
 		emit selectionChanged();
 	}
-
-
 
 }
 
@@ -521,61 +611,6 @@ namespace qtLabels
 				object.unselect();
 			}
 			selection_changed();
-		}
-
-
-		public void select_region( LabelRegion region )
-		{
-			double r_x1 = double.min( region.x1, region.x2 );
-			double r_y1 = double.min( region.y1, region.y2 );
-			double r_x2 = double.max( region.x1, region.x2 );
-			double r_y2 = double.max( region.y1, region.y2 );
-
-			foreach ( LabelObject object in object_list )
-			{
-				LabelRegion obj_extent = object.get_extent();
-
-				if ( (obj_extent.x1 >= r_x1) &&
-				     (obj_extent.x2 <= r_x2) &&
-				     (obj_extent.y1 >= r_y1) &&
-				     (obj_extent.y2 <= r_y2) )
-				{
-					object.select();
-				}
-			}
-			selection_changed();
-		}
-
-
-		public bool is_selection_empty()
-		{
-			foreach ( LabelObject object in object_list )
-			{
-				if ( object.is_selected() )
-				{
-					return false;
-				}
-			}
-			return true;
-		}
-
-
-		public bool is_selection_atomic()
-		{
-			int n_selected = 0;
-
-			foreach ( LabelObject object in object_list )
-			{
-				if ( object.is_selected() )
-				{
-					n_selected++;
-					if ( n_selected > 1 )
-					{
-						return false;
-					}
-				}
-			}
-			return (n_selected == 1);
 		}
 
 

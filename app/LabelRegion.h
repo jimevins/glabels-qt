@@ -28,24 +28,24 @@ namespace glabels
 	struct LabelRegion
 	{
 	public:
-		inline double x1( void ) { return m_x1; }
-		inline void x1( double value ) { m_x1 = value; }
+		inline double x1( void ) const { return mX1; }
+		inline void x1( double value ) { mX1 = value; }
 
-		inline double y1( void ) { return m_y1; }
-		inline void y1( double value ) { m_y1 = value; }
+		inline double y1( void ) const { return mY1; }
+		inline void y1( double value ) { mY1 = value; }
 
-		inline double x2( void ) { return m_x2; }
-		inline void x2( double value ) { m_x2 = value; }
+		inline double x2( void ) const { return mX2; }
+		inline void x2( double value ) { mX2 = value; }
 
-		inline double y2( void ) { return m_y2; }
-		inline void y2( double value ) { m_y2 = value; }
+		inline double y2( void ) const { return mY2; }
+		inline void y2( double value ) { mY2 = value; }
 
 
 	private:
-		double m_x1;
-		double m_y1;
-		double m_x2;
-		double m_y2;
+		double mX1;
+		double mY1;
+		double mX2;
+		double mY2;
 	};
 
 }

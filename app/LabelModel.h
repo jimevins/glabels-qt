@@ -39,11 +39,16 @@ namespace glabels
 		virtual ~LabelModel() {}
 
 	signals:
+		void changed();
 		void selectionChanged();
 		void itemAdded( LabelModelItem *item );
 		void itemDeleted( LabelModelItem *item );
 
 	public:
+		Q_PROPERTY( bool modified READ isModified );
+		bool isModified( void ) const { return mModified; }
+
+
 		void addItem( LabelModelItem *item );
 
 		void deleteItem( LabelModelItem *item );
@@ -53,9 +58,15 @@ namespace glabels
 
 		void unselectItem( LabelModelItem *item );
 
-		void selectAll( void );
+		void selectAll();
 
-		void unselectAll( void );
+		void unselectAll();
+
+		void selectRegion( const LabelRegion &region );
+
+		bool isSelectionEmpty();
+
+		bool isSelectionAtomic();
 
 
 		QList<LabelModelItem *> getSelection();
@@ -64,9 +75,16 @@ namespace glabels
 		void deleteSelection();
 
 
+	private slots:
+		void itemChanged( LabelModelItem *item );
+		void itemMoved( LabelModelItem *item );
+
+
 	private:
 
 		QList<LabelModelItem*> mItemList;
+
+		bool mModified;
 		
 	};
 
@@ -338,189 +356,9 @@ namespace qtLabels
 		}
 
 
-		public void add_object( LabelObject object )
-		{
-			object.parent = this;
-			object_list.append( object );
-
-			object.changed.connect( on_object_changed );
-			object.moved.connect( on_object_moved );
-
-			changed();
-			modified = true;
-		}
-
-
-		public void delete_object( LabelObject object )
-		{
-			unselect_object( object );
-
-			object_list.remove( object );
-
-			object.changed.disconnect( on_object_changed );
-			object.moved.disconnect( on_object_moved );
-
-			changed();
-			modified = true;
-		}
-
-
-		private void on_object_changed()
-		{
-			schedule_or_emit_changed_signal();
-		}
-
-
-		private void on_object_moved()
-		{
-			schedule_or_emit_changed_signal();
-		}
-
-
 		private void on_merge_source_changed()
 		{
 			changed();
-		}
-
-
-		public void draw( Cairo.Context cr,
-		                  bool          in_editor,
-		                  MergeRecord?  record )
-		{
-			foreach ( LabelObject object in object_list )
-			{
-				object.draw( cr, in_editor, record );
-			}
-		}
-
-
-		public LabelObject? object_at( Cairo.Context cr,
-		                               double        x_pixels,
-		                               double        y_pixels )
-		{
-			for ( unowned List<LabelObject>? p = object_list.last(); p != null; p = p.prev ) 
-			{
-				LabelObject object = p.data;
-
-				if ( object.is_located_at( cr, x_pixels, y_pixels ) )
-				{
-					return object;
-				}
-			}
-
-			return null;
-		}
-
-
-		public Handle? handle_at( Cairo.Context cr,
-		                          double        x_pixels,
-		                          double        y_pixels )
-		{
-			for ( unowned List<LabelObject>? p = object_list.last(); p != null; p = p.prev ) 
-			{
-				LabelObject object = p.data;
-
-				if ( object.is_selected() )
-				{
-					Handle? handle = object.handle_at( cr, x_pixels, y_pixels );
-
-					if ( handle != null )
-					{
-						return handle;
-					}
-				}
-			}
-
-			return null;
-		}
-
-
-		public void select_object( LabelObject object )
-		{
-			object.select();
-			selection_changed();
-		}
-
-
-		public void unselect_object( LabelObject object )
-		{
-			object.unselect();
-			selection_changed();
-		}
-
-
-		public void select_all()
-		{
-			foreach ( LabelObject object in object_list )
-			{
-				object.select();
-			}
-			selection_changed();
-		}
-
-
-		public void unselect_all()
-		{
-			foreach ( LabelObject object in object_list )
-			{
-				object.unselect();
-			}
-			selection_changed();
-		}
-
-
-		public void select_region( LabelRegion region )
-		{
-			double r_x1 = double.min( region.x1, region.x2 );
-			double r_y1 = double.min( region.y1, region.y2 );
-			double r_x2 = double.max( region.x1, region.x2 );
-			double r_y2 = double.max( region.y1, region.y2 );
-
-			foreach ( LabelObject object in object_list )
-			{
-				LabelRegion obj_extent = object.get_extent();
-
-				if ( (obj_extent.x1 >= r_x1) &&
-				     (obj_extent.x2 <= r_x2) &&
-				     (obj_extent.y1 >= r_y1) &&
-				     (obj_extent.y2 <= r_y2) )
-				{
-					object.select();
-				}
-			}
-			selection_changed();
-		}
-
-
-		public bool is_selection_empty()
-		{
-			foreach ( LabelObject object in object_list )
-			{
-				if ( object.is_selected() )
-				{
-					return false;
-				}
-			}
-			return true;
-		}
-
-
-		public bool is_selection_atomic()
-		{
-			int n_selected = 0;
-
-			foreach ( LabelObject object in object_list )
-			{
-				if ( object.is_selected() )
-				{
-					n_selected++;
-					if ( n_selected > 1 )
-					{
-						return false;
-					}
-				}
-			}
-			return (n_selected == 1);
 		}
 
 
