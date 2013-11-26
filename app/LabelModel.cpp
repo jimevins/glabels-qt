@@ -360,5 +360,315 @@ namespace glabels
 		rotateSelection( 90.0 );
 	}
 
+
+	void LabelModel::flipSelectionHoriz()
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->flipHoriz();
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::flipSelectionVert()
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->flipVert();
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::alignSelectionLeft()
+	{
+		if ( isSelectionEmpty() || isSelectionAtomic() )
+		{
+			return;
+		}
+
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		/* Find left-most edge. */
+		double x1_min = 7200; /* Start with a very large value: 7200pts = 100in */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			if ( r.x1() < x1_min ) x1_min = r.x1();
+		}
+
+		/* Now adjust the object positions to line up the left edges at left-most edge. */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dx = x1_min - r.x1();
+			item->setPositionRelative( dx, 0 );
+		}
+		
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::alignSelectionRight()
+	{
+		if ( isSelectionEmpty() || isSelectionAtomic() )
+		{
+			return;
+		}
+
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		/* Find right-most edge. */
+		double x1_max = -7200; /* Start with a very large negative value: 7200pts = 100in */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			if ( r.x1() > x1_max ) x1_max = r.x1();
+		}
+
+		/* Now adjust the object positions to line up the right edges at right-most edge. */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dx = x1_max - r.x1();
+			item->setPositionRelative( dx, 0 );
+		}
+		
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::alignSelectionHCenter()
+	{
+		if ( isSelectionEmpty() || isSelectionAtomic() )
+		{
+			return;
+		}
+
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		/* Find average center of objects. */
+		double xsum = 0;
+		int n = 0;
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			xsum += (r.x1() + r.x2()) / 2.0;
+			n++;
+		}
+		double xavg = xsum / n;
+
+		/* Find item closest to average center of objects. */
+		double xcenter = 7200; /* Start with very large value. */
+		double dxmin = fabs( xavg - xcenter );
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dx = fabs( xavg - (r.x1() + r.x2())/2.0 );
+			if ( dx < dxmin )
+			{
+				dxmin = dx;
+				xcenter = (r.x1() + r.x2()) / 2.0;
+			}
+		}
+
+		/* Now adjust the object positions to line up with the center of this item. */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dx = xcenter - (r.x1() + r.x2())/2.0;
+			item->setPositionRelative( dx, 0 );
+		}
+		
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::alignSelectionTop()
+	{
+		if ( isSelectionEmpty() || isSelectionAtomic() )
+		{
+			return;
+		}
+
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		/* Find top-most edge. */
+		double y1_min = 7200; /* Start with a very large value: 7200pts = 100in */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			if ( r.y1() < y1_min ) y1_min = r.y1();
+		}
+
+		/* Now adjust the object positions to line up the top edges at top-most edge. */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dy = y1_min - r.y1();
+			item->setPositionRelative( 0, dy );
+		}
+		
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::alignSelectionBottom()
+	{
+		if ( isSelectionEmpty() || isSelectionAtomic() )
+		{
+			return;
+		}
+
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		/* Find bottom-most edge. */
+		double y1_max = -7200; /* Start with a very large negative value: 7200pts = 100in */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			if ( r.y1() > y1_max ) y1_max = r.y1();
+		}
+
+		/* Now adjust the object positions to line up the bottom edges at bottom-most edge. */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dy = y1_max - r.y1();
+			item->setPositionRelative( 0, dy );
+		}
+		
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::alignSelectionVCenter()
+	{
+		if ( isSelectionEmpty() || isSelectionAtomic() )
+		{
+			return;
+		}
+
+		QList<LabelModelItem*> selectedList = getSelection();
+
+		/* Find average center of objects. */
+		double ysum = 0;
+		int n = 0;
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			ysum += (r.y1() + r.y2()) / 2.0;
+			n++;
+		}
+		double yavg = ysum / n;
+
+		/* Find item closest to average center of objects. */
+		double ycenter = 7200; /* Start with very large value. */
+		double dymin = fabs( yavg - ycenter );
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dy = fabs( yavg - (r.y1() + r.y2())/2.0 );
+			if ( dy < dymin )
+			{
+				dymin = dy;
+				ycenter = (r.y1() + r.y2()) / 2.0;
+			}
+		}
+
+		/* Now adjust the object positions to line up with the center of this item. */
+		foreach ( LabelModelItem *item, selectedList )
+		{
+			LabelRegion r = item->getExtent();
+			double dy = ycenter - (r.y1() + r.y2())/2.0;
+			item->setPositionRelative( 0, dy );
+		}
+		
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::centerSelectionHoriz()
+	{
+		double xLabelCenter = w() / 2.0;
+
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				LabelRegion r = item->getExtent();
+				double xItemCenter = (r.x1() + r.x2()) / 2.0;
+				double dx = xLabelCenter - xItemCenter;
+				item->setPositionRelative( dx, 0 );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::centerSelectionVert()
+	{
+		double yLabelCenter = h() / 2.0;
+
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				LabelRegion r = item->getExtent();
+				double yItemCenter = (r.y1() + r.y2()) / 2.0;
+				double dy = yLabelCenter - yItemCenter;
+				item->setPositionRelative( 0, dy );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::moveSelection( double dx, double dy )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setPositionRelative( dx, dy );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
 }
 

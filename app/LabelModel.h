@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QList>
 
+#include "libglabels/Template.h"
 #include "LabelModelItem.h"
 
 
@@ -40,6 +41,7 @@ namespace glabels
 
 	signals:
 		void changed();
+		void sizeChanged();
 		void selectionChanged();
 		void itemAdded( LabelModelItem *item );
 		void itemDeleted( LabelModelItem *item );
@@ -47,8 +49,35 @@ namespace glabels
 		void itemToBottom( LabelModelItem *item );
 
 	public:
-		Q_PROPERTY( bool modified READ isModified );
 		bool isModified( void ) const { return mModified; }
+
+		const libglabels::Template *tmplate() const { return mTmplate; }
+		void setTmplate( const libglabels::Template *tmplate )
+		{
+			if (mTmplate != tmplate)
+			{
+				mTmplate = tmplate;
+				mFrame = tmplate->frames().first();
+				mModified = true;
+				emit changed();
+				emit sizeChanged();
+			}
+		}
+
+		bool rotate() const { return mRotate; }
+		void setRotate( bool rotate )
+		{
+			if (mRotate != rotate)
+			{
+				mRotate = rotate;
+				mModified = true;
+				emit changed();
+				emit sizeChanged();
+			}
+		}
+
+		double w() const { return mRotate ? mFrame->h() : mFrame->w(); }
+		double h() const { return mRotate ? mFrame->w() : mFrame->h(); }
 
 
 		void addItem( LabelModelItem *item );
@@ -88,6 +117,17 @@ namespace glabels
 		void rotateSelection( double thetaDegs );
 		void rotateSelectionLeft();
 		void rotateSelectionRight();
+		void flipSelectionHoriz();
+		void flipSelectionVert();
+		void alignSelectionLeft();
+		void alignSelectionRight();
+		void alignSelectionHCenter();
+		void alignSelectionTop();
+		void alignSelectionBottom();
+		void alignSelectionVCenter();
+		void centerSelectionHoriz();
+		void centerSelectionVert();
+		void moveSelection( double dx, double dy );
 
 
 	private slots:
@@ -99,8 +139,10 @@ namespace glabels
 
 		QList<LabelModelItem*> mItemList;
 
-		bool mModified;
-		
+		bool                         mModified;
+		const libglabels::Template  *mTmplate;
+		const libglabels::Frame     *mFrame;
+		bool                         mRotate;
 	};
 
 }
