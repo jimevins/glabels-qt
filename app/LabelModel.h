@@ -128,6 +128,17 @@ namespace glabels
 		void centerSelectionHoriz();
 		void centerSelectionVert();
 		void moveSelection( double dx, double dy );
+		void setSelectionFontFamily( const QString &fontFamily );
+		void setSelectionFontSize( double fontSize );
+		void setSelectionFontWeight( QFont::Weight fontWeight );
+		void setSelectionFontItalicFlag( bool fontItalicFlag );
+		void setSelectionTextHAlign( Qt::Alignment textHAlign );
+		void setSelectionTextVAlign( Qt::Alignment textVAlign );
+		void setSelectionTextLineSpacing( double textLineSpacing );
+		void setSelectionTextColorNode( ColorNode textColorNode );
+		void setSelectionLineWidth( double lineWidth );
+		void setSelectionLineColorNode( ColorNode lineColorNode );
+		void setSelectionFillColorNode( ColorNode fillColorNode );
 
 
 	private slots:

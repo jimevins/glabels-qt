@@ -670,5 +670,181 @@ namespace glabels
 		emit changed();
 	}
 
+
+	void LabelModel::setSelectionFontFamily( const QString &fontFamily )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setFontFamily( fontFamily );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionFontSize( double fontSize )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setFontSize( fontSize );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionFontWeight( QFont::Weight fontWeight )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setFontWeight( fontWeight );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionFontItalicFlag( bool fontItalicFlag )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setFontItalicFlag( fontItalicFlag );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionTextHAlign( Qt::Alignment textHAlign )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setTextHAlign( textHAlign );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionTextVAlign( Qt::Alignment textVAlign )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setTextVAlign( textVAlign );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionTextLineSpacing( double textLineSpacing )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setTextLineSpacing( textLineSpacing );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionTextColorNode( ColorNode textColorNode )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setTextColorNode( textColorNode );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionLineWidth( double lineWidth )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setLineWidth( lineWidth );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionLineColorNode( ColorNode lineColorNode )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setLineColorNode( lineColorNode );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
+
+	void LabelModel::setSelectionFillColorNode( ColorNode fillColorNode )
+	{
+		foreach ( LabelModelItem *item, mItemList )
+		{
+			if ( item->isSelected() )
+			{
+				item->setFillColorNode( fillColorNode );
+			}
+		}
+
+		mModified = true;
+
+		emit changed();
+	}
+
 }
 
