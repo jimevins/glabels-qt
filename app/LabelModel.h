@@ -41,6 +41,7 @@ namespace glabels
 
 	signals:
 		void changed();
+		void nameChanged();
 		void sizeChanged();
 		void selectionChanged();
 		void itemAdded( LabelModelItem *item );
@@ -49,7 +50,21 @@ namespace glabels
 		void itemToBottom( LabelModelItem *item );
 
 	public:
-		bool isModified( void ) const { return mModified; }
+		bool isModified() const { return mModified; }
+		void clearModified() { mModified = false; }
+
+		const QString &filename() const { return mFilename; }
+		void setFilename( const QString &filename )
+		{
+			if ( mFilename != filename )
+			{
+				mFilename = filename;
+				emit nameChanged();
+			}
+		}
+
+		int compressionLevel() const { return mCompressionLevel; }
+		void setCompressionLevel( int compressionLevel ) { mCompressionLevel = compressionLevel; }
 
 		const libglabels::Template *tmplate() const { return mTmplate; }
 		void setTmplate( const libglabels::Template *tmplate )
@@ -151,6 +166,8 @@ namespace glabels
 		QList<LabelModelItem*> mItemList;
 
 		bool                         mModified;
+		QString                      mFilename;
+		int                          mCompressionLevel;
 		const libglabels::Template  *mTmplate;
 		const libglabels::Frame     *mFrame;
 		bool                         mRotate;
