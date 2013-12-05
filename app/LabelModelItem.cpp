@@ -24,11 +24,15 @@
 namespace glabels
 {
 
+	int LabelModelItem::lastId = 0;
+
 	/*
 	 * Default constructor.
 	 */
 	LabelModelItem::LabelModelItem( QObject *parent = 0 ) : QObject(parent)
 	{
+		mId = lastId++;
+
 		mX0 = 0;
 		mY0 = 0;
 		mW  = 0;

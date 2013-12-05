@@ -44,6 +44,8 @@ namespace glabels
 		void nameChanged();
 		void sizeChanged();
 		void selectionChanged();
+		void itemChanged( LabelModelItem *item );
+		void itemMoved( LabelModelItem *item );
 		void itemAdded( LabelModelItem *item );
 		void itemDeleted( LabelModelItem *item );
 		void itemToTop( LabelModelItem *item );
@@ -157,8 +159,8 @@ namespace glabels
 
 
 	private slots:
-		void itemChanged( LabelModelItem *item );
-		void itemMoved( LabelModelItem *item );
+		void onItemChanged( LabelModelItem *item );
+		void onItemMoved( LabelModelItem *item );
 
 
 	private:

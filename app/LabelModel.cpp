@@ -52,18 +52,20 @@ namespace glabels
 	}
 
 
-	void LabelModel::itemChanged( LabelModelItem *item )
+	void LabelModel::onItemChanged( LabelModelItem *item )
 	{
 		mModified = true;
 
+		emit itemChanged( item );
 		emit changed();
 	}
 
 
-	void LabelModel::itemMoved( LabelModelItem *item )
+	void LabelModel::onItemMoved( LabelModelItem *item )
 	{
 		mModified = true;
 
+		emit itemMoved( item );
 		emit changed();
 	}
 
