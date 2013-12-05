@@ -1,4 +1,4 @@
-/*  LabelModelItem.cpp
+/*  LabelModelObject.cpp
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,18 +18,18 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "LabelModelItem.h"
+#include "LabelModelObject.h"
 
 
 namespace glabels
 {
 
-	int LabelModelItem::lastId = 0;
+	int LabelModelObject::lastId = 0;
 
 	/*
 	 * Default constructor.
 	 */
-	LabelModelItem::LabelModelItem( QObject *parent = 0 ) : QObject(parent)
+	LabelModelObject::LabelModelObject( QObject *parent = 0 ) : QObject(parent)
 	{
 		mId = lastId++;
 
@@ -49,7 +49,7 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::setPosition( double x0, double y0 )
+	void LabelModelObject::setPosition( double x0, double y0 )
 	{
 		if ( ( mX0 != x0 ) || ( mY0 != y0 ) )
 		{
@@ -61,7 +61,7 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::setPositionRelative( double dx, double dy )
+	void LabelModelObject::setPositionRelative( double dx, double dy )
 	{
 		if ( ( dx != 0 ) || ( dy != 0 ) )
 		{
@@ -73,14 +73,14 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::setSize( double w, double h )
+	void LabelModelObject::setSize( double w, double h )
 	{
 		mW = w;
 		mH = h;
 	}
 
 
-	void LabelModelItem::setSizeHonorAspect( double w, double h )
+	void LabelModelObject::setSizeHonorAspect( double w, double h )
 	{
 		double aspectRatio = mH / mW;
 
@@ -103,7 +103,7 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::setWHonorAspect( double w )
+	void LabelModelObject::setWHonorAspect( double w )
 	{
 		double aspectRatio = mH / mW;
 		double h = w * aspectRatio;
@@ -118,7 +118,7 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::setHHonorAspect( double h )
+	void LabelModelObject::setHHonorAspect( double h )
 	{
 		double aspectRatio = mH / mW;
 		double w = h / aspectRatio;
@@ -133,7 +133,7 @@ namespace glabels
 	}
 
 
-	LabelRegion LabelModelItem::getExtent()
+	LabelRegion LabelModelObject::getExtent()
 	{
 		QPointF a1(    - lineWidth()/2,    - lineWidth()/2 );
 		QPointF a2( mW + lineWidth()/2,    - lineWidth()/2 );
@@ -155,7 +155,7 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::rotate( double thetaDegs )
+	void LabelModelObject::rotate( double thetaDegs )
 	{
 		if ( thetaDegs != 0 )
 		{
@@ -165,14 +165,14 @@ namespace glabels
 	}
 
 
-	void LabelModelItem::flipHoriz()
+	void LabelModelObject::flipHoriz()
 	{
 		mMatrix = mMatrix.scale( -1, 1 );
 		emit changed();
 	}
 
 
-	void LabelModelItem::flipVert()
+	void LabelModelObject::flipVert()
 	{
 		mMatrix = mMatrix.scale( 1, -1 );
 		emit changed();

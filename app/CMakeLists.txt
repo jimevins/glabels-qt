@@ -9,8 +9,8 @@ set (glabels_sources
   File.cpp
   Help.cpp
   LabelModel.cpp
-  LabelModelItem.cpp
-  LabelModelBoxItem.cpp
+  LabelModelObject.cpp
+  LabelModelBoxObject.cpp
   LabelRegion.cpp
   MainWindow.cpp
   MergeField.cpp
@@ -24,8 +24,8 @@ set (glabels_sources
 
 set (glabels_qobject_headers
   LabelModel.h
-  LabelModelItem.h
-  LabelModelBoxItem.h
+  LabelModelObject.h
+  LabelModelBoxObject.h
   MainWindow.h
   TemplatePicker.h
   NewLabelDialog.h

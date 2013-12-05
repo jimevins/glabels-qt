@@ -1,4 +1,4 @@
-/*  LabelModelItem.h
+/*  LabelModelObject.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_LabelModelItem_h
-#define glabels_LabelModelItem_h
+#ifndef glabels_LabelModelObject_h
+#define glabels_LabelModelObject_h
 
 #include <QObject>
 #include <QTransform>
@@ -36,7 +36,7 @@
 namespace glabels
 {
 
-	class LabelModelItem : public QObject
+	class LabelModelObject : public QObject
 	{
 		Q_OBJECT
 
@@ -44,8 +44,8 @@ namespace glabels
 		// Lifecycle Methods
 		///////////////////////////////////////////////////////////////
 	public:
-		LabelModelItem( QObject *parent );
-		virtual ~LabelModelItem() {}
+		LabelModelObject( QObject *parent );
+		virtual ~LabelModelObject() {}
 
 
 		///////////////////////////////////////////////////////////////
@@ -456,4 +456,4 @@ namespace glabels
 
 }
 
-#endif // glabels_LabelModelItem_h
+#endif // glabels_LabelModelObject_h

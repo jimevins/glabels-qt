@@ -1,4 +1,4 @@
-/*  LabelModelBoxItem.cpp
+/*  LabelModelBoxObject.cpp
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "LabelModelBoxItem.h"
+#include "LabelModelBoxObject.h"
 
 #include <QGraphicsRectItem>
 #include <QBrush>
@@ -29,7 +29,7 @@ namespace glabels
 {
 
 	// Create QGraphicsItem suitable for representing this object
-	QGraphicsItem* LabelModelBoxItem::createGraphicsItem()
+	QGraphicsItem* LabelModelBoxObject::createGraphicsItem()
 	{
 		QGraphicsRectItem *rectItem = new QGraphicsRectItem( x0(), y0(), w(), h() );
 
@@ -45,7 +45,7 @@ namespace glabels
 
 
 	// Update a QGraphicsItem to keep it in sync with this object
-	void LabelModelBoxItem::updateGraphicsItem( QGraphicsItem* graphicsItem )
+	void LabelModelBoxObject::updateGraphicsItem( QGraphicsItem* graphicsItem )
 	{
 		QGraphicsRectItem *rectItem = dynamic_cast<QGraphicsRectItem*>(graphicsItem);
 		if ( rectItem )

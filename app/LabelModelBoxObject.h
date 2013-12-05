@@ -1,4 +1,4 @@
-/*  LabelModelBoxItem.h
+/*  LabelModelBoxObject.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,16 +18,16 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_LabelModelBoxItem_h
-#define glabels_LabelModelBoxItem_h
+#ifndef glabels_LabelModelBoxObject_h
+#define glabels_LabelModelBoxObject_h
 
-#include "LabelModelItem.h"
+#include "LabelModelObject.h"
 
 
 namespace glabels
 {
 
-	class LabelModelBoxItem : public LabelModelItem
+	class LabelModelBoxObject : public LabelModelObject
 	{
 		Q_OBJECT
 
@@ -35,8 +35,8 @@ namespace glabels
 		// Lifecycle Methods
 		///////////////////////////////////////////////////////////////
 	public:
-		LabelModelBoxItem( QObject *parent = 0 ) : LabelModelItem(parent) { /* TODO: initialize default line and fill poperties.  */ };
-		virtual ~LabelModelBoxItem() {}
+		LabelModelBoxObject( QObject *parent = 0 ) : LabelModelObject(parent) { /* TODO: initialize default line and fill poperties.  */ };
+		virtual ~LabelModelBoxObject() {}
 
 
 		///////////////////////////////////////////////////////////////
@@ -95,4 +95,4 @@ namespace glabels
 
 }
 
-#endif // glabels_LabelModelBoxItem_h
+#endif // glabels_LabelModelBoxObject_h

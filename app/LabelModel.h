@@ -25,7 +25,7 @@
 #include <QList>
 
 #include "libglabels/Template.h"
-#include "LabelModelItem.h"
+#include "LabelModelObject.h"
 
 
 namespace glabels
@@ -44,12 +44,12 @@ namespace glabels
 		void nameChanged();
 		void sizeChanged();
 		void selectionChanged();
-		void itemChanged( LabelModelItem *item );
-		void itemMoved( LabelModelItem *item );
-		void itemAdded( LabelModelItem *item );
-		void itemDeleted( LabelModelItem *item );
-		void itemToTop( LabelModelItem *item );
-		void itemToBottom( LabelModelItem *item );
+		void objectChanged( LabelModelObject* object );
+		void objectMoved( LabelModelObject* object );
+		void objectAdded( LabelModelObject* object );
+		void objectDeleted( LabelModelObject* object );
+		void objectToTop( LabelModelObject* object );
+		void objectToBottom( LabelModelObject* object );
 
 	public:
 		bool isModified() const { return mModified; }
@@ -68,8 +68,8 @@ namespace glabels
 		int compressionLevel() const { return mCompressionLevel; }
 		void setCompressionLevel( int compressionLevel ) { mCompressionLevel = compressionLevel; }
 
-		const libglabels::Template *tmplate() const { return mTmplate; }
-		void setTmplate( const libglabels::Template *tmplate )
+		const libglabels::Template* tmplate() const { return mTmplate; }
+		void setTmplate( const libglabels::Template* tmplate )
 		{
 			if (mTmplate != tmplate)
 			{
@@ -97,14 +97,14 @@ namespace glabels
 		double h() const { return mRotate ? mFrame->w() : mFrame->h(); }
 
 
-		void addItem( LabelModelItem *item );
+		void addObject( LabelModelObject* object );
 
-		void deleteItem( LabelModelItem *item );
+		void deleteObject( LabelModelObject* object );
 
 
-		void selectItem( LabelModelItem *item );
+		void selectObject( LabelModelObject* object );
 
-		void unselectItem( LabelModelItem *item );
+		void unselectObject( LabelModelObject* object );
 
 		void selectAll();
 
@@ -117,9 +117,9 @@ namespace glabels
 		bool isSelectionAtomic();
 
 
-		QList<LabelModelItem *> getSelection();
+		QList<LabelModelObject*> getSelection();
 
-		LabelModelItem *getFirstSelectedItem();
+		LabelModelObject* getFirstSelectedObject();
 
 
 		bool canSelectionText();
@@ -159,19 +159,19 @@ namespace glabels
 
 
 	private slots:
-		void onItemChanged( LabelModelItem *item );
-		void onItemMoved( LabelModelItem *item );
+		void onObjectChanged( LabelModelObject* object );
+		void onObjectMoved( LabelModelObject* object );
 
 
 	private:
 
-		QList<LabelModelItem*> mItemList;
+		QList<LabelModelObject*> mObjectList;
 
 		bool                         mModified;
 		QString                      mFilename;
 		int                          mCompressionLevel;
-		const libglabels::Template  *mTmplate;
-		const libglabels::Frame     *mFrame;
+		const libglabels::Template*  mTmplate;
+		const libglabels::Frame*     mFrame;
 		bool                         mRotate;
 	};
 

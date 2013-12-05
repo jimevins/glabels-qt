@@ -35,85 +35,85 @@ namespace glabels
 
 
 	/**
-	 * Add item.
+	 * Add object.
 	 */
-	void LabelModel::addItem( LabelModelItem *item )
+	void LabelModel::addObject( LabelModelObject* object )
 	{
-		item->setParent( this );
-		mItemList << item;
+		object->setParent( this );
+		mObjectList << object;
 
-		connect( item, SIGNAL(changed()), this, SLOT(itemChanged(LabelModelItem*)) );
-		connect( item, SIGNAL(moved()), this, SLOT(itemMoved(LabelModelItem*)) );
+		connect( object, SIGNAL(changed()), this, SLOT(objectChanged(LabelModelObject*)) );
+		connect( object, SIGNAL(moved()), this, SLOT(objectMoved(LabelModelObject*)) );
 
 		mModified = true;
 
-		emit itemAdded( item );
+		emit objectAdded( object );
 		emit changed();
 	}
 
 
-	void LabelModel::onItemChanged( LabelModelItem *item )
+	void LabelModel::onObjectChanged( LabelModelObject* object )
 	{
 		mModified = true;
 
-		emit itemChanged( item );
+		emit objectChanged( object );
 		emit changed();
 	}
 
 
-	void LabelModel::onItemMoved( LabelModelItem *item )
+	void LabelModel::onObjectMoved( LabelModelObject* object )
 	{
 		mModified = true;
 
-		emit itemMoved( item );
+		emit objectMoved( object );
 		emit changed();
 	}
 
 
-	void LabelModel::deleteItem( LabelModelItem *item )
+	void LabelModel::deleteObject( LabelModelObject* object )
 	{
-		item->unselect();
-		mItemList.removeOne( item );
+		object->unselect();
+		mObjectList.removeOne( object );
 
-		disconnect( item, 0, this, 0 );
+		disconnect( object, 0, this, 0 );
 
 		mModified = true;
 
-		emit itemDeleted( item );
+		emit objectDeleted( object );
 		emit changed();
 	}
 
 
 	/**
-	 * Select item.
+	 * Select object.
 	 */
-	void LabelModel::selectItem( LabelModelItem *item )
+	void LabelModel::selectObject( LabelModelObject* object )
 	{
-		item->select();
+		object->select();
 
 		emit selectionChanged();
 	}
 
 
 	/**
-	 * Unselect item.
+	 * Unselect object.
 	 */
-	void LabelModel::unselectItem( LabelModelItem *item )
+	void LabelModel::unselectObject( LabelModelObject* object )
 	{
-		item->unselect();
+		object->unselect();
 
 		emit selectionChanged();
 	}
 
 
 	/**
-	 * Select all items.
+	 * Select all objects.
 	 */
 	void LabelModel::selectAll()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			item->select();
+			object->select();
 		}
 
 		emit selectionChanged();
@@ -121,13 +121,13 @@ namespace glabels
 
 
 	/**
-	 * Unselect item all items.
+	 * Unselect object all objects.
 	 */
 	void LabelModel::unselectAll()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			item->unselect();
+			object->unselect();
 		}
 
 		emit selectionChanged();
@@ -141,16 +141,16 @@ namespace glabels
 		double rX2 = std::max( region.x1(), region.x2() );
 		double rY2 = std::max( region.y1(), region.y2() );
 
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			LabelRegion itemExtent = item->getExtent();
+			LabelRegion objectExtent = object->getExtent();
 
-			if ( (itemExtent.x1() >= rX1) &&
-			     (itemExtent.x2() <= rX2) &&
-			     (itemExtent.y1() >= rY1) &&
-			     (itemExtent.y2() <= rY2) )
+			if ( (objectExtent.x1() >= rX1) &&
+			     (objectExtent.x2() <= rX2) &&
+			     (objectExtent.y1() >= rY1) &&
+			     (objectExtent.y2() <= rY2) )
 			{
-				item->select();
+				object->select();
 			}
 		}
 
@@ -160,9 +160,9 @@ namespace glabels
 
 	bool LabelModel::isSelectionEmpty()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
 				return false;
 			}
@@ -176,9 +176,9 @@ namespace glabels
 	{
 		int nSelected = 0;
 
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
 				nSelected++;
 				if ( nSelected > 1 )
@@ -192,28 +192,28 @@ namespace glabels
 	}
 
 
-	QList<LabelModelItem *> LabelModel::getSelection()
+	QList<LabelModelObject*> LabelModel::getSelection()
 	{
-		QList<LabelModelItem*> selectedList;
+		QList<LabelModelObject*> selectedList;
 
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				selectedList << item;
+				selectedList << object;
 			}
 		}
 		
 	}
 
 
-	LabelModelItem *LabelModel::getFirstSelectedItem()
+	LabelModelObject* LabelModel::getFirstSelectedObject()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				return item;
+				return object;
 			}
 		}
 	}
@@ -221,9 +221,9 @@ namespace glabels
 
 	bool LabelModel::canSelectionText()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() && item->canText() )
+			if ( object->isSelected() && object->canText() )
 			{
 				return true;
 			}
@@ -235,9 +235,9 @@ namespace glabels
 
 	bool LabelModel::canSelectionFill()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() && item->canFill() )
+			if ( object->isSelected() && object->canFill() )
 			{
 				return true;
 			}
@@ -249,9 +249,9 @@ namespace glabels
 
 	bool LabelModel::canSelectionLineColor()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() && item->canLineColor() )
+			if ( object->isSelected() && object->canLineColor() )
 			{
 				return true;
 			}
@@ -263,9 +263,9 @@ namespace glabels
 
 	bool LabelModel::canSelectionLineWidth()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() && item->canLineWidth() )
+			if ( object->isSelected() && object->canLineWidth() )
 			{
 				return true;
 			}
@@ -277,11 +277,11 @@ namespace glabels
 
 	void LabelModel::deleteSelection()
 	{
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			deleteItem( item );
+			deleteObject( object );
 		}
 
 		mModified = true;
@@ -293,18 +293,18 @@ namespace glabels
 
 	void LabelModel::raiseSelectionToTop()
 	{
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			mItemList.removeOne( item );
+			mObjectList.removeOne( object );
 		}
 
-		/* Move to end of list, representing top most item. */
-		foreach ( LabelModelItem *item, selectedList )
+		/* Move to end of list, representing top most object. */
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			mItemList.push_back( item );
-			emit itemToTop( item );
+			mObjectList.push_back( object );
+			emit objectToTop( object );
 		}
 
 		mModified = true;
@@ -315,18 +315,18 @@ namespace glabels
 
 	void LabelModel::lowerSelectionToBottom()
 	{
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			mItemList.removeOne( item );
+			mObjectList.removeOne( object );
 		}
 
-		/* Move to front of list, representing bottom most item. */
-		foreach ( LabelModelItem *item, selectedList )
+		/* Move to front of list, representing bottom most object. */
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			mItemList.push_front( item );
-			emit itemToBottom( item );
+			mObjectList.push_front( object );
+			emit objectToBottom( object );
 		}
 
 		mModified = true;
@@ -337,11 +337,11 @@ namespace glabels
 
 	void LabelModel::rotateSelection( double thetaDegs )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->rotate( thetaDegs );
+				object->rotate( thetaDegs );
 			}
 		}
 
@@ -365,11 +365,11 @@ namespace glabels
 
 	void LabelModel::flipSelectionHoriz()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->flipHoriz();
+				object->flipHoriz();
 			}
 		}
 
@@ -381,11 +381,11 @@ namespace glabels
 
 	void LabelModel::flipSelectionVert()
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->flipVert();
+				object->flipVert();
 			}
 		}
 
@@ -402,22 +402,22 @@ namespace glabels
 			return;
 		}
 
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
 		/* Find left-most edge. */
 		double x1_min = 7200; /* Start with a very large value: 7200pts = 100in */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			if ( r.x1() < x1_min ) x1_min = r.x1();
 		}
 
 		/* Now adjust the object positions to line up the left edges at left-most edge. */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dx = x1_min - r.x1();
-			item->setPositionRelative( dx, 0 );
+			object->setPositionRelative( dx, 0 );
 		}
 		
 		mModified = true;
@@ -433,22 +433,22 @@ namespace glabels
 			return;
 		}
 
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
 		/* Find right-most edge. */
 		double x1_max = -7200; /* Start with a very large negative value: 7200pts = 100in */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			if ( r.x1() > x1_max ) x1_max = r.x1();
 		}
 
 		/* Now adjust the object positions to line up the right edges at right-most edge. */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dx = x1_max - r.x1();
-			item->setPositionRelative( dx, 0 );
+			object->setPositionRelative( dx, 0 );
 		}
 		
 		mModified = true;
@@ -464,25 +464,25 @@ namespace glabels
 			return;
 		}
 
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
 		/* Find average center of objects. */
 		double xsum = 0;
 		int n = 0;
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			xsum += (r.x1() + r.x2()) / 2.0;
 			n++;
 		}
 		double xavg = xsum / n;
 
-		/* Find item closest to average center of objects. */
+		/* Find object closest to average center of objects. */
 		double xcenter = 7200; /* Start with very large value. */
 		double dxmin = fabs( xavg - xcenter );
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dx = fabs( xavg - (r.x1() + r.x2())/2.0 );
 			if ( dx < dxmin )
 			{
@@ -491,12 +491,12 @@ namespace glabels
 			}
 		}
 
-		/* Now adjust the object positions to line up with the center of this item. */
-		foreach ( LabelModelItem *item, selectedList )
+		/* Now adjust the object positions to line up with the center of this object. */
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dx = xcenter - (r.x1() + r.x2())/2.0;
-			item->setPositionRelative( dx, 0 );
+			object->setPositionRelative( dx, 0 );
 		}
 		
 		mModified = true;
@@ -512,22 +512,22 @@ namespace glabels
 			return;
 		}
 
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
 		/* Find top-most edge. */
 		double y1_min = 7200; /* Start with a very large value: 7200pts = 100in */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			if ( r.y1() < y1_min ) y1_min = r.y1();
 		}
 
 		/* Now adjust the object positions to line up the top edges at top-most edge. */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dy = y1_min - r.y1();
-			item->setPositionRelative( 0, dy );
+			object->setPositionRelative( 0, dy );
 		}
 		
 		mModified = true;
@@ -543,22 +543,22 @@ namespace glabels
 			return;
 		}
 
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
 		/* Find bottom-most edge. */
 		double y1_max = -7200; /* Start with a very large negative value: 7200pts = 100in */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			if ( r.y1() > y1_max ) y1_max = r.y1();
 		}
 
 		/* Now adjust the object positions to line up the bottom edges at bottom-most edge. */
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dy = y1_max - r.y1();
-			item->setPositionRelative( 0, dy );
+			object->setPositionRelative( 0, dy );
 		}
 		
 		mModified = true;
@@ -574,25 +574,25 @@ namespace glabels
 			return;
 		}
 
-		QList<LabelModelItem*> selectedList = getSelection();
+		QList<LabelModelObject*> selectedList = getSelection();
 
 		/* Find average center of objects. */
 		double ysum = 0;
 		int n = 0;
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			ysum += (r.y1() + r.y2()) / 2.0;
 			n++;
 		}
 		double yavg = ysum / n;
 
-		/* Find item closest to average center of objects. */
+		/* Find object closest to average center of objects. */
 		double ycenter = 7200; /* Start with very large value. */
 		double dymin = fabs( yavg - ycenter );
-		foreach ( LabelModelItem *item, selectedList )
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dy = fabs( yavg - (r.y1() + r.y2())/2.0 );
 			if ( dy < dymin )
 			{
@@ -601,12 +601,12 @@ namespace glabels
 			}
 		}
 
-		/* Now adjust the object positions to line up with the center of this item. */
-		foreach ( LabelModelItem *item, selectedList )
+		/* Now adjust the object positions to line up with the center of this object. */
+		foreach ( LabelModelObject* object, selectedList )
 		{
-			LabelRegion r = item->getExtent();
+			LabelRegion r = object->getExtent();
 			double dy = ycenter - (r.y1() + r.y2())/2.0;
-			item->setPositionRelative( 0, dy );
+			object->setPositionRelative( 0, dy );
 		}
 		
 		mModified = true;
@@ -619,14 +619,14 @@ namespace glabels
 	{
 		double xLabelCenter = w() / 2.0;
 
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				LabelRegion r = item->getExtent();
-				double xItemCenter = (r.x1() + r.x2()) / 2.0;
-				double dx = xLabelCenter - xItemCenter;
-				item->setPositionRelative( dx, 0 );
+				LabelRegion r = object->getExtent();
+				double xObjectCenter = (r.x1() + r.x2()) / 2.0;
+				double dx = xLabelCenter - xObjectCenter;
+				object->setPositionRelative( dx, 0 );
 			}
 		}
 
@@ -640,14 +640,14 @@ namespace glabels
 	{
 		double yLabelCenter = h() / 2.0;
 
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				LabelRegion r = item->getExtent();
-				double yItemCenter = (r.y1() + r.y2()) / 2.0;
-				double dy = yLabelCenter - yItemCenter;
-				item->setPositionRelative( 0, dy );
+				LabelRegion r = object->getExtent();
+				double yObjectCenter = (r.y1() + r.y2()) / 2.0;
+				double dy = yLabelCenter - yObjectCenter;
+				object->setPositionRelative( 0, dy );
 			}
 		}
 
@@ -659,11 +659,11 @@ namespace glabels
 
 	void LabelModel::moveSelection( double dx, double dy )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setPositionRelative( dx, dy );
+				object->setPositionRelative( dx, dy );
 			}
 		}
 
@@ -675,11 +675,11 @@ namespace glabels
 
 	void LabelModel::setSelectionFontFamily( const QString &fontFamily )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setFontFamily( fontFamily );
+				object->setFontFamily( fontFamily );
 			}
 		}
 
@@ -691,11 +691,11 @@ namespace glabels
 
 	void LabelModel::setSelectionFontSize( double fontSize )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setFontSize( fontSize );
+				object->setFontSize( fontSize );
 			}
 		}
 
@@ -707,11 +707,11 @@ namespace glabels
 
 	void LabelModel::setSelectionFontWeight( QFont::Weight fontWeight )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setFontWeight( fontWeight );
+				object->setFontWeight( fontWeight );
 			}
 		}
 
@@ -723,11 +723,11 @@ namespace glabels
 
 	void LabelModel::setSelectionFontItalicFlag( bool fontItalicFlag )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setFontItalicFlag( fontItalicFlag );
+				object->setFontItalicFlag( fontItalicFlag );
 			}
 		}
 
@@ -739,11 +739,11 @@ namespace glabels
 
 	void LabelModel::setSelectionTextHAlign( Qt::Alignment textHAlign )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setTextHAlign( textHAlign );
+				object->setTextHAlign( textHAlign );
 			}
 		}
 
@@ -755,11 +755,11 @@ namespace glabels
 
 	void LabelModel::setSelectionTextVAlign( Qt::Alignment textVAlign )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setTextVAlign( textVAlign );
+				object->setTextVAlign( textVAlign );
 			}
 		}
 
@@ -771,11 +771,11 @@ namespace glabels
 
 	void LabelModel::setSelectionTextLineSpacing( double textLineSpacing )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setTextLineSpacing( textLineSpacing );
+				object->setTextLineSpacing( textLineSpacing );
 			}
 		}
 
@@ -787,11 +787,11 @@ namespace glabels
 
 	void LabelModel::setSelectionTextColorNode( ColorNode textColorNode )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setTextColorNode( textColorNode );
+				object->setTextColorNode( textColorNode );
 			}
 		}
 
@@ -803,11 +803,11 @@ namespace glabels
 
 	void LabelModel::setSelectionLineWidth( double lineWidth )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setLineWidth( lineWidth );
+				object->setLineWidth( lineWidth );
 			}
 		}
 
@@ -819,11 +819,11 @@ namespace glabels
 
 	void LabelModel::setSelectionLineColorNode( ColorNode lineColorNode )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setLineColorNode( lineColorNode );
+				object->setLineColorNode( lineColorNode );
 			}
 		}
 
@@ -835,11 +835,11 @@ namespace glabels
 
 	void LabelModel::setSelectionFillColorNode( ColorNode fillColorNode )
 	{
-		foreach ( LabelModelItem *item, mItemList )
+		foreach ( LabelModelObject* object, mObjectList )
 		{
-			if ( item->isSelected() )
+			if ( object->isSelected() )
 			{
-				item->setFillColorNode( fillColorNode );
+				object->setFillColorNode( fillColorNode );
 			}
 		}
 
