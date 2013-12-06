@@ -40,6 +40,9 @@ namespace glabels
 		pen.setWidthF( lineWidth() );
 		rectItem->setPen( pen );
 
+		updateGraphicsItemMatrix( rectItem );
+		updateGraphicsItemShadow( rectItem );
+
 		return rectItem;
 	}
 
@@ -58,6 +61,9 @@ namespace glabels
 			QPen pen( lineColorNode().color() );
 			pen.setWidthF( lineWidth() );
 			rectItem->setPen( pen );
+
+			updateGraphicsItemMatrix( rectItem );
+			updateGraphicsItemShadow( rectItem );
 		}
 	}
 

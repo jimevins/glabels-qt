@@ -20,6 +20,8 @@
 
 #include "LabelModelObject.h"
 
+#include <QGraphicsDropShadowEffect>
+
 
 namespace glabels
 {
@@ -176,6 +178,27 @@ namespace glabels
 	{
 		mMatrix = mMatrix.scale( 1, -1 );
 		emit changed();
+	}
+
+
+	void LabelModelObject::updateGraphicsItemMatrix( QGraphicsItem* graphicsItem )
+	{
+		graphicsItem->setTransform( mMatrix );
+	}
+
+
+	void LabelModelObject::updateGraphicsItemShadow( QGraphicsItem* graphicsItem )
+	{
+		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+
+		QColor color = mShadowColorNode.color();
+		color.setAlphaF( mShadowOpacity );
+
+		shadowEffect->setColor( color );
+		shadowEffect->setOffset( mShadowX, mShadowY );
+		shadowEffect->setBlurRadius( 0 );
+
+		graphicsItem->setGraphicsEffect( shadowEffect );
 	}
 
 }

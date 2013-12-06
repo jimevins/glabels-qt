@@ -429,6 +429,10 @@ namespace glabels
 		virtual QGraphicsItem* createGraphicsItem() = 0;
 		virtual void updateGraphicsItem( QGraphicsItem* graphicsItem ) = 0;
 
+	protected:
+		void updateGraphicsItemMatrix( QGraphicsItem* graphicsItem );
+		void updateGraphicsItemShadow( QGraphicsItem* graphicsItem );
+
 
 		///////////////////////////////////////////////////////////////
 		// Private Members
