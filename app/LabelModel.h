@@ -31,14 +31,23 @@
 namespace glabels
 {
 
+
 	class LabelModel : public QObject
 	{
 		Q_OBJECT
 
+
+		/////////////////////////////////
+		// Lifecycle
+		/////////////////////////////////
 	public:
 		LabelModel();
 		virtual ~LabelModel() {}
 
+
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
 	signals:
 		void changed();
 		void nameChanged();
@@ -51,83 +60,75 @@ namespace glabels
 		void objectToTop( LabelModelObject* object );
 		void objectToBottom( LabelModelObject* object );
 
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
 	public:
-		bool isModified() const { return mModified; }
-		void clearModified() { mModified = false; }
+		inline bool isModified() const;
+		inline void clearModified();
 
-		const QString &filename() const { return mFilename; }
-		void setFilename( const QString &filename )
-		{
-			if ( mFilename != filename )
-			{
-				mFilename = filename;
-				emit nameChanged();
-			}
-		}
+		inline const QString& filename() const;
+		inline void setFilename( const QString &filename );
 
-		int compressionLevel() const { return mCompressionLevel; }
-		void setCompressionLevel( int compressionLevel ) { mCompressionLevel = compressionLevel; }
+		inline int compressionLevel() const;
+		inline void setCompressionLevel( int compressionLevel );
 
-		const libglabels::Template* tmplate() const { return mTmplate; }
-		void setTmplate( const libglabels::Template* tmplate )
-		{
-			if (mTmplate != tmplate)
-			{
-				mTmplate = tmplate;
-				mFrame = tmplate->frames().first();
-				mModified = true;
-				emit changed();
-				emit sizeChanged();
-			}
-		}
+		inline const libglabels::Template* tmplate() const;
+		inline void setTmplate( const libglabels::Template* tmplate );
 
-		bool rotate() const { return mRotate; }
-		void setRotate( bool rotate )
-		{
-			if (mRotate != rotate)
-			{
-				mRotate = rotate;
-				mModified = true;
-				emit changed();
-				emit sizeChanged();
-			}
-		}
+		inline bool rotate() const;
+		inline void setRotate( bool rotate );
 
-		double w() const { return mRotate ? mFrame->h() : mFrame->w(); }
-		double h() const { return mRotate ? mFrame->w() : mFrame->h(); }
+		inline double w() const;
+		inline double h() const;
 
+		inline const QList<LabelModelObject*>& objectList() const;
 
+		
+		/////////////////////////////////
+		// Manage objects
+		/////////////////////////////////
+	public:
 		void addObject( LabelModelObject* object );
-
 		void deleteObject( LabelModelObject* object );
 
 
+		/////////////////////////////////
+		// Manipulate selection
+		/////////////////////////////////
+	public:
 		void selectObject( LabelModelObject* object );
-
 		void unselectObject( LabelModelObject* object );
-
 		void selectAll();
-
 		void unselectAll();
-
-		void selectRegion( const LabelRegion &region );
-
+		void selectRegion( const LabelRegion& region );
 		bool isSelectionEmpty();
-
 		bool isSelectionAtomic();
 
 
+		/////////////////////////////////
+		// Get selected objects
+		/////////////////////////////////
+	public:
 		QList<LabelModelObject*> getSelection();
-
 		LabelModelObject* getFirstSelectedObject();
 
 
+		/////////////////////////////////
+		// Query selection capabilities
+		/////////////////////////////////
+	public:
 		bool canSelectionText();
 		bool canSelectionFill();
 		bool canSelectionLineColor();
 		bool canSelectionLineWidth();
 
 
+		/////////////////////////////////
+		// Operations on selections
+		/////////////////////////////////
+	public:
 		void deleteSelection();
 		void raiseSelectionToTop();
 		void lowerSelectionToBottom();
@@ -145,7 +146,7 @@ namespace glabels
 		void centerSelectionHoriz();
 		void centerSelectionVert();
 		void moveSelection( double dx, double dy );
-		void setSelectionFontFamily( const QString &fontFamily );
+		void setSelectionFontFamily( const QString& fontFamily );
 		void setSelectionFontSize( double fontSize );
 		void setSelectionFontWeight( QFont::Weight fontWeight );
 		void setSelectionFontItalicFlag( bool fontItalicFlag );
@@ -157,23 +158,129 @@ namespace glabels
 		void setSelectionLineColorNode( ColorNode lineColorNode );
 		void setSelectionFillColorNode( ColorNode fillColorNode );
 
-
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
 	private slots:
 		void onObjectChanged( LabelModelObject* object );
 		void onObjectMoved( LabelModelObject* object );
 
 
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
 	private:
-
-		QList<LabelModelObject*> mObjectList;
-
 		bool                         mModified;
 		QString                      mFilename;
 		int                          mCompressionLevel;
 		const libglabels::Template*  mTmplate;
 		const libglabels::Frame*     mFrame;
 		bool                         mRotate;
+
+		QList<LabelModelObject*>     mObjectList;
+
 	};
+
+
+
+	/////////////////////////////////
+	// INLINE METHODS
+	/////////////////////////////////
+
+	inline bool LabelModel::isModified() const
+	{
+		return mModified;
+	}
+
+
+	inline void LabelModel::clearModified()
+	{
+		mModified = false;
+	}
+
+
+	inline const QString& LabelModel::filename() const
+	{
+		return mFilename;
+	}
+
+
+	inline void LabelModel::setFilename( const QString &filename )
+	{
+		if ( mFilename != filename )
+		{
+			mFilename = filename;
+			emit nameChanged();
+		}
+	}
+
+
+	inline int LabelModel::compressionLevel() const
+	{
+		return mCompressionLevel;
+	}
+
+
+	inline void LabelModel::setCompressionLevel( int compressionLevel )
+	{
+		mCompressionLevel = compressionLevel;
+	}
+
+
+	inline const libglabels::Template* LabelModel::tmplate() const
+	{
+		return mTmplate;
+	}
+
+
+	inline void LabelModel::setTmplate( const libglabels::Template* tmplate )
+	{
+		if (mTmplate != tmplate)
+		{
+			mTmplate = tmplate;
+			mFrame = tmplate->frames().first();
+			mModified = true;
+			emit changed();
+			emit sizeChanged();
+		}
+	}
+
+
+	inline bool LabelModel::rotate() const
+	{
+		return mRotate;
+	}
+
+
+	inline void LabelModel::setRotate( bool rotate )
+	{
+		if (mRotate != rotate)
+		{
+			mRotate = rotate;
+			mModified = true;
+			emit changed();
+			emit sizeChanged();
+		}
+	}
+
+
+	inline double LabelModel::w() const
+	{
+		return mRotate ? mFrame->h() : mFrame->w();
+	}
+
+
+	inline double LabelModel::h() const
+	{
+		return mRotate ? mFrame->w() : mFrame->h();
+	}
+
+
+	inline const QList<LabelModelObject*>& LabelModel::objectList() const
+	{
+		return mObjectList;
+	}
+
 
 }
 
