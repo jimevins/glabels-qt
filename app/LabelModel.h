@@ -158,12 +158,13 @@ namespace glabels
 		void setSelectionLineColorNode( ColorNode lineColorNode );
 		void setSelectionFillColorNode( ColorNode fillColorNode );
 
+
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onObjectChanged( LabelModelObject* object );
-		void onObjectMoved( LabelModelObject* object );
+		void onObjectChanged();
+		void onObjectMoved();
 
 
 		/////////////////////////////////

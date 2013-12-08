@@ -37,6 +37,7 @@ namespace glabels
 		rectItem->setBrush( brush );
 
 		QPen pen( lineColorNode().color() );
+		pen.setJoinStyle( Qt::MiterJoin );
 		pen.setWidthF( lineWidth() );
 		rectItem->setPen( pen );
 
@@ -59,6 +60,7 @@ namespace glabels
 			rectItem->setBrush( brush );
 
 			QPen pen( lineColorNode().color() );
+			pen.setJoinStyle( Qt::MiterJoin );
 			pen.setWidthF( lineWidth() );
 			rectItem->setPen( pen );
 

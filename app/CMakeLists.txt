@@ -20,6 +20,7 @@ set (glabels_sources
   TextNode.cpp
   NewLabelDialog.cpp
   SimplePreview.cpp
+  View.cpp
 )
 
 set (glabels_qobject_headers
@@ -30,6 +31,7 @@ set (glabels_qobject_headers
   TemplatePicker.h
   NewLabelDialog.h
   SimplePreview.h
+  View.h
 )
 
 set (glabels_forms

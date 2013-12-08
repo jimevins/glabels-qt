@@ -26,9 +26,13 @@
 
 #include <iostream>
 
+#include "libglabels/Db.h"
+#include "LabelModelBoxObject.h"
 #include "Icons.h"
 #include "File.h"
 #include "Help.h"
+#include "View.h"
+
 
 namespace glabels
 {
@@ -36,8 +40,29 @@ namespace glabels
 	MainWindow::MainWindow()
 	{
 /////////////// TEMPORARY TESTING ///////////////
-#if 1
-		QLabel *tmp = new QLabel( "Coming Soon..." );
+#if 0
+		QLabel* tmp = new QLabel( "Coming Soon..." );
+#else
+		LabelModel* model = new LabelModel();
+		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromName( "Avery 3612" );
+		model->setTmplate( tmplate );
+		LabelModelBoxObject* object = new LabelModelBoxObject();
+		object->setW( 36 );
+		object->setH( 36 );
+		object->setX0( 72 );
+		object->setY0( 72 );
+		object->setFillColorNode( ColorNode( QColor( 0, 255, 0 ) ) );
+		object->setLineColorNode( ColorNode( QColor( 0, 0, 0 ) ) );
+		object->setLineWidth( 4 );
+		object->setShadowColorNode( ColorNode( QColor( 0, 0, 0 ) ) );
+		object->setShadowOpacity( 0.25 );
+		object->setShadowX( 5 );
+		object->setShadowY( 5 );
+		object->setShadow( true );
+		model->addObject( object );
+
+		View* tmp = new View();
+		tmp->setModel( model );
 #endif
 		setCentralWidget( tmp );
 /////////////////////////////////////////////////

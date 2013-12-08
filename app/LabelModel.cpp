@@ -42,8 +42,8 @@ namespace glabels
 		object->setParent( this );
 		mObjectList << object;
 
-		connect( object, SIGNAL(changed()), this, SLOT(objectChanged(LabelModelObject*)) );
-		connect( object, SIGNAL(moved()), this, SLOT(objectMoved(LabelModelObject*)) );
+		connect( object, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
+		connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 
 		mModified = true;
 
@@ -52,20 +52,20 @@ namespace glabels
 	}
 
 
-	void LabelModel::onObjectChanged( LabelModelObject* object )
+	void LabelModel::onObjectChanged()
 	{
 		mModified = true;
 
-		emit objectChanged( object );
+		emit objectChanged( qobject_cast<LabelModelObject*>(sender()) );
 		emit changed();
 	}
 
 
-	void LabelModel::onObjectMoved( LabelModelObject* object )
+	void LabelModel::onObjectMoved()
 	{
 		mModified = true;
 
-		emit objectMoved( object );
+		emit objectMoved( qobject_cast<LabelModelObject*>(sender()) );
 		emit changed();
 	}
 
