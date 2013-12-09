@@ -21,12 +21,15 @@
 #include "View.h"
 
 #include <cmath>
+#include <iostream>
 
 
 namespace
 {
 	const int    nZoomLevels = 14;
 	const double zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33, 0.25, 0.15, 0.10 };
+
+	const double ZOOM_TO_FIT_PAD = 16;
 }
 
 
@@ -107,6 +110,15 @@ namespace glabels
 
 	void View::zoomToFit()
 	{
+		double x_scale = (72.0/physicalDpiY()) * ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
+		double y_scale = (72.0/physicalDpiY()) * ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
+		double newZoom = min( x_scale, y_scale );
+
+		// Limits
+		newZoom = min( newZoom, zoomLevels[0] );
+		newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
+
+		setZoomReal( newZoom, true );
 	}
 
 
@@ -131,6 +143,15 @@ namespace glabels
 		scale( mZoom*physicalDpiX()/72.0, mZoom*physicalDpiY()/72.0 );
 
 		emit zoomChanged();
+	}
+
+
+	void View::resizeEvent( QResizeEvent *event )
+	{
+		if ( mZoomToFitFlag )
+		{
+			zoomToFit();
+		}
 	}
 
 }

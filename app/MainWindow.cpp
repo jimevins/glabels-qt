@@ -828,7 +828,7 @@ namespace glabels
 
 	void MainWindow::viewZoomToFit()
 	{
-		std::cout << "ACTION: edit->Zoom to fit" << std::endl;
+		view->zoomToFit();
 	}
 
 

@@ -57,6 +57,10 @@ namespace glabels
 		void setZoomReal( double zoom, bool zoomToFitFlag );
 
 
+	protected:
+		void resizeEvent( QResizeEvent *event );
+
+
 	private:
 		QGraphicsScene*  mScene;
 
