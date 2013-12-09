@@ -37,16 +37,44 @@ namespace glabels
 	public:
 		View( QWidget *parent = 0 );
 
+
+	signals:
+		void zoomChanged();
+
+
+	public:
+		inline double zoom() const;
+
 		void setModel( LabelModel* model );
+
+		void zoomIn();
+		void zoomOut();
+		void zoom1To1();
+		void zoomToFit();
+		bool isZoomMax() const;
+		bool isZoomMin() const;
+	private:
+		void setZoomReal( double zoom, bool zoomToFitFlag );
+
 
 	private:
 		QGraphicsScene*  mScene;
-		double           mScale;
+
+		double           mZoom;
+		bool             mZoomToFitFlag;
 
 		LabelModel*      mModel;
 
 	};
 
+
+	inline double View::zoom() const
+	{
+		return mZoom;
+	}
+
 }
+
+
 
 #endif // glabels_View_h

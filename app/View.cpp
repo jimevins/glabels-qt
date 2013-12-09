@@ -20,12 +20,24 @@
 
 #include "View.h"
 
+#include <cmath>
+
+
+namespace
+{
+	const int    nZoomLevels = 14;
+	const double zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33, 0.25, 0.15, 0.10 };
+}
+
 
 namespace glabels
 {
 
-	View::View( QWidget *parent ) : QGraphicsView(parent), mScale(1), mModel(0)
+	View::View( QWidget *parent ) : QGraphicsView(parent)
 	{
+		setZoomReal( 1, false );
+		mModel         = 0;
+
 		mScene = new QGraphicsScene();
 		setScene( mScene );
 	}
@@ -40,6 +52,85 @@ namespace glabels
 			QGraphicsItem* item = object->createGraphicsItem();
 			mScene->addItem( item );
 		}
+	}
+
+
+	void View::zoomIn()
+	{
+		// Find closest standard zoom level to our current zoom
+		// Start with 2nd largest scale
+		int i_min = 1;
+		double dist_min = fabs( zoomLevels[1] - mZoom );
+
+		for ( int i = 2; i < nZoomLevels; i++ )
+		{
+			double dist = fabs( zoomLevels[i] - mZoom );
+			if ( dist < dist_min )
+			{
+				i_min = i;
+				dist_min = dist;
+			}
+		}
+
+		// Zoom in one notch
+		setZoomReal( zoomLevels[i_min-1], false );
+	}
+
+
+	void View::zoomOut()
+	{
+		// Find closest standard zoom level to our current zoom
+		// Start with largest scale, end on 2nd smallest
+		int i_min = 0;
+		double dist_min = fabs( zoomLevels[0] - mZoom );
+
+		for ( int i = 1; i < (nZoomLevels-1); i++ )
+		{
+			double dist = fabs( zoomLevels[i] - mZoom );
+			if ( dist < dist_min )
+			{
+				i_min = i;
+				dist_min = dist;
+			}
+		}
+
+		// Zoom out one notch
+		setZoomReal( zoomLevels[i_min+1], false );
+	}
+
+
+	void View::zoom1To1()
+	{
+		setZoomReal( 1.0, false );
+	}
+
+
+	void View::zoomToFit()
+	{
+	}
+
+
+	bool View::isZoomMax() const
+	{
+		return ( mZoom >= zoomLevels[0] );
+	}
+
+
+	bool View::isZoomMin() const
+	{
+		return ( mZoom <= zoomLevels[nZoomLevels-1] );
+	}
+
+
+	void View::setZoomReal( double zoom, bool zoomToFitFlag )
+	{
+		mZoom          = zoom;
+		mZoomToFitFlag = zoomToFitFlag;
+
+		resetTransform();
+		scale( mZoom*physicalDpiX()/72.0, mZoom*physicalDpiY()/72.0 );
+
+		emit zoomChanged();
 	}
 
 }

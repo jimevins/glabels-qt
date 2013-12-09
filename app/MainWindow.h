@@ -29,6 +29,8 @@
 #include <QToolBar>
 #include <QLabel>
 
+#include "View.h"
+
 
 namespace glabels
 {
@@ -74,7 +76,7 @@ namespace glabels
 		void viewMarkup();
 		void viewZoomIn();
 		void viewZoomOut();
-		void viewZoom1to1();
+		void viewZoom1To1();
 		void viewZoomToFit();
 
 		void objectsArrowMode();
@@ -103,7 +105,7 @@ namespace glabels
 		void helpContents();
 		void helpAbout();
 
-		void updateZoomInfo( double, bool, bool );
+		void updateZoomInfo();
 		void updateCursorInfo();
 		void updateCursorInfo( double, double );
 
@@ -123,82 +125,84 @@ namespace glabels
 		void readSettings();
 		void writeSettings();
 
-		QMenu   *fileMenu;
-		QMenu   *editMenu;
-		QMenu   *viewMenu;
-		QMenu   *viewToolBarsMenu;
-		QMenu   *objectsMenu;
-		QMenu   *objectsCreateMenu;
-		QMenu   *objectsOrderMenu;
-		QMenu   *objectsXformMenu;
-		QMenu   *objectsAlignMenu;
-		QMenu   *objectsCenterMenu;
-		QMenu   *helpMenu;
+		QMenu*    fileMenu;
+		QMenu*    editMenu;
+		QMenu*    viewMenu;
+		QMenu*    viewToolBarsMenu;
+		QMenu*    objectsMenu;
+		QMenu*    objectsCreateMenu;
+		QMenu*    objectsOrderMenu;
+		QMenu*    objectsXformMenu;
+		QMenu*    objectsAlignMenu;
+		QMenu*    objectsCenterMenu;
+		QMenu*    helpMenu;
 
-		QToolBar *fileToolBar;
-		QToolBar *objectsToolBar;
-		QToolBar *editToolBar;
-		QToolBar *viewToolBar;
+		QToolBar* fileToolBar;
+		QToolBar* objectsToolBar;
+		QToolBar* editToolBar;
+		QToolBar* viewToolBar;
 
-		QLabel *zoomInfoLabel;
-		QLabel *cursorInfoLabel;
+		View*     view;
 
-		QAction *fileNewAction;
-		QAction *fileOpenAction;
-		QAction *fileSaveAction;
-		QAction *fileSaveAsAction;
-		QAction *filePrintAction;
-		QAction *filePropertiesAction;
-		QAction *fileTemplateDesignerAction;
-		QAction *fileCloseAction;
-		QAction *fileExitAction;
+		QLabel*   zoomInfoLabel;
+		QLabel*   cursorInfoLabel;
 
-		QAction *editUndoAction;
-		QAction *editRedoAction;
-		QAction *editCutAction;
-		QAction *editCopyAction;
-		QAction *editPasteAction;
-		QAction *editDeleteAction;
-		QAction *editSelectAllAction;
-		QAction *editUnSelectAllAction;
-		QAction *editPreferencesAction;
+		QAction*  fileNewAction;
+		QAction*  fileOpenAction;
+		QAction*  fileSaveAction;
+		QAction*  fileSaveAsAction;
+		QAction*  filePrintAction;
+		QAction*  filePropertiesAction;
+		QAction*  fileTemplateDesignerAction;
+		QAction*  fileCloseAction;
+		QAction*  fileExitAction;
 
-		QAction *viewFileToolBarAction;
-		QAction *viewObjectsToolBarAction;
-		QAction *viewEditToolBarAction;
-		QAction *viewViewToolBarAction;
-		QAction *viewGridAction;
-		QAction *viewMarkupAction;
-		QAction *viewZoomInAction;
-		QAction *viewZoomOutAction;
-		QAction *viewZoom1to1Action;
-		QAction *viewZoomToFitAction;
+		QAction*  editUndoAction;
+		QAction*  editRedoAction;
+		QAction*  editCutAction;
+		QAction*  editCopyAction;
+		QAction*  editPasteAction;
+		QAction*  editDeleteAction;
+		QAction*  editSelectAllAction;
+		QAction*  editUnSelectAllAction;
+		QAction*  editPreferencesAction;
 
-		QAction *objectsArrowModeAction;
-		QAction *objectsCreateTextAction;
-		QAction *objectsCreateBoxAction;
-		QAction *objectsCreateLineAction;
-		QAction *objectsCreateEllipseAction;
-		QAction *objectsCreateImageAction;
-		QAction *objectsCreateBarcodeAction;
-		QAction *objectsOrderRaiseAction;
-		QAction *objectsOrderLowerAction;
-		QAction *objectsXformRotateLeftAction;
-		QAction *objectsXformRotateRightAction;
-		QAction *objectsXformFlipHorizAction;
-		QAction *objectsXformFlipVertAction;
-		QAction *objectsAlignLeftAction;
-		QAction *objectsAlignHCenterAction;
-		QAction *objectsAlignRightAction;
-		QAction *objectsAlignTopAction;
-		QAction *objectsAlignVCenterAction;
-		QAction *objectsAlignBottomAction;
-		QAction *objectsCenterHorizAction;
-		QAction *objectsCenterVertAction;
-		QAction *objectsMergePropertiesAction;
+		QAction*  viewFileToolBarAction;
+		QAction*  viewObjectsToolBarAction;
+		QAction*  viewEditToolBarAction;
+		QAction*  viewViewToolBarAction;
+		QAction*  viewGridAction;
+		QAction*  viewMarkupAction;
+		QAction*  viewZoomInAction;
+		QAction*  viewZoomOutAction;
+		QAction*  viewZoom1To1Action;
+		QAction*  viewZoomToFitAction;
 
-		QAction *helpContentsAction;
-		QAction *helpAboutAction;
+		QAction*  objectsArrowModeAction;
+		QAction*  objectsCreateTextAction;
+		QAction*  objectsCreateBoxAction;
+		QAction*  objectsCreateLineAction;
+		QAction*  objectsCreateEllipseAction;
+		QAction*  objectsCreateImageAction;
+		QAction*  objectsCreateBarcodeAction;
+		QAction*  objectsOrderRaiseAction;
+		QAction*  objectsOrderLowerAction;
+		QAction*  objectsXformRotateLeftAction;
+		QAction*  objectsXformRotateRightAction;
+		QAction*  objectsXformFlipHorizAction;
+		QAction*  objectsXformFlipVertAction;
+		QAction*  objectsAlignLeftAction;
+		QAction*  objectsAlignHCenterAction;
+		QAction*  objectsAlignRightAction;
+		QAction*  objectsAlignTopAction;
+		QAction*  objectsAlignVCenterAction;
+		QAction*  objectsAlignBottomAction;
+		QAction*  objectsCenterHorizAction;
+		QAction*  objectsCenterVertAction;
+		QAction*  objectsMergePropertiesAction;
+
+		QAction*  helpContentsAction;
+		QAction*  helpAboutAction;
 
 	};
 

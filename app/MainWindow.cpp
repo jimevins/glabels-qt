@@ -31,7 +31,6 @@
 #include "Icons.h"
 #include "File.h"
 #include "Help.h"
-#include "View.h"
 
 
 namespace glabels
@@ -42,6 +41,7 @@ namespace glabels
 /////////////// TEMPORARY TESTING ///////////////
 #if 0
 		QLabel* tmp = new QLabel( "Coming Soon..." );
+		setCentralWidget( tmp );
 #else
 		LabelModel* model = new LabelModel();
 		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromName( "Avery 3612" );
@@ -61,10 +61,11 @@ namespace glabels
 		object->setShadow( true );
 		model->addObject( object );
 
-		View* tmp = new View();
-		tmp->setModel( model );
+		view = new View();
+		view->setModel( model );
+
+		setCentralWidget( view );
 #endif
-		setCentralWidget( tmp );
 /////////////////////////////////////////////////
 
 		createActions();
@@ -72,7 +73,7 @@ namespace glabels
 		createToolBars();
 		createStatusBar();
 
-		setDocVerbsEnabled( false );
+		setDocVerbsEnabled( true );
 		setPasteVerbsEnabled( false );
 
 		readSettings();
@@ -240,10 +241,10 @@ namespace glabels
 		viewZoomOutAction->setStatusTip( tr("Decrease magnification") );
 		connect( viewZoomOutAction, SIGNAL(triggered()), this, SLOT(viewZoomOut()) );
 
-		viewZoom1to1Action = new QAction( tr("Zoom &1 to 1"), this );
-		viewZoom1to1Action->setIcon( QIcon::fromTheme( "zoom-original", Icons::Fallback::ZoomOriginal() ) );
-		viewZoom1to1Action->setStatusTip( tr("Restore scale to 100%") );
-		connect( viewZoom1to1Action, SIGNAL(triggered()), this, SLOT(viewZoom1to1()) );
+		viewZoom1To1Action = new QAction( tr("Zoom &1 to 1"), this );
+		viewZoom1To1Action->setIcon( QIcon::fromTheme( "zoom-original", Icons::Fallback::ZoomOriginal() ) );
+		viewZoom1To1Action->setStatusTip( tr("Restore scale to 100%") );
+		connect( viewZoom1To1Action, SIGNAL(triggered()), this, SLOT(viewZoom1To1()) );
 
 		viewZoomToFitAction = new QAction( tr("Zoom to &Fit"), this );
 		viewZoomToFitAction->setIcon( QIcon::fromTheme( "zoom-fit-best", Icons::Fallback::ZoomBestFit() ) );
@@ -419,7 +420,7 @@ namespace glabels
 		viewMenu->addSeparator();
 		viewMenu->addAction( viewZoomInAction );
 		viewMenu->addAction( viewZoomOutAction );
-		viewMenu->addAction( viewZoom1to1Action );
+		viewMenu->addAction( viewZoom1To1Action );
 		viewMenu->addAction( viewZoomToFitAction );
 
 		objectsMenu = menuBar()->addMenu( tr("&Objects") );
@@ -489,7 +490,7 @@ namespace glabels
 		viewToolBar = addToolBar( tr("&View") );
 		viewToolBar->addAction( viewZoomInAction );
 		viewToolBar->addAction( viewZoomOutAction );
-		viewToolBar->addAction( viewZoom1to1Action );
+		viewToolBar->addAction( viewZoom1To1Action );
 		viewToolBar->addAction( viewZoomToFitAction );
 	}
 
@@ -508,10 +509,12 @@ namespace glabels
 		statusBar()->addWidget( zoomInfoLabel );
 		statusBar()->addWidget( cursorInfoLabel, 1 );
 
-		updateZoomInfo( 1, false, false );
+		updateZoomInfo();
 		updateCursorInfo();
 
-		/* TODO: connect cursor and zoom signals to appropriate slots. */
+		connect( view, SIGNAL(zoomChanged()), this, SLOT(updateZoomInfo()) );
+
+		/* TODO: connect cursor signals to appropriate slots. */
 	}
 
 
@@ -535,7 +538,7 @@ namespace glabels
 		editUnSelectAllAction->setEnabled( enabled );
 		viewZoomInAction->setEnabled( enabled );
 		viewZoomOutAction->setEnabled( enabled );
-		viewZoom1to1Action->setEnabled( enabled );
+		viewZoom1To1Action->setEnabled( enabled );
 		viewZoomToFitAction->setEnabled( enabled );
 		viewGridAction->setEnabled( enabled );
 		viewMarkupAction->setEnabled( enabled );
@@ -807,19 +810,19 @@ namespace glabels
 
 	void MainWindow::viewZoomIn()
 	{
-		std::cout << "ACTION: edit->Zoom in" << std::endl;
+		view->zoomIn();
 	}
 
 
 	void MainWindow::viewZoomOut()
 	{
-		std::cout << "ACTION: edit->Zoom out" << std::endl;
+		view->zoomOut();
 	}
 
 
-	void MainWindow::viewZoom1to1()
+	void MainWindow::viewZoom1To1()
 	{
-		std::cout << "ACTION: edit->Zoom 1 to 1" << std::endl;
+		view->zoom1To1();
 	}
 
 
@@ -973,12 +976,12 @@ namespace glabels
 	}
 
 
-	void MainWindow::updateZoomInfo( double zoom, bool min_flag, bool max_flag )
+	void MainWindow::updateZoomInfo()
 	{
-		zoomInfoLabel->setText( QString( " %1% " ).arg(100*zoom, 0, 'f', 0) );
+		zoomInfoLabel->setText( QString( " %1% " ).arg(100*view->zoom(), 0, 'f', 0) );
 
-		viewZoomInAction->setEnabled( !max_flag );
-		viewZoomOutAction->setEnabled( !min_flag );
+		viewZoomInAction->setEnabled( !view->isZoomMax() );
+		viewZoomOutAction->setEnabled( !view->isZoomMin() );
 	}
 
 
