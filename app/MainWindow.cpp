@@ -513,8 +513,8 @@ namespace glabels
 		updateCursorInfo();
 
 		connect( view, SIGNAL(zoomChanged()), this, SLOT(updateZoomInfo()) );
-
-		/* TODO: connect cursor signals to appropriate slots. */
+		connect( view, SIGNAL(pointerMoved(double, double)), this, SLOT(updateCursorInfo(double, double)) );
+		connect( view, SIGNAL(pointerExited()), this, SLOT(updateCursorInfo()) );
 	}
 
 

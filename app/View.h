@@ -34,19 +34,40 @@ namespace glabels
 	{
 		Q_OBJECT
 
+		/////////////////////////////////////
+		// Lifecycle
+		/////////////////////////////////////
 	public:
 		View( QWidget *parent = 0 );
 
 
+		/////////////////////////////////////
+		// Signals
+		/////////////////////////////////////
 	signals:
 		void zoomChanged();
+		void pointerMoved( double x, double y );
+		void pointerExited();
 
 
+		/////////////////////////////////////
+		// Parameters
+		/////////////////////////////////////
 	public:
 		inline double zoom() const;
 
+
+		/////////////////////////////////////
+		// Model
+		/////////////////////////////////////
+	public:
 		void setModel( LabelModel* model );
 
+
+		/////////////////////////////////////
+		// Zoom operations
+		/////////////////////////////////////
+	public:
 		void zoomIn();
 		void zoomOut();
 		void zoom1To1();
@@ -57,10 +78,18 @@ namespace glabels
 		void setZoomReal( double zoom, bool zoomToFitFlag );
 
 
+		/////////////////////////////////////
+		// Event handlers
+		/////////////////////////////////////
 	protected:
-		void resizeEvent( QResizeEvent *event );
+		void resizeEvent( QResizeEvent* event );
+		void mouseMoveEvent( QMouseEvent* event );
+		void leaveEvent( QEvent* event );
 
 
+		/////////////////////////////////////
+		// Private data
+		/////////////////////////////////////
 	private:
 		QGraphicsScene*  mScene;
 
@@ -71,6 +100,10 @@ namespace glabels
 
 	};
 
+
+	/////////////////////////////////
+	// INLINE METHODS
+	/////////////////////////////////
 
 	inline double View::zoom() const
 	{

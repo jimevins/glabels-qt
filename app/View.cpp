@@ -20,6 +20,7 @@
 
 #include "View.h"
 
+#include <QMouseEvent>
 #include <cmath>
 #include <iostream>
 
@@ -40,6 +41,8 @@ namespace glabels
 	{
 		setZoomReal( 1, false );
 		mModel         = 0;
+
+		setMouseTracking( true );
 
 		mScene = new QGraphicsScene();
 		setScene( mScene );
@@ -152,6 +155,19 @@ namespace glabels
 		{
 			zoomToFit();
 		}
+	}
+
+
+	void View::mouseMoveEvent( QMouseEvent* event )
+	{
+		QPointF pointer = mapToScene( event->x(), event->y() );
+		emit pointerMoved( pointer.x(), pointer.y() );
+	}
+
+
+	void View::leaveEvent( QEvent* event )
+	{
+		emit pointerExited();
 	}
 
 }
