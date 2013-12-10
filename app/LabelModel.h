@@ -75,6 +75,7 @@ namespace glabels
 		inline void setCompressionLevel( int compressionLevel );
 
 		inline const libglabels::Template* tmplate() const;
+		inline const libglabels::Frame* frame() const;
 		inline void setTmplate( const libglabels::Template* tmplate );
 
 		inline bool rotate() const;
@@ -231,6 +232,12 @@ namespace glabels
 	inline const libglabels::Template* LabelModel::tmplate() const
 	{
 		return mTmplate;
+	}
+
+
+	inline const libglabels::Frame* LabelModel::frame() const
+	{
+		return mFrame;
 	}
 
 

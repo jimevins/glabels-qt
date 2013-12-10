@@ -44,7 +44,7 @@ namespace glabels
 		setCentralWidget( tmp );
 #else
 		LabelModel* model = new LabelModel();
-		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromName( "Avery 3612" );
+		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromName( "Avery 5163" );
 		model->setTmplate( tmplate );
 		LabelModelBoxObject* object = new LabelModelBoxObject();
 		object->setW( 36 );

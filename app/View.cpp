@@ -21,6 +21,7 @@
 #include "View.h"
 
 #include <QMouseEvent>
+#include <QGraphicsDropShadowEffect>
 #include <cmath>
 #include <iostream>
 
@@ -31,6 +32,14 @@ namespace
 	const double zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33, 0.25, 0.15, 0.10 };
 
 	const double ZOOM_TO_FIT_PAD = 16;
+
+        const QColor  shadowColor( 64, 64, 64 );
+	const double  shadowOffsetPixels = 3;
+	const double  shadowRadiusPixels = 12;
+
+        const QColor  labelColor( 255, 255, 255 );
+        const QColor  labelOutlineColor( 0, 0, 0 );
+	const double  labelOutlineWidthPixels = 1;
 }
 
 
@@ -44,6 +53,9 @@ namespace glabels
 
 		setMouseTracking( true );
 
+		setAttribute( Qt::WA_TranslucentBackground );
+		viewport()->setAutoFillBackground( false );
+
 		mScene = new QGraphicsScene();
 		setScene( mScene );
 	}
@@ -52,6 +64,8 @@ namespace glabels
 	void View::setModel( LabelModel* model )
 	{
 		mModel = model;
+
+		createLabelLayer();
 
 		foreach (LabelModelObject* object, model->objectList() )
 		{
@@ -168,6 +182,29 @@ namespace glabels
 	void View::leaveEvent( QEvent* event )
 	{
 		emit pointerExited();
+	}
+
+
+	void View::createLabelLayer()
+	{
+                QGraphicsPathItem *labelItem  = new QGraphicsPathItem( mModel->frame()->path() );
+
+                QBrush brush( labelColor );
+                labelItem->setBrush( brush );
+
+                QPen pen( labelOutlineColor );
+		pen.setJoinStyle( Qt::MiterJoin );
+		pen.setCosmetic( true );
+                pen.setWidthF( labelOutlineWidthPixels );
+                labelItem->setPen( pen );
+
+                QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+                shadowEffect->setColor( shadowColor );
+                shadowEffect->setOffset( shadowOffsetPixels );
+                shadowEffect->setBlurRadius( shadowRadiusPixels );
+		labelItem->setGraphicsEffect( shadowEffect );
+
+                mScene->addItem( labelItem );
 	}
 
 }
