@@ -29,7 +29,7 @@ namespace glabels
 	/**
 	 * Default constructor.
 	 */
-	LabelModel::LabelModel() : mModified(true)
+	LabelModel::LabelModel() : mModified(true), mTmplate(0), mRotate(false)
 	{
 	}
 
