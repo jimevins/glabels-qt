@@ -222,12 +222,12 @@ namespace glabels
 		viewGridAction = new QAction( tr("Grid"), this );
 		viewGridAction->setCheckable( true );
 		viewGridAction->setStatusTip( tr("Change visibility of the grid in current window") );
-		connect( viewGridAction, SIGNAL(triggered()), this, SLOT(viewGrid()) );
+		connect( viewGridAction, SIGNAL(toggled(bool)), this, SLOT(viewGrid(bool)) );
 
 		viewMarkupAction = new QAction( tr("Markup"), this );
 		viewMarkupAction->setCheckable( true );
 		viewMarkupAction->setStatusTip( tr("Change visibility of markup lines in current window") );
-		connect( viewMarkupAction, SIGNAL(triggered()), this, SLOT(viewMarkup()) );
+		connect( viewMarkupAction, SIGNAL(toggled(bool)), this, SLOT(viewMarkup(bool)) );
 
 		viewZoomInAction = new QAction( tr("Zoom &In"), this );
 		viewZoomInAction->setIcon( QIcon::fromTheme( "zoom-in", Icons::Fallback::ZoomIn() ) );
@@ -637,17 +637,20 @@ namespace glabels
 		bool showObjectsToolBar = settings.value( "showObjectsToolBar", true ).toBool();
 		bool showEditToolBar    = settings.value( "showEditToolBar",    true ).toBool();
 		bool showViewToolBar    = settings.value( "showViewToolBar",    true ).toBool();
+		bool showGrid           = settings.value( "showGrid",           true ).toBool();
 		settings.endGroup();
 
 		viewFileToolBarAction->setChecked(    showFileToolBar );
 		viewObjectsToolBarAction->setChecked( showObjectsToolBar );
 		viewEditToolBarAction->setChecked(    showEditToolBar );
 		viewViewToolBarAction->setChecked(    showViewToolBar );
+		viewGridAction->setChecked(           showGrid );
 
 		fileToolBar->setVisible(    showFileToolBar );
 		objectsToolBar->setVisible( showObjectsToolBar );
 		editToolBar->setVisible(    showEditToolBar );
 		viewToolBar->setVisible(    showViewToolBar );
+		view->setGridVisible(       showGrid );
 	}
 
 
@@ -660,6 +663,7 @@ namespace glabels
 		settings.setValue( "showObjectsToolBar", viewObjectsToolBarAction->isChecked() );
 		settings.setValue( "showEditToolBar",    viewEditToolBarAction->isChecked() );
 		settings.setValue( "showViewToolBar",    viewViewToolBarAction->isChecked() );
+		settings.setValue( "showGrid",           viewGridAction->isChecked() );
 		settings.endGroup();
 	}
 
@@ -796,13 +800,13 @@ namespace glabels
 	}
 
 
-	void MainWindow::viewGrid()
+	void MainWindow::viewGrid( bool state )
 	{
-		std::cout << "ACTION: edit->Grid" << std::endl;
+		view->setGridVisible( state );
 	}
 
 
-	void MainWindow::viewMarkup()
+	void MainWindow::viewMarkup( bool state )
 	{
 		std::cout << "ACTION: edit->Markup" << std::endl;
 	}

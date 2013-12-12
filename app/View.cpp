@@ -21,9 +21,12 @@
 #include "View.h"
 
 #include <QMouseEvent>
+#include <QGraphicsLineItem>
 #include <QGraphicsDropShadowEffect>
 #include <cmath>
 #include <iostream>
+
+#include "libglabels/FrameRect.h"
 
 
 namespace
@@ -40,6 +43,10 @@ namespace
         const QColor  labelColor( 255, 255, 255 );
         const QColor  labelOutlineColor( 0, 0, 0 );
 	const double  labelOutlineWidthPixels = 1;
+
+	const QColor  gridLineColor( 192, 192, 192 );
+	const double  gridLineWidthPixels = 1;
+	const double  gridSpacing = 9; // TODO: determine from locale.
 }
 
 
@@ -58,6 +65,11 @@ namespace glabels
 
 		mScene = new QGraphicsScene();
 		setScene( mScene );
+
+		mScene->addItem( mLabelLayer      = new QGraphicsItemGroup() );
+		mScene->addItem( mGridLayer       = new QGraphicsItemGroup() );
+		mScene->addItem( mObjectLayer     = new QGraphicsItemGroup() );
+		mScene->addItem( mForegroundLayer = new QGraphicsItemGroup() );
 	}
 
 
@@ -66,12 +78,20 @@ namespace glabels
 		mModel = model;
 
 		createLabelLayer();
+		createGridLayer();
 
 		foreach (LabelModelObject* object, model->objectList() )
 		{
-			QGraphicsItem* item = object->createGraphicsItem();
-			mScene->addItem( item );
+			addObjectToObjectLayer( object );
 		}
+
+		createForegroundLayer();
+	}
+
+
+	void View::setGridVisible( bool visibleFlag )
+	{
+		mGridLayer->setVisible( visibleFlag );
 	}
 
 
@@ -191,18 +211,23 @@ namespace glabels
 	}
 
 
+	void View::clearLayer( QGraphicsItemGroup* layer )
+	{
+		foreach( QGraphicsItem* item, layer->childItems() )
+		{
+			layer->removeFromGroup( item );
+		}
+	}
+
+
 	void View::createLabelLayer()
 	{
+		clearLayer( mLabelLayer );
+
                 QGraphicsPathItem *labelItem  = new QGraphicsPathItem( mModel->frame()->path() );
 
                 QBrush brush( labelColor );
                 labelItem->setBrush( brush );
-
-                QPen pen( labelOutlineColor );
-		pen.setJoinStyle( Qt::MiterJoin );
-		pen.setCosmetic( true );
-                pen.setWidthF( labelOutlineWidthPixels );
-                labelItem->setPen( pen );
 
                 QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
                 shadowEffect->setColor( shadowColor );
@@ -210,7 +235,73 @@ namespace glabels
                 shadowEffect->setBlurRadius( shadowRadiusPixels );
 		labelItem->setGraphicsEffect( shadowEffect );
 
-                mScene->addItem( labelItem );
+                mLabelLayer->addToGroup( labelItem );
+	}
+
+
+	void View::createGridLayer()
+	{
+		clearLayer( mGridLayer );
+
+                QGraphicsPathItem *clipItem  = new QGraphicsPathItem( mModel->frame()->path() );
+		clipItem->setFlag( QGraphicsItem::ItemClipsChildrenToShape );
+
+                QPen pen( gridLineColor );
+		pen.setCosmetic( true );
+                pen.setWidthF( gridLineWidthPixels );
+
+		double w = mModel->w();
+		double h = mModel->h();
+		double x0;
+		double y0;
+		if ( dynamic_cast<const libglabels::FrameRect*>( mModel->frame() ) )
+		{
+			x0 = gridSpacing;
+			y0 = gridSpacing;
+		}
+		else
+		{
+			/* round labels, align grid with center of label. */
+			x0 = fmod( w/2, gridSpacing );
+			y0 = fmod( h/2, gridSpacing );
+		}
+
+		for ( double x = x0; x < w; x += gridSpacing )
+		{
+			QGraphicsLineItem* lineItem = new QGraphicsLineItem( x, 0, x, h, clipItem );
+			lineItem->setPen( pen );
+		}
+
+		for ( double y = y0; y < h; y += gridSpacing )
+		{
+			QGraphicsLineItem* lineItem = new QGraphicsLineItem( 0, y, w, y, clipItem );
+			lineItem->setPen( pen );
+		}
+
+                mGridLayer->addToGroup( clipItem );
+	}
+
+
+	void View::addObjectToObjectLayer( LabelModelObject* object )
+	{
+		QGraphicsItem* item = object->createGraphicsItem();
+		mObjectLayer->addToGroup( item );
+	}
+
+
+	void View::createForegroundLayer()
+	{
+		clearLayer( mForegroundLayer );
+
+                QGraphicsPathItem *outlineItem  = new QGraphicsPathItem( mModel->frame()->path() );
+
+                QPen pen( labelOutlineColor );
+		pen.setJoinStyle( Qt::MiterJoin );
+		pen.setCosmetic( true );
+                pen.setWidthF( labelOutlineWidthPixels );
+                outlineItem->setPen( pen );
+
+                mForegroundLayer->addToGroup( outlineItem );
 	}
 
 }

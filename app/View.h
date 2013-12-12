@@ -23,6 +23,7 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QGraphicsItemGroup>
 
 #include "LabelModel.h"
 
@@ -65,6 +66,13 @@ namespace glabels
 
 
 		/////////////////////////////////////
+		// Visibility operations
+		/////////////////////////////////////
+	public:
+		void setGridVisible( bool visibleFlag );
+
+
+		/////////////////////////////////////
 		// Zoom operations
 		/////////////////////////////////////
 	public:
@@ -91,19 +99,28 @@ namespace glabels
 		// Private methods
 		/////////////////////////////////////
 	private:
+		void clearLayer( QGraphicsItemGroup* layer );
 		void createLabelLayer();
+		void createGridLayer();
+		void addObjectToObjectLayer( LabelModelObject* object );
+		void createForegroundLayer();
 
 
 		/////////////////////////////////////
 		// Private data
 		/////////////////////////////////////
 	private:
-		QGraphicsScene*  mScene;
+		QGraphicsScene*     mScene;
 
-		double           mZoom;
-		bool             mZoomToFitFlag;
+		QGraphicsItemGroup* mLabelLayer;
+		QGraphicsItemGroup* mGridLayer;
+		QGraphicsItemGroup* mObjectLayer;
+		QGraphicsItemGroup* mForegroundLayer;
 
-		LabelModel*      mModel;
+		double              mZoom;
+		bool                mZoomToFitFlag;
+
+		LabelModel*         mModel;
 
 	};
 

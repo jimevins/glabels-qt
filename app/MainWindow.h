@@ -72,8 +72,8 @@ namespace glabels
 		void viewObjectsToolBar( bool );
 		void viewEditToolBar( bool );
 		void viewViewToolBar( bool );
-		void viewGrid();
-		void viewMarkup();
+		void viewGrid( bool );
+		void viewMarkup( bool );
 		void viewZoomIn();
 		void viewZoomOut();
 		void viewZoom1To1();
