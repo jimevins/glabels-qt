@@ -26,7 +26,11 @@
 #include <cmath>
 #include <iostream>
 
+#include "libglabels/Markup.h"
 #include "libglabels/FrameRect.h"
+#include "libglabels/FrameRound.h"
+#include "libglabels/FrameEllipse.h"
+#include "libglabels/FrameCd.h"
 
 
 namespace
@@ -47,6 +51,9 @@ namespace
 	const QColor  gridLineColor( 192, 192, 192 );
 	const double  gridLineWidthPixels = 1;
 	const double  gridSpacing = 9; // TODO: determine from locale.
+
+	const QColor  markupLineColor( 240, 99, 99 );
+	const double  markupLineWidthPixels = 1;
 }
 
 
@@ -68,6 +75,7 @@ namespace glabels
 
 		mScene->addItem( mLabelLayer      = new QGraphicsItemGroup() );
 		mScene->addItem( mGridLayer       = new QGraphicsItemGroup() );
+		mScene->addItem( mMarkupLayer     = new QGraphicsItemGroup() );
 		mScene->addItem( mObjectLayer     = new QGraphicsItemGroup() );
 		mScene->addItem( mForegroundLayer = new QGraphicsItemGroup() );
 	}
@@ -79,6 +87,7 @@ namespace glabels
 
 		createLabelLayer();
 		createGridLayer();
+		createMarkupLayer();
 
 		foreach (LabelModelObject* object, model->objectList() )
 		{
@@ -92,6 +101,12 @@ namespace glabels
 	void View::setGridVisible( bool visibleFlag )
 	{
 		mGridLayer->setVisible( visibleFlag );
+	}
+
+
+	void View::setMarkupVisible( bool visibleFlag )
+	{
+		mMarkupLayer->setVisible( visibleFlag );
 	}
 
 
@@ -279,6 +294,25 @@ namespace glabels
 		}
 
                 mGridLayer->addToGroup( clipItem );
+	}
+
+
+	void View::createMarkupLayer()
+	{
+		clearLayer( mMarkupLayer );
+
+                QPen pen( markupLineColor );
+		pen.setCosmetic( true );
+                pen.setWidthF( markupLineWidthPixels );
+
+		const libglabels::Frame* frame = mModel->frame();
+
+		foreach (libglabels::Markup* markup, frame->markups() )
+		{
+			QGraphicsItem* markupItem = markup->createGraphicsItem( frame, pen );
+
+			mMarkupLayer->addToGroup( markupItem );
+		}
 	}
 
 

@@ -638,19 +638,22 @@ namespace glabels
 		bool showEditToolBar    = settings.value( "showEditToolBar",    true ).toBool();
 		bool showViewToolBar    = settings.value( "showViewToolBar",    true ).toBool();
 		bool showGrid           = settings.value( "showGrid",           true ).toBool();
+		bool showMarkup         = settings.value( "showMarkup",         true ).toBool();
 		settings.endGroup();
 
-		viewFileToolBarAction->setChecked(    showFileToolBar );
+		viewFileToolBarAction   ->setChecked( showFileToolBar );
 		viewObjectsToolBarAction->setChecked( showObjectsToolBar );
-		viewEditToolBarAction->setChecked(    showEditToolBar );
-		viewViewToolBarAction->setChecked(    showViewToolBar );
-		viewGridAction->setChecked(           showGrid );
+		viewEditToolBarAction   ->setChecked( showEditToolBar );
+		viewViewToolBarAction   ->setChecked( showViewToolBar );
+		viewGridAction          ->setChecked( showGrid );
+		viewMarkupAction        ->setChecked( showMarkup );
 
-		fileToolBar->setVisible(    showFileToolBar );
-		objectsToolBar->setVisible( showObjectsToolBar );
-		editToolBar->setVisible(    showEditToolBar );
-		viewToolBar->setVisible(    showViewToolBar );
-		view->setGridVisible(       showGrid );
+		fileToolBar   ->setVisible(       showFileToolBar );
+		objectsToolBar->setVisible(       showObjectsToolBar );
+		editToolBar   ->setVisible(       showEditToolBar );
+		viewToolBar   ->setVisible(       showViewToolBar );
+		view          ->setGridVisible(   showGrid );
+		view          ->setMarkupVisible( showMarkup );
 	}
 
 
@@ -664,6 +667,7 @@ namespace glabels
 		settings.setValue( "showEditToolBar",    viewEditToolBarAction->isChecked() );
 		settings.setValue( "showViewToolBar",    viewViewToolBarAction->isChecked() );
 		settings.setValue( "showGrid",           viewGridAction->isChecked() );
+		settings.setValue( "showMarkup",         viewMarkupAction->isChecked() );
 		settings.endGroup();
 	}
 
@@ -808,7 +812,7 @@ namespace glabels
 
 	void MainWindow::viewMarkup( bool state )
 	{
-		std::cout << "ACTION: edit->Markup" << std::endl;
+		view->setMarkupVisible( state );
 	}
 
 

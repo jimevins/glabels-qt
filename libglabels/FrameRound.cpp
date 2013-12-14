@@ -62,5 +62,16 @@ namespace libglabels
 		return false;
 	}
 
+
+	QGraphicsItem* FrameRound::createMarginGraphicsItem( double size, const QPen& pen ) const
+	{
+		double r = mR - size;
+
+		QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mR-r, mR-r, 2*r, 2*r );
+		item->setPen( pen );
+
+		return item;
+	}
+
 }
 

@@ -21,6 +21,11 @@
 #ifndef libglabels_Markup_h
 #define libglabels_Markup_h
 
+#include <QGraphicsItem>
+#include <QPainterPath>
+
+#include "Frame.h"
+
 
 namespace libglabels
 {
@@ -29,6 +34,7 @@ namespace libglabels
 	{
 	public:
 		virtual Markup *dup() const = 0;
+		virtual QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const = 0;
 	};
 
 
@@ -42,6 +48,11 @@ namespace libglabels
 		inline double size() const { return mSize; }
 
 		Markup *dup() const { return new MarkupMargin( mSize ); }
+
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
+		{
+			return frame->createMarginGraphicsItem( mSize, pen );
+		}
 
 	private:
 		double  mSize;
@@ -61,6 +72,14 @@ namespace libglabels
 		inline double y2() const { return mY2; }
 
 		Markup *dup() const { return new MarkupLine( mX1, mY1, mX2, mY2 ); }
+
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
+		{
+			QGraphicsLineItem* item =  new QGraphicsLineItem( mX1, mY1, mX2, mY2 );
+			item->setPen( pen );
+
+			return item;
+		}
 
 	private:
 		double  mX1;
@@ -86,6 +105,17 @@ namespace libglabels
 
 		Markup *dup() const { return new MarkupRect( mX1, mY1, mW, mH, mR ); }
 
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
+		{
+			QPainterPath path;
+			path.addRoundedRect( mX1, mY1, mW, mH, mR, mR );
+
+			QGraphicsPathItem* item = new QGraphicsPathItem( path );
+			item->setPen( pen );
+
+			return item;
+		}
+
 	private:
 		double  mX1;
 		double  mY1;
@@ -110,6 +140,14 @@ namespace libglabels
 
 		Markup *dup() const { return new MarkupEllipse( mX1, mY1, mW, mH ); }
 
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
+		{
+			QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mX1, mY1, mW, mH );
+			item->setPen( pen );
+
+			return item;
+		}
+
 	private:
 		double  mX1;
 		double  mY1;
@@ -132,13 +170,19 @@ namespace libglabels
 
 		Markup *dup() const { return new MarkupCircle( mX0, mY0, mR ); }
 
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
+		{
+			QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mX0-mR, mY0-mR, 2*mR, 2*mR );
+			item->setPen( pen );
+
+			return item;
+		}
+
 	private:
 		double  mX0;
 		double  mY0;
 		double  mR;
 	};
-
-
 	
 
 }

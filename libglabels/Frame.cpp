@@ -20,6 +20,8 @@
 
 #include "Frame.h"
 
+#include "Markup.h"
+
 
 namespace libglabels
 {

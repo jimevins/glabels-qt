@@ -70,6 +70,7 @@ namespace glabels
 		/////////////////////////////////////
 	public:
 		void setGridVisible( bool visibleFlag );
+		void setMarkupVisible( bool visibleFlag );
 
 
 		/////////////////////////////////////
@@ -102,6 +103,7 @@ namespace glabels
 		void clearLayer( QGraphicsItemGroup* layer );
 		void createLabelLayer();
 		void createGridLayer();
+		void createMarkupLayer();
 		void addObjectToObjectLayer( LabelModelObject* object );
 		void createForegroundLayer();
 
@@ -114,6 +116,7 @@ namespace glabels
 
 		QGraphicsItemGroup* mLabelLayer;
 		QGraphicsItemGroup* mGridLayer;
+		QGraphicsItemGroup* mMarkupLayer;
 		QGraphicsItemGroup* mObjectLayer;
 		QGraphicsItemGroup* mForegroundLayer;
 

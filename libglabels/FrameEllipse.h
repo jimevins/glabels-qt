@@ -55,6 +55,7 @@ namespace libglabels
 		bool isSimilarTo( Frame *other ) const;
 
 		const QPainterPath &path() const { return mPath; }
+		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
 
 
 	private:

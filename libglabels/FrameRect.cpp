@@ -64,5 +64,21 @@ namespace libglabels
 		return false;
 	}
 
+
+	QGraphicsItem* FrameRect::createMarginGraphicsItem( double size, const QPen& pen ) const
+	{
+		double w = mW - 2*size;
+		double h = mH - 2*size;
+		double r = std::max( mR - size, 0.0 );
+
+		QPainterPath path;
+		path.addRoundedRect( size, size, w, h, r, r );
+
+		QGraphicsPathItem* item = new QGraphicsPathItem( path );
+		item->setPen( pen );
+
+		return item;
+	}
+
 }
 

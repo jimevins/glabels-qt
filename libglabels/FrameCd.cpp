@@ -86,5 +86,36 @@ namespace libglabels
 		mPath.translate( w()/2 - mR1, h()/2 - mR1 );
 	}
 
+
+	QGraphicsItem* FrameCd::createMarginGraphicsItem( double size, const QPen& pen ) const
+	{
+		double r1 = mR1 - size;
+		double r2 = mR2 + size;
+
+		QPainterPath path;
+
+		// Outer path (may be clipped in the case business card type CD)
+		double theta1 = acos( (mW-2*size) / (2*r1) ) * 180/M_PI;
+		double theta2 = asin( (mH-2*size) / (2*r1) ) * 180/M_PI;
+
+		path.arcMoveTo( 0, 0, 2*r1, 2*r1, theta1 );
+		path.arcTo( 0, 0, 2*r1, 2*r1, theta1,     theta2-theta1 );
+		path.arcTo( 0, 0, 2*r1, 2*r1, 180-theta2, theta2-theta1 );
+		path.arcTo( 0, 0, 2*r1, 2*r1, 180+theta1, theta2-theta1 );
+		path.arcTo( 0, 0, 2*r1, 2*r1, 360-theta2, theta2-theta1 );
+		path.closeSubpath();
+
+		// Inner path (hole)
+		path.addEllipse( r1-r2, r1-r2, 2*r2, 2*r2 );
+
+		// Translate to account for offset with clipped business card CDs (applies to element already drawn)
+		path.translate( mW/2 - r1, mH/2 - r1 );
+
+		QGraphicsPathItem* item = new QGraphicsPathItem( path );
+		item->setPen( pen );
+
+		return item;
+	}
+
 }
 

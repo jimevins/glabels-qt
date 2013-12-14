@@ -64,5 +64,17 @@ namespace libglabels
 		return false;
 	}
 
+
+	QGraphicsItem* FrameEllipse::createMarginGraphicsItem( double size, const QPen& pen ) const
+	{
+		double w = mW - 2*size;
+		double h = mH - 2*size;
+
+		QGraphicsEllipseItem* item = new QGraphicsEllipseItem( size, size, w, h );
+		item->setPen( pen );
+
+		return item;
+	}
+
 }
 

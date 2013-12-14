@@ -25,16 +25,18 @@
 #include <QString>
 #include <QList>
 #include <QPainterPath>
+#include <QGraphicsItem>
 #include <QVector>
 
 #include "Units.h"
 #include "Point.h"
 #include "Layout.h"
-#include "Markup.h"
 
 
 namespace libglabels
 {
+	class Markup;  // Forward reference
+
 
 	class Frame
 	{
@@ -68,6 +70,7 @@ namespace libglabels
 		virtual bool isSimilarTo( Frame *other ) const = 0;
 
 		virtual const QPainterPath &path() const = 0;
+		virtual QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const = 0;
 
 
 	private:
