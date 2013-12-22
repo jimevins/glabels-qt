@@ -20,11 +20,16 @@
 
 #include "View.h"
 
+#include <QGraphicsScene>
+#include <QGraphicsItemGroup>
 #include <QMouseEvent>
 #include <QGraphicsLineItem>
 #include <QGraphicsDropShadowEffect>
 #include <cmath>
 #include <iostream>
+
+#include "LabelModel.h"
+#include "LabelModelObject.h"
 
 #include "libglabels/Markup.h"
 #include "libglabels/FrameRect.h"
@@ -164,11 +169,11 @@ namespace glabels
 	{
 		double x_scale = (72.0/physicalDpiX()) * ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
 		double y_scale = (72.0/physicalDpiY()) * ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
-		double newZoom = min( x_scale, y_scale );
+		double newZoom = std::min( x_scale, y_scale );
 
 		// Limits
-		newZoom = min( newZoom, zoomLevels[0] );
-		newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
+		newZoom = std::min( newZoom, zoomLevels[0] );
+		newZoom = std::max( newZoom, zoomLevels[nZoomLevels-1] );
 
 		setZoomReal( newZoom, true );
 	}

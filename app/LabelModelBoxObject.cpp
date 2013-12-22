@@ -28,6 +28,83 @@
 namespace glabels
 {
 
+	LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelObject(parent)
+	{
+		/* TODO: initialize default line and fill poperties.  */
+	}
+
+
+	LabelModelBoxObject::~LabelModelBoxObject()
+	{
+	}
+
+
+	double LabelModelBoxObject::lineWidth( void ) const
+	{
+		return mLineWidth;
+	}
+
+
+	void LabelModelBoxObject::setLineWidth( double value )
+	{
+		if ( mLineWidth != value )
+		{
+			mLineWidth = value;
+			emit changed();
+		}
+	}
+
+
+	ColorNode LabelModelBoxObject::lineColorNode( void ) const
+	{
+		return mLineColorNode;
+	}
+
+
+	void LabelModelBoxObject::setLineColorNode( const ColorNode& value )
+	{
+		if ( mLineColorNode != value )
+		{
+			mLineColorNode = value;
+			emit changed();
+		}
+	}
+		
+
+	ColorNode LabelModelBoxObject::fillColorNode( void ) const
+	{
+		return mFillColorNode;
+	}
+
+
+	void LabelModelBoxObject::setFillColorNode( const ColorNode& value )
+	{
+		if ( mFillColorNode != value )
+		{
+			mFillColorNode = value;
+			emit changed();
+		}
+	}
+		
+
+	bool LabelModelBoxObject::canFill()
+	{
+		return true;
+	}
+
+
+	bool LabelModelBoxObject::canLineColor()
+	{
+		return true;
+	}
+
+
+	bool LabelModelBoxObject::canLineWidth()
+	{
+		return true;
+	}
+
+
 	// Create QGraphicsItem suitable for representing this object
 	QGraphicsItem* LabelModelBoxObject::createGraphicsItem()
 	{

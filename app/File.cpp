@@ -26,15 +26,10 @@
 namespace glabels
 {
 
-	namespace File
+	void File::newLabel( QWidget *parent )
 	{
-
-		void newLabel( QWidget *parent )
-		{
-			NewLabelDialog newDialog( parent );
-			newDialog.exec();
-		}
-
+		NewLabelDialog newDialog( parent );
+		newDialog.exec();
 	}
 
 }

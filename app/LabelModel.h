@@ -25,13 +25,21 @@
 #include <QList>
 
 #include "libglabels/Template.h"
-#include "LabelModelObject.h"
 
 
 namespace glabels
 {
+	// Forward References
+	class LabelModelObject;
+	class LabelRegion;
+	class ColorNode;
 
 
+	//////////////////////////////////////////////
+	//////////////////////////////////////////////
+	// LabelModel
+	//////////////////////////////////////////////
+	//////////////////////////////////////////////
 	class LabelModel : public QObject
 	{
 		Q_OBJECT

@@ -22,15 +22,23 @@
 #define glabels_View_h
 
 #include <QGraphicsView>
-#include <QGraphicsScene>
-#include <QGraphicsItemGroup>
 
-#include "LabelModel.h"
+class QGraphicsScene;
+class QGraphicsItemGroup;
 
 
 namespace glabels
 {
+	// Forward References
+	class LabelModel;
+	class LabelModelObject;
 
+
+	//////////////////////////////////////////////
+	//////////////////////////////////////////////
+	// View
+	//////////////////////////////////////////////
+	//////////////////////////////////////////////
 	class View : public QGraphicsView
 	{
 		Q_OBJECT

@@ -21,6 +21,15 @@
 #include "LabelModelObject.h"
 
 #include <QGraphicsDropShadowEffect>
+#include <QTransform>
+#include <QFont>
+#include <QGraphicsItem>
+
+#include "ColorNode.h"
+#include "TextNode.h"
+#include "BarcodeStyle.h"
+#include "LabelRegion.h"
+#include "MergeRecord.h"
 
 
 namespace glabels
@@ -48,6 +57,428 @@ namespace glabels
 		mShadowOpacity   = 0.5;
 
 		mSelectedFlag = false;
+	}
+
+
+	LabelModelObject::~LabelModelObject()
+	{
+	}
+
+
+	int LabelModelObject::id() const
+	{
+		return mId;
+	}
+
+
+	bool LabelModelObject::isSelected() const
+	{
+		return mSelectedFlag;
+	}
+
+
+	void LabelModelObject::select( bool value )
+	{
+		mSelectedFlag = value;
+	}
+
+
+	void LabelModelObject::unselect()
+	{
+		mSelectedFlag = false;
+	}
+
+
+	double LabelModelObject::x0() const
+	{
+		return mX0;
+	}
+
+
+	void LabelModelObject::setX0( double value )
+	{
+		if ( mX0 != value )
+		{
+			mX0 = value;
+			emit moved();
+		}
+	}
+		
+
+	double LabelModelObject::y0() const
+	{
+		return mY0;
+	}
+
+
+	void LabelModelObject::setY0( double value )
+	{
+		if ( mY0 != value )
+		{
+			mY0 = value;
+			emit moved();
+		}
+	}
+		
+
+	double LabelModelObject::w() const
+	{
+		return mW;
+	}
+
+
+	void LabelModelObject::setW( double value )
+	{
+		if ( mW != value )
+		{
+			mW = value;
+			emit moved();
+		}
+	}
+		
+
+	double LabelModelObject::h() const
+	{
+		return mH;
+	}
+
+
+	void LabelModelObject::setH( double value )
+	{
+		if ( mH != value )
+		{
+			mH = value;
+			emit moved();
+		}
+	}
+
+
+	QTransform LabelModelObject::matrix() const
+	{
+		return mMatrix;
+	}
+
+
+	void LabelModelObject::setMatrix( const QTransform& value )
+	{
+		if ( mMatrix != value )
+		{
+			mMatrix = value;
+			emit changed();
+		}
+	}
+
+
+	bool LabelModelObject::shadow() const
+	{
+		return mShadowState;
+	}
+
+
+	void LabelModelObject::setShadow( bool value )
+	{
+		if ( mShadowState != value )
+		{
+			mShadowState = value;
+			emit changed();
+		}
+	}
+
+
+	double LabelModelObject::shadowX() const
+	{
+		return mShadowX;
+	}
+
+
+	void LabelModelObject::setShadowX( double value )
+	{
+		if ( mShadowX != value )
+		{
+			mShadowX = value;
+			emit changed();
+		}
+	}
+		
+
+	double LabelModelObject::shadowY() const
+	{
+		return mShadowY;
+	}
+
+
+	void LabelModelObject::setShadowY( double value )
+	{
+		if ( mShadowY != value )
+		{
+			mShadowY = value;
+			emit changed();
+		}
+	}
+		
+
+	double LabelModelObject::shadowOpacity() const
+	{
+		return mShadowOpacity;
+	}
+
+
+	void LabelModelObject::setShadowOpacity( double value )
+	{
+		if ( mShadowOpacity != value )
+		{
+			mShadowOpacity = value;
+			emit changed();
+		}
+	}
+		
+
+	ColorNode LabelModelObject::shadowColorNode() const
+	{
+		return mShadowColorNode;
+	}
+
+
+	void LabelModelObject::setShadowColorNode( const ColorNode& value )
+	{
+		if ( mShadowColorNode != value )
+		{
+			mShadowColorNode = value;
+			emit changed();
+		}
+	}
+		
+
+	QString LabelModelObject::fontFamily() const
+	{
+		return "";
+	}
+
+
+	void LabelModelObject::setFontFamily( const QString& value )
+	{
+	}
+
+
+	double LabelModelObject::fontSize() const
+	{
+		return 0;
+	}
+
+
+	void LabelModelObject::setFontSize( double value )
+	{
+	}
+
+
+	QFont::Weight LabelModelObject::fontWeight() const
+	{
+		return QFont::Normal;
+	}
+
+
+	void LabelModelObject::setFontWeight( QFont::Weight value )
+	{
+	}
+
+
+	bool LabelModelObject::fontItalicFlag() const
+	{
+		return false;
+	}
+
+
+	void LabelModelObject::setFontItalicFlag( bool value )
+	{
+	}
+
+
+	bool LabelModelObject::fontUnderlineFlag() const
+	{
+		return false;
+	}
+
+
+	void LabelModelObject::setFontUnderlineFlag( bool value )
+	{
+	}
+
+
+	ColorNode LabelModelObject::textColorNode() const
+	{
+		return ColorNode( QColor::fromRgba(0x00000000) );
+	}
+
+
+	void LabelModelObject::setTextColorNode( const ColorNode &value )
+	{
+	}
+		
+
+	Qt::Alignment LabelModelObject::textHAlign() const
+	{
+		return Qt::AlignLeft;
+	}
+
+
+	void LabelModelObject::setTextHAlign( Qt::Alignment value )
+	{
+	}
+
+
+	Qt::Alignment LabelModelObject::textVAlign() const
+	{
+		return Qt::AlignTop;
+	}
+
+
+	void LabelModelObject::setTextVAlign( Qt::Alignment value )
+	{
+	}
+
+
+	double LabelModelObject::textLineSpacing() const
+	{
+		return 0;
+	}
+
+
+	void LabelModelObject::setTextLineSpacing( double value )
+	{
+	}
+
+
+	TextNode LabelModelObject::filenameNode() const
+	{
+		return TextNode();
+	}
+
+
+	void LabelModelObject::setFilenameNode( const TextNode& value )
+	{
+	}
+		
+
+	double LabelModelObject::lineWidth() const
+	{
+		return 0;
+	}
+
+
+	void LabelModelObject::setLineWidth( double value )
+	{
+	}
+
+
+	ColorNode LabelModelObject::lineColorNode() const
+	{
+		return ColorNode( QColor::fromRgba(0x00000000) );
+	}
+
+
+	void LabelModelObject::setLineColorNode( const ColorNode &value )
+	{
+	}
+		
+
+	ColorNode LabelModelObject::fillColorNode() const
+	{
+		return ColorNode( QColor::fromRgba(0x00000000) );
+	}
+
+
+	void LabelModelObject::setFillColorNode( const ColorNode &value )
+	{
+	}
+		
+
+	TextNode LabelModelObject::bcDataNode() const
+	{
+		return TextNode();
+	}
+
+
+	void LabelModelObject::setBcDataNode( const TextNode &value )
+	{
+	}
+		
+
+	bool LabelModelObject::bcTextFlag() const
+	{
+		return false;
+	}
+
+
+	void LabelModelObject::setBcTextFlag( bool value )
+	{
+	}
+
+
+	bool LabelModelObject::bcChecksumFlag() const
+	{
+		return false;
+	}
+
+
+	void LabelModelObject::setBcChecksumFlag( bool value )
+	{
+	}
+
+
+	ColorNode LabelModelObject::bcColorNode() const
+	{
+		return ColorNode( QColor::fromRgba(0x00000000) );
+	}
+
+
+	void LabelModelObject::setBcColorNode( const ColorNode &value )
+	{
+	}
+		
+
+	BarcodeStyle LabelModelObject::bcStyle() const
+	{
+		return BarcodeStyle();
+	}
+
+
+	void LabelModelObject::setBcStyle( const BarcodeStyle &value )
+	{
+	}
+		
+
+	int LabelModelObject::bcFormatDigits() const
+	{
+		return false;
+	}
+
+
+	void LabelModelObject::setBcFormatDigits( int value )
+	{
+	}
+
+
+	bool LabelModelObject::canText() const
+	{
+		return false;
+	}
+
+
+	bool LabelModelObject::canFill() const
+	{
+		return false;
+	}
+
+
+	bool LabelModelObject::canLineColor() const
+	{ 
+		return false;
+	}
+
+
+	bool LabelModelObject::canLineWidth() const
+	{
+		return false;
 	}
 
 

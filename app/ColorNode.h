@@ -32,107 +32,39 @@ namespace glabels
 	{
 
 	public:
-		ColorNode()
-			: m_field_flag(false), m_color(QColor::fromRgba(0x00000000)), m_key("")
-		{
-		}
+		ColorNode();
 
+		ColorNode( bool fieldFlag, const QColor& color, const QString& key );
 
-		ColorNode( bool field_flag, QColor &color, QString &key )
-			: m_field_flag(field_flag), m_color(color), m_key(key)
-		{
-		}
+		ColorNode( const QColor& color );
 
+		ColorNode( const QString& key );
 
-		ColorNode( const QColor &color )
-			: m_field_flag(false), m_color(color), m_key("")
-		{
-		}
+		bool operator==( const ColorNode& cn );
 
-
-		ColorNode( QString &key )
-			: m_field_flag(true), m_color(QColor::fromRgba(0x00000000)), m_key(key)
-		{
-		}
-
-
-		bool operator==( const ColorNode &cn )
-		{
-			return ( (m_field_flag == cn.m_field_flag) &&
-				 (m_color      == cn.m_color)      &&
-				 (m_key        == cn.m_key) );
-		}
-
-
-		bool operator!=( const ColorNode &cn )
-		{
-			return ( (m_field_flag != cn.m_field_flag) ||
-				 (m_color      != cn.m_color)      ||
-				 (m_key        != cn.m_key) );
-		}
-
+		bool operator!=( const ColorNode& cn );
 
 #if TODO
-		QColor expand( MergeRecord? record )
-		{
-			if ( field_flag )
-			{
-				if ( record == null )
-				{
-					return QColor.fromRgba(0x00000000);
-				}
-				else
-				{
-					string? text = record.eval_key( key );
-					if ( text != null )
-					{
-						Gdk.Color gdk_color = Gdk.Color();
-						if ( Gdk.Color.parse( text, out gdk_color ) )
-						{
-							Color color = Color.from_gdk_color( gdk_color );
-							return color;
-						}
-						else
-						{
-							return Color.fromRgba(0x00000000);
-						}
-					}
-					else
-					{
-						return Color.fromRgba(0x00000000);
-					}
-				}
-			}
-			else
-			{
-				return color;
-			}
-		}
+		QColor expand( MergeRecord? record );
 #endif
 
 
-		/*
-		 * field flag property
-		 */
-		bool field_flag( void ) { return m_field_flag; }
+		// field flag property
+		bool fieldFlag( void ) const;
 		
 
-		/*
-		 * color property
-		 */
-		QColor color( void ) { return m_color; }
+		// color property
+		const QColor& color( void ) const;
 		
 
-		/*
-		 * key property
-		 */
-		QString key( void ) { return m_key; }
+		// key property
+		const QString& key( void ) const;
 		
 
 	private:
-		bool    m_field_flag;
-		QColor  m_color;
-		QString m_key;
+		bool    mFieldFlag;
+		QColor  mColor;
+		QString mKey;
 
 	};
 

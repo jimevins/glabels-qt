@@ -28,33 +28,28 @@
 namespace glabels
 {
 
-	namespace Help
+	void Help::displayContents( QWidget *parent )
 	{
-
-		void displayContents( QWidget *parent )
-		{
-			std::cout << "TODO: Help::displayContents" << std::endl;
-		}
+		std::cout << "TODO: Help::displayContents" << std::endl;
+	}
 
 
-		void displayAbout( QWidget *parent )
-		{
-			QMessageBox aboutBox( QMessageBox::NoIcon,
-					      QMessageBox::tr("About gLabels"),
-					      QMessageBox::tr("<h2>gLabels-qt</h2>"
-							      "<p>x.x.x</p>"
-							      "<p>A label and business card creation program.</p>"
-							      "<font size=\"smaller\">"
-							      "<p><a href=\"http://glabels.org\">Homepage</a></p>"
-							      "<p>Copyright &copy; 2013 Jim Evins <evins@snaught.com></p>"
-							      "</font>"),
-					      QMessageBox::Ok,
-					      parent );
-			aboutBox.setIconPixmap( QPixmap( ":/images/glabels-logo.png" ) );
+	void Help::displayAbout( QWidget *parent )
+	{
+		QMessageBox aboutBox( QMessageBox::NoIcon,
+				      QMessageBox::tr("About gLabels"),
+				      QMessageBox::tr("<h2>gLabels-qt</h2>"
+						      "<p>x.x.x</p>"
+						      "<p>A label and business card creation program.</p>"
+						      "<font size=\"smaller\">"
+						      "<p><a href=\"http://glabels.org\">Homepage</a></p>"
+						      "<p>Copyright &copy; 2013 Jim Evins <evins@snaught.com></p>"
+						      "</font>"),
+				      QMessageBox::Ok,
+				      parent );
+		aboutBox.setIconPixmap( QPixmap( ":/images/glabels-logo.png" ) );
 
-			aboutBox.exec();
-		}
-
+		aboutBox.exec();
 	}
 
 }

@@ -22,6 +22,9 @@
 
 #include <cmath>
 
+#include "LabelModelObject.h"
+#include "LabelRegion.h"
+
 
 namespace glabels
 {

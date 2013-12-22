@@ -22,31 +22,48 @@
 #define glabels_MainWindow_h
 
 #include <QMainWindow>
-#include <QAction>
-#include <QCloseEvent>
-#include <QMenuBar>
-#include <QMenu>
-#include <QToolBar>
-#include <QLabel>
 
-#include "View.h"
+class QAction;
+class QCloseEvent;
+class QMenuBar;
+class QMenu;
+class QToolBar;
+class QLabel;
 
 
 namespace glabels
 {
+	// Forward References
+	class View;
 
+
+	//////////////////////////////////////////////
+	//////////////////////////////////////////////
+	// MainWindow
+	//////////////////////////////////////////////
+	//////////////////////////////////////////////
 	class MainWindow : public QMainWindow
 	{
 		Q_OBJECT
 
+
+		/////////////////////////////////////
+		// Lifecycle
+		/////////////////////////////////////
 	public:
 		MainWindow();
 
 
+		/////////////////////////////////////
+		// Events
+		/////////////////////////////////////
 	protected:
 		void closeEvent( QCloseEvent *event );
 
 
+		/////////////////////////////////////
+		// Slots
+		/////////////////////////////////////
 	private slots:
 		void fileNew();
 		void fileOpen();
@@ -110,6 +127,9 @@ namespace glabels
 		void updateCursorInfo( double, double );
 
 
+		/////////////////////////////////////
+		// Internal Private Methods
+		/////////////////////////////////////
 	private:
 		void createActions();
 		void createMenus();
@@ -125,6 +145,11 @@ namespace glabels
 		void readSettings();
 		void writeSettings();
 
+
+		/////////////////////////////////////
+		// Private Data
+		/////////////////////////////////////
+	private:
 		QMenu*    fileMenu;
 		QMenu*    editMenu;
 		QMenu*    viewMenu;

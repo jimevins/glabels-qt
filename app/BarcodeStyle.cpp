@@ -19,3 +19,113 @@
  */
 
 #include "BarcodeStyle.h"
+
+
+namespace glabels
+{
+
+
+	BarcodeStyle::BarcodeStyle ()
+		: mId( "" ),
+		  mName( "" ),
+		  mCanText( false ),
+		  mTextOptional( false ),
+		  mCanChecksum( false ),
+		  mChecksumOptional( false ),
+		  mDefaultDigits( "" ),
+		  mCanFreeform( false ),
+		  mPreferedN( 0 )
+	{
+	}
+
+
+	BarcodeStyle::BarcodeStyle ( const QString& id,
+				     const QString& name,
+				     bool           canText,
+				     bool           textOptional,
+				     bool           canChecksum,
+				     bool           checksumOptional,
+				     const QString& defaultDigits,
+				     bool           canFreeform,
+				     int            preferedN )
+		: mId( id ),
+		  mName( name ),
+		  mCanText( canText ),
+		  mTextOptional( textOptional ),
+		  mCanChecksum( canChecksum ),
+		  mChecksumOptional( checksumOptional ),
+		  mDefaultDigits( defaultDigits ),
+		  mCanFreeform( canFreeform ),
+		  mPreferedN( preferedN )
+	{
+	}
+
+
+	const QString& BarcodeStyle::id() const
+	{
+		return mId;
+	}
+
+
+	const QString& BarcodeStyle::name() const
+	{
+		return mName;
+	}
+
+
+	bool BarcodeStyle::canText() const
+	{
+		return mCanText;
+	}
+
+
+	bool BarcodeStyle::textOptional() const
+	{
+		return mTextOptional;
+	}
+
+
+	bool BarcodeStyle::canChecksum() const
+	{
+		return mCanChecksum;
+	}
+
+
+	bool BarcodeStyle::checksumOptional() const
+	{
+		return mChecksumOptional;
+	}
+
+
+	const QString& BarcodeStyle::defaultDigits() const
+	{
+		return mDefaultDigits;
+	}
+
+
+	bool BarcodeStyle::canFreeform() const
+	{
+		return mCanFreeform;
+	}
+
+
+	int BarcodeStyle::preferedN() const
+	{
+		return mPreferedN;
+	}
+
+
+	QString BarcodeStyle::exampleDigits( int n ) const
+	{
+		if ( mCanFreeform )
+		{
+			return QString( std::max( n, 1 ), QChar('0') );
+		}
+		else
+		{
+			return mDefaultDigits;
+		}
+	}
+
+}
+

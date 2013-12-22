@@ -35,8 +35,8 @@ namespace glabels
 		// Lifecycle Methods
 		///////////////////////////////////////////////////////////////
 	public:
-		LabelModelBoxObject( QObject *parent = 0 ) : LabelModelObject(parent) { /* TODO: initialize default line and fill poperties.  */ };
-		virtual ~LabelModelBoxObject() {}
+		LabelModelBoxObject( QObject* parent = 0 );
+		virtual ~LabelModelBoxObject();
 
 
 		///////////////////////////////////////////////////////////////
@@ -46,33 +46,31 @@ namespace glabels
 		/*
 		 * Virtual Shape Property: lineWidth
 		 */
-		double lineWidth( void ) const { return mLineWidth; }
-		void setLineWidth( double value ) { mLineWidth = value; }
+		virtual double lineWidth( void ) const;
+		virtual void setLineWidth( double value );
 
 
 		/*
 		 * Virtual Shape Property: lineColorNode
 		 */
-		ColorNode lineColorNode( void ) { return mLineColorNode; }
-		void setLineColorNode( const ColorNode &value ) { mLineColorNode = value; }
+		virtual ColorNode lineColorNode( void ) const;
+		virtual void setLineColorNode( const ColorNode& value );
 		
 
 		/*
 		 * Virtual Shape Property: fillColorNode
 		 */
-		ColorNode fillColorNode( void ) { return mFillColorNode; }
-		void setFillColorNode( const ColorNode &value ) { mFillColorNode = value; }
+		virtual ColorNode fillColorNode( void ) const;
+		virtual void setFillColorNode( const ColorNode& value );
 		
 
 		///////////////////////////////////////////////////////////////
 		// Capabilities
 		///////////////////////////////////////////////////////////////
 	public:
-		bool canFill()	{ return true;	}
-
-		bool canLineColor() { return true; }
-
-		bool canLineWidth() { return true; }
+		virtual bool canFill();
+		virtual bool canLineColor();
+		virtual bool canLineWidth();
 
 
 		///////////////////////////////////////////////////////////////

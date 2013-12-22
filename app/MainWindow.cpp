@@ -23,10 +23,17 @@
 #include <QSettings>
 #include <QStatusBar>
 #include <QFrame>
-
+#include <QAction>
+#include <QCloseEvent>
+#include <QMenuBar>
+#include <QMenu>
+#include <QToolBar>
+#include <QLabel>
 #include <iostream>
 
 #include "libglabels/Db.h"
+#include "View.h"
+#include "LabelModel.h"
 #include "LabelModelBoxObject.h"
 #include "Icons.h"
 #include "File.h"
