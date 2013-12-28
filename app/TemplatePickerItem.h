@@ -31,14 +31,29 @@
 namespace glabels
 {
 
+	///
+	/// Template Picker Item Widget
+	///
 	class TemplatePickerItem : public QListWidgetItem
 	{
 
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
-		TemplatePickerItem( libglabels::Template *tmplate, QListWidget *parent );
+		TemplatePickerItem( libglabels::Template *tmplate, QListWidget *parent = 0 );
 
-		inline const libglabels::Template *tmplate() const { return mTmplate; }
 
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		const libglabels::Template *tmplate() const;
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
 	private:
 		libglabels::Template *mTmplate;
 

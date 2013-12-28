@@ -25,28 +25,105 @@
 namespace glabels
 {
 
+	///
+	/// Label Region Type
+	///
 	struct LabelRegion
 	{
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
 	public:
-		inline double x1( void ) const { return mX1; }
-		inline void x1( double value ) { mX1 = value; }
-
-		inline double y1( void ) const { return mY1; }
-		inline void y1( double value ) { mY1 = value; }
-
-		inline double x2( void ) const { return mX2; }
-		inline void x2( double value ) { mX2 = value; }
-
-		inline double y2( void ) const { return mY2; }
-		inline void y2( double value ) { mY2 = value; }
+		//
+		// X1 Property
+		//
+		inline double x1( void ) const;
+		inline void setX1( double value );
 
 
+		//
+		// Y1 Property
+		//
+		inline double y1( void ) const;
+		inline void setY1( double value );
+
+
+		//
+		// X2 Property
+		//
+		inline double x2( void ) const;
+		inline void setX2( double value );
+
+
+
+		//
+		// Y2 Property
+		//
+		inline double y2( void ) const;
+		inline void setY2( double value );
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
 	private:
 		double mX1;
 		double mY1;
 		double mX2;
 		double mY2;
 	};
+
+
+	/////////////////////////////////
+	// INLINE METHODS
+	/////////////////////////////////
+	double LabelRegion::x1( void ) const
+	{
+		return mX1;
+	}
+
+
+	void LabelRegion::setX1( double value )
+	{
+		mX1 = value;
+	}
+
+
+	double LabelRegion::y1( void ) const
+	{
+		return mY1;
+	}
+
+
+	void LabelRegion::setY1( double value )
+	{
+		mY1 = value;
+	}
+
+
+	double LabelRegion::x2( void ) const
+	{
+		return mX2;
+	}
+
+
+	void LabelRegion::setX2( double value )
+	{
+		mX2 = value;
+	}
+
+
+	double LabelRegion::y2( void ) const
+	{
+		return mY2;
+	}
+
+
+	void LabelRegion::setY2( double value )
+	{
+		mY2 = value;
+	}
 
 }
 

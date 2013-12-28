@@ -36,6 +36,27 @@ namespace {
 namespace glabels
 {
 
+	///
+	/// Default Constructor
+	///
+	TextNode::TextNode()
+		: mFieldFlag(false), mData("")
+	{
+	}
+
+
+	///
+	/// Constructor from Data
+	///
+	TextNode::TextNode( bool field_flag, const QString &data )
+		: mFieldFlag(field_flag), mData(data)
+	{
+	}
+
+
+	///
+	/// Constructor from Parsing Next Token in Text
+	///
 	TextNode::TextNode( const QString &text, int i_start, int &i_next )
 	{
 		State   state = START;
@@ -175,10 +196,48 @@ namespace glabels
 
 		}
 
-		m_field_flag = field_flag;
-		m_data       = field_flag ? field_name : literal_text;
+		mFieldFlag = field_flag;
+		mData      = field_flag ? field_name : literal_text;
 
 		i_next = i;
+	}
+
+
+	///
+	/// == Operator
+	///
+	bool TextNode::operator==( const TextNode& other )
+	{
+		return ( (mFieldFlag == other.mFieldFlag) &&
+			 (mData      == other.mData) );
+	}
+
+
+	///
+	/// != Operator
+	///
+	bool TextNode::operator!=( const TextNode& other )
+	{
+		return ( (mFieldFlag != other.mFieldFlag) ||
+			 (mData      != other.mData) );
+	}
+
+
+	///
+	/// Field Flag Property Getter
+	///
+	bool TextNode::fieldFlag( void ) const
+	{
+		return mFieldFlag;
+	}
+
+
+	///
+	/// Data Property Getter
+	///
+	const QString& TextNode::data( void ) const
+	{
+		return mData;
 	}
 
 

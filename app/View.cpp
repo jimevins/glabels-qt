@@ -38,6 +38,9 @@
 #include "libglabels/FrameCd.h"
 
 
+//
+// Private Configuration Data
+//
 namespace
 {
 	const int    nZoomLevels = 14;
@@ -65,6 +68,9 @@ namespace
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	View::View( QWidget *parent ) : QGraphicsView(parent)
 	{
 		setZoomReal( 1, false );
@@ -86,6 +92,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Model Parameter Setter
+	///
 	void View::setModel( LabelModel* model )
 	{
 		mModel = model;
@@ -103,18 +112,27 @@ namespace glabels
 	}
 
 
+	///
+	/// Grid Visibility Parameter Setter
+	///
 	void View::setGridVisible( bool visibleFlag )
 	{
 		mGridLayer->setVisible( visibleFlag );
 	}
 
 
+	///
+	/// Markup Visibility Parameter Setter
+	///
 	void View::setMarkupVisible( bool visibleFlag )
 	{
 		mMarkupLayer->setVisible( visibleFlag );
 	}
 
 
+	///
+	/// Zoom In "One Notch"
+	///
 	void View::zoomIn()
 	{
 		// Find closest standard zoom level to our current zoom
@@ -137,6 +155,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Zoom Out "One Notch"
+	///
 	void View::zoomOut()
 	{
 		// Find closest standard zoom level to our current zoom
@@ -159,12 +180,18 @@ namespace glabels
 	}
 
 
+	///
+	/// Zoom To 1:1 Scale
+	///
 	void View::zoom1To1()
 	{
 		setZoomReal( 1.0, false );
 	}
 
 
+	///
+	/// Zoom To Fit
+	///
 	void View::zoomToFit()
 	{
 		double x_scale = (72.0/physicalDpiX()) * ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
@@ -179,18 +206,27 @@ namespace glabels
 	}
 
 
+	///
+	/// Is Zoom at Maximum?
+	///
 	bool View::isZoomMax() const
 	{
 		return ( mZoom >= zoomLevels[0] );
 	}
 
 
+	///
+	/// Is Zoom at Minimum?
+	///
 	bool View::isZoomMin() const
 	{
 		return ( mZoom <= zoomLevels[nZoomLevels-1] );
 	}
 
 
+	///
+	/// Set Zoom to Value
+	///
 	void View::setZoomReal( double zoom, bool zoomToFitFlag )
 	{
 		mZoom          = zoom;
@@ -203,6 +239,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Resize Event Handler
+	///
 	void View::resizeEvent( QResizeEvent *event )
 	{
 		if ( mZoomToFitFlag )
@@ -218,6 +257,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Mouse Movement Event Handler
+	///
 	void View::mouseMoveEvent( QMouseEvent* event )
 	{
 		QPointF pointer = mapToScene( event->x(), event->y() );
@@ -225,12 +267,18 @@ namespace glabels
 	}
 
 
+	///
+	/// Leave Event Handler
+	///
 	void View::leaveEvent( QEvent* event )
 	{
 		emit pointerExited();
 	}
 
 
+	///
+	/// Clear Layer (Item Group) of All Child Items
+	///
 	void View::clearLayer( QGraphicsItemGroup* layer )
 	{
 		foreach( QGraphicsItem* item, layer->childItems() )
@@ -240,6 +288,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Label Layer
+	///
 	void View::createLabelLayer()
 	{
 		clearLayer( mLabelLayer );
@@ -259,6 +310,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Grid Layer
+	///
 	void View::createGridLayer()
 	{
 		clearLayer( mGridLayer );
@@ -302,6 +356,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Markup Layer
+	///
 	void View::createMarkupLayer()
 	{
 		clearLayer( mMarkupLayer );
@@ -321,6 +378,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Add Object to Object Layer
+	///
 	void View::addObjectToObjectLayer( LabelModelObject* object )
 	{
 		QGraphicsItem* item = object->createGraphicsItem();
@@ -328,6 +388,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Foreground Layer
+	///
 	void View::createForegroundLayer()
 	{
 		clearLayer( mForegroundLayer );

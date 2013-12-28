@@ -27,10 +27,10 @@ set (glabels_qobject_headers
   LabelModel.h
   LabelModelObject.h
   LabelModelBoxObject.h
-  MainWindow.h
-  TemplatePicker.h
   NewLabelDialog.h
+  MainWindow.h
   SimplePreview.h
+  TemplatePicker.h
   View.h
 )
 

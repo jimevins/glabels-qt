@@ -26,6 +26,9 @@
 namespace glabels
 {
 
+	///
+	/// Open a New Label Dialog
+	///
 	void File::newLabel( QWidget *parent )
 	{
 		NewLabelDialog newDialog( parent );

@@ -29,6 +29,9 @@
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	NewLabelDialog::NewLabelDialog( QWidget *parent = 0 )
 	{
 		setupUi( this );
@@ -66,6 +69,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Search Entry Text Changed Slot
+	///
 	void NewLabelDialog::searchEntryTextChanged( const QString &text )
 	{
 		templatePicker->applyFilter( text,
@@ -75,6 +81,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Page Size Radio Toggled Slot
+	///
 	void NewLabelDialog::pageSizeRadioToggled( bool checked )
 	{
 		if ( checked )
@@ -87,6 +96,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Template Picker Selection Changed Slot
+	///
 	void NewLabelDialog::templatePickerSelectionChanged()
 	{
 		orientationNormalRadio->setChecked( true );
@@ -164,6 +176,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Orientation Radio Button Toggled Slot
+	///
 	void NewLabelDialog::orientationRadioToggled( bool checked )
 	{
 		if ( checked )
@@ -173,6 +188,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Button Clicked Slot
+	///
 	void NewLabelDialog::createButtonClicked()
 	{
 		const libglabels::Template *tmplate = templatePicker->selectedTemplate();

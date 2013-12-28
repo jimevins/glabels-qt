@@ -39,6 +39,9 @@ namespace glabels
 	class MergeRecord;
 
 
+	///
+	/// Label Model Object Base Class
+	///
 	class LabelModelObject : public QObject
 	{
 		Q_OBJECT
@@ -63,16 +66,16 @@ namespace glabels
 		// Common Properties
 		///////////////////////////////////////////////////////////////
 	public:
-		/*
-		 * ID Property.
-		 */
+		//
+		// ID Property.
+		//
 		Q_PROPERTY( int id READ id )
 
 		int id() const;
 
-		/*
-		 * Selected Property.
-		 */
+		//
+		// Selected Property.
+		//
 		Q_PROPERTY( bool selected READ isSelected WRITE select RESET unselect )
 
 		bool isSelected() const;
@@ -80,90 +83,90 @@ namespace glabels
 		void unselect();
 
 
-		/*
-		 * x0 Property ( x coordinate of origin )
-		 */
+		//
+		// x0 Property ( x coordinate of origin )
+		//
 		Q_PROPERTY( double x0 READ x0 WRITE setX0 );
 
 		double x0() const;
 		void setX0( double value );
 		
 
-		/*
-		 * y0 Property ( y coordinate of origin )
-		 */
+		//
+		// y0 Property ( y coordinate of origin )
+		//
 		Q_PROPERTY( double y0 READ y0 WRITE setY0 );
 
 		double y0() const;
 		void setY0( double value );
 		
 
-		/*
-		 * w Property ( width of bounding box )
-		 */
+		//
+		// w Property ( width of bounding box )
+		//
 		Q_PROPERTY( double w  READ w  WRITE setW );
 
 		double w() const;
 		void setW( double value );
 		
 
-		/*
-		 * h Property ( height of bounding box )
-		 */
+		//
+		// h Property ( height of bounding box )
+		//
 		Q_PROPERTY( double h  READ h  WRITE setH );
 
 		double h() const;
 		void setH( double value );
 
 
-		/*
-		 * Transformation Matrix Property
-		 */
+		//
+		// Transformation Matrix Property
+		//
 		Q_PROPERTY( QTransform matrix READ matrix WRITE setMatrix );
 
 		QTransform matrix() const;
 		void setMatrix( const QTransform& value );
 
 
-		/*
-		 * Shadow State Property
-		 */
+		//
+		// Shadow State Property
+		//
 		Q_PROPERTY( bool shadow READ shadow WRITE setShadow );
 
 		bool shadow() const;
 		void setShadow( bool value );
 
 
-		/*
-		 * Shadow x Offset Property
-		 */
+		//
+		// Shadow x Offset Property
+		//
 		Q_PROPERTY( double shadowX READ shadowX WRITE setShadowX );
 
 		double shadowX() const;
 		void setShadowX( double value );
 		
 
-		/*
-		 * Shadow y Offset Property
-		 */
+		//
+		// Shadow y Offset Property
+		//
 		Q_PROPERTY( double shadowY READ shadowY WRITE setShadowY );
 
 		double shadowY() const;
 		void setShadowY( double value );
 		
 
-		/*
-		 * Shadow opacity Property
-		 */
+		//
+		// Shadow opacity Property
+		//
 		Q_PROPERTY( double shadowOpacity READ shadowOpacity WRITE setShadowOpacity );
 
 		double shadowOpacity() const;
 		void setShadowOpacity( double value );
 		
 
-		/*
-		 * Shadow Color Property
-		 */
+		//
+		// Shadow Color Property
+		//
 		Q_PROPERTY( ColorNode shadowColorNode READ shadowColorNode WRITE setShadowColorNode );
 
 		ColorNode shadowColorNode() const;
@@ -174,81 +177,81 @@ namespace glabels
 		// Text Properties Virtual Interface
 		///////////////////////////////////////////////////////////////
 	public:
-		/*
-		 * Virtual Text Property: fontFamily
-		 */
+		//
+		// Virtual Text Property: fontFamily
+		//
 		Q_PROPERTY( QString fontFamily READ fontFamily WRITE setFontFamily );
 
 		virtual QString fontFamily() const;
 		virtual void setFontFamily( const QString &value );
 
 
-		/*
-		 * Virtual Text Property: fontSize
-		 */
+		//
+		// Virtual Text Property: fontSize
+		//
 		Q_PROPERTY( double fontSize READ fontSize WRITE setFontSize );
 
 		virtual double fontSize() const;
 		virtual void setFontSize( double value );
 
 
-		/*
-		 * Virtual Text Property: fontWeight
-		 */
+		//
+		// Virtual Text Property: fontWeight
+		//
 		Q_PROPERTY( QFont::Weight fontWeight READ fontWeight WRITE setFontWeight );
 
 		virtual QFont::Weight fontWeight() const;
 		virtual void setFontWeight( QFont::Weight value );
 
 
-		/*
-		 * Virtual Text Property: fontItalicFlag
-		 */
+		//
+		// Virtual Text Property: fontItalicFlag
+		//
 		Q_PROPERTY( bool fontItalicFlag READ fontItalicFlag WRITE setFontItalicFlag );
 
 		virtual bool fontItalicFlag() const;
 		virtual void setFontItalicFlag( bool value );
 
 
-		/*
-		 * Virtual Text Property: fontUnderlineFlag
-		 */
+		//
+		// Virtual Text Property: fontUnderlineFlag
+		//
 		Q_PROPERTY( bool fontUnderlineFlag READ fontUnderlineFlag WRITE setFontUnderlineFlag );
 
 		virtual bool fontUnderlineFlag() const;
 		virtual void setFontUnderlineFlag( bool value );
 
 
-		/*
-		 * Virtual Text Property: textColorNode
-		 */
+		//
+		// Virtual Text Property: textColorNode
+		//
 		Q_PROPERTY( ColorNode textColorNode READ textColorNode WRITE setTextColorNode );
 
 		virtual ColorNode textColorNode() const;
 		virtual void setTextColorNode( const ColorNode &value );
 		
 
-		/*
-		 * Virtual Text Property: textHAlign
-		 */
+		//
+		// Virtual Text Property: textHAlign
+		//
 		Q_PROPERTY( Qt::Alignment textHAlign READ textHAlign WRITE setTextHAlign );
 
 		virtual Qt::Alignment textHAlign() const;
 		virtual void setTextHAlign( Qt::Alignment value );
 
 
-		/*
-		 * Virtual Text Property: textVAlign
-		 */
+		//
+		// Virtual Text Property: textVAlign
+		//
 		Q_PROPERTY( Qt::Alignment textVAlign READ textVAlign WRITE setTextVAlign );
 
 		virtual Qt::Alignment textVAlign() const;
 		virtual void setTextVAlign( Qt::Alignment value );
 
 
-		/*
-		 * Virtual Text Property: textLineSpacing
-		 */
+		//
+		// Virtual Text Property: textLineSpacing
+		//
 		Q_PROPERTY( double textLineSpacing READ textLineSpacing WRITE setTextLineSpacing );
 
 		virtual double textLineSpacing() const;
@@ -259,9 +262,9 @@ namespace glabels
 		// Image Properties Virtual Interface
 		///////////////////////////////////////////////////////////////
 	public:
-		/*
-		 * Virtual Image Property: filenameNode
-		 */
+		//
+		// Virtual Image Property: filenameNode
+		//
 		Q_PROPERTY( TextNode filenameNode READ filenameNode WRITE setFilenameNode );
 
 		virtual TextNode filenameNode() const;
@@ -272,27 +275,27 @@ namespace glabels
 		// Shape Properties Virtual Interface
 		///////////////////////////////////////////////////////////////
 	public:
-		/*
-		 * Virtual Shape Property: lineWidth
-		 */
+		//
+		// Virtual Shape Property: lineWidth
+		//
 		Q_PROPERTY( double lineWidth READ lineWidth WRITE setLineWidth );
 
 		virtual double lineWidth() const;
 		virtual void setLineWidth( double value );
 
 
-		/*
-		 * Virtual Shape Property: lineColorNode
-		 */
+		//
+		// Virtual Shape Property: lineColorNode
+		//
 		Q_PROPERTY( ColorNode lineColorNode READ lineColorNode WRITE setLineColorNode );
 
 		virtual ColorNode lineColorNode() const;
 		virtual void setLineColorNode( const ColorNode &value );
 		
 
-		/*
-		 * Virtual Shape Property: fillColorNode
-		 */
+		//
+		// Virtual Shape Property: fillColorNode
+		//
 		Q_PROPERTY( ColorNode fillColorNode READ fillColorNode WRITE setFillColorNode );
 
 		virtual ColorNode fillColorNode() const;
@@ -303,54 +306,54 @@ namespace glabels
 		// Barcode Properties Virtual Interface
 		///////////////////////////////////////////////////////////////
 	public:
-		/*
-		 * Virtual Barcode Property: bcDataNode
-		 */
+		//
+		// Virtual Barcode Property: bcDataNode
+		//
 		Q_PROPERTY( TextNode bcDataNode READ bcDataNode WRITE setBcDataNode );
 
 		virtual TextNode bcDataNode() const;
 		virtual void setBcDataNode( const TextNode &value );
 		
 
-		/*
-		 * Virtual Barcode Property: bcTextFlag
-		 */
+		//
+		// Virtual Barcode Property: bcTextFlag
+		//
 		Q_PROPERTY( bool bcTextFlag READ bcTextFlag WRITE setBcTextFlag );
 
 		virtual bool bcTextFlag() const;
 		virtual void setBcTextFlag( bool value );
 
 
-		/*
-		 * Virtual Barcode Property: bcChecksumFlag
-		 */
+		//
+		// Virtual Barcode Property: bcChecksumFlag
+		//
 		Q_PROPERTY( bool bcChecksumFlag READ bcChecksumFlag WRITE setBcChecksumFlag );
 
 		virtual bool bcChecksumFlag() const;
 		virtual void setBcChecksumFlag( bool value );
 
 
-		/*
-		 * Virtual Barcode Property: bcColorNode
-		 */
+		//
+		// Virtual Barcode Property: bcColorNode
+		//
 		Q_PROPERTY( ColorNode bcColorNode READ bcColorNode WRITE setBcColorNode );
 
 		virtual ColorNode bcColorNode() const;
 		virtual void setBcColorNode( const ColorNode &value );
 		
 
-		/*
-		 * Virtual Barcode Property: bcStyle
-		 */
+		//
+		// Virtual Barcode Property: bcStyle
+		//
 		Q_PROPERTY( BarcodeStyle bcStyle READ bcStyle WRITE setBcStyle );
 
 		virtual BarcodeStyle bcStyle() const;
 		virtual void setBcStyle( const BarcodeStyle &value );
 		
 
-		/*
-		 * Virtual Barcode Property: bcFormatDigits
-		 */
+		//
+		// Virtual Barcode Property: bcFormatDigits
+		//
 		Q_PROPERTY( int bcFormatDigits READ bcFormatDigits WRITE setBcFormatDigits );
 
 		virtual int bcFormatDigits() const;
@@ -399,7 +402,7 @@ namespace glabels
 		// Private Members
 		///////////////////////////////////////////////////////////////
 	private:
-		static int lastId;
+		static int msNextId;
 		int        mId;
 
 		bool       mSelectedFlag;

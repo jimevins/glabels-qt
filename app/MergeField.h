@@ -27,20 +27,65 @@
 namespace glabels
 {
 
+	///
+	/// Merge Field Structure
+	///
 	struct MergeField
 	{
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
 	public:
-		inline QString key( void ) { return m_key; }
-		inline void key( const QString &value ) { m_key = value; }
+		//
+		// Key Property
+		//
+		inline const QString key( void ) const;
+		inline void setKey( const QString &value );
 
-		inline QString value( void ) { return m_value; }
-		inline void value( const QString &value ) { m_value = value; }
+
+		//
+		// Value Property
+		//
+		inline const QString value( void ) const;
+		inline void setValue( const QString &value );
 
 
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
 	private:
-		QString m_key;
-		QString m_value;
+		QString mKey;
+		QString mValue;
+
 	};
+
+
+	/////////////////////////////////
+	// INLINE METHODS
+	/////////////////////////////////
+	const QString MergeField::key( void ) const
+	{
+		return mKey;
+	}
+
+
+	void MergeField::setKey( const QString &value )
+	{
+		mKey = value;
+	}
+
+
+	const QString MergeField::value( void ) const
+	{
+		return mValue;
+	}
+
+
+	void MergeField::setValue( const QString &value )
+	{
+		mValue = value;
+	}
 
 }
 

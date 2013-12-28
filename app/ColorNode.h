@@ -28,9 +28,15 @@
 namespace glabels
 {
 
-	class ColorNode
+	///
+	/// Color Node Type
+	///
+	struct ColorNode
 	{
 
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
 		ColorNode();
 
@@ -40,27 +46,51 @@ namespace glabels
 
 		ColorNode( const QString& key );
 
+
+		/////////////////////////////////
+		// Operators
+		/////////////////////////////////
+	public:
 		bool operator==( const ColorNode& cn );
 
 		bool operator!=( const ColorNode& cn );
 
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		//
+		// Field Flag Property
+		//
+		bool fieldFlag( void ) const;
+		
+
+		//
+		// Color Property
+		//
+		const QColor& color( void ) const;
+		
+
+		//
+		// Key Property
+		//
+		const QString& key( void ) const;
+		
+
+
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
+	public:
 #if TODO
 		QColor expand( MergeRecord? record );
 #endif
 
 
-		// field flag property
-		bool fieldFlag( void ) const;
-		
-
-		// color property
-		const QColor& color( void ) const;
-		
-
-		// key property
-		const QString& key( void ) const;
-		
-
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
 	private:
 		bool    mFieldFlag;
 		QColor  mColor;

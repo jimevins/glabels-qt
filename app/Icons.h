@@ -27,6 +27,9 @@
 namespace glabels
 {
 
+	///
+	/// Glabels Icons
+	///
 	namespace Icons
 	{
 
@@ -40,6 +43,7 @@ namespace glabels
 			}
 		};
 
+
 		class Barcode : public QIcon
 		{
 		public:
@@ -49,6 +53,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-barcode.png" );
 			}
 		};
+
 
 		class Box : public QIcon
 		{
@@ -60,6 +65,7 @@ namespace glabels
 			}
 		};
 
+
 		class Ellipse : public QIcon
 		{
 		public:
@@ -69,6 +75,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-ellipse.png" );
 			}
 		};
+
 
 		class Image : public QIcon
 		{
@@ -80,6 +87,7 @@ namespace glabels
 			}
 		};
 
+
 		class Line : public QIcon
 		{
 		public:
@@ -89,6 +97,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-line.png" );
 			}
 		};
+
 
 		class Text : public QIcon
 		{
@@ -100,6 +109,7 @@ namespace glabels
 			}
 		};
 
+
 		class Merge : public QIcon
 		{
 		public:
@@ -109,6 +119,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-merge.png" );
 			}
 		};
+
 
 		class ObjectProperties : public QIcon
 		{
@@ -120,6 +131,7 @@ namespace glabels
 			}
 		};
 
+
 		class AlignLeft : public QIcon
 		{
 		public:
@@ -128,6 +140,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-align-left.png" );
 			}
 		};
+
 
 		class AlignHCenter : public QIcon
 		{
@@ -138,6 +151,7 @@ namespace glabels
 			}
 		};
 
+
 		class AlignRight : public QIcon
 		{
 		public:
@@ -146,6 +160,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-align-right.png" );
 			}
 		};
+
 
 		class AlignBottom : public QIcon
 		{
@@ -156,6 +171,7 @@ namespace glabels
 			}
 		};
 
+
 		class AlignVCenter : public QIcon
 		{
 		public:
@@ -164,6 +180,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-align-vcenter.png" );
 			}
 		};
+
 
 		class AlignTop : public QIcon
 		{
@@ -174,6 +191,7 @@ namespace glabels
 			}
 		};
 
+
 		class CenterHoriz : public QIcon
 		{
 		public:
@@ -182,6 +200,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-center-horiz.png" );
 			}
 		};
+
 
 		class CenterVert : public QIcon
 		{
@@ -192,6 +211,7 @@ namespace glabels
 			}
 		};
 
+
 		class FlipHoriz : public QIcon
 		{
 		public:
@@ -200,6 +220,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-flip-horiz.png" );
 			}
 		};
+
 
 		class FlipVert : public QIcon
 		{
@@ -210,6 +231,7 @@ namespace glabels
 			}
 		};
 
+
 		class RotateLeft : public QIcon
 		{
 		public:
@@ -218,6 +240,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-rotate-left.png" );
 			}
 		};
+
 
 		class RotateRight : public QIcon
 		{
@@ -228,6 +251,7 @@ namespace glabels
 			}
 		};
 
+
 		class OrderBottom : public QIcon
 		{
 		public:
@@ -236,6 +260,7 @@ namespace glabels
 				addFile( ":icons/16x16/actions/glabels-order-bottom.png" );
 			}
 		};
+
 
 		class OrderTop : public QIcon
 		{
@@ -246,6 +271,7 @@ namespace glabels
 			}
 		};
 
+
 		class AlignTextBottom : public QIcon
 		{
 		public:
@@ -254,6 +280,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-align-text-bottom.png" );
 			}
 		};
+
 
 		class AlignTextMiddle : public QIcon
 		{
@@ -264,6 +291,7 @@ namespace glabels
 			}
 		};
 
+
 		class AlignTextTop : public QIcon
 		{
 		public:
@@ -272,6 +300,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-align-text-top.png" );
 			}
 		};
+
 
 		class BucketFill : public QIcon
 		{
@@ -283,6 +312,7 @@ namespace glabels
 			}
 		};
 
+
 		class Pencil : public QIcon
 		{
 		public:
@@ -292,6 +322,7 @@ namespace glabels
 				addFile( ":icons/24x24/actions/glabels-pencil.png" );
 			}
 		};
+
 
 		class Glabels : public QIcon
 		{
@@ -307,10 +338,10 @@ namespace glabels
 		};
 
 
-		/*
-		 * Fallback Icons.  These are fallbacks for icons that would normally come from the current theme,
-		 * if supported.  These icons are copied from the mate-icon-theme (GPL-v3 or CC-BY-SA-v3).
-		 */
+		///
+		/// Fallback Icons.  These are fallbacks for icons that would normally come from the current theme,
+		/// if supported.  These icons are copied from the mate-icon-theme (GPL-v3 or CC-BY-SA-v3).
+		///
 		namespace Fallback
 		{
 
@@ -323,6 +354,7 @@ namespace glabels
 				}
 			};
 
+
 			class EditCut : public QIcon
 			{
 			public:
@@ -331,6 +363,7 @@ namespace glabels
 					addFile( ":icons/24x24/actions/fallback-edit-cut.png" );
 				}
 			};
+
 
 			class EditPaste : public QIcon
 			{
@@ -341,6 +374,7 @@ namespace glabels
 				}
 			};
 
+
 			class FileNew : public QIcon
 			{
 			public:
@@ -349,6 +383,7 @@ namespace glabels
 					addFile( ":icons/24x24/actions/fallback-file-new.png" );
 				}
 			};
+
 
 			class FileOpen : public QIcon
 			{
@@ -359,6 +394,7 @@ namespace glabels
 				}
 			};
 
+
 			class FilePrint : public QIcon
 			{
 			public:
@@ -367,6 +403,7 @@ namespace glabels
 					addFile( ":icons/24x24/actions/fallback-file-print.png" );
 				}
 			};
+
 
 			class FileSave : public QIcon
 			{
@@ -377,6 +414,7 @@ namespace glabels
 				}
 			};
 
+
 			class FileSaveAs : public QIcon
 			{
 			public:
@@ -385,6 +423,7 @@ namespace glabels
 					addFile( ":icons/24x24/actions/fallback-file-save-as.png" );
 				}
 			};
+
 
 			class ZoomBestFit : public QIcon
 			{
@@ -395,6 +434,7 @@ namespace glabels
 				}
 			};
 
+
 			class ZoomIn : public QIcon
 			{
 			public:
@@ -404,6 +444,7 @@ namespace glabels
 				}
 			};
 
+
 			class ZoomOriginal : public QIcon
 			{
 			public:
@@ -412,6 +453,7 @@ namespace glabels
 					addFile( ":icons/24x24/actions/fallback-zoom-original.png" );
 				}
 			};
+
 
 			class ZoomOut : public QIcon
 			{

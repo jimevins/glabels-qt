@@ -28,23 +28,35 @@
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelObject(parent)
 	{
 		/* TODO: initialize default line and fill poperties.  */
 	}
 
 
+	///
+	/// Destructor
+	///
 	LabelModelBoxObject::~LabelModelBoxObject()
 	{
 	}
 
 
+	///
+	/// Line Width Property Getter
+	///
 	double LabelModelBoxObject::lineWidth( void ) const
 	{
 		return mLineWidth;
 	}
 
 
+	///
+	/// Line Width Property Setter
+	///
 	void LabelModelBoxObject::setLineWidth( double value )
 	{
 		if ( mLineWidth != value )
@@ -55,12 +67,18 @@ namespace glabels
 	}
 
 
+	///
+	/// Line Color Node Property Getter
+	///
 	ColorNode LabelModelBoxObject::lineColorNode( void ) const
 	{
 		return mLineColorNode;
 	}
 
 
+	///
+	/// Line Color Node Property Setter
+	///
 	void LabelModelBoxObject::setLineColorNode( const ColorNode& value )
 	{
 		if ( mLineColorNode != value )
@@ -71,12 +89,18 @@ namespace glabels
 	}
 		
 
+	///
+	/// Fill Color Node Property Getter
+	///
 	ColorNode LabelModelBoxObject::fillColorNode( void ) const
 	{
 		return mFillColorNode;
 	}
 
 
+	///
+	/// Fill Color Node Property Setter
+	///
 	void LabelModelBoxObject::setFillColorNode( const ColorNode& value )
 	{
 		if ( mFillColorNode != value )
@@ -87,25 +111,36 @@ namespace glabels
 	}
 		
 
+	///
+	/// Can Fill Capability Implementation
+	///
 	bool LabelModelBoxObject::canFill()
 	{
 		return true;
 	}
 
 
+	///
+	/// Can Line Color Capability Implementation
+	///
 	bool LabelModelBoxObject::canLineColor()
 	{
 		return true;
 	}
 
 
+	///
+	/// Can Line Width Capability Implementation
+	///
 	bool LabelModelBoxObject::canLineWidth()
 	{
 		return true;
 	}
 
 
-	// Create QGraphicsItem suitable for representing this object
+	///
+	/// Create QGraphicsItem suitable for representing this object
+	///
 	QGraphicsItem* LabelModelBoxObject::createGraphicsItem()
 	{
 		QGraphicsRectItem *rectItem = new QGraphicsRectItem( x0(), y0(), w(), h() );
@@ -125,7 +160,9 @@ namespace glabels
 	}
 
 
-	// Update a QGraphicsItem to keep it in sync with this object
+	///
+	/// Update a QGraphicsItem to keep it in sync with this object
+	///
 	void LabelModelBoxObject::updateGraphicsItem( QGraphicsItem* graphicsItem )
 	{
 		QGraphicsRectItem *rectItem = dynamic_cast<QGraphicsRectItem*>(graphicsItem);

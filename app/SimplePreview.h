@@ -32,16 +32,32 @@
 namespace glabels
 {
 
+	///
+	/// Simple Preview Widget
+	///
 	class SimplePreview : public QGraphicsView
 	{
 		Q_OBJECT
 
+
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
 		SimplePreview( QWidget *parent );
 
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
 		void setTemplate( const libglabels::Template *tmplate );
 		void setRotate( bool rotateFlag );
 
+
+		/////////////////////////////////
+		// Internal Methods
+		/////////////////////////////////
 	private:
 		void update();
 		void clearScene();
@@ -50,10 +66,16 @@ namespace glabels
 		void drawLabel( double x, double y, const QPainterPath &path );
 		void drawArrow();
 
-		QGraphicsScene             *mScene;
-		double                      mScale;
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
 		const libglabels::Template *mTmplate;
 		bool                        mRotateFlag;
+
+		QGraphicsScene             *mScene;
+		double                      mScale;
 
 	};
 

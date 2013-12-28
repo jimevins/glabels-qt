@@ -28,6 +28,9 @@
 namespace glabels
 {
 
+	///
+	/// File Actions
+	///
 	namespace File
 	{
 		void newLabel( QWidget *parent );

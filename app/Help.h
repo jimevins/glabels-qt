@@ -28,6 +28,9 @@
 namespace glabels
 {
 
+	///
+	/// Help Actions
+	///
 	namespace Help
 	{
 		void displayContents( QWidget *parent );

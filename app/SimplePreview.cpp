@@ -25,6 +25,9 @@
 #include <iostream>
 
 
+//
+// Private Configuration Data
+//
 namespace
 {
         const QColor  paperColor( 255, 255, 255 );
@@ -51,6 +54,9 @@ namespace
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	SimplePreview::SimplePreview( QWidget *parent = 0 )
 		: mScale(1), mTmplate(NULL), mRotateFlag(false), QGraphicsView(parent)
 	{
@@ -65,6 +71,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Template Property Setter
+	///
 	void SimplePreview::setTemplate( const libglabels::Template *tmplate )
 	{
 		mTmplate = tmplate;
@@ -72,6 +81,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Rotate Property Setter
+	///
 	void SimplePreview::setRotate( bool rotateFlag )
 	{
 		mRotateFlag = rotateFlag;
@@ -79,6 +91,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Update View
+	///
 	void SimplePreview::update()
 	{
 		clearScene();
@@ -103,6 +118,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Clear View
+	///
 	void SimplePreview::clearScene()
 	{
 		foreach ( QGraphicsItem *item, mScene->items() )
@@ -113,6 +131,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Draw Paper
+	///
 	void SimplePreview::drawPaper( double pw, double ph )
 	{
 		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
@@ -133,6 +154,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Draw Labels on Paper
+	///
 	void SimplePreview::drawLabels()
 	{
 		libglabels::Frame *frame = mTmplate->frames().first();
@@ -144,6 +168,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Draw a Single Label at x,y
+	///
 	void SimplePreview::drawLabel( double x, double y, const QPainterPath &path )
 	{
 		QBrush brush( labelColor );
@@ -159,6 +186,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Draw Arrow Indicating Top of First Label
+	///
 	void SimplePreview::drawArrow()
 	{
 		libglabels::Frame *frame = mTmplate->frames().first();

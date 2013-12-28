@@ -43,6 +43,9 @@
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	MainWindow::MainWindow()
 	{
 /////////////// TEMPORARY TESTING ///////////////
@@ -87,6 +90,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Close Event Handler
+	///
 	void MainWindow::closeEvent( QCloseEvent *event )
 	{
 		std::cout << "CLOSE EVENT" << std::endl;
@@ -95,6 +101,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Actions
+	///
 	void MainWindow::createActions()
 	{
 		/* File actions */
@@ -385,6 +394,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Menus
+	///
 	void MainWindow::createMenus()
 	{
 		fileMenu = menuBar()->addMenu( tr("&File") );
@@ -468,6 +480,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Tool Bars
+	///
 	void MainWindow::createToolBars()
 	{
 		fileToolBar = addToolBar( tr("&File") );
@@ -502,6 +517,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Create Status Bar
+	///
 	void MainWindow::createStatusBar()
 	{
 		zoomInfoLabel = new QLabel( " 999% " );
@@ -525,9 +543,9 @@ namespace glabels
 	}
 
 
-	/*
-	 * Set enabled state of actions associated with a document.
-	 */
+	///
+	/// Set enabled state of actions associated with a document.
+	///
 	void MainWindow::setDocVerbsEnabled( bool enabled )
 	{
 		filePropertiesAction->setEnabled( enabled );
@@ -579,27 +597,27 @@ namespace glabels
 	}
 
 
-	/*
-	 * Set enabled state of actions associated with a document being modified since last save.
-	 */
+	///
+	/// Set enabled state of actions associated with a document being modified since last save.
+	///
 	void MainWindow::setDocModifiedVerbsEnabled( bool enabled )
 	{
 		fileSaveAction->setEnabled( enabled );
 	}
 
 
-	/*
-	 * Set enabled state of actions associated with data being available on clipboard.
-	 */
+	///
+	/// Set enabled state of actions associated with data being available on clipboard.
+	///
 	void MainWindow::setPasteVerbsEnabled( bool enabled )
 	{
 		editPasteAction->setEnabled( enabled );
 	}
 
 
-	/*
-	 * Set enabled state of actions associated with a non-empty selection.
-	 */
+	///
+	/// Set enabled state of actions associated with a non-empty selection.
+	///
 	void MainWindow::setSelectionVerbsEnabled( bool enabled )
 	{
 		editCutAction->setEnabled( enabled );
@@ -620,9 +638,9 @@ namespace glabels
 	}
 
 
-	/*
-	 * Set enabled state of actions associated with a non-atomic selection.
-	 */
+	///
+	/// Set enabled state of actions associated with a non-atomic selection.
+	///
 	void MainWindow::setMultiSelectionVerbsEnabled( bool enabled )
 	{
 		objectsAlignMenu->setEnabled( enabled );
@@ -635,6 +653,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Read MainWindow Settings
+	///
 	void MainWindow::readSettings()
 	{
 		QSettings settings;
@@ -664,6 +685,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Write MainWindow Settings
+	///
 	void MainWindow::writeSettings()
 	{
 		QSettings settings;
@@ -679,318 +703,477 @@ namespace glabels
 	}
 
 
+	///
+	/// File->New Action
+	///
 	void MainWindow::fileNew()
 	{
 		File::newLabel( this );
 	}
 
 
+	///
+	/// File->Open Action
+	///
 	void MainWindow::fileOpen()
 	{
 		std::cout << "ACTION: file->Open" << std::endl;
 	}
 
 
+	///
+	/// File->Save Action
+	///
 	void MainWindow::fileSave()
 	{
 		std::cout << "ACTION: file->Save" << std::endl;
 	}
 
 
+	///
+	/// File->Save As Action
+	///
 	void MainWindow::fileSaveAs()
 	{
 		std::cout << "ACTION: file->Save As" << std::endl;
 	}
 
 
+	///
+	/// File->Print Action
+	///
 	void MainWindow::filePrint()
 	{
 		std::cout << "ACTION: file->Print" << std::endl;
 	}
 
 
+	///
+	/// File->Properties Action
+	///
 	void MainWindow::fileProperties()
 	{
 		std::cout << "ACTION: file->Properties" << std::endl;
 	}
 
 
+	///
+	/// File->Template Designer Action
+	///
 	void MainWindow::fileTemplateDesigner()
 	{
 		std::cout << "ACTION: file->Template Designer" << std::endl;
 	}
 
 
+	///
+	/// File->Close Action
+	///
 	void MainWindow::fileClose()
 	{
 		std::cout << "ACTION: file->Close" << std::endl;
 	}
 
 
+	///
+	/// File->Exit Action
+	///
 	void MainWindow::fileExit()
 	{
 		std::cout << "ACTION: file->Exit" << std::endl;
 	}
 
 
+	///
+	/// Edit->Undo Action
+	///
 	void MainWindow::editUndo()
 	{
 		std::cout << "ACTION: edit->Undo" << std::endl;
 	}
 
 
+	///
+	/// Edit->Redo Action
+	///
 	void MainWindow::editRedo()
 	{
 		std::cout << "ACTION: edit->Redo" << std::endl;
 	}
 
 
+	///
+	/// Edit->Cut Action
+	///
 	void MainWindow::editCut()
 	{
 		std::cout << "ACTION: edit->Cut" << std::endl;
 	}
 
 
+	///
+	/// Edit->Copy Action
+	///
 	void MainWindow::editCopy()
 	{
 		std::cout << "ACTION: edit->Copy" << std::endl;
 	}
 
 
+	///
+	/// Edit->Paste Action
+	///
 	void MainWindow::editPaste()
 	{
 		std::cout << "ACTION: edit->Paste" << std::endl;
 	}
 
 
+	///
+	/// Edit->Delete Action
+	///
 	void MainWindow::editDelete()
 	{
 		std::cout << "ACTION: edit->Delete" << std::endl;
 	}
 
 
+	///
+	/// Edit->Select All Action
+	///
 	void MainWindow::editSelectAll()
 	{
 		std::cout << "ACTION: edit->Select All" << std::endl;
 	}
 
 
+	///
+	/// Edit->Unselect All Action
+	///
 	void MainWindow::editUnSelectAll()
 	{
 		std::cout << "ACTION: edit->Un-select All" << std::endl;
 	}
 
 
+	///
+	/// Edit->Preferences Action
+	///
 	void MainWindow::editPreferences()
 	{
 		std::cout << "ACTION: edit->Preferences" << std::endl;
 	}
 
 
+	///
+	/// View->File Tool Bar Toggle Action
+	///
 	void MainWindow::viewFileToolBar( bool state )
 	{
 		fileToolBar->setVisible( state );
 	}
 
 
+	///
+	/// View->Objects Tool Bar Toggle Action
+	///
 	void MainWindow::viewObjectsToolBar( bool state )
 	{
 		objectsToolBar->setVisible( state );
 	}
 
 
+	///
+	/// View->Edit Tool Bar Toggle Action
+	///
 	void MainWindow::viewEditToolBar( bool state )
 	{
 		editToolBar->setVisible( state );
 	}
 
 
+	///
+	/// View->View Tool Bar Toggle Action
+	///
 	void MainWindow::viewViewToolBar( bool state )
 	{
 		viewToolBar->setVisible( state );
 	}
 
 
+	///
+	/// View->Grid Toggle Action
+	///
 	void MainWindow::viewGrid( bool state )
 	{
 		view->setGridVisible( state );
 	}
 
 
+	///
+	/// View->Markup Toggle Action
+	///
 	void MainWindow::viewMarkup( bool state )
 	{
 		view->setMarkupVisible( state );
 	}
 
 
+	///
+	/// View->Zoom In Action
+	///
 	void MainWindow::viewZoomIn()
 	{
 		view->zoomIn();
 	}
 
 
+	///
+	/// View->Zoom Out Action
+	///
 	void MainWindow::viewZoomOut()
 	{
 		view->zoomOut();
 	}
 
 
+	///
+	/// View->Zoom 1:1 Action
+	///
 	void MainWindow::viewZoom1To1()
 	{
 		view->zoom1To1();
 	}
 
 
+	///
+	/// View->Zoom To Fit Action
+	///
 	void MainWindow::viewZoomToFit()
 	{
 		view->zoomToFit();
 	}
 
 
+	///
+	/// Objects->Arrow Mode Action
+	///
 	void MainWindow::objectsArrowMode()
 	{
 		std::cout << "ACTION: objects->Select Mode" << std::endl;
 	}
 
 
+	///
+	/// Objects->Create Text Mode Action
+	///
 	void MainWindow::objectsCreateText()
 	{
 		std::cout << "ACTION: objects->Create->Text" << std::endl;
 	}
 
 
+	///
+	/// Objects->Create Box Mode Action
+	///
 	void MainWindow::objectsCreateBox()
 	{
 		std::cout << "ACTION: objects->Create->Box" << std::endl;
 	}
 
 
+	///
+	/// Objects->Create Line Mode Action
+	///
 	void MainWindow::objectsCreateLine()
 	{
 		std::cout << "ACTION: objects->Create->Line" << std::endl;
 	}
 
 
+	///
+	/// Objects->Create Ellipse Mode Action
+	///
 	void MainWindow::objectsCreateEllipse()
 	{
 		std::cout << "ACTION: objects->Create->Ellipse" << std::endl;
 	}
 
 
+	///
+	/// Objects->Create Image Mode Action
+	///
 	void MainWindow::objectsCreateImage()
 	{
 		std::cout << "ACTION: objects->Create->Image" << std::endl;
 	}
 
 
+	///
+	/// Objects->Create Barcode Mode Action
+	///
 	void MainWindow::objectsCreateBarcode()
 	{
 		std::cout << "ACTION: objects->Create->Barcode" << std::endl;
 	}
 
 
+	///
+	/// Objects->Order->Bring To Front Action
+	///
 	void MainWindow::objectsOrderRaise()
 	{
 		std::cout << "ACTION: objects->Order->Bring to front" << std::endl;
 	}
 
 
+	///
+	/// Objects->Order->Send To Back Action
+	///
 	void MainWindow::objectsOrderLower()
 	{
 		std::cout << "ACTION: objects->Order->Send to back" << std::endl;
 	}
 
 
+	///
+	/// Objects->Rotate/Flip->Rotate Left Action
+	///
 	void MainWindow::objectsXformRotateLeft()
 	{
 		std::cout << "ACTION: objects->Rotate/Flip->Rotate Left" << std::endl;
 	}
 
 
+	///
+	/// Objects->Rotate/Flip->Rotate Right Action
+	///
 	void MainWindow::objectsXformRotateRight()
 	{
 		std::cout << "ACTION: objects->Rotate/Flip->Rotate Right" << std::endl;
 	}
 
 
+	///
+	/// Objects->Rotate/Flip->Flip Horizontally Action
+	///
 	void MainWindow::objectsXformFlipHoriz()
 	{
 		std::cout << "ACTION: objects->Rotate/Flip->Flip Horizontally" << std::endl;
 	}
 
 
+	///
+	/// Objects->Rotate/Flip->Flip Vertically Action
+	///
 	void MainWindow::objectsXformFlipVert()
 	{
 		std::cout << "ACTION: objects->Rotate/Flip->Flip Vertically" << std::endl;
 	}
 
 
+	///
+	/// Objects->Align->Left Action
+	///
 	void MainWindow::objectsAlignLeft()
 	{
 		std::cout << "ACTION: objects->Align->Left" << std::endl;
 	}
 
 
+	///
+	/// Objects->Align->Center Horizontally Action
+	///
 	void MainWindow::objectsAlignHCenter()
 	{
 		std::cout << "ACTION: objects->Align->Center Horizontally" << std::endl;
 	}
 
 
+	///
+	/// Objects->Align->Right Action
+	///
 	void MainWindow::objectsAlignRight()
 	{
 		std::cout << "ACTION: objects->Align->Right" << std::endl;
 	}
 
 
+	///
+	/// Objects->Align->Top Action
+	///
 	void MainWindow::objectsAlignTop()
 	{
 		std::cout << "ACTION: objects->Align->Top" << std::endl;
 	}
 
 
+	///
+	/// Objects->Align->Center Vertically Action
+	///
 	void MainWindow::objectsAlignVCenter()
 	{
 		std::cout << "ACTION: objects->Align->Center Vertically" << std::endl;
 	}
 
 
+	///
+	/// Objects->Align->Bottom Action
+	///
 	void MainWindow::objectsAlignBottom()
 	{
 		std::cout << "ACTION: objects->Align->Bottom" << std::endl;
 	}
 
 
+	///
+	/// Objects->Center->Horizontally Action
+	///
 	void MainWindow::objectsCenterHoriz()
 	{
 		std::cout << "ACTION: objects->Center->Horizontally" << std::endl;
 	}
 
 
+	///
+	/// Objects->Center->Vertically Action
+	///
 	void MainWindow::objectsCenterVert()
 	{
 		std::cout << "ACTION: objects->Center->Vertically" << std::endl;
 	}
 
 
+	///
+	/// Objects->Merge Properties Action
+	///
 	void MainWindow::objectsMergeProperties()
 	{
 		std::cout << "ACTION: objects->Merge Properties..." << std::endl;
 	}
 
 
+	///
+	/// Help->Contents Action
+	///
 	void MainWindow::helpContents()
 	{
 		Help::displayContents( this );
 	}
 
 
+	///
+	/// Help->About Action
+	///
 	void MainWindow::helpAbout()
 	{
 		Help::displayAbout( this );
 	}
 
 
+	///
+	/// Update Zoom Information in Status Bar
+	///
 	void MainWindow::updateZoomInfo()
 	{
 		zoomInfoLabel->setText( QString( " %1% " ).arg(100*view->zoom(), 0, 'f', 0) );
@@ -1000,6 +1183,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Update Cursor Information in Status Bar
+	///
 	void MainWindow::updateCursorInfo( double x, double y )
 	{
 		/* TODO: convert x,y to locale units and set precision accordingly. */
@@ -1007,7 +1193,10 @@ namespace glabels
 	}
 
 
-	/* Clears cursor info.  E.g. when pointer exits view. */
+	///
+	/// Update Zoom Information in Status Bar (Clears information)
+	/// E.g. when pointer exits view.
+	///
 	void MainWindow::updateCursorInfo()
 	{
 		cursorInfoLabel->setText( "" );

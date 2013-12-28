@@ -27,53 +27,64 @@
 namespace glabels
 {
 
-	class TextNode
+	///
+	/// Text Node Type
+	///
+	struct TextNode
 	{
 
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
-		TextNode()
-			: m_field_flag(false), m_data("")
-		{
-		}
+		TextNode();
 
-
-		TextNode( bool field_flag, const QString &data )
-			: m_field_flag(field_flag), m_data(data)
-		{
-		}
-
-		virtual ~TextNode() {}
-
+		TextNode( bool field_flag, const QString &data );
 
 		TextNode( const QString &text, int i_start, int &i_next );
 
 
-		bool operator==( const TextNode &tn )
-		{
-			return ( (m_field_flag == tn.m_field_flag) &&
-				 (m_data       == tn.m_data) );
-		}
+		/////////////////////////////////
+		// Operators
+		/////////////////////////////////
+	public:
+		bool operator==( const TextNode& other );
+
+		bool operator!=( const TextNode& other );
 
 
-		bool operator!=( const TextNode &tn )
-		{
-			return ( (m_field_flag != tn.m_field_flag) ||
-				 (m_data       != tn.m_data) );
-		}
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		//
+		// Field Flag Property
+		//
+		bool fieldFlag( void ) const;
+
+		//
+		// Data Property
+		//
+		const QString& data( void ) const;
 
 
+
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
 #if TODO
 		string expand( MergeRecord? record );
 		bool is_empty_field( MergeRecord? record );
 #endif
 
-		bool field_flag( void ) { return m_field_flag; }
-		QString data( void ) { return m_data; }
 
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
 	private:
 
-		bool    m_field_flag;
-		QString m_data;
+		bool    mFieldFlag;
+		QString mData;
 
 	};
 

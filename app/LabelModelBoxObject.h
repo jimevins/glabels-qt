@@ -27,6 +27,9 @@
 namespace glabels
 {
 
+	///
+	/// Label Model Box Object
+	///
 	class LabelModelBoxObject : public LabelModelObject
 	{
 		Q_OBJECT
@@ -40,32 +43,32 @@ namespace glabels
 
 
 		///////////////////////////////////////////////////////////////
-		// Properties
+		// Property Implementations
 		///////////////////////////////////////////////////////////////
 	public:
-		/*
-		 * Virtual Shape Property: lineWidth
-		 */
+		//
+		// Shape Property: lineWidth
+		//
 		virtual double lineWidth( void ) const;
 		virtual void setLineWidth( double value );
 
 
-		/*
-		 * Virtual Shape Property: lineColorNode
-		 */
+		//
+		// Shape Property: lineColorNode
+		//
 		virtual ColorNode lineColorNode( void ) const;
 		virtual void setLineColorNode( const ColorNode& value );
 		
 
-		/*
-		 * Virtual Shape Property: fillColorNode
-		 */
+		//
+		// Shape Property: fillColorNode
+		//
 		virtual ColorNode fillColorNode( void ) const;
 		virtual void setFillColorNode( const ColorNode& value );
 		
 
 		///////////////////////////////////////////////////////////////
-		// Capabilities
+		// Capability Implementations
 		///////////////////////////////////////////////////////////////
 	public:
 		virtual bool canFill();
@@ -74,11 +77,11 @@ namespace glabels
 
 
 		///////////////////////////////////////////////////////////////
-		// QGraphicsItem methods
+		// QGraphicsItem Method Implementations
 		///////////////////////////////////////////////////////////////
 	public:
-		QGraphicsItem* createGraphicsItem();
-		void updateGraphicsItem( QGraphicsItem* graphicsItem );
+		virtual QGraphicsItem* createGraphicsItem();
+		virtual void updateGraphicsItem( QGraphicsItem* graphicsItem );
 
 
 		///////////////////////////////////////////////////////////////

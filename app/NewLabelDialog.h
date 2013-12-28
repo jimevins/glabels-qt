@@ -27,13 +27,24 @@
 namespace glabels
 {
 
+	///
+	/// New Label Dialog Widget
+	///
 	class NewLabelDialog : public QDialog, public Ui_NewLabelDialog
 	{
 		Q_OBJECT
 
+
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
 		NewLabelDialog( QWidget *parent );
 
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
 	private slots:
 		void searchEntryTextChanged( const QString &text );
 		void pageSizeRadioToggled( bool checked );

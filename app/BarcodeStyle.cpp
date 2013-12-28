@@ -24,7 +24,9 @@
 namespace glabels
 {
 
-
+	///
+	/// Default Constructor
+	///
 	BarcodeStyle::BarcodeStyle ()
 		: mId( "" ),
 		  mName( "" ),
@@ -39,6 +41,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Constructor From Data
+	///
 	BarcodeStyle::BarcodeStyle ( const QString& id,
 				     const QString& name,
 				     bool           canText,
@@ -61,60 +66,90 @@ namespace glabels
 	}
 
 
+	///
+	/// ID Property Getter
+	///
 	const QString& BarcodeStyle::id() const
 	{
 		return mId;
 	}
 
 
+	///
+	/// Name Property Getter
+	///
 	const QString& BarcodeStyle::name() const
 	{
 		return mName;
 	}
 
 
+	///
+	/// Can Text Property Getter
+	///
 	bool BarcodeStyle::canText() const
 	{
 		return mCanText;
 	}
 
 
+	///
+	/// Text Optional Property Getter
+	///
 	bool BarcodeStyle::textOptional() const
 	{
 		return mTextOptional;
 	}
 
 
+	///
+	/// Can Checksum Property Getter
+	///
 	bool BarcodeStyle::canChecksum() const
 	{
 		return mCanChecksum;
 	}
 
 
+	///
+	/// Checksum Optional Property Getter
+	///
 	bool BarcodeStyle::checksumOptional() const
 	{
 		return mChecksumOptional;
 	}
 
 
+	///
+	/// Default Digits Property Getter
+	///
 	const QString& BarcodeStyle::defaultDigits() const
 	{
 		return mDefaultDigits;
 	}
 
 
+	///
+	/// Can Freeform Property Getter
+	///
 	bool BarcodeStyle::canFreeform() const
 	{
 		return mCanFreeform;
 	}
 
 
+	///
+	/// Prefered N Property Getter
+	///
 	int BarcodeStyle::preferedN() const
 	{
 		return mPreferedN;
 	}
 
 
+	///
+	/// Generate Example Digits
+	///
 	QString BarcodeStyle::exampleDigits( int n ) const
 	{
 		if ( mCanFreeform )

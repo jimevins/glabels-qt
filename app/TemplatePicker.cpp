@@ -28,6 +28,9 @@
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	TemplatePicker::TemplatePicker( QWidget *parent ) : QListWidget(parent)
 	{
 		setViewMode( QListView::IconMode );
@@ -39,6 +42,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Set List of Templates to Pick From
+	///
 	void TemplatePicker::setTemplates( const QList <libglabels::Template*> &tmplates )
 	{
 		foreach (libglabels::Template *tmplate, tmplates)
@@ -48,6 +54,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Apply Filter to Narrow Template Choices
+	///
 	void TemplatePicker::applyFilter( const QString &searchString,
 					  bool isoMask, bool usMask, bool otherMask )
 	{
@@ -72,6 +81,9 @@ namespace glabels
 	}
 
 
+	///
+	/// Get Currently Selected Template
+	///
 	const libglabels::Template *TemplatePicker::selectedTemplate()
 	{
 		QList<QListWidgetItem *> items = selectedItems();

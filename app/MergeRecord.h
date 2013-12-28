@@ -22,36 +22,71 @@
 #define glabels_MergeRecord_h
 
 #include <QString>
-#include <list>
+#include <QList>
 
 #include "MergeField.h"
-
-using namespace std;
 
 
 namespace glabels
 {
 
+	///
+	/// Merge Record Structure
+	///
 	struct MergeRecord
 	{
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
-		MergeRecord() : m_selected( false )
-		{
-		}
+		MergeRecord();
 
 
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
 	public:
-		inline bool selected( void ) { return m_selected; }
-		inline void selected( bool value ) { m_selected = value; }
+		inline bool selected( void ) const;
+		inline void setSelected( bool value );
 
-		inline list<MergeField> field_list( void ) { return m_field_list; }
-		inline void field_list( list<MergeField> &value ) { m_field_list = value; }
+		inline const QList<MergeField>& fieldList( void ) const;
+		inline void setFieldList( QList<MergeField>& value );
 
 
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
 	private:
-		bool             m_selected;
-		list<MergeField> m_field_list;
+		bool              mSelected;
+		QList<MergeField> mFieldList;
 	};
+
+
+	/////////////////////////////////
+	// INLINE METHODS
+	/////////////////////////////////
+	bool MergeRecord::selected( void ) const
+	{
+		return mSelected;
+	}
+
+
+	void MergeRecord::setSelected( bool value )
+	{
+		mSelected = value;
+	}
+
+
+	const QList<MergeField>& MergeRecord::fieldList( void ) const
+	{
+		return mFieldList;
+	}
+
+
+	void MergeRecord::setFieldList( QList<MergeField>& value )
+	{
+		mFieldList = value;
+	}
 
 }
 

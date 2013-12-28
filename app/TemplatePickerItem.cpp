@@ -28,8 +28,11 @@
 namespace glabels
 {
 
+	///
+	/// Constructor
+	///
 	TemplatePickerItem::TemplatePickerItem( libglabels::Template *tmplate,
-						QListWidget          *parent = 0 )
+						QListWidget          *parent )
 		: QListWidgetItem(parent)
 	{
 		mTmplate = tmplate;
@@ -38,6 +41,15 @@ namespace glabels
 		setText( tmplate->name() );
 
 		setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
+	}
+
+
+	///
+	/// Template Property Getter
+	///
+	const libglabels::Template *TemplatePickerItem::tmplate() const
+	{
+		return mTmplate;
 	}
 
 }

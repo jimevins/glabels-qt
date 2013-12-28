@@ -28,12 +28,18 @@
 namespace glabels
 {
 
+	///
+	/// Display Help Contents
+	///
 	void Help::displayContents( QWidget *parent )
 	{
 		std::cout << "TODO: Help::displayContents" << std::endl;
 	}
 
 
+	///
+	/// Display Help->About Dialog
+	///
 	void Help::displayAbout( QWidget *parent )
 	{
 		QMessageBox aboutBox( QMessageBox::NoIcon,

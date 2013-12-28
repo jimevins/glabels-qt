@@ -20,3 +20,17 @@
 
 #include "MergeRecord.h"
 
+
+namespace glabels
+{
+
+	///
+	/// Constructor
+	///
+	MergeRecord::MergeRecord() : mSelected( false )
+	{
+	}
+
+}
+
+

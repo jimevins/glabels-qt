@@ -31,15 +31,31 @@
 namespace glabels
 {
 
+	///
+	/// Template Picker Widget
+	///
 	class TemplatePicker : public QListWidget
 	{
 		Q_OBJECT
 
+
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
 		TemplatePicker( QWidget *parent = 0 );
 
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
 		void setTemplates( const QList <libglabels::Template*> &tmplates );
 
+
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
 		void applyFilter( const QString &searchString, bool isoMask, bool usMask, bool otherMask );
 
 		const libglabels::Template *selectedTemplate();

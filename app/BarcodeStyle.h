@@ -27,9 +27,15 @@
 namespace glabels
 {
 
-	class BarcodeStyle
+	///
+	/// Barcode Style Type
+	///
+	struct BarcodeStyle
 	{
 
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
 	public:
 		BarcodeStyle ();
 
@@ -44,6 +50,9 @@ namespace glabels
 			       int            preferedN );
 
 
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
 		const QString& id() const;
 
 		const QString& name() const;
@@ -63,9 +72,16 @@ namespace glabels
 		int preferedN() const;
 
 
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
+	public:
 		QString exampleDigits( int n ) const;
 
 
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
 	private:
 		QString mId;
 		QString mName;

@@ -24,30 +24,45 @@
 namespace glabels
 {
 
+	///
+	/// Default Constructor
+	///
 	ColorNode::ColorNode()
 		: mFieldFlag(false), mColor(QColor::fromRgba(0x00000000)), mKey("")
 	{
 	}
 
 
+	///
+	/// Constructor From Data
+	///
 	ColorNode::ColorNode( bool fieldFlag, const QColor& color, const QString& key )
 		: mFieldFlag(fieldFlag), mColor(color), mKey(key)
 	{
 	}
 
 
+	///
+	/// Constructor From Color
+	///
 	ColorNode::ColorNode( const QColor& color )
 		: mFieldFlag(false), mColor(color), mKey("")
 	{
 	}
 
 
+	///
+	/// Constructor From Key
+	///
 	ColorNode::ColorNode( const QString& key )
 		: mFieldFlag(true), mColor(QColor::fromRgba(0x00000000)), mKey(key)
 	{
 	}
 
 
+	///
+	/// == Operator
+	///
 	bool ColorNode::operator==( const ColorNode& cn )
 	{
 		return ( (mFieldFlag == cn.mFieldFlag) &&
@@ -56,6 +71,9 @@ namespace glabels
 	}
 
 
+	///
+	/// != Operator
+	///
 	bool ColorNode::operator!=( const ColorNode& cn )
 	{
 		return ( (mFieldFlag != cn.mFieldFlag) ||
@@ -63,6 +81,33 @@ namespace glabels
 			 (mKey       != cn.mKey) );
 	}
 
+
+	///
+	/// Field Flag Property Getter
+	///
+	bool ColorNode::fieldFlag( void ) const
+	{
+		return mFieldFlag;
+	}
+		
+
+	///
+	/// Color Property Getter
+	///
+	const QColor& ColorNode::color( void ) const
+	{
+		return mColor;
+	}
+		
+
+	///
+	/// Key Property
+	///
+	const QString& ColorNode::key( void ) const
+	{
+		return mKey;
+	}
+		
 
 #if TODO
 	QColor ColorNode::expand( MergeRecord? record )
@@ -102,23 +147,5 @@ namespace glabels
 	}
 #endif
 
-
-	bool ColorNode::fieldFlag( void ) const
-	{
-		return mFieldFlag;
-	}
-		
-
-	const QColor& ColorNode::color( void ) const
-	{
-		return mColor;
-	}
-		
-
-	const QString& ColorNode::key( void ) const
-	{
-		return mKey;
-	}
-		
 }
 
