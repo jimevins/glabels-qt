@@ -20,6 +20,7 @@
 
 #include "LabelModel.h"
 
+#include <algorithm>
 #include <cmath>
 
 #include "LabelModelObject.h"
@@ -151,10 +152,13 @@ namespace glabels
 	///
 	void LabelModel::selectRegion( const LabelRegion &region )
 	{
-		double rX1 = std::min( region.x1(), region.x2() );
-		double rY1 = std::min( region.y1(), region.y2() );
-		double rX2 = std::max( region.x1(), region.x2() );
-		double rY2 = std::max( region.y1(), region.y2() );
+		using std::min;
+		using std::max;
+
+		double rX1 = min( region.x1(), region.x2() );
+		double rY1 = min( region.y1(), region.y2() );
+		double rX2 = max( region.x1(), region.x2() );
+		double rY2 = max( region.y1(), region.y2() );
 
 		foreach ( LabelModelObject* object, mObjectList )
 		{

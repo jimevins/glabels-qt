@@ -20,6 +20,8 @@
 
 #include "BarcodeStyle.h"
 
+#include <algorithm>
+
 
 namespace glabels
 {
@@ -152,9 +154,11 @@ namespace glabels
 	///
 	QString BarcodeStyle::exampleDigits( int n ) const
 	{
+		using std::max;
+
 		if ( mCanFreeform )
 		{
-			return QString( std::max( n, 1 ), QChar('0') );
+			return QString( max( n, 1 ), QChar('0') );
 		}
 		else
 		{

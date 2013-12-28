@@ -24,6 +24,7 @@
 #include <QTransform>
 #include <QFont>
 #include <QGraphicsItem>
+#include <algorithm>
 
 #include "ColorNode.h"
 #include "TextNode.h"
@@ -836,6 +837,9 @@ namespace glabels
 	///
 	LabelRegion LabelModelObject::getExtent()
 	{
+		using std::min;
+		using std::max;
+
 		QPointF a1(    - lineWidth()/2,    - lineWidth()/2 );
 		QPointF a2( mW + lineWidth()/2,    - lineWidth()/2 );
 		QPointF a3( mW + lineWidth()/2, mH + lineWidth()/2 );
@@ -847,10 +851,10 @@ namespace glabels
 		a4 = mMatrix.map( a4 );
 
 		LabelRegion region;
-		region.setX1( std::min( a1.x(), std::min( a2.x(), std::min( a3.x(), a4.x() ) ) ) + mX0 );
-		region.setY1( std::min( a1.y(), std::min( a2.y(), std::min( a3.y(), a4.y() ) ) ) + mY0 );
-		region.setX2( std::max( a1.x(), std::max( a2.x(), std::max( a3.x(), a4.x() ) ) ) + mX0 );
-		region.setY2( std::max( a1.y(), std::max( a2.y(), std::max( a3.y(), a4.y() ) ) ) + mY0 );
+		region.setX1( min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) ) + mX0 );
+		region.setY1( min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) ) + mY0 );
+		region.setX2( max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) ) + mX0 );
+		region.setY2( max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) ) + mY0 );
 
 		return region;
 	}

@@ -22,7 +22,7 @@
 #define glabels_BarcodeStyle_h
 
 #include <QString>
-#include <algorithm>
+
 
 namespace glabels
 {
