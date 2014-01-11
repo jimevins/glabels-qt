@@ -21,6 +21,8 @@
 #ifndef glabels_LabelRegion_h
 #define glabels_LabelRegion_h
 
+#include <QRectF>
+
 
 namespace glabels
 {
@@ -62,6 +64,13 @@ namespace glabels
 		//
 		inline double y2( void ) const;
 		inline void setY2( double value );
+
+
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
+	public:
+		QRectF rect() const;
 
 
 		/////////////////////////////////

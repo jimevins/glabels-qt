@@ -63,6 +63,10 @@ namespace
 
 	const QColor  markupLineColor( 240, 99, 99 );
 	const double  markupLineWidthPixels = 1;
+
+        const QColor  selectRegionFillColor( 192, 192, 255, 128 );
+        const QColor  selectRegionOutlineColor( 0, 0, 255, 128 );
+	const double  selectRegionOutlineWidthPixels = 3;
 }
 
 
@@ -74,6 +78,8 @@ namespace glabels
 	///
 	View::View( QWidget *parent ) : QGraphicsView(parent)
 	{
+		mState = IdleState;
+
 		setZoomReal( 1, false );
 		mModel         = 0;
 
@@ -85,11 +91,14 @@ namespace glabels
 		mScene = new QGraphicsScene();
 		setScene( mScene );
 
-		mScene->addItem( mLabelLayer      = new QGraphicsItemGroup() );
-		mScene->addItem( mGridLayer       = new QGraphicsItemGroup() );
-		mScene->addItem( mMarkupLayer     = new QGraphicsItemGroup() );
-		mScene->addItem( mObjectLayer     = new QGraphicsItemGroup() );
-		mScene->addItem( mForegroundLayer = new QGraphicsItemGroup() );
+		mScene->addItem( mLabelLayer        = new QGraphicsItemGroup() );
+		mScene->addItem( mGridLayer         = new QGraphicsItemGroup() );
+		mScene->addItem( mMarkupLayer       = new QGraphicsItemGroup() );
+		mScene->addItem( mObjectLayer       = new QGraphicsItemGroup() );
+		mScene->addItem( mForegroundLayer   = new QGraphicsItemGroup() );
+		mScene->addItem( mSelectRegionLayer = new QGraphicsItemGroup() );
+
+		initSelectRegionLayer();
 	}
 
 
@@ -100,16 +109,18 @@ namespace glabels
 	{
 		mModel = model;
 
-		createLabelLayer();
-		createGridLayer();
-		createMarkupLayer();
+		mScene->setSceneRect( 0, 0, model->w(), model->h() );
+
+		initLabelLayer();
+		initGridLayer();
+		initMarkupLayer();
 
 		foreach (LabelModelObject* object, model->objectList() )
 		{
 			addObjectToObjectLayer( object );
 		}
 
-		createForegroundLayer();
+		initForegroundLayer();
 	}
 
 
@@ -268,6 +279,25 @@ namespace glabels
 	{
 		QPointF pointer = mapToScene( event->x(), event->y() );
 		emit pointerMoved( pointer.x(), pointer.y() );
+
+		switch (mState)
+		{
+
+		case IdleState:
+			break;
+
+		case ArrowSelectRegionState:
+			mSelectRegion.setX2( pointer.x() );
+			mSelectRegion.setY2( pointer.y() );
+
+			mSelectRegionItem->setRect( mSelectRegion.rect() );
+			break;
+
+		default:
+			// Should not happen!
+			break;
+
+		}
 	}
 
 
@@ -277,6 +307,76 @@ namespace glabels
 	void View::leaveEvent( QEvent* event )
 	{
 		emit pointerExited();
+	}
+
+
+	///
+	/// Mouse Button Press Event Handler
+	///
+	void View::mousePressEvent( QMouseEvent* event )
+	{
+		QPointF pointer = mapToScene( event->x(), event->y() );
+
+		if ( event->button() & Qt::LeftButton )
+		{
+			// Select Region
+			if ( !(event->modifiers() & Qt::ControlModifier) )
+			{
+				mModel->unselectAll();
+			}
+
+			mSelectRegion.setX1( pointer.x() );
+			mSelectRegion.setY1( pointer.y() );
+			mSelectRegion.setX2( pointer.x() );
+			mSelectRegion.setY2( pointer.y() );
+
+			mSelectRegionItem->setRect( mSelectRegion.rect() );
+			mSelectRegionLayer->setVisible( true );
+
+			mState = ArrowSelectRegionState;
+		}
+		else
+		{
+		}
+	}
+
+
+	///
+	/// Mouse Button Release Event Handler
+	///
+	void View::mouseReleaseEvent( QMouseEvent* event )
+	{
+		QPointF pointer = mapToScene( event->x(), event->y() );
+
+		if ( event->button() & Qt::LeftButton )
+		{
+			switch (mState)
+			{
+
+			case IdleState:
+				break;
+
+			case ArrowSelectRegionState:
+				mSelectRegion.setX2( pointer.x() );
+				mSelectRegion.setY2( pointer.y() );
+
+				mSelectRegionItem->setRect( 0, 0, 0, 0 );
+				mSelectRegionLayer->setVisible( false );
+
+				mModel->selectRegion( mSelectRegion );
+
+			mState = IdleState;
+			break;
+
+			default:
+				// Should not happen!
+				break;
+
+			}
+		}
+		else
+		{
+		}
 	}
 
 
@@ -293,9 +393,9 @@ namespace glabels
 
 
 	///
-	/// Create Label Layer
+	/// Initialize Label Layer
 	///
-	void View::createLabelLayer()
+	void View::initLabelLayer()
 	{
 		clearLayer( mLabelLayer );
 
@@ -315,9 +415,9 @@ namespace glabels
 
 
 	///
-	/// Create Grid Layer
+	/// Initialize Grid Layer
 	///
-	void View::createGridLayer()
+	void View::initGridLayer()
 	{
 		clearLayer( mGridLayer );
 
@@ -361,9 +461,9 @@ namespace glabels
 
 
 	///
-	/// Create Markup Layer
+	/// Initialize Markup Layer
 	///
-	void View::createMarkupLayer()
+	void View::initMarkupLayer()
 	{
 		clearLayer( mMarkupLayer );
 
@@ -393,9 +493,9 @@ namespace glabels
 
 
 	///
-	/// Create Foreground Layer
+	/// Initialize Foreground Layer
 	///
-	void View::createForegroundLayer()
+	void View::initForegroundLayer()
 	{
 		clearLayer( mForegroundLayer );
 
@@ -408,6 +508,28 @@ namespace glabels
                 outlineItem->setPen( pen );
 
                 mForegroundLayer->addToGroup( outlineItem );
+	}
+
+
+	///
+	/// Initialize Select Region Layer
+	///
+	void View::initSelectRegionLayer()
+	{
+		clearLayer( mSelectRegionLayer );
+
+		mSelectRegionItem = new QGraphicsRectItem();
+
+                QBrush brush( selectRegionFillColor );
+                mSelectRegionItem->setBrush( brush );
+
+                QPen pen( selectRegionOutlineColor );
+		pen.setJoinStyle( Qt::MiterJoin );
+		pen.setCosmetic( true );
+                pen.setWidthF( selectRegionOutlineWidthPixels );
+                mSelectRegionItem->setPen( pen );
+
+                mSelectRegionLayer->addToGroup( mSelectRegionItem );
 	}
 
 }

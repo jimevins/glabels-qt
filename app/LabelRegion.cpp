@@ -19,3 +19,27 @@
  */
 
 #include "LabelRegion.h"
+
+#include <algorithm>
+#include <cmath>
+
+
+namespace glabels
+{
+
+	QRectF LabelRegion::rect() const
+	{
+		using std::min;
+		using std::fabs;
+
+		QRectF r;
+
+		r.setX( min( mX1, mX2 ) );
+		r.setY( min( mY1, mY2 ) );
+		r.setWidth( fabs( mX2 - mX1 ) );
+		r.setHeight( fabs( mY2 - mY1 ) );
+
+		return r;
+	}
+
+}

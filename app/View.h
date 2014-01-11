@@ -23,6 +23,8 @@
 
 #include <QGraphicsView>
 
+#include "LabelRegion.h"
+
 class QGraphicsScene;
 class QGraphicsItemGroup;
 
@@ -99,6 +101,8 @@ namespace glabels
 	protected:
 		void resizeEvent( QResizeEvent* event );
 		void mouseMoveEvent( QMouseEvent* event );
+		void mousePressEvent( QMouseEvent* event );
+		void mouseReleaseEvent( QMouseEvent* event );
 		void leaveEvent( QEvent* event );
 
 
@@ -107,17 +111,25 @@ namespace glabels
 		/////////////////////////////////////
 	private:
 		void clearLayer( QGraphicsItemGroup* layer );
-		void createLabelLayer();
-		void createGridLayer();
-		void createMarkupLayer();
+		void initLabelLayer();
+		void initGridLayer();
+		void initMarkupLayer();
 		void addObjectToObjectLayer( LabelModelObject* object );
-		void createForegroundLayer();
+		void initForegroundLayer();
+		void initSelectRegionLayer();
 
 
 		/////////////////////////////////////
 		// Private data
 		/////////////////////////////////////
 	private:
+		enum State {
+			IdleState,
+			ArrowSelectRegionState
+		};
+
+		State               mState;
+
 		QGraphicsScene*     mScene;
 
 		QGraphicsItemGroup* mLabelLayer;
@@ -125,6 +137,10 @@ namespace glabels
 		QGraphicsItemGroup* mMarkupLayer;
 		QGraphicsItemGroup* mObjectLayer;
 		QGraphicsItemGroup* mForegroundLayer;
+		QGraphicsItemGroup* mSelectRegionLayer;
+
+		QGraphicsRectItem*  mSelectRegionItem;
+		LabelRegion         mSelectRegion;
 
 		double              mZoom;
 		bool                mZoomToFitFlag;
