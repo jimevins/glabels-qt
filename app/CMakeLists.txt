@@ -10,6 +10,7 @@ set (glabels_sources
   BarcodeMenuItem.cpp
   BarcodeStyle.cpp
   ColorNode.cpp
+  ColorSwatch.cpp
   File.cpp
   Help.cpp
   LabelModel.cpp
