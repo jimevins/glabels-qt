@@ -20,9 +20,7 @@
 
 #include "ColorSwatch.h"
 
-#include <QGraphicsRectItem>
-#include <QGraphicsDropShadowEffect>
-#include <iostream>
+#include <QPainter>
 
 
 //
@@ -41,43 +39,21 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	ColorSwatch::ColorSwatch( int w, int h, QColor& color, QWidget *parent )
-		: mW(w), mH(h), mColor(color), QGraphicsView(parent)
+	ColorSwatch::ColorSwatch( int w, int h, const QColor& color )
 	{
-		setAttribute(Qt::WA_TranslucentBackground);
-		viewport()->setAutoFillBackground(false);
-		setFrameStyle( QFrame::NoFrame );
-		setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-		resize( mW, mH );
-		fitInView( 0, 0, mW, mH, Qt::KeepAspectRatio );
+		fill( Qt::transparent );
 
-		mScene = new QGraphicsScene();
-		setScene( mScene );
+		QPainter painter(this );
 
-		mScene->setSceneRect( 0, 0, mW, mH );
+		painter.setBackgroundMode( Qt::TransparentMode );
 
-		QBrush brush( mColor );
+		QBrush brush( color );
 		QPen pen( outlineColor );
-		pen.setWidthF( outlineWidthPixels );
+		pen.setWidth( outlineWidthPixels );
 
-		mSwatchItem = new QGraphicsRectItem( 1, 1, mW-2, mH-2 );
-		mSwatchItem->setBrush( brush );
-		mSwatchItem->setPen( pen );
-				
-		mScene->addItem( mSwatchItem );
+		painter.setBrush( brush );
+		painter.setPen( pen );
+		painter.drawRect( 1, 1, w-2, h-2 );
 	}
-
-
-	///
-	/// Color Property Setter
-	///
-	void ColorSwatch::setColor( QColor& color )
-	{
-		mColor = color;
-
-		QBrush brush( mColor );
-		mSwatchItem->setBrush( brush );
-	}
-
 
 }

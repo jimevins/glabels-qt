@@ -21,10 +21,7 @@
 #ifndef glabels_ColorSwatch_h
 #define glabels_ColorSwatch_h
 
-#include <QGraphicsView>
-#include <QGraphicsScene>
-#include <QGraphicsRectItem>
-#include <QColor>
+#include <QPixmap>
 
 
 namespace glabels
@@ -33,33 +30,14 @@ namespace glabels
 	///
 	/// Simple Preview Widget
 	///
-	class ColorSwatch : public QGraphicsView
+	class ColorSwatch : public QPixmap
 	{
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorSwatch( int w, int h, QColor& color, QWidget *parent = 0 );
-
-
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		void setColor( QColor& color );
-
-
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		int                mW;
-		int                mH;
-		QColor             mColor;
-
-		QGraphicsScene*    mScene;
-		QGraphicsRectItem* mSwatchItem;
+		ColorSwatch( int w, int h, const QColor& color );
 
 	};
 
