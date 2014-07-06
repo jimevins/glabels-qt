@@ -1,4 +1,4 @@
-/*  BarcodeMenuItem.cpp
+/*  BarcodeMenu.cpp
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,6 +18,9 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "BarcodeMenu.h"
+
+#include "BarcodeBackends.h"
 #include "BarcodeMenuItem.h"
 
 
@@ -25,33 +28,41 @@ namespace glabels
 {
 
 	///
-	/// Constructor From Data
+	/// Constructor
 	///
-	BarcodeMenuItem::BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent )
-		: QAction(parent), mBcStyle(bcStyle)
+	BarcodeMenu::BarcodeMenu()
 	{
-		setText( bcStyle->name() );
+		foreach ( QString name, BarcodeBackends::getNameList() )
+		{
+			const BarcodeStyle* bcStyle = BarcodeBackends::lookupStyleFromName( name );
 
-		connect( this, SIGNAL(triggered()), this, SLOT(onTriggered()) );
+			BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+			connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
+
+			addAction( bcMenuItem );
+		}
 	}
 
 
 	///
-	/// bcStyle Property Getter
+	/// bcStyle getter
 	///
-	const BarcodeStyle* BarcodeMenuItem::bcStyle() const
+	const BarcodeStyle* BarcodeMenu::bcStyle() const
 	{
 		return mBcStyle;
 	}
 
 
 	///
-	/// onTriggered slot
+	/// onMenuItemActivated slot
 	///
-	void BarcodeMenuItem::onTriggered()
+	void BarcodeMenu::onMenuItemActivated( BarcodeStyle *bcStyle )
 	{
-		emit activated( mBcStyle );
+		mBcStyle = bcStyle;
+
+		emit styleChanged();
 	}
+
 
 }
 

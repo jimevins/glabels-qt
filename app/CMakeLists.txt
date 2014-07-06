@@ -5,6 +5,7 @@ project (app CXX)
 set (glabels_sources
   glabels_main.cpp
   BarcodeBackends.cpp
+  BarcodeMenu.cpp
   BarcodeMenuItem.cpp
   BarcodeStyle.cpp
   ColorNode.cpp
@@ -26,6 +27,8 @@ set (glabels_sources
 )
 
 set (glabels_qobject_headers
+  BarcodeMenu.h
+  BarcodeMenuItem.h
   LabelModel.h
   LabelModelObject.h
   LabelModelBoxObject.h

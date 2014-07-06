@@ -1,4 +1,4 @@
-/*  BarcodeMenuItem.h
+/*  BarcodeMenu.h
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,10 +18,10 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_BarcodeMenuItem_h
-#define glabels_BarcodeMenuItem_h
+#ifndef glabels_BarcodeMenu_h
+#define glabels_BarcodeMenu_h
 
-#include <QAction>
+#include <QMenu>
 #include "BarcodeStyle.h"
 
 
@@ -31,7 +31,7 @@ namespace glabels
 	///
 	/// Barcode Menu Item
 	///
-	class BarcodeMenuItem : public QAction
+	class BarcodeMenu : public QMenu
 	{
 		Q_OBJECT
 
@@ -39,14 +39,14 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = 0 );
+		BarcodeMenu();
 
 
 		/////////////////////////////////
 		// Signals
 		/////////////////////////////////
 	signals:
-		void activated( const BarcodeStyle* bcStyle );
+		void styleChanged();
 
 
 		/////////////////////////////////
@@ -60,18 +60,18 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onTriggered();
+		void onMenuItemActivated( BarcodeStyle *bcStyle );
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		const BarcodeStyle* mBcStyle;
+		BarcodeStyle* mBcStyle;
 
 	};
 
 
 }
 
-#endif // glabels_BarcodeMenuItem_h
+#endif // glabels_BarcodeMenu_h
