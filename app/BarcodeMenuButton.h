@@ -30,7 +30,7 @@ namespace glabels
 {
 
 	///
-	/// Barcode Menu Item
+	/// Barcode Menu Button
 	///
 	class BarcodeMenuButton : public QPushButton
 	{
