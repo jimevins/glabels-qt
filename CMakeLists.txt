@@ -25,6 +25,6 @@ add_definitions (-g)
 #
 # Subdirectories
 #
-add_subdirectory (app)
+add_subdirectory (glabels)
 add_subdirectory (libglabels)
 
