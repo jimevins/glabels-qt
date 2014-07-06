@@ -4,6 +4,8 @@ project (app CXX)
 
 set (glabels_sources
   glabels_main.cpp
+  BarcodeBackends.cpp
+  BarcodeMenuItem.cpp
   BarcodeStyle.cpp
   ColorNode.cpp
   File.cpp

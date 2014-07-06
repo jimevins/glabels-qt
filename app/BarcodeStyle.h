@@ -40,6 +40,7 @@ namespace glabels
 		BarcodeStyle ();
 
 		BarcodeStyle ( const QString& id,
+			       const QString& backendId,
 			       const QString& name,
 			       bool           canText,
 			       bool           textOptional,
@@ -54,6 +55,8 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 		const QString& id() const;
+
+		const QString& backendId() const;
 
 		const QString& name() const;
 
@@ -84,6 +87,7 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		QString mId;
+		QString mBackendId;
 		QString mName;
 		bool    mCanText;
 		bool    mTextOptional;

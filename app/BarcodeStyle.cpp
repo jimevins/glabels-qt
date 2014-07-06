@@ -31,6 +31,7 @@ namespace glabels
 	///
 	BarcodeStyle::BarcodeStyle ()
 		: mId( "" ),
+		  mBackendId( "" ),
 		  mName( "" ),
 		  mCanText( false ),
 		  mTextOptional( false ),
@@ -47,6 +48,7 @@ namespace glabels
 	/// Constructor From Data
 	///
 	BarcodeStyle::BarcodeStyle ( const QString& id,
+				     const QString& backendId,
 				     const QString& name,
 				     bool           canText,
 				     bool           textOptional,
@@ -56,6 +58,7 @@ namespace glabels
 				     bool           canFreeform,
 				     int            preferedN )
 		: mId( id ),
+		  mBackendId( backendId ),
 		  mName( name ),
 		  mCanText( canText ),
 		  mTextOptional( textOptional ),
@@ -74,6 +77,15 @@ namespace glabels
 	const QString& BarcodeStyle::id() const
 	{
 		return mId;
+	}
+
+
+	///
+	/// Backend ID Property Getter
+	///
+	const QString& BarcodeStyle::backendId() const
+	{
+		return mBackendId;
 	}
 
 
