@@ -64,18 +64,21 @@ namespace glabels
 		// Field Flag Property
 		//
 		bool fieldFlag( void ) const;
+		void setFieldFlag( bool fieldFlag );
 		
 
 		//
 		// Color Property
 		//
 		const QColor& color( void ) const;
+		void setColor( const QColor& color );
 		
 
 		//
 		// Key Property
 		//
 		const QString& key( void ) const;
+		void setKey( const QString& key );
 		
 
 

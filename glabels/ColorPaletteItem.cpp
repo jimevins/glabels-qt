@@ -1,4 +1,4 @@
-/*  ColorPalletteItem.cpp
+/*  ColorPaletteItem.cpp
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ColorPalletteItem.h"
+#include "ColorPaletteItem.h"
 
 #include "ColorSwatch.h"
 
@@ -39,10 +39,10 @@ namespace glabels
 	///
 	/// Constructor From Data
 	///
-	ColorPalletteItem::ColorPalletteItem( int            id,
-					      const QColor&  color,
-					      const QString& tip,
-					      QWidget*       parent )
+	ColorPaletteItem::ColorPaletteItem( int            id,
+					    const QColor&  color,
+					    const QString& tip,
+					    QWidget*       parent )
 		: QPushButton(parent), mId(id), mColor(color), mTip(tip)
 	{
 		setIcon( QIcon( ColorSwatch( wSwatch, hSwatch, color ) ) );
@@ -55,9 +55,9 @@ namespace glabels
 	///
 	/// Color Property Setter
 	///
-	void ColorPalletteItem::setColor( int            id,
-					  const QColor&  color,
-					  const QString& tip )
+	void ColorPaletteItem::setColor( int            id,
+					 const QColor&  color,
+					 const QString& tip )
 	{
 		mId    = id;
 		mColor = color;
@@ -71,7 +71,7 @@ namespace glabels
 	///
 	/// onClicked slot
 	///
-	void ColorPalletteItem::onClicked()
+	void ColorPaletteItem::onClicked()
 	{
 		emit activated( mId );
 	}

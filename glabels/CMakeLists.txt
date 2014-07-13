@@ -11,7 +11,8 @@ set (glabels_sources
   BarcodeStyle.cpp
   ColorHistory.cpp
   ColorNode.cpp
-  ColorPalletteItem.cpp
+  ColorPaletteDialog.cpp
+  ColorPaletteItem.cpp
   ColorSwatch.cpp
   File.cpp
   Help.cpp
@@ -35,7 +36,8 @@ set (glabels_qobject_headers
   BarcodeMenuButton.h
   BarcodeMenuItem.h
   ColorHistory.h
-  ColorPalletteItem.h
+  ColorPaletteDialog.h
+  ColorPaletteItem.h
   LabelModel.h
   LabelModelObject.h
   LabelModelBoxObject.h

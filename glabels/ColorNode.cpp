@@ -92,20 +92,47 @@ namespace glabels
 		
 
 	///
+	/// Field Flag Property Setter
+	///
+	void ColorNode::setFieldFlag( bool fieldFlag )
+	{
+		mFieldFlag = fieldFlag;
+	}
+
+
+	///
 	/// Color Property Getter
 	///
 	const QColor& ColorNode::color( void ) const
 	{
 		return mColor;
 	}
+
+
+	///
+	/// Color Property Setter
+	///
+	void ColorNode::setColor( const QColor& color )
+	{
+		mColor = color;
+	}
 		
 
 	///
-	/// Key Property
+	/// Key Property Getter
 	///
 	const QString& ColorNode::key( void ) const
 	{
 		return mKey;
+	}
+
+
+	///
+	/// Key Property Setter
+	///
+	void ColorNode::setKey( const QString& key )
+	{
+		mKey = key;
 	}
 		
 

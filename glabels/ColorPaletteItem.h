@@ -1,4 +1,4 @@
-/*  ColorPalletteItem.h
+/*  ColorPaletteItem.h
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorPalletteItem_h
-#define glabels_ColorPalletteItem_h
+#ifndef glabels_ColorPaletteItem_h
+#define glabels_ColorPaletteItem_h
 
 #include <QPushButton>
 #include <QColor>
@@ -31,7 +31,7 @@ namespace glabels
 	///
 	/// Barcode Menu Item
 	///
-	class ColorPalletteItem : public QPushButton
+	class ColorPaletteItem : public QPushButton
 	{
 		Q_OBJECT
 
@@ -39,10 +39,10 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorPalletteItem( int            id,
-		                   const QColor&  color,
-		                   const QString& tip,
-		                   QWidget*       parent = 0 );
+		ColorPaletteItem( int            id,
+		                  const QColor&  color,
+		                  const QString& tip,
+		                  QWidget*       parent = 0 );
 
 
 		/////////////////////////////////
@@ -81,4 +81,4 @@ namespace glabels
 
 }
 
-#endif // glabels_ColorPalletteItem_h
+#endif // glabels_ColorPaletteItem_h
