@@ -9,6 +9,7 @@ set (glabels_sources
   BarcodeMenuButton.cpp
   BarcodeMenuItem.cpp
   BarcodeStyle.cpp
+  ColorButton.cpp
   ColorHistory.cpp
   ColorNode.cpp
   ColorPaletteDialog.cpp
@@ -35,6 +36,7 @@ set (glabels_qobject_headers
   BarcodeMenu.h
   BarcodeMenuButton.h
   BarcodeMenuItem.h
+  ColorButton.h
   ColorHistory.h
   ColorPaletteDialog.h
   ColorPaletteItem.h

@@ -29,7 +29,7 @@ namespace glabels
 {
 
 	///
-	/// Barcode Menu Item
+	/// Color Palette Item
 	///
 	class ColorPaletteItem : public QPushButton
 	{

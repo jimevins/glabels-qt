@@ -1,4 +1,4 @@
-/*  ColorPaletteDialog.h
+/*  ColorButton.h
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,24 +18,22 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorPaletteDialog_h
-#define glabels_ColorPaletteDialog_h
+#ifndef glabels_ColorButton_h
+#define glabels_ColorButton_h
 
-#include <QObject>
-#include <QDialog>
+#include <QPushButton>
 
 #include "ColorNode.h"
-#include "ColorHistory.h"
-#include "ColorPaletteItem.h"
+#include "ColorPaletteDialog.h"
 
 
 namespace glabels
 {
 
 	///
-	/// Color Palette Dialog
+	/// Color Button
 	///
-	class ColorPaletteDialog : public QDialog
+	class ColorButton : public QPushButton
 	{
 		Q_OBJECT
 
@@ -44,10 +42,10 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorPaletteDialog( const QString& defaultLabel,
-		                    const QColor&  defaultColor,
-		                    const QColor&  color,
-		                    QWidget*       parent = 0 );
+		ColorButton( const QString& defaultLabel,
+		             const QColor&  defaultColor,
+		             const QColor&  color,
+		             QWidget*       parent = 0 );
 
 
 		/////////////////////////////////
@@ -61,6 +59,10 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
+		void   setColorNode( ColorNode colorNode );
+		void   setColor( QColor color );
+		void   setToDefault();
+		ColorNode getColorNode( bool& isDefault );
 		void   setKeys( const QList<QString> keyList );
 		void   clearKeys();
 
@@ -69,43 +71,28 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onDefaultButtonClicked();
-		void onPaletteItemActivated( int id );
-		void onHistoryItemActivated( int id );
-		void onCustomColorButtonClicked();
-		void onColorHistoryChanged();
+		void onButtonPressed();
+		void onPaletteDialogChanged( ColorNode colorNode, bool isDefault );
 
 
 		/////////////////////////////////
 		// Private Methods
 		/////////////////////////////////
 	private:
-		void loadCustomColorHistory();
 
 
 		/////////////////////////////////
 		// Private Members
 		/////////////////////////////////
 	private:
-		QColor        mDefaultColor;
-		ColorNode     mColorNode;
+		QColor              mDefaultColor;
+		bool                mIsDefault;
+		ColorNode           mColorNode;
 
-		static const int PALETTE_COLS = 9;
-		static const int PALETTE_ROWS = 4;
-
-		typedef struct {
-			QString colorSpec;
-			QString name;
-		} ColorTableEntry;
-
-		static ColorTableEntry mColorTable[];
-
-		ColorHistory* mColorHistory;
-		ColorPaletteItem* mHistoryItem[PALETTE_COLS];
-
+		ColorPaletteDialog* mDialog;
 	};
 
 }
 
 
-#endif // glabels_ColorPaletteDialog_h
+#endif // glabels_ColorButton_h

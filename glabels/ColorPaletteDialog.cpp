@@ -72,8 +72,8 @@ namespace glabels
 
 
 	ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
-						QColor         defaultColor,
-						QColor         color,
+						const QColor&  defaultColor,
+						const QColor&  color,
 						QWidget*       parent )
 		: QDialog( parent )
 	{
