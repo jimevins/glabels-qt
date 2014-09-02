@@ -20,6 +20,7 @@
 
 #include "LabelModel.h"
 
+#include <QFileInfo>
 #include <algorithm>
 #include <cmath>
 
@@ -33,8 +34,34 @@ namespace glabels
 	///
 	/// Default constructor.
 	///
-	LabelModel::LabelModel() : mModified(true), mTmplate(0), mRotate(false)
+	LabelModel::LabelModel() : mUntitledInstance(0), mModified(true), mTmplate(0), mRotate(false)
 	{
+	}
+
+
+	///
+	/// Short name.
+	///
+	QString LabelModel::shortName()
+	{
+		static int untitledCount = 0;
+		
+		if ( mFilename.isEmpty() )
+		{
+			if ( mUntitledInstance == 0 )
+			{
+				mUntitledInstance = ++untitledCount;
+			}
+			QString numString;
+			numString.setNum(mUntitledInstance);;
+
+			return tr("Untitled") + numString;
+		}
+		else
+		{
+			QFileInfo fileInfo( mFilename );
+			return fileInfo.baseName();
+		}
 	}
 
 

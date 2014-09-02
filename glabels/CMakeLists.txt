@@ -46,6 +46,7 @@ set (glabels_qobject_headers
   FieldButton.h
   FieldMenu.h
   FieldMenuItem.h
+  File.h
   LabelModel.h
   LabelModelObject.h
   LabelModelBoxObject.h

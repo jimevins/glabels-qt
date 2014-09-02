@@ -44,6 +44,12 @@ namespace glabels
 {
 
 	///
+	/// Static window list
+	///
+	QList<MainWindow*> MainWindow::smWindowList;
+
+
+	///
 	/// Constructor
 	///
 	MainWindow::MainWindow()
@@ -53,9 +59,9 @@ namespace glabels
 		QLabel* tmp = new QLabel( "Coming Soon..." );
 		setCentralWidget( tmp );
 #else
-		LabelModel* model = new LabelModel();
+		mModel = new LabelModel();
 		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromName( "Avery 5163" );
-		model->setTmplate( tmplate );
+		mModel->setTmplate( tmplate );
 		LabelModelBoxObject* object = new LabelModelBoxObject();
 		object->setW( 36 );
 		object->setH( 36 );
@@ -69,12 +75,12 @@ namespace glabels
 		object->setShadowX( 5 );
 		object->setShadowY( 5 );
 		object->setShadow( true );
-		model->addObject( object );
+		mModel->addObject( object );
 
-		view = new View();
-		view->setModel( model );
+		mView = new View();
+		mView->setModel( mModel );
 
-		setCentralWidget( view );
+		setCentralWidget( mView );
 #endif
 /////////////////////////////////////////////////
 
@@ -87,6 +93,43 @@ namespace glabels
 		setPasteVerbsEnabled( false );
 
 		readSettings();
+
+		smWindowList.push_back( this );
+	}
+
+
+	///
+	/// Destructor
+	///
+	MainWindow::~MainWindow()
+	{
+		smWindowList.removeOne( this );
+	}
+
+
+	///
+	/// Get model accessor
+	///
+	LabelModel* MainWindow::model() const
+	{
+		return mModel;
+	}
+
+
+	///
+	/// Is window empty?
+	///
+	bool MainWindow::isEmpty() const
+	{
+		return mModel == 0;
+	}
+
+	///
+	/// Get window list
+	///
+	QList<MainWindow*> MainWindow::windowList()
+	{
+		return smWindowList;
 	}
 
 
@@ -537,9 +580,9 @@ namespace glabels
 		updateZoomInfo();
 		updateCursorInfo();
 
-		connect( view, SIGNAL(zoomChanged()), this, SLOT(updateZoomInfo()) );
-		connect( view, SIGNAL(pointerMoved(double, double)), this, SLOT(updateCursorInfo(double, double)) );
-		connect( view, SIGNAL(pointerExited()), this, SLOT(updateCursorInfo()) );
+		connect( mView, SIGNAL(zoomChanged()), this, SLOT(updateZoomInfo()) );
+		connect( mView, SIGNAL(pointerMoved(double, double)), this, SLOT(updateCursorInfo(double, double)) );
+		connect( mView, SIGNAL(pointerExited()), this, SLOT(updateCursorInfo()) );
 	}
 
 
@@ -680,8 +723,8 @@ namespace glabels
 		objectsToolBar->setVisible(       showObjectsToolBar );
 		editToolBar   ->setVisible(       showEditToolBar );
 		viewToolBar   ->setVisible(       showViewToolBar );
-		view          ->setGridVisible(   showGrid );
-		view          ->setMarkupVisible( showMarkup );
+		mView         ->setGridVisible(   showGrid );
+		mView         ->setMarkupVisible( showMarkup );
 	}
 
 
@@ -717,7 +760,7 @@ namespace glabels
 	///
 	void MainWindow::fileOpen()
 	{
-		std::cout << "ACTION: file->Open" << std::endl;
+		File::open( this );
 	}
 
 
@@ -726,7 +769,7 @@ namespace glabels
 	///
 	void MainWindow::fileSave()
 	{
-		std::cout << "ACTION: file->Save" << std::endl;
+		File::save( this );
 	}
 
 
@@ -735,7 +778,7 @@ namespace glabels
 	///
 	void MainWindow::fileSaveAs()
 	{
-		std::cout << "ACTION: file->Save As" << std::endl;
+		File::saveAs( this );
 	}
 
 
@@ -744,7 +787,7 @@ namespace glabels
 	///
 	void MainWindow::filePrint()
 	{
-		std::cout << "ACTION: file->Print" << std::endl;
+		File::print( this );
 	}
 
 
@@ -771,7 +814,7 @@ namespace glabels
 	///
 	void MainWindow::fileClose()
 	{
-		std::cout << "ACTION: file->Close" << std::endl;
+		File::close( this );
 	}
 
 
@@ -780,7 +823,7 @@ namespace glabels
 	///
 	void MainWindow::fileExit()
 	{
-		std::cout << "ACTION: file->Exit" << std::endl;
+		File::exit();
 	}
 
 
@@ -906,7 +949,7 @@ namespace glabels
 	///
 	void MainWindow::viewGrid( bool state )
 	{
-		view->setGridVisible( state );
+		mView->setGridVisible( state );
 	}
 
 
@@ -915,7 +958,7 @@ namespace glabels
 	///
 	void MainWindow::viewMarkup( bool state )
 	{
-		view->setMarkupVisible( state );
+		mView->setMarkupVisible( state );
 	}
 
 
@@ -924,7 +967,7 @@ namespace glabels
 	///
 	void MainWindow::viewZoomIn()
 	{
-		view->zoomIn();
+		mView->zoomIn();
 	}
 
 
@@ -933,7 +976,7 @@ namespace glabels
 	///
 	void MainWindow::viewZoomOut()
 	{
-		view->zoomOut();
+		mView->zoomOut();
 	}
 
 
@@ -942,7 +985,7 @@ namespace glabels
 	///
 	void MainWindow::viewZoom1To1()
 	{
-		view->zoom1To1();
+		mView->zoom1To1();
 	}
 
 
@@ -951,7 +994,7 @@ namespace glabels
 	///
 	void MainWindow::viewZoomToFit()
 	{
-		view->zoomToFit();
+		mView->zoomToFit();
 	}
 
 
@@ -1176,10 +1219,10 @@ namespace glabels
 	///
 	void MainWindow::updateZoomInfo()
 	{
-		zoomInfoLabel->setText( QString( " %1% " ).arg(100*view->zoom(), 0, 'f', 0) );
+		zoomInfoLabel->setText( QString( " %1% " ).arg(100*mView->zoom(), 0, 'f', 0) );
 
-		viewZoomInAction->setEnabled( !view->isZoomMax() );
-		viewZoomOutAction->setEnabled( !view->isZoomMin() );
+		viewZoomInAction->setEnabled( !mView->isZoomMax() );
+		viewZoomOutAction->setEnabled( !mView->isZoomMin() );
 	}
 
 

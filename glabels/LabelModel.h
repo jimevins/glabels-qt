@@ -76,6 +76,7 @@ namespace glabels
 		inline bool isModified() const;
 		inline void clearModified();
 
+		QString shortName();
 		inline const QString& filename() const;
 		inline void setFilename( const QString &filename );
 
@@ -180,6 +181,7 @@ namespace glabels
 		// Private data
 		/////////////////////////////////
 	private:
+		int                          mUntitledInstance;
 		bool                         mModified;
 		QString                      mFilename;
 		int                          mCompressionLevel;

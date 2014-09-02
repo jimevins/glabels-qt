@@ -22,19 +22,29 @@
 #define glabels_File_h
 
 
-#include <QWidget>
+#include <QObject>
 
 
 namespace glabels
 {
+	class MainWindow;
 
 	///
 	/// File Actions
 	///
-	namespace File
+	class File : public QObject
 	{
-		void newLabel( QWidget *parent );
-	}
+		Q_OBJECT
+
+	public:
+		static void newLabel( MainWindow *window );
+		static void open( MainWindow *window );
+		static bool save( MainWindow *window );
+		static bool saveAs( MainWindow *window );
+		static void print( MainWindow *window );
+		static void close( MainWindow *window );
+		static void exit();
+	};
 
 }
 

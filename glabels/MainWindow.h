@@ -34,6 +34,7 @@ class QLabel;
 namespace glabels
 {
 	// Forward References
+	class LabelModel;
 	class View;
 
 
@@ -50,6 +51,17 @@ namespace glabels
 		/////////////////////////////////////
 	public:
 		MainWindow();
+		virtual ~MainWindow();
+
+
+		/////////////////////////////////////
+		// Public Methods
+		/////////////////////////////////////
+	public:
+		LabelModel* model() const;
+		bool isEmpty() const;
+
+		static QList<MainWindow *> windowList();
 
 
 		/////////////////////////////////////
@@ -148,6 +160,8 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////////
 	private:
+		static    QList<MainWindow*> smWindowList;
+
 		QMenu*    fileMenu;
 		QMenu*    editMenu;
 		QMenu*    viewMenu;
@@ -165,7 +179,8 @@ namespace glabels
 		QToolBar* editToolBar;
 		QToolBar* viewToolBar;
 
-		View*     view;
+		LabelModel* mModel;
+		View*       mView;
 
 		QLabel*   zoomInfoLabel;
 		QLabel*   cursorInfoLabel;
