@@ -43,6 +43,19 @@ namespace glabels
 
 
 	///
+	/// Constructor From Data
+	///
+	ColorNode::ColorNode( bool fieldFlag, uint32_t rgba, const QString& key )
+		: mFieldFlag(fieldFlag), mKey(key)
+	{
+		mColor = QColor( (rgba >> 24) & 0xFF,
+				 (rgba >> 16) & 0xFF,
+				 (rgba >>  8) & 0xFF,
+				 (rgba      ) & 0xFF );
+	}
+
+
+	///
 	/// Constructor From Color
 	///
 	ColorNode::ColorNode( const QColor& color )

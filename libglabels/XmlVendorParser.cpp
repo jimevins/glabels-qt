@@ -92,8 +92,8 @@ namespace libglabels
 
 	void XmlVendorParser::parseVendorNode( const QDomElement &node )
 	{
-		QString name = XmlUtil::getAttr( node, "name", "" );
-		QString url  = XmlUtil::getAttr( node, "url", "" );
+		QString name = XmlUtil::getStringAttr( node, "name", "" );
+		QString url  = XmlUtil::getStringAttr( node, "url", "" );
 
 		Vendor *vendor = new Vendor( name, url );
 		if ( vendor != NULL )

@@ -23,6 +23,7 @@
 
 #include <QString>
 #include <QColor>
+#include <stdint.h>
 
 
 namespace glabels
@@ -41,6 +42,8 @@ namespace glabels
 		ColorNode();
 
 		ColorNode( bool fieldFlag, const QColor& color, const QString& key );
+
+		ColorNode( bool fieldFlag, uint32_t rgba, const QString& key );
 
 		ColorNode( const QColor& color );
 

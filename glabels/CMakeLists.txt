@@ -33,6 +33,7 @@ set (glabels_sources
   NewLabelDialog.cpp
   SimplePreview.cpp
   View.cpp
+  XmlLabel.cpp
 )
 
 set (glabels_qobject_headers

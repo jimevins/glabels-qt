@@ -92,8 +92,8 @@ namespace libglabels
 
 	void XmlCategoryParser::parseCategoryNode( const QDomElement &node )
 	{
-		QString id   = XmlUtil::getAttr( node, "id", "" );
-		QString name = XmlUtil::getAttrI18n( node, "name", "" );
+		QString id   = XmlUtil::getStringAttr( node, "id", "" );
+		QString name = XmlUtil::getI18nAttr( node, "name", "" );
 
 		Category *category = new Category( id, name );
 		if ( category != NULL )

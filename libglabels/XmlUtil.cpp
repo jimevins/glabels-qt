@@ -30,25 +30,23 @@ namespace libglabels
 	Units *XmlUtil::mDefaultUnits;
 
 
-	QString  XmlUtil::getAttr( const QDomElement &node, const QString &name, const char *default_value )
-	{
-		return node.attribute( name, QString(default_value) );
-	}
-
-
-	QString  XmlUtil::getAttr( const QDomElement &node, const QString &name, const QString &default_value )
+	QString XmlUtil::getStringAttr( const QDomElement& node,
+					const QString&     name,
+					const QString& default_value )
 	{
 		return node.attribute( name, default_value );
 	}
 
 
-	double   XmlUtil::getAttr( const QDomElement &node, const QString &name, double default_value )
+	double XmlUtil::getDoubleAttr( const QDomElement& node,
+				       const QString&     name,
+				       double             default_value )
 	{
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
 			bool ok;
-			double value = valueString.toDouble( &ok );
+			double value = valueString.toDouble(& ok );
 
 			if ( !ok )
 			{
@@ -66,7 +64,9 @@ namespace libglabels
 	}
 
 
-	bool     XmlUtil::getAttr( const QDomElement &node, const QString &name, bool default_value )
+	bool XmlUtil::getBoolAttr( const QDomElement& node,
+				   const QString&     name,
+				   bool               default_value )
 	{
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
@@ -100,13 +100,15 @@ namespace libglabels
 	}
 
 
-	int      XmlUtil::getAttr( const QDomElement &node, const QString &name, int default_value )
+	int XmlUtil::getIntAttr( const QDomElement& node,
+				 const QString&     name,
+				 int                default_value )
 	{
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
 			bool ok;
-			int value = valueString.toInt( &ok );
+			int value = valueString.toInt(& ok );
 
 			if ( !ok )
 			{
@@ -124,14 +126,16 @@ namespace libglabels
 	}
 
 
-	uint32_t XmlUtil::getAttr( const QDomElement &node, const QString &name, uint32_t default_value )
+	uint32_t XmlUtil::getUIntAttr( const QDomElement& node,
+				       const QString&     name,
+				       uint32_t           default_value )
 	{
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
 			// TODO: Does base-0 do what we want?  I.e. use base determined by format e.g. "0xff"
 			bool ok;
-			uint32_t value = valueString.toInt( &ok, 0 );
+			uint32_t value = valueString.toInt(& ok, 0 );
 
 			if ( !ok )
 			{
@@ -149,7 +153,9 @@ namespace libglabels
 	}
 
 
-	QString  XmlUtil::getAttrI18n( const QDomElement &node, const QString &name, const QString &default_value )
+	QString  XmlUtil::getI18nAttr( const QDomElement& node,
+				       const QString&     name,
+				       const QString&     default_value )
 	{
 		// TODO: are translations done in a compatable way, so that we can use "_name" attributes?
 		QString i18nString = node.attribute( QString("_").append(name), "" );
@@ -163,7 +169,9 @@ namespace libglabels
 	}
 
 
-	double   XmlUtil::getAttrLength( const QDomElement &node, const QString &name, double default_value )
+	double XmlUtil::getLengthAttr( const QDomElement& node,
+				       const QString&     name,
+				       double             default_value )
 	{
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
@@ -192,43 +200,49 @@ namespace libglabels
 	}
 
 
-	void     XmlUtil::setAttr( const QDomElement &node, const QString &name, const char *value )
+	void XmlUtil::setStringAttr( const QDomElement& node,
+				     const QString&     name,
+				     const QString&     value )
 	{
 		// TODO
 	}
 
 
-	void     XmlUtil::setAttr( const QDomElement &node, const QString &name, const QString &value )
+	void XmlUtil::setDoubleAttr( const QDomElement& node,
+				     const QString&     name,
+				     double             value )
 	{
 		// TODO
 	}
 
 
-	void     XmlUtil::setAttr( const QDomElement &node, const QString &name, double value )
+	void XmlUtil::setBoolAttr( const QDomElement& node,
+				   const QString&     name,
+				   bool               value )
 	{
 		// TODO
 	}
 
 
-	void     XmlUtil::setAttr( const QDomElement &node, const QString &name, bool value )
+	void XmlUtil::setIntAttr( const QDomElement& node,
+				  const QString&     name,
+				  int                value )
 	{
 		// TODO
 	}
 
 
-	void     XmlUtil::setAttr( const QDomElement &node, const QString &name, int value )
+	void XmlUtil::setUIntAttr( const QDomElement& node,
+				   const QString&     name,
+				   uint32_t           value )
 	{
 		// TODO
 	}
 
 
-	void     XmlUtil::setAttr( const QDomElement &node, const QString &name, uint32_t value )
-	{
-		// TODO
-	}
-
-
-	void     XmlUtil::setAttrLength( const QDomElement &node, const QString &name, double value )
+	void XmlUtil::setLengthAttr( const QDomElement& node,
+				     const QString&     name,
+				     double             value )
 	{
 		// TODO
 	}

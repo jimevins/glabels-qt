@@ -1,6 +1,6 @@
 /*  MainWindow.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -54,42 +54,16 @@ namespace glabels
 	///
 	MainWindow::MainWindow()
 	{
-/////////////// TEMPORARY TESTING ///////////////
-#if 0
-		QLabel* tmp = new QLabel( "Coming Soon..." );
-		setCentralWidget( tmp );
-#else
-		mModel = new LabelModel();
-		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromName( "Avery 5163" );
-		mModel->setTmplate( tmplate );
-		LabelModelBoxObject* object = new LabelModelBoxObject();
-		object->setW( 36 );
-		object->setH( 36 );
-		object->setX0( 72 );
-		object->setY0( 72 );
-		object->setFillColorNode( ColorNode( QColor( 0, 255, 0 ) ) );
-		object->setLineColorNode( ColorNode( QColor( 0, 0, 0 ) ) );
-		object->setLineWidth( 4 );
-		object->setShadowColorNode( ColorNode( QColor( 0, 0, 0 ) ) );
-		object->setShadowOpacity( 0.25 );
-		object->setShadowX( 5 );
-		object->setShadowY( 5 );
-		object->setShadow( true );
-		mModel->addObject( object );
-
 		mView = new View();
-		mView->setModel( mModel );
-
 		setCentralWidget( mView );
-#endif
-/////////////////////////////////////////////////
+		mModel = 0;
 
 		createActions();
 		createMenus();
 		createToolBars();
 		createStatusBar();
 
-		setDocVerbsEnabled( true );
+		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
 
 		readSettings();
@@ -113,6 +87,16 @@ namespace glabels
 	LabelModel* MainWindow::model() const
 	{
 		return mModel;
+	}
+
+
+	///
+	/// Set model accessor
+	///
+	void MainWindow::setModel( LabelModel *label )
+	{
+		mModel = label;
+		mView->setModel( mModel );
 	}
 
 

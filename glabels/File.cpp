@@ -1,6 +1,6 @@
 /*  File.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -23,6 +23,7 @@
 #include "MainWindow.h"
 #include "LabelModel.h"
 #include "NewLabelDialog.h"
+#include "XmlLabel.h"
 #include <QFileDialog>
 #include <QMessageBox>
 
@@ -54,7 +55,28 @@ namespace glabels
 				                    );
 		if ( !fileName.isEmpty() )
 		{
-			std::cout << "ACTION: file->Open: " << fileName.toStdString() << std::endl;
+			LabelModel *label = XmlLabel::readFile( fileName );
+			if ( label )
+			{
+				if ( window->isEmpty() )
+				{
+					window->setModel( label );
+				}
+				else
+				{
+					MainWindow *newWindow = new MainWindow();
+					newWindow->setModel( label );
+					newWindow->show();
+				}
+			}
+			else
+			{
+				QMessageBox msgBox;
+				msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
+				msgBox.setStandardButtons( QMessageBox::Ok );
+				msgBox.setDefaultButton( QMessageBox::Ok );
+				msgBox.exec();
+			}
 		}
 	}
 

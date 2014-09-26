@@ -106,13 +106,13 @@ namespace libglabels
 
 	Template *XmlTemplateParser::parseTemplateNode( const QDomElement &node )
 	{
-		QString brand = XmlUtil::getAttr( node, "brand", "" );
-		QString part  = XmlUtil::getAttr( node, "part", "" );
+		QString brand = XmlUtil::getStringAttr( node, "brand", "" );
+		QString part  = XmlUtil::getStringAttr( node, "part", "" );
 
 		if ( (brand == "") || (part == "") )
 		{
 			// Try the deprecated "name" attribute.
-			QString name = XmlUtil::getAttr( node, "name", "" );
+			QString name = XmlUtil::getStringAttr( node, "name", "" );
 			if ( name != "" )
 			{
 				QStringList fields = name.split( " " );
@@ -129,7 +129,7 @@ namespace libglabels
 
 		Template *tmplate = NULL;
 
-		QString equivPart = XmlUtil::getAttr( node, "equiv", "" );
+		QString equivPart = XmlUtil::getStringAttr( node, "equiv", "" );
 		if ( equivPart != NULL )
 		{
 			tmplate = Template::fromEquiv( brand, part, equivPart );
@@ -150,8 +150,8 @@ namespace libglabels
 		}
 		else
 		{
-			QString description = XmlUtil::getAttrI18n( node, "description", "" );
-			QString paperId     = XmlUtil::getAttr( node, "size", "" );
+			QString description = XmlUtil::getI18nAttr( node, "description", "" );
+			QString paperId     = XmlUtil::getStringAttr( node, "size", "" );
 
 			if ( !Db::isPaperIdOther( paperId ) )
 			{
@@ -167,8 +167,8 @@ namespace libglabels
 			}
 			else
 			{
-				double width  = XmlUtil::getAttrLength( node, "width", 0 );
-				double height = XmlUtil::getAttrLength( node, "height", 0 );
+				double width  = XmlUtil::getLengthAttr( node, "width", 0 );
+				double height = XmlUtil::getLengthAttr( node, "height", 0 );
 
 				tmplate = new Template( brand, part, description, paperId, width, height );
 			}
@@ -210,13 +210,13 @@ namespace libglabels
 
 	void XmlTemplateParser::parseMetaNode( const QDomElement &node, Template *tmplate )
 	{
-		QString productUrl = XmlUtil::getAttr( node, "product_url", "" );
+		QString productUrl = XmlUtil::getStringAttr( node, "product_url", "" );
 		if ( productUrl != "" )
 		{
 			tmplate->setProductUrl( productUrl );
 		}
 		
-		QString categoryId = XmlUtil::getAttr( node, "category", "" );
+		QString categoryId = XmlUtil::getStringAttr( node, "category", "" );
 		if ( categoryId != "" )
 		{
 			tmplate->addCategory( categoryId );
@@ -226,15 +226,15 @@ namespace libglabels
 
 	void XmlTemplateParser::parseLabelRectangleNode( const QDomElement &node, Template *tmplate )
 	{
-		QString id = XmlUtil::getAttr( node, "id", "0" );
+		QString id = XmlUtil::getStringAttr( node, "id", "0" );
 
-		double w   = XmlUtil::getAttrLength( node, "width", 0 );
-		double h   = XmlUtil::getAttrLength( node, "height", 0 );
-		double r   = XmlUtil::getAttrLength( node, "round", 0 );
+		double w   = XmlUtil::getLengthAttr( node, "width", 0 );
+		double h   = XmlUtil::getLengthAttr( node, "height", 0 );
+		double r   = XmlUtil::getLengthAttr( node, "round", 0 );
 
 		double xWaste, yWaste;
 
-		double waste = XmlUtil::getAttrLength( node, "waste", -1 );
+		double waste = XmlUtil::getLengthAttr( node, "waste", -1 );
 		if ( waste >= 0 )
 		{
 			xWaste = waste;
@@ -242,8 +242,8 @@ namespace libglabels
 		}
 		else
 		{
-			xWaste = XmlUtil::getAttrLength( node, "x_waste", 0 );
-			yWaste = XmlUtil::getAttrLength( node, "y_waste", 0 );
+			xWaste = XmlUtil::getLengthAttr( node, "x_waste", 0 );
+			yWaste = XmlUtil::getLengthAttr( node, "y_waste", 0 );
 		}
 
 		Frame *frame = new FrameRect( w, h, r, xWaste, yWaste, id );
@@ -256,11 +256,11 @@ namespace libglabels
 
 	void XmlTemplateParser::parseLabelEllipseNode( const QDomElement &node, Template *tmplate )
 	{
-		QString id    = XmlUtil::getAttr( node, "id", "0" );
+		QString id    = XmlUtil::getStringAttr( node, "id", "0" );
 
-		double  w     = XmlUtil::getAttrLength( node, "width", 0 );
-		double  h     = XmlUtil::getAttrLength( node, "height", 0 );
-		double  waste = XmlUtil::getAttrLength( node, "waste", -1 );
+		double  w     = XmlUtil::getLengthAttr( node, "width", 0 );
+		double  h     = XmlUtil::getLengthAttr( node, "height", 0 );
+		double  waste = XmlUtil::getLengthAttr( node, "waste", -1 );
 
 		Frame *frame = new FrameEllipse( w, h, waste, id );
 
@@ -272,10 +272,10 @@ namespace libglabels
 
 	void XmlTemplateParser::parseLabelRoundNode( const QDomElement &node, Template *tmplate )
 	{
-		QString id    = XmlUtil::getAttr( node, "id", "0" );
+		QString id    = XmlUtil::getStringAttr( node, "id", "0" );
 
-		double  r     = XmlUtil::getAttrLength( node, "radius", 0 );
-		double  waste = XmlUtil::getAttrLength( node, "waste", -1 );
+		double  r     = XmlUtil::getLengthAttr( node, "radius", 0 );
+		double  waste = XmlUtil::getLengthAttr( node, "waste", -1 );
 
 		Frame *frame = new FrameRound( r, waste, id );
 
@@ -287,13 +287,13 @@ namespace libglabels
 
 	void XmlTemplateParser::parseLabelCdNode( const QDomElement &node, Template *tmplate )
 	{
-		QString id    = XmlUtil::getAttr( node, "id", "0" );
+		QString id    = XmlUtil::getStringAttr( node, "id", "0" );
 
-		double  r1    = XmlUtil::getAttrLength( node, "radius", 0 );
-		double  r2    = XmlUtil::getAttrLength( node, "hole", 0 );
-		double  w     = XmlUtil::getAttrLength( node, "width", 0 );
-		double  h     = XmlUtil::getAttrLength( node, "height", 0 );
-		double  waste = XmlUtil::getAttrLength( node, "waste", -1 );
+		double  r1    = XmlUtil::getLengthAttr( node, "radius", 0 );
+		double  r2    = XmlUtil::getLengthAttr( node, "hole", 0 );
+		double  w     = XmlUtil::getLengthAttr( node, "width", 0 );
+		double  h     = XmlUtil::getLengthAttr( node, "height", 0 );
+		double  waste = XmlUtil::getLengthAttr( node, "waste", -1 );
 
 		Frame *frame = new FrameCd( r1, r2, w, h, waste, id );
 
@@ -343,14 +343,14 @@ namespace libglabels
 
 	void XmlTemplateParser::parseLayoutNode( const QDomElement &node, Frame *frame )
 	{
-		int    nX = XmlUtil::getAttr( node, "nx", 1 );
-		int    nY = XmlUtil::getAttr( node, "ny", 1 );
+		int    nX = XmlUtil::getIntAttr( node, "nx", 1 );
+		int    nY = XmlUtil::getIntAttr( node, "ny", 1 );
 
-		double x0 = XmlUtil::getAttrLength( node, "x0", 0 );
-		double y0 = XmlUtil::getAttrLength( node, "y0", 0 );
+		double x0 = XmlUtil::getLengthAttr( node, "x0", 0 );
+		double y0 = XmlUtil::getLengthAttr( node, "y0", 0 );
 
-		double dX = XmlUtil::getAttrLength( node, "dx", 0 );
-		double dY = XmlUtil::getAttrLength( node, "dy", 0 );
+		double dX = XmlUtil::getLengthAttr( node, "dx", 0 );
+		double dY = XmlUtil::getLengthAttr( node, "dy", 0 );
 
 		frame->addLayout( new Layout( nX, nY, x0, y0, dX, dY ) );
 	}
@@ -358,7 +358,7 @@ namespace libglabels
 
 	void XmlTemplateParser::parseMarkupMarginNode( const QDomElement &node, Frame *frame )
 	{
-		double size = XmlUtil::getAttrLength( node, "size", 0 );
+		double size = XmlUtil::getLengthAttr( node, "size", 0 );
 
 		frame->addMarkup( new MarkupMargin( size ) );
 	}
@@ -366,10 +366,10 @@ namespace libglabels
 
 	void XmlTemplateParser::parseMarkupLineNode( const QDomElement &node, Frame *frame )
 	{
-		double x1 = XmlUtil::getAttrLength( node, "x1", 0 );
-		double y1 = XmlUtil::getAttrLength( node, "y1", 0 );
-		double x2 = XmlUtil::getAttrLength( node, "x2", 0 );
-		double y2 = XmlUtil::getAttrLength( node, "y2", 0 );
+		double x1 = XmlUtil::getLengthAttr( node, "x1", 0 );
+		double y1 = XmlUtil::getLengthAttr( node, "y1", 0 );
+		double x2 = XmlUtil::getLengthAttr( node, "x2", 0 );
+		double y2 = XmlUtil::getLengthAttr( node, "y2", 0 );
 
 		frame->addMarkup( new MarkupLine( x1, y1, x2, y2 ) );
 	}
@@ -377,9 +377,9 @@ namespace libglabels
 
 	void XmlTemplateParser::parseMarkupCircleNode( const QDomElement &node, Frame *frame )
 	{
-		double x0 = XmlUtil::getAttrLength( node, "x0", 0 );
-		double y0 = XmlUtil::getAttrLength( node, "y0", 0 );
-		double r  = XmlUtil::getAttrLength( node, "radius", 0 );
+		double x0 = XmlUtil::getLengthAttr( node, "x0", 0 );
+		double y0 = XmlUtil::getLengthAttr( node, "y0", 0 );
+		double r  = XmlUtil::getLengthAttr( node, "radius", 0 );
 
 		frame->addMarkup( new MarkupCircle( x0, y0, r ) );
 	}
@@ -387,11 +387,11 @@ namespace libglabels
 
 	void XmlTemplateParser::parseMarkupRectNode( const QDomElement &node, Frame *frame )
 	{
-		double x1 = XmlUtil::getAttrLength( node, "x1", 0 );
-		double y1 = XmlUtil::getAttrLength( node, "y1", 0 );
-		double w  = XmlUtil::getAttrLength( node, "w", 0 );
-		double h  = XmlUtil::getAttrLength( node, "h", 0 );
-		double r  = XmlUtil::getAttrLength( node, "r", 0 );
+		double x1 = XmlUtil::getLengthAttr( node, "x1", 0 );
+		double y1 = XmlUtil::getLengthAttr( node, "y1", 0 );
+		double w  = XmlUtil::getLengthAttr( node, "w", 0 );
+		double h  = XmlUtil::getLengthAttr( node, "h", 0 );
+		double r  = XmlUtil::getLengthAttr( node, "r", 0 );
 
 		frame->addMarkup( new MarkupRect( x1, y1, w, h, r ) );
 	}
@@ -399,10 +399,10 @@ namespace libglabels
 
 	void XmlTemplateParser::parseMarkupEllipseNode( const QDomElement &node, Frame *frame )
 	{
-		double x1 = XmlUtil::getAttrLength( node, "x1", 0 );
-		double y1 = XmlUtil::getAttrLength( node, "y1", 0 );
-		double w  = XmlUtil::getAttrLength( node, "w", 0 );
-		double h  = XmlUtil::getAttrLength( node, "h", 0 );
+		double x1 = XmlUtil::getLengthAttr( node, "x1", 0 );
+		double y1 = XmlUtil::getLengthAttr( node, "y1", 0 );
+		double w  = XmlUtil::getLengthAttr( node, "w", 0 );
+		double h  = XmlUtil::getLengthAttr( node, "h", 0 );
 
 		frame->addMarkup( new MarkupEllipse( x1, y1, w, h ) );
 	}
