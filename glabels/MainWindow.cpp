@@ -29,7 +29,7 @@
 #include <QMenu>
 #include <QToolBar>
 #include <QLabel>
-#include <iostream>
+#include <QDebug>
 
 #include "libglabels/Db.h"
 #include "View.h"
@@ -97,6 +97,8 @@ namespace glabels
 	{
 		mModel = label;
 		mView->setModel( mModel );
+
+		setDocVerbsEnabled( true );
 	}
 
 
@@ -122,7 +124,7 @@ namespace glabels
 	///
 	void MainWindow::closeEvent( QCloseEvent *event )
 	{
-		std::cout << "CLOSE EVENT" << std::endl;
+		qDebug() << "CLOSE EVENT";
 		writeSettings();
 		event->accept();
 	}
@@ -780,7 +782,7 @@ namespace glabels
 	///
 	void MainWindow::fileProperties()
 	{
-		std::cout << "ACTION: file->Properties" << std::endl;
+		qDebug() << "ACTION: file->Properties";
 	}
 
 
@@ -789,7 +791,7 @@ namespace glabels
 	///
 	void MainWindow::fileTemplateDesigner()
 	{
-		std::cout << "ACTION: file->Template Designer" << std::endl;
+		qDebug() << "ACTION: file->Template Designer";
 	}
 
 
@@ -816,7 +818,7 @@ namespace glabels
 	///
 	void MainWindow::editUndo()
 	{
-		std::cout << "ACTION: edit->Undo" << std::endl;
+		qDebug() << "ACTION: edit->Undo";
 	}
 
 
@@ -825,7 +827,7 @@ namespace glabels
 	///
 	void MainWindow::editRedo()
 	{
-		std::cout << "ACTION: edit->Redo" << std::endl;
+		qDebug() << "ACTION: edit->Redo";
 	}
 
 
@@ -834,7 +836,7 @@ namespace glabels
 	///
 	void MainWindow::editCut()
 	{
-		std::cout << "ACTION: edit->Cut" << std::endl;
+		qDebug() << "ACTION: edit->Cut";
 	}
 
 
@@ -843,7 +845,7 @@ namespace glabels
 	///
 	void MainWindow::editCopy()
 	{
-		std::cout << "ACTION: edit->Copy" << std::endl;
+		qDebug() << "ACTION: edit->Copy";
 	}
 
 
@@ -852,7 +854,7 @@ namespace glabels
 	///
 	void MainWindow::editPaste()
 	{
-		std::cout << "ACTION: edit->Paste" << std::endl;
+		qDebug() << "ACTION: edit->Paste";
 	}
 
 
@@ -861,7 +863,7 @@ namespace glabels
 	///
 	void MainWindow::editDelete()
 	{
-		std::cout << "ACTION: edit->Delete" << std::endl;
+		qDebug() << "ACTION: edit->Delete";
 	}
 
 
@@ -870,7 +872,7 @@ namespace glabels
 	///
 	void MainWindow::editSelectAll()
 	{
-		std::cout << "ACTION: edit->Select All" << std::endl;
+		qDebug() << "ACTION: edit->Select All";
 	}
 
 
@@ -879,7 +881,7 @@ namespace glabels
 	///
 	void MainWindow::editUnSelectAll()
 	{
-		std::cout << "ACTION: edit->Un-select All" << std::endl;
+		qDebug() << "ACTION: edit->Un-select All";
 	}
 
 
@@ -888,7 +890,7 @@ namespace glabels
 	///
 	void MainWindow::editPreferences()
 	{
-		std::cout << "ACTION: edit->Preferences" << std::endl;
+		qDebug() << "ACTION: edit->Preferences";
 	}
 
 
@@ -987,7 +989,7 @@ namespace glabels
 	///
 	void MainWindow::objectsArrowMode()
 	{
-		std::cout << "ACTION: objects->Select Mode" << std::endl;
+		qDebug() << "ACTION: objects->Select Mode";
 	}
 
 
@@ -996,7 +998,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateText()
 	{
-		std::cout << "ACTION: objects->Create->Text" << std::endl;
+		qDebug() << "ACTION: objects->Create->Text";
 	}
 
 
@@ -1005,7 +1007,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateBox()
 	{
-		std::cout << "ACTION: objects->Create->Box" << std::endl;
+		qDebug() << "ACTION: objects->Create->Box";
 	}
 
 
@@ -1014,7 +1016,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateLine()
 	{
-		std::cout << "ACTION: objects->Create->Line" << std::endl;
+		qDebug() << "ACTION: objects->Create->Line";
 	}
 
 
@@ -1023,7 +1025,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateEllipse()
 	{
-		std::cout << "ACTION: objects->Create->Ellipse" << std::endl;
+		qDebug() << "ACTION: objects->Create->Ellipse";
 	}
 
 
@@ -1032,7 +1034,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateImage()
 	{
-		std::cout << "ACTION: objects->Create->Image" << std::endl;
+		qDebug() << "ACTION: objects->Create->Image";
 	}
 
 
@@ -1041,7 +1043,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateBarcode()
 	{
-		std::cout << "ACTION: objects->Create->Barcode" << std::endl;
+		qDebug() << "ACTION: objects->Create->Barcode";
 	}
 
 
@@ -1050,7 +1052,7 @@ namespace glabels
 	///
 	void MainWindow::objectsOrderRaise()
 	{
-		std::cout << "ACTION: objects->Order->Bring to front" << std::endl;
+		qDebug() << "ACTION: objects->Order->Bring to front";
 	}
 
 
@@ -1059,7 +1061,7 @@ namespace glabels
 	///
 	void MainWindow::objectsOrderLower()
 	{
-		std::cout << "ACTION: objects->Order->Send to back" << std::endl;
+		qDebug() << "ACTION: objects->Order->Send to back";
 	}
 
 
@@ -1068,7 +1070,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformRotateLeft()
 	{
-		std::cout << "ACTION: objects->Rotate/Flip->Rotate Left" << std::endl;
+		qDebug() << "ACTION: objects->Rotate/Flip->Rotate Left";
 	}
 
 
@@ -1077,7 +1079,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformRotateRight()
 	{
-		std::cout << "ACTION: objects->Rotate/Flip->Rotate Right" << std::endl;
+		qDebug() << "ACTION: objects->Rotate/Flip->Rotate Right";
 	}
 
 
@@ -1086,7 +1088,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformFlipHoriz()
 	{
-		std::cout << "ACTION: objects->Rotate/Flip->Flip Horizontally" << std::endl;
+		qDebug() << "ACTION: objects->Rotate/Flip->Flip Horizontally";
 	}
 
 
@@ -1095,7 +1097,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformFlipVert()
 	{
-		std::cout << "ACTION: objects->Rotate/Flip->Flip Vertically" << std::endl;
+		qDebug() << "ACTION: objects->Rotate/Flip->Flip Vertically";
 	}
 
 
@@ -1104,7 +1106,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignLeft()
 	{
-		std::cout << "ACTION: objects->Align->Left" << std::endl;
+		qDebug() << "ACTION: objects->Align->Left";
 	}
 
 
@@ -1113,7 +1115,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignHCenter()
 	{
-		std::cout << "ACTION: objects->Align->Center Horizontally" << std::endl;
+		qDebug() << "ACTION: objects->Align->Center Horizontally";
 	}
 
 
@@ -1122,7 +1124,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignRight()
 	{
-		std::cout << "ACTION: objects->Align->Right" << std::endl;
+		qDebug() << "ACTION: objects->Align->Right";
 	}
 
 
@@ -1131,7 +1133,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignTop()
 	{
-		std::cout << "ACTION: objects->Align->Top" << std::endl;
+		qDebug() << "ACTION: objects->Align->Top";
 	}
 
 
@@ -1140,7 +1142,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignVCenter()
 	{
-		std::cout << "ACTION: objects->Align->Center Vertically" << std::endl;
+		qDebug() << "ACTION: objects->Align->Center Vertically";
 	}
 
 
@@ -1149,7 +1151,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignBottom()
 	{
-		std::cout << "ACTION: objects->Align->Bottom" << std::endl;
+		qDebug() << "ACTION: objects->Align->Bottom";
 	}
 
 
@@ -1158,7 +1160,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCenterHoriz()
 	{
-		std::cout << "ACTION: objects->Center->Horizontally" << std::endl;
+		qDebug() << "ACTION: objects->Center->Horizontally";
 	}
 
 
@@ -1167,7 +1169,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCenterVert()
 	{
-		std::cout << "ACTION: objects->Center->Vertically" << std::endl;
+		qDebug() << "ACTION: objects->Center->Vertically";
 	}
 
 
@@ -1176,7 +1178,7 @@ namespace glabels
 	///
 	void MainWindow::objectsMergeProperties()
 	{
-		std::cout << "ACTION: objects->Merge Properties..." << std::endl;
+		qDebug() << "ACTION: objects->Merge Properties...";
 	}
 
 

@@ -26,8 +26,7 @@
 #include "XmlLabel.h"
 #include <QFileDialog>
 #include <QMessageBox>
-
-#include <iostream>
+#include <QDebug>
 
 namespace glabels
 {
@@ -92,7 +91,7 @@ namespace glabels
 		}
 		else
 		{
-			std::cout << "ACTION: file->Save: " << window->model()->filename().toStdString() << std::endl;
+			qDebug() << "ACTION: file->Save: " << window->model()->filename();
 			return true;
 		}
 	}
@@ -111,7 +110,7 @@ namespace glabels
 				                    );
 		if ( !fileName.isEmpty() )
 		{
-			std::cout << "ACTION: file->SaveAs: " << fileName.toStdString() << std::endl;
+			qDebug() << "ACTION: file->SaveAs: " << fileName;
 			return true;
 		}
 
@@ -124,7 +123,7 @@ namespace glabels
 	///
 	void File::print( MainWindow *window )
 	{
-		std::cout << "ACTION: file->print" << std::endl;
+		qDebug() << "ACTION: file->print";
 	}
 
 

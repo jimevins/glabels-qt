@@ -23,7 +23,7 @@
 #include <QFile>
 #include <QDomDocument>
 #include <QDomNode>
-#include <iostream>
+#include <QtDebug>
 
 #include "Paper.h"
 #include "XmlUtil.h"
@@ -39,9 +39,8 @@ namespace libglabels
 
 		if ( !file.open( QFile::ReadOnly | QFile::Text) )
 		{
-			std::cerr << "Error: Cannot read file " << qPrintable(fileName)
-			          << ": " << qPrintable(file.errorString())
-			          << std::endl;
+			qWarning() << "Error: Cannot read file " << fileName
+				   << ": " << file.errorString();
 			return false;
 		}
 
@@ -53,17 +52,16 @@ namespace libglabels
 
 		if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
 		{
-			std::cerr << "Error: Parse error at line " << errorLine
-				  << "column " << errorColumn
-				  << ": " << qPrintable(errorString)
-				  << std::endl;
+			qWarning() << "Error: Parse error at line " << errorLine
+				   << "column " << errorColumn
+				   << ": " << errorString;
 			return false;
 		}
 
 		QDomElement root = doc.documentElement();
 		if ( root.tagName() != "Glabels-paper-sizes" )
 		{
-			std::cerr << "Error: Not a Glabels-paper-sizes file" << std::endl;
+			qWarning() << "Error: Not a Glabels-paper-sizes file.";
 			return false;
 		}
 
@@ -82,9 +80,9 @@ namespace libglabels
 			}
 			else if ( !child.isComment() )
 			{
-				std::cerr << "Warning: bad element: " << qPrintable(child.toElement().tagName())
-					  << ", Ignored"
-					  << std::endl;
+				qWarning() << "Warning: bad element: "
+					   << child.toElement().tagName()
+					   << ", Ignored.";
 			}
 		}
 	}

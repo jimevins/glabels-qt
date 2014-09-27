@@ -21,7 +21,7 @@
 #include "XmlUtil.h"
 
 #include <QTextStream>
-#include <iostream>
+#include <QtDebug>
 
 
 namespace libglabels
@@ -50,10 +50,9 @@ namespace libglabels
 
 			if ( !ok )
 			{
-				std::cerr << "Error: bad double value in attribute "
-					  << qPrintable( node.tagName() ) << ":" << qPrintable( name )
-					  << " : '" << qPrintable( valueString ) << "'"
-					  << std:: endl;
+				qWarning() << "Error: bad double value in attribute "
+					   << node.tagName() << ":" << name
+					   << " : " << valueString;
 				return default_value;
 			}
 
@@ -89,10 +88,9 @@ namespace libglabels
 				return false;
 			}
 
-			std::cerr << "Error: bad boolean value in attribute "
-				  << qPrintable( node.tagName() ) << ":" << qPrintable( name )
-				  << " : '" << qPrintable( valueString ) << "'"
-				  << std:: endl;
+			qWarning() << "Error: bad boolean value in attribute "
+				   << node.tagName() << ":" << name
+				   << " : " << valueString;
 			return default_value;
 		}
 
@@ -112,10 +110,9 @@ namespace libglabels
 
 			if ( !ok )
 			{
-				std::cerr << "Error: bad integer value in attribute "
-					  << qPrintable( node.tagName() ) << ":" << qPrintable( name )
-					  << " : '" << qPrintable( valueString ) << "'"
-					  << std:: endl;
+				qWarning() << "Error: bad integer value in attribute "
+					   << node.tagName() << ":" << name
+					   << " : " << valueString;
 				return default_value;
 			}
 
@@ -139,10 +136,9 @@ namespace libglabels
 
 			if ( !ok )
 			{
-				std::cerr << "Error: bad unsigned integer value in attribute "
-					  << qPrintable( node.tagName() ) << ":" << qPrintable( name )
-					  << " : '" << qPrintable( valueString ) << "'"
-					  << std:: endl;
+				qWarning() << "Error: bad unsigned integer value in attribute "
+					   << node.tagName() << ":" << name
+					   << " : " << valueString;
 				return default_value;
 			}
 
@@ -184,10 +180,9 @@ namespace libglabels
 
 			if ( !Units::isIdValid( unitsString ) )
 			{
-				std::cerr << "Error: bad length value in attribute "
-					  << qPrintable( node.tagName() ) << ":" << qPrintable( name )
-					  << " : '" << qPrintable( valueString ) << "'"
-					  << std:: endl;
+				qWarning() << "Error: bad length value in attribute "
+					   << node.tagName() << ":" <<  name
+					   << " : " << valueString;
 				return default_value;
 			}
 

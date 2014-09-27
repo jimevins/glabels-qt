@@ -23,7 +23,7 @@
 #include <QFile>
 #include <QDomDocument>
 #include <QDomNode>
-#include <iostream>
+#include <QtDebug>
 
 #include "Template.h"
 #include "XmlUtil.h"
@@ -45,9 +45,8 @@ namespace libglabels
 
 		if ( !file.open( QFile::ReadOnly | QFile::Text) )
 		{
-			std::cerr << "Error: Cannot read file " << qPrintable(fileName)
-			          << ": " << qPrintable(file.errorString())
-			          << std::endl;
+			qWarning() << "Error: Cannot read file " << fileName
+				   << ": " << file.errorString();
 			return false;
 		}
 
@@ -59,17 +58,16 @@ namespace libglabels
 
 		if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
 		{
-			std::cerr << "Error: Parse error at line " << errorLine
-				  << "column " << errorColumn
-				  << ": " << qPrintable(errorString)
-				  << std::endl;
+			qWarning() << "Error: Parse error at line " << errorLine
+				   << "column " << errorColumn
+				   << ": " << errorString;
 			return false;
 		}
 
 		QDomElement root = doc.documentElement();
 		if ( root.tagName() != "Glabels-templates" )
 		{
-			std::cerr << "Error: Not a Glabels-templates file" << std::endl;
+			qWarning() << "Error: Not a Glabels-templates file";
 			return false;
 		}
 
@@ -91,14 +89,14 @@ namespace libglabels
 				}
 				else
 				{
-					std::cerr << "Warning: could not create template, Ignored." << std::endl;
+					qWarning() << "Warning: could not create template, Ignored.";
 				}
 			}
 			else if ( !child.isComment() )
 			{
-				std::cerr << "Warning: bad element: " << qPrintable(child.toElement().tagName())
-					  << ", Ignored"
-					  << std::endl;
+				qWarning() << "Warning: bad element: "
+					   << child.toElement().tagName()
+					   << ", Ignored.";
 			}
 		}
 	}
@@ -121,7 +119,7 @@ namespace libglabels
 			}
 			else
 			{
-				std::cerr << "Error: missing name or brand/part attributes." << std::endl;
+				qWarning() << "Error: missing name or brand/part attributes.";
 				return NULL;
 			}
 		}
@@ -142,9 +140,9 @@ namespace libglabels
 				}
 				else if ( !child.isComment() )
 				{
-					std::cerr << "Warning: bad element: " << qPrintable(child.toElement().tagName())
-						  << ", Ignored"
-						  << std::endl;
+					qWarning() << "Warning: bad element: "
+						   << child.toElement().tagName()
+						   << ", Ignored.";
 				}
 			}
 		}
@@ -158,7 +156,7 @@ namespace libglabels
 				const Paper *paper = Db::lookupPaperFromId( paperId );
 				if ( paper == NULL )
 				{
-					std::cerr << "Error: unknown paper ID: " << qPrintable( paperId ) << std::endl;
+					qWarning() << "Error: unknown paper ID: " << paperId;
 					return NULL;
 				}
 
@@ -197,9 +195,9 @@ namespace libglabels
 				}
 				else if ( !child.isComment() )
 				{
-					std::cerr << "Warning: bad element: " << qPrintable(child.toElement().tagName())
-						  << ", Ignored"
-						  << std::endl;
+					qWarning() << "Warning: bad element: "
+						   << child.toElement().tagName()
+						   << ", Ignored.";
 				}
 			}
 		}
@@ -333,9 +331,9 @@ namespace libglabels
 			}
 			else if ( !child.isComment() )
 			{
-				std::cerr << "Warning: bad element: " << qPrintable(child.toElement().tagName())
-					  << ", Ignored"
-					  << std::endl;
+				qWarning() << "Warning: bad element: "
+					   << child.toElement().tagName()
+					   << ", Ignored.";
 			}
 		}
 	}

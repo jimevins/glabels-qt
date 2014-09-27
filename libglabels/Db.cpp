@@ -21,7 +21,7 @@
 #include "Db.h"
 
 #include <QApplication>
-#include <iostream>
+#include <QtDebug>
 
 #include "Config.h"
 #include "StrUtil.h"
@@ -77,7 +77,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate paper ID: \"%s\".", qPrintable(paper->id()) );
+			qWarning() << "Duplicate paper ID: " << paper->id();
 		}
 	}
 
@@ -86,7 +86,7 @@ namespace libglabels
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
-			qDebug( "NULL paper name." );
+			qWarning() << "NULL paper name.";
 			return mPapers.first();
 		}
 
@@ -98,7 +98,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown paper name: " << name;
 		return NULL;
 	}
 
@@ -107,7 +107,7 @@ namespace libglabels
 	{
 		if ( id.isNull() || id.isEmpty() )
 		{
-			qDebug( "NULL paper ID." );
+			qWarning() << "NULL paper ID.";
 			return mPapers.first();
 		}
 
@@ -119,7 +119,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper ID: \"%s\".", qPrintable(id) );
+		qWarning() << "Unknown paper ID: " << id;
 		return NULL;
 	}
 
@@ -135,7 +135,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown paper name: " << name;
 		return mEmpty;
 	}
 
@@ -156,7 +156,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown paper id: \"%s\".", qPrintable(id) );
+		qWarning() << "Unknown paper id: " << id;
 		return mEmpty;
 	}
 
@@ -191,7 +191,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate category ID: \"%s\".", qPrintable(category->id()) );
+			qWarning() << "Duplicate category ID: " << category->id();
 		}
 	}
 
@@ -200,7 +200,7 @@ namespace libglabels
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
-			qDebug( "NULL category name." );
+			qWarning() << "NULL category name.";
 			return mCategories.first();
 		}
 
@@ -212,7 +212,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown category name: \"%s\"." << name;
 		return NULL;
 	}
 
@@ -221,7 +221,7 @@ namespace libglabels
 	{
 		if ( id.isNull() || id.isEmpty() )
 		{
-			qDebug( "NULL category ID." );
+			qDebug() << "NULL category ID.";
 			return mCategories.first();
 		}
 
@@ -233,7 +233,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category ID: \"%s\".", qPrintable(id) );
+		qWarning() << "Unknown category ID: " << id;
 		return NULL;
 	}
 
@@ -249,7 +249,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown category name: " << name;
 		return mEmpty;
 	}
 
@@ -265,7 +265,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown category id: \"%s\".", qPrintable(id) );
+		qWarning() << "Unknown category id: " << id;
 		return mEmpty;
 	}
 
@@ -293,7 +293,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate vendor name: \"%s\".", qPrintable(vendor->name()) );
+			qWarning() << "Duplicate vendor name: " << vendor->name();
 		}
 	}
 
@@ -302,7 +302,7 @@ namespace libglabels
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
-			qDebug( "NULL vendor name." );
+			qWarning() << "NULL vendor name.";
 			return mVendors.first();
 		}
 
@@ -314,7 +314,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown vendor name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown vendor name: " << name;
 		return NULL;
 	}
 
@@ -330,7 +330,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown vendor name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown vendor name: " << name;
 		return mEmpty;
 	}
 
@@ -358,7 +358,7 @@ namespace libglabels
 		}
 		else
 		{
-			qDebug( "Duplicate template name: \"%s\".", qPrintable(tmplate->name()) );
+			qWarning() << "Duplicate template name: " << tmplate->name();
 		}
 	}
 
@@ -367,7 +367,7 @@ namespace libglabels
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
-			qDebug( "NULL template name." );
+			qWarning() << "NULL template name.";
 			return mTemplates.first();
 		}
 
@@ -379,7 +379,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown template name: \"%s\".", qPrintable(name) );
+		qWarning() << "Unknown template name: " << name;
 		return NULL;
 	}
 
@@ -388,7 +388,7 @@ namespace libglabels
 	{
 		if ( brand.isNull() || brand.isEmpty() || part.isNull() || part.isEmpty() )
 		{
-			qDebug( "NULL template brand and/or part." );
+			qWarning() << "NULL template brand and/or part.";
 			return mTemplates.first();
 		}
 
@@ -400,7 +400,7 @@ namespace libglabels
 			}
 		}
 
-		qDebug( "Unknown template brand, part: \"%s\", \"%s\".", qPrintable(brand), qPrintable(part) );
+		qWarning() << "Unknown template brand, part: " << brand << ", " << part;
 		return NULL;
 	}
 
@@ -426,7 +426,7 @@ namespace libglabels
 		const Template *tmplate1 = lookupTemplateFromName( name );
 		if ( tmplate1 == NULL )
 		{
-			qDebug( "Unknown template name: \"%s\".", qPrintable(name) );
+			qWarning() << "Unknown template name: " << name;
 			return list;
 		}
 
@@ -465,69 +465,65 @@ namespace libglabels
 
 	void Db::printKnownPapers()
 	{
-		std::cout << "KNOWN PAPERS:" << std::endl;
+		qDebug() << "KNOWN PAPERS:";
 
 		foreach ( Paper *paper, mPapers )
 		{
-			std::cout << "paper "
-				  << "id='"      << qPrintable(paper->id())      << "', "
-				  << "name='"    << qPrintable(paper->name())    << "', "
-				  << "width="    << paper->width()               << "pts, "
-				  << "height="   << paper->height()              << "pts, "
-				  << "pwg_size=" << qPrintable(paper->pwgSize())
-				  << std::endl;
+			qDebug() << "paper "
+				 << "id="       << paper->id()       << ", "
+				 << "name="     << paper->name()     << ", "
+				 << "width="    << paper->width()    << "pts, "
+				 << "height="   << paper->height()   << "pts, "
+				 << "pwg_size=" << paper->pwgSize();
 		}
 
-		std::cout << std::endl;
+		qDebug();
 	}
 
 
 	void Db::printKnownCategories()
 	{
-		std::cout << "KNOWN CATEGORIES:" << std::endl;
+		qDebug() << "KNOWN CATEGORIES:";
 
 		foreach ( Category *category, mCategories )
 		{
-			std::cout << "category "
-				  << "id='"    << category->id().toStdString()   << "', "
-				  << "name='"  << category->name().toStdString() << "', "
-				  << std::endl;
+			qDebug() << "category "
+				 << "id="    << category->id()   << ", "
+				 << "name="  << category->name();
 		}
 
-		std::cout << std::endl;
+		qDebug();
 	}
 
 
 	void Db::printKnownVendors()
 	{
-		std::cout << "KNOWN VENDORS:" << std::endl;
+		qDebug() << "KNOWN VENDORS:";
 
 		foreach ( Vendor *vendor, mVendors )
 		{
-			std::cout << "vendor "
-				  << "name='" << vendor->name().toStdString() << "', "
-				  << "url='"  << vendor->url().toStdString()  << "'"
-				  << std::endl;
+			qDebug() << "vendor "
+				 << "name='" << vendor->name() << ", "
+				 << "url='"  << vendor->url();
 		}
 
-		std::cout << std::endl;
+		qDebug();
 	}
 
 
 	void Db::printKnownTemplates()
 	{
-		std::cout << "KNOWN TEMPLATES:" << std::endl;
+		qDebug() << "KNOWN TEMPLATES:";
 
 		foreach ( Template *tmplate, mTemplates )
 		{
-			std::cout << "template "
-				  << "brand='"       << tmplate->brand().toStdString()       << "', "
-				  << "part='"        << tmplate->part().toStdString()        << "', "
-				  << "description='" << tmplate->description().toStdString() << "'"
-				  << std::endl;
+			qDebug() << "template "
+				 << "brand="       << tmplate->brand()       << ", "
+				 << "part="        << tmplate->part()        << ", "
+				 << "description=" << tmplate->description();
 		}
 
-		std::cout << std::endl;
+		qDebug();
 	}
 
 

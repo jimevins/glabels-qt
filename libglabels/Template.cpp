@@ -20,7 +20,7 @@
 
 #include "Template.h"
 
-#include <iostream>
+#include <QtDebug>
 
 #include "Db.h"
 
@@ -109,10 +109,9 @@ namespace libglabels
 		}
 		else
 		{
-			std::cerr << "Error: cannot create equivalent template for "
-				  << qPrintable(brand) << ", " << qPrintable(equivPart)
-				  << ". Forward references not supported."
-				  << std::endl;
+			qWarning() << "Error: cannot create equivalent template for "
+				   << brand << ", " << equivPart
+				   << ". Forward references not supported.";
 			return NULL;
 		}
 	}
