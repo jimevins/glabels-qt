@@ -133,9 +133,14 @@ namespace glabels
 		void helpContents();
 		void helpAbout();
 
-		void updateZoomInfo();
-		void updateCursorInfo();
-		void updateCursorInfo( double, double );
+		void onZoomChanged();
+		void onPointerMoved( double, double );
+		void onPointerExit();
+
+		void onNameChanged();
+		void onModifiedChanged();
+		void onSelectionChanged();
+		void onLabelChanged();
 
 
 		/////////////////////////////////////
@@ -152,6 +157,8 @@ namespace glabels
 		void setPasteVerbsEnabled( bool );
 		void setSelectionVerbsEnabled( bool );
 		void setMultiSelectionVerbsEnabled( bool );
+
+		void setTitle();
 
 		void readSettings();
 		void writeSettings();

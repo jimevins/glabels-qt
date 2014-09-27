@@ -65,6 +65,7 @@ namespace glabels
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
+		setTitle();
 
 		readSettings();
 
@@ -99,6 +100,12 @@ namespace glabels
 		mView->setModel( mModel );
 
 		setDocVerbsEnabled( true );
+		setTitle();
+
+		connect( mModel, SIGNAL(nameChanged()), this, SLOT(onNameChanged()) );
+		connect( mModel, SIGNAL(modifiedChanged()), this, SLOT(onModifiedChanged()) );
+		connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
+		connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
 	}
 
 
@@ -563,12 +570,13 @@ namespace glabels
 		statusBar()->addWidget( zoomInfoLabel );
 		statusBar()->addWidget( cursorInfoLabel, 1 );
 
-		updateZoomInfo();
-		updateCursorInfo();
+		onZoomChanged();
+		onPointerExit();
 
-		connect( mView, SIGNAL(zoomChanged()), this, SLOT(updateZoomInfo()) );
-		connect( mView, SIGNAL(pointerMoved(double, double)), this, SLOT(updateCursorInfo(double, double)) );
-		connect( mView, SIGNAL(pointerExited()), this, SLOT(updateCursorInfo()) );
+		connect( mView, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
+		connect( mView, SIGNAL(pointerMoved(double, double)),
+			 this, SLOT(onPointerMoved(double, double)) );
+		connect( mView, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
 	}
 
 
@@ -679,6 +687,30 @@ namespace glabels
 		objectsAlignTopAction->setEnabled( enabled );
 		objectsAlignBottomAction->setEnabled( enabled );
 		objectsAlignVCenterAction->setEnabled( enabled );
+	}
+
+
+	///
+	/// Set window title
+	///
+	void MainWindow::setTitle()
+	{
+		if ( mModel == 0 )
+		{
+			setWindowTitle( "gLabels" );
+		}
+		else
+		{
+			if ( mModel->isModified() )
+			{
+				setWindowTitle( mModel->shortName() + " " + tr("(modified)")
+						+ " - gLabels" );
+			}
+			else
+			{
+				setWindowTitle( mModel->shortName() + " - gLabels" );
+			}
+		}
 	}
 
 
@@ -1201,9 +1233,9 @@ namespace glabels
 
 
 	///
-	/// Update Zoom Information in Status Bar
+	/// Zoom changed: update Zoom Information in Status Bar
 	///
-	void MainWindow::updateZoomInfo()
+	void MainWindow::onZoomChanged()
 	{
 		zoomInfoLabel->setText( QString( " %1% " ).arg(100*mView->zoom(), 0, 'f', 0) );
 
@@ -1213,9 +1245,9 @@ namespace glabels
 
 
 	///
-	/// Update Cursor Information in Status Bar
+	/// Pointer moved: update Cursor Information in Status Bar
 	///
-	void MainWindow::updateCursorInfo( double x, double y )
+	void MainWindow::onPointerMoved( double x, double y )
 	{
 		/* TODO: convert x,y to locale units and set precision accordingly. */
 		cursorInfoLabel->setText( QString( "%1, %2" ).arg(x).arg(y) );
@@ -1223,12 +1255,49 @@ namespace glabels
 
 
 	///
-	/// Update Zoom Information in Status Bar (Clears information)
-	/// E.g. when pointer exits view.
+	/// Pointer exited view: update Zoom Information in Status Bar (Clears information)
 	///
-	void MainWindow::updateCursorInfo()
+	void MainWindow::onPointerExit()
 	{
 		cursorInfoLabel->setText( "" );
+	}
+
+
+	///
+	/// Name changed handler
+	///
+	void MainWindow::onNameChanged()
+	{
+		setTitle();
+	}
+
+
+	///
+	/// Modified changed handler
+	///
+	void MainWindow::onModifiedChanged()
+	{
+		setTitle();
+		setDocModifiedVerbsEnabled( mModel->isModified() );
+	}
+
+
+	///
+	/// Selection changed handler
+	///
+	void MainWindow::onSelectionChanged()
+	{
+		setSelectionVerbsEnabled( !mModel->isSelectionEmpty() );
+		setMultiSelectionVerbsEnabled( !mModel->isSelectionAtomic() );
+	}
+
+
+	///
+	/// Label changed handler
+	///
+	void MainWindow::onLabelChanged()
+	{
+		/* @TODO: update undo/redo verbs. */
 	}
 
 

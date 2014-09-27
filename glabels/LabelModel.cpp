@@ -66,6 +66,16 @@ namespace glabels
 
 
 	///
+	/// Clear modified status
+	///
+	void LabelModel::clearModified()
+	{
+		mModified = false;
+		emit modifiedChanged();
+	}
+
+
+	///
 	/// Add object.
 	///
 	void LabelModel::addObject( LabelModelObject* object )
@@ -80,6 +90,7 @@ namespace glabels
 
 		emit objectAdded( object );
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -92,6 +103,7 @@ namespace glabels
 
 		emit objectChanged( qobject_cast<LabelModelObject*>(sender()) );
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -104,6 +116,7 @@ namespace glabels
 
 		emit objectMoved( qobject_cast<LabelModelObject*>(sender()) );
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -121,6 +134,7 @@ namespace glabels
 
 		emit objectDeleted( object );
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -361,6 +375,7 @@ namespace glabels
 
 		emit changed();
 		emit selectionChanged();
+		emit modifiedChanged();
 	}
 
 
@@ -386,6 +401,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -411,6 +427,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -430,6 +447,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -467,6 +485,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -486,6 +505,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -520,6 +540,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -554,6 +575,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -605,6 +627,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -639,6 +662,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -673,6 +697,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -724,6 +749,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -748,6 +774,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -772,6 +799,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -791,6 +819,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -810,6 +839,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -829,6 +859,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -848,6 +879,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -867,6 +899,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -886,6 +919,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -905,6 +939,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -924,6 +959,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -943,6 +979,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -962,6 +999,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -981,6 +1019,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 
@@ -1000,6 +1039,7 @@ namespace glabels
 		mModified = true;
 
 		emit changed();
+		emit modifiedChanged();
 	}
 
 }

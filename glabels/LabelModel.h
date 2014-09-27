@@ -61,6 +61,7 @@ namespace glabels
 		void nameChanged();
 		void sizeChanged();
 		void selectionChanged();
+		void modifiedChanged();
 		void objectChanged( LabelModelObject* object );
 		void objectMoved( LabelModelObject* object );
 		void objectAdded( LabelModelObject* object );
@@ -74,7 +75,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		inline bool isModified() const;
-		inline void clearModified();
+		void clearModified();
 
 		QString shortName();
 		inline const QString& filename() const;
@@ -202,12 +203,6 @@ namespace glabels
 	inline bool LabelModel::isModified() const
 	{
 		return mModified;
-	}
-
-
-	inline void LabelModel::clearModified()
-	{
-		mModified = false;
 	}
 
 
