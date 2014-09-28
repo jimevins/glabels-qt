@@ -172,6 +172,7 @@ glabels::LabelModel* glabels::XmlLabel::parseRootNode( const QDomElement &node )
 		}
 	}
 
+	label->clearModified();
 	return label;
 }
 

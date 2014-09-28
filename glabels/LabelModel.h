@@ -62,12 +62,6 @@ namespace glabels
 		void sizeChanged();
 		void selectionChanged();
 		void modifiedChanged();
-		void objectChanged( LabelModelObject* object );
-		void objectMoved( LabelModelObject* object );
-		void objectAdded( LabelModelObject* object );
-		void objectDeleted( LabelModelObject* object );
-		void objectToTop( LabelModelObject* object );
-		void objectToBottom( LabelModelObject* object );
 
 
 		/////////////////////////////////

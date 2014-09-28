@@ -100,6 +100,8 @@ namespace glabels
 		mView->setModel( mModel );
 
 		setDocVerbsEnabled( true );
+		setSelectionVerbsEnabled( false );
+		setMultiSelectionVerbsEnabled( false );
 		setTitle();
 
 		connect( mModel, SIGNAL(nameChanged()), this, SLOT(onNameChanged()) );
@@ -131,7 +133,6 @@ namespace glabels
 	///
 	void MainWindow::closeEvent( QCloseEvent *event )
 	{
-		qDebug() << "CLOSE EVENT";
 		writeSettings();
 		event->accept();
 	}
@@ -589,7 +590,6 @@ namespace glabels
 		fileSaveAction->setEnabled( enabled );
 		fileSaveAsAction->setEnabled( enabled );
 		filePrintAction->setEnabled( enabled );
-		fileCloseAction->setEnabled( enabled );
 		editUndoAction->setEnabled( enabled );
 		editRedoAction->setEnabled( enabled );
 		editCutAction->setEnabled( enabled );
@@ -895,7 +895,7 @@ namespace glabels
 	///
 	void MainWindow::editDelete()
 	{
-		qDebug() << "ACTION: edit->Delete";
+		mModel->deleteSelection();
 	}
 
 
@@ -904,7 +904,7 @@ namespace glabels
 	///
 	void MainWindow::editSelectAll()
 	{
-		qDebug() << "ACTION: edit->Select All";
+		mModel->selectAll();
 	}
 
 
@@ -913,7 +913,7 @@ namespace glabels
 	///
 	void MainWindow::editUnSelectAll()
 	{
-		qDebug() << "ACTION: edit->Un-select All";
+		mModel->unselectAll();
 	}
 
 

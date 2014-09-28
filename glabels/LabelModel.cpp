@@ -88,7 +88,6 @@ namespace glabels
 
 		mModified = true;
 
-		emit objectAdded( object );
 		emit changed();
 		emit modifiedChanged();
 	}
@@ -101,7 +100,6 @@ namespace glabels
 	{
 		mModified = true;
 
-		emit objectChanged( qobject_cast<LabelModelObject*>(sender()) );
 		emit changed();
 		emit modifiedChanged();
 	}
@@ -114,7 +112,6 @@ namespace glabels
 	{
 		mModified = true;
 
-		emit objectMoved( qobject_cast<LabelModelObject*>(sender()) );
 		emit changed();
 		emit modifiedChanged();
 	}
@@ -132,9 +129,10 @@ namespace glabels
 
 		mModified = true;
 
-		emit objectDeleted( object );
 		emit changed();
 		emit modifiedChanged();
+
+		delete object;
 	}
 
 
@@ -272,7 +270,8 @@ namespace glabels
 				selectedList << object;
 			}
 		}
-		
+
+		return selectedList;
 	}
 
 
@@ -395,7 +394,6 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			mObjectList.push_back( object );
-			emit objectToTop( object );
 		}
 
 		mModified = true;
@@ -421,7 +419,6 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			mObjectList.push_front( object );
-			emit objectToBottom( object );
 		}
 
 		mModified = true;
