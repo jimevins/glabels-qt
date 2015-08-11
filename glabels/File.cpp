@@ -38,6 +38,25 @@ namespace glabels
 	{
 		NewLabelDialog newDialog( window );
 		newDialog.exec();
+
+		const libglabels::Template* tmplate = newDialog.tmplate();
+		if ( tmplate )
+		{
+			LabelModel* label = new LabelModel();
+			label->setTmplate( tmplate );
+			label->setRotate( newDialog.rotate() );
+
+			if ( window->isEmpty() )
+			{
+				window->setModel( label );
+			}
+			else
+			{
+				MainWindow *newWindow = new MainWindow();
+				newWindow->setModel( label );
+				newWindow->show();
+			}
+		}
 	}
 
 

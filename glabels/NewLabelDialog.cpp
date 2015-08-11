@@ -36,7 +36,8 @@ namespace glabels
 	{
 		setupUi( this );
 
-		// TODO: Set default based on locale
+		// TODO: Set default based on locale and/or saved preferences
+		//       Perhaps move to checkboxes
 		pageSizeIsoRadio->setChecked( true );
 
 		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
@@ -68,8 +69,25 @@ namespace glabels
 		connect( createButton, SIGNAL(clicked()), this, SLOT(createButtonClicked()) );
 	}
 
+	///
+	/// Get selected template
+	///
+	const libglabels::Template* NewLabelDialog::tmplate() const
+	{
+		return templatePicker->selectedTemplate();
+	}
+
 
 	///
+	/// Get rotation selection
+	///
+	bool NewLabelDialog::rotate() const
+	{
+		return orientationRotatedRadio->isChecked();
+	}
+
+
+        ///
 	/// Search Entry Text Changed Slot
 	///
 	void NewLabelDialog::searchEntryTextChanged( const QString &text )
@@ -193,12 +211,6 @@ namespace glabels
 	///
 	void NewLabelDialog::createButtonClicked()
 	{
-		const libglabels::Template *tmplate = templatePicker->selectedTemplate();
-
-		std::cout << "TODO: create new label, template = '" << qPrintable(tmplate->name())
-			  << "', rotate = " << orientationRotatedRadio->isChecked()
-			  << std::endl;
-
 		close();
 	}
 
