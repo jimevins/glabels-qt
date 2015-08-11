@@ -94,6 +94,42 @@ namespace glabels
 
 
 	///
+	/// Delete Object
+	///
+	void LabelModel::deleteObject( LabelModelObject* object )
+	{
+		object->unselect();
+		mObjectList.removeOne( object );
+
+		disconnect( object, 0, this, 0 );
+
+		mModified = true;
+
+		emit changed();
+		emit modifiedChanged();
+
+		delete object;
+	}
+
+
+	///
+	/// Delete Object
+	///
+	LabelModelObject* LabelModel::objectAt( double x, double y )
+	{
+		foreach( LabelModelObject* object, mObjectList )
+		{
+			if ( object->isLocatedAt( x, y ) )
+			{
+				return object;
+			}
+		}
+
+		return 0;
+	}
+
+
+	///
 	/// Object Changed Slot
 	///
 	void LabelModel::onObjectChanged()
@@ -114,25 +150,6 @@ namespace glabels
 
 		emit changed();
 		emit modifiedChanged();
-	}
-
-
-	///
-	/// Delete Object
-	///
-	void LabelModel::deleteObject( LabelModelObject* object )
-	{
-		object->unselect();
-		mObjectList.removeOne( object );
-
-		disconnect( object, 0, this, 0 );
-
-		mModified = true;
-
-		emit changed();
-		emit modifiedChanged();
-
-		delete object;
 	}
 
 

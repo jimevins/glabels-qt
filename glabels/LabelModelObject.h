@@ -384,6 +384,7 @@ namespace glabels
 		void rotate( double thetaDegs );
 		void flipHoriz();
 		void flipVert();
+		virtual bool isLocatedAt( double x, double y );
 
 
 		///////////////////////////////////////////////////////////////

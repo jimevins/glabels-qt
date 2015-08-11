@@ -98,6 +98,8 @@ namespace glabels
 		void addObject( LabelModelObject* object );
 		void deleteObject( LabelModelObject* object );
 
+		LabelModelObject* objectAt( double x, double y );
+
 
 		/////////////////////////////////
 		// Manipulate selection

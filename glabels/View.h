@@ -21,12 +21,10 @@
 #ifndef glabels_View_h
 #define glabels_View_h
 
-#include <QGraphicsView>
+#include <QWidget>
+#include <QPainter>
 
 #include "LabelRegion.h"
-
-class QGraphicsScene;
-class QGraphicsItemGroup;
 
 
 namespace glabels
@@ -39,7 +37,7 @@ namespace glabels
 	///
 	/// View Widget
 	///
-	class View : public QGraphicsView
+	class View : public QWidget
 	{
 		Q_OBJECT
 
@@ -54,16 +52,20 @@ namespace glabels
 		// Signals
 		/////////////////////////////////////
 	signals:
+		void contextMenuActivate();
 		void zoomChanged();
 		void pointerMoved( double x, double y );
 		void pointerExited();
+		void modeChanged();
 
 
 		/////////////////////////////////////
 		// Parameters
 		/////////////////////////////////////
 	public:
-		inline double zoom() const;
+		double zoom() const;
+		bool markupVisible() const;
+		bool qridVisible() const;
 
 
 		/////////////////////////////////////
@@ -96,9 +98,23 @@ namespace glabels
 
 
 		/////////////////////////////////////
+		// Mode operations
+		/////////////////////////////////////
+	public:
+		void arrowMode();
+		void createBoxMode();
+		void createEllipseMode();
+		void createLineMode();
+		void createImageMode();
+		void createTextMode();
+		void createBarcodeMode();
+
+
+		/////////////////////////////////////
 		// Event handlers
 		/////////////////////////////////////
 	protected:
+		void paintEvent( QPaintEvent* event );
 		void resizeEvent( QResizeEvent* event );
 		void mouseMoveEvent( QMouseEvent* event );
 		void mousePressEvent( QMouseEvent* event );
@@ -110,13 +126,25 @@ namespace glabels
 		// Private methods
 		/////////////////////////////////////
 	private:
-		void clearLayer( QGraphicsItemGroup* layer );
-		void initLabelLayer();
-		void initGridLayer();
-		void initMarkupLayer();
-		void addObjectToObjectLayer( LabelModelObject* object );
-		void initForegroundLayer();
-		void initSelectRegionLayer();
+		void drawBgLayer( QPainter* painter );
+		void drawGridLayer( QPainter* painter );
+		void drawMarkupLayer( QPainter* painter );
+		void drawObjectsLayer( QPainter* painter );
+		void drawFgLayer( QPainter* painter );
+		void drawHighlightLayer( QPainter* painter );
+		void drawSelectRegionLayer( QPainter* painter );
+
+		void handleResizeMotion( QPainter* painter,
+		                         double    xPixels,
+		                         double    yPixels );
+
+
+		/////////////////////////////////////
+		// Private slots
+		/////////////////////////////////////
+	private:
+		void onLabelChanged();
+		void onLabelSizeChanged();
 
 
 		/////////////////////////////////////
@@ -125,39 +153,54 @@ namespace glabels
 	private:
 		enum State {
 			IdleState,
-			ArrowSelectRegionState
+			ArrowSelectRegion,
+			ArrowMove,
+			ArrowResize,
+			CreateDrag
 		};
 
-		State               mState;
-
-		QGraphicsScene*     mScene;
-
-		QGraphicsItemGroup* mLabelLayer;
-		QGraphicsItemGroup* mGridLayer;
-		QGraphicsItemGroup* mMarkupLayer;
-		QGraphicsItemGroup* mObjectLayer;
-		QGraphicsItemGroup* mForegroundLayer;
-		QGraphicsItemGroup* mSelectRegionLayer;
-
-		QGraphicsRectItem*  mSelectRegionItem;
-		LabelRegion         mSelectRegion;
+		enum CreateType {
+			Box,
+			Ellipse,
+			Line,
+			Image,
+			Text,
+			Barcode
+		};
 
 		double              mZoom;
 		bool                mZoomToFitFlag;
 
+		bool                mMarkupVisible;
+		bool                mGridVisible;
+
+		double              mGridSpacing;
+
 		LabelModel*         mModel;
+
+		State               mState;
+
+		/* ArrowSelectRegion state */
+		bool                mSelectRegionVisible;
+		LabelRegion         mSelectRegion;
+
+		/* ArrowMove state */
+		double              mMoveLastX;
+		double              mMoveLastY;
+
+		/* ArrowResize state */
+		/* @TODO */
+
+		/* CreateDrag state */
+		bool                mInObjectCreateMode;
+		CreateType          mCreateObjectType;
+		LabelModelObject*   mCreateObject;
+		double              mCreateX0;
+		double              mCreateY0;
+
 
 	};
 
-
-	/////////////////////////////////
-	// INLINE METHODS
-	/////////////////////////////////
-
-	inline double View::zoom() const
-	{
-		return mZoom;
-	}
 
 }
 

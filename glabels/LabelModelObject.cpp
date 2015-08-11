@@ -894,6 +894,15 @@ namespace glabels
 
 
 	///
+	/// Default isLocatedAt method
+	///
+	bool LabelModelObject::isLocatedAt( double x, double y )
+	{
+		return false;
+	}
+
+
+	///
 	/// Update Representative Graphics Item with Object's Transformation Matrix
 	///
 	void LabelModelObject::updateGraphicsItemMatrix( QGraphicsItem* graphicsItem )

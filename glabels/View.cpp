@@ -20,14 +20,10 @@
 
 #include "View.h"
 
-#include <QGraphicsScene>
-#include <QGraphicsItemGroup>
-#include <QMouseEvent>
-#include <QGraphicsLineItem>
-#include <QGraphicsDropShadowEffect>
 #include <algorithm>
 #include <cmath>
-#include <iostream>
+#include <QMouseEvent>
+#include <QtDebug>
 
 #include "LabelModel.h"
 #include "LabelModelObject.h"
@@ -49,7 +45,7 @@ namespace
 
 	const double ZOOM_TO_FIT_PAD = 16.0;
 
-        const QColor  shadowColor( 64, 64, 64 );
+        const QColor  shadowColor( 64, 64, 64, 128 );
 	const double  shadowOffsetPixels = 3;
 	const double  shadowRadiusPixels = 12;
 
@@ -70,227 +66,420 @@ namespace
 }
 
 
-namespace glabels
+
+///
+/// Constructor
+///
+glabels::View::View( QWidget *parent ) : QWidget(parent)
 {
+	mState = IdleState;
 
-	///
-	/// Constructor
-	///
-	View::View( QWidget *parent ) : QGraphicsView(parent)
+	setZoomReal( 1, false );
+
+	mModel              = 0;
+	mMarkupVisible      = true;
+	mGridVisible        = true;
+	mGridSpacing        = 18;
+	mInObjectCreateMode = false;
+
+	setMouseTracking( true );
+}
+
+
+///
+/// Zoom property
+///
+double
+glabels::View::zoom() const
+{
+	return mZoom;
+}
+
+
+///
+/// Markup visible? property
+///
+bool
+glabels::View::markupVisible() const
+{
+	return mMarkupVisible;
+}
+
+
+///
+/// Grid visible? property
+///
+bool
+glabels::View::qridVisible() const
+{
+	return mGridVisible;
+}
+
+
+///
+/// Model Parameter Setter
+///
+void
+glabels::View::setModel( LabelModel* model )
+{
+	mModel = model;
+
+	if ( model )
 	{
-		mState = IdleState;
-
-		setZoomReal( 1, false );
-		mModel         = 0;
-
-		setMouseTracking( true );
-
-		setAttribute( Qt::WA_TranslucentBackground );
-		viewport()->setAutoFillBackground( false );
-
-		mScene = new QGraphicsScene();
-		setScene( mScene );
-
-		mScene->addItem( mLabelLayer        = new QGraphicsItemGroup() );
-		mScene->addItem( mGridLayer         = new QGraphicsItemGroup() );
-		mScene->addItem( mMarkupLayer       = new QGraphicsItemGroup() );
-		mScene->addItem( mObjectLayer       = new QGraphicsItemGroup() );
-		mScene->addItem( mForegroundLayer   = new QGraphicsItemGroup() );
-		mScene->addItem( mSelectRegionLayer = new QGraphicsItemGroup() );
-
-		initSelectRegionLayer();
+		connect( model, SIGNAL(changed()), this, SLOT(onModelChanged()) );
+		connect( model, SIGNAL(selectionChanged()), this, SLOT(onModelSelectionChanged()) );
+		connect( model, SIGNAL(sizeChanged()), this, SLOT(onModelSizeChanged()) );
 	}
+}
 
 
-	///
-	/// Model Parameter Setter
-	///
-	void View::setModel( LabelModel* model )
+///
+/// Grid Visibility Parameter Setter
+///
+void
+glabels::View::setGridVisible( bool visibleFlag )
+{
+	mGridVisible = visibleFlag;
+	update();
+}
+
+
+///
+/// Markup Visibility Parameter Setter
+///
+void
+glabels::View::setMarkupVisible( bool visibleFlag )
+{
+	mMarkupVisible = visibleFlag;
+	update();
+}
+
+
+///
+/// Zoom In "One Notch"
+///
+void
+glabels::View::zoomIn()
+{
+	// Find closest standard zoom level to our current zoom
+	// Start with 2nd largest scale
+	int i_min = 1;
+	double dist_min = fabs( zoomLevels[1] - mZoom );
+
+	for ( int i = 2; i < nZoomLevels; i++ )
 	{
-		mModel = model;
-
-		mScene->setSceneRect( 0, 0, model->w(), model->h() );
-
-		initLabelLayer();
-		initGridLayer();
-		initMarkupLayer();
-
-		foreach (LabelModelObject* object, model->objectList() )
+		double dist = fabs( zoomLevels[i] - mZoom );
+		if ( dist < dist_min )
 		{
-			addObjectToObjectLayer( object );
+			i_min = i;
+			dist_min = dist;
 		}
-
-		initForegroundLayer();
 	}
 
+	// Zoom in one notch
+	setZoomReal( zoomLevels[i_min-1], false );
+}
 
-	///
-	/// Grid Visibility Parameter Setter
-	///
-	void View::setGridVisible( bool visibleFlag )
+
+///
+/// Zoom Out "One Notch"
+///
+void
+glabels::View::zoomOut()
+{
+	// Find closest standard zoom level to our current zoom
+	// Start with largest scale, end on 2nd smallest
+	int i_min = 0;
+	double dist_min = fabs( zoomLevels[0] - mZoom );
+
+	for ( int i = 1; i < (nZoomLevels-1); i++ )
 	{
-		mGridLayer->setVisible( visibleFlag );
-	}
-
-
-	///
-	/// Markup Visibility Parameter Setter
-	///
-	void View::setMarkupVisible( bool visibleFlag )
-	{
-		mMarkupLayer->setVisible( visibleFlag );
-	}
-
-
-	///
-	/// Zoom In "One Notch"
-	///
-	void View::zoomIn()
-	{
-		// Find closest standard zoom level to our current zoom
-		// Start with 2nd largest scale
-		int i_min = 1;
-		double dist_min = fabs( zoomLevels[1] - mZoom );
-
-		for ( int i = 2; i < nZoomLevels; i++ )
+		double dist = fabs( zoomLevels[i] - mZoom );
+		if ( dist < dist_min )
 		{
-			double dist = fabs( zoomLevels[i] - mZoom );
-			if ( dist < dist_min )
+			i_min = i;
+			dist_min = dist;
+		}
+	}
+
+	// Zoom out one notch
+	setZoomReal( zoomLevels[i_min+1], false );
+}
+
+
+///
+/// Zoom To 1:1 Scale
+///
+void
+glabels::View::zoom1To1()
+{
+	setZoomReal( 1.0, false );
+}
+
+
+///
+/// Zoom To Fit
+///
+void
+glabels::View::zoomToFit()
+{
+	using std::min;
+	using std::max;
+
+	double x_scale = (72.0/physicalDpiX()) * ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
+	double y_scale = (72.0/physicalDpiY()) * ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
+	double newZoom = min( x_scale, y_scale );
+
+	// Limits
+	newZoom = min( newZoom, zoomLevels[0] );
+	newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
+
+	setZoomReal( newZoom, true );
+}
+
+
+///
+/// Is Zoom at Maximum?
+///
+bool
+glabels::View::isZoomMax() const
+{
+	return ( mZoom >= zoomLevels[0] );
+}
+
+
+///
+/// Is Zoom at Minimum?
+///
+bool
+glabels::View::isZoomMin() const
+{
+	return ( mZoom <= zoomLevels[nZoomLevels-1] );
+}
+
+
+///
+/// Set Zoom to Value
+///
+void
+glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
+{
+	mZoom          = zoom;
+	mZoomToFitFlag = zoomToFitFlag;
+
+	update();
+
+	emit zoomChanged();
+}
+
+
+///
+/// Paint Event Handler
+///
+void
+glabels::View::paintEvent( QPaintEvent* event )
+{
+	if ( mModel )
+	{
+		QPainter painter( this );
+
+		painter.scale( mZoom, mZoom );
+
+		drawBgLayer( &painter );
+		drawGridLayer( &painter );
+		drawMarkupLayer( &painter );
+	}
+}
+
+
+///
+/// Resize Event Handler
+///
+void
+glabels::View::resizeEvent( QResizeEvent *event )
+{
+	if ( mZoomToFitFlag )
+	{
+		zoomToFit();
+	}
+	else
+	{
+		update();
+	}
+}
+
+
+///
+/// Mouse Movement Event Handler
+///
+void
+glabels::View::mouseMoveEvent( QMouseEvent* event )
+{
+	/*
+	 * Translate to label coordinates
+	 */
+	QTransform transform;
+
+	transform.scale( mZoom, mZoom );
+
+	qreal xWorld, yWorld;
+	transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+
+	/*
+	 * Emit signal regardless of mode
+	 */
+	emit pointerMoved( xWorld, yWorld );
+
+
+	/*
+	 * Handle event as appropriate for mode
+	 */
+	if ( mInObjectCreateMode )
+	{
+		switch (mState)
+		{
+
+		case IdleState:
+			/* @TODO handle handles. */
+			if ( mModel->objectAt( xWorld, yWorld ) )
 			{
-				i_min = i;
-				dist_min = dist;
+				setCursor( Qt::SizeAllCursor );
+			}
+			else
+			{
+				setCursor( Qt::ArrowCursor );
+			}
+			break;
+
+		case ArrowSelectRegion:
+			mSelectRegion.setX2( xWorld );
+			mSelectRegion.setY2( yWorld );
+			update();
+			break;
+
+		case ArrowMove:
+			mModel->moveSelection( (xWorld - mMoveLastX),
+					       (yWorld - mMoveLastY) );
+			mMoveLastX = xWorld;
+			mMoveLastY = yWorld;
+			break;
+
+		case ArrowResize:
+			/* @TODO handle resize motion */
+			break;
+
+		default:
+			// Should not happen!
+			qWarning() << "Invalid arrow state.";
+			break;
+
+		}
+	}
+	else
+	{
+		if ( mState != IdleState )
+		{
+			switch (mCreateObjectType)
+			{
+			case Box:
+				// @TODO
+				break;
+			case Ellipse:
+				// @TODO
+				break;
+			case Line:
+				// @TODO
+				break;
+			case Image:
+				// @TODO
+				break;
+			case Text:
+				// @TODO
+				break;
+			case Barcode:
+				// @TODO
+				break;
+			default:
+				// Should not happen!
+				qWarning() << "Invalid create type.";
+				break;
 			}
 		}
-
-		// Zoom in one notch
-		setZoomReal( zoomLevels[i_min-1], false );
 	}
+}
 
 
-	///
-	/// Zoom Out "One Notch"
-	///
-	void View::zoomOut()
+///
+/// Mouse Button Press Event Handler
+///
+void
+glabels::View::mousePressEvent( QMouseEvent* event )
+{
+	/*
+	 * Translate to label coordinates
+	 */
+	QTransform transform;
+
+	transform.scale( mZoom, mZoom );
+
+	qreal xWorld, yWorld;
+	transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+
+
+	if ( event->button() & Qt::LeftButton )
 	{
-		// Find closest standard zoom level to our current zoom
-		// Start with largest scale, end on 2nd smallest
-		int i_min = 0;
-		double dist_min = fabs( zoomLevels[0] - mZoom );
-
-		for ( int i = 1; i < (nZoomLevels-1); i++ )
+		// Select Region
+		if ( !(event->modifiers() & Qt::ControlModifier) )
 		{
-			double dist = fabs( zoomLevels[i] - mZoom );
-			if ( dist < dist_min )
-			{
-				i_min = i;
-				dist_min = dist;
-			}
+			mModel->unselectAll();
 		}
 
-		// Zoom out one notch
-		setZoomReal( zoomLevels[i_min+1], false );
+		mSelectRegionVisible = true;
+		mSelectRegion.setX1( xWorld );
+		mSelectRegion.setY1( yWorld );
+		mSelectRegion.setX2( xWorld );
+		mSelectRegion.setY2( yWorld );
+
+		mState = ArrowSelectRegion;
 	}
-
-
-	///
-	/// Zoom To 1:1 Scale
-	///
-	void View::zoom1To1()
+	else
 	{
-		setZoomReal( 1.0, false );
 	}
+}
 
 
-	///
-	/// Zoom To Fit
-	///
-	void View::zoomToFit()
+///
+/// Mouse Button Release Event Handler
+///
+void
+glabels::View::mouseReleaseEvent( QMouseEvent* event )
+{
+	/*
+	 * Translate to label coordinates
+	 */
+	QTransform transform;
+
+	transform.scale( mZoom, mZoom );
+
+	qreal xWorld, yWorld;
+	transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+
+
+	if ( event->button() & Qt::LeftButton )
 	{
-		using std::min;
-		using std::max;
-
-		double x_scale = (72.0/physicalDpiX()) * ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
-		double y_scale = (72.0/physicalDpiY()) * ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
-		double newZoom = min( x_scale, y_scale );
-
-		// Limits
-		newZoom = min( newZoom, zoomLevels[0] );
-		newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
-
-		setZoomReal( newZoom, true );
-	}
-
-
-	///
-	/// Is Zoom at Maximum?
-	///
-	bool View::isZoomMax() const
-	{
-		return ( mZoom >= zoomLevels[0] );
-	}
-
-
-	///
-	/// Is Zoom at Minimum?
-	///
-	bool View::isZoomMin() const
-	{
-		return ( mZoom <= zoomLevels[nZoomLevels-1] );
-	}
-
-
-	///
-	/// Set Zoom to Value
-	///
-	void View::setZoomReal( double zoom, bool zoomToFitFlag )
-	{
-		mZoom          = zoom;
-		mZoomToFitFlag = zoomToFitFlag;
-
-		resetTransform();
-		scale( mZoom*physicalDpiX()/72.0, mZoom*physicalDpiY()/72.0 );
-
-		emit zoomChanged();
-	}
-
-
-	///
-	/// Resize Event Handler
-	///
-	void View::resizeEvent( QResizeEvent *event )
-	{
-		if ( mZoomToFitFlag )
-		{
-			zoomToFit();
-		}
-		else
-		{
-			// Refresh to keep view location relative to window
-			resetTransform();
-			scale( mZoom*physicalDpiX()/72.0, mZoom*physicalDpiY()/72.0 );
-		}
-	}
-
-
-	///
-	/// Mouse Movement Event Handler
-	///
-	void View::mouseMoveEvent( QMouseEvent* event )
-	{
-		QPointF pointer = mapToScene( event->x(), event->y() );
-		emit pointerMoved( pointer.x(), pointer.y() );
-
 		switch (mState)
 		{
 
 		case IdleState:
 			break;
 
-		case ArrowSelectRegionState:
-			mSelectRegion.setX2( pointer.x() );
-			mSelectRegion.setY2( pointer.y() );
+		case ArrowSelectRegion:
+			mSelectRegion.setX2( xWorld );
+			mSelectRegion.setY2( yWorld );
 
-			mSelectRegionItem->setRect( mSelectRegion.rect() );
+			mModel->selectRegion( mSelectRegion );
+
+			mState = IdleState;
 			break;
 
 		default:
@@ -299,139 +488,58 @@ namespace glabels
 
 		}
 	}
-
-
-	///
-	/// Leave Event Handler
-	///
-	void View::leaveEvent( QEvent* event )
+	else
 	{
-		emit pointerExited();
 	}
+}
 
 
-	///
-	/// Mouse Button Press Event Handler
-	///
-	void View::mousePressEvent( QMouseEvent* event )
+///
+/// Leave Event Handler
+///
+void
+glabels::View::leaveEvent( QEvent* event )
+{
+	emit pointerExited();
+}
+
+
+///
+/// Draw Background Layer
+///
+void
+glabels::View::drawBgLayer( QPainter* painter )
+{
+	painter->save();
+
+	QBrush brush( shadowColor );
+	painter->setBrush( QBrush( shadowColor ) );
+	painter->translate( shadowOffsetPixels/mZoom, shadowOffsetPixels/mZoom );
+	painter->drawPath( mModel->frame()->path() );
+
+	painter->restore();
+	
+	painter->save();
+
+	painter->setBrush( QBrush( labelColor ) );
+	painter->drawPath( mModel->frame()->path() );
+
+	painter->restore();
+}
+
+
+///
+/// Draw Grid Layer
+///
+void
+glabels::View::drawGridLayer( QPainter* painter )
+{
+	if ( mGridVisible )
 	{
-		QPointF pointer = mapToScene( event->x(), event->y() );
-
-		if ( event->button() & Qt::LeftButton )
-		{
-			// Select Region
-			if ( !(event->modifiers() & Qt::ControlModifier) )
-			{
-				mModel->unselectAll();
-			}
-
-			mSelectRegion.setX1( pointer.x() );
-			mSelectRegion.setY1( pointer.y() );
-			mSelectRegion.setX2( pointer.x() );
-			mSelectRegion.setY2( pointer.y() );
-
-			mSelectRegionItem->setRect( mSelectRegion.rect() );
-			mSelectRegionLayer->setVisible( true );
-
-			mState = ArrowSelectRegionState;
-		}
-		else
-		{
-		}
-	}
-
-
-	///
-	/// Mouse Button Release Event Handler
-	///
-	void View::mouseReleaseEvent( QMouseEvent* event )
-	{
-		QPointF pointer = mapToScene( event->x(), event->y() );
-
-		if ( event->button() & Qt::LeftButton )
-		{
-			switch (mState)
-			{
-
-			case IdleState:
-				break;
-
-			case ArrowSelectRegionState:
-				mSelectRegion.setX2( pointer.x() );
-				mSelectRegion.setY2( pointer.y() );
-
-				mSelectRegionItem->setRect( 0, 0, 0, 0 );
-				mSelectRegionLayer->setVisible( false );
-
-				mModel->selectRegion( mSelectRegion );
-
-			mState = IdleState;
-			break;
-
-			default:
-				// Should not happen!
-				break;
-
-			}
-		}
-		else
-		{
-		}
-	}
-
-
-	///
-	/// Clear Layer (Item Group) of All Child Items
-	///
-	void View::clearLayer( QGraphicsItemGroup* layer )
-	{
-		foreach( QGraphicsItem* item, layer->childItems() )
-		{
-			layer->removeFromGroup( item );
-		}
-	}
-
-
-	///
-	/// Initialize Label Layer
-	///
-	void View::initLabelLayer()
-	{
-		clearLayer( mLabelLayer );
-
-                QGraphicsPathItem *labelItem  = new QGraphicsPathItem( mModel->frame()->path() );
-
-                QBrush brush( labelColor );
-                labelItem->setBrush( brush );
-
-                QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
-                shadowEffect->setColor( shadowColor );
-                shadowEffect->setOffset( shadowOffsetPixels );
-                shadowEffect->setBlurRadius( shadowRadiusPixels );
-		labelItem->setGraphicsEffect( shadowEffect );
-
-                mLabelLayer->addToGroup( labelItem );
-	}
-
-
-	///
-	/// Initialize Grid Layer
-	///
-	void View::initGridLayer()
-	{
-		clearLayer( mGridLayer );
-
-                QGraphicsPathItem *clipItem  = new QGraphicsPathItem( mModel->frame()->path() );
-		clipItem->setFlag( QGraphicsItem::ItemClipsChildrenToShape );
-
-                QPen pen( gridLineColor );
-		pen.setCosmetic( true );
-                pen.setWidthF( gridLineWidthPixels );
-
 		double w = mModel->w();
 		double h = mModel->h();
-		double x0;
-		double y0;
+
+		double x0, y0;
 		if ( dynamic_cast<const libglabels::FrameRect*>( mModel->frame() ) )
 		{
 			x0 = gridSpacing;
@@ -439,97 +547,38 @@ namespace glabels
 		}
 		else
 		{
-			/* round labels, align grid with center of label. */
+			/* round labels, adjust grid to line up with center of label. */
 			x0 = fmod( w/2, gridSpacing );
 			y0 = fmod( h/2, gridSpacing );
 		}
 
+		painter->save();
+
+		painter->setClipPath( mModel->frame()->path() );
+
+		painter->setPen( QPen( gridLineColor, gridLineWidthPixels/mZoom ) );
+
 		for ( double x = x0; x < w; x += gridSpacing )
 		{
-			QGraphicsLineItem* lineItem = new QGraphicsLineItem( x, 0, x, h, clipItem );
-			lineItem->setPen( pen );
+			painter->drawLine( x, 0, x, h );
 		}
 
 		for ( double y = y0; y < h; y += gridSpacing )
 		{
-			QGraphicsLineItem* lineItem = new QGraphicsLineItem( 0, y, w, y, clipItem );
-			lineItem->setPen( pen );
+			painter->drawLine( 0, y, w, y );
 		}
 
-                mGridLayer->addToGroup( clipItem );
+		painter->restore();
 	}
-
-
-	///
-	/// Initialize Markup Layer
-	///
-	void View::initMarkupLayer()
-	{
-		clearLayer( mMarkupLayer );
-
-                QPen pen( markupLineColor );
-		pen.setCosmetic( true );
-                pen.setWidthF( markupLineWidthPixels );
-
-		const libglabels::Frame* frame = mModel->frame();
-
-		foreach (libglabels::Markup* markup, frame->markups() )
-		{
-			QGraphicsItem* markupItem = markup->createGraphicsItem( frame, pen );
-
-			mMarkupLayer->addToGroup( markupItem );
-		}
-	}
-
-
-	///
-	/// Add Object to Object Layer
-	///
-	void View::addObjectToObjectLayer( LabelModelObject* object )
-	{
-		QGraphicsItem* item = object->createGraphicsItem();
-		mObjectLayer->addToGroup( item );
-	}
-
-
-	///
-	/// Initialize Foreground Layer
-	///
-	void View::initForegroundLayer()
-	{
-		clearLayer( mForegroundLayer );
-
-                QGraphicsPathItem *outlineItem  = new QGraphicsPathItem( mModel->frame()->path() );
-
-                QPen pen( labelOutlineColor );
-		pen.setJoinStyle( Qt::MiterJoin );
-		pen.setCosmetic( true );
-                pen.setWidthF( labelOutlineWidthPixels );
-                outlineItem->setPen( pen );
-
-                mForegroundLayer->addToGroup( outlineItem );
-	}
-
-
-	///
-	/// Initialize Select Region Layer
-	///
-	void View::initSelectRegionLayer()
-	{
-		clearLayer( mSelectRegionLayer );
-
-		mSelectRegionItem = new QGraphicsRectItem();
-
-                QBrush brush( selectRegionFillColor );
-                mSelectRegionItem->setBrush( brush );
-
-                QPen pen( selectRegionOutlineColor );
-		pen.setJoinStyle( Qt::MiterJoin );
-		pen.setCosmetic( true );
-                pen.setWidthF( selectRegionOutlineWidthPixels );
-                mSelectRegionItem->setPen( pen );
-
-                mSelectRegionLayer->addToGroup( mSelectRegionItem );
-	}
-
 }
+
+
+///
+/// Draw Markup Layer
+///
+void
+glabels::View::drawMarkupLayer( QPainter* painter )
+{
+}
+
+
