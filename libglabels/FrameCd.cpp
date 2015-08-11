@@ -29,6 +29,80 @@
 namespace libglabels
 {
 
+	FrameCd::FrameCd( double r1, double r2, double w, double h, double waste, QString id )
+		: mR1(r1), mR2(r2), mW(w), mH(h), mWaste(waste), Frame(id)
+	{
+		//
+		// First, initialize the un-rotated path
+		//
+		{
+			// Outer path (may be clipped in the case business card type CD)
+			double theta1 = acos( w / (2*mR1) ) * 180/M_PI;
+			double theta2 = asin( h / (2*mR1) ) * 180/M_PI;
+
+			mPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
+			mPath.closeSubpath();
+
+			// Inner path (hole)
+			mPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
+
+			// Translate to account for offset with clipped business card CDs
+			mPath.translate( w/2 - mR1, h/2 - mR1 );
+		}
+
+		//
+		// Next, initialize the rotated path
+		//
+		{
+			// Outer path (may be clipped in the case business card type CD)
+			double theta1 = acos( h / (2*mR1) ) * 180/M_PI;
+			double theta2 = asin( w / (2*mR1) ) * 180/M_PI;
+
+			mRotatedPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
+			mRotatedPath.closeSubpath();
+
+			// Inner path (hole)
+			mRotatedPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
+
+			// Translate to account for offset with clipped business card CDs
+			mRotatedPath.translate( h/2 - mR1, w/2 - mR1 );
+		}
+	}
+
+
+	FrameCd::FrameCd( const FrameCd& other )
+		: mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
+		  mPath(other.mPath), Frame(other)
+	{
+	}
+
+	
+	Frame* FrameCd::dup() const
+	{
+		return new FrameCd( *this );
+	}
+	
+
+	double FrameCd::w() const
+	{
+		return (mW == 0) ? 2*mR1 : mW;
+	}
+
+	
+	double FrameCd::h() const
+	{
+		return (mH == 0) ? 2*mR1 : mH;
+	}
+
+
 	const QString FrameCd::sizeDescription( const Units *units ) const
 	{
 		if ( units->id() == "in" )
@@ -66,53 +140,11 @@ namespace libglabels
 	}
 
 
-	void FrameCd::initPath()
+	const QPainterPath& FrameCd::path( bool isRotated ) const
 	{
-		//
-		// First the un-rotated path
-		//
-		{
-			// Outer path (may be clipped in the case business card type CD)
-			double theta1 = acos( w() / (2*mR1) ) * 180/M_PI;
-			double theta2 = asin( h() / (2*mR1) ) * 180/M_PI;
-
-			mPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
-			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
-			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
-			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
-			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
-			mPath.closeSubpath();
-
-			// Inner path (hole)
-			mPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
-
-			// Translate to account for offset with clipped business card CDs
-			mPath.translate( w()/2 - mR1, h()/2 - mR1 );
-		}
-
-		//
-		// Next, the rotated path
-		//
-		{
-			// Outer path (may be clipped in the case business card type CD)
-			double theta1 = acos( h() / (2*mR1) ) * 180/M_PI;
-			double theta2 = asin( w() / (2*mR1) ) * 180/M_PI;
-
-			mRotatedPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
-			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
-			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
-			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
-			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
-			mRotatedPath.closeSubpath();
-
-			// Inner path (hole)
-			mRotatedPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
-
-			// Translate to account for offset with clipped business card CDs
-			mRotatedPath.translate( h()/2 - mR1, w()/2 - mR1 );
-		}
+		return isRotated ? mRotatedPath : mPath;
 	}
-
+	
 
 	QGraphicsItem* FrameCd::createMarginGraphicsItem( double size, const QPen& pen ) const
 	{

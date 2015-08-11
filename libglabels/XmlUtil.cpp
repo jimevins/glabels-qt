@@ -27,7 +27,31 @@
 namespace libglabels
 {
 
-	Units *XmlUtil::mDefaultUnits;
+	Units* XmlUtil::mDefaultUnits;
+
+
+	XmlUtil::XmlUtil()
+	{
+		mDefaultUnits = Units::point();
+	}
+
+
+	void XmlUtil::init()
+	{
+		static XmlUtil* xmlUtil = new XmlUtil();
+	}
+
+
+	const Units* XmlUtil::defaultUnits()
+	{
+		return mDefaultUnits;
+	}
+
+
+	void XmlUtil::setDefaultUnits( Units* defaultUnits )
+	{
+		mDefaultUnits = defaultUnits;
+	}
 
 
 	QString XmlUtil::getStringAttr( const QDomElement& node,
@@ -186,9 +210,9 @@ namespace libglabels
 				return default_value;
 			}
 
-			Units *units = Units::fromId( unitsString );
+			Units* units = Units::fromId( unitsString );
 
-			return value * units->pointsPerUnit();
+			return value*  units->pointsPerUnit();
 		}
 
 		return default_value;

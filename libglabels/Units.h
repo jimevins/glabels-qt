@@ -36,22 +36,14 @@ namespace libglabels
 
 
 	private:
-		Units( const QString &id, const QString &name, double pointsPerUnit )
-			: mId(id), mName(name), mPointsPerUnit(pointsPerUnit)
-		{
-			mUnitsPerPoint = 1.0 / mPointsPerUnit;
-		}
-
+		Units( const QString &id, const QString &name, double pointsPerUnit );
 
 	public:
-		inline QString id() const { return mId; }
+		QString id() const;
+		QString name() const;
 
-		inline QString name() const { return mName; }
-
-		inline double pointsPerUnit() const { return mPointsPerUnit; }
-
-		inline double unitsPerPoint() const { return mUnitsPerPoint; }
-
+		double pointsPerUnit() const;
+		double unitsPerPoint() const;
 
 		static Units *fromId( const QString &id );
 
@@ -77,5 +69,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Units.inl"
+
 
 #endif // libglabels_Units_h

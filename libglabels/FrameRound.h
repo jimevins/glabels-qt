@@ -29,32 +29,24 @@ namespace libglabels
 
 	class FrameRound : public Frame
 	{
+
 	public:
-		FrameRound( double  r,
-			    double  waste,
-			    QString id = "0" )
-			: mR(r), mWaste(waste), Frame(id)
-		{
-			mPath.addEllipse( 0, 0, 2*mR, 2*mR );
-		}
+		FrameRound( double r, double waste, QString id = "0" );
 
-		FrameRound( const FrameRound &other )
-			: mR(other.mR), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
-		{
-		}
+		FrameRound( const FrameRound &other );
 
-		Frame *dup() const { return new FrameRound( *this ); }
+		Frame *dup() const;
 
-		inline double r() const { return mR; }
-		inline double waste() const { return mWaste; }
+		double r() const;
+		double waste() const;
 
-		double w() const { return 2*mR; }
-		double h() const { return 2*mR; }
+		double w() const;
+		double h() const;
 
 		const QString sizeDescription( const Units *units ) const;
 		bool isSimilarTo( Frame *other ) const;
 
-		const QPainterPath &path( bool isRotated ) const { return mPath; }
+		const QPainterPath &path( bool isRotated ) const;
 		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
 
 
@@ -67,5 +59,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "FrameRound.inl"
+
 
 #endif // libglabels_FrameRound_h

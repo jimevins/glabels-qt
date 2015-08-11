@@ -30,19 +30,24 @@ namespace libglabels
 
 	class Category
 	{
-	public:
-		Category( const QString &id, const QString &name ) : mId(id), mName(name)
-		{
-		}
 
-		inline const QString &id() const { return mId; }
-		inline const QString &name() const { return mName; }
+	public:
+		Category( const QString& id, const QString& name );
+
+		const QString& id() const;
+		const QString& name() const;
+
 
 	private:
 		QString mId;
 		QString mName;
+
 	};
 
 }
+
+
+#include "Category.inl"
+
 
 #endif // libglabels_Category_h

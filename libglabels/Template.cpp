@@ -28,10 +28,10 @@
 namespace libglabels
 {
 
-	Template::Template( const QString &brand,
-			    const QString &part,
-			    const QString &description,
-			    const QString &paperId,
+	Template::Template( const QString& brand,
+			    const QString& part,
+			    const QString& description,
+			    const QString& paperId,
 			    double         pageWidth = 0,
 			    double         pageHeight = 0 )
 		: mBrand(brand),
@@ -48,14 +48,14 @@ namespace libglabels
 
 		if ( Db::isPaperIdKnown( paperId ) )
 		{
-			const Paper *paper = Db::lookupPaperFromId( paperId );
+			const Paper* paper = Db::lookupPaperFromId( paperId );
 			mIsSizeIso = paper->isSizeIso();
 			mIsSizeUs  = paper->isSizeUs();
 		}
 	}
 
 
-	Template::Template( const Template &other )
+	Template::Template( const Template& other )
 	{
 		mBrand       = other.mBrand;
 		mPart        = other.mPart;
@@ -69,7 +69,7 @@ namespace libglabels
 		mName        = other.mName;
 		mProductUrl  = other.mProductUrl;
 
-		foreach ( Frame *frame, other.mFrames )
+		foreach ( Frame* frame, other.mFrames )
 		{
 			addFrame( frame );
 		}
@@ -81,8 +81,14 @@ namespace libglabels
 	}
 
 
+	Template* Template::dup() const
+	{
+		return new Template( *this );
+	}
+
+
 	// Generic full page template
-	Template *Template::fullPage( const QString &paperId )
+	Template* Template::fullPage( const QString& paperId )
 	{
 		// TODO
 		return NULL;
@@ -90,14 +96,14 @@ namespace libglabels
 
 
 	// From equivalent part number
-	Template *Template::fromEquiv( const QString &brand,
-				       const QString &part,
-				       const QString &equivPart )
+	Template* Template::fromEquiv( const QString& brand,
+				       const QString& part,
+				       const QString& equivPart )
 	{
-		const Template *other = Db::lookupTemplateFromBrandPart( brand, equivPart );
+		const Template* other = Db::lookupTemplateFromBrandPart( brand, equivPart );
 		if ( other != NULL )
 		{
-			Template *tmplate = other->dup();
+			Template* tmplate = other->dup();
 
 			tmplate->mPart      = part;
 			tmplate->mEquivPart = equivPart;
@@ -117,13 +123,13 @@ namespace libglabels
 	}
 
 
-	void Template::addCategory( const QString &categoryId )
+	void Template::addCategory( const QString& categoryId )
 	{
 		mCategoryIds << categoryId;
 	}
 
 
-	void Template::addFrame( Frame *frame )
+	void Template::addFrame( Frame* frame )
 	{
 		mFrames << frame;
 	}
@@ -135,13 +141,13 @@ namespace libglabels
 	}
 
 
-	bool Template::operator==( const Template &other ) const
+	bool Template::operator==( const Template& other ) const
 	{
 		return (mBrand == other.mBrand) && (mPart == other.mPart);
 	}
 
 
-	bool Template::hasCategory( const QString &categoryId ) const
+	bool Template::hasCategory( const QString& categoryId ) const
 	{
 		foreach ( QString testCategoryId, mCategoryIds )
 		{
@@ -155,7 +161,7 @@ namespace libglabels
 	}
 
 
-	bool Template::isSimilarTo( const Template *other ) const
+	bool Template::isSimilarTo( const Template* other ) const
 	{
 		// Does page size match?
 		if ( (mPaperId    != other->mPaperId)    ||
@@ -166,18 +172,18 @@ namespace libglabels
 		}
 
 		// Are frames similar
-		Frame *frame1 = mFrames.first();
-		Frame *frame2 = other->mFrames.first();
+		Frame* frame1 = mFrames.first();
+		Frame* frame2 = other->mFrames.first();
 		if ( !frame1->isSimilarTo( frame2 ) )
 		{
 			return false;
 		}
 
 		// Are they layed out similarly?
-		foreach ( Layout *layout1, frame1->layouts() )
+		foreach ( Layout* layout1, frame1->layouts() )
 		{
 			bool matchFound = false;
-			foreach ( Layout *layout2, frame2->layouts() )
+			foreach ( Layout* layout2, frame2->layouts() )
 			{
 				if ( layout1->isSimilarTo(layout2) )
 				{

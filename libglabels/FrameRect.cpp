@@ -29,6 +29,39 @@
 namespace libglabels
 {
 
+	FrameRect::FrameRect( double w, double h, double r, double xWaste, double yWaste, QString id )
+		: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
+	{
+		mPath.addRoundedRect( 0, 0, mW, mH, mR, mR );
+		mRotatedPath.addRoundedRect( 0, 0, mH, mW, mR, mR );
+	}
+
+	
+	FrameRect::FrameRect( const FrameRect &other )
+		: mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
+		  mYWaste(other.mYWaste), mPath(other.mPath), Frame(other)
+	{
+	}
+
+	
+	Frame* FrameRect::dup() const
+	{
+		return new FrameRect( *this );
+	}
+
+
+	double FrameRect::w() const
+	{
+		return mW;
+	}
+
+	
+	double FrameRect::h() const
+	{
+		return mH;
+	}
+
+
 	const QString FrameRect::sizeDescription( const Units *units ) const
 	{
 		if ( units->id() == "in" )
@@ -65,6 +98,12 @@ namespace libglabels
 	}
 
 
+	const QPainterPath& FrameRect::path( bool isRotated ) const
+	{
+		return isRotated ? mRotatedPath : mPath;
+	}
+
+
 	QGraphicsItem* FrameRect::createMarginGraphicsItem( double size, const QPen& pen ) const
 	{
 		double w = mW - 2*size;
@@ -79,6 +118,7 @@ namespace libglabels
 
 		return item;
 	}
+
 
 }
 

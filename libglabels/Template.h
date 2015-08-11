@@ -46,58 +46,57 @@ namespace libglabels
 
 	public:
 
-		Template( const QString &brand,
-			  const QString &part,
-			  const QString &description,
-			  const QString &paperId,
+		Template( const QString& brand,
+			  const QString& part,
+			  const QString& description,
+			  const QString& paperId,
 			  double         pageWidth,
 			  double         pageHeight );
 
-		Template( const Template &other );
+		Template( const Template& other );
 
-		inline Template *dup() const { return new Template( *this ); }
-
+		Template* dup() const;
 
 		// Generic full page template
-		static Template *fullPage( const QString &paperId );
+		static Template* fullPage( const QString& paperId );
 
 		// From equivalent part number
-		static Template *fromEquiv( const QString &brand,
-					    const QString &part,
-					    const QString &equivPart );
+		static Template* fromEquiv( const QString& brand,
+					    const QString& part,
+					    const QString& equivPart );
 
 
-		inline const QString &brand() const { return mBrand; }
-		inline const QString &part() const { return mPart; }
-		inline const QString &description() const { return mDescription; }
+		const QString& brand() const;
+		const QString& part() const;
+		const QString& description() const;
 
-		inline const QString &paperId() const { return mPaperId; }
-		inline double pageWidth() const { return mPageWidth; }
-		inline double pageHeight() const { return mPageHeight; }
-		inline bool isSizeIso() const { return mIsSizeIso; }
-		inline bool isSizeUs() const { return mIsSizeUs; }
-		inline bool isSizeOther() const { return !mIsSizeIso && !mIsSizeUs; }
+		const QString& paperId() const;
+		double pageWidth() const;
+		double pageHeight() const;
+		bool isSizeIso() const;
+		bool isSizeUs() const;
+		bool isSizeOther() const;
 
-		inline const QString &equivPart() const { return mEquivPart; }
-		inline void setEquivPart( const QString &value ) { mEquivPart = value; }
+		const QString& equivPart() const;
+		void setEquivPart( const QString& value );
 
-		inline const QString &productUrl() const { return mProductUrl; }
-		inline void setProductUrl( const QString &value ) { mProductUrl = value; }
+		const QString& productUrl() const;
+		void setProductUrl( const QString& value );
 
-		inline const QString &name() const { return mName; }
+		const QString& name() const;
 
-		void addCategory( const QString &categoryId );
-		void addFrame( Frame *frame );
+		void addCategory( const QString& categoryId );
+		void addFrame( Frame* frame );
 
 		void initPreview();
-		inline const MiniPreviewPixmap &preview() const { return mPreview; }
+		const MiniPreviewPixmap& preview() const;
 
-		inline const QList<Frame*> &frames() const { return mFrames; }
+		const QList<Frame*>& frames() const;
 
-		bool operator==( const Template &other ) const;
+		bool operator==( const Template& other ) const;
 
-		bool hasCategory( const QString &categoryId ) const;
-		bool isSimilarTo( const Template *other ) const;
+		bool hasCategory( const QString& categoryId ) const;
+		bool isSimilarTo( const Template* other ) const;
 
 
 	private:
@@ -123,5 +122,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Template.inl"
+
 
 #endif // libglabels_Template_h

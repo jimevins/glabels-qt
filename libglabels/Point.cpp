@@ -24,6 +24,16 @@
 namespace libglabels
 {
 
+	Point::Point() : mX(0), mY(0)
+	{
+	}
+
+
+	Point::Point( double x, double y ) : mX(x), mY(y)
+	{
+	}
+
+
 	bool Point::operator<( const Point &other ) const
 	{
 		if ( mY < other.mY )

@@ -19,3 +19,13 @@
  */
 
 #include "Vendor.h"
+
+
+namespace libglabels
+{
+
+	Vendor::Vendor( const QString &name, const QString &url ) : mName(name), mUrl(url)
+	{
+	}
+
+}

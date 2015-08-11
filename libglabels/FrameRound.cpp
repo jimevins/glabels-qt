@@ -29,6 +29,37 @@
 namespace libglabels
 {
 
+	FrameRound::FrameRound( double r, double waste, QString id )
+		: mR(r), mWaste(waste), Frame(id)
+	{
+		mPath.addEllipse( 0, 0, 2*mR, 2*mR );
+	}
+	
+
+	FrameRound::FrameRound( const FrameRound& other )
+		: mR(other.mR), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
+	{
+	}
+	
+
+	Frame* FrameRound::dup() const
+	{
+		return new FrameRound( *this );
+	}
+
+	
+	double FrameRound::w() const
+	{
+		return 2*mR;
+	}
+
+	
+	double FrameRound::h() const
+	{
+		return 2*mR;
+	}
+
+	
 	const QString FrameRound::sizeDescription( const Units *units ) const
 	{
 		if ( units->id() == "in" )
@@ -60,6 +91,12 @@ namespace libglabels
 			}
 		}
 		return false;
+	}
+
+
+	const QPainterPath& FrameRound::path( bool isRotated ) const
+	{
+		return mPath;
 	}
 
 

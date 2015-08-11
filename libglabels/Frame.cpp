@@ -26,7 +26,13 @@
 namespace libglabels
 {
 
-	Frame::Frame( const Frame &other )
+	Frame::Frame( const QString& id )
+		: mId(id), mNLabels(0), mLayoutDescription("")
+	{
+	}
+
+
+	Frame::Frame( const Frame& other )
 	{
 		mId = other.mId;
 		mNLabels = 0;

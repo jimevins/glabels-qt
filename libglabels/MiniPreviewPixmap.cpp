@@ -38,6 +38,18 @@ namespace
 namespace libglabels
 {
 
+	MiniPreviewPixmap::MiniPreviewPixmap()
+	{
+	}
+
+
+	MiniPreviewPixmap::MiniPreviewPixmap( const Template *tmplate, int width, int height )
+		: QPixmap( width, height )
+	{
+		draw( tmplate, width, height );
+	}
+
+
 	void MiniPreviewPixmap::draw( const Template *tmplate, int width, int height )
 	{
 		fill( Qt::transparent );

@@ -19,3 +19,14 @@
  */
 
 #include "Paper.h"
+
+
+namespace libglabels
+{
+	
+	Paper::Paper( const QString& id, const QString& name, double width, double height, const QString& pwgSize )
+		: mId(id), mName(name), mWidth(width), mHeight(height), mPwgSize(pwgSize)
+	{
+	}
+
+}

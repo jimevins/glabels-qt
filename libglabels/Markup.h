@@ -33,7 +33,7 @@ namespace libglabels
 	class Markup
 	{
 	public:
-		virtual Markup *dup() const = 0;
+		virtual Markup* dup() const = 0;
 		virtual QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const = 0;
 	};
 
@@ -41,18 +41,13 @@ namespace libglabels
 	class MarkupMargin : public Markup
 	{
 	public:
-		MarkupMargin( double size ) : mSize(size)
-		{
-		}
+		MarkupMargin( double size );
 
-		inline double size() const { return mSize; }
+		double size() const;
 
-		Markup *dup() const { return new MarkupMargin( mSize ); }
+		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
-		{
-			return frame->createMarginGraphicsItem( mSize, pen );
-		}
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mSize;
@@ -62,24 +57,16 @@ namespace libglabels
 	class MarkupLine : public Markup
 	{
 	public:
-		MarkupLine( double x1, double y1, double x2, double y2 ) : mX1(x1), mY1(y1), mX2(x2), mY2(y2)
-		{
-		}
+		MarkupLine( double x1, double y1, double x2, double y2 );
 
-		inline double x1() const { return mX1; }
-		inline double y1() const { return mY1; }
-		inline double x2() const { return mX2; }
-		inline double y2() const { return mY2; }
+		double x1() const;
+		double y1() const;
+		double x2() const;
+		double y2() const;
 
-		Markup *dup() const { return new MarkupLine( mX1, mY1, mX2, mY2 ); }
+		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
-		{
-			QGraphicsLineItem* item =  new QGraphicsLineItem( mX1, mY1, mX2, mY2 );
-			item->setPen( pen );
-
-			return item;
-		}
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mX1;
@@ -92,29 +79,17 @@ namespace libglabels
 	class MarkupRect : public Markup
 	{
 	public:
-		MarkupRect( double x1, double y1, double w, double h, double r )
-			: mX1(x1), mY1(y1), mW(w), mH(h), mR(r)
-		{
-		}
+		MarkupRect( double x1, double y1, double w, double h, double r );
 
-		inline double x1() const { return mX1; }
-		inline double y1() const { return mY1; }
-		inline double w() const { return mW; }
-		inline double h() const { return mH; }
-		inline double r() const { return mR; }
+		double x1() const;
+		double y1() const;
+		double w() const;
+		double h() const;
+		double r() const;
 
-		Markup *dup() const { return new MarkupRect( mX1, mY1, mW, mH, mR ); }
+		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
-		{
-			QPainterPath path;
-			path.addRoundedRect( mX1, mY1, mW, mH, mR, mR );
-
-			QGraphicsPathItem* item = new QGraphicsPathItem( path );
-			item->setPen( pen );
-
-			return item;
-		}
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mX1;
@@ -128,25 +103,16 @@ namespace libglabels
 	class MarkupEllipse : public Markup
 	{
 	public:
-		MarkupEllipse( double x1, double y1, double w, double h )
-			: mX1(x1), mY1(y1), mW(w), mH(h)
-		{
-		}
+		MarkupEllipse( double x1, double y1, double w, double h );
 
-		inline double x1() const { return mX1; }
-		inline double y1() const { return mY1; }
-		inline double w() const { return mW; }
-		inline double h() const { return mH; }
+		double x1() const;
+		double y1() const;
+		double w() const;
+		double h() const;
 
-		Markup *dup() const { return new MarkupEllipse( mX1, mY1, mW, mH ); }
+		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
-		{
-			QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mX1, mY1, mW, mH );
-			item->setPen( pen );
-
-			return item;
-		}
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mX1;
@@ -159,24 +125,15 @@ namespace libglabels
 	class MarkupCircle : public Markup
 	{
 	public:
-		MarkupCircle( double x0, double y0, double r )
-			: mX0(x0), mY0(y0), mR(r)
-		{
-		}
+		MarkupCircle( double x0, double y0, double r );
 
-		inline double x0() const { return mX0; }
-		inline double y0() const { return mY0; }
-		inline double r() const { return mR; }
+		double x0() const;
+		double y0() const;
+		double r() const;
 
-		Markup *dup() const { return new MarkupCircle( mX0, mY0, mR ); }
+		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const
-		{
-			QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mX0-mR, mY0-mR, 2*mR, 2*mR );
-			item->setPen( pen );
-
-			return item;
-		}
+		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mX0;
@@ -186,5 +143,9 @@ namespace libglabels
 	
 
 }
+
+
+#include "Markup.inl"
+
 
 #endif // libglabels_Markup_h

@@ -44,22 +44,22 @@ namespace libglabels
 		Db();
 
 	public:
-		static void init() { instance(); }
-		static Db *instance() { static Db *db = new Db(); return db; }
+		static void init();
+		static Db* instance();
 
 
-		static const QList<Paper*>    &papers() { return mPapers; }
-		static const QStringList      &paperIds() { return mPaperIds; }
-		static const QStringList      &paperNames() { return mPaperNames; }
+		static const QList<Paper*>& papers();
+		static const QStringList& paperIds();
+		static const QStringList& paperNames();
 
-		static const QList<Category*> &categories() { return mCategories; }
-		static const QStringList      &categoryIds() { return mCategoryIds; }
-		static const QStringList      &categoryNames() { return mCategoryNames; }
+		static const QList<Category*>& categories();
+		static const QStringList& categoryIds();
+		static const QStringList& categoryNames();
 
-		static const QList<Vendor*>   &vendors() { return mVendors; }
-		static const QStringList      &vendorNames() { return mVendorNames; }
+		static const QList<Vendor*>& vendors();
+		static const QStringList& vendorNames();
 
-		static const QList<Template*> &templates() { return mTemplates; }
+		static const QList<Template*>& templates();
 
 
 		static void registerPaper( Paper *paper );
@@ -84,13 +84,15 @@ namespace libglabels
 
 		static void registerTemplate( Template *tmplate );
 		static const Template *lookupTemplateFromName( const QString &name );
-		static const Template *lookupTemplateFromBrandPart( const QString &brand, const QString &part );
+		static const Template *lookupTemplateFromBrandPart( const QString &brand,
+		                                                    const QString &part );
 		static bool isTemplateKnown( const QString &brand, const QString &part );
 		static QStringList getNameListOfSimilarTemplates( const QString &name );
 
 		static void registerUserTemplate( Template *tmplate );
 		static void deleteUserTemplateByName( const QString &name );
-		static void deleteUserTemplateByBrandPart( const QString &brand, const QString &part );
+		static void deleteUserTemplateByBrandPart( const QString &brand,
+		                                           const QString &part );
 
 		static void printKnownPapers();
 		static void printKnownCategories();
@@ -133,5 +135,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Db.inl"
+
 
 #endif // libglabels_Db_h

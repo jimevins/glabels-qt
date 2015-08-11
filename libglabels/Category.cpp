@@ -19,3 +19,16 @@
  */
 
 #include "Category.h"
+
+
+namespace libglabels
+{
+
+	Category::Category( const QString &id, const QString &name )
+		: mId(id), mName(name)
+	{
+	}
+
+}
+
+

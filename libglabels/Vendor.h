@@ -31,13 +31,10 @@ namespace libglabels
 	class Vendor
 	{
 	public:
-		Vendor( const QString &name, const QString &url ) : mName(name), mUrl(url)
-		{
-		}
+		Vendor( const QString &name, const QString &url );
 
-		inline const QString &name() const { return mName; }
-
-		inline const QString &url() const { return mUrl; }
+		const QString& name() const;
+		const QString& url() const;
 
 	private:
 		QString mName;
@@ -45,5 +42,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Vendor.inl"
+
 
 #endif // libglabels_Vendor_h

@@ -30,42 +30,27 @@ namespace libglabels
 	class FrameCd : public Frame
 	{
 	public:
-		FrameCd( double r1,
-			 double r2,
-			 double  w,
-			 double  h,
-			 double  waste,
-			 QString id = "0" )
-			: mR1(r1), mR2(r2), mW(w), mH(h), mWaste(waste), Frame(id)
-		{
-			initPath();
-		}
+		FrameCd( double r1, double r2, double w, double h, double waste, QString id = "0" );
 
-		FrameCd( const FrameCd &other )
-			: mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
-			  mPath(other.mPath), Frame(other)
-		{
-		}
+		FrameCd( const FrameCd &other );
 
-		Frame *dup() const { return new FrameCd( *this ); }
+		Frame *dup() const;
 
-		inline double r1() const { return mR1; }
-		inline double r2() const { return mR2; }
-		inline double waste() const { return mWaste; }
+		double r1() const;
+		double r2() const;
+		double waste() const;
 
-		double w() const { return (mW == 0) ? 2*mR1 : mW; }
-		double h() const { return (mH == 0) ? 2*mR1 : mH; }
+		double w() const;
+		double h() const;
 
 		const QString sizeDescription( const Units *units ) const;
 		bool isSimilarTo( Frame *other ) const;
 
-		const QPainterPath &path( bool isRotated ) const { return isRotated ? mRotatedPath : mPath; }
+		const QPainterPath &path( bool isRotated ) const;
 		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
 
 
 	private:
-		void initPath();
-
 		double mR1;
 		double mR2;
 		double mW;
@@ -78,5 +63,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "FrameCd.inl"
+
 
 #endif // libglabels_FrameCd_h

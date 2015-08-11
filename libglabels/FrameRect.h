@@ -35,32 +35,24 @@ namespace libglabels
 			   double  r,
 			   double  xWaste,
 			   double  yWaste,
-			   QString id = "0" )
-			: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
-		{
-			mPath.addRoundedRect( 0, 0, mW, mH, mR, mR );
-			mRotatedPath.addRoundedRect( 0, 0, mH, mW, mR, mR );
-		}
+		           QString id = "0" );
 
-		FrameRect( const FrameRect &other )
-			: mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste), mYWaste(other.mYWaste),
-			  mPath(other.mPath), Frame(other)
-		{
-		}
+		FrameRect( const FrameRect& other );
 
-		Frame *dup() const { return new FrameRect( *this ); }
+		Frame* dup() const;
 
-		inline double r() const { return mR; }
-		inline double xWaste() const { return mXWaste; }
-		inline double yWaste() const { return mYWaste; }
+		double r() const;
+		double xWaste() const;
+		double yWaste() const;
 
-		double w() const { return mW; }
-		double h() const { return mH; }
+		double w() const;
+		double h() const;
 
 		const QString sizeDescription( const Units *units ) const;
+
 		bool isSimilarTo( Frame *other ) const;
 
-		const QPainterPath &path( bool isRotated ) const { return isRotated ? mRotatedPath : mPath; }
+		const QPainterPath& path( bool isRotated ) const;
 		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
 
 
@@ -77,5 +69,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "FrameRect.inl"
+
 
 #endif // libglabels_FrameRect_h

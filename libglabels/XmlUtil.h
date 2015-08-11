@@ -34,24 +34,15 @@ namespace libglabels
 	class XmlUtil
 	{
 	private:
-		XmlUtil()
-		{
-			mDefaultUnits = Units::point();
-		}
+		XmlUtil();
 
+		
 	public:
 
-		static void init()
-		{
-			static XmlUtil *xmlUtil = new XmlUtil();
-		}
+		static void init();
 
-		static const Units *defaultUnits() { return mDefaultUnits; }
-
-		static void setDefaultUnits( Units *defaultUnits )
-		{
-			mDefaultUnits = defaultUnits;
-		}
+		static const Units* defaultUnits();
+		static void setDefaultUnits( Units* defaultUnits );
 
 		static QString  getStringAttr( const QDomElement& node,
 		                               const QString&     name,
@@ -106,7 +97,7 @@ namespace libglabels
 		                               double value );
 
 	private:
-		static Units *mDefaultUnits;
+		static Units* mDefaultUnits;
 
 	};
 

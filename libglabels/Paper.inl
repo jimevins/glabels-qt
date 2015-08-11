@@ -1,4 +1,4 @@
-/*  FrameEllipse.h
+/*  Paper.inl
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,51 +18,19 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_FrameEllipse_h
-#define libglabels_FrameEllipse_h
-
-#include "Frame.h"
-
 
 namespace libglabels
 {
 
-	class FrameEllipse : public Frame
-	{
-		
-	public:
-		FrameEllipse( double w, double h, double waste, QString id = "0" );
+	inline const QString& Paper::id() const { return mId; }
+	inline const QString& Paper::name() const { return mName; }
 
-		FrameEllipse( const FrameEllipse& other );
+	inline double Paper::width() const { return mWidth; }
+	inline double Paper::height() const { return mHeight; }
 
-		Frame* dup() const;
+	inline QString Paper::pwgSize() const { return mPwgSize; }
 
-		double waste() const;
-
-		double w() const;
-		double h() const;
-
-		const QString sizeDescription( const Units* units ) const;
-		bool isSimilarTo( Frame* other ) const;
-
-		const QPainterPath& path( bool isRotated ) const;
-		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
-
-
-	private:
-		double mW;
-		double mH;
-		double mWaste;
-
-		QPainterPath mPath;
-		QPainterPath mRotatedPath;
-
-	};
+	inline bool Paper::isSizeIso() const { return mPwgSize.startsWith( "iso_" ); }
+	inline bool Paper::isSizeUs() const { return mPwgSize.startsWith( "na_" ); }
 
 }
-
-
-#include "FrameEllipse.inl"
-
-
-#endif // libglabels_FrameEllipse_h

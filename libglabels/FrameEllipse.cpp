@@ -29,6 +29,37 @@
 namespace libglabels
 {
 
+	FrameEllipse::FrameEllipse( double w, double h, double waste, QString id )
+		: mW(w), mH(h), mWaste(waste), Frame(id)
+	{
+		mPath.addEllipse( 0, 0, mW, mH );
+		mRotatedPath.addEllipse( 0, 0, mH, mW );
+	}
+
+	FrameEllipse::FrameEllipse( const FrameEllipse& other )
+		: mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
+	{
+	}
+
+	
+	Frame* FrameEllipse::dup() const
+	{
+		return new FrameEllipse( *this );
+	}
+
+
+	double FrameEllipse::w() const
+	{
+		return mW;
+	}
+
+	
+	double FrameEllipse::h() const
+	{
+		return mH;
+	}
+	
+
 	const QString FrameEllipse::sizeDescription( const Units *units ) const
 	{
 		if ( units->id() == "in" )
@@ -51,9 +82,9 @@ namespace libglabels
 	}
 
 
-	bool FrameEllipse::isSimilarTo( Frame *other ) const
+	bool FrameEllipse::isSimilarTo( Frame* other ) const
 	{
-		if ( FrameEllipse *otherEllipse = dynamic_cast<FrameEllipse*>(other) )
+		if ( FrameEllipse* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
 		{
 			if ( (fabs( mW - otherEllipse->mW ) <= Constants::EPSILON) &&
 			     (fabs( mH - otherEllipse->mH ) <= Constants::EPSILON) )
@@ -65,6 +96,12 @@ namespace libglabels
 	}
 
 
+	const QPainterPath& FrameEllipse::path( bool isRotated ) const
+	{
+		return isRotated ? mRotatedPath : mPath;
+	}
+
+	
 	QGraphicsItem* FrameEllipse::createMarginGraphicsItem( double size, const QPen& pen ) const
 	{
 		double w = mW - 2*size;

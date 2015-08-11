@@ -31,29 +31,22 @@ namespace libglabels
 	class Paper
 	{
 	public:
-		Paper( const QString &id,
-		       const QString &name,
-		       double         width,
-		       double         height,
-		       const QString &pwgSize ) : mId(id), mName(name), mWidth(width), mHeight(height), mPwgSize(pwgSize)
-		{
-		}
+		Paper( const QString& id, const QString& name, double width, double height, const QString& pwgSize );
 
-		inline const QString &id() const { return mId; }
-
-		inline const QString &name() const { return mName; }
+		inline const QString& id() const;
+		inline const QString& name() const;
 
 		/* Width (in points) */
-		inline double width() const { return mWidth; }
+		inline double width() const;
 
 		/* Height (in points) */
-		inline double height() const { return mHeight; }
+		inline double height() const;
 
 		/* PWG 5101.1-2002 size name */
-		inline QString pwgSize() const { return mPwgSize; }
+		inline QString pwgSize() const;
 
-		inline bool isSizeIso() const { return mPwgSize.startsWith( "iso_" ); }
-		inline bool isSizeUs() const { return mPwgSize.startsWith( "na_" ); }
+		inline bool isSizeIso() const;
+		inline bool isSizeUs() const;
 
 	private:
 		QString mId;
@@ -64,5 +57,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Paper.inl"
+
 
 #endif // libglabels_Paper_h

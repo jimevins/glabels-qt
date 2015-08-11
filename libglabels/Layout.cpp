@@ -28,6 +28,19 @@
 namespace libglabels
 {
 
+	Layout::Layout( int nx, int ny, double x0, double y0, double dx, double dy )
+		: mNx(nx), mNy(ny), mX0(x0), mY0(y0), mDx(dx), mDy(dy)
+	{
+	}
+
+	
+	Layout::Layout( const Layout& other )
+		: mNx(other.mNx), mNy(other.mNy), mX0(other.mX0), mY0(other.mY0),
+		  mDx(other.mDx), mDy(other.mDy)
+	{
+	}
+
+
 	bool Layout::isSimilarTo( const Layout *other )
 	{
 		return ( (mNx == other->mNx)                           &&
@@ -36,6 +49,13 @@ namespace libglabels
 			 (fabs(mY0 - other->mY0) < Constants::EPSILON) &&
 			 (fabs(mDx - other->mDx) < Constants::EPSILON) &&
 			 (fabs(mDy - other->mDy) < Constants::EPSILON) );
+	}
+
+
+	Layout* Layout::dup() const
+	{
+		Layout *other = new Layout( *this );
+		return other;
 	}
 
 }

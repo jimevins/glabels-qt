@@ -27,33 +27,24 @@ namespace libglabels
 
 	class Layout
 	{
+		
 	public:
-		Layout( int nx, int ny, double x0, double y0, double dx, double dy )
-			: mNx(nx), mNy(ny), mX0(x0), mY0(y0), mDx(dx), mDy(dy)
-		{
-		}
+		Layout( int nx, int ny, double x0, double y0, double dx, double dy );
 
-		Layout( const Layout &other )
-			: mNx(other.mNx), mNy(other.mNy), mX0(other.mX0), mY0(other.mY0), mDx(other.mDx), mDy(other.mDy)
-		{
-		}
+		Layout( const Layout &other );
 
-		inline int    nx() const { return mNx; }
-		inline int    ny() const { return mNy; }
+		int nx() const;
+		int ny() const;
 
-		inline double x0() const { return mX0; }
-		inline double y0() const { return mY0; }
+		double x0() const;
+		double y0() const;
 
-		inline double dx() const { return mDx; }
-		inline double dy() const { return mDy; }
+		double dx() const;
+		double dy() const;
 
 		bool isSimilarTo( const Layout *other );
 
-		inline Layout *dup() const
-		{
-			Layout *other = new Layout( *this );
-			return other;
-		}
+		Layout* dup() const;
 
 
 	private:
@@ -63,8 +54,13 @@ namespace libglabels
 		double  mY0;
 		double  mDx;
 		double  mDy;
+		
 	};
 
 }
+
+
+#include "Layout.inl"
+
 
 #endif // libglabels_Layout_h

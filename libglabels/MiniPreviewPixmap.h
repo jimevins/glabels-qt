@@ -34,22 +34,19 @@ namespace libglabels
 
 	class MiniPreviewPixmap : public QPixmap
 	{
+		
 	public:
-		MiniPreviewPixmap()
-		{
-		}
+		MiniPreviewPixmap();
 
-		MiniPreviewPixmap( const Template *tmplate, int width, int height )
-			: QPixmap( width, height )
-		{
-			draw( tmplate, width, height );
-		}
+		MiniPreviewPixmap( const Template *tmplate, int width, int height );
 
+		
 	private:
 		void draw( const Template *tmplate, int width, int height );
 		void drawPaper( QPainter &painter, const Template *tmplate, double scale );
 		void drawLabelOutlines( QPainter &painter, const Template *tmplate, double scale );
 		void drawLabelOutline( QPainter &painter, const Frame *frame, double x0, double y0 );
+		
 	};
 
 }

@@ -1,4 +1,4 @@
-/*  FrameEllipse.h
+/*  FrameRect.inl
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,51 +18,25 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_FrameEllipse_h
-#define libglabels_FrameEllipse_h
-
-#include "Frame.h"
-
 
 namespace libglabels
 {
 
-	class FrameEllipse : public Frame
+	inline double FrameRect::r() const
 	{
+		return mR;
+	}
+
 		
-	public:
-		FrameEllipse( double w, double h, double waste, QString id = "0" );
+	inline double FrameRect::xWaste() const
+	{
+		return mXWaste;
+	}
 
-		FrameEllipse( const FrameEllipse& other );
-
-		Frame* dup() const;
-
-		double waste() const;
-
-		double w() const;
-		double h() const;
-
-		const QString sizeDescription( const Units* units ) const;
-		bool isSimilarTo( Frame* other ) const;
-
-		const QPainterPath& path( bool isRotated ) const;
-		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
-
-
-	private:
-		double mW;
-		double mH;
-		double mWaste;
-
-		QPainterPath mPath;
-		QPainterPath mRotatedPath;
-
-	};
+		
+	inline double FrameRect::yWaste() const
+	{
+		return mYWaste;
+	}
 
 }
-
-
-#include "FrameEllipse.inl"
-
-
-#endif // libglabels_FrameEllipse_h

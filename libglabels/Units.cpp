@@ -36,6 +36,13 @@ namespace
 namespace libglabels
 {
 
+	Units::Units( const QString &id, const QString &name, double pointsPerUnit )
+		: mId(id), mName(name), mPointsPerUnit(pointsPerUnit)
+	{
+		mUnitsPerPoint = 1.0 / mPointsPerUnit;
+	}
+
+
 	Units *Units::fromId( const QString &id )
 	{
 		if ( id == "pt" )

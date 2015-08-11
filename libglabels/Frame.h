@@ -43,34 +43,32 @@ namespace libglabels
 		Q_DECLARE_TR_FUNCTIONS(Frame)
 
 	protected:
-		Frame( const QString &id = "0" ) : mId(id), mNLabels(0), mLayoutDescription("")
-		{
-		}
-
-		Frame( const Frame &other );
+		Frame( const QString& id = "0" );
+		Frame( const Frame& other );
 
 	public:
-		virtual Frame *dup() const = 0;
+		virtual Frame* dup() const = 0;
 
-		inline const QString &id() const { return mId; }
-		inline int nLabels() const { return mNLabels; }
-		inline const QString &layoutDescription() const { return mLayoutDescription; }
-		inline const QList<Layout*> &layouts() const { return mLayouts; }
-		inline const QList<Markup*> &markups() const { return mMarkups; }
+		const QString& id() const;
+		int nLabels() const;
+		const QString& layoutDescription() const;
+		const QList<Layout*>& layouts() const;
+		const QList<Markup*>& markups() const;
 
 		QVector<Point> getOrigins() const;
 
-		void addLayout( Layout *layout );
-		void addMarkup( Markup *markup );
+		void addLayout( Layout* layout );
+		void addMarkup( Markup* markup );
 
 		virtual double w() const = 0;
 		virtual double h() const = 0;
 
-		virtual const QString sizeDescription( const Units *units ) const = 0;
-		virtual bool isSimilarTo( Frame *other ) const = 0;
+		virtual const QString sizeDescription( const Units* units ) const = 0;
+		virtual bool isSimilarTo( Frame* other ) const = 0;
 
 		virtual const QPainterPath &path( bool isRotated = false ) const = 0;
-		virtual QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const = 0;
+		virtual QGraphicsItem* createMarginGraphicsItem( double size,
+		                                                 const QPen& pen ) const = 0;
 
 
 	private:
@@ -83,5 +81,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Frame.inl"
+
 
 #endif // libglabels_Frame_h

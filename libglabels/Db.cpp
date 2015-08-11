@@ -67,6 +67,19 @@ namespace libglabels
 	}
 
 
+	void Db::init()
+	{
+		instance();
+	}
+
+	
+	Db* Db::instance()
+	{
+		static Db* db = new Db();
+		return db;
+	}
+
+
 	void Db::registerPaper( Paper *paper )
 	{
 		if ( !isPaperIdKnown( paper->id() ) )

@@ -28,16 +28,12 @@ namespace libglabels
 	class Point
 	{
 	public:
-		Point() : mX(0), mY(0)
-		{
-		}
+		Point();
+		
+		Point( double x, double y );
 
-		Point( double x, double y ) : mX(x), mY(y)
-		{
-		}
-
-		inline double x() const { return mX; }
-		inline double y() const { return mY; }
+		double x() const;
+		double y() const;
 
 		bool operator<( const Point &other ) const;
 
@@ -48,5 +44,9 @@ namespace libglabels
 	};
 
 }
+
+
+#include "Point.inl"
+
 
 #endif // libglabels_Point_h
