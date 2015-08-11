@@ -69,7 +69,7 @@ namespace libglabels
 		virtual const QString sizeDescription( const Units *units ) const = 0;
 		virtual bool isSimilarTo( Frame *other ) const = 0;
 
-		virtual const QPainterPath &path() const = 0;
+		virtual const QPainterPath &path( bool isRotated = false ) const = 0;
 		virtual QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const = 0;
 
 

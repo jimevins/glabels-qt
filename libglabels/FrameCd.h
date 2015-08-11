@@ -59,7 +59,7 @@ namespace libglabels
 		const QString sizeDescription( const Units *units ) const;
 		bool isSimilarTo( Frame *other ) const;
 
-		const QPainterPath &path() const { return mPath; }
+		const QPainterPath &path( bool isRotated ) const { return isRotated ? mRotatedPath : mPath; }
 		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
 
 
@@ -73,6 +73,7 @@ namespace libglabels
 		double mWaste;
 
 		QPainterPath mPath;
+		QPainterPath mRotatedPath;
 
 	};
 

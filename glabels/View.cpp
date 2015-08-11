@@ -512,17 +512,18 @@ glabels::View::drawBgLayer( QPainter* painter )
 {
 	painter->save();
 
-	QBrush brush( shadowColor );
 	painter->setBrush( QBrush( shadowColor ) );
+	painter->setPen( Qt::NoPen );
 	painter->translate( shadowOffsetPixels/mZoom, shadowOffsetPixels/mZoom );
-	painter->drawPath( mModel->frame()->path() );
+	painter->drawPath( mModel->frame()->path( mModel->rotate() ) );
 
 	painter->restore();
 	
 	painter->save();
 
 	painter->setBrush( QBrush( labelColor ) );
-	painter->drawPath( mModel->frame()->path() );
+	painter->setPen( QPen( labelOutlineColor ) );
+	painter->drawPath( mModel->frame()->path( mModel->rotate() ) );
 
 	painter->restore();
 }
@@ -554,7 +555,7 @@ glabels::View::drawGridLayer( QPainter* painter )
 
 		painter->save();
 
-		painter->setClipPath( mModel->frame()->path() );
+		painter->setClipPath( mModel->frame()->path( mModel->rotate() ) );
 
 		painter->setPen( QPen( gridLineColor, gridLineWidthPixels/mZoom ) );
 

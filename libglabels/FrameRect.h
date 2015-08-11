@@ -39,6 +39,7 @@ namespace libglabels
 			: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
 		{
 			mPath.addRoundedRect( 0, 0, mW, mH, mR, mR );
+			mRotatedPath.addRoundedRect( 0, 0, mH, mW, mR, mR );
 		}
 
 		FrameRect( const FrameRect &other )
@@ -59,7 +60,7 @@ namespace libglabels
 		const QString sizeDescription( const Units *units ) const;
 		bool isSimilarTo( Frame *other ) const;
 
-		const QPainterPath &path() const { return mPath; }
+		const QPainterPath &path( bool isRotated ) const { return isRotated ? mRotatedPath : mPath; }
 		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
 
 
@@ -71,6 +72,7 @@ namespace libglabels
 		double mYWaste;
 
 		QPainterPath mPath;
+		QPainterPath mRotatedPath;
 
 	};
 

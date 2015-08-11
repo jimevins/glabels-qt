@@ -68,22 +68,49 @@ namespace libglabels
 
 	void FrameCd::initPath()
 	{
-		// Outer path (may be clipped in the case business card type CD)
-		double theta1 = acos( w() / (2*mR1) ) * 180/M_PI;
-		double theta2 = asin( h() / (2*mR1) ) * 180/M_PI;
+		//
+		// First the un-rotated path
+		//
+		{
+			// Outer path (may be clipped in the case business card type CD)
+			double theta1 = acos( w() / (2*mR1) ) * 180/M_PI;
+			double theta2 = asin( h() / (2*mR1) ) * 180/M_PI;
 
-		mPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
-		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
-		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
-		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
-		mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
-		mPath.closeSubpath();
+			mPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
+			mPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
+			mPath.closeSubpath();
 
-		// Inner path (hole)
-		mPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
+			// Inner path (hole)
+			mPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
 
-		// Translate to account for offset with clipped business card CDs (applies to element already drawn)
-		mPath.translate( w()/2 - mR1, h()/2 - mR1 );
+			// Translate to account for offset with clipped business card CDs
+			mPath.translate( w()/2 - mR1, h()/2 - mR1 );
+		}
+
+		//
+		// Next, the rotated path
+		//
+		{
+			// Outer path (may be clipped in the case business card type CD)
+			double theta1 = acos( h() / (2*mR1) ) * 180/M_PI;
+			double theta2 = asin( w() / (2*mR1) ) * 180/M_PI;
+
+			mRotatedPath.arcMoveTo( 0, 0, 2*mR1, 2*mR1, theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, theta1,     theta2-theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180-theta2, theta2-theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 180+theta1, theta2-theta1 );
+			mRotatedPath.arcTo( 0, 0, 2*mR1, 2*mR1, 360-theta2, theta2-theta1 );
+			mRotatedPath.closeSubpath();
+
+			// Inner path (hole)
+			mRotatedPath.addEllipse( mR1-mR2, mR1-mR2, 2*mR2, 2*mR2 );
+
+			// Translate to account for offset with clipped business card CDs
+			mRotatedPath.translate( h()/2 - mR1, w()/2 - mR1 );
+		}
 	}
 
 
