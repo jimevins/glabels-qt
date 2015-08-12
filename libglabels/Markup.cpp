@@ -24,27 +24,30 @@
 namespace libglabels
 {
 
-	MarkupMargin::MarkupMargin( double size )
-		: mSize(size)
+	const QPainterPath& Markup::path() const
 	{
+		return mPath;
+	}
+
+	
+	MarkupMargin::MarkupMargin( const Frame* frame, double size )
+		: mFrame(frame), mSize(size)
+	{
+		mPath = frame->marginPath( size );
 	}
 	
 
 	Markup* MarkupMargin::dup() const
 	{
-		return new MarkupMargin( mSize );
-	}
-
-
-	QGraphicsItem* MarkupMargin::createGraphicsItem( const Frame* frame, const QPen& pen ) const
-	{
-		return frame->createMarginGraphicsItem( mSize, pen );
+		return new MarkupMargin( mFrame, mSize );
 	}
 
 
 	MarkupLine::MarkupLine( double x1, double y1, double x2, double y2 )
 		: mX1(x1), mY1(y1), mX2(x2), mY2(y2)
 	{
+		mPath.moveTo( x1, y1 );
+		mPath.lineTo( x2, y2 );
 	}
 
 
@@ -54,18 +57,10 @@ namespace libglabels
 	}
 
 	
-	QGraphicsItem* MarkupLine::createGraphicsItem( const Frame* frame, const QPen& pen ) const
-	{
-		QGraphicsLineItem* item =  new QGraphicsLineItem( mX1, mY1, mX2, mY2 );
-		item->setPen( pen );
-
-		return item;
-	}
-
-
 	MarkupRect::MarkupRect( double x1, double y1, double w, double h, double r )
 		: mX1(x1), mY1(y1), mW(w), mH(h), mR(r)
 	{
+		mPath.addRoundedRect( x1, y1, w, h, r, r );
 	}
 
 
@@ -75,21 +70,10 @@ namespace libglabels
 	}
 	
 
-	QGraphicsItem* MarkupRect::createGraphicsItem( const Frame* frame, const QPen& pen ) const
-	{
-		QPainterPath path;
-		path.addRoundedRect( mX1, mY1, mW, mH, mR, mR );
-
-		QGraphicsPathItem* item = new QGraphicsPathItem( path );
-		item->setPen( pen );
-
-		return item;
-	}
-
-
 	MarkupEllipse::MarkupEllipse( double x1, double y1, double w, double h )
 		: mX1(x1), mY1(y1), mW(w), mH(h)
 	{
+		mPath.addEllipse( x1, y1, w, h );
 	}
 
 
@@ -99,32 +83,15 @@ namespace libglabels
 	}
 
 	
-	QGraphicsItem* MarkupEllipse::createGraphicsItem( const Frame* frame, const QPen& pen ) const
-	{
-		QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mX1, mY1, mW, mH );
-		item->setPen( pen );
-
-		return item;
-	}
-
-
 	MarkupCircle::MarkupCircle( double x0, double y0, double r )
 		: mX0(x0), mY0(y0), mR(r)
 	{
+		mPath.addEllipse( x0-r, y0-r, 2*r, 2*r );
 	}
 
 	Markup* MarkupCircle::dup() const
 	{
 		return new MarkupCircle( mX0, mY0, mR );
-	}
-
-	
-	QGraphicsItem* MarkupCircle::createGraphicsItem( const Frame* frame, const QPen& pen ) const
-	{
-		QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mX0-mR, mY0-mR, 2*mR, 2*mR );
-		item->setPen( pen );
-
-		return item;
 	}
 
 }

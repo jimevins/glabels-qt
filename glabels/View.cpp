@@ -510,20 +510,40 @@ glabels::View::leaveEvent( QEvent* event )
 void
 glabels::View::drawBgLayer( QPainter* painter )
 {
+	/*
+	 * Draw shadow
+	 */
 	painter->save();
 
 	painter->setBrush( QBrush( shadowColor ) );
 	painter->setPen( Qt::NoPen );
+
 	painter->translate( shadowOffsetPixels/mZoom, shadowOffsetPixels/mZoom );
-	painter->drawPath( mModel->frame()->path( mModel->rotate() ) );
+
+	if ( mModel->rotate() )
+	{
+		painter->rotate( -90 );
+		painter->translate( -mModel->frame()->w(), 0 );
+	}
+	painter->drawPath( mModel->frame()->path() );
 
 	painter->restore();
-	
+
+
+	/*
+	 * Draw label
+	 */
 	painter->save();
 
 	painter->setBrush( QBrush( labelColor ) );
 	painter->setPen( QPen( labelOutlineColor ) );
-	painter->drawPath( mModel->frame()->path( mModel->rotate() ) );
+
+	if ( mModel->rotate() )
+	{
+		painter->rotate( -90 );
+		painter->translate( -mModel->frame()->w(), 0 );
+	}
+	painter->drawPath( mModel->frame()->path() );
 
 	painter->restore();
 }
@@ -537,8 +557,8 @@ glabels::View::drawGridLayer( QPainter* painter )
 {
 	if ( mGridVisible )
 	{
-		double w = mModel->w();
-		double h = mModel->h();
+		double w = mModel->frame()->w();
+		double h = mModel->frame()->h();
 
 		double x0, y0;
 		if ( dynamic_cast<const libglabels::FrameRect*>( mModel->frame() ) )
@@ -554,8 +574,13 @@ glabels::View::drawGridLayer( QPainter* painter )
 		}
 
 		painter->save();
+		if ( mModel->rotate() )
+		{
+			painter->rotate( -90 );
+			painter->translate( -mModel->frame()->w(), 0 );
+		}
 
-		painter->setClipPath( mModel->frame()->path( mModel->rotate() ) );
+		painter->setClipPath( mModel->frame()->path() );
 
 		painter->setPen( QPen( gridLineColor, gridLineWidthPixels/mZoom ) );
 

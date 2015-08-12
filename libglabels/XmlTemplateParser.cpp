@@ -358,7 +358,7 @@ namespace libglabels
 	{
 		double size = XmlUtil::getLengthAttr( node, "size", 0 );
 
-		frame->addMarkup( new MarkupMargin( size ) );
+		frame->addMarkup( new MarkupMargin( frame, size ) );
 	}
 
 

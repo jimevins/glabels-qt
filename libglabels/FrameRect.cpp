@@ -33,7 +33,6 @@ namespace libglabels
 		: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
 	{
 		mPath.addRoundedRect( 0, 0, mW, mH, mR, mR );
-		mRotatedPath.addRoundedRect( 0, 0, mH, mW, mR, mR );
 	}
 
 	
@@ -62,7 +61,7 @@ namespace libglabels
 	}
 
 
-	const QString FrameRect::sizeDescription( const Units *units ) const
+	const QString FrameRect::sizeDescription( const Units* units ) const
 	{
 		if ( units->id() == "in" )
 		{
@@ -84,7 +83,7 @@ namespace libglabels
 	}
 
 
-	bool FrameRect::isSimilarTo( Frame *other ) const
+	bool FrameRect::isSimilarTo( Frame* other ) const
 	{
 		if ( FrameRect *otherRect = dynamic_cast<FrameRect*>(other) )
 		{
@@ -98,13 +97,13 @@ namespace libglabels
 	}
 
 
-	const QPainterPath& FrameRect::path( bool isRotated ) const
+	const QPainterPath& FrameRect::path() const
 	{
-		return isRotated ? mRotatedPath : mPath;
+		return mPath;
 	}
 
 
-	QGraphicsItem* FrameRect::createMarginGraphicsItem( double size, const QPen& pen ) const
+	QPainterPath FrameRect::marginPath( double size ) const
 	{
 		double w = mW - 2*size;
 		double h = mH - 2*size;
@@ -113,10 +112,7 @@ namespace libglabels
 		QPainterPath path;
 		path.addRoundedRect( size, size, w, h, r, r );
 
-		QGraphicsPathItem* item = new QGraphicsPathItem( path );
-		item->setPen( pen );
-
-		return item;
+		return path;
 	}
 
 

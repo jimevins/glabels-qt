@@ -60,7 +60,7 @@ namespace libglabels
 	}
 
 	
-	const QString FrameRound::sizeDescription( const Units *units ) const
+	const QString FrameRound::sizeDescription( const Units* units ) const
 	{
 		if ( units->id() == "in" )
 		{
@@ -81,7 +81,7 @@ namespace libglabels
 	}
 
 
-	bool FrameRound::isSimilarTo( Frame *other ) const
+	bool FrameRound::isSimilarTo( Frame* other ) const
 	{
 		if ( FrameRound *otherRound = dynamic_cast<FrameRound*>(other) )
 		{
@@ -94,20 +94,20 @@ namespace libglabels
 	}
 
 
-	const QPainterPath& FrameRound::path( bool isRotated ) const
+	const QPainterPath& FrameRound::path() const
 	{
 		return mPath;
 	}
 
 
-	QGraphicsItem* FrameRound::createMarginGraphicsItem( double size, const QPen& pen ) const
+	QPainterPath FrameRound::marginPath( double size ) const
 	{
 		double r = mR - size;
 
-		QGraphicsEllipseItem* item = new QGraphicsEllipseItem( mR-r, mR-r, 2*r, 2*r );
-		item->setPen( pen );
+		QPainterPath path;
+		path.addEllipse( size, size, 2*r, 2*r );
 
-		return item;
+		return path;
 	}
 
 }

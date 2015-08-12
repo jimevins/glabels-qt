@@ -33,7 +33,6 @@ namespace libglabels
 		: mW(w), mH(h), mWaste(waste), Frame(id)
 	{
 		mPath.addEllipse( 0, 0, mW, mH );
-		mRotatedPath.addEllipse( 0, 0, mH, mW );
 	}
 
 	FrameEllipse::FrameEllipse( const FrameEllipse& other )
@@ -60,7 +59,7 @@ namespace libglabels
 	}
 	
 
-	const QString FrameEllipse::sizeDescription( const Units *units ) const
+	const QString FrameEllipse::sizeDescription( const Units* units ) const
 	{
 		if ( units->id() == "in" )
 		{
@@ -96,21 +95,21 @@ namespace libglabels
 	}
 
 
-	const QPainterPath& FrameEllipse::path( bool isRotated ) const
+	const QPainterPath& FrameEllipse::path() const
 	{
-		return isRotated ? mRotatedPath : mPath;
+		return mPath;
 	}
 
 	
-	QGraphicsItem* FrameEllipse::createMarginGraphicsItem( double size, const QPen& pen ) const
+	QPainterPath FrameEllipse::marginPath( double size ) const
 	{
 		double w = mW - 2*size;
 		double h = mH - 2*size;
 
-		QGraphicsEllipseItem* item = new QGraphicsEllipseItem( size, size, w, h );
-		item->setPen( pen );
+		QPainterPath path;
+		path.addEllipse( size, size, w, h );
 
-		return item;
+		return path;
 	}
 
 }

@@ -48,12 +48,12 @@ namespace libglabels
 		double w() const;
 		double h() const;
 
-		const QString sizeDescription( const Units *units ) const;
+		const QString sizeDescription( const Units* units ) const;
 
-		bool isSimilarTo( Frame *other ) const;
+		bool isSimilarTo( Frame* other ) const;
 
-		const QPainterPath& path( bool isRotated ) const;
-		QGraphicsItem* createMarginGraphicsItem( double size, const QPen& pen ) const;
+		const QPainterPath& path() const;
+		QPainterPath marginPath( double size ) const;
 
 
 	private:
@@ -64,7 +64,6 @@ namespace libglabels
 		double mYWaste;
 
 		QPainterPath mPath;
-		QPainterPath mRotatedPath;
 
 	};
 

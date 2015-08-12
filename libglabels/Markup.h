@@ -21,7 +21,6 @@
 #ifndef libglabels_Markup_h
 #define libglabels_Markup_h
 
-#include <QGraphicsItem>
 #include <QPainterPath>
 
 #include "Frame.h"
@@ -34,22 +33,25 @@ namespace libglabels
 	{
 	public:
 		virtual Markup* dup() const = 0;
-		virtual QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const = 0;
+
+		const QPainterPath& path() const;
+
+	protected:
+		QPainterPath mPath;
 	};
 
 
 	class MarkupMargin : public Markup
 	{
 	public:
-		MarkupMargin( double size );
+		MarkupMargin( const Frame* frame, double size );
 
 		double size() const;
 
 		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
-
 	private:
+		const Frame* mFrame;
 		double  mSize;
 	};
 
@@ -65,8 +67,6 @@ namespace libglabels
 		double y2() const;
 
 		Markup* dup() const;
-
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mX1;
@@ -89,8 +89,6 @@ namespace libglabels
 
 		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
-
 	private:
 		double  mX1;
 		double  mY1;
@@ -112,8 +110,6 @@ namespace libglabels
 
 		Markup* dup() const;
 
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
-
 	private:
 		double  mX1;
 		double  mY1;
@@ -132,8 +128,6 @@ namespace libglabels
 		double r() const;
 
 		Markup* dup() const;
-
-		QGraphicsItem* createGraphicsItem( const Frame* frame, const QPen& pen ) const;
 
 	private:
 		double  mX0;
