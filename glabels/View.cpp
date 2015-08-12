@@ -46,8 +46,7 @@ namespace
 	const double ZOOM_TO_FIT_PAD = 16.0;
 
         const QColor  shadowColor( 64, 64, 64, 128 );
-	const double  shadowOffsetPixels = 3;
-	const double  shadowRadiusPixels = 12;
+	const double  shadowOffsetPixels = 4;
 
         const QColor  labelColor( 255, 255, 255 );
         const QColor  labelOutlineColor( 0, 0, 0 );
@@ -289,6 +288,7 @@ glabels::View::paintEvent( QPaintEvent* event )
 		drawGridLayer( &painter );
 		drawMarkupLayer( &painter );
 		drawObjectsLayer( &painter );
+		drawFgLayer( &painter );
 	}
 }
 
@@ -537,7 +537,7 @@ glabels::View::drawBgLayer( QPainter* painter )
 	painter->save();
 
 	painter->setBrush( QBrush( labelColor ) );
-	painter->setPen( QPen( labelOutlineColor ) );
+	painter->setPen( Qt::NoPen );
 
 	if ( mModel->rotate() )
 	{
@@ -639,3 +639,26 @@ glabels::View::drawObjectsLayer( QPainter* painter )
 }
 
 
+///
+/// Draw Foreground Layer
+///
+void
+glabels::View::drawFgLayer( QPainter* painter )
+{
+	/*
+	 * Draw label outline
+	 */
+	painter->save();
+
+	painter->setBrush( QBrush( Qt::NoBrush ) );
+	painter->setPen( QPen( labelOutlineColor, labelOutlineWidthPixels/mZoom ) );
+
+	if ( mModel->rotate() )
+	{
+		painter->rotate( -90 );
+		painter->translate( -mModel->frame()->w(), 0 );
+	}
+	painter->drawPath( mModel->frame()->path() );
+
+	painter->restore();
+}
