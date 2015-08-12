@@ -20,10 +20,8 @@
 
 #include "LabelModelObject.h"
 
-#include <QGraphicsDropShadowEffect>
 #include <QTransform>
 #include <QFont>
-#include <QGraphicsItem>
 #include <algorithm>
 
 #include "ColorNode.h"
@@ -903,30 +901,28 @@ namespace glabels
 
 
 	///
-	/// Update Representative Graphics Item with Object's Transformation Matrix
+	/// Draw object + shadow
 	///
-	void LabelModelObject::updateGraphicsItemMatrix( QGraphicsItem* graphicsItem )
+	void LabelModelObject::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
 	{
-		graphicsItem->setTransform( mMatrix );
+		painter->save();
+		painter->translate( mX0, mY0 );
+
+		if ( mShadowState )
+		{
+			painter->save();
+			painter->translate( mShadowX, mShadowY );
+			painter->setTransform( mMatrix, true );
+			drawShadow( painter, inEditor, record );
+			painter->restore();
+		}
+
+		painter->setTransform( mMatrix, true );
+		drawObject( painter, inEditor, record );
+
+		painter->restore();
 	}
 
-
-	///
-	/// Update Representative Graphics Item with Object's Shadow Properties
-	///
-	void LabelModelObject::updateGraphicsItemShadow( QGraphicsItem* graphicsItem )
-	{
-		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
-
-		QColor color = mShadowColorNode.color();
-		color.setAlphaF( mShadowOpacity );
-
-		shadowEffect->setColor( color );
-		shadowEffect->setOffset( mShadowX, mShadowY );
-		shadowEffect->setBlurRadius( 0 );
-
-		graphicsItem->setGraphicsEffect( shadowEffect );
-	}
 
 }
 

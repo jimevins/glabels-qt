@@ -20,7 +20,6 @@
 
 #include "LabelModelBoxObject.h"
 
-#include <QGraphicsRectItem>
 #include <QBrush>
 #include <QPen>
 
@@ -139,48 +138,62 @@ namespace glabels
 
 
 	///
-	/// Create QGraphicsItem suitable for representing this object
+	/// Draw shadow of object
 	///
-	QGraphicsItem* LabelModelBoxObject::createGraphicsItem()
+	void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const
 	{
-		QGraphicsRectItem *rectItem = new QGraphicsRectItem( x0(), y0(), w(), h() );
+		/// TODO expand colors based on record
+		
+		QColor lineColor = mLineColorNode.color();
+		QColor fillColor = mFillColorNode.color();
+		QColor shadowColor = mShadowColorNode.color();
 
-		QBrush brush( fillColorNode().color() );
-		rectItem->setBrush( brush );
+		shadowColor.setAlphaF( mShadowOpacity );
 
-		QPen pen( lineColorNode().color() );
-		pen.setJoinStyle( Qt::MiterJoin );
-		pen.setWidthF( lineWidth() );
-		rectItem->setPen( pen );
+		if ( fillColor.alpha() )
+		{
+			painter->setPen( Qt::NoPen );
+			painter->setBrush( shadowColor );
 
-		updateGraphicsItemMatrix( rectItem );
-		updateGraphicsItemShadow( rectItem );
+			if ( lineColor.alpha() )
+			{
+				/* Has FILL and OUTLINE: adjust size to account for line width. */
+				painter->drawRect( -mLineWidth/2, -mLineWidth/2, mW+mLineWidth, mH+mLineWidth );
+			}
+			else
+			{
+				/* Has FILL, but no OUTLINE. */
+				painter->drawRect( 0, 0, mW, mH );
+			}
+		}
+		else
+		{
+			if ( lineColor.alpha() )
+			{
+				/* Has only OUTLINE. */
+				painter->setPen( QPen( shadowColor, mLineWidth ) );
+				painter->setBrush( Qt::NoBrush );
 
-		return rectItem;
+				painter->drawRect( 0, 0, mW, mH );
+			}
+		}
+		
 	}
 
-
+	
 	///
-	/// Update a QGraphicsItem to keep it in sync with this object
+	/// Draw object itself
 	///
-	void LabelModelBoxObject::updateGraphicsItem( QGraphicsItem* graphicsItem )
+	void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const
 	{
-		QGraphicsRectItem *rectItem = dynamic_cast<QGraphicsRectItem*>(graphicsItem);
-		if ( rectItem )
-		{
-			rectItem->setRect( x0(), y0(), w(), h() );
+		/// TODO expand colors based on record
+		
+		QColor lineColor = mLineColorNode.color();
+		QColor fillColor = mFillColorNode.color();
 
-			QBrush brush( fillColorNode().color() );
-			rectItem->setBrush( brush );
-
-			QPen pen( lineColorNode().color() );
-			pen.setJoinStyle( Qt::MiterJoin );
-			pen.setWidthF( lineWidth() );
-			rectItem->setPen( pen );
-
-			updateGraphicsItemMatrix( rectItem );
-			updateGraphicsItemShadow( rectItem );
-		}
+		painter->setPen( QPen( lineColor, mLineWidth ) );
+		painter->setBrush( fillColor );
+		painter->drawRect( 0, 0, mW, mH );
 	}
 
 }

@@ -288,6 +288,7 @@ glabels::View::paintEvent( QPaintEvent* event )
 		drawBgLayer( &painter );
 		drawGridLayer( &painter );
 		drawMarkupLayer( &painter );
+		drawObjectsLayer( &painter );
 	}
 }
 
@@ -625,6 +626,16 @@ glabels::View::drawMarkupLayer( QPainter* painter )
 
 		painter->restore();
 	}
+}
+
+
+///
+/// Draw Objects Layer
+///
+void
+glabels::View::drawObjectsLayer( QPainter* painter )
+{
+	mModel->draw( painter );
 }
 
 

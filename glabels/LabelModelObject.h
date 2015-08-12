@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QFont>
 #include <QTransform>
+#include <QPainter>
 
 #include "ColorNode.h"
 #include "TextNode.h"
@@ -388,15 +389,32 @@ namespace glabels
 
 
 		///////////////////////////////////////////////////////////////
-		// QGraphicsItem methods
+		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	public:
-		virtual QGraphicsItem* createGraphicsItem() = 0;
-		virtual void updateGraphicsItem( QGraphicsItem* graphicsItem ) = 0;
+		void draw( QPainter* painter, bool inEditor, MergeRecord* record ) const;
 
 	protected:
-		void updateGraphicsItemMatrix( QGraphicsItem* graphicsItem );
-		void updateGraphicsItemShadow( QGraphicsItem* graphicsItem );
+		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
+		virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
+
+		
+		///////////////////////////////////////////////////////////////
+		// Protected Members
+		///////////////////////////////////////////////////////////////
+	protected:
+		bool       mSelectedFlag;
+
+		double     mX0;
+		double     mY0;
+		double     mW;
+		double     mH;
+
+		bool       mShadowState;
+		double     mShadowX;
+		double     mShadowY;
+		double     mShadowOpacity;
+		ColorNode  mShadowColorNode;
 
 
 		///////////////////////////////////////////////////////////////
@@ -406,20 +424,7 @@ namespace glabels
 		static int msNextId;
 		int        mId;
 
-		bool       mSelectedFlag;
-
-		double     mX0;
-		double     mY0;
-		double     mW;
-		double     mH;
-
 		QTransform mMatrix;
-
-		bool       mShadowState;
-		double     mShadowX;
-		double     mShadowY;
-		double     mShadowOpacity;
-		ColorNode  mShadowColorNode;
 
 	};
 

@@ -23,7 +23,9 @@
 
 #include <QObject>
 #include <QList>
+#include <QPainter>
 
+#include "MergeRecord.h"
 #include "libglabels/Template.h"
 
 
@@ -166,6 +168,13 @@ namespace glabels
 		void setSelectionFillColorNode( ColorNode fillColorNode );
 
 
+		/////////////////////////////////
+		// Drawing operations
+		/////////////////////////////////
+	public:
+		void draw( QPainter* painter, bool inEditor = true, MergeRecord* record = 0 ) const;
+
+		
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////

@@ -1056,5 +1056,17 @@ namespace glabels
 		emit modifiedChanged();
 	}
 
+
+	///
+	/// Draw label objects
+	///
+	void LabelModel::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
+	{
+		foreach ( LabelModelObject* object, mObjectList )
+		{
+			object->draw( painter, inEditor, record );
+		}
+	}
+
 }
 
