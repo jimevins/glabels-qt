@@ -605,6 +605,26 @@ glabels::View::drawGridLayer( QPainter* painter )
 void
 glabels::View::drawMarkupLayer( QPainter* painter )
 {
+	if ( mMarkupVisible )
+	{
+		painter->save();
+
+		painter->setBrush( Qt::NoBrush );
+		painter->setPen( QPen( markupLineColor ) );
+
+		if ( mModel->rotate() )
+		{
+			painter->rotate( -90 );
+			painter->translate( -mModel->frame()->w(), 0 );
+		}
+
+		foreach( libglabels::Markup* markup, mModel->frame()->markups() )
+		{
+			painter->drawPath( markup->path() );
+		}
+
+		painter->restore();
+	}
 }
 
 
