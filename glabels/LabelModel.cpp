@@ -114,15 +114,33 @@ namespace glabels
 
 
 	///
-	/// Delete Object
+	/// Object at x,y
 	///
-	LabelModelObject* LabelModel::objectAt( double scale, double x, double y )
+	LabelModelObject* LabelModel::objectAt( double scale, double x, double y ) const
 	{
 		foreach( LabelModelObject* object, mObjectList )
 		{
 			if ( object->isLocatedAt( scale, x, y ) )
 			{
 				return object;
+			}
+		}
+
+		return 0;
+	}
+
+
+	///
+	/// Handle at x,y
+	///
+	Handle* LabelModel::handleAt( double scale, double x, double y ) const
+	{
+		foreach( LabelModelObject* object, mObjectList )
+		{
+			Handle* handle = object->handleAt( scale, x, y );
+			if ( handle )
+			{
+				return handle;
 			}
 		}
 

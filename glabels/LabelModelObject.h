@@ -386,6 +386,7 @@ namespace glabels
 		void flipHoriz();
 		void flipVert();
 		bool isLocatedAt( double scale, double x, double y ) const;
+		Handle* handleAt( double scale, double x, double y ) const;
 
 
 		///////////////////////////////////////////////////////////////

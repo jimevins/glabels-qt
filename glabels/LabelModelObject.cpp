@@ -921,6 +921,27 @@ namespace glabels
 
 
 	///
+	/// Is one of this object's handles locate at x,y?  If so, return it.
+	///
+	Handle* LabelModelObject::handleAt( double scale, double x, double y ) const
+	{
+		QPointF p( x, y );
+		p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
+
+		foreach ( Handle* handle, mHandles )
+		{
+			QPainterPath handlePath = mMatrix.map( handle->path( scale ) );
+			if ( handlePath.contains( p ) )
+			{
+				return handle;
+			}
+		}
+
+		return 0;
+	}
+
+
+	///
 	/// Draw object + shadow
 	///
 	void LabelModelObject::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const

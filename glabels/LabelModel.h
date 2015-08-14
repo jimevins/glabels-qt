@@ -33,6 +33,7 @@ namespace glabels
 {
 	// Forward References
 	class LabelModelObject;
+	class Handle;
 	class LabelRegion;
 	class ColorNode;
 
@@ -100,7 +101,8 @@ namespace glabels
 		void addObject( LabelModelObject* object );
 		void deleteObject( LabelModelObject* object );
 
-		LabelModelObject* objectAt( double scale, double x, double y );
+		LabelModelObject* objectAt( double scale, double x, double y ) const;
+		Handle* handleAt( double scale, double x, double y ) const;
 
 
 		/////////////////////////////////

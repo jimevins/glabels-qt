@@ -367,6 +367,7 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 						       (yWorld - mMoveLastY) );
 				mMoveLastX = xWorld;
 				mMoveLastY = yWorld;
+				update();
 				break;
 
 			case ArrowResize:
@@ -436,23 +437,81 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 
 		if ( event->button() & Qt::LeftButton )
 		{
-			// Select Region
-			if ( !(event->modifiers() & Qt::ControlModifier) )
+			//
+			// LEFT BUTTON
+			//
+
+			if ( !mInObjectCreateMode )
 			{
-				mModel->unselectAll();
+				LabelModelObject* object = 0;
+				Handle* handle = 0;
+				if ( mModel->isSelectionAtomic() &&
+				     (handle = mModel->handleAt( mZoom, xWorld, yWorld )) != 0 )
+				{
+					// TODO PREP RESIZE
+				}
+				else if ( (object = mModel->objectAt( mZoom, xWorld, yWorld )) != 0 )
+				{
+					//
+					// Start a Move Selection (adjusting selection if necessary)
+					//
+					if ( event->modifiers() & Qt::ControlModifier )
+					{
+						if ( object->isSelected() )
+						{
+							// Un-selecting a selected item
+							mModel->unselectObject( object );
+						}
+						else
+						{
+							// Add to current selection
+							mModel->selectObject( object );
+						}
+					}
+					else
+					{
+						if ( !object->isSelected() )
+						{
+							// Replace current selection with this object
+							mModel->unselectAll();
+							mModel->selectObject( object );
+						}
+					}
+
+					mMoveLastX = xWorld;
+					mMoveLastY = yWorld;
+
+					mState = ArrowMove;
+					update();
+				}
+				else
+				{
+					//
+					// Start a Select Region
+					//
+					if ( !(event->modifiers() & Qt::ControlModifier) )
+					{
+						mModel->unselectAll();
+					}
+
+					mSelectRegionVisible = true;
+					mSelectRegion.setX1( xWorld );
+					mSelectRegion.setY1( yWorld );
+					mSelectRegion.setX2( xWorld );
+					mSelectRegion.setY2( yWorld );
+
+					mState = ArrowSelectRegion;
+					update();
+				}
 			}
 
-			mSelectRegionVisible = true;
-			mSelectRegion.setX1( xWorld );
-			mSelectRegion.setY1( yWorld );
-			mSelectRegion.setX2( xWorld );
-			mSelectRegion.setY2( yWorld );
-
-			mState = ArrowSelectRegion;
-			update();
 		}
-		else
+		else if ( event->button() & Qt::RightButton )
 		{
+			//
+			// RIGHT BUTTON
+			//
+
 		}
 	}
 }
@@ -479,31 +538,39 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 
 		if ( event->button() & Qt::LeftButton )
 		{
-			switch (mState)
+			//
+			// LEFT BUTTON Release
+			//
+			
+			if ( !mInObjectCreateMode )
 			{
+				
+				switch (mState)
+				{
 
-			case IdleState:
-				break;
+				case ArrowSelectRegion:
+					mSelectRegionVisible = false;
+					mSelectRegion.setX2( xWorld );
+					mSelectRegion.setY2( yWorld );
 
-			case ArrowSelectRegion:
-				mSelectRegionVisible = false;
-				mSelectRegion.setX2( xWorld );
-				mSelectRegion.setY2( yWorld );
+					mModel->selectRegion( mSelectRegion );
 
-				mModel->selectRegion( mSelectRegion );
+					mState = IdleState;
+					update();
+					break;
 
-				mState = IdleState;
-				update();
-				break;
+				default:
+					mState = IdleState;
+					update();
+					break;
 
-			default:
-				// Should not happen!
-				break;
-
+				}
+				
 			}
-		}
-		else
-		{
+			else
+			{
+				
+			}
 		}
 	}
 }
