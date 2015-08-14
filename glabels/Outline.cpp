@@ -28,8 +28,11 @@
 
 namespace
 {
-	const double outlineWidthPixels = 2;
-	const QColor outlineColor( 0,  0,   0,  192 );
+	const qreal dashSize = 1;
+
+	const double outlineWidthPixels = 1;
+	const QColor outlineColor1(   0,   0,   0 );
+	const QColor outlineColor2( 255, 255, 255 );
 }
 
 
@@ -39,6 +42,20 @@ namespace
 glabels::Outline::Outline( LabelModelObject* owner )
 	: mOwner(owner)
 {
+	mDashes << dashSize << dashSize;
+
+	mPen1.setColor( outlineColor1 );
+	mPen1.setWidth( outlineWidthPixels );
+	mPen1.setCosmetic( true );
+	mPen1.setCapStyle( Qt::FlatCap );
+	mPen1.setDashPattern( mDashes );
+
+	mPen2.setColor( outlineColor2 );
+	mPen2.setWidth( outlineWidthPixels );
+	mPen2.setCosmetic( true );
+	mPen2.setCapStyle( Qt::FlatCap );
+	mPen2.setDashPattern( mDashes );
+	mPen2.setDashOffset( dashSize );
 }
 
 
@@ -57,11 +74,12 @@ void glabels::Outline::draw( QPainter* painter ) const
 {
 	painter->save();
 
-	QPen pen( outlineColor, outlineWidthPixels, Qt::DotLine );
-	pen.setCosmetic( true );
-	painter->setPen( pen );
 	painter->setBrush( Qt::NoBrush );
 
+	painter->setPen( mPen1 );
+	painter->drawRect( 0, 0, mOwner->w(), mOwner->h() );
+
+	painter->setPen( mPen2 );
 	painter->drawRect( 0, 0, mOwner->w(), mOwner->h() );
 
 	painter->restore();

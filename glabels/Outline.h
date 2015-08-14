@@ -59,6 +59,10 @@ namespace glabels
 	private:
 		LabelModelObject* mOwner;
 
+		QVector<qreal> mDashes;
+		QPen           mPen1;
+		QPen           mPen2;
+	
 	};
 
 }

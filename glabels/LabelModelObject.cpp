@@ -23,6 +23,7 @@
 #include <QTransform>
 #include <QFont>
 #include <algorithm>
+#include <QtDebug>
 
 #include "ColorNode.h"
 #include "TextNode.h"

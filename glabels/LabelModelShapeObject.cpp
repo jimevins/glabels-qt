@@ -32,6 +32,8 @@ namespace glabels
 	///
 	LabelModelShapeObject::LabelModelShapeObject( QObject* parent ) : LabelModelObject(parent)
 	{
+		mOutline = new Outline( this );
+
 		mHandles << new HandleNorthWest( this );
 		mHandles << new HandleNorth( this );
 		mHandles << new HandleNorthEast( this );
@@ -50,6 +52,8 @@ namespace glabels
 	///
 	LabelModelShapeObject::~LabelModelShapeObject()
 	{
+		delete mOutline;
+
 		foreach( Handle* handle, mHandles )
 		{
 			delete handle;

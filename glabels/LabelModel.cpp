@@ -23,6 +23,7 @@
 #include <QFileInfo>
 #include <algorithm>
 #include <cmath>
+#include <QtDebug>
 
 #include "LabelModelObject.h"
 #include "LabelRegion.h"

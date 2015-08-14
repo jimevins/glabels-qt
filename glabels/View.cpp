@@ -290,6 +290,7 @@ glabels::View::paintEvent( QPaintEvent* event )
 		drawObjectsLayer( &painter );
 		drawFgLayer( &painter );
 		drawHighlightLayer( &painter );
+		drawSelectRegionLayer( &painter );
 	}
 }
 
@@ -317,94 +318,97 @@ glabels::View::resizeEvent( QResizeEvent *event )
 void
 glabels::View::mouseMoveEvent( QMouseEvent* event )
 {
-	/*
-	 * Translate to label coordinates
-	 */
-	QTransform transform;
-
-	transform.scale( mZoom, mZoom );
-
-	qreal xWorld, yWorld;
-	transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
-
-	/*
-	 * Emit signal regardless of mode
-	 */
-	emit pointerMoved( xWorld, yWorld );
-
-
-	/*
-	 * Handle event as appropriate for mode
-	 */
-	if ( mInObjectCreateMode )
+	if ( mModel )
 	{
-		switch (mState)
+		/*
+		 * Translate to label coordinates
+		 */
+		QTransform transform;
+
+		transform.scale( mZoom, mZoom );
+
+		qreal xWorld, yWorld;
+		transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+
+		/*
+		 * Emit signal regardless of mode
+		 */
+		emit pointerMoved( xWorld, yWorld );
+
+
+		/*
+		 * Handle event as appropriate for mode
+		 */
+		if ( !mInObjectCreateMode )
 		{
-
-		case IdleState:
-			/* @TODO handle handles. */
-			if ( mModel->objectAt( xWorld, yWorld ) )
+			switch (mState)
 			{
-				setCursor( Qt::SizeAllCursor );
-			}
-			else
-			{
-				setCursor( Qt::ArrowCursor );
-			}
-			break;
 
-		case ArrowSelectRegion:
-			mSelectRegion.setX2( xWorld );
-			mSelectRegion.setY2( yWorld );
-			update();
-			break;
+			case IdleState:
+				/* @TODO handle handles. */
+				if ( mModel->objectAt( xWorld, yWorld ) )
+				{
+					setCursor( Qt::SizeAllCursor );
+				}
+				else
+				{
+					setCursor( Qt::ArrowCursor );
+				}
+				break;
 
-		case ArrowMove:
-			mModel->moveSelection( (xWorld - mMoveLastX),
-					       (yWorld - mMoveLastY) );
-			mMoveLastX = xWorld;
-			mMoveLastY = yWorld;
-			break;
+			case ArrowSelectRegion:
+				mSelectRegion.setX2( xWorld );
+				mSelectRegion.setY2( yWorld );
+				update();
+				break;
 
-		case ArrowResize:
-			/* @TODO handle resize motion */
-			break;
+			case ArrowMove:
+				mModel->moveSelection( (xWorld - mMoveLastX),
+						       (yWorld - mMoveLastY) );
+				mMoveLastX = xWorld;
+				mMoveLastY = yWorld;
+				break;
 
-		default:
-			// Should not happen!
-			qWarning() << "Invalid arrow state.";
-			break;
+			case ArrowResize:
+				/* @TODO handle resize motion */
+				break;
 
-		}
-	}
-	else
-	{
-		if ( mState != IdleState )
-		{
-			switch (mCreateObjectType)
-			{
-			case Box:
-				// @TODO
-				break;
-			case Ellipse:
-				// @TODO
-				break;
-			case Line:
-				// @TODO
-				break;
-			case Image:
-				// @TODO
-				break;
-			case Text:
-				// @TODO
-				break;
-			case Barcode:
-				// @TODO
-				break;
 			default:
 				// Should not happen!
-				qWarning() << "Invalid create type.";
+				qWarning() << "Invalid arrow state.";
 				break;
+
+			}
+		}
+		else
+		{
+			if ( mState != IdleState )
+			{
+				switch (mCreateObjectType)
+				{
+				case Box:
+					// @TODO
+					break;
+				case Ellipse:
+					// @TODO
+					break;
+				case Line:
+					// @TODO
+					break;
+				case Image:
+					// @TODO
+					break;
+				case Text:
+					// @TODO
+					break;
+				case Barcode:
+					// @TODO
+					break;
+				default:
+					// Should not happen!
+					qWarning() << "Invalid create type.";
+					break;
+				}
 			}
 		}
 	}
@@ -417,35 +421,39 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 void
 glabels::View::mousePressEvent( QMouseEvent* event )
 {
-	/*
-	 * Translate to label coordinates
-	 */
-	QTransform transform;
-
-	transform.scale( mZoom, mZoom );
-
-	qreal xWorld, yWorld;
-	transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
-
-
-	if ( event->button() & Qt::LeftButton )
+	if ( mModel )
 	{
-		// Select Region
-		if ( !(event->modifiers() & Qt::ControlModifier) )
+		/*
+		 * Translate to label coordinates
+		 */
+		QTransform transform;
+
+		transform.scale( mZoom, mZoom );
+
+		qreal xWorld, yWorld;
+		transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+
+
+		if ( event->button() & Qt::LeftButton )
 		{
-			mModel->unselectAll();
+			// Select Region
+			if ( !(event->modifiers() & Qt::ControlModifier) )
+			{
+				mModel->unselectAll();
+			}
+
+			mSelectRegionVisible = true;
+			mSelectRegion.setX1( xWorld );
+			mSelectRegion.setY1( yWorld );
+			mSelectRegion.setX2( xWorld );
+			mSelectRegion.setY2( yWorld );
+
+			mState = ArrowSelectRegion;
+			update();
 		}
-
-		mSelectRegionVisible = true;
-		mSelectRegion.setX1( xWorld );
-		mSelectRegion.setY1( yWorld );
-		mSelectRegion.setX2( xWorld );
-		mSelectRegion.setY2( yWorld );
-
-		mState = ArrowSelectRegion;
-	}
-	else
-	{
+		else
+		{
+		}
 	}
 }
 
@@ -456,42 +464,47 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 void
 glabels::View::mouseReleaseEvent( QMouseEvent* event )
 {
-	/*
-	 * Translate to label coordinates
-	 */
-	QTransform transform;
-
-	transform.scale( mZoom, mZoom );
-
-	qreal xWorld, yWorld;
-	transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
-
-
-	if ( event->button() & Qt::LeftButton )
+	if ( mModel )
 	{
-		switch (mState)
+		/*
+		 * Translate to label coordinates
+		 */
+		QTransform transform;
+
+		transform.scale( mZoom, mZoom );
+
+		qreal xWorld, yWorld;
+		transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+
+
+		if ( event->button() & Qt::LeftButton )
 		{
+			switch (mState)
+			{
 
-		case IdleState:
-			break;
+			case IdleState:
+				break;
 
-		case ArrowSelectRegion:
-			mSelectRegion.setX2( xWorld );
-			mSelectRegion.setY2( yWorld );
+			case ArrowSelectRegion:
+				mSelectRegionVisible = false;
+				mSelectRegion.setX2( xWorld );
+				mSelectRegion.setY2( yWorld );
 
-			mModel->selectRegion( mSelectRegion );
+				mModel->selectRegion( mSelectRegion );
 
-			mState = IdleState;
-			break;
+				mState = IdleState;
+				update();
+				break;
 
-		default:
-			// Should not happen!
-			break;
+			default:
+				// Should not happen!
+				break;
 
+			}
 		}
-	}
-	else
-	{
+		else
+		{
+		}
 	}
 }
 
@@ -502,7 +515,10 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 void
 glabels::View::leaveEvent( QEvent* event )
 {
-	emit pointerExited();
+	if ( mModel )
+	{
+		emit pointerExited();
+	}
 }
 
 
@@ -584,7 +600,9 @@ glabels::View::drawGridLayer( QPainter* painter )
 
 		painter->setClipPath( mModel->frame()->path() );
 
-		painter->setPen( QPen( gridLineColor, gridLineWidthPixels/mZoom ) );
+		QPen pen( gridLineColor, gridLineWidthPixels );
+		pen.setCosmetic( true );
+		painter->setPen( pen );
 
 		for ( double x = x0; x < w; x += gridSpacing )
 		{
@@ -651,8 +669,10 @@ glabels::View::drawFgLayer( QPainter* painter )
 	 */
 	painter->save();
 
+	QPen pen( labelOutlineColor, labelOutlineWidthPixels );
+	pen.setCosmetic( true );
 	painter->setBrush( QBrush( Qt::NoBrush ) );
-	painter->setPen( QPen( labelOutlineColor, labelOutlineWidthPixels/mZoom ) );
+	painter->setPen( pen );
 
 	if ( mModel->rotate() )
 	{
@@ -682,4 +702,27 @@ glabels::View::drawHighlightLayer( QPainter* painter )
 	}
 
 	painter->restore();
+}
+
+
+///
+/// Draw Select Region Layer
+///
+void
+glabels::View::drawSelectRegionLayer( QPainter* painter )
+{
+	if ( mSelectRegionVisible )
+	{
+		painter->save();
+
+		QPen pen( selectRegionOutlineColor, selectRegionOutlineWidthPixels );
+		pen.setCosmetic( true );
+		painter->setBrush( selectRegionFillColor );
+		painter->setPen( pen );
+
+		painter->drawRect( mSelectRegion.rect() );
+		
+		painter->restore();
+	}
+
 }

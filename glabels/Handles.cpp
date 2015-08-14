@@ -61,7 +61,12 @@ void glabels::Handle::drawAt( QPainter* painter, double x, double y ) const
 	painter->save();
 
 	painter->translate( x, y );
-	painter->resetTransform();
+
+	/* Render at a scale of 1:1 in pixels, while preserving translations and rotations. */
+	QTransform t = painter->transform();
+	painter->setTransform( QTransform( 1,       t.m12(), t.m13(),
+					   t.m21(), 1,       t.m23(),
+					   t.m31(), t.m32(), t.m33() ) );
 
 	painter->setPen( QPen( handleOutlineColor, handleOutlineWidthPixels ) );
 	painter->setBrush( handleFillColor );
@@ -147,7 +152,7 @@ glabels::HandleNorthEast::~HandleNorthEast()
 ///
 void glabels::HandleNorthEast::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, mOwner->w(), 0 );
 }
 
 
@@ -156,7 +161,7 @@ void glabels::HandleNorthEast::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleNorthEast::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, mOwner->w(), 0 );
 }
 
 
@@ -182,7 +187,7 @@ glabels::HandleEast::~HandleEast()
 ///
 void glabels::HandleEast::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, mOwner->w(), mOwner->h()/2 );
 }
 
 
@@ -191,7 +196,7 @@ void glabels::HandleEast::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleEast::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, mOwner->w(), mOwner->h()/2 );
 }
 
 
@@ -217,7 +222,7 @@ glabels::HandleSouthEast::~HandleSouthEast()
 ///
 void glabels::HandleSouthEast::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, mOwner->w(), mOwner->h() );
 }
 
 
@@ -226,7 +231,7 @@ void glabels::HandleSouthEast::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleSouthEast::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, mOwner->w(), mOwner->h() );
 }
 
 
@@ -252,7 +257,7 @@ glabels::HandleSouth::~HandleSouth()
 ///
 void glabels::HandleSouth::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, mOwner->w()/2, mOwner->h() );
 }
 
 
@@ -261,7 +266,7 @@ void glabels::HandleSouth::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleSouth::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, mOwner->w()/2, mOwner->h() );
 }
 
 
@@ -287,7 +292,7 @@ glabels::HandleSouthWest::~HandleSouthWest()
 ///
 void glabels::HandleSouthWest::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, 0, mOwner->h() );
 }
 
 
@@ -296,7 +301,7 @@ void glabels::HandleSouthWest::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleSouthWest::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, 0, mOwner->w() );
 }
 
 
@@ -322,7 +327,7 @@ glabels::HandleWest::~HandleWest()
 ///
 void glabels::HandleWest::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, 0, mOwner->h()/2 );
 }
 
 
@@ -331,7 +336,7 @@ void glabels::HandleWest::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleWest::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, 0, mOwner->h()/2 );
 }
 
 
@@ -357,7 +362,7 @@ glabels::HandleNorthWest::~HandleNorthWest()
 ///
 void glabels::HandleNorthWest::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, 0, 0 );
 }
 
 
@@ -366,7 +371,7 @@ void glabels::HandleNorthWest::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleNorthWest::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, 0, 0 );
 }
 
 
@@ -392,7 +397,7 @@ glabels::HandleP1::~HandleP1()
 ///
 void glabels::HandleP1::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, 0, 0 );
 }
 
 
@@ -401,7 +406,7 @@ void glabels::HandleP1::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleP1::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, 0, 0 );
 }
 
 
@@ -427,7 +432,7 @@ glabels::HandleP2::~HandleP2()
 ///
 void glabels::HandleP2::draw( QPainter* painter ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, mOwner->w(), mOwner->h() );
 }
 
 
@@ -436,5 +441,5 @@ void glabels::HandleP2::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleP2::path( QPainter* painter ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( painter, mOwner->w(), mOwner->h() );
 }
