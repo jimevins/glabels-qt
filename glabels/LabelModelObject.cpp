@@ -925,15 +925,18 @@ namespace glabels
 	///
 	Handle* LabelModelObject::handleAt( double scale, double x, double y ) const
 	{
-		QPointF p( x, y );
-		p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
-
-		foreach ( Handle* handle, mHandles )
+		if ( mSelectedFlag )
 		{
-			QPainterPath handlePath = mMatrix.map( handle->path( scale ) );
-			if ( handlePath.contains( p ) )
+			QPointF p( x, y );
+			p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
+
+			foreach ( Handle* handle, mHandles )
 			{
-				return handle;
+				QPainterPath handlePath = mMatrix.map( handle->path( scale ) );
+				if ( handlePath.contains( p ) )
+				{
+					return handle;
+				}
 			}
 		}
 

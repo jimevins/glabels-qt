@@ -345,8 +345,12 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 			{
 
 			case IdleState:
-				/* @TODO handle handles. */
-				if ( mModel->objectAt( mZoom, xWorld, yWorld ) )
+				if ( mModel->isSelectionAtomic() &&
+				     mModel->handleAt( mZoom, xWorld, yWorld ) )
+				{
+					setCursor( Qt::CrossCursor );
+				}
+				else if ( mModel->objectAt( mZoom, xWorld, yWorld ) )
 				{
 					setCursor( Qt::SizeAllCursor );
 				}
