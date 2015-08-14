@@ -24,6 +24,7 @@ set (glabels_sources
   LabelModel.cpp
   LabelModelObject.cpp
   LabelModelBoxObject.cpp
+  LabelModelShapeObject.cpp
   LabelRegion.cpp
   MainWindow.cpp
   MergeField.cpp
@@ -53,6 +54,7 @@ set (glabels_qobject_headers
   LabelModel.h
   LabelModelObject.h
   LabelModelBoxObject.h
+  LabelModelShapeObject.h
   NewLabelDialog.h
   MainWindow.h
   SimplePreview.h

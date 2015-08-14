@@ -30,18 +30,8 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelObject(parent)
+	LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelShapeObject(parent)
 	{
-		mHandles << new HandleNorthWest( this );
-		mHandles << new HandleNorth( this );
-		mHandles << new HandleNorthEast( this );
-		mHandles << new HandleEast( this );
-		mHandles << new HandleSouthEast( this );
-		mHandles << new HandleSouth( this );
-		mHandles << new HandleSouthWest( this );
-		mHandles << new HandleWest( this );
-
-		/* TODO: initialize default line and fill poperties.  */
 	}
 
 
@@ -50,104 +40,6 @@ namespace glabels
 	///
 	LabelModelBoxObject::~LabelModelBoxObject()
 	{
-		foreach( Handle* handle, mHandles )
-		{
-			delete handle;
-		}
-		mHandles.clear();
-	}
-
-
-	///
-	/// Line Width Property Getter
-	///
-	double LabelModelBoxObject::lineWidth( void ) const
-	{
-		return mLineWidth;
-	}
-
-
-	///
-	/// Line Width Property Setter
-	///
-	void LabelModelBoxObject::setLineWidth( double value )
-	{
-		if ( mLineWidth != value )
-		{
-			mLineWidth = value;
-			emit changed();
-		}
-	}
-
-
-	///
-	/// Line Color Node Property Getter
-	///
-	ColorNode LabelModelBoxObject::lineColorNode( void ) const
-	{
-		return mLineColorNode;
-	}
-
-
-	///
-	/// Line Color Node Property Setter
-	///
-	void LabelModelBoxObject::setLineColorNode( const ColorNode& value )
-	{
-		if ( mLineColorNode != value )
-		{
-			mLineColorNode = value;
-			emit changed();
-		}
-	}
-		
-
-	///
-	/// Fill Color Node Property Getter
-	///
-	ColorNode LabelModelBoxObject::fillColorNode( void ) const
-	{
-		return mFillColorNode;
-	}
-
-
-	///
-	/// Fill Color Node Property Setter
-	///
-	void LabelModelBoxObject::setFillColorNode( const ColorNode& value )
-	{
-		if ( mFillColorNode != value )
-		{
-			mFillColorNode = value;
-			emit changed();
-		}
-	}
-		
-
-	///
-	/// Can Fill Capability Implementation
-	///
-	bool LabelModelBoxObject::canFill()
-	{
-		return true;
-	}
-
-
-	///
-	/// Can Line Color Capability Implementation
-	///
-	bool LabelModelBoxObject::canLineColor()
-	{
-		return true;
-	}
-
-
-	///
-	/// Can Line Width Capability Implementation
-	///
-	bool LabelModelBoxObject::canLineWidth()
-	{
-		return true;
 	}
 
 

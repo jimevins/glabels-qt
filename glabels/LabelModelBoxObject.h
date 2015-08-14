@@ -21,7 +21,8 @@
 #ifndef glabels_LabelModelBoxObject_h
 #define glabels_LabelModelBoxObject_h
 
-#include "LabelModelObject.h"
+
+#include "LabelModelShapeObject.h"
 
 
 namespace glabels
@@ -30,7 +31,7 @@ namespace glabels
 	///
 	/// Label Model Box Object
 	///
-	class LabelModelBoxObject : public LabelModelObject
+	class LabelModelBoxObject : public LabelModelShapeObject
 	{
 		Q_OBJECT
 
@@ -43,54 +44,11 @@ namespace glabels
 
 
 		///////////////////////////////////////////////////////////////
-		// Property Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		//
-		// Shape Property: lineWidth
-		//
-		virtual double lineWidth( void ) const;
-		virtual void setLineWidth( double value );
-
-
-		//
-		// Shape Property: lineColorNode
-		//
-		virtual ColorNode lineColorNode( void ) const;
-		virtual void setLineColorNode( const ColorNode& value );
-		
-
-		//
-		// Shape Property: fillColorNode
-		//
-		virtual ColorNode fillColorNode( void ) const;
-		virtual void setFillColorNode( const ColorNode& value );
-		
-
-		///////////////////////////////////////////////////////////////
-		// Capability Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		virtual bool canFill();
-		virtual bool canLineColor();
-		virtual bool canLineWidth();
-
-
-		///////////////////////////////////////////////////////////////
 		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	protected:
 		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const;
 		virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const;
-
-
-		///////////////////////////////////////////////////////////////
-		// Private Members
-		///////////////////////////////////////////////////////////////
-	private:
-		double     mLineWidth;
-		ColorNode  mLineColorNode;
-		ColorNode  mFillColorNode;
 
 	};
 
