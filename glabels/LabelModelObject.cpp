@@ -60,6 +60,8 @@ namespace glabels
 		mShadowOpacity   = 0.5;
 
 		mSelectedFlag = false;
+
+		mOutline = 0;
 	}
 
 
@@ -922,6 +924,32 @@ namespace glabels
 
 		painter->restore();
 	}
+
+
+	///
+	/// Draw selection highlights
+	///
+	void LabelModelObject::drawSelectionHighlight( QPainter* painter ) const
+	{
+		painter->save();
+
+		painter->translate( mX0, mY0 );
+		painter->setTransform( mMatrix, true );
+
+		if ( mOutline )
+		{
+			mOutline->draw( painter );
+		}
+
+		foreach( Handle* handle, mHandles )
+		{
+			handle->draw( painter );
+		}
+		
+		painter->restore();
+	}
+
+
 
 
 }

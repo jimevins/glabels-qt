@@ -32,6 +32,15 @@ namespace glabels
 	///
 	LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelObject(parent)
 	{
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
 		/* TODO: initialize default line and fill poperties.  */
 	}
 
@@ -41,6 +50,11 @@ namespace glabels
 	///
 	LabelModelBoxObject::~LabelModelBoxObject()
 	{
+		foreach( Handle* handle, mHandles )
+		{
+			delete handle;
+		}
+		mHandles.clear();
 	}
 
 

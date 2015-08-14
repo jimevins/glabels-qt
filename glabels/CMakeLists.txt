@@ -19,6 +19,7 @@ set (glabels_sources
   FieldMenu.cpp
   FieldMenuItem.cpp
   File.cpp
+  Handles.cpp
   Help.cpp
   LabelModel.cpp
   LabelModelObject.cpp
@@ -27,10 +28,11 @@ set (glabels_sources
   MainWindow.cpp
   MergeField.cpp
   MergeRecord.cpp
+  NewLabelDialog.cpp
+  Outline.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
-  NewLabelDialog.cpp
   SimplePreview.cpp
   View.cpp
   XmlLabel.cpp

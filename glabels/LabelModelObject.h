@@ -29,8 +29,8 @@
 #include "ColorNode.h"
 #include "TextNode.h"
 #include "BarcodeStyle.h"
-
-class QGraphicsItem;
+#include "Handles.h"
+#include "Outline.h"
 
 
 namespace glabels
@@ -393,6 +393,7 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		void draw( QPainter* painter, bool inEditor, MergeRecord* record ) const;
+		void drawSelectionHighlight( QPainter* painter ) const;
 
 	protected:
 		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
@@ -415,6 +416,9 @@ namespace glabels
 		double     mShadowY;
 		double     mShadowOpacity;
 		ColorNode  mShadowColorNode;
+
+		QList<Handle*> mHandles;
+		Outline*       mOutline;
 
 
 		///////////////////////////////////////////////////////////////

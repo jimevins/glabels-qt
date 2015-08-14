@@ -289,6 +289,7 @@ glabels::View::paintEvent( QPaintEvent* event )
 		drawMarkupLayer( &painter );
 		drawObjectsLayer( &painter );
 		drawFgLayer( &painter );
+		drawHighlightLayer( &painter );
 	}
 }
 
@@ -659,6 +660,26 @@ glabels::View::drawFgLayer( QPainter* painter )
 		painter->translate( -mModel->frame()->w(), 0 );
 	}
 	painter->drawPath( mModel->frame()->path() );
+
+	painter->restore();
+}
+
+
+///
+/// Draw Highlight Layer
+///
+void
+glabels::View::drawHighlightLayer( QPainter* painter )
+{
+	painter->save();
+
+	foreach ( LabelModelObject* object, mModel->objectList() )
+	{
+		if ( object->isSelected() )
+		{
+			object->drawSelectionHighlight( painter );
+		}
+	}
 
 	painter->restore();
 }
