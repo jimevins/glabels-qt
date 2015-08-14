@@ -49,6 +49,7 @@ namespace glabels
 	protected:
 		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const;
 		virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const;
+		virtual QPainterPath path() const;
 
 	};
 

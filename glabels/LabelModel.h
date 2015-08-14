@@ -100,7 +100,7 @@ namespace glabels
 		void addObject( LabelModelObject* object );
 		void deleteObject( LabelModelObject* object );
 
-		LabelModelObject* objectAt( double x, double y );
+		LabelModelObject* objectAt( double scale, double x, double y );
 
 
 		/////////////////////////////////

@@ -116,11 +116,11 @@ namespace glabels
 	///
 	/// Delete Object
 	///
-	LabelModelObject* LabelModel::objectAt( double x, double y )
+	LabelModelObject* LabelModel::objectAt( double scale, double x, double y )
 	{
 		foreach( LabelModelObject* object, mObjectList )
 		{
-			if ( object->isLocatedAt( x, y ) )
+			if ( object->isLocatedAt( scale, x, y ) )
 			{
 				return object;
 			}

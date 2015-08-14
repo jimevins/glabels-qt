@@ -346,7 +346,7 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 
 			case IdleState:
 				/* @TODO handle handles. */
-				if ( mModel->objectAt( xWorld, yWorld ) )
+				if ( mModel->objectAt( mZoom, xWorld, yWorld ) )
 				{
 					setCursor( Qt::SizeAllCursor );
 				}

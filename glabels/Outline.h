@@ -50,7 +50,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		void  draw( QPainter* painter ) const;
-		QPainterPath path( QPainter* painter ) const;
+		QPainterPath path( double scale ) const;
 
 
 		////////////////////////////

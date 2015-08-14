@@ -30,6 +30,7 @@ namespace
 {
 	const qreal dashSize = 1;
 
+	const double slopPixels = 2;
 	const double outlineWidthPixels = 1;
 	const QColor outlineColor1(   0,   0,   0 );
 	const QColor outlineColor2( 255, 255, 255 );
@@ -89,11 +90,17 @@ void glabels::Outline::draw( QPainter* painter ) const
 ///
 /// Create Outline path
 ///
-QPainterPath glabels::Outline::path( QPainter *painter ) const
+QPainterPath glabels::Outline::path( double scale ) const
 {
+	double s = 1 / scale;
+
 	QPainterPath path;
 
-	path.addRect( 0, 0, mOwner->w(), mOwner->h() );
+	path.addRect( -s*slopPixels, -s*slopPixels,
+		      mOwner->w()+s*2*slopPixels, mOwner->h()+s*2*slopPixels );
+	path.closeSubpath();
+	path.addRect( s*slopPixels, s*slopPixels,
+		      mOwner->w()-s*2*slopPixels, mOwner->h()-s*2*slopPixels );
 	
 	return path;
 }

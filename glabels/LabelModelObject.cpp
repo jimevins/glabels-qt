@@ -895,10 +895,27 @@ namespace glabels
 
 
 	///
-	/// Default isLocatedAt method
+	/// Is this object locate at x,y?
 	///
-	bool LabelModelObject::isLocatedAt( double x, double y )
+	bool LabelModelObject::isLocatedAt( double scale, double x, double y ) const
 	{
+		QPointF p( x, y );
+		p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
+
+		QPainterPath objectPath = mMatrix.map( path() );
+		if ( objectPath.contains( p ) )
+		{
+			return true;
+		}
+		else if ( mOutline )
+		{
+			QPainterPath outlinePath = mMatrix.map( mOutline->path( scale ) );
+			if ( outlinePath.contains( p ) )
+			{
+				return true;
+			}
+		}
+
 		return false;
 	}
 

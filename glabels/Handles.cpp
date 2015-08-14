@@ -80,15 +80,13 @@ void glabels::Handle::drawAt( QPainter* painter, double x, double y ) const
 ///
 /// Create Handle path at x,y
 ///
-QPainterPath glabels::Handle::pathAt( QPainter *painter, double x, double y ) const
+QPainterPath glabels::Handle::pathAt( double scale, double x, double y ) const
 {
 	QPainterPath path;
 
-	QTransform transform = painter->transform();
-	double sx = 1/transform.m11();
-	double sy = 1/transform.m22();
+	double s = 1/scale;
 
-	path.addRect( -sx*handlePixels/2, -sy*handlePixels/2, sx*handlePixels, sy*handlePixels );
+	path.addRect( -s*handlePixels/2, -s*handlePixels/2, s*handlePixels, s*handlePixels );
 	path.translate( x, y );
 	
 	return path;
@@ -124,9 +122,9 @@ void glabels::HandleNorth::draw( QPainter* painter ) const
 ///
 /// HandleNorth Path
 ///
-QPainterPath glabels::HandleNorth::path( QPainter* painter ) const
+QPainterPath glabels::HandleNorth::path( double scale ) const
 {
-	return pathAt( painter, mOwner->w()/2, 0 );
+	return pathAt( scale, mOwner->w()/2, 0 );
 }
 
 
@@ -159,9 +157,9 @@ void glabels::HandleNorthEast::draw( QPainter* painter ) const
 ///
 /// HandleNorthEast Path
 ///
-QPainterPath glabels::HandleNorthEast::path( QPainter* painter ) const
+QPainterPath glabels::HandleNorthEast::path( double scale ) const
 {
-	return pathAt( painter, mOwner->w(), 0 );
+	return pathAt( scale, mOwner->w(), 0 );
 }
 
 
@@ -194,9 +192,9 @@ void glabels::HandleEast::draw( QPainter* painter ) const
 ///
 /// HandleEast Path
 ///
-QPainterPath glabels::HandleEast::path( QPainter* painter ) const
+QPainterPath glabels::HandleEast::path( double scale ) const
 {
-	return pathAt( painter, mOwner->w(), mOwner->h()/2 );
+	return pathAt( scale, mOwner->w(), mOwner->h()/2 );
 }
 
 
@@ -229,9 +227,9 @@ void glabels::HandleSouthEast::draw( QPainter* painter ) const
 ///
 /// HandleSouthEast Path
 ///
-QPainterPath glabels::HandleSouthEast::path( QPainter* painter ) const
+QPainterPath glabels::HandleSouthEast::path( double scale ) const
 {
-	return pathAt( painter, mOwner->w(), mOwner->h() );
+	return pathAt( scale, mOwner->w(), mOwner->h() );
 }
 
 
@@ -264,9 +262,9 @@ void glabels::HandleSouth::draw( QPainter* painter ) const
 ///
 /// HandleSouth Path
 ///
-QPainterPath glabels::HandleSouth::path( QPainter* painter ) const
+QPainterPath glabels::HandleSouth::path( double scale ) const
 {
-	return pathAt( painter, mOwner->w()/2, mOwner->h() );
+	return pathAt( scale, mOwner->w()/2, mOwner->h() );
 }
 
 
@@ -299,9 +297,9 @@ void glabels::HandleSouthWest::draw( QPainter* painter ) const
 ///
 /// HandleSouthWest Path
 ///
-QPainterPath glabels::HandleSouthWest::path( QPainter* painter ) const
+QPainterPath glabels::HandleSouthWest::path( double scale ) const
 {
-	return pathAt( painter, 0, mOwner->w() );
+	return pathAt( scale, 0, mOwner->w() );
 }
 
 
@@ -334,9 +332,9 @@ void glabels::HandleWest::draw( QPainter* painter ) const
 ///
 /// HandleWest Path
 ///
-QPainterPath glabels::HandleWest::path( QPainter* painter ) const
+QPainterPath glabels::HandleWest::path( double scale ) const
 {
-	return pathAt( painter, 0, mOwner->h()/2 );
+	return pathAt( scale, 0, mOwner->h()/2 );
 }
 
 
@@ -369,9 +367,9 @@ void glabels::HandleNorthWest::draw( QPainter* painter ) const
 ///
 /// HandleNorthWest Path
 ///
-QPainterPath glabels::HandleNorthWest::path( QPainter* painter ) const
+QPainterPath glabels::HandleNorthWest::path( double scale ) const
 {
-	return pathAt( painter, 0, 0 );
+	return pathAt( scale, 0, 0 );
 }
 
 
@@ -404,9 +402,9 @@ void glabels::HandleP1::draw( QPainter* painter ) const
 ///
 /// HandleP1 Path
 ///
-QPainterPath glabels::HandleP1::path( QPainter* painter ) const
+QPainterPath glabels::HandleP1::path( double scale ) const
 {
-	return pathAt( painter, 0, 0 );
+	return pathAt( scale, 0, 0 );
 }
 
 
@@ -439,7 +437,7 @@ void glabels::HandleP2::draw( QPainter* painter ) const
 ///
 /// HandleP2 Path
 ///
-QPainterPath glabels::HandleP2::path( QPainter* painter ) const
+QPainterPath glabels::HandleP2::path( double scale ) const
 {
-	return pathAt( painter, mOwner->w(), mOwner->h() );
+	return pathAt( scale, mOwner->w(), mOwner->h() );
 }

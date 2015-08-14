@@ -385,7 +385,7 @@ namespace glabels
 		void rotate( double thetaDegs );
 		void flipHoriz();
 		void flipVert();
-		virtual bool isLocatedAt( double x, double y );
+		bool isLocatedAt( double scale, double x, double y ) const;
 
 
 		///////////////////////////////////////////////////////////////
@@ -398,6 +398,7 @@ namespace glabels
 	protected:
 		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
 		virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
+		virtual QPainterPath path() const = 0;
 
 		
 		///////////////////////////////////////////////////////////////

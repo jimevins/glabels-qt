@@ -51,10 +51,10 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const = 0;
-		virtual QPainterPath path( QPainter* painter ) const = 0;
+		virtual QPainterPath path( double scale ) const = 0;
 	protected:
 		void drawAt( QPainter* painter, double x, double y ) const;
-		QPainterPath pathAt( QPainter* painter, double x, double y ) const;
+		QPainterPath pathAt( double scale, double x, double y ) const;
 
 
 		////////////////////////////
@@ -84,7 +84,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -106,7 +106,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -128,7 +128,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -150,7 +150,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -172,7 +172,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -194,7 +194,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -216,7 +216,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -238,7 +238,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -260,7 +260,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 
@@ -282,7 +282,7 @@ namespace glabels
 		////////////////////////////
 	public:
 		virtual void  draw( QPainter* painter ) const;
-		virtual QPainterPath path( QPainter* painter ) const;
+		virtual QPainterPath path( double scale ) const;
 	};
 
 

@@ -102,4 +102,15 @@ namespace glabels
 		painter->drawRect( 0, 0, mW, mH );
 	}
 
+
+	///
+	/// Path representing object
+	///
+	QPainterPath LabelModelBoxObject::path() const
+	{
+		QPainterPath path;
+		path.addRect( 0, 0, mW, mH );
+
+		return path;
+	}
 }
