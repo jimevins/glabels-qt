@@ -57,7 +57,7 @@ namespace glabels
 		mShadowState     = false;
 		mShadowX         = 1.3;
 		mShadowY         = 1.3;
-		mShadowColorNode = ColorNode( QColor::fromRgb(0x000000) );
+		mShadowColorNode = ColorNode( QColor( 0, 0, 0 ) );
 		mShadowOpacity   = 0.5;
 
 		mSelectedFlag = false;
@@ -768,6 +768,8 @@ namespace glabels
 	{
 		mW = w;
 		mH = h;
+
+		emit changed();
 	}
 
 

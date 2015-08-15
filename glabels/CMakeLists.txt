@@ -15,6 +15,7 @@ set (glabels_sources
   ColorPaletteDialog.cpp
   ColorPaletteItem.cpp
   ColorSwatch.cpp
+  Cursors.cpp
   FieldButton.cpp
   FieldMenu.cpp
   FieldMenuItem.cpp
@@ -67,13 +68,14 @@ set (glabels_forms
 )
 
 set (glabels_resource_files
+  cursors.qrc
   icons.qrc
   images.qrc
 )
 
 qt4_wrap_cpp (glabels_moc_sources ${glabels_qobject_headers})
 qt4_wrap_ui (glabels_forms_headers ${glabels_forms})
-qt4_add_resources(glabels_qrc_sources ${glabels_resource_files})
+qt4_add_resources (glabels_qrc_sources ${glabels_resource_files})
 
 include (${QT_USE_FILE})
 

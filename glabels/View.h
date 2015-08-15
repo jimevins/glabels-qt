@@ -116,8 +116,8 @@ namespace glabels
 		/////////////////////////////////////
 	protected:
 		void resizeEvent( QResizeEvent* event );
-		void mouseMoveEvent( QMouseEvent* event );
 		void mousePressEvent( QMouseEvent* event );
+		void mouseMoveEvent( QMouseEvent* event );
 		void mouseReleaseEvent( QMouseEvent* event );
 		void leaveEvent( QEvent* event );
 		void paintEvent( QPaintEvent* event );

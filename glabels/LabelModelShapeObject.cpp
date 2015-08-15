@@ -43,7 +43,9 @@ namespace glabels
 		mHandles << new HandleSouthWest( this );
 		mHandles << new HandleWest( this );
 
-		/* TODO: initialize default line and fill poperties.  */
+		mLineWidth       = 1.0;
+		mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
+		mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
 	}
 
 

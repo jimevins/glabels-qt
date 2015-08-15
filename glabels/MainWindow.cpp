@@ -1021,7 +1021,7 @@ namespace glabels
 	///
 	void MainWindow::objectsArrowMode()
 	{
-		qDebug() << "ACTION: objects->Select Mode";
+		mView->arrowMode();
 	}
 
 
@@ -1039,7 +1039,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateBox()
 	{
-		qDebug() << "ACTION: objects->Create->Box";
+		mView->createBoxMode();
 	}
 
 

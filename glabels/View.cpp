@@ -27,6 +27,8 @@
 
 #include "LabelModel.h"
 #include "LabelModelObject.h"
+#include "LabelModelBoxObject.h"
+#include "Cursors.h"
 
 #include "libglabels/Markup.h"
 #include "libglabels/FrameRect.h"
@@ -130,9 +132,9 @@ glabels::View::setModel( LabelModel* model )
 	{
 		setZoomReal( 1, false );
 
-		connect( model, SIGNAL(changed()), this, SLOT(onModelChanged()) );
-		connect( model, SIGNAL(selectionChanged()), this, SLOT(onModelSelectionChanged()) );
-		connect( model, SIGNAL(sizeChanged()), this, SLOT(onModelSizeChanged()) );
+		connect( model, SIGNAL(changed()), this, SLOT(update()) );
+		connect( model, SIGNAL(selectionChanged()), this, SLOT(update()) );
+		connect( model, SIGNAL(sizeChanged()), this, SLOT(update()) );
 
 		update();
 	}
@@ -287,6 +289,33 @@ glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
 
 
 ///
+/// Arrow mode (normal mode)
+///
+void
+glabels::View::arrowMode()
+{
+	setCursor( Qt::ArrowCursor );
+
+	mInObjectCreateMode = false;
+	mState = IdleState;
+}
+
+
+///
+/// Create box mode
+///
+void
+glabels::View::createBoxMode()
+{
+	setCursor( Cursors::Box() );
+
+	mInObjectCreateMode = true;
+	mCreateObjectType = Box;
+	mState = IdleState;
+}
+
+
+///
 /// Resize Event Handler
 ///
 void
@@ -305,118 +334,6 @@ glabels::View::resizeEvent( QResizeEvent *event )
 			mY0 = (height()/mScale - mModel->h()) / 2;
 
 			update();
-		}
-	}
-}
-
-
-///
-/// Mouse Movement Event Handler
-///
-void
-glabels::View::mouseMoveEvent( QMouseEvent* event )
-{
-	if ( mModel )
-	{
-		/*
-		 * Transform to label coordinates
-		 */
-		QTransform transform;
-
-		transform.scale( mScale, mScale );
-		transform.translate( mX0, mY0 );
-
-		QPointF pWorld = transform.inverted().map( event->posF() );
-		double xWorld = pWorld.x();
-		double yWorld = pWorld.y();
-
-		
-		/*
-		 * Emit signal regardless of mode
-		 */
-		emit pointerMoved( xWorld, yWorld );
-
-
-		/*
-		 * Handle event as appropriate for mode
-		 */
-		if ( !mInObjectCreateMode )
-		{
-			switch (mState)
-			{
-
-			case IdleState:
-				if ( mModel->isSelectionAtomic() &&
-				     mModel->handleAt( mScale, xWorld, yWorld ) )
-				{
-					setCursor( Qt::CrossCursor );
-				}
-				else if ( mModel->objectAt( mScale, xWorld, yWorld ) )
-				{
-					setCursor( Qt::SizeAllCursor );
-				}
-				else
-				{
-					setCursor( Qt::ArrowCursor );
-				}
-				break;
-
-			case ArrowSelectRegion:
-				mSelectRegion.setX2( xWorld );
-				mSelectRegion.setY2( yWorld );
-				update();
-				break;
-
-			case ArrowMove:
-				mModel->moveSelection( (xWorld - mMoveLastX),
-						       (yWorld - mMoveLastY) );
-				mMoveLastX = xWorld;
-				mMoveLastY = yWorld;
-				update();
-				break;
-
-			case ArrowResize:
-				handleResizeMotion( xWorld, yWorld );
-				update();
-				break;
-
-			default:
-				// Should not happen!
-				qWarning() << "Invalid arrow state.";
-				break;
-
-			}
-		}
-		else
-		{
-			if ( mState != IdleState )
-			{
-				switch (mCreateObjectType)
-				{
-				case Box:
-					// @TODO
-					break;
-				case Ellipse:
-					// @TODO
-					break;
-				case Line:
-					// @TODO
-					break;
-				case Image:
-					// @TODO
-					break;
-				case Text:
-					// @TODO
-					break;
-				case Barcode:
-					// @TODO
-					break;
-				default:
-					// Should not happen!
-					qWarning() << "Invalid create type.";
-					break;
-				}
-			}
 		}
 	}
 }
@@ -451,6 +368,10 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 
 			if ( !mInObjectCreateMode )
 			{
+				//
+				// NORMAL MODE
+				//
+				
 				LabelModelObject* object = 0;
 				Handle* handle = 0;
 				if ( mModel->isSelectionAtomic() &&
@@ -497,7 +418,6 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 					mMoveLastY = yWorld;
 
 					mState = ArrowMove;
-					update();
 				}
 				else
 				{
@@ -519,6 +439,53 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 					update();
 				}
 			}
+			else
+			{
+				//
+				// OBJECT CREATION MODE
+				//
+				
+				if ( mState == IdleState )
+				{
+					switch ( mCreateObjectType )
+					{
+					case Box:
+						mCreateObject = new LabelModelBoxObject();
+						break;
+					case Ellipse:
+						// mCreateObject = new LabelModelEllipseObject();
+						break;
+					case Line: 
+						// mCreateObject = new LabelModelLineObject();
+						break;
+					case Image:
+						// mCreateObject = new LabelModelImageObject();
+						break;
+					case Text:
+						// mCreateObject = new LabelModelTextObject();
+						break;
+					case Barcode:
+						// mCreateObject = new LabelModelBarcodeObject();
+						break;
+					default:
+						Q_ASSERT_X( false, "View::::mousePressEvent", "Invalid creation type" );
+						break;
+					}
+
+					mCreateObject->setPosition( xWorld, yWorld );
+					mCreateObject->setSize( 0, 0 );
+					mModel->addObject( mCreateObject );
+
+					mModel->unselectAll();
+					mModel->selectObject( mCreateObject );
+
+					mCreateX0 = xWorld;
+					mCreateY0 = yWorld;
+
+					mState = CreateDrag;
+				}
+	
+			}
 
 		}
 		else if ( event->button() & Qt::RightButton )
@@ -527,6 +494,123 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 			// RIGHT BUTTON
 			//
 
+		}
+	}
+}
+
+
+///
+/// Mouse Movement Event Handler
+///
+void
+glabels::View::mouseMoveEvent( QMouseEvent* event )
+{
+	using std::min;
+	using std::max;
+
+	if ( mModel )
+	{
+		/*
+		 * Transform to label coordinates
+		 */
+		QTransform transform;
+
+		transform.scale( mScale, mScale );
+		transform.translate( mX0, mY0 );
+
+		QPointF pWorld = transform.inverted().map( event->posF() );
+		double xWorld = pWorld.x();
+		double yWorld = pWorld.y();
+
+		
+		/*
+		 * Emit signal regardless of mode
+		 */
+		emit pointerMoved( xWorld, yWorld );
+
+
+		/*
+		 * Handle event as appropriate for mode
+		 */
+		if ( !mInObjectCreateMode )
+		{
+			///
+			/// NORMAL MODE
+			///
+
+			switch (mState)
+			{
+
+			case IdleState:
+				if ( mModel->isSelectionAtomic() &&
+				     mModel->handleAt( mScale, xWorld, yWorld ) )
+				{
+					setCursor( Qt::CrossCursor );
+				}
+				else if ( mModel->objectAt( mScale, xWorld, yWorld ) )
+				{
+					setCursor( Qt::SizeAllCursor );
+				}
+				else
+				{
+					setCursor( Qt::ArrowCursor );
+				}
+				break;
+
+			case ArrowSelectRegion:
+				mSelectRegion.setX2( xWorld );
+				mSelectRegion.setY2( yWorld );
+				update();
+				break;
+
+			case ArrowMove:
+				mModel->moveSelection( (xWorld - mMoveLastX),
+						       (yWorld - mMoveLastY) );
+				mMoveLastX = xWorld;
+				mMoveLastY = yWorld;
+				break;
+
+			case ArrowResize:
+				handleResizeMotion( xWorld, yWorld );
+				break;
+
+			default:
+				// Should not happen!
+				Q_ASSERT_X( false, "View::::mouseMoveEvent", "Invalid state" );
+				break;
+
+			}
+		}
+		else
+		{
+			//
+			// OBJECT CREATION MODE
+			//
+				
+			if ( mState != IdleState )
+			{
+				switch (mCreateObjectType)
+				{
+				case Box:
+				case Ellipse:
+				case Image:
+				case Text:
+				case Barcode:
+					mCreateObject->setPosition( min( xWorld, mCreateX0 ),
+								    min( yWorld, mCreateY0 ) );
+					mCreateObject->setSize( max(xWorld,mCreateX0) - min(xWorld,mCreateX0),
+								max(yWorld,mCreateY0) - min(yWorld,mCreateY0) );
+								
+					break;
+				case Line:
+					mCreateObject->setSize( xWorld - mCreateX0, yWorld - mCreateY0 );
+					break;
+				default:
+					// Should not happen!
+					Q_ASSERT_X( false, "View::::mouseMoveEvent", "Invalid creation mode" );
+					break;
+				}
+			}
 		}
 	}
 }
@@ -561,6 +645,9 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 			
 			if ( !mInObjectCreateMode )
 			{
+				///
+				/// NORMAL MODE
+				///
 				
 				switch (mState)
 				{
@@ -582,7 +669,6 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 
 				default:
 					mState = IdleState;
-					update();
 					break;
 
 				}
@@ -590,7 +676,27 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 			}
 			else
 			{
+				//
+				// OBJECT CREATION MODE
+				//
+
+				if ( (fabs(mCreateObject->w()) < 4) && (fabs(mCreateObject->h()) < 4) )
+				{
+					switch (mCreateObjectType)
+					{
+					case Text:
+						mCreateObject->setSize( 0, 0 );
+						break;
+					case Line:
+						mCreateObject->setSize( 72, 0 );
+						break;
+					default:
+						mCreateObject->setSize( 72, 72 );
+						break;
+					}
+				}
 				
+				arrowMode();
 			}
 		}
 	}
