@@ -115,18 +115,20 @@ namespace glabels
 		// Event handlers
 		/////////////////////////////////////
 	protected:
-		void paintEvent( QPaintEvent* event );
 		void resizeEvent( QResizeEvent* event );
 		void mouseMoveEvent( QMouseEvent* event );
 		void mousePressEvent( QMouseEvent* event );
 		void mouseReleaseEvent( QMouseEvent* event );
 		void leaveEvent( QEvent* event );
+		void paintEvent( QPaintEvent* event );
 
 
 		/////////////////////////////////////
 		// Private methods
 		/////////////////////////////////////
 	private:
+		void handleResizeMotion( double xWorld, double yWorld );
+
 		void drawBgLayer( QPainter* painter );
 		void drawGridLayer( QPainter* painter );
 		void drawMarkupLayer( QPainter* painter );
@@ -134,8 +136,6 @@ namespace glabels
 		void drawFgLayer( QPainter* painter );
 		void drawHighlightLayer( QPainter* painter );
 		void drawSelectRegionLayer( QPainter* painter );
-
-		void handleResizeMotion( double xWorld, double yWorld );
 
 
 		/////////////////////////////////////
@@ -169,6 +169,9 @@ namespace glabels
 
 		double              mZoom;
 		bool                mZoomToFitFlag;
+		double              mScale;
+		double              mX0;
+		double              mY0;
 
 		bool                mMarkupVisible;
 		bool                mGridVisible;

@@ -40,10 +40,13 @@
 //
 namespace
 {
-	const int    nZoomLevels = 14;
-	const double zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33, 0.25, 0.15, 0.10 };
+	const int     nZoomLevels = 14;
+	const double  zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33, 0.25, 0.15, 0.10 };
 
-	const double ZOOM_TO_FIT_PAD = 16.0;
+	const double  PTS_PER_INCH = 72.0;
+	const double  ZOOM_TO_FIT_PAD = 16.0;
+
+        const QColor  backgroundColor( 192, 192, 192 );
 
         const QColor  shadowColor( 64, 64, 64, 128 );
 	const double  shadowOffsetPixels = 4;
@@ -73,8 +76,6 @@ glabels::View::View( QWidget *parent ) : QWidget(parent)
 {
 	mState = IdleState;
 
-	setZoomReal( 1, false );
-
 	mModel              = 0;
 	mMarkupVisible      = true;
 	mGridVisible        = true;
@@ -82,6 +83,8 @@ glabels::View::View( QWidget *parent ) : QWidget(parent)
 	mInObjectCreateMode = false;
 
 	setMouseTracking( true );
+
+	setMinimumSize( 640, 400 );
 }
 
 
@@ -125,9 +128,13 @@ glabels::View::setModel( LabelModel* model )
 
 	if ( model )
 	{
+		setZoomReal( 1, false );
+
 		connect( model, SIGNAL(changed()), this, SLOT(onModelChanged()) );
 		connect( model, SIGNAL(selectionChanged()), this, SLOT(onModelSelectionChanged()) );
 		connect( model, SIGNAL(sizeChanged()), this, SLOT(onModelSizeChanged()) );
+
+		update();
 	}
 }
 
@@ -225,9 +232,9 @@ glabels::View::zoomToFit()
 	using std::min;
 	using std::max;
 
-	double x_scale = (72.0/physicalDpiX()) * ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
-	double y_scale = (72.0/physicalDpiY()) * ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
-	double newZoom = min( x_scale, y_scale );
+	double x_scale = ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
+	double y_scale = ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
+	double newZoom = min( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
 
 	// Limits
 	newZoom = min( newZoom, zoomLevels[0] );
@@ -266,36 +273,16 @@ glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
 	mZoom          = zoom;
 	mZoomToFitFlag = zoomToFitFlag;
 
+	/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
+	mScale = zoom * physicalDpiX() / PTS_PER_INCH;
+
+	/* Adjust origin to center label in widget. */
+	mX0 = (width()/mScale - mModel->w()) / 2;
+	mY0 = (height()/mScale - mModel->h()) / 2;
+
 	update();
 
 	emit zoomChanged();
-}
-
-
-///
-/// Paint Event Handler
-///
-void
-glabels::View::paintEvent( QPaintEvent* event )
-{
-	if ( mModel )
-	{
-		QPainter painter( this );
-
-		painter.setRenderHint( QPainter::Antialiasing, true );
-		painter.setRenderHint( QPainter::TextAntialiasing, true );
-		painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-		
-		painter.scale( mZoom, mZoom );
-
-		drawBgLayer( &painter );
-		drawGridLayer( &painter );
-		drawMarkupLayer( &painter );
-		drawObjectsLayer( &painter );
-		drawFgLayer( &painter );
-		drawHighlightLayer( &painter );
-		drawSelectRegionLayer( &painter );
-	}
 }
 
 
@@ -305,13 +292,20 @@ glabels::View::paintEvent( QPaintEvent* event )
 void
 glabels::View::resizeEvent( QResizeEvent *event )
 {
-	if ( mZoomToFitFlag )
+	if ( mModel )
 	{
-		zoomToFit();
-	}
-	else
-	{
-		update();
+		if ( mZoomToFitFlag )
+		{
+			zoomToFit();
+		}
+		else
+		{
+			/* Re-adjust origin to center label in widget. */
+			mX0 = (width()/mScale - mModel->w()) / 2;
+			mY0 = (height()/mScale - mModel->h()) / 2;
+
+			update();
+		}
 	}
 }
 
@@ -325,11 +319,12 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 	if ( mModel )
 	{
 		/*
-		 * Translate to label coordinates
+		 * Transform to label coordinates
 		 */
 		QTransform transform;
 
-		transform.scale( mZoom, mZoom );
+		transform.scale( mScale, mScale );
+		transform.translate( mX0, mY0 );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
 		double xWorld = pWorld.x();
@@ -352,11 +347,11 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 
 			case IdleState:
 				if ( mModel->isSelectionAtomic() &&
-				     mModel->handleAt( mZoom, xWorld, yWorld ) )
+				     mModel->handleAt( mScale, xWorld, yWorld ) )
 				{
 					setCursor( Qt::CrossCursor );
 				}
-				else if ( mModel->objectAt( mZoom, xWorld, yWorld ) )
+				else if ( mModel->objectAt( mScale, xWorld, yWorld ) )
 				{
 					setCursor( Qt::SizeAllCursor );
 				}
@@ -436,11 +431,12 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 	if ( mModel )
 	{
 		/*
-		 * Translate to label coordinates
+		 * Transform to label coordinates
 		 */
 		QTransform transform;
 
-		transform.scale( mZoom, mZoom );
+		transform.scale( mScale, mScale );
+		transform.translate( mX0, mY0 );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
 		double xWorld = pWorld.x();
@@ -458,7 +454,7 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 				LabelModelObject* object = 0;
 				Handle* handle = 0;
 				if ( mModel->isSelectionAtomic() &&
-				     (handle = mModel->handleAt( mZoom, xWorld, yWorld )) != 0 )
+				     (handle = mModel->handleAt( mScale, xWorld, yWorld )) != 0 )
 				{
 					//
 					// Start an object resize
@@ -469,7 +465,7 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 
 					mState = ArrowResize;
 				}
-				else if ( (object = mModel->objectAt( mZoom, xWorld, yWorld )) != 0 )
+				else if ( (object = mModel->objectAt( mScale, xWorld, yWorld )) != 0 )
 				{
 					//
 					// Start a Move Selection (adjusting selection if necessary)
@@ -545,11 +541,12 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 	if ( mModel )
 	{
 		/*
-		 * Translate to label coordinates
+		 * Transform to label coordinates
 		 */
 		QTransform transform;
 
-		transform.scale( mZoom, mZoom );
+		transform.scale( mScale, mScale );
+		transform.translate( mX0, mY0 );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
 		double xWorld = pWorld.x();
@@ -748,6 +745,41 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 
 
 ///
+/// Paint Event Handler
+///
+void
+glabels::View::paintEvent( QPaintEvent* event )
+{
+	if ( mModel )
+	{
+		QPainter painter( this );
+
+		painter.setRenderHint( QPainter::Antialiasing, true );
+		painter.setRenderHint( QPainter::TextAntialiasing, true );
+		painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+		
+		/* Fill background before any transformations */
+		painter.setBrush( QBrush( backgroundColor ) );
+		painter.setPen( Qt::NoPen );
+		painter.drawRect( rect() );
+
+		/* Transform. */
+		painter.scale( mScale, mScale );
+		painter.translate( mX0, mY0 );
+
+		/* Now draw from the bottom layer up. */
+		drawBgLayer( &painter );
+		drawGridLayer( &painter );
+		drawMarkupLayer( &painter );
+		drawObjectsLayer( &painter );
+		drawFgLayer( &painter );
+		drawHighlightLayer( &painter );
+		drawSelectRegionLayer( &painter );
+	}
+}
+
+
+///
 /// Draw Background Layer
 ///
 void
@@ -761,7 +793,7 @@ glabels::View::drawBgLayer( QPainter* painter )
 	painter->setBrush( QBrush( shadowColor ) );
 	painter->setPen( Qt::NoPen );
 
-	painter->translate( shadowOffsetPixels/mZoom, shadowOffsetPixels/mZoom );
+	painter->translate( shadowOffsetPixels/mScale, shadowOffsetPixels/mScale );
 
 	if ( mModel->rotate() )
 	{
