@@ -28,7 +28,7 @@
 
 namespace
 {
-	const qreal dashSize = 1;
+	const qreal dashSize = 2;
 
 	const double slopPixels = 2;
 	const double outlineWidthPixels = 1;
@@ -78,10 +78,10 @@ void glabels::Outline::draw( QPainter* painter ) const
 	painter->setBrush( Qt::NoBrush );
 
 	painter->setPen( mPen1 );
-	painter->drawRect( 0, 0, mOwner->w(), mOwner->h() );
+	painter->drawRect( QRectF( 0, 0, mOwner->w(), mOwner->h() ) );
 
 	painter->setPen( mPen2 );
-	painter->drawRect( 0, 0, mOwner->w(), mOwner->h() );
+	painter->drawRect( QRectF( 0, 0, mOwner->w(), mOwner->h() ) );
 
 	painter->restore();
 }

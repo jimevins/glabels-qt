@@ -64,12 +64,12 @@ namespace glabels
 			if ( lineColor.alpha() )
 			{
 				/* Has FILL and OUTLINE: adjust size to account for line width. */
-				painter->drawRect( -mLineWidth/2, -mLineWidth/2, mW+mLineWidth, mH+mLineWidth );
+				painter->drawRect( QRectF( -mLineWidth/2, -mLineWidth/2, mW+mLineWidth, mH+mLineWidth ) );
 			}
 			else
 			{
 				/* Has FILL, but no OUTLINE. */
-				painter->drawRect( 0, 0, mW, mH );
+				painter->drawRect( QRectF( 0, 0, mW, mH ) );
 			}
 		}
 		else
@@ -80,7 +80,7 @@ namespace glabels
 				painter->setPen( QPen( shadowColor, mLineWidth ) );
 				painter->setBrush( Qt::NoBrush );
 
-				painter->drawRect( 0, 0, mW, mH );
+				painter->drawRect( QRectF( 0, 0, mW, mH ) );
 			}
 		}
 		
@@ -99,7 +99,8 @@ namespace glabels
 
 		painter->setPen( QPen( lineColor, mLineWidth ) );
 		painter->setBrush( fillColor );
-		painter->drawRect( 0, 0, mW, mH );
+
+		painter->drawRect( QRectF( 0, 0, mW, mH ) );
 	}
 
 

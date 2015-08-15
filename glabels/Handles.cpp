@@ -24,6 +24,7 @@
 #include "LabelModelObject.h"
 
 #include <QColor>
+#include <QtDebug>
 
 
 namespace
@@ -39,8 +40,8 @@ namespace
 ///
 /// Handle Constructor
 ///
-glabels::Handle::Handle( LabelModelObject* owner )
-	: mOwner(owner)
+glabels::Handle::Handle( LabelModelObject* owner, Location location )
+	: mOwner(owner), mLocation(location)
 {
 }
 
@@ -54,6 +55,24 @@ glabels::Handle::~Handle()
 
 
 ///
+/// Handle owner
+///
+glabels::LabelModelObject* glabels::Handle::owner() const
+{
+	return mOwner;
+}
+
+
+///
+/// Handle location
+///
+glabels::Handle::Location glabels::Handle::location() const
+{
+	return mLocation;
+}
+
+
+///
 /// Draw Handle at x,y
 ///
 void glabels::Handle::drawAt( QPainter* painter, double x, double y ) const
@@ -62,16 +81,12 @@ void glabels::Handle::drawAt( QPainter* painter, double x, double y ) const
 
 	painter->translate( x, y );
 
-	/* Render at a scale of 1:1 in pixels, while preserving translations and rotations. */
-	QTransform t = painter->transform();
-	painter->setTransform( QTransform( 1,       t.m12(), t.m13(),
-					   t.m21(), 1,       t.m23(),
-					   t.m31(), t.m32(), t.m33() ) );
+	double s = 1.0 / painter->transform().m11();
 
-	painter->setPen( QPen( handleOutlineColor, handleOutlineWidthPixels ) );
+	painter->setPen( QPen( handleOutlineColor, s*handleOutlineWidthPixels ) );
 	painter->setBrush( handleFillColor );
 
-	painter->drawRect( -handlePixels/2, -handlePixels/2, handlePixels, handlePixels );
+	painter->drawRect( QRectF( -s*handlePixels/2.0, -s*handlePixels/2.0, s*handlePixels, s*handlePixels ) );
 
 	painter->restore();
 }
@@ -94,10 +109,45 @@ QPainterPath glabels::Handle::pathAt( double scale, double x, double y ) const
 
 
 ///
+/// HandleNorthWest Constructor
+///
+glabels::HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
+	: Handle( owner, NW )
+{
+}
+
+
+///
+/// HandleNorthWest Destructor
+///
+glabels::HandleNorthWest::~HandleNorthWest()
+{
+}
+
+
+///
+/// Draw HandleNorthWest
+///
+void glabels::HandleNorthWest::draw( QPainter* painter ) const
+{
+	drawAt( painter, 0, 0 );
+}
+
+
+///
+/// HandleNorthWest Path
+///
+QPainterPath glabels::HandleNorthWest::path( double scale ) const
+{
+	return pathAt( scale, 0, 0 );
+}
+
+
+///
 /// HandleNorth Constructor
 ///
 glabels::HandleNorth::HandleNorth( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, N )
 {
 }
 
@@ -132,7 +182,7 @@ QPainterPath glabels::HandleNorth::path( double scale ) const
 /// HandleNorthEast Constructor
 ///
 glabels::HandleNorthEast::HandleNorthEast( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, NE )
 {
 }
 
@@ -167,7 +217,7 @@ QPainterPath glabels::HandleNorthEast::path( double scale ) const
 /// HandleEast Constructor
 ///
 glabels::HandleEast::HandleEast( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, E )
 {
 }
 
@@ -202,7 +252,7 @@ QPainterPath glabels::HandleEast::path( double scale ) const
 /// HandleSouthEast Constructor
 ///
 glabels::HandleSouthEast::HandleSouthEast( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, SE )
 {
 }
 
@@ -237,7 +287,7 @@ QPainterPath glabels::HandleSouthEast::path( double scale ) const
 /// HandleSouth Constructor
 ///
 glabels::HandleSouth::HandleSouth( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, S )
 {
 }
 
@@ -272,7 +322,7 @@ QPainterPath glabels::HandleSouth::path( double scale ) const
 /// HandleSouthWest Constructor
 ///
 glabels::HandleSouthWest::HandleSouthWest( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, SW )
 {
 }
 
@@ -299,7 +349,7 @@ void glabels::HandleSouthWest::draw( QPainter* painter ) const
 ///
 QPainterPath glabels::HandleSouthWest::path( double scale ) const
 {
-	return pathAt( scale, 0, mOwner->w() );
+	return pathAt( scale, 0, mOwner->h() );
 }
 
 
@@ -307,7 +357,7 @@ QPainterPath glabels::HandleSouthWest::path( double scale ) const
 /// HandleWest Constructor
 ///
 glabels::HandleWest::HandleWest( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, W )
 {
 }
 
@@ -339,45 +389,10 @@ QPainterPath glabels::HandleWest::path( double scale ) const
 
 
 ///
-/// HandleNorthWest Constructor
-///
-glabels::HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
-	: Handle(owner)
-{
-}
-
-
-///
-/// HandleNorthWest Destructor
-///
-glabels::HandleNorthWest::~HandleNorthWest()
-{
-}
-
-
-///
-/// Draw HandleNorthWest
-///
-void glabels::HandleNorthWest::draw( QPainter* painter ) const
-{
-	drawAt( painter, 0, 0 );
-}
-
-
-///
-/// HandleNorthWest Path
-///
-QPainterPath glabels::HandleNorthWest::path( double scale ) const
-{
-	return pathAt( scale, 0, 0 );
-}
-
-
-///
 /// HandleP1 Constructor
 ///
 glabels::HandleP1::HandleP1( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, P1 )
 {
 }
 
@@ -412,7 +427,7 @@ QPainterPath glabels::HandleP1::path( double scale ) const
 /// HandleP2 Constructor
 ///
 glabels::HandleP2::HandleP2( LabelModelObject* owner )
-	: Handle(owner)
+	: Handle( owner, P2 )
 {
 }
 

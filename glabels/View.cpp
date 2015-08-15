@@ -282,6 +282,10 @@ glabels::View::paintEvent( QPaintEvent* event )
 	{
 		QPainter painter( this );
 
+		painter.setRenderHint( QPainter::Antialiasing, true );
+		painter.setRenderHint( QPainter::TextAntialiasing, true );
+		painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+		
 		painter.scale( mZoom, mZoom );
 
 		drawBgLayer( &painter );
@@ -327,9 +331,11 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 
 		transform.scale( mZoom, mZoom );
 
-		qreal xWorld, yWorld;
-		transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+		QPointF pWorld = transform.inverted().map( event->posF() );
+		double xWorld = pWorld.x();
+		double yWorld = pWorld.y();
 
+		
 		/*
 		 * Emit signal regardless of mode
 		 */
@@ -375,7 +381,8 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 				break;
 
 			case ArrowResize:
-				/* @TODO handle resize motion */
+				handleResizeMotion( xWorld, yWorld );
+				update();
 				break;
 
 			default:
@@ -435,10 +442,11 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 
 		transform.scale( mZoom, mZoom );
 
-		qreal xWorld, yWorld;
-		transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+		QPointF pWorld = transform.inverted().map( event->posF() );
+		double xWorld = pWorld.x();
+		double yWorld = pWorld.y();
 
-
+		
 		if ( event->button() & Qt::LeftButton )
 		{
 			//
@@ -452,7 +460,14 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 				if ( mModel->isSelectionAtomic() &&
 				     (handle = mModel->handleAt( mZoom, xWorld, yWorld )) != 0 )
 				{
-					// TODO PREP RESIZE
+					//
+					// Start an object resize
+					//
+					mResizeObject = handle->owner();
+					mResizeHandle = handle;
+					mResizeHonorAspect = event->modifiers() & Qt::ControlModifier;
+
+					mState = ArrowResize;
 				}
 				else if ( (object = mModel->objectAt( mZoom, xWorld, yWorld )) != 0 )
 				{
@@ -536,10 +551,11 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 
 		transform.scale( mZoom, mZoom );
 
-		qreal xWorld, yWorld;
-		transform.inverted().map( event->x(), event->y(), &xWorld, &yWorld );
+		QPointF pWorld = transform.inverted().map( event->posF() );
+		double xWorld = pWorld.x();
+		double yWorld = pWorld.y();
 
-
+		
 		if ( event->button() & Qt::LeftButton )
 		{
 			//
@@ -551,6 +567,10 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 				
 				switch (mState)
 				{
+
+				case ArrowResize:
+					mState = IdleState;
+					break;
 
 				case ArrowSelectRegion:
 					mSelectRegionVisible = false;
@@ -590,6 +610,140 @@ glabels::View::leaveEvent( QEvent* event )
 	{
 		emit pointerExited();
 	}
+}
+
+
+///
+/// Handle resize motion
+///
+void
+glabels::View::handleResizeMotion( double xWorld, double yWorld )
+{
+	QPointF p( xWorld, yWorld );
+	Handle::Location location = mResizeHandle->location();
+	
+	/*
+	 * Change to item relative coordinates
+	 */
+	p -= QPointF( mResizeObject->x0(), mResizeObject->y0() );
+	p = mResizeObject->matrix().map( p );
+
+	/*
+	 * Initialize origin and 2 corners in object relative coordinates.
+	 */
+	double x0 = 0.0;
+	double y0 = 0.0;
+
+	double x1 = 0.0;
+	double y1 = 0.0;
+
+	double x2 = mResizeObject->w();
+	double y2 = mResizeObject->h();
+
+	/*
+	 * Calculate new size
+	 */
+	double w, h;
+	switch ( location )
+	{
+	case Handle::NW:
+		w = std::max( x2 - p.x(), 0.0 );
+		h = std::max( y2 - p.y(), 0.0 );
+		break;
+	case Handle::N:
+		w = x2 - x1;
+		h = std::max( y2 - p.y(), 0.0 );
+		break;
+	case Handle::NE:
+		w = std::max( p.x() - x1, 0.0 );
+		h = std::max( y2 - p.y(), 0.0 );
+		break;
+	case Handle::E:
+		w = std::max( p.x() - x1, 0.0 );
+		h = y2 - y1;
+		break;
+	case Handle::SE:
+		w = std::max( p.x() - x1, 0.0 );
+		h = std::max( p.y() - y1, 0.0 );
+		break;
+	case Handle::S:
+		w = x2 - x1;
+		h = std::max( p.y() - y1, 0.0 );
+		break;
+	case Handle::SW:
+		w = std::max( x2 - p.x(), 0.0 );
+		h = std::max( p.y() - y1, 0.0 );
+		break;
+	case Handle::W:
+		w = std::max( x2 - p.x(), 0.0 );
+		h = y2 - y1;
+		break;
+	case Handle::P1:
+		x1 = p.x();
+		y1 = p.y();
+		w  = x2 - p.x();
+		h  = y2 - p.y();
+		x0 = x0 + x1;
+		y0 = y0 + y1;
+		break;
+	case Handle::P2:
+		w  = p.x() - x1;
+		h  = p.y() - y1;
+		x0 = x0 + x1;
+		y0 = y0 + y1;
+		break;
+	default:
+		Q_ASSERT_X( false, "View::handleResizeMotion", "Invalid Handle Location" );
+	}
+
+	/*
+	 * Set size
+	 */
+	if ( !(location == Handle::P1) && !(location == Handle::P2) )
+	{
+		if ( mResizeHonorAspect )
+		{
+			mResizeObject->setSizeHonorAspect( w, h );
+		}
+		else
+		{
+			mResizeObject->setSize( w, h );
+		}
+
+		/*
+		 * Adjust origin, if needed.
+		 */
+		switch ( location )
+		{
+		case Handle::NW:
+			x0 += x2 - mResizeObject->w();
+			y0 += y2 - mResizeObject->h();
+			break;
+		case Handle::N:
+		case Handle::NE:
+			y0 += y2 - mResizeObject->h();
+			break;
+		case Handle::W:
+		case Handle::SW:
+			x0 += x2 - mResizeObject->w();
+			break;
+		defaule:
+			break;
+		}
+	}
+	else
+	{
+		mResizeObject->setSize( w, h );
+	}
+
+	/*
+	 * Put new origin back into world coordinates and set.
+	 */
+	QTransform inverseMatrix = mResizeObject->matrix().inverted();
+	QPointF p0( x0, y0 );
+	p0 = inverseMatrix.map( p0 );
+	p0 += QPointF( mResizeObject->x0(), mResizeObject->y0() );
+	mResizeObject->setPosition( p0.x(), p0.y() );
 }
 
 

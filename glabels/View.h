@@ -32,6 +32,7 @@ namespace glabels
 	// Forward References
 	class LabelModel;
 	class LabelModelObject;
+	class Handle;
 
 
 	///
@@ -134,9 +135,7 @@ namespace glabels
 		void drawHighlightLayer( QPainter* painter );
 		void drawSelectRegionLayer( QPainter* painter );
 
-		void handleResizeMotion( QPainter* painter,
-		                         double    xPixels,
-		                         double    yPixels );
+		void handleResizeMotion( double xWorld, double yWorld );
 
 
 		/////////////////////////////////////
@@ -189,7 +188,9 @@ namespace glabels
 		double              mMoveLastY;
 
 		/* ArrowResize state */
-		/* @TODO */
+		LabelModelObject*   mResizeObject;
+		Handle*             mResizeHandle;
+		bool                mResizeHonorAspect;
 
 		/* CreateDrag state */
 		bool                mInObjectCreateMode;

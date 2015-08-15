@@ -38,13 +38,27 @@ namespace glabels
 	class Handle
 	{
 		////////////////////////////
+		// Location enumeration
+		////////////////////////////
+	public:
+		enum Location { NW, N, NE, E, SE, S, SW, W, P1, P2 };
+		
+		
+		////////////////////////////
 		// Lifecycle Methods
 		////////////////////////////
 	protected:
-		Handle( LabelModelObject* owner );
+		Handle( LabelModelObject* owner, Location location );
 	public:
 		virtual ~Handle();
 
+		
+		////////////////////////////
+		// Attribue Methods
+		////////////////////////////
+		LabelModelObject* owner() const;
+		Location location() const;
+		
 
 		////////////////////////////
 		// Drawing Methods
@@ -62,6 +76,7 @@ namespace glabels
 		////////////////////////////
 	protected:
 		LabelModelObject* mOwner;
+		Location mLocation;
 
 	};
 
