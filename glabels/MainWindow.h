@@ -98,9 +98,7 @@ namespace glabels
 		void editPreferences();
 
 		void viewFileToolBar( bool );
-		void viewObjectsToolBar( bool );
-		void viewEditToolBar( bool );
-		void viewViewToolBar( bool );
+		void viewEditorToolBar( bool );
 		void viewGrid( bool );
 		void viewMarkup( bool );
 		void viewZoomIn();
@@ -153,6 +151,8 @@ namespace glabels
 		void createToolBars();
 		void createStatusBar();
 
+		QWidget* createEditorPage();
+
 		void setDocVerbsEnabled( bool );
 		void setDocModifiedVerbsEnabled( bool );
 		void setPasteVerbsEnabled( bool );
@@ -184,9 +184,7 @@ namespace glabels
 		QMenu*    helpMenu;
 
 		QToolBar* fileToolBar;
-		QToolBar* objectsToolBar;
-		QToolBar* editToolBar;
-		QToolBar* viewToolBar;
+		QToolBar* editorToolBar;
 
 		LabelModel*   mModel;
 		View*         mView;
@@ -216,9 +214,7 @@ namespace glabels
 		QAction*  editPreferencesAction;
 
 		QAction*  viewFileToolBarAction;
-		QAction*  viewObjectsToolBarAction;
-		QAction*  viewEditToolBarAction;
-		QAction*  viewViewToolBarAction;
+		QAction*  viewEditorToolBarAction;
 		QAction*  viewGridAction;
 		QAction*  viewMarkupAction;
 		QAction*  viewZoomInAction;

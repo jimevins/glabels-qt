@@ -55,23 +55,18 @@ namespace glabels
 	///
 	MainWindow::MainWindow()
 	{
-		QWidget* editorPage = new QWidget;
-
 		mView = new View();
 		mObjectEditor = new ObjectEditor();
-
-		QHBoxLayout* editorLayout = new QHBoxLayout;
-		editorLayout->addWidget( mView );
-		editorLayout->addWidget( mObjectEditor );
-		editorPage->setLayout( editorLayout );
-		
-		setCentralWidget( editorPage );
-		mModel = 0;
 
 		createActions();
 		createMenus();
 		createToolBars();
 		createStatusBar();
+
+		QWidget* editorPage = createEditorPage();
+		
+		setCentralWidget( editorPage );
+		mModel = 0;
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
@@ -267,20 +262,11 @@ namespace glabels
 		viewFileToolBarAction->setStatusTip( tr("Change visibility of file toolbar in current window") );
 		connect( viewFileToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewFileToolBar(bool)) );
 
-		viewObjectsToolBarAction = new QAction( tr("Objects"), this );
-		viewObjectsToolBarAction->setCheckable( true );
-		viewObjectsToolBarAction->setStatusTip( tr("Change visibility of objects toolbar in current window") );
-		connect( viewObjectsToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewObjectsToolBar(bool)) );
+		viewEditorToolBarAction = new QAction( tr("Editor"), this );
+		viewEditorToolBarAction->setCheckable( true );
+		viewEditorToolBarAction->setStatusTip( tr("Change visibility of editor toolbar in current window") );
+		connect( viewEditorToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewEditorToolBar(bool)) );
 
-		viewEditToolBarAction = new QAction( tr("Edit"), this );
-		viewEditToolBarAction->setCheckable( true );
-		viewEditToolBarAction->setStatusTip( tr("Change visibility of edit toolbar in current window") );
-		connect( viewEditToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewEditToolBar(bool)) );
-
-		viewViewToolBarAction = new QAction( tr("View"), this );
-		viewViewToolBarAction->setCheckable( true );
-		viewViewToolBarAction->setStatusTip( tr("Change visibility of view toolbar in current window") );
-		connect( viewViewToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewViewToolBar(bool)) );
 
 		viewGridAction = new QAction( tr("Grid"), this );
 		viewGridAction->setCheckable( true );
@@ -477,9 +463,7 @@ namespace glabels
 		viewMenu = menuBar()->addMenu( tr("&View") );
 		viewToolBarsMenu = viewMenu->addMenu( tr("Toolbars") );
 		viewToolBarsMenu->addAction( viewFileToolBarAction );
-		viewToolBarsMenu->addAction( viewObjectsToolBarAction );
-		viewToolBarsMenu->addAction( viewEditToolBarAction );
-		viewToolBarsMenu->addAction( viewViewToolBarAction );
+		viewToolBarsMenu->addAction( viewEditorToolBarAction );
 		viewMenu->addSeparator();
 		viewMenu->addAction( viewGridAction );
 		viewMenu->addAction( viewMarkupAction );
@@ -539,28 +523,24 @@ namespace glabels
 		fileToolBar->addSeparator();
 		fileToolBar->addAction( filePrintAction );
 
-		objectsToolBar = addToolBar( tr("&Objects") );
-		objectsToolBar->addAction( objectsArrowModeAction );
-		objectsToolBar->addSeparator();
-		objectsToolBar->addAction( objectsCreateTextAction );
-		objectsToolBar->addAction( objectsCreateBoxAction );
-		objectsToolBar->addAction( objectsCreateLineAction );
-		objectsToolBar->addAction( objectsCreateEllipseAction );
-		objectsToolBar->addAction( objectsCreateImageAction );
-		objectsToolBar->addAction( objectsCreateBarcodeAction );
-		objectsToolBar->addSeparator();
-		objectsToolBar->addAction( objectsMergePropertiesAction );
-
-		editToolBar = addToolBar( tr("&Edit") );
-		editToolBar->addAction( editCutAction );
-		editToolBar->addAction( editCopyAction );
-		editToolBar->addAction( editPasteAction );
-
-		viewToolBar = addToolBar( tr("&View") );
-		viewToolBar->addAction( viewZoomInAction );
-		viewToolBar->addAction( viewZoomOutAction );
-		viewToolBar->addAction( viewZoom1To1Action );
-		viewToolBar->addAction( viewZoomToFitAction );
+		editorToolBar = new QToolBar( tr("&Editor") );
+		editorToolBar->addAction( objectsArrowModeAction );
+		editorToolBar->addSeparator();
+		editorToolBar->addAction( objectsCreateTextAction );
+		editorToolBar->addAction( objectsCreateBoxAction );
+		editorToolBar->addAction( objectsCreateLineAction );
+		editorToolBar->addAction( objectsCreateEllipseAction );
+		editorToolBar->addAction( objectsCreateImageAction );
+		editorToolBar->addAction( objectsCreateBarcodeAction );
+		editorToolBar->addSeparator();
+		editorToolBar->addAction( editCutAction );
+		editorToolBar->addAction( editCopyAction );
+		editorToolBar->addAction( editPasteAction );
+		editorToolBar->addSeparator();
+		editorToolBar->addAction( viewZoomInAction );
+		editorToolBar->addAction( viewZoomOutAction );
+		editorToolBar->addAction( viewZoom1To1Action );
+		editorToolBar->addAction( viewZoomToFitAction );
 	}
 
 
@@ -588,6 +568,27 @@ namespace glabels
 		connect( mView, SIGNAL(pointerMoved(double, double)),
 			 this, SLOT(onPointerMoved(double, double)) );
 		connect( mView, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
+	}
+
+
+	///
+	/// Create Editor Page
+	///
+	QWidget* MainWindow::createEditorPage()
+	{
+		QWidget* page = new QWidget;
+
+		QVBoxLayout* editorVLayout = new QVBoxLayout;
+		editorVLayout->addWidget( editorToolBar );
+		editorVLayout->addWidget( mView );
+
+		QHBoxLayout* editorHLayout = new QHBoxLayout;
+		editorHLayout->addLayout( editorVLayout );
+		editorHLayout->addWidget( mObjectEditor );
+
+		page->setLayout( editorHLayout );
+
+		return page;
 	}
 
 
@@ -733,24 +734,18 @@ namespace glabels
 
 		settings.beginGroup( "MainWindow" );
 		bool showFileToolBar    = settings.value( "showFileToolBar",    true ).toBool();
-		bool showObjectsToolBar = settings.value( "showObjectsToolBar", true ).toBool();
-		bool showEditToolBar    = settings.value( "showEditToolBar",    true ).toBool();
-		bool showViewToolBar    = settings.value( "showViewToolBar",    true ).toBool();
+		bool showEditorToolBar  = settings.value( "showEditToolBar",    true ).toBool();
 		bool showGrid           = settings.value( "showGrid",           true ).toBool();
 		bool showMarkup         = settings.value( "showMarkup",         true ).toBool();
 		settings.endGroup();
 
 		viewFileToolBarAction   ->setChecked( showFileToolBar );
-		viewObjectsToolBarAction->setChecked( showObjectsToolBar );
-		viewEditToolBarAction   ->setChecked( showEditToolBar );
-		viewViewToolBarAction   ->setChecked( showViewToolBar );
+		viewEditorToolBarAction ->setChecked( showEditorToolBar );
 		viewGridAction          ->setChecked( showGrid );
 		viewMarkupAction        ->setChecked( showMarkup );
 
 		fileToolBar   ->setVisible(       showFileToolBar );
-		objectsToolBar->setVisible(       showObjectsToolBar );
-		editToolBar   ->setVisible(       showEditToolBar );
-		viewToolBar   ->setVisible(       showViewToolBar );
+		editorToolBar ->setVisible(       showEditorToolBar );
 		mView         ->setGridVisible(   showGrid );
 		mView         ->setMarkupVisible( showMarkup );
 	}
@@ -765,9 +760,7 @@ namespace glabels
 
 		settings.beginGroup( "MainWindow" );
 		settings.setValue( "showFileToolBar",    viewFileToolBarAction->isChecked() );
-		settings.setValue( "showObjectsToolBar", viewObjectsToolBarAction->isChecked() );
-		settings.setValue( "showEditToolBar",    viewEditToolBarAction->isChecked() );
-		settings.setValue( "showViewToolBar",    viewViewToolBarAction->isChecked() );
+		settings.setValue( "showEditorToolBar",  viewEditorToolBarAction->isChecked() );
 		settings.setValue( "showGrid",           viewGridAction->isChecked() );
 		settings.setValue( "showMarkup",         viewMarkupAction->isChecked() );
 		settings.endGroup();
@@ -948,27 +941,9 @@ namespace glabels
 	///
 	/// View->Objects Tool Bar Toggle Action
 	///
-	void MainWindow::viewObjectsToolBar( bool state )
+	void MainWindow::viewEditorToolBar( bool state )
 	{
-		objectsToolBar->setVisible( state );
-	}
-
-
-	///
-	/// View->Edit Tool Bar Toggle Action
-	///
-	void MainWindow::viewEditToolBar( bool state )
-	{
-		editToolBar->setVisible( state );
-	}
-
-
-	///
-	/// View->View Tool Bar Toggle Action
-	///
-	void MainWindow::viewViewToolBar( bool state )
-	{
-		viewToolBar->setVisible( state );
+		editorToolBar->setVisible( state );
 	}
 
 
