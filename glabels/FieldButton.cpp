@@ -27,8 +27,19 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	FieldButton::FieldButton( const QString& name, QWidget* parent )
+	FieldButton::FieldButton( QWidget* parent )
 		: QPushButton(parent)
+	{
+		setEnabled( false );
+
+		mMenu = new FieldMenu();
+		setMenu( mMenu );
+
+		connect( mMenu, SIGNAL(keySelected(const QString&)), this, SLOT(onMenuKeySelected(const QString&)) );
+	}
+
+
+	void FieldButton::setName( const QString& name )
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
@@ -40,14 +51,6 @@ namespace glabels
 			setText( name );
 			mLabelIsKey = true;
 		}
-
-
-		setEnabled( false );
-
-		mMenu = new FieldMenu();
-		setMenu( mMenu );
-
-		connect( mMenu, SIGNAL(keySelected(const QString&)), this, SLOT(onMenuKeySelected(const QString&)) );
 	}
 
 

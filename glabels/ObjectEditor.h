@@ -1,6 +1,6 @@
-/*  FieldButton.h
+/*  ObjectEditor.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,72 +18,50 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_FieldButton_h
-#define glabels_FieldButton_h
+#ifndef glabels_ObjectEditor_h
+#define glabels_ObjectEditor_h
 
-#include <QPushButton>
-#include <QString>
-#include "FieldMenu.h"
+#include "ui_ObjectEditor.h"
 
 
 namespace glabels
 {
 
 	///
-	/// Field Button
+	/// Object Editor Widget
 	///
-	class FieldButton : public QPushButton
+	class ObjectEditor : public QWidget, public Ui_ObjectEditor
 	{
 		Q_OBJECT
 
+		
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		FieldButton( QWidget* parent = 0 );
+		ObjectEditor( QWidget *parent = 0 );
 
 
 		/////////////////////////////////
-		// Signals
+		// Accessors
 		/////////////////////////////////
-	signals:
-		void keySelected( const QString& key );
 
 
 		/////////////////////////////////
-		// Properties
+		// Private methods
 		/////////////////////////////////
-	public:
-		QString key() const;
-
-
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void setName( const QString& name = "" );
-		void setKeys( const QList<QString>& keyList );
-		void clearKeys();
-
+	private:
+		void hidePages();
+		
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onMenuKeySelected( const QString& key );
 
-
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		FieldMenu*  mMenu;
-		QString     mKey;
-		bool        mLabelIsKey;
 
 	};
 
-
 }
 
-#endif // glabels_FieldButton_h
+#endif // glabels_ObjectEditor_h

@@ -31,6 +31,7 @@ set (glabels_sources
   MergeField.cpp
   MergeRecord.cpp
   NewLabelDialog.cpp
+  ObjectEditor.cpp
   Outline.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
@@ -56,8 +57,9 @@ set (glabels_qobject_headers
   LabelModelObject.h
   LabelModelBoxObject.h
   LabelModelShapeObject.h
-  NewLabelDialog.h
   MainWindow.h
+  NewLabelDialog.h
+  ObjectEditor.h
   SimplePreview.h
   TemplatePicker.h
   View.h
@@ -65,6 +67,7 @@ set (glabels_qobject_headers
 
 set (glabels_forms
   ui/NewLabelDialog.ui
+  ui/ObjectEditor.ui
 )
 
 set (glabels_resource_files

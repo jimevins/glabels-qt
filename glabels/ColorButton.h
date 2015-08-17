@@ -42,10 +42,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorButton( const QString& defaultLabel,
-		             const QColor&  defaultColor,
-		             const QColor&  color,
-		             QWidget*       parent = 0 );
+		ColorButton( QWidget* parent = 0 );
 
 
 		/////////////////////////////////
@@ -59,6 +56,7 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
+		void   init( const QString& defaultLabel, const QColor& defaultColor, const QColor& color );
 		void   setColorNode( ColorNode colorNode );
 		void   setColor( QColor color );
 		void   setToDefault();

@@ -34,11 +34,13 @@ namespace
 namespace glabels
 {
 
-	ColorButton::ColorButton( const QString& defaultLabel,
-				  const QColor&  defaultColor,
-				  const QColor&  color,
-				  QWidget*       parent )
+	ColorButton::ColorButton( QWidget* parent )
 		: QPushButton( parent )
+	{
+	}
+
+
+	void ColorButton::init( const QString& defaultLabel, const QColor& defaultColor, const QColor&  color )
 	{
 		mDefaultColor = defaultColor;
 		mColorNode = ColorNode( color );

@@ -86,7 +86,7 @@ glabels::View::View( QWidget *parent ) : QWidget(parent)
 
 	setMouseTracking( true );
 
-	setMinimumSize( 640, 400 );
+	setMinimumSize( 640, 450 );
 }
 
 

@@ -36,6 +36,7 @@ namespace glabels
 	// Forward References
 	class LabelModel;
 	class View;
+	class ObjectEditor;
 
 
 	///
@@ -187,8 +188,9 @@ namespace glabels
 		QToolBar* editToolBar;
 		QToolBar* viewToolBar;
 
-		LabelModel* mModel;
-		View*       mView;
+		LabelModel*   mModel;
+		View*         mView;
+		ObjectEditor* mObjectEditor;
 
 		QLabel*   zoomInfoLabel;
 		QLabel*   cursorInfoLabel;

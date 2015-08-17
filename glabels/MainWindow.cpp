@@ -33,6 +33,7 @@
 
 #include "libglabels/Db.h"
 #include "View.h"
+#include "ObjectEditor.h"
 #include "LabelModel.h"
 #include "LabelModelBoxObject.h"
 #include "Icons.h"
@@ -54,8 +55,17 @@ namespace glabels
 	///
 	MainWindow::MainWindow()
 	{
+		QWidget* editorPage = new QWidget;
+
 		mView = new View();
-		setCentralWidget( mView );
+		mObjectEditor = new ObjectEditor();
+
+		QHBoxLayout* editorLayout = new QHBoxLayout;
+		editorLayout->addWidget( mView );
+		editorLayout->addWidget( mObjectEditor );
+		editorPage->setLayout( editorLayout );
+		
+		setCentralWidget( editorPage );
 		mModel = 0;
 
 		createActions();
