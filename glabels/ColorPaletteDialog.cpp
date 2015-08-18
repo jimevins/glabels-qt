@@ -125,6 +125,8 @@ namespace glabels
 		QPushButton* mergeFieldButton = new QPushButton( "TODO: Field Button" );
 		layout->addWidget( mergeFieldButton, iAbsRow, 0, 1, PALETTE_COLS );
 
+		setLayout( layout );
+
 		loadCustomColorHistory();
 	}
 

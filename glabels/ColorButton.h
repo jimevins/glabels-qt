@@ -49,7 +49,7 @@ namespace glabels
 		// Signals
 		/////////////////////////////////
 	signals:
-		void colorChanged( ColorNode colorNode, bool isDefault );
+		void colorChanged();
 
 
 		/////////////////////////////////

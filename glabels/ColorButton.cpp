@@ -26,8 +26,8 @@
 
 namespace
 {
-	const int SWATCH_W = 100;
-	const int SWATCH_H =  24;
+	const int SWATCH_W = 24;
+	const int SWATCH_H = 24;
 }
 
 
@@ -47,6 +47,7 @@ namespace glabels
 
 		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
 		setText( "" );
+		setCheckable( true );
 
 		mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
 		mDialog->setModal( true );
@@ -130,10 +131,12 @@ namespace glabels
 
 	void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
 	{
+		setDown( false );
+
 		mColorNode = colorNode;
 		mIsDefault = isDefault;
 
-		emit colorChanged( colorNode, isDefault );
+		emit colorChanged();
 	}
 
 

@@ -39,6 +39,9 @@ namespace glabels
 	{
 		setupUi( this );
 
+		lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
+		fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
+
 		setEnabled( false );
 		hidePages();
 	}

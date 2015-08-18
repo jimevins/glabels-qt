@@ -40,6 +40,7 @@ namespace glabels
 	/// Constructor
 	///
 	ColorSwatch::ColorSwatch( int w, int h, const QColor& color )
+		: QPixmap( w, h )
 	{
 		fill( Qt::transparent );
 

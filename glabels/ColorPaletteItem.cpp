@@ -45,6 +45,7 @@ namespace glabels
 					    QWidget*       parent )
 		: QPushButton(parent), mId(id), mColor(color), mTip(tip)
 	{
+		setFlat( true );
 		setIcon( QIcon( ColorSwatch( wSwatch, hSwatch, color ) ) );
 		setToolTip( tip );
 
