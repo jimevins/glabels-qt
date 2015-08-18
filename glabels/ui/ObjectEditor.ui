@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>861</height>
+    <height>853</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,7 +35,7 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="titleImageLabel">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -51,7 +51,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="titleLabel">
        <property name="font">
         <font>
          <family>Sans Serif</family>
@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>5</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -419,7 +419,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>150</height>
+           <height>142</height>
           </size>
          </property>
         </spacer>
@@ -492,7 +492,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>356</height>
+           <height>352</height>
           </size>
          </property>
         </spacer>
@@ -767,7 +767,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>654</height>
+           <height>646</height>
           </size>
          </property>
         </spacer>
@@ -966,7 +966,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>578</height>
+           <height>570</height>
           </size>
          </property>
         </spacer>
@@ -1354,7 +1354,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>583</height>
+           <height>575</height>
           </size>
          </property>
         </spacer>
@@ -1370,15 +1370,700 @@
    <class>glabels::ColorButton</class>
    <extends>QPushButton</extends>
    <header>ColorButton.h</header>
+   <slots>
+    <signal>colorChanged()</signal>
+   </slots>
   </customwidget>
   <customwidget>
    <class>glabels::FieldButton</class>
    <extends>QPushButton</extends>
    <header>FieldButton.h</header>
+   <slots>
+    <signal>keySelected()</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>
   <include location="../icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>textFontFamilyCombo</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textFontSizeSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>128</x>
+     <y>154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textFontBoldToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>183</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textFontItalicToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textFontUnderlineToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textColorButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>134</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>281</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textHAlignLeftToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>154</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textHAlignCenterToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>334</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textHAlignRightToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>249</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>367</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textVAlignTopToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>396</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textVAlignMiddleToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>423</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textVAlignBottomToggle</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textLineSpacingSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>390</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>485</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>271</x>
+     <y>538</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>543</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textInsertFieldButton</sender>
+   <signal>keySelected()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>652</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>638</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeTypeCombo</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeShowTextCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeChecksumCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeColorButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeLiteralRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>55</x>
+     <y>277</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeKeyRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>387</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>391</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeTextEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>333</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeDigitsSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>206</x>
+     <y>446</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageFileRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageKeyRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>42</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageFieldButton</sender>
+   <signal>keySelected()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>203</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineWidthSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onLineControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineColorButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onLineControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fillColorButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onFillControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>posXSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>400</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>posYSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>112</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>325</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeWSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>135</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>340</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeHSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>98</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeAspectCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeResetImageButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onResetImageSize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>211</x>
+     <y>324</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>423</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeLineLengthSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeLineAngleSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>113</x>
+     <y>437</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>628</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shadowEnableCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>183</x>
+     <y>-5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shadowXSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shadowYSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>147</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>-2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shadowColorButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>405</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shadowOpacitySpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>229</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>406</x>
+     <y>503</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onChanged()</slot>
+  <slot>onResetImageSize()</slot>
+  <slot>onLineControlsChanged()</slot>
+  <slot>onFillControlsChanged()</slot>
+ </slots>
 </ui>

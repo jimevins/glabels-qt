@@ -54,6 +54,7 @@ namespace glabels
 	/// Constructor
 	///
 	MainWindow::MainWindow()
+		: mModel(0)
 	{
 		mView = new View();
 		mObjectEditor = new ObjectEditor();
@@ -66,7 +67,6 @@ namespace glabels
 		QWidget* editorPage = createEditorPage();
 		
 		setCentralWidget( editorPage );
-		mModel = 0;
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
@@ -103,6 +103,7 @@ namespace glabels
 	{
 		mModel = label;
 		mView->setModel( mModel );
+		mObjectEditor->setModel( mModel );
 
 		setDocVerbsEnabled( true );
 		setSelectionVerbsEnabled( false );

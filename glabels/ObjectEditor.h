@@ -26,6 +26,9 @@
 
 namespace glabels
 {
+	class LabelModel;  // Forward reference
+	class LabelModelObject;  // Forward reference
+	
 
 	///
 	/// Object Editor Widget
@@ -43,8 +46,9 @@ namespace glabels
 
 
 		/////////////////////////////////
-		// Accessors
+		// Public methods
 		/////////////////////////////////
+		void setModel( LabelModel* model );
 
 
 		/////////////////////////////////
@@ -52,13 +56,27 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		void hidePages();
+		void loadLineFillPage();
 		
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
+		void onSelectionChanged();
+		void onObjectChanged();
+		void onObjectMoved();
+		void onLineControlsChanged();
+		void onFillControlsChanged();
+		void onChanged();
+		
 
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		LabelModel*       mModel;
+		LabelModelObject* mObject;
 
 	};
 

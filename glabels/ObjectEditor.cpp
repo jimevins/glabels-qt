@@ -21,6 +21,13 @@
 #include "ObjectEditor.h"
 
 
+#include "LabelModel.h"
+#include "LabelModelObject.h"
+#include "LabelModelBoxObject.h"
+
+#include <QtDebug>
+
+
 namespace glabels
 {
 
@@ -28,6 +35,7 @@ namespace glabels
 	/// Constructor
 	///
 	ObjectEditor::ObjectEditor( QWidget *parent )
+		: mModel(0), mObject(0)
 	{
 		setupUi( this );
 
@@ -35,7 +43,17 @@ namespace glabels
 		hidePages();
 	}
 
+	
+	void ObjectEditor::setModel( LabelModel* model )
+	{
+		mModel = model;
 
+		connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
+
+		onSelectionChanged();
+	}
+
+	
 	void ObjectEditor::hidePages()
 	{
 		notebook->removeTab( notebook->indexOf(textPage) );
@@ -45,4 +63,91 @@ namespace glabels
 		notebook->removeTab( notebook->indexOf(posSizePage) );
 		notebook->removeTab( notebook->indexOf(shadowPage) );
 	}
+
+
+	void ObjectEditor::loadLineFillPage()
+	{
+		lineWidthSpin->setValue( mObject->lineWidth() );
+		lineColorButton->setColorNode( mObject->lineColorNode() );
+		fillColorButton->setColorNode( mObject->fillColorNode() );
+	}
+
+
+	void ObjectEditor::onSelectionChanged()
+	{
+		if ( mObject )
+		{
+			disconnect( mObject, 0, this, 0 );
+		}
+
+		hidePages();
+
+		if ( mModel->isSelectionAtomic() )
+		{
+			mObject = mModel->getFirstSelectedObject();
+
+			if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
+			{
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
+				titleLabel->setText( "Box object properties" );
+
+				notebook->addTab( lineFillPage, "line/fill" );
+				notebook->addTab( posSizePage, "position/size" );
+				notebook->addTab( shadowPage, "shadow" );
+
+				sizeRectFrame->setVisible( true );
+				sizeResetImageButton->setVisible( false );
+				sizeLineFrame->setVisible( false );
+
+				loadLineFillPage();
+				
+				setEnabled( true );
+			}
+			else
+			{
+				Q_ASSERT_X( false, "ObjectEditor::onSelectionChanged", "Invalid object" );
+			}
+
+			connect( mObject, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
+			connect( mObject, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
+		}
+		else
+		{
+			mObject = 0;
+
+			titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.png") );
+			titleLabel->setText( "Object properties" );
+			setEnabled( false );
+		}
+	}
+
+	
+	void ObjectEditor::onObjectChanged()
+	{
+		qDebug() << "Object changed.";
+	}
+
+	
+	void ObjectEditor::onObjectMoved()
+	{
+		qDebug() << "Object moved.";
+	}
+
+	
+	void ObjectEditor::onLineControlsChanged()
+	{
+		mObject->setLineWidth( lineWidthSpin->value() );
+	}
+
+	
+	void ObjectEditor::onFillControlsChanged()
+	{
+	}
+
+
+	void ObjectEditor::onChanged()
+	{
+		qDebug() << "Form changed.";
+	}
+
 }
