@@ -28,20 +28,26 @@
 	<file>icons/16x16/actions/glabels-rotate-right.png</file>
 	<file>icons/16x16/actions/glabels-text.png</file>
 	<file>icons/16x16/apps/glabels.png</file>
-	<file>icons/24x24/actions/glabels-align-text-bottom.png</file>
-	<file>icons/24x24/actions/glabels-align-text-middle.png</file>
-	<file>icons/24x24/actions/glabels-align-text-top.png</file>
+	<file>icons/24x24/actions/glabels-align-text-center.png</file>
+	<file>icons/24x24/actions/glabels-align-text-left.png</file>
+	<file>icons/24x24/actions/glabels-align-text-right.png</file>
 	<file>icons/24x24/actions/glabels-arrow.png</file>
 	<file>icons/24x24/actions/glabels-barcode.png</file>
 	<file>icons/24x24/actions/glabels-box.png</file>
 	<file>icons/24x24/actions/glabels-bucket-fill.png</file>
 	<file>icons/24x24/actions/glabels-ellipse.png</file>
+	<file>icons/24x24/actions/glabels-format-text-bold.png</file>
+	<file>icons/24x24/actions/glabels-format-text-italic.png</file>
+	<file>icons/24x24/actions/glabels-format-text-underline.png</file>
 	<file>icons/24x24/actions/glabels-image.png</file>
 	<file>icons/24x24/actions/glabels-line.png</file>
 	<file>icons/24x24/actions/glabels-merge.png</file>
 	<file>icons/24x24/actions/glabels-object-properties.png</file>
 	<file>icons/24x24/actions/glabels-pencil.png</file>
 	<file>icons/24x24/actions/glabels-text.png</file>
+	<file>icons/24x24/actions/glabels-valign-text-bottom.png</file>
+	<file>icons/24x24/actions/glabels-valign-text-middle.png</file>
+	<file>icons/24x24/actions/glabels-valign-text-top.png</file>
 	<file>icons/24x24/actions/fallback-edit-copy.png</file>
 	<file>icons/24x24/actions/fallback-edit-cut.png</file>
 	<file>icons/24x24/actions/fallback-edit-paste.png</file>
