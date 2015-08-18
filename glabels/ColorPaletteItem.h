@@ -21,7 +21,7 @@
 #ifndef glabels_ColorPaletteItem_h
 #define glabels_ColorPaletteItem_h
 
-#include <QPushButton>
+#include <QWidget>
 #include <QColor>
 
 
@@ -31,7 +31,7 @@ namespace glabels
 	///
 	/// Color Palette Item
 	///
-	class ColorPaletteItem : public QPushButton
+	class ColorPaletteItem : public QWidget
 	{
 		Q_OBJECT
 
@@ -53,7 +53,7 @@ namespace glabels
 
 
 		/////////////////////////////////
-		// Properties
+		// Public Methods
 		/////////////////////////////////
 	public:
 		void setColor( int            id,
@@ -62,10 +62,13 @@ namespace glabels
 
 
 		/////////////////////////////////
-		// Slots
+		// Event handlers
 		/////////////////////////////////
-	private slots:
-		void onClicked();
+	protected:
+		void paintEvent( QPaintEvent* event );
+		void enterEvent( QEvent* event );
+		void leaveEvent( QEvent* event );
+		void mousePressEvent( QMouseEvent* event );
 
 
 		/////////////////////////////////
@@ -75,7 +78,8 @@ namespace glabels
 		int     mId;
 		QColor  mColor;
 		QString mTip;
-		
+
+		bool        mHover;
 	};
 
 

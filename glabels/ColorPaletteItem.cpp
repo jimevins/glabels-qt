@@ -20,7 +20,8 @@
 
 #include "ColorPaletteItem.h"
 
-#include "ColorSwatch.h"
+
+#include <QPainter>
 
 
 //
@@ -28,8 +29,13 @@
 //
 namespace
 {
-	const double  wSwatch = 20;
-	const double  hSwatch = 20;
+	const int     border = 4;
+	const int     wSwatch = 25;
+	const int     hSwatch = 25;
+        const QColor  hoverColor( 170, 200, 255 );
+        const QColor  outlineColor( 0, 0, 0 );
+        const QColor  emptyOutlineColor( 192, 192, 192 );
+	const int     outlineWidthPixels = 1;
 }
 
 
@@ -43,13 +49,11 @@ namespace glabels
 					    const QColor&  color,
 					    const QString& tip,
 					    QWidget*       parent )
-		: QPushButton(parent), mId(id), mColor(color), mTip(tip)
+		: QWidget(parent), mId(id), mColor(color), mTip(tip), mHover(false)
 	{
-		setFlat( true );
-		setIcon( QIcon( ColorSwatch( wSwatch, hSwatch, color ) ) );
+		setSizePolicy( QSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed ) );
+		setMinimumSize( wSwatch+2*border+1, hSwatch+2*border+1 );
 		setToolTip( tip );
-
-		connect( this, SIGNAL(clicked()), this, SLOT(onClicked()) );
 	}
 
 
@@ -64,15 +68,67 @@ namespace glabels
 		mColor = color;
 		mTip   = tip;
 
-		setIcon( QIcon( ColorSwatch( wSwatch, hSwatch, color ) ) );
 		setToolTip( tip );
+		update();
 	}
 
 
 	///
-	/// onClicked slot
+	/// Paint Event
 	///
-	void ColorPaletteItem::onClicked()
+	void ColorPaletteItem::paintEvent( QPaintEvent* event )
+	{
+		QPainter painter(this);
+
+		if ( mHover && mColor.alpha() )
+		{
+			painter.setBrush( QBrush( hoverColor ) );
+			painter.setPen( Qt::NoPen );
+			painter.drawRect( rect() );
+		}
+
+		if ( mColor.alpha() )
+		{
+			QPen pen( outlineColor );
+			pen.setWidth( outlineWidthPixels );
+			painter.setPen( pen );
+		}
+		else
+		{
+			QPen pen( emptyOutlineColor );
+			pen.setWidth( outlineWidthPixels );
+			painter.setPen( pen );
+		}
+
+		painter.setBrush( QBrush( mColor ) );
+		painter.drawRect( border, border, wSwatch, hSwatch );
+	}
+
+
+	///
+	/// Enter Event
+	///
+	void ColorPaletteItem::enterEvent( QEvent* event )
+	{
+		mHover = true;
+		update();
+	}
+
+
+	///
+	/// Leave Event
+	///
+	void ColorPaletteItem::leaveEvent( QEvent* event )
+	{
+		mHover = false;
+		update();
+	}
+
+	
+	///
+	/// Mouse Press Event
+	///
+	void ColorPaletteItem::mousePressEvent( QMouseEvent* event )
 	{
 		emit activated( mId );
 	}
