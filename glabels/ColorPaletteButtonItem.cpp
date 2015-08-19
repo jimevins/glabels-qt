@@ -32,12 +32,7 @@ namespace
 {
 	const int     border = 4;
 	const int     hBox = 25;
-        const QColor  hoverOutlineColor( 89, 130, 182 );
-        const QColor  hoverGradientColor0( 164, 195, 232 );
-        const QColor  hoverGradientColor1( 147, 181, 224 );
 	const int     outlineWidthPixels = 1;
-        const QColor  textColor( 0, 0, 0 );
-        const QColor  hoverTextColor( 255, 255, 255 );
 }
 
 
@@ -68,11 +63,11 @@ namespace glabels
 		if ( mHover )
 		{
 			QLinearGradient gradient( 0, 0, 0, height() );
-			gradient.setColorAt( 0, hoverGradientColor0 );
-			gradient.setColorAt( 1, hoverGradientColor1 );
+			gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
+			gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
 			painter.setBrush( QBrush( gradient ) );
-
-			QPen pen( hoverOutlineColor );
+			
+			QPen pen( palette().color( QPalette::Text ) );
 			pen.setWidth( outlineWidthPixels );
 			painter.setPen( pen );
 
@@ -86,11 +81,11 @@ namespace glabels
 
 		if ( mHover )
 		{
-			painter.setPen( QPen( hoverTextColor ) );
+			painter.setPen( QPen( palette().color( QPalette::HighlightedText ) ) );
 		}
 		else
 		{
-			painter.setPen( QPen( textColor ) );
+			painter.setPen( QPen( palette().color( QPalette::Text ) ) );
 		}
 
 		QRect textRect( border, border, width()-2*border, hBox );

@@ -26,8 +26,6 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
-#include <QPushButton>
-#include <QToolButton>
 #include <QFrame>
 
 
@@ -90,7 +88,7 @@ namespace glabels
 		mDefaultColor = defaultColor;
 		mColorNode = ColorNode( color );
 
-		setStyleSheet( "background: white; border: 1px solid black" );
+		setStyleSheet( ".glabels--ColorPaletteDialog {background: white; border: 1px solid black}" );
 		setWindowFlags( Qt::Popup | Qt::FramelessWindowHint );
 
 		QVBoxLayout* vLayout = new QVBoxLayout();

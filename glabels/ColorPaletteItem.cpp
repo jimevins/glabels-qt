@@ -34,14 +34,8 @@ namespace
 	const int     wSwatch = 25;
 	const int     hSwatch = 25;
 
-        const QColor  hoverBgOutlineColor( 89, 130, 182 );
-        const QColor  hoverBgGradientColor0( 164, 195, 232 );
-        const QColor  hoverBgGradientColor1( 147, 181, 224 );
 	const int     hoverBgOutlineWidthPixels = 1;
 
-        const QColor  outlineColor( 0, 0, 0 );
-        const QColor  hoverOutlineColor( 255, 255, 255 );
-        const QColor  emptyOutlineColor( 192, 192, 192 );
 	const int     outlineWidthPixels = 1;
 }
 
@@ -93,11 +87,11 @@ namespace glabels
 		if ( isEnabled() && mHover )
 		{
 			QLinearGradient gradient( 0, 0, 0, height() );
-			gradient.setColorAt( 0, hoverBgGradientColor0 );
-			gradient.setColorAt( 1, hoverBgGradientColor1 );
+			gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
+			gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
 			painter.setBrush( QBrush( gradient ) );
 
-			QPen pen( hoverBgOutlineColor );
+			QPen pen( palette().color( QPalette::Text ) );
 			pen.setWidth( hoverBgOutlineWidthPixels );
 			painter.setPen( pen );
 
@@ -107,19 +101,17 @@ namespace glabels
 		//
 		// Draw swatch
 		//
-		painter.setBrush( QBrush( Qt::NoBrush ) );
-
 		if ( isEnabled() )
 		{
 			if ( mHover )
 			{
-				QPen pen( hoverOutlineColor );
+				QPen pen( palette().color( QPalette::HighlightedText ) );
 				pen.setWidth( outlineWidthPixels );
 				painter.setPen( pen );
 			}
 			else
 			{
-				QPen pen( outlineColor );
+				QPen pen( palette().color( QPalette::Text ) );
 				pen.setWidth( outlineWidthPixels );
 				painter.setPen( pen );
 			}
@@ -128,7 +120,7 @@ namespace glabels
 		}
 		else
 		{
-			QPen pen( emptyOutlineColor );
+			QPen pen( palette().color( QPalette::Disabled, QPalette::Text ) );
 			pen.setWidth( outlineWidthPixels );
 			painter.setPen( pen );
 		}
