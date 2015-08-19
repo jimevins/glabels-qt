@@ -25,6 +25,7 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 
+#include <cmath>
 #include <QtDebug>
 
 
@@ -99,15 +100,33 @@ namespace glabels
 	}
 
 
+	void ObjectEditor::loadRectSizePage()
+	{
+		if ( mObject )
+		{
+			mBlocked = true;
+			
+			sizeWSpin->setValue( mObject->w() );
+			sizeHSpin->setValue( mObject->h() );
+
+			mBlocked = false;			
+		}
+	}
+
+
 	void ObjectEditor::onLabelSizeChanged()
 	{
 		if ( mModel )
 		{
 			mBlocked = true;
-			
-			posXSpin->setRange( -mModel->w(), 2*mModel->w() );
-			posYSpin->setRange( -mModel->h(), 2*mModel->h() );
 
+			double whMax = std::max( mModel->w(), mModel->h() );
+			
+			posXSpin->setRange( -whMax, 2*whMax );
+			posYSpin->setRange( -whMax, 2*whMax );
+			sizeWSpin->setRange( 0, 2*whMax );
+			sizeHSpin->setRange( 0, 2*whMax );
+			
 			mBlocked = false;			
 		}
 	}
@@ -141,6 +160,7 @@ namespace glabels
 
 				loadLineFillPage();
 				loadPositionPage();
+				loadRectSizePage();
 				
 				setEnabled( true );
 			}
@@ -167,6 +187,8 @@ namespace glabels
 	{
 		if ( !mBlocked )
 		{
+			loadLineFillPage();
+			loadRectSizePage();
 		}
 	}
 
@@ -220,9 +242,38 @@ namespace glabels
 	}
 
 
+	void ObjectEditor::onRectSizeControlsChanged()
+	{
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			if ( sizeAspectCheck->isChecked() )
+			{
+				mObject->setSizeHonorAspect( sizeWSpin->value(), sizeHSpin->value() );
+				sizeWSpin->setValue( mObject->w() );
+				sizeHSpin->setValue( mObject->h() );
+			}
+			else
+			{
+				mObject->setSize( sizeWSpin->value(), sizeHSpin->value() );
+			}
+			
+			mBlocked = false;
+		}
+	}
+
+
 	void ObjectEditor::onChanged()
 	{
-		qDebug() << "Form changed.";
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			qDebug() << "Form changed.";
+
+			mBlocked = false;
+		}
 	}
 
 }

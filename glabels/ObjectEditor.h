@@ -58,6 +58,7 @@ namespace glabels
 		void hidePages();
 		void loadLineFillPage();
 		void loadPositionPage();
+		void loadRectSizePage();
 		
 
 		/////////////////////////////////
@@ -71,6 +72,7 @@ namespace glabels
 		void onLineControlsChanged();
 		void onFillControlsChanged();
 		void onPositionControlsChanged();
+		void onRectSizeControlsChanged();
 		void onChanged();
 		
 

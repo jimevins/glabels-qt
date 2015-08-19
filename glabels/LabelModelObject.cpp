@@ -23,6 +23,7 @@
 #include <QTransform>
 #include <QFont>
 #include <algorithm>
+#include <cmath>
 #include <QtDebug>
 
 #include "ColorNode.h"
@@ -171,7 +172,7 @@ namespace glabels
 		if ( mW != value )
 		{
 			mW = value;
-			emit moved();
+			emit changed();
 		}
 	}
 		
@@ -193,7 +194,7 @@ namespace glabels
 		if ( mH != value )
 		{
 			mH = value;
-			emit moved();
+			emit changed();
 		}
 	}
 
@@ -778,23 +779,13 @@ namespace glabels
 	///
 	void LabelModelObject::setSizeHonorAspect( double w, double h )
 	{
-		double aspectRatio = mH / mW;
-
-		if ( h > (w * aspectRatio) )
+		if ( fabs(w - mW) > fabs(h - mH) )
 		{
-			h = w * aspectRatio;
+			setWHonorAspect( w );
 		}
 		else
 		{
-			w = h / aspectRatio;
-		}
-
-		if ( ( mW != w ) || ( mH != h ) )
-		{
-			mW = w;
-			mH = h;
-
-			emit changed();
+			setHHonorAspect( h );
 		}
 	}
 

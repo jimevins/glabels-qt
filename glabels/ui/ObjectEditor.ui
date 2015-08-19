@@ -1100,6 +1100,18 @@
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QCheckBox" name="sizeAspectCheck">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>132</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Lock aspect ratio</string>
                 </property>
@@ -1887,7 +1899,7 @@
    <sender>sizeWSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>135</x>
@@ -1903,7 +1915,7 @@
    <sender>sizeHSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>98</x>
@@ -1912,22 +1924,6 @@
     <hint type="destinationlabel">
      <x>0</x>
      <y>381</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sizeAspectCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>191</x>
-     <y>293</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>395</x>
-     <y>275</y>
     </hint>
    </hints>
   </connection>
@@ -2066,5 +2062,6 @@
   <slot>onLineControlsChanged()</slot>
   <slot>onFillControlsChanged()</slot>
   <slot>onPositionControlsChanged()</slot>
+  <slot>onRectSizeControlsChanged()</slot>
  </slots>
 </ui>
