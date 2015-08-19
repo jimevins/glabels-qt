@@ -69,6 +69,7 @@ namespace glabels
 		void onSelectionChanged();
 		void onObjectChanged();
 		void onObjectMoved();
+		void onObjectDestroyed();
 		void onLineControlsChanged();
 		void onFillControlsChanged();
 		void onPositionControlsChanged();

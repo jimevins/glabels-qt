@@ -171,6 +171,7 @@ namespace glabels
 
 			connect( mObject, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
 			connect( mObject, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
+			connect( mObject, SIGNAL(destroyed(QObject*)), this, SLOT(onObjectDestroyed()) );
 		}
 		else
 		{
@@ -201,6 +202,13 @@ namespace glabels
 		}
 	}
 
+
+	void ObjectEditor::onObjectDestroyed()
+	{
+		disconnect( mObject, 0, this, 0 );
+		mObject = 0;
+	}
+	
 	
 	void ObjectEditor::onLineControlsChanged()
 	{
