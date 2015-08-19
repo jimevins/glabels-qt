@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>3</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -1855,15 +1855,15 @@
    <sender>posXSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>90</x>
      <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>400</x>
-     <y>90</y>
+     <x>399</x>
+     <y>89</y>
     </hint>
    </hints>
   </connection>
@@ -1871,7 +1871,7 @@
    <sender>posYSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>112</x>
@@ -2065,5 +2065,6 @@
   <slot>onResetImageSize()</slot>
   <slot>onLineControlsChanged()</slot>
   <slot>onFillControlsChanged()</slot>
+  <slot>onPositionControlsChanged()</slot>
  </slots>
 </ui>

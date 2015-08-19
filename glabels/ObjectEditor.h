@@ -57,17 +57,20 @@ namespace glabels
 	private:
 		void hidePages();
 		void loadLineFillPage();
+		void loadPositionPage();
 		
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
+		void onLabelSizeChanged();
 		void onSelectionChanged();
 		void onObjectChanged();
 		void onObjectMoved();
 		void onLineControlsChanged();
 		void onFillControlsChanged();
+		void onPositionControlsChanged();
 		void onChanged();
 		
 
@@ -77,6 +80,7 @@ namespace glabels
 	private:
 		LabelModel*       mModel;
 		LabelModelObject* mObject;
+		bool              mBlocked;
 
 	};
 

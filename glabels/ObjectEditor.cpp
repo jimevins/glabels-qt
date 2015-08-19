@@ -35,7 +35,7 @@ namespace glabels
 	/// Constructor
 	///
 	ObjectEditor::ObjectEditor( QWidget *parent )
-		: mModel(0), mObject(0)
+		: mModel(0), mObject(0), mBlocked(false)
 	{
 		setupUi( this );
 
@@ -51,8 +51,10 @@ namespace glabels
 	{
 		mModel = model;
 
+		connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 		connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
 
+		onLabelSizeChanged();
 		onSelectionChanged();
 	}
 
@@ -70,11 +72,46 @@ namespace glabels
 
 	void ObjectEditor::loadLineFillPage()
 	{
-		lineWidthSpin->setValue( mObject->lineWidth() );
-		lineColorButton->setColorNode( mObject->lineColorNode() );
-		fillColorButton->setColorNode( mObject->fillColorNode() );
+		if ( mObject )
+		{
+			mBlocked = true;
+			
+			lineWidthSpin->setValue( mObject->lineWidth() );
+			lineColorButton->setColorNode( mObject->lineColorNode() );
+			fillColorButton->setColorNode( mObject->fillColorNode() );
+
+			mBlocked = false;			
+		}
 	}
 
+
+	void ObjectEditor::loadPositionPage()
+	{
+		if ( mObject )
+		{
+			mBlocked = true;
+			
+			posXSpin->setValue( mObject->x0() );
+			posYSpin->setValue( mObject->y0() );
+
+			mBlocked = false;			
+		}
+	}
+
+
+	void ObjectEditor::onLabelSizeChanged()
+	{
+		if ( mModel )
+		{
+			mBlocked = true;
+			
+			posXSpin->setRange( -mModel->w(), 2*mModel->w() );
+			posYSpin->setRange( -mModel->h(), 2*mModel->h() );
+
+			mBlocked = false;			
+		}
+	}
+	
 
 	void ObjectEditor::onSelectionChanged()
 	{
@@ -103,6 +140,7 @@ namespace glabels
 				sizeLineFrame->setVisible( false );
 
 				loadLineFillPage();
+				loadPositionPage();
 				
 				setEnabled( true );
 			}
@@ -127,26 +165,58 @@ namespace glabels
 	
 	void ObjectEditor::onObjectChanged()
 	{
-		qDebug() << "Object changed.";
+		if ( !mBlocked )
+		{
+		}
 	}
 
 	
 	void ObjectEditor::onObjectMoved()
 	{
-		qDebug() << "Object moved.";
+		if ( !mBlocked )
+		{
+			loadPositionPage();
+		}
 	}
 
 	
 	void ObjectEditor::onLineControlsChanged()
 	{
-		mObject->setLineWidth( lineWidthSpin->value() );
-		mObject->setLineColorNode( lineColorButton->colorNode() );
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			mObject->setLineWidth( lineWidthSpin->value() );
+			mObject->setLineColorNode( lineColorButton->colorNode() );
+
+			mBlocked = false;
+		}
 	}
 
 	
 	void ObjectEditor::onFillControlsChanged()
 	{
-		mObject->setFillColorNode( fillColorButton->colorNode() );
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			mObject->setFillColorNode( fillColorButton->colorNode() );
+
+			mBlocked = false;
+		}
+	}
+
+
+	void ObjectEditor::onPositionControlsChanged()
+	{
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			mObject->setPosition( posXSpin->value(), posYSpin->value() );
+
+			mBlocked = false;
+		}
 	}
 
 
