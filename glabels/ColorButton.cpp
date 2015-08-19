@@ -53,7 +53,7 @@ namespace glabels
 		mDialog->setModal( true );
 
 		connect( this, SIGNAL(pressed()), this, SLOT(onButtonPressed()) );
-		connect( mDialog, SIGNAL(changed(colorNode,bool)), this, SLOT(onColorPaletteDialogChanged(colorNode,bool)) );
+		connect( mDialog, SIGNAL(colorChanged(colorNode,bool)), this, SLOT(onColorPaletteDialogChanged(colorNode,bool)) );
 	}
 
 
@@ -123,7 +123,6 @@ namespace glabels
 
 	void ColorButton::onButtonPressed()
 	{
-		setDown( true );
 		// TODO: move dialog -- see menu_position_function is VALA version
 		mDialog->show();
 	}
@@ -131,8 +130,6 @@ namespace glabels
 
 	void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
 	{
-		setDown( false );
-
 		mColorNode = colorNode;
 		mIsDefault = isDefault;
 

@@ -50,7 +50,7 @@ namespace glabels
 		QColor newColors[MAX_COLORS];
 		int n;
 
-		readColorArray( oldColors, n );
+		readColorArray( oldColors, &n );
 
 		int i;
 		newColors[0] = color;
@@ -69,6 +69,8 @@ namespace glabels
 		QColor colors[MAX_COLORS];
 		int n;
 
+		readColorArray( colors, &n );
+		
 		if ( (n > 0) && (i < n) )
 		{
 			return colors[i];
@@ -80,15 +82,15 @@ namespace glabels
 	}
 
 
-	void ColorHistory::readColorArray( QColor array[MAX_COLORS], int& n )
+	void ColorHistory::readColorArray( QColor array[MAX_COLORS], int* n )
 	{
 		QSettings settings;
 
 		settings.beginGroup( "ColorHistory" );
 
 		settings.beginReadArray( "history" );
-		n = settings.value( "history/size", 0 ).toInt();
-		for ( int i = 0; i < n; i++ )
+		*n = settings.value( "history/size", 0 ).toInt();
+		for ( int i = 0; i < *n; i++ )
 		{
 			settings.setArrayIndex(i);
 			array[i] = settings.value( "color" ).value<QColor>();

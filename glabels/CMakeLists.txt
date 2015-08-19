@@ -14,6 +14,7 @@ set (glabels_sources
   ColorNode.cpp
   ColorPaletteDialog.cpp
   ColorPaletteItem.cpp
+  ColorPaletteButtonItem.cpp
   ColorSwatch.cpp
   Cursors.cpp
   FieldButton.cpp
@@ -49,6 +50,7 @@ set (glabels_qobject_headers
   ColorHistory.h
   ColorPaletteDialog.h
   ColorPaletteItem.h
+  ColorPaletteButtonItem.h
   FieldButton.h
   FieldMenu.h
   FieldMenuItem.h

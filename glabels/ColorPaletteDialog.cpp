@@ -20,8 +20,15 @@
 
 #include "ColorPaletteDialog.h"
 
+#include "ColorPaletteItem.h"
+#include "ColorPaletteButtonItem.h"
+
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QToolButton>
+#include <QFrame>
 
 
 namespace glabels
@@ -80,14 +87,20 @@ namespace glabels
 		mColorHistory = ColorHistory::instance();
 		connect( mColorHistory, SIGNAL(changed()), this, SLOT(onColorHistoryChanged()) );
 
-		QGridLayout* layout = new QGridLayout();
-		int iAbsRow = 0;
+		QVBoxLayout* vLayout = new QVBoxLayout();
+		vLayout->setContentsMargins( 0, 0, 0, 0 );
+		vLayout->setSpacing( 0 );
 
-		QPushButton* defaultButton = new QPushButton( defaultLabel );
-		layout->addWidget( defaultButton, iAbsRow, 0, 1, PALETTE_COLS );
-		iAbsRow++;
+		ColorPaletteButtonItem* defaultButton = new ColorPaletteButtonItem( defaultLabel );
+		vLayout->addWidget( defaultButton );
+		
+		QFrame* hline1 = new QFrame;
+		hline1->setFrameStyle( QFrame::HLine | QFrame::Plain );
+		hline1->setLineWidth( 1 );
+		vLayout->addWidget( hline1 );
 
-
+		QGridLayout* mainPaletteLayout = new QGridLayout();
+		mainPaletteLayout->setSpacing( 0 );
 		for ( int iRow = 0; iRow < PALETTE_ROWS; iRow++ )
 		{
 			for ( int iCol = 0; iCol < PALETTE_COLS; iCol++ )
@@ -99,33 +112,46 @@ namespace glabels
 									       mColorTable[i].name );
 				connect( item, SIGNAL(activated(int)), this, SLOT(onPaletteItemActivated(int)) );
 
-				layout->addWidget( item, iAbsRow, iCol );
+				mainPaletteLayout->addWidget( item, iRow, iCol );
 			}
-			iAbsRow++;
 		}
+		vLayout->addLayout( mainPaletteLayout );
 
+		QFrame* hline2 = new QFrame;
+		hline2->setFrameStyle( QFrame::HLine | QFrame::Plain );
+		hline2->setLineWidth( 1 );
+		vLayout->addWidget( hline2 );
 
+		QHBoxLayout* customPaletteLayout = new QHBoxLayout();
+		customPaletteLayout->setSpacing( 0 );
 		for ( int iCol = 0; iCol < PALETTE_COLS; iCol++ )
 		{
-			mHistoryItem[iCol] = new ColorPaletteItem( iCol,
-								   QColor(0,0,0,0),
-								   "" );
+			mHistoryItem[iCol] = new ColorPaletteItem( iCol, QColor(0,0,0,0), "" );
 			mHistoryItem[iCol]->setEnabled( false );
 			connect( mHistoryItem[iCol], SIGNAL(activated(int)), this, SLOT(onHistoryItemActivated(int)) );
 
-			layout->addWidget( mHistoryItem[iCol], iAbsRow, iCol );
+			customPaletteLayout->addWidget( mHistoryItem[iCol] );
 		}
-		iAbsRow++;
+		vLayout->addLayout( customPaletteLayout );
 
 
-		QPushButton* customColorButton = new QPushButton( tr("Custom color") );
-		layout->addWidget( customColorButton, iAbsRow, 0, 1, PALETTE_COLS );
-		iAbsRow++;
+		QFrame* hline3 = new QFrame;
+		hline3->setFrameStyle( QFrame::HLine | QFrame::Plain );
+		hline3->setLineWidth( 1 );
+		vLayout->addWidget( hline3 );
 
-		QPushButton* mergeFieldButton = new QPushButton( "TODO: Field Button" );
-		layout->addWidget( mergeFieldButton, iAbsRow, 0, 1, PALETTE_COLS );
+		ColorPaletteButtonItem* customColorButton = new ColorPaletteButtonItem( tr("Custom color") );
+		vLayout->addWidget( customColorButton );
 
-		setLayout( layout );
+		QFrame* hline4 = new QFrame;
+		hline4->setFrameStyle( QFrame::HLine | QFrame::Plain );
+		hline4->setLineWidth( 1 );
+		vLayout->addWidget( hline4 );
+
+		ColorPaletteButtonItem* mergeFieldButton = new ColorPaletteButtonItem( "TODO: Field Button" );
+		vLayout->addWidget( mergeFieldButton );
+
+		setLayout( vLayout );
 
 		loadCustomColorHistory();
 	}
@@ -143,12 +169,13 @@ namespace glabels
 	}
 
 
-	void ColorPaletteDialog::onDefaultButtonClicked()
+	void ColorPaletteDialog::onDefaultItemActivated()
 	{
 		mColorNode.setFieldFlag( false );
 		mColorNode.setColor( mDefaultColor );
 		mColorNode.setKey( "" );
 
+		setVisible( false );
 		emit colorChanged( mColorNode, true );
 	}
 
@@ -159,6 +186,7 @@ namespace glabels
 		mColorNode.setColor( QColor( mColorTable[id].colorSpec ) );
 		mColorNode.setKey( "" );
 
+		setVisible( false );
 		emit colorChanged( mColorNode, false );
 	}
 
@@ -169,12 +197,14 @@ namespace glabels
 		mColorNode.setColor( mColorHistory->getColor( id ) );
 		mColorNode.setKey( "" );
 
+		setVisible( false );
 		emit colorChanged( mColorNode, false );
 	}
 
 
-	void ColorPaletteDialog::onCustomColorButtonClicked()
+	void ColorPaletteDialog::onCustomColorItemActivated()
 	{
+		setVisible( false );
 		// TODO
 	}
 
@@ -187,7 +217,7 @@ namespace glabels
 
 	void ColorPaletteDialog::loadCustomColorHistory()
 	{
-		for ( int i; i < PALETTE_COLS; i++ )
+		for ( int i = 0; i < PALETTE_COLS; i++ )
 		{
 			QColor color = mColorHistory->getColor( i );
 

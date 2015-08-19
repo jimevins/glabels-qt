@@ -32,8 +32,14 @@ namespace
 	const int     border = 4;
 	const int     wSwatch = 25;
 	const int     hSwatch = 25;
-        const QColor  hoverColor( 170, 200, 255 );
+
+        const QColor  hoverBgOutlineColor( 89, 130, 182 );
+        const QColor  hoverBgGradientColor0( 164, 195, 232 );
+        const QColor  hoverBgGradientColor1( 147, 181, 224 );
+	const int     hoverBgOutlineWidthPixels = 1;
+
         const QColor  outlineColor( 0, 0, 0 );
+        const QColor  hoverOutlineColor( 255, 255, 255 );
         const QColor  emptyOutlineColor( 192, 192, 192 );
 	const int     outlineWidthPixels = 1;
 }
@@ -80,18 +86,44 @@ namespace glabels
 	{
 		QPainter painter(this);
 
-		if ( mHover && mColor.alpha() )
+		//
+		// Draw background
+		//
+		if ( isEnabled() && mHover )
 		{
-			painter.setBrush( QBrush( hoverColor ) );
-			painter.setPen( Qt::NoPen );
-			painter.drawRect( rect() );
+			QLinearGradient gradient( 0, 0, 0, height() );
+			gradient.setColorAt( 0, hoverBgGradientColor0 );
+			gradient.setColorAt( 1, hoverBgGradientColor1 );
+			painter.setBrush( QBrush( gradient ) );
+
+			QPen pen( hoverBgOutlineColor );
+			pen.setWidth( hoverBgOutlineWidthPixels );
+			painter.setPen( pen );
+
+			painter.drawRect( 0, 0, width()-1, height()-1 );
 		}
 
-		if ( mColor.alpha() )
+		//
+		// Draw swatch
+		//
+		painter.setBrush( QBrush( Qt::NoBrush ) );
+
+		if ( isEnabled() )
 		{
-			QPen pen( outlineColor );
-			pen.setWidth( outlineWidthPixels );
-			painter.setPen( pen );
+			if ( mHover )
+			{
+				QPen pen( hoverOutlineColor );
+				pen.setWidth( outlineWidthPixels );
+				painter.setPen( pen );
+			}
+			else
+			{
+				QPen pen( outlineColor );
+				pen.setWidth( outlineWidthPixels );
+				painter.setPen( pen );
+			}
+
+			
 		}
 		else
 		{

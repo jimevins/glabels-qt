@@ -1,4 +1,4 @@
-/*  ColorHistory.h
+/*  ColorPaletteButtonItem.h
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,10 +18,10 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorHistory_h
-#define glabels_ColorHistory_h
+#ifndef glabels_ColorPaletteButtonItem_h
+#define glabels_ColorPaletteButtonItem_h
 
-#include <QObject>
+#include <QWidget>
 #include <QColor>
 
 
@@ -29,56 +29,46 @@ namespace glabels
 {
 
 	///
-	/// Barcode Backends Database
+	/// Color Palette Item
 	///
-	class ColorHistory : public QObject
+	class ColorPaletteButtonItem : public QWidget
 	{
 		Q_OBJECT
-
-	public:
-		static const int MAX_COLORS = 10;
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
-	private:
-		ColorHistory();
-
 	public:
-		static ColorHistory* instance();
+		ColorPaletteButtonItem( const QString& text, QWidget* parent = 0 );
 
 
 		/////////////////////////////////
 		// Signals
 		/////////////////////////////////
 	signals:
-		void changed();
+		void activated();
 
 
 		/////////////////////////////////
-		// Public Methods
+		// Event handlers
 		/////////////////////////////////
-	public:
-		void   addColor( const QColor &color );
-		QColor getColor( int i );
+	protected:
+		void paintEvent( QPaintEvent* event );
+		void enterEvent( QEvent* event );
+		void leaveEvent( QEvent* event );
+		void mousePressEvent( QMouseEvent* event );
 
 
 		/////////////////////////////////
-		// Private Methods
-		/////////////////////////////////
-	private:
-		void readColorArray( QColor array[MAX_COLORS], int* n );
-		void writeColorArray( const QColor array[MAX_COLORS], int n );
-
-
-		/////////////////////////////////
-		// Private Members
+		// Private Data
 		/////////////////////////////////
 	private:
+		QString mText;
 
+		bool        mHover;
 	};
+
 
 }
 
-
-#endif // glabels_ColorHistory_h
+#endif // glabels_ColorPaletteButtonItem_h

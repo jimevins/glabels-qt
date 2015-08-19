@@ -69,10 +69,10 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onDefaultButtonClicked();
+		void onDefaultItemActivated();
 		void onPaletteItemActivated( int id );
 		void onHistoryItemActivated( int id );
-		void onCustomColorButtonClicked();
+		void onCustomColorItemActivated();
 		void onColorHistoryChanged();
 
 
