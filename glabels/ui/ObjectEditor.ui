@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>4</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -1979,7 +1979,7 @@
    <sender>shadowEnableCheck</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>58</x>
@@ -1995,7 +1995,7 @@
    <sender>shadowXSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>125</x>
@@ -2011,7 +2011,7 @@
    <sender>shadowYSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>147</x>
@@ -2027,7 +2027,7 @@
    <sender>shadowColorButton</sender>
    <signal>colorChanged()</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>106</x>
@@ -2043,7 +2043,7 @@
    <sender>shadowOpacitySpin</sender>
    <signal>valueChanged(int)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>115</x>
@@ -2063,5 +2063,6 @@
   <slot>onFillControlsChanged()</slot>
   <slot>onPositionControlsChanged()</slot>
   <slot>onRectSizeControlsChanged()</slot>
+  <slot>onShadowControlsChanged()</slot>
  </slots>
 </ui>

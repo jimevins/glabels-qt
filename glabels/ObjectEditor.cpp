@@ -42,6 +42,7 @@ namespace glabels
 
 		lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
 		fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
+		shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
 		setEnabled( false );
 		hidePages();
@@ -114,6 +115,23 @@ namespace glabels
 	}
 
 
+	void ObjectEditor::loadShadowPage()
+	{
+		if ( mObject )
+		{
+			mBlocked = true;
+			
+			shadowEnableCheck->setChecked( mObject->shadow() );
+			shadowXSpin->setValue( mObject->shadowX() );
+			shadowYSpin->setValue( mObject->shadowY() );
+			shadowColorButton->setColorNode( mObject->shadowColorNode() );
+			shadowOpacitySpin->setValue( 100*mObject->shadowOpacity() );
+
+			mBlocked = false;			
+		}
+	}
+
+
 	void ObjectEditor::onLabelSizeChanged()
 	{
 		if ( mModel )
@@ -161,6 +179,7 @@ namespace glabels
 				loadLineFillPage();
 				loadPositionPage();
 				loadRectSizePage();
+				loadShadowPage();
 				
 				setEnabled( true );
 			}
@@ -190,6 +209,7 @@ namespace glabels
 		{
 			loadLineFillPage();
 			loadRectSizePage();
+			loadShadowPage();
 		}
 	}
 
@@ -267,6 +287,23 @@ namespace glabels
 				mObject->setSize( sizeWSpin->value(), sizeHSpin->value() );
 			}
 			
+			mBlocked = false;
+		}
+	}
+
+
+	void ObjectEditor::onShadowControlsChanged()
+	{
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			mObject->setShadow( shadowEnableCheck->isChecked() );
+			mObject->setShadowX( shadowXSpin->value() );
+			mObject->setShadowY( shadowYSpin->value() );
+			mObject->setShadowColorNode( shadowColorButton->colorNode() );
+			mObject->setShadowOpacity( shadowOpacitySpin->value()/100.0 );
+
 			mBlocked = false;
 		}
 	}
