@@ -124,7 +124,6 @@ namespace glabels
 	///
 	void ColorPaletteButtonItem::mousePressEvent( QMouseEvent* event )
 	{
-		event->ignore(); // Allow event to propagate to parent
 		emit activated();
 	}
 

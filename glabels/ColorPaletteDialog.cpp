@@ -90,6 +90,9 @@ namespace glabels
 		mDefaultColor = defaultColor;
 		mColorNode = ColorNode( color );
 
+		setStyleSheet( "background: white; border: 1px solid black" );
+		setWindowFlags( Qt::Popup | Qt::FramelessWindowHint );
+
 		QVBoxLayout* vLayout = new QVBoxLayout();
 		vLayout->setContentsMargins( 0, 0, 0, 0 );
 		vLayout->setSpacing( 0 );
@@ -181,6 +184,7 @@ namespace glabels
 		mColorNode.setKey( "" );
 
 		emit colorChanged( mColorNode, true );
+		accept();
 	}
 
 
@@ -191,6 +195,7 @@ namespace glabels
 		mColorNode.setKey( "" );
 
 		emit colorChanged( mColorNode, false );
+		accept();
 	}
 
 
@@ -201,12 +206,14 @@ namespace glabels
 		mColorNode.setKey( "" );
 
 		emit colorChanged( mColorNode, false );
+		accept();
 	}
 
 
 	void ColorPaletteDialog::onCustomColorItemActivated()
 	{
 		// TODO
+		accept();
 	}
 
 

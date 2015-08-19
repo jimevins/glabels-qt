@@ -22,7 +22,6 @@
 
 #include "ColorSwatch.h"
 #include <QIcon>
-#include <QMenu>
 #include <QHBoxLayout>
 #include <QtDebug>
 
@@ -53,16 +52,12 @@ namespace glabels
 		setCheckable( true );
 
 		mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
-		//mDialog->setModal( true );
 
-		mMenu = new QMenu();
-		QHBoxLayout* layout = new QHBoxLayout;
-		layout->addWidget( mDialog );
-		mMenu->setLayout( layout );
-		setMenu( mMenu );
-
+		connect( this, SIGNAL(toggled(bool)), this, SLOT(onButtonToggled(bool)) );
 		connect( mDialog, SIGNAL(colorChanged(ColorNode,bool)),
 			 this, SLOT(onPaletteDialogChanged(ColorNode,bool)) );
+		connect( mDialog, SIGNAL(accepted()), this, SLOT(onPaletteDialogAccepted()) );
+		connect( mDialog, SIGNAL(rejected()), this, SLOT(onPaletteDialogRejected()) );
 	}
 
 
@@ -129,18 +124,41 @@ namespace glabels
 	}
 
 
+	void ColorButton::onButtonToggled( bool checked )
+	{
+		if ( checked )
+		{
+			///
+			/// @TODO: improve positioning of dialog -- near edges of screen.
+			///
+			QPoint dialogPos( 0, height() );
+			mDialog->move( mapToGlobal(dialogPos) );
+
+			mDialog->show();
+		}
+	}
+
+
+	void ColorButton::onPaletteDialogAccepted()
+	{
+		setChecked( false );
+	}
+
+
+	void ColorButton::onPaletteDialogRejected()
+	{
+		setChecked( false );
+	}
+
+
 	void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
 	{
-		qDebug() << "Palette Dialog Changed.";
-
 		mColorNode = colorNode;
 		mIsDefault = isDefault;
 
 		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
 		setText( "" );
-
-		mMenu->setVisible( false );
-
+		
 		emit colorChanged();
 	}
 
