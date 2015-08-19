@@ -111,9 +111,8 @@ namespace glabels
 	}
 
 
-	ColorNode ColorButton::getColorNode( bool& isDefault )
+	ColorNode ColorButton::colorNode()
 	{
-		isDefault = mIsDefault;
 		return mColorNode;
 	}
 

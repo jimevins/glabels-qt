@@ -140,11 +140,13 @@ namespace glabels
 	void ObjectEditor::onLineControlsChanged()
 	{
 		mObject->setLineWidth( lineWidthSpin->value() );
+		mObject->setLineColorNode( lineColorButton->colorNode() );
 	}
 
 	
 	void ObjectEditor::onFillControlsChanged()
 	{
+		mObject->setFillColorNode( fillColorButton->colorNode() );
 	}
 
 

@@ -60,7 +60,7 @@ namespace glabels
 		void   setColorNode( ColorNode colorNode );
 		void   setColor( QColor color );
 		void   setToDefault();
-		ColorNode getColorNode( bool& isDefault );
+		ColorNode colorNode();
 		void   setKeys( const QList<QString> keyList );
 		void   clearKeys();
 
