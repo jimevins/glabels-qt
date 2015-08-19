@@ -69,7 +69,6 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onButtonPressed();
 		void onPaletteDialogChanged( ColorNode colorNode, bool isDefault );
 
 
@@ -88,6 +87,7 @@ namespace glabels
 		ColorNode           mColorNode;
 
 		ColorPaletteDialog* mDialog;
+		QMenu*              mMenu;
 	};
 
 }

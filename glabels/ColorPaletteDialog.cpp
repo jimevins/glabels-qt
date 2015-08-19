@@ -87,11 +87,15 @@ namespace glabels
 		mColorHistory = ColorHistory::instance();
 		connect( mColorHistory, SIGNAL(changed()), this, SLOT(onColorHistoryChanged()) );
 
+		mDefaultColor = defaultColor;
+		mColorNode = ColorNode( color );
+
 		QVBoxLayout* vLayout = new QVBoxLayout();
 		vLayout->setContentsMargins( 0, 0, 0, 0 );
 		vLayout->setSpacing( 0 );
 
 		ColorPaletteButtonItem* defaultButton = new ColorPaletteButtonItem( defaultLabel );
+		connect( defaultButton, SIGNAL(activated()), this, SLOT(onDefaultItemActivated()) );
 		vLayout->addWidget( defaultButton );
 		
 		QFrame* hline1 = new QFrame;
@@ -141,6 +145,7 @@ namespace glabels
 		vLayout->addWidget( hline3 );
 
 		ColorPaletteButtonItem* customColorButton = new ColorPaletteButtonItem( tr("Custom color") );
+		connect( customColorButton, SIGNAL(activated()), this, SLOT(onCustomColorItemActivated()) );
 		vLayout->addWidget( customColorButton );
 
 		QFrame* hline4 = new QFrame;
@@ -175,7 +180,6 @@ namespace glabels
 		mColorNode.setColor( mDefaultColor );
 		mColorNode.setKey( "" );
 
-		setVisible( false );
 		emit colorChanged( mColorNode, true );
 	}
 
@@ -186,7 +190,6 @@ namespace glabels
 		mColorNode.setColor( QColor( mColorTable[id].colorSpec ) );
 		mColorNode.setKey( "" );
 
-		setVisible( false );
 		emit colorChanged( mColorNode, false );
 	}
 
@@ -197,14 +200,12 @@ namespace glabels
 		mColorNode.setColor( mColorHistory->getColor( id ) );
 		mColorNode.setKey( "" );
 
-		setVisible( false );
 		emit colorChanged( mColorNode, false );
 	}
 
 
 	void ColorPaletteDialog::onCustomColorItemActivated()
 	{
-		setVisible( false );
 		// TODO
 	}
 

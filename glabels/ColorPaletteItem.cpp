@@ -22,6 +22,7 @@
 
 
 #include <QPainter>
+#include <QMouseEvent>
 
 
 //
@@ -162,6 +163,7 @@ namespace glabels
 	///
 	void ColorPaletteItem::mousePressEvent( QMouseEvent* event )
 	{
+		event->ignore(); // Allow event to propagate to parent
 		emit activated( mId );
 	}
 

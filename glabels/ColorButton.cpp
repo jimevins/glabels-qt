@@ -22,6 +22,9 @@
 
 #include "ColorSwatch.h"
 #include <QIcon>
+#include <QMenu>
+#include <QHBoxLayout>
+#include <QtDebug>
 
 
 namespace
@@ -50,10 +53,16 @@ namespace glabels
 		setCheckable( true );
 
 		mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
-		mDialog->setModal( true );
+		//mDialog->setModal( true );
 
-		connect( this, SIGNAL(pressed()), this, SLOT(onButtonPressed()) );
-		connect( mDialog, SIGNAL(colorChanged(colorNode,bool)), this, SLOT(onColorPaletteDialogChanged(colorNode,bool)) );
+		mMenu = new QMenu();
+		QHBoxLayout* layout = new QHBoxLayout;
+		layout->addWidget( mDialog );
+		mMenu->setLayout( layout );
+		setMenu( mMenu );
+
+		connect( mDialog, SIGNAL(colorChanged(ColorNode,bool)),
+			 this, SLOT(onPaletteDialogChanged(ColorNode,bool)) );
 	}
 
 
@@ -121,17 +130,17 @@ namespace glabels
 	}
 
 
-	void ColorButton::onButtonPressed()
-	{
-		// TODO: move dialog -- see menu_position_function is VALA version
-		mDialog->show();
-	}
-
-
 	void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
 	{
+		qDebug() << "Palette Dialog Changed.";
+
 		mColorNode = colorNode;
 		mIsDefault = isDefault;
+
+		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
+		setText( "" );
+
+		mMenu->setVisible( false );
 
 		emit colorChanged();
 	}
