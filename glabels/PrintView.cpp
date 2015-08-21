@@ -56,7 +56,7 @@ namespace glabels
 	///
 	void PrintView::onLabelSizeChanged()
 	{
-		preview->setTemplate( mModel->tmplate() );
+		preview->setModel( mModel );
 	}
 
 

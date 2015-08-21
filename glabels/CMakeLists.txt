@@ -35,6 +35,7 @@ set (glabels_sources
   ObjectEditor.cpp
   Outline.cpp
   PrintView.cpp
+  Preview.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
@@ -64,6 +65,7 @@ set (glabels_qobject_headers
   NewLabelDialog.h
   ObjectEditor.h
   PrintView.h
+  Preview.h
   SimplePreview.h
   TemplatePicker.h
   View.h

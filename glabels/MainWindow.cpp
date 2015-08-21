@@ -69,12 +69,13 @@ namespace glabels
 		QWidget* mergePage = createMergePage();
 		QWidget* printPage = createPrintPage();
 
-		QTabWidget* notebook = new QTabWidget();
-		notebook->addTab( editorPage, "Editor" );
-		notebook->addTab( mergePage, "Merge" );
-		notebook->addTab( printPage, "Print" );
-		
-		setCentralWidget( notebook );
+		mNotebook = new QTabWidget();
+		mNotebook->addTab( editorPage, "Editor" );
+		mNotebook->addTab( mergePage, "Merge" );
+		mNotebook->addTab( printPage, "Print" );
+		mNotebook->setEnabled( false );
+
+		setCentralWidget( mNotebook );
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
@@ -114,6 +115,7 @@ namespace glabels
 		mObjectEditor->setModel( mModel );
 		mPrintView->setModel( mModel );
 
+		mNotebook->setEnabled( true );
 		setDocVerbsEnabled( true );
 		setSelectionVerbsEnabled( false );
 		setMultiSelectionVerbsEnabled( false );

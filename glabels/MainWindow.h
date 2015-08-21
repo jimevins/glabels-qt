@@ -189,6 +189,7 @@ namespace glabels
 		QToolBar* fileToolBar;
 		QToolBar* editorToolBar;
 
+		QTabWidget*   mNotebook;
 		LabelModel*   mModel;
 		View*         mView;
 		ObjectEditor* mObjectEditor;

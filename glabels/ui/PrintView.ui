@@ -26,7 +26,7 @@
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <item>
-      <widget class="glabels::SimplePreview" name="preview" native="true">
+      <widget class="glabels::Preview" name="preview" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -43,6 +43,9 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <property name="bottomMargin">
+        <number>16</number>
+       </property>
        <item>
         <spacer name="horizontalSpacer_8">
          <property name="orientation">
@@ -456,9 +459,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glabels::SimplePreview</class>
+   <class>glabels::Preview</class>
    <extends>QWidget</extends>
-   <header>SimplePreview.h</header>
+   <header>Preview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

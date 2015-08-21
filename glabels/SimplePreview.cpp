@@ -57,7 +57,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	SimplePreview::SimplePreview( QWidget *parent = 0 )
+	SimplePreview::SimplePreview( QWidget *parent )
 		: mTmplate(NULL), mRotateFlag(false), QGraphicsView(parent)
 	{
 		mScene = new QGraphicsScene();

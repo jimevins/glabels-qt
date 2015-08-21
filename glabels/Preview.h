@@ -1,4 +1,4 @@
-/*  SimplePreview.h
+/*  Preview.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,24 +18,24 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_SimplePreview_h
-#define glabels_SimplePreview_h
+#ifndef glabels_Preview_h
+#define glabels_Preview_h
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
 #include <QList>
 
-#include "libglabels/Template.h"
-
 
 namespace glabels
 {
+	class LabelModel; // Forward reference
+
 
 	///
-	/// Simple Preview Widget
+	///  Preview Widget
 	///
-	class SimplePreview : public QGraphicsView
+	class Preview : public QGraphicsView
 	{
 		Q_OBJECT
 
@@ -44,15 +44,14 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		SimplePreview( QWidget *parent = 0 );
+		Preview( QWidget *parent = 0 );
 
 
 		/////////////////////////////////
 		// Properties
 		/////////////////////////////////
 	public:
-		void setTemplate( const libglabels::Template *tmplate );
-		void setRotate( bool rotateFlag );
+		void setModel( const LabelModel* model );
 
 
 		/////////////////////////////////////
@@ -66,25 +65,21 @@ namespace glabels
 		// Internal Methods
 		/////////////////////////////////
 	private:
-		void update();
 		void clearScene();
 		void drawPaper( double pw, double ph );
 		void drawLabels();
 		void drawLabel( double x, double y, const QPainterPath &path );
-		void drawArrow();
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		const libglabels::Template *mTmplate;
-		bool                        mRotateFlag;
-
-		QGraphicsScene             *mScene;
+		const LabelModel* mModel;
+		QGraphicsScene*   mScene;
 
 	};
 
 }
 
-#endif // glabels_SimplePreview_h
+#endif // glabels_Preview_h
