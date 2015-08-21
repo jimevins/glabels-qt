@@ -21,6 +21,7 @@
 #include "Preview.h"
 
 #include "LabelModel.h"
+#include "PreviewOverlayItem.h"
 
 #include <QGraphicsRectItem>
 #include <QGraphicsDropShadowEffect>
@@ -53,7 +54,7 @@ namespace glabels
 	/// Constructor
 	///
 	Preview::Preview( QWidget *parent )
-		: mModel(0), QGraphicsView(parent)
+		: mModel(0), mRenderer(0), QGraphicsView(parent)
 	{
 		mScene = new QGraphicsScene();
 		setScene( mScene );
@@ -88,7 +89,17 @@ namespace glabels
 
 			drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
 			drawLabels();
+			drawPreviewOverlay();
 		}
+	}
+
+
+	///
+	/// Set renderer
+	///
+	void Preview::setRenderer( const PageRenderer* renderer )
+	{
+		mRenderer = renderer;
 	}
 
 
@@ -157,18 +168,31 @@ namespace glabels
 	///
 	void Preview::drawLabel( double x, double y, const QPainterPath &path )
 	{
-		QBrush brush( labelColor );
+		QBrush brush( Qt::NoBrush );
 		QPen pen( labelOutlineColor );
 		pen.setStyle( Qt::DotLine );
 		pen.setCosmetic( true );
 		pen.setWidthF( labelOutlineWidthPixels );
 
-		QGraphicsPathItem *labelItem  = new QGraphicsPathItem( path );
-		labelItem->setBrush( brush );
-		labelItem->setPen( pen );
-		labelItem->setPos( x, y );
+		QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
+		labelOutlineItem->setBrush( brush );
+		labelOutlineItem->setPen( pen );
+		labelOutlineItem->setPos( x, y );
 
-		mScene->addItem( labelItem );
+		mScene->addItem( labelOutlineItem );
+	}
+
+
+	///
+	/// Draw Preview Overlay
+	///
+	void Preview::drawPreviewOverlay()
+	{
+		if ( mRenderer )
+		{
+			PreviewOverlayItem* overlayItem = new PreviewOverlayItem( mRenderer );
+			mScene->addItem( overlayItem );
+		}
 	}
 
 

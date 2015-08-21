@@ -34,8 +34,10 @@ set (glabels_sources
   NewLabelDialog.cpp
   ObjectEditor.cpp
   Outline.cpp
+  PageRenderer.cpp
   PrintView.cpp
   Preview.cpp
+  PreviewOverlayItem.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp

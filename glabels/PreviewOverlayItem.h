@@ -1,4 +1,4 @@
-/*  PrintView.h
+/*  PreviewOverlayItem.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,56 +18,46 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_PrintView_h
-#define glabels_PrintView_h
+#ifndef glabels_PreviewOverlayItem_h
+#define glabels_PreviewOverlayItem_h
 
-#include "ui_PrintView.h"
-#include "PageRenderer.h"
+#include <QGraphicsItem>
 
 
 namespace glabels
 {
-	class LabelModel;  // Forward reference
-	
+	class PageRenderer; // Forward reference
+
 
 	///
-	/// Print View Widget
+	///  PreviewOverlayItem Widget
 	///
-	class PrintView : public QWidget, public Ui_PrintView
+	class PreviewOverlayItem : public QGraphicsItem
 	{
-		Q_OBJECT
-
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		PrintView( QWidget *parent = 0 );
+		PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = 0 );
 
 
-		/////////////////////////////////
-		// Public methods
-		/////////////////////////////////
-		void setModel( LabelModel* model );
+		/////////////////////////////////////
+		// Virtual method implementations
+		/////////////////////////////////////
+	public:
+		QRectF boundingRect() const;
+		void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget );
 
-
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onLabelChanged();
-		void onLabelSizeChanged();
-
-
+		
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		LabelModel*   mModel;
-		PageRenderer mRenderer;
+		const PageRenderer* mRenderer;
 
 	};
 
 }
 
-#endif // glabels_PrintView_h
+#endif // glabels_PreviewOverlayItem_h

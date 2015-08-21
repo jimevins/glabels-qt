@@ -24,7 +24,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-#include <QList>
+#include "PageRenderer.h"
 
 
 namespace glabels
@@ -52,6 +52,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		void setModel( const LabelModel* model );
+		void setRenderer( const PageRenderer* renderer );
 
 
 		/////////////////////////////////////
@@ -69,14 +70,16 @@ namespace glabels
 		void drawPaper( double pw, double ph );
 		void drawLabels();
 		void drawLabel( double x, double y, const QPainterPath &path );
+		void drawPreviewOverlay();
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		const LabelModel* mModel;
-		QGraphicsScene*   mScene;
+		const LabelModel*   mModel;
+		const PageRenderer* mRenderer;    
+		QGraphicsScene*     mScene;
 
 	};
 

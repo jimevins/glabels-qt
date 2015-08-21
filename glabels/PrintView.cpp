@@ -33,6 +33,8 @@ namespace glabels
 		: QWidget(parent)
 	{
 		setupUi( this );
+
+		preview->setRenderer( &mRenderer );
 	}
 
 
@@ -42,6 +44,8 @@ namespace glabels
 	void PrintView::setModel( LabelModel* model )
 	{
 		mModel = model;
+		mRenderer.setModel( model );
+		mRenderer.setNLabels( model->frame()->nLabels() );
 
 		connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 		connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
@@ -57,6 +61,7 @@ namespace glabels
 	void PrintView::onLabelSizeChanged()
 	{
 		preview->setModel( mModel );
+		mRenderer.setModel( mModel );
 	}
 
 
@@ -65,6 +70,7 @@ namespace glabels
 	///
 	void PrintView::onLabelChanged()
 	{
+		preview->update();
 	}
 	
 }
