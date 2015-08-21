@@ -57,14 +57,18 @@ namespace glabels
 	private slots:
 		void onLabelChanged();
 		void onLabelSizeChanged();
+		void onFormChanged();
+		void onPrintButtonClicked();
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		LabelModel*   mModel;
+		LabelModel*  mModel;
 		PageRenderer mRenderer;
+
+		bool         mBlocked;
 
 	};
 

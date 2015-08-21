@@ -163,6 +163,7 @@ namespace glabels
 
 		printCropMarks( painter );
 
+		qDebug() << "ipage = " << iPage << ", iStart = " << iStart << ", iEnd = " << iEnd;
 		for ( int i = iStart; i < iEnd; i++ )
 		{
 			painter->save();
