@@ -1,4 +1,4 @@
-/*  SimplePreview.h
+/*  PrintView.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,24 +18,21 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_SimplePreview_h
-#define glabels_SimplePreview_h
+#ifndef glabels_PrintView_h
+#define glabels_PrintView_h
 
-#include <QGraphicsView>
-#include <QGraphicsScene>
-
-#include <QList>
-
-#include "libglabels/Template.h"
+#include "ui_PrintView.h"
 
 
 namespace glabels
 {
+	class LabelModel;  // Forward reference
+	
 
 	///
-	/// Simple Preview Widget
+	/// Print View Widget
 	///
-	class SimplePreview : public QGraphicsView
+	class PrintView : public QWidget, public Ui_PrintView
 	{
 		Q_OBJECT
 
@@ -44,47 +41,31 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		SimplePreview( QWidget *parent );
+		PrintView( QWidget *parent = 0 );
 
 
 		/////////////////////////////////
-		// Properties
+		// Public methods
 		/////////////////////////////////
-	public:
-		void setTemplate( const libglabels::Template *tmplate );
-		void setRotate( bool rotateFlag );
+		void setModel( LabelModel* model );
 
 
-		/////////////////////////////////////
-		// Event handlers
-		/////////////////////////////////////
-	protected:
-		void resizeEvent( QResizeEvent* event );
-
-		
 		/////////////////////////////////
-		// Internal Methods
+		// Slots
 		/////////////////////////////////
-	private:
-		void update();
-		void clearScene();
-		void drawPaper( double pw, double ph );
-		void drawLabels();
-		void drawLabel( double x, double y, const QPainterPath &path );
-		void drawArrow();
+	private slots:
+		void onLabelChanged();
+		void onLabelSizeChanged();
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		const libglabels::Template *mTmplate;
-		bool                        mRotateFlag;
-
-		QGraphicsScene             *mScene;
+		LabelModel* mModel;
 
 	};
 
 }
 
-#endif // glabels_SimplePreview_h
+#endif // glabels_PrintView_h

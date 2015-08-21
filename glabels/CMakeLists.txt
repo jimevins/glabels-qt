@@ -34,6 +34,7 @@ set (glabels_sources
   NewLabelDialog.cpp
   ObjectEditor.cpp
   Outline.cpp
+  PrintView.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
@@ -62,6 +63,7 @@ set (glabels_qobject_headers
   MainWindow.h
   NewLabelDialog.h
   ObjectEditor.h
+  PrintView.h
   SimplePreview.h
   TemplatePicker.h
   View.h
@@ -70,6 +72,7 @@ set (glabels_qobject_headers
 set (glabels_forms
   ui/NewLabelDialog.ui
   ui/ObjectEditor.ui
+  ui/PrintView.ui
 )
 
 set (glabels_resource_files

@@ -22,7 +22,7 @@
 
 #include <QGraphicsRectItem>
 #include <QGraphicsDropShadowEffect>
-#include <iostream>
+#include <QtDebug>
 
 
 //
@@ -58,7 +58,7 @@ namespace glabels
 	/// Constructor
 	///
 	SimplePreview::SimplePreview( QWidget *parent = 0 )
-		: mScale(1), mTmplate(NULL), mRotateFlag(false), QGraphicsView(parent)
+		: mTmplate(NULL), mRotateFlag(false), QGraphicsView(parent)
 	{
 		mScene = new QGraphicsScene();
 		setScene( mScene );
@@ -92,6 +92,15 @@ namespace glabels
 
 
 	///
+	/// Resize Event Handler
+	///
+	void SimplePreview::resizeEvent( QResizeEvent* event )
+	{
+		fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
+	}
+
+
+	///
 	/// Update View
 	///
 	void SimplePreview::update()
@@ -107,9 +116,7 @@ namespace glabels
 			double h = 1.10 * mTmplate->pageHeight();
 
 			mScene->setSceneRect( x, y, w, h );
-			fitInView( x, y, w, h, Qt::KeepAspectRatio );
-
-			mScale = matrix().m11();
+			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
 
 			drawPaper( mTmplate->pageWidth(), mTmplate->pageHeight() );
 			drawLabels();
@@ -143,7 +150,8 @@ namespace glabels
 
 		QBrush brush( paperColor );
 		QPen pen( paperOutlineColor );
-		pen.setWidthF( paperOutlineWidthPixels / mScale );
+		pen.setCosmetic( true );
+		pen.setWidthF( paperOutlineWidthPixels );
 
 		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw, ph );
 		pageItem->setBrush( brush );
@@ -175,7 +183,8 @@ namespace glabels
 	{
 		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
-		pen.setWidthF( labelOutlineWidthPixels / mScale );
+		pen.setCosmetic( true );
+		pen.setWidthF( labelOutlineWidthPixels );
 
 		QGraphicsPathItem *labelItem  = new QGraphicsPathItem( path );
 		labelItem->setBrush( brush );

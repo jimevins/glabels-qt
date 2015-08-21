@@ -34,6 +34,7 @@
 #include "libglabels/Db.h"
 #include "View.h"
 #include "ObjectEditor.h"
+#include "PrintView.h"
 #include "LabelModel.h"
 #include "LabelModelBoxObject.h"
 #include "Icons.h"
@@ -65,8 +66,15 @@ namespace glabels
 		createStatusBar();
 
 		QWidget* editorPage = createEditorPage();
+		QWidget* mergePage = createMergePage();
+		QWidget* printPage = createPrintPage();
+
+		QTabWidget* notebook = new QTabWidget();
+		notebook->addTab( editorPage, "Editor" );
+		notebook->addTab( mergePage, "Merge" );
+		notebook->addTab( printPage, "Print" );
 		
-		setCentralWidget( editorPage );
+		setCentralWidget( notebook );
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
@@ -104,6 +112,7 @@ namespace glabels
 		mModel = label;
 		mView->setModel( mModel );
 		mObjectEditor->setModel( mModel );
+		mPrintView->setModel( mModel );
 
 		setDocVerbsEnabled( true );
 		setSelectionVerbsEnabled( false );
@@ -590,6 +599,28 @@ namespace glabels
 		page->setLayout( editorHLayout );
 
 		return page;
+	}
+
+
+	///
+	/// Create Merge Page
+	///
+	QWidget* MainWindow::createMergePage()
+	{
+		QWidget* page = new QWidget;
+
+		return page;
+	}
+
+
+	///
+	/// Create Print Page
+	///
+	QWidget* MainWindow::createPrintPage()
+	{
+		mPrintView = new PrintView();
+
+		return mPrintView;
 	}
 
 

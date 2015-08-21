@@ -37,6 +37,7 @@ namespace glabels
 	class LabelModel;
 	class View;
 	class ObjectEditor;
+	class PrintView;
 
 
 	///
@@ -152,6 +153,8 @@ namespace glabels
 		void createStatusBar();
 
 		QWidget* createEditorPage();
+		QWidget* createMergePage();
+		QWidget* createPrintPage();
 
 		void setDocVerbsEnabled( bool );
 		void setDocModifiedVerbsEnabled( bool );
@@ -189,6 +192,7 @@ namespace glabels
 		LabelModel*   mModel;
 		View*         mView;
 		ObjectEditor* mObjectEditor;
+		PrintView*    mPrintView;
 
 		QLabel*   zoomInfoLabel;
 		QLabel*   cursorInfoLabel;
