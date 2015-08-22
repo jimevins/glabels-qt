@@ -42,8 +42,8 @@
 //
 namespace
 {
-	const int     nZoomLevels = 14;
-	const double  zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33, 0.25, 0.15, 0.10 };
+	const int     nZoomLevels = 11;
+	const double  zoomLevels[nZoomLevels] = { 8, 6, 4, 3, 2, 1.5, 1, 0.75, 0.67, 0.50, 0.33 };
 
 	const double  PTS_PER_INCH = 72.0;
 	const double  ZOOM_TO_FIT_PAD = 16.0;
