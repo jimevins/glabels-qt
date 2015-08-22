@@ -134,13 +134,25 @@ namespace glabels
 	}
 
 	
+	///
+	/// Print page using persistent page number
+	///
 	void PageRenderer::printPage( QPainter* painter ) const
+	{
+		printPage( painter, mIPage );
+	}
+
+
+	///
+	/// Print page
+	///
+	void PageRenderer::printPage( QPainter* painter, int iPage ) const
 	{
 		if ( mModel )
 		{
 			/// @TODO merge case
 		
-			printSimplePage( painter, mIPage );
+			printSimplePage( painter, iPage );
 		}
 	}
 

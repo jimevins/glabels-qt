@@ -63,6 +63,7 @@ namespace glabels
 		int nPages() const;
 		QRectF pageRect() const;
 		void printPage( QPainter* painter ) const;
+		void printPage( QPainter* painter, int iPage ) const;
 
 
 		/////////////////////////////////

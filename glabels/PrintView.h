@@ -24,6 +24,8 @@
 #include "ui_PrintView.h"
 #include "PageRenderer.h"
 
+#include <QPrinter>
+
 
 namespace glabels
 {
@@ -43,6 +45,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		PrintView( QWidget *parent = 0 );
+		~PrintView();
 
 
 		/////////////////////////////////
@@ -66,6 +69,7 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		LabelModel*  mModel;
+		QPrinter*    mPrinter;
 		PageRenderer mRenderer;
 
 		bool         mBlocked;

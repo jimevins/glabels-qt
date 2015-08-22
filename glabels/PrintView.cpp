@@ -22,6 +22,7 @@
 
 #include "LabelModel.h"
 
+#include <QPrintDialog>
 #include <QtDebug>
 
 
@@ -35,8 +36,18 @@ namespace glabels
 		: QWidget(parent), mModel(0), mBlocked(false)
 	{
 		setupUi( this );
-
 		preview->setRenderer( &mRenderer );
+
+		mPrinter = new QPrinter( QPrinter::HighResolution );
+	}
+
+
+	///
+	/// Destructor
+	///
+	PrintView::~PrintView()
+	{
+		delete mPrinter;
 	}
 
 
@@ -45,8 +56,6 @@ namespace glabels
 	///
 	void PrintView::setModel( LabelModel* model )
 	{
-		int nLabelsPerPage = model->frame()->nLabels();
-
 		mModel = model;
 
 		// TODO set visibility based on merge selection
@@ -129,7 +138,38 @@ namespace glabels
 	///
 	void PrintView::onPrintButtonClicked()
 	{
-		qDebug() << "Print!";
+		QSizeF pageSize( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
+		mPrinter->setPaperSize( pageSize, QPrinter::Point );
+		mPrinter->setFullPage( true );
+		mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
+
+		QPrintDialog printDialog( mPrinter, this );
+
+		printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
+		printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
+		printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
+		printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
+		printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
+		printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
+
+		if ( printDialog.exec() == QDialog::Accepted )
+		{
+			QPainter painter( mPrinter );
+			
+			QSizeF sizePx  = mPrinter->paperSize( QPrinter::DevicePixel );
+			QSizeF sizePts = mPrinter->paperSize( QPrinter::Point );
+			painter.scale( sizePx.width()/sizePts.width(), sizePx.height()/sizePts.height() );
+
+			for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
+			{
+				if ( iPage )
+				{
+					mPrinter->newPage();
+				}
+
+				mRenderer.printPage( &painter, iPage );
+			}
+		}
 	}
 
 }
