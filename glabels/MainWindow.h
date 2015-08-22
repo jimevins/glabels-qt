@@ -82,7 +82,6 @@ namespace glabels
 		void fileOpen();
 		void fileSave();
 		void fileSaveAs();
-		void filePrint();
 		void fileProperties();
 		void fileTemplateDesigner();
 		void fileClose();
@@ -128,7 +127,6 @@ namespace glabels
 		void objectsAlignBottom();
 		void objectsCenterHoriz();
 		void objectsCenterVert();
-		void objectsMergeProperties();
 
 		void helpContents();
 		void helpAbout();
@@ -202,7 +200,6 @@ namespace glabels
 		QAction*  fileOpenAction;
 		QAction*  fileSaveAction;
 		QAction*  fileSaveAsAction;
-		QAction*  filePrintAction;
 		QAction*  filePropertiesAction;
 		QAction*  fileTemplateDesignerAction;
 		QAction*  fileCloseAction;
@@ -248,7 +245,6 @@ namespace glabels
 		QAction*  objectsAlignBottomAction;
 		QAction*  objectsCenterHorizAction;
 		QAction*  objectsCenterVertAction;
-		QAction*  objectsMergePropertiesAction;
 
 		QAction*  helpContentsAction;
 		QAction*  helpAboutAction;

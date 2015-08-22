@@ -185,12 +185,6 @@ namespace glabels
 		fileSaveAsAction->setStatusTip( tr("Save current file to a different name") );
 		connect( fileSaveAsAction, SIGNAL(triggered()), this, SLOT(fileSaveAs()) );
 
-		filePrintAction = new QAction( tr("&Print..."), this );
-		filePrintAction->setIcon( QIcon::fromTheme( "document-print", Icons::Fallback::FilePrint() ) );
-		filePrintAction->setShortcut( QKeySequence::Print );
-		filePrintAction->setStatusTip( tr("Print the current file") );
-		connect( filePrintAction, SIGNAL(triggered()), this, SLOT(filePrint()) );
-
 		filePropertiesAction = new QAction( tr("Properties..."), this );
 		filePropertiesAction->setIcon( QIcon::fromTheme( "document-properties" ) );
 		filePropertiesAction->setStatusTip( tr("Modify document properties") );
@@ -419,11 +413,6 @@ namespace glabels
 		objectsCenterVertAction->setStatusTip( tr("Vertically center objects in label") );
 		connect( objectsCenterVertAction, SIGNAL(triggered()), this, SLOT(objectsCenterVert()) );
 
-		objectsMergePropertiesAction = new QAction( tr("Merge Properties..."), this );
-		objectsMergePropertiesAction->setIcon( Icons::Merge() );
-		objectsMergePropertiesAction->setStatusTip( tr("Edit merge properties") );
-		connect( objectsMergePropertiesAction, SIGNAL(triggered()), this, SLOT(objectsMergeProperties()) );
-
 
 		/* Help actions */
 		helpContentsAction = new QAction( tr("&Contents..."), this );
@@ -449,8 +438,6 @@ namespace glabels
 		fileMenu->addAction( fileOpenAction );
 		fileMenu->addAction( fileSaveAction );
 		fileMenu->addAction( fileSaveAsAction );
-		fileMenu->addSeparator();
-		fileMenu->addAction( filePrintAction );
 		fileMenu->addSeparator();
 		fileMenu->addAction( filePropertiesAction );
 		fileMenu->addAction( fileTemplateDesignerAction );
@@ -514,8 +501,6 @@ namespace glabels
 		objectsCenterMenu = objectsMenu->addMenu( tr("Center") );
 		objectsCenterMenu->addAction( objectsCenterHorizAction );
 		objectsCenterMenu->addAction( objectsCenterVertAction );
-		objectsMenu->addSeparator();
-		objectsMenu->addAction( objectsMergePropertiesAction );
 
 		helpMenu = menuBar()->addMenu( tr("&Help") );
 		helpMenu->addAction( helpContentsAction );
@@ -532,8 +517,6 @@ namespace glabels
 		fileToolBar->addAction( fileNewAction );
 		fileToolBar->addAction( fileOpenAction );
 		fileToolBar->addAction( fileSaveAction );
-		fileToolBar->addSeparator();
-		fileToolBar->addAction( filePrintAction );
 
 		editorToolBar = new QToolBar( tr("&Editor") );
 		editorToolBar->addAction( objectsArrowModeAction );
@@ -634,7 +617,6 @@ namespace glabels
 		filePropertiesAction->setEnabled( enabled );
 		fileSaveAction->setEnabled( enabled );
 		fileSaveAsAction->setEnabled( enabled );
-		filePrintAction->setEnabled( enabled );
 		editUndoAction->setEnabled( enabled );
 		editRedoAction->setEnabled( enabled );
 		editCutAction->setEnabled( enabled );
@@ -675,7 +657,6 @@ namespace glabels
 		objectsCenterMenu->setEnabled( enabled );
 		objectsCenterHorizAction->setEnabled( enabled );
 		objectsCenterVertAction->setEnabled( enabled );
-		objectsMergePropertiesAction->setEnabled( enabled );
 	}
 
 
@@ -834,15 +815,6 @@ namespace glabels
 	void MainWindow::fileSaveAs()
 	{
 		File::saveAs( this );
-	}
-
-
-	///
-	/// File->Print Action
-	///
-	void MainWindow::filePrint()
-	{
-		File::print( this );
 	}
 
 
@@ -1221,15 +1193,6 @@ namespace glabels
 	void MainWindow::objectsCenterVert()
 	{
 		qDebug() << "ACTION: objects->Center->Vertically";
-	}
-
-
-	///
-	/// Objects->Merge Properties Action
-	///
-	void MainWindow::objectsMergeProperties()
-	{
-		qDebug() << "ACTION: objects->Merge Properties...";
 	}
 
 
