@@ -85,8 +85,6 @@ glabels::View::View( QWidget *parent ) : QWidget(parent)
 	mInObjectCreateMode = false;
 
 	setMouseTracking( true );
-
-	setMinimumSize( 640, 450 );
 }
 
 
@@ -234,8 +232,12 @@ glabels::View::zoomToFit()
 	using std::min;
 	using std::max;
 
-	double x_scale = ( width() - ZOOM_TO_FIT_PAD ) / mModel->w();
-	double y_scale = ( height() - ZOOM_TO_FIT_PAD ) / mModel->h();
+	// Assumes parent widget (QScrollArea) exists
+	double wPixels = parentWidget()->width();
+	double hPixels = parentWidget()->height();
+	
+	double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w();
+	double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h();
 	double newZoom = min( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
 
 	// Limits
@@ -277,6 +279,8 @@ glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
 
 	/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
 	mScale = zoom * physicalDpiX() / PTS_PER_INCH;
+
+	setMinimumSize( mScale*mModel->w(), mScale*mModel->h() );
 
 	/* Adjust origin to center label in widget. */
 	mX0 = (width()/mScale - mModel->w()) / 2;

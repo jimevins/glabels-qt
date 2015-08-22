@@ -23,6 +23,7 @@
 #include <QSettings>
 #include <QStatusBar>
 #include <QFrame>
+#include <QScrollArea>
 #include <QAction>
 #include <QCloseEvent>
 #include <QMenuBar>
@@ -57,13 +58,9 @@ namespace glabels
 	MainWindow::MainWindow()
 		: mModel(0)
 	{
-		mView = new View();
-		mObjectEditor = new ObjectEditor();
-
 		createActions();
 		createMenus();
 		createToolBars();
-		createStatusBar();
 
 		QWidget* editorPage = createEditorPage();
 		QWidget* mergePage = createMergePage();
@@ -76,6 +73,8 @@ namespace glabels
 		mNotebook->setEnabled( false );
 
 		setCentralWidget( mNotebook );
+
+		createStatusBar();
 
 		setDocVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
@@ -573,9 +572,17 @@ namespace glabels
 	{
 		QWidget* page = new QWidget;
 
+		mView = new View();
+		mObjectEditor = new ObjectEditor();
+
+		QScrollArea* scrollArea = new QScrollArea();
+		scrollArea->setMinimumSize( 640, 450 );
+		scrollArea->setWidgetResizable( true );
+		scrollArea->setWidget( mView );
+
 		QVBoxLayout* editorVLayout = new QVBoxLayout;
 		editorVLayout->addWidget( editorToolBar );
-		editorVLayout->addWidget( mView );
+		editorVLayout->addWidget( scrollArea );
 
 		QHBoxLayout* editorHLayout = new QHBoxLayout;
 		editorHLayout->addLayout( editorVLayout );
