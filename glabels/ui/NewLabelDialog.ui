@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>991</width>
-    <height>820</height>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -198,9 +198,6 @@
                  <height>350</height>
                 </size>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
               </widget>
              </item>
              <item>
@@ -388,9 +385,6 @@
                  </layout>
                 </item>
                </layout>
-               <zorder>orientationNormalRadio</zorder>
-               <zorder>orientationRotatedRadio</zorder>
-               <zorder>orientationNormalRadio</zorder>
               </widget>
              </item>
             </layout>
