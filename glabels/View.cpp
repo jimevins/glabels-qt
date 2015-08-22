@@ -128,7 +128,7 @@ glabels::View::setModel( LabelModel* model )
 
 	if ( model )
 	{
-		setZoomReal( 1, false );
+		zoomToFit();
 
 		connect( model, SIGNAL(changed()), this, SLOT(update()) );
 		connect( model, SIGNAL(selectionChanged()), this, SLOT(update()) );
