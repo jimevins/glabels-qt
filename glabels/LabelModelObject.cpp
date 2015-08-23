@@ -888,7 +888,7 @@ namespace glabels
 
 
 	///
-	/// Is this object locate at x,y?
+	/// Is this object located at x,y?
 	///
 	bool LabelModelObject::isLocatedAt( double scale, double x, double y ) const
 	{

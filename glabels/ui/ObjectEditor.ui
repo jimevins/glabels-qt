@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>5</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -848,6 +848,12 @@
               </property>
               <item row="0" column="0">
                <widget class="QLabel" name="label_10">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Width:</string>
                 </property>
@@ -855,6 +861,12 @@
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_11">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Color:</string>
                 </property>
@@ -926,6 +938,12 @@
              <layout class="QFormLayout" name="formLayout_4">
               <item row="0" column="0">
                <widget class="QLabel" name="label_12">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>Color:</string>
                 </property>
@@ -988,6 +1006,12 @@
            <layout class="QFormLayout" name="formLayout_9">
             <item row="0" column="0">
              <widget class="QLabel" name="label_25">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>X:</string>
               </property>
@@ -1009,6 +1033,12 @@
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_26">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>Y:</string>
               </property>
@@ -1056,6 +1086,12 @@
            <layout class="QFormLayout" name="formLayout_10">
             <item row="0" column="0">
              <widget class="QLabel" name="label_29">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>Width:</string>
               </property>
@@ -1077,6 +1113,12 @@
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_30">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>Height:</string>
               </property>
@@ -1154,6 +1196,12 @@
            <layout class="QFormLayout" name="formLayout_11">
             <item row="0" column="0">
              <widget class="QLabel" name="label_33">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>Length:</string>
               </property>
@@ -1175,6 +1223,12 @@
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_35">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="text">
                <string>Angle:</string>
               </property>
