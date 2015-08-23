@@ -29,6 +29,7 @@ class QMenuBar;
 class QMenu;
 class QToolBar;
 class QLabel;
+class QScrollArea;
 
 
 namespace glabels
@@ -189,6 +190,7 @@ namespace glabels
 
 		QTabWidget*   mNotebook;
 		LabelModel*   mModel;
+		QScrollArea*  mViewScrollArea;
 		View*         mView;
 		ObjectEditor* mObjectEditor;
 		PrintView*    mPrintView;

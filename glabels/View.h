@@ -22,6 +22,7 @@
 #define glabels_View_h
 
 #include <QWidget>
+#include <QScrollArea>
 #include <QPainter>
 
 #include "LabelRegion.h"
@@ -46,7 +47,7 @@ namespace glabels
 		// Lifecycle
 		/////////////////////////////////////
 	public:
-		View( QWidget *parent = 0 );
+		View( QScrollArea* scrollArea, QWidget* parent = 0 );
 
 
 		/////////////////////////////////////
@@ -142,8 +143,8 @@ namespace glabels
 		// Private slots
 		/////////////////////////////////////
 	private:
-		void onLabelChanged();
-		void onLabelSizeChanged();
+		void onModelChanged();
+		void onModelSizeChanged();
 
 
 		/////////////////////////////////////
@@ -166,6 +167,8 @@ namespace glabels
 			Text,
 			Barcode
 		};
+
+		QScrollArea*        mScrollArea;
 
 		double              mZoom;
 		bool                mZoomToFitFlag;

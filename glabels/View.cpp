@@ -74,7 +74,8 @@ namespace
 ///
 /// Constructor
 ///
-glabels::View::View( QWidget *parent ) : QWidget(parent)
+glabels::View::View( QScrollArea* scrollArea, QWidget* parent )
+	: QWidget(parent), mScrollArea(scrollArea)
 {
 	mState = IdleState;
 
@@ -232,9 +233,8 @@ glabels::View::zoomToFit()
 	using std::min;
 	using std::max;
 
-	// Assumes parent widget (QScrollArea) exists
-	double wPixels = parentWidget()->width();
-	double hPixels = parentWidget()->height();
+	double wPixels = mScrollArea->maximumViewportSize().width();
+	double hPixels = mScrollArea->maximumViewportSize().height();
 	
 	double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w();
 	double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h();
@@ -280,7 +280,7 @@ glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
 	/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
 	mScale = zoom * physicalDpiX() / PTS_PER_INCH;
 
-	setMinimumSize( mScale*mModel->w(), mScale*mModel->h() );
+	setMinimumSize( mScale*mModel->w() + ZOOM_TO_FIT_PAD, mScale*mModel->h() + ZOOM_TO_FIT_PAD );
 
 	/* Adjust origin to center label in widget. */
 	mX0 = (width()/mScale - mModel->w()) / 2;

@@ -572,17 +572,18 @@ namespace glabels
 	{
 		QWidget* page = new QWidget;
 
-		mView = new View();
+		mViewScrollArea = new QScrollArea();
+		mViewScrollArea->setMinimumSize( 640, 450 );
+		mViewScrollArea->setWidgetResizable( true );
+
+		mView = new View( mViewScrollArea );
 		mObjectEditor = new ObjectEditor();
 
-		QScrollArea* scrollArea = new QScrollArea();
-		scrollArea->setMinimumSize( 640, 450 );
-		scrollArea->setWidgetResizable( true );
-		scrollArea->setWidget( mView );
+		mViewScrollArea->setWidget( mView );
 
 		QVBoxLayout* editorVLayout = new QVBoxLayout;
 		editorVLayout->addWidget( editorToolBar );
-		editorVLayout->addWidget( scrollArea );
+		editorVLayout->addWidget( mViewScrollArea );
 
 		QHBoxLayout* editorHLayout = new QHBoxLayout;
 		editorHLayout->addLayout( editorVLayout );
