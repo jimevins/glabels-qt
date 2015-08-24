@@ -21,13 +21,45 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QLineEdit" name="searchEntry">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="title">
+            <string>Search</string>
            </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QLineEdit" name="searchEntry">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="placeholderText">
+               <string>Search</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="searchClearButton">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../icons.qrc">
+                <normaloff>:/icons/16x16/actions/edit-clear.png</normaloff>:/icons/16x16/actions/edit-clear.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+              <property name="autoRaise">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
          <item>
@@ -61,64 +93,43 @@
            <property name="checkable">
             <bool>false</bool>
            </property>
-           <widget class="QRadioButton" name="pageSizeIsoRadio">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>20</y>
-              <width>121</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>ISO sizes</string>
-            </property>
-           </widget>
-           <widget class="QRadioButton" name="pageSizeUsRadio">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>40</y>
-              <width>111</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>US sizes</string>
-            </property>
-           </widget>
-           <widget class="QRadioButton" name="pageSizeOtherRadio">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>60</y>
-              <width>111</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Other</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QCheckBox" name="pageSizeIsoCheck">
+              <property name="text">
+               <string>ISO sizes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="pageSizeUsCheck">
+              <property name="text">
+               <string>US sizes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="pageSizeOtherCheck">
+              <property name="text">
+               <string>Other</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -445,6 +456,178 @@
    <header>SimplePreview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>searchEntry</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onSearchEntryTextChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>53</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onSearchClearButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>190</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pageSizeIsoCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onPageSizeCheckToggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pageSizeUsCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onPageSizeCheckToggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>52</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pageSizeOtherCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onPageSizeCheckToggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>170</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>10</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>templatePicker</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onTemplatePickerSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>697</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>orientationRotatedRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onOrientationRadioToggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>901</x>
+     <y>637</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>982</x>
+     <y>617</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>orientationNormalRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onOrientationRadioToggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>807</x>
+     <y>644</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>982</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>createButton</sender>
+   <signal>clicked()</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onCreateButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>951</x>
+     <y>699</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>985</x>
+     <y>671</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>NewLabelDialog</receiver>
+   <slot>onCancelButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>837</x>
+     <y>692</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>767</x>
+     <y>704</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onSearchClearButtonClicked()</slot>
+  <slot>onPageSizeCheckToggled()</slot>
+  <slot>onTemplatePickerSelectionChanged()</slot>
+  <slot>onOrientationRadioToggled()</slot>
+  <slot>onCreateButtonClicked()</slot>
+  <slot>onSearchEntryTextChanged()</slot>
+  <slot>onCancelButtonClicked()</slot>
+ </slots>
 </ui>

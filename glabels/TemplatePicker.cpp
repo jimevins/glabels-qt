@@ -64,13 +64,14 @@ namespace glabels
 		{
 			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
 
-			if ( tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) &&
-			     (isoMask == tItem->tmplate()->isSizeIso()) &&
-			     (usMask == tItem->tmplate()->isSizeUs()) &&
-			     (otherMask == tItem->tmplate()->isSizeOther()) )
+			bool sizeMask =
+				(isoMask   && tItem->tmplate()->isSizeIso())   ||
+				(usMask    && tItem->tmplate()->isSizeUs())    ||
+				(otherMask && tItem->tmplate()->isSizeOther());
+
+			if ( tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) && sizeMask )
 			{
 				item->setHidden( false );
-
 			}
 			else
 			{

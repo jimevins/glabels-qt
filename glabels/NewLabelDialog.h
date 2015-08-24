@@ -39,7 +39,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		NewLabelDialog( QWidget *parent );
+		NewLabelDialog( QWidget *parent = 0 );
 
 
 		/////////////////////////////////
@@ -53,11 +53,20 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void searchEntryTextChanged( const QString &text );
-		void pageSizeRadioToggled( bool checked );
-		void templatePickerSelectionChanged();
-		void orientationRadioToggled( bool checked );
-		void createButtonClicked();
+		void onSearchEntryTextChanged();
+		void onSearchClearButtonClicked();
+		void onPageSizeCheckToggled();
+		void onTemplatePickerSelectionChanged();
+		void onOrientationRadioToggled();
+		void onCreateButtonClicked();
+		void onCancelButtonClicked();
+
+		
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		bool mCanceled;
 
 	};
 

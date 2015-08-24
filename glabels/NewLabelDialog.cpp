@@ -32,41 +32,29 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	NewLabelDialog::NewLabelDialog( QWidget *parent = 0 )
+	NewLabelDialog::NewLabelDialog( QWidget *parent )
+		: QDialog(parent), mCanceled(false)
 	{
 		setupUi( this );
 
 		// TODO: Set default based on locale and/or saved preferences
 		//       Perhaps move to checkboxes
-		pageSizeIsoRadio->setChecked( true );
+		pageSizeIsoCheck->setChecked( false );
+		pageSizeUsCheck->setChecked( true );
+		pageSizeOtherCheck->setChecked( true );
 
 		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
 		templatePicker->setTemplates( tmplates );
 
 		templatePicker->applyFilter( searchEntry->text(),
-					     pageSizeIsoRadio->isChecked(),
-					     pageSizeUsRadio->isChecked(),
-					     pageSizeOtherRadio->isChecked() );
+					     pageSizeIsoCheck->isChecked(),
+					     pageSizeUsCheck->isChecked(),
+					     pageSizeOtherCheck->isChecked() );
 
 		similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
 		similarBrowser->viewport()->setAutoFillBackground(false);
 
 		selectionStackedWidget->setCurrentIndex( 0 );
-
-		connect( searchEntry, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(searchEntryTextChanged(const QString &)) );
-
-		connect( pageSizeIsoRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
-		connect( pageSizeUsRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
-		connect( pageSizeOtherRadio, SIGNAL(toggled(bool)), this, SLOT(pageSizeRadioToggled(bool)) );
-
-		connect( templatePicker, SIGNAL(itemSelectionChanged()), this, SLOT(templatePickerSelectionChanged()) );
-
-		connect( orientationNormalRadio, SIGNAL(toggled(bool)), this, SLOT(orientationRadioToggled(bool)) );
-		connect( orientationRotatedRadio, SIGNAL(toggled(bool)), this, SLOT(orientationRadioToggled(bool)) );
-
-		connect( cancelButton, SIGNAL(clicked()), this, SLOT(close()) );
-		connect( createButton, SIGNAL(clicked()), this, SLOT(createButtonClicked()) );
 	}
 
 	///
@@ -74,7 +62,14 @@ namespace glabels
 	///
 	const libglabels::Template* NewLabelDialog::tmplate() const
 	{
-		return templatePicker->selectedTemplate();
+		if ( !mCanceled )
+		{
+			return templatePicker->selectedTemplate();
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 
@@ -90,34 +85,40 @@ namespace glabels
         ///
 	/// Search Entry Text Changed Slot
 	///
-	void NewLabelDialog::searchEntryTextChanged( const QString &text )
+	void NewLabelDialog::onSearchEntryTextChanged()
 	{
-		templatePicker->applyFilter( text,
-					     pageSizeIsoRadio->isChecked(),
-					     pageSizeUsRadio->isChecked(),
-					     pageSizeOtherRadio->isChecked() );
+		templatePicker->applyFilter( searchEntry->text(),
+					     pageSizeIsoCheck->isChecked(),
+					     pageSizeUsCheck->isChecked(),
+					     pageSizeOtherCheck->isChecked() );
+	}
+
+
+        ///
+	/// Search Entry Text Changed Slot
+	///
+	void NewLabelDialog::onSearchClearButtonClicked()
+	{
+		searchEntry->setText( "" );
 	}
 
 
 	///
-	/// Page Size Radio Toggled Slot
+	/// Page Size Check Toggled Slot
 	///
-	void NewLabelDialog::pageSizeRadioToggled( bool checked )
+	void NewLabelDialog::onPageSizeCheckToggled()
 	{
-		if ( checked )
-		{
-			templatePicker->applyFilter( searchEntry->text(),
-						     pageSizeIsoRadio->isChecked(),
-						     pageSizeUsRadio->isChecked(),
-						     pageSizeOtherRadio->isChecked() );
-		}
+		templatePicker->applyFilter( searchEntry->text(),
+					     pageSizeIsoCheck->isChecked(),
+					     pageSizeUsCheck->isChecked(),
+					     pageSizeOtherCheck->isChecked() );
 	}
 
 
 	///
 	/// Template Picker Selection Changed Slot
 	///
-	void NewLabelDialog::templatePickerSelectionChanged()
+	void NewLabelDialog::onTemplatePickerSelectionChanged()
 	{
 		orientationNormalRadio->setChecked( true );
 
@@ -197,20 +198,27 @@ namespace glabels
 	///
 	/// Orientation Radio Button Toggled Slot
 	///
-	void NewLabelDialog::orientationRadioToggled( bool checked )
+	void NewLabelDialog::onOrientationRadioToggled()
 	{
-		if ( checked )
-		{
-			simplePreview->setRotate( orientationRotatedRadio->isChecked() );
-		}
+		simplePreview->setRotate( orientationRotatedRadio->isChecked() );
 	}
 
 
 	///
 	/// Create Button Clicked Slot
 	///
-	void NewLabelDialog::createButtonClicked()
+	void NewLabelDialog::onCreateButtonClicked()
 	{
+		close();
+	}
+
+
+	///
+	/// Cancel Button Clicked Slot
+	///
+	void NewLabelDialog::onCancelButtonClicked()
+	{
+		mCanceled = true;
 		close();
 	}
 

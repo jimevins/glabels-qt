@@ -2,6 +2,8 @@
 
 <RCC version="1.0">
 <qresource>
+	<file>icons/16x16/actions/edit-clear.png</file>
+	<file>icons/16x16/actions/edit-find.png</file>
 	<file>icons/16x16/actions/glabels-align-bottom.png</file>
 	<file>icons/16x16/actions/glabels-align-hcenter.png</file>
 	<file>icons/16x16/actions/glabels-align-left.png</file>
@@ -28,6 +30,8 @@
 	<file>icons/16x16/actions/glabels-rotate-right.png</file>
 	<file>icons/16x16/actions/glabels-text.png</file>
 	<file>icons/16x16/apps/glabels.png</file>
+	<file>icons/24x24/actions/edit-clear.png</file>
+	<file>icons/24x24/actions/edit-find.png</file>
 	<file>icons/24x24/actions/glabels-align-text-center.png</file>
 	<file>icons/24x24/actions/glabels-align-text-left.png</file>
 	<file>icons/24x24/actions/glabels-align-text-right.png</file>
