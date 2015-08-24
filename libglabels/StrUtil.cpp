@@ -67,11 +67,12 @@ namespace libglabels
                         int d = (int)denom[i];
                         if ( n > d )
                         {
-                                return QString().sprintf( "%d%s/%s", (n/d), num_string[n%d], denom_string[i] );
+                                return QString::number(n/d) +
+					QString::fromUtf8(num_string[n%d]) + "/" + QString::fromUtf8(denom_string[i]);
                         }
                         else
                         {
-                                return QString().sprintf( "%s/%s", num_string[n%d], denom_string[i] );
+                                return QString::fromUtf8(num_string[n%d]) + "/" + QString::fromUtf8(denom_string[i]);
                         }
 		}
 
