@@ -15,7 +15,11 @@ set (Package_Version "${Major_Version}.${Minor_Version}.${Bugfix_Version}")
 
 set (Unique_Package_Name ${Package_Name}-${API_Version})
 
-
+if (WIN32)
+	# Make sure we can find MSys libraries
+	set (CMAKE_PREFIX_PATH C:/MinGW/msys/1.0 )
+endif ()
+	
 find_package(Qt4 4.8.4 REQUIRED QtCore QtGui QtXml)
 find_package(ZLIB REQUIRED)
 
