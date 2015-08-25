@@ -93,6 +93,7 @@ include (${QT_USE_FILE})
 
 
 include_directories (
+  ${ZLIB_INCLUDE_DIRS}
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${glabels_qt_SOURCE_DIR}
@@ -107,6 +108,7 @@ add_executable (glabels-qt ${glabels_sources} ${glabels_moc_sources} ${glabels_q
 target_link_libraries (glabels-qt
   libglabels
   ${QT_LIBRARIES}
+  ${ZLIB_LIBRARIES}
 )
 
 

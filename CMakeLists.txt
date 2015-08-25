@@ -17,6 +17,7 @@ set (Unique_Package_Name ${Package_Name}-${API_Version})
 
 
 find_package(Qt4 4.8.4 REQUIRED QtCore QtGui QtXml)
+find_package(ZLIB REQUIRED)
 
 
 add_definitions (-g)

@@ -31,6 +31,8 @@
 #include "libglabels/XmlUtil.h"
 
 #include <QFile>
+#include <QByteArray>
+#include <zlib.h>
 #include <QtDebug>
 
 
@@ -38,26 +40,41 @@ glabels::LabelModel* glabels::XmlLabel::readFile( const QString& fileName )
 {
 	QFile file( fileName );
 
-	if ( !file.open( QFile::ReadOnly | QFile::Text) )
+	if ( !file.open( QFile::ReadOnly ) )
 	{
 		qWarning() << "Error: Cannot read file " << qPrintable(fileName)
 			   << ": " << file.errorString();
 		return 0;
 	}
 
-
 	QDomDocument doc;
+	bool         success;
 	QString      errorString;
 	int          errorLine;
 	int          errorColumn;
 
-	if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
+	QByteArray rawData = file.readAll();
+	if ( ((rawData[0]&0xFF) == 0x1F) && ((rawData[1]&0xFF) == 0x8b) ) // gzip magic number 0x1F, 0x8B
+	{
+		// gzip compressed format
+		QByteArray unzippedData;
+		gunzip( rawData, unzippedData );
+		success = doc.setContent( unzippedData, false, &errorString, &errorLine, &errorColumn );
+	}
+	else
+	{
+		// plain text
+		success = doc.setContent( rawData, false, &errorString, &errorLine, &errorColumn );
+	}
+
+	if ( !success )
 	{
 		qWarning() << "Error: Parse error at line " << errorLine
 			   << "column " << errorColumn
 			   << ": " << errorString;
 		return 0;
 	}
+	
 
 	QDomElement root = doc.documentElement();
 	if ( root.tagName() != "Glabels-document" )
@@ -121,6 +138,55 @@ void glabels::XmlLabel::writeBuffer( const LabelModel* label, QString& buffer )
 
 	createDoc( doc, label );
 	buffer = doc.toString( 4 );
+}
+
+
+void glabels::XmlLabel::gunzip( const QByteArray& data, QByteArray& result )
+{
+        result.clear();
+
+	if (data.size() <= 4) {
+		qWarning("XmlLabel::gunzip: Input data is truncated");
+		return;
+	}
+
+	// setup stream for inflate()
+	z_stream strm;
+	strm.zalloc = Z_NULL;
+	strm.zfree = Z_NULL;
+	strm.opaque = Z_NULL;
+	strm.avail_in = data.size();
+	strm.next_in = (Bytef*)(data.data());
+
+	int ret = inflateInit2(&strm, MAX_WBITS + 16); // gzip decoding
+	if (ret != Z_OK)
+	{
+		return;
+	}
+
+	static const int CHUNK_SIZE = 1024;
+	char out[CHUNK_SIZE];
+
+	// run inflate(), one chunk at a time
+	do {
+		strm.avail_out = CHUNK_SIZE;
+		strm.next_out = (Bytef*)(out);
+
+		ret = inflate(&strm, Z_NO_FLUSH);
+		Q_ASSERT(ret != Z_STREAM_ERROR);  // state not clobbered
+
+		if ( (ret == Z_NEED_DICT) || (ret == Z_DATA_ERROR) || (ret == Z_MEM_ERROR) )
+		{
+			// clean up
+			inflateEnd(&strm);
+			return;
+		}
+
+		result.append(out, CHUNK_SIZE - strm.avail_out);
+	} while (strm.avail_out == 0);
+
+	// clean up
+	inflateEnd(&strm);
 }
 
 

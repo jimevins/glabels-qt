@@ -52,6 +52,7 @@ namespace glabels
 		static void writeBuffer( const LabelModel* label, QString& buffer );
 
 	private:
+		static void gunzip( const QByteArray& gzippedData, QByteArray& data );
 		static LabelModel* parseRootNode( const QDomElement &node );
 		static void parseObjectsNode( const QDomElement &node, LabelModel* label );
 		static void parseObjectBoxNode( const QDomElement &node, LabelModel* label );
