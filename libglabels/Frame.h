@@ -62,7 +62,7 @@ namespace libglabels
 		virtual double w() const = 0;
 		virtual double h() const = 0;
 
-		virtual const QString sizeDescription( const Units* units ) const = 0;
+		virtual const QString sizeDescription( const Units& units ) const = 0;
 		virtual bool isSimilarTo( Frame* other ) const = 0;
 
 		virtual const QPainterPath& path() const = 0;

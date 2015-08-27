@@ -39,23 +39,25 @@ namespace libglabels
 		Units( const QString &id, const QString &name, double pointsPerUnit );
 
 	public:
+		Units();
+
 		QString id() const;
 		QString name() const;
 
 		double pointsPerUnit() const;
 		double unitsPerPoint() const;
 
-		static Units *fromId( const QString &id );
+		static Units fromId( const QString &id );
 
-		static Units *point();
+		static Units point();
 
-		static Units *inch();
+		static Units inch();
 
-		static Units *mm();
+		static Units mm();
 
-		static Units *cm();
+		static Units cm();
 
-		static Units *pica();
+		static Units pica();
 
 		static bool isIdValid( QString id );
 

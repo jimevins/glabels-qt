@@ -80,22 +80,22 @@ namespace libglabels
 	}
 
 
-	const QString FrameCd::sizeDescription( const Units* units ) const
+	const QString FrameCd::sizeDescription( const Units& units ) const
 	{
-		if ( units->id() == "in" )
+		if ( units.id() == "in" )
 		{
-			QString dStr = StrUtil::formatFraction( 2 * mR1 * units->unitsPerPoint() );
+			QString dStr = StrUtil::formatFraction( 2 * mR1 * units.unitsPerPoint() );
 
 			return QString().sprintf( "%s %s %s",
 						  qPrintable(dStr),
-						  qPrintable(units->name()),
+						  qPrintable(units.name()),
 						  qPrintable(tr("diameter")) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g %s %s",
-						  2 * mR1 * units->unitsPerPoint(),
-						  qPrintable(units->name()),
+						  2 * mR1 * units.unitsPerPoint(),
+						  qPrintable(units.name()),
 						  qPrintable(tr("diameter")) );
 		}
 	}

@@ -61,24 +61,24 @@ namespace libglabels
 	}
 
 
-	const QString FrameRect::sizeDescription( const Units* units ) const
+	const QString FrameRect::sizeDescription( const Units& units ) const
 	{
-		if ( units->id() == "in" )
+		if ( units.id() == "in" )
 		{
-			QString wStr = StrUtil::formatFraction( mW * units->unitsPerPoint() );
-			QString hStr = StrUtil::formatFraction( mH * units->unitsPerPoint() );
+			QString wStr = StrUtil::formatFraction( mW * units.unitsPerPoint() );
+			QString hStr = StrUtil::formatFraction( mH * units.unitsPerPoint() );
 
 			return QString().sprintf( "%s x %s %s",
 						  qPrintable(wStr),
 						  qPrintable(hStr),
-						  qPrintable(units->name()) );
+						  qPrintable(units.name()) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g x %.5g %s",
-						  mW * units->unitsPerPoint(),
-						  mH * units->unitsPerPoint(),
-						  qPrintable(units->name()) );
+						  mW * units.unitsPerPoint(),
+						  mH * units.unitsPerPoint(),
+						  qPrintable(units.name()) );
 		}
 	}
 

@@ -43,7 +43,13 @@ namespace libglabels
 	}
 
 
-	Units *Units::fromId( const QString &id )
+	Units::Units()
+		: mId("pt"), mName(tr("points")), mPointsPerUnit(POINTS_PER_POINT)
+	{
+	}
+
+
+	Units Units::fromId( const QString &id )
 	{
 		if ( id == "pt" )
 		{
@@ -79,68 +85,33 @@ namespace libglabels
 	}
 
 
-	Units *Units::point()
+	Units Units::point()
 	{
-		static Units *instance = NULL;
-
-		if ( instance == NULL )
-		{
-			instance = new Units( "pt", tr("points"), POINTS_PER_POINT );
-		}
-
-		return instance;
+		return Units( "pt", tr("points"), POINTS_PER_POINT );
 	}
 
 
-	Units *Units::inch()
+	Units Units::inch()
 	{
-		static Units *instance = NULL;
-
-		if ( instance == NULL )
-		{
-			instance = new Units( "in", tr("inches"), POINTS_PER_INCH );
-		}
-
-		return instance;
+		return Units( "in", tr("inches"), POINTS_PER_INCH );
 	}
 
 
-	Units *Units::mm()
+	Units Units::mm()
 	{
-		static Units *instance = NULL;
-
-		if ( instance == NULL )
-		{
-			instance = new Units( "mm", tr("mm"), POINTS_PER_MM );
-		}
-
-		return instance;
+		return Units( "mm", tr("mm"), POINTS_PER_MM );
 	}
 
 
-	Units *Units::cm()
+	Units Units::cm()
 	{
-		static Units *instance = NULL;
-
-		if ( instance == NULL )
-		{
-			instance = new Units( "cm", tr("cm"), POINTS_PER_CM );
-		}
-
-		return instance;
+		return Units( "cm", tr("cm"), POINTS_PER_CM );
 	}
 
 
-	Units *Units::pica()
+	Units Units::pica()
 	{
-		static Units *instance = NULL;
-
-		if ( instance == NULL )
-		{
-			instance = new Units( "pc", tr("picas"), POINTS_PER_PICA );
-		}
-
-		return instance;
+		return Units( "pc", tr("picas"), POINTS_PER_PICA );
 	}
 
 

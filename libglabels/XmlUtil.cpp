@@ -27,7 +27,7 @@
 namespace libglabels
 {
 
-	Units* XmlUtil::mDefaultUnits;
+	Units XmlUtil::mDefaultUnits;
 
 
 	XmlUtil::XmlUtil()
@@ -42,13 +42,13 @@ namespace libglabels
 	}
 
 
-	const Units* XmlUtil::defaultUnits()
+	Units XmlUtil::defaultUnits()
 	{
 		return mDefaultUnits;
 	}
 
 
-	void XmlUtil::setDefaultUnits( Units* defaultUnits )
+	void XmlUtil::setDefaultUnits( const Units& defaultUnits )
 	{
 		mDefaultUnits = defaultUnits;
 	}
@@ -210,60 +210,61 @@ namespace libglabels
 				return default_value;
 			}
 
-			Units* units = Units::fromId( unitsString );
+			Units units = Units::fromId( unitsString );
 
-			return value*  units->pointsPerUnit();
+			return value *  units.pointsPerUnit();
 		}
 
 		return default_value;
 	}
 
 
-	void XmlUtil::setStringAttr( const QDomElement& node,
-				     const QString&     name,
-				     const QString&     value )
+	void XmlUtil::setStringAttr( QDomElement&   node,
+				     const QString& name,
+				     const QString& value )
 	{
-		// TODO
+		node.setAttribute( name, value );
 	}
 
 
-	void XmlUtil::setDoubleAttr( const QDomElement& node,
-				     const QString&     name,
-				     double             value )
+	void XmlUtil::setDoubleAttr( QDomElement&   node,
+				     const QString& name,
+				     double         value )
 	{
-		// TODO
+		node.setAttribute( name, QString::number(value) );
 	}
 
 
-	void XmlUtil::setBoolAttr( const QDomElement& node,
-				   const QString&     name,
-				   bool               value )
+	void XmlUtil::setBoolAttr( QDomElement&   node,
+				   const QString& name,
+				   bool           value )
 	{
-		// TODO
+		node.setAttribute( name, value ? "true" : "false" );
 	}
 
 
-	void XmlUtil::setIntAttr( const QDomElement& node,
-				  const QString&     name,
-				  int                value )
+	void XmlUtil::setIntAttr( QDomElement&   node,
+				  const QString& name,
+				  int            value )
 	{
-		// TODO
+		node.setAttribute( name, QString::number(value) );
 	}
 
 
-	void XmlUtil::setUIntAttr( const QDomElement& node,
-				   const QString&     name,
-				   uint32_t           value )
+	void XmlUtil::setUIntAttr( QDomElement&   node,
+				   const QString& name,
+				   uint32_t       value )
 	{
-		// TODO
+		node.setAttribute( name, "0x" + QString::number(value, 16) );
 	}
 
 
-	void XmlUtil::setLengthAttr( const QDomElement& node,
-				     const QString&     name,
-				     double             value )
+	void XmlUtil::setLengthAttr( QDomElement&   node,
+				     const QString& name,
+				     double         value )
 	{
-		// TODO
+		value *= mDefaultUnits.unitsPerPoint();
+		node.setAttribute( name, QString::number(value) + mDefaultUnits.id() );
 	}
 
 }
