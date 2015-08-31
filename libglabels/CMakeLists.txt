@@ -24,6 +24,7 @@ set (libglabels_sources
   XmlPaperParser.cpp
   XmlVendorParser.cpp
   XmlTemplateParser.cpp
+  XmlTemplateCreator.cpp
   XmlUtil.cpp
   MiniPreviewPixmap.cpp
 )
