@@ -44,12 +44,16 @@ namespace libglabels
 
 	Units XmlUtil::defaultUnits()
 	{
+		init();
+
 		return mDefaultUnits;
 	}
 
 
 	void XmlUtil::setDefaultUnits( const Units& defaultUnits )
 	{
+		init();
+
 		mDefaultUnits = defaultUnits;
 	}
 
@@ -58,6 +62,8 @@ namespace libglabels
 					const QString&     name,
 					const QString& default_value )
 	{
+		init();
+
 		return node.attribute( name, default_value );
 	}
 
@@ -66,6 +72,8 @@ namespace libglabels
 				       const QString&     name,
 				       double             default_value )
 	{
+		init();
+
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
@@ -91,6 +99,8 @@ namespace libglabels
 				   const QString&     name,
 				   bool               default_value )
 	{
+		init();
+
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
@@ -126,6 +136,8 @@ namespace libglabels
 				 const QString&     name,
 				 int                default_value )
 	{
+		init();
+
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
@@ -151,6 +163,8 @@ namespace libglabels
 				       const QString&     name,
 				       uint32_t           default_value )
 	{
+		init();
+
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
@@ -177,6 +191,8 @@ namespace libglabels
 				       const QString&     name,
 				       const QString&     default_value )
 	{
+		init();
+
 		// TODO: are translations done in a compatable way, so that we can use "_name" attributes?
 		QString i18nString = node.attribute( QString("_").append(name), "" );
 
@@ -193,6 +209,8 @@ namespace libglabels
 				       const QString&     name,
 				       double             default_value )
 	{
+		init();
+
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
@@ -223,6 +241,8 @@ namespace libglabels
 				     const QString& name,
 				     const QString& value )
 	{
+		init();
+
 		node.setAttribute( name, value );
 	}
 
@@ -231,6 +251,8 @@ namespace libglabels
 				     const QString& name,
 				     double         value )
 	{
+		init();
+
 		node.setAttribute( name, QString::number(value) );
 	}
 
@@ -239,6 +261,8 @@ namespace libglabels
 				   const QString& name,
 				   bool           value )
 	{
+		init();
+
 		node.setAttribute( name, value ? "true" : "false" );
 	}
 
@@ -247,6 +271,8 @@ namespace libglabels
 				  const QString& name,
 				  int            value )
 	{
+		init();
+
 		node.setAttribute( name, QString::number(value) );
 	}
 
@@ -255,6 +281,8 @@ namespace libglabels
 				   const QString& name,
 				   uint32_t       value )
 	{
+		init();
+
 		node.setAttribute( name, "0x" + QString::number(value, 16) );
 	}
 
@@ -263,6 +291,8 @@ namespace libglabels
 				     const QString& name,
 				     double         value )
 	{
+		init();
+
 		value *= mDefaultUnits.unitsPerPoint();
 		node.setAttribute( name, QString::number(value) + mDefaultUnits.id() );
 	}

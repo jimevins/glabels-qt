@@ -75,7 +75,7 @@ namespace glabels
 		//
 		const QColor& color( void ) const;
 		void setColor( const QColor& color );
-		
+
 
 		//
 		// Key Property
@@ -89,6 +89,8 @@ namespace glabels
 		// Methods
 		/////////////////////////////////
 	public:
+		uint32_t rgba( void ) const;
+		
 #if TODO
 		QColor expand( MergeRecord? record );
 #endif

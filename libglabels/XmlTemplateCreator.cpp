@@ -94,7 +94,10 @@ namespace libglabels
 
 		XmlUtil::setStringAttr( node, "description", tmplate->description() );
 
-		createMetaNode( node, "product_url", tmplate->productUrl() );
+		if ( !tmplate->productUrl().isEmpty() )
+		{
+			createMetaNode( node, "product_url", tmplate->productUrl() );
+		}
 #if TODO
 		foreach ( QString categoryId, tmplate->categoryIds() )
 		{

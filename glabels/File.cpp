@@ -23,13 +23,17 @@
 #include "MainWindow.h"
 #include "LabelModel.h"
 #include "NewLabelDialog.h"
-#include "XmlLabel.h"
+#include "XmlLabelParser.h"
+#include "XmlLabelCreator.h"
+#include "FileUtil.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDebug>
 
+
 namespace glabels
 {
+	/// @TODO keep track of cwd between open/save dialogs
 
 	///
 	/// New Label Dialog
@@ -73,7 +77,7 @@ namespace glabels
 				                    );
 		if ( !fileName.isEmpty() )
 		{
-			LabelModel *label = XmlLabel::readFile( fileName );
+			LabelModel *label = XmlLabelParser::readFile( fileName );
 			if ( label )
 			{
 				if ( window->isEmpty() )
@@ -108,11 +112,14 @@ namespace glabels
 		{
 			return saveAs( window );
 		}
-		else
+
+		if ( !window->model()->isModified() )
 		{
-			qDebug() << "ACTION: file->Save: " << window->model()->filename();
 			return true;
 		}
+
+		XmlLabelCreator::writeFile( window->model(), window->model()->filename() );
+		return true;
 	}
 
 
@@ -121,15 +128,37 @@ namespace glabels
 	///
 	bool File::saveAs( MainWindow *window )
 	{
-		QString fileName =
+		QString rawFilename =
 			QFileDialog::getSaveFileName( window,
-						      tr("Save label"),
+						      tr("Save Label As"),
 						      ".",
-						      tr("glabels files (*.glabels)")
+						      tr("glabels files (*.glabels);;All files (*)"),
+						      0,
+						      QFileDialog::DontConfirmOverwrite
 				                    );
-		if ( !fileName.isEmpty() )
+		if ( !rawFilename.isEmpty() )
 		{
-			qDebug() << "ACTION: file->SaveAs: " << fileName;
+			QString filename = FileUtil::addExtension( rawFilename, ".glabels" );
+			
+			
+			if ( QFileInfo(filename).exists() )
+			{
+				QMessageBox msgBox( window );
+				msgBox.setWindowTitle( tr("Save Label As") );
+				msgBox.setIcon( QMessageBox::Warning );
+				msgBox.setText( tr("%1 already exists.").arg(filename) );
+				msgBox.setInformativeText( tr("Do you want to replace it?") );
+				msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
+				msgBox.setDefaultButton( QMessageBox::No );
+
+				if ( msgBox.exec() == QMessageBox::No )
+				{
+					return saveAs( window );
+				}
+			}
+			
+			XmlLabelCreator::writeFile( window->model(), filename );
+			window->model()->setFilename( filename );
 			return true;
 		}
 

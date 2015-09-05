@@ -1,4 +1,4 @@
-/*  XmlLabel.h
+/*  XmlLabelParser.h
  *
  *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_XmlLabel_h
-#define glabels_XmlLabel_h
+#ifndef glabels_XmlLabelParser_h
+#define glabels_XmlLabelParser_h
 
 
 #include <QObject>
@@ -39,17 +39,15 @@ namespace glabels
 
 
 	///
-	/// XmlLabel Actions
+	/// XmlLabelParser
 	///
-	class XmlLabel : public QObject
+	class XmlLabelParser : public QObject
 	{
 		Q_OBJECT
 
 	public:
 		static LabelModel* readFile( const QString& fileName );
 		static LabelModel* readBuffer( const QString& buffer );
-		static void writeFile( const LabelModel* label, const QString& fileName );
-		static void writeBuffer( const LabelModel* label, QString& buffer );
 
 	private:
 		static void gunzip( const QByteArray& gzippedData, QByteArray& data );
@@ -69,25 +67,8 @@ namespace glabels
 		static void parsePixdataNode( const QDomElement &node, LabelModel* label );
 		static void parseFileNode( const QDomElement &node, LabelModel* label );
 
-		static void createDoc( QDomDocument& doc, const LabelModel* label );
-		static void createRootNode( const LabelModel* label );
-		static void createObjectsNode( QDomElement &parent, const LabelModel* label );
-		static void createObjectBoxNode( QDomElement &parent, const LabelModelBoxObject* object );
-		static void createObjectEllipseNode( QDomElement &parent, const LabelModelEllipseObject* object );
-		static void createObjectLineNode( QDomElement &parent, const LabelModelLineObject* object );
-		static void createObjectImageNode( QDomElement &parent, const LabelModelImageObject* object );
-		static void createObjectBarcodeNode( QDomElement &parent, const LabelModelBarcodeObject* object );
-		static void createObjectTextNode( QDomElement &parent, const LabelModelTextObject* object );
-		static void createObjectTopLevelSpanNode( QDomElement &parent, const LabelModelTextObject* object );
-		static void createffineAttrs( QDomElement &node, const LabelModelObject* object );
-		static void createShadowAttrs( QDomElement &node, const LabelModelObject* object );
-		static void createMergeNode( QDomElement &node, LabelModel* label );
-		static void createDataNode( QDomElement &node, LabelModel* label );
-		static void createPixdataNode( QDomElement &node, LabelModel* label, const QString& name );
-		static void createSvgFileNode( QDomElement &node, LabelModel* label, const QString& name );
-
 	};
 
 }
 
-#endif // glabels_XmlLabel_h
+#endif // glabels_XmlLabelParser_h

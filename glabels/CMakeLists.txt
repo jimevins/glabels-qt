@@ -21,6 +21,7 @@ set (glabels_sources
   FieldMenu.cpp
   FieldMenuItem.cpp
   File.cpp
+  FileUtil.cpp
   Handles.cpp
   Help.cpp
   LabelModel.cpp
@@ -43,7 +44,8 @@ set (glabels_sources
   TextNode.cpp
   SimplePreview.cpp
   View.cpp
-  XmlLabel.cpp
+  XmlLabelCreator.cpp
+  XmlLabelParser.cpp
 )
 
 set (glabels_qobject_headers

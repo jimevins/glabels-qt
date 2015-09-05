@@ -149,6 +149,18 @@ namespace glabels
 	}
 		
 
+	uint32_t ColorNode::rgba( void ) const
+	{
+		uint32_t c =
+			mColor.red()   << 24 |
+			mColor.green() << 16 |
+			mColor.blue()  <<  8 |
+			mColor.alpha();
+
+		return c;
+	}
+
+	
 #if TODO
 	QColor ColorNode::expand( MergeRecord? record )
 	{

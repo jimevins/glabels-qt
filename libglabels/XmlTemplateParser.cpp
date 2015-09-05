@@ -113,7 +113,7 @@ namespace libglabels
 			QString name = XmlUtil::getStringAttr( node, "name", "" );
 			if ( name != "" )
 			{
-				QStringList fields = name.split( " " );
+				QStringList fields = name.split( " ", QString::SkipEmptyParts );
 				brand = fields[0];
 				part  = fields[1];
 			}
