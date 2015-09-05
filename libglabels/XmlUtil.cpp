@@ -83,8 +83,7 @@ namespace libglabels
 			if ( !ok )
 			{
 				qWarning() << "Error: bad double value in attribute "
-					   << node.tagName() << ":" << name
-					   << " : " << valueString;
+					   << node.tagName() << ":" << name << "=" << valueString;
 				return default_value;
 			}
 
@@ -123,8 +122,7 @@ namespace libglabels
 			}
 
 			qWarning() << "Error: bad boolean value in attribute "
-				   << node.tagName() << ":" << name
-				   << " : " << valueString;
+				   << node.tagName() << ":" << name << "=" << valueString;
 			return default_value;
 		}
 
@@ -147,8 +145,7 @@ namespace libglabels
 			if ( !ok )
 			{
 				qWarning() << "Error: bad integer value in attribute "
-					   << node.tagName() << ":" << name
-					   << " : " << valueString;
+					   << node.tagName() << ":" << name << "=" << valueString;
 				return default_value;
 			}
 
@@ -168,15 +165,13 @@ namespace libglabels
 		QString valueString = node.attribute( name, "" );
 		if ( valueString != "" )
 		{
-			// TODO: Does base-0 do what we want?  I.e. use base determined by format e.g. "0xff"
 			bool ok;
-			uint32_t value = valueString.toInt(& ok, 0 );
+			uint32_t value = valueString.toUInt(& ok, 0 );
 
 			if ( !ok )
 			{
 				qWarning() << "Error: bad unsigned integer value in attribute "
-					   << node.tagName() << ":" << name
-					   << " : " << valueString;
+					   << node.tagName() << ":" << name << "=" << valueString;
 				return default_value;
 			}
 
@@ -223,8 +218,7 @@ namespace libglabels
 			if ( !Units::isIdValid( unitsString ) )
 			{
 				qWarning() << "Error: bad length value in attribute "
-					   << node.tagName() << ":" <<  name
-					   << " : " << valueString;
+					   << node.tagName() << ":" <<  name << "=" << valueString;
 				return default_value;
 			}
 
