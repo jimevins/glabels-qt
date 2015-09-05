@@ -75,8 +75,8 @@ namespace glabels
 		void clearModified();
 
 		QString shortName();
-		inline const QString& filename() const;
-		inline void setFilename( const QString &filename );
+		inline const QString& fileName() const;
+		inline void setFileName( const QString &fileName );
 
 		inline int compressionLevel() const;
 		inline void setCompressionLevel( int compressionLevel );
@@ -191,7 +191,7 @@ namespace glabels
 	private:
 		int                          mUntitledInstance;
 		bool                         mModified;
-		QString                      mFilename;
+		QString                      mFileName;
 		int                          mCompressionLevel;
 		const libglabels::Template*  mTmplate;
 		const libglabels::Frame*     mFrame;
@@ -213,17 +213,17 @@ namespace glabels
 	}
 
 
-	inline const QString& LabelModel::filename() const
+	inline const QString& LabelModel::fileName() const
 	{
-		return mFilename;
+		return mFileName;
 	}
 
 
-	inline void LabelModel::setFilename( const QString &filename )
+	inline void LabelModel::setFileName( const QString &fileName )
 	{
-		if ( mFilename != filename )
+		if ( mFileName != fileName )
 		{
-			mFilename = filename;
+			mFileName = fileName;
 			emit nameChanged();
 		}
 	}

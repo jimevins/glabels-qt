@@ -47,7 +47,7 @@ namespace glabels
 	{
 		static int untitledCount = 0;
 		
-		if ( mFilename.isEmpty() )
+		if ( mFileName.isEmpty() )
 		{
 			if ( mUntitledInstance == 0 )
 			{
@@ -60,7 +60,7 @@ namespace glabels
 		}
 		else
 		{
-			QFileInfo fileInfo( mFilename );
+			QFileInfo fileInfo( mFileName );
 			return fileInfo.baseName();
 		}
 	}

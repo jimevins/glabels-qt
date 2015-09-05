@@ -80,6 +80,8 @@ namespace glabels
 			LabelModel *label = XmlLabelParser::readFile( fileName );
 			if ( label )
 			{
+				label->setFileName( fileName );
+				
 				if ( window->isEmpty() )
 				{
 					window->setModel( label );
@@ -108,7 +110,7 @@ namespace glabels
 	///
 	bool File::save( MainWindow *window )
 	{
-		if ( window->model()->filename().isEmpty() )
+		if ( window->model()->fileName().isEmpty() )
 		{
 			return saveAs( window );
 		}
@@ -118,7 +120,7 @@ namespace glabels
 			return true;
 		}
 
-		XmlLabelCreator::writeFile( window->model(), window->model()->filename() );
+		XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
 		return true;
 	}
 
@@ -128,7 +130,7 @@ namespace glabels
 	///
 	bool File::saveAs( MainWindow *window )
 	{
-		QString rawFilename =
+		QString rawFileName =
 			QFileDialog::getSaveFileName( window,
 						      tr("Save Label As"),
 						      ".",
@@ -136,17 +138,17 @@ namespace glabels
 						      0,
 						      QFileDialog::DontConfirmOverwrite
 				                    );
-		if ( !rawFilename.isEmpty() )
+		if ( !rawFileName.isEmpty() )
 		{
-			QString filename = FileUtil::addExtension( rawFilename, ".glabels" );
+			QString fileName = FileUtil::addExtension( rawFileName, ".glabels" );
 			
 			
-			if ( QFileInfo(filename).exists() )
+			if ( QFileInfo(fileName).exists() )
 			{
 				QMessageBox msgBox( window );
 				msgBox.setWindowTitle( tr("Save Label As") );
 				msgBox.setIcon( QMessageBox::Warning );
-				msgBox.setText( tr("%1 already exists.").arg(filename) );
+				msgBox.setText( tr("%1 already exists.").arg(fileName) );
 				msgBox.setInformativeText( tr("Do you want to replace it?") );
 				msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
 				msgBox.setDefaultButton( QMessageBox::No );
@@ -157,8 +159,8 @@ namespace glabels
 				}
 			}
 			
-			XmlLabelCreator::writeFile( window->model(), filename );
-			window->model()->setFilename( filename );
+			XmlLabelCreator::writeFile( window->model(), fileName );
+			window->model()->setFileName( fileName );
 			return true;
 		}
 
