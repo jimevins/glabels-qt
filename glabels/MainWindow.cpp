@@ -1083,7 +1083,7 @@ namespace glabels
 	///
 	void MainWindow::objectsOrderRaise()
 	{
-		qDebug() << "ACTION: objects->Order->Bring to front";
+		mModel->raiseSelectionToTop();
 	}
 
 
@@ -1092,7 +1092,7 @@ namespace glabels
 	///
 	void MainWindow::objectsOrderLower()
 	{
-		qDebug() << "ACTION: objects->Order->Send to back";
+		mModel->lowerSelectionToBottom();
 	}
 
 
@@ -1101,7 +1101,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformRotateLeft()
 	{
-		qDebug() << "ACTION: objects->Rotate/Flip->Rotate Left";
+		mModel->rotateSelectionLeft();
 	}
 
 
@@ -1110,7 +1110,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformRotateRight()
 	{
-		qDebug() << "ACTION: objects->Rotate/Flip->Rotate Right";
+		mModel->rotateSelectionRight();
 	}
 
 
@@ -1119,7 +1119,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformFlipHoriz()
 	{
-		qDebug() << "ACTION: objects->Rotate/Flip->Flip Horizontally";
+		mModel->flipSelectionHoriz();
 	}
 
 
@@ -1128,7 +1128,7 @@ namespace glabels
 	///
 	void MainWindow::objectsXformFlipVert()
 	{
-		qDebug() << "ACTION: objects->Rotate/Flip->Flip Vertically";
+		mModel->flipSelectionVert();
 	}
 
 
@@ -1137,7 +1137,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignLeft()
 	{
-		qDebug() << "ACTION: objects->Align->Left";
+		mModel->alignSelectionLeft();
 	}
 
 
@@ -1146,7 +1146,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignHCenter()
 	{
-		qDebug() << "ACTION: objects->Align->Center Horizontally";
+		mModel->alignSelectionHCenter();
 	}
 
 
@@ -1155,7 +1155,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignRight()
 	{
-		qDebug() << "ACTION: objects->Align->Right";
+		mModel->alignSelectionRight();
 	}
 
 
@@ -1164,7 +1164,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignTop()
 	{
-		qDebug() << "ACTION: objects->Align->Top";
+		mModel->alignSelectionTop();
 	}
 
 
@@ -1173,7 +1173,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignVCenter()
 	{
-		qDebug() << "ACTION: objects->Align->Center Vertically";
+		mModel->alignSelectionVCenter();
 	}
 
 
@@ -1182,7 +1182,7 @@ namespace glabels
 	///
 	void MainWindow::objectsAlignBottom()
 	{
-		qDebug() << "ACTION: objects->Align->Bottom";
+		mModel->alignSelectionBottom();
 	}
 
 
@@ -1191,7 +1191,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCenterHoriz()
 	{
-		qDebug() << "ACTION: objects->Center->Horizontally";
+		mModel->centerSelectionHoriz();
 	}
 
 
@@ -1200,7 +1200,7 @@ namespace glabels
 	///
 	void MainWindow::objectsCenterVert()
 	{
-		qDebug() << "ACTION: objects->Center->Vertically";
+		mModel->centerSelectionVert();
 	}
 
 
