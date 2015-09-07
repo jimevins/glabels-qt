@@ -846,9 +846,8 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	/*
 	 * Put new origin back into world coordinates and set.
 	 */
-	QMatrix inverseMatrix = mResizeObject->matrix().inverted();
 	QPointF p0( x0, y0 );
-	p0 = inverseMatrix.map( p0 );
+	p0 = mResizeObject->matrix().map( p0 );
 	p0 += QPointF( mResizeObject->x0(), mResizeObject->y0() );
 	mResizeObject->setPosition( p0.x(), p0.y() );
 }
