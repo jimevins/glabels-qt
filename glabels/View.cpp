@@ -497,7 +497,7 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 			//
 			// RIGHT BUTTON
 			//
-
+			emit contextMenuActivate();
 		}
 	}
 }

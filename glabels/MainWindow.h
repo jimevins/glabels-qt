@@ -132,6 +132,8 @@ namespace glabels
 		void helpContents();
 		void helpAbout();
 
+		void onContextMenuActivate();
+
 		void onZoomChanged();
 		void onPointerMoved( double, double );
 		void onPointerExit();
@@ -185,6 +187,13 @@ namespace glabels
 		QMenu*    objectsCenterMenu;
 		QMenu*    helpMenu;
 
+		QMenu*    contextMenu;
+		QMenu*    contextOrderMenu;
+		QMenu*    contextXformMenu;
+		QMenu*    contextAlignMenu;
+		QMenu*    contextCenterMenu;
+		QMenu*    noSelectionContextMenu;
+		
 		QToolBar* fileToolBar;
 		QToolBar* editorToolBar;
 
@@ -251,6 +260,10 @@ namespace glabels
 		QAction*  helpContentsAction;
 		QAction*  helpAboutAction;
 
+		QAction*  contextCutAction;
+		QAction*  contextCopyAction;
+		QAction*  contextPasteAction;
+		QAction*  contextDeleteAction;
 	};
 
 }

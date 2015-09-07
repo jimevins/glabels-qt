@@ -120,6 +120,7 @@ namespace glabels
 		setMultiSelectionVerbsEnabled( false );
 		setTitle();
 
+		connect( mView, SIGNAL(contextMenuActivate()), this, SLOT(onContextMenuActivate()) );
 		connect( mModel, SIGNAL(nameChanged()), this, SLOT(onNameChanged()) );
 		connect( mModel, SIGNAL(modifiedChanged()), this, SLOT(onModifiedChanged()) );
 		connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
@@ -424,6 +425,28 @@ namespace glabels
 		helpAboutAction->setIcon( QIcon::fromTheme( "help-about" ) );
 		helpAboutAction->setStatusTip( tr("About gLabels") );
 		connect( helpAboutAction, SIGNAL(triggered()), this, SLOT(helpAbout()) );
+
+
+		/* Context menu version of edit actions */
+		contextCutAction = new QAction( tr("Cut"), this );
+		contextCutAction->setIcon( QIcon::fromTheme( "edit-cut", Icons::Fallback::EditCut() ) );
+		contextCutAction->setStatusTip( tr("Cut the selection") );
+		connect( contextCutAction, SIGNAL(triggered()), this, SLOT(editCut()) );
+
+		contextCopyAction = new QAction( tr("&Copy"), this );
+		contextCopyAction->setIcon( QIcon::fromTheme( "edit-copy", Icons::Fallback::EditCopy() ) );
+		contextCopyAction->setStatusTip( tr("Copy the selection") );
+		connect( contextCopyAction, SIGNAL(triggered()), this, SLOT(editCopy()) );
+
+		contextPasteAction = new QAction( tr("&Paste"), this );
+		contextPasteAction->setIcon( QIcon::fromTheme( "edit-paste", Icons::Fallback::EditPaste() ) );
+		contextPasteAction->setStatusTip( tr("Paste the clipboard") );
+		connect( contextPasteAction, SIGNAL(triggered()), this, SLOT(editPaste()) );
+
+		contextDeleteAction = new QAction( tr("&Delete"), this );
+		contextDeleteAction->setIcon( QIcon::fromTheme( "edit-delete" ) );
+		contextDeleteAction->setStatusTip( tr("Delete the selected objects") );
+		connect( contextDeleteAction, SIGNAL(triggered()), this, SLOT(editDelete()) );
 	}
 
 
@@ -504,6 +527,35 @@ namespace glabels
 		helpMenu = menuBar()->addMenu( tr("&Help") );
 		helpMenu->addAction( helpContentsAction );
 		helpMenu->addAction( helpAboutAction );
+
+		contextMenu = new QMenu();
+		contextOrderMenu = contextMenu->addMenu( tr("&Order") );
+		contextOrderMenu->addAction( objectsOrderRaiseAction );
+		contextOrderMenu->addAction( objectsOrderLowerAction );
+		contextXformMenu = contextMenu->addMenu( tr("&Rotate/Flip") );
+		contextXformMenu->addAction( objectsXformRotateLeftAction );
+		contextXformMenu->addAction( objectsXformRotateRightAction );
+		contextXformMenu->addAction( objectsXformFlipHorizAction );
+		contextXformMenu->addAction( objectsXformFlipVertAction );
+		contextAlignMenu = contextMenu->addMenu( tr("&Alignment") );
+		contextAlignMenu->addAction( objectsAlignLeftAction );
+		contextAlignMenu->addAction( objectsAlignHCenterAction );
+		contextAlignMenu->addAction( objectsAlignRightAction );
+		contextAlignMenu->addSeparator();
+		contextAlignMenu->addAction( objectsAlignTopAction );
+		contextAlignMenu->addAction( objectsAlignVCenterAction );
+		contextAlignMenu->addAction( objectsAlignBottomAction );
+		contextCenterMenu = contextMenu->addMenu( tr("Center") );
+		contextCenterMenu->addAction( objectsCenterHorizAction );
+		contextCenterMenu->addAction( objectsCenterVertAction );
+		contextMenu->addSeparator();
+		contextMenu->addAction( contextCutAction );
+		contextMenu->addAction( contextCopyAction );
+		contextMenu->addAction( contextPasteAction );
+		contextMenu->addAction( contextDeleteAction );
+
+		noSelectionContextMenu = new QMenu();
+		noSelectionContextMenu->addAction( contextPasteAction );
 	}
 
 
@@ -1219,6 +1271,22 @@ namespace glabels
 	void MainWindow::helpAbout()
 	{
 		Help::displayAbout( this );
+	}
+
+
+	///
+	/// Context Menu Activation
+	///
+	void MainWindow::onContextMenuActivate()
+	{
+		if ( mModel->isSelectionEmpty() )
+		{
+			noSelectionContextMenu->popup( QCursor::pos() );
+		}
+		else
+		{
+			contextMenu->popup( QCursor::pos() );
+		}
 	}
 
 
