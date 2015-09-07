@@ -20,7 +20,6 @@
 
 #include "LabelModelObject.h"
 
-#include <QTransform>
 #include <QFont>
 #include <algorithm>
 #include <cmath>
@@ -53,7 +52,7 @@ namespace glabels
 		mY0 = 0;
 		mW  = 0;
 		mH  = 0;
-		mMatrix = QTransform();
+		mMatrix = QMatrix();
 
 		mShadowState     = false;
 		mShadowX         = 1.3;
@@ -202,7 +201,7 @@ namespace glabels
 	///
 	/// Matrix Property Getter
 	///
-	QTransform LabelModelObject::matrix() const
+	QMatrix LabelModelObject::matrix() const
 	{
 		return mMatrix;
 	}
@@ -211,7 +210,7 @@ namespace glabels
 	///
 	/// Matrix Property Setter
 	///
-	void LabelModelObject::setMatrix( const QTransform& value )
+	void LabelModelObject::setMatrix( const QMatrix& value )
 	{
 		if ( mMatrix != value )
 		{
@@ -861,7 +860,10 @@ namespace glabels
 	{
 		if ( thetaDegs != 0 )
 		{
-			mMatrix = mMatrix.rotate( thetaDegs );
+			QMatrix m;
+			m.rotate( thetaDegs );
+			mMatrix *= m;
+
 			emit changed();
 		}
 	}
@@ -872,7 +874,10 @@ namespace glabels
 	///
 	void LabelModelObject::flipHoriz()
 	{
-		mMatrix = mMatrix.scale( -1, 1 );
+		QMatrix m;
+		m.scale( -1, 1 );
+		mMatrix *= m;
+
 		emit changed();
 	}
 
@@ -882,7 +887,10 @@ namespace glabels
 	///
 	void LabelModelObject::flipVert()
 	{
-		mMatrix = mMatrix.scale( 1, -1 );
+		QMatrix m;
+		m.scale( 1, -1 );
+		mMatrix *= m;
+
 		emit changed();
 	}
 
@@ -949,12 +957,12 @@ namespace glabels
 		{
 			painter->save();
 			painter->translate( mShadowX, mShadowY );
-			painter->setTransform( mMatrix, true );
+			painter->setMatrix( mMatrix, true );
 			drawShadow( painter, inEditor, record );
 			painter->restore();
 		}
 
-		painter->setTransform( mMatrix, true );
+		painter->setMatrix( mMatrix, true );
 		drawObject( painter, inEditor, record );
 
 		painter->restore();
@@ -964,12 +972,12 @@ namespace glabels
 	///
 	/// Draw selection highlights
 	///
-	void LabelModelObject::drawSelectionHighlight( QPainter* painter ) const
+	void LabelModelObject::drawSelectionHighlight( QPainter* painter, double scale ) const
 	{
 		painter->save();
 
 		painter->translate( mX0, mY0 );
-		painter->setTransform( mMatrix, true );
+		painter->setMatrix( mMatrix, true );
 
 		if ( mOutline )
 		{
@@ -978,7 +986,7 @@ namespace glabels
 
 		foreach( Handle* handle, mHandles )
 		{
-			handle->draw( painter );
+			handle->draw( painter, scale );
 		}
 		
 		painter->restore();

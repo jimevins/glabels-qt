@@ -23,7 +23,7 @@
 
 #include <QObject>
 #include <QFont>
-#include <QTransform>
+#include <QMatrix>
 #include <QPainter>
 
 #include "ColorNode.h"
@@ -123,10 +123,10 @@ namespace glabels
 		//
 		// Transformation Matrix Property
 		//
-		Q_PROPERTY( QTransform matrix READ matrix WRITE setMatrix );
+		Q_PROPERTY( QMatrix matrix READ matrix WRITE setMatrix );
 
-		QTransform matrix() const;
-		void setMatrix( const QTransform& value );
+		QMatrix matrix() const;
+		void setMatrix( const QMatrix& value );
 
 
 		//
@@ -394,7 +394,7 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		void draw( QPainter* painter, bool inEditor, MergeRecord* record ) const;
-		void drawSelectionHighlight( QPainter* painter ) const;
+		void drawSelectionHighlight( QPainter* painter, double scale ) const;
 
 	protected:
 		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
@@ -430,7 +430,7 @@ namespace glabels
 		static int msNextId;
 		int        mId;
 
-		QTransform mMatrix;
+		QMatrix    mMatrix;
 
 	};
 

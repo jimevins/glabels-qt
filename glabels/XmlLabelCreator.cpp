@@ -198,7 +198,7 @@ glabels::XmlLabelCreator::createObjectTopLevelSpanNode( QDomElement &parent, con
 void
 glabels::XmlLabelCreator::createAffineAttrs( QDomElement &node, const LabelModelObject* object )
 {
-	QTransform a = object->matrix();
+	QMatrix a = object->matrix();
 	
 	libglabels::XmlUtil::setDoubleAttr( node, "a0", a.m11() );
 	libglabels::XmlUtil::setDoubleAttr( node, "a1", a.m12() );

@@ -75,15 +75,19 @@ glabels::Handle::Location glabels::Handle::location() const
 ///
 /// Draw Handle at x,y
 ///
-void glabels::Handle::drawAt( QPainter* painter, double x, double y ) const
+void glabels::Handle::drawAt( QPainter* painter, double scale, double x, double y ) const
 {
 	painter->save();
 
 	painter->translate( x, y );
 
-	double s = 1.0 / painter->transform().m11();
+	double s = 1.0 / scale;
 
-	painter->setPen( QPen( handleOutlineColor, s*handleOutlineWidthPixels ) );
+	QPen pen( handleOutlineColor );
+	pen.setCosmetic( true );
+	pen.setWidth( handleOutlineWidthPixels );
+
+	painter->setPen( pen );
 	painter->setBrush( handleFillColor );
 
 	painter->drawRect( QRectF( -s*handlePixels/2.0, -s*handlePixels/2.0, s*handlePixels, s*handlePixels ) );
@@ -128,9 +132,9 @@ glabels::HandleNorthWest::~HandleNorthWest()
 ///
 /// Draw HandleNorthWest
 ///
-void glabels::HandleNorthWest::draw( QPainter* painter ) const
+void glabels::HandleNorthWest::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, 0, 0 );
+	drawAt( painter, scale, 0, 0 );
 }
 
 
@@ -163,9 +167,9 @@ glabels::HandleNorth::~HandleNorth()
 ///
 /// Draw HandleNorth
 ///
-void glabels::HandleNorth::draw( QPainter* painter ) const
+void glabels::HandleNorth::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, mOwner->w()/2, 0 );
+	drawAt( painter, scale, mOwner->w()/2, 0 );
 }
 
 
@@ -198,9 +202,9 @@ glabels::HandleNorthEast::~HandleNorthEast()
 ///
 /// Draw HandleNorthEast
 ///
-void glabels::HandleNorthEast::draw( QPainter* painter ) const
+void glabels::HandleNorthEast::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, mOwner->w(), 0 );
+	drawAt( painter, scale, mOwner->w(), 0 );
 }
 
 
@@ -233,9 +237,9 @@ glabels::HandleEast::~HandleEast()
 ///
 /// Draw HandleEast
 ///
-void glabels::HandleEast::draw( QPainter* painter ) const
+void glabels::HandleEast::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, mOwner->w(), mOwner->h()/2 );
+	drawAt( painter, scale, mOwner->w(), mOwner->h()/2 );
 }
 
 
@@ -268,9 +272,9 @@ glabels::HandleSouthEast::~HandleSouthEast()
 ///
 /// Draw HandleSouthEast
 ///
-void glabels::HandleSouthEast::draw( QPainter* painter ) const
+void glabels::HandleSouthEast::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, mOwner->w(), mOwner->h() );
+	drawAt( painter, scale, mOwner->w(), mOwner->h() );
 }
 
 
@@ -303,9 +307,9 @@ glabels::HandleSouth::~HandleSouth()
 ///
 /// Draw HandleSouth
 ///
-void glabels::HandleSouth::draw( QPainter* painter ) const
+void glabels::HandleSouth::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, mOwner->w()/2, mOwner->h() );
+	drawAt( painter, scale, mOwner->w()/2, mOwner->h() );
 }
 
 
@@ -338,9 +342,9 @@ glabels::HandleSouthWest::~HandleSouthWest()
 ///
 /// Draw HandleSouthWest
 ///
-void glabels::HandleSouthWest::draw( QPainter* painter ) const
+void glabels::HandleSouthWest::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, 0, mOwner->h() );
+	drawAt( painter, scale, 0, mOwner->h() );
 }
 
 
@@ -373,9 +377,9 @@ glabels::HandleWest::~HandleWest()
 ///
 /// Draw HandleWest
 ///
-void glabels::HandleWest::draw( QPainter* painter ) const
+void glabels::HandleWest::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, 0, mOwner->h()/2 );
+	drawAt( painter, scale, 0, mOwner->h()/2 );
 }
 
 
@@ -408,9 +412,9 @@ glabels::HandleP1::~HandleP1()
 ///
 /// Draw HandleP1
 ///
-void glabels::HandleP1::draw( QPainter* painter ) const
+void glabels::HandleP1::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, 0, 0 );
+	drawAt( painter, scale, 0, 0 );
 }
 
 
@@ -443,9 +447,9 @@ glabels::HandleP2::~HandleP2()
 ///
 /// Draw HandleP2
 ///
-void glabels::HandleP2::draw( QPainter* painter ) const
+void glabels::HandleP2::draw( QPainter* painter, double scale ) const
 {
-	drawAt( painter, mOwner->w(), mOwner->h() );
+	drawAt( painter, scale, mOwner->w(), mOwner->h() );
 }
 
 

@@ -846,7 +846,7 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	/*
 	 * Put new origin back into world coordinates and set.
 	 */
-	QTransform inverseMatrix = mResizeObject->matrix().inverted();
+	QMatrix inverseMatrix = mResizeObject->matrix().inverted();
 	QPointF p0( x0, y0 );
 	p0 = inverseMatrix.map( p0 );
 	p0 += QPointF( mResizeObject->x0(), mResizeObject->y0() );
@@ -1064,7 +1064,7 @@ glabels::View::drawHighlightLayer( QPainter* painter )
 	{
 		if ( object->isSelected() )
 		{
-			object->drawSelectionHighlight( painter );
+			object->drawSelectionHighlight( painter, mScale );
 		}
 	}
 

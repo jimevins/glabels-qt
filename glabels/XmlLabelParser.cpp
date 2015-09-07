@@ -352,7 +352,7 @@ glabels::XmlLabelParser::parseAffineAttrs( const QDomElement &node, LabelModelOb
 	a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
 	a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
-	object->setMatrix( QTransform( a[0], a[1], a[2], a[3], a[4], a[5] ) );
+	object->setMatrix( QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ) );
 }
 
 
