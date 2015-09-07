@@ -278,9 +278,19 @@ namespace glabels
 
 			if ( sizeAspectCheck->isChecked() )
 			{
-				mObject->setSizeHonorAspect( sizeWSpin->value(), sizeHSpin->value() );
-				sizeWSpin->setValue( mObject->w() );
-				sizeHSpin->setValue( mObject->h() );
+				double spinW = sizeWSpin->value();
+				double spinH = sizeHSpin->value();
+				
+				if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
+				{
+					mObject->setWHonorAspect( spinW );
+					sizeHSpin->setValue( mObject->h() );
+				}
+				else
+				{
+					mObject->setHHonorAspect( spinH );
+					sizeWSpin->setValue( mObject->w() );
+				}
 			}
 			else
 			{

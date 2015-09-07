@@ -810,7 +810,20 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	{
 		if ( mResizeHonorAspect )
 		{
-			mResizeObject->setSizeHonorAspect( w, h );
+			switch ( location )
+			{
+			case Handle::E:
+			case Handle::W:
+				mResizeObject->setWHonorAspect( w );
+				break;
+			case Handle::N:
+			case Handle::S:
+				mResizeObject->setHHonorAspect( h );
+				break;
+			default:
+				mResizeObject->setSizeHonorAspect( w, h );
+				break;
+			}
 		}
 		else
 		{

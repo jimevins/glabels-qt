@@ -778,14 +778,18 @@ namespace glabels
 	///
 	void LabelModelObject::setSizeHonorAspect( double w, double h )
 	{
-		if ( fabs(w - mW) > fabs(h - mH) )
+		double aspectRatio = mH / mW;
+		
+		if ( h > (w*aspectRatio) )
 		{
-			setWHonorAspect( w );
+			h = w*aspectRatio;
 		}
 		else
 		{
-			setHHonorAspect( h );
+			w = h/aspectRatio;
 		}
+
+		setSize( w, h );
 	}
 
 
