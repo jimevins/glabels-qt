@@ -24,6 +24,12 @@
 #include <QPen>
 
 
+namespace
+{
+	const double slopPixels = 2;
+}
+
+
 namespace glabels
 {
 
@@ -105,12 +111,30 @@ namespace glabels
 
 
 	///
-	/// Path representing object
+	/// Path to test for hover condition
 	///
-	QPainterPath LabelModelBoxObject::path() const
+	QPainterPath LabelModelBoxObject::hoverPath( double scale ) const
 	{
+		double s = 1 / scale;
+
 		QPainterPath path;
-		path.addRect( 0, 0, mW, mH );
+
+		if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
+		{
+			path.addRect( -mLineWidth/2, -mLineWidth/2, mW+mLineWidth, mH+mLineWidth );
+		}
+		else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
+		{
+			path.addRect( 0, 0, mW, mH );
+		}
+		else if ( mLineColorNode.color().alpha() )
+		{
+			path.addRect( (-mLineWidth/2)-s*slopPixels, (-mLineWidth/2)-s*slopPixels,
+				      mW+mLineWidth+s*2*slopPixels, mH+mLineWidth+s*2*slopPixels );
+			path.closeSubpath();
+			path.addRect( mLineWidth/2+s*slopPixels, mLineWidth/2+s*slopPixels,
+				      mW-mLineWidth-s*2*slopPixels, mH-mLineWidth-s*2*slopPixels );
+		}
 
 		return path;
 	}

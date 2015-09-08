@@ -399,7 +399,7 @@ namespace glabels
 	protected:
 		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
 		virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
-		virtual QPainterPath path() const = 0;
+		virtual QPainterPath hoverPath( double scale ) const = 0;
 
 		
 		///////////////////////////////////////////////////////////////

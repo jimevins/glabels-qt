@@ -49,8 +49,8 @@ namespace glabels
 		// Drawing Methods
 		////////////////////////////
 	public:
-		void  draw( QPainter* painter ) const;
-		QPainterPath path( double scale ) const;
+		void draw( QPainter* painter ) const;
+		QPainterPath hoverPath( double scale ) const;
 
 
 		////////////////////////////

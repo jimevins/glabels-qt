@@ -88,9 +88,9 @@ void glabels::Outline::draw( QPainter* painter ) const
 
 
 ///
-/// Create Outline path
+/// Create path for testing for hover condition
 ///
-QPainterPath glabels::Outline::path( double scale ) const
+QPainterPath glabels::Outline::hoverPath( double scale ) const
 {
 	double s = 1 / scale;
 

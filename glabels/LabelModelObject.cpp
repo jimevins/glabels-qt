@@ -905,17 +905,20 @@ namespace glabels
 	bool LabelModelObject::isLocatedAt( double scale, double x, double y ) const
 	{
 		QPointF p( x, y );
-		p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
 
-		QPainterPath objectPath = mMatrix.map( path() );
-		if ( objectPath.contains( p ) )
+		/*
+		 * Change point to object relative coordinates
+		 */
+		p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
+		p = mMatrix.inverted().map( p );
+
+		if ( hoverPath( scale ).contains( p ) )
 		{
 			return true;
 		}
-		else if ( mOutline )
+		else if ( isSelected() && mOutline )
 		{
-			QPainterPath outlinePath = mMatrix.map( mOutline->path( scale ) );
-			if ( outlinePath.contains( p ) )
+			if ( mOutline->hoverPath( scale ).contains( p ) )
 			{
 				return true;
 			}

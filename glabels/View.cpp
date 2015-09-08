@@ -730,7 +730,7 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	Handle::Location location = mResizeHandle->location();
 	
 	/*
-	 * Change to item relative coordinates
+	 * Change point to object relative coordinates
 	 */
 	p -= QPointF( mResizeObject->x0(), mResizeObject->y0() );
 	p = mResizeObject->matrix().inverted().map( p );
