@@ -38,6 +38,7 @@ namespace glabels
 	class LabelModel;
 	class View;
 	class ObjectEditor;
+	class MergePropertyEditor;
 	class PrintView;
 
 
@@ -197,12 +198,13 @@ namespace glabels
 		QToolBar* fileToolBar;
 		QToolBar* editorToolBar;
 
-		QTabWidget*   mNotebook;
-		LabelModel*   mModel;
-		QScrollArea*  mViewScrollArea;
-		View*         mView;
-		ObjectEditor* mObjectEditor;
-		PrintView*    mPrintView;
+		QTabWidget*          mNotebook;
+		LabelModel*          mModel;
+		QScrollArea*         mViewScrollArea;
+		View*                mView;
+		ObjectEditor*        mObjectEditor;
+		MergePropertyEditor* mMergePropertyEditor;
+		PrintView*           mPrintView;
 
 		QLabel*   zoomInfoLabel;
 		QLabel*   cursorInfoLabel;

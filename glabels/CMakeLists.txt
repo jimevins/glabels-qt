@@ -31,6 +31,7 @@ set (glabels_sources
   LabelRegion.cpp
   MainWindow.cpp
   MergeField.cpp
+  MergePropertyEditor.cpp
   MergeRecord.cpp
   NewLabelDialog.cpp
   ObjectEditor.cpp
@@ -66,6 +67,7 @@ set (glabels_qobject_headers
   LabelModelBoxObject.h
   LabelModelShapeObject.h
   MainWindow.h
+  MergePropertyEditor.h
   NewLabelDialog.h
   ObjectEditor.h
   PrintView.h
@@ -78,6 +80,7 @@ set (glabels_qobject_headers
 set (glabels_forms
   ui/NewLabelDialog.ui
   ui/ObjectEditor.ui
+  ui/MergePropertyEditor.ui
   ui/PrintView.ui
 )
 

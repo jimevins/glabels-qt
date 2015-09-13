@@ -35,6 +35,7 @@
 #include "libglabels/Db.h"
 #include "View.h"
 #include "ObjectEditor.h"
+#include "MergePropertyEditor.h"
 #include "PrintView.h"
 #include "LabelModel.h"
 #include "LabelModelBoxObject.h"
@@ -652,9 +653,9 @@ namespace glabels
 	///
 	QWidget* MainWindow::createMergePage()
 	{
-		QWidget* page = new QWidget;
+		mMergePropertyEditor = new MergePropertyEditor();
 
-		return page;
+		return mMergePropertyEditor;
 	}
 
 
