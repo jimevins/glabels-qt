@@ -118,8 +118,12 @@ namespace glabels
 	///
 	LabelModelObject* LabelModel::objectAt( double scale, double x, double y ) const
 	{
-		foreach( LabelModelObject* object, mObjectList )
+		/* Search object list in reverse order.  I.e. from top to bottom. */
+		QList<LabelModelObject*>::const_iterator it = mObjectList.end();
+		while ( it != mObjectList.begin() )
 		{
+			it--;
+			LabelModelObject* object = *it;
 			if ( object->isLocatedAt( scale, x, y ) )
 			{
 				return object;
