@@ -83,7 +83,6 @@ glabels::View::View( QScrollArea* scrollArea, QWidget* parent )
 	mMarkupVisible      = true;
 	mGridVisible        = true;
 	mGridSpacing        = 18;
-	mInObjectCreateMode = false;
 
 	setMouseTracking( true );
 }
@@ -300,7 +299,6 @@ glabels::View::arrowMode()
 {
 	setCursor( Qt::ArrowCursor );
 
-	mInObjectCreateMode = false;
 	mState = IdleState;
 }
 
@@ -313,9 +311,8 @@ glabels::View::createBoxMode()
 {
 	setCursor( Cursors::Box() );
 
-	mInObjectCreateMode = true;
 	mCreateObjectType = Box;
-	mState = IdleState;
+	mState = CreateIdle;
 }
 
 
@@ -369,13 +366,11 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 			//
 			// LEFT BUTTON
 			//
-
-			if ( !mInObjectCreateMode )
+			switch (mState)
 			{
-				//
-				// NORMAL MODE
-				//
-				
+
+			case IdleState:
+			{
 				LabelModelObject* object = 0;
 				Handle* handle = 0;
 				if ( mModel->isSelectionAtomic() &&
@@ -443,52 +438,57 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 					update();
 				}
 			}
-			else
+			break;
+
+
+			case CreateIdle:
 			{
-				//
-				// OBJECT CREATION MODE
-				//
-				
-				if ( mState == IdleState )
+				switch ( mCreateObjectType )
 				{
-					switch ( mCreateObjectType )
-					{
-					case Box:
-						mCreateObject = new LabelModelBoxObject();
-						break;
-					case Ellipse:
-						// mCreateObject = new LabelModelEllipseObject();
-						break;
-					case Line: 
-						// mCreateObject = new LabelModelLineObject();
-						break;
-					case Image:
-						// mCreateObject = new LabelModelImageObject();
-						break;
-					case Text:
-						// mCreateObject = new LabelModelTextObject();
-						break;
-					case Barcode:
-						// mCreateObject = new LabelModelBarcodeObject();
-						break;
-					default:
-						Q_ASSERT_X( false, "View::::mousePressEvent", "Invalid creation type" );
-						break;
-					}
-
-					mCreateObject->setPosition( xWorld, yWorld );
-					mCreateObject->setSize( 0, 0 );
-					mModel->addObject( mCreateObject );
-
-					mModel->unselectAll();
-					mModel->selectObject( mCreateObject );
-
-					mCreateX0 = xWorld;
-					mCreateY0 = yWorld;
-
-					mState = CreateDrag;
+				case Box:
+					mCreateObject = new LabelModelBoxObject();
+					break;
+				case Ellipse:
+					// mCreateObject = new LabelModelEllipseObject();
+					break;
+				case Line: 
+					// mCreateObject = new LabelModelLineObject();
+					break;
+				case Image:
+					// mCreateObject = new LabelModelImageObject();
+					break;
+				case Text:
+					// mCreateObject = new LabelModelTextObject();
+					break;
+				case Barcode:
+					// mCreateObject = new LabelModelBarcodeObject();
+					break;
+				default:
+					qDebug() << "View::mousePressEvent: Invalid creation type. Should not happen!";
+					break;
 				}
-	
+
+				mCreateObject->setPosition( xWorld, yWorld );
+				mCreateObject->setSize( 0, 0 );
+				mModel->addObject( mCreateObject );
+
+				mModel->unselectAll();
+				mModel->selectObject( mCreateObject );
+
+				mCreateX0 = xWorld;
+				mCreateY0 = yWorld;
+
+				mState = CreateDrag;
+			}
+			break;
+
+				
+			default:
+			{
+				qDebug() << "View::mousePressEvent: Invalid state. Should not happen!";
+			}
+			break;
+
 			}
 
 		}
@@ -497,7 +497,10 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 			//
 			// RIGHT BUTTON
 			//
-			emit contextMenuActivate();
+			if ( mState == IdleState )
+			{
+				emit contextMenuActivate();
+			}
 		}
 	}
 }
@@ -534,87 +537,74 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 
 
 		/*
-		 * Handle event as appropriate for mode
+		 * Handle event as appropriate for state
 		 */
-		if ( !mInObjectCreateMode )
+		switch (mState)
 		{
-			///
-			/// NORMAL MODE
-			///
 
-			switch (mState)
+		case IdleState:
+			if ( mModel->isSelectionAtomic() &&
+			     mModel->handleAt( mScale, xWorld, yWorld ) )
 			{
-
-			case IdleState:
-				if ( mModel->isSelectionAtomic() &&
-				     mModel->handleAt( mScale, xWorld, yWorld ) )
-				{
-					setCursor( Qt::CrossCursor );
-				}
-				else if ( mModel->objectAt( mScale, xWorld, yWorld ) )
-				{
-					setCursor( Qt::SizeAllCursor );
-				}
-				else
-				{
-					setCursor( Qt::ArrowCursor );
-				}
-				break;
-
-			case ArrowSelectRegion:
-				mSelectRegion.setX2( xWorld );
-				mSelectRegion.setY2( yWorld );
-				update();
-				break;
-
-			case ArrowMove:
-				mModel->moveSelection( (xWorld - mMoveLastX),
-						       (yWorld - mMoveLastY) );
-				mMoveLastX = xWorld;
-				mMoveLastY = yWorld;
-				break;
-
-			case ArrowResize:
-				handleResizeMotion( xWorld, yWorld );
-				break;
-
-			default:
-				// Should not happen!
-				Q_ASSERT_X( false, "View::::mouseMoveEvent", "Invalid state" );
-				break;
-
+				setCursor( Qt::CrossCursor );
 			}
-		}
-		else
-		{
-			//
-			// OBJECT CREATION MODE
-			//
-				
-			if ( mState != IdleState )
+			else if ( mModel->objectAt( mScale, xWorld, yWorld ) )
 			{
-				switch (mCreateObjectType)
-				{
-				case Box:
-				case Ellipse:
-				case Image:
-				case Text:
-				case Barcode:
-					mCreateObject->setPosition( min( xWorld, mCreateX0 ),
-								    min( yWorld, mCreateY0 ) );
-					mCreateObject->setSize( max(xWorld,mCreateX0) - min(xWorld,mCreateX0),
-								max(yWorld,mCreateY0) - min(yWorld,mCreateY0) );
+				setCursor( Qt::SizeAllCursor );
+			}
+			else
+			{
+				setCursor( Qt::ArrowCursor );
+			}
+			break;
+
+		case ArrowSelectRegion:
+			mSelectRegion.setX2( xWorld );
+			mSelectRegion.setY2( yWorld );
+			update();
+			break;
+
+		case ArrowMove:
+			mModel->moveSelection( (xWorld - mMoveLastX),
+					       (yWorld - mMoveLastY) );
+			mMoveLastX = xWorld;
+			mMoveLastY = yWorld;
+			break;
+
+		case ArrowResize:
+			handleResizeMotion( xWorld, yWorld );
+			break;
+
+		case CreateIdle:
+			break;
+
+		case CreateDrag:
+			switch (mCreateObjectType)
+			{
+			case Box:
+			case Ellipse:
+			case Image:
+			case Text:
+			case Barcode:
+				mCreateObject->setPosition( min( xWorld, mCreateX0 ),
+							    min( yWorld, mCreateY0 ) );
+				mCreateObject->setSize( max(xWorld,mCreateX0) - min(xWorld,mCreateX0),
+							max(yWorld,mCreateY0) - min(yWorld,mCreateY0) );
 								
-					break;
-				case Line:
-					mCreateObject->setSize( xWorld - mCreateX0, yWorld - mCreateY0 );
-					break;
-				default:
-					// Should not happen!
-					Q_ASSERT_X( false, "View::::mouseMoveEvent", "Invalid creation mode" );
-					break;
-				}
+				break;
+			case Line:
+				mCreateObject->setSize( xWorld - mCreateX0, yWorld - mCreateY0 );
+				break;
+			default:
+				qDebug() << "View::mouseMoveEvent: Invalid creation mode. Should not happen!";
+				break;
 			}
+			break;
+
+		default:
+			qDebug() << "View::mouseMoveEvent: Invalid state. Should not happen!";
+			break;
+
 		}
 	}
 }
@@ -646,44 +636,25 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 			//
 			// LEFT BUTTON Release
 			//
-			
-			if ( !mInObjectCreateMode )
+			switch (mState)
 			{
-				///
-				/// NORMAL MODE
-				///
-				
-				switch (mState)
-				{
 
-				case ArrowResize:
-					mState = IdleState;
-					break;
+			case ArrowResize:
+				mState = IdleState;
+				break;
 
-				case ArrowSelectRegion:
-					mSelectRegionVisible = false;
-					mSelectRegion.setX2( xWorld );
-					mSelectRegion.setY2( yWorld );
+			case ArrowSelectRegion:
+				mSelectRegionVisible = false;
+				mSelectRegion.setX2( xWorld );
+				mSelectRegion.setY2( yWorld );
 
-					mModel->selectRegion( mSelectRegion );
+				mModel->selectRegion( mSelectRegion );
 
-					mState = IdleState;
-					update();
-					break;
+				mState = IdleState;
+				update();
+				break;
 
-				default:
-					mState = IdleState;
-					break;
-
-				}
-				
-			}
-			else
-			{
-				//
-				// OBJECT CREATION MODE
-				//
-
+			case CreateDrag:
 				if ( (fabs(mCreateObject->w()) < 4) && (fabs(mCreateObject->h()) < 4) )
 				{
 					switch (mCreateObjectType)
@@ -699,9 +670,17 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 						break;
 					}
 				}
-				
-				arrowMode();
+
+				setCursor( Qt::ArrowCursor );
+				mState = IdleState;
+				break;
+
+			default:
+				mState = IdleState;
+				break;
+
 			}
+
 		}
 	}
 }
@@ -800,7 +779,7 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 		y0 = y0 + y1;
 		break;
 	default:
-		Q_ASSERT_X( false, "View::handleResizeMotion", "Invalid Handle Location" );
+		qDebug() << "View::handleResizeMotion: Invalid Handle Location. Should not happen!";
 	}
 
 	/*

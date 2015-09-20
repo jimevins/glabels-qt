@@ -156,6 +156,7 @@ namespace glabels
 			ArrowSelectRegion,
 			ArrowMove,
 			ArrowResize,
+			CreateIdle,
 			CreateDrag
 		};
 
@@ -199,7 +200,6 @@ namespace glabels
 		bool                mResizeHonorAspect;
 
 		/* CreateDrag state */
-		bool                mInObjectCreateMode;
 		CreateType          mCreateObjectType;
 		LabelModelObject*   mCreateObject;
 		double              mCreateX0;
