@@ -46,10 +46,11 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		inline bool selected( void ) const;
+		inline bool isSelected() const;
 		inline void setSelected( bool value );
+		inline bool empty() const;
 
-		inline const QList<MergeField>& fieldList( void ) const;
+		inline const QList<MergeField>& fieldList() const;
 		inline void setFieldList( QList<MergeField>& value );
 
 
@@ -65,7 +66,7 @@ namespace glabels
 	/////////////////////////////////
 	// INLINE METHODS
 	/////////////////////////////////
-	bool MergeRecord::selected( void ) const
+	bool MergeRecord::isSelected() const
 	{
 		return mSelected;
 	}
@@ -77,7 +78,13 @@ namespace glabels
 	}
 
 
-	const QList<MergeField>& MergeRecord::fieldList( void ) const
+	bool MergeRecord::empty() const
+	{
+		return mFieldList.size() == 0;
+	}
+
+
+	const QList<MergeField>& MergeRecord::fieldList() const
 	{
 		return mFieldList;
 	}

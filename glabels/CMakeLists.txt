@@ -30,6 +30,7 @@ set (glabels_sources
   LabelModelShapeObject.cpp
   LabelRegion.cpp
   MainWindow.cpp
+  Merge.cpp
   MergeField.cpp
   MergePropertyEditor.cpp
   MergeRecord.cpp
@@ -67,6 +68,7 @@ set (glabels_qobject_headers
   LabelModelBoxObject.h
   LabelModelShapeObject.h
   MainWindow.h
+  Merge.h
   MergePropertyEditor.h
   NewLabelDialog.h
   ObjectEditor.h
