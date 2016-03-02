@@ -50,6 +50,7 @@ namespace glabels
 		/////////////////////////////////
 	protected:
 		Merge( QString id, QString name, SourceType type );
+		virtual ~Merge();
 
 
 		/////////////////////////////////

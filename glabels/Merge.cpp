@@ -34,6 +34,14 @@ namespace glabels
 
 
 	///
+	/// Destructor
+	///
+	Merge::~Merge()
+	{
+	}
+
+
+	///
 	/// Set source
 	///
 	void Merge::setSource( const QString& source )
