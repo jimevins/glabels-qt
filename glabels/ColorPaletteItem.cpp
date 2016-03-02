@@ -82,38 +82,26 @@ namespace glabels
 		QPainter painter(this);
 
 		//
-		// Draw background
-		//
-		if ( isEnabled() && mHover )
-		{
-			QLinearGradient gradient( 0, 0, 0, height() );
-			gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
-			gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
-			painter.setBrush( QBrush( gradient ) );
-
-			QPen pen( palette().color( QPalette::Text ) );
-			pen.setWidth( hoverBgOutlineWidthPixels );
-			painter.setPen( pen );
-
-			painter.drawRect( 0, 0, width()-1, height()-1 );
-		}
-
-		//
 		// Draw swatch
 		//
 		if ( isEnabled() )
 		{
 			if ( mHover )
 			{
-				QPen pen( palette().color( QPalette::HighlightedText ) );
-				pen.setWidth( outlineWidthPixels );
+				QPen pen( palette().color( QPalette::Text ) );
+				pen.setWidth( 2*outlineWidthPixels );
+				pen.setJoinStyle( Qt::MiterJoin );
 				painter.setPen( pen );
+				painter.setBrush( QBrush( mColor ) );
+				painter.drawRect( 1, 1, width()-2, height()-2 );
 			}
 			else
 			{
 				QPen pen( palette().color( QPalette::Text ) );
 				pen.setWidth( outlineWidthPixels );
 				painter.setPen( pen );
+				painter.setBrush( QBrush( mColor ) );
+				painter.drawRect( border, border, wSwatch, hSwatch );
 			}
 
 			
@@ -123,10 +111,10 @@ namespace glabels
 			QPen pen( palette().color( QPalette::Disabled, QPalette::Text ) );
 			pen.setWidth( outlineWidthPixels );
 			painter.setPen( pen );
+			painter.setBrush( QBrush( mColor ) );
+			painter.drawRect( border, border, wSwatch, hSwatch );
 		}
 
-		painter.setBrush( QBrush( mColor ) );
-		painter.drawRect( border, border, wSwatch, hSwatch );
 	}
 
 
