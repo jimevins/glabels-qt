@@ -22,7 +22,7 @@
 #define libglabels_privateConstants_h
 
 
-#include <QString>
+#include "Distance.h"
 
 
 namespace libglabels
@@ -31,7 +31,8 @@ namespace libglabels
 	namespace Constants
 	{
 
-	        const double EPSILON = 0.5;  /* Allowed error when comparing dimensions. (0.5pts ~= .007in ~= .2mm) */
+		const Distance EPSILON( 0.5, Distance::Units::PT );
+
 	}
 
 }

@@ -1,6 +1,6 @@
 /*  Layout.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -28,7 +28,12 @@
 namespace libglabels
 {
 
-	Layout::Layout( int nx, int ny, double x0, double y0, double dx, double dy )
+	Layout::Layout( int             nx,
+		        int             ny,
+		        const Distance& x0,
+		        const Distance& y0,
+		        const Distance& dx,
+		        const Distance& dy )
 		: mNx(nx), mNy(ny), mX0(x0), mY0(y0), mDx(dx), mDy(dy)
 	{
 	}

@@ -22,6 +22,7 @@
 #define glabels_LabelRegion_h
 
 #include <QRectF>
+#include "libglabels/Distance.h"
 
 
 namespace glabels
@@ -40,30 +41,30 @@ namespace glabels
 		//
 		// X1 Property
 		//
-		inline double x1( void ) const;
-		inline void setX1( double value );
+		libglabels::Distance x1( void ) const;
+		void setX1( const libglabels::Distance& value );
 
 
 		//
 		// Y1 Property
 		//
-		inline double y1( void ) const;
-		inline void setY1( double value );
+		libglabels::Distance y1( void ) const;
+		void setY1( const libglabels::Distance& value );
 
 
 		//
 		// X2 Property
 		//
-		inline double x2( void ) const;
-		inline void setX2( double value );
+		libglabels::Distance x2( void ) const;
+		void setX2( const libglabels::Distance& value );
 
 
 
 		//
 		// Y2 Property
 		//
-		inline double y2( void ) const;
-		inline void setY2( double value );
+		libglabels::Distance y2( void ) const;
+		void setY2( const libglabels::Distance& value );
 
 
 		/////////////////////////////////
@@ -77,59 +78,59 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		double mX1;
-		double mY1;
-		double mX2;
-		double mY2;
+		libglabels::Distance mX1;
+		libglabels::Distance mY1;
+		libglabels::Distance mX2;
+		libglabels::Distance mY2;
 	};
 
 
 	/////////////////////////////////
 	// INLINE METHODS
 	/////////////////////////////////
-	double LabelRegion::x1( void ) const
+	inline libglabels::Distance LabelRegion::x1( void ) const
 	{
 		return mX1;
 	}
 
 
-	void LabelRegion::setX1( double value )
+	inline void LabelRegion::setX1( const libglabels::Distance& value )
 	{
 		mX1 = value;
 	}
 
 
-	double LabelRegion::y1( void ) const
+	inline libglabels::Distance LabelRegion::y1( void ) const
 	{
 		return mY1;
 	}
 
 
-	void LabelRegion::setY1( double value )
+	inline void LabelRegion::setY1( const libglabels::Distance& value )
 	{
 		mY1 = value;
 	}
 
 
-	double LabelRegion::x2( void ) const
+	inline libglabels::Distance LabelRegion::x2( void ) const
 	{
 		return mX2;
 	}
 
 
-	void LabelRegion::setX2( double value )
+	inline void LabelRegion::setX2( const libglabels::Distance& value )
 	{
 		mX2 = value;
 	}
 
 
-	double LabelRegion::y2( void ) const
+	inline libglabels::Distance LabelRegion::y2( void ) const
 	{
 		return mY2;
 	}
 
 
-	void LabelRegion::setY2( double value )
+	inline void LabelRegion::setY2( const libglabels::Distance& value )
 	{
 		mY2 = value;
 	}

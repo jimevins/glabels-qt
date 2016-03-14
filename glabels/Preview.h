@@ -1,6 +1,6 @@
 /*  Preview.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -67,9 +67,12 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		void clearScene();
-		void drawPaper( double pw, double ph );
+		void drawPaper( const libglabels::Distance& pw, const libglabels::Distance& ph );
 		void drawLabels();
-		void drawLabel( double x, double y, const QPainterPath &path );
+		void drawLabel( const libglabels::Distance& x,
+		                const libglabels::Distance& y,
+		                const QPainterPath&         path );
+		
 		void drawPreviewOverlay();
 
 

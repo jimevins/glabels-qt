@@ -1,6 +1,6 @@
 /*  ObjectEditor.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -78,7 +78,7 @@ namespace glabels
 		{
 			mBlocked = true;
 			
-			lineWidthSpin->setValue( mObject->lineWidth() );
+			lineWidthSpin->setValue( mObject->lineWidth().pt() );
 			lineColorButton->setColorNode( mObject->lineColorNode() );
 			fillColorButton->setColorNode( mObject->fillColorNode() );
 
@@ -93,8 +93,8 @@ namespace glabels
 		{
 			mBlocked = true;
 			
-			posXSpin->setValue( mObject->x0() );
-			posYSpin->setValue( mObject->y0() );
+			posXSpin->setValue( mObject->x0().in() );
+			posYSpin->setValue( mObject->y0().in() );
 
 			mBlocked = false;			
 		}
@@ -107,8 +107,8 @@ namespace glabels
 		{
 			mBlocked = true;
 			
-			sizeWSpin->setValue( mObject->w() );
-			sizeHSpin->setValue( mObject->h() );
+			sizeWSpin->setValue( mObject->w().in() );
+			sizeHSpin->setValue( mObject->h().in() );
 
 			mBlocked = false;			
 		}
@@ -122,8 +122,8 @@ namespace glabels
 			mBlocked = true;
 			
 			shadowEnableCheck->setChecked( mObject->shadow() );
-			shadowXSpin->setValue( mObject->shadowX() );
-			shadowYSpin->setValue( mObject->shadowY() );
+			shadowXSpin->setValue( mObject->shadowX().in() );
+			shadowYSpin->setValue( mObject->shadowY().in() );
 			shadowColorButton->setColorNode( mObject->shadowColorNode() );
 			shadowOpacitySpin->setValue( 100*mObject->shadowOpacity() );
 
@@ -138,12 +138,12 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			double whMax = std::max( mModel->w(), mModel->h() );
+			libglabels::Distance whMax = std::max( mModel->w(), mModel->h() );
 			
-			posXSpin->setRange( -whMax, 2*whMax );
-			posYSpin->setRange( -whMax, 2*whMax );
-			sizeWSpin->setRange( 0, 2*whMax );
-			sizeHSpin->setRange( 0, 2*whMax );
+			posXSpin->setRange( -whMax.in(), 2*whMax.in() );
+			posYSpin->setRange( -whMax.in(), 2*whMax.in() );
+			sizeWSpin->setRange( 0, 2*whMax.in() );
+			sizeHSpin->setRange( 0, 2*whMax.in() );
 			
 			mBlocked = false;			
 		}
@@ -236,7 +236,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			mObject->setLineWidth( lineWidthSpin->value() );
+			mObject->setLineWidth( libglabels::Distance::pt(lineWidthSpin->value()) );
 			mObject->setLineColorNode( lineColorButton->colorNode() );
 
 			mBlocked = false;
@@ -275,26 +275,26 @@ namespace glabels
 		if ( !mBlocked )
 		{
 			mBlocked = true;
-
+			
+			libglabels::Distance spinW = libglabels::Distance::in(sizeWSpin->value());
+			libglabels::Distance spinH = libglabels::Distance::in(sizeHSpin->value());
+				
 			if ( sizeAspectCheck->isChecked() )
 			{
-				double spinW = sizeWSpin->value();
-				double spinH = sizeHSpin->value();
-				
 				if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
 				{
 					mObject->setWHonorAspect( spinW );
-					sizeHSpin->setValue( mObject->h() );
+					sizeHSpin->setValue( mObject->h().in() );
 				}
 				else
 				{
 					mObject->setHHonorAspect( spinH );
-					sizeWSpin->setValue( mObject->w() );
+					sizeWSpin->setValue( mObject->w().in() );
 				}
 			}
 			else
 			{
-				mObject->setSize( sizeWSpin->value(), sizeHSpin->value() );
+				mObject->setSize( spinW, spinH );
 			}
 			
 			mBlocked = false;
@@ -309,8 +309,8 @@ namespace glabels
 			mBlocked = true;
 
 			mObject->setShadow( shadowEnableCheck->isChecked() );
-			mObject->setShadowX( shadowXSpin->value() );
-			mObject->setShadowY( shadowYSpin->value() );
+			mObject->setShadowX( libglabels::Distance::in(shadowXSpin->value()) );
+			mObject->setShadowY( libglabels::Distance::in(shadowYSpin->value()) );
 			mObject->setShadowColorNode( shadowColorButton->colorNode() );
 			mObject->setShadowOpacity( shadowOpacitySpin->value()/100.0 );
 

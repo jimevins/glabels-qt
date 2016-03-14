@@ -1,6 +1,6 @@
 /*  LabelModel.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -116,7 +116,9 @@ namespace glabels
 	///
 	/// Object at x,y
 	///
-	LabelModelObject* LabelModel::objectAt( double scale, double x, double y ) const
+	LabelModelObject* LabelModel::objectAt( double                      scale,
+						const libglabels::Distance& x,
+						const libglabels::Distance& y ) const
 	{
 		/* Search object list in reverse order.  I.e. from top to bottom. */
 		QList<LabelModelObject*>::const_iterator it = mObjectList.end();
@@ -137,7 +139,9 @@ namespace glabels
 	///
 	/// Handle at x,y
 	///
-	Handle* LabelModel::handleAt( double scale, double x, double y ) const
+	Handle* LabelModel::handleAt( double                      scale,
+				      const libglabels::Distance& x,
+				      const libglabels::Distance& y ) const
 	{
 		foreach( LabelModelObject* object, mObjectList )
 		{
@@ -234,10 +238,10 @@ namespace glabels
 		using std::min;
 		using std::max;
 
-		double rX1 = min( region.x1(), region.x2() );
-		double rY1 = min( region.y1(), region.y2() );
-		double rX2 = max( region.x1(), region.x2() );
-		double rY2 = max( region.y1(), region.y2() );
+		libglabels::Distance rX1 = min( region.x1(), region.x2() );
+		libglabels::Distance rY1 = min( region.y1(), region.y2() );
+		libglabels::Distance rX2 = max( region.x1(), region.x2() );
+		libglabels::Distance rY2 = max( region.y1(), region.y2() );
 
 		foreach ( LabelModelObject* object, mObjectList )
 		{
@@ -559,7 +563,7 @@ namespace glabels
 		QList<LabelModelObject*> selectedList = getSelection();
 
 		/// Find left-most edge.
-		double x1_min = 7200; /// Start with a very large value: 7200pts = 100in
+		libglabels::Distance x1_min = 7200; /// Start with a very large value: 7200pts = 100in
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
@@ -570,7 +574,7 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dx = x1_min - r.x1();
+			libglabels::Distance dx = x1_min - r.x1();
 			object->setPositionRelative( dx, 0 );
 		}
 		
@@ -594,7 +598,7 @@ namespace glabels
 		QList<LabelModelObject*> selectedList = getSelection();
 
 		/// Find right-most edge.
-		double x1_max = -7200; /// Start with a very large negative value: 7200pts = 100in
+		libglabels::Distance x1_max = -7200; /// Start with a very large negative value: 7200pts = 100in
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
@@ -605,7 +609,7 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dx = x1_max - r.x1();
+			libglabels::Distance dx = x1_max - r.x1();
 			object->setPositionRelative( dx, 0 );
 		}
 		
@@ -629,7 +633,7 @@ namespace glabels
 		QList<LabelModelObject*> selectedList = getSelection();
 
 		/// Find average center of objects.
-		double xsum = 0;
+		libglabels::Distance xsum = 0;
 		int n = 0;
 		foreach ( LabelModelObject* object, selectedList )
 		{
@@ -637,15 +641,15 @@ namespace glabels
 			xsum += (r.x1() + r.x2()) / 2.0;
 			n++;
 		}
-		double xavg = xsum / n;
+		libglabels::Distance xavg = xsum / n;
 
 		/// Find object closest to average center of objects.
-		double xcenter = 7200; /// Start with very large value.
-		double dxmin = fabs( xavg - xcenter );
+		libglabels::Distance xcenter = 7200; /// Start with very large value.
+		libglabels::Distance dxmin = fabs( xavg - xcenter );
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dx = fabs( xavg - (r.x1() + r.x2())/2.0 );
+			libglabels::Distance dx = fabs( xavg - (r.x1() + r.x2())/2.0 );
 			if ( dx < dxmin )
 			{
 				dxmin = dx;
@@ -657,7 +661,7 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dx = xcenter - (r.x1() + r.x2())/2.0;
+			libglabels::Distance dx = xcenter - (r.x1() + r.x2())/2.0;
 			object->setPositionRelative( dx, 0 );
 		}
 		
@@ -681,7 +685,7 @@ namespace glabels
 		QList<LabelModelObject*> selectedList = getSelection();
 
 		/// Find top-most edge.
-		double y1_min = 7200; /// Start with a very large value: 7200pts = 100in
+		libglabels::Distance y1_min = 7200; /// Start with a very large value: 7200pts = 100in
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
@@ -692,7 +696,7 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dy = y1_min - r.y1();
+			libglabels::Distance dy = y1_min - r.y1();
 			object->setPositionRelative( 0, dy );
 		}
 		
@@ -716,7 +720,7 @@ namespace glabels
 		QList<LabelModelObject*> selectedList = getSelection();
 
 		/// Find bottom-most edge.
-		double y1_max = -7200; /// Start with a very large negative value: 7200pts = 100in
+		libglabels::Distance y1_max = -7200; /// Start with a very large negative value: 7200pts = 100in
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
@@ -727,7 +731,7 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dy = y1_max - r.y1();
+			libglabels::Distance dy = y1_max - r.y1();
 			object->setPositionRelative( 0, dy );
 		}
 		
@@ -751,7 +755,7 @@ namespace glabels
 		QList<LabelModelObject*> selectedList = getSelection();
 
 		/// Find average center of objects.
-		double ysum = 0;
+		libglabels::Distance ysum = 0;
 		int n = 0;
 		foreach ( LabelModelObject* object, selectedList )
 		{
@@ -759,15 +763,15 @@ namespace glabels
 			ysum += (r.y1() + r.y2()) / 2.0;
 			n++;
 		}
-		double yavg = ysum / n;
+		libglabels::Distance yavg = ysum / n;
 
 		/// Find object closest to average center of objects.
-		double ycenter = 7200; /// Start with very large value.
-		double dymin = fabs( yavg - ycenter );
+		libglabels::Distance ycenter = 7200; /// Start with very large value.
+		libglabels::Distance dymin = fabs( yavg - ycenter );
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dy = fabs( yavg - (r.y1() + r.y2())/2.0 );
+			libglabels::Distance dy = fabs( yavg - (r.y1() + r.y2())/2.0 );
 			if ( dy < dymin )
 			{
 				dymin = dy;
@@ -779,7 +783,7 @@ namespace glabels
 		foreach ( LabelModelObject* object, selectedList )
 		{
 			LabelRegion r = object->getExtent();
-			double dy = ycenter - (r.y1() + r.y2())/2.0;
+			libglabels::Distance dy = ycenter - (r.y1() + r.y2())/2.0;
 			object->setPositionRelative( 0, dy );
 		}
 		
@@ -795,15 +799,15 @@ namespace glabels
 	///
 	void LabelModel::centerSelectionHoriz()
 	{
-		double xLabelCenter = w() / 2.0;
+		libglabels::Distance xLabelCenter = w() / 2.0;
 
 		foreach ( LabelModelObject* object, mObjectList )
 		{
 			if ( object->isSelected() )
 			{
 				LabelRegion r = object->getExtent();
-				double xObjectCenter = (r.x1() + r.x2()) / 2.0;
-				double dx = xLabelCenter - xObjectCenter;
+				libglabels::Distance xObjectCenter = (r.x1() + r.x2()) / 2.0;
+				libglabels::Distance dx = xLabelCenter - xObjectCenter;
 				object->setPositionRelative( dx, 0 );
 			}
 		}
@@ -820,15 +824,15 @@ namespace glabels
 	///
 	void LabelModel::centerSelectionVert()
 	{
-		double yLabelCenter = h() / 2.0;
+		libglabels::Distance yLabelCenter = h() / 2.0;
 
 		foreach ( LabelModelObject* object, mObjectList )
 		{
 			if ( object->isSelected() )
 			{
 				LabelRegion r = object->getExtent();
-				double yObjectCenter = (r.y1() + r.y2()) / 2.0;
-				double dy = yLabelCenter - yObjectCenter;
+				libglabels::Distance yObjectCenter = (r.y1() + r.y2()) / 2.0;
+				libglabels::Distance dy = yLabelCenter - yObjectCenter;
 				object->setPositionRelative( 0, dy );
 			}
 		}
@@ -843,7 +847,7 @@ namespace glabels
 	///
 	/// Move Selected Objects By dx,dy
 	///
-	void LabelModel::moveSelection( double dx, double dy )
+	void LabelModel::moveSelection( const libglabels::Distance& dx, const libglabels::Distance& dy )
 	{
 		foreach ( LabelModelObject* object, mObjectList )
 		{
@@ -1023,7 +1027,7 @@ namespace glabels
 	///
 	/// Set Line Width Of Selected Objects
 	///
-	void LabelModel::setSelectionLineWidth( double lineWidth )
+	void LabelModel::setSelectionLineWidth( const libglabels::Distance& lineWidth )
 	{
 		foreach ( LabelModelObject* object, mObjectList )
 		{

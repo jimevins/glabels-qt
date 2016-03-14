@@ -1,6 +1,6 @@
 /*  Layout.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,6 +21,8 @@
 #ifndef libglabels_Layout_h
 #define libglabels_Layout_h
 
+#include "Distance.h"
+
 
 namespace libglabels
 {
@@ -29,18 +31,23 @@ namespace libglabels
 	{
 		
 	public:
-		Layout( int nx, int ny, double x0, double y0, double dx, double dy );
+		Layout( int             nx,
+		        int             ny,
+		        const Distance& x0,
+		        const Distance& y0,
+		        const Distance& dx,
+		        const Distance& dy );
 
 		Layout( const Layout &other );
 
 		int nx() const;
 		int ny() const;
 
-		double x0() const;
-		double y0() const;
+		Distance x0() const;
+		Distance y0() const;
 
-		double dx() const;
-		double dy() const;
+		Distance dx() const;
+		Distance dy() const;
 
 		bool isSimilarTo( const Layout *other );
 
@@ -48,12 +55,12 @@ namespace libglabels
 
 
 	private:
-		int     mNx;
-		int     mNy;
-		double  mX0;
-		double  mY0;
-		double  mDx;
-		double  mDy;
+		int      mNx;
+		int      mNy;
+		Distance mX0;
+		Distance mY0;
+		Distance mDx;
+		Distance mDy;
 		
 	};
 

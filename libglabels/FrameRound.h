@@ -1,6 +1,6 @@
 /*  FrameRound.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -31,28 +31,30 @@ namespace libglabels
 	{
 
 	public:
-		FrameRound( double r, double waste, QString id = "0" );
+		FrameRound( const Distance& r,
+		            const Distance& waste,
+		            const QString&  id = "0" );
 
 		FrameRound( const FrameRound &other );
 
 		Frame *dup() const;
 
-		double r() const;
-		double waste() const;
+		Distance r() const;
+		Distance waste() const;
 
-		double w() const;
-		double h() const;
+		Distance w() const;
+		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		const QString sizeDescription( Distance::Units units ) const;
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
-		QPainterPath marginPath( double size ) const;
+		QPainterPath marginPath( const Distance& size ) const;
 
 
 	private:
-		double mR;
-		double mWaste;
+		Distance mR;
+		Distance mWaste;
 
 		QPainterPath mPath;
 

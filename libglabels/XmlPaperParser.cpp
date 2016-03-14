@@ -93,8 +93,8 @@ namespace libglabels
 		QString id      = XmlUtil::getStringAttr( node, "id", "" );
 		QString name    = XmlUtil::getI18nAttr( node, "name", "" );
 
-		double  width   = XmlUtil::getLengthAttr( node, "width", 0 );
-		double  height  = XmlUtil::getLengthAttr( node, "height", 0 );
+		Distance width   = XmlUtil::getLengthAttr( node, "width", Distance(0) );
+		Distance height  = XmlUtil::getLengthAttr( node, "height", Distance(0) );
 
 		QString pwgSize = XmlUtil::getStringAttr( node, "pwg_size", "" );
 

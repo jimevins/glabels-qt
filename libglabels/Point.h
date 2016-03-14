@@ -1,6 +1,6 @@
 /*  Point.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,6 +21,8 @@
 #ifndef libglabels_Point_h
 #define libglabels_Point_h
 
+#include "Distance.h"
+
 
 namespace libglabels
 {
@@ -30,17 +32,17 @@ namespace libglabels
 	public:
 		Point();
 		
-		Point( double x, double y );
+		Point( Distance x, Distance y );
 
-		double x() const;
-		double y() const;
+		Distance x() const;
+		Distance y() const;
 
 		bool operator<( const Point &other ) const;
 
 
 	private:
-		double  mX;
-		double  mY;
+		Distance  mX;
+		Distance  mY;
 	};
 
 }

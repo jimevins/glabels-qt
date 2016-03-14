@@ -24,7 +24,7 @@ find_package(Qt4 4.8.4 REQUIRED QtCore QtGui QtXml)
 find_package(ZLIB REQUIRED)
 
 
-add_definitions (-g)
+add_definitions (-std=c++11 -g)
 
 
 #

@@ -1,6 +1,6 @@
 /*  Outline.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -78,10 +78,10 @@ void glabels::Outline::draw( QPainter* painter ) const
 	painter->setBrush( Qt::NoBrush );
 
 	painter->setPen( mPen1 );
-	painter->drawRect( QRectF( 0, 0, mOwner->w(), mOwner->h() ) );
+	painter->drawRect( QRectF( 0, 0, mOwner->w().pt(), mOwner->h().pt() ) );
 
 	painter->setPen( mPen2 );
-	painter->drawRect( QRectF( 0, 0, mOwner->w(), mOwner->h() ) );
+	painter->drawRect( QRectF( 0, 0, mOwner->w().pt(), mOwner->h().pt() ) );
 
 	painter->restore();
 }
@@ -97,10 +97,10 @@ QPainterPath glabels::Outline::hoverPath( double scale ) const
 	QPainterPath path;
 
 	path.addRect( -s*slopPixels, -s*slopPixels,
-		      mOwner->w()+s*2*slopPixels, mOwner->h()+s*2*slopPixels );
+		      mOwner->w().pt()+s*2*slopPixels, mOwner->h().pt()+s*2*slopPixels );
 	path.closeSubpath();
 	path.addRect( s*slopPixels, s*slopPixels,
-		      mOwner->w()-s*2*slopPixels, mOwner->h()-s*2*slopPixels );
+		      mOwner->w().pt()-s*2*slopPixels, mOwner->h().pt()-s*2*slopPixels );
 	
 	return path;
 }

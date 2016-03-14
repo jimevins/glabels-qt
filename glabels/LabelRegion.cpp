@@ -1,6 +1,6 @@
 /*  LabelRegion.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -34,10 +34,10 @@ namespace glabels
 
 		QRectF r;
 
-		r.setX( min( mX1, mX2 ) );
-		r.setY( min( mY1, mY2 ) );
-		r.setWidth( fabs( mX2 - mX1 ) );
-		r.setHeight( fabs( mY2 - mY1 ) );
+		r.setX( min( mX1, mX2 ).pt() );
+		r.setY( min( mY1, mY2 ).pt() );
+		r.setWidth( fabs( mX2 - mX1 ).pt() );
+		r.setHeight( fabs( mY2 - mY1 ).pt() );
 
 		return r;
 	}

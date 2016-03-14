@@ -1,6 +1,6 @@
 /*  Layout.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -34,25 +34,25 @@ namespace libglabels
 	}
 		
 
-	inline double Layout::x0() const
+	inline Distance Layout::x0() const
 	{
 		return mX0;
 	}
 
 		
-	inline double Layout::y0() const
+	inline Distance Layout::y0() const
 	{
 		return mY0;
 	}
 		
 
-	inline double Layout::dx() const
+	inline Distance Layout::dx() const
 	{
 		return mDx;
 	}
 
 		
-	inline double Layout::dy() const
+	inline Distance Layout::dy() const
 	{
 		return mDy;
 	}

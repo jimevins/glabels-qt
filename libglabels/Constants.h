@@ -1,6 +1,6 @@
-/*  Units.inl
+/*  Constants.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,16 +18,19 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef libglabels_Constants_h
+#define libglabels_Constants_h
+
 
 namespace libglabels
 {
 
-	inline QString Units::id() const { return mId; }
-
-	inline QString Units::name() const { return mName; }
-
-	inline double Units::pointsPerUnit() const { return mPointsPerUnit; }
-
-	inline double Units::unitsPerPoint() const { return mUnitsPerPoint; }
+	const double PTS_PER_PT    =  1.0;
+	const double PTS_PER_INCH  = 72.0;
+	const double PTS_PER_MM    =  2.83464566929;
+	const double PTS_PER_CM    =  (10.0*PTS_PER_MM);
+	const double PTS_PER_PICA  =  (1.0/12.0);
 
 }
+
+#endif // libglabels_Constants_h

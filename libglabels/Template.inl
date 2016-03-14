@@ -1,6 +1,6 @@
 /*  Template.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -27,8 +27,8 @@ namespace libglabels
 	inline const QString& Template::description() const { return mDescription; }
 
 	inline const QString& Template::paperId() const { return mPaperId; }
-	inline double Template::pageWidth() const { return mPageWidth; }
-	inline double Template::pageHeight() const { return mPageHeight; }
+	inline Distance Template::pageWidth() const { return mPageWidth; }
+	inline Distance Template::pageHeight() const { return mPageHeight; }
 	inline bool Template::isSizeIso() const { return mIsSizeIso; }
 	inline bool Template::isSizeUs() const { return mIsSizeUs; }
 	inline bool Template::isSizeOther() const { return !mIsSizeIso && !mIsSizeUs; }

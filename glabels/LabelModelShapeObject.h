@@ -1,6 +1,6 @@
 /*  LabelModelShapeObject.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -50,8 +50,8 @@ namespace glabels
 		//
 		// Shape Property: lineWidth
 		//
-		virtual double lineWidth( void ) const;
-		virtual void setLineWidth( double value );
+		virtual libglabels::Distance lineWidth( void ) const;
+		virtual void setLineWidth( const libglabels::Distance& value );
 
 
 		//
@@ -81,9 +81,9 @@ namespace glabels
 		// Private Members
 		///////////////////////////////////////////////////////////////
 	protected:
-		double     mLineWidth;
-		ColorNode  mLineColorNode;
-		ColorNode  mFillColorNode;
+		libglabels::Distance mLineWidth;
+		ColorNode            mLineColorNode;
+		ColorNode            mFillColorNode;
 
 	};
 

@@ -1,6 +1,6 @@
 /*  FrameEllipse.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -31,28 +31,31 @@ namespace libglabels
 	{
 		
 	public:
-		FrameEllipse( double w, double h, double waste, QString id = "0" );
+		FrameEllipse( const Distance& w,
+		              const Distance& h,
+		              const Distance& waste,
+		              const QString&  id = "0" );
 
 		FrameEllipse( const FrameEllipse& other );
 
 		Frame* dup() const;
 
-		double waste() const;
+		Distance waste() const;
 
-		double w() const;
-		double h() const;
+		Distance w() const;
+		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		const QString sizeDescription( Distance::Units units ) const;
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
-		QPainterPath marginPath( double size ) const;
+		QPainterPath marginPath( const Distance& size ) const;
 
 
 	private:
-		double mW;
-		double mH;
-		double mWaste;
+		Distance mW;
+		Distance mH;
+		Distance mWaste;
 
 		QPainterPath mPath;
 

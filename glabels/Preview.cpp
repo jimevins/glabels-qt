@@ -1,6 +1,6 @@
 /*  Preview.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -79,12 +79,12 @@ namespace glabels
 		if ( mModel != NULL )
 		{
 			// Set scene up with a 5% margin around paper
-			double x = -0.05 * mModel->tmplate()->pageWidth();
-			double y = -0.05 * mModel->tmplate()->pageHeight();
-			double w = 1.10 * mModel->tmplate()->pageWidth();
-			double h = 1.10 * mModel->tmplate()->pageHeight();
+			libglabels::Distance x = -0.05 * mModel->tmplate()->pageWidth();
+			libglabels::Distance y = -0.05 * mModel->tmplate()->pageHeight();
+			libglabels::Distance w = 1.10 * mModel->tmplate()->pageWidth();
+			libglabels::Distance h = 1.10 * mModel->tmplate()->pageHeight();
 
-			mScene->setSceneRect( x, y, w, h );
+			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
 			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
 
 			drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
@@ -128,7 +128,7 @@ namespace glabels
 	///
 	/// Draw Paper
 	///
-	void Preview::drawPaper( double pw, double ph )
+	void Preview::drawPaper( const libglabels::Distance& pw, const libglabels::Distance& ph )
 	{
 		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
@@ -140,7 +140,7 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( paperOutlineWidthPixels );
 
-		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw, ph );
+		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
 		pageItem->setBrush( brush );
 		pageItem->setPen( pen );
 		pageItem->setGraphicsEffect( shadowEffect );
@@ -166,7 +166,9 @@ namespace glabels
 	///
 	/// Draw a Single Label at x,y
 	///
-	void Preview::drawLabel( double x, double y, const QPainterPath &path )
+	void Preview::drawLabel( const libglabels::Distance& x,
+				 const libglabels::Distance& y,
+				 const QPainterPath&         path )
 	{
 		QBrush brush( Qt::NoBrush );
 		QPen pen( labelOutlineColor );
@@ -177,7 +179,7 @@ namespace glabels
 		QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
 		labelOutlineItem->setBrush( brush );
 		labelOutlineItem->setPen( pen );
-		labelOutlineItem->setPos( x, y );
+		labelOutlineItem->setPos( x.pt(), y.pt() );
 
 		mScene->addItem( labelOutlineItem );
 	}

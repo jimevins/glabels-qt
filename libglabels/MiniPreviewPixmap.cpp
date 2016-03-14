@@ -1,6 +1,6 @@
 /*  MiniPreviewPixmap.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -43,14 +43,14 @@ namespace libglabels
 	}
 
 
-	MiniPreviewPixmap::MiniPreviewPixmap( const Template *tmplate, int width, int height )
+	MiniPreviewPixmap::MiniPreviewPixmap( const Template* tmplate, int width, int height )
 		: QPixmap( width, height )
 	{
 		draw( tmplate, width, height );
 	}
 
 
-	void MiniPreviewPixmap::draw( const Template *tmplate, int width, int height )
+	void MiniPreviewPixmap::draw( const Template* tmplate, int width, int height )
 	{
 		fill( Qt::transparent );
 
@@ -62,26 +62,26 @@ namespace libglabels
 		double w = width - 1;
 		double h = height - 1;
 		double scale;
-		if ( (w/tmplate->pageWidth()) > (h/tmplate->pageHeight()) )
+		if ( (w/tmplate->pageWidth().pt()) > (h/tmplate->pageHeight().pt()) )
 		{
-			scale = h / tmplate->pageHeight();
+			scale = h / tmplate->pageHeight().pt();
 		}
 		else
 		{
-			scale = w / tmplate->pageWidth();
+			scale = w / tmplate->pageWidth().pt();
 		}
 		painter.scale( scale, scale );
 
-		double xOffset = ( width/scale - tmplate->pageWidth() ) / 2;
-		double yOffset = ( height/scale - tmplate->pageHeight() ) / 2;
-		painter.translate( xOffset, yOffset );
+		Distance xOffset = ( Distance::pt(width/scale) - tmplate->pageWidth() ) / 2;
+		Distance yOffset = ( Distance::pt(height/scale) - tmplate->pageHeight() ) / 2;
+		painter.translate( xOffset.pt(), yOffset.pt() );
 
 		drawPaper( painter, tmplate, scale );
 		drawLabelOutlines( painter, tmplate, scale );
 	}
 
 
-	void MiniPreviewPixmap::drawPaper( QPainter &painter, const Template *tmplate, double scale )
+	void MiniPreviewPixmap::drawPaper( QPainter& painter, const Template* tmplate, double scale )
 	{
 		QBrush brush( paperColor );
 		QPen pen( paperOutlineColor );
@@ -91,13 +91,13 @@ namespace libglabels
 
 		painter.setBrush( brush );
 		painter.setPen( pen );
-		painter.drawRect( 0, 0, tmplate->pageWidth(), tmplate->pageHeight() );
+		painter.drawRect( 0, 0, tmplate->pageWidth().pt(), tmplate->pageHeight().pt() );
 
 		painter.restore();
 	}
 
 
-	void MiniPreviewPixmap::drawLabelOutlines( QPainter &painter, const Template *tmplate, double scale )
+	void MiniPreviewPixmap::drawLabelOutlines( QPainter& painter, const Template* tmplate, double scale )
 	{
 		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
@@ -111,20 +111,20 @@ namespace libglabels
 		Frame *frame = tmplate->frames().first();
 		QVector<Point> origins = frame->getOrigins();
 
-		foreach ( Point point, origins )
+		foreach ( Point p0, origins )
 		{
-			drawLabelOutline( painter, frame, point.x(), point.y() );
+			drawLabelOutline( painter, frame, p0 );
 		}
 
 		painter.restore();
 	}
 
 
-	void MiniPreviewPixmap::drawLabelOutline( QPainter &painter, const Frame *frame, double x0, double y0 )
+	void MiniPreviewPixmap::drawLabelOutline( QPainter& painter, const Frame* frame, const Point& p0 )
 	{
 		painter.save();
 
-		painter.translate( x0, y0 );
+		painter.translate( p0.x().pt(), p0.y().pt() );
 		painter.drawPath( frame->path() );
 		
 		painter.restore();

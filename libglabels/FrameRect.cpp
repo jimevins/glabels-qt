@@ -1,6 +1,6 @@
 /*  FrameRect.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -29,10 +29,15 @@
 namespace libglabels
 {
 
-	FrameRect::FrameRect( double w, double h, double r, double xWaste, double yWaste, QString id )
+	FrameRect::FrameRect( const Distance& w,
+			      const Distance& h,
+			      const Distance& r,
+			      const Distance& xWaste,
+			      const Distance& yWaste,
+			      const QString&  id )
 		: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
 	{
-		mPath.addRoundedRect( 0, 0, mW, mH, mR, mR );
+		mPath.addRoundedRect( 0, 0, mW.pt(), mH.pt(), mR.pt(), mR.pt() );
 	}
 
 	
@@ -49,36 +54,36 @@ namespace libglabels
 	}
 
 
-	double FrameRect::w() const
+	Distance FrameRect::w() const
 	{
 		return mW;
 	}
 
 	
-	double FrameRect::h() const
+	Distance FrameRect::h() const
 	{
 		return mH;
 	}
 
 
-	const QString FrameRect::sizeDescription( const Units& units ) const
+	const QString FrameRect::sizeDescription( Distance::Units units ) const
 	{
-		if ( units.id() == "in" )
+		if ( units == Distance::Units::IN )
 		{
-			QString wStr = StrUtil::formatFraction( mW * units.unitsPerPoint() );
-			QString hStr = StrUtil::formatFraction( mH * units.unitsPerPoint() );
+			QString wStr = StrUtil::formatFraction( mW.in() );
+			QString hStr = StrUtil::formatFraction( mH.in() );
 
 			return QString().sprintf( "%s x %s %s",
 						  qPrintable(wStr),
 						  qPrintable(hStr),
-						  qPrintable(units.name()) );
+						  qPrintable(Distance::toTrName(units)) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g x %.5g %s",
-						  mW * units.unitsPerPoint(),
-						  mH * units.unitsPerPoint(),
-						  qPrintable(units.name()) );
+						  mW.inUnits(units),
+						  mH.inUnits(units),
+						  qPrintable(Distance::toTrName(units)) );
 		}
 	}
 
@@ -103,14 +108,14 @@ namespace libglabels
 	}
 
 
-	QPainterPath FrameRect::marginPath( double size ) const
+	QPainterPath FrameRect::marginPath( const Distance& size ) const
 	{
-		double w = mW - 2*size;
-		double h = mH - 2*size;
-		double r = std::max( mR - size, 0.0 );
+		Distance w = mW - 2*size;
+		Distance h = mH - 2*size;
+		Distance r = std::max( mR - size, Distance(0.0) );
 
 		QPainterPath path;
-		path.addRoundedRect( size, size, w, h, r, r );
+		path.addRoundedRect( size.pt(), size.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
 
 		return path;
 	}

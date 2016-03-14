@@ -1,6 +1,6 @@
 /*  FrameRect.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -22,19 +22,19 @@
 namespace libglabels
 {
 
-	inline double FrameRect::r() const
+	inline Distance FrameRect::r() const
 	{
 		return mR;
 	}
 
 		
-	inline double FrameRect::xWaste() const
+	inline Distance FrameRect::xWaste() const
 	{
 		return mXWaste;
 	}
 
 		
-	inline double FrameRect::yWaste() const
+	inline Distance FrameRect::yWaste() const
 	{
 		return mYWaste;
 	}

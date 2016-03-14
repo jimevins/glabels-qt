@@ -1,6 +1,6 @@
 /*  Template.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -28,12 +28,12 @@
 namespace libglabels
 {
 
-	Template::Template( const QString& brand,
-			    const QString& part,
-			    const QString& description,
-			    const QString& paperId,
-			    double         pageWidth = 0,
-			    double         pageHeight = 0 )
+	Template::Template( const QString&  brand,
+			    const QString&  part,
+			    const QString&  description,
+			    const QString&  paperId,
+			    const Distance& pageWidth,
+			    const Distance& pageHeight )
 		: mBrand(brand),
 		  mPart(part),
 		  mDescription(description),

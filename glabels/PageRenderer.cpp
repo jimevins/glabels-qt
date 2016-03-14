@@ -1,6 +1,6 @@
 /*  PageRenderer.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2014  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -104,7 +104,7 @@ namespace glabels
 	{
 		if ( mModel )
 		{
-			return QRectF( 0, 0, mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
+			return QRectF( 0, 0, mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
 		}
 		else
 		{
@@ -178,7 +178,7 @@ namespace glabels
 		for ( int i = iStart; i < iEnd; i++ )
 		{
 			painter->save();
-			painter->translate( mOrigins[i].x(), mOrigins[i].y() );
+			painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
 			
 			painter->save();
 			clipLabel( painter );
@@ -238,12 +238,12 @@ namespace glabels
 		if ( mModel->rotate() )
 		{
 			painter->rotate( 90.0 );
-			painter->translate( 0, mModel->h() );
+			painter->translate( 0, mModel->h().pt() );
 		}
 
 		if ( mPrintReverse )
 		{
-			painter->translate( mModel->w(), 0 );
+			painter->translate( mModel->w().pt(), 0 );
 			painter->scale( -1, 1 );
 		}
 

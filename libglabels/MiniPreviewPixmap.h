@@ -1,6 +1,6 @@
 /*  MiniPreviewPixmap.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -24,6 +24,7 @@
 
 #include <QPixmap>
 #include <QPainter>
+#include "Point.h"
 
 
 namespace libglabels
@@ -38,14 +39,14 @@ namespace libglabels
 	public:
 		MiniPreviewPixmap();
 
-		MiniPreviewPixmap( const Template *tmplate, int width, int height );
+		MiniPreviewPixmap( const Template* tmplate, int width, int height );
 
 		
 	private:
-		void draw( const Template *tmplate, int width, int height );
-		void drawPaper( QPainter &painter, const Template *tmplate, double scale );
-		void drawLabelOutlines( QPainter &painter, const Template *tmplate, double scale );
-		void drawLabelOutline( QPainter &painter, const Frame *frame, double x0, double y0 );
+		void draw( const Template* tmplate, int width, int height );
+		void drawPaper( QPainter& painter, const Template* tmplate, double scale );
+		void drawLabelOutlines( QPainter& painter, const Template* tmplate, double scale );
+		void drawLabelOutline( QPainter& painter, const Frame *frame, const Point& point0 );
 		
 	};
 

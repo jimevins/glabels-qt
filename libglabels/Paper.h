@@ -1,6 +1,6 @@
 /*  Paper.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -23,6 +23,7 @@
 
 
 #include <QString>
+#include "Distance.h"
 
 
 namespace libglabels
@@ -31,16 +32,20 @@ namespace libglabels
 	class Paper
 	{
 	public:
-		Paper( const QString& id, const QString& name, double width, double height, const QString& pwgSize );
+		Paper( const QString&  id,
+		       const QString&  name,
+		       const Distance& width,
+		       const Distance& height,
+		       const QString&  pwgSize );
 
 		inline const QString& id() const;
 		inline const QString& name() const;
 
-		/* Width (in points) */
-		inline double width() const;
+		/* Width */
+		inline Distance width() const;
 
-		/* Height (in points) */
-		inline double height() const;
+		/* Height */
+		inline Distance height() const;
 
 		/* PWG 5101.1-2002 size name */
 		inline QString pwgSize() const;
@@ -49,11 +54,11 @@ namespace libglabels
 		inline bool isSizeUs() const;
 
 	private:
-		QString mId;
-		QString mName;
-		double  mWidth;
-		double  mHeight;
-		QString mPwgSize;
+		QString  mId;
+		QString  mName;
+		Distance mWidth;
+		Distance mHeight;
+		QString  mPwgSize;
 	};
 
 }

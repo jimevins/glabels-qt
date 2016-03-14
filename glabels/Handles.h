@@ -24,6 +24,7 @@
 
 #include <QPainter>
 #include <QPainterPath>
+#include "libglabels/Distance.h"
 
 
 namespace glabels
@@ -67,8 +68,15 @@ namespace glabels
 		virtual void  draw( QPainter* painter, double scale ) const = 0;
 		virtual QPainterPath path( double scale ) const = 0;
 	protected:
-		void drawAt( QPainter* painter, double scale, double x, double y, QColor color ) const;
-		QPainterPath pathAt( double scale, double x, double y ) const;
+		void drawAt( QPainter*                   painter,
+		             double                      scale,
+		             const libglabels::Distance& x,
+		             const libglabels::Distance& y,
+		             QColor                      color ) const;
+		
+		QPainterPath pathAt( double                      scale,
+		                     const libglabels::Distance& x,
+		                     const libglabels::Distance& y ) const;
 
 
 		////////////////////////////

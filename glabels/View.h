@@ -1,6 +1,6 @@
 /*  View.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -56,7 +56,7 @@ namespace glabels
 	signals:
 		void contextMenuActivate();
 		void zoomChanged();
-		void pointerMoved( double x, double y );
+		void pointerMoved( const libglabels::Distance& x, const libglabels::Distance& y );
 		void pointerExited();
 		void modeChanged();
 
@@ -128,7 +128,8 @@ namespace glabels
 		// Private methods
 		/////////////////////////////////////
 	private:
-		void handleResizeMotion( double xWorld, double yWorld );
+		void handleResizeMotion( const libglabels::Distance& xWorld,
+		                         const libglabels::Distance& yWorld );
 
 		void drawBgLayer( QPainter* painter );
 		void drawGridLayer( QPainter* painter );
@@ -169,41 +170,41 @@ namespace glabels
 			Barcode
 		};
 
-		QScrollArea*        mScrollArea;
+		QScrollArea*         mScrollArea;
 
-		double              mZoom;
-		bool                mZoomToFitFlag;
-		double              mScale;
-		double              mX0;
-		double              mY0;
+		double               mZoom;
+		bool                 mZoomToFitFlag;
+		double               mScale;
+		libglabels::Distance mX0;
+		libglabels::Distance mY0;
 
-		bool                mMarkupVisible;
-		bool                mGridVisible;
+		bool                 mMarkupVisible;
+		bool                 mGridVisible;
 
-		double              mGridSpacing;
+		double               mGridSpacing;
 
-		LabelModel*         mModel;
+		LabelModel*          mModel;
 
-		State               mState;
+		State                mState;
 
 		/* ArrowSelectRegion state */
-		bool                mSelectRegionVisible;
-		LabelRegion         mSelectRegion;
+		bool                 mSelectRegionVisible;
+		LabelRegion          mSelectRegion;
 
 		/* ArrowMove state */
-		double              mMoveLastX;
-		double              mMoveLastY;
+		libglabels::Distance mMoveLastX;
+		libglabels::Distance mMoveLastY;
 
 		/* ArrowResize state */
-		LabelModelObject*   mResizeObject;
-		Handle*             mResizeHandle;
-		bool                mResizeHonorAspect;
+		LabelModelObject*    mResizeObject;
+		Handle*              mResizeHandle;
+		bool                 mResizeHonorAspect;
 
 		/* CreateDrag state */
-		CreateType          mCreateObjectType;
-		LabelModelObject*   mCreateObject;
-		double              mCreateX0;
-		double              mCreateY0;
+		CreateType           mCreateObjectType;
+		LabelModelObject*    mCreateObject;
+		libglabels::Distance mCreateX0;
+		libglabels::Distance mCreateY0;
 
 
 	};

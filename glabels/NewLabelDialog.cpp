@@ -1,6 +1,6 @@
 /*  NewLabelDialog.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -165,7 +165,7 @@ namespace glabels
 			QString pgSizeString = libglabels::Db::lookupPaperNameFromId( tmplate->paperId() );
 			pageSizeLabel->setText( pgSizeString );
 
-			QString labelSizeString = frame->sizeDescription( libglabels::Units::inch() );
+			QString labelSizeString = frame->sizeDescription( libglabels::Distance::Units::IN );
 			labelSizeLabel->setText( labelSizeString );
 
 			QString layoutString = frame->layoutDescription();

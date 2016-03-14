@@ -76,11 +76,15 @@ glabels::Handle::Location glabels::Handle::location() const
 ///
 /// Draw Handle at x,y
 ///
-void glabels::Handle::drawAt( QPainter* painter, double scale, double x, double y, QColor color ) const
+void glabels::Handle::drawAt( QPainter*                   painter,
+			      double                      scale,
+			      const libglabels::Distance& x,
+			      const libglabels::Distance& y,
+			      QColor                      color ) const
 {
 	painter->save();
 
-	painter->translate( x, y );
+	painter->translate( x.pt(), y.pt() );
 
 	double s = 1.0 / scale;
 
@@ -100,14 +104,16 @@ void glabels::Handle::drawAt( QPainter* painter, double scale, double x, double 
 ///
 /// Create Handle path at x,y
 ///
-QPainterPath glabels::Handle::pathAt( double scale, double x, double y ) const
+QPainterPath glabels::Handle::pathAt( double                      scale,
+				      const libglabels::Distance& x,
+				      const libglabels::Distance& y ) const
 {
 	QPainterPath path;
 
 	double s = 1/scale;
 
 	path.addRect( -s*handlePixels/2, -s*handlePixels/2, s*handlePixels, s*handlePixels );
-	path.translate( x, y );
+	path.translate( x.pt(), y.pt() );
 	
 	return path;
 }

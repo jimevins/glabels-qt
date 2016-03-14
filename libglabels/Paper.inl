@@ -25,8 +25,8 @@ namespace libglabels
 	inline const QString& Paper::id() const { return mId; }
 	inline const QString& Paper::name() const { return mName; }
 
-	inline double Paper::width() const { return mWidth; }
-	inline double Paper::height() const { return mHeight; }
+	inline Distance Paper::width() const { return mWidth; }
+	inline Distance Paper::height() const { return mHeight; }
 
 	inline QString Paper::pwgSize() const { return mPwgSize; }
 

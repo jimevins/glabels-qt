@@ -1,6 +1,6 @@
 /*  FrameCd.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -30,32 +30,37 @@ namespace libglabels
 	class FrameCd : public Frame
 	{
 	public:
-		FrameCd( double r1, double r2, double w, double h, double waste, QString id = "0" );
+		FrameCd( const Distance& r1,
+		         const Distance& r2,
+		         const Distance& w,
+		         const Distance& h,
+		         const Distance& waste,
+		         const QString&  id = "0" );
 
 		FrameCd( const FrameCd &other );
 
 		Frame *dup() const;
 
-		double r1() const;
-		double r2() const;
-		double waste() const;
+		Distance r1() const;
+		Distance r2() const;
+		Distance waste() const;
 
-		double w() const;
-		double h() const;
+		Distance w() const;
+		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		const QString sizeDescription( Distance::Units units ) const;
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
-		QPainterPath marginPath( double size ) const;
+		QPainterPath marginPath( const Distance& size ) const;
 
 
 	private:
-		double mR1;
-		double mR2;
-		double mW;
-		double mH;
-		double mWaste;
+		Distance mR1;
+		Distance mR2;
+		Distance mW;
+		Distance mH;
+		Distance mWaste;
 
 		QPainterPath mPath;
 

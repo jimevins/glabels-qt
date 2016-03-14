@@ -1,6 +1,6 @@
 /*  FrameRound.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -29,10 +29,12 @@
 namespace libglabels
 {
 
-	FrameRound::FrameRound( double r, double waste, QString id )
+	FrameRound::FrameRound( const Distance& r,
+				const Distance& waste,
+				const QString&  id )
 		: mR(r), mWaste(waste), Frame(id)
 	{
-		mPath.addEllipse( 0, 0, 2*mR, 2*mR );
+		mPath.addEllipse( 0, 0, 2*mR.pt(), 2*mR.pt() );
 	}
 	
 
@@ -48,34 +50,34 @@ namespace libglabels
 	}
 
 	
-	double FrameRound::w() const
+	Distance FrameRound::w() const
 	{
 		return 2*mR;
 	}
 
 	
-	double FrameRound::h() const
+	Distance FrameRound::h() const
 	{
 		return 2*mR;
 	}
 
 	
-	const QString FrameRound::sizeDescription( const Units& units ) const
+	const QString FrameRound::sizeDescription( Distance::Units units ) const
 	{
-		if ( units.id() == "in" )
+		if ( units == Distance::Units::IN )
 		{
-			QString dStr = StrUtil::formatFraction( 2 * mR * units.unitsPerPoint() );
+			QString dStr = StrUtil::formatFraction( 2 * mR.in() );
 
 			return QString().sprintf( "%s %s %s",
 						  qPrintable(dStr),
-						  qPrintable(units.name()),
+						  qPrintable(Distance::toTrName(units)),
 						  qPrintable(tr("diameter")) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g %s %s",
-						  2 * mR * units.unitsPerPoint(),
-						  qPrintable(units.name()),
+						  2 * mR.inUnits(units),
+						  qPrintable(Distance::toTrName(units)),
 						  qPrintable(tr("diameter")) );
 		}
 	}
@@ -100,12 +102,12 @@ namespace libglabels
 	}
 
 
-	QPainterPath FrameRound::marginPath( double size ) const
+	QPainterPath FrameRound::marginPath( const Distance& size ) const
 	{
-		double r = mR - size;
+		Distance r = mR - size;
 
 		QPainterPath path;
-		path.addEllipse( size, size, 2*r, 2*r );
+		path.addEllipse( size.pt(), size.pt(), 2*r.pt(), 2*r.pt() );
 
 		return path;
 	}

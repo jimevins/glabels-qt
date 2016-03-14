@@ -1,6 +1,6 @@
 /*  XmlUtil.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -25,7 +25,7 @@
 #include <QDomElement>
 #include <stdint.h>
 
-#include "Units.h"
+#include "Distance.h"
 
 
 namespace libglabels
@@ -41,8 +41,8 @@ namespace libglabels
 
 		static void init();
 
-		static Units defaultUnits();
-		static void setDefaultUnits( const Units& defaultUnits );
+		static Distance::Units units();
+		static void setUnits( Distance::Units units );
 
 		static QString  getStringAttr( const QDomElement& node,
 		                               const QString&     name,
@@ -68,9 +68,9 @@ namespace libglabels
 		                             const QString&     name,
 		                             const QString&     default_value );
 
-		static double   getLengthAttr( const QDomElement& node,
+		static Distance getLengthAttr( const QDomElement& node,
 		                               const QString&     name,
-		                               double             default_value );
+		                               const Distance&    default_value );
 
 		static void     setStringAttr( QDomElement&   node,
 		                               const QString& name,
@@ -92,12 +92,12 @@ namespace libglabels
 		                             const QString& name,
 		                             uint32_t       value );
 
-		static void     setLengthAttr( QDomElement&   node,
-		                               const QString& name,
-		                               double         value );
+		static void     setLengthAttr( QDomElement&    node,
+		                               const QString&  name,
+		                               const Distance& value );
 
 	private:
-		static Units mDefaultUnits;
+		static Distance::Units mUnits;
 
 	};
 

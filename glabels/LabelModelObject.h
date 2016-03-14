@@ -1,6 +1,6 @@
 /*  LabelModelObject.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -26,6 +26,7 @@
 #include <QMatrix>
 #include <QPainter>
 
+#include "libglabels/Distance.h"
 #include "ColorNode.h"
 #include "TextNode.h"
 #include "BarcodeStyle.h"
@@ -70,15 +71,11 @@ namespace glabels
 		//
 		// ID Property.
 		//
-		Q_PROPERTY( int id READ id )
-
 		int id() const;
 
 		//
 		// Selected Property.
 		//
-		Q_PROPERTY( bool selected READ isSelected WRITE select RESET unselect )
-
 		bool isSelected() const;
 		void select( bool value = true );
 		void unselect();
@@ -87,44 +84,34 @@ namespace glabels
 		//
 		// x0 Property ( x coordinate of origin )
 		//
-		Q_PROPERTY( double x0 READ x0 WRITE setX0 );
-
-		double x0() const;
-		void setX0( double value );
+		libglabels::Distance x0() const;
+		void setX0( const libglabels::Distance& value );
 		
 
 		//
 		// y0 Property ( y coordinate of origin )
 		//
-		Q_PROPERTY( double y0 READ y0 WRITE setY0 );
-
-		double y0() const;
-		void setY0( double value );
+		libglabels::Distance y0() const;
+		void setY0( const libglabels::Distance& value );
 		
 
 		//
 		// w Property ( width of bounding box )
 		//
-		Q_PROPERTY( double w  READ w  WRITE setW );
-
-		double w() const;
-		void setW( double value );
+		libglabels::Distance w() const;
+		void setW( const libglabels::Distance& value );
 		
 
 		//
 		// h Property ( height of bounding box )
 		//
-		Q_PROPERTY( double h  READ h  WRITE setH );
-
-		double h() const;
-		void setH( double value );
+		libglabels::Distance h() const;
+		void setH( const libglabels::Distance& value );
 
 
 		//
 		// Transformation Matrix Property
 		//
-		Q_PROPERTY( QMatrix matrix READ matrix WRITE setMatrix );
-
 		QMatrix matrix() const;
 		void setMatrix( const QMatrix& value );
 
@@ -132,8 +119,6 @@ namespace glabels
 		//
 		// Shadow State Property
 		//
-		Q_PROPERTY( bool shadow READ shadow WRITE setShadow );
-
 		bool shadow() const;
 		void setShadow( bool value );
 
@@ -141,26 +126,20 @@ namespace glabels
 		//
 		// Shadow x Offset Property
 		//
-		Q_PROPERTY( double shadowX READ shadowX WRITE setShadowX );
-
-		double shadowX() const;
-		void setShadowX( double value );
+		libglabels::Distance shadowX() const;
+		void setShadowX( const libglabels::Distance& value );
 		
 
 		//
 		// Shadow y Offset Property
 		//
-		Q_PROPERTY( double shadowY READ shadowY WRITE setShadowY );
-
-		double shadowY() const;
-		void setShadowY( double value );
+		libglabels::Distance shadowY() const;
+		void setShadowY( const libglabels::Distance& value );
 		
 
 		//
 		// Shadow opacity Property
 		//
-		Q_PROPERTY( double shadowOpacity READ shadowOpacity WRITE setShadowOpacity );
-
 		double shadowOpacity() const;
 		void setShadowOpacity( double value );
 		
@@ -168,8 +147,6 @@ namespace glabels
 		//
 		// Shadow Color Property
 		//
-		Q_PROPERTY( ColorNode shadowColorNode READ shadowColorNode WRITE setShadowColorNode );
-
 		ColorNode shadowColorNode() const;
 		void setShadowColorNode( const ColorNode& value );
 		
@@ -181,8 +158,6 @@ namespace glabels
 		//
 		// Virtual Text Property: fontFamily
 		//
-		Q_PROPERTY( QString fontFamily READ fontFamily WRITE setFontFamily );
-
 		virtual QString fontFamily() const;
 		virtual void setFontFamily( const QString &value );
 
@@ -190,8 +165,6 @@ namespace glabels
 		//
 		// Virtual Text Property: fontSize
 		//
-		Q_PROPERTY( double fontSize READ fontSize WRITE setFontSize );
-
 		virtual double fontSize() const;
 		virtual void setFontSize( double value );
 
@@ -199,8 +172,6 @@ namespace glabels
 		//
 		// Virtual Text Property: fontWeight
 		//
-		Q_PROPERTY( QFont::Weight fontWeight READ fontWeight WRITE setFontWeight );
-
 		virtual QFont::Weight fontWeight() const;
 		virtual void setFontWeight( QFont::Weight value );
 
@@ -208,8 +179,6 @@ namespace glabels
 		//
 		// Virtual Text Property: fontItalicFlag
 		//
-		Q_PROPERTY( bool fontItalicFlag READ fontItalicFlag WRITE setFontItalicFlag );
-
 		virtual bool fontItalicFlag() const;
 		virtual void setFontItalicFlag( bool value );
 
@@ -217,8 +186,6 @@ namespace glabels
 		//
 		// Virtual Text Property: fontUnderlineFlag
 		//
-		Q_PROPERTY( bool fontUnderlineFlag READ fontUnderlineFlag WRITE setFontUnderlineFlag );
-
 		virtual bool fontUnderlineFlag() const;
 		virtual void setFontUnderlineFlag( bool value );
 
@@ -226,8 +193,6 @@ namespace glabels
 		//
 		// Virtual Text Property: textColorNode
 		//
-		Q_PROPERTY( ColorNode textColorNode READ textColorNode WRITE setTextColorNode );
-
 		virtual ColorNode textColorNode() const;
 		virtual void setTextColorNode( const ColorNode &value );
 		
@@ -235,8 +200,6 @@ namespace glabels
 		//
 		// Virtual Text Property: textHAlign
 		//
-		Q_PROPERTY( Qt::Alignment textHAlign READ textHAlign WRITE setTextHAlign );
-
 		virtual Qt::Alignment textHAlign() const;
 		virtual void setTextHAlign( Qt::Alignment value );
 
@@ -244,8 +207,6 @@ namespace glabels
 		//
 		// Virtual Text Property: textVAlign
 		//
-		Q_PROPERTY( Qt::Alignment textVAlign READ textVAlign WRITE setTextVAlign );
-
 		virtual Qt::Alignment textVAlign() const;
 		virtual void setTextVAlign( Qt::Alignment value );
 
@@ -253,8 +214,6 @@ namespace glabels
 		//
 		// Virtual Text Property: textLineSpacing
 		//
-		Q_PROPERTY( double textLineSpacing READ textLineSpacing WRITE setTextLineSpacing );
-
 		virtual double textLineSpacing() const;
 		virtual void setTextLineSpacing( double value );
 
@@ -266,8 +225,6 @@ namespace glabels
 		//
 		// Virtual Image Property: filenameNode
 		//
-		Q_PROPERTY( TextNode filenameNode READ filenameNode WRITE setFilenameNode );
-
 		virtual TextNode filenameNode() const;
 		virtual void setFilenameNode( const TextNode &value );
 		
@@ -279,17 +236,13 @@ namespace glabels
 		//
 		// Virtual Shape Property: lineWidth
 		//
-		Q_PROPERTY( double lineWidth READ lineWidth WRITE setLineWidth );
-
-		virtual double lineWidth() const;
-		virtual void setLineWidth( double value );
+		virtual libglabels::Distance lineWidth() const;
+		virtual void setLineWidth( const libglabels::Distance& value );
 
 
 		//
 		// Virtual Shape Property: lineColorNode
 		//
-		Q_PROPERTY( ColorNode lineColorNode READ lineColorNode WRITE setLineColorNode );
-
 		virtual ColorNode lineColorNode() const;
 		virtual void setLineColorNode( const ColorNode &value );
 		
@@ -297,8 +250,6 @@ namespace glabels
 		//
 		// Virtual Shape Property: fillColorNode
 		//
-		Q_PROPERTY( ColorNode fillColorNode READ fillColorNode WRITE setFillColorNode );
-
 		virtual ColorNode fillColorNode() const;
 		virtual void setFillColorNode( const ColorNode &value );
 		
@@ -310,8 +261,6 @@ namespace glabels
 		//
 		// Virtual Barcode Property: bcDataNode
 		//
-		Q_PROPERTY( TextNode bcDataNode READ bcDataNode WRITE setBcDataNode );
-
 		virtual TextNode bcDataNode() const;
 		virtual void setBcDataNode( const TextNode &value );
 		
@@ -319,8 +268,6 @@ namespace glabels
 		//
 		// Virtual Barcode Property: bcTextFlag
 		//
-		Q_PROPERTY( bool bcTextFlag READ bcTextFlag WRITE setBcTextFlag );
-
 		virtual bool bcTextFlag() const;
 		virtual void setBcTextFlag( bool value );
 
@@ -328,8 +275,6 @@ namespace glabels
 		//
 		// Virtual Barcode Property: bcChecksumFlag
 		//
-		Q_PROPERTY( bool bcChecksumFlag READ bcChecksumFlag WRITE setBcChecksumFlag );
-
 		virtual bool bcChecksumFlag() const;
 		virtual void setBcChecksumFlag( bool value );
 
@@ -337,8 +282,6 @@ namespace glabels
 		//
 		// Virtual Barcode Property: bcColorNode
 		//
-		Q_PROPERTY( ColorNode bcColorNode READ bcColorNode WRITE setBcColorNode );
-
 		virtual ColorNode bcColorNode() const;
 		virtual void setBcColorNode( const ColorNode &value );
 		
@@ -346,8 +289,6 @@ namespace glabels
 		//
 		// Virtual Barcode Property: bcStyle
 		//
-		Q_PROPERTY( BarcodeStyle bcStyle READ bcStyle WRITE setBcStyle );
-
 		virtual BarcodeStyle bcStyle() const;
 		virtual void setBcStyle( const BarcodeStyle &value );
 		
@@ -355,8 +296,6 @@ namespace glabels
 		//
 		// Virtual Barcode Property: bcFormatDigits
 		//
-		Q_PROPERTY( int bcFormatDigits READ bcFormatDigits WRITE setBcFormatDigits );
-
 		virtual int bcFormatDigits() const;
 		virtual void setBcFormatDigits( int value );
 
@@ -375,18 +314,18 @@ namespace glabels
 		// Position and Size methods
 		///////////////////////////////////////////////////////////////
 	public:
-		void setPosition( double x0, double y0 );
-		void setPositionRelative( double dx, double dy );
-		void setSize( double w, double h );
-		void setSizeHonorAspect( double w, double h );
-		void setWHonorAspect( double w );
-		void setHHonorAspect( double h );
+		void setPosition( const libglabels::Distance& x0, const libglabels::Distance& y0 );
+		void setPositionRelative( const libglabels::Distance& dx, const libglabels::Distance& dy );
+		void setSize( const libglabels::Distance& w, const libglabels::Distance& h );
+		void setSizeHonorAspect( const libglabels::Distance& w, const libglabels::Distance& h );
+		void setWHonorAspect( const libglabels::Distance& w );
+		void setHHonorAspect( const libglabels::Distance& h );
 		LabelRegion getExtent();
 		void rotate( double thetaDegs );
 		void flipHoriz();
 		void flipVert();
-		bool isLocatedAt( double scale, double x, double y ) const;
-		Handle* handleAt( double scale, double x, double y ) const;
+		bool isLocatedAt( double scale, const libglabels::Distance& x, const libglabels::Distance& y ) const;
+		Handle* handleAt( double scale, const libglabels::Distance& x, const libglabels::Distance& y ) const;
 
 
 		///////////////////////////////////////////////////////////////
@@ -406,21 +345,21 @@ namespace glabels
 		// Protected Members
 		///////////////////////////////////////////////////////////////
 	protected:
-		bool       mSelectedFlag;
+		bool                 mSelectedFlag;
 
-		double     mX0;
-		double     mY0;
-		double     mW;
-		double     mH;
+		libglabels::Distance mX0;
+		libglabels::Distance mY0;
+		libglabels::Distance mW;
+		libglabels::Distance mH;
 
-		bool       mShadowState;
-		double     mShadowX;
-		double     mShadowY;
-		double     mShadowOpacity;
-		ColorNode  mShadowColorNode;
+		bool                 mShadowState;
+		libglabels::Distance mShadowX;
+		libglabels::Distance mShadowY;
+		double               mShadowOpacity;
+		ColorNode            mShadowColorNode;
 
-		QList<Handle*> mHandles;
-		Outline*       mOutline;
+		QList<Handle*>       mHandles;
+		Outline*             mOutline;
 
 
 		///////////////////////////////////////////////////////////////

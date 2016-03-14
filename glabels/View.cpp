@@ -1,6 +1,6 @@
 /*  View.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -59,7 +59,7 @@ namespace
 
 	const QColor  gridLineColor( 192, 192, 192 );
 	const double  gridLineWidthPixels = 1;
-	const double  gridSpacing = 9; // TODO: determine from locale.
+	const libglabels::Distance gridSpacing = libglabels::Distance::pt(9); // TODO: determine from locale.
 
 	const QColor  markupLineColor( 240, 99, 99 );
 	const double  markupLineWidthPixels = 1;
@@ -235,8 +235,8 @@ glabels::View::zoomToFit()
 	double wPixels = mScrollArea->maximumViewportSize().width();
 	double hPixels = mScrollArea->maximumViewportSize().height();
 	
-	double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w();
-	double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h();
+	double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w().pt();
+	double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h().pt();
 	double newZoom = min( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
 
 	// Limits
@@ -279,7 +279,8 @@ glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
 	/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
 	mScale = zoom * physicalDpiX() / PTS_PER_INCH;
 
-	setMinimumSize( mScale*mModel->w() + ZOOM_TO_FIT_PAD, mScale*mModel->h() + ZOOM_TO_FIT_PAD );
+	setMinimumSize( mScale*mModel->w().pt() + ZOOM_TO_FIT_PAD,
+			mScale*mModel->h().pt() + ZOOM_TO_FIT_PAD );
 
 	/* Adjust origin to center label in widget. */
 	mX0 = (width()/mScale - mModel->w()) / 2;
@@ -354,11 +355,11 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 		QTransform transform;
 
 		transform.scale( mScale, mScale );
-		transform.translate( mX0, mY0 );
+		transform.translate( mX0.pt(), mY0.pt() );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
-		double xWorld = pWorld.x();
-		double yWorld = pWorld.y();
+		libglabels::Distance xWorld = libglabels::Distance::pt( pWorld.x() );
+		libglabels::Distance yWorld = libglabels::Distance::pt( pWorld.y() );
 
 		
 		if ( event->button() & Qt::LeftButton )
@@ -523,11 +524,11 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 		QTransform transform;
 
 		transform.scale( mScale, mScale );
-		transform.translate( mX0, mY0 );
+		transform.translate( mX0.pt(), mY0.pt() );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
-		double xWorld = pWorld.x();
-		double yWorld = pWorld.y();
+		libglabels::Distance xWorld = libglabels::Distance::pt( pWorld.x() );
+		libglabels::Distance yWorld = libglabels::Distance::pt( pWorld.y() );
 
 		
 		/*
@@ -624,11 +625,11 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 		QTransform transform;
 
 		transform.scale( mScale, mScale );
-		transform.translate( mX0, mY0 );
+		transform.translate( mX0.pt(), mY0.pt() );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
-		double xWorld = pWorld.x();
-		double yWorld = pWorld.y();
+		libglabels::Distance xWorld = libglabels::Distance::pt( pWorld.x() );
+		libglabels::Distance yWorld = libglabels::Distance::pt( pWorld.y() );
 
 		
 		if ( event->button() & Qt::LeftButton )
@@ -703,15 +704,16 @@ glabels::View::leaveEvent( QEvent* event )
 /// Handle resize motion
 ///
 void
-glabels::View::handleResizeMotion( double xWorld, double yWorld )
+glabels::View::handleResizeMotion( const libglabels::Distance& xWorld,
+				   const libglabels::Distance& yWorld )
 {
-	QPointF p( xWorld, yWorld );
+	QPointF p( xWorld.pt(), yWorld.pt() );
 	Handle::Location location = mResizeHandle->location();
 	
 	/*
 	 * Change point to object relative coordinates
 	 */
-	p -= QPointF( mResizeObject->x0(), mResizeObject->y0() );
+	p -= QPointF( mResizeObject->x0().pt(), mResizeObject->y0().pt() );
 	p = mResizeObject->matrix().inverted().map( p );
 
 	/*
@@ -723,8 +725,8 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	double x1 = 0.0;
 	double y1 = 0.0;
 
-	double x2 = mResizeObject->w();
-	double y2 = mResizeObject->h();
+	double x2 = mResizeObject->w().pt();
+	double y2 = mResizeObject->h().pt();
 
 	/*
 	 * Calculate new size
@@ -793,20 +795,22 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 			{
 			case Handle::E:
 			case Handle::W:
-				mResizeObject->setWHonorAspect( w );
+				mResizeObject->setWHonorAspect( libglabels::Distance::pt(w) );
 				break;
 			case Handle::N:
 			case Handle::S:
-				mResizeObject->setHHonorAspect( h );
+				mResizeObject->setHHonorAspect( libglabels::Distance::pt(h) );
 				break;
 			default:
-				mResizeObject->setSizeHonorAspect( w, h );
+				mResizeObject->setSizeHonorAspect( libglabels::Distance::pt(w),
+								   libglabels::Distance::pt(h) );
 				break;
 			}
 		}
 		else
 		{
-			mResizeObject->setSize( w, h );
+			mResizeObject->setSize( libglabels::Distance::pt(w),
+						libglabels::Distance::pt(h) );
 		}
 
 		/*
@@ -815,16 +819,16 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 		switch ( location )
 		{
 		case Handle::NW:
-			x0 += x2 - mResizeObject->w();
-			y0 += y2 - mResizeObject->h();
+			x0 += x2 - mResizeObject->w().pt();
+			y0 += y2 - mResizeObject->h().pt();
 			break;
 		case Handle::N:
 		case Handle::NE:
-			y0 += y2 - mResizeObject->h();
+			y0 += y2 - mResizeObject->h().pt();
 			break;
 		case Handle::W:
 		case Handle::SW:
-			x0 += x2 - mResizeObject->w();
+			x0 += x2 - mResizeObject->w().pt();
 			break;
 		defaule:
 			break;
@@ -832,7 +836,8 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	}
 	else
 	{
-		mResizeObject->setSize( w, h );
+		mResizeObject->setSize( libglabels::Distance::pt(w),
+					libglabels::Distance::pt(h) );
 	}
 
 	/*
@@ -840,8 +845,9 @@ glabels::View::handleResizeMotion( double xWorld, double yWorld )
 	 */
 	QPointF p0( x0, y0 );
 	p0 = mResizeObject->matrix().map( p0 );
-	p0 += QPointF( mResizeObject->x0(), mResizeObject->y0() );
-	mResizeObject->setPosition( p0.x(), p0.y() );
+	p0 += QPointF( mResizeObject->x0().pt(), mResizeObject->y0().pt() );
+	mResizeObject->setPosition( libglabels::Distance::pt(p0.x()),
+				    libglabels::Distance::pt(p0.y()) );
 }
 
 
@@ -866,7 +872,7 @@ glabels::View::paintEvent( QPaintEvent* event )
 
 		/* Transform. */
 		painter.scale( mScale, mScale );
-		painter.translate( mX0, mY0 );
+		painter.translate( mX0.pt(), mY0.pt() );
 
 		/* Now draw from the bottom layer up. */
 		drawBgLayer( &painter );
@@ -899,7 +905,7 @@ glabels::View::drawBgLayer( QPainter* painter )
 	if ( mModel->rotate() )
 	{
 		painter->rotate( -90 );
-		painter->translate( -mModel->frame()->w(), 0 );
+		painter->translate( -mModel->frame()->w().pt(), 0 );
 	}
 	painter->drawPath( mModel->frame()->path() );
 
@@ -917,7 +923,7 @@ glabels::View::drawBgLayer( QPainter* painter )
 	if ( mModel->rotate() )
 	{
 		painter->rotate( -90 );
-		painter->translate( -mModel->frame()->w(), 0 );
+		painter->translate( -mModel->frame()->w().pt(), 0 );
 	}
 	painter->drawPath( mModel->frame()->path() );
 
@@ -933,10 +939,10 @@ glabels::View::drawGridLayer( QPainter* painter )
 {
 	if ( mGridVisible )
 	{
-		double w = mModel->frame()->w();
-		double h = mModel->frame()->h();
+		libglabels::Distance w = mModel->frame()->w();
+		libglabels::Distance h = mModel->frame()->h();
 
-		double x0, y0;
+		libglabels::Distance x0, y0;
 		if ( dynamic_cast<const libglabels::FrameRect*>( mModel->frame() ) )
 		{
 			x0 = gridSpacing;
@@ -953,7 +959,7 @@ glabels::View::drawGridLayer( QPainter* painter )
 		if ( mModel->rotate() )
 		{
 			painter->rotate( -90 );
-			painter->translate( -mModel->frame()->w(), 0 );
+			painter->translate( -mModel->frame()->w().pt(), 0 );
 		}
 
 		painter->setClipPath( mModel->frame()->path() );
@@ -962,14 +968,14 @@ glabels::View::drawGridLayer( QPainter* painter )
 		pen.setCosmetic( true );
 		painter->setPen( pen );
 
-		for ( double x = x0; x < w; x += gridSpacing )
+		for ( libglabels::Distance x = x0; x < w; x += gridSpacing )
 		{
-			painter->drawLine( x, 0, x, h );
+			painter->drawLine( x.pt(), 0, x.pt(), h.pt() );
 		}
 
-		for ( double y = y0; y < h; y += gridSpacing )
+		for ( libglabels::Distance y = y0; y < h; y += gridSpacing )
 		{
-			painter->drawLine( 0, y, w, y );
+			painter->drawLine( 0, y.pt(), w.pt(), y.pt() );
 		}
 
 		painter->restore();
@@ -993,7 +999,7 @@ glabels::View::drawMarkupLayer( QPainter* painter )
 		if ( mModel->rotate() )
 		{
 			painter->rotate( -90 );
-			painter->translate( -mModel->frame()->w(), 0 );
+			painter->translate( -mModel->frame()->w().pt(), 0 );
 		}
 
 		foreach( libglabels::Markup* markup, mModel->frame()->markups() )
@@ -1035,7 +1041,7 @@ glabels::View::drawFgLayer( QPainter* painter )
 	if ( mModel->rotate() )
 	{
 		painter->rotate( -90 );
-		painter->translate( -mModel->frame()->w(), 0 );
+		painter->translate( -mModel->frame()->w().pt(), 0 );
 	}
 	painter->drawPath( mModel->frame()->path() );
 

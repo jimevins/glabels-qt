@@ -1,6 +1,6 @@
 /*  SimplePreview.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -110,12 +110,12 @@ namespace glabels
 		if ( mTmplate != NULL )
 		{
 			// Set scene up with a 5% margin around paper
-			double x = -0.05 * mTmplate->pageWidth();
-			double y = -0.05 * mTmplate->pageHeight();
-			double w = 1.10 * mTmplate->pageWidth();
-			double h = 1.10 * mTmplate->pageHeight();
+			libglabels::Distance x = -0.05 * mTmplate->pageWidth();
+			libglabels::Distance y = -0.05 * mTmplate->pageHeight();
+			libglabels::Distance w = 1.10 * mTmplate->pageWidth();
+			libglabels::Distance h = 1.10 * mTmplate->pageHeight();
 
-			mScene->setSceneRect( x, y, w, h );
+			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
 			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
 
 			drawPaper( mTmplate->pageWidth(), mTmplate->pageHeight() );
@@ -141,7 +141,7 @@ namespace glabels
 	///
 	/// Draw Paper
 	///
-	void SimplePreview::drawPaper( double pw, double ph )
+	void SimplePreview::drawPaper( const libglabels::Distance& pw, const libglabels::Distance& ph )
 	{
 		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
@@ -153,7 +153,7 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( paperOutlineWidthPixels );
 
-		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw, ph );
+		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
 		pageItem->setBrush( brush );
 		pageItem->setPen( pen );
 		pageItem->setGraphicsEffect( shadowEffect );
@@ -179,7 +179,9 @@ namespace glabels
 	///
 	/// Draw a Single Label at x,y
 	///
-	void SimplePreview::drawLabel( double x, double y, const QPainterPath &path )
+	void SimplePreview::drawLabel( const libglabels::Distance& x,
+				       const libglabels::Distance& y,
+				       const QPainterPath&         path )
 	{
 		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
@@ -189,7 +191,7 @@ namespace glabels
 		QGraphicsPathItem *labelItem  = new QGraphicsPathItem( path );
 		labelItem->setBrush( brush );
 		labelItem->setPen( pen );
-		labelItem->setPos( x, y );
+		labelItem->setPos( x.pt(), y.pt() );
 
 		mScene->addItem( labelItem );
 	}
@@ -202,32 +204,32 @@ namespace glabels
 	{
 		libglabels::Frame *frame = mTmplate->frames().first();
 
-		double w = frame->w();
-		double h = frame->h();
+		libglabels::Distance w = frame->w();
+		libglabels::Distance h = frame->h();
 
-		double min = ( w < h ) ? w : h;
+		libglabels::Distance min = libglabels::min( w, h );
 
 		QPen pen( arrowColor );
-		pen.setWidthF( 0.25*min*arrowScale );
+		pen.setWidthF( 0.25*min.pt()*arrowScale );
 		pen.setCapStyle( Qt::FlatCap );
 		pen.setJoinStyle( Qt::MiterJoin );
 
 		QBrush brush( upColor );
 
 		libglabels::Point origin = frame->getOrigins().first();
-		double x0 = origin.x();
-		double y0 = origin.y();
+		libglabels::Distance x0 = origin.x();
+		libglabels::Distance y0 = origin.y();
 
 		QPainterPath path;
-		path.moveTo( 0,                  min*arrowScale/3 );
-		path.lineTo( 0,                 -min*arrowScale   );
-		path.moveTo( -min*arrowScale/2, -min*arrowScale/2 );
-		path.lineTo( 0,                 -min*arrowScale   );
-		path.lineTo(  min*arrowScale/2, -min*arrowScale/2 );
+		path.moveTo( 0,                       min.pt()*arrowScale/3 );
+		path.lineTo( 0,                      -min.pt()*arrowScale   );
+		path.moveTo( -min.pt()*arrowScale/2, -min.pt()*arrowScale/2 );
+		path.lineTo( 0,                      -min.pt()*arrowScale   );
+		path.lineTo(  min.pt()*arrowScale/2, -min.pt()*arrowScale/2 );
 
 		QGraphicsPathItem *arrowItem = new QGraphicsPathItem( path );
 		arrowItem->setPen( pen );
-		arrowItem->setPos( x0+w/2, y0+h/2 );
+		arrowItem->setPos( (x0+w/2).pt(), (y0+h/2).pt() );
 		if ( mRotateFlag )
 		{
 			arrowItem->setRotation( 90 );
@@ -235,17 +237,17 @@ namespace glabels
 
 		QGraphicsSimpleTextItem *upItem = new QGraphicsSimpleTextItem( tr("Up") );
 		upItem->setBrush( brush );
-		upItem->setFont( QFont( upFontFamily, min*upScale, QFont::Bold ) );
-		upItem->setPos( x0+w/2, y0+h/2 );
+		upItem->setFont( QFont( upFontFamily, min.pt()*upScale, QFont::Bold ) );
+		upItem->setPos( (x0+w/2).pt(), (y0+h/2).pt() );
 		QRectF rect = upItem->boundingRect();
 		if ( mRotateFlag )
 		{
-			upItem->setPos( upItem->x()-min/8, upItem->y()-rect.width()/2 );
+			upItem->setPos( upItem->x()-min.pt()/8, upItem->y()-rect.width()/2 );
 			upItem->setRotation( 90 );
 		}
 		else
 		{
-			upItem->setPos( upItem->x()-rect.width()/2, upItem->y()+min/8 );
+			upItem->setPos( upItem->x()-rect.width()/2, upItem->y()+min.pt()/8 );
 		}
 
 		mScene->addItem( arrowItem );

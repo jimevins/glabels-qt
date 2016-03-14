@@ -1,6 +1,6 @@
 /*  XmlLabelParser.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -374,7 +374,7 @@ glabels::XmlLabelParser::parseShadowAttrs( const QDomElement &node, LabelModelOb
 
 		object->setShadowColorNode( ColorNode( field_flag, color, key ) );
 
-		object->setShadowOpacity( XmlUtil::getLengthAttr( node, "shadow_y", 1.0 ) );
+		object->setShadowOpacity( XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 ) );
 	}
 }
 

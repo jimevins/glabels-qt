@@ -1,6 +1,6 @@
 /*  Template.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -28,7 +28,7 @@
 
 #include <vector>
 
-#include "Units.h"
+#include "Distance.h"
 #include "Point.h"
 #include "Frame.h"
 #include "MiniPreviewPixmap.h"
@@ -46,12 +46,12 @@ namespace libglabels
 
 	public:
 
-		Template( const QString& brand,
-			  const QString& part,
-			  const QString& description,
-			  const QString& paperId,
-			  double         pageWidth,
-			  double         pageHeight );
+		Template( const QString&  brand,
+			  const QString&  part,
+			  const QString&  description,
+			  const QString&  paperId,
+		          const Distance& pageWidth,
+		          const Distance& pageHeight );
 
 		Template( const Template& other );
 
@@ -71,8 +71,8 @@ namespace libglabels
 		const QString& description() const;
 
 		const QString& paperId() const;
-		double pageWidth() const;
-		double pageHeight() const;
+		Distance pageWidth() const;
+		Distance pageHeight() const;
 		bool isSizeIso() const;
 		bool isSizeUs() const;
 		bool isSizeOther() const;
@@ -104,11 +104,11 @@ namespace libglabels
 		QString mPart;
 		QString mDescription;
 
-		QString mPaperId;
-		double  mPageWidth;
-		double  mPageHeight;
-		bool    mIsSizeIso;
-		bool    mIsSizeUs;
+		QString  mPaperId;
+		Distance mPageWidth;
+		Distance mPageHeight;
+		bool     mIsSizeIso;
+		bool     mIsSizeUs;
 
 		QString mEquivPart;
 		QString mName;

@@ -1,6 +1,6 @@
 /*  Markup.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -22,26 +22,26 @@
 namespace libglabels
 {
 
-	inline double MarkupMargin::size() const { return mSize; }
+	inline Distance MarkupMargin::size() const { return mSize; }
 
-	inline double MarkupLine::x1() const { return mX1; }
-	inline double MarkupLine::y1() const { return mY1; }
-	inline double MarkupLine::x2() const { return mX2; }
-	inline double MarkupLine::y2() const { return mY2; }
+	inline Distance MarkupLine::x1() const { return mX1; }
+	inline Distance MarkupLine::y1() const { return mY1; }
+	inline Distance MarkupLine::x2() const { return mX2; }
+	inline Distance MarkupLine::y2() const { return mY2; }
 
-	inline double MarkupRect::x1() const { return mX1; }
-	inline double MarkupRect::y1() const { return mY1; }
-	inline double MarkupRect::w() const { return mW; }
-	inline double MarkupRect::h() const { return mH; }
-	inline double MarkupRect::r() const { return mR; }
+	inline Distance MarkupRect::x1() const { return mX1; }
+	inline Distance MarkupRect::y1() const { return mY1; }
+	inline Distance MarkupRect::w() const { return mW; }
+	inline Distance MarkupRect::h() const { return mH; }
+	inline Distance MarkupRect::r() const { return mR; }
 
-	inline double MarkupEllipse::x1() const { return mX1; }
-	inline double MarkupEllipse::y1() const { return mY1; }
-	inline double MarkupEllipse::w() const { return mW; }
-	inline double MarkupEllipse::h() const { return mH; }
+	inline Distance MarkupEllipse::x1() const { return mX1; }
+	inline Distance MarkupEllipse::y1() const { return mY1; }
+	inline Distance MarkupEllipse::w() const { return mW; }
+	inline Distance MarkupEllipse::h() const { return mH; }
 
-	inline double MarkupCircle::x0() const { return mX0; }
-	inline double MarkupCircle::y0() const { return mY0; }
-	inline double MarkupCircle::r() const { return mR; }
+	inline Distance MarkupCircle::x0() const { return mX0; }
+	inline Distance MarkupCircle::y0() const { return mY0; }
+	inline Distance MarkupCircle::r() const { return mR; }
 
 }

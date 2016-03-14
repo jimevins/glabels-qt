@@ -1,6 +1,6 @@
 /*  LabelModelShapeObject.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -67,7 +67,7 @@ namespace glabels
 	///
 	/// Line Width Property Getter
 	///
-	double LabelModelShapeObject::lineWidth( void ) const
+	libglabels::Distance LabelModelShapeObject::lineWidth( void ) const
 	{
 		return mLineWidth;
 	}
@@ -76,7 +76,7 @@ namespace glabels
 	///
 	/// Line Width Property Setter
 	///
-	void LabelModelShapeObject::setLineWidth( double value )
+	void LabelModelShapeObject::setLineWidth( const libglabels::Distance& value )
 	{
 		if ( mLineWidth != value )
 		{

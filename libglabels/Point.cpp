@@ -24,12 +24,12 @@
 namespace libglabels
 {
 
-	Point::Point() : mX(0), mY(0)
+	Point::Point() : mX(Distance(0)), mY(Distance(0))
 	{
 	}
 
 
-	Point::Point( double x, double y ) : mX(x), mY(y)
+	Point::Point( Distance x, Distance y ) : mX(x), mY(y)
 	{
 	}
 

@@ -1,6 +1,6 @@
 /*  XmlTemplateCreator.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -203,11 +203,11 @@ namespace libglabels
 		XmlUtil::setLengthAttr( node, "radius",  frame->r1() );
 		XmlUtil::setLengthAttr( node, "hole",    frame->r2() );
 		XmlUtil::setLengthAttr( node, "waste",   frame->waste() );
-		if ( frame->w() )
+		if ( frame->w() != Distance(0) )
 		{
 			XmlUtil::setLengthAttr( node, "width",   frame->w() );
 		}
-		if ( frame->h() )
+		if ( frame->h() != Distance(0) )
 		{
 			XmlUtil::setLengthAttr( node, "height",  frame->h() );
 		}

@@ -8,7 +8,6 @@ set (libglabels_sources
   Category.cpp
   Paper.cpp
   Vendor.cpp
-  Units.cpp
   Point.cpp
   Layout.cpp
   Markup.cpp
@@ -27,6 +26,7 @@ set (libglabels_sources
   XmlTemplateCreator.cpp
   XmlUtil.cpp
   MiniPreviewPixmap.cpp
+  Distance.cpp
 )
 
 set (libglabels_qobject_headers

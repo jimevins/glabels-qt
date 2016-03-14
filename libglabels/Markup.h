@@ -1,6 +1,6 @@
 /*  Markup.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -44,95 +44,108 @@ namespace libglabels
 	class MarkupMargin : public Markup
 	{
 	public:
-		MarkupMargin( const Frame* frame, double size );
+		MarkupMargin( const Frame*    frame,
+		              const Distance& size );
 
-		double size() const;
+		Distance size() const;
 
 		Markup* dup() const;
 
 	private:
 		const Frame* mFrame;
-		double  mSize;
+		Distance  mSize;
 	};
 
 
 	class MarkupLine : public Markup
 	{
 	public:
-		MarkupLine( double x1, double y1, double x2, double y2 );
+		MarkupLine( const Distance& x1,
+		            const Distance& y1,
+		            const Distance& x2,
+		            const Distance& y2 );
 
-		double x1() const;
-		double y1() const;
-		double x2() const;
-		double y2() const;
+		Distance x1() const;
+		Distance y1() const;
+		Distance x2() const;
+		Distance y2() const;
 
 		Markup* dup() const;
 
 	private:
-		double  mX1;
-		double  mY1;
-		double  mX2;
-		double  mY2;
+		Distance  mX1;
+		Distance  mY1;
+		Distance  mX2;
+		Distance  mY2;
 	};
 
 
 	class MarkupRect : public Markup
 	{
 	public:
-		MarkupRect( double x1, double y1, double w, double h, double r );
+		MarkupRect( const Distance& x1,
+		            const Distance& y1,
+		            const Distance& w,
+		            const Distance& h,
+		            const Distance& r );
 
-		double x1() const;
-		double y1() const;
-		double w() const;
-		double h() const;
-		double r() const;
+		Distance x1() const;
+		Distance y1() const;
+		Distance w() const;
+		Distance h() const;
+		Distance r() const;
 
 		Markup* dup() const;
 
 	private:
-		double  mX1;
-		double  mY1;
-		double  mW;
-		double  mH;
-		double  mR;
+		Distance  mX1;
+		Distance  mY1;
+		Distance  mW;
+		Distance  mH;
+		Distance  mR;
 	};
 
 
 	class MarkupEllipse : public Markup
 	{
 	public:
-		MarkupEllipse( double x1, double y1, double w, double h );
+		MarkupEllipse( const Distance& x1,
+		               const Distance& y1,
+		               const Distance& w,
+		               const Distance& h );
 
-		double x1() const;
-		double y1() const;
-		double w() const;
-		double h() const;
+		Distance x1() const;
+		Distance y1() const;
+		Distance w() const;
+		Distance h() const;
 
 		Markup* dup() const;
 
 	private:
-		double  mX1;
-		double  mY1;
-		double  mW;
-		double  mH;
+		Distance  mX1;
+		Distance  mY1;
+		Distance  mW;
+		Distance  mH;
 	};
 
 
 	class MarkupCircle : public Markup
 	{
 	public:
-		MarkupCircle( double x0, double y0, double r );
+		MarkupCircle( const Distance& x0,
+		              const Distance& y0,
+		              const Distance& r );
 
-		double x0() const;
-		double y0() const;
-		double r() const;
+		Distance x0() const;
+		Distance y0() const;
+		Distance r() const;
 
 		Markup* dup() const;
 
 	private:
-		double  mX0;
-		double  mY0;
-		double  mR;
+		Distance  mX0;
+		Distance  mY0;
+		Distance  mR;
 	};
 	
 

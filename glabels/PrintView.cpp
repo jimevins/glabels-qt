@@ -1,6 +1,6 @@
 /*  PrintView.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -138,7 +138,7 @@ namespace glabels
 	///
 	void PrintView::onPrintButtonClicked()
 	{
-		QSizeF pageSize( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
+		QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
 		mPrinter->setPaperSize( pageSize, QPrinter::Point );
 		mPrinter->setFullPage( true );
 		mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );

@@ -1,6 +1,6 @@
 /*  FrameEllipse.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -22,7 +22,7 @@
 namespace libglabels
 {
 
-	inline double FrameEllipse::waste() const
+	inline Distance FrameEllipse::waste() const
 	{
 		return mWaste;
 	}

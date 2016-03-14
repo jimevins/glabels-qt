@@ -1,6 +1,6 @@
 /*  LabelModel.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -88,8 +88,8 @@ namespace glabels
 		inline bool rotate() const;
 		inline void setRotate( bool rotate );
 
-		inline double w() const;
-		inline double h() const;
+		inline libglabels::Distance w() const;
+		inline libglabels::Distance h() const;
 
 		inline const QList<LabelModelObject*>& objectList() const;
 
@@ -101,8 +101,13 @@ namespace glabels
 		void addObject( LabelModelObject* object );
 		void deleteObject( LabelModelObject* object );
 
-		LabelModelObject* objectAt( double scale, double x, double y ) const;
-		Handle* handleAt( double scale, double x, double y ) const;
+		LabelModelObject* objectAt( double                      scale,
+		                            const libglabels::Distance& x,
+		                            const libglabels::Distance& y ) const;
+		
+		Handle* handleAt( double                      scale,
+		                  const libglabels::Distance& x,
+		                  const libglabels::Distance& y ) const;
 
 
 		/////////////////////////////////
@@ -156,7 +161,7 @@ namespace glabels
 		void alignSelectionVCenter();
 		void centerSelectionHoriz();
 		void centerSelectionVert();
-		void moveSelection( double dx, double dy );
+		void moveSelection( const libglabels::Distance& dx, const libglabels::Distance& dy );
 		void setSelectionFontFamily( const QString& fontFamily );
 		void setSelectionFontSize( double fontSize );
 		void setSelectionFontWeight( QFont::Weight fontWeight );
@@ -165,7 +170,7 @@ namespace glabels
 		void setSelectionTextVAlign( Qt::Alignment textVAlign );
 		void setSelectionTextLineSpacing( double textLineSpacing );
 		void setSelectionTextColorNode( ColorNode textColorNode );
-		void setSelectionLineWidth( double lineWidth );
+		void setSelectionLineWidth( const libglabels::Distance& lineWidth );
 		void setSelectionLineColorNode( ColorNode lineColorNode );
 		void setSelectionFillColorNode( ColorNode fillColorNode );
 
@@ -284,13 +289,13 @@ namespace glabels
 	}
 
 
-	inline double LabelModel::w() const
+	inline libglabels::Distance LabelModel::w() const
 	{
 		return mRotate ? mFrame->h() : mFrame->w();
 	}
 
 
-	inline double LabelModel::h() const
+	inline libglabels::Distance LabelModel::h() const
 	{
 		return mRotate ? mFrame->w() : mFrame->h();
 	}

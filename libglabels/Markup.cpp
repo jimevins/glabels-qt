@@ -1,6 +1,6 @@
 /*  Markup.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -30,7 +30,8 @@ namespace libglabels
 	}
 
 	
-	MarkupMargin::MarkupMargin( const Frame* frame, double size )
+	MarkupMargin::MarkupMargin( const Frame*    frame,
+				    const Distance& size )
 		: mFrame(frame), mSize(size)
 	{
 		mPath = frame->marginPath( size );
@@ -43,11 +44,14 @@ namespace libglabels
 	}
 
 
-	MarkupLine::MarkupLine( double x1, double y1, double x2, double y2 )
+	MarkupLine::MarkupLine( const Distance& x1,
+				const Distance& y1,
+				const Distance& x2,
+				const Distance& y2 )
 		: mX1(x1), mY1(y1), mX2(x2), mY2(y2)
 	{
-		mPath.moveTo( x1, y1 );
-		mPath.lineTo( x2, y2 );
+		mPath.moveTo( x1.pt(), y1.pt() );
+		mPath.lineTo( x2.pt(), y2.pt() );
 	}
 
 
@@ -57,10 +61,14 @@ namespace libglabels
 	}
 
 	
-	MarkupRect::MarkupRect( double x1, double y1, double w, double h, double r )
+	MarkupRect::MarkupRect( const Distance& x1,
+				const Distance& y1,
+				const Distance& w,
+				const Distance& h,
+				const Distance& r )
 		: mX1(x1), mY1(y1), mW(w), mH(h), mR(r)
 	{
-		mPath.addRoundedRect( x1, y1, w, h, r, r );
+		mPath.addRoundedRect( x1.pt(), y1.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
 	}
 
 
@@ -70,10 +78,13 @@ namespace libglabels
 	}
 	
 
-	MarkupEllipse::MarkupEllipse( double x1, double y1, double w, double h )
+	MarkupEllipse::MarkupEllipse( const Distance& x1,
+				      const Distance& y1,
+				      const Distance& w,
+				      const Distance& h )
 		: mX1(x1), mY1(y1), mW(w), mH(h)
 	{
-		mPath.addEllipse( x1, y1, w, h );
+		mPath.addEllipse( x1.pt(), y1.pt(), w.pt(), h.pt() );
 	}
 
 
@@ -83,10 +94,12 @@ namespace libglabels
 	}
 
 	
-	MarkupCircle::MarkupCircle( double x0, double y0, double r )
+	MarkupCircle::MarkupCircle( const Distance& x0,
+				    const Distance& y0,
+				    const Distance& r )
 		: mX0(x0), mY0(y0), mR(r)
 	{
-		mPath.addEllipse( x0-r, y0-r, 2*r, 2*r );
+		mPath.addEllipse( (x0-r).pt(), (y0-r).pt(), 2*r.pt(), 2*r.pt() );
 	}
 
 	Markup* MarkupCircle::dup() const

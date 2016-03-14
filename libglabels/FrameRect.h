@@ -30,38 +30,38 @@ namespace libglabels
 	class FrameRect : public Frame
 	{
 	public:
-		FrameRect( double  w,
-			   double  h,
-			   double  r,
-			   double  xWaste,
-			   double  yWaste,
-		           QString id = "0" );
+		FrameRect( const Distance& w,
+			   const Distance& h,
+		           const Distance& r,
+			   const Distance& xWaste,
+		           const Distance& yWaste,
+		           const QString&  id = "0" );
 
 		FrameRect( const FrameRect& other );
 
 		Frame* dup() const;
 
-		double r() const;
-		double xWaste() const;
-		double yWaste() const;
+		Distance r() const;
+		Distance xWaste() const;
+		Distance yWaste() const;
 
-		double w() const;
-		double h() const;
+		Distance w() const;
+		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		const QString sizeDescription( Distance::Units units ) const;
 
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
-		QPainterPath marginPath( double size ) const;
+		QPainterPath marginPath( const Distance& size ) const;
 
 
 	private:
-		double mW;
-		double mH;
-		double mR;
-		double mXWaste;
-		double mYWaste;
+		Distance mW;
+		Distance mH;
+		Distance mR;
+		Distance mXWaste;
+		Distance mYWaste;
 
 		QPainterPath mPath;
 

@@ -113,7 +113,7 @@ namespace glabels
 	///
 	/// X0 Property Getter
 	///
-	double LabelModelObject::x0() const
+	libglabels::Distance LabelModelObject::x0() const
 	{
 		return mX0;
 	}
@@ -122,7 +122,7 @@ namespace glabels
 	///
 	/// X0 Property Setter
 	///
-	void LabelModelObject::setX0( double value )
+	void LabelModelObject::setX0( const libglabels::Distance& value )
 	{
 		if ( mX0 != value )
 		{
@@ -135,7 +135,7 @@ namespace glabels
 	///
 	/// Y0 Property Getter
 	///
-	double LabelModelObject::y0() const
+	libglabels::Distance LabelModelObject::y0() const
 	{
 		return mY0;
 	}
@@ -144,7 +144,7 @@ namespace glabels
 	///
 	/// Y0 Property Setter
 	///
-	void LabelModelObject::setY0( double value )
+	void LabelModelObject::setY0( const libglabels::Distance& value )
 	{
 		if ( mY0 != value )
 		{
@@ -157,7 +157,7 @@ namespace glabels
 	///
 	/// W (Width) Property Getter
 	///
-	double LabelModelObject::w() const
+	libglabels::Distance LabelModelObject::w() const
 	{
 		return mW;
 	}
@@ -166,7 +166,7 @@ namespace glabels
 	///
 	/// W (Width) Property Setter
 	///
-	void LabelModelObject::setW( double value )
+	void LabelModelObject::setW( const libglabels::Distance& value )
 	{
 		if ( mW != value )
 		{
@@ -179,7 +179,7 @@ namespace glabels
 	///
 	/// H (Height) Property Getter
 	///
-	double LabelModelObject::h() const
+	libglabels::Distance LabelModelObject::h() const
 	{
 		return mH;
 	}
@@ -188,7 +188,7 @@ namespace glabels
 	///
 	/// H (Height) Property Setter
 	///
-	void LabelModelObject::setH( double value )
+	void LabelModelObject::setH( const libglabels::Distance& value )
 	{
 		if ( mH != value )
 		{
@@ -245,7 +245,7 @@ namespace glabels
 	///
 	/// Shadow X Property Getter
 	///
-	double LabelModelObject::shadowX() const
+	libglabels::Distance LabelModelObject::shadowX() const
 	{
 		return mShadowX;
 	}
@@ -254,7 +254,7 @@ namespace glabels
 	///
 	/// Shadow X Property Setter
 	///
-	void LabelModelObject::setShadowX( double value )
+	void LabelModelObject::setShadowX( const libglabels::Distance& value )
 	{
 		if ( mShadowX != value )
 		{
@@ -267,7 +267,7 @@ namespace glabels
 	///
 	/// Shadow Y Property Getter
 	///
-	double LabelModelObject::shadowY() const
+	libglabels::Distance LabelModelObject::shadowY() const
 	{
 		return mShadowY;
 	}
@@ -276,7 +276,7 @@ namespace glabels
 	///
 	/// Shadow Y Property Setter
 	///
-	void LabelModelObject::setShadowY( double value )
+	void LabelModelObject::setShadowY( const libglabels::Distance& value )
 	{
 		if ( mShadowY != value )
 		{
@@ -524,7 +524,7 @@ namespace glabels
 	/// Virtual Line Width Property Default Getter
 	/// (Overridden by concrete class)
 	///
-	double LabelModelObject::lineWidth() const
+	libglabels::Distance LabelModelObject::lineWidth() const
 	{
 		return 0;
 	}
@@ -534,7 +534,7 @@ namespace glabels
 	/// Virtual Line Width Property Default Setter
 	/// (Overridden by concrete class)
 	///
-	void LabelModelObject::setLineWidth( double value )
+	void LabelModelObject::setLineWidth( const libglabels::Distance& value )
 	{
 	}
 
@@ -734,7 +734,8 @@ namespace glabels
 	///
 	/// Set Absolute Position
 	///
-	void LabelModelObject::setPosition( double x0, double y0 )
+	void LabelModelObject::setPosition( const libglabels::Distance& x0,
+					    const libglabels::Distance& y0 )
 	{
 		if ( ( mX0 != x0 ) || ( mY0 != y0 ) )
 		{
@@ -749,7 +750,8 @@ namespace glabels
 	///
 	/// Set Relative Position
 	///
-	void LabelModelObject::setPositionRelative( double dx, double dy )
+	void LabelModelObject::setPositionRelative( const libglabels::Distance& dx,
+						    const libglabels::Distance& dy )
 	{
 		if ( ( dx != 0 ) || ( dy != 0 ) )
 		{
@@ -764,7 +766,8 @@ namespace glabels
 	///
 	/// Set Size
 	///
-	void LabelModelObject::setSize( double w, double h )
+	void LabelModelObject::setSize( const libglabels::Distance& w,
+					const libglabels::Distance& h )
 	{
 		mW = w;
 		mH = h;
@@ -776,30 +779,33 @@ namespace glabels
 	///
 	/// Set Size (But Maintain Current Aspect Ratio)
 	///
-	void LabelModelObject::setSizeHonorAspect( double w, double h )
+	void LabelModelObject::setSizeHonorAspect( const libglabels::Distance& w,
+						   const libglabels::Distance& h )
 	{
 		double aspectRatio = mH / mW;
+		libglabels::Distance wNew = w;
+		libglabels::Distance hNew = h;
 		
 		if ( h > (w*aspectRatio) )
 		{
-			h = w*aspectRatio;
+			hNew = w*aspectRatio;
 		}
 		else
 		{
-			w = h/aspectRatio;
+			wNew = h/aspectRatio;
 		}
 
-		setSize( w, h );
+		setSize( wNew, hNew );
 	}
 
 
 	///
 	/// Set Width (But Maintain Current Aspect Ratio)
 	///
-	void LabelModelObject::setWHonorAspect( double w )
+	void LabelModelObject::setWHonorAspect( const libglabels::Distance& w )
 	{
 		double aspectRatio = mH / mW;
-		double h = w * aspectRatio;
+		libglabels::Distance h = w * aspectRatio;
 
 		if ( ( mW != w ) || ( mH != h ) )
 		{
@@ -814,10 +820,10 @@ namespace glabels
 	///
 	/// Set Height (But Maintain Current Aspect Ratio)
 	///
-	void LabelModelObject::setHHonorAspect( double h )
+	void LabelModelObject::setHHonorAspect( const libglabels::Distance& h )
 	{
 		double aspectRatio = mH / mW;
-		double w = h / aspectRatio;
+		libglabels::Distance w = h / aspectRatio;
 
 		if ( ( mW != w ) || ( mH != h ) )
 		{
@@ -837,10 +843,10 @@ namespace glabels
 		using std::min;
 		using std::max;
 
-		QPointF a1(    - lineWidth()/2,    - lineWidth()/2 );
-		QPointF a2( mW + lineWidth()/2,    - lineWidth()/2 );
-		QPointF a3( mW + lineWidth()/2, mH + lineWidth()/2 );
-		QPointF a4(    - lineWidth()/2, mH + lineWidth()/2 );
+		QPointF a1( (   - lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
+		QPointF a2( (mW + lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
+		QPointF a3( (mW + lineWidth()/2).pt(), (mH + lineWidth()/2).pt() );
+		QPointF a4( (   - lineWidth()/2).pt(), (mH + lineWidth()/2).pt() );
 
 		a1 = mMatrix.map( a1 );
 		a2 = mMatrix.map( a2 );
@@ -848,10 +854,10 @@ namespace glabels
 		a4 = mMatrix.map( a4 );
 
 		LabelRegion region;
-		region.setX1( min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) ) + mX0 );
-		region.setY1( min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) ) + mY0 );
-		region.setX2( max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) ) + mX0 );
-		region.setY2( max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) ) + mY0 );
+		region.setX1( libglabels::Distance(min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) )) + mX0 );
+		region.setY1( libglabels::Distance(min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) )) + mY0 );
+		region.setX2( libglabels::Distance(max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) )) + mX0 );
+		region.setY2( libglabels::Distance(max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) )) + mY0 );
 
 		return region;
 	}
@@ -902,14 +908,16 @@ namespace glabels
 	///
 	/// Is this object located at x,y?
 	///
-	bool LabelModelObject::isLocatedAt( double scale, double x, double y ) const
+	bool LabelModelObject::isLocatedAt( double                      scale,
+					    const libglabels::Distance& x,
+					    const libglabels::Distance& y ) const
 	{
-		QPointF p( x, y );
+		QPointF p( x.pt(), y.pt() );
 
 		/*
 		 * Change point to object relative coordinates
 		 */
-		p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
+		p -= QPointF( mX0.pt(), mY0.pt() ); // Translate point to x0,y0
 		p = mMatrix.inverted().map( p );
 
 		if ( hoverPath( scale ).contains( p ) )
@@ -931,12 +939,14 @@ namespace glabels
 	///
 	/// Is one of this object's handles locate at x,y?  If so, return it.
 	///
-	Handle* LabelModelObject::handleAt( double scale, double x, double y ) const
+	Handle* LabelModelObject::handleAt( double                      scale,
+					    const libglabels::Distance& x,
+					    const libglabels::Distance& y ) const
 	{
 		if ( mSelectedFlag )
 		{
-			QPointF p( x, y );
-			p -= QPointF( mX0, mY0 ); // Translate point to x0,y0
+			QPointF p( x.pt(), y.pt() );
+			p -= QPointF( mX0.pt(), mY0.pt() ); // Translate point to x0,y0
 
 			foreach ( Handle* handle, mHandles )
 			{
@@ -958,12 +968,12 @@ namespace glabels
 	void LabelModelObject::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
 	{
 		painter->save();
-		painter->translate( mX0, mY0 );
+		painter->translate( mX0.pt(), mY0.pt() );
 
 		if ( mShadowState )
 		{
 			painter->save();
-			painter->translate( mShadowX, mShadowY );
+			painter->translate( mShadowX.pt(), mShadowY.pt() );
 			painter->setMatrix( mMatrix, true );
 			drawShadow( painter, inEditor, record );
 			painter->restore();
@@ -983,7 +993,7 @@ namespace glabels
 	{
 		painter->save();
 
-		painter->translate( mX0, mY0 );
+		painter->translate( mX0.pt(), mY0.pt() );
 		painter->setMatrix( mMatrix, true );
 
 		if ( mOutline )
@@ -998,8 +1008,6 @@ namespace glabels
 		
 		painter->restore();
 	}
-
-
 
 
 }

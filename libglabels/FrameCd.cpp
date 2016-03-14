@@ -1,6 +1,6 @@
 /*  FrameCd.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -30,20 +30,25 @@
 namespace libglabels
 {
 
-	FrameCd::FrameCd( double r1, double r2, double w, double h, double waste, QString id )
+	FrameCd::FrameCd( const Distance& r1,
+			  const Distance& r2,
+			  const Distance& w,
+			  const Distance& h,
+			  const Distance& waste,
+			  const QString&  id )
 		: mR1(r1), mR2(r2), mW(w), mH(h), mWaste(waste), Frame(id)
 	{
-		double wReal = (mW == 0) ? 2*mR1 : mW;
-		double hReal = (mH == 0) ? 2*mR1 : mH;
+		Distance wReal = (mW == 0) ? 2*mR1 : mW;
+		Distance hReal = (mH == 0) ? 2*mR1 : mH;
 
 		/*
 		 * Construct outer subpath (may be clipped if it's a business card CD)
 		 */
 		QPainterPath outerPath;
-		outerPath.addEllipse( wReal/2 - r1, hReal/2 - r1, 2*r1, 2*r1 );
+		outerPath.addEllipse( (wReal/2 - r1).pt(), (hReal/2 - r1).pt(), 2*r1.pt(), 2*r1.pt() );
 
 		QPainterPath clipPath;
-		clipPath.addRect( 0, 0, wReal, hReal );
+		clipPath.addRect( 0, 0, wReal.pt(), hReal.pt() );
 
 		mPath.addPath( outerPath & clipPath );
 		mPath.closeSubpath();
@@ -51,7 +56,7 @@ namespace libglabels
 		/*
 		 * Add inner subpath
 		 */
-		mPath.addEllipse( wReal/2 - r2, hReal/2 - r2, 2*r2, 2*r2 );
+		mPath.addEllipse( (wReal/2 - r2).pt(), (hReal/2 - r2).pt(), 2*r2.pt(), 2*r2.pt() );
 	}
 
 
@@ -68,34 +73,34 @@ namespace libglabels
 	}
 	
 
-	double FrameCd::w() const
+	Distance FrameCd::w() const
 	{
 		return (mW == 0) ? 2*mR1 : mW;
 	}
 
 	
-	double FrameCd::h() const
+	Distance FrameCd::h() const
 	{
 		return (mH == 0) ? 2*mR1 : mH;
 	}
 
 
-	const QString FrameCd::sizeDescription( const Units& units ) const
+	const QString FrameCd::sizeDescription( Distance::Units units ) const
 	{
-		if ( units.id() == "in" )
+		if ( units == Distance::Units::IN )
 		{
-			QString dStr = StrUtil::formatFraction( 2 * mR1 * units.unitsPerPoint() );
+			QString dStr = StrUtil::formatFraction( 2 * mR1.in() );
 
 			return QString().sprintf( "%s %s %s",
 						  qPrintable(dStr),
-						  qPrintable(units.name()),
+						  qPrintable(Distance::toTrName(units)),
 						  qPrintable(tr("diameter")) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g %s %s",
-						  2 * mR1 * units.unitsPerPoint(),
-						  qPrintable(units.name()),
+						  2 * mR1.inUnits(units),
+						  qPrintable(Distance::toTrName(units)),
 						  qPrintable(tr("diameter")) );
 		}
 	}
@@ -123,13 +128,13 @@ namespace libglabels
 	}
 	
 
-	QPainterPath FrameCd::marginPath( double size ) const
+	QPainterPath FrameCd::marginPath( const Distance& size ) const
 	{
-		double wReal = (mW == 0) ? 2*mR1 : mW;
-		double hReal = (mH == 0) ? 2*mR1 : mH;
+		Distance wReal = (mW == 0) ? 2*mR1 : mW;
+		Distance hReal = (mH == 0) ? 2*mR1 : mH;
 
-		double r1 = mR1 - size;
-		double r2 = mR2 + size;
+		Distance r1 = mR1 - size;
+		Distance r2 = mR2 + size;
 
 		QPainterPath path;
 
@@ -137,10 +142,10 @@ namespace libglabels
 		 * Construct outer subpath (may be clipped if it's a business card CD)
 		 */
 		QPainterPath outerPath;
-		outerPath.addEllipse( wReal/2 - r1, hReal/2 - r1, 2*r1, 2*r1 );
+		outerPath.addEllipse( (wReal/2 - r1).pt(), (hReal/2 - r1).pt(), 2*r1.pt(), 2*r1.pt() );
 
 		QPainterPath clipPath;
-		clipPath.addRect( size, size, wReal-2*size, hReal-2*size );
+		clipPath.addRect( size.pt(), size.pt(), (wReal-2*size).pt(), (hReal-2*size).pt() );
 
 		path.addPath( outerPath & clipPath );
 		path.closeSubpath();
@@ -148,7 +153,7 @@ namespace libglabels
 		/*
 		 * Add inner subpath
 		 */
-		path.addEllipse( wReal/2 - r2, hReal/2 - r2, 2*r2, 2*r2 );
+		path.addEllipse( (wReal/2 - r2).pt(), (hReal/2 - r2).pt(), 2*r2.pt(), 2*r2.pt() );
 
 		return path;
 	}

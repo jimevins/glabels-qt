@@ -1,6 +1,6 @@
 /*  XmlUtil.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -27,12 +27,12 @@
 namespace libglabels
 {
 
-	Units XmlUtil::mDefaultUnits;
+	Distance::Units XmlUtil::mUnits;
 
 
 	XmlUtil::XmlUtil()
 	{
-		mDefaultUnits = Units::point();
+		mUnits = Distance::Units::PT;
 	}
 
 
@@ -42,25 +42,25 @@ namespace libglabels
 	}
 
 
-	Units XmlUtil::defaultUnits()
+	Distance::Units XmlUtil::units()
 	{
 		init();
 
-		return mDefaultUnits;
+		return mUnits;
 	}
 
 
-	void XmlUtil::setDefaultUnits( const Units& defaultUnits )
+	void XmlUtil::setUnits( Distance::Units units )
 	{
 		init();
 
-		mDefaultUnits = defaultUnits;
+		mUnits = units;
 	}
 
 
 	QString XmlUtil::getStringAttr( const QDomElement& node,
 					const QString&     name,
-					const QString& default_value )
+					const QString&     default_value )
 	{
 		init();
 
@@ -200,9 +200,9 @@ namespace libglabels
 	}
 
 
-	double XmlUtil::getLengthAttr( const QDomElement& node,
-				       const QString&     name,
-				       double             default_value )
+	Distance XmlUtil::getLengthAttr( const QDomElement& node,
+					 const QString&     name,
+					 const Distance&    default_value )
 	{
 		init();
 
@@ -215,16 +215,13 @@ namespace libglabels
 
 			valueStream >> value >> unitsString;
 
-			if ( !Units::isIdValid( unitsString ) )
+			if ( !unitsString.isEmpty() && !Distance::isIdValid( unitsString ) )
 			{
 				qWarning() << "Error: bad length value in attribute "
 					   << node.tagName() << ":" <<  name << "=" << valueString;
-				return default_value;
 			}
 
-			Units units = Units::fromId( unitsString );
-
-			return value *  units.pointsPerUnit();
+			return Distance( value, unitsString );
 		}
 
 		return default_value;
@@ -281,14 +278,13 @@ namespace libglabels
 	}
 
 
-	void XmlUtil::setLengthAttr( QDomElement&   node,
-				     const QString& name,
-				     double         value )
+	void XmlUtil::setLengthAttr( QDomElement&    node,
+				     const QString&  name,
+				     const Distance& value )
 	{
 		init();
 
-		value *= mDefaultUnits.unitsPerPoint();
-		node.setAttribute( name, QString::number(value) + mDefaultUnits.id() );
+		node.setAttribute( name, QString::number(value.inUnits(mUnits)) + Distance::toId(mUnits) );
 	}
 
 }

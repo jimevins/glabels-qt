@@ -1,6 +1,6 @@
 /*  LabelModelBoxObject.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -70,12 +70,15 @@ namespace glabels
 			if ( lineColor.alpha() )
 			{
 				/* Has FILL and OUTLINE: adjust size to account for line width. */
-				painter->drawRect( QRectF( -mLineWidth/2, -mLineWidth/2, mW+mLineWidth, mH+mLineWidth ) );
+				painter->drawRect( QRectF( -mLineWidth.pt()/2,
+							   -mLineWidth.pt()/2,
+							   (mW + mLineWidth).pt(),
+							   (mH + mLineWidth).pt() ) );
 			}
 			else
 			{
 				/* Has FILL, but no OUTLINE. */
-				painter->drawRect( QRectF( 0, 0, mW, mH ) );
+				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 			}
 		}
 		else
@@ -83,10 +86,10 @@ namespace glabels
 			if ( lineColor.alpha() )
 			{
 				/* Has only OUTLINE. */
-				painter->setPen( QPen( shadowColor, mLineWidth ) );
+				painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
 				painter->setBrush( Qt::NoBrush );
 
-				painter->drawRect( QRectF( 0, 0, mW, mH ) );
+				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 			}
 		}
 		
@@ -103,10 +106,10 @@ namespace glabels
 		QColor lineColor = mLineColorNode.color();
 		QColor fillColor = mFillColorNode.color();
 
-		painter->setPen( QPen( lineColor, mLineWidth ) );
+		painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
 		painter->setBrush( fillColor );
 
-		painter->drawRect( QRectF( 0, 0, mW, mH ) );
+		painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 	}
 
 
@@ -121,21 +124,26 @@ namespace glabels
 
 		if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
 		{
-			path.addRect( -mLineWidth/2, -mLineWidth/2, mW+mLineWidth, mH+mLineWidth );
+			path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
 		}
 		else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
 		{
-			path.addRect( 0, 0, mW, mH );
+			path.addRect( 0, 0, mW.pt(), mH.pt() );
 		}
 		else if ( mLineColorNode.color().alpha() )
 		{
-			path.addRect( (-mLineWidth/2)-s*slopPixels, (-mLineWidth/2)-s*slopPixels,
-				      mW+mLineWidth+s*2*slopPixels, mH+mLineWidth+s*2*slopPixels );
+			path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
+				      (-mLineWidth.pt()/2) - s*slopPixels,
+				      (mW + mLineWidth).pt() + s*2*slopPixels,
+				      (mH + mLineWidth).pt() + s*2*slopPixels );
 			path.closeSubpath();
-			path.addRect( mLineWidth/2+s*slopPixels, mLineWidth/2+s*slopPixels,
-				      mW-mLineWidth-s*2*slopPixels, mH-mLineWidth-s*2*slopPixels );
+			path.addRect( mLineWidth.pt()/2 + s*slopPixels,
+				      mLineWidth.pt()/2 + s*slopPixels,
+				      (mW - mLineWidth).pt() - s*2*slopPixels,
+				      (mH - mLineWidth).pt() - s*2*slopPixels );
 		}
 
 		return path;
 	}
+	
 }

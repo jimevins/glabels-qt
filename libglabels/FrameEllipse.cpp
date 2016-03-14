@@ -1,6 +1,6 @@
 /*  FrameEllipse.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -29,10 +29,13 @@
 namespace libglabels
 {
 
-	FrameEllipse::FrameEllipse( double w, double h, double waste, QString id )
+	FrameEllipse::FrameEllipse( const Distance& w,
+				    const Distance& h,
+				    const Distance& waste,
+				    const QString&  id )
 		: mW(w), mH(h), mWaste(waste), Frame(id)
 	{
-		mPath.addEllipse( 0, 0, mW, mH );
+		mPath.addEllipse( 0, 0, mW.pt(), mH.pt() );
 	}
 
 	FrameEllipse::FrameEllipse( const FrameEllipse& other )
@@ -47,36 +50,36 @@ namespace libglabels
 	}
 
 
-	double FrameEllipse::w() const
+	Distance FrameEllipse::w() const
 	{
 		return mW;
 	}
 
 	
-	double FrameEllipse::h() const
+	Distance FrameEllipse::h() const
 	{
 		return mH;
 	}
 	
 
-	const QString FrameEllipse::sizeDescription( const Units& units ) const
+	const QString FrameEllipse::sizeDescription( Distance::Units units ) const
 	{
-		if ( units.id() == "in" )
+		if ( units == Distance::Units::IN )
 		{
-			QString wStr = StrUtil::formatFraction( mW * units.unitsPerPoint() );
-			QString hStr = StrUtil::formatFraction( mH * units.unitsPerPoint() );
+			QString wStr = StrUtil::formatFraction( mW.in() );
+			QString hStr = StrUtil::formatFraction( mH.in() );
 
 			return QString().sprintf( "%s x %s %s",
 						  qPrintable(wStr),
 						  qPrintable(hStr),
-						  qPrintable(units.name()) );
+						  qPrintable(Distance::toTrName(units)) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g x %.5g %s",
-						  mW * units.unitsPerPoint(),
-						  mH * units.unitsPerPoint(),
-						  qPrintable(units.name()) );
+						  mW.inUnits(units),
+						  mH.inUnits(units),
+						  qPrintable(Distance::toTrName(units)) );
 		}
 	}
 
@@ -101,13 +104,13 @@ namespace libglabels
 	}
 
 	
-	QPainterPath FrameEllipse::marginPath( double size ) const
+	QPainterPath FrameEllipse::marginPath( const Distance& size ) const
 	{
-		double w = mW - 2*size;
-		double h = mH - 2*size;
+		Distance w = mW - 2*size;
+		Distance h = mH - 2*size;
 
 		QPainterPath path;
-		path.addEllipse( size, size, w, h );
+		path.addEllipse( size.pt(), size.pt(), w.pt(), h.pt() );
 
 		return path;
 	}

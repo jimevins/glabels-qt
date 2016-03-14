@@ -1,6 +1,6 @@
 /*  FrameRound.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -22,13 +22,13 @@
 namespace libglabels
 {
 
-	inline double FrameRound::r() const
+	inline Distance FrameRound::r() const
 	{
 		return mR;
 	}
 
 
-	inline double FrameRound::waste() const
+	inline Distance FrameRound::waste() const
 	{
 		return mWaste;
 	}
