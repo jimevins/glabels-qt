@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_FrameCd_h
-#define libglabels_FrameCd_h
+#ifndef glabels_FrameCd_h
+#define glabels_FrameCd_h
 
 #include "Frame.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class FrameCd : public Frame
@@ -72,4 +72,4 @@ namespace libglabels
 #include "FrameCd.inl"
 
 
-#endif // libglabels_FrameCd_h
+#endif // glabels_FrameCd_h

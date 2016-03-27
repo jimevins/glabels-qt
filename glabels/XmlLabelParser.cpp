@@ -36,8 +36,8 @@
 #include <QtDebug>
 
 
-glabels::LabelModel*
-glabels::XmlLabelParser::readFile( const QString& fileName )
+LabelModel*
+XmlLabelParser::readFile( const QString& fileName )
 {
 	QFile file( fileName );
 
@@ -88,8 +88,8 @@ glabels::XmlLabelParser::readFile( const QString& fileName )
 }
 
 
-glabels::LabelModel*
-glabels::XmlLabelParser::readBuffer( const QString& buffer )
+LabelModel*
+XmlLabelParser::readBuffer( const QString& buffer )
 {
 	QDomDocument doc;
 	QString      errorString;
@@ -116,7 +116,7 @@ glabels::XmlLabelParser::readBuffer( const QString& buffer )
 
 
 void
-glabels::XmlLabelParser::gunzip( const QByteArray& data, QByteArray& result )
+XmlLabelParser::gunzip( const QByteArray& data, QByteArray& result )
 {
         result.clear();
 
@@ -165,10 +165,10 @@ glabels::XmlLabelParser::gunzip( const QByteArray& data, QByteArray& result )
 }
 
 
-glabels::LabelModel*
-glabels::XmlLabelParser::parseRootNode( const QDomElement &node )
+LabelModel*
+XmlLabelParser::parseRootNode( const QDomElement &node )
 {
-	using namespace libglabels;
+	using namespace glabels;
 
 	LabelModel* label = new LabelModel();
 
@@ -220,7 +220,7 @@ glabels::XmlLabelParser::parseRootNode( const QDomElement &node )
 
 
 void
-glabels::XmlLabelParser::parseObjectsNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectsNode( const QDomElement &node, LabelModel* label )
 {
 	for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 	{
@@ -259,9 +259,9 @@ glabels::XmlLabelParser::parseObjectsNode( const QDomElement &node, LabelModel* 
 
 
 void
-glabels::XmlLabelParser::parseObjectBoxNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectBoxNode( const QDomElement &node, LabelModel* label )
 {
-	using namespace libglabels;
+	using namespace glabels;
 
 	LabelModelBoxObject* object = new LabelModelBoxObject();
 	label->addObject( object );
@@ -303,45 +303,45 @@ glabels::XmlLabelParser::parseObjectBoxNode( const QDomElement &node, LabelModel
 
 
 void
-glabels::XmlLabelParser::parseObjectEllipseNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectEllipseNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseObjectLineNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectLineNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseObjectImageNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectImageNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseObjectTextNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectTextNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseTopLevelSpanNode( const QDomElement &node, LabelModelTextObject* object )
+XmlLabelParser::parseTopLevelSpanNode( const QDomElement &node, LabelModelTextObject* object )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseAffineAttrs( const QDomElement &node, LabelModelObject* object )
+XmlLabelParser::parseAffineAttrs( const QDomElement &node, LabelModelObject* object )
 {
-	using namespace libglabels;
+	using namespace glabels;
 
 	double a[6];
 
@@ -357,9 +357,9 @@ glabels::XmlLabelParser::parseAffineAttrs( const QDomElement &node, LabelModelOb
 
 
 void
-glabels::XmlLabelParser::parseShadowAttrs( const QDomElement &node, LabelModelObject* object )
+XmlLabelParser::parseShadowAttrs( const QDomElement &node, LabelModelObject* object )
 {
-	using namespace libglabels;
+	using namespace glabels;
 
 	object->setShadow( XmlUtil::getBoolAttr( node, "shadow", false ) );
 
@@ -380,25 +380,25 @@ glabels::XmlLabelParser::parseShadowAttrs( const QDomElement &node, LabelModelOb
 
 
 void
-glabels::XmlLabelParser::parseMergeNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseMergeNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseDataNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseDataNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parsePixdataNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parsePixdataNode( const QDomElement &node, LabelModel* label )
 {
 }
 
 
 void
-glabels::XmlLabelParser::parseFileNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseFileNode( const QDomElement &node, LabelModel* label )
 {
 }
 

@@ -29,7 +29,7 @@
    <item row="0" column="4">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="glabels::SimplePreview" name="preview">
+      <widget class="SimplePreview" name="preview">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -356,7 +356,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glabels::SimplePreview</class>
+   <class>SimplePreview</class>
    <extends>QGraphicsView</extends>
    <header>SimplePreview.h</header>
    <container>1</container>

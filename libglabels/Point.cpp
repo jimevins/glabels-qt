@@ -1,6 +1,6 @@
 /*  Point.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,7 +21,7 @@
 #include "Point.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	Point::Point() : mX(Distance(0)), mY(Distance(0))

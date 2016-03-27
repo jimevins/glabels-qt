@@ -23,24 +23,19 @@
 #include "PageRenderer.h"
 
 
-namespace glabels
+PreviewOverlayItem::PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent )
+	: QGraphicsItem(parent), mRenderer(renderer)
 {
-
-	PreviewOverlayItem::PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent )
-		: QGraphicsItem(parent), mRenderer(renderer)
-	{
-	}
+}
 
 
-	QRectF PreviewOverlayItem::boundingRect() const
-	{
-		return mRenderer->pageRect();
-	}
+QRectF PreviewOverlayItem::boundingRect() const
+{
+	return mRenderer->pageRect();
+}
 
 
-	void PreviewOverlayItem::paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget )
-	{
-		mRenderer->printPage( painter );
-	}
-
+void PreviewOverlayItem::paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget )
+{
+	mRenderer->printPage( painter );
 }

@@ -18,60 +18,55 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_BarcodeMenuItem_h
-#define glabels_BarcodeMenuItem_h
+#ifndef BarcodeMenuItem_h
+#define BarcodeMenuItem_h
 
 #include <QAction>
 #include "BarcodeStyle.h"
 
 
-namespace glabels
+///
+/// Barcode Menu Item
+///
+class BarcodeMenuItem : public QAction
 {
+	Q_OBJECT
 
-	///
-	/// Barcode Menu Item
-	///
-	class BarcodeMenuItem : public QAction
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = 0 );
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void activated( const BarcodeStyle* bcStyle );
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void activated( const BarcodeStyle* bcStyle );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		const BarcodeStyle* bcStyle() const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	const BarcodeStyle* bcStyle() const;
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onTriggered();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onTriggered();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		const BarcodeStyle* mBcStyle;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	const BarcodeStyle* mBcStyle;
 
-	};
+};
 
 
-}
-
-#endif // glabels_BarcodeMenuItem_h
+#endif // BarcodeMenuItem_h

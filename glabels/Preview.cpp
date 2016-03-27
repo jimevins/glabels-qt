@@ -47,155 +47,149 @@ namespace
 }
 
 
-namespace glabels
+///
+/// Constructor
+///
+Preview::Preview( QWidget *parent )
+	: mModel(0), mRenderer(0), QGraphicsView(parent)
 {
+	mScene = new QGraphicsScene();
+	setScene( mScene );
 
-	///
-	/// Constructor
-	///
-	Preview::Preview( QWidget *parent )
-		: mModel(0), mRenderer(0), QGraphicsView(parent)
+	setAttribute(Qt::WA_TranslucentBackground);
+	viewport()->setAutoFillBackground(false);
+
+	setFrameStyle( QFrame::NoFrame );
+	setRenderHints( QPainter::Antialiasing );
+}
+
+
+///
+/// Set model
+///
+void Preview::setModel( const LabelModel* model )
+{
+	mModel = model;
+
+	clearScene();
+
+	if ( mModel != NULL )
 	{
-		mScene = new QGraphicsScene();
-		setScene( mScene );
+		// Set scene up with a 5% margin around paper
+		glabels::Distance x = -0.05 * mModel->tmplate()->pageWidth();
+		glabels::Distance y = -0.05 * mModel->tmplate()->pageHeight();
+		glabels::Distance w = 1.10 * mModel->tmplate()->pageWidth();
+		glabels::Distance h = 1.10 * mModel->tmplate()->pageHeight();
 
-		setAttribute(Qt::WA_TranslucentBackground);
-		viewport()->setAutoFillBackground(false);
-
-		setFrameStyle( QFrame::NoFrame );
-		setRenderHints( QPainter::Antialiasing );
-	}
-
-
-	///
-	/// Set model
-	///
-	void Preview::setModel( const LabelModel* model )
-	{
-		mModel = model;
-
-		clearScene();
-
-		if ( mModel != NULL )
-		{
-			// Set scene up with a 5% margin around paper
-			libglabels::Distance x = -0.05 * mModel->tmplate()->pageWidth();
-			libglabels::Distance y = -0.05 * mModel->tmplate()->pageHeight();
-			libglabels::Distance w = 1.10 * mModel->tmplate()->pageWidth();
-			libglabels::Distance h = 1.10 * mModel->tmplate()->pageHeight();
-
-			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
-			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
-
-			drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
-			drawLabels();
-			drawPreviewOverlay();
-		}
-	}
-
-
-	///
-	/// Set renderer
-	///
-	void Preview::setRenderer( const PageRenderer* renderer )
-	{
-		mRenderer = renderer;
-	}
-
-
-	///
-	/// Resize Event Handler
-	///
-	void Preview::resizeEvent( QResizeEvent* event )
-	{
+		mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
 		fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
+
+		drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
+		drawLabels();
+		drawPreviewOverlay();
 	}
+}
 
 
-	///
-	/// Clear View
-	///
-	void Preview::clearScene()
+///
+/// Set renderer
+///
+void Preview::setRenderer( const PageRenderer* renderer )
+{
+	mRenderer = renderer;
+}
+
+
+///
+/// Resize Event Handler
+///
+void Preview::resizeEvent( QResizeEvent* event )
+{
+	fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
+}
+
+
+///
+/// Clear View
+///
+void Preview::clearScene()
+{
+	foreach ( QGraphicsItem *item, mScene->items() )
 	{
-		foreach ( QGraphicsItem *item, mScene->items() )
-		{
-			mScene->removeItem( item );
-			delete item;
-		}
+		mScene->removeItem( item );
+		delete item;
 	}
+}
 
 
-	///
-	/// Draw Paper
-	///
-	void Preview::drawPaper( const libglabels::Distance& pw, const libglabels::Distance& ph )
-	{
-		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
-		shadowEffect->setColor( shadowColor );
-		shadowEffect->setOffset( shadowOffsetPixels );
-		shadowEffect->setBlurRadius( shadowRadiusPixels );
+///
+/// Draw Paper
+///
+void Preview::drawPaper( const glabels::Distance& pw, const glabels::Distance& ph )
+{
+	QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+	shadowEffect->setColor( shadowColor );
+	shadowEffect->setOffset( shadowOffsetPixels );
+	shadowEffect->setBlurRadius( shadowRadiusPixels );
 
-		QBrush brush( paperColor );
-		QPen pen( paperOutlineColor );
-		pen.setCosmetic( true );
-		pen.setWidthF( paperOutlineWidthPixels );
+	QBrush brush( paperColor );
+	QPen pen( paperOutlineColor );
+	pen.setCosmetic( true );
+	pen.setWidthF( paperOutlineWidthPixels );
 
-		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
-		pageItem->setBrush( brush );
-		pageItem->setPen( pen );
-		pageItem->setGraphicsEffect( shadowEffect );
+	QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
+	pageItem->setBrush( brush );
+	pageItem->setPen( pen );
+	pageItem->setGraphicsEffect( shadowEffect );
 				
-		mScene->addItem( pageItem );
-	}
+	mScene->addItem( pageItem );
+}
 
 
-	///
-	/// Draw Labels on Paper
-	///
-	void Preview::drawLabels()
+///
+/// Draw Labels on Paper
+///
+void Preview::drawLabels()
+{
+	glabels::Frame *frame = mModel->tmplate()->frames().first();
+
+	foreach (glabels::Point origin, frame->getOrigins() )
 	{
-		libglabels::Frame *frame = mModel->tmplate()->frames().first();
-
-		foreach (libglabels::Point origin, frame->getOrigins() )
-		{
-			drawLabel( origin.x(), origin.y(), frame->path() );
-		}
+		drawLabel( origin.x(), origin.y(), frame->path() );
 	}
+}
 
 
-	///
-	/// Draw a Single Label at x,y
-	///
-	void Preview::drawLabel( const libglabels::Distance& x,
-				 const libglabels::Distance& y,
-				 const QPainterPath&         path )
+///
+/// Draw a Single Label at x,y
+///
+void Preview::drawLabel( const glabels::Distance& x,
+			 const glabels::Distance& y,
+			 const QPainterPath&      path )
+{
+	QBrush brush( Qt::NoBrush );
+	QPen pen( labelOutlineColor );
+	pen.setStyle( Qt::DotLine );
+	pen.setCosmetic( true );
+	pen.setWidthF( labelOutlineWidthPixels );
+
+	QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
+	labelOutlineItem->setBrush( brush );
+	labelOutlineItem->setPen( pen );
+	labelOutlineItem->setPos( x.pt(), y.pt() );
+
+	mScene->addItem( labelOutlineItem );
+}
+
+
+///
+/// Draw Preview Overlay
+///
+void Preview::drawPreviewOverlay()
+{
+	if ( mRenderer )
 	{
-		QBrush brush( Qt::NoBrush );
-		QPen pen( labelOutlineColor );
-		pen.setStyle( Qt::DotLine );
-		pen.setCosmetic( true );
-		pen.setWidthF( labelOutlineWidthPixels );
-
-		QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
-		labelOutlineItem->setBrush( brush );
-		labelOutlineItem->setPen( pen );
-		labelOutlineItem->setPos( x.pt(), y.pt() );
-
-		mScene->addItem( labelOutlineItem );
+		PreviewOverlayItem* overlayItem = new PreviewOverlayItem( mRenderer );
+		mScene->addItem( overlayItem );
 	}
-
-
-	///
-	/// Draw Preview Overlay
-	///
-	void Preview::drawPreviewOverlay()
-	{
-		if ( mRenderer )
-		{
-			PreviewOverlayItem* overlayItem = new PreviewOverlayItem( mRenderer );
-			mScene->addItem( overlayItem );
-		}
-	}
-
-
 }

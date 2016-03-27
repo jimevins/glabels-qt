@@ -18,57 +18,52 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorPaletteButtonItem_h
-#define glabels_ColorPaletteButtonItem_h
+#ifndef ColorPaletteButtonItem_h
+#define ColorPaletteButtonItem_h
 
 #include <QWidget>
 #include <QColor>
 
 
-namespace glabels
+///
+/// Color Palette Item
+///
+class ColorPaletteButtonItem : public QWidget
 {
+	Q_OBJECT
 
-	///
-	/// Color Palette Item
-	///
-	class ColorPaletteButtonItem : public QWidget
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		ColorPaletteButtonItem( const QString& text, QWidget* parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	ColorPaletteButtonItem( const QString& text, QWidget* parent = 0 );
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void activated();
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void activated();
 
 
-		/////////////////////////////////
-		// Event handlers
-		/////////////////////////////////
-	protected:
-		void paintEvent( QPaintEvent* event );
-		void enterEvent( QEvent* event );
-		void leaveEvent( QEvent* event );
-		void mousePressEvent( QMouseEvent* event );
+	/////////////////////////////////
+	// Event handlers
+	/////////////////////////////////
+protected:
+	void paintEvent( QPaintEvent* event );
+	void enterEvent( QEvent* event );
+	void leaveEvent( QEvent* event );
+	void mousePressEvent( QMouseEvent* event );
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		QString mText;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	QString mText;
 
-		bool        mHover;
-	};
+	bool        mHover;
+};
 
 
-}
-
-#endif // glabels_ColorPaletteButtonItem_h
+#endif // ColorPaletteButtonItem_h

@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_TemplatePicker_h
-#define glabels_TemplatePicker_h
+#ifndef TemplatePicker_h
+#define TemplatePicker_h
 
 #include <QListWidget>
 
@@ -28,40 +28,36 @@
 #include "libglabels/Template.h"
 
 
-namespace glabels
+///
+/// Template Picker Widget
+///
+class TemplatePicker : public QListWidget
 {
-
-	///
-	/// Template Picker Widget
-	///
-	class TemplatePicker : public QListWidget
-	{
-		Q_OBJECT
+	Q_OBJECT
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		TemplatePicker( QWidget *parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	TemplatePicker( QWidget *parent = 0 );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		void setTemplates( const QList <libglabels::Template*> &tmplates );
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	void setTemplates( const QList <glabels::Template*> &tmplates );
 
 
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
-		void applyFilter( const QString &searchString, bool isoMask, bool usMask, bool otherMask );
+	/////////////////////////////////
+	// Methods
+	/////////////////////////////////
+	void applyFilter( const QString &searchString, bool isoMask, bool usMask, bool otherMask );
 
-		const libglabels::Template *selectedTemplate();
+	const glabels::Template *selectedTemplate();
 
-	};
+};
 
-}
 
-#endif // glabels_TemplatePicker_h
+#endif // TemplatePicker_h

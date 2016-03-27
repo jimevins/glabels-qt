@@ -24,22 +24,17 @@
 #include <cmath>
 
 
-namespace glabels
+QRectF LabelRegion::rect() const
 {
+	using std::min;
+	using std::fabs;
 
-	QRectF LabelRegion::rect() const
-	{
-		using std::min;
-		using std::fabs;
+	QRectF r;
 
-		QRectF r;
+	r.setX( min( mX1, mX2 ).pt() );
+	r.setY( min( mY1, mY2 ).pt() );
+	r.setWidth( fabs( mX2 - mX1 ).pt() );
+	r.setHeight( fabs( mY2 - mY1 ).pt() );
 
-		r.setX( min( mX1, mX2 ).pt() );
-		r.setY( min( mY1, mY2 ).pt() );
-		r.setWidth( fabs( mX2 - mX1 ).pt() );
-		r.setHeight( fabs( mY2 - mY1 ).pt() );
-
-		return r;
-	}
-
+	return r;
 }

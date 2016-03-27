@@ -26,7 +26,7 @@
 #include "privateConstants.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	FrameRect::FrameRect( const Distance& w,

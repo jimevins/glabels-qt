@@ -25,79 +25,73 @@
 #include "TemplatePickerItem.h"
 
 
-namespace glabels
+///
+/// Constructor
+///
+TemplatePicker::TemplatePicker( QWidget *parent ) : QListWidget(parent)
 {
+	setViewMode( QListView::IconMode );
+	setResizeMode( QListView::Adjust );
+	setSpacing( 24 );
+	setWordWrap( true );
+	setUniformItemSizes( true );
+	setIconSize( QSize(glabels::TEMPLATE_PREVIEW_SIZE, glabels::TEMPLATE_PREVIEW_SIZE) );
+}
 
-	///
-	/// Constructor
-	///
-	TemplatePicker::TemplatePicker( QWidget *parent ) : QListWidget(parent)
+
+///
+/// Set List of Templates to Pick From
+///
+void TemplatePicker::setTemplates( const QList <glabels::Template*> &tmplates )
+{
+	foreach (glabels::Template *tmplate, tmplates)
 	{
-		setViewMode( QListView::IconMode );
-		setResizeMode( QListView::Adjust );
-		setSpacing( 24 );
-		setWordWrap( true );
-		setUniformItemSizes( true );
-		setIconSize( QSize(libglabels::TEMPLATE_PREVIEW_SIZE, libglabels::TEMPLATE_PREVIEW_SIZE) );
+		TemplatePickerItem *item = new TemplatePickerItem( tmplate, this );
 	}
+}
 
 
-	///
-	/// Set List of Templates to Pick From
-	///
-	void TemplatePicker::setTemplates( const QList <libglabels::Template*> &tmplates )
+///
+/// Apply Filter to Narrow Template Choices
+///
+void TemplatePicker::applyFilter( const QString &searchString,
+				  bool isoMask, bool usMask, bool otherMask )
+{
+	foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 	{
-		foreach (libglabels::Template *tmplate, tmplates)
+		TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
+
+		bool sizeMask =
+			(isoMask   && tItem->tmplate()->isSizeIso())   ||
+			(usMask    && tItem->tmplate()->isSizeUs())    ||
+			(otherMask && tItem->tmplate()->isSizeOther());
+
+		if ( tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) && sizeMask )
 		{
-			TemplatePickerItem *item = new TemplatePickerItem( tmplate, this );
-		}
-	}
-
-
-	///
-	/// Apply Filter to Narrow Template Choices
-	///
-	void TemplatePicker::applyFilter( const QString &searchString,
-					  bool isoMask, bool usMask, bool otherMask )
-	{
-		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
-		{
-			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
-
-			bool sizeMask =
-				(isoMask   && tItem->tmplate()->isSizeIso())   ||
-				(usMask    && tItem->tmplate()->isSizeUs())    ||
-				(otherMask && tItem->tmplate()->isSizeOther());
-
-			if ( tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) && sizeMask )
-			{
-				item->setHidden( false );
-			}
-			else
-			{
-				item->setHidden( true );
-				item->setSelected( false );
-			}
-		}
-	}
-
-
-	///
-	/// Get Currently Selected Template
-	///
-	const libglabels::Template *TemplatePicker::selectedTemplate()
-	{
-		QList<QListWidgetItem *> items = selectedItems();
-		if ( items.isEmpty() )
-		{
-			return NULL;
+			item->setHidden( false );
 		}
 		else
 		{
-			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
-			return tItem->tmplate();
+			item->setHidden( true );
+			item->setSelected( false );
 		}
 	}
-
 }
 
+
+///
+/// Get Currently Selected Template
+///
+const glabels::Template *TemplatePicker::selectedTemplate()
+{
+	QList<QListWidgetItem *> items = selectedItems();
+	if ( items.isEmpty() )
+	{
+		return NULL;
+	}
+	else
+	{
+		TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
+		return tItem->tmplate();
+	}
+}

@@ -24,137 +24,131 @@
 #include <QPen>
 
 
-namespace glabels
+///
+/// Constructor
+///
+LabelModelShapeObject::LabelModelShapeObject( QObject* parent ) : LabelModelObject(parent)
 {
+	mOutline = new Outline( this );
 
-	///
-	/// Constructor
-	///
-	LabelModelShapeObject::LabelModelShapeObject( QObject* parent ) : LabelModelObject(parent)
+	mHandles << new HandleNorthWest( this );
+	mHandles << new HandleNorth( this );
+	mHandles << new HandleNorthEast( this );
+	mHandles << new HandleEast( this );
+	mHandles << new HandleSouthEast( this );
+	mHandles << new HandleSouth( this );
+	mHandles << new HandleSouthWest( this );
+	mHandles << new HandleWest( this );
+
+	mLineWidth       = 1.0;
+	mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
+	mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
+}
+
+
+///
+/// Destructor
+///
+LabelModelShapeObject::~LabelModelShapeObject()
+{
+	delete mOutline;
+
+	foreach( Handle* handle, mHandles )
 	{
-		mOutline = new Outline( this );
-
-		mHandles << new HandleNorthWest( this );
-		mHandles << new HandleNorth( this );
-		mHandles << new HandleNorthEast( this );
-		mHandles << new HandleEast( this );
-		mHandles << new HandleSouthEast( this );
-		mHandles << new HandleSouth( this );
-		mHandles << new HandleSouthWest( this );
-		mHandles << new HandleWest( this );
-
-		mLineWidth       = 1.0;
-		mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
-		mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
+		delete handle;
 	}
+	mHandles.clear();
+}
 
 
-	///
-	/// Destructor
-	///
-	LabelModelShapeObject::~LabelModelShapeObject()
+///
+/// Line Width Property Getter
+///
+glabels::Distance LabelModelShapeObject::lineWidth( void ) const
+{
+	return mLineWidth;
+}
+
+
+///
+/// Line Width Property Setter
+///
+void LabelModelShapeObject::setLineWidth( const glabels::Distance& value )
+{
+	if ( mLineWidth != value )
 	{
-		delete mOutline;
-
-		foreach( Handle* handle, mHandles )
-		{
-			delete handle;
-		}
-		mHandles.clear();
+		mLineWidth = value;
+		emit changed();
 	}
+}
 
 
-	///
-	/// Line Width Property Getter
-	///
-	libglabels::Distance LabelModelShapeObject::lineWidth( void ) const
+///
+/// Line Color Node Property Getter
+///
+ColorNode LabelModelShapeObject::lineColorNode( void ) const
+{
+	return mLineColorNode;
+}
+
+
+///
+/// Line Color Node Property Setter
+///
+void LabelModelShapeObject::setLineColorNode( const ColorNode& value )
+{
+	if ( mLineColorNode != value )
 	{
-		return mLineWidth;
+		mLineColorNode = value;
+		emit changed();
 	}
-
-
-	///
-	/// Line Width Property Setter
-	///
-	void LabelModelShapeObject::setLineWidth( const libglabels::Distance& value )
-	{
-		if ( mLineWidth != value )
-		{
-			mLineWidth = value;
-			emit changed();
-		}
-	}
-
-
-	///
-	/// Line Color Node Property Getter
-	///
-	ColorNode LabelModelShapeObject::lineColorNode( void ) const
-	{
-		return mLineColorNode;
-	}
-
-
-	///
-	/// Line Color Node Property Setter
-	///
-	void LabelModelShapeObject::setLineColorNode( const ColorNode& value )
-	{
-		if ( mLineColorNode != value )
-		{
-			mLineColorNode = value;
-			emit changed();
-		}
-	}
+}
 		
 
-	///
-	/// Fill Color Node Property Getter
-	///
-	ColorNode LabelModelShapeObject::fillColorNode( void ) const
-	{
-		return mFillColorNode;
-	}
+///
+/// Fill Color Node Property Getter
+///
+ColorNode LabelModelShapeObject::fillColorNode( void ) const
+{
+	return mFillColorNode;
+}
 
 
-	///
-	/// Fill Color Node Property Setter
-	///
-	void LabelModelShapeObject::setFillColorNode( const ColorNode& value )
+///
+/// Fill Color Node Property Setter
+///
+void LabelModelShapeObject::setFillColorNode( const ColorNode& value )
+{
+	if ( mFillColorNode != value )
 	{
-		if ( mFillColorNode != value )
-		{
-			mFillColorNode = value;
-			emit changed();
-		}
+		mFillColorNode = value;
+		emit changed();
 	}
+}
 		
 
-	///
-	/// Can Fill Capability Implementation
-	///
-	bool LabelModelShapeObject::canFill()
-	{
-		return true;
-	}
+///
+/// Can Fill Capability Implementation
+///
+bool LabelModelShapeObject::canFill()
+{
+	return true;
+}
 
 
-	///
-	/// Can Line Color Capability Implementation
-	///
-	bool LabelModelShapeObject::canLineColor()
-	{
-		return true;
-	}
+///
+/// Can Line Color Capability Implementation
+///
+bool LabelModelShapeObject::canLineColor()
+{
+	return true;
+}
 
 
-	///
-	/// Can Line Width Capability Implementation
-	///
-	bool LabelModelShapeObject::canLineWidth()
-	{
-		return true;
-	}
-
-
+///
+/// Can Line Width Capability Implementation
+///
+bool LabelModelShapeObject::canLineWidth()
+{
+	return true;
 }

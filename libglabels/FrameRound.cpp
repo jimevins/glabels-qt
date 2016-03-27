@@ -26,7 +26,7 @@
 #include "privateConstants.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	FrameRound::FrameRound( const Distance& r,

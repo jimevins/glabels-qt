@@ -18,15 +18,15 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Paper_h
-#define libglabels_Paper_h
+#ifndef glabels_Paper_h
+#define glabels_Paper_h
 
 
 #include <QString>
 #include "Distance.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class Paper
@@ -67,4 +67,4 @@ namespace libglabels
 #include "Paper.inl"
 
 
-#endif // libglabels_Paper_h
+#endif // glabels_Paper_h

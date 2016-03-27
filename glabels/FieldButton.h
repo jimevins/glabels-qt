@@ -18,72 +18,67 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_FieldButton_h
-#define glabels_FieldButton_h
+#ifndef FieldButton_h
+#define FieldButton_h
 
 #include <QPushButton>
 #include <QString>
 #include "FieldMenu.h"
 
 
-namespace glabels
+///
+/// Field Button
+///
+class FieldButton : public QPushButton
 {
+	Q_OBJECT
 
-	///
-	/// Field Button
-	///
-	class FieldButton : public QPushButton
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		FieldButton( QWidget* parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	FieldButton( QWidget* parent = 0 );
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void keySelected( const QString& key );
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void keySelected( const QString& key );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		QString key() const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	QString key() const;
 
 
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void setName( const QString& name = "" );
-		void setKeys( const QList<QString>& keyList );
-		void clearKeys();
+	/////////////////////////////////
+	// Public Methods
+	/////////////////////////////////
+public:
+	void setName( const QString& name = "" );
+	void setKeys( const QList<QString>& keyList );
+	void clearKeys();
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onMenuKeySelected( const QString& key );
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onMenuKeySelected( const QString& key );
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		FieldMenu*  mMenu;
-		QString     mKey;
-		bool        mLabelIsKey;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	FieldMenu*  mMenu;
+	QString     mKey;
+	bool        mLabelIsKey;
 
-	};
+};
 
 
-}
-
-#endif // glabels_FieldButton_h
+#endif // FieldButton_h

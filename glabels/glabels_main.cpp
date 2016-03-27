@@ -24,9 +24,6 @@
 #include "File.h"
 #include "libglabels/Db.h"
 
-using namespace glabels;
-using namespace libglabels;
-
 
 int main( int argc, char **argv )
 {
@@ -36,13 +33,13 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-qt" );
 
-	Db::init();
+	glabels::Db::init();
 	////// TEMPORARY TESTING ////////
 #if 0
-	Db::printKnownPapers();
-	Db::printKnownCategories();
-	Db::printKnownVendors();
-	Db::printKnownTemplates();
+	glabels::Db::printKnownPapers();
+	glabels::Db::printKnownCategories();
+	glabels::Db::printKnownVendors();
+	glabels::Db::printKnownTemplates();
 #endif
 	/////////////////////////////////
 

@@ -18,41 +18,37 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_LabelModelBoxObject_h
-#define glabels_LabelModelBoxObject_h
+#ifndef LabelModelBoxObject_h
+#define LabelModelBoxObject_h
 
 
 #include "LabelModelShapeObject.h"
 
 
-namespace glabels
+///
+/// Label Model Box Object
+///
+class LabelModelBoxObject : public LabelModelShapeObject
 {
+	Q_OBJECT
 
-	///
-	/// Label Model Box Object
-	///
-	class LabelModelBoxObject : public LabelModelShapeObject
-	{
-		Q_OBJECT
-
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		LabelModelBoxObject( QObject* parent = 0 );
-		virtual ~LabelModelBoxObject();
+	///////////////////////////////////////////////////////////////
+	// Lifecycle Methods
+	///////////////////////////////////////////////////////////////
+public:
+	LabelModelBoxObject( QObject* parent = 0 );
+	virtual ~LabelModelBoxObject();
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const;
-		virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const;
-		virtual QPainterPath hoverPath( double scale ) const;
+	///////////////////////////////////////////////////////////////
+	// Drawing operations
+	///////////////////////////////////////////////////////////////
+protected:
+	virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const;
+	virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const;
+	virtual QPainterPath hoverPath( double scale ) const;
 
-	};
+};
 
-}
 
-#endif // glabels_LabelModelBoxObject_h
+#endif // LabelModelBoxObject_h

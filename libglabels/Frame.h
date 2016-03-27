@@ -1,6 +1,6 @@
 /*  Frame.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Frame_h
-#define libglabels_Frame_h
+#ifndef glabels_Frame_h
+#define glabels_Frame_h
 
 #include <QCoreApplication>
 #include <QString>
@@ -32,7 +32,7 @@
 #include "Layout.h"
 
 
-namespace libglabels
+namespace glabels
 {
 	class Markup;  // Forward reference
 
@@ -84,4 +84,4 @@ namespace libglabels
 #include "Frame.inl"
 
 
-#endif // libglabels_Frame_h
+#endif // glabels_Frame_h

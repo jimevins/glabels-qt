@@ -1,6 +1,6 @@
 /*  XmlVendorParser.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,15 +18,15 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_XmlVendorParser_h
-#define libglabels_XmlVendorParser_h
+#ifndef glabels_XmlVendorParser_h
+#define glabels_XmlVendorParser_h
 
 
 #include <QString>
 #include <QDomElement>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class XmlVendorParser
@@ -43,4 +43,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_XmlVendorParser_h
+#endif // glabels_XmlVendorParser_h

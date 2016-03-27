@@ -18,25 +18,23 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Help_h
-#define glabels_Help_h
+#ifndef Help_h
+#define Help_h
 
 
 #include <QWidget>
 
 
-namespace glabels
+///
+/// Help Actions
+///
+namespace Help
 {
 
-	///
-	/// Help Actions
-	///
-	namespace Help
-	{
-		void displayContents( QWidget *parent );
-		void displayAbout( QWidget *parent );
-	}
+	void displayContents( QWidget *parent );
+	void displayAbout( QWidget *parent );
 
 }
 
-#endif // glabels_Help_h
+
+#endif // Help_h

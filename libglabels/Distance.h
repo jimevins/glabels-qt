@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Distance_h
-#define libglabels_Distance_h
+#ifndef glabels_Distance_h
+#define glabels_Distance_h
 
 
 #include <QCoreApplication>
@@ -27,7 +27,7 @@
 #include "Constants.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 
@@ -104,4 +104,4 @@ namespace libglabels
 #include "Distance.inl"
 
 
-#endif // libglabels_Distance_h
+#endif // glabels_Distance_h

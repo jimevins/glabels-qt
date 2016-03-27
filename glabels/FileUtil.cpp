@@ -21,24 +21,17 @@
 #include "FileUtil.h"
 
 
-namespace glabels
+namespace FileUtil
 {
 
-	namespace FileUtil
+	QString addExtension( const QString& rawFilename, const QString& extension )
 	{
-
-		QString addExtension( const QString& rawFilename, const QString& extension )
+		if ( rawFilename.endsWith( extension ) )
 		{
-			if ( rawFilename.endsWith( extension ) )
-			{
-				return rawFilename;
-			}
-
-			return rawFilename + extension;
+			return rawFilename;
 		}
 
+		return rawFilename + extension;
 	}
 
-
 }
-

@@ -30,120 +30,115 @@ namespace
 }
 
 
-namespace glabels
+///
+/// Constructor
+///
+LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelShapeObject(parent)
 {
-
-	///
-	/// Constructor
-	///
-	LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelShapeObject(parent)
-	{
-	}
+}
 
 
-	///
-	/// Destructor
-	///
-	LabelModelBoxObject::~LabelModelBoxObject()
-	{
-	}
+///
+/// Destructor
+///
+LabelModelBoxObject::~LabelModelBoxObject()
+{
+}
 
 
-	///
-	/// Draw shadow of object
-	///
-	void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const
-	{
-		/// TODO expand colors based on record
+///
+/// Draw shadow of object
+///
+void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const
+{
+	/// TODO expand colors based on record
 		
-		QColor lineColor = mLineColorNode.color();
-		QColor fillColor = mFillColorNode.color();
-		QColor shadowColor = mShadowColorNode.color();
+	QColor lineColor = mLineColorNode.color();
+	QColor fillColor = mFillColorNode.color();
+	QColor shadowColor = mShadowColorNode.color();
 
-		shadowColor.setAlphaF( mShadowOpacity );
+	shadowColor.setAlphaF( mShadowOpacity );
 
-		if ( fillColor.alpha() )
+	if ( fillColor.alpha() )
+	{
+		painter->setPen( Qt::NoPen );
+		painter->setBrush( shadowColor );
+
+		if ( lineColor.alpha() )
 		{
-			painter->setPen( Qt::NoPen );
-			painter->setBrush( shadowColor );
-
-			if ( lineColor.alpha() )
-			{
-				/* Has FILL and OUTLINE: adjust size to account for line width. */
-				painter->drawRect( QRectF( -mLineWidth.pt()/2,
-							   -mLineWidth.pt()/2,
-							   (mW + mLineWidth).pt(),
-							   (mH + mLineWidth).pt() ) );
-			}
-			else
-			{
-				/* Has FILL, but no OUTLINE. */
-				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-			}
+			/* Has FILL and OUTLINE: adjust size to account for line width. */
+			painter->drawRect( QRectF( -mLineWidth.pt()/2,
+						   -mLineWidth.pt()/2,
+						   (mW + mLineWidth).pt(),
+						   (mH + mLineWidth).pt() ) );
 		}
 		else
 		{
-			if ( lineColor.alpha() )
-			{
-				/* Has only OUTLINE. */
-				painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
-				painter->setBrush( Qt::NoBrush );
-
-				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-			}
+			/* Has FILL, but no OUTLINE. */
+			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 		}
-		
 	}
+	else
+	{
+		if ( lineColor.alpha() )
+		{
+			/* Has only OUTLINE. */
+			painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
+			painter->setBrush( Qt::NoBrush );
+
+			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+		}
+	}
+		
+}
 
 	
-	///
-	/// Draw object itself
-	///
-	void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const
-	{
-		/// TODO expand colors based on record
+///
+/// Draw object itself
+///
+void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const
+{
+	/// TODO expand colors based on record
 		
-		QColor lineColor = mLineColorNode.color();
-		QColor fillColor = mFillColorNode.color();
+	QColor lineColor = mLineColorNode.color();
+	QColor fillColor = mFillColorNode.color();
 
-		painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
-		painter->setBrush( fillColor );
+	painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
+	painter->setBrush( fillColor );
 
-		painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-	}
+	painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+}
 
 
-	///
-	/// Path to test for hover condition
-	///
-	QPainterPath LabelModelBoxObject::hoverPath( double scale ) const
+///
+/// Path to test for hover condition
+///
+QPainterPath LabelModelBoxObject::hoverPath( double scale ) const
+{
+	double s = 1 / scale;
+
+	QPainterPath path;
+
+	if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
 	{
-		double s = 1 / scale;
-
-		QPainterPath path;
-
-		if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
-		{
-			path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
-		}
-		else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
-		{
-			path.addRect( 0, 0, mW.pt(), mH.pt() );
-		}
-		else if ( mLineColorNode.color().alpha() )
-		{
-			path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
-				      (-mLineWidth.pt()/2) - s*slopPixels,
-				      (mW + mLineWidth).pt() + s*2*slopPixels,
-				      (mH + mLineWidth).pt() + s*2*slopPixels );
-			path.closeSubpath();
-			path.addRect( mLineWidth.pt()/2 + s*slopPixels,
-				      mLineWidth.pt()/2 + s*slopPixels,
-				      (mW - mLineWidth).pt() - s*2*slopPixels,
-				      (mH - mLineWidth).pt() - s*2*slopPixels );
-		}
-
-		return path;
+		path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
 	}
-	
+	else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
+	{
+		path.addRect( 0, 0, mW.pt(), mH.pt() );
+	}
+	else if ( mLineColorNode.color().alpha() )
+	{
+		path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
+			      (-mLineWidth.pt()/2) - s*slopPixels,
+			      (mW + mLineWidth).pt() + s*2*slopPixels,
+			      (mH + mLineWidth).pt() + s*2*slopPixels );
+		path.closeSubpath();
+		path.addRect( mLineWidth.pt()/2 + s*slopPixels,
+			      mLineWidth.pt()/2 + s*slopPixels,
+			      (mW - mLineWidth).pt() - s*2*slopPixels,
+			      (mH - mLineWidth).pt() - s*2*slopPixels );
+	}
+
+	return path;
 }

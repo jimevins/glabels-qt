@@ -32,983 +32,976 @@
 #include "MergeRecord.h"
 
 
-namespace glabels
+///
+/// Next Object ID
+///
+int LabelModelObject::msNextId = 0;
+
+
+///
+/// Constructor
+///
+LabelModelObject::LabelModelObject( QObject *parent = 0 ) : QObject(parent)
 {
+	mId = msNextId++;
 
-	///
-	/// Next Object ID
-	///
-	int LabelModelObject::msNextId = 0;
+	mX0 = 0;
+	mY0 = 0;
+	mW  = 0;
+	mH  = 0;
+	mMatrix = QMatrix();
+
+	mShadowState     = false;
+	mShadowX         = 1.3;
+	mShadowY         = 1.3;
+	mShadowColorNode = ColorNode( QColor( 0, 0, 0 ) );
+	mShadowOpacity   = 0.5;
+
+	mSelectedFlag = false;
+
+	mOutline = 0;
+}
 
 
-	///
-	/// Constructor
-	///
-	LabelModelObject::LabelModelObject( QObject *parent = 0 ) : QObject(parent)
+///
+/// Destructor
+///
+LabelModelObject::~LabelModelObject()
+{
+}
+
+
+///
+/// ID Property Getter
+///
+int LabelModelObject::id() const
+{
+	return mId;
+}
+
+
+///
+/// Selected Property Getter
+///
+bool LabelModelObject::isSelected() const
+{
+	return mSelectedFlag;
+}
+
+
+///
+/// Selected Property Setter
+///
+void LabelModelObject::select( bool value )
+{
+	mSelectedFlag = value;
+}
+
+
+///
+/// Clear Selected Property Setter
+///
+void LabelModelObject::unselect()
+{
+	mSelectedFlag = false;
+}
+
+
+///
+/// X0 Property Getter
+///
+glabels::Distance LabelModelObject::x0() const
+{
+	return mX0;
+}
+
+
+///
+/// X0 Property Setter
+///
+void LabelModelObject::setX0( const glabels::Distance& value )
+{
+	if ( mX0 != value )
 	{
-		mId = msNextId++;
-
-		mX0 = 0;
-		mY0 = 0;
-		mW  = 0;
-		mH  = 0;
-		mMatrix = QMatrix();
-
-		mShadowState     = false;
-		mShadowX         = 1.3;
-		mShadowY         = 1.3;
-		mShadowColorNode = ColorNode( QColor( 0, 0, 0 ) );
-		mShadowOpacity   = 0.5;
-
-		mSelectedFlag = false;
-
-		mOutline = 0;
+		mX0 = value;
+		emit moved();
 	}
-
-
-	///
-	/// Destructor
-	///
-	LabelModelObject::~LabelModelObject()
-	{
-	}
-
-
-	///
-	/// ID Property Getter
-	///
-	int LabelModelObject::id() const
-	{
-		return mId;
-	}
-
-
-	///
-	/// Selected Property Getter
-	///
-	bool LabelModelObject::isSelected() const
-	{
-		return mSelectedFlag;
-	}
-
-
-	///
-	/// Selected Property Setter
-	///
-	void LabelModelObject::select( bool value )
-	{
-		mSelectedFlag = value;
-	}
-
-
-	///
-	/// Clear Selected Property Setter
-	///
-	void LabelModelObject::unselect()
-	{
-		mSelectedFlag = false;
-	}
-
-
-	///
-	/// X0 Property Getter
-	///
-	libglabels::Distance LabelModelObject::x0() const
-	{
-		return mX0;
-	}
-
-
-	///
-	/// X0 Property Setter
-	///
-	void LabelModelObject::setX0( const libglabels::Distance& value )
-	{
-		if ( mX0 != value )
-		{
-			mX0 = value;
-			emit moved();
-		}
-	}
+}
 		
 
-	///
-	/// Y0 Property Getter
-	///
-	libglabels::Distance LabelModelObject::y0() const
-	{
-		return mY0;
-	}
+///
+/// Y0 Property Getter
+///
+glabels::Distance LabelModelObject::y0() const
+{
+	return mY0;
+}
 
 
-	///
-	/// Y0 Property Setter
-	///
-	void LabelModelObject::setY0( const libglabels::Distance& value )
+///
+/// Y0 Property Setter
+///
+void LabelModelObject::setY0( const glabels::Distance& value )
+{
+	if ( mY0 != value )
 	{
-		if ( mY0 != value )
-		{
-			mY0 = value;
-			emit moved();
-		}
+		mY0 = value;
+		emit moved();
 	}
+}
 		
 
-	///
-	/// W (Width) Property Getter
-	///
-	libglabels::Distance LabelModelObject::w() const
-	{
-		return mW;
-	}
+///
+/// W (Width) Property Getter
+///
+glabels::Distance LabelModelObject::w() const
+{
+	return mW;
+}
 
 
-	///
-	/// W (Width) Property Setter
-	///
-	void LabelModelObject::setW( const libglabels::Distance& value )
+///
+/// W (Width) Property Setter
+///
+void LabelModelObject::setW( const glabels::Distance& value )
+{
+	if ( mW != value )
 	{
-		if ( mW != value )
-		{
-			mW = value;
-			emit changed();
-		}
+		mW = value;
+		emit changed();
 	}
+}
 		
 
-	///
-	/// H (Height) Property Getter
-	///
-	libglabels::Distance LabelModelObject::h() const
+///
+/// H (Height) Property Getter
+///
+glabels::Distance LabelModelObject::h() const
+{
+	return mH;
+}
+
+
+///
+/// H (Height) Property Setter
+///
+void LabelModelObject::setH( const glabels::Distance& value )
+{
+	if ( mH != value )
 	{
-		return mH;
+		mH = value;
+		emit changed();
 	}
+}
 
 
-	///
-	/// H (Height) Property Setter
-	///
-	void LabelModelObject::setH( const libglabels::Distance& value )
+///
+/// Matrix Property Getter
+///
+QMatrix LabelModelObject::matrix() const
+{
+	return mMatrix;
+}
+
+
+///
+/// Matrix Property Setter
+///
+void LabelModelObject::setMatrix( const QMatrix& value )
+{
+	if ( mMatrix != value )
 	{
-		if ( mH != value )
-		{
-			mH = value;
-			emit changed();
-		}
+		mMatrix = value;
+		emit changed();
 	}
+}
 
 
-	///
-	/// Matrix Property Getter
-	///
-	QMatrix LabelModelObject::matrix() const
+///
+/// Shadow State Property Getter
+///
+bool LabelModelObject::shadow() const
+{
+	return mShadowState;
+}
+
+
+///
+/// Shadow State Property Setter
+///
+void LabelModelObject::setShadow( bool value )
+{
+	if ( mShadowState != value )
 	{
-		return mMatrix;
+		mShadowState = value;
+		emit changed();
 	}
+}
 
 
-	///
-	/// Matrix Property Setter
-	///
-	void LabelModelObject::setMatrix( const QMatrix& value )
+///
+/// Shadow X Property Getter
+///
+glabels::Distance LabelModelObject::shadowX() const
+{
+	return mShadowX;
+}
+
+
+///
+/// Shadow X Property Setter
+///
+void LabelModelObject::setShadowX( const glabels::Distance& value )
+{
+	if ( mShadowX != value )
 	{
-		if ( mMatrix != value )
-		{
-			mMatrix = value;
-			emit changed();
-		}
+		mShadowX = value;
+		emit changed();
 	}
-
-
-	///
-	/// Shadow State Property Getter
-	///
-	bool LabelModelObject::shadow() const
-	{
-		return mShadowState;
-	}
-
-
-	///
-	/// Shadow State Property Setter
-	///
-	void LabelModelObject::setShadow( bool value )
-	{
-		if ( mShadowState != value )
-		{
-			mShadowState = value;
-			emit changed();
-		}
-	}
-
-
-	///
-	/// Shadow X Property Getter
-	///
-	libglabels::Distance LabelModelObject::shadowX() const
-	{
-		return mShadowX;
-	}
-
-
-	///
-	/// Shadow X Property Setter
-	///
-	void LabelModelObject::setShadowX( const libglabels::Distance& value )
-	{
-		if ( mShadowX != value )
-		{
-			mShadowX = value;
-			emit changed();
-		}
-	}
+}
 		
 
-	///
-	/// Shadow Y Property Getter
-	///
-	libglabels::Distance LabelModelObject::shadowY() const
-	{
-		return mShadowY;
-	}
+///
+/// Shadow Y Property Getter
+///
+glabels::Distance LabelModelObject::shadowY() const
+{
+	return mShadowY;
+}
 
 
-	///
-	/// Shadow Y Property Setter
-	///
-	void LabelModelObject::setShadowY( const libglabels::Distance& value )
+///
+/// Shadow Y Property Setter
+///
+void LabelModelObject::setShadowY( const glabels::Distance& value )
+{
+	if ( mShadowY != value )
 	{
-		if ( mShadowY != value )
-		{
-			mShadowY = value;
-			emit changed();
-		}
+		mShadowY = value;
+		emit changed();
 	}
+}
 		
 
-	///
-	/// Shadow Opacity Property Getter
-	///
-	double LabelModelObject::shadowOpacity() const
-	{
-		return mShadowOpacity;
-	}
+///
+/// Shadow Opacity Property Getter
+///
+double LabelModelObject::shadowOpacity() const
+{
+	return mShadowOpacity;
+}
 
 
-	///
-	/// Shadow Opacity Property Setter
-	///
-	void LabelModelObject::setShadowOpacity( double value )
+///
+/// Shadow Opacity Property Setter
+///
+void LabelModelObject::setShadowOpacity( double value )
+{
+	if ( mShadowOpacity != value )
 	{
-		if ( mShadowOpacity != value )
-		{
-			mShadowOpacity = value;
-			emit changed();
-		}
+		mShadowOpacity = value;
+		emit changed();
 	}
+}
 		
 
-	///
-	/// Shadow Color Node Property Getter
-	///
-	ColorNode LabelModelObject::shadowColorNode() const
-	{
-		return mShadowColorNode;
-	}
+///
+/// Shadow Color Node Property Getter
+///
+ColorNode LabelModelObject::shadowColorNode() const
+{
+	return mShadowColorNode;
+}
 
 
-	///
-	/// Shadow Color Node Property Setter
-	///
-	void LabelModelObject::setShadowColorNode( const ColorNode& value )
+///
+/// Shadow Color Node Property Setter
+///
+void LabelModelObject::setShadowColorNode( const ColorNode& value )
+{
+	if ( mShadowColorNode != value )
 	{
-		if ( mShadowColorNode != value )
-		{
-			mShadowColorNode = value;
-			emit changed();
-		}
+		mShadowColorNode = value;
+		emit changed();
 	}
+}
 		
 
-	///
-	/// Virtual Font Family Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	QString LabelModelObject::fontFamily() const
-	{
-		return "";
-	}
+///
+/// Virtual Font Family Property Default Getter
+/// (Overridden by concrete class)
+///
+QString LabelModelObject::fontFamily() const
+{
+	return "";
+}
 
 
-	///
-	/// Virtual Font Family Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFontFamily( const QString& value )
-	{
-	}
+///
+/// Virtual Font Family Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFontFamily( const QString& value )
+{
+}
 
 
-	///
-	/// Virtual Font Size Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	double LabelModelObject::fontSize() const
-	{
-		return 0;
-	}
+///
+/// Virtual Font Size Property Default Getter
+/// (Overridden by concrete class)
+///
+double LabelModelObject::fontSize() const
+{
+	return 0;
+}
 
 
-	///
-	/// Virtual Font Size Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFontSize( double value )
-	{
-	}
+///
+/// Virtual Font Size Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFontSize( double value )
+{
+}
 
 
-	///
-	/// Virtual Font Weight Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	QFont::Weight LabelModelObject::fontWeight() const
-	{
-		return QFont::Normal;
-	}
+///
+/// Virtual Font Weight Property Default Getter
+/// (Overridden by concrete class)
+///
+QFont::Weight LabelModelObject::fontWeight() const
+{
+	return QFont::Normal;
+}
 
 
-	///
-	/// Virtual Font Weight Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFontWeight( QFont::Weight value )
-	{
-	}
+///
+/// Virtual Font Weight Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFontWeight( QFont::Weight value )
+{
+}
 
 
-	///
-	/// Virtual Font Italic Flag Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::fontItalicFlag() const
-	{
-		return false;
-	}
+///
+/// Virtual Font Italic Flag Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::fontItalicFlag() const
+{
+	return false;
+}
 
 
-	///
-	/// Virtual Font Italic Flag Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFontItalicFlag( bool value )
-	{
-	}
+///
+/// Virtual Font Italic Flag Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFontItalicFlag( bool value )
+{
+}
 
 
-	///
-	/// Virtual Font Underline Flag Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::fontUnderlineFlag() const
-	{
-		return false;
-	}
+///
+/// Virtual Font Underline Flag Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::fontUnderlineFlag() const
+{
+	return false;
+}
 
 
-	///
-	/// Virtual Font Underline Flag Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFontUnderlineFlag( bool value )
-	{
-	}
+///
+/// Virtual Font Underline Flag Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFontUnderlineFlag( bool value )
+{
+}
 
 
-	///
-	/// Virtual Text Color Node Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	ColorNode LabelModelObject::textColorNode() const
-	{
-		return ColorNode( QColor::fromRgba(0x00000000) );
-	}
+///
+/// Virtual Text Color Node Property Default Getter
+/// (Overridden by concrete class)
+///
+ColorNode LabelModelObject::textColorNode() const
+{
+	return ColorNode( QColor::fromRgba(0x00000000) );
+}
 
 
-	///
-	/// Virtual Text Color Node Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setTextColorNode( const ColorNode &value )
-	{
-	}
+///
+/// Virtual Text Color Node Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setTextColorNode( const ColorNode &value )
+{
+}
 		
 
-	///
-	/// Virtual Text Horizontal Alignment Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	Qt::Alignment LabelModelObject::textHAlign() const
-	{
-		return Qt::AlignLeft;
-	}
+///
+/// Virtual Text Horizontal Alignment Property Default Getter
+/// (Overridden by concrete class)
+///
+Qt::Alignment LabelModelObject::textHAlign() const
+{
+	return Qt::AlignLeft;
+}
 
 
-	///
-	/// Virtual Text Horizontal Alignment Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setTextHAlign( Qt::Alignment value )
-	{
-	}
+///
+/// Virtual Text Horizontal Alignment Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setTextHAlign( Qt::Alignment value )
+{
+}
 
 
-	///
-	/// Virtual Text Vertical Alignment Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	Qt::Alignment LabelModelObject::textVAlign() const
-	{
-		return Qt::AlignTop;
-	}
+///
+/// Virtual Text Vertical Alignment Property Default Getter
+/// (Overridden by concrete class)
+///
+Qt::Alignment LabelModelObject::textVAlign() const
+{
+	return Qt::AlignTop;
+}
 
 
-	///
-	/// Virtual Text Vertical Alignment Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setTextVAlign( Qt::Alignment value )
-	{
-	}
+///
+/// Virtual Text Vertical Alignment Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setTextVAlign( Qt::Alignment value )
+{
+}
 
 
-	///
-	/// Virtual Text Line Spacing Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	double LabelModelObject::textLineSpacing() const
-	{
-		return 0;
-	}
+///
+/// Virtual Text Line Spacing Property Default Getter
+/// (Overridden by concrete class)
+///
+double LabelModelObject::textLineSpacing() const
+{
+	return 0;
+}
 
 
-	///
-	/// Virtual Text Line Spacing Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setTextLineSpacing( double value )
-	{
-	}
+///
+/// Virtual Text Line Spacing Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setTextLineSpacing( double value )
+{
+}
 
 
-	///
-	/// Virtual Filename Node Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	TextNode LabelModelObject::filenameNode() const
-	{
-		return TextNode();
-	}
+///
+/// Virtual Filename Node Property Default Getter
+/// (Overridden by concrete class)
+///
+TextNode LabelModelObject::filenameNode() const
+{
+	return TextNode();
+}
 
 
-	///
-	/// Virtual Filename Node Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFilenameNode( const TextNode& value )
-	{
-	}
+///
+/// Virtual Filename Node Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFilenameNode( const TextNode& value )
+{
+}
 		
 
-	///
-	/// Virtual Line Width Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	libglabels::Distance LabelModelObject::lineWidth() const
-	{
-		return 0;
-	}
+///
+/// Virtual Line Width Property Default Getter
+/// (Overridden by concrete class)
+///
+glabels::Distance LabelModelObject::lineWidth() const
+{
+	return 0;
+}
 
 
-	///
-	/// Virtual Line Width Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setLineWidth( const libglabels::Distance& value )
-	{
-	}
+///
+/// Virtual Line Width Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setLineWidth( const glabels::Distance& value )
+{
+}
 
 
-	///
-	/// Virtual Line Color Node Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	ColorNode LabelModelObject::lineColorNode() const
-	{
-		return ColorNode( QColor::fromRgba(0x00000000) );
-	}
+///
+/// Virtual Line Color Node Property Default Getter
+/// (Overridden by concrete class)
+///
+ColorNode LabelModelObject::lineColorNode() const
+{
+	return ColorNode( QColor::fromRgba(0x00000000) );
+}
 
 
-	///
-	/// Virtual Line Color Node Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setLineColorNode( const ColorNode &value )
-	{
-	}
+///
+/// Virtual Line Color Node Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setLineColorNode( const ColorNode &value )
+{
+}
 		
 
-	///
-	/// Virtual Fill Color Node Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	ColorNode LabelModelObject::fillColorNode() const
-	{
-		return ColorNode( QColor::fromRgba(0x00000000) );
-	}
+///
+/// Virtual Fill Color Node Property Default Getter
+/// (Overridden by concrete class)
+///
+ColorNode LabelModelObject::fillColorNode() const
+{
+	return ColorNode( QColor::fromRgba(0x00000000) );
+}
 
 
-	///
-	/// Virtual Fill Color Node Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setFillColorNode( const ColorNode &value )
-	{
-	}
+///
+/// Virtual Fill Color Node Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setFillColorNode( const ColorNode &value )
+{
+}
 		
 
-	///
-	/// Virtual Barcode Data Node Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	TextNode LabelModelObject::bcDataNode() const
-	{
-		return TextNode();
-	}
+///
+/// Virtual Barcode Data Node Property Default Getter
+/// (Overridden by concrete class)
+///
+TextNode LabelModelObject::bcDataNode() const
+{
+	return TextNode();
+}
 
 
-	///
-	/// Virtual Barcode Data Node Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setBcDataNode( const TextNode &value )
-	{
-	}
+///
+/// Virtual Barcode Data Node Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setBcDataNode( const TextNode &value )
+{
+}
 		
 
-	///
-	/// Virtual Barcode Text Flag Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::bcTextFlag() const
-	{
-		return false;
-	}
+///
+/// Virtual Barcode Text Flag Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::bcTextFlag() const
+{
+	return false;
+}
 
 
-	///
-	/// Virtual Barcode Text Flag Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setBcTextFlag( bool value )
-	{
-	}
+///
+/// Virtual Barcode Text Flag Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setBcTextFlag( bool value )
+{
+}
 
 
-	///
-	/// Virtual Barcode Checksum Flag Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::bcChecksumFlag() const
-	{
-		return false;
-	}
+///
+/// Virtual Barcode Checksum Flag Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::bcChecksumFlag() const
+{
+	return false;
+}
 
 
-	///
-	/// Virtual Barcode Checksum Flag Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setBcChecksumFlag( bool value )
-	{
-	}
+///
+/// Virtual Barcode Checksum Flag Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setBcChecksumFlag( bool value )
+{
+}
 
 
-	///
-	/// Virtual Barcode Color Node Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	ColorNode LabelModelObject::bcColorNode() const
-	{
-		return ColorNode( QColor::fromRgba(0x00000000) );
-	}
+///
+/// Virtual Barcode Color Node Property Default Getter
+/// (Overridden by concrete class)
+///
+ColorNode LabelModelObject::bcColorNode() const
+{
+	return ColorNode( QColor::fromRgba(0x00000000) );
+}
 
 
-	///
-	/// Virtual Barcode Color Node Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setBcColorNode( const ColorNode &value )
-	{
-	}
+///
+/// Virtual Barcode Color Node Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setBcColorNode( const ColorNode &value )
+{
+}
 		
 
-	///
-	/// Virtual Barcode Style Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	BarcodeStyle LabelModelObject::bcStyle() const
-	{
-		return BarcodeStyle();
-	}
+///
+/// Virtual Barcode Style Property Default Getter
+/// (Overridden by concrete class)
+///
+BarcodeStyle LabelModelObject::bcStyle() const
+{
+	return BarcodeStyle();
+}
 
 
-	///
-	/// Virtual Barcode Style Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setBcStyle( const BarcodeStyle &value )
-	{
-	}
+///
+/// Virtual Barcode Style Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setBcStyle( const BarcodeStyle &value )
+{
+}
 		
 
-	///
-	/// Virtual Barcode Format Digits Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	int LabelModelObject::bcFormatDigits() const
+///
+/// Virtual Barcode Format Digits Property Default Getter
+/// (Overridden by concrete class)
+///
+int LabelModelObject::bcFormatDigits() const
+{
+	return 0;
+}
+
+
+///
+/// Virtual Barcode Format Digits Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setBcFormatDigits( int value )
+{
+}
+
+
+///
+/// Virtual Can Text Capability Read-Only Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::canText() const
+{
+	return false;
+}
+
+
+///
+/// Virtual Can Fill Capability Read-Only Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::canFill() const
+{
+	return false;
+}
+
+
+///
+/// Virtual Can Line Color Capability Read-Only Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::canLineColor() const
+{ 
+	return false;
+}
+
+
+///
+/// Virtual Can Line Width Capability Read-Only Property Default Getter
+/// (Overridden by concrete class)
+///
+bool LabelModelObject::canLineWidth() const
+{
+	return false;
+}
+
+
+///
+/// Set Absolute Position
+///
+void LabelModelObject::setPosition( const glabels::Distance& x0,
+				    const glabels::Distance& y0 )
+{
+	if ( ( mX0 != x0 ) || ( mY0 != y0 ) )
 	{
-		return 0;
+		mX0 = x0;
+		mY0 = y0;
+
+		emit moved();
 	}
+}
 
 
-	///
-	/// Virtual Barcode Format Digits Property Default Setter
-	/// (Overridden by concrete class)
-	///
-	void LabelModelObject::setBcFormatDigits( int value )
+///
+/// Set Relative Position
+///
+void LabelModelObject::setPositionRelative( const glabels::Distance& dx,
+					    const glabels::Distance& dy )
+{
+	if ( ( dx != 0 ) || ( dy != 0 ) )
 	{
+		mX0 += dx;
+		mY0 += dy;
+
+		emit moved();
 	}
+}
 
 
-	///
-	/// Virtual Can Text Capability Read-Only Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::canText() const
+///
+/// Set Size
+///
+void LabelModelObject::setSize( const glabels::Distance& w,
+				const glabels::Distance& h )
+{
+	mW = w;
+	mH = h;
+
+	emit changed();
+}
+
+
+///
+/// Set Size (But Maintain Current Aspect Ratio)
+///
+void LabelModelObject::setSizeHonorAspect( const glabels::Distance& w,
+					   const glabels::Distance& h )
+{
+	double aspectRatio = mH / mW;
+	glabels::Distance wNew = w;
+	glabels::Distance hNew = h;
+		
+	if ( h > (w*aspectRatio) )
 	{
-		return false;
+		hNew = w*aspectRatio;
 	}
-
-
-	///
-	/// Virtual Can Fill Capability Read-Only Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::canFill() const
+	else
 	{
-		return false;
+		wNew = h/aspectRatio;
 	}
 
-
-	///
-	/// Virtual Can Line Color Capability Read-Only Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::canLineColor() const
-	{ 
-		return false;
-	}
+	setSize( wNew, hNew );
+}
 
 
-	///
-	/// Virtual Can Line Width Capability Read-Only Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	bool LabelModelObject::canLineWidth() const
-	{
-		return false;
-	}
+///
+/// Set Width (But Maintain Current Aspect Ratio)
+///
+void LabelModelObject::setWHonorAspect( const glabels::Distance& w )
+{
+	double aspectRatio = mH / mW;
+	glabels::Distance h = w * aspectRatio;
 
-
-	///
-	/// Set Absolute Position
-	///
-	void LabelModelObject::setPosition( const libglabels::Distance& x0,
-					    const libglabels::Distance& y0 )
-	{
-		if ( ( mX0 != x0 ) || ( mY0 != y0 ) )
-		{
-			mX0 = x0;
-			mY0 = y0;
-
-			emit moved();
-		}
-	}
-
-
-	///
-	/// Set Relative Position
-	///
-	void LabelModelObject::setPositionRelative( const libglabels::Distance& dx,
-						    const libglabels::Distance& dy )
-	{
-		if ( ( dx != 0 ) || ( dy != 0 ) )
-		{
-			mX0 += dx;
-			mY0 += dy;
-
-			emit moved();
-		}
-	}
-
-
-	///
-	/// Set Size
-	///
-	void LabelModelObject::setSize( const libglabels::Distance& w,
-					const libglabels::Distance& h )
+	if ( ( mW != w ) || ( mH != h ) )
 	{
 		mW = w;
 		mH = h;
 
 		emit changed();
 	}
+}
 
 
-	///
-	/// Set Size (But Maintain Current Aspect Ratio)
-	///
-	void LabelModelObject::setSizeHonorAspect( const libglabels::Distance& w,
-						   const libglabels::Distance& h )
+///
+/// Set Height (But Maintain Current Aspect Ratio)
+///
+void LabelModelObject::setHHonorAspect( const glabels::Distance& h )
+{
+	double aspectRatio = mH / mW;
+	glabels::Distance w = h / aspectRatio;
+
+	if ( ( mW != w ) || ( mH != h ) )
 	{
-		double aspectRatio = mH / mW;
-		libglabels::Distance wNew = w;
-		libglabels::Distance hNew = h;
-		
-		if ( h > (w*aspectRatio) )
-		{
-			hNew = w*aspectRatio;
-		}
-		else
-		{
-			wNew = h/aspectRatio;
-		}
+		mW = w;
+		mH = h;
 
-		setSize( wNew, hNew );
+		emit changed();
 	}
+}
 
 
-	///
-	/// Set Width (But Maintain Current Aspect Ratio)
-	///
-	void LabelModelObject::setWHonorAspect( const libglabels::Distance& w )
-	{
-		double aspectRatio = mH / mW;
-		libglabels::Distance h = w * aspectRatio;
+///
+/// Get Extent of Bounding Box
+///
+LabelRegion LabelModelObject::getExtent()
+{
+	using std::min;
+	using std::max;
 
-		if ( ( mW != w ) || ( mH != h ) )
-		{
-			mW = w;
-			mH = h;
+	QPointF a1( (   - lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
+	QPointF a2( (mW + lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
+	QPointF a3( (mW + lineWidth()/2).pt(), (mH + lineWidth()/2).pt() );
+	QPointF a4( (   - lineWidth()/2).pt(), (mH + lineWidth()/2).pt() );
 
-			emit changed();
-		}
-	}
+	a1 = mMatrix.map( a1 );
+	a2 = mMatrix.map( a2 );
+	a3 = mMatrix.map( a3 );
+	a4 = mMatrix.map( a4 );
 
+	LabelRegion region;
+	region.setX1( glabels::Distance(min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) )) + mX0 );
+	region.setY1( glabels::Distance(min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) )) + mY0 );
+	region.setX2( glabels::Distance(max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) )) + mX0 );
+	region.setY2( glabels::Distance(max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) )) + mY0 );
 
-	///
-	/// Set Height (But Maintain Current Aspect Ratio)
-	///
-	void LabelModelObject::setHHonorAspect( const libglabels::Distance& h )
-	{
-		double aspectRatio = mH / mW;
-		libglabels::Distance w = h / aspectRatio;
-
-		if ( ( mW != w ) || ( mH != h ) )
-		{
-			mW = w;
-			mH = h;
-
-			emit changed();
-		}
-	}
+	return region;
+}
 
 
-	///
-	/// Get Extent of Bounding Box
-	///
-	LabelRegion LabelModelObject::getExtent()
-	{
-		using std::min;
-		using std::max;
-
-		QPointF a1( (   - lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
-		QPointF a2( (mW + lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
-		QPointF a3( (mW + lineWidth()/2).pt(), (mH + lineWidth()/2).pt() );
-		QPointF a4( (   - lineWidth()/2).pt(), (mH + lineWidth()/2).pt() );
-
-		a1 = mMatrix.map( a1 );
-		a2 = mMatrix.map( a2 );
-		a3 = mMatrix.map( a3 );
-		a4 = mMatrix.map( a4 );
-
-		LabelRegion region;
-		region.setX1( libglabels::Distance(min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) )) + mX0 );
-		region.setY1( libglabels::Distance(min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) )) + mY0 );
-		region.setX2( libglabels::Distance(max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) )) + mX0 );
-		region.setY2( libglabels::Distance(max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) )) + mY0 );
-
-		return region;
-	}
-
-
-	///
-	/// Rotate Object
-	///
-	void LabelModelObject::rotate( double thetaDegs )
-	{
-		if ( thetaDegs != 0 )
-		{
-			QMatrix m;
-			m.rotate( thetaDegs );
-			mMatrix *= m;
-
-			emit changed();
-		}
-	}
-
-
-	///
-	/// Flip Object Horizontally
-	///
-	void LabelModelObject::flipHoriz()
+///
+/// Rotate Object
+///
+void LabelModelObject::rotate( double thetaDegs )
+{
+	if ( thetaDegs != 0 )
 	{
 		QMatrix m;
-		m.scale( -1, 1 );
+		m.rotate( thetaDegs );
 		mMatrix *= m;
 
 		emit changed();
 	}
+}
 
 
-	///
-	/// Flip Object Vertically
-	///
-	void LabelModelObject::flipVert()
+///
+/// Flip Object Horizontally
+///
+void LabelModelObject::flipHoriz()
+{
+	QMatrix m;
+	m.scale( -1, 1 );
+	mMatrix *= m;
+
+	emit changed();
+}
+
+
+///
+/// Flip Object Vertically
+///
+void LabelModelObject::flipVert()
+{
+	QMatrix m;
+	m.scale( 1, -1 );
+	mMatrix *= m;
+
+	emit changed();
+}
+
+
+///
+/// Is this object located at x,y?
+///
+bool LabelModelObject::isLocatedAt( double                   scale,
+				    const glabels::Distance& x,
+				    const glabels::Distance& y ) const
+{
+	QPointF p( x.pt(), y.pt() );
+
+	/*
+	 * Change point to object relative coordinates
+	 */
+	p -= QPointF( mX0.pt(), mY0.pt() ); // Translate point to x0,y0
+	p = mMatrix.inverted().map( p );
+
+	if ( hoverPath( scale ).contains( p ) )
 	{
-		QMatrix m;
-		m.scale( 1, -1 );
-		mMatrix *= m;
-
-		emit changed();
+		return true;
 	}
-
-
-	///
-	/// Is this object located at x,y?
-	///
-	bool LabelModelObject::isLocatedAt( double                      scale,
-					    const libglabels::Distance& x,
-					    const libglabels::Distance& y ) const
+	else if ( isSelected() && mOutline )
 	{
-		QPointF p( x.pt(), y.pt() );
-
-		/*
-		 * Change point to object relative coordinates
-		 */
-		p -= QPointF( mX0.pt(), mY0.pt() ); // Translate point to x0,y0
-		p = mMatrix.inverted().map( p );
-
-		if ( hoverPath( scale ).contains( p ) )
+		if ( mOutline->hoverPath( scale ).contains( p ) )
 		{
 			return true;
 		}
-		else if ( isSelected() && mOutline )
-		{
-			if ( mOutline->hoverPath( scale ).contains( p ) )
-			{
-				return true;
-			}
-		}
-
-		return false;
 	}
 
-
-	///
-	/// Is one of this object's handles locate at x,y?  If so, return it.
-	///
-	Handle* LabelModelObject::handleAt( double                      scale,
-					    const libglabels::Distance& x,
-					    const libglabels::Distance& y ) const
-	{
-		if ( mSelectedFlag )
-		{
-			QPointF p( x.pt(), y.pt() );
-			p -= QPointF( mX0.pt(), mY0.pt() ); // Translate point to x0,y0
-
-			foreach ( Handle* handle, mHandles )
-			{
-				QPainterPath handlePath = mMatrix.map( handle->path( scale ) );
-				if ( handlePath.contains( p ) )
-				{
-					return handle;
-				}
-			}
-		}
-
-		return 0;
-	}
-
-
-	///
-	/// Draw object + shadow
-	///
-	void LabelModelObject::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
-	{
-		painter->save();
-		painter->translate( mX0.pt(), mY0.pt() );
-
-		if ( mShadowState )
-		{
-			painter->save();
-			painter->translate( mShadowX.pt(), mShadowY.pt() );
-			painter->setMatrix( mMatrix, true );
-			drawShadow( painter, inEditor, record );
-			painter->restore();
-		}
-
-		painter->setMatrix( mMatrix, true );
-		drawObject( painter, inEditor, record );
-
-		painter->restore();
-	}
-
-
-	///
-	/// Draw selection highlights
-	///
-	void LabelModelObject::drawSelectionHighlight( QPainter* painter, double scale ) const
-	{
-		painter->save();
-
-		painter->translate( mX0.pt(), mY0.pt() );
-		painter->setMatrix( mMatrix, true );
-
-		if ( mOutline )
-		{
-			mOutline->draw( painter );
-		}
-
-		foreach( Handle* handle, mHandles )
-		{
-			handle->draw( painter, scale );
-		}
-		
-		painter->restore();
-	}
-
-
+	return false;
 }
 
+
+///
+/// Is one of this object's handles locate at x,y?  If so, return it.
+///
+Handle* LabelModelObject::handleAt( double                   scale,
+				    const glabels::Distance& x,
+				    const glabels::Distance& y ) const
+{
+	if ( mSelectedFlag )
+	{
+		QPointF p( x.pt(), y.pt() );
+		p -= QPointF( mX0.pt(), mY0.pt() ); // Translate point to x0,y0
+
+		foreach ( Handle* handle, mHandles )
+		{
+			QPainterPath handlePath = mMatrix.map( handle->path( scale ) );
+			if ( handlePath.contains( p ) )
+			{
+				return handle;
+			}
+		}
+	}
+
+	return 0;
+}
+
+
+///
+/// Draw object + shadow
+///
+void LabelModelObject::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
+{
+	painter->save();
+	painter->translate( mX0.pt(), mY0.pt() );
+
+	if ( mShadowState )
+	{
+		painter->save();
+		painter->translate( mShadowX.pt(), mShadowY.pt() );
+		painter->setMatrix( mMatrix, true );
+		drawShadow( painter, inEditor, record );
+		painter->restore();
+	}
+
+	painter->setMatrix( mMatrix, true );
+	drawObject( painter, inEditor, record );
+
+	painter->restore();
+}
+
+
+///
+/// Draw selection highlights
+///
+void LabelModelObject::drawSelectionHighlight( QPainter* painter, double scale ) const
+{
+	painter->save();
+
+	painter->translate( mX0.pt(), mY0.pt() );
+	painter->setMatrix( mMatrix, true );
+
+	if ( mOutline )
+	{
+		mOutline->draw( painter );
+	}
+
+	foreach( Handle* handle, mHandles )
+	{
+		handle->draw( painter, scale );
+	}
+		
+	painter->restore();
+}

@@ -25,7 +25,7 @@
 #include "Db.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	Template::Template( const QString&  brand,

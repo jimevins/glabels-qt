@@ -36,7 +36,7 @@
 
 
 void
-glabels::XmlLabelCreator::writeFile( const LabelModel* label, const QString& fileName )
+XmlLabelCreator::writeFile( const LabelModel* label, const QString& fileName )
 {
 	QDomDocument doc;
 
@@ -56,7 +56,7 @@ glabels::XmlLabelCreator::writeFile( const LabelModel* label, const QString& fil
 
 
 void
-glabels::XmlLabelCreator::writeBuffer( const LabelModel* label, QString& buffer )
+XmlLabelCreator::writeBuffer( const LabelModel* label, QString& buffer )
 {
 	QDomDocument doc;
 
@@ -66,7 +66,7 @@ glabels::XmlLabelCreator::writeBuffer( const LabelModel* label, QString& buffer 
 
 
 void
-glabels::XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label )
+XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label )
 {
 	QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
 	doc.appendChild( xmlNode );
@@ -74,7 +74,7 @@ glabels::XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label 
 	QDomElement root = doc.createElement( "Glabels-document" );
 	doc.appendChild( root );
 
-	libglabels::XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
+	glabels::XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
 
 	createObjectsNode( root, label );
 
@@ -85,14 +85,14 @@ glabels::XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label 
 
 
 void
-glabels::XmlLabelCreator::createObjectsNode( QDomElement &parent, const LabelModel* label )
+XmlLabelCreator::createObjectsNode( QDomElement &parent, const LabelModel* label )
 {
 	QDomDocument doc = parent.ownerDocument();
 	QDomElement node = doc.createElement( "Objects" );
 	parent.appendChild( node );
 
-	libglabels::XmlUtil::setStringAttr( node, "id", "0" );
-	libglabels::XmlUtil::setBoolAttr( node, "rotate", label->rotate() );
+	glabels::XmlUtil::setStringAttr( node, "id", "0" );
+	glabels::XmlUtil::setBoolAttr( node, "rotate", label->rotate() );
 
 	foreach ( LabelModelObject* object, label->objectList() )
 	{
@@ -110,39 +110,39 @@ glabels::XmlLabelCreator::createObjectsNode( QDomElement &parent, const LabelMod
 
 
 void
-glabels::XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const LabelModelBoxObject* object )
+XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const LabelModelBoxObject* object )
 {
 	QDomDocument doc = parent.ownerDocument();
 	QDomElement node = doc.createElement( "Object-box" );
 	parent.appendChild( node );
 
 	/* position attrs */
-	libglabels::XmlUtil::setLengthAttr( node, "x", object->x0() );
-	libglabels::XmlUtil::setLengthAttr( node, "y", object->y0() );
+	glabels::XmlUtil::setLengthAttr( node, "x", object->x0() );
+	glabels::XmlUtil::setLengthAttr( node, "y", object->y0() );
 
 	/* size attrs */
-	libglabels::XmlUtil::setLengthAttr( node, "w", object->w() );
-	libglabels::XmlUtil::setLengthAttr( node, "h", object->h() );
+	glabels::XmlUtil::setLengthAttr( node, "w", object->w() );
+	glabels::XmlUtil::setLengthAttr( node, "h", object->h() );
 
 	/* line attrs */
-	libglabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
+	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
 	if ( object->lineColorNode().fieldFlag() )
 	{
-		libglabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
+		glabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
 	}
 	else
 	{
-		libglabels::XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
+		glabels::XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
 	}
 
 	/* fill attrs */
 	if ( object->fillColorNode().fieldFlag() )
 	{
-		libglabels::XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
+		glabels::XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
 	}
 	else
 	{
-		libglabels::XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
+		glabels::XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
 	}
 
 	/* affine attrs */
@@ -154,108 +154,108 @@ glabels::XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const LabelM
 
 
 void
-glabels::XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const LabelModelEllipseObject* object )
+XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const LabelModelEllipseObject* object )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createObjectLineNode( QDomElement &parent, const LabelModelLineObject* object )
+XmlLabelCreator::createObjectLineNode( QDomElement &parent, const LabelModelLineObject* object )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createObjectImageNode( QDomElement &parent, const LabelModelImageObject* object )
+XmlLabelCreator::createObjectImageNode( QDomElement &parent, const LabelModelImageObject* object )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createObjectBarcodeNode( QDomElement &parent, const LabelModelBarcodeObject* object )
+XmlLabelCreator::createObjectBarcodeNode( QDomElement &parent, const LabelModelBarcodeObject* object )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createObjectTextNode( QDomElement &parent, const LabelModelTextObject* object )
+XmlLabelCreator::createObjectTextNode( QDomElement &parent, const LabelModelTextObject* object )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createObjectTopLevelSpanNode( QDomElement &parent, const LabelModelTextObject* object )
+XmlLabelCreator::createObjectTopLevelSpanNode( QDomElement &parent, const LabelModelTextObject* object )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createAffineAttrs( QDomElement &node, const LabelModelObject* object )
+XmlLabelCreator::createAffineAttrs( QDomElement &node, const LabelModelObject* object )
 {
 	QMatrix a = object->matrix();
 	
-	libglabels::XmlUtil::setDoubleAttr( node, "a0", a.m11() );
-	libglabels::XmlUtil::setDoubleAttr( node, "a1", a.m12() );
-	libglabels::XmlUtil::setDoubleAttr( node, "a2", a.m21() );
-	libglabels::XmlUtil::setDoubleAttr( node, "a3", a.m22() );
-	libglabels::XmlUtil::setDoubleAttr( node, "a4", a.dx() );
-	libglabels::XmlUtil::setDoubleAttr( node, "a5", a.dy() );
+	glabels::XmlUtil::setDoubleAttr( node, "a0", a.m11() );
+	glabels::XmlUtil::setDoubleAttr( node, "a1", a.m12() );
+	glabels::XmlUtil::setDoubleAttr( node, "a2", a.m21() );
+	glabels::XmlUtil::setDoubleAttr( node, "a3", a.m22() );
+	glabels::XmlUtil::setDoubleAttr( node, "a4", a.dx() );
+	glabels::XmlUtil::setDoubleAttr( node, "a5", a.dy() );
 }
 
 
 void
-glabels::XmlLabelCreator::createShadowAttrs( QDomElement &node, const LabelModelObject* object )
+XmlLabelCreator::createShadowAttrs( QDomElement &node, const LabelModelObject* object )
 {
 	if ( object->shadow() )
 	{
-		libglabels::XmlUtil::setBoolAttr( node, "shadow", object->shadow() );
+		glabels::XmlUtil::setBoolAttr( node, "shadow", object->shadow() );
 
-		libglabels::XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
-		libglabels::XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
+		glabels::XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
+		glabels::XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
 
 		if ( object->fillColorNode().fieldFlag() )
 		{
-			libglabels::XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
+			glabels::XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
 		}
 		else
 		{
-			libglabels::XmlUtil::setUIntAttr( node, "shadow_color", object->shadowColorNode().rgba() );
+			glabels::XmlUtil::setUIntAttr( node, "shadow_color", object->shadowColorNode().rgba() );
 		}
 
-		libglabels::XmlUtil::setDoubleAttr( node, "shadow_opacity", object->shadowOpacity() );
+		glabels::XmlUtil::setDoubleAttr( node, "shadow_opacity", object->shadowOpacity() );
 	}
 }
 
 
 void
-glabels::XmlLabelCreator::createMergeNode( QDomElement &parent, const LabelModel* label )
+XmlLabelCreator::createMergeNode( QDomElement &parent, const LabelModel* label )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createDataNode( QDomElement &parent, const LabelModel* label )
+XmlLabelCreator::createDataNode( QDomElement &parent, const LabelModel* label )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createPixdataNode( QDomElement &parent, const LabelModel* label, const QString& name )
+XmlLabelCreator::createPixdataNode( QDomElement &parent, const LabelModel* label, const QString& name )
 {
 	// TODO
 }
 
 
 void
-glabels::XmlLabelCreator::createSvgFileNode( QDomElement &parent, const LabelModel* label, const QString& name )
+XmlLabelCreator::createSvgFileNode( QDomElement &parent, const LabelModel* label, const QString& name )
 {
 	// TODO
 }

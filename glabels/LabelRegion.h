@@ -18,123 +18,119 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_LabelRegion_h
-#define glabels_LabelRegion_h
+#ifndef LabelRegion_h
+#define LabelRegion_h
 
 #include <QRectF>
 #include "libglabels/Distance.h"
 
 
-namespace glabels
+///
+/// Label Region Type
+///
+struct LabelRegion
 {
 
-	///
-	/// Label Region Type
-	///
-	struct LabelRegion
-	{
-
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		//
-		// X1 Property
-		//
-		libglabels::Distance x1( void ) const;
-		void setX1( const libglabels::Distance& value );
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	//
+	// X1 Property
+	//
+	glabels::Distance x1( void ) const;
+	void setX1( const glabels::Distance& value );
 
 
-		//
-		// Y1 Property
-		//
-		libglabels::Distance y1( void ) const;
-		void setY1( const libglabels::Distance& value );
+	//
+	// Y1 Property
+	//
+	glabels::Distance y1( void ) const;
+	void setY1( const glabels::Distance& value );
 
 
-		//
-		// X2 Property
-		//
-		libglabels::Distance x2( void ) const;
-		void setX2( const libglabels::Distance& value );
+	//
+	// X2 Property
+	//
+	glabels::Distance x2( void ) const;
+	void setX2( const glabels::Distance& value );
 
 
 
-		//
-		// Y2 Property
-		//
-		libglabels::Distance y2( void ) const;
-		void setY2( const libglabels::Distance& value );
-
-
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
-	public:
-		QRectF rect() const;
-
-
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		libglabels::Distance mX1;
-		libglabels::Distance mY1;
-		libglabels::Distance mX2;
-		libglabels::Distance mY2;
-	};
+	//
+	// Y2 Property
+	//
+	glabels::Distance y2( void ) const;
+	void setY2( const glabels::Distance& value );
 
 
 	/////////////////////////////////
-	// INLINE METHODS
+	// Methods
 	/////////////////////////////////
-	inline libglabels::Distance LabelRegion::x1( void ) const
-	{
-		return mX1;
-	}
+public:
+	QRectF rect() const;
 
 
-	inline void LabelRegion::setX1( const libglabels::Distance& value )
-	{
-		mX1 = value;
-	}
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	glabels::Distance mX1;
+	glabels::Distance mY1;
+	glabels::Distance mX2;
+	glabels::Distance mY2;
+};
 
 
-	inline libglabels::Distance LabelRegion::y1( void ) const
-	{
-		return mY1;
-	}
-
-
-	inline void LabelRegion::setY1( const libglabels::Distance& value )
-	{
-		mY1 = value;
-	}
-
-
-	inline libglabels::Distance LabelRegion::x2( void ) const
-	{
-		return mX2;
-	}
-
-
-	inline void LabelRegion::setX2( const libglabels::Distance& value )
-	{
-		mX2 = value;
-	}
-
-
-	inline libglabels::Distance LabelRegion::y2( void ) const
-	{
-		return mY2;
-	}
-
-
-	inline void LabelRegion::setY2( const libglabels::Distance& value )
-	{
-		mY2 = value;
-	}
-
+/////////////////////////////////
+// INLINE METHODS
+/////////////////////////////////
+inline glabels::Distance LabelRegion::x1( void ) const
+{
+	return mX1;
 }
 
-#endif // glabels_LabelRegion_h
+
+inline void LabelRegion::setX1( const glabels::Distance& value )
+{
+	mX1 = value;
+}
+
+
+inline glabels::Distance LabelRegion::y1( void ) const
+{
+	return mY1;
+}
+
+
+inline void LabelRegion::setY1( const glabels::Distance& value )
+{
+	mY1 = value;
+}
+
+
+inline glabels::Distance LabelRegion::x2( void ) const
+{
+	return mX2;
+}
+
+
+inline void LabelRegion::setX2( const glabels::Distance& value )
+{
+	mX2 = value;
+}
+
+
+inline glabels::Distance LabelRegion::y2( void ) const
+{
+	return mY2;
+}
+
+
+inline void LabelRegion::setY2( const glabels::Distance& value )
+{
+	mY2 = value;
+}
+
+
+#endif // LabelRegion_h

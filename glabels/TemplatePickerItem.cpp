@@ -25,32 +25,27 @@
 #include <QHBoxLayout>
 
 
-namespace glabels
+///
+/// Constructor
+///
+TemplatePickerItem::TemplatePickerItem( glabels::Template *tmplate,
+					QListWidget       *parent )
+	: QListWidgetItem(parent)
 {
+	mTmplate = tmplate;
 
-	///
-	/// Constructor
-	///
-	TemplatePickerItem::TemplatePickerItem( libglabels::Template *tmplate,
-						QListWidget          *parent )
-		: QListWidgetItem(parent)
-	{
-		mTmplate = tmplate;
+	setIcon( QIcon(tmplate->preview()) );
+	setText( tmplate->name() );
 
-		setIcon( QIcon(tmplate->preview()) );
-		setText( tmplate->name() );
-
-		setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
-	}
+	setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
+}
 
 
-	///
-	/// Template Property Getter
-	///
-	const libglabels::Template *TemplatePickerItem::tmplate() const
-	{
-		return mTmplate;
-	}
-
+///
+/// Template Property Getter
+///
+const glabels::Template *TemplatePickerItem::tmplate() const
+{
+	return mTmplate;
 }
 

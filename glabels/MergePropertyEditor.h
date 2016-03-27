@@ -18,54 +18,51 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_MergePropertyEditor_h
-#define glabels_MergePropertyEditor_h
+#ifndef MergePropertyEditor_h
+#define MergePropertyEditor_h
 
 #include "ui_MergePropertyEditor.h"
 
 
-namespace glabels
-{
-	class LabelModel;  // Forward reference
+class LabelModel;  // Forward reference
 	
 
-	///
-	/// Merge Property Editor Widget
-	///
-	class MergePropertyEditor : public QWidget, public Ui_MergePropertyEditor
-	{
-		Q_OBJECT
+///
+/// Merge Property Editor Widget
+///
+class MergePropertyEditor : public QWidget, public Ui_MergePropertyEditor
+{
+	Q_OBJECT
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		MergePropertyEditor( QWidget *parent = 0 );
-		~MergePropertyEditor();
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	MergePropertyEditor( QWidget *parent = 0 );
+	~MergePropertyEditor();
 
 
-		/////////////////////////////////
-		// Public methods
-		/////////////////////////////////
-		void setModel( LabelModel* model );
+	/////////////////////////////////
+	// Public methods
+	/////////////////////////////////
+	void setModel( LabelModel* model );
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onLabelChanged();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onLabelChanged();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		LabelModel*  mModel;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	LabelModel*  mModel;
 
-	};
+};
 
-}
 
-#endif // glabels_MergePropertyEditor_h
+#endif // MergePropertyEditor_h

@@ -30,7 +30,7 @@
 #include "Db.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	bool XmlTemplateCreator::writeTemplates( const QList<const Template*> tmplates, const QString &fileName )

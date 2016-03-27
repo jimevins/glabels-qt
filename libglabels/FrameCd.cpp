@@ -27,7 +27,7 @@
 #include <QtDebug>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	FrameCd::FrameCd( const Distance& r1,

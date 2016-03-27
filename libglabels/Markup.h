@@ -18,15 +18,15 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Markup_h
-#define libglabels_Markup_h
+#ifndef glabels_Markup_h
+#define glabels_Markup_h
 
 #include <QPainterPath>
 
 #include "Frame.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class Markup
@@ -155,4 +155,4 @@ namespace libglabels
 #include "Markup.inl"
 
 
-#endif // libglabels_Markup_h
+#endif // glabels_Markup_h

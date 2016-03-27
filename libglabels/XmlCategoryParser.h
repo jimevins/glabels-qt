@@ -1,6 +1,6 @@
 /*  XmlCategoryParser.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,15 +18,15 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_XmlCategoryParser_h
-#define libglabels_XmlCategoryParser_h
+#ifndef glabels_XmlCategoryParser_h
+#define glabels_XmlCategoryParser_h
 
 
 #include <QString>
 #include <QDomElement>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class XmlCategoryParser
@@ -43,4 +43,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_XmlCategoryParser_h
+#endif // glabels_XmlCategoryParser_h

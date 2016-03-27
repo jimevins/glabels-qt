@@ -18,56 +18,53 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_PropertiesView_h
-#define glabels_PropertiesView_h
+#ifndef PropertiesView_h
+#define PropertiesView_h
 
 #include "ui_PropertiesView.h"
 
 
-namespace glabels
-{
-	class LabelModel;  // Forward reference
+class LabelModel;  // Forward reference
 	
 
-	///
-	/// Properties View Widget
-	///
-	class PropertiesView : public QWidget, public Ui_PropertiesView
-	{
-		Q_OBJECT
+///
+/// Properties View Widget
+///
+class PropertiesView : public QWidget, public Ui_PropertiesView
+{
+	Q_OBJECT
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		PropertiesView( QWidget *parent = 0 );
-		~PropertiesView();
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	PropertiesView( QWidget *parent = 0 );
+	~PropertiesView();
 
 
-		/////////////////////////////////
-		// Public methods
-		/////////////////////////////////
-		void setModel( LabelModel* model );
+	/////////////////////////////////
+	// Public methods
+	/////////////////////////////////
+	void setModel( LabelModel* model );
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onLabelSizeChanged();
-		void onFormChanged();
-		void onChangeProductButtonClicked();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onLabelSizeChanged();
+	void onFormChanged();
+	void onChangeProductButtonClicked();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		LabelModel*  mModel;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	LabelModel*  mModel;
 
-	};
+};
 
-}
 
-#endif // glabels_PropertiesView_h
+#endif // PropertiesView_h

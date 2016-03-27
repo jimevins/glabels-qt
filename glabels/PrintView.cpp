@@ -26,150 +26,145 @@
 #include <QtDebug>
 
 
-namespace glabels
+///
+/// Constructor
+///
+PrintView::PrintView( QWidget *parent )
+	: QWidget(parent), mModel(0), mBlocked(false)
 {
+	setupUi( this );
+	preview->setRenderer( &mRenderer );
 
-	///
-	/// Constructor
-	///
-	PrintView::PrintView( QWidget *parent )
-		: QWidget(parent), mModel(0), mBlocked(false)
-	{
-		setupUi( this );
-		preview->setRenderer( &mRenderer );
-
-		mPrinter = new QPrinter( QPrinter::HighResolution );
-	}
+	mPrinter = new QPrinter( QPrinter::HighResolution );
+}
 
 
-	///
-	/// Destructor
-	///
-	PrintView::~PrintView()
-	{
-		delete mPrinter;
-	}
+///
+/// Destructor
+///
+PrintView::~PrintView()
+{
+	delete mPrinter;
+}
 
 
-	///
-	/// Set Model
-	///
-	void PrintView::setModel( LabelModel* model )
-	{
-		mModel = model;
+///
+/// Set Model
+///
+void PrintView::setModel( LabelModel* model )
+{
+	mModel = model;
 
-		// TODO set visibility based on merge selection
-		copiesBox->setVisible( true );
-		mergeBox->setVisible( false );
+	// TODO set visibility based on merge selection
+	copiesBox->setVisible( true );
+	mergeBox->setVisible( false );
 		
-		connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
-		connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
+	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
+	connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
 
-		onLabelSizeChanged();
-		onFormChanged();
-	}
+	onLabelSizeChanged();
+	onFormChanged();
+}
 
 
-	///
-	/// Label size changed handler
-	///
-	void PrintView::onLabelSizeChanged()
+///
+/// Label size changed handler
+///
+void PrintView::onLabelSizeChanged()
+{
+	preview->setModel( mModel );
+	mRenderer.setModel( mModel );
+}
+
+
+///
+/// Label changed handler
+///
+void PrintView::onLabelChanged()
+{
+	preview->update();
+}
+
+
+///
+/// Form changed handler
+///
+void PrintView::onFormChanged()
+{
+	if ( !mBlocked )
 	{
-		preview->setModel( mModel );
-		mRenderer.setModel( mModel );
-	}
+		mBlocked = true;
+			
+		int nLabelsPerPage = mModel->frame()->nLabels();
+		copiesFromSpin->setRange( 1, nLabelsPerPage );
+		copiesToSpin->setRange( copiesFromSpin->value(), nLabelsPerPage );
 
+		// TODO select between simple and merge
+		if ( copiesSheetsRadio->isChecked() )
+		{
+			mRenderer.setNLabels( copiesSheetsSpin->value()*nLabelsPerPage );
+			mRenderer.setStartLabel( 0 );
+			copiesFromSpin->setValue( 1 );
+			copiesToSpin->setValue( nLabelsPerPage );
+		}
+		else
+		{
+			mRenderer.setNLabels( copiesToSpin->value() - copiesFromSpin->value() + 1 );
+			mRenderer.setStartLabel( copiesFromSpin->value() - 1 );
+			copiesSheetsSpin->setValue( 1 );
+		}
 
-	///
-	/// Label changed handler
-	///
-	void PrintView::onLabelChanged()
-	{
+		mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
+		mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
+		mRenderer.setPrintReverse( printReverseCheck->isChecked() );
+
+		pageSpin->setRange( 1, mRenderer.nPages() );
+		nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
+
+		mRenderer.setIPage( pageSpin->value() - 1 );
+
 		preview->update();
+
+		mBlocked = false;
 	}
+}
 
 
-	///
-	/// Form changed handler
-	///
-	void PrintView::onFormChanged()
+///
+/// Print Button Clicked handler
+///
+void PrintView::onPrintButtonClicked()
+{
+	QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
+	mPrinter->setPaperSize( pageSize, QPrinter::Point );
+	mPrinter->setFullPage( true );
+	mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
+
+	QPrintDialog printDialog( mPrinter, this );
+
+	printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
+	printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
+	printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
+	printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
+	printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
+	printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
+
+	if ( printDialog.exec() == QDialog::Accepted )
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
+		QPainter painter( mPrinter );
 			
-			int nLabelsPerPage = mModel->frame()->nLabels();
-			copiesFromSpin->setRange( 1, nLabelsPerPage );
-			copiesToSpin->setRange( copiesFromSpin->value(), nLabelsPerPage );
+		QSizeF sizePx  = mPrinter->paperSize( QPrinter::DevicePixel );
+		QSizeF sizePts = mPrinter->paperSize( QPrinter::Point );
+		painter.scale( sizePx.width()/sizePts.width(), sizePx.height()/sizePts.height() );
 
-			// TODO select between simple and merge
-			if ( copiesSheetsRadio->isChecked() )
+		for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
+		{
+			if ( iPage )
 			{
-				mRenderer.setNLabels( copiesSheetsSpin->value()*nLabelsPerPage );
-				mRenderer.setStartLabel( 0 );
-				copiesFromSpin->setValue( 1 );
-				copiesToSpin->setValue( nLabelsPerPage );
-			}
-			else
-			{
-				mRenderer.setNLabels( copiesToSpin->value() - copiesFromSpin->value() + 1 );
-				mRenderer.setStartLabel( copiesFromSpin->value() - 1 );
-				copiesSheetsSpin->setValue( 1 );
+				mPrinter->newPage();
 			}
 
-			mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
-			mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
-			mRenderer.setPrintReverse( printReverseCheck->isChecked() );
-
-			pageSpin->setRange( 1, mRenderer.nPages() );
-			nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
-
-			mRenderer.setIPage( pageSpin->value() - 1 );
-
-			preview->update();
-
-			mBlocked = false;
+			mRenderer.printPage( &painter, iPage );
 		}
 	}
-
-
-	///
-	/// Print Button Clicked handler
-	///
-	void PrintView::onPrintButtonClicked()
-	{
-		QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
-		mPrinter->setPaperSize( pageSize, QPrinter::Point );
-		mPrinter->setFullPage( true );
-		mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
-
-		QPrintDialog printDialog( mPrinter, this );
-
-		printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
-		printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
-		printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
-		printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
-		printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
-		printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
-
-		if ( printDialog.exec() == QDialog::Accepted )
-		{
-			QPainter painter( mPrinter );
-			
-			QSizeF sizePx  = mPrinter->paperSize( QPrinter::DevicePixel );
-			QSizeF sizePts = mPrinter->paperSize( QPrinter::Point );
-			painter.scale( sizePx.width()/sizePts.width(), sizePx.height()/sizePts.height() );
-
-			for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
-			{
-				if ( iPage )
-				{
-					mPrinter->newPage();
-				}
-
-				mRenderer.printPage( &painter, iPage );
-			}
-		}
-	}
-
 }

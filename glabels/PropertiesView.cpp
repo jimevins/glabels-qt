@@ -27,167 +27,162 @@
 #include <QtDebug>
 
 
-namespace glabels
+///
+/// Constructor
+///
+PropertiesView::PropertiesView( QWidget *parent )
+	: QWidget(parent), mModel(0)
 {
+	setupUi( this );
 
-	///
-	/// Constructor
-	///
-	PropertiesView::PropertiesView( QWidget *parent )
-		: QWidget(parent), mModel(0)
+	similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
+	similarBrowser->viewport()->setAutoFillBackground(false);
+}
+
+
+///
+/// Destructor
+///
+PropertiesView::~PropertiesView()
+{
+}
+
+
+///
+/// Set Model
+///
+void PropertiesView::setModel( LabelModel* model )
+{
+	mModel = model;
+
+	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
+
+	onLabelSizeChanged();
+}
+
+
+///
+/// Label size changed handler
+///
+void PropertiesView::onLabelSizeChanged()
+{
+	const glabels::Template *tmplate   = mModel->tmplate();
+	const glabels::Frame    *frame     = tmplate->frames().first();
+	bool                     isRotated = mModel->rotate();
+
+	preview->setTemplate( tmplate );
+	preview->setRotate( isRotated );
+
+	const glabels::Vendor *vendor = glabels::Db::lookupVendorFromName( tmplate->brand() );
+	if ( (vendor != NULL) && (vendor->url() != NULL) )
 	{
-		setupUi( this );
-
-		similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
-		similarBrowser->viewport()->setAutoFillBackground(false);
+		QString markup = "<a href='" + vendor->url() + "'>" + vendor->name() + "</a>";
+		vendorLabel->setText( markup );
+	}
+	else
+	{
+		vendorLabel->setText( tmplate->brand() );
 	}
 
-
-	///
-	/// Destructor
-	///
-	PropertiesView::~PropertiesView()
+	if ( tmplate->productUrl() != NULL )
 	{
+		QString markup = "<a href='" + tmplate->productUrl() + "'>" + tmplate->part() + "</a>";
+		partLabel->setText( markup );
+	}
+	else
+	{
+		partLabel->setText( tmplate->part() );
 	}
 
+	descriptionLabel->setText( tmplate->description() );
 
-	///
-	/// Set Model
-	///
-	void PropertiesView::setModel( LabelModel* model )
+	QString pgSizeString = glabels::Db::lookupPaperNameFromId( tmplate->paperId() );
+	pageSizeLabel->setText( pgSizeString );
+
+	QString labelSizeString = frame->sizeDescription( glabels::Distance::Units::IN );
+	labelSizeLabel->setText( labelSizeString );
+
+	QString layoutString = frame->layoutDescription();
+	layoutLabel->setText( layoutString );
+
+	QStringList list = glabels::Db::getNameListOfSimilarTemplates( tmplate->name() );
+	if ( list.isEmpty() )
 	{
-		mModel = model;
+		similarProductsGroupBox->hide();
+		similarProductsNullBox->show();
+	}
+	else
+	{
+		similarProductsGroupBox->show();
+		similarProductsNullBox->hide();
 
-		connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
-
-		onLabelSizeChanged();
+		QString similarListString;
+		foreach ( QString name, list )
+		{
+			similarListString += name + "\n";
+		}
+		similarBrowser->setText( similarListString );
 	}
 
-
-	///
-	/// Label size changed handler
-	///
-	void PropertiesView::onLabelSizeChanged()
+	orientationCombo->setEnabled( frame->w() != frame->h() );
+	if ( frame->w() == frame->h() )
 	{
-		const libglabels::Template *tmplate   = mModel->tmplate();
-		const libglabels::Frame    *frame     = tmplate->frames().first();
-		bool                        isRotated = mModel->rotate();
-
-		preview->setTemplate( tmplate );
-		preview->setRotate( isRotated );
-
-		const libglabels::Vendor *vendor = libglabels::Db::lookupVendorFromName( tmplate->brand() );
-		if ( (vendor != NULL) && (vendor->url() != NULL) )
-		{
-			QString markup = "<a href='" + vendor->url() + "'>" + vendor->name() + "</a>";
-			vendorLabel->setText( markup );
-		}
-		else
-		{
-			vendorLabel->setText( tmplate->brand() );
-		}
-
-		if ( tmplate->productUrl() != NULL )
-		{
-			QString markup = "<a href='" + tmplate->productUrl() + "'>" + tmplate->part() + "</a>";
-			partLabel->setText( markup );
-		}
-		else
-		{
-			partLabel->setText( tmplate->part() );
-		}
-
-		descriptionLabel->setText( tmplate->description() );
-
-		QString pgSizeString = libglabels::Db::lookupPaperNameFromId( tmplate->paperId() );
-		pageSizeLabel->setText( pgSizeString );
-
-		QString labelSizeString = frame->sizeDescription( libglabels::Distance::Units::IN );
-		labelSizeLabel->setText( labelSizeString );
-
-		QString layoutString = frame->layoutDescription();
-		layoutLabel->setText( layoutString );
-
-		QStringList list = libglabels::Db::getNameListOfSimilarTemplates( tmplate->name() );
-		if ( list.isEmpty() )
-		{
-			similarProductsGroupBox->hide();
-			similarProductsNullBox->show();
-		}
-		else
-		{
-			similarProductsGroupBox->show();
-			similarProductsNullBox->hide();
-
-			QString similarListString;
-			foreach ( QString name, list )
-			{
-				similarListString += name + "\n";
-			}
-			similarBrowser->setText( similarListString );
-		}
-
-		orientationCombo->setEnabled( frame->w() != frame->h() );
-		if ( frame->w() == frame->h() )
-		{
-			orientationCombo->setCurrentIndex(0);
-		}
-		else if ( frame->w() > frame->h() )
-		{
-			orientationCombo->setCurrentIndex( isRotated ? 1 : 0 );
-		}
-		else
-		{
-			orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
-		}
+		orientationCombo->setCurrentIndex(0);
 	}
-
-
-	///
-	/// Form changed handler
-	///
-	void PropertiesView::onFormChanged()
+	else if ( frame->w() > frame->h() )
 	{
-		const libglabels::Template *tmplate = mModel->tmplate();
-		const libglabels::Frame    *frame   = tmplate->frames().first();
+		orientationCombo->setCurrentIndex( isRotated ? 1 : 0 );
+	}
+	else
+	{
+		orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
+	}
+}
 
+
+///
+/// Form changed handler
+///
+void PropertiesView::onFormChanged()
+{
+	const glabels::Template *tmplate = mModel->tmplate();
+	const glabels::Frame    *frame   = tmplate->frames().first();
+
+	if ( frame->w() == frame->h() )
+	{
+		mModel->setRotate( false );
+	}
+	else if ( frame->w() > frame->h() )
+	{
+		int index = orientationCombo->currentIndex();
+		mModel->setRotate( index == 1 );
+	}
+	else
+	{
+		int index = orientationCombo->currentIndex();
+		mModel->setRotate( index == 0 );
+	}
+}
+
+
+///
+/// Change Product Button Clicked handler
+///
+void PropertiesView::onChangeProductButtonClicked()
+{
+	SelectProductDialog selectProductDialog( this );
+	selectProductDialog.exec();
+
+	const glabels::Template* tmplate = selectProductDialog.tmplate();
+	if ( tmplate )
+	{
+		mModel->setTmplate( tmplate );
+
+		// Don't rotate circular or round labels
+		const glabels::Frame *frame = tmplate->frames().first();
 		if ( frame->w() == frame->h() )
 		{
 			mModel->setRotate( false );
 		}
-		else if ( frame->w() > frame->h() )
-		{
-			int index = orientationCombo->currentIndex();
-			mModel->setRotate( index == 1 );
-		}
-		else
-		{
-			int index = orientationCombo->currentIndex();
-			mModel->setRotate( index == 0 );
-		}
 	}
-
-
-	///
-	/// Change Product Button Clicked handler
-	///
-	void PropertiesView::onChangeProductButtonClicked()
-	{
-		SelectProductDialog selectProductDialog( this );
-		selectProductDialog.exec();
-
-		const libglabels::Template* tmplate = selectProductDialog.tmplate();
-		if ( tmplate )
-		{
-			mModel->setTmplate( tmplate );
-
-			// Don't rotate circular or round labels
-			const libglabels::Frame *frame = tmplate->frames().first();
-			if ( frame->w() == frame->h() )
-			{
-				mModel->setRotate( false );
-			}
-		}
-	}
-
 }

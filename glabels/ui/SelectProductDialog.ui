@@ -134,7 +134,7 @@
         </layout>
        </item>
        <item>
-        <widget class="glabels::TemplatePicker" name="templatePicker">
+        <widget class="TemplatePicker" name="templatePicker">
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
@@ -182,7 +182,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glabels::TemplatePicker</class>
+   <class>TemplatePicker</class>
    <extends>QListWidget</extends>
    <header>TemplatePicker.h</header>
   </customwidget>

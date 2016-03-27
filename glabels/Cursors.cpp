@@ -24,37 +24,37 @@
 #include <QPixmap>
 
 
-glabels::Cursors::Barcode::Barcode()
+Cursors::Barcode::Barcode()
 	: QCursor( QPixmap(":cursors/32x32/cursor_barcode.png"), 7, 7 )
 {
 }
 
 
-glabels::Cursors::Box::Box()
+Cursors::Box::Box()
 	: QCursor( QPixmap(":cursors/32x32/cursor_box.png"), 7, 7 )
 {
 }
 
 
-glabels::Cursors::Ellipse::Ellipse()
+Cursors::Ellipse::Ellipse()
 	: QCursor( QPixmap(":cursors/32x32/cursor_ellipse.png"), 7, 7 )
 {
 }
 
 
-glabels::Cursors::Image::Image()
+Cursors::Image::Image()
 	: QCursor( QPixmap(":cursors/32x32/cursor_image.png"), 7, 7 )
 {
 }
 
 
-glabels::Cursors::Line::Line()
+Cursors::Line::Line()
 	: QCursor( QPixmap(":cursors/32x32/cursor_line.png"), 7, 7 )
 {
 }
 
 
-glabels::Cursors::Text::Text()
+Cursors::Text::Text()
 	: QCursor( QPixmap(":cursors/32x32/cursor_text.png"), 7, 7 )
 {
 }

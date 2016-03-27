@@ -59,7 +59,7 @@ namespace
 
 	const QColor  gridLineColor( 192, 192, 192 );
 	const double  gridLineWidthPixels = 1;
-	const libglabels::Distance gridSpacing = libglabels::Distance::pt(9); // TODO: determine from locale.
+	const glabels::Distance gridSpacing = glabels::Distance::pt(9); // TODO: determine from locale.
 
 	const QColor  markupLineColor( 240, 99, 99 );
 	const double  markupLineWidthPixels = 1;
@@ -74,7 +74,7 @@ namespace
 ///
 /// Constructor
 ///
-glabels::View::View( QScrollArea* scrollArea, QWidget* parent )
+View::View( QScrollArea* scrollArea, QWidget* parent )
 	: QWidget(parent), mScrollArea(scrollArea)
 {
 	mState = IdleState;
@@ -92,7 +92,7 @@ glabels::View::View( QScrollArea* scrollArea, QWidget* parent )
 /// Zoom property
 ///
 double
-glabels::View::zoom() const
+View::zoom() const
 {
 	return mZoom;
 }
@@ -102,7 +102,7 @@ glabels::View::zoom() const
 /// Markup visible? property
 ///
 bool
-glabels::View::markupVisible() const
+View::markupVisible() const
 {
 	return mMarkupVisible;
 }
@@ -112,7 +112,7 @@ glabels::View::markupVisible() const
 /// Grid visible? property
 ///
 bool
-glabels::View::qridVisible() const
+View::qridVisible() const
 {
 	return mGridVisible;
 }
@@ -122,7 +122,7 @@ glabels::View::qridVisible() const
 /// Model Parameter Setter
 ///
 void
-glabels::View::setModel( LabelModel* model )
+View::setModel( LabelModel* model )
 {
 	mModel = model;
 
@@ -143,7 +143,7 @@ glabels::View::setModel( LabelModel* model )
 /// Grid Visibility Parameter Setter
 ///
 void
-glabels::View::setGridVisible( bool visibleFlag )
+View::setGridVisible( bool visibleFlag )
 {
 	mGridVisible = visibleFlag;
 	update();
@@ -154,7 +154,7 @@ glabels::View::setGridVisible( bool visibleFlag )
 /// Markup Visibility Parameter Setter
 ///
 void
-glabels::View::setMarkupVisible( bool visibleFlag )
+View::setMarkupVisible( bool visibleFlag )
 {
 	mMarkupVisible = visibleFlag;
 	update();
@@ -165,7 +165,7 @@ glabels::View::setMarkupVisible( bool visibleFlag )
 /// Zoom In "One Notch"
 ///
 void
-glabels::View::zoomIn()
+View::zoomIn()
 {
 	// Find closest standard zoom level to our current zoom
 	// Start with 2nd largest scale
@@ -191,7 +191,7 @@ glabels::View::zoomIn()
 /// Zoom Out "One Notch"
 ///
 void
-glabels::View::zoomOut()
+View::zoomOut()
 {
 	// Find closest standard zoom level to our current zoom
 	// Start with largest scale, end on 2nd smallest
@@ -217,7 +217,7 @@ glabels::View::zoomOut()
 /// Zoom To 1:1 Scale
 ///
 void
-glabels::View::zoom1To1()
+View::zoom1To1()
 {
 	setZoomReal( 1.0, false );
 }
@@ -227,7 +227,7 @@ glabels::View::zoom1To1()
 /// Zoom To Fit
 ///
 void
-glabels::View::zoomToFit()
+View::zoomToFit()
 {
 	using std::min;
 	using std::max;
@@ -251,7 +251,7 @@ glabels::View::zoomToFit()
 /// Is Zoom at Maximum?
 ///
 bool
-glabels::View::isZoomMax() const
+View::isZoomMax() const
 {
 	return ( mZoom >= zoomLevels[0] );
 }
@@ -261,7 +261,7 @@ glabels::View::isZoomMax() const
 /// Is Zoom at Minimum?
 ///
 bool
-glabels::View::isZoomMin() const
+View::isZoomMin() const
 {
 	return ( mZoom <= zoomLevels[nZoomLevels-1] );
 }
@@ -271,7 +271,7 @@ glabels::View::isZoomMin() const
 /// Set Zoom to Value
 ///
 void
-glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
+View::setZoomReal( double zoom, bool zoomToFitFlag )
 {
 	mZoom          = zoom;
 	mZoomToFitFlag = zoomToFitFlag;
@@ -296,7 +296,7 @@ glabels::View::setZoomReal( double zoom, bool zoomToFitFlag )
 /// Arrow mode (normal mode)
 ///
 void
-glabels::View::arrowMode()
+View::arrowMode()
 {
 	setCursor( Qt::ArrowCursor );
 
@@ -308,7 +308,7 @@ glabels::View::arrowMode()
 /// Create box mode
 ///
 void
-glabels::View::createBoxMode()
+View::createBoxMode()
 {
 	setCursor( Cursors::Box() );
 
@@ -321,7 +321,7 @@ glabels::View::createBoxMode()
 /// Resize Event Handler
 ///
 void
-glabels::View::resizeEvent( QResizeEvent *event )
+View::resizeEvent( QResizeEvent *event )
 {
 	if ( mModel )
 	{
@@ -345,7 +345,7 @@ glabels::View::resizeEvent( QResizeEvent *event )
 /// Mouse Button Press Event Handler
 ///
 void
-glabels::View::mousePressEvent( QMouseEvent* event )
+View::mousePressEvent( QMouseEvent* event )
 {
 	if ( mModel )
 	{
@@ -358,8 +358,8 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 		transform.translate( mX0.pt(), mY0.pt() );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
-		libglabels::Distance xWorld = libglabels::Distance::pt( pWorld.x() );
-		libglabels::Distance yWorld = libglabels::Distance::pt( pWorld.y() );
+		glabels::Distance xWorld = glabels::Distance::pt( pWorld.x() );
+		glabels::Distance yWorld = glabels::Distance::pt( pWorld.y() );
 
 		
 		if ( event->button() & Qt::LeftButton )
@@ -511,7 +511,7 @@ glabels::View::mousePressEvent( QMouseEvent* event )
 /// Mouse Movement Event Handler
 ///
 void
-glabels::View::mouseMoveEvent( QMouseEvent* event )
+View::mouseMoveEvent( QMouseEvent* event )
 {
 	using std::min;
 	using std::max;
@@ -527,8 +527,8 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 		transform.translate( mX0.pt(), mY0.pt() );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
-		libglabels::Distance xWorld = libglabels::Distance::pt( pWorld.x() );
-		libglabels::Distance yWorld = libglabels::Distance::pt( pWorld.y() );
+		glabels::Distance xWorld = glabels::Distance::pt( pWorld.x() );
+		glabels::Distance yWorld = glabels::Distance::pt( pWorld.y() );
 
 		
 		/*
@@ -615,7 +615,7 @@ glabels::View::mouseMoveEvent( QMouseEvent* event )
 /// Mouse Button Release Event Handler
 ///
 void
-glabels::View::mouseReleaseEvent( QMouseEvent* event )
+View::mouseReleaseEvent( QMouseEvent* event )
 {
 	if ( mModel )
 	{
@@ -628,8 +628,8 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 		transform.translate( mX0.pt(), mY0.pt() );
 
 		QPointF pWorld = transform.inverted().map( event->posF() );
-		libglabels::Distance xWorld = libglabels::Distance::pt( pWorld.x() );
-		libglabels::Distance yWorld = libglabels::Distance::pt( pWorld.y() );
+		glabels::Distance xWorld = glabels::Distance::pt( pWorld.x() );
+		glabels::Distance yWorld = glabels::Distance::pt( pWorld.y() );
 
 		
 		if ( event->button() & Qt::LeftButton )
@@ -691,7 +691,7 @@ glabels::View::mouseReleaseEvent( QMouseEvent* event )
 /// Leave Event Handler
 ///
 void
-glabels::View::leaveEvent( QEvent* event )
+View::leaveEvent( QEvent* event )
 {
 	if ( mModel )
 	{
@@ -704,8 +704,8 @@ glabels::View::leaveEvent( QEvent* event )
 /// Handle resize motion
 ///
 void
-glabels::View::handleResizeMotion( const libglabels::Distance& xWorld,
-				   const libglabels::Distance& yWorld )
+View::handleResizeMotion( const glabels::Distance& xWorld,
+			  const glabels::Distance& yWorld )
 {
 	QPointF p( xWorld.pt(), yWorld.pt() );
 	Handle::Location location = mResizeHandle->location();
@@ -795,22 +795,22 @@ glabels::View::handleResizeMotion( const libglabels::Distance& xWorld,
 			{
 			case Handle::E:
 			case Handle::W:
-				mResizeObject->setWHonorAspect( libglabels::Distance::pt(w) );
+				mResizeObject->setWHonorAspect( glabels::Distance::pt(w) );
 				break;
 			case Handle::N:
 			case Handle::S:
-				mResizeObject->setHHonorAspect( libglabels::Distance::pt(h) );
+				mResizeObject->setHHonorAspect( glabels::Distance::pt(h) );
 				break;
 			default:
-				mResizeObject->setSizeHonorAspect( libglabels::Distance::pt(w),
-								   libglabels::Distance::pt(h) );
+				mResizeObject->setSizeHonorAspect( glabels::Distance::pt(w),
+								   glabels::Distance::pt(h) );
 				break;
 			}
 		}
 		else
 		{
-			mResizeObject->setSize( libglabels::Distance::pt(w),
-						libglabels::Distance::pt(h) );
+			mResizeObject->setSize( glabels::Distance::pt(w),
+						glabels::Distance::pt(h) );
 		}
 
 		/*
@@ -836,8 +836,8 @@ glabels::View::handleResizeMotion( const libglabels::Distance& xWorld,
 	}
 	else
 	{
-		mResizeObject->setSize( libglabels::Distance::pt(w),
-					libglabels::Distance::pt(h) );
+		mResizeObject->setSize( glabels::Distance::pt(w),
+					glabels::Distance::pt(h) );
 	}
 
 	/*
@@ -846,8 +846,8 @@ glabels::View::handleResizeMotion( const libglabels::Distance& xWorld,
 	QPointF p0( x0, y0 );
 	p0 = mResizeObject->matrix().map( p0 );
 	p0 += QPointF( mResizeObject->x0().pt(), mResizeObject->y0().pt() );
-	mResizeObject->setPosition( libglabels::Distance::pt(p0.x()),
-				    libglabels::Distance::pt(p0.y()) );
+	mResizeObject->setPosition( glabels::Distance::pt(p0.x()),
+				    glabels::Distance::pt(p0.y()) );
 }
 
 
@@ -855,7 +855,7 @@ glabels::View::handleResizeMotion( const libglabels::Distance& xWorld,
 /// Paint Event Handler
 ///
 void
-glabels::View::paintEvent( QPaintEvent* event )
+View::paintEvent( QPaintEvent* event )
 {
 	if ( mModel )
 	{
@@ -890,7 +890,7 @@ glabels::View::paintEvent( QPaintEvent* event )
 /// Draw Background Layer
 ///
 void
-glabels::View::drawBgLayer( QPainter* painter )
+View::drawBgLayer( QPainter* painter )
 {
 	/*
 	 * Draw shadow
@@ -935,15 +935,15 @@ glabels::View::drawBgLayer( QPainter* painter )
 /// Draw Grid Layer
 ///
 void
-glabels::View::drawGridLayer( QPainter* painter )
+View::drawGridLayer( QPainter* painter )
 {
 	if ( mGridVisible )
 	{
-		libglabels::Distance w = mModel->frame()->w();
-		libglabels::Distance h = mModel->frame()->h();
+		glabels::Distance w = mModel->frame()->w();
+		glabels::Distance h = mModel->frame()->h();
 
-		libglabels::Distance x0, y0;
-		if ( dynamic_cast<const libglabels::FrameRect*>( mModel->frame() ) )
+		glabels::Distance x0, y0;
+		if ( dynamic_cast<const glabels::FrameRect*>( mModel->frame() ) )
 		{
 			x0 = gridSpacing;
 			y0 = gridSpacing;
@@ -968,12 +968,12 @@ glabels::View::drawGridLayer( QPainter* painter )
 		pen.setCosmetic( true );
 		painter->setPen( pen );
 
-		for ( libglabels::Distance x = x0; x < w; x += gridSpacing )
+		for ( glabels::Distance x = x0; x < w; x += gridSpacing )
 		{
 			painter->drawLine( x.pt(), 0, x.pt(), h.pt() );
 		}
 
-		for ( libglabels::Distance y = y0; y < h; y += gridSpacing )
+		for ( glabels::Distance y = y0; y < h; y += gridSpacing )
 		{
 			painter->drawLine( 0, y.pt(), w.pt(), y.pt() );
 		}
@@ -987,7 +987,7 @@ glabels::View::drawGridLayer( QPainter* painter )
 /// Draw Markup Layer
 ///
 void
-glabels::View::drawMarkupLayer( QPainter* painter )
+View::drawMarkupLayer( QPainter* painter )
 {
 	if ( mMarkupVisible )
 	{
@@ -1002,7 +1002,7 @@ glabels::View::drawMarkupLayer( QPainter* painter )
 			painter->translate( -mModel->frame()->w().pt(), 0 );
 		}
 
-		foreach( libglabels::Markup* markup, mModel->frame()->markups() )
+		foreach( glabels::Markup* markup, mModel->frame()->markups() )
 		{
 			painter->drawPath( markup->path() );
 		}
@@ -1016,7 +1016,7 @@ glabels::View::drawMarkupLayer( QPainter* painter )
 /// Draw Objects Layer
 ///
 void
-glabels::View::drawObjectsLayer( QPainter* painter )
+View::drawObjectsLayer( QPainter* painter )
 {
 	mModel->draw( painter );
 }
@@ -1026,7 +1026,7 @@ glabels::View::drawObjectsLayer( QPainter* painter )
 /// Draw Foreground Layer
 ///
 void
-glabels::View::drawFgLayer( QPainter* painter )
+View::drawFgLayer( QPainter* painter )
 {
 	/*
 	 * Draw label outline
@@ -1053,7 +1053,7 @@ glabels::View::drawFgLayer( QPainter* painter )
 /// Draw Highlight Layer
 ///
 void
-glabels::View::drawHighlightLayer( QPainter* painter )
+View::drawHighlightLayer( QPainter* painter )
 {
 	painter->save();
 
@@ -1073,7 +1073,7 @@ glabels::View::drawHighlightLayer( QPainter* painter )
 /// Draw Select Region Layer
 ///
 void
-glabels::View::drawSelectRegionLayer( QPainter* painter )
+View::drawSelectRegionLayer( QPainter* painter )
 {
 	if ( mSelectRegionVisible )
 	{
@@ -1089,4 +1089,20 @@ glabels::View::drawSelectRegionLayer( QPainter* painter )
 		painter->restore();
 	}
 
+}
+
+
+///
+/// Model changed handler
+///
+void View::onModelChanged()
+{
+}
+
+
+///
+/// Model size changed handler
+///
+void View::onModelSizeChanged()
+{
 }

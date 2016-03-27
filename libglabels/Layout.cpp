@@ -25,7 +25,7 @@
 #include "privateConstants.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	Layout::Layout( int             nx,

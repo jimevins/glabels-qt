@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_XmlTemplateParser_h
-#define libglabels_XmlTemplateParser_h
+#ifndef glabels_XmlTemplateParser_h
+#define glabels_XmlTemplateParser_h
 
 
 #include <QString>
@@ -28,7 +28,7 @@
 #include "Template.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class XmlTemplateParser
@@ -58,4 +58,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_XmlTemplateParser_h
+#endif // glabels_XmlTemplateParser_h

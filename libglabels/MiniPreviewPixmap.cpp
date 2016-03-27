@@ -35,7 +35,7 @@ namespace
 }
 
 
-namespace libglabels
+namespace glabels
 {
 
 	MiniPreviewPixmap::MiniPreviewPixmap()

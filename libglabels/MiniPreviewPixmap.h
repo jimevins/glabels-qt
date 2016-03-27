@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_MiniPreviewPixmap_h
-#define libglabels_MiniPreviewPixmap_h
+#ifndef glabels_MiniPreviewPixmap_h
+#define glabels_MiniPreviewPixmap_h
 
 
 #include <QPixmap>
@@ -27,7 +27,7 @@
 #include "Point.h"
 
 
-namespace libglabels
+namespace glabels
 {
 	class Template;  // Forward reference
 	class Frame;     // Forward reference
@@ -52,4 +52,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_MiniPreviewPixmap_h
+#endif // glabels_MiniPreviewPixmap_h

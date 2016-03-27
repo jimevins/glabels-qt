@@ -33,212 +33,209 @@ namespace {
 }
 
 
-namespace glabels
+///
+/// Default Constructor
+///
+TextNode::TextNode()
+	: mFieldFlag(false), mData("")
 {
+}
 
-	///
-	/// Default Constructor
-	///
-	TextNode::TextNode()
-		: mFieldFlag(false), mData("")
+
+///
+/// Constructor from Data
+///
+TextNode::TextNode( bool field_flag, const QString &data )
+	: mFieldFlag(field_flag), mData(data)
+{
+}
+
+
+///
+/// Constructor from Parsing Next Token in Text
+///
+TextNode::TextNode( const QString &text, int i_start, int &i_next )
+{
+	State   state = START;
+	QString literal_text;
+	QString field_name;
+	bool    field_flag = false;
+
+	int i = i_start;
+
+	while ( state != DONE )
 	{
-	}
+		QChar c = text[i];
 
+		switch (state) {
 
-	///
-	/// Constructor from Data
-	///
-	TextNode::TextNode( bool field_flag, const QString &data )
-		: mFieldFlag(field_flag), mData(data)
-	{
-	}
-
-
-	///
-	/// Constructor from Parsing Next Token in Text
-	///
-	TextNode::TextNode( const QString &text, int i_start, int &i_next )
-	{
-		State   state = START;
-		QString literal_text;
-		QString field_name;
-		bool    field_flag = false;
-
-		int i = i_start;
-
-		while ( state != DONE )
-		{
-			QChar c = text[i];
-
-			switch (state) {
-
-			case START:
-				switch (c.unicode()) {
-				case '$':
-					/* May be start of a field node. */
-					i++;
-					state = START_DOLLAR;
-					break;
-				case '\n':
-					state = DONE;
-					break;
-				case 0:
-					state = DONE;
-					break;
-				default:
-					/* Start a literal text node. */
-					literal_text.append( c );
-					i++;
-					state = LITERAL;
-					break;
-				}
+		case START:
+			switch (c.unicode()) {
+			case '$':
+				/* May be start of a field node. */
+				i++;
+				state = START_DOLLAR;
 				break;
-
-			case LITERAL:
-				switch (c.unicode()) {
-				case '$':
-					/* May be the beginning of a field node. */
-					i++;
-					state = LITERAL_DOLLAR;
-					break;
-				case '\n':
-					state = DONE;
-					break;
-				case 0:
-					state = DONE;
-					break;
-				default:
-					literal_text.append( c );
-					i++;
-					state = LITERAL;
-					break;
-				}
+			case '\n':
+				state = DONE;
 				break;
-
-			case LITERAL_DOLLAR:
-				switch (c.unicode()) {
-				case '{':
-					/* "${" indicates the start of a new field node, gather for literal too. */
-					literal_text.append( '$' );
-					i++;
-					state = DONE;
-					break;
-				case '\n':
-					/* Append "$" to literal text, don't gather newline. */
-					literal_text.append( '$' );
-					i++;
-					state = DONE;
-					break;
-				case 0:
-					/* Append "$" to literal text, don't gather null. */
-					literal_text.append( '$' );
-					i++;
-					state = DONE;
-					break;
-				default:
-					/* Append "$" to literal text, gather this character too. */
-					literal_text.append( '$' );
-					literal_text.append( c );
-					i+=2;
-					state = LITERAL;
-					break;
-				}
+			case 0:
+				state = DONE;
 				break;
-
-			case START_DOLLAR:
-				switch (c.unicode()) {
-				case '{':
-					/* This is probably the begining of a field node, gather for literal too. */
-					literal_text.append( c );
-					i++;
-					state = FIELD;
-					break;
-				case '\n':
-					state = DONE;
-					break;
-				case 0:
-					state = DONE;
-					break;
-				default:
-					/* The "$" was literal. */
-					literal_text.append( c );
-					i++;
-					state = LITERAL;
-					break;
-				}
+			default:
+				/* Start a literal text node. */
+				literal_text.append( c );
+				i++;
+				state = LITERAL;
 				break;
-
-			case FIELD:
-				switch (c.unicode()) {
-				case '}':
-					/* We now finally know that this node is really field node. */
-					field_flag = true;
-					i++;
-					state = DONE;
-					break;
-				case '\n':
-					state = DONE;
-					break;
-				case 0:
-					state = DONE;
-					break;
-				default:
-					/* Gather for field name and literal, just in case. */
-					field_name.append( c );
-					literal_text.append( c );
-					i++;
-					state = FIELD;
-					break;
-				}
-				break;
-
 			}
+			break;
+
+		case LITERAL:
+			switch (c.unicode()) {
+			case '$':
+				/* May be the beginning of a field node. */
+				i++;
+				state = LITERAL_DOLLAR;
+				break;
+			case '\n':
+				state = DONE;
+				break;
+			case 0:
+				state = DONE;
+				break;
+			default:
+				literal_text.append( c );
+				i++;
+				state = LITERAL;
+				break;
+			}
+			break;
+
+		case LITERAL_DOLLAR:
+			switch (c.unicode()) {
+			case '{':
+				/* "${" indicates the start of a new field node, gather for literal too. */
+				literal_text.append( '$' );
+				i++;
+				state = DONE;
+				break;
+			case '\n':
+				/* Append "$" to literal text, don't gather newline. */
+				literal_text.append( '$' );
+				i++;
+				state = DONE;
+				break;
+			case 0:
+				/* Append "$" to literal text, don't gather null. */
+				literal_text.append( '$' );
+				i++;
+				state = DONE;
+				break;
+			default:
+				/* Append "$" to literal text, gather this character too. */
+				literal_text.append( '$' );
+				literal_text.append( c );
+				i+=2;
+				state = LITERAL;
+				break;
+			}
+			break;
+
+		case START_DOLLAR:
+			switch (c.unicode()) {
+			case '{':
+				/* This is probably the begining of a field node, gather for literal too. */
+				literal_text.append( c );
+				i++;
+				state = FIELD;
+				break;
+			case '\n':
+				state = DONE;
+				break;
+			case 0:
+				state = DONE;
+				break;
+			default:
+				/* The "$" was literal. */
+				literal_text.append( c );
+				i++;
+				state = LITERAL;
+				break;
+			}
+			break;
+
+		case FIELD:
+			switch (c.unicode()) {
+			case '}':
+				/* We now finally know that this node is really field node. */
+				field_flag = true;
+				i++;
+				state = DONE;
+				break;
+			case '\n':
+				state = DONE;
+				break;
+			case 0:
+				state = DONE;
+				break;
+			default:
+				/* Gather for field name and literal, just in case. */
+				field_name.append( c );
+				literal_text.append( c );
+				i++;
+				state = FIELD;
+				break;
+			}
+			break;
 
 		}
 
-		mFieldFlag = field_flag;
-		mData      = field_flag ? field_name : literal_text;
-
-		i_next = i;
 	}
 
+	mFieldFlag = field_flag;
+	mData      = field_flag ? field_name : literal_text;
 
-	///
-	/// == Operator
-	///
-	bool TextNode::operator==( const TextNode& other )
-	{
-		return ( (mFieldFlag == other.mFieldFlag) &&
-			 (mData      == other.mData) );
-	}
+	i_next = i;
+}
 
 
-	///
-	/// != Operator
-	///
-	bool TextNode::operator!=( const TextNode& other )
-	{
-		return ( (mFieldFlag != other.mFieldFlag) ||
-			 (mData      != other.mData) );
-	}
+///
+/// == Operator
+///
+bool TextNode::operator==( const TextNode& other )
+{
+	return ( (mFieldFlag == other.mFieldFlag) &&
+		 (mData      == other.mData) );
+}
 
 
-	///
-	/// Field Flag Property Getter
-	///
-	bool TextNode::fieldFlag( void ) const
-	{
-		return mFieldFlag;
-	}
+///
+/// != Operator
+///
+bool TextNode::operator!=( const TextNode& other )
+{
+	return ( (mFieldFlag != other.mFieldFlag) ||
+		 (mData      != other.mData) );
+}
 
 
-	///
-	/// Data Property Getter
-	///
-	const QString& TextNode::data( void ) const
-	{
-		return mData;
-	}
+///
+/// Field Flag Property Getter
+///
+bool TextNode::fieldFlag( void ) const
+{
+	return mFieldFlag;
+}
+
+
+///
+/// Data Property Getter
+///
+const QString& TextNode::data( void ) const
+{
+	return mData;
+}
 
 
 #if TODO
@@ -285,6 +282,3 @@ namespace glabels
 			}
 		}
 #endif
-
-}
-

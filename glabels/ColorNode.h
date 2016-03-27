@@ -18,94 +18,90 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorNode_h
-#define glabels_ColorNode_h
+#ifndef ColorNode_h
+#define ColorNode_h
 
 #include <QString>
 #include <QColor>
 #include <stdint.h>
 
 
-namespace glabels
+///
+/// Color Node Type
+///
+struct ColorNode
 {
 
-	///
-	/// Color Node Type
-	///
-	struct ColorNode
-	{
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	ColorNode();
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		ColorNode();
+	ColorNode( bool fieldFlag, const QColor& color, const QString& key );
 
-		ColorNode( bool fieldFlag, const QColor& color, const QString& key );
+	ColorNode( bool fieldFlag, uint32_t rgba, const QString& key );
 
-		ColorNode( bool fieldFlag, uint32_t rgba, const QString& key );
+	ColorNode( const QColor& color );
 
-		ColorNode( const QColor& color );
-
-		ColorNode( const QString& key );
+	ColorNode( const QString& key );
 
 
-		/////////////////////////////////
-		// Operators
-		/////////////////////////////////
-	public:
-		bool operator==( const ColorNode& cn );
+	/////////////////////////////////
+	// Operators
+	/////////////////////////////////
+public:
+	bool operator==( const ColorNode& cn );
 
-		bool operator!=( const ColorNode& cn );
+	bool operator!=( const ColorNode& cn );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		//
-		// Field Flag Property
-		//
-		bool fieldFlag( void ) const;
-		void setFieldFlag( bool fieldFlag );
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	//
+	// Field Flag Property
+	//
+	bool fieldFlag( void ) const;
+	void setFieldFlag( bool fieldFlag );
 		
 
-		//
-		// Color Property
-		//
-		const QColor& color( void ) const;
-		void setColor( const QColor& color );
+	//
+	// Color Property
+	//
+	const QColor& color( void ) const;
+	void setColor( const QColor& color );
 
 
-		//
-		// Key Property
-		//
-		const QString& key( void ) const;
-		void setKey( const QString& key );
+	//
+	// Key Property
+	//
+	const QString& key( void ) const;
+	void setKey( const QString& key );
 		
 
 
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
-	public:
-		uint32_t rgba( void ) const;
+	/////////////////////////////////
+	// Methods
+	/////////////////////////////////
+public:
+	uint32_t rgba( void ) const;
 		
 #if TODO
-		QColor expand( MergeRecord? record );
+	QColor expand( MergeRecord? record );
 #endif
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		bool    mFieldFlag;
-		QColor  mColor;
-		QString mKey;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	bool    mFieldFlag;
+	QColor  mColor;
+	QString mKey;
 
-	};
+};
 
-}
 
-#endif // glabels_ColorNode_h
+#endif // ColorNode_h

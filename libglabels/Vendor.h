@@ -1,6 +1,6 @@
 /*  Vendor.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,14 +18,14 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Vendor_h
-#define libglabels_Vendor_h
+#ifndef glabels_Vendor_h
+#define glabels_Vendor_h
 
 
 #include <QString>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class Vendor
@@ -47,4 +47,4 @@ namespace libglabels
 #include "Vendor.inl"
 
 
-#endif // libglabels_Vendor_h
+#endif // glabels_Vendor_h

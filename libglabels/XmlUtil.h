@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_XmlUtil_h
-#define libglabels_XmlUtil_h
+#ifndef glabels_XmlUtil_h
+#define glabels_XmlUtil_h
 
 #include <QString>
 #include <QDomElement>
@@ -28,7 +28,7 @@
 #include "Distance.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class XmlUtil
@@ -103,4 +103,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_XmlUtil_h
+#endif // glabels_XmlUtil_h

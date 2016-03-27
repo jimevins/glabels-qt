@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_SimplePreview_h
-#define glabels_SimplePreview_h
+#ifndef SimplePreview_h
+#define SimplePreview_h
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -29,64 +29,60 @@
 #include "libglabels/Template.h"
 
 
-namespace glabels
+///
+/// Simple Preview Widget
+///
+class SimplePreview : public QGraphicsView
 {
-
-	///
-	/// Simple Preview Widget
-	///
-	class SimplePreview : public QGraphicsView
-	{
-		Q_OBJECT
+	Q_OBJECT
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		SimplePreview( QWidget *parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	SimplePreview( QWidget *parent = 0 );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		void setTemplate( const libglabels::Template *tmplate );
-		void setRotate( bool rotateFlag );
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	void setTemplate( const glabels::Template *tmplate );
+	void setRotate( bool rotateFlag );
 
 
-		/////////////////////////////////////
-		// Event handlers
-		/////////////////////////////////////
-	protected:
-		void resizeEvent( QResizeEvent* event );
+	/////////////////////////////////////
+	// Event handlers
+	/////////////////////////////////////
+protected:
+	void resizeEvent( QResizeEvent* event );
 
 		
-		/////////////////////////////////
-		// Internal Methods
-		/////////////////////////////////
-	private:
-		void update();
-		void clearScene();
-		void drawPaper( const libglabels::Distance& pw, const libglabels::Distance& ph );
-		void drawLabels();
-		void drawLabel( const libglabels::Distance& x,
-		                const libglabels::Distance& y,
-		                const QPainterPath&         path );
-		void drawArrow();
+	/////////////////////////////////
+	// Internal Methods
+	/////////////////////////////////
+private:
+	void update();
+	void clearScene();
+	void drawPaper( const glabels::Distance& pw, const glabels::Distance& ph );
+	void drawLabels();
+	void drawLabel( const glabels::Distance& x,
+	                const glabels::Distance& y,
+	                const QPainterPath&      path );
+	void drawArrow();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		const libglabels::Template *mTmplate;
-		bool                        mRotateFlag;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	const glabels::Template *mTmplate;
+	bool                     mRotateFlag;
 
-		QGraphicsScene             *mScene;
+	QGraphicsScene          *mScene;
 
-	};
+};
 
-}
 
-#endif // glabels_SimplePreview_h
+#endif // SimplePreview_h

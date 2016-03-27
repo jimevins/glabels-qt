@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_PrintView_h
-#define glabels_PrintView_h
+#ifndef PrintView_h
+#define PrintView_h
 
 #include "ui_PrintView.h"
 #include "PageRenderer.h"
@@ -27,55 +27,52 @@
 #include <QPrinter>
 
 
-namespace glabels
-{
-	class LabelModel;  // Forward reference
+class LabelModel;  // Forward reference
 	
 
-	///
-	/// Print View Widget
-	///
-	class PrintView : public QWidget, public Ui_PrintView
-	{
-		Q_OBJECT
+///
+/// Print View Widget
+///
+class PrintView : public QWidget, public Ui_PrintView
+{
+	Q_OBJECT
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		PrintView( QWidget *parent = 0 );
-		~PrintView();
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	PrintView( QWidget *parent = 0 );
+	~PrintView();
 
 
-		/////////////////////////////////
-		// Public methods
-		/////////////////////////////////
-		void setModel( LabelModel* model );
+	/////////////////////////////////
+	// Public methods
+	/////////////////////////////////
+	void setModel( LabelModel* model );
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onLabelChanged();
-		void onLabelSizeChanged();
-		void onFormChanged();
-		void onPrintButtonClicked();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onLabelChanged();
+	void onLabelSizeChanged();
+	void onFormChanged();
+	void onPrintButtonClicked();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		LabelModel*  mModel;
-		QPrinter*    mPrinter;
-		PageRenderer mRenderer;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	LabelModel*  mModel;
+	QPrinter*    mPrinter;
+	PageRenderer mRenderer;
 
-		bool         mBlocked;
+	bool         mBlocked;
 
-	};
+};
 
-}
 
-#endif // glabels_PrintView_h
+#endif // PrintView_h

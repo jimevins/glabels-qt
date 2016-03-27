@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_FrameRound_h
-#define libglabels_FrameRound_h
+#ifndef glabels_FrameRound_h
+#define glabels_FrameRound_h
 
 #include "Frame.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class FrameRound : public Frame
@@ -66,4 +66,4 @@ namespace libglabels
 #include "FrameRound.inl"
 
 
-#endif // libglabels_FrameRound_h
+#endif // glabels_FrameRound_h

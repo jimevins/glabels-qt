@@ -18,66 +18,62 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Cursors_h
-#define glabels_Cursors_h
+#ifndef Cursors_h
+#define Cursors_h
 
 
 #include <QCursor>
 
 
-namespace glabels
+///
+/// Glabels Cursors
+///
+namespace Cursors
 {
 
-	///
-	/// Glabels Cursors
-	///
-	namespace Cursors
-	{
-
 		
-		class Barcode : public QCursor
-		{
-		public:
-			Barcode();
-		};
+	class Barcode : public QCursor
+	{
+	public:
+		Barcode();
+	};
 
 
-		class Box : public QCursor
-		{
-		public:
-			Box();
-		};
+	class Box : public QCursor
+	{
+	public:
+		Box();
+	};
 
 
-		class Ellipse : public QCursor
-		{
-		public:
-			Ellipse();
-		};
+	class Ellipse : public QCursor
+	{
+	public:
+		Ellipse();
+	};
 
 
-		class Image : public QCursor
-		{
-		public:
-			Image();
-		};
+	class Image : public QCursor
+	{
+	public:
+		Image();
+	};
 
 
-		class Line : public QCursor
-		{
-		public:
-			Line();
-		};
+	class Line : public QCursor
+	{
+	public:
+		Line();
+	};
 
 
-		class Text : public QCursor
-		{
-		public:
-			Text();
-		};
+	class Text : public QCursor
+	{
+	public:
+		Text();
+	};
 
-
-	}
 }
 
-#endif // glabels_Cursors_h
+
+#endif // Cursors_h

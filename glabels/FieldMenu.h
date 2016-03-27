@@ -18,59 +18,54 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_FieldMenu_h
-#define glabels_FieldMenu_h
+#ifndef FieldMenu_h
+#define FieldMenu_h
 
 #include <QMenu>
 #include <QString>
 
 
-namespace glabels
+///
+/// Field Menu
+///
+class FieldMenu : public QMenu
 {
+	Q_OBJECT
 
-	///
-	/// Field Menu
-	///
-	class FieldMenu : public QMenu
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		FieldMenu();
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	FieldMenu();
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void keySelected( const QString& key );
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void keySelected( const QString& key );
 
 
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void setKeys( const QList<QString>& keyList );
+	/////////////////////////////////
+	// Public Methods
+	/////////////////////////////////
+public:
+	void setKeys( const QList<QString>& keyList );
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onMenuItemActivated( const QString& key );
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onMenuItemActivated( const QString& key );
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
 
-	};
+};
 
 
-}
-
-#endif // glabels_FieldMenu_h
+#endif // FieldMenu_h

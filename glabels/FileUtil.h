@@ -18,21 +18,18 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_FileUtil_h
-#define glabels_FileUtil_h
+#ifndef FileUtil_h
+#define FileUtil_h
 
 #include <QString>
 
 
-namespace glabels
+namespace FileUtil
 {
 
-	namespace FileUtil
-	{
-
-		QString addExtension( const QString& rawFilename, const QString& extension );
-	}
+	QString addExtension( const QString& rawFilename, const QString& extension );
 
 }
 
-#endif // glabels_FileUtil_h
+
+#endif // FileUtil_h

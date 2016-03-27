@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_PageRenderer_h
-#define glabels_PageRenderer_h
+#ifndef PageRenderer_h
+#define PageRenderer_h
 
 
 #include "libglabels/Point.h"
@@ -31,72 +31,69 @@
 class QPainter; // Forward reference
 
 
-namespace glabels
+class LabelModel; // Forward reference
+class MergeRecord; // Forward reference
+
+
+///
+///  PageRenderer Widget
+///
+class PageRenderer
 {
-	class LabelModel; // Forward reference
-	class MergeRecord; // Forward reference
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	PageRenderer();
 
 
-	///
-	///  PageRenderer Widget
-	///
-	class PageRenderer
-	{
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		PageRenderer();
+	/////////////////////////////////
+	// Public Methods
+	/////////////////////////////////
+public:
+	void setModel( const LabelModel* model );
+	void setNLabels( int nLabels );
+	void setStartLabel( int startLabel );
+	void setPrintOutlines( bool printOutlinesFlag );
+	void setPrintCropMarks( bool printCropMarksFlag );
+	void setPrintReverse( bool printReverseFlag );
+	void setIPage( int iPage );
+	int nPages() const;
+	QRectF pageRect() const;
+	void printPage( QPainter* painter ) const;
+	void printPage( QPainter* painter, int iPage ) const;
 
 
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void setModel( const LabelModel* model );
-		void setNLabels( int nLabels );
-		void setStartLabel( int startLabel );
-		void setPrintOutlines( bool printOutlinesFlag );
-		void setPrintCropMarks( bool printCropMarksFlag );
-		void setPrintReverse( bool printReverseFlag );
-		void setIPage( int iPage );
-		int nPages() const;
-		QRectF pageRect() const;
-		void printPage( QPainter* painter ) const;
-		void printPage( QPainter* painter, int iPage ) const;
+	/////////////////////////////////
+	// Internal Methods
+	/////////////////////////////////
+private:
+	void updateNPages();
+	void printSimplePage( QPainter* painter, int iPage ) const;
+	void printMergePage( QPainter* painter, int iPage ) const;
+	void printCropMarks( QPainter* painter ) const;
+	void printOutline( QPainter* painter ) const;
+	void clipLabel( QPainter* painter ) const;
+	void printLabel( QPainter* painter, MergeRecord* record ) const;
 
 
-		/////////////////////////////////
-		// Internal Methods
-		/////////////////////////////////
-	private:
-		void updateNPages();
-		void printSimplePage( QPainter* painter, int iPage ) const;
-		void printMergePage( QPainter* painter, int iPage ) const;
-		void printCropMarks( QPainter* painter ) const;
-		void printOutline( QPainter* painter ) const;
-		void clipLabel( QPainter* painter ) const;
-		void printLabel( QPainter* painter, MergeRecord* record ) const;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	const LabelModel* mModel;
+	int               mNLabels;
+	int               mStartLabel;
+	bool              mPrintOutlines;
+	bool              mPrintCropMarks;
+	bool              mPrintReverse;
+	int               mIPage;
+
+	int               mNPages;
+	int               mNLabelsPerPage;
+
+	QVector<glabels::Point> mOrigins;
+};
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		const LabelModel* mModel;
-		int               mNLabels;
-		int               mStartLabel;
-		bool              mPrintOutlines;
-		bool              mPrintCropMarks;
-		bool              mPrintReverse;
-		int               mIPage;
-
-		int               mNPages;
-		int               mNLabelsPerPage;
-
-		QVector<libglabels::Point> mOrigins;
-	};
-
-}
-
-#endif // glabels_PageRenderer_h
+#endif // PageRenderer_h

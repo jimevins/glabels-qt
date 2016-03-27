@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Layout_h
-#define libglabels_Layout_h
+#ifndef glabels_Layout_h
+#define glabels_Layout_h
 
 #include "Distance.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class Layout
@@ -70,4 +70,4 @@ namespace libglabels
 #include "Layout.inl"
 
 
-#endif // libglabels_Layout_h
+#endif // glabels_Layout_h

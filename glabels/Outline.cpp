@@ -40,7 +40,7 @@ namespace
 ///
 /// Outline Constructor
 ///
-glabels::Outline::Outline( LabelModelObject* owner )
+Outline::Outline( LabelModelObject* owner )
 	: mOwner(owner)
 {
 	mDashes << dashSize << dashSize;
@@ -63,7 +63,7 @@ glabels::Outline::Outline( LabelModelObject* owner )
 ///
 /// Outline Destructor
 ///
-glabels::Outline::~Outline()
+Outline::~Outline()
 {
 }
 
@@ -71,7 +71,7 @@ glabels::Outline::~Outline()
 ///
 /// Draw Outline
 ///
-void glabels::Outline::draw( QPainter* painter ) const
+void Outline::draw( QPainter* painter ) const
 {
 	painter->save();
 
@@ -90,7 +90,7 @@ void glabels::Outline::draw( QPainter* painter ) const
 ///
 /// Create path for testing for hover condition
 ///
-QPainterPath glabels::Outline::hoverPath( double scale ) const
+QPainterPath Outline::hoverPath( double scale ) const
 {
 	double s = 1 / scale;
 

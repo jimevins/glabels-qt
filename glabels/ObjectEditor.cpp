@@ -29,306 +29,301 @@
 #include <QtDebug>
 
 
-namespace glabels
+///
+/// Constructor
+///
+ObjectEditor::ObjectEditor( QWidget *parent )
+	: mModel(0), mObject(0), mBlocked(false)
 {
+	setupUi( this );
 
-	///
-	/// Constructor
-	///
-	ObjectEditor::ObjectEditor( QWidget *parent )
-		: mModel(0), mObject(0), mBlocked(false)
-	{
-		setupUi( this );
+	lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
+	fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
+	shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
-		lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
-		fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
-		shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
-
-		setEnabled( false );
-		hidePages();
-	}
+	setEnabled( false );
+	hidePages();
+}
 
 	
-	void ObjectEditor::setModel( LabelModel* model )
-	{
-		mModel = model;
+void ObjectEditor::setModel( LabelModel* model )
+{
+	mModel = model;
 
-		connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
-		connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
+	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
+	connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
 
-		onLabelSizeChanged();
-		onSelectionChanged();
-	}
+	onLabelSizeChanged();
+	onSelectionChanged();
+}
 
 	
-	void ObjectEditor::hidePages()
+void ObjectEditor::hidePages()
+{
+	notebook->removeTab( notebook->indexOf(textPage) );
+	notebook->removeTab( notebook->indexOf(barcodePage) );
+	notebook->removeTab( notebook->indexOf(imagePage) );
+	notebook->removeTab( notebook->indexOf(lineFillPage) );
+	notebook->removeTab( notebook->indexOf(posSizePage) );
+	notebook->removeTab( notebook->indexOf(shadowPage) );
+}
+
+
+void ObjectEditor::loadLineFillPage()
+{
+	if ( mObject )
 	{
-		notebook->removeTab( notebook->indexOf(textPage) );
-		notebook->removeTab( notebook->indexOf(barcodePage) );
-		notebook->removeTab( notebook->indexOf(imagePage) );
-		notebook->removeTab( notebook->indexOf(lineFillPage) );
-		notebook->removeTab( notebook->indexOf(posSizePage) );
-		notebook->removeTab( notebook->indexOf(shadowPage) );
+		mBlocked = true;
+			
+		lineWidthSpin->setValue( mObject->lineWidth().pt() );
+		lineColorButton->setColorNode( mObject->lineColorNode() );
+		fillColorButton->setColorNode( mObject->fillColorNode() );
+
+		mBlocked = false;			
 	}
+}
 
 
-	void ObjectEditor::loadLineFillPage()
+void ObjectEditor::loadPositionPage()
+{
+	if ( mObject )
 	{
-		if ( mObject )
-		{
-			mBlocked = true;
+		mBlocked = true;
 			
-			lineWidthSpin->setValue( mObject->lineWidth().pt() );
-			lineColorButton->setColorNode( mObject->lineColorNode() );
-			fillColorButton->setColorNode( mObject->fillColorNode() );
+		posXSpin->setValue( mObject->x0().in() );
+		posYSpin->setValue( mObject->y0().in() );
 
-			mBlocked = false;			
-		}
+		mBlocked = false;			
 	}
+}
 
 
-	void ObjectEditor::loadPositionPage()
+void ObjectEditor::loadRectSizePage()
+{
+	if ( mObject )
 	{
-		if ( mObject )
-		{
-			mBlocked = true;
+		mBlocked = true;
 			
-			posXSpin->setValue( mObject->x0().in() );
-			posYSpin->setValue( mObject->y0().in() );
+		sizeWSpin->setValue( mObject->w().in() );
+		sizeHSpin->setValue( mObject->h().in() );
 
-			mBlocked = false;			
-		}
+		mBlocked = false;			
 	}
+}
 
 
-	void ObjectEditor::loadRectSizePage()
+void ObjectEditor::loadShadowPage()
+{
+	if ( mObject )
 	{
-		if ( mObject )
-		{
-			mBlocked = true;
+		mBlocked = true;
 			
-			sizeWSpin->setValue( mObject->w().in() );
-			sizeHSpin->setValue( mObject->h().in() );
+		shadowEnableCheck->setChecked( mObject->shadow() );
+		shadowXSpin->setValue( mObject->shadowX().in() );
+		shadowYSpin->setValue( mObject->shadowY().in() );
+		shadowColorButton->setColorNode( mObject->shadowColorNode() );
+		shadowOpacitySpin->setValue( 100*mObject->shadowOpacity() );
 
-			mBlocked = false;			
-		}
+		mBlocked = false;			
 	}
+}
 
 
-	void ObjectEditor::loadShadowPage()
+void ObjectEditor::onLabelSizeChanged()
+{
+	if ( mModel )
 	{
-		if ( mObject )
-		{
-			mBlocked = true;
-			
-			shadowEnableCheck->setChecked( mObject->shadow() );
-			shadowXSpin->setValue( mObject->shadowX().in() );
-			shadowYSpin->setValue( mObject->shadowY().in() );
-			shadowColorButton->setColorNode( mObject->shadowColorNode() );
-			shadowOpacitySpin->setValue( 100*mObject->shadowOpacity() );
+		mBlocked = true;
 
-			mBlocked = false;			
-		}
+		glabels::Distance whMax = std::max( mModel->w(), mModel->h() );
+			
+		posXSpin->setRange( -whMax.in(), 2*whMax.in() );
+		posYSpin->setRange( -whMax.in(), 2*whMax.in() );
+		sizeWSpin->setRange( 0, 2*whMax.in() );
+		sizeHSpin->setRange( 0, 2*whMax.in() );
+			
+		mBlocked = false;			
 	}
-
-
-	void ObjectEditor::onLabelSizeChanged()
-	{
-		if ( mModel )
-		{
-			mBlocked = true;
-
-			libglabels::Distance whMax = std::max( mModel->w(), mModel->h() );
-			
-			posXSpin->setRange( -whMax.in(), 2*whMax.in() );
-			posYSpin->setRange( -whMax.in(), 2*whMax.in() );
-			sizeWSpin->setRange( 0, 2*whMax.in() );
-			sizeHSpin->setRange( 0, 2*whMax.in() );
-			
-			mBlocked = false;			
-		}
-	}
+}
 	
 
-	void ObjectEditor::onSelectionChanged()
+void ObjectEditor::onSelectionChanged()
+{
+	if ( mObject )
 	{
-		if ( mObject )
+		disconnect( mObject, 0, this, 0 );
+	}
+
+	hidePages();
+
+	if ( mModel->isSelectionAtomic() )
+	{
+		mObject = mModel->getFirstSelectedObject();
+
+		if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
 		{
-			disconnect( mObject, 0, this, 0 );
-		}
+			titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
+			titleLabel->setText( "Box object properties" );
 
-		hidePages();
+			notebook->addTab( lineFillPage, "line/fill" );
+			notebook->addTab( posSizePage, "position/size" );
+			notebook->addTab( shadowPage, "shadow" );
 
-		if ( mModel->isSelectionAtomic() )
-		{
-			mObject = mModel->getFirstSelectedObject();
+			sizeRectFrame->setVisible( true );
+			sizeResetImageButton->setVisible( false );
+			sizeLineFrame->setVisible( false );
 
-			if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
-			{
-				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
-				titleLabel->setText( "Box object properties" );
-
-				notebook->addTab( lineFillPage, "line/fill" );
-				notebook->addTab( posSizePage, "position/size" );
-				notebook->addTab( shadowPage, "shadow" );
-
-				sizeRectFrame->setVisible( true );
-				sizeResetImageButton->setVisible( false );
-				sizeLineFrame->setVisible( false );
-
-				loadLineFillPage();
-				loadPositionPage();
-				loadRectSizePage();
-				loadShadowPage();
+			loadLineFillPage();
+			loadPositionPage();
+			loadRectSizePage();
+			loadShadowPage();
 				
-				setEnabled( true );
-			}
-			else
-			{
-				Q_ASSERT_X( false, "ObjectEditor::onSelectionChanged", "Invalid object" );
-			}
-
-			connect( mObject, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
-			connect( mObject, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
-			connect( mObject, SIGNAL(destroyed(QObject*)), this, SLOT(onObjectDestroyed()) );
+			setEnabled( true );
 		}
 		else
 		{
-			mObject = 0;
-
-			titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.png") );
-			titleLabel->setText( "Object properties" );
-			setEnabled( false );
+			Q_ASSERT_X( false, "ObjectEditor::onSelectionChanged", "Invalid object" );
 		}
+
+		connect( mObject, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
+		connect( mObject, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
+		connect( mObject, SIGNAL(destroyed(QObject*)), this, SLOT(onObjectDestroyed()) );
 	}
-
-	
-	void ObjectEditor::onObjectChanged()
+	else
 	{
-		if ( !mBlocked )
-		{
-			loadLineFillPage();
-			loadRectSizePage();
-			loadShadowPage();
-		}
-	}
-
-	
-	void ObjectEditor::onObjectMoved()
-	{
-		if ( !mBlocked )
-		{
-			loadPositionPage();
-		}
-	}
-
-
-	void ObjectEditor::onObjectDestroyed()
-	{
-		disconnect( mObject, 0, this, 0 );
 		mObject = 0;
-	}
-	
-	
-	void ObjectEditor::onLineControlsChanged()
-	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
 
-			mObject->setLineWidth( libglabels::Distance::pt(lineWidthSpin->value()) );
-			mObject->setLineColorNode( lineColorButton->colorNode() );
-
-			mBlocked = false;
-		}
+		titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.png") );
+		titleLabel->setText( "Object properties" );
+		setEnabled( false );
 	}
+}
 
 	
-	void ObjectEditor::onFillControlsChanged()
+void ObjectEditor::onObjectChanged()
+{
+	if ( !mBlocked )
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
-
-			mObject->setFillColorNode( fillColorButton->colorNode() );
-
-			mBlocked = false;
-		}
+		loadLineFillPage();
+		loadRectSizePage();
+		loadShadowPage();
 	}
+}
 
-
-	void ObjectEditor::onPositionControlsChanged()
+	
+void ObjectEditor::onObjectMoved()
+{
+	if ( !mBlocked )
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
-
-			mObject->setPosition( posXSpin->value(), posYSpin->value() );
-
-			mBlocked = false;
-		}
+		loadPositionPage();
 	}
+}
 
 
-	void ObjectEditor::onRectSizeControlsChanged()
+void ObjectEditor::onObjectDestroyed()
+{
+	disconnect( mObject, 0, this, 0 );
+	mObject = 0;
+}
+	
+	
+void ObjectEditor::onLineControlsChanged()
+{
+	if ( !mBlocked )
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
+		mBlocked = true;
+
+		mObject->setLineWidth( glabels::Distance::pt(lineWidthSpin->value()) );
+		mObject->setLineColorNode( lineColorButton->colorNode() );
+
+		mBlocked = false;
+	}
+}
+
+	
+void ObjectEditor::onFillControlsChanged()
+{
+	if ( !mBlocked )
+	{
+		mBlocked = true;
+
+		mObject->setFillColorNode( fillColorButton->colorNode() );
+
+		mBlocked = false;
+	}
+}
+
+
+void ObjectEditor::onPositionControlsChanged()
+{
+	if ( !mBlocked )
+	{
+		mBlocked = true;
+
+		mObject->setPosition( posXSpin->value(), posYSpin->value() );
+
+		mBlocked = false;
+	}
+}
+
+
+void ObjectEditor::onRectSizeControlsChanged()
+{
+	if ( !mBlocked )
+	{
+		mBlocked = true;
 			
-			libglabels::Distance spinW = libglabels::Distance::in(sizeWSpin->value());
-			libglabels::Distance spinH = libglabels::Distance::in(sizeHSpin->value());
+		glabels::Distance spinW = glabels::Distance::in(sizeWSpin->value());
+		glabels::Distance spinH = glabels::Distance::in(sizeHSpin->value());
 				
-			if ( sizeAspectCheck->isChecked() )
+		if ( sizeAspectCheck->isChecked() )
+		{
+			if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
 			{
-				if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
-				{
-					mObject->setWHonorAspect( spinW );
-					sizeHSpin->setValue( mObject->h().in() );
-				}
-				else
-				{
-					mObject->setHHonorAspect( spinH );
-					sizeWSpin->setValue( mObject->w().in() );
-				}
+				mObject->setWHonorAspect( spinW );
+				sizeHSpin->setValue( mObject->h().in() );
 			}
 			else
 			{
-				mObject->setSize( spinW, spinH );
+				mObject->setHHonorAspect( spinH );
+				sizeWSpin->setValue( mObject->w().in() );
 			}
+		}
+		else
+		{
+			mObject->setSize( spinW, spinH );
+		}
 			
-			mBlocked = false;
-		}
+		mBlocked = false;
 	}
+}
 
 
-	void ObjectEditor::onShadowControlsChanged()
+void ObjectEditor::onShadowControlsChanged()
+{
+	if ( !mBlocked )
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
+		mBlocked = true;
 
-			mObject->setShadow( shadowEnableCheck->isChecked() );
-			mObject->setShadowX( libglabels::Distance::in(shadowXSpin->value()) );
-			mObject->setShadowY( libglabels::Distance::in(shadowYSpin->value()) );
-			mObject->setShadowColorNode( shadowColorButton->colorNode() );
-			mObject->setShadowOpacity( shadowOpacitySpin->value()/100.0 );
+		mObject->setShadow( shadowEnableCheck->isChecked() );
+		mObject->setShadowX( glabels::Distance::in(shadowXSpin->value()) );
+		mObject->setShadowY( glabels::Distance::in(shadowYSpin->value()) );
+		mObject->setShadowColorNode( shadowColorButton->colorNode() );
+		mObject->setShadowOpacity( shadowOpacitySpin->value()/100.0 );
 
-			mBlocked = false;
-		}
+		mBlocked = false;
 	}
+}
 
 
-	void ObjectEditor::onChanged()
+void ObjectEditor::onChanged()
+{
+	if ( !mBlocked )
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
+		mBlocked = true;
 
-			qDebug() << "Form changed.";
+		qDebug() << "Form changed.";
 
-			mBlocked = false;
-		}
+		mBlocked = false;
 	}
-
 }

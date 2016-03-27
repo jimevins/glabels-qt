@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_MergeRecord_h
-#define glabels_MergeRecord_h
+#ifndef MergeRecord_h
+#define MergeRecord_h
 
 #include <QString>
 #include <QList>
@@ -27,74 +27,70 @@
 #include "MergeField.h"
 
 
-namespace glabels
+///
+/// Merge Record Structure
+///
+struct MergeRecord
 {
-
-	///
-	/// Merge Record Structure
-	///
-	struct MergeRecord
-	{
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		MergeRecord();
-
-
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		inline bool isSelected() const;
-		inline void setSelected( bool value );
-		inline bool empty() const;
-
-		inline const QList<MergeField>& fieldList() const;
-		inline void setFieldList( QList<MergeField>& value );
-
-
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	private:
-		bool              mSelected;
-		QList<MergeField> mFieldList;
-	};
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	MergeRecord();
 
 
 	/////////////////////////////////
-	// INLINE METHODS
+	// Properties
 	/////////////////////////////////
-	bool MergeRecord::isSelected() const
-	{
-		return mSelected;
-	}
+public:
+	inline bool isSelected() const;
+	inline void setSelected( bool value );
+	inline bool empty() const;
+
+	inline const QList<MergeField>& fieldList() const;
+	inline void setFieldList( QList<MergeField>& value );
 
 
-	void MergeRecord::setSelected( bool value )
-	{
-		mSelected = value;
-	}
+	/////////////////////////////////
+	// Private data
+	/////////////////////////////////
+private:
+	bool              mSelected;
+	QList<MergeField> mFieldList;
+};
 
 
-	bool MergeRecord::empty() const
-	{
-		return mFieldList.size() == 0;
-	}
-
-
-	const QList<MergeField>& MergeRecord::fieldList() const
-	{
-		return mFieldList;
-	}
-
-
-	void MergeRecord::setFieldList( QList<MergeField>& value )
-	{
-		mFieldList = value;
-	}
-
+/////////////////////////////////
+// INLINE METHODS
+/////////////////////////////////
+bool MergeRecord::isSelected() const
+{
+	return mSelected;
 }
 
-#endif // glabels_MergeRecord_h
+
+void MergeRecord::setSelected( bool value )
+{
+	mSelected = value;
+}
+
+
+bool MergeRecord::empty() const
+{
+	return mFieldList.size() == 0;
+}
+
+
+const QList<MergeField>& MergeRecord::fieldList() const
+{
+	return mFieldList;
+}
+
+
+void MergeRecord::setFieldList( QList<MergeField>& value )
+{
+	mFieldList = value;
+}
+
+
+#endif // MergeRecord_h

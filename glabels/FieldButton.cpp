@@ -21,101 +21,94 @@
 #include "FieldButton.h"
 
 
-namespace glabels
+///
+/// Constructor
+///
+FieldButton::FieldButton( QWidget* parent )
+	: QPushButton(parent)
 {
+	setEnabled( false );
 
-	///
-	/// Constructor
-	///
-	FieldButton::FieldButton( QWidget* parent )
-		: QPushButton(parent)
+	mMenu = new FieldMenu();
+	setMenu( mMenu );
+
+	connect( mMenu, SIGNAL(keySelected(const QString&)), this, SLOT(onMenuKeySelected(const QString&)) );
+}
+
+
+void FieldButton::setName( const QString& name )
+{
+	if ( name.isNull() || name.isEmpty() )
 	{
-		setEnabled( false );
-
-		mMenu = new FieldMenu();
-		setMenu( mMenu );
-
-		connect( mMenu, SIGNAL(keySelected(const QString&)), this, SLOT(onMenuKeySelected(const QString&)) );
+		setText( tr("(None)") );
+		mLabelIsKey = false;
 	}
-
-
-	void FieldButton::setName( const QString& name )
+	else
 	{
-		if ( name.isNull() || name.isEmpty() )
-		{
-			setText( tr("(None)") );
-			mLabelIsKey = false;
-		}
-		else
-		{
-			setText( name );
-			mLabelIsKey = true;
-		}
+		setText( name );
+		mLabelIsKey = true;
 	}
+}
 
 
-	void FieldButton::setKeys( const QList<QString>& keyList )
+void FieldButton::setKeys( const QList<QString>& keyList )
+{
+	mMenu->setKeys( keyList );
+
+	if ( keyList.length() > 0 )
 	{
-		mMenu->setKeys( keyList );
-
-		if ( keyList.length() > 0 )
-		{
-			mKey = keyList.first();
-
-			if ( mLabelIsKey )
-			{
-				setText( mKey );
-			}
-			else
-			{
-				setText( tr("(None)") );
-			}
-
-			setEnabled( true );
-		}
-		else
-		{
-			setEnabled( false );
-		}
-	}
-
-
-	void FieldButton::clearKeys()
-	{
-		if ( !mLabelIsKey )
-		{
-			setText( tr("(None)") );
-		}
-
-		setEnabled( false );
-	}
-
-
-
-	///
-	/// key getter
-	///
-	QString FieldButton::key() const
-	{
-		return mKey;
-	}
-
-
-	///
-	/// onMenuKeySelected slot
-	///
-	void FieldButton::onMenuKeySelected( const QString& key )
-	{
-		mKey = key;
+		mKey = keyList.first();
 
 		if ( mLabelIsKey )
 		{
-			setText( key );
+			setText( mKey );
+		}
+		else
+		{
+			setText( tr("(None)") );
 		}
 
-		emit keySelected( key );
+		setEnabled( true );
 	}
-
-
+	else
+	{
+		setEnabled( false );
+	}
 }
 
+
+void FieldButton::clearKeys()
+{
+	if ( !mLabelIsKey )
+	{
+		setText( tr("(None)") );
+	}
+
+	setEnabled( false );
+}
+
+
+
+///
+/// key getter
+///
+QString FieldButton::key() const
+{
+	return mKey;
+}
+
+
+///
+/// onMenuKeySelected slot
+///
+void FieldButton::onMenuKeySelected( const QString& key )
+{
+	mKey = key;
+
+	if ( mLabelIsKey )
+	{
+		setText( key );
+	}
+
+	emit keySelected( key );
+}

@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Point_h
-#define libglabels_Point_h
+#ifndef glabels_Point_h
+#define glabels_Point_h
 
 #include "Distance.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class Point
@@ -51,4 +51,4 @@ namespace libglabels
 #include "Point.inl"
 
 
-#endif // libglabels_Point_h
+#endif // glabels_Point_h

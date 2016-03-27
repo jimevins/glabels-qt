@@ -24,45 +24,38 @@
 #include "BarcodeMenuItem.h"
 
 
-namespace glabels
+///
+/// Constructor
+///
+BarcodeMenuButton::BarcodeMenuButton( QWidget* parent )
+	: QPushButton(parent)
 {
+	mMenu = new BarcodeMenu();
+	setMenu( mMenu );
 
-	///
-	/// Constructor
-	///
-	BarcodeMenuButton::BarcodeMenuButton( QWidget* parent )
-		: QPushButton(parent)
-	{
-		mMenu = new BarcodeMenu();
-		setMenu( mMenu );
+	mBcStyle = BarcodeBackends::lookupStyleFromId( "" ); // Default style
+	setText( mBcStyle->name() );
 
-		mBcStyle = BarcodeBackends::lookupStyleFromId( "" ); // Default style
-		setText( mBcStyle->name() );
-
-		connect( mMenu, SIGNAL(styleChanged()), this, SLOT(onMenuStyleChanged()) );
-	}
-
-
-	///
-	/// bcStyle getter
-	///
-	const BarcodeStyle* BarcodeMenuButton::bcStyle() const
-	{
-		return mBcStyle;
-	}
-
-
-	///
-	/// onMenuStyleChanged slot
-	///
-	void BarcodeMenuButton::onMenuStyleChanged()
-	{
-		mBcStyle = mMenu->bcStyle();
-		setText( mBcStyle->name() );
-
-		emit styleChanged();
-	}
-
-
+	connect( mMenu, SIGNAL(styleChanged()), this, SLOT(onMenuStyleChanged()) );
 }
 
+
+///
+/// bcStyle getter
+///
+const BarcodeStyle* BarcodeMenuButton::bcStyle() const
+{
+	return mBcStyle;
+}
+
+
+///
+/// onMenuStyleChanged slot
+///
+void BarcodeMenuButton::onMenuStyleChanged()
+{
+	mBcStyle = mMenu->bcStyle();
+	setText( mBcStyle->name() );
+
+	emit styleChanged();
+}

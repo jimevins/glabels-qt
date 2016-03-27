@@ -18,76 +18,72 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_TextNode_h
-#define glabels_TextNode_h
+#ifndef TextNode_h
+#define TextNode_h
 
 #include <QString>
 
 
-namespace glabels
+///
+/// Text Node Type
+///
+struct TextNode
 {
 
-	///
-	/// Text Node Type
-	///
-	struct TextNode
-	{
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	TextNode();
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		TextNode();
+	TextNode( bool field_flag, const QString &data );
 
-		TextNode( bool field_flag, const QString &data );
-
-		TextNode( const QString &text, int i_start, int &i_next );
+	TextNode( const QString &text, int i_start, int &i_next );
 
 
-		/////////////////////////////////
-		// Operators
-		/////////////////////////////////
-	public:
-		bool operator==( const TextNode& other );
+	/////////////////////////////////
+	// Operators
+	/////////////////////////////////
+public:
+	bool operator==( const TextNode& other );
 
-		bool operator!=( const TextNode& other );
+	bool operator!=( const TextNode& other );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		//
-		// Field Flag Property
-		//
-		bool fieldFlag( void ) const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	//
+	// Field Flag Property
+	//
+	bool fieldFlag( void ) const;
 
-		//
-		// Data Property
-		//
-		const QString& data( void ) const;
+	//
+	// Data Property
+	//
+	const QString& data( void ) const;
 
 
 
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
+	/////////////////////////////////
+	// Methods
+	/////////////////////////////////
 #if TODO
-		string expand( MergeRecord? record );
-		bool is_empty_field( MergeRecord? record );
+	string expand( MergeRecord? record );
+	bool is_empty_field( MergeRecord? record );
 #endif
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
 
-		bool    mFieldFlag;
-		QString mData;
+	bool    mFieldFlag;
+	QString mData;
 
-	};
+};
 
-}
 
-#endif // glabels_TextNode_h
+#endif // TextNode_h

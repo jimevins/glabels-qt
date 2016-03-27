@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Handles_h
-#define glabels_Handles_h
+#ifndef Handles_h
+#define Handles_h
 
 
 #include <QPainter>
@@ -27,288 +27,283 @@
 #include "libglabels/Distance.h"
 
 
-namespace glabels
+class LabelModelObject;
+
+
+///
+/// Handle Base Class
+///
+class Handle
 {
-
-	class LabelModelObject;
-
-
-	///
-	/// Handle Base Class
-	///
-	class Handle
-	{
-		////////////////////////////
-		// Location enumeration
-		////////////////////////////
-	public:
-		enum Location { NW, N, NE, E, SE, S, SW, W, P1, P2 };
+	////////////////////////////
+	// Location enumeration
+	////////////////////////////
+public:
+	enum Location { NW, N, NE, E, SE, S, SW, W, P1, P2 };
 		
 		
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	protected:
-		Handle( LabelModelObject* owner, Location location );
-	public:
-		virtual ~Handle();
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+protected:
+	Handle( LabelModelObject* owner, Location location );
+public:
+	virtual ~Handle();
 
 		
-		////////////////////////////
-		// Attribue Methods
-		////////////////////////////
-		LabelModelObject* owner() const;
-		Location location() const;
+	////////////////////////////
+	// Attribue Methods
+	////////////////////////////
+	LabelModelObject* owner() const;
+	Location location() const;
 		
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const = 0;
-		virtual QPainterPath path( double scale ) const = 0;
-	protected:
-		void drawAt( QPainter*                   painter,
-		             double                      scale,
-		             const libglabels::Distance& x,
-		             const libglabels::Distance& y,
-		             QColor                      color ) const;
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const = 0;
+	virtual QPainterPath path( double scale ) const = 0;
+protected:
+	void drawAt( QPainter*                painter,
+	             double                   scale,
+	             const glabels::Distance& x,
+	             const glabels::Distance& y,
+	             QColor                   color ) const;
 		
-		QPainterPath pathAt( double                      scale,
-		                     const libglabels::Distance& x,
-		                     const libglabels::Distance& y ) const;
+	QPainterPath pathAt( double                   scale,
+	                     const glabels::Distance& x,
+	                     const glabels::Distance& y ) const;
 
 
-		////////////////////////////
-		// Protected Data
-		////////////////////////////
-	protected:
-		LabelModelObject* mOwner;
-		Location mLocation;
+	////////////////////////////
+	// Protected Data
+	////////////////////////////
+protected:
+	LabelModelObject* mOwner;
+	Location mLocation;
 
-	};
-
-
-	///
-	/// HandleNorth Class
-	///
-	class HandleNorth : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleNorth( LabelModelObject* owner );
-		virtual ~HandleNorth();
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleNorth Class
+///
+class HandleNorth : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleNorth( LabelModelObject* owner );
+	virtual ~HandleNorth();
 
 
-	///
-	/// HandleNorthEast Class
-	///
-	class HandleNorthEast : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleNorthEast( LabelModelObject* owner );
-		virtual ~HandleNorthEast();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleNorthEast Class
+///
+class HandleNorthEast : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleNorthEast( LabelModelObject* owner );
+	virtual ~HandleNorthEast();
 
 
-	///
-	/// HandleEast Class
-	///
-	class HandleEast : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleEast( LabelModelObject* owner );
-		virtual ~HandleEast();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleEast Class
+///
+class HandleEast : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleEast( LabelModelObject* owner );
+	virtual ~HandleEast();
 
 
-	///
-	/// HandleSouthEast Class
-	///
-	class HandleSouthEast : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleSouthEast( LabelModelObject* owner );
-		virtual ~HandleSouthEast();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleSouthEast Class
+///
+class HandleSouthEast : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleSouthEast( LabelModelObject* owner );
+	virtual ~HandleSouthEast();
 
 
-	///
-	/// HandleSouth Class
-	///
-	class HandleSouth : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleSouth( LabelModelObject* owner );
-		virtual ~HandleSouth();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleSouth Class
+///
+class HandleSouth : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleSouth( LabelModelObject* owner );
+	virtual ~HandleSouth();
 
 
-	///
-	/// HandleSouthWest Class
-	///
-	class HandleSouthWest : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleSouthWest( LabelModelObject* owner );
-		virtual ~HandleSouthWest();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleSouthWest Class
+///
+class HandleSouthWest : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleSouthWest( LabelModelObject* owner );
+	virtual ~HandleSouthWest();
 
 
-	///
-	/// HandleWest Class
-	///
-	class HandleWest : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleWest( LabelModelObject* owner );
-		virtual ~HandleWest();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleWest Class
+///
+class HandleWest : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleWest( LabelModelObject* owner );
+	virtual ~HandleWest();
 
 
-	///
-	/// HandleNorthWest Class
-	///
-	class HandleNorthWest : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleNorthWest( LabelModelObject* owner );
-		virtual ~HandleNorthWest();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleNorthWest Class
+///
+class HandleNorthWest : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleNorthWest( LabelModelObject* owner );
+	virtual ~HandleNorthWest();
 
 
-	///
-	/// HandleP1 Class
-	///
-	class HandleP1 : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleP1( LabelModelObject* owner );
-		virtual ~HandleP1();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleP1 Class
+///
+class HandleP1 : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleP1( LabelModelObject* owner );
+	virtual ~HandleP1();
 
 
-	///
-	/// HandleP2 Class
-	///
-	class HandleP2 : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleP2( LabelModelObject* owner );
-		virtual ~HandleP2();
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
-	};
+///
+/// HandleP2 Class
+///
+class HandleP2 : public Handle
+{
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	HandleP2( LabelModelObject* owner );
+	virtual ~HandleP2();
 
 
-}
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	virtual void  draw( QPainter* painter, double scale ) const;
+	virtual QPainterPath path( double scale ) const;
+};
 
-#endif // glabels_Handles_h
+
+#endif // Handles_h

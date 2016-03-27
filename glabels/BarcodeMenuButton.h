@@ -18,62 +18,57 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_BarcodeMenuButton_h
-#define glabels_BarcodeMenuButton_h
+#ifndef BarcodeMenuButton_h
+#define BarcodeMenuButton_h
 
 #include <QPushButton>
 #include "BarcodeMenu.h"
 #include "BarcodeStyle.h"
 
 
-namespace glabels
+///
+/// Barcode Menu Button
+///
+class BarcodeMenuButton : public QPushButton
 {
+	Q_OBJECT
 
-	///
-	/// Barcode Menu Button
-	///
-	class BarcodeMenuButton : public QPushButton
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		BarcodeMenuButton( QWidget* parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	BarcodeMenuButton( QWidget* parent = 0 );
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void styleChanged();
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void styleChanged();
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		const BarcodeStyle* bcStyle() const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	const BarcodeStyle* bcStyle() const;
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onMenuStyleChanged();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onMenuStyleChanged();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		BarcodeMenu*  mMenu;
-		const BarcodeStyle* mBcStyle;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	BarcodeMenu*  mMenu;
+	const BarcodeStyle* mBcStyle;
 
-	};
+};
 
 
-}
-
-#endif // glabels_BarcodeMenuButton_h
+#endif // BarcodeMenuButton_h

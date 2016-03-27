@@ -19,7 +19,7 @@
  */
 
 
-namespace libglabels
+namespace glabels
 {
 
 	inline const QString& Template::brand() const { return mBrand; }

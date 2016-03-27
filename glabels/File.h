@@ -18,34 +18,32 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_File_h
-#define glabels_File_h
+#ifndef File_h
+#define File_h
 
 
 #include <QObject>
 
 
-namespace glabels
+class MainWindow;
+
+
+///
+/// File Actions
+///
+class File : public QObject
 {
-	class MainWindow;
+	Q_OBJECT
 
-	///
-	/// File Actions
-	///
-	class File : public QObject
-	{
-		Q_OBJECT
+public:
+	static void newLabel( MainWindow *window = 0 );
+	static void open( MainWindow *window );
+	static bool save( MainWindow *window );
+	static bool saveAs( MainWindow *window );
+	static void print( MainWindow *window );
+	static void close( MainWindow *window );
+	static void exit();
+};
 
-	public:
-		static void newLabel( MainWindow *window = 0 );
-		static void open( MainWindow *window );
-		static bool save( MainWindow *window );
-		static bool saveAs( MainWindow *window );
-		static void print( MainWindow *window );
-		static void close( MainWindow *window );
-		static void exit();
-	};
 
-}
-
-#endif // glabels_File_h
+#endif // File_h

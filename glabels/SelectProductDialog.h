@@ -18,56 +18,52 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_SelectProductDialog_h
-#define glabels_SelectProductDialog_h
+#ifndef SelectProductDialog_h
+#define SelectProductDialog_h
 
 #include "ui_SelectProductDialog.h"
 
 
-namespace glabels
+///
+/// New Label Dialog Widget
+///
+class SelectProductDialog : public QDialog, public Ui_SelectProductDialog
 {
-
-	///
-	/// New Label Dialog Widget
-	///
-	class SelectProductDialog : public QDialog, public Ui_SelectProductDialog
-	{
-		Q_OBJECT
+	Q_OBJECT
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		SelectProductDialog( QWidget *parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	SelectProductDialog( QWidget *parent = 0 );
 
 
-		/////////////////////////////////
-		// Accessors
-		/////////////////////////////////
-		const libglabels::Template* tmplate() const;
+	/////////////////////////////////
+	// Accessors
+	/////////////////////////////////
+	const glabels::Template* tmplate() const;
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onSearchEntryTextChanged();
-		void onSearchClearButtonClicked();
-		void onPageSizeCheckToggled();
-		void onTemplatePickerSelectionChanged();
-		void onSelectButtonClicked();
-		void onCancelButtonClicked();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onSearchEntryTextChanged();
+	void onSearchClearButtonClicked();
+	void onPageSizeCheckToggled();
+	void onTemplatePickerSelectionChanged();
+	void onSelectButtonClicked();
+	void onCancelButtonClicked();
 
 		
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	private:
-		bool mCanceled;
+	/////////////////////////////////
+	// Private data
+	/////////////////////////////////
+private:
+	bool mCanceled;
 
-	};
+};
 
-}
 
-#endif // glabels_SelectProductDialog_h
+#endif // SelectProductDialog_h

@@ -18,46 +18,43 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_PreviewOverlayItem_h
-#define glabels_PreviewOverlayItem_h
+#ifndef PreviewOverlayItem_h
+#define PreviewOverlayItem_h
 
 #include <QGraphicsItem>
 
 
-namespace glabels
+class PageRenderer; // Forward reference
+
+
+///
+///  PreviewOverlayItem Widget
+///
+class PreviewOverlayItem : public QGraphicsItem
 {
-	class PageRenderer; // Forward reference
+
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = 0 );
 
 
-	///
-	///  PreviewOverlayItem Widget
-	///
-	class PreviewOverlayItem : public QGraphicsItem
-	{
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = 0 );
-
-
-		/////////////////////////////////////
-		// Virtual method implementations
-		/////////////////////////////////////
-	public:
-		QRectF boundingRect() const;
-		void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget );
+	/////////////////////////////////////
+	// Virtual method implementations
+	/////////////////////////////////////
+public:
+	QRectF boundingRect() const;
+	void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget );
 
 		
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		const PageRenderer* mRenderer;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	const PageRenderer* mRenderer;
 
-	};
+};
 
-}
 
-#endif // glabels_PreviewOverlayItem_h
+#endif // PreviewOverlayItem_h

@@ -1,6 +1,6 @@
 /*  privateConstants.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,14 +18,14 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_privateConstants_h
-#define libglabels_privateConstants_h
+#ifndef glabels_privateConstants_h
+#define glabels_privateConstants_h
 
 
 #include "Distance.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	namespace Constants
@@ -37,4 +37,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_privateConstants_h
+#endif // glabels_privateConstants_h

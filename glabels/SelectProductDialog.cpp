@@ -26,108 +26,103 @@
 #include "TemplatePickerItem.h"
 
 
-namespace glabels
+///
+/// Constructor
+///
+SelectProductDialog::SelectProductDialog( QWidget *parent )
+	: QDialog(parent), mCanceled(false)
 {
+	setupUi( this );
 
-	///
-	/// Constructor
-	///
-	SelectProductDialog::SelectProductDialog( QWidget *parent )
-		: QDialog(parent), mCanceled(false)
+	// TODO: Set default based on locale and/or saved preferences
+	//       Perhaps move to checkboxes
+	pageSizeIsoCheck->setChecked( false );
+	pageSizeUsCheck->setChecked( true );
+	pageSizeOtherCheck->setChecked( true );
+
+	QList<glabels::Template*> tmplates = glabels::Db::templates();
+	templatePicker->setTemplates( tmplates );
+
+	templatePicker->applyFilter( searchEntry->text(),
+				     pageSizeIsoCheck->isChecked(),
+				     pageSizeUsCheck->isChecked(),
+				     pageSizeOtherCheck->isChecked() );
+}
+
+///
+/// Get selected template
+///
+const glabels::Template* SelectProductDialog::tmplate() const
+{
+	if ( !mCanceled )
 	{
-		setupUi( this );
-
-		// TODO: Set default based on locale and/or saved preferences
-		//       Perhaps move to checkboxes
-		pageSizeIsoCheck->setChecked( false );
-		pageSizeUsCheck->setChecked( true );
-		pageSizeOtherCheck->setChecked( true );
-
-		QList<libglabels::Template*> tmplates = libglabels::Db::templates();
-		templatePicker->setTemplates( tmplates );
-
-		templatePicker->applyFilter( searchEntry->text(),
-					     pageSizeIsoCheck->isChecked(),
-					     pageSizeUsCheck->isChecked(),
-					     pageSizeOtherCheck->isChecked() );
+		return templatePicker->selectedTemplate();
 	}
-
-	///
-	/// Get selected template
-	///
-	const libglabels::Template* SelectProductDialog::tmplate() const
+	else
 	{
-		if ( !mCanceled )
-		{
-			return templatePicker->selectedTemplate();
-		}
-		else
-		{
-			return 0;
-		}
+		return 0;
 	}
+}
 
 
-        ///
-	/// Search Entry Text Changed Slot
-	///
-	void SelectProductDialog::onSearchEntryTextChanged()
-	{
-		templatePicker->applyFilter( searchEntry->text(),
-					     pageSizeIsoCheck->isChecked(),
-					     pageSizeUsCheck->isChecked(),
-					     pageSizeOtherCheck->isChecked() );
-	}
+///
+/// Search Entry Text Changed Slot
+///
+void SelectProductDialog::onSearchEntryTextChanged()
+{
+	templatePicker->applyFilter( searchEntry->text(),
+				     pageSizeIsoCheck->isChecked(),
+				     pageSizeUsCheck->isChecked(),
+				     pageSizeOtherCheck->isChecked() );
+}
 
 
-        ///
-	/// Search Entry Text Changed Slot
-	///
-	void SelectProductDialog::onSearchClearButtonClicked()
-	{
-		searchEntry->setText( "" );
-	}
+///
+/// Search Entry Text Changed Slot
+///
+void SelectProductDialog::onSearchClearButtonClicked()
+{
+	searchEntry->setText( "" );
+}
 
 
-	///
-	/// Page Size Check Toggled Slot
-	///
-	void SelectProductDialog::onPageSizeCheckToggled()
-	{
-		templatePicker->applyFilter( searchEntry->text(),
-					     pageSizeIsoCheck->isChecked(),
-					     pageSizeUsCheck->isChecked(),
-					     pageSizeOtherCheck->isChecked() );
-	}
+///
+/// Page Size Check Toggled Slot
+///
+void SelectProductDialog::onPageSizeCheckToggled()
+{
+	templatePicker->applyFilter( searchEntry->text(),
+				     pageSizeIsoCheck->isChecked(),
+				     pageSizeUsCheck->isChecked(),
+				     pageSizeOtherCheck->isChecked() );
+}
 
 
-	///
-	/// Template Picker Selection Changed Slot
-	///
-	void SelectProductDialog::onTemplatePickerSelectionChanged()
-	{
-		const libglabels::Template *tmplate = templatePicker->selectedTemplate();
+///
+/// Template Picker Selection Changed Slot
+///
+void SelectProductDialog::onTemplatePickerSelectionChanged()
+{
+	const glabels::Template *tmplate = templatePicker->selectedTemplate();
 
-		selectButton->setEnabled( tmplate != NULL );
-	}
-
-
-	///
-	/// Select Button Clicked Slot
-	///
-	void SelectProductDialog::onSelectButtonClicked()
-	{
-		close();
-	}
+	selectButton->setEnabled( tmplate != NULL );
+}
 
 
-	///
-	/// Cancel Button Clicked Slot
-	///
-	void SelectProductDialog::onCancelButtonClicked()
-	{
-		mCanceled = true;
-		close();
-	}
+///
+/// Select Button Clicked Slot
+///
+void SelectProductDialog::onSelectButtonClicked()
+{
+	close();
+}
 
+
+///
+/// Cancel Button Clicked Slot
+///
+void SelectProductDialog::onCancelButtonClicked()
+{
+	mCanceled = true;
+	close();
 }

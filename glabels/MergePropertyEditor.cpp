@@ -24,43 +24,38 @@
 #include <QtDebug>
 
 
-namespace glabels
+///
+/// Constructor
+///
+MergePropertyEditor::MergePropertyEditor( QWidget *parent )
+	: QWidget(parent), mModel(0)
 {
-
-	///
-	/// Constructor
-	///
-	MergePropertyEditor::MergePropertyEditor( QWidget *parent )
-		: QWidget(parent), mModel(0)
-	{
-		setupUi( this );
-	}
+	setupUi( this );
+}
 
 
-	///
-	/// Destructor
-	///
-	MergePropertyEditor::~MergePropertyEditor()
-	{
-	}
+///
+/// Destructor
+///
+MergePropertyEditor::~MergePropertyEditor()
+{
+}
 
 
-	///
-	/// Set Model
-	///
-	void MergePropertyEditor::setModel( LabelModel* model )
-	{
-		mModel = model;
+///
+/// Set Model
+///
+void MergePropertyEditor::setModel( LabelModel* model )
+{
+	mModel = model;
 
-		connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
-	}
+	connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
+}
 
 
-	///
-	/// Label changed handler
-	///
-	void MergePropertyEditor::onLabelChanged()
-	{
-	}
-
+///
+/// Label changed handler
+///
+void MergePropertyEditor::onLabelChanged()
+{
 }

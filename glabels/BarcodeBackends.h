@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_BarcodeBackends_h
-#define glabels_BarcodeBackends_h
+#ifndef BarcodeBackends_h
+#define BarcodeBackends_h
 
 #include "BarcodeStyle.h"
 
@@ -29,73 +29,68 @@
 #include <QList>
 
 
-namespace glabels
+///
+/// Barcode Backends Database
+///
+class BarcodeBackends : public QObject
 {
 
-	///
-	/// Barcode Backends Database
-	///
-	class BarcodeBackends : public QObject
-	{
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+private:
+	BarcodeBackends();
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		BarcodeBackends();
+public:
+	static void init( void );
 
-	public:
-		static void init( void );
+	/////////////////////////////////
+	// Public Methods
+	/////////////////////////////////
+public:
+	static QString BackendIdToName( const QString& backendId );
+	static QString BackendNameToId( const QString& backendName );
 
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		static QString BackendIdToName( const QString& backendId );
-		static QString BackendNameToId( const QString& backendName );
+	static const QList<QString>& getBackendNameList();
+	static const QList<QString>& getNameList();
 
-		static const QList<QString>& getBackendNameList();
-		static const QList<QString>& getNameList();
-
-		static const BarcodeStyle* lookupStyleFromId( const QString& id );
-		static const BarcodeStyle* lookupStyleFromName( const QString& name );
+	static const BarcodeStyle* lookupStyleFromId( const QString& id );
+	static const BarcodeStyle* lookupStyleFromName( const QString& name );
 
 
-		/////////////////////////////////
-		// Private Methods
-		/////////////////////////////////
-	private:
-		static void registerBackend( QString &id, QString &name);
+	/////////////////////////////////
+	// Private Methods
+	/////////////////////////////////
+private:
+	static void registerBackend( QString &id, QString &name);
 
-		static void registerStyle( const char*    id,
-		                           const char*    backendId,
-		                           const QString& name,
-		                           bool           canText,
-		                           bool           textOptional,
-		                           bool           canChecksum,
-		                           bool           checksumOptional,
-		                           const char*    defaultDigits,
-		                           bool           canFreeForm,
-		                           int            preferedN );
-
-
-		/////////////////////////////////
-		// Private Members
-		/////////////////////////////////
-		typedef QMap<QString,QString> BackendMap;
-		static BackendMap mBackendIdMap;
-		static BackendMap mBackendNameMap;
-
-		typedef QMap<QString,BarcodeStyle*> StyleMap;
-		static StyleMap mStyleIdMap;
-		static StyleMap mStyleNameMap;
-
-		static QList<QString> mBackendNameList;
-		static QList<QString> mNameList;
-
-	};
-
-}
+	static void registerStyle( const char*    id,
+	                           const char*    backendId,
+	                           const QString& name,
+	                           bool           canText,
+	                           bool           textOptional,
+	                           bool           canChecksum,
+	                           bool           checksumOptional,
+	                           const char*    defaultDigits,
+	                           bool           canFreeForm,
+	                           int            preferedN );
 
 
-#endif // glabels_BarcodeBackends_h
+	/////////////////////////////////
+	// Private Members
+	/////////////////////////////////
+	typedef QMap<QString,QString> BackendMap;
+	static BackendMap mBackendIdMap;
+	static BackendMap mBackendNameMap;
+
+	typedef QMap<QString,BarcodeStyle*> StyleMap;
+	static StyleMap mStyleIdMap;
+	static StyleMap mStyleNameMap;
+
+	static QList<QString> mBackendNameList;
+	static QList<QString> mNameList;
+
+};
+
+
+#endif // BarcodeBackends_h

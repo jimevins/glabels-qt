@@ -36,91 +36,85 @@ namespace
 }
 
 
-namespace glabels
+///
+/// Constructor From Data
+///
+ColorPaletteButtonItem::ColorPaletteButtonItem( const QString& text, QWidget* parent )
+	: QWidget(parent), mText(text), mHover(false)
 {
-
-	///
-	/// Constructor From Data
-	///
-	ColorPaletteButtonItem::ColorPaletteButtonItem( const QString& text, QWidget* parent )
-		: QWidget(parent), mText(text), mHover(false)
-	{
-		setSizePolicy( QSizePolicy( QSizePolicy::Preferred, QSizePolicy::Fixed ) );
-		setMinimumSize( hBox+2*border+1, hBox+2*border+1 );
-	}
-
-
-	///
-	/// Paint Event
-	///
-	void ColorPaletteButtonItem::paintEvent( QPaintEvent* event )
-	{
-		QPainter painter(this);
-
-		//
-		// Draw background
-		//
-		if ( mHover )
-		{
-			QLinearGradient gradient( 0, 0, 0, height() );
-			gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
-			gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
-			painter.setBrush( QBrush( gradient ) );
-			
-			QPen pen( palette().color( QPalette::Text ) );
-			pen.setWidth( outlineWidthPixels );
-			painter.setPen( pen );
-
-			painter.drawRect( 0, 0, width()-1, height()-1 );
-		}
-
-		//
-		// Draw text
-		//
-		painter.setBrush( QBrush( Qt::NoBrush ) );
-
-		if ( mHover )
-		{
-			painter.setPen( QPen( palette().color( QPalette::HighlightedText ) ) );
-		}
-		else
-		{
-			painter.setPen( QPen( palette().color( QPalette::Text ) ) );
-		}
-
-		QRect textRect( border, border, width()-2*border, hBox );
-
-		painter.drawText( textRect, Qt::AlignLeft|Qt::AlignVCenter, mText );
-	}
-
-
-	///
-	/// Enter Event
-	///
-	void ColorPaletteButtonItem::enterEvent( QEvent* event )
-	{
-		mHover = true;
-		update();
-	}
-
-
-	///
-	/// Leave Event
-	///
-	void ColorPaletteButtonItem::leaveEvent( QEvent* event )
-	{
-		mHover = false;
-		update();
-	}
-
-	
-	///
-	/// Mouse Press Event
-	///
-	void ColorPaletteButtonItem::mousePressEvent( QMouseEvent* event )
-	{
-		emit activated();
-	}
-
+	setSizePolicy( QSizePolicy( QSizePolicy::Preferred, QSizePolicy::Fixed ) );
+	setMinimumSize( hBox+2*border+1, hBox+2*border+1 );
 }
 
+
+///
+/// Paint Event
+///
+void ColorPaletteButtonItem::paintEvent( QPaintEvent* event )
+{
+	QPainter painter(this);
+
+	//
+	// Draw background
+	//
+	if ( mHover )
+	{
+		QLinearGradient gradient( 0, 0, 0, height() );
+		gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
+		gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
+		painter.setBrush( QBrush( gradient ) );
+			
+		QPen pen( palette().color( QPalette::Text ) );
+		pen.setWidth( outlineWidthPixels );
+		painter.setPen( pen );
+
+		painter.drawRect( 0, 0, width()-1, height()-1 );
+	}
+
+	//
+	// Draw text
+	//
+	painter.setBrush( QBrush( Qt::NoBrush ) );
+
+	if ( mHover )
+	{
+		painter.setPen( QPen( palette().color( QPalette::HighlightedText ) ) );
+	}
+	else
+	{
+		painter.setPen( QPen( palette().color( QPalette::Text ) ) );
+	}
+
+	QRect textRect( border, border, width()-2*border, hBox );
+
+	painter.drawText( textRect, Qt::AlignLeft|Qt::AlignVCenter, mText );
+}
+
+
+///
+/// Enter Event
+///
+void ColorPaletteButtonItem::enterEvent( QEvent* event )
+{
+	mHover = true;
+	update();
+}
+
+
+///
+/// Leave Event
+///
+void ColorPaletteButtonItem::leaveEvent( QEvent* event )
+{
+	mHover = false;
+	update();
+}
+
+	
+///
+/// Mouse Press Event
+///
+void ColorPaletteButtonItem::mousePressEvent( QMouseEvent* event )
+{
+	emit activated();
+}

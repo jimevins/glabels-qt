@@ -23,42 +23,35 @@
 #include "FieldMenuItem.h"
 
 
-namespace glabels
+///
+/// Constructor
+///
+FieldMenu::FieldMenu()
 {
-
-	///
-	/// Constructor
-	///
-	FieldMenu::FieldMenu()
-	{
-	}
-
-
-	///
-	/// set keys
-	///
-	void FieldMenu::setKeys( const QList<QString>& keyList )
-	{
-		clear();
-
-		foreach ( QString key, keyList )
-		{
-			FieldMenuItem* menuItem = new FieldMenuItem( key );
-			connect( menuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
-
-			addAction( menuItem );
-		}
-	}
-
-
-	///
-	/// onMenuItemActivated slot
-	///
-	void FieldMenu::onMenuItemActivated( const QString& key )
-	{
-		emit keySelected( key );
-	}
-
-
 }
 
+
+///
+/// set keys
+///
+void FieldMenu::setKeys( const QList<QString>& keyList )
+{
+	clear();
+
+	foreach ( QString key, keyList )
+	{
+		FieldMenuItem* menuItem = new FieldMenuItem( key );
+		connect( menuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
+
+		addAction( menuItem );
+	}
+}
+
+
+///
+/// onMenuItemActivated slot
+///
+void FieldMenu::onMenuItemActivated( const QString& key )
+{
+	emit keySelected( key );
+}

@@ -1,6 +1,6 @@
 /*  StrUtil.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_StrUtil_h
-#define libglabels_StrUtil_h
+#ifndef glabels_StrUtil_h
+#define glabels_StrUtil_h
 
 #include <QString>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	namespace StrUtil
@@ -38,4 +38,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_StrUtil_h
+#endif // glabels_StrUtil_h

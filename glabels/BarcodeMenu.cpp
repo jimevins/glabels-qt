@@ -24,45 +24,38 @@
 #include "BarcodeMenuItem.h"
 
 
-namespace glabels
+///
+/// Constructor
+///
+BarcodeMenu::BarcodeMenu()
 {
-
-	///
-	/// Constructor
-	///
-	BarcodeMenu::BarcodeMenu()
+	foreach ( QString name, BarcodeBackends::getNameList() )
 	{
-		foreach ( QString name, BarcodeBackends::getNameList() )
-		{
-			const BarcodeStyle* bcStyle = BarcodeBackends::lookupStyleFromName( name );
+		const BarcodeStyle* bcStyle = BarcodeBackends::lookupStyleFromName( name );
 
-			BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
-			connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
+		BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+		connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
 
-			addAction( bcMenuItem );
-		}
+		addAction( bcMenuItem );
 	}
-
-
-	///
-	/// bcStyle getter
-	///
-	const BarcodeStyle* BarcodeMenu::bcStyle() const
-	{
-		return mBcStyle;
-	}
-
-
-	///
-	/// onMenuItemActivated slot
-	///
-	void BarcodeMenu::onMenuItemActivated( BarcodeStyle *bcStyle )
-	{
-		mBcStyle = bcStyle;
-
-		emit styleChanged();
-	}
-
-
 }
 
+
+///
+/// bcStyle getter
+///
+const BarcodeStyle* BarcodeMenu::bcStyle() const
+{
+	return mBcStyle;
+}
+
+
+///
+/// onMenuItemActivated slot
+///
+void BarcodeMenu::onMenuItemActivated( BarcodeStyle *bcStyle )
+{
+	mBcStyle = bcStyle;
+
+	emit styleChanged();
+}

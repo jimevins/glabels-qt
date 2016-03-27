@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_TemplatePickerItem_h
-#define glabels_TemplatePickerItem_h
+#ifndef TemplatePickerItem_h
+#define TemplatePickerItem_h
 
 #include <QListWidget>
 
@@ -28,37 +28,33 @@
 #include "libglabels/Template.h"
 
 
-namespace glabels
+///
+/// Template Picker Item Widget
+///
+class TemplatePickerItem : public QListWidgetItem
 {
 
-	///
-	/// Template Picker Item Widget
-	///
-	class TemplatePickerItem : public QListWidgetItem
-	{
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		TemplatePickerItem( libglabels::Template *tmplate, QListWidget *parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	TemplatePickerItem( glabels::Template *tmplate, QListWidget *parent = 0 );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		const libglabels::Template *tmplate() const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	const glabels::Template *tmplate() const;
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		libglabels::Template *mTmplate;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	glabels::Template *mTmplate;
 
-	};
+};
 
-}
 
-#endif // glabels_TemplatePickerItem_h
+#endif // TemplatePickerItem_h

@@ -18,77 +18,74 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ObjectEditor_h
-#define glabels_ObjectEditor_h
+#ifndef ObjectEditor_h
+#define ObjectEditor_h
 
 #include "ui_ObjectEditor.h"
 
 
-namespace glabels
-{
-	class LabelModel;  // Forward reference
-	class LabelModelObject;  // Forward reference
+class LabelModel;  // Forward reference
+class LabelModelObject;  // Forward reference
 	
 
-	///
-	/// Object Editor Widget
-	///
-	class ObjectEditor : public QWidget, public Ui_ObjectEditor
-	{
-		Q_OBJECT
+///
+/// Object Editor Widget
+///
+class ObjectEditor : public QWidget, public Ui_ObjectEditor
+{
+	Q_OBJECT
 
 		
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		ObjectEditor( QWidget *parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	ObjectEditor( QWidget *parent = 0 );
 
 
-		/////////////////////////////////
-		// Public methods
-		/////////////////////////////////
-		void setModel( LabelModel* model );
+	/////////////////////////////////
+	// Public methods
+	/////////////////////////////////
+	void setModel( LabelModel* model );
 
 
-		/////////////////////////////////
-		// Private methods
-		/////////////////////////////////
-	private:
-		void hidePages();
-		void loadLineFillPage();
-		void loadPositionPage();
-		void loadRectSizePage();
-		void loadShadowPage();
+	/////////////////////////////////
+	// Private methods
+	/////////////////////////////////
+private:
+	void hidePages();
+	void loadLineFillPage();
+	void loadPositionPage();
+	void loadRectSizePage();
+	void loadShadowPage();
 		
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onLabelSizeChanged();
-		void onSelectionChanged();
-		void onObjectChanged();
-		void onObjectMoved();
-		void onObjectDestroyed();
-		void onLineControlsChanged();
-		void onFillControlsChanged();
-		void onPositionControlsChanged();
-		void onRectSizeControlsChanged();
-		void onShadowControlsChanged();
-		void onChanged();
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onLabelSizeChanged();
+	void onSelectionChanged();
+	void onObjectChanged();
+	void onObjectMoved();
+	void onObjectDestroyed();
+	void onLineControlsChanged();
+	void onFillControlsChanged();
+	void onPositionControlsChanged();
+	void onRectSizeControlsChanged();
+	void onShadowControlsChanged();
+	void onChanged();
 		
 
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	private:
-		LabelModel*       mModel;
-		LabelModelObject* mObject;
-		bool              mBlocked;
+	/////////////////////////////////
+	// Private data
+	/////////////////////////////////
+private:
+	LabelModel*       mModel;
+	LabelModelObject* mObject;
+	bool              mBlocked;
 
-	};
+};
 
-}
 
-#endif // glabels_ObjectEditor_h
+#endif // ObjectEditor_h

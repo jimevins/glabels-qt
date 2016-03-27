@@ -31,195 +31,189 @@
 #include <QDebug>
 
 
-namespace glabels
+/// @TODO keep track of cwd between open/save dialogs
+
+///
+/// New Label Dialog
+///
+void File::newLabel( MainWindow *window )
 {
-	/// @TODO keep track of cwd between open/save dialogs
+	// @TODO lookup latest template, if none default based on locale
+	const glabels::Template* tmplate = glabels::Db::lookupTemplateFromBrandPart( "Avery", "5159" );
+	LabelModel* label = new LabelModel();
+	label->setTmplate( tmplate );
+	label->setRotate( false );
 
-	///
-	/// New Label Dialog
-	///
-	void File::newLabel( MainWindow *window )
+	MainWindow *newWindow = new MainWindow();
+	newWindow->setModel( label );
+	newWindow->show();
+}
+
+
+///
+/// Open File Dialog
+///
+void File::open( MainWindow *window )
+{
+	QString fileName =
+		QFileDialog::getOpenFileName( window,
+					      tr("Open label"),
+					      ".",
+					      tr("glabels files (*.glabels);;All files (*)")
+			);
+	if ( !fileName.isEmpty() )
 	{
-		// @TODO lookup latest template, if none default based on locale
-		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromBrandPart( "Avery", "5159" );
-		LabelModel* label = new LabelModel();
-		label->setTmplate( tmplate );
-		label->setRotate( false );
-
-		MainWindow *newWindow = new MainWindow();
-		newWindow->setModel( label );
-		newWindow->show();
-	}
-
-
-	///
-	/// Open File Dialog
-	///
-	void File::open( MainWindow *window )
-	{
-		QString fileName =
-			QFileDialog::getOpenFileName( window,
-						      tr("Open label"),
-						      ".",
-						      tr("glabels files (*.glabels);;All files (*)")
-				                    );
-		if ( !fileName.isEmpty() )
+		LabelModel *label = XmlLabelParser::readFile( fileName );
+		if ( label )
 		{
-			LabelModel *label = XmlLabelParser::readFile( fileName );
-			if ( label )
-			{
-				label->setFileName( fileName );
+			label->setFileName( fileName );
 				
-				if ( window->isEmpty() )
-				{
-					window->setModel( label );
-				}
-				else
-				{
-					MainWindow *newWindow = new MainWindow();
-					newWindow->setModel( label );
-					newWindow->show();
-				}
+			if ( window->isEmpty() )
+			{
+				window->setModel( label );
 			}
 			else
 			{
-				QMessageBox msgBox;
-				msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
-				msgBox.setStandardButtons( QMessageBox::Ok );
-				msgBox.setDefaultButton( QMessageBox::Ok );
-				msgBox.exec();
+				MainWindow *newWindow = new MainWindow();
+				newWindow->setModel( label );
+				newWindow->show();
 			}
 		}
+		else
+		{
+			QMessageBox msgBox;
+			msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
+			msgBox.setStandardButtons( QMessageBox::Ok );
+			msgBox.setDefaultButton( QMessageBox::Ok );
+			msgBox.exec();
+		}
+	}
+}
+
+
+///
+/// Save file
+///
+bool File::save( MainWindow *window )
+{
+	if ( window->model()->fileName().isEmpty() )
+	{
+		return saveAs( window );
 	}
 
-
-	///
-	/// Save file
-	///
-	bool File::save( MainWindow *window )
+	if ( !window->model()->isModified() )
 	{
-		if ( window->model()->fileName().isEmpty() )
-		{
-			return saveAs( window );
-		}
-
-		if ( !window->model()->isModified() )
-		{
-			return true;
-		}
-
-		XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
 		return true;
 	}
 
-
-	///
-	/// Save file as
-	///
-	bool File::saveAs( MainWindow *window )
-	{
-		QString rawFileName =
-			QFileDialog::getSaveFileName( window,
-						      tr("Save Label As"),
-						      ".",
-						      tr("glabels files (*.glabels);;All files (*)"),
-						      0,
-						      QFileDialog::DontConfirmOverwrite
-				                    );
-		if ( !rawFileName.isEmpty() )
-		{
-			QString fileName = FileUtil::addExtension( rawFileName, ".glabels" );
-			
-			
-			if ( QFileInfo(fileName).exists() )
-			{
-				QMessageBox msgBox( window );
-				msgBox.setWindowTitle( tr("Save Label As") );
-				msgBox.setIcon( QMessageBox::Warning );
-				msgBox.setText( tr("%1 already exists.").arg(fileName) );
-				msgBox.setInformativeText( tr("Do you want to replace it?") );
-				msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
-				msgBox.setDefaultButton( QMessageBox::No );
-
-				if ( msgBox.exec() == QMessageBox::No )
-				{
-					return saveAs( window );
-				}
-			}
-			
-			XmlLabelCreator::writeFile( window->model(), fileName );
-			window->model()->setFileName( fileName );
-			return true;
-		}
-
-		return false;
-	}
-
-
-	///
-	/// Print file
-	///
-	void File::print( MainWindow *window )
-	{
-		qDebug() << "ACTION: file->print";
-	}
-
-
-	///
-	/// Close file
-	///
-	void File::close( MainWindow *window )
-	{
-		bool closeFlag = true;
-
-		if ( !window->isEmpty() )
-		{
-			QMessageBox msgBox;
-			msgBox.setText( tr("The document ") + window->model()->shortName() + tr(" has been modified.") );
-			msgBox.setInformativeText( tr("Do you want to save your changes?") );
-			msgBox.setStandardButtons( QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel );
-			msgBox.setDefaultButton( QMessageBox::Save );
-
-			int ret = msgBox.exec();
-
-			switch (ret) {
-			case QMessageBox::Save:
-				// Save was clicked
-				closeFlag = save( window );
-				break;
-			case QMessageBox::Discard:
-				// Don't Save was clicked
-				closeFlag = true;
-				break;
-			case QMessageBox::Cancel:
-				// Cancel was clicked
-				closeFlag = false;
-				break;
-			default:
-				// should never be reached
-				closeFlag = false;
-				break;
-			}
-		}
-
-		if ( closeFlag )
-		{
-			window->close();
-		}
-	}
-
-
-	///
-	/// Exit, closing all windows
-	///
-	void File::exit()
-	{
-		foreach ( MainWindow* window, MainWindow::windowList() )
-		{
-			close( window );
-		}
-	}
-
-
+	XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
+	return true;
 }
 
+
+///
+/// Save file as
+///
+bool File::saveAs( MainWindow *window )
+{
+	QString rawFileName =
+		QFileDialog::getSaveFileName( window,
+					      tr("Save Label As"),
+					      ".",
+					      tr("glabels files (*.glabels);;All files (*)"),
+					      0,
+					      QFileDialog::DontConfirmOverwrite
+			);
+	if ( !rawFileName.isEmpty() )
+	{
+		QString fileName = FileUtil::addExtension( rawFileName, ".glabels" );
+			
+			
+		if ( QFileInfo(fileName).exists() )
+		{
+			QMessageBox msgBox( window );
+			msgBox.setWindowTitle( tr("Save Label As") );
+			msgBox.setIcon( QMessageBox::Warning );
+			msgBox.setText( tr("%1 already exists.").arg(fileName) );
+			msgBox.setInformativeText( tr("Do you want to replace it?") );
+			msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
+			msgBox.setDefaultButton( QMessageBox::No );
+
+			if ( msgBox.exec() == QMessageBox::No )
+			{
+				return saveAs( window );
+			}
+		}
+			
+		XmlLabelCreator::writeFile( window->model(), fileName );
+		window->model()->setFileName( fileName );
+		return true;
+	}
+
+	return false;
+}
+
+
+///
+/// Print file
+///
+void File::print( MainWindow *window )
+{
+	qDebug() << "ACTION: file->print";
+}
+
+
+///
+/// Close file
+///
+void File::close( MainWindow *window )
+{
+	bool closeFlag = true;
+
+	if ( !window->isEmpty() )
+	{
+		QMessageBox msgBox;
+		msgBox.setText( tr("The document ") + window->model()->shortName() + tr(" has been modified.") );
+		msgBox.setInformativeText( tr("Do you want to save your changes?") );
+		msgBox.setStandardButtons( QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel );
+		msgBox.setDefaultButton( QMessageBox::Save );
+
+		int ret = msgBox.exec();
+
+		switch (ret) {
+		case QMessageBox::Save:
+			// Save was clicked
+			closeFlag = save( window );
+			break;
+		case QMessageBox::Discard:
+			// Don't Save was clicked
+			closeFlag = true;
+			break;
+		case QMessageBox::Cancel:
+			// Cancel was clicked
+			closeFlag = false;
+			break;
+		default:
+			// should never be reached
+			closeFlag = false;
+			break;
+		}
+	}
+
+	if ( closeFlag )
+	{
+		window->close();
+	}
+}
+
+
+///
+/// Exit, closing all windows
+///
+void File::exit()
+{
+	foreach ( MainWindow* window, MainWindow::windowList() )
+	{
+		close( window );
+	}
+}

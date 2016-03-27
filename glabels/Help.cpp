@@ -25,38 +25,32 @@
 #include <iostream>
 
 
-namespace glabels
+///
+/// Display Help Contents
+///
+void Help::displayContents( QWidget *parent )
 {
-
-	///
-	/// Display Help Contents
-	///
-	void Help::displayContents( QWidget *parent )
-	{
-		std::cout << "TODO: Help::displayContents" << std::endl;
-	}
-
-
-	///
-	/// Display Help->About Dialog
-	///
-	void Help::displayAbout( QWidget *parent )
-	{
-		QMessageBox aboutBox( QMessageBox::NoIcon,
-				      QMessageBox::tr("About gLabels"),
-				      QMessageBox::tr("<h2>gLabels-qt</h2>"
-						      "<p>x.x.x</p>"
-						      "<p>A label and business card creation program.</p>"
-						      "<font size=\"smaller\">"
-						      "<p><a href=\"http://glabels.org\">Homepage</a></p>"
-						      "<p>Copyright &copy; 2013 Jim Evins <evins@snaught.com></p>"
-						      "</font>"),
-				      QMessageBox::Ok,
-				      parent );
-		aboutBox.setIconPixmap( QPixmap( ":/images/glabels-logo.png" ) );
-
-		aboutBox.exec();
-	}
-
+	std::cout << "TODO: Help::displayContents" << std::endl;
 }
 
+
+///
+/// Display Help->About Dialog
+///
+void Help::displayAbout( QWidget *parent )
+{
+	QMessageBox aboutBox( QMessageBox::NoIcon,
+			      QMessageBox::tr("About gLabels"),
+			      QMessageBox::tr("<h2>gLabels-qt</h2>"
+					      "<p>x.x.x</p>"
+					      "<p>A label and business card creation program.</p>"
+					      "<font size=\"smaller\">"
+					      "<p><a href=\"http://glabels.org\">Homepage</a></p>"
+					      "<p>Copyright &copy; 2013 Jim Evins <evins@snaught.com></p>"
+					      "</font>"),
+			      QMessageBox::Ok,
+			      parent );
+	aboutBox.setIconPixmap( QPixmap( ":/images/glabels-logo.png" ) );
+
+	aboutBox.exec();
+}

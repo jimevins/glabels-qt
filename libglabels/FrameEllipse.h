@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_FrameEllipse_h
-#define libglabels_FrameEllipse_h
+#ifndef glabels_FrameEllipse_h
+#define glabels_FrameEllipse_h
 
 #include "Frame.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class FrameEllipse : public Frame
@@ -67,4 +67,4 @@ namespace libglabels
 #include "FrameEllipse.inl"
 
 
-#endif // libglabels_FrameEllipse_h
+#endif // glabels_FrameEllipse_h

@@ -24,7 +24,7 @@
 #include <QtDebug>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	Distance::Units XmlUtil::mUnits;

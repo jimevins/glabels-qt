@@ -18,67 +18,62 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorHistory_h
-#define glabels_ColorHistory_h
+#ifndef ColorHistory_h
+#define ColorHistory_h
 
 #include <QObject>
 #include <QColor>
 
 
-namespace glabels
+///
+/// Barcode Backends Database
+///
+class ColorHistory : public QObject
 {
+	Q_OBJECT
 
-	///
-	/// Barcode Backends Database
-	///
-	class ColorHistory : public QObject
-	{
-		Q_OBJECT
+public:
+	static const int MAX_COLORS = 10;
 
-	public:
-		static const int MAX_COLORS = 10;
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+private:
+	ColorHistory();
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		ColorHistory();
-
-	public:
-		static ColorHistory* instance();
+public:
+	static ColorHistory* instance();
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void changed();
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void changed();
 
 
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void   addColor( const QColor &color );
-		QColor getColor( int i );
+	/////////////////////////////////
+	// Public Methods
+	/////////////////////////////////
+public:
+	void   addColor( const QColor &color );
+	QColor getColor( int i );
 
 
-		/////////////////////////////////
-		// Private Methods
-		/////////////////////////////////
-	private:
-		void readColorArray( QColor array[MAX_COLORS], int* n );
-		void writeColorArray( const QColor array[MAX_COLORS], int n );
+	/////////////////////////////////
+	// Private Methods
+	/////////////////////////////////
+private:
+	void readColorArray( QColor array[MAX_COLORS], int* n );
+	void writeColorArray( const QColor array[MAX_COLORS], int n );
 
 
-		/////////////////////////////////
-		// Private Members
-		/////////////////////////////////
-	private:
+	/////////////////////////////////
+	// Private Members
+	/////////////////////////////////
+private:
 
-	};
-
-}
+};
 
 
-#endif // glabels_ColorHistory_h
+#endif // ColorHistory_h

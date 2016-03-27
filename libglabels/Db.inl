@@ -1,6 +1,6 @@
 /*  Db.inl
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -19,7 +19,7 @@
  */
 
 
-namespace libglabels
+namespace glabels
 {
 
 	inline const QList<Paper*>& Db::papers()

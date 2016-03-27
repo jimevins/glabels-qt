@@ -21,37 +21,31 @@
 #include "FieldMenuItem.h"
 
 
-namespace glabels
+///
+/// Constructor From Data
+///
+FieldMenuItem::FieldMenuItem( const QString& key, QObject* parent )
+	: QAction(parent), mKey(key)
 {
+	setText( key );
 
-	///
-	/// Constructor From Data
-	///
-	FieldMenuItem::FieldMenuItem( const QString& key, QObject* parent )
-		: QAction(parent), mKey(key)
-	{
-		setText( key );
-
-		connect( this, SIGNAL(triggered()), this, SLOT(onTriggered()) );
-	}
-
-
-	///
-	/// key Property Getter
-	///
-	QString FieldMenuItem::key() const
-	{
-		return mKey;
-	}
-
-
-	///
-	/// onTriggered slot
-	///
-	void FieldMenuItem::onTriggered()
-	{
-		emit activated( mKey );
-	}
-
+	connect( this, SIGNAL(triggered()), this, SLOT(onTriggered()) );
 }
 
+
+///
+/// key Property Getter
+///
+QString FieldMenuItem::key() const
+{
+	return mKey;
+}
+
+
+///
+/// onTriggered slot
+///
+void FieldMenuItem::onTriggered()
+{
+	emit activated( mKey );
+}

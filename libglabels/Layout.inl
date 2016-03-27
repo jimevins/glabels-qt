@@ -19,7 +19,7 @@
  */
 
 
-namespace libglabels
+namespace glabels
 {
 
 	inline int Layout::nx() const

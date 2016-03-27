@@ -24,7 +24,7 @@
 #include <QtDebug>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	QString Distance::toId( Units units )

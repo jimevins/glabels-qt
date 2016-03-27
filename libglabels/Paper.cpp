@@ -21,7 +21,7 @@
 #include "Paper.h"
 
 
-namespace libglabels
+namespace glabels
 {
 	
 	Paper::Paper( const QString&  id,

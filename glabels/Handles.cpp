@@ -41,7 +41,7 @@ namespace
 ///
 /// Handle Constructor
 ///
-glabels::Handle::Handle( LabelModelObject* owner, Location location )
+Handle::Handle( LabelModelObject* owner, Location location )
 	: mOwner(owner), mLocation(location)
 {
 }
@@ -50,7 +50,7 @@ glabels::Handle::Handle( LabelModelObject* owner, Location location )
 ///
 /// Handle Destructor
 ///
-glabels::Handle::~Handle()
+Handle::~Handle()
 {
 }
 
@@ -58,7 +58,7 @@ glabels::Handle::~Handle()
 ///
 /// Handle owner
 ///
-glabels::LabelModelObject* glabels::Handle::owner() const
+LabelModelObject* Handle::owner() const
 {
 	return mOwner;
 }
@@ -67,7 +67,7 @@ glabels::LabelModelObject* glabels::Handle::owner() const
 ///
 /// Handle location
 ///
-glabels::Handle::Location glabels::Handle::location() const
+Handle::Location Handle::location() const
 {
 	return mLocation;
 }
@@ -76,11 +76,11 @@ glabels::Handle::Location glabels::Handle::location() const
 ///
 /// Draw Handle at x,y
 ///
-void glabels::Handle::drawAt( QPainter*                   painter,
-			      double                      scale,
-			      const libglabels::Distance& x,
-			      const libglabels::Distance& y,
-			      QColor                      color ) const
+void Handle::drawAt( QPainter*                painter,
+		     double                   scale,
+		     const glabels::Distance& x,
+		     const glabels::Distance& y,
+		     QColor                   color ) const
 {
 	painter->save();
 
@@ -104,9 +104,9 @@ void glabels::Handle::drawAt( QPainter*                   painter,
 ///
 /// Create Handle path at x,y
 ///
-QPainterPath glabels::Handle::pathAt( double                      scale,
-				      const libglabels::Distance& x,
-				      const libglabels::Distance& y ) const
+QPainterPath Handle::pathAt( double                   scale,
+			     const glabels::Distance& x,
+			     const glabels::Distance& y ) const
 {
 	QPainterPath path;
 
@@ -122,7 +122,7 @@ QPainterPath glabels::Handle::pathAt( double                      scale,
 ///
 /// HandleNorthWest Constructor
 ///
-glabels::HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
+HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
 	: Handle( owner, NW )
 {
 }
@@ -131,7 +131,7 @@ glabels::HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
 ///
 /// HandleNorthWest Destructor
 ///
-glabels::HandleNorthWest::~HandleNorthWest()
+HandleNorthWest::~HandleNorthWest()
 {
 }
 
@@ -139,7 +139,7 @@ glabels::HandleNorthWest::~HandleNorthWest()
 ///
 /// Draw HandleNorthWest
 ///
-void glabels::HandleNorthWest::draw( QPainter* painter, double scale ) const
+void HandleNorthWest::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, 0, 0, originHandleFillColor );
 }
@@ -148,7 +148,7 @@ void glabels::HandleNorthWest::draw( QPainter* painter, double scale ) const
 ///
 /// HandleNorthWest Path
 ///
-QPainterPath glabels::HandleNorthWest::path( double scale ) const
+QPainterPath HandleNorthWest::path( double scale ) const
 {
 	return pathAt( scale, 0, 0 );
 }
@@ -157,7 +157,7 @@ QPainterPath glabels::HandleNorthWest::path( double scale ) const
 ///
 /// HandleNorth Constructor
 ///
-glabels::HandleNorth::HandleNorth( LabelModelObject* owner )
+HandleNorth::HandleNorth( LabelModelObject* owner )
 	: Handle( owner, N )
 {
 }
@@ -166,7 +166,7 @@ glabels::HandleNorth::HandleNorth( LabelModelObject* owner )
 ///
 /// HandleNorth Destructor
 ///
-glabels::HandleNorth::~HandleNorth()
+HandleNorth::~HandleNorth()
 {
 }
 
@@ -174,7 +174,7 @@ glabels::HandleNorth::~HandleNorth()
 ///
 /// Draw HandleNorth
 ///
-void glabels::HandleNorth::draw( QPainter* painter, double scale ) const
+void HandleNorth::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, mOwner->w()/2, 0, handleFillColor );
 }
@@ -183,7 +183,7 @@ void glabels::HandleNorth::draw( QPainter* painter, double scale ) const
 ///
 /// HandleNorth Path
 ///
-QPainterPath glabels::HandleNorth::path( double scale ) const
+QPainterPath HandleNorth::path( double scale ) const
 {
 	return pathAt( scale, mOwner->w()/2, 0 );
 }
@@ -192,7 +192,7 @@ QPainterPath glabels::HandleNorth::path( double scale ) const
 ///
 /// HandleNorthEast Constructor
 ///
-glabels::HandleNorthEast::HandleNorthEast( LabelModelObject* owner )
+HandleNorthEast::HandleNorthEast( LabelModelObject* owner )
 	: Handle( owner, NE )
 {
 }
@@ -201,7 +201,7 @@ glabels::HandleNorthEast::HandleNorthEast( LabelModelObject* owner )
 ///
 /// HandleNorthEast Destructor
 ///
-glabels::HandleNorthEast::~HandleNorthEast()
+HandleNorthEast::~HandleNorthEast()
 {
 }
 
@@ -209,7 +209,7 @@ glabels::HandleNorthEast::~HandleNorthEast()
 ///
 /// Draw HandleNorthEast
 ///
-void glabels::HandleNorthEast::draw( QPainter* painter, double scale ) const
+void HandleNorthEast::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, mOwner->w(), 0, handleFillColor );
 }
@@ -218,7 +218,7 @@ void glabels::HandleNorthEast::draw( QPainter* painter, double scale ) const
 ///
 /// HandleNorthEast Path
 ///
-QPainterPath glabels::HandleNorthEast::path( double scale ) const
+QPainterPath HandleNorthEast::path( double scale ) const
 {
 	return pathAt( scale, mOwner->w(), 0 );
 }
@@ -227,7 +227,7 @@ QPainterPath glabels::HandleNorthEast::path( double scale ) const
 ///
 /// HandleEast Constructor
 ///
-glabels::HandleEast::HandleEast( LabelModelObject* owner )
+HandleEast::HandleEast( LabelModelObject* owner )
 	: Handle( owner, E )
 {
 }
@@ -236,7 +236,7 @@ glabels::HandleEast::HandleEast( LabelModelObject* owner )
 ///
 /// HandleEast Destructor
 ///
-glabels::HandleEast::~HandleEast()
+HandleEast::~HandleEast()
 {
 }
 
@@ -244,7 +244,7 @@ glabels::HandleEast::~HandleEast()
 ///
 /// Draw HandleEast
 ///
-void glabels::HandleEast::draw( QPainter* painter, double scale ) const
+void HandleEast::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, mOwner->w(), mOwner->h()/2, handleFillColor );
 }
@@ -253,7 +253,7 @@ void glabels::HandleEast::draw( QPainter* painter, double scale ) const
 ///
 /// HandleEast Path
 ///
-QPainterPath glabels::HandleEast::path( double scale ) const
+QPainterPath HandleEast::path( double scale ) const
 {
 	return pathAt( scale, mOwner->w(), mOwner->h()/2 );
 }
@@ -262,7 +262,7 @@ QPainterPath glabels::HandleEast::path( double scale ) const
 ///
 /// HandleSouthEast Constructor
 ///
-glabels::HandleSouthEast::HandleSouthEast( LabelModelObject* owner )
+HandleSouthEast::HandleSouthEast( LabelModelObject* owner )
 	: Handle( owner, SE )
 {
 }
@@ -271,7 +271,7 @@ glabels::HandleSouthEast::HandleSouthEast( LabelModelObject* owner )
 ///
 /// HandleSouthEast Destructor
 ///
-glabels::HandleSouthEast::~HandleSouthEast()
+HandleSouthEast::~HandleSouthEast()
 {
 }
 
@@ -279,7 +279,7 @@ glabels::HandleSouthEast::~HandleSouthEast()
 ///
 /// Draw HandleSouthEast
 ///
-void glabels::HandleSouthEast::draw( QPainter* painter, double scale ) const
+void HandleSouthEast::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, mOwner->w(), mOwner->h(), handleFillColor );
 }
@@ -288,7 +288,7 @@ void glabels::HandleSouthEast::draw( QPainter* painter, double scale ) const
 ///
 /// HandleSouthEast Path
 ///
-QPainterPath glabels::HandleSouthEast::path( double scale ) const
+QPainterPath HandleSouthEast::path( double scale ) const
 {
 	return pathAt( scale, mOwner->w(), mOwner->h() );
 }
@@ -297,7 +297,7 @@ QPainterPath glabels::HandleSouthEast::path( double scale ) const
 ///
 /// HandleSouth Constructor
 ///
-glabels::HandleSouth::HandleSouth( LabelModelObject* owner )
+HandleSouth::HandleSouth( LabelModelObject* owner )
 	: Handle( owner, S )
 {
 }
@@ -306,7 +306,7 @@ glabels::HandleSouth::HandleSouth( LabelModelObject* owner )
 ///
 /// HandleSouth Destructor
 ///
-glabels::HandleSouth::~HandleSouth()
+HandleSouth::~HandleSouth()
 {
 }
 
@@ -314,7 +314,7 @@ glabels::HandleSouth::~HandleSouth()
 ///
 /// Draw HandleSouth
 ///
-void glabels::HandleSouth::draw( QPainter* painter, double scale ) const
+void HandleSouth::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, mOwner->w()/2, mOwner->h(), handleFillColor );
 }
@@ -323,7 +323,7 @@ void glabels::HandleSouth::draw( QPainter* painter, double scale ) const
 ///
 /// HandleSouth Path
 ///
-QPainterPath glabels::HandleSouth::path( double scale ) const
+QPainterPath HandleSouth::path( double scale ) const
 {
 	return pathAt( scale, mOwner->w()/2, mOwner->h() );
 }
@@ -332,7 +332,7 @@ QPainterPath glabels::HandleSouth::path( double scale ) const
 ///
 /// HandleSouthWest Constructor
 ///
-glabels::HandleSouthWest::HandleSouthWest( LabelModelObject* owner )
+HandleSouthWest::HandleSouthWest( LabelModelObject* owner )
 	: Handle( owner, SW )
 {
 }
@@ -341,7 +341,7 @@ glabels::HandleSouthWest::HandleSouthWest( LabelModelObject* owner )
 ///
 /// HandleSouthWest Destructor
 ///
-glabels::HandleSouthWest::~HandleSouthWest()
+HandleSouthWest::~HandleSouthWest()
 {
 }
 
@@ -349,7 +349,7 @@ glabels::HandleSouthWest::~HandleSouthWest()
 ///
 /// Draw HandleSouthWest
 ///
-void glabels::HandleSouthWest::draw( QPainter* painter, double scale ) const
+void HandleSouthWest::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, 0, mOwner->h(), handleFillColor );
 }
@@ -358,7 +358,7 @@ void glabels::HandleSouthWest::draw( QPainter* painter, double scale ) const
 ///
 /// HandleSouthWest Path
 ///
-QPainterPath glabels::HandleSouthWest::path( double scale ) const
+QPainterPath HandleSouthWest::path( double scale ) const
 {
 	return pathAt( scale, 0, mOwner->h() );
 }
@@ -367,7 +367,7 @@ QPainterPath glabels::HandleSouthWest::path( double scale ) const
 ///
 /// HandleWest Constructor
 ///
-glabels::HandleWest::HandleWest( LabelModelObject* owner )
+HandleWest::HandleWest( LabelModelObject* owner )
 	: Handle( owner, W )
 {
 }
@@ -376,7 +376,7 @@ glabels::HandleWest::HandleWest( LabelModelObject* owner )
 ///
 /// HandleWest Destructor
 ///
-glabels::HandleWest::~HandleWest()
+HandleWest::~HandleWest()
 {
 }
 
@@ -384,7 +384,7 @@ glabels::HandleWest::~HandleWest()
 ///
 /// Draw HandleWest
 ///
-void glabels::HandleWest::draw( QPainter* painter, double scale ) const
+void HandleWest::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, 0, mOwner->h()/2, handleFillColor );
 }
@@ -393,7 +393,7 @@ void glabels::HandleWest::draw( QPainter* painter, double scale ) const
 ///
 /// HandleWest Path
 ///
-QPainterPath glabels::HandleWest::path( double scale ) const
+QPainterPath HandleWest::path( double scale ) const
 {
 	return pathAt( scale, 0, mOwner->h()/2 );
 }
@@ -402,7 +402,7 @@ QPainterPath glabels::HandleWest::path( double scale ) const
 ///
 /// HandleP1 Constructor
 ///
-glabels::HandleP1::HandleP1( LabelModelObject* owner )
+HandleP1::HandleP1( LabelModelObject* owner )
 	: Handle( owner, P1 )
 {
 }
@@ -411,7 +411,7 @@ glabels::HandleP1::HandleP1( LabelModelObject* owner )
 ///
 /// HandleP1 Destructor
 ///
-glabels::HandleP1::~HandleP1()
+HandleP1::~HandleP1()
 {
 }
 
@@ -419,7 +419,7 @@ glabels::HandleP1::~HandleP1()
 ///
 /// Draw HandleP1
 ///
-void glabels::HandleP1::draw( QPainter* painter, double scale ) const
+void HandleP1::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, 0, 0, originHandleFillColor );
 }
@@ -428,7 +428,7 @@ void glabels::HandleP1::draw( QPainter* painter, double scale ) const
 ///
 /// HandleP1 Path
 ///
-QPainterPath glabels::HandleP1::path( double scale ) const
+QPainterPath HandleP1::path( double scale ) const
 {
 	return pathAt( scale, 0, 0 );
 }
@@ -437,7 +437,7 @@ QPainterPath glabels::HandleP1::path( double scale ) const
 ///
 /// HandleP2 Constructor
 ///
-glabels::HandleP2::HandleP2( LabelModelObject* owner )
+HandleP2::HandleP2( LabelModelObject* owner )
 	: Handle( owner, P2 )
 {
 }
@@ -446,7 +446,7 @@ glabels::HandleP2::HandleP2( LabelModelObject* owner )
 ///
 /// HandleP2 Destructor
 ///
-glabels::HandleP2::~HandleP2()
+HandleP2::~HandleP2()
 {
 }
 
@@ -454,7 +454,7 @@ glabels::HandleP2::~HandleP2()
 ///
 /// Draw HandleP2
 ///
-void glabels::HandleP2::draw( QPainter* painter, double scale ) const
+void HandleP2::draw( QPainter* painter, double scale ) const
 {
 	drawAt( painter, scale, mOwner->w(), mOwner->h(), handleFillColor );
 }
@@ -463,7 +463,7 @@ void glabels::HandleP2::draw( QPainter* painter, double scale ) const
 ///
 /// HandleP2 Path
 ///
-QPainterPath glabels::HandleP2::path( double scale ) const
+QPainterPath HandleP2::path( double scale ) const
 {
 	return pathAt( scale, mOwner->w(), mOwner->h() );
 }

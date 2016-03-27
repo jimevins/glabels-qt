@@ -372,7 +372,7 @@
             <item row="3" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_23">
               <item>
-               <widget class="glabels::ColorButton" name="textColorButton">
+               <widget class="ColorButton" name="textColorButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -451,7 +451,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="glabels::FieldButton" name="textInsertFieldButton">
+               <widget class="FieldButton" name="textInsertFieldButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -539,7 +539,7 @@
             <item row="3" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_22">
               <item>
-               <widget class="glabels::ColorButton" name="barcodeColorButton">
+               <widget class="ColorButton" name="barcodeColorButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -679,7 +679,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_16">
                 <item>
-                 <widget class="glabels::FieldButton" name="barcodeFieldButton">
+                 <widget class="FieldButton" name="barcodeFieldButton">
                   <property name="text">
                    <string/>
                   </property>
@@ -802,7 +802,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="glabels::FieldButton" name="imageFieldButton">
+             <widget class="FieldButton" name="imageFieldButton">
               <property name="text">
                <string/>
               </property>
@@ -889,7 +889,7 @@
               <item row="1" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_21">
                 <item>
-                 <widget class="glabels::ColorButton" name="lineColorButton">
+                 <widget class="ColorButton" name="lineColorButton">
                   <property name="text">
                    <string/>
                   </property>
@@ -950,7 +950,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="glabels::ColorButton" name="fillColorButton">
+               <widget class="ColorButton" name="fillColorButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -1373,7 +1373,7 @@
             <item row="2" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_24">
               <item>
-               <widget class="glabels::ColorButton" name="shadowColorButton">
+               <widget class="ColorButton" name="shadowColorButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -1433,7 +1433,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glabels::ColorButton</class>
+   <class>ColorButton</class>
    <extends>QPushButton</extends>
    <header>ColorButton.h</header>
    <slots>
@@ -1441,7 +1441,7 @@
    </slots>
   </customwidget>
   <customwidget>
-   <class>glabels::FieldButton</class>
+   <class>FieldButton</class>
    <extends>QPushButton</extends>
    <header>FieldButton.h</header>
    <slots>

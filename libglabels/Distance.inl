@@ -22,7 +22,7 @@
 #include <cmath>
 
 
-namespace libglabels
+namespace glabels
 {
 
 	inline Distance::Distance() : mDPts(0)

@@ -21,37 +21,31 @@
 #include "BarcodeMenuItem.h"
 
 
-namespace glabels
+///
+/// Constructor From Data
+///
+BarcodeMenuItem::BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent )
+	: QAction(parent), mBcStyle(bcStyle)
 {
+	setText( bcStyle->name() );
 
-	///
-	/// Constructor From Data
-	///
-	BarcodeMenuItem::BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent )
-		: QAction(parent), mBcStyle(bcStyle)
-	{
-		setText( bcStyle->name() );
-
-		connect( this, SIGNAL(triggered()), this, SLOT(onTriggered()) );
-	}
-
-
-	///
-	/// bcStyle Property Getter
-	///
-	const BarcodeStyle* BarcodeMenuItem::bcStyle() const
-	{
-		return mBcStyle;
-	}
-
-
-	///
-	/// onTriggered slot
-	///
-	void BarcodeMenuItem::onTriggered()
-	{
-		emit activated( mBcStyle );
-	}
-
+	connect( this, SIGNAL(triggered()), this, SLOT(onTriggered()) );
 }
 
+
+///
+/// bcStyle Property Getter
+///
+const BarcodeStyle* BarcodeMenuItem::bcStyle() const
+{
+	return mBcStyle;
+}
+
+
+///
+/// onTriggered slot
+///
+void BarcodeMenuItem::onTriggered()
+{
+	emit activated( mBcStyle );
+}

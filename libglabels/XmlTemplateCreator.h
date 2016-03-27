@@ -1,6 +1,6 @@
 /*  XmlTemplateCreator.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_XmlTemplateCreator_h
-#define libglabels_XmlTemplateCreator_h
+#ifndef glabels_XmlTemplateCreator_h
+#define glabels_XmlTemplateCreator_h
 
 
 #include <QString>
@@ -34,7 +34,7 @@
 #include "Markup.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class XmlTemplateCreator
@@ -65,4 +65,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_XmlTemplateCreator_h
+#endif // glabels_XmlTemplateCreator_h

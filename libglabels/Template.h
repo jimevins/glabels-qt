@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Template_h
-#define libglabels_Template_h
+#ifndef glabels_Template_h
+#define glabels_Template_h
 
 #include <QCoreApplication>
 #include <QString>
@@ -34,7 +34,7 @@
 #include "MiniPreviewPixmap.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	const int TEMPLATE_PREVIEW_SIZE = 80;
@@ -127,4 +127,4 @@ namespace libglabels
 #include "Template.inl"
 
 
-#endif // libglabels_Template_h
+#endif // glabels_Template_h

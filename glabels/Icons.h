@@ -18,456 +18,453 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Icons_h
-#define glabels_Icons_h
+#ifndef Icons_h
+#define Icons_h
 
 #include <QIcon>
 
 
-namespace glabels
+///
+/// Glabels Icons
+///
+namespace Icons
 {
 
+	class Arrow : public QIcon
+	{
+	public:
+		Arrow()
+		{
+			addFile( ":icons/16x16/actions/glabels-arrow.png" );
+			addFile( ":icons/24x24/actions/glabels-arrow.png" );
+		}
+	};
+
+
+	class Barcode : public QIcon
+	{
+	public:
+		Barcode()
+		{
+			addFile( ":icons/16x16/actions/glabels-barcode.png" );
+			addFile( ":icons/24x24/actions/glabels-barcode.png" );
+		}
+	};
+
+
+	class Box : public QIcon
+	{
+	public:
+		Box()
+		{
+			addFile( ":icons/16x16/actions/glabels-box.png" );
+			addFile( ":icons/24x24/actions/glabels-box.png" );
+		}
+	};
+
+
+	class Ellipse : public QIcon
+	{
+	public:
+		Ellipse()
+		{
+			addFile( ":icons/16x16/actions/glabels-ellipse.png" );
+			addFile( ":icons/24x24/actions/glabels-ellipse.png" );
+		}
+	};
+
+
+	class Image : public QIcon
+	{
+	public:
+		Image()
+		{
+			addFile( ":icons/16x16/actions/glabels-image.png" );
+			addFile( ":icons/24x24/actions/glabels-image.png" );
+		}
+	};
+
+
+	class Line : public QIcon
+	{
+	public:
+		Line()
+		{
+			addFile( ":icons/16x16/actions/glabels-line.png" );
+			addFile( ":icons/24x24/actions/glabels-line.png" );
+		}
+	};
+
+
+	class Text : public QIcon
+	{
+	public:
+		Text()
+		{
+			addFile( ":icons/16x16/actions/glabels-text.png" );
+			addFile( ":icons/24x24/actions/glabels-text.png" );
+		}
+	};
+
+
+	class Merge : public QIcon
+	{
+	public:
+		Merge()
+		{
+			addFile( ":icons/16x16/actions/glabels-merge.png" );
+			addFile( ":icons/24x24/actions/glabels-merge.png" );
+		}
+	};
+
+
+	class ObjectProperties : public QIcon
+	{
+	public:
+		ObjectProperties()
+		{
+			addFile( ":icons/16x16/actions/glabels-object-properties.png" );
+			addFile( ":icons/24x24/actions/glabels-object-properties.png" );
+		}
+	};
+
+
+	class AlignLeft : public QIcon
+	{
+	public:
+		AlignLeft()
+		{
+			addFile( ":icons/16x16/actions/glabels-align-left.png" );
+		}
+	};
+
+
+	class AlignHCenter : public QIcon
+	{
+	public:
+		AlignHCenter()
+		{
+			addFile( ":icons/16x16/actions/glabels-align-hcenter.png" );
+		}
+	};
+
+
+	class AlignRight : public QIcon
+	{
+	public:
+		AlignRight()
+		{
+			addFile( ":icons/16x16/actions/glabels-align-right.png" );
+		}
+	};
+
+
+	class AlignBottom : public QIcon
+	{
+	public:
+		AlignBottom()
+		{
+			addFile( ":icons/16x16/actions/glabels-align-bottom.png" );
+		}
+	};
+
+
+	class AlignVCenter : public QIcon
+	{
+	public:
+		AlignVCenter()
+		{
+			addFile( ":icons/16x16/actions/glabels-align-vcenter.png" );
+		}
+	};
+
+
+	class AlignTop : public QIcon
+	{
+	public:
+		AlignTop()
+		{
+			addFile( ":icons/16x16/actions/glabels-align-top.png" );
+		}
+	};
+
+
+	class CenterHoriz : public QIcon
+	{
+	public:
+		CenterHoriz()
+		{
+			addFile( ":icons/16x16/actions/glabels-center-horiz.png" );
+		}
+	};
+
+
+	class CenterVert : public QIcon
+	{
+	public:
+		CenterVert()
+		{
+			addFile( ":icons/16x16/actions/glabels-center-vert.png" );
+		}
+	};
+
+
+	class FlipHoriz : public QIcon
+	{
+	public:
+		FlipHoriz()
+		{
+			addFile( ":icons/16x16/actions/glabels-flip-horiz.png" );
+		}
+	};
+
+
+	class FlipVert : public QIcon
+	{
+	public:
+		FlipVert()
+		{
+			addFile( ":icons/16x16/actions/glabels-flip-vert.png" );
+		}
+	};
+
+
+	class RotateLeft : public QIcon
+	{
+	public:
+		RotateLeft()
+		{
+			addFile( ":icons/16x16/actions/glabels-rotate-left.png" );
+		}
+	};
+
+
+	class RotateRight : public QIcon
+	{
+	public:
+		RotateRight()
+		{
+			addFile( ":icons/16x16/actions/glabels-rotate-right.png" );
+		}
+	};
+
+
+	class OrderBottom : public QIcon
+	{
+	public:
+		OrderBottom()
+		{
+			addFile( ":icons/16x16/actions/glabels-order-bottom.png" );
+		}
+	};
+
+
+	class OrderTop : public QIcon
+	{
+	public:
+		OrderTop()
+		{
+			addFile( ":icons/16x16/actions/glabels-order-top.png" );
+		}
+	};
+
+
+	class AlignTextBottom : public QIcon
+	{
+	public:
+		AlignTextBottom()
+		{
+			addFile( ":icons/24x24/actions/glabels-align-text-bottom.png" );
+		}
+	};
+
+
+	class AlignTextMiddle : public QIcon
+	{
+	public:
+		AlignTextMiddle()
+		{
+			addFile( ":icons/24x24/actions/glabels-align-text-middle.png" );
+		}
+	};
+
+
+	class AlignTextTop : public QIcon
+	{
+	public:
+		AlignTextTop()
+		{
+			addFile( ":icons/24x24/actions/glabels-align-text-top.png" );
+		}
+	};
+
+
+	class BucketFill : public QIcon
+	{
+	public:
+		BucketFill()
+		{
+			addFile( ":icons/16x16/actions/glabels-bucket-fill.png" );
+			addFile( ":icons/24x24/actions/glabels-bucket-fill.png" );
+		}
+	};
+
+
+	class Pencil : public QIcon
+	{
+	public:
+		Pencil()
+		{
+			addFile( ":icons/16x16/actions/glabels-pencil.png" );
+			addFile( ":icons/24x24/actions/glabels-pencil.png" );
+		}
+	};
+
+
+	class Glabels : public QIcon
+	{
+	public:
+		Glabels()
+		{
+			addFile( ":icons/16x16/apps/glabels.png" );
+			addFile( ":icons/24x24/apps/glabels.png" );
+			addFile( ":icons/32x32/apps/glabels.png" );
+			addFile( ":icons/48x48/apps/glabels.png" );
+			addFile( ":icons/scalable/apps/glabels.svg" );
+		}
+	};
+
+
 	///
-	/// Glabels Icons
+	/// Fallback Icons.  These are fallbacks for icons that would normally come from the current theme,
+	/// if supported.  These icons are copied from the mate-icon-theme (GPL-v3 or CC-BY-SA-v3).
 	///
-	namespace Icons
+	namespace Fallback
 	{
 
-		class Arrow : public QIcon
+		class EditCopy : public QIcon
 		{
 		public:
-			Arrow()
+			EditCopy()
 			{
-				addFile( ":icons/16x16/actions/glabels-arrow.png" );
-				addFile( ":icons/24x24/actions/glabels-arrow.png" );
+				addFile( ":icons/24x24/actions/edit-copy.png" );
 			}
 		};
 
 
-		class Barcode : public QIcon
+		class EditCut : public QIcon
 		{
 		public:
-			Barcode()
+			EditCut()
 			{
-				addFile( ":icons/16x16/actions/glabels-barcode.png" );
-				addFile( ":icons/24x24/actions/glabels-barcode.png" );
+				addFile( ":icons/24x24/actions/edit-cut.png" );
 			}
 		};
 
 
-		class Box : public QIcon
+		class EditPaste : public QIcon
 		{
 		public:
-			Box()
+			EditPaste()
 			{
-				addFile( ":icons/16x16/actions/glabels-box.png" );
-				addFile( ":icons/24x24/actions/glabels-box.png" );
+				addFile( ":icons/24x24/actions/edit-paste.png" );
 			}
 		};
 
 
-		class Ellipse : public QIcon
+		class FileNew : public QIcon
 		{
 		public:
-			Ellipse()
+			FileNew()
 			{
-				addFile( ":icons/16x16/actions/glabels-ellipse.png" );
-				addFile( ":icons/24x24/actions/glabels-ellipse.png" );
+				addFile( ":icons/24x24/actions/file-new.png" );
 			}
 		};
 
 
-		class Image : public QIcon
+		class FileOpen : public QIcon
 		{
 		public:
-			Image()
+			FileOpen()
 			{
-				addFile( ":icons/16x16/actions/glabels-image.png" );
-				addFile( ":icons/24x24/actions/glabels-image.png" );
+				addFile( ":icons/24x24/actions/file-open.png" );
 			}
 		};
 
 
-		class Line : public QIcon
+		class FilePrint : public QIcon
 		{
 		public:
-			Line()
+			FilePrint()
 			{
-				addFile( ":icons/16x16/actions/glabels-line.png" );
-				addFile( ":icons/24x24/actions/glabels-line.png" );
+				addFile( ":icons/24x24/actions/file-print.png" );
+				addFile( ":icons/32x32/actions/file-print.png" );
 			}
 		};
 
 
-		class Text : public QIcon
+		class FileSave : public QIcon
 		{
 		public:
-			Text()
+			FileSave()
 			{
-				addFile( ":icons/16x16/actions/glabels-text.png" );
-				addFile( ":icons/24x24/actions/glabels-text.png" );
+				addFile( ":icons/24x24/actions/file-save.png" );
 			}
 		};
 
 
-		class Merge : public QIcon
+		class FileSaveAs : public QIcon
 		{
 		public:
-			Merge()
+			FileSaveAs()
 			{
-				addFile( ":icons/16x16/actions/glabels-merge.png" );
-				addFile( ":icons/24x24/actions/glabels-merge.png" );
+				addFile( ":icons/24x24/actions/file-save-as.png" );
 			}
 		};
 
 
-		class ObjectProperties : public QIcon
+		class ZoomBestFit : public QIcon
 		{
 		public:
-			ObjectProperties()
+			ZoomBestFit()
 			{
-				addFile( ":icons/16x16/actions/glabels-object-properties.png" );
-				addFile( ":icons/24x24/actions/glabels-object-properties.png" );
+				addFile( ":icons/24x24/actions/zoom-best-fit.png" );
 			}
 		};
 
 
-		class AlignLeft : public QIcon
+		class ZoomIn : public QIcon
 		{
 		public:
-			AlignLeft()
+			ZoomIn()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-left.png" );
+				addFile( ":icons/24x24/actions/zoom-in.png" );
 			}
 		};
 
 
-		class AlignHCenter : public QIcon
+		class ZoomOriginal : public QIcon
 		{
 		public:
-			AlignHCenter()
+			ZoomOriginal()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-hcenter.png" );
+				addFile( ":icons/24x24/actions/zoom-original.png" );
 			}
 		};
 
 
-		class AlignRight : public QIcon
+		class ZoomOut : public QIcon
 		{
 		public:
-			AlignRight()
+			ZoomOut()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-right.png" );
+				addFile( ":icons/24x24/actions/zoom-out.png" );
 			}
 		};
-
-
-		class AlignBottom : public QIcon
-		{
-		public:
-			AlignBottom()
-			{
-				addFile( ":icons/16x16/actions/glabels-align-bottom.png" );
-			}
-		};
-
-
-		class AlignVCenter : public QIcon
-		{
-		public:
-			AlignVCenter()
-			{
-				addFile( ":icons/16x16/actions/glabels-align-vcenter.png" );
-			}
-		};
-
-
-		class AlignTop : public QIcon
-		{
-		public:
-			AlignTop()
-			{
-				addFile( ":icons/16x16/actions/glabels-align-top.png" );
-			}
-		};
-
-
-		class CenterHoriz : public QIcon
-		{
-		public:
-			CenterHoriz()
-			{
-				addFile( ":icons/16x16/actions/glabels-center-horiz.png" );
-			}
-		};
-
-
-		class CenterVert : public QIcon
-		{
-		public:
-			CenterVert()
-			{
-				addFile( ":icons/16x16/actions/glabels-center-vert.png" );
-			}
-		};
-
-
-		class FlipHoriz : public QIcon
-		{
-		public:
-			FlipHoriz()
-			{
-				addFile( ":icons/16x16/actions/glabels-flip-horiz.png" );
-			}
-		};
-
-
-		class FlipVert : public QIcon
-		{
-		public:
-			FlipVert()
-			{
-				addFile( ":icons/16x16/actions/glabels-flip-vert.png" );
-			}
-		};
-
-
-		class RotateLeft : public QIcon
-		{
-		public:
-			RotateLeft()
-			{
-				addFile( ":icons/16x16/actions/glabels-rotate-left.png" );
-			}
-		};
-
-
-		class RotateRight : public QIcon
-		{
-		public:
-			RotateRight()
-			{
-				addFile( ":icons/16x16/actions/glabels-rotate-right.png" );
-			}
-		};
-
-
-		class OrderBottom : public QIcon
-		{
-		public:
-			OrderBottom()
-			{
-				addFile( ":icons/16x16/actions/glabels-order-bottom.png" );
-			}
-		};
-
-
-		class OrderTop : public QIcon
-		{
-		public:
-			OrderTop()
-			{
-				addFile( ":icons/16x16/actions/glabels-order-top.png" );
-			}
-		};
-
-
-		class AlignTextBottom : public QIcon
-		{
-		public:
-			AlignTextBottom()
-			{
-				addFile( ":icons/24x24/actions/glabels-align-text-bottom.png" );
-			}
-		};
-
-
-		class AlignTextMiddle : public QIcon
-		{
-		public:
-			AlignTextMiddle()
-			{
-				addFile( ":icons/24x24/actions/glabels-align-text-middle.png" );
-			}
-		};
-
-
-		class AlignTextTop : public QIcon
-		{
-		public:
-			AlignTextTop()
-			{
-				addFile( ":icons/24x24/actions/glabels-align-text-top.png" );
-			}
-		};
-
-
-		class BucketFill : public QIcon
-		{
-		public:
-			BucketFill()
-			{
-				addFile( ":icons/16x16/actions/glabels-bucket-fill.png" );
-				addFile( ":icons/24x24/actions/glabels-bucket-fill.png" );
-			}
-		};
-
-
-		class Pencil : public QIcon
-		{
-		public:
-			Pencil()
-			{
-				addFile( ":icons/16x16/actions/glabels-pencil.png" );
-				addFile( ":icons/24x24/actions/glabels-pencil.png" );
-			}
-		};
-
-
-		class Glabels : public QIcon
-		{
-		public:
-			Glabels()
-			{
-				addFile( ":icons/16x16/apps/glabels.png" );
-				addFile( ":icons/24x24/apps/glabels.png" );
-				addFile( ":icons/32x32/apps/glabels.png" );
-				addFile( ":icons/48x48/apps/glabels.png" );
-				addFile( ":icons/scalable/apps/glabels.svg" );
-			}
-		};
-
-
-		///
-		/// Fallback Icons.  These are fallbacks for icons that would normally come from the current theme,
-		/// if supported.  These icons are copied from the mate-icon-theme (GPL-v3 or CC-BY-SA-v3).
-		///
-		namespace Fallback
-		{
-
-			class EditCopy : public QIcon
-			{
-			public:
-				EditCopy()
-				{
-					addFile( ":icons/24x24/actions/edit-copy.png" );
-				}
-			};
-
-
-			class EditCut : public QIcon
-			{
-			public:
-				EditCut()
-				{
-					addFile( ":icons/24x24/actions/edit-cut.png" );
-				}
-			};
-
-
-			class EditPaste : public QIcon
-			{
-			public:
-				EditPaste()
-				{
-					addFile( ":icons/24x24/actions/edit-paste.png" );
-				}
-			};
-
-
-			class FileNew : public QIcon
-			{
-			public:
-				FileNew()
-				{
-					addFile( ":icons/24x24/actions/file-new.png" );
-				}
-			};
-
-
-			class FileOpen : public QIcon
-			{
-			public:
-				FileOpen()
-				{
-					addFile( ":icons/24x24/actions/file-open.png" );
-				}
-			};
-
-
-			class FilePrint : public QIcon
-			{
-			public:
-				FilePrint()
-				{
-					addFile( ":icons/24x24/actions/file-print.png" );
-					addFile( ":icons/32x32/actions/file-print.png" );
-				}
-			};
-
-
-			class FileSave : public QIcon
-			{
-			public:
-				FileSave()
-				{
-					addFile( ":icons/24x24/actions/file-save.png" );
-				}
-			};
-
-
-			class FileSaveAs : public QIcon
-			{
-			public:
-				FileSaveAs()
-				{
-					addFile( ":icons/24x24/actions/file-save-as.png" );
-				}
-			};
-
-
-			class ZoomBestFit : public QIcon
-			{
-			public:
-				ZoomBestFit()
-				{
-					addFile( ":icons/24x24/actions/zoom-best-fit.png" );
-				}
-			};
-
-
-			class ZoomIn : public QIcon
-			{
-			public:
-				ZoomIn()
-				{
-					addFile( ":icons/24x24/actions/zoom-in.png" );
-				}
-			};
-
-
-			class ZoomOriginal : public QIcon
-			{
-			public:
-				ZoomOriginal()
-				{
-					addFile( ":icons/24x24/actions/zoom-original.png" );
-				}
-			};
-
-
-			class ZoomOut : public QIcon
-			{
-			public:
-				ZoomOut()
-				{
-					addFile( ":icons/24x24/actions/zoom-out.png" );
-				}
-			};
-
-		}
 
 	}
+
 }
 
-#endif // glabels_Icons_h
+
+#endif // Icons_h

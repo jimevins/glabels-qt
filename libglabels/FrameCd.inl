@@ -19,7 +19,7 @@
  */
 
 
-namespace libglabels
+namespace glabels
 {
 
 	inline Distance FrameCd::r1() const

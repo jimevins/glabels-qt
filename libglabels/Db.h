@@ -1,6 +1,6 @@
 /*  Db.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Db_h
-#define libglabels_Db_h
+#ifndef glabels_Db_h
+#define glabels_Db_h
 
 
 #include <QCoreApplication>
@@ -33,7 +33,7 @@
 #include "Template.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class Db
@@ -140,4 +140,4 @@ namespace libglabels
 #include "Db.inl"
 
 
-#endif // libglabels_Db_h
+#endif // glabels_Db_h

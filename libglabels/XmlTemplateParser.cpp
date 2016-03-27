@@ -36,7 +36,7 @@
 #include "Markup.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	bool XmlTemplateParser::readFile( const QString &fileName )

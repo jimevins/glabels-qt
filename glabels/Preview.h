@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Preview_h
-#define glabels_Preview_h
+#ifndef Preview_h
+#define Preview_h
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -27,65 +27,62 @@
 #include "PageRenderer.h"
 
 
-namespace glabels
+class LabelModel; // Forward reference
+
+
+///
+///  Preview Widget
+///
+class Preview : public QGraphicsView
 {
-	class LabelModel; // Forward reference
+	Q_OBJECT
 
 
-	///
-	///  Preview Widget
-	///
-	class Preview : public QGraphicsView
-	{
-		Q_OBJECT
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	Preview( QWidget *parent = 0 );
 
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		Preview( QWidget *parent = 0 );
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	void setModel( const LabelModel* model );
+	void setRenderer( const PageRenderer* renderer );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		void setModel( const LabelModel* model );
-		void setRenderer( const PageRenderer* renderer );
-
-
-		/////////////////////////////////////
-		// Event handlers
-		/////////////////////////////////////
-	protected:
-		void resizeEvent( QResizeEvent* event );
+	/////////////////////////////////////
+	// Event handlers
+	/////////////////////////////////////
+protected:
+	void resizeEvent( QResizeEvent* event );
 
 		
-		/////////////////////////////////
-		// Internal Methods
-		/////////////////////////////////
-	private:
-		void clearScene();
-		void drawPaper( const libglabels::Distance& pw, const libglabels::Distance& ph );
-		void drawLabels();
-		void drawLabel( const libglabels::Distance& x,
-		                const libglabels::Distance& y,
-		                const QPainterPath&         path );
+	/////////////////////////////////
+	// Internal Methods
+	/////////////////////////////////
+private:
+	void clearScene();
+	void drawPaper( const glabels::Distance& pw, const glabels::Distance& ph );
+	void drawLabels();
+	void drawLabel( const glabels::Distance& x,
+	                const glabels::Distance& y,
+	                const QPainterPath&      path );
 		
-		void drawPreviewOverlay();
+	void drawPreviewOverlay();
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		const LabelModel*   mModel;
-		const PageRenderer* mRenderer;    
-		QGraphicsScene*     mScene;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	const LabelModel*   mModel;
+	const PageRenderer* mRenderer;    
+	QGraphicsScene*     mScene;
 
-	};
+};
 
-}
 
-#endif // glabels_Preview_h
+#endif // Preview_h

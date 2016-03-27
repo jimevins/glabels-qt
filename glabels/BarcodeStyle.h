@@ -18,88 +18,83 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_BarcodeStyle_h
-#define glabels_BarcodeStyle_h
+#ifndef BarcodeStyle_h
+#define BarcodeStyle_h
 
 #include <QString>
 
 
-namespace glabels
+///
+/// Barcode Style Type
+///
+struct BarcodeStyle
 {
 
-	///
-	/// Barcode Style Type
-	///
-	struct BarcodeStyle
-	{
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	BarcodeStyle ();
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		BarcodeStyle ();
-
-		BarcodeStyle ( const QString& id,
-			       const QString& backendId,
-			       const QString& name,
-			       bool           canText,
-			       bool           textOptional,
-			       bool           canChecksum,
-			       bool           checksumOptional,
-			       const QString& defaultDigits,
-			       bool           canFreeform,
-			       int            preferedN );
+	BarcodeStyle ( const QString& id,
+	               const QString& backendId,
+	               const QString& name,
+	               bool           canText,
+	               bool           textOptional,
+	               bool           canChecksum,
+	               bool           checksumOptional,
+	               const QString& defaultDigits,
+	               bool           canFreeform,
+	               int            preferedN );
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-		const QString& id() const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+	const QString& id() const;
 
-		const QString& backendId() const;
+	const QString& backendId() const;
 
-		const QString& name() const;
+	const QString& name() const;
 
-		bool canText() const;
+	bool canText() const;
 
-		bool textOptional() const;
+	bool textOptional() const;
 
-		bool canChecksum() const;
+	bool canChecksum() const;
 
-		bool checksumOptional() const;
+	bool checksumOptional() const;
 
-		const QString& defaultDigits() const;
+	const QString& defaultDigits() const;
 
-		bool canFreeform() const;
+	bool canFreeform() const;
 
-		int preferedN() const;
-
-
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
-	public:
-		QString exampleDigits( int n ) const;
+	int preferedN() const;
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		QString mId;
-		QString mBackendId;
-		QString mName;
-		bool    mCanText;
-		bool    mTextOptional;
-		bool    mCanChecksum;
-		bool    mChecksumOptional;
-		QString mDefaultDigits;
-		bool    mCanFreeform;
-		int     mPreferedN;
-
-	};
+	/////////////////////////////////
+	// Methods
+	/////////////////////////////////
+public:
+	QString exampleDigits( int n ) const;
 
 
-}
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	QString mId;
+	QString mBackendId;
+	QString mName;
+	bool    mCanText;
+	bool    mTextOptional;
+	bool    mCanChecksum;
+	bool    mChecksumOptional;
+	QString mDefaultDigits;
+	bool    mCanFreeform;
+	int     mPreferedN;
 
-#endif // glabels_BarcodeStyle_h
+};
+
+
+#endif // BarcodeStyle_h

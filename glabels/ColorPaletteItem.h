@@ -18,71 +18,66 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorPaletteItem_h
-#define glabels_ColorPaletteItem_h
+#ifndef ColorPaletteItem_h
+#define ColorPaletteItem_h
 
 #include <QWidget>
 #include <QColor>
 
 
-namespace glabels
+///
+/// Color Palette Item
+///
+class ColorPaletteItem : public QWidget
 {
+	Q_OBJECT
 
-	///
-	/// Color Palette Item
-	///
-	class ColorPaletteItem : public QWidget
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		ColorPaletteItem( int            id,
-		                  const QColor&  color,
-		                  const QString& tip,
-		                  QWidget*       parent = 0 );
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	ColorPaletteItem( int            id,
+	                  const QColor&  color,
+	                  const QString& tip,
+	                  QWidget*       parent = 0 );
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void activated( int id );
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void activated( int id );
 
 
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void setColor( int            id,
-		               const QColor&  color,
-		               const QString& tip );
+	/////////////////////////////////
+	// Public Methods
+	/////////////////////////////////
+public:
+	void setColor( int            id,
+	               const QColor&  color,
+	               const QString& tip );
 
 
-		/////////////////////////////////
-		// Event handlers
-		/////////////////////////////////
-	protected:
-		void paintEvent( QPaintEvent* event );
-		void enterEvent( QEvent* event );
-		void leaveEvent( QEvent* event );
-		void mousePressEvent( QMouseEvent* event );
+	/////////////////////////////////
+	// Event handlers
+	/////////////////////////////////
+protected:
+	void paintEvent( QPaintEvent* event );
+	void enterEvent( QEvent* event );
+	void leaveEvent( QEvent* event );
+	void mousePressEvent( QMouseEvent* event );
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		int     mId;
-		QColor  mColor;
-		QString mTip;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	int     mId;
+	QColor  mColor;
+	QString mTip;
 
-		bool        mHover;
-	};
+	bool        mHover;
+};
 
 
-}
-
-#endif // glabels_ColorPaletteItem_h
+#endif // ColorPaletteItem_h

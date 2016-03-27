@@ -18,60 +18,55 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_BarcodeMenu_h
-#define glabels_BarcodeMenu_h
+#ifndef BarcodeMenu_h
+#define BarcodeMenu_h
 
 #include <QMenu>
 #include "BarcodeStyle.h"
 
 
-namespace glabels
+///
+/// Barcode Menu
+///
+class BarcodeMenu : public QMenu
 {
+	Q_OBJECT
 
-	///
-	/// Barcode Menu
-	///
-	class BarcodeMenu : public QMenu
-	{
-		Q_OBJECT
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		BarcodeMenu();
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	BarcodeMenu();
 
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void styleChanged();
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void styleChanged();
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		const BarcodeStyle* bcStyle() const;
+	/////////////////////////////////
+	// Properties
+	/////////////////////////////////
+public:
+	const BarcodeStyle* bcStyle() const;
 
 
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-		void onMenuItemActivated( BarcodeStyle *bcStyle );
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onMenuItemActivated( BarcodeStyle *bcStyle );
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		BarcodeStyle* mBcStyle;
+	/////////////////////////////////
+	// Private Data
+	/////////////////////////////////
+private:
+	BarcodeStyle* mBcStyle;
 
-	};
+};
 
 
-}
-
-#endif // glabels_BarcodeMenu_h
+#endif // BarcodeMenu_h

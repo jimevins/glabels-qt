@@ -21,7 +21,7 @@
 #include "Markup.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	const QPainterPath& Markup::path() const

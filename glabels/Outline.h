@@ -18,53 +18,49 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Outline_h
-#define glabels_Outline_h
+#ifndef Outline_h
+#define Outline_h
 
 
 #include <QPainter>
 #include <QPainterPath>
 
 
-namespace glabels
+class LabelModelObject;
+
+
+///
+/// Outline Base Class
+///
+class Outline
 {
-
-	class LabelModelObject;
-
-
-	///
-	/// Outline Base Class
-	///
-	class Outline
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		Outline( LabelModelObject* owner );
-		virtual ~Outline();
+	////////////////////////////
+	// Lifecycle Methods
+	////////////////////////////
+public:
+	Outline( LabelModelObject* owner );
+	virtual ~Outline();
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void draw( QPainter* painter ) const;
-		QPainterPath hoverPath( double scale ) const;
+	////////////////////////////
+	// Drawing Methods
+	////////////////////////////
+public:
+	void draw( QPainter* painter ) const;
+	QPainterPath hoverPath( double scale ) const;
 
 
-		////////////////////////////
-		// Private Data
-		////////////////////////////
-	private:
-		LabelModelObject* mOwner;
+	////////////////////////////
+	// Private Data
+	////////////////////////////
+private:
+	LabelModelObject* mOwner;
 
-		QVector<qreal> mDashes;
-		QPen           mPen1;
-		QPen           mPen2;
+	QVector<qreal> mDashes;
+	QPen           mPen1;
+	QPen           mPen2;
 	
-	};
+};
 
-}
 
-#endif // glabels_Outline_h
+#endif // Outline_h

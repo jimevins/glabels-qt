@@ -23,99 +23,94 @@
 #include <QSettings>
 
 
-namespace glabels
+ColorHistory::ColorHistory()
 {
+}
 
-	ColorHistory::ColorHistory()
+
+ColorHistory* ColorHistory::instance()
+{
+	static ColorHistory* singletonInstance = 0;
+
+	if ( singletonInstance == 0 )
 	{
+		singletonInstance = new ColorHistory();
 	}
 
+	return singletonInstance;
+}
 
-	ColorHistory* ColorHistory::instance()
+
+void ColorHistory::addColor( const QColor &color )
+{
+	QColor oldColors[MAX_COLORS];
+	QColor newColors[MAX_COLORS];
+	int n;
+
+	readColorArray( oldColors, &n );
+
+	int i;
+	newColors[0] = color;
+	for ( i = 0; ( i < (MAX_COLORS-1) ) && (i < n); i++ )
 	{
-		static ColorHistory* singletonInstance = 0;
-
-		if ( singletonInstance == 0 )
-		{
-			singletonInstance = new ColorHistory();
-		}
-
-		return singletonInstance;
+		newColors[i+1] = oldColors[i];
 	}
 
-
-	void ColorHistory::addColor( const QColor &color )
-	{
-		QColor oldColors[MAX_COLORS];
-		QColor newColors[MAX_COLORS];
-		int n;
-
-		readColorArray( oldColors, &n );
-
-		int i;
-		newColors[0] = color;
-		for ( i = 0; ( i < (MAX_COLORS-1) ) && (i < n); i++ )
-		{
-			newColors[i+1] = oldColors[i];
-		}
-
-		writeColorArray( newColors, i+1 );
-		emit changed();
-	}
+	writeColorArray( newColors, i+1 );
+	emit changed();
+}
 
 
-	QColor ColorHistory::getColor( int i )
-	{
-		QColor colors[MAX_COLORS];
-		int n;
+QColor ColorHistory::getColor( int i )
+{
+	QColor colors[MAX_COLORS];
+	int n;
 
-		readColorArray( colors, &n );
+	readColorArray( colors, &n );
 		
-		if ( (n > 0) && (i < n) )
-		{
-			return colors[i];
-		}
-		else
-		{
-			return QColor( 0, 0, 0, 0 );
-		}
-	}
-
-
-	void ColorHistory::readColorArray( QColor array[MAX_COLORS], int* n )
+	if ( (n > 0) && (i < n) )
 	{
-		QSettings settings;
-
-		settings.beginGroup( "ColorHistory" );
-
-		settings.beginReadArray( "history" );
-		*n = settings.value( "history/size", 0 ).toInt();
-		for ( int i = 0; i < *n; i++ )
-		{
-			settings.setArrayIndex(i);
-			array[i] = settings.value( "color" ).value<QColor>();
-		}
-		settings.endArray();
-
-		settings.endGroup();
+		return colors[i];
 	}
-
-
-	void ColorHistory::writeColorArray( const QColor array[MAX_COLORS], int n )
+	else
 	{
-		QSettings settings;
-
-		settings.beginGroup( "ColorHistory" );
-
-		settings.beginWriteArray( "history" );
-		for ( int i = 0; (i < n) && (i < MAX_COLORS); i++ )
-		{
-			settings.setArrayIndex(i);
-			settings.setValue( "color", array[i] );
-		}
-		settings.endArray();
-
-		settings.endGroup();
+		return QColor( 0, 0, 0, 0 );
 	}
+}
 
+
+void ColorHistory::readColorArray( QColor array[MAX_COLORS], int* n )
+{
+	QSettings settings;
+
+	settings.beginGroup( "ColorHistory" );
+
+	settings.beginReadArray( "history" );
+	*n = settings.value( "history/size", 0 ).toInt();
+	for ( int i = 0; i < *n; i++ )
+	{
+		settings.setArrayIndex(i);
+		array[i] = settings.value( "color" ).value<QColor>();
+	}
+	settings.endArray();
+
+	settings.endGroup();
+}
+
+
+void ColorHistory::writeColorArray( const QColor array[MAX_COLORS], int n )
+{
+	QSettings settings;
+
+	settings.beginGroup( "ColorHistory" );
+
+	settings.beginWriteArray( "history" );
+	for ( int i = 0; (i < n) && (i < MAX_COLORS); i++ )
+	{
+		settings.setArrayIndex(i);
+		settings.setValue( "color", array[i] );
+	}
+	settings.endArray();
+
+	settings.endGroup();
 }

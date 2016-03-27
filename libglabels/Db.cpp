@@ -33,14 +33,14 @@
 
 namespace
 {
-	bool partNameLessThan( const libglabels::Template *a, const libglabels::Template *b )
+	bool partNameLessThan( const glabels::Template *a, const glabels::Template *b )
 	{
-		return libglabels::StrUtil::comparePartNames( a->name(), b->name() ) < 0;
+		return glabels::StrUtil::comparePartNames( a->name(), b->name() ) < 0;
 	}
 }
 
 
-namespace libglabels
+namespace glabels
 {
 
 	QList<Paper*>    Db::mPapers;

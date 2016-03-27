@@ -1,6 +1,6 @@
 /*  FrameRect.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_FrameRect_h
-#define libglabels_FrameRect_h
+#ifndef glabels_FrameRect_h
+#define glabels_FrameRect_h
 
 #include "Frame.h"
 
 
-namespace libglabels
+namespace glabels
 {
 
 	class FrameRect : public Frame
@@ -73,4 +73,4 @@ namespace libglabels
 #include "FrameRect.inl"
 
 
-#endif // libglabels_FrameRect_h
+#endif // glabels_FrameRect_h

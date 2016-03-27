@@ -18,29 +18,25 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_ColorSwatch_h
-#define glabels_ColorSwatch_h
+#ifndef ColorSwatch_h
+#define ColorSwatch_h
 
 #include <QPixmap>
 
 
-namespace glabels
+///
+/// Simple Preview Widget
+///
+class ColorSwatch : public QPixmap
 {
 
-	///
-	/// Simple Preview Widget
-	///
-	class ColorSwatch : public QPixmap
-	{
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	ColorSwatch( int w, int h, const QColor& color );
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		ColorSwatch( int w, int h, const QColor& color );
+};
 
-	};
 
-}
-
-#endif // glabels_ColorSwatch_h
+#endif // ColorSwatch_h

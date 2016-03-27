@@ -18,11 +18,11 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef libglabels_Constants_h
-#define libglabels_Constants_h
+#ifndef glabels_Constants_h
+#define glabels_Constants_h
 
 
-namespace libglabels
+namespace glabels
 {
 
 	const double PTS_PER_PT    =  1.0;
@@ -33,4 +33,4 @@ namespace libglabels
 
 }
 
-#endif // libglabels_Constants_h
+#endif // glabels_Constants_h
