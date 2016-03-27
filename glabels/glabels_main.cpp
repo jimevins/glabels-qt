@@ -1,6 +1,6 @@
 /*  glabels_main.cpp
  *
- *  Copyright (C) 2011  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,7 +21,7 @@
 
 #include <QApplication>
 
-#include "MainWindow.h"
+#include "File.h"
 #include "libglabels/Db.h"
 
 using namespace glabels;
@@ -46,8 +46,7 @@ int main( int argc, char **argv )
 #endif
 	/////////////////////////////////
 
-	MainWindow mainWin;
-	mainWin.show();
+	File::newLabel();
 
 	return app.exec();
 }

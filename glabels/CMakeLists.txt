@@ -34,17 +34,18 @@ set (glabels_sources
   MergeField.cpp
   MergePropertyEditor.cpp
   MergeRecord.cpp
-  NewLabelDialog.cpp
   ObjectEditor.cpp
   Outline.cpp
   PageRenderer.cpp
   PrintView.cpp
+  PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  SelectProductDialog.cpp
+  SimplePreview.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
-  SimplePreview.cpp
   View.cpp
   XmlLabelCreator.cpp
   XmlLabelParser.cpp
@@ -70,20 +71,22 @@ set (glabels_qobject_headers
   MainWindow.h
   Merge.h
   MergePropertyEditor.h
-  NewLabelDialog.h
   ObjectEditor.h
   PrintView.h
+  PropertiesView.h
   Preview.h
+  SelectProductDialog.h
   SimplePreview.h
   TemplatePicker.h
   View.h
 )
 
 set (glabels_forms
-  ui/NewLabelDialog.ui
-  ui/ObjectEditor.ui
   ui/MergePropertyEditor.ui
+  ui/ObjectEditor.ui
   ui/PrintView.ui
+  ui/PropertiesView.ui
+  ui/SelectProductDialog.ui
 )
 
 set (glabels_resource_files

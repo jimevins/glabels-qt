@@ -33,6 +33,7 @@
 #include <QDebug>
 
 #include "libglabels/Db.h"
+#include "PropertiesView.h"
 #include "View.h"
 #include "ObjectEditor.h"
 #include "MergePropertyEditor.h"
@@ -63,11 +64,13 @@ namespace glabels
 		createMenus();
 		createToolBars();
 
+		QWidget* propertiesPage = createPropertiesPage();
 		QWidget* editorPage = createEditorPage();
 		QWidget* mergePage = createMergePage();
 		QWidget* printPage = createPrintPage();
 
 		mNotebook = new QTabWidget();
+		mNotebook->addTab( propertiesPage, "Properties" );
 		mNotebook->addTab( editorPage, "Editor" );
 		mNotebook->addTab( mergePage, "Merge" );
 		mNotebook->addTab( printPage, "Print" );
@@ -111,6 +114,7 @@ namespace glabels
 	void MainWindow::setModel( LabelModel *label )
 	{
 		mModel = label;
+		mPropertiesView->setModel( mModel );
 		mView->setModel( mModel );
 		mObjectEditor->setModel( mModel );
 		mPrintView->setModel( mModel );
@@ -615,6 +619,17 @@ namespace glabels
 		connect( mView, SIGNAL(pointerMoved(double, double)),
 			 this, SLOT(onPointerMoved(double, double)) );
 		connect( mView, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
+	}
+
+
+	///
+	/// Create Properties Page
+	///
+	QWidget* MainWindow::createPropertiesPage()
+	{
+		mPropertiesView = new PropertiesView();
+
+		return mPropertiesView;
 	}
 
 

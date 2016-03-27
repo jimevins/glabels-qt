@@ -36,6 +36,7 @@ namespace glabels
 {
 	// Forward References
 	class LabelModel;
+	class PropertiesView;
 	class View;
 	class ObjectEditor;
 	class MergePropertyEditor;
@@ -154,6 +155,7 @@ namespace glabels
 		void createToolBars();
 		void createStatusBar();
 
+		QWidget* createPropertiesPage();
 		QWidget* createEditorPage();
 		QWidget* createMergePage();
 		QWidget* createPrintPage();
@@ -200,6 +202,7 @@ namespace glabels
 
 		QTabWidget*          mNotebook;
 		LabelModel*          mModel;
+		PropertiesView*      mPropertiesView;
 		QScrollArea*         mViewScrollArea;
 		View*                mView;
 		ObjectEditor*        mObjectEditor;

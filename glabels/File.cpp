@@ -22,7 +22,7 @@
 
 #include "MainWindow.h"
 #include "LabelModel.h"
-#include "NewLabelDialog.h"
+#include "libglabels/Db.h"
 #include "XmlLabelParser.h"
 #include "XmlLabelCreator.h"
 #include "FileUtil.h"
@@ -40,27 +40,15 @@ namespace glabels
 	///
 	void File::newLabel( MainWindow *window )
 	{
-		NewLabelDialog newDialog( window );
-		newDialog.exec();
+		// @TODO lookup latest template, if none default based on locale
+		const libglabels::Template* tmplate = libglabels::Db::lookupTemplateFromBrandPart( "Avery", "5159" );
+		LabelModel* label = new LabelModel();
+		label->setTmplate( tmplate );
+		label->setRotate( false );
 
-		const libglabels::Template* tmplate = newDialog.tmplate();
-		if ( tmplate )
-		{
-			LabelModel* label = new LabelModel();
-			label->setTmplate( tmplate );
-			label->setRotate( newDialog.rotate() );
-
-			if ( window->isEmpty() )
-			{
-				window->setModel( label );
-			}
-			else
-			{
-				MainWindow *newWindow = new MainWindow();
-				newWindow->setModel( label );
-				newWindow->show();
-			}
-		}
+		MainWindow *newWindow = new MainWindow();
+		newWindow->setModel( label );
+		newWindow->show();
 	}
 
 

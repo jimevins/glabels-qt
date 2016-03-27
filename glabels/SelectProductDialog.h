@@ -1,6 +1,6 @@
-/*  NewLabelDialog.h
+/*  SelectProductDialog.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,10 +18,10 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_NewLabelDialog_h
-#define glabels_NewLabelDialog_h
+#ifndef glabels_SelectProductDialog_h
+#define glabels_SelectProductDialog_h
 
-#include "ui_NewLabelDialog.h"
+#include "ui_SelectProductDialog.h"
 
 
 namespace glabels
@@ -30,7 +30,7 @@ namespace glabels
 	///
 	/// New Label Dialog Widget
 	///
-	class NewLabelDialog : public QDialog, public Ui_NewLabelDialog
+	class SelectProductDialog : public QDialog, public Ui_SelectProductDialog
 	{
 		Q_OBJECT
 
@@ -39,14 +39,13 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		NewLabelDialog( QWidget *parent = 0 );
+		SelectProductDialog( QWidget *parent = 0 );
 
 
 		/////////////////////////////////
 		// Accessors
 		/////////////////////////////////
 		const libglabels::Template* tmplate() const;
-		bool rotate() const;
 
 
 		/////////////////////////////////
@@ -57,8 +56,7 @@ namespace glabels
 		void onSearchClearButtonClicked();
 		void onPageSizeCheckToggled();
 		void onTemplatePickerSelectionChanged();
-		void onOrientationRadioToggled();
-		void onCreateButtonClicked();
+		void onSelectButtonClicked();
 		void onCancelButtonClicked();
 
 		
@@ -72,4 +70,4 @@ namespace glabels
 
 }
 
-#endif // glabels_NewLabelDialog_h
+#endif // glabels_SelectProductDialog_h
