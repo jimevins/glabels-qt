@@ -571,6 +571,10 @@ void MainWindow::createToolBars()
 	fileToolBar->addAction( fileOpenAction );
 	fileToolBar->addAction( fileSaveAction );
 
+	zoomInfoLabel = new QLabel( " 999% " );
+	zoomInfoLabel->setAlignment( Qt::AlignHCenter|Qt::AlignVCenter );
+	zoomInfoLabel->setMinimumSize( zoomInfoLabel->sizeHint() );
+
 	editorToolBar = new QToolBar( tr("&Editor") );
 	editorToolBar->addAction( objectsArrowModeAction );
 	editorToolBar->addSeparator();
@@ -589,6 +593,8 @@ void MainWindow::createToolBars()
 	editorToolBar->addAction( viewZoomOutAction );
 	editorToolBar->addAction( viewZoom1To1Action );
 	editorToolBar->addAction( viewZoomToFitAction );
+	editorToolBar->addWidget( zoomInfoLabel );
+	editorToolBar->addSeparator();
 }
 
 
@@ -597,16 +603,10 @@ void MainWindow::createToolBars()
 ///
 void MainWindow::createStatusBar()
 {
-	zoomInfoLabel = new QLabel( " 999% " );
-	zoomInfoLabel->setAlignment( Qt::AlignHCenter );
-	zoomInfoLabel->setMinimumSize( zoomInfoLabel->sizeHint() );
-	zoomInfoLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
-
 	cursorInfoLabel = new QLabel;
 	cursorInfoLabel->setIndent( 3 );
 	cursorInfoLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
 
-	statusBar()->addWidget( zoomInfoLabel );
 	statusBar()->addWidget( cursorInfoLabel, 1 );
 
 	onZoomChanged();
