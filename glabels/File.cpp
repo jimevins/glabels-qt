@@ -22,7 +22,7 @@
 
 #include "MainWindow.h"
 #include "LabelModel.h"
-#include "libglabels/Db.h"
+#include "SelectProductDialog.h"
 #include "XmlLabelParser.h"
 #include "XmlLabelCreator.h"
 #include "FileUtil.h"
@@ -36,17 +36,31 @@
 ///
 /// New Label Dialog
 ///
-void File::newLabel( MainWindow *window )
+bool File::newLabel( MainWindow *window )
 {
-	// @TODO lookup latest template, if none default based on locale
-	const glabels::Template* tmplate = glabels::Db::lookupTemplateFromBrandPart( "Avery", "5159" );
-	LabelModel* label = new LabelModel();
-	label->setTmplate( tmplate );
-	label->setRotate( false );
+	SelectProductDialog dialog( window );
+	dialog.exec();
 
-	MainWindow *newWindow = new MainWindow();
-	newWindow->setModel( label );
-	newWindow->show();
+	const glabels::Template* tmplate = dialog.tmplate();
+	if ( tmplate )
+	{
+		LabelModel* label = new LabelModel();
+		label->setTmplate( tmplate );
+
+		// Intelligently decide to rotate label by default
+		const glabels::Frame* frame = tmplate->frames().first();
+		label->setRotate( frame->h() > frame->w() );
+
+		MainWindow *newWindow = new MainWindow();
+		newWindow->setModel( label );
+		newWindow->show();
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 

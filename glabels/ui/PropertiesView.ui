@@ -225,11 +225,14 @@
         </item>
         <item row="1" column="0">
          <widget class="QPushButton" name="changeProductButton">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select another product for this gLabels project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">text-align:left; padding:3px;</string>
           </property>
           <property name="text">
-           <string>Select another product</string>
+           <string>Change product</string>
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
@@ -267,6 +270,9 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Select horizontal or vertical orientation.</string>
             </property>
             <property name="iconSize">
              <size>

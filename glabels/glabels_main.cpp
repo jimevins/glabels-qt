@@ -21,8 +21,8 @@
 
 #include <QApplication>
 
-#include "File.h"
 #include "libglabels/Db.h"
+#include "StartupWizard.h"
 
 
 int main( int argc, char **argv )
@@ -43,7 +43,9 @@ int main( int argc, char **argv )
 #endif
 	/////////////////////////////////
 
-	File::newLabel();
+	/// @TODO open file(s) from command line if present, otherwise start wizard
+	StartupWizard startupWizard;
+	startupWizard.show();
 
 	return app.exec();
 }

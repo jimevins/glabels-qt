@@ -81,6 +81,13 @@ MainWindow::MainWindow()
 	setPasteVerbsEnabled( false );
 	setTitle();
 
+	connect( mView, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
+#if 0
+	connect( mView, SIGNAL(pointerMoved(double, double)),
+		 this, SLOT(onPointerMoved(double, double)) );
+	connect( mView, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
+#endif
+
 	readSettings();
 
 	smWindowList.push_back( this );
@@ -603,19 +610,7 @@ void MainWindow::createToolBars()
 ///
 void MainWindow::createStatusBar()
 {
-	cursorInfoLabel = new QLabel;
-	cursorInfoLabel->setIndent( 3 );
-	cursorInfoLabel->setFrameStyle( QFrame::Panel | QFrame::Sunken );
-
-	statusBar()->addWidget( cursorInfoLabel, 1 );
-
-	onZoomChanged();
-	onPointerExit();
-
-	connect( mView, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
-	connect( mView, SIGNAL(pointerMoved(double, double)),
-		 this, SLOT(onPointerMoved(double, double)) );
-	connect( mView, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
+	statusBar();
 }
 
 

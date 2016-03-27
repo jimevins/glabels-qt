@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>gLabels - Select Product</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>

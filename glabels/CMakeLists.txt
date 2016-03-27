@@ -43,6 +43,7 @@ set (glabels_sources
   PreviewOverlayItem.cpp
   SelectProductDialog.cpp
   SimplePreview.cpp
+  StartupWizard.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
@@ -77,6 +78,7 @@ set (glabels_qobject_headers
   Preview.h
   SelectProductDialog.h
   SimplePreview.h
+  StartupWizard.h
   TemplatePicker.h
   View.h
 )
@@ -87,6 +89,7 @@ set (glabels_forms
   ui/PrintView.ui
   ui/PropertiesView.ui
   ui/SelectProductDialog.ui
+  ui/StartupWizard.ui
 )
 
 set (glabels_resource_files

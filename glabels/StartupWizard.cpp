@@ -1,6 +1,6 @@
-/*  File.h
+/*  StartupWizard.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,32 +18,44 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef File_h
-#define File_h
+#include "StartupWizard.h"
 
-
-#include <QObject>
-
-
-class MainWindow;
+#include "File.h"
+#include <QtDebug>
 
 
 ///
-/// File Actions
+/// Constructor
 ///
-class File : public QObject
+StartupWizard::StartupWizard( QWidget *parent )
+	: QDialog(parent)
 {
-	Q_OBJECT
-
-public:
-	static bool newLabel( MainWindow *window = 0 );
-	static void open( MainWindow *window );
-	static bool save( MainWindow *window );
-	static bool saveAs( MainWindow *window );
-	static void print( MainWindow *window );
-	static void close( MainWindow *window );
-	static void exit();
-};
+	setupUi( this );
+}
 
 
-#endif // File_h
+///
+/// "New Project" Button Clicked Slot
+///
+void StartupWizard::onNewProjectButtonClicked()
+{
+	hide();
+	
+	if ( File::newLabel() )
+	{
+		close();
+	}
+	else
+	{
+		show();
+	}
+}
+
+
+///
+/// "Open Project" Button Clicked Slot
+///
+void StartupWizard::onOpenProjectButtonClicked()
+{
+	qDebug() << "OPEN PROJECT";
+}
