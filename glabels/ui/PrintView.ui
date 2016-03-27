@@ -414,7 +414,13 @@
        </property>
        <property name="icon">
         <iconset resource="../icons.qrc">
-         <normaloff>:/icons/24x24/actions/fallback-file-print.png</normaloff>:/icons/24x24/actions/fallback-file-print.png</iconset>
+         <normaloff>:/icons/32x32/actions/file-print.png</normaloff>:/icons/32x32/actions/file-print.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>

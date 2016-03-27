@@ -52,20 +52,21 @@
 	<file>icons/24x24/actions/glabels-valign-text-bottom.png</file>
 	<file>icons/24x24/actions/glabels-valign-text-middle.png</file>
 	<file>icons/24x24/actions/glabels-valign-text-top.png</file>
-	<file>icons/24x24/actions/fallback-edit-copy.png</file>
-	<file>icons/24x24/actions/fallback-edit-cut.png</file>
-	<file>icons/24x24/actions/fallback-edit-paste.png</file>
-	<file>icons/24x24/actions/fallback-file-new.png</file>
-	<file>icons/24x24/actions/fallback-file-open.png</file>
-	<file>icons/24x24/actions/fallback-file-print.png</file>
-	<file>icons/24x24/actions/fallback-file-save-as.png</file>
-	<file>icons/24x24/actions/fallback-file-save.png</file>
-	<file>icons/24x24/actions/fallback-zoom-best-fit.png</file>
-	<file>icons/24x24/actions/fallback-zoom-in.png</file>
-	<file>icons/24x24/actions/fallback-zoom-original.png</file>
-	<file>icons/24x24/actions/fallback-zoom-out.png</file>
+	<file>icons/24x24/actions/edit-copy.png</file>
+	<file>icons/24x24/actions/edit-cut.png</file>
+	<file>icons/24x24/actions/edit-paste.png</file>
+	<file>icons/24x24/actions/file-new.png</file>
+	<file>icons/24x24/actions/file-open.png</file>
+	<file>icons/24x24/actions/file-print.png</file>
+	<file>icons/24x24/actions/file-save-as.png</file>
+	<file>icons/24x24/actions/file-save.png</file>
+	<file>icons/24x24/actions/zoom-best-fit.png</file>
+	<file>icons/24x24/actions/zoom-in.png</file>
+	<file>icons/24x24/actions/zoom-original.png</file>
+	<file>icons/24x24/actions/zoom-out.png</file>
 	<file>icons/24x24/apps/glabels.png</file>
 	<file>icons/32x32/apps/glabels.png</file>
+	<file>icons/32x32/actions/file-print.png</file>
 	<file>icons/32x32/actions/horizontal-orientation.png</file>
 	<file>icons/32x32/actions/select-product.png</file>
 	<file>icons/32x32/actions/vertical-orientation.png</file>

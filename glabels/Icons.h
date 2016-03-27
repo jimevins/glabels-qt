@@ -350,7 +350,7 @@ namespace glabels
 			public:
 				EditCopy()
 				{
-					addFile( ":icons/24x24/actions/fallback-edit-copy.png" );
+					addFile( ":icons/24x24/actions/edit-copy.png" );
 				}
 			};
 
@@ -360,7 +360,7 @@ namespace glabels
 			public:
 				EditCut()
 				{
-					addFile( ":icons/24x24/actions/fallback-edit-cut.png" );
+					addFile( ":icons/24x24/actions/edit-cut.png" );
 				}
 			};
 
@@ -370,7 +370,7 @@ namespace glabels
 			public:
 				EditPaste()
 				{
-					addFile( ":icons/24x24/actions/fallback-edit-paste.png" );
+					addFile( ":icons/24x24/actions/edit-paste.png" );
 				}
 			};
 
@@ -380,7 +380,7 @@ namespace glabels
 			public:
 				FileNew()
 				{
-					addFile( ":icons/24x24/actions/fallback-file-new.png" );
+					addFile( ":icons/24x24/actions/file-new.png" );
 				}
 			};
 
@@ -390,7 +390,7 @@ namespace glabels
 			public:
 				FileOpen()
 				{
-					addFile( ":icons/24x24/actions/fallback-file-open.png" );
+					addFile( ":icons/24x24/actions/file-open.png" );
 				}
 			};
 
@@ -400,7 +400,8 @@ namespace glabels
 			public:
 				FilePrint()
 				{
-					addFile( ":icons/24x24/actions/fallback-file-print.png" );
+					addFile( ":icons/24x24/actions/file-print.png" );
+					addFile( ":icons/32x32/actions/file-print.png" );
 				}
 			};
 
@@ -410,7 +411,7 @@ namespace glabels
 			public:
 				FileSave()
 				{
-					addFile( ":icons/24x24/actions/fallback-file-save.png" );
+					addFile( ":icons/24x24/actions/file-save.png" );
 				}
 			};
 
@@ -420,7 +421,7 @@ namespace glabels
 			public:
 				FileSaveAs()
 				{
-					addFile( ":icons/24x24/actions/fallback-file-save-as.png" );
+					addFile( ":icons/24x24/actions/file-save-as.png" );
 				}
 			};
 
@@ -430,7 +431,7 @@ namespace glabels
 			public:
 				ZoomBestFit()
 				{
-					addFile( ":icons/24x24/actions/fallback-zoom-best-fit.png" );
+					addFile( ":icons/24x24/actions/zoom-best-fit.png" );
 				}
 			};
 
@@ -440,7 +441,7 @@ namespace glabels
 			public:
 				ZoomIn()
 				{
-					addFile( ":icons/24x24/actions/fallback-zoom-in.png" );
+					addFile( ":icons/24x24/actions/zoom-in.png" );
 				}
 			};
 
@@ -450,7 +451,7 @@ namespace glabels
 			public:
 				ZoomOriginal()
 				{
-					addFile( ":icons/24x24/actions/fallback-zoom-original.png" );
+					addFile( ":icons/24x24/actions/zoom-original.png" );
 				}
 			};
 
@@ -460,7 +461,7 @@ namespace glabels
 			public:
 				ZoomOut()
 				{
-					addFile( ":icons/24x24/actions/fallback-zoom-out.png" );
+					addFile( ":icons/24x24/actions/zoom-out.png" );
 				}
 			};
 
