@@ -19,9 +19,6 @@
   <property name="windowTitle">
    <string>gLabels - Startup Wizard</string>
   </property>
-  <property name="windowOpacity">
-   <double>0.000000000000000</double>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
