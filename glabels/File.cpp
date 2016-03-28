@@ -36,9 +36,9 @@
 ///
 /// New Label Dialog
 ///
-bool File::newLabel( MainWindow *window )
+bool File::newLabel( QWidget *parent )
 {
-	SelectProductDialog dialog( window );
+	SelectProductDialog dialog( parent );
 	dialog.exec();
 
 	const glabels::Template* tmplate = dialog.tmplate();
@@ -67,13 +67,13 @@ bool File::newLabel( MainWindow *window )
 ///
 /// Open File Dialog
 ///
-void File::open( MainWindow *window )
+bool File::open( QWidget *parent )
 {
 	QString fileName =
-		QFileDialog::getOpenFileName( window,
+		QFileDialog::getOpenFileName( parent,
 					      tr("Open label"),
 					      ".",
-					      tr("glabels files (*.glabels);;All files (*)")
+					      tr("glabels project files (*.glabels);;All files (*)")
 			);
 	if ( !fileName.isEmpty() )
 	{
@@ -82,16 +82,11 @@ void File::open( MainWindow *window )
 		{
 			label->setFileName( fileName );
 				
-			if ( window->isEmpty() )
-			{
-				window->setModel( label );
-			}
-			else
-			{
-				MainWindow *newWindow = new MainWindow();
-				newWindow->setModel( label );
-				newWindow->show();
-			}
+			MainWindow *newWindow = new MainWindow();
+			newWindow->setModel( label );
+			newWindow->show();
+
+			return true;
 		}
 		else
 		{
@@ -102,6 +97,8 @@ void File::open( MainWindow *window )
 			msgBox.exec();
 		}
 	}
+
+	return false;
 }
 
 

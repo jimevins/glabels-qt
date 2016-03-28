@@ -57,5 +57,14 @@ void StartupWizard::onNewProjectButtonClicked()
 ///
 void StartupWizard::onOpenProjectButtonClicked()
 {
-	qDebug() << "OPEN PROJECT";
+	hide();
+	
+	if ( File::open() )
+	{
+		close();
+	}
+	else
+	{
+		show();
+	}
 }

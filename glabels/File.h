@@ -36,8 +36,8 @@ class File : public QObject
 	Q_OBJECT
 
 public:
-	static bool newLabel( MainWindow *window = 0 );
-	static void open( MainWindow *window );
+	static bool newLabel( QWidget *parent = 0 );
+	static bool open( QWidget *parent = 0 );
 	static bool save( MainWindow *window );
 	static bool saveAs( MainWindow *window );
 	static void print( MainWindow *window );
