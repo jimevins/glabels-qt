@@ -41,12 +41,12 @@ void Help::displayAbout( QWidget *parent )
 {
 	QMessageBox aboutBox( QMessageBox::NoIcon,
 			      QMessageBox::tr("About gLabels"),
-			      QMessageBox::tr("<h2>gLabels-qt</h2>"
+			      QMessageBox::tr("<p><span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#909090;'>Label Designer</span></p>"
 					      "<p>x.x.x</p>"
-					      "<p>A label and business card creation program.</p>"
+					      "<p>A program to create labels and business cards.</p>"
 					      "<font size=\"smaller\">"
 					      "<p><a href=\"http://glabels.org\">Homepage</a></p>"
-					      "<p>Copyright &copy; 2013 Jim Evins <evins@snaught.com></p>"
+					      "<p>Copyright &copy; 2016 Jim Evins <evins@snaught.com></p>"
 					      "</font>"),
 			      QMessageBox::Ok,
 			      parent );
