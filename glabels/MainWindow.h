@@ -83,7 +83,6 @@ private slots:
 	void fileOpen();
 	void fileSave();
 	void fileSaveAs();
-	void fileProperties();
 	void fileTemplateDesigner();
 	void fileClose();
 	void fileExit();
@@ -214,7 +213,6 @@ private:
 	QAction*  fileOpenAction;
 	QAction*  fileSaveAction;
 	QAction*  fileSaveAsAction;
-	QAction*  filePropertiesAction;
 	QAction*  fileTemplateDesignerAction;
 	QAction*  fileCloseAction;
 	QAction*  fileExitAction;

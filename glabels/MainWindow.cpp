@@ -173,31 +173,26 @@ void MainWindow::createActions()
 	fileNewAction = new QAction( tr("&New..."), this );
 	fileNewAction->setIcon( QIcon::fromTheme( "document-new", Icons::Fallback::FileNew() ) );
 	fileNewAction->setShortcut( QKeySequence::New );
-	fileNewAction->setStatusTip( tr("Create a new file") );
+	fileNewAction->setStatusTip( tr("Create a new gLabels project") );
 	connect( fileNewAction, SIGNAL(triggered()), this, SLOT(fileNew()) );
 
 	fileOpenAction = new QAction( tr("&Open..."), this );
 	fileOpenAction->setIcon( QIcon::fromTheme( "document-open", Icons::Fallback::FileOpen() ) );
 	fileOpenAction->setShortcut( QKeySequence::Open );
-	fileOpenAction->setStatusTip( tr("Open a file") );
+	fileOpenAction->setStatusTip( tr("Open an existing gLabels project") );
 	connect( fileOpenAction, SIGNAL(triggered()), this, SLOT(fileOpen()) );
 
 	fileSaveAction = new QAction( tr("&Save"), this );
 	fileSaveAction->setIcon( QIcon::fromTheme( "document-save", Icons::Fallback::FileSave() ) );
 	fileSaveAction->setShortcut( QKeySequence::Save );
-	fileSaveAction->setStatusTip( tr("Save current file") );
+	fileSaveAction->setStatusTip( tr("Save current gLabels project") );
 	connect( fileSaveAction, SIGNAL(triggered()), this, SLOT(fileSave()) );
 
 	fileSaveAsAction = new QAction( tr("Save &As..."), this );
 	fileSaveAsAction->setIcon( QIcon::fromTheme( "document-save-as", Icons::Fallback::FileSaveAs() ) );
 	fileSaveAsAction->setShortcut( QKeySequence::SaveAs );
-	fileSaveAsAction->setStatusTip( tr("Save current file to a different name") );
+	fileSaveAsAction->setStatusTip( tr("Save current gLabels project to a different name") );
 	connect( fileSaveAsAction, SIGNAL(triggered()), this, SLOT(fileSaveAs()) );
-
-	filePropertiesAction = new QAction( tr("Properties..."), this );
-	filePropertiesAction->setIcon( QIcon::fromTheme( "document-properties" ) );
-	filePropertiesAction->setStatusTip( tr("Modify document properties") );
-	connect( filePropertiesAction, SIGNAL(triggered()), this, SLOT(fileProperties()) );
 
 	fileTemplateDesignerAction = new QAction( tr("Template &Designer..."), this );
 	fileTemplateDesignerAction->setStatusTip( tr("Create custom templates") );
@@ -470,7 +465,6 @@ void MainWindow::createMenus()
 	fileMenu->addAction( fileSaveAction );
 	fileMenu->addAction( fileSaveAsAction );
 	fileMenu->addSeparator();
-	fileMenu->addAction( filePropertiesAction );
 	fileMenu->addAction( fileTemplateDesignerAction );
 	fileMenu->addSeparator();
 	fileMenu->addAction( fileCloseAction );
@@ -682,7 +676,6 @@ QWidget* MainWindow::createPrintPage()
 ///
 void MainWindow::setDocVerbsEnabled( bool enabled )
 {
-	filePropertiesAction->setEnabled( enabled );
 	fileSaveAction->setEnabled( enabled );
 	fileSaveAsAction->setEnabled( enabled );
 	editUndoAction->setEnabled( enabled );
@@ -883,15 +876,6 @@ void MainWindow::fileSave()
 void MainWindow::fileSaveAs()
 {
 	File::saveAs( this );
-}
-
-
-///
-/// File->Properties Action
-///
-void MainWindow::fileProperties()
-{
-	qDebug() << "ACTION: file->Properties";
 }
 
 
