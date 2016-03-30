@@ -88,13 +88,11 @@ glabels::Distance::Units Settings::units()
 {
 	// Guess at a suitable default
 	QString defaultIdString;
-	switch (QLocale::system().country())
+	switch (QLocale::system().measurementSystem())
 	{
-	case QLocale::UnitedStates:
-	case QLocale::Canada:
+	case QLocale::ImperialSystem:
 		defaultIdString = "in";
 		break;
-
 	default:
 		defaultIdString = "mm";
 		break;
