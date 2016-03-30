@@ -42,6 +42,7 @@ set (glabels_sources
   Preview.cpp
   PreviewOverlayItem.cpp
   SelectProductDialog.cpp
+  Settings.cpp
   SimplePreview.cpp
   StartupWizard.cpp
   TemplatePicker.cpp
@@ -77,6 +78,7 @@ set (glabels_qobject_headers
   PropertiesView.h
   Preview.h
   SelectProductDialog.h
+  Settings.h
   SimplePreview.h
   StartupWizard.h
   TemplatePicker.h
