@@ -88,14 +88,13 @@ glabels::Distance::Units Settings::units()
 {
 	// Guess at a suitable default
 	QString defaultIdString;
-	switch (QLocale::system().measurementSystem())
+	if ( QLocale::system().measurementSystem() == QLocale::ImperialSystem )
 	{
-	case QLocale::ImperialSystem:
-		defaultIdString = "in";
-		break;
-	default:
-		defaultIdString = "mm";
-		break;
+		defaultIdString = glabels::Distance::toId( glabels::Distance::Units::IN );
+	}
+	else
+	{
+		defaultIdString = glabels::Distance::toId( glabels::Distance::Units::MM );
 	}
 	
 	mInstance->beginGroup( "Locale" );

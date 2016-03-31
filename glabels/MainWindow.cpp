@@ -33,6 +33,7 @@
 #include <QDebug>
 
 #include "libglabels/Db.h"
+#include "PreferencesDialog.h"
 #include "PropertiesView.h"
 #include "View.h"
 #include "ObjectEditor.h"
@@ -983,7 +984,8 @@ void MainWindow::editUnSelectAll()
 ///
 void MainWindow::editPreferences()
 {
-	qDebug() << "ACTION: edit->Preferences";
+	PreferencesDialog dialog( this );
+	dialog.exec();
 }
 
 

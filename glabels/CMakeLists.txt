@@ -37,6 +37,7 @@ set (glabels_sources
   ObjectEditor.cpp
   Outline.cpp
   PageRenderer.cpp
+  PreferencesDialog.cpp
   PrintView.cpp
   PropertiesView.cpp
   Preview.cpp
@@ -74,6 +75,7 @@ set (glabels_qobject_headers
   Merge.h
   MergePropertyEditor.h
   ObjectEditor.h
+  PreferencesDialog.h
   PrintView.h
   PropertiesView.h
   Preview.h
@@ -88,6 +90,7 @@ set (glabels_qobject_headers
 set (glabels_forms
   ui/MergePropertyEditor.ui
   ui/ObjectEditor.ui
+  ui/PreferencesDialog.ui
   ui/PrintView.ui
   ui/PropertiesView.ui
   ui/SelectProductDialog.ui

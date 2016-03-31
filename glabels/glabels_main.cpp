@@ -22,6 +22,7 @@
 #include <QApplication>
 
 #include "libglabels/Db.h"
+#include "Settings.h"
 #include "StartupWizard.h"
 
 
@@ -33,6 +34,7 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-qt" );
 
+	Settings::init();
 	glabels::Db::init();
 	////// TEMPORARY TESTING ////////
 #if 0
