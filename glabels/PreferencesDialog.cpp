@@ -49,15 +49,6 @@ PreferencesDialog::PreferencesDialog( QWidget *parent )
 		unitsPointsRadio->setChecked( true );
 		break;
 	}
-
-	if ( Settings::preferIsoPaperSizes() )
-	{
-		preferedPaperSizesIsoRadio->setChecked( true );
-	}
-	else
-	{
-		preferedPaperSizesUsRadio->setChecked( true );
-	}
 }
 
 
@@ -86,13 +77,4 @@ void PreferencesDialog::onUnitsRadiosChanged()
 	{
 		Settings::setUnits( glabels::Distance::Units::PT );
 	}
-}
-
-
-///
-/// Prefered Paper Sizes Radios Changed
-///
-void PreferencesDialog::onPreferedPaperSizesRadiosChanged()
-{
-	Settings::setPreferIsoPaperSizes( preferedPaperSizesIsoRadio->isChecked() );
 }

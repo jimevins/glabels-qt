@@ -51,7 +51,7 @@ public:
 private slots:
 	void onSearchEntryTextChanged();
 	void onSearchClearButtonClicked();
-	void onPageSizeCheckToggled();
+	void onPageSizeCheckClicked();
 	void onTemplatePickerSelectionChanged();
 	void onSelectButtonClicked();
 	void onCancelButtonClicked();

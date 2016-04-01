@@ -224,54 +224,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>pageSizeIsoCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onPageSizeCheckToggled()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>78</x>
-     <y>116</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>3</x>
-     <y>110</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pageSizeUsCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onPageSizeCheckToggled()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>52</x>
-     <y>145</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>8</x>
-     <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pageSizeOtherCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onPageSizeCheckToggled()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>37</x>
-     <y>170</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>10</x>
-     <y>188</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>templatePicker</sender>
    <signal>itemSelectionChanged()</signal>
    <receiver>SelectProductDialog</receiver>
@@ -294,8 +246,8 @@
    <slot>onCancelButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>587</x>
-     <y>708</y>
+     <x>864</x>
+     <y>648</y>
     </hint>
     <hint type="destinationlabel">
      <x>689</x>
@@ -310,8 +262,8 @@
    <slot>onSelectButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>660</x>
-     <y>689</y>
+     <x>955</x>
+     <y>648</y>
     </hint>
     <hint type="destinationlabel">
      <x>687</x>
@@ -319,14 +271,62 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pageSizeIsoCheck</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onPageSizeCheckClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pageSizeUsCheck</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onPageSizeCheckClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>38</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>141</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pageSizeOtherCheck</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onPageSizeCheckClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>35</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>168</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onSearchClearButtonClicked()</slot>
-  <slot>onPageSizeCheckToggled()</slot>
   <slot>onTemplatePickerSelectionChanged()</slot>
   <slot>onOrientationRadioToggled()</slot>
   <slot>onSearchEntryTextChanged()</slot>
   <slot>onCancelButtonClicked()</slot>
   <slot>onSelectButtonClicked()</slot>
+  <slot>onPageSizeCheckClicked()</slot>
  </slots>
 </ui>

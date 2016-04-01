@@ -49,41 +49,6 @@ Settings* Settings::instance()
 }
 
 
-bool Settings::preferIsoPaperSizes()
-{
-	// Guess at a suitable default
-	bool defaultValue;
-	switch (QLocale::system().country())
-	{
-	case QLocale::UnitedStates:
-	case QLocale::Canada:
-		defaultValue = false;
-		break;
-
-	default:
-		defaultValue = true;
-		break;
-	}
-	
-	mInstance->beginGroup( "Locale" );
-	bool returnValue = mInstance->value( "preferIsoPaperSizes", defaultValue ).toBool();
-	mInstance->endGroup();
-
-	return returnValue;
-}
-
-
-void Settings::setPreferIsoPaperSizes( bool preferIsoPaperSizes )
-{
-	
-	mInstance->beginGroup( "Locale" );
-	mInstance->setValue( "preferIsoPaperSizes", preferIsoPaperSizes );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
 glabels::Distance::Units Settings::units()
 {
 	// Guess at a suitable default
@@ -115,3 +80,99 @@ void Settings::setUnits( glabels::Distance::Units units )
 
 	emit mInstance->changed();
 }
+
+
+bool Settings::searchIsoPaperSizes()
+{
+	// Guess at a suitable default
+	bool defaultValue;
+	switch (QLocale::system().country())
+	{
+	case QLocale::UnitedStates:
+	case QLocale::Canada:
+		defaultValue = false;
+		break;
+
+	default:
+		defaultValue = true;
+		break;
+	}
+	
+	mInstance->beginGroup( "Search" );
+	bool returnValue = mInstance->value( "isoPaperSizes", defaultValue ).toBool();
+	mInstance->endGroup();
+
+	return returnValue;
+}
+
+
+void Settings::setSearchIsoPaperSizes( bool searchIsoPaperSizes )
+{
+	
+	mInstance->beginGroup( "Search" );
+	mInstance->setValue( "isoPaperSizes", searchIsoPaperSizes );
+	mInstance->endGroup();
+
+	emit mInstance->changed();
+}
+
+
+bool Settings::searchUsPaperSizes()
+{
+	// Guess at a suitable default
+	bool defaultValue;
+	switch (QLocale::system().country())
+	{
+	case QLocale::UnitedStates:
+	case QLocale::Canada:
+		defaultValue = true;
+		break;
+
+	default:
+		defaultValue = false;
+		break;
+	}
+	
+	mInstance->beginGroup( "Search" );
+	bool returnValue = mInstance->value( "usPaperSizes", defaultValue ).toBool();
+	mInstance->endGroup();
+
+	return returnValue;
+}
+
+
+void Settings::setSearchUsPaperSizes( bool searchUsPaperSizes )
+{
+	
+	mInstance->beginGroup( "Search" );
+	mInstance->setValue( "usPaperSizes", searchUsPaperSizes );
+	mInstance->endGroup();
+
+	emit mInstance->changed();
+}
+
+
+bool Settings::searchOtherPaperSizes()
+{
+	// Guess at a suitable default
+	bool defaultValue = true;
+	
+	mInstance->beginGroup( "Search" );
+	bool returnValue = mInstance->value( "otherPaperSizes", defaultValue ).toBool();
+	mInstance->endGroup();
+
+	return returnValue;
+}
+
+
+void Settings::setSearchOtherPaperSizes( bool searchOtherPaperSizes )
+{
+	
+	mInstance->beginGroup( "Search" );
+	mInstance->setValue( "otherPaperSizes", searchOtherPaperSizes );
+	mInstance->endGroup();
+
+	emit mInstance->changed();
+}
+
+

@@ -44,7 +44,6 @@ public:
 	/////////////////////////////////
 private slots:
 	void onUnitsRadiosChanged();
-	void onPreferedPaperSizesRadiosChanged();
 
 };
 

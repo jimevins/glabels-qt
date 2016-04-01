@@ -20,10 +20,11 @@
 
 #include "SelectProductDialog.h"
 
-#include <iostream>
-
 #include "libglabels/Db.h"
 #include "TemplatePickerItem.h"
+#include "Settings.h"
+
+#include <QtDebug>
 
 
 ///
@@ -34,11 +35,9 @@ SelectProductDialog::SelectProductDialog( QWidget *parent )
 {
 	setupUi( this );
 
-	// TODO: Set default based on locale and/or saved preferences
-	//       Perhaps move to checkboxes
-	pageSizeIsoCheck->setChecked( false );
-	pageSizeUsCheck->setChecked( true );
-	pageSizeOtherCheck->setChecked( true );
+	pageSizeIsoCheck->setChecked( Settings::searchIsoPaperSizes() );
+	pageSizeUsCheck->setChecked( Settings::searchUsPaperSizes() );
+	pageSizeOtherCheck->setChecked( Settings::searchOtherPaperSizes() );
 
 	QList<glabels::Template*> tmplates = glabels::Db::templates();
 	templatePicker->setTemplates( tmplates );
@@ -89,8 +88,12 @@ void SelectProductDialog::onSearchClearButtonClicked()
 ///
 /// Page Size Check Toggled Slot
 ///
-void SelectProductDialog::onPageSizeCheckToggled()
+void SelectProductDialog::onPageSizeCheckClicked()
 {
+	Settings::setSearchIsoPaperSizes( pageSizeIsoCheck->isChecked() );
+	Settings::setSearchUsPaperSizes( pageSizeUsCheck->isChecked() );
+	Settings::setSearchOtherPaperSizes( pageSizeOtherCheck->isChecked() );
+
 	templatePicker->applyFilter( searchEntry->text(),
 				     pageSizeIsoCheck->isChecked(),
 				     pageSizeUsCheck->isChecked(),

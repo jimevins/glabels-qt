@@ -59,11 +59,17 @@ signals:
 	// Accessors
 	/////////////////////////////////
 public:
-	static bool preferIsoPaperSizes();
-	static void setPreferIsoPaperSizes( bool preferIsoPaperSizes );
-
 	static glabels::Distance::Units units();
 	static void setUnits( glabels::Distance::Units units );
+
+	static bool searchIsoPaperSizes();
+	static void setSearchIsoPaperSizes( bool searchIsoPaperSizes );
+
+	static bool searchUsPaperSizes();
+	static void setSearchUsPaperSizes( bool searchUsPaperSizes );
+
+	static bool searchOtherPaperSizes();
+	static void setSearchOtherPaperSizes( bool searchOtherPaperSizes );
 
 
 private:
