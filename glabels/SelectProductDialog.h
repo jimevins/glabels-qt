@@ -22,6 +22,7 @@
 #define SelectProductDialog_h
 
 #include "ui_SelectProductDialog.h"
+#include <QBasicTimer>
 
 
 ///
@@ -53,14 +54,21 @@ private slots:
 	void onSearchClearButtonClicked();
 	void onPageSizeCheckClicked();
 	void onTemplatePickerSelectionChanged();
-	void onSelectButtonClicked();
 	void onCancelButtonClicked();
 
 		
 	/////////////////////////////////
+	// Events
+	/////////////////////////////////
+protected:
+	void timerEvent(QTimerEvent *event);
+
+
+        /////////////////////////////////
 	// Private data
 	/////////////////////////////////
 private:
+	QBasicTimer mTimer;
 	bool mCanceled;
 
 };

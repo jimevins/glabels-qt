@@ -164,16 +164,6 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="selectButton">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>&amp;Select</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
     </layout>
@@ -252,22 +242,6 @@
     <hint type="destinationlabel">
      <x>689</x>
      <y>704</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>selectButton</sender>
-   <signal>clicked()</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onSelectButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>955</x>
-     <y>648</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>687</x>
-     <y>682</y>
     </hint>
    </hints>
   </connection>

@@ -106,18 +106,8 @@ void SelectProductDialog::onPageSizeCheckClicked()
 ///
 void SelectProductDialog::onTemplatePickerSelectionChanged()
 {
-	const glabels::Template *tmplate = templatePicker->selectedTemplate();
-
-	selectButton->setEnabled( tmplate != NULL );
-}
-
-
-///
-/// Select Button Clicked Slot
-///
-void SelectProductDialog::onSelectButtonClicked()
-{
-	close();
+	// Delay close.  This should make the selection more apparent to the user.
+	mTimer.start( 125, this );
 }
 
 
@@ -127,5 +117,15 @@ void SelectProductDialog::onSelectButtonClicked()
 void SelectProductDialog::onCancelButtonClicked()
 {
 	mCanceled = true;
+	close();
+}
+
+
+///
+/// Cancel Button Clicked Slot
+///
+void SelectProductDialog::timerEvent( QTimerEvent *event )
+{
+	mTimer.stop();
 	close();
 }
