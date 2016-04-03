@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>967</width>
-    <height>660</height>
+    <width>987</width>
+    <height>661</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,12 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>180</width>
+                <height>0</height>
+               </size>
               </property>
               <property name="placeholderText">
                <string>Search</string>
@@ -94,6 +100,9 @@
             <bool>false</bool>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="spacing">
+             <number>3</number>
+            </property>
             <item>
              <widget class="QCheckBox" name="pageSizeIsoCheck">
               <property name="text">
@@ -123,23 +132,45 @@
            <property name="title">
             <string>Filter by category</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="1" column="0" rowspan="2">
-             <layout class="QVBoxLayout" name="categoriesLayout">
-              <item>
-               <widget class="QCheckBox" name="anyCategoryCheck">
-                <property name="font">
-                 <font>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>All categories</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="spacing">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QRadioButton" name="allCategoriesRadio">
+              <property name="text">
+               <string>All</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="selectedCategoriesRadio">
+              <property name="text">
+               <string>Selected</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="categoriesCheckContainer" native="true">
+              <layout class="QGridLayout" name="gridLayout">
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="categoriesLayout">
+                 <property name="spacing">
+                  <number>3</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>20</number>
+                 </property>
+                </layout>
+               </item>
+              </layout>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -320,18 +351,34 @@
    </hints>
   </connection>
   <connection>
-   <sender>anyCategoryCheck</sender>
+   <sender>allCategoriesRadio</sender>
    <signal>clicked()</signal>
    <receiver>SelectProductDialog</receiver>
-   <slot>onAnyCategoryCheckClicked()</slot>
+   <slot>onCategoryRadioClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>31</x>
-     <y>234</y>
+     <x>36</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>-7</x>
-     <y>240</y>
+     <x>-5</x>
+     <y>223</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectedCategoriesRadio</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onCategoryRadioClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>252</y>
     </hint>
    </hints>
   </connection>
@@ -344,6 +391,6 @@
   <slot>onCancelButtonClicked()</slot>
   <slot>onSelectButtonClicked()</slot>
   <slot>onPageSizeCheckClicked()</slot>
-  <slot>onAnyCategoryCheckClicked()</slot>
+  <slot>onCategoryRadioClicked()</slot>
  </slots>
 </ui>

@@ -53,7 +53,7 @@ private slots:
 	void onSearchEntryTextChanged();
 	void onSearchClearButtonClicked();
 	void onPageSizeCheckClicked();
-	void onAnyCategoryCheckClicked();
+	void onCategoryRadioClicked();
 	void onCategoryCheckClicked();
 	void onTemplatePickerSelectionChanged();
 	void onCancelButtonClicked();

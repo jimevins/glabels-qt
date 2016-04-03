@@ -39,14 +39,17 @@ SelectProductDialog::SelectProductDialog( QWidget *parent )
 	pageSizeUsCheck->setChecked( Settings::searchUsPaperSizes() );
 	pageSizeOtherCheck->setChecked( Settings::searchOtherPaperSizes() );
 
-	anyCategoryCheck->setChecked( Settings::searchAllCategories() );
-	mCategoryIdList = Settings::searchCategoryList();
+	allCategoriesRadio->setChecked( Settings::searchAllCategories() );
+	selectedCategoriesRadio->setChecked( !Settings::searchAllCategories() );
 
+	categoriesCheckContainer->setEnabled( !Settings::searchAllCategories() );
+	mCategoryIdList = Settings::searchCategoryList();
+	
 	QList<glabels::Category*> categories = glabels::Db::categories();
 	foreach ( glabels::Category *category, categories )
 	{
 		QCheckBox* check = new QCheckBox( category->name() );
-		check->setChecked( mCategoryIdList.contains( category->id() ) || anyCategoryCheck->isChecked() );
+		check->setChecked( mCategoryIdList.contains( category->id() ) );
 		categoriesLayout->addWidget( check );
 
 		mCheckToCategoryMap[check] = category->id();
@@ -61,7 +64,7 @@ SelectProductDialog::SelectProductDialog( QWidget *parent )
 				     pageSizeIsoCheck->isChecked(),
 				     pageSizeUsCheck->isChecked(),
 				     pageSizeOtherCheck->isChecked(),
-				     anyCategoryCheck->isChecked(),
+				     allCategoriesRadio->isChecked(),
 				     mCategoryIdList );
 }
 
@@ -90,7 +93,7 @@ void SelectProductDialog::onSearchEntryTextChanged()
 				     pageSizeIsoCheck->isChecked(),
 				     pageSizeUsCheck->isChecked(),
 				     pageSizeOtherCheck->isChecked(),
-				     anyCategoryCheck->isChecked(),
+				     allCategoriesRadio->isChecked(),
 				     mCategoryIdList );
 }
 
@@ -117,32 +120,27 @@ void SelectProductDialog::onPageSizeCheckClicked()
 				     pageSizeIsoCheck->isChecked(),
 				     pageSizeUsCheck->isChecked(),
 				     pageSizeOtherCheck->isChecked(),
-				     anyCategoryCheck->isChecked(),
+				     allCategoriesRadio->isChecked(),
 				     mCategoryIdList );
 }
 
 
 ///
-/// Any category Check Clicked Slot
+/// Category Radio Clicked Slot
 ///
-void SelectProductDialog::onAnyCategoryCheckClicked()
+void SelectProductDialog::onCategoryRadioClicked()
 {
-	if ( anyCategoryCheck->isChecked() )
-	{
-		foreach( QCheckBox* check, mCheckToCategoryMap.keys() )
-		{
-			check->setChecked( true );
-		}
-	}
-	
+	categoriesCheckContainer->setEnabled( selectedCategoriesRadio->isChecked() );
 	loadCategoryList();
 
 	templatePicker->applyFilter( searchEntry->text(),
 				     pageSizeIsoCheck->isChecked(),
 				     pageSizeUsCheck->isChecked(),
 				     pageSizeOtherCheck->isChecked(),
-				     anyCategoryCheck->isChecked(),
+				     allCategoriesRadio->isChecked(),
 				     mCategoryIdList );
+
+	Settings::setSearchAllCategories( allCategoriesRadio->isChecked() );
 }
 
 
@@ -151,21 +149,17 @@ void SelectProductDialog::onAnyCategoryCheckClicked()
 ///
 void SelectProductDialog::onCategoryCheckClicked()
 {
-	bool allFlag = true;
-	foreach( QCheckBox* check, mCheckToCategoryMap.keys() )
-	{
-		allFlag = allFlag && check->isChecked();
-	}
-	anyCategoryCheck->setChecked( allFlag );
-
 	loadCategoryList();
 
 	templatePicker->applyFilter( searchEntry->text(),
 				     pageSizeIsoCheck->isChecked(),
 				     pageSizeUsCheck->isChecked(),
 				     pageSizeOtherCheck->isChecked(),
-				     anyCategoryCheck->isChecked(),
+				     allCategoriesRadio->isChecked(),
 				     mCategoryIdList );
+
+
+	Settings::setSearchCategoryList( mCategoryIdList );
 }
 
 
@@ -213,7 +207,4 @@ void SelectProductDialog::loadCategoryList()
 			mCategoryIdList.append( mCheckToCategoryMap[check] );
 		}
 	}
-
-	Settings::setSearchAllCategories( anyCategoryCheck->isChecked() );
-	Settings::setSearchCategoryList( mCategoryIdList );
 }
