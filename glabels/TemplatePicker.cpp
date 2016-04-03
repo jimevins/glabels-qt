@@ -55,18 +55,36 @@ void TemplatePicker::setTemplates( const QList <glabels::Template*> &tmplates )
 /// Apply Filter to Narrow Template Choices
 ///
 void TemplatePicker::applyFilter( const QString &searchString,
-				  bool isoMask, bool usMask, bool otherMask )
+				  bool isoMask, bool usMask, bool otherMask,
+				  bool anyCategory, const QStringList& categoryIds )
 {
 	foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 	{
 		TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
 
+		bool nameMask = tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive );
+		
 		bool sizeMask =
 			(isoMask   && tItem->tmplate()->isSizeIso())   ||
 			(usMask    && tItem->tmplate()->isSizeUs())    ||
 			(otherMask && tItem->tmplate()->isSizeOther());
 
-		if ( tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive ) && sizeMask )
+		bool categoryMask;
+		if ( anyCategory )
+		{
+			categoryMask = true;
+		}
+		else
+		{
+			categoryMask = false;
+			foreach ( QString id, categoryIds )
+			{
+				categoryMask = categoryMask || tItem->tmplate()->hasCategory( id );
+			}
+		}
+		
+
+		if (  nameMask && sizeMask && categoryMask )
 		{
 			item->setHidden( false );
 		}

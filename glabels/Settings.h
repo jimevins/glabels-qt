@@ -24,6 +24,7 @@
 
 #include <QSettings>
 #include "libglabels/Distance.h"
+#include <QStringList>
 
 
 ///
@@ -70,6 +71,12 @@ public:
 
 	static bool searchOtherPaperSizes();
 	static void setSearchOtherPaperSizes( bool searchOtherPaperSizes );
+
+	static bool searchAllCategories();
+	static void setSearchAllCategories( bool searchAllCategories );
+
+	static QStringList searchCategoryList();
+	static void setSearchCategoryList( const QStringList& searchCategoryList );
 
 
 private:

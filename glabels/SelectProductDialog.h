@@ -53,6 +53,8 @@ private slots:
 	void onSearchEntryTextChanged();
 	void onSearchClearButtonClicked();
 	void onPageSizeCheckClicked();
+	void onAnyCategoryCheckClicked();
+	void onCategoryCheckClicked();
 	void onTemplatePickerSelectionChanged();
 	void onCancelButtonClicked();
 
@@ -65,10 +67,21 @@ protected:
 
 
         /////////////////////////////////
+	// Private methods
+	/////////////////////////////////
+private:
+	void loadCategoryList();
+	
+
+        /////////////////////////////////
 	// Private data
 	/////////////////////////////////
 private:
 	QBasicTimer mTimer;
+
+	QMap<QCheckBox*,QString> mCheckToCategoryMap;
+	QStringList              mCategoryIdList;
+
 	bool mCanceled;
 
 };

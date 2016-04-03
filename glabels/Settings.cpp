@@ -22,6 +22,7 @@
 
 #include <QLocale>
 #include <QString>
+#include <QtDebug>
 
 
 Settings* Settings::mInstance = 0;
@@ -108,7 +109,6 @@ bool Settings::searchIsoPaperSizes()
 
 void Settings::setSearchIsoPaperSizes( bool searchIsoPaperSizes )
 {
-	
 	mInstance->beginGroup( "Search" );
 	mInstance->setValue( "isoPaperSizes", searchIsoPaperSizes );
 	mInstance->endGroup();
@@ -143,7 +143,6 @@ bool Settings::searchUsPaperSizes()
 
 void Settings::setSearchUsPaperSizes( bool searchUsPaperSizes )
 {
-	
 	mInstance->beginGroup( "Search" );
 	mInstance->setValue( "usPaperSizes", searchUsPaperSizes );
 	mInstance->endGroup();
@@ -167,7 +166,6 @@ bool Settings::searchOtherPaperSizes()
 
 void Settings::setSearchOtherPaperSizes( bool searchOtherPaperSizes )
 {
-	
 	mInstance->beginGroup( "Search" );
 	mInstance->setValue( "otherPaperSizes", searchOtherPaperSizes );
 	mInstance->endGroup();
@@ -176,3 +174,46 @@ void Settings::setSearchOtherPaperSizes( bool searchOtherPaperSizes )
 }
 
 
+bool Settings::searchAllCategories()
+{
+	// Guess at a suitable default
+	bool defaultValue = true;
+	
+	mInstance->beginGroup( "Search" );
+	bool returnValue = mInstance->value( "allCategories", defaultValue ).toBool();
+	mInstance->endGroup();
+
+	return returnValue;
+}
+
+
+void Settings::setSearchAllCategories( bool searchAllCategories )
+{
+	mInstance->beginGroup( "Search" );
+	mInstance->setValue( "allCategories", searchAllCategories );
+	mInstance->endGroup();
+
+	emit mInstance->changed();
+}
+
+
+QStringList Settings::searchCategoryList()
+{
+	QStringList defaultList;
+	
+	mInstance->beginGroup( "Search" );
+	QStringList returnList = mInstance->value( "categoryList", defaultList ).toStringList();
+	mInstance->endGroup();
+
+	return returnList;
+}
+
+
+void Settings::setSearchCategoryList( const QStringList& searchCategoryList )
+{
+	mInstance->beginGroup( "Search" );
+	mInstance->setValue( "categoryList", searchCategoryList );
+	mInstance->endGroup();
+
+	emit mInstance->changed();
+}

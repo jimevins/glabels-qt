@@ -85,7 +85,7 @@
             <bool>false</bool>
            </property>
            <property name="title">
-            <string>Page size</string>
+            <string>Filter by paper size</string>
            </property>
            <property name="flat">
             <bool>false</bool>
@@ -114,6 +114,32 @@
                <string>Other</string>
               </property>
              </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string>Filter by category</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="1" column="0" rowspan="2">
+             <layout class="QVBoxLayout" name="categoriesLayout">
+              <item>
+               <widget class="QCheckBox" name="anyCategoryCheck">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>All categories</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -182,82 +208,18 @@
  </resources>
  <connections>
   <connection>
-   <sender>searchEntry</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onSearchEntryTextChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>69</x>
-     <y>48</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>2</x>
-     <y>53</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>searchClearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onSearchClearButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>177</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>190</x>
-     <y>7</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>templatePicker</sender>
-   <signal>itemSelectionChanged()</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onTemplatePickerSelectionChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>232</x>
-     <y>550</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>244</x>
-     <y>697</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cancelButton</sender>
-   <signal>clicked()</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onCancelButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>864</x>
-     <y>648</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>689</x>
-     <y>704</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pageSizeIsoCheck</sender>
+   <sender>pageSizeOtherCheck</sender>
    <signal>clicked()</signal>
    <receiver>SelectProductDialog</receiver>
    <slot>onPageSizeCheckClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>40</x>
-     <y>112</y>
+     <x>35</x>
+     <y>169</y>
     </hint>
     <hint type="destinationlabel">
-     <x>2</x>
-     <y>116</y>
+     <x>8</x>
+     <y>168</y>
     </hint>
    </hints>
   </connection>
@@ -278,18 +240,98 @@
    </hints>
   </connection>
   <connection>
-   <sender>pageSizeOtherCheck</sender>
+   <sender>templatePicker</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onTemplatePickerSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>697</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pageSizeIsoCheck</sender>
    <signal>clicked()</signal>
    <receiver>SelectProductDialog</receiver>
    <slot>onPageSizeCheckClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>35</x>
-     <y>169</y>
+     <x>40</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>8</x>
-     <y>168</y>
+     <x>2</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onCancelButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>955</x>
+     <y>648</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>689</x>
+     <y>704</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onSearchClearButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>190</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchEntry</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onSearchEntryTextChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>53</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>anyCategoryCheck</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectProductDialog</receiver>
+   <slot>onAnyCategoryCheckClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>234</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-7</x>
+     <y>240</y>
     </hint>
    </hints>
   </connection>
@@ -302,5 +344,6 @@
   <slot>onCancelButtonClicked()</slot>
   <slot>onSelectButtonClicked()</slot>
   <slot>onPageSizeCheckClicked()</slot>
+  <slot>onAnyCategoryCheckClicked()</slot>
  </slots>
 </ui>
