@@ -27,6 +27,7 @@
 
 #include "MergeRecord.h"
 #include "libglabels/Template.h"
+#include "Settings.h"
 
 
 // Forward References
@@ -265,6 +266,8 @@ inline void LabelModel::setTmplate( const glabels::Template* tmplate )
 		mModified = true;
 		emit changed();
 		emit sizeChanged();
+
+		Settings::addToRecentTemplateList( tmplate->name() );
 	}
 }
 

@@ -60,12 +60,12 @@ SelectProductDialog::SelectProductDialog( QWidget *parent )
 	QList<glabels::Template*> tmplates = glabels::Db::templates();
 	templatePicker->setTemplates( tmplates );
 
-	templatePicker->applyFilter( searchEntry->text(),
-				     pageSizeIsoCheck->isChecked(),
-				     pageSizeUsCheck->isChecked(),
-				     pageSizeOtherCheck->isChecked(),
-				     allCategoriesRadio->isChecked(),
-				     mCategoryIdList );
+	if ( Settings::recentTemplateList().count() > 0 )
+	{
+		modeNotebook->setCurrentIndex(1);
+	}
+
+	onModeTabChanged();
 }
 
 ///
@@ -80,6 +80,32 @@ const glabels::Template* SelectProductDialog::tmplate() const
 	else
 	{
 		return 0;
+	}
+}
+
+
+///
+/// Mode Notebook Tab Changed Slot
+///
+void SelectProductDialog::onModeTabChanged()
+{
+	switch (modeNotebook->currentIndex())
+	{
+	case 0:
+		// Search Tab
+		templatePicker->applyFilter( searchEntry->text(),
+					     pageSizeIsoCheck->isChecked(),
+					     pageSizeUsCheck->isChecked(),
+					     pageSizeOtherCheck->isChecked(),
+					     allCategoriesRadio->isChecked(),
+					     mCategoryIdList );
+		break;
+	case 1:
+		// Recent Tab
+		templatePicker->applyFilter( Settings::recentTemplateList() );
+		break;
+	default:
+		qDebug() << "onModeTabChanged(): unknown tab!";
 	}
 }
 

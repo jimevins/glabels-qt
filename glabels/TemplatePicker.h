@@ -53,9 +53,11 @@ public:
 	/////////////////////////////////
 	// Methods
 	/////////////////////////////////
-	void applyFilter( const QString &searchString,
+	void applyFilter( const QString& searchString,
 	                  bool isoMask, bool usMask, bool otherMask,
 	                  bool anyCategory, const QStringList& categoryIds );
+
+	void applyFilter( const QStringList& names );
 
 	const glabels::Template *selectedTemplate();
 

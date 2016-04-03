@@ -217,3 +217,36 @@ void Settings::setSearchCategoryList( const QStringList& searchCategoryList )
 
 	emit mInstance->changed();
 }
+
+
+QStringList Settings::recentTemplateList()
+{
+	QStringList defaultList;
+	
+	mInstance->beginGroup( "Recent" );
+	QStringList returnList = mInstance->value( "templateList", defaultList ).toStringList();
+	mInstance->endGroup();
+
+	return returnList;
+}
+
+
+void Settings::addToRecentTemplateList( const QString& name )
+{
+	mInstance->beginGroup( "Recent" );
+
+	QStringList list = mInstance->value( "templateList" ).toStringList();
+
+	list.removeAll( name );
+	list.prepend( name );
+	while ( list.count() > 10 )
+	{
+		list.removeLast();
+	}
+
+	mInstance->setValue( "templateList", list );
+
+	mInstance->endGroup();
+
+	emit mInstance->changed();
+}

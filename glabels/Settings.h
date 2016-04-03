@@ -78,6 +78,9 @@ public:
 	static QStringList searchCategoryList();
 	static void setSearchCategoryList( const QStringList& searchCategoryList );
 
+	static QStringList recentTemplateList();
+	static void addToRecentTemplateList( const QString& name );
+
 
 private:
 	static Settings* mInstance;
