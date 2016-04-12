@@ -4,6 +4,7 @@ project (app CXX)
 
 set (glabels_sources
   glabels_main.cpp
+  AboutDialog.cpp
   BarcodeBackends.cpp
   BarcodeMenu.cpp
   BarcodeMenuButton.cpp
@@ -55,6 +56,7 @@ set (glabels_sources
 )
 
 set (glabels_qobject_headers
+  AboutDialog.h
   BarcodeMenu.h
   BarcodeMenuButton.h
   BarcodeMenuItem.h
@@ -88,6 +90,7 @@ set (glabels_qobject_headers
 )
 
 set (glabels_forms
+  ui/AboutDialog.ui
   ui/MergePropertyEditor.ui
   ui/ObjectEditor.ui
   ui/PreferencesDialog.ui

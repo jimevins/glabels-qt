@@ -1,4 +1,4 @@
-/*  StartupWizard.cpp
+/*  AboutDialog.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,60 +18,35 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StartupWizard.h"
+#ifndef AboutDialog_h
+#define AboutDialog_h
 
-#include "File.h"
-#include <QtDebug>
+#include "ui_AboutDialog.h"
 
 
 ///
-/// Constructor
+/// About Dialog Widget
 ///
-StartupWizard::StartupWizard( QWidget *parent )
-	: QDialog(parent)
+class AboutDialog : public QDialog, public Ui_AboutDialog
 {
-	setupUi( this );
-
-	QString subtitle = tr("Label Designer");
-
-	QString markup = "<span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#333333;'>"
-		+ subtitle + "</span>";
-
-	titleLabel->setText( markup );
-}
+	Q_OBJECT
 
 
-///
-/// "New Project" Button Clicked Slot
-///
-void StartupWizard::onNewProjectButtonClicked()
-{
-	hide();
-	
-	if ( File::newLabel() )
-	{
-		close();
-	}
-	else
-	{
-		show();
-	}
-}
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	AboutDialog( QWidget *parent = 0 );
 
 
-///
-/// "Open Project" Button Clicked Slot
-///
-void StartupWizard::onOpenProjectButtonClicked()
-{
-	hide();
-	
-	if ( File::open() )
-	{
-		close();
-	}
-	else
-	{
-		show();
-	}
-}
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onLicenseButtonClicked();
+	void onWebsiteButtonClicked();
+
+};
+
+
+#endif // AboutDialog_h

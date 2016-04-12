@@ -1,4 +1,4 @@
-/*  StartupWizard.cpp
+/*  AboutDialog.cpp
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,60 +18,48 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StartupWizard.h"
+#include "AboutDialog.h"
 
-#include "File.h"
+#include <QUrl>
+#include <QDesktopServices>
 #include <QtDebug>
 
 
 ///
 /// Constructor
 ///
-StartupWizard::StartupWizard( QWidget *parent )
+AboutDialog::AboutDialog( QWidget *parent )
 	: QDialog(parent)
 {
 	setupUi( this );
 
 	QString subtitle = tr("Label Designer");
+	QString version = "x.x.x";
+	QString description = tr("A program to create labels and business cards.");
 
-	QString markup = "<span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#333333;'>"
-		+ subtitle + "</span>";
+	QString markup = "<p><span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#333333;'>"
+		+ subtitle + "</span></p>"
+		+ "<p>" + version + "</p>"
+		+ "<p>" + description + "</p>"
+		+ "<p>Copyright &copy; 2016 Jim Evins <evins@snaught.com></p>";
 
-	titleLabel->setText( markup );
+	aboutLabel->setText( markup );
 }
 
 
 ///
-/// "New Project" Button Clicked Slot
+/// "License" Button Clicked Slot
 ///
-void StartupWizard::onNewProjectButtonClicked()
+void AboutDialog::onLicenseButtonClicked()
 {
-	hide();
-	
-	if ( File::newLabel() )
-	{
-		close();
-	}
-	else
-	{
-		show();
-	}
+	QDesktopServices::openUrl( QUrl("http://www.gnu.org/licenses/gpl-3.0.txt") );
 }
 
 
 ///
-/// "Open Project" Button Clicked Slot
+/// "Website" Button Clicked Slot
 ///
-void StartupWizard::onOpenProjectButtonClicked()
+void AboutDialog::onWebsiteButtonClicked()
 {
-	hide();
-	
-	if ( File::open() )
-	{
-		close();
-	}
-	else
-	{
-		show();
-	}
+	QDesktopServices::openUrl( QUrl("http://glabels.org/") );
 }
