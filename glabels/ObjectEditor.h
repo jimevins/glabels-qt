@@ -22,6 +22,7 @@
 #define ObjectEditor_h
 
 #include "ui_ObjectEditor.h"
+#include "libglabels/Distance.h"
 
 
 class LabelModel;  // Forward reference
@@ -58,12 +59,16 @@ private:
 	void loadPositionPage();
 	void loadRectSizePage();
 	void loadShadowPage();
+
+	int spinDigits( glabels::Distance::Units units );
+	double spinStep( glabels::Distance::Units units );
 		
 
 	/////////////////////////////////
 	// Slots
 	/////////////////////////////////
 private slots:
+	void onSettingsChanged();
 	void onLabelSizeChanged();
 	void onSelectionChanged();
 	void onObjectChanged();
@@ -81,9 +86,10 @@ private slots:
 	// Private data
 	/////////////////////////////////
 private:
-	LabelModel*       mModel;
-	LabelModelObject* mObject;
-	bool              mBlocked;
+	LabelModel*              mModel;
+	LabelModelObject*        mObject;
+	glabels::Distance::Units mUnits;
+	bool                     mBlocked;
 
 };
 

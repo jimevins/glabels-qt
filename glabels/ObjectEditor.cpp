@@ -25,6 +25,8 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 
+#include "Settings.h"
+
 #include <cmath>
 #include <QtDebug>
 
@@ -43,6 +45,9 @@ ObjectEditor::ObjectEditor( QWidget *parent )
 
 	setEnabled( false );
 	hidePages();
+
+	connect( Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
+	onSettingsChanged();
 }
 
 	
@@ -90,8 +95,8 @@ void ObjectEditor::loadPositionPage()
 	{
 		mBlocked = true;
 			
-		posXSpin->setValue( mObject->x0().in() );
-		posYSpin->setValue( mObject->y0().in() );
+		posXSpin->setValue( mObject->x0().inUnits(mUnits) );
+		posYSpin->setValue( mObject->y0().inUnits(mUnits) );
 
 		mBlocked = false;			
 	}
@@ -104,8 +109,8 @@ void ObjectEditor::loadRectSizePage()
 	{
 		mBlocked = true;
 			
-		sizeWSpin->setValue( mObject->w().in() );
-		sizeHSpin->setValue( mObject->h().in() );
+		sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
+		sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 
 		mBlocked = false;			
 	}
@@ -119,13 +124,107 @@ void ObjectEditor::loadShadowPage()
 		mBlocked = true;
 			
 		shadowEnableCheck->setChecked( mObject->shadow() );
-		shadowXSpin->setValue( mObject->shadowX().in() );
-		shadowYSpin->setValue( mObject->shadowY().in() );
+		shadowXSpin->setValue( mObject->shadowX().inUnits(mUnits) );
+		shadowYSpin->setValue( mObject->shadowY().inUnits(mUnits) );
 		shadowColorButton->setColorNode( mObject->shadowColorNode() );
 		shadowOpacitySpin->setValue( 100*mObject->shadowOpacity() );
 
 		mBlocked = false;			
 	}
+}
+
+
+int ObjectEditor::spinDigits( glabels::Distance::Units units )
+{
+	int digits;
+		
+	switch (units)
+	{
+	case glabels::Distance::Units::PT:
+		digits = 2;
+		break;
+	case glabels::Distance::Units::IN:
+		digits = 3;
+		break;
+	case glabels::Distance::Units::MM:
+		digits = 2;
+		break;
+	case glabels::Distance::Units::CM:
+		digits = 3;
+		break;
+	case glabels::Distance::Units::PC:
+		digits = 2;
+		break;
+	}
+
+	return digits;
+}
+
+
+double ObjectEditor::spinStep( glabels::Distance::Units units )
+{
+	double step;
+		
+	switch (units)
+	{
+	case glabels::Distance::Units::PT:
+		step = 0.01;
+		break;
+	case glabels::Distance::Units::IN:
+		step = 0.001;
+		break;
+	case glabels::Distance::Units::MM:
+		step = 0.01;
+		break;
+	case glabels::Distance::Units::CM:
+		step = 0.001;
+		break;
+	case glabels::Distance::Units::PC:
+		step = 0.01;
+		break;
+	}
+
+	return step;
+}
+
+
+void ObjectEditor::onSettingsChanged()
+{
+	mUnits = Settings::units();
+
+	int digits = spinDigits( mUnits );
+	double step = spinStep( mUnits );
+
+	posXSpin->setDecimals( digits );
+	posXSpin->setSingleStep( step );
+	posXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	posYSpin->setDecimals( digits );
+	posYSpin->setSingleStep( step );
+	posYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	sizeWSpin->setDecimals( digits );
+	sizeWSpin->setSingleStep( step );
+	sizeWSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	sizeHSpin->setDecimals( digits );
+	sizeHSpin->setSingleStep( step );
+	sizeHSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	sizeLineLengthSpin->setDecimals( digits );
+	sizeLineLengthSpin->setSingleStep( step );
+	sizeLineLengthSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	shadowXSpin->setDecimals( digits );
+	shadowXSpin->setSingleStep( step );
+	shadowXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	shadowYSpin->setDecimals( digits );
+	shadowYSpin->setSingleStep( step );
+	shadowYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+	onLabelSizeChanged();
+	onSelectionChanged();
 }
 
 
@@ -137,10 +236,10 @@ void ObjectEditor::onLabelSizeChanged()
 
 		glabels::Distance whMax = std::max( mModel->w(), mModel->h() );
 			
-		posXSpin->setRange( -whMax.in(), 2*whMax.in() );
-		posYSpin->setRange( -whMax.in(), 2*whMax.in() );
-		sizeWSpin->setRange( 0, 2*whMax.in() );
-		sizeHSpin->setRange( 0, 2*whMax.in() );
+		posXSpin->setRange( -whMax.inUnits(mUnits), 2*whMax.inUnits(mUnits) );
+		posYSpin->setRange( -whMax.inUnits(mUnits), 2*whMax.inUnits(mUnits) );
+		sizeWSpin->setRange( 0, 2*whMax.inUnits(mUnits) );
+		sizeHSpin->setRange( 0, 2*whMax.inUnits(mUnits) );
 			
 		mBlocked = false;			
 	}
@@ -149,53 +248,56 @@ void ObjectEditor::onLabelSizeChanged()
 
 void ObjectEditor::onSelectionChanged()
 {
-	if ( mObject )
+	if ( mModel )
 	{
-		disconnect( mObject, 0, this, 0 );
-	}
-
-	hidePages();
-
-	if ( mModel->isSelectionAtomic() )
-	{
-		mObject = mModel->getFirstSelectedObject();
-
-		if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
+		if ( mObject )
 		{
-			titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
-			titleLabel->setText( "Box object properties" );
+			disconnect( mObject, 0, this, 0 );
+		}
 
-			notebook->addTab( lineFillPage, "line/fill" );
-			notebook->addTab( posSizePage, "position/size" );
-			notebook->addTab( shadowPage, "shadow" );
+		hidePages();
 
-			sizeRectFrame->setVisible( true );
-			sizeResetImageButton->setVisible( false );
-			sizeLineFrame->setVisible( false );
+		if ( mModel->isSelectionAtomic() )
+		{
+			mObject = mModel->getFirstSelectedObject();
 
-			loadLineFillPage();
-			loadPositionPage();
-			loadRectSizePage();
-			loadShadowPage();
+			if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
+			{
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
+				titleLabel->setText( "Box object properties" );
+
+				notebook->addTab( lineFillPage, "line/fill" );
+				notebook->addTab( posSizePage, "position/size" );
+				notebook->addTab( shadowPage, "shadow" );
+
+				sizeRectFrame->setVisible( true );
+				sizeResetImageButton->setVisible( false );
+				sizeLineFrame->setVisible( false );
+
+				loadLineFillPage();
+				loadPositionPage();
+				loadRectSizePage();
+				loadShadowPage();
 				
-			setEnabled( true );
+				setEnabled( true );
+			}
+			else
+			{
+				Q_ASSERT_X( false, "ObjectEditor::onSelectionChanged", "Invalid object" );
+			}
+
+			connect( mObject, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
+			connect( mObject, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
+			connect( mObject, SIGNAL(destroyed(QObject*)), this, SLOT(onObjectDestroyed()) );
 		}
 		else
 		{
-			Q_ASSERT_X( false, "ObjectEditor::onSelectionChanged", "Invalid object" );
+			mObject = 0;
+
+			titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.png") );
+			titleLabel->setText( "Object properties" );
+			setEnabled( false );
 		}
-
-		connect( mObject, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
-		connect( mObject, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
-		connect( mObject, SIGNAL(destroyed(QObject*)), this, SLOT(onObjectDestroyed()) );
-	}
-	else
-	{
-		mObject = 0;
-
-		titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.png") );
-		titleLabel->setText( "Object properties" );
-		setEnabled( false );
 	}
 }
 
@@ -260,7 +362,10 @@ void ObjectEditor::onPositionControlsChanged()
 	{
 		mBlocked = true;
 
-		mObject->setPosition( posXSpin->value(), posYSpin->value() );
+		glabels::Distance x = glabels::Distance(posXSpin->value(), mUnits);
+		glabels::Distance y = glabels::Distance(posYSpin->value(), mUnits);
+
+		mObject->setPosition( x, y );
 
 		mBlocked = false;
 	}
@@ -273,20 +378,20 @@ void ObjectEditor::onRectSizeControlsChanged()
 	{
 		mBlocked = true;
 			
-		glabels::Distance spinW = glabels::Distance::in(sizeWSpin->value());
-		glabels::Distance spinH = glabels::Distance::in(sizeHSpin->value());
+		glabels::Distance spinW = glabels::Distance(sizeWSpin->value(), mUnits);
+		glabels::Distance spinH = glabels::Distance(sizeHSpin->value(), mUnits);
 				
 		if ( sizeAspectCheck->isChecked() )
 		{
 			if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
 			{
 				mObject->setWHonorAspect( spinW );
-				sizeHSpin->setValue( mObject->h().in() );
+				sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 			}
 			else
 			{
 				mObject->setHHonorAspect( spinH );
-				sizeWSpin->setValue( mObject->w().in() );
+				sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 			}
 		}
 		else
@@ -306,8 +411,8 @@ void ObjectEditor::onShadowControlsChanged()
 		mBlocked = true;
 
 		mObject->setShadow( shadowEnableCheck->isChecked() );
-		mObject->setShadowX( glabels::Distance::in(shadowXSpin->value()) );
-		mObject->setShadowY( glabels::Distance::in(shadowYSpin->value()) );
+		mObject->setShadowX( glabels::Distance(shadowXSpin->value(), mUnits) );
+		mObject->setShadowY( glabels::Distance(shadowYSpin->value(), mUnits) );
 		mObject->setShadowColorNode( shadowColorButton->colorNode() );
 		mObject->setShadowOpacity( shadowOpacitySpin->value()/100.0 );
 
