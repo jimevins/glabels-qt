@@ -88,7 +88,11 @@ private slots:
 private:
 	LabelModel*              mModel;
 	LabelModelObject*        mObject;
+	
 	glabels::Distance::Units mUnits;
+	int                      mSpinDigits;
+	double                   mSpinStep;
+	
 	bool                     mBlocked;
 
 };

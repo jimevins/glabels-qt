@@ -95,6 +95,14 @@ void ObjectEditor::loadPositionPage()
 	{
 		mBlocked = true;
 			
+		posXSpin->setDecimals( mSpinDigits );
+		posXSpin->setSingleStep( mSpinStep );
+		posXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+		posYSpin->setDecimals( mSpinDigits );
+		posYSpin->setSingleStep( mSpinStep );
+		posYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
 		posXSpin->setValue( mObject->x0().inUnits(mUnits) );
 		posYSpin->setValue( mObject->y0().inUnits(mUnits) );
 
@@ -109,6 +117,14 @@ void ObjectEditor::loadRectSizePage()
 	{
 		mBlocked = true;
 			
+		sizeWSpin->setDecimals( mSpinDigits );
+		sizeWSpin->setSingleStep( mSpinStep );
+		sizeWSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+		sizeHSpin->setDecimals( mSpinDigits );
+		sizeHSpin->setSingleStep( mSpinStep );
+		sizeHSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
 		sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 		sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 
@@ -123,6 +139,14 @@ void ObjectEditor::loadShadowPage()
 	{
 		mBlocked = true;
 			
+		shadowXSpin->setDecimals( mSpinDigits );
+		shadowXSpin->setSingleStep( mSpinStep );
+		shadowXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
+		shadowYSpin->setDecimals( mSpinDigits );
+		shadowYSpin->setSingleStep( mSpinStep );
+		shadowYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+
 		shadowEnableCheck->setChecked( mObject->shadow() );
 		shadowXSpin->setValue( mObject->shadowX().inUnits(mUnits) );
 		shadowYSpin->setValue( mObject->shadowY().inUnits(mUnits) );
@@ -191,38 +215,10 @@ double ObjectEditor::spinStep( glabels::Distance::Units units )
 void ObjectEditor::onSettingsChanged()
 {
 	mUnits = Settings::units();
+	mSpinDigits = spinDigits( mUnits );
+	mSpinStep = spinStep( mUnits );
 
-	int digits = spinDigits( mUnits );
-	double step = spinStep( mUnits );
-
-	posXSpin->setDecimals( digits );
-	posXSpin->setSingleStep( step );
-	posXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
-	posYSpin->setDecimals( digits );
-	posYSpin->setSingleStep( step );
-	posYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
-	sizeWSpin->setDecimals( digits );
-	sizeWSpin->setSingleStep( step );
-	sizeWSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
-	sizeHSpin->setDecimals( digits );
-	sizeHSpin->setSingleStep( step );
-	sizeHSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
-	sizeLineLengthSpin->setDecimals( digits );
-	sizeLineLengthSpin->setSingleStep( step );
-	sizeLineLengthSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
-	shadowXSpin->setDecimals( digits );
-	shadowXSpin->setSingleStep( step );
-	shadowXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
-	shadowYSpin->setDecimals( digits );
-	shadowYSpin->setSingleStep( step );
-	shadowYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
-
+	/* Must now update limits and reload any active pages with appropriate units . */
 	onLabelSizeChanged();
 	onSelectionChanged();
 }
