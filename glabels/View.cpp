@@ -28,6 +28,7 @@
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
+#include "Settings.h"
 #include "Cursors.h"
 
 #include "libglabels/Markup.h"
@@ -85,6 +86,10 @@ View::View( QScrollArea* scrollArea, QWidget* parent )
 	mGridSpacing        = 18;
 
 	setMouseTracking( true );
+	setFocusPolicy(Qt::StrongFocus);
+
+	connect( Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
+	onSettingsChanged();
 }
 
 
@@ -852,6 +857,50 @@ View::handleResizeMotion( const glabels::Distance& xWorld,
 
 
 ///
+/// Key Press Event Handler
+void
+View::keyPressEvent( QKeyEvent* event )
+{
+	if ( mState == IdleState )
+	{
+		switch (event->key())
+		{
+
+		case Qt::Key_Left:
+			mModel->moveSelection( -mStepSize, glabels::Distance(0) );
+			break;
+
+		case Qt::Key_Up:
+			mModel->moveSelection( glabels::Distance(0), -mStepSize );
+			break;
+
+		case Qt::Key_Right:
+			mModel->moveSelection( mStepSize, glabels::Distance(0) );
+			break;
+
+		case Qt::Key_Down:
+			mModel->moveSelection( glabels::Distance(0), mStepSize );
+			break;
+
+		case Qt::Key_Delete:
+			mModel->deleteSelection();
+			setCursor( Qt::ArrowCursor );
+			break;
+
+		default:
+			QWidget::keyPressEvent( event );
+			break;
+			
+		}
+	}
+	else
+	{
+		QWidget::keyPressEvent( event );
+	}
+}
+
+
+///
 /// Paint Event Handler
 ///
 void
@@ -1089,6 +1138,17 @@ View::drawSelectRegionLayer( QPainter* painter )
 		painter->restore();
 	}
 
+}
+
+
+///
+/// Settings changed handler
+///
+void View::onSettingsChanged()
+{
+	glabels::Units units = Settings::units();
+	
+	mStepSize = glabels::Distance( units.resolution(), units );
 }
 
 

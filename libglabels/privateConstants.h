@@ -31,7 +31,7 @@ namespace glabels
 	namespace Constants
 	{
 
-		const Distance EPSILON( 0.5, Distance::Units::PT );
+		const Distance EPSILON( 0.5, Units::PT );
 
 	}
 

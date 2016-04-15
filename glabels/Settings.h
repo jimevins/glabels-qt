@@ -60,8 +60,8 @@ signals:
 	// Accessors
 	/////////////////////////////////
 public:
-	static glabels::Distance::Units units();
-	static void setUnits( glabels::Distance::Units units );
+	static glabels::Units units();
+	static void setUnits( const glabels::Units& units );
 
 	static bool searchIsoPaperSizes();
 	static void setSearchIsoPaperSizes( bool searchIsoPaperSizes );

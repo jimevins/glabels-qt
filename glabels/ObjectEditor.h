@@ -60,9 +60,6 @@ private:
 	void loadRectSizePage();
 	void loadShadowPage();
 
-	int spinDigits( glabels::Distance::Units units );
-	double spinStep( glabels::Distance::Units units );
-		
 
 	/////////////////////////////////
 	// Slots
@@ -89,7 +86,7 @@ private:
 	LabelModel*              mModel;
 	LabelModelObject*        mObject;
 	
-	glabels::Distance::Units mUnits;
+	glabels::Units           mUnits;
 	int                      mSpinDigits;
 	double                   mSpinStep;
 	

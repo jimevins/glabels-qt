@@ -1,4 +1,4 @@
-/*  Constants.h
+/*  Units.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,19 +18,52 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef glabels_Constants_h
-#define glabels_Constants_h
+#ifndef glabels_Units_h
+#define glabels_Units_h
+
+
+#include <QCoreApplication>
+#include <QString>
 
 
 namespace glabels
 {
 
-	const double PTS_PER_PT    =  1.0;
-	const double PTS_PER_INCH  = 72.0;
-	const double PTS_PER_MM    =  2.83464566929;
-	const double PTS_PER_CM    =  (10.0*PTS_PER_MM);
-	const double PTS_PER_PICA  =  12.0;
+
+	class Units
+	{
+		Q_DECLARE_TR_FUNCTIONS(Units)
+
+	public:
+		enum Enum { PT, IN, MM, CM, PC };
+
+		Units();
+		Units( Enum enumValue );
+		Units( const QString& idString );
+
+		static Units pt();
+		static Units in();
+		static Units mm();
+		static Units cm();
+		static Units pc();
+
+		Enum toEnum() const;
+		
+		QString toIdString() const;
+		QString toTrName() const;
+
+		double resolution() const;
+		int resolutionDigits() const;
+
+		static bool isIdValid( const QString& unitsId );
+
+		
+	private:
+		Enum mEnumValue;
+
+	};
 
 }
 
-#endif // glabels_Constants_h
+
+#endif // glabels_Units_h

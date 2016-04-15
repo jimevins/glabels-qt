@@ -41,8 +41,8 @@ namespace glabels
 
 		static void init();
 
-		static Distance::Units units();
-		static void setUnits( Distance::Units units );
+		static Units units();
+		static void setUnits( const Units& units );
 
 		static QString  getStringAttr( const QDomElement& node,
 		                               const QString&     name,
@@ -97,7 +97,7 @@ namespace glabels
 		                               const Distance& value );
 
 	private:
-		static Distance::Units mUnits;
+		static Units mUnits;
 
 	};
 

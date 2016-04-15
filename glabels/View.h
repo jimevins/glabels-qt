@@ -119,6 +119,7 @@ protected:
 	void mouseMoveEvent( QMouseEvent* event );
 	void mouseReleaseEvent( QMouseEvent* event );
 	void leaveEvent( QEvent* event );
+	void keyPressEvent( QKeyEvent* event );
 	void paintEvent( QPaintEvent* event );
 
 
@@ -142,6 +143,7 @@ private:
 	// Private slots
 	/////////////////////////////////////
 private slots:
+	void onSettingsChanged();
 	void onModelChanged();
 	void onModelSizeChanged();
 
@@ -180,6 +182,7 @@ private:
 	bool                 mGridVisible;
 
 	double               mGridSpacing;
+	glabels::Distance    mStepSize;
 
 	LabelModel*          mModel;
 

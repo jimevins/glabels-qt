@@ -62,22 +62,22 @@ namespace glabels
 	}
 
 	
-	const QString FrameRound::sizeDescription( Distance::Units units ) const
+	const QString FrameRound::sizeDescription( const Units& units ) const
 	{
-		if ( units == Distance::Units::IN )
+		if ( units.toEnum() == Units::IN )
 		{
 			QString dStr = StrUtil::formatFraction( 2 * mR.in() );
 
 			return QString().sprintf( "%s %s %s",
 						  qPrintable(dStr),
-						  qPrintable(Distance::toTrName(units)),
+						  qPrintable(units.toTrName()),
 						  qPrintable(tr("diameter")) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g %s %s",
 						  2 * mR.inUnits(units),
-						  qPrintable(Distance::toTrName(units)),
+						  qPrintable(units.toTrName()),
 						  qPrintable(tr("diameter")) );
 		}
 	}

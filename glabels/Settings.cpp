@@ -50,30 +50,30 @@ Settings* Settings::instance()
 }
 
 
-glabels::Distance::Units Settings::units()
+glabels::Units Settings::units()
 {
 	// Guess at a suitable default
 	QString defaultIdString;
 	if ( QLocale::system().measurementSystem() == QLocale::ImperialSystem )
 	{
-		defaultIdString = glabels::Distance::toId( glabels::Distance::Units::IN );
+		defaultIdString = glabels::Units(glabels::Units::IN).toIdString();
 	}
 	else
 	{
-		defaultIdString = glabels::Distance::toId( glabels::Distance::Units::MM );
+		defaultIdString = glabels::Units(glabels::Units::MM).toIdString();
 	}
 	
 	mInstance->beginGroup( "Locale" );
 	QString idString = mInstance->value( "units", defaultIdString ).toString();
 	mInstance->endGroup();
 
-	return glabels::Distance::toUnits( idString );
+	return glabels::Units( idString );
 }
 
 
-void Settings::setUnits( glabels::Distance::Units units )
+void Settings::setUnits( const glabels::Units& units )
 {
-	QString idString = glabels::Distance::toId( units );
+	QString idString = units.toIdString();
 
 	mInstance->beginGroup( "Locale" );
 	mInstance->setValue( "units", idString );

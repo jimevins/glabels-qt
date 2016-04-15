@@ -24,7 +24,7 @@
 
 #include <QCoreApplication>
 #include <QString>
-#include "Constants.h"
+#include "Units.h"
 
 
 namespace glabels
@@ -36,16 +36,9 @@ namespace glabels
 		Q_DECLARE_TR_FUNCTIONS(Distance)
 
 	public:
-		enum class Units { PT, IN, MM, CM, PC };
-
-		static QString toId( Units units );
-		static QString toTrName( Units units );
-		static bool isIdValid( const QString& unitsId );
-		static Units toUnits( const QString& unitsId );
-		
-
 		Distance();
-		Distance( double d, Units units = Units::PT );
+		Distance( double d, Units::Enum unitsEnum = Units::PT );
+		Distance( double d, const Units& units );
 		Distance( double d, const QString& unitsId );
 
 		static Distance pt( double dPts );
@@ -61,11 +54,13 @@ namespace glabels
 		double mm() const;
 		double cm() const;
 		double pc() const;
-		double inUnits( Units units ) const;
+		double inUnits( const Units& units ) const;
+		double inUnits( Units::Enum unitsEnum ) const;
 		double inUnits( const QString& unitsId ) const;
 
 
-		QString toString( Units units ) const;
+		QString toString( const Units& units ) const;
+		QString toString( Units::Enum unitsEnum ) const;
 		QString toString( const QString& unitsId ) const;
 
 

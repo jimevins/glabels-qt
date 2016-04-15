@@ -23,6 +23,7 @@
 
 #include "ui_PropertiesView.h"
 
+#include "libglabels/Units.h"
 
 class LabelModel;  // Forward reference
 	
@@ -53,6 +54,7 @@ public:
 	// Slots
 	/////////////////////////////////
 private slots:
+	void onSettingsChanged();
 	void onLabelSizeChanged();
 	void onFormChanged();
 	void onChangeProductButtonClicked();
@@ -62,7 +64,8 @@ private slots:
 	// Private Data
 	/////////////////////////////////
 private:
-	LabelModel*  mModel;
+	LabelModel*    mModel;
+	glabels::Units mUnits;
 
 };
 

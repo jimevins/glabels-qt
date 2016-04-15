@@ -27,12 +27,12 @@
 namespace glabels
 {
 
-	Distance::Units XmlUtil::mUnits;
+	Units XmlUtil::mUnits;
 
 
 	XmlUtil::XmlUtil()
 	{
-		mUnits = Distance::Units::PT;
+		mUnits = Units(Units::PT);
 	}
 
 
@@ -42,7 +42,7 @@ namespace glabels
 	}
 
 
-	Distance::Units XmlUtil::units()
+	Units XmlUtil::units()
 	{
 		init();
 
@@ -50,7 +50,7 @@ namespace glabels
 	}
 
 
-	void XmlUtil::setUnits( Distance::Units units )
+	void XmlUtil::setUnits( const Units& units )
 	{
 		init();
 
@@ -215,7 +215,7 @@ namespace glabels
 
 			valueStream >> value >> unitsString;
 
-			if ( !unitsString.isEmpty() && !Distance::isIdValid( unitsString ) )
+			if ( !unitsString.isEmpty() && !Units::isIdValid( unitsString ) )
 			{
 				qWarning() << "Error: bad length value in attribute "
 					   << node.tagName() << ":" <<  name << "=" << valueString;
@@ -284,7 +284,7 @@ namespace glabels
 	{
 		init();
 
-		node.setAttribute( name, QString::number(value.inUnits(mUnits)) + Distance::toId(mUnits) );
+		node.setAttribute( name, QString::number(value.inUnits(mUnits)) + mUnits.toIdString() );
 	}
 
 }

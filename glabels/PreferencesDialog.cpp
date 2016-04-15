@@ -31,18 +31,18 @@ PreferencesDialog::PreferencesDialog( QWidget *parent )
 {
 	setupUi( this );
 
-	switch ( Settings::units() )
+	switch ( Settings::units().toEnum() )
 	{
-	case glabels::Distance::Units::IN:
+	case glabels::Units::IN:
 		unitsInchesRadio->setChecked( true );
 		break;
-	case glabels::Distance::Units::MM:
+	case glabels::Units::MM:
 		unitsMillimetersRadio->setChecked( true );
 		break;
-	case glabels::Distance::Units::CM:
+	case glabels::Units::CM:
 		unitsCentimetersRadio->setChecked( true );
 		break;
-	case glabels::Distance::Units::PC:
+	case glabels::Units::PC:
 		unitsPicasRadio->setChecked( true );
 		break;
 	default:
@@ -59,22 +59,22 @@ void PreferencesDialog::onUnitsRadiosChanged()
 {
 	if ( unitsInchesRadio->isChecked() )
 	{
-		Settings::setUnits( glabels::Distance::Units::IN );
+		Settings::setUnits( glabels::Units::in() );
 	}
 	else if ( unitsMillimetersRadio->isChecked() )
 	{
-		Settings::setUnits( glabels::Distance::Units::MM );
+		Settings::setUnits( glabels::Units::mm() );
 	}
 	else if ( unitsCentimetersRadio->isChecked() )
 	{
-		Settings::setUnits( glabels::Distance::Units::CM );
+		Settings::setUnits( glabels::Units::cm() );
 	}
 	else if ( unitsPicasRadio->isChecked() )
 	{
-		Settings::setUnits( glabels::Distance::Units::PC );
+		Settings::setUnits( glabels::Units::pc() );
 	}
 	else
 	{
-		Settings::setUnits( glabels::Distance::Units::PT );
+		Settings::setUnits( glabels::Units::pt() );
 	}
 }

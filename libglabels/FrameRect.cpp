@@ -66,9 +66,9 @@ namespace glabels
 	}
 
 
-	const QString FrameRect::sizeDescription( Distance::Units units ) const
+	const QString FrameRect::sizeDescription( const Units& units ) const
 	{
-		if ( units == Distance::Units::IN )
+		if ( units.toEnum() == Units::IN )
 		{
 			QString wStr = StrUtil::formatFraction( mW.in() );
 			QString hStr = StrUtil::formatFraction( mH.in() );
@@ -76,14 +76,14 @@ namespace glabels
 			return QString().sprintf( "%s x %s %s",
 						  qPrintable(wStr),
 						  qPrintable(hStr),
-						  qPrintable(Distance::toTrName(units)) );
+						  qPrintable(units.toTrName()) );
 		}
 		else
 		{
 			return QString().sprintf( "%.5g x %.5g %s",
 						  mW.inUnits(units),
 						  mH.inUnits(units),
-						  qPrintable(Distance::toTrName(units)) );
+						  qPrintable(units.toTrName()) );
 		}
 	}
 

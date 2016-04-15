@@ -21,6 +21,7 @@
 #include "PropertiesView.h"
 
 #include "LabelModel.h"
+#include "Settings.h"
 
 #include "libglabels/Db.h"
 #include "SelectProductDialog.h"
@@ -37,6 +38,9 @@ PropertiesView::PropertiesView( QWidget *parent )
 
 	similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
 	similarBrowser->viewport()->setAutoFillBackground(false);
+
+	connect( Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
+	onSettingsChanged();
 }
 
 
@@ -58,6 +62,19 @@ void PropertiesView::setModel( LabelModel* model )
 	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 
 	onLabelSizeChanged();
+}
+
+
+///
+/// Settings changed handler
+///
+void PropertiesView::onSettingsChanged()
+{
+	mUnits = Settings::units();
+	if (mModel)
+	{
+		onLabelSizeChanged();
+	}
 }
 
 
@@ -99,7 +116,7 @@ void PropertiesView::onLabelSizeChanged()
 	QString pgSizeString = glabels::Db::lookupPaperNameFromId( tmplate->paperId() );
 	pageSizeLabel->setText( pgSizeString );
 
-	QString labelSizeString = frame->sizeDescription( glabels::Distance::Units::IN );
+	QString labelSizeString = frame->sizeDescription( mUnits );
 	labelSizeLabel->setText( labelSizeString );
 
 	QString layoutString = frame->layoutDescription();

@@ -62,7 +62,7 @@ namespace glabels
 		virtual Distance w() const = 0;
 		virtual Distance h() const = 0;
 
-		virtual const QString sizeDescription( Distance::Units units ) const = 0;
+		virtual const QString sizeDescription( const Units& units ) const = 0;
 		virtual bool isSimilarTo( Frame* other ) const = 0;
 
 		virtual const QPainterPath& path() const = 0;

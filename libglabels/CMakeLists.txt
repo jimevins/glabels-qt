@@ -26,6 +26,7 @@ set (libglabels_sources
   XmlTemplateCreator.cpp
   XmlUtil.cpp
   MiniPreviewPixmap.cpp
+  Units.cpp
   Distance.cpp
 )
 

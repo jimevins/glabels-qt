@@ -97,11 +97,11 @@ void ObjectEditor::loadPositionPage()
 			
 		posXSpin->setDecimals( mSpinDigits );
 		posXSpin->setSingleStep( mSpinStep );
-		posXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+		posXSpin->setSuffix( " " + mUnits.toIdString() );
 
 		posYSpin->setDecimals( mSpinDigits );
 		posYSpin->setSingleStep( mSpinStep );
-		posYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+		posYSpin->setSuffix( " " + mUnits.toIdString() );
 
 		posXSpin->setValue( mObject->x0().inUnits(mUnits) );
 		posYSpin->setValue( mObject->y0().inUnits(mUnits) );
@@ -119,11 +119,11 @@ void ObjectEditor::loadRectSizePage()
 			
 		sizeWSpin->setDecimals( mSpinDigits );
 		sizeWSpin->setSingleStep( mSpinStep );
-		sizeWSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+		sizeWSpin->setSuffix( " " + mUnits.toIdString() );
 
 		sizeHSpin->setDecimals( mSpinDigits );
 		sizeHSpin->setSingleStep( mSpinStep );
-		sizeHSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+		sizeHSpin->setSuffix( " " + mUnits.toIdString() );
 
 		sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 		sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
@@ -141,11 +141,11 @@ void ObjectEditor::loadShadowPage()
 			
 		shadowXSpin->setDecimals( mSpinDigits );
 		shadowXSpin->setSingleStep( mSpinStep );
-		shadowXSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+		shadowXSpin->setSuffix( " " + mUnits.toIdString() );
 
 		shadowYSpin->setDecimals( mSpinDigits );
 		shadowYSpin->setSingleStep( mSpinStep );
-		shadowYSpin->setSuffix( " " + glabels::Distance::toId(mUnits) );
+		shadowYSpin->setSuffix( " " + mUnits.toIdString() );
 
 		shadowEnableCheck->setChecked( mObject->shadow() );
 		shadowXSpin->setValue( mObject->shadowX().inUnits(mUnits) );
@@ -158,65 +158,11 @@ void ObjectEditor::loadShadowPage()
 }
 
 
-int ObjectEditor::spinDigits( glabels::Distance::Units units )
-{
-	int digits;
-		
-	switch (units)
-	{
-	case glabels::Distance::Units::PT:
-		digits = 2;
-		break;
-	case glabels::Distance::Units::IN:
-		digits = 3;
-		break;
-	case glabels::Distance::Units::MM:
-		digits = 2;
-		break;
-	case glabels::Distance::Units::CM:
-		digits = 3;
-		break;
-	case glabels::Distance::Units::PC:
-		digits = 2;
-		break;
-	}
-
-	return digits;
-}
-
-
-double ObjectEditor::spinStep( glabels::Distance::Units units )
-{
-	double step;
-		
-	switch (units)
-	{
-	case glabels::Distance::Units::PT:
-		step = 0.01;
-		break;
-	case glabels::Distance::Units::IN:
-		step = 0.001;
-		break;
-	case glabels::Distance::Units::MM:
-		step = 0.01;
-		break;
-	case glabels::Distance::Units::CM:
-		step = 0.001;
-		break;
-	case glabels::Distance::Units::PC:
-		step = 0.01;
-		break;
-	}
-
-	return step;
-}
-
-
 void ObjectEditor::onSettingsChanged()
 {
 	mUnits = Settings::units();
-	mSpinDigits = spinDigits( mUnits );
-	mSpinStep = spinStep( mUnits );
+	mSpinDigits = mUnits.resolutionDigits();
+	mSpinStep = mUnits.resolution();
 
 	/* Must now update limits and reload any active pages with appropriate units . */
 	onLabelSizeChanged();
