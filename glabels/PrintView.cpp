@@ -72,6 +72,17 @@ void PrintView::setModel( LabelModel* model )
 ///
 void PrintView::onLabelSizeChanged()
 {
+	int nLabelsPerPage = mModel->frame()->nLabels();
+	copiesFromSpin->setRange( 1, nLabelsPerPage );
+	copiesToSpin->setRange( copiesFromSpin->value(), nLabelsPerPage );
+	if ( copiesSheetsRadio->isChecked() )
+	{
+		mRenderer.setNLabels( copiesSheetsSpin->value()*nLabelsPerPage );
+		mRenderer.setStartLabel( 0 );
+		copiesFromSpin->setValue( 1 );
+		copiesToSpin->setValue( nLabelsPerPage );
+	}
+
 	preview->setModel( mModel );
 	mRenderer.setModel( mModel );
 }
