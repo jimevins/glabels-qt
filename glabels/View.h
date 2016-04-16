@@ -144,7 +144,6 @@ private:
 	/////////////////////////////////////
 private slots:
 	void onSettingsChanged();
-	void onModelChanged();
 	void onModelSizeChanged();
 
 

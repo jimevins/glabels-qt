@@ -137,7 +137,7 @@ View::setModel( LabelModel* model )
 
 		connect( model, SIGNAL(changed()), this, SLOT(update()) );
 		connect( model, SIGNAL(selectionChanged()), this, SLOT(update()) );
-		connect( model, SIGNAL(sizeChanged()), this, SLOT(update()) );
+		connect( model, SIGNAL(sizeChanged()), this, SLOT(onModelSizeChanged()) );
 
 		update();
 	}
@@ -1153,16 +1153,40 @@ void View::onSettingsChanged()
 
 
 ///
-/// Model changed handler
-///
-void View::onModelChanged()
-{
-}
-
-
-///
 /// Model size changed handler
 ///
 void View::onModelSizeChanged()
 {
+	using std::min;
+	using std::max;
+
+	if (mZoomToFitFlag)
+	{
+		double wPixels = mScrollArea->maximumViewportSize().width();
+		double hPixels = mScrollArea->maximumViewportSize().height();
+	
+		double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w().pt();
+		double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h().pt();
+		double newZoom = min( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
+
+		// Limits
+		newZoom = min( newZoom, zoomLevels[0] );
+		newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
+
+		mZoom = newZoom;
+	}
+
+	/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
+	mScale = mZoom * physicalDpiX() / PTS_PER_INCH;
+
+	setMinimumSize( mScale*mModel->w().pt() + ZOOM_TO_FIT_PAD,
+			mScale*mModel->h().pt() + ZOOM_TO_FIT_PAD );
+
+	/* Adjust origin to center label in widget. */
+	mX0 = (width()/mScale - mModel->w()) / 2;
+	mY0 = (height()/mScale - mModel->h()) / 2;
+
+	update();
+
+	emit zoomChanged();
 }
