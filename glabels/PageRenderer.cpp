@@ -234,8 +234,8 @@ void PageRenderer::printLabel( QPainter* painter, MergeRecord* record ) const
 
 	if ( mModel->rotate() )
 	{
-		painter->rotate( 90.0 );
-		painter->translate( 0, mModel->h().pt() );
+		painter->rotate( -90.0 );
+		painter->translate( -mModel->w().pt(), 0 );
 	}
 
 	if ( mPrintReverse )

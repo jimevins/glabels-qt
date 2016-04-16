@@ -229,7 +229,7 @@ void SimplePreview::drawArrow()
 	arrowItem->setPos( (x0+w/2).pt(), (y0+h/2).pt() );
 	if ( mRotateFlag )
 	{
-		arrowItem->setRotation( 90 );
+		arrowItem->setRotation( -90 );
 	}
 
 	QGraphicsSimpleTextItem *upItem = new QGraphicsSimpleTextItem( tr("Up") );
@@ -239,8 +239,8 @@ void SimplePreview::drawArrow()
 	QRectF rect = upItem->boundingRect();
 	if ( mRotateFlag )
 	{
-		upItem->setPos( upItem->x()-min.pt()/8, upItem->y()-rect.width()/2 );
-		upItem->setRotation( 90 );
+		upItem->setPos( upItem->x()+min.pt()/8, upItem->y()+rect.width()/2 );
+		upItem->setRotation( -90 );
 	}
 	else
 	{
