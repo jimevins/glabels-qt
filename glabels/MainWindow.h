@@ -35,9 +35,9 @@ class QScrollArea;
 // Forward References
 class LabelModel;
 class PropertiesView;
-class View;
+class LabelEditor;
 class ObjectEditor;
-class MergePropertyEditor;
+class MergeView;
 class PrintView;
 
 
@@ -200,10 +200,10 @@ private:
 	QTabWidget*          mNotebook;
 	LabelModel*          mModel;
 	PropertiesView*      mPropertiesView;
-	QScrollArea*         mViewScrollArea;
-	View*                mView;
+	QScrollArea*         mLabelEditorScrollArea;
+	LabelEditor*         mLabelEditor;
 	ObjectEditor*        mObjectEditor;
-	MergePropertyEditor* mMergePropertyEditor;
+	MergeView*           mMergeView;
 	PrintView*           mPrintView;
 
 	QLabel*   zoomInfoLabel;

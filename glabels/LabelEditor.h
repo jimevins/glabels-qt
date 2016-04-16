@@ -1,4 +1,4 @@
-/*  View.h
+/*  LabelEditor.h
  *
  *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef View_h
-#define View_h
+#ifndef LabelEditor_h
+#define LabelEditor_h
 
 #include <QWidget>
 #include <QScrollArea>
@@ -35,9 +35,9 @@ class Handle;
 
 
 ///
-/// View Widget
+/// LabelEditor Widget
 ///
-class View : public QWidget
+class LabelEditor : public QWidget
 {
 	Q_OBJECT
 
@@ -45,7 +45,7 @@ class View : public QWidget
 	// Lifecycle
 	/////////////////////////////////////
 public:
-	View( QScrollArea* scrollArea, QWidget* parent = 0 );
+	LabelEditor( QScrollArea* scrollArea, QWidget* parent = 0 );
 
 
 	/////////////////////////////////////
@@ -210,4 +210,4 @@ private:
 };
 
 
-#endif // View_h
+#endif // LabelEditor_h

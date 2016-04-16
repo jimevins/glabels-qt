@@ -35,9 +35,9 @@
 #include "libglabels/Db.h"
 #include "PreferencesDialog.h"
 #include "PropertiesView.h"
-#include "View.h"
+#include "LabelEditor.h"
 #include "ObjectEditor.h"
-#include "MergePropertyEditor.h"
+#include "MergeView.h"
 #include "PrintView.h"
 #include "LabelModel.h"
 #include "LabelModelBoxObject.h"
@@ -82,11 +82,11 @@ MainWindow::MainWindow()
 	setPasteVerbsEnabled( false );
 	setTitle();
 
-	connect( mView, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
+	connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
 #if 0
-	connect( mView, SIGNAL(pointerMoved(double, double)),
+	connect( mLabelEditor, SIGNAL(pointerMoved(double, double)),
 		 this, SLOT(onPointerMoved(double, double)) );
-	connect( mView, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
+	connect( mLabelEditor, SIGNAL(pointerExited()), this, SLOT(onPointerExit()) );
 #endif
 
 	readSettings();
@@ -120,7 +120,7 @@ void MainWindow::setModel( LabelModel *label )
 {
 	mModel = label;
 	mPropertiesView->setModel( mModel );
-	mView->setModel( mModel );
+	mLabelEditor->setModel( mModel );
 	mObjectEditor->setModel( mModel );
 	mPrintView->setModel( mModel );
 
@@ -130,7 +130,7 @@ void MainWindow::setModel( LabelModel *label )
 	setMultiSelectionVerbsEnabled( false );
 	setTitle();
 
-	connect( mView, SIGNAL(contextMenuActivate()), this, SLOT(onContextMenuActivate()) );
+	connect( mLabelEditor, SIGNAL(contextMenuActivate()), this, SLOT(onContextMenuActivate()) );
 	connect( mModel, SIGNAL(nameChanged()), this, SLOT(onNameChanged()) );
 	connect( mModel, SIGNAL(modifiedChanged()), this, SLOT(onModifiedChanged()) );
 	connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
@@ -627,18 +627,18 @@ QWidget* MainWindow::createEditorPage()
 {
 	QWidget* page = new QWidget;
 
-	mViewScrollArea = new QScrollArea();
-	mViewScrollArea->setMinimumSize( 640, 450 );
-	mViewScrollArea->setWidgetResizable( true );
+	mLabelEditorScrollArea = new QScrollArea();
+	mLabelEditorScrollArea->setMinimumSize( 640, 450 );
+	mLabelEditorScrollArea->setWidgetResizable( true );
 
-	mView = new View( mViewScrollArea );
+	mLabelEditor = new LabelEditor( mLabelEditorScrollArea );
 	mObjectEditor = new ObjectEditor();
 
-	mViewScrollArea->setWidget( mView );
+	mLabelEditorScrollArea->setWidget( mLabelEditor );
 
 	QVBoxLayout* editorVLayout = new QVBoxLayout;
 	editorVLayout->addWidget( editorToolBar );
-	editorVLayout->addWidget( mViewScrollArea );
+	editorVLayout->addWidget( mLabelEditorScrollArea );
 
 	QHBoxLayout* editorHLayout = new QHBoxLayout;
 	editorHLayout->addLayout( editorVLayout );
@@ -655,9 +655,9 @@ QWidget* MainWindow::createEditorPage()
 ///
 QWidget* MainWindow::createMergePage()
 {
-	mMergePropertyEditor = new MergePropertyEditor();
+	mMergeView = new MergeView();
 
-	return mMergePropertyEditor;
+	return mMergeView;
 }
 
 
@@ -823,8 +823,8 @@ void MainWindow::readSettings()
 
 	fileToolBar   ->setVisible(       showFileToolBar );
 	editorToolBar ->setVisible(       showEditorToolBar );
-	mView         ->setGridVisible(   showGrid );
-	mView         ->setMarkupVisible( showMarkup );
+	mLabelEditor  ->setGridVisible(   showGrid );
+	mLabelEditor  ->setMarkupVisible( showMarkup );
 }
 
 
@@ -1012,7 +1012,7 @@ void MainWindow::viewEditorToolBar( bool state )
 ///
 void MainWindow::viewGrid( bool state )
 {
-	mView->setGridVisible( state );
+	mLabelEditor->setGridVisible( state );
 }
 
 
@@ -1021,7 +1021,7 @@ void MainWindow::viewGrid( bool state )
 ///
 void MainWindow::viewMarkup( bool state )
 {
-	mView->setMarkupVisible( state );
+	mLabelEditor->setMarkupVisible( state );
 }
 
 
@@ -1030,7 +1030,7 @@ void MainWindow::viewMarkup( bool state )
 ///
 void MainWindow::viewZoomIn()
 {
-	mView->zoomIn();
+	mLabelEditor->zoomIn();
 }
 
 
@@ -1039,7 +1039,7 @@ void MainWindow::viewZoomIn()
 ///
 void MainWindow::viewZoomOut()
 {
-	mView->zoomOut();
+	mLabelEditor->zoomOut();
 }
 
 
@@ -1048,7 +1048,7 @@ void MainWindow::viewZoomOut()
 ///
 void MainWindow::viewZoom1To1()
 {
-	mView->zoom1To1();
+	mLabelEditor->zoom1To1();
 }
 
 
@@ -1057,7 +1057,7 @@ void MainWindow::viewZoom1To1()
 ///
 void MainWindow::viewZoomToFit()
 {
-	mView->zoomToFit();
+	mLabelEditor->zoomToFit();
 }
 
 
@@ -1066,7 +1066,7 @@ void MainWindow::viewZoomToFit()
 ///
 void MainWindow::objectsArrowMode()
 {
-	mView->arrowMode();
+	mLabelEditor->arrowMode();
 }
 
 
@@ -1084,7 +1084,7 @@ void MainWindow::objectsCreateText()
 ///
 void MainWindow::objectsCreateBox()
 {
-	mView->createBoxMode();
+	mLabelEditor->createBoxMode();
 }
 
 
@@ -1289,10 +1289,10 @@ void MainWindow::onContextMenuActivate()
 ///
 void MainWindow::onZoomChanged()
 {
-	zoomInfoLabel->setText( QString( " %1% " ).arg(100*mView->zoom(), 0, 'f', 0) );
+	zoomInfoLabel->setText( QString( " %1% " ).arg(100*mLabelEditor->zoom(), 0, 'f', 0) );
 
-	viewZoomInAction->setEnabled( !mView->isZoomMax() );
-	viewZoomOutAction->setEnabled( !mView->isZoomMin() );
+	viewZoomInAction->setEnabled( !mLabelEditor->isZoomMax() );
+	viewZoomOutAction->setEnabled( !mLabelEditor->isZoomMin() );
 }
 
 

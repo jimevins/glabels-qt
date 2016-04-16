@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MergePropertyEditor</class>
+ <class>MergeView</class>
  <widget class="QWidget" name="MergePropertyEditor">
   <property name="geometry">
    <rect>

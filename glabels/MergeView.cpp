@@ -1,6 +1,6 @@
-/*  MergePropertyEditor.cpp
+/*  MergeView.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "MergePropertyEditor.h"
+#include "MergeView.h"
 
 #include "LabelModel.h"
 #include <QtDebug>
@@ -27,7 +27,7 @@
 ///
 /// Constructor
 ///
-MergePropertyEditor::MergePropertyEditor( QWidget *parent )
+MergeView::MergeView( QWidget *parent )
 	: QWidget(parent), mModel(0)
 {
 	setupUi( this );
@@ -37,7 +37,7 @@ MergePropertyEditor::MergePropertyEditor( QWidget *parent )
 ///
 /// Destructor
 ///
-MergePropertyEditor::~MergePropertyEditor()
+MergeView::~MergeView()
 {
 }
 
@@ -45,7 +45,7 @@ MergePropertyEditor::~MergePropertyEditor()
 ///
 /// Set Model
 ///
-void MergePropertyEditor::setModel( LabelModel* model )
+void MergeView::setModel( LabelModel* model )
 {
 	mModel = model;
 
@@ -56,6 +56,6 @@ void MergePropertyEditor::setModel( LabelModel* model )
 ///
 /// Label changed handler
 ///
-void MergePropertyEditor::onLabelChanged()
+void MergeView::onLabelChanged()
 {
 }

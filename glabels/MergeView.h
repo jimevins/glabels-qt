@@ -1,6 +1,6 @@
-/*  MergePropertyEditor.h
+/*  MergeView.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,10 +18,10 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergePropertyEditor_h
-#define MergePropertyEditor_h
+#ifndef MergeView_h
+#define MergeView_h
 
-#include "ui_MergePropertyEditor.h"
+#include "ui_MergeView.h"
 
 
 class LabelModel;  // Forward reference
@@ -30,7 +30,7 @@ class LabelModel;  // Forward reference
 ///
 /// Merge Property Editor Widget
 ///
-class MergePropertyEditor : public QWidget, public Ui_MergePropertyEditor
+class MergeView : public QWidget, public Ui_MergeView
 {
 	Q_OBJECT
 
@@ -39,8 +39,8 @@ class MergePropertyEditor : public QWidget, public Ui_MergePropertyEditor
 	// Life Cycle
 	/////////////////////////////////
 public:
-	MergePropertyEditor( QWidget *parent = 0 );
-	~MergePropertyEditor();
+	MergeView( QWidget *parent = 0 );
+	~MergeView();
 
 
 	/////////////////////////////////
@@ -65,4 +65,4 @@ private:
 };
 
 
-#endif // MergePropertyEditor_h
+#endif // MergeView_h

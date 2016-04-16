@@ -1,4 +1,4 @@
-/*  View.cpp
+/*  LabelEditor.cpp
  *
  *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "View.h"
+#include "LabelEditor.h"
 
 #include <algorithm>
 #include <cmath>
@@ -75,7 +75,7 @@ namespace
 ///
 /// Constructor
 ///
-View::View( QScrollArea* scrollArea, QWidget* parent )
+LabelEditor::LabelEditor( QScrollArea* scrollArea, QWidget* parent )
 	: QWidget(parent), mScrollArea(scrollArea)
 {
 	mState = IdleState;
@@ -97,7 +97,7 @@ View::View( QScrollArea* scrollArea, QWidget* parent )
 /// Zoom property
 ///
 double
-View::zoom() const
+LabelEditor::zoom() const
 {
 	return mZoom;
 }
@@ -107,7 +107,7 @@ View::zoom() const
 /// Markup visible? property
 ///
 bool
-View::markupVisible() const
+LabelEditor::markupVisible() const
 {
 	return mMarkupVisible;
 }
@@ -117,7 +117,7 @@ View::markupVisible() const
 /// Grid visible? property
 ///
 bool
-View::qridVisible() const
+LabelEditor::qridVisible() const
 {
 	return mGridVisible;
 }
@@ -127,7 +127,7 @@ View::qridVisible() const
 /// Model Parameter Setter
 ///
 void
-View::setModel( LabelModel* model )
+LabelEditor::setModel( LabelModel* model )
 {
 	mModel = model;
 
@@ -148,7 +148,7 @@ View::setModel( LabelModel* model )
 /// Grid Visibility Parameter Setter
 ///
 void
-View::setGridVisible( bool visibleFlag )
+LabelEditor::setGridVisible( bool visibleFlag )
 {
 	mGridVisible = visibleFlag;
 	update();
@@ -159,7 +159,7 @@ View::setGridVisible( bool visibleFlag )
 /// Markup Visibility Parameter Setter
 ///
 void
-View::setMarkupVisible( bool visibleFlag )
+LabelEditor::setMarkupVisible( bool visibleFlag )
 {
 	mMarkupVisible = visibleFlag;
 	update();
@@ -170,7 +170,7 @@ View::setMarkupVisible( bool visibleFlag )
 /// Zoom In "One Notch"
 ///
 void
-View::zoomIn()
+LabelEditor::zoomIn()
 {
 	// Find closest standard zoom level to our current zoom
 	// Start with 2nd largest scale
@@ -196,7 +196,7 @@ View::zoomIn()
 /// Zoom Out "One Notch"
 ///
 void
-View::zoomOut()
+LabelEditor::zoomOut()
 {
 	// Find closest standard zoom level to our current zoom
 	// Start with largest scale, end on 2nd smallest
@@ -222,7 +222,7 @@ View::zoomOut()
 /// Zoom To 1:1 Scale
 ///
 void
-View::zoom1To1()
+LabelEditor::zoom1To1()
 {
 	setZoomReal( 1.0, false );
 }
@@ -232,7 +232,7 @@ View::zoom1To1()
 /// Zoom To Fit
 ///
 void
-View::zoomToFit()
+LabelEditor::zoomToFit()
 {
 	using std::min;
 	using std::max;
@@ -256,7 +256,7 @@ View::zoomToFit()
 /// Is Zoom at Maximum?
 ///
 bool
-View::isZoomMax() const
+LabelEditor::isZoomMax() const
 {
 	return ( mZoom >= zoomLevels[0] );
 }
@@ -266,7 +266,7 @@ View::isZoomMax() const
 /// Is Zoom at Minimum?
 ///
 bool
-View::isZoomMin() const
+LabelEditor::isZoomMin() const
 {
 	return ( mZoom <= zoomLevels[nZoomLevels-1] );
 }
@@ -276,7 +276,7 @@ View::isZoomMin() const
 /// Set Zoom to Value
 ///
 void
-View::setZoomReal( double zoom, bool zoomToFitFlag )
+LabelEditor::setZoomReal( double zoom, bool zoomToFitFlag )
 {
 	mZoom          = zoom;
 	mZoomToFitFlag = zoomToFitFlag;
@@ -301,7 +301,7 @@ View::setZoomReal( double zoom, bool zoomToFitFlag )
 /// Arrow mode (normal mode)
 ///
 void
-View::arrowMode()
+LabelEditor::arrowMode()
 {
 	setCursor( Qt::ArrowCursor );
 
@@ -313,7 +313,7 @@ View::arrowMode()
 /// Create box mode
 ///
 void
-View::createBoxMode()
+LabelEditor::createBoxMode()
 {
 	setCursor( Cursors::Box() );
 
@@ -326,7 +326,7 @@ View::createBoxMode()
 /// Resize Event Handler
 ///
 void
-View::resizeEvent( QResizeEvent *event )
+LabelEditor::resizeEvent( QResizeEvent *event )
 {
 	if ( mModel )
 	{
@@ -350,7 +350,7 @@ View::resizeEvent( QResizeEvent *event )
 /// Mouse Button Press Event Handler
 ///
 void
-View::mousePressEvent( QMouseEvent* event )
+LabelEditor::mousePressEvent( QMouseEvent* event )
 {
 	if ( mModel )
 	{
@@ -470,7 +470,7 @@ View::mousePressEvent( QMouseEvent* event )
 					// mCreateObject = new LabelModelBarcodeObject();
 					break;
 				default:
-					qDebug() << "View::mousePressEvent: Invalid creation type. Should not happen!";
+					qDebug() << "LabelEditor::mousePressEvent: Invalid creation type. Should not happen!";
 					break;
 				}
 
@@ -491,7 +491,7 @@ View::mousePressEvent( QMouseEvent* event )
 				
 			default:
 			{
-				qDebug() << "View::mousePressEvent: Invalid state. Should not happen!";
+				qDebug() << "LabelEditor::mousePressEvent: Invalid state. Should not happen!";
 			}
 			break;
 
@@ -516,7 +516,7 @@ View::mousePressEvent( QMouseEvent* event )
 /// Mouse Movement Event Handler
 ///
 void
-View::mouseMoveEvent( QMouseEvent* event )
+LabelEditor::mouseMoveEvent( QMouseEvent* event )
 {
 	using std::min;
 	using std::max;
@@ -602,13 +602,13 @@ View::mouseMoveEvent( QMouseEvent* event )
 				mCreateObject->setSize( xWorld - mCreateX0, yWorld - mCreateY0 );
 				break;
 			default:
-				qDebug() << "View::mouseMoveEvent: Invalid creation mode. Should not happen!";
+				qDebug() << "LabelEditor::mouseMoveEvent: Invalid creation mode. Should not happen!";
 				break;
 			}
 			break;
 
 		default:
-			qDebug() << "View::mouseMoveEvent: Invalid state. Should not happen!";
+			qDebug() << "LabelEditor::mouseMoveEvent: Invalid state. Should not happen!";
 			break;
 
 		}
@@ -620,7 +620,7 @@ View::mouseMoveEvent( QMouseEvent* event )
 /// Mouse Button Release Event Handler
 ///
 void
-View::mouseReleaseEvent( QMouseEvent* event )
+LabelEditor::mouseReleaseEvent( QMouseEvent* event )
 {
 	if ( mModel )
 	{
@@ -696,7 +696,7 @@ View::mouseReleaseEvent( QMouseEvent* event )
 /// Leave Event Handler
 ///
 void
-View::leaveEvent( QEvent* event )
+LabelEditor::leaveEvent( QEvent* event )
 {
 	if ( mModel )
 	{
@@ -709,7 +709,7 @@ View::leaveEvent( QEvent* event )
 /// Handle resize motion
 ///
 void
-View::handleResizeMotion( const glabels::Distance& xWorld,
+LabelEditor::handleResizeMotion( const glabels::Distance& xWorld,
 			  const glabels::Distance& yWorld )
 {
 	QPointF p( xWorld.pt(), yWorld.pt() );
@@ -786,7 +786,7 @@ View::handleResizeMotion( const glabels::Distance& xWorld,
 		y0 = y0 + y1;
 		break;
 	default:
-		qDebug() << "View::handleResizeMotion: Invalid Handle Location. Should not happen!";
+		qDebug() << "LabelEditor::handleResizeMotion: Invalid Handle Location. Should not happen!";
 	}
 
 	/*
@@ -859,7 +859,7 @@ View::handleResizeMotion( const glabels::Distance& xWorld,
 ///
 /// Key Press Event Handler
 void
-View::keyPressEvent( QKeyEvent* event )
+LabelEditor::keyPressEvent( QKeyEvent* event )
 {
 	if ( mState == IdleState )
 	{
@@ -904,7 +904,7 @@ View::keyPressEvent( QKeyEvent* event )
 /// Paint Event Handler
 ///
 void
-View::paintEvent( QPaintEvent* event )
+LabelEditor::paintEvent( QPaintEvent* event )
 {
 	if ( mModel )
 	{
@@ -939,7 +939,7 @@ View::paintEvent( QPaintEvent* event )
 /// Draw Background Layer
 ///
 void
-View::drawBgLayer( QPainter* painter )
+LabelEditor::drawBgLayer( QPainter* painter )
 {
 	/*
 	 * Draw shadow
@@ -984,7 +984,7 @@ View::drawBgLayer( QPainter* painter )
 /// Draw Grid Layer
 ///
 void
-View::drawGridLayer( QPainter* painter )
+LabelEditor::drawGridLayer( QPainter* painter )
 {
 	if ( mGridVisible )
 	{
@@ -1036,7 +1036,7 @@ View::drawGridLayer( QPainter* painter )
 /// Draw Markup Layer
 ///
 void
-View::drawMarkupLayer( QPainter* painter )
+LabelEditor::drawMarkupLayer( QPainter* painter )
 {
 	if ( mMarkupVisible )
 	{
@@ -1065,7 +1065,7 @@ View::drawMarkupLayer( QPainter* painter )
 /// Draw Objects Layer
 ///
 void
-View::drawObjectsLayer( QPainter* painter )
+LabelEditor::drawObjectsLayer( QPainter* painter )
 {
 	mModel->draw( painter );
 }
@@ -1075,7 +1075,7 @@ View::drawObjectsLayer( QPainter* painter )
 /// Draw Foreground Layer
 ///
 void
-View::drawFgLayer( QPainter* painter )
+LabelEditor::drawFgLayer( QPainter* painter )
 {
 	/*
 	 * Draw label outline
@@ -1102,7 +1102,7 @@ View::drawFgLayer( QPainter* painter )
 /// Draw Highlight Layer
 ///
 void
-View::drawHighlightLayer( QPainter* painter )
+LabelEditor::drawHighlightLayer( QPainter* painter )
 {
 	painter->save();
 
@@ -1122,7 +1122,7 @@ View::drawHighlightLayer( QPainter* painter )
 /// Draw Select Region Layer
 ///
 void
-View::drawSelectRegionLayer( QPainter* painter )
+LabelEditor::drawSelectRegionLayer( QPainter* painter )
 {
 	if ( mSelectRegionVisible )
 	{
@@ -1144,7 +1144,7 @@ View::drawSelectRegionLayer( QPainter* painter )
 ///
 /// Settings changed handler
 ///
-void View::onSettingsChanged()
+void LabelEditor::onSettingsChanged()
 {
 	glabels::Units units = Settings::units();
 	
@@ -1155,7 +1155,7 @@ void View::onSettingsChanged()
 ///
 /// Model size changed handler
 ///
-void View::onModelSizeChanged()
+void LabelEditor::onModelSizeChanged()
 {
 	using std::min;
 	using std::max;

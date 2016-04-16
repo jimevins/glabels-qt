@@ -25,6 +25,7 @@ set (glabels_sources
   FileUtil.cpp
   Handles.cpp
   Help.cpp
+  LabelEditor.cpp
   LabelModel.cpp
   LabelModelObject.cpp
   LabelModelBoxObject.cpp
@@ -33,7 +34,7 @@ set (glabels_sources
   MainWindow.cpp
   Merge.cpp
   MergeField.cpp
-  MergePropertyEditor.cpp
+  MergeView.cpp
   MergeRecord.cpp
   ObjectEditor.cpp
   Outline.cpp
@@ -50,7 +51,6 @@ set (glabels_sources
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
-  View.cpp
   XmlLabelCreator.cpp
   XmlLabelParser.cpp
 )
@@ -69,13 +69,14 @@ set (glabels_qobject_headers
   FieldMenu.h
   FieldMenuItem.h
   File.h
+  LabelEditor.h
   LabelModel.h
   LabelModelObject.h
   LabelModelBoxObject.h
   LabelModelShapeObject.h
   MainWindow.h
   Merge.h
-  MergePropertyEditor.h
+  MergeView.h
   ObjectEditor.h
   PreferencesDialog.h
   PrintView.h
@@ -86,12 +87,11 @@ set (glabels_qobject_headers
   SimplePreview.h
   StartupWizard.h
   TemplatePicker.h
-  View.h
 )
 
 set (glabels_forms
   ui/AboutDialog.ui
-  ui/MergePropertyEditor.ui
+  ui/MergeView.ui
   ui/ObjectEditor.ui
   ui/PreferencesDialog.ui
   ui/PrintView.ui
