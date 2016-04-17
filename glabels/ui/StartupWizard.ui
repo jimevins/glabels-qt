@@ -58,6 +58,16 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Welcome to gLabels.  Let's get started:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QCommandLinkButton" name="newProjectButton">
        <property name="minimumSize">
         <size>
