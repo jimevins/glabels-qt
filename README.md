@@ -1,4 +1,4 @@
-qtLabels
-========
+gLabels-qt
+==========
 
-Qt/C++ Port of glabels
+Qt/C++ Port of glabels.
