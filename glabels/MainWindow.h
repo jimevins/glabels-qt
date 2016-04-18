@@ -29,6 +29,9 @@ class QMenuBar;
 class QMenu;
 class QToolBar;
 class QLabel;
+class QListWidget;
+class QListWidgetItem;
+class QStackedWidget;
 class QScrollArea;
 
 
@@ -79,6 +82,8 @@ protected:
 	// Slots
 	/////////////////////////////////////
 private slots:
+	void changePage(QListWidgetItem *current, QListWidgetItem *previous);
+
 	void fileNew();
 	void fileOpen();
 	void fileSave();
@@ -197,7 +202,8 @@ private:
 	QToolBar* fileToolBar;
 	QToolBar* editorToolBar;
 
-	QTabWidget*          mNotebook;
+	QListWidget*         mContents;
+	QStackedWidget*      mPages;
 	LabelModel*          mModel;
 	PropertiesView*      mPropertiesView;
 	QScrollArea*         mLabelEditorScrollArea;

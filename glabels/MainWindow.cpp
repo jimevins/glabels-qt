@@ -29,6 +29,8 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QToolBar>
+#include <QListWidget>
+#include <QStackedWidget>
 #include <QLabel>
 #include <QDebug>
 
@@ -61,27 +63,67 @@ MainWindow::MainWindow()
 	createActions();
 	createMenus();
 	createToolBars();
+	createStatusBar();
 
+	// Build pages
 	QWidget* propertiesPage = createPropertiesPage();
 	QWidget* editorPage = createEditorPage();
 	QWidget* mergePage = createMergePage();
 	QWidget* printPage = createPrintPage();
 
-	mNotebook = new QTabWidget();
-	mNotebook->addTab( propertiesPage, "Properties" );
-	mNotebook->addTab( editorPage, "Editor" );
-	mNotebook->addTab( mergePage, "Merge" );
-	mNotebook->addTab( printPage, "Print" );
-	mNotebook->setEnabled( false );
+	// Table of contents widget
+	mContents = new QListWidget();
+	mContents->setViewMode(QListView::ListMode);
+	mContents->setMovement(QListView::Static);
+	mContents->setMinimumWidth(96);
+	mContents->setMaximumWidth(96);
+	mContents->setSpacing(6);
+	mContents->setEnabled( false );
+	
+	// Pages widget
+	mPages = new QStackedWidget();
+	mPages->setEnabled( false );
 
-	setCentralWidget( mNotebook );
+	// Add "Properties" page
+	mPages->addWidget( propertiesPage );
+	QListWidgetItem *propertiesButton = new QListWidgetItem(mContents);
+	propertiesButton->setText(tr("Properties"));
+	propertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
-	createStatusBar();
+	// Add "Editor" page
+	mPages->addWidget( editorPage );
+	QListWidgetItem *editorButton = new QListWidgetItem(mContents);
+	editorButton->setText(tr("Editor"));
+	editorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+	// Add "Merge" page
+	mPages->addWidget( mergePage );
+	QListWidgetItem *mergeButton = new QListWidgetItem(mContents);
+	mergeButton->setText(tr("Merge"));
+	mergeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+	// Add "Print" page
+	mPages->addWidget( printPage );
+	QListWidgetItem *printButton = new QListWidgetItem(mContents);
+	printButton->setText(tr("Print"));
+	printButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+	// Create central widget
+	QWidget *centralWidget = new QWidget();
+	QHBoxLayout *hLayout = new QHBoxLayout();
+	hLayout->setContentsMargins( 0, 0, 0, 0 );
+	hLayout->addWidget( mContents );
+	hLayout->addWidget( mPages );
+	centralWidget->setLayout( hLayout );
+	setCentralWidget( centralWidget );
 
 	setDocVerbsEnabled( false );
 	setPasteVerbsEnabled( false );
 	setTitle();
 
+	// Connect
+	connect( mContents, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
+		 this, SLOT(changePage(QListWidgetItem*,QListWidgetItem*)));
 	connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
 #if 0
 	connect( mLabelEditor, SIGNAL(pointerMoved(double, double)),
@@ -124,7 +166,8 @@ void MainWindow::setModel( LabelModel *label )
 	mObjectEditor->setModel( mModel );
 	mPrintView->setModel( mModel );
 
-	mNotebook->setEnabled( true );
+	mContents->setEnabled( true );
+	mPages->setEnabled( true );
 	setDocVerbsEnabled( true );
 	setSelectionVerbsEnabled( false );
 	setMultiSelectionVerbsEnabled( false );
@@ -637,10 +680,12 @@ QWidget* MainWindow::createEditorPage()
 	mLabelEditorScrollArea->setWidget( mLabelEditor );
 
 	QVBoxLayout* editorVLayout = new QVBoxLayout;
+	editorVLayout->setContentsMargins( 0, 0, 0, 0 );
 	editorVLayout->addWidget( editorToolBar );
 	editorVLayout->addWidget( mLabelEditorScrollArea );
 
 	QHBoxLayout* editorHLayout = new QHBoxLayout;
+	editorHLayout->setContentsMargins( 0, 0, 0, 0 );
 	editorHLayout->addLayout( editorVLayout );
 	editorHLayout->addWidget( mObjectEditor );
 
@@ -841,6 +886,20 @@ void MainWindow::writeSettings()
 	settings.setValue( "showGrid",           viewGridAction->isChecked() );
 	settings.setValue( "showMarkup",         viewMarkupAction->isChecked() );
 	settings.endGroup();
+}
+
+
+///
+/// Change page
+///
+void MainWindow::changePage(QListWidgetItem *current, QListWidgetItem *previous)
+{
+    if (!current)
+    {
+        current = previous;
+    }
+
+    mPages->setCurrentIndex(mContents->row(current));
 }
 
 
