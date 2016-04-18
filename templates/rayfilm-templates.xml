@@ -234,7 +234,7 @@
     <Meta category="label"/>
     <Meta category="square-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0241&amp;vzhled=1"/>
-    <Label-rectangle id="0" width="49mm" height="49mm" round="0mm" x_waste="mm" y_waste="1mm">
+    <Label-rectangle id="0" width="49mm" height="49mm" round="0mm" x_waste="1mm" y_waste="1mm">
       <Layout nx="3" ny="5" x0="26.5mm" y0="16mm" dx="54mm" dy="54mm"/>
     </Label-rectangle>
   </Template>
@@ -1252,8 +1252,8 @@
     <Meta category="label"/>
     <Meta category="elliptical-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=4525&amp;vzhled=1"/>
-    <Label-ellipse id="0" width="45mm" height="25mm" waste="mm">
-      <Layout nx="4" ny="10" x0="mm8" y0="8.02mm" dx="49.67mm" dy="28.44mm"/>
+    <Label-ellipse id="0" width="45mm" height="25mm" waste="1mm">
+      <Layout nx="4" ny="10" x0="8mm" y0="8.02mm" dx="49.67mm" dy="28.44mm"/>
     </Label-ellipse>
   </Template>
 
@@ -1453,7 +1453,7 @@
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=8042&amp;vzhled=1"/>
-    <Label-rectangle id="0" width="85mm" height="140mm" round="mm" x_waste="1.5mm" y_waste="1.5mm">
+    <Label-rectangle id="0" width="85mm" height="140mm" round="1.5mm" x_waste="1.5mm" y_waste="1.5mm">
       <Layout nx="2" ny="2" x0="17.5mm" y0="6mm" dx="90mm" dy="145mm"/>
     </Label-rectangle>
   </Template>

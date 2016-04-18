@@ -13,6 +13,19 @@
 
 
   <!-- =================================================================== -->
+  <!-- Avery L4730 family: Mini Labels                          -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L4730" size="A4" _description="Mini Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="17.8mm" height="10mm" round="1.6mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="10" ny="27" x0="6mm" y0="13mm" dx="20.3mm" dy="10mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+  <!-- =================================================================== -->
   <!-- Avery L4732 family: Mini Labels                                     -->
   <!-- =================================================================== -->
   <Template brand="Avery" part="L4732" size="A4" _description="Mini Labels">

@@ -151,6 +151,15 @@
     </Label-rectangle>
   </Template>
 
+  <!-- =================================================================== -->
+  <!-- Bruna 1166000.  Mailing Labels.                                     -->
+  <!-- =================================================================== -->
+  <Template brand="Bruna" part="1166000" size="A4" _description="Mailing labels">
+    <Label-rectangle id="0" width="70mm" height="37.1mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="9pt"/>
+      <Layout nx="3" ny="8" x0="0mm" y0="0mm" dx="70mm" dy="37.1mm"/>
+    </Label-rectangle>
+  </Template>
 
   <!-- ************************* -->
   <!--                           -->

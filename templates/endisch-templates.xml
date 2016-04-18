@@ -58,7 +58,7 @@
     <Meta category="round-label"/>
     <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/round60_e.html"/>
     <Label-round id="0" radius="30mm" waste="1mm">
-      <Layout nx="3" ny="4" x0="mm8" y0="18mm" dx="67mm" dy="67mm"/>
+      <Layout nx="3" ny="4" x0="8mm" y0="18mm" dx="67mm" dy="67mm"/>
     </Label-round>
   </Template>
 
@@ -73,7 +73,7 @@
   <Template brand="Endisch" part="6500067x" size="A4" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
-    <Label-round id="0" radius="33.75mm" waste="mm">
+    <Label-round id="0" radius="33.75mm" waste="1mm">
       <Layout nx="3" ny="4" x0="1.75mm" y0="8.25mm" dx="69.5mm" dy="71mm"/>
     </Label-round>
   </Template>

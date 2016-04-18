@@ -8,10 +8,23 @@
   <!-- ******************************************************************** -->
 
   <!-- =================================================================== -->
-  <!-- Zweckform 4761: Lever Arch File Labels, 192 x 61 mm, 4 per sheet    -->
+  <!-- Zweckform 4760: Lever Arch File Labels, slim, 7 per sheet           -->
+  <!-- =================================================================== -->
+  <Template brand="Zweckform" part="4760" size="A4" _description="Lever Arch File Labels">
+    <Meta category="label"/>
+    <Meta category="filing"/>
+    <Label-rectangle id="0" width="544.252pt" height="107.717pt" round="5.66929pt" waste="0pt">
+      <Markup-margin size="9pt"/>
+      <Layout nx="1" ny="7" x0="25.5118pt" y0="43.7386pt" dx="544.252pt" dy="107.717pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <!-- =================================================================== -->
+  <!-- Zweckform 4761: Lever Arch File Labels, wide, 4 per sheet           -->
   <!-- =================================================================== -->
   <Template brand="Zweckform" part="4761" size="A4" _description="Lever Arch File Labels">
     <Meta category="label"/>
+    <Meta category="filing"/>
     <Label-rectangle id="0" width="544.25" height="172.9" round="5">
       <Markup-margin size="5"/>
       <Layout nx="1" ny="4" x0="25" y0="75" dx="544.25" dy="172.9"/>
@@ -19,7 +32,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3477: Adress labels                                       -->
+  <!-- Zweckform 3477: Address labels                                      -->
   <!-- =================================================================== -->
   <Template brand="Zweckform" part="3477" size="A4" _description="Address Labels">
     <Meta category="label"/>
@@ -77,10 +90,11 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3688: Ordnerruecken Labels                                -->
+  <!-- Zweckform 3688: Lever Arch File Labels, wide, 4 per sheet           -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3688" size="A4" _description="File Back Labels">
+  <Template brand="Zweckform" part="3688" size="A4" _description="Lever Arch File Labels">
     <Meta category="label"/>
+    <Meta category="filing"/>
     <Label-rectangle id="0" width="544.252pt" height="172.913pt" round="0pt" waste="0pt">
       <Markup-margin size="9.07087pt"/>
       <Layout nx="1" ny="4" x0="28.3465pt" y0="76.5354pt" dx="544.252pt" dy="172.913pt"/>
@@ -258,18 +272,6 @@
     </Label-rectangle>
   </Template>
 
-
-  <!-- =================================================================== -->
-  <!-- Zweckform 4760: File Labels, 192 x 38 mm, 7 per sheet               -->
-  <!-- =================================================================== -->
-  <Template brand="Zweckform" part="4760" size="A4" _description="File Back Labels">
-    <Meta category="label"/>
-    <Label-rectangle id="0" width="544.252pt" height="107.717pt" round="5.66929pt" waste="0pt">
-      <Markup-margin size="9pt"/>
-      <Layout nx="1" ny="7" x0="25.5118pt" y0="43.7386pt" dx="544.252pt" dy="107.717pt"/>
-    </Label-rectangle>
-  </Template>
-
   <!-- =================================================================== -->
   <!-- Zweckform 3348: Adress Labels.                                      -->
   <!-- =================================================================== -->
@@ -283,7 +285,3 @@
   </Template>
 
 </Glabels-templates>
-
-
-
-

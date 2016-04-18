@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+  <!--                                                                      -->
+  <!-- Cable Label Co A4 products                                           -->
+  <!--                                                                      -->
+  <!-- ******************************************************************** -->
+  <!-- ******************************************************************** -->
+
+
+  <!-- ============================================================ -->
+  <!-- Cable Label Co CableBug: Mini Labels                         -->
+  <!-- ============================================================ -->
+  <Template brand="Cable Label Co" part="CableBug" size="A4" _description="Mini Labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="46.7mm" height="7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="1mm"/>
+      <Layout nx="4" ny="39" x0="12mm" y0="12mm" dx="46.7mm" dy="7mm"/>
+    </Label-rectangle>
+  </Template>
+
+
+</Glabels-templates>
+
+
+
+

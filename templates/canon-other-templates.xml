@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<Glabels-templates>
+
+
+  <!-- =================================================================== -->
+  <!-- Type J CD/DVD Tray.                                                 -->
+  <!-- =================================================================== -->
+  <Template brand="Canon" part="Type J Tray" size="Other" width="135mm" height="295mm" _description="CD/DVD Tray">
+    <Label-cd id="0" radius="59mm" hole="11mm" waste="2mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="5.6mm" y0="58.5mm" dx="122mm" dy="122mm"/>
+    </Label-cd>
+  </Template>
+
+  <Template brand="Canon" part="MX920 CD Tray"  equiv="Type J Tray"/>
+  <Template brand="Canon" part="MG5400 CD Tray" equiv="Type J Tray"/>
+  <Template brand="Canon" part="MG6300 CD Tray" equiv="Type J Tray"/>
+  <Template brand="Canon" part="MG6500 CD Tray" equiv="Type J Tray"/>
+  <Template brand="Canon" part="iP7200 CD Tray" equiv="Type J Tray"/>
+
+
+</Glabels-templates>

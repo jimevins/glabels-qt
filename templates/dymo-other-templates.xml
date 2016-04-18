@@ -2,87 +2,227 @@
 
 <Glabels-templates>
 
-
   <!-- =================================================================== -->
-  <!-- Dymo 99012 Large Address labels.                                    -->
+  <!-- Dymo 11352 Return Address labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="99012" size="Other" width="102.047pt" height="252.283pt" _description="Large Address Labels">
+  <Template brand="Dymo" part="11352" size="Other" width="25mm" height="54mm" _description="Return Address Labels">
     <Meta category="label"/>
     <Meta category="mail"/>
-    <Label-rectangle id="0" width="102.047pt" height="252.283pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Meta product_url="http://global.dymo.com/deAT/Labels/S0722520.html"/>
+    <Label-rectangle id="0" width="25mm" height="54mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="102.047pt" dy="252.283pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="25mm" dy="54mm"/>
     </Label-rectangle>
   </Template>
-
+  
   <!-- =================================================================== -->
-  <!-- Dymo 99010 Address labels.                                          -->
+  <!-- Dymo 11353 Multipurpose Labels.                                     -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="99010" size="Other" width="81pt" height="252pt" _description="Address Labels">
+  <Template brand="Dymo" part="11353" size="Other" width="13mm" height="25mm" _description="Multipurpose Labels">
     <Meta category="label"/>
     <Meta category="mail"/>
-    <Label-rectangle id="0" width="81pt" height="252pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Label-rectangle id="0" width="13mm" height="25mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="81pt" dy="252pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="13mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>  
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 11354 Return Address labels.                                   -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="11354" size="Other" width="32mm" height="57mm" _description="Return Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="32mm" height="57mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="32mm" dy="57mm"/>
     </Label-rectangle>
   </Template>
-
+  
   <!-- =================================================================== -->
   <!-- Dymo 11355 Return Address labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="11355" size="Other" width="54pt" height="144pt" _description="Return Address Labels">
+  <Template brand="Dymo" part="11355" size="Other" width="19mm" height="51mm" _description="Return Address Labels">
     <Meta category="label"/>
     <Meta category="mail"/>
-    <Label-rectangle id="0" width="54pt" height="144pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Label-rectangle id="0" width="19mm" height="51mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="54pt" dy="144pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="19mm" dy="51mm"/>
     </Label-rectangle>
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Dymo 99014 Shipping Address labels.                                 -->
+  <!-- Dymo 30256 Address labels.                                          -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="99014" size="Other" width="167pt" height="288pt" _description="Shipping Address Labels">
+  <Template brand="Dymo" part="30256" size="Other" width="59mm" height="102mm" _description="Address labels">
     <Meta category="label"/>
-    <Meta category="mail"/>
-    <Label-rectangle id="0" width="167pt" height="288pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="59mm" height="102mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="167pt" dy="288pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="59mm" dy="102mm"/>
     </Label-rectangle>
-  </Template>
-
+  </Template>   
+  
   <!-- =================================================================== -->
   <!-- Dymo 30327 File Folder labels.                                      -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="30327" size="Other" width="41pt" height="248pt" _description="File Folder">
+  <Template brand="Dymo" part="30327" size="Other" width="14mm" height="87mm" _description="File Folder">
     <Meta category="label"/>
-    <Label-rectangle id="0" width="41pt" height="248pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Meta category="rectangle-label"/>
+    <Meta category="filing"/>
+    <Label-rectangle id="0" width="14mm" height="87mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="41pt" dy="248pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="14mm" dy="87mm"/>
     </Label-rectangle>
-  </Template>
-
+  </Template>  
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 30258 Multipurpose Labels (was 3.5" Disk labels).              -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="30258" size="Other" width="54mm" height="70mm" _description="Multipurpose Labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-rectangle id="0" width="54mm" height="70mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="54mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>  
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 30332 File Folder labels.                                      -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="30332" size="Other" width="25mm" height="25mm" _description="Multipurpose Labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta category="filing"/>
+    <Label-rectangle id="0" width="25mm" height="25mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="25mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>  
+  
+ <!-- =================================================================== -->
+ <!-- Dymo 30374 Name Badge.                                              -->
+ <!-- =================================================================== -->
+  <Template brand="Dymo" part="30374" size="Other" width="51mm" height="89mm" _description="Name Badges">
+    <Meta category="label"/>
+    <Meta category="name-badge"/>
+    <Label-rectangle id="0" width="51mm" height="89mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="51mm" dy="89mm"/>
+    </Label-rectangle>
+  </Template>   
+  
   <!-- =================================================================== -->
   <!-- Dymo 30376 Hanging Folder labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="30376" size="Other" width="41pt" height="144pt" _description="Hanging Folder">
+  <Template brand="Dymo" part="30376" size="Other" width="14mm" height="51mm" _description="Hanging Folder">
     <Meta category="label"/>
-    <Label-rectangle id="0" width="41pt" height="144pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Meta category="rectangle-label"/>
+    <Meta category="filing"/>
+    <Label-rectangle id="0" width="14mm" height="51mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="41pt" dy="144pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="14mm" dy="51mm"/>
     </Label-rectangle>
   </Template>
-
+  
   <!-- =================================================================== -->
-  <!-- Dymo 30258 3.5" Disk labels.                                        -->
+  <!-- Dymo 30856 Name Badge                                               -->
   <!-- =================================================================== -->
-  <Template brand="Dymo" part="30258" size="Other" width="153pt" height="198pt" _description="3.5in Diskette">
+  <Template brand="Dymo" part="30856" size="Other" width="62mm" height="106mm" _description="Name Badges">
     <Meta category="label"/>
-    <Meta category="media"/>
-    <Label-rectangle id="0" width="153pt" height="198pt" round="0pt" x_waste="0pt" y_waste="0pt">
+    <Meta category="name-badge"/>
+    <Label-rectangle id="0" width="62mm" height="106mm" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="0pt"/>
-      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="153pt" dy="198pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="62mm" dy="106mm"/>
+    </Label-rectangle>
+  </Template>  
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99010 Address labels.                                          -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99010" size="Other" width="28mm" height="89mm" _description="Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="28mm" height="89mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="28mm" dy="89mm"/>
+    </Label-rectangle>
+  </Template> 
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99012 Large Address labels.                                    -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99012" size="Other" width="36mm" height="89mm" _description="Large Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="36mm" height="89mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="36mm" dy="89mm"/>
     </Label-rectangle>
   </Template>
-
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99013 Large Address labels. Transparent Plastic                -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99013" size="Other" width="36mm" height="89mm" _description="Large Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-rectangle id="0" width="36mm" height="89mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="36mm" dy="89mm"/>
+    </Label-rectangle>
+  </Template>
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99014 Shipping Address labels.                                 -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99014" size="Other" width="54mm" height="101mm" _description="Shipping Address Labels">
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Meta category="name-badge"/>
+    <Label-rectangle id="0" width="54mm" height="101mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="54mm" dy="101mm"/>
+    </Label-rectangle>
+  </Template>
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99015 Name Badge.                                              -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99015" size="Other" width="54mm" height="70mm" _description="Name Badges">
+    <Meta category="label"/>
+    <Meta category="name-badge"/>
+    <Label-rectangle id="0" width="54mm" height="70mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="54mm" dy="70mm"/>
+    </Label-rectangle>
+  </Template>
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99017 Hanging Folder labels.                                   -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99017" size="Other" width="12mm" height="50mm" _description="Hanging Folder">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="filing"/>
+    <Label-rectangle id="0" width="12mm" height="50mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="12mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+  
+  <!-- =================================================================== -->
+  <!-- Dymo 99019 Lever Arch labels.                                       -->
+  <!-- =================================================================== -->
+  <Template brand="Dymo" part="99019" size="Other" width="59mm" height="190mm" _description="File Folder">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="filing"/>
+    <Label-rectangle id="0" width="59mm" height="190mm" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="1" x0="0pt" y0="0pt" dx="59mm" dy="190mm"/>
+    </Label-rectangle>
+  </Template>
+  
 </Glabels-templates>
