@@ -66,6 +66,24 @@ XmlLabelCreator::writeBuffer( const LabelModel* label, QString& buffer )
 
 
 void
+XmlLabelCreator::serializeObjects( const QList<LabelModelObject*>& objects,
+				   QString&                        buffer )
+{
+	QDomDocument doc;
+
+	QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
+	doc.appendChild( xmlNode );
+
+	QDomElement root = doc.createElement( "Glabels-objects" );
+	doc.appendChild( root );
+
+	addObjectsToNode( root, objects );
+
+	buffer = doc.toString( 2 );
+}
+
+
+void
 XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label )
 {
 	QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
@@ -94,16 +112,23 @@ XmlLabelCreator::createObjectsNode( QDomElement &parent, const LabelModel* label
 	glabels::XmlUtil::setStringAttr( node, "id", "0" );
 	glabels::XmlUtil::setBoolAttr( node, "rotate", label->rotate() );
 
-	foreach ( LabelModelObject* object, label->objectList() )
+	addObjectsToNode( node, label->objectList() );
+}
+
+
+void
+XmlLabelCreator::addObjectsToNode( QDomElement &parent, const QList<LabelModelObject*>& objects )
+{
+	foreach ( LabelModelObject* object, objects )
 	{
 		if ( LabelModelBoxObject* boxObject = dynamic_cast<LabelModelBoxObject*>(object) )
 		{
-			createObjectBoxNode( node, boxObject );
+			createObjectBoxNode( parent, boxObject );
 		}
 		// TODO: other object types
 		else
 		{
-			Q_ASSERT_X( false, "XmlLabelCreator::createObjectsNode", "Invalid object type." );
+			Q_ASSERT_X( false, "XmlLabelCreator::addObjectsToNode", "Invalid object type." );
 		}
 	}
 }

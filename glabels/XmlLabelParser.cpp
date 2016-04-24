@@ -115,6 +115,35 @@ XmlLabelParser::readBuffer( const QString& buffer )
 }
 
 
+QList<LabelModelObject*>
+XmlLabelParser::deserializeObjects( const QString& buffer )
+{
+	QList<LabelModelObject*> list;
+	
+	QDomDocument doc;
+	QString      errorString;
+	int          errorLine;
+	int          errorColumn;
+
+	if ( !doc.setContent( buffer, false, &errorString, &errorLine, &errorColumn ) )
+	{
+		qWarning() << "Error: Parse error at line " << errorLine
+			   << "column " << errorColumn
+			   << ": " << errorString;
+		return list;
+	}
+
+	QDomElement root = doc.documentElement();
+	if ( root.tagName() != "Glabels-objects" )
+	{
+		qWarning() << "Error: Not a Glabels-objects stream";
+		return list;
+	}
+
+	return parseObjects( root );
+}
+
+
 void
 XmlLabelParser::gunzip( const QByteArray& data, QByteArray& result )
 {
@@ -219,52 +248,69 @@ XmlLabelParser::parseRootNode( const QDomElement &node )
 }
 
 
-void
-XmlLabelParser::parseObjectsNode( const QDomElement &node, LabelModel* label )
+QList<LabelModelObject*>
+XmlLabelParser::parseObjects( const QDomElement &node )
 {
+	QList<LabelModelObject*> list;
+
 	for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 	{
 		QString tagName = child.toElement().tagName();
 		
 		if ( tagName == "Object-box" )
 		{
-			parseObjectBoxNode( child.toElement(), label );
+			list.append( parseObjectBoxNode( child.toElement() ) );
 		}
+#if 0
 		else if ( tagName == "Object-ellipse" )
 		{
-			parseObjectEllipseNode( child.toElement(), label );
+			list.append( parseObjectEllipseNode( child.toElement() ) );
 		}
 		else if ( tagName == "Object-line" )
 		{
-			parseObjectLineNode( child.toElement(), label );
+			list.append( parseObjectLineNode( child.toElement() ) );
 		}
 		else if ( tagName == "Object-image" )
 		{
-			parseObjectImageNode( child.toElement(), label );
+			list.append( parseObjectImageNode( child.toElement() ) );
 		}
 		else if ( tagName == "Object-barcode" )
 		{
-			parseObjectBarcodeNode( child.toElement(), label );
+			list.append( parseObjectBarcodeNode( child.toElement() ) );
 		}
 		else if ( tagName == "Object-text" )
 		{
-			parseObjectTextNode( child.toElement(), label );
+			list.append( parseObjectTextNode( child.toElement() ) );
 		}
+#endif
 		else if ( !child.isComment() )
 		{
 			qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
 		}
 	}
+
+	return list;
 }
 
 
 void
-XmlLabelParser::parseObjectBoxNode( const QDomElement &node, LabelModel* label )
+XmlLabelParser::parseObjectsNode( const QDomElement &node, LabelModel* label )
+{
+	QList<LabelModelObject*> list = parseObjects( node );
+
+	foreach ( LabelModelObject* object, list )
+	{
+		label->addObject( object );
+	}
+}
+
+
+LabelModelBoxObject*
+XmlLabelParser::parseObjectBoxNode( const QDomElement &node )
 {
 	using namespace glabels;
 
 	LabelModelBoxObject* object = new LabelModelBoxObject();
-	label->addObject( object );
 
 
 	/* position attrs */
@@ -299,36 +345,43 @@ XmlLabelParser::parseObjectBoxNode( const QDomElement &node, LabelModel* label )
 
 	/* shadow attrs */
 	parseShadowAttrs( node, object );
+
+	return object;
 }
 
 
-void
-XmlLabelParser::parseObjectEllipseNode( const QDomElement &node, LabelModel* label )
+LabelModelEllipseObject*
+XmlLabelParser::parseObjectEllipseNode( const QDomElement &node )
 {
+	return 0;
 }
 
 
-void
-XmlLabelParser::parseObjectLineNode( const QDomElement &node, LabelModel* label )
+LabelModelLineObject*
+XmlLabelParser::parseObjectLineNode( const QDomElement &node )
 {
+	return 0;
 }
 
 
-void
-XmlLabelParser::parseObjectImageNode( const QDomElement &node, LabelModel* label )
+LabelModelImageObject*
+XmlLabelParser::parseObjectImageNode( const QDomElement &node )
 {
+	return 0;
 }
 
 
-void
-XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node, LabelModel* label )
+LabelModelBarcodeObject*
+XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node )
 {
+	return 0;
 }
 
 
-void
-XmlLabelParser::parseObjectTextNode( const QDomElement &node, LabelModel* label )
+LabelModelTextObject*
+XmlLabelParser::parseObjectTextNode( const QDomElement &node )
 {
+	return 0;
 }
 
 

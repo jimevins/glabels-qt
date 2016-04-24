@@ -46,11 +46,13 @@ class XmlLabelCreator : public QObject
 public:
 	static void writeFile( const LabelModel* label, const QString& fileName );
 	static void writeBuffer( const LabelModel* label, QString& buffer );
+	static void serializeObjects( const QList<LabelModelObject*>& objects, QString& buffer );
 
 private:
 	static void createDoc( QDomDocument& doc, const LabelModel* label );
 	static void createRootNode( const LabelModel* label );
 	static void createObjectsNode( QDomElement &parent, const LabelModel* label );
+	static void addObjectsToNode( QDomElement &parent, const QList<LabelModelObject*>& objects );
 	static void createObjectBoxNode( QDomElement &parent, const LabelModelBoxObject* object );
 	static void createObjectEllipseNode( QDomElement &parent, const LabelModelEllipseObject* object );
 	static void createObjectLineNode( QDomElement &parent, const LabelModelLineObject* object );

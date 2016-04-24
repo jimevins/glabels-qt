@@ -84,6 +84,8 @@ protected:
 private slots:
 	void changePage(QListWidgetItem *current, QListWidgetItem *previous);
 
+	void clipboardChanged();
+
 	void fileNew();
 	void fileOpen();
 	void fileSave();

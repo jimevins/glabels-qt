@@ -20,6 +20,7 @@
 
 #include "MainWindow.h"
 
+#include <QClipboard>
 #include <QSettings>
 #include <QStatusBar>
 #include <QFrame>
@@ -125,6 +126,7 @@ MainWindow::MainWindow()
 	connect( mContents, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
 		 this, SLOT(changePage(QListWidgetItem*,QListWidgetItem*)));
 	connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
+	connect( QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(clipboardChanged()) );
 #if 0
 	connect( mLabelEditor, SIGNAL(pointerMoved(double, double)),
 		 this, SLOT(onPointerMoved(double, double)) );
@@ -726,9 +728,6 @@ void MainWindow::setDocVerbsEnabled( bool enabled )
 	fileSaveAsAction->setEnabled( enabled );
 	editUndoAction->setEnabled( enabled );
 	editRedoAction->setEnabled( enabled );
-	editCutAction->setEnabled( enabled );
-	editCopyAction->setEnabled( enabled );
-	editPasteAction->setEnabled( enabled );
 	editDeleteAction->setEnabled( enabled );
 	editSelectAllAction->setEnabled( enabled );
 	editUnSelectAllAction->setEnabled( enabled );
@@ -904,6 +903,15 @@ void MainWindow::changePage(QListWidgetItem *current, QListWidgetItem *previous)
 
 
 ///
+/// Clipboard contents changed
+///
+void MainWindow::clipboardChanged()
+{
+	setPasteVerbsEnabled( mModel->canPaste() );
+}
+
+
+///
 /// File->New Action
 ///
 void MainWindow::fileNew()
@@ -989,7 +997,7 @@ void MainWindow::editRedo()
 ///
 void MainWindow::editCut()
 {
-	qDebug() << "ACTION: edit->Cut";
+	mModel->cutSelection();
 }
 
 
@@ -998,7 +1006,7 @@ void MainWindow::editCut()
 ///
 void MainWindow::editCopy()
 {
-	qDebug() << "ACTION: edit->Copy";
+	mModel->copySelection();
 }
 
 
@@ -1007,7 +1015,7 @@ void MainWindow::editCopy()
 ///
 void MainWindow::editPaste()
 {
-	qDebug() << "ACTION: edit->Paste";
+	mModel->paste();
 }
 
 

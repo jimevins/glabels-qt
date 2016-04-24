@@ -46,17 +46,19 @@ class XmlLabelParser : public QObject
 public:
 	static LabelModel* readFile( const QString& fileName );
 	static LabelModel* readBuffer( const QString& buffer );
+	static QList<LabelModelObject*> deserializeObjects( const QString& buffer );
 
 private:
 	static void gunzip( const QByteArray& gzippedData, QByteArray& data );
 	static LabelModel* parseRootNode( const QDomElement &node );
+	static QList<LabelModelObject*> parseObjects( const QDomElement &node );
 	static void parseObjectsNode( const QDomElement &node, LabelModel* label );
-	static void parseObjectBoxNode( const QDomElement &node, LabelModel* label );
-	static void parseObjectEllipseNode( const QDomElement &node, LabelModel* label );
-	static void parseObjectLineNode( const QDomElement &node, LabelModel* label );
-	static void parseObjectImageNode( const QDomElement &node, LabelModel* label );
-	static void parseObjectBarcodeNode( const QDomElement &node, LabelModel* label );
-	static void parseObjectTextNode( const QDomElement &node, LabelModel* label );
+	static LabelModelBoxObject* parseObjectBoxNode( const QDomElement &node );
+	static LabelModelEllipseObject* parseObjectEllipseNode( const QDomElement &node );
+	static LabelModelLineObject* parseObjectLineNode( const QDomElement &node );
+	static LabelModelImageObject* parseObjectImageNode( const QDomElement &node );
+	static LabelModelBarcodeObject* parseObjectBarcodeNode( const QDomElement &node );
+	static LabelModelTextObject* parseObjectTextNode( const QDomElement &node );
 	static void parseTopLevelSpanNode( const QDomElement &node, LabelModelTextObject* object );
 	static void parseAffineAttrs( const QDomElement &node, LabelModelObject* object );
 	static void parseShadowAttrs( const QDomElement &node, LabelModelObject* object );

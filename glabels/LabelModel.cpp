@@ -23,10 +23,21 @@
 #include <QFileInfo>
 #include <algorithm>
 #include <cmath>
+#include <QApplication>
+#include <QClipboard>
+#include <QMimeData>
 #include <QtDebug>
 
 #include "LabelModelObject.h"
 #include "LabelRegion.h"
+#include "XmlLabelCreator.h"
+#include "XmlLabelParser.h"
+
+
+namespace
+{
+	const QString MIME_TYPE = "application/x-glabels-objects";
+}
 
 
 ///
@@ -1078,6 +1089,91 @@ void LabelModel::setSelectionFillColorNode( ColorNode fillColorNode )
 
 	emit changed();
 	emit modifiedChanged();
+}
+
+
+///
+/// Copy selection to clipboard
+///
+void LabelModel::copySelection()
+{
+	if ( !isSelectionEmpty() )
+	{
+		QClipboard *clipboard = QApplication::clipboard();
+		
+		QString buffer;
+		XmlLabelCreator::serializeObjects( getSelection(), buffer );
+
+		QMimeData *mimeData = new QMimeData;
+		mimeData->setData( MIME_TYPE, buffer.toUtf8() );
+
+		clipboard->setMimeData( mimeData );
+	}
+}
+
+
+///
+/// Cut selection to clipboard
+///
+void LabelModel::cutSelection()
+{
+	copySelection();
+	deleteSelection();
+}
+
+
+///
+/// Can we paste?
+///
+bool LabelModel::canPaste()
+{
+	const QClipboard *clipboard = QApplication::clipboard();
+	const QMimeData *mimeData = clipboard->mimeData();
+
+	if ( mimeData->hasFormat( MIME_TYPE ) )
+	{
+		return true;
+	}
+	else if ( mimeData->hasImage() )
+	{
+		// TODO: return true
+	}
+	else if ( mimeData->hasText() )
+	{
+		// TODO: return true
+	}
+	return false;
+}
+
+
+///
+/// Paste from clipboard
+///
+void LabelModel::paste()
+{
+	const QClipboard *clipboard = QApplication::clipboard();
+	const QMimeData *mimeData = clipboard->mimeData();
+
+	if ( mimeData->hasFormat( MIME_TYPE ) )
+	{
+		QByteArray buffer = mimeData->data( MIME_TYPE );
+		QList <LabelModelObject*> objects = XmlLabelParser::deserializeObjects( QString(buffer) );
+
+		unselectAll();
+		foreach ( LabelModelObject* object, objects )
+		{
+			addObject( object );
+			selectObject( object );
+		}
+	}
+	else if ( mimeData->hasImage() )
+	{
+		// TODO: create an image object from image
+	}
+	else if ( mimeData->hasText() )
+	{
+		// TODO: create a text object from text
+	}
 }
 
 
