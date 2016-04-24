@@ -1101,11 +1101,11 @@ void LabelModel::copySelection()
 	{
 		QClipboard *clipboard = QApplication::clipboard();
 		
-		QString buffer;
+		QByteArray buffer;
 		XmlLabelCreator::serializeObjects( getSelection(), buffer );
 
 		QMimeData *mimeData = new QMimeData;
-		mimeData->setData( MIME_TYPE, buffer.toUtf8() );
+		mimeData->setData( MIME_TYPE, buffer );
 
 		clipboard->setMimeData( mimeData );
 	}
@@ -1157,7 +1157,7 @@ void LabelModel::paste()
 	if ( mimeData->hasFormat( MIME_TYPE ) )
 	{
 		QByteArray buffer = mimeData->data( MIME_TYPE );
-		QList <LabelModelObject*> objects = XmlLabelParser::deserializeObjects( QString(buffer) );
+		QList <LabelModelObject*> objects = XmlLabelParser::deserializeObjects( buffer );
 
 		unselectAll();
 		foreach ( LabelModelObject* object, objects )

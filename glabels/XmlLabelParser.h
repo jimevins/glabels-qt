@@ -45,8 +45,8 @@ class XmlLabelParser : public QObject
 
 public:
 	static LabelModel* readFile( const QString& fileName );
-	static LabelModel* readBuffer( const QString& buffer );
-	static QList<LabelModelObject*> deserializeObjects( const QString& buffer );
+	static LabelModel* readBuffer( const QByteArray& buffer );
+	static QList<LabelModelObject*> deserializeObjects( const QByteArray& buffer );
 
 private:
 	static void gunzip( const QByteArray& gzippedData, QByteArray& data );

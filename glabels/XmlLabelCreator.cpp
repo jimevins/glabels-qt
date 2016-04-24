@@ -41,7 +41,7 @@ XmlLabelCreator::writeFile( const LabelModel* label, const QString& fileName )
 	QDomDocument doc;
 
 	createDoc( doc, label );
-	QString buffer = doc.toString( 2 );
+	QByteArray buffer = doc.toByteArray( 2 );
 
 	QFile file( fileName );
 
@@ -51,23 +51,23 @@ XmlLabelCreator::writeFile( const LabelModel* label, const QString& fileName )
 			   << ": " << file.errorString();
 	}
 
-	file.write( buffer.toStdString().c_str(), buffer.size() );
+	file.write( buffer.data(), buffer.size() );
 }
 
 
 void
-XmlLabelCreator::writeBuffer( const LabelModel* label, QString& buffer )
+XmlLabelCreator::writeBuffer( const LabelModel* label, QByteArray& buffer )
 {
 	QDomDocument doc;
 
 	createDoc( doc, label );
-	buffer = doc.toString( 2 );
+	buffer = doc.toByteArray( 2 );
 }
 
 
 void
 XmlLabelCreator::serializeObjects( const QList<LabelModelObject*>& objects,
-				   QString&                        buffer )
+				   QByteArray&                     buffer )
 {
 	QDomDocument doc;
 
@@ -79,7 +79,7 @@ XmlLabelCreator::serializeObjects( const QList<LabelModelObject*>& objects,
 
 	addObjectsToNode( root, objects );
 
-	buffer = doc.toString( 2 );
+	buffer = doc.toByteArray( 2 );
 }
 
 

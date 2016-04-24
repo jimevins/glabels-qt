@@ -89,7 +89,7 @@ XmlLabelParser::readFile( const QString& fileName )
 
 
 LabelModel*
-XmlLabelParser::readBuffer( const QString& buffer )
+XmlLabelParser::readBuffer( const QByteArray& buffer )
 {
 	QDomDocument doc;
 	QString      errorString;
@@ -116,7 +116,7 @@ XmlLabelParser::readBuffer( const QString& buffer )
 
 
 QList<LabelModelObject*>
-XmlLabelParser::deserializeObjects( const QString& buffer )
+XmlLabelParser::deserializeObjects( const QByteArray& buffer )
 {
 	QList<LabelModelObject*> list;
 	
