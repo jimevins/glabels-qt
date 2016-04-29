@@ -54,6 +54,13 @@ public:
 	LabelModel();
 	virtual ~LabelModel() {}
 
+	
+	/////////////////////////////////
+	// Save/restore model state
+	/////////////////////////////////
+	LabelModel* save() const;
+	void restore( const LabelModel *savedModel );
+	
 
 	/////////////////////////////////
 	// Signals

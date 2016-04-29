@@ -49,6 +49,49 @@ LabelModel::LabelModel() : mUntitledInstance(0), mModified(true), mTmplate(0), m
 
 
 ///
+/// Save model state
+///
+LabelModel* LabelModel::save() const
+{
+	LabelModel* savedModel = new LabelModel;
+	savedModel->restore( this );
+
+	return savedModel;
+}
+
+
+///
+/// Restore model state
+///
+void LabelModel::restore( const LabelModel *savedModel )
+{
+	// Clear current object list
+	foreach ( LabelModelObject* object, mObjectList )
+	{
+		delete object;
+	}
+	mObjectList.clear();
+
+	// Now copy state
+	mUntitledInstance = savedModel->mUntitledInstance;
+	mModified         = savedModel->mModified;
+	mFileName         = savedModel->mFileName;
+	mCompressionLevel = savedModel->mCompressionLevel;
+	mTmplate          = savedModel->mTmplate;
+	mFrame            = savedModel->mFrame;
+	mRotate           = savedModel->mRotate;
+
+	foreach ( LabelModelObject* object, savedModel->mObjectList )
+	{
+		mObjectList.append( object->clone() );
+	}
+
+	emit changed();
+	emit selectionChanged();
+}
+
+
+///
 /// Short name.
 ///
 QString LabelModel::shortName()

@@ -33,7 +33,15 @@ namespace
 ///
 /// Constructor
 ///
-LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelShapeObject(parent)
+LabelModelBoxObject::LabelModelBoxObject()
+{
+}
+
+
+///
+/// Copy constructor
+///
+LabelModelBoxObject::LabelModelBoxObject( const LabelModelBoxObject* object ) : LabelModelShapeObject( object )
 {
 }
 
@@ -43,6 +51,15 @@ LabelModelBoxObject::LabelModelBoxObject( QObject* parent ) : LabelModelShapeObj
 ///
 LabelModelBoxObject::~LabelModelBoxObject()
 {
+}
+
+
+///
+/// Clone
+///
+LabelModelBoxObject* LabelModelBoxObject::clone() const
+{
+	return new LabelModelBoxObject( this );
 }
 
 

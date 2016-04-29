@@ -120,41 +120,6 @@ QPainterPath Handle::pathAt( double                   scale,
 
 
 ///
-/// HandleNorthWest Constructor
-///
-HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
-	: Handle( owner, NW )
-{
-}
-
-
-///
-/// HandleNorthWest Destructor
-///
-HandleNorthWest::~HandleNorthWest()
-{
-}
-
-
-///
-/// Draw HandleNorthWest
-///
-void HandleNorthWest::draw( QPainter* painter, double scale ) const
-{
-	drawAt( painter, scale, 0, 0, originHandleFillColor );
-}
-
-
-///
-/// HandleNorthWest Path
-///
-QPainterPath HandleNorthWest::path( double scale ) const
-{
-	return pathAt( scale, 0, 0 );
-}
-
-
-///
 /// HandleNorth Constructor
 ///
 HandleNorth::HandleNorth( LabelModelObject* owner )
@@ -168,6 +133,15 @@ HandleNorth::HandleNorth( LabelModelObject* owner )
 ///
 HandleNorth::~HandleNorth()
 {
+}
+
+
+///
+/// HandleNorth Clone
+///
+HandleNorth* HandleNorth::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleNorth( newOwner );
 }
 
 
@@ -207,6 +181,15 @@ HandleNorthEast::~HandleNorthEast()
 
 
 ///
+/// HandleNorthEast Clone
+///
+HandleNorthEast* HandleNorthEast::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleNorthEast( newOwner );
+}
+
+
+///
 /// Draw HandleNorthEast
 ///
 void HandleNorthEast::draw( QPainter* painter, double scale ) const
@@ -238,6 +221,15 @@ HandleEast::HandleEast( LabelModelObject* owner )
 ///
 HandleEast::~HandleEast()
 {
+}
+
+
+///
+/// HandleEast Clone
+///
+HandleEast* HandleEast::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleEast( newOwner );
 }
 
 
@@ -277,6 +269,15 @@ HandleSouthEast::~HandleSouthEast()
 
 
 ///
+/// HandleSouthEast Clone
+///
+HandleSouthEast* HandleSouthEast::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleSouthEast( newOwner );
+}
+
+
+///
 /// Draw HandleSouthEast
 ///
 void HandleSouthEast::draw( QPainter* painter, double scale ) const
@@ -308,6 +309,15 @@ HandleSouth::HandleSouth( LabelModelObject* owner )
 ///
 HandleSouth::~HandleSouth()
 {
+}
+
+
+///
+/// HandleSouth Clone
+///
+HandleSouth* HandleSouth::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleSouth( newOwner );
 }
 
 
@@ -347,6 +357,15 @@ HandleSouthWest::~HandleSouthWest()
 
 
 ///
+/// HandleSouthWest Clone
+///
+HandleSouthWest* HandleSouthWest::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleSouthWest( newOwner );
+}
+
+
+///
 /// Draw HandleSouthWest
 ///
 void HandleSouthWest::draw( QPainter* painter, double scale ) const
@@ -382,6 +401,15 @@ HandleWest::~HandleWest()
 
 
 ///
+/// HandleWest Clone
+///
+HandleWest* HandleWest::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleWest( newOwner );
+}
+
+
+///
 /// Draw HandleWest
 ///
 void HandleWest::draw( QPainter* painter, double scale ) const
@@ -400,6 +428,49 @@ QPainterPath HandleWest::path( double scale ) const
 
 
 ///
+/// HandleNorthWest Constructor
+///
+HandleNorthWest::HandleNorthWest( LabelModelObject* owner )
+	: Handle( owner, NW )
+{
+}
+
+
+///
+/// HandleNorthWest Destructor
+///
+HandleNorthWest::~HandleNorthWest()
+{
+}
+
+///
+/// HandleNorthWest Clone
+///
+HandleNorthWest* HandleNorthWest::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleNorthWest( newOwner );
+}
+
+
+///
+/// Draw HandleNorthWest
+///
+void HandleNorthWest::draw( QPainter* painter, double scale ) const
+{
+	drawAt( painter, scale, 0, 0, originHandleFillColor );
+}
+
+
+///
+/// HandleNorthWest Path
+///
+QPainterPath HandleNorthWest::path( double scale ) const
+{
+	return pathAt( scale, 0, 0 );
+}
+
+
+///
 /// HandleP1 Constructor
 ///
 HandleP1::HandleP1( LabelModelObject* owner )
@@ -413,6 +484,15 @@ HandleP1::HandleP1( LabelModelObject* owner )
 ///
 HandleP1::~HandleP1()
 {
+}
+
+
+///
+/// HandleP1 Clone
+///
+HandleP1* HandleP1::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleP1( newOwner );
 }
 
 
@@ -448,6 +528,15 @@ HandleP2::HandleP2( LabelModelObject* owner )
 ///
 HandleP2::~HandleP2()
 {
+}
+
+
+///
+/// HandleP2 Clone
+///
+HandleP2* HandleP2::clone( LabelModelObject* newOwner ) const
+{
+	return new HandleP2( newOwner );
 }
 
 

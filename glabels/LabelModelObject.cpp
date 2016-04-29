@@ -41,7 +41,7 @@ int LabelModelObject::msNextId = 0;
 ///
 /// Constructor
 ///
-LabelModelObject::LabelModelObject( QObject *parent = 0 ) : QObject(parent)
+LabelModelObject::LabelModelObject() : QObject(0)
 {
 	mId = msNextId++;
 
@@ -60,6 +60,36 @@ LabelModelObject::LabelModelObject( QObject *parent = 0 ) : QObject(parent)
 	mSelectedFlag = false;
 
 	mOutline = 0;
+}
+
+
+///
+/// Copy constructor
+///
+LabelModelObject::LabelModelObject( const LabelModelObject* object )
+{
+	mId = msNextId++;
+
+	mSelectedFlag    = object->mSelectedFlag;
+
+	mX0              = object->mX0;
+	mY0              = object->mY0;
+	mW               = object->mW;
+	mH               = object->mH;
+
+	mShadowState     = object->mShadowState;
+	mShadowX         = object->mShadowX;
+	mShadowY         = object->mShadowY;
+	mShadowOpacity   = object->mShadowOpacity;
+	mShadowColorNode = object->mShadowColorNode;
+
+	foreach ( Handle* handle, object->mHandles )
+	{
+		mHandles.append( handle->clone( this ) );
+	}
+	mOutline         = object->mOutline->clone( this );
+
+	mMatrix          = object->mMatrix;
 }
 
 

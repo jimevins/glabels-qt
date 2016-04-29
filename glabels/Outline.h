@@ -39,7 +39,14 @@ class Outline
 	////////////////////////////
 public:
 	Outline( LabelModelObject* owner );
+	Outline( const Outline* outline, LabelModelObject* newOwner );
 	virtual ~Outline();
+
+	
+	////////////////////////////
+	// Duplication
+	////////////////////////////
+	Outline* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////

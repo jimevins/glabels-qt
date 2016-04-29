@@ -50,6 +50,12 @@ protected:
 public:
 	virtual ~Handle();
 
+
+	////////////////////////////
+	// Duplication
+	////////////////////////////
+	virtual Handle* clone( LabelModelObject* newOwner ) const = 0;
+	
 		
 	////////////////////////////
 	// Attribue Methods
@@ -97,6 +103,7 @@ class HandleNorth : public Handle
 public:
 	HandleNorth( LabelModelObject* owner );
 	virtual ~HandleNorth();
+	virtual HandleNorth* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -119,6 +126,7 @@ class HandleNorthEast : public Handle
 public:
 	HandleNorthEast( LabelModelObject* owner );
 	virtual ~HandleNorthEast();
+	virtual HandleNorthEast* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -141,6 +149,7 @@ class HandleEast : public Handle
 public:
 	HandleEast( LabelModelObject* owner );
 	virtual ~HandleEast();
+	virtual HandleEast* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -163,6 +172,7 @@ class HandleSouthEast : public Handle
 public:
 	HandleSouthEast( LabelModelObject* owner );
 	virtual ~HandleSouthEast();
+	virtual HandleSouthEast* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -185,6 +195,7 @@ class HandleSouth : public Handle
 public:
 	HandleSouth( LabelModelObject* owner );
 	virtual ~HandleSouth();
+	virtual HandleSouth* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -207,6 +218,7 @@ class HandleSouthWest : public Handle
 public:
 	HandleSouthWest( LabelModelObject* owner );
 	virtual ~HandleSouthWest();
+	virtual HandleSouthWest* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -229,6 +241,7 @@ class HandleWest : public Handle
 public:
 	HandleWest( LabelModelObject* owner );
 	virtual ~HandleWest();
+	virtual HandleWest* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -251,6 +264,7 @@ class HandleNorthWest : public Handle
 public:
 	HandleNorthWest( LabelModelObject* owner );
 	virtual ~HandleNorthWest();
+	virtual HandleNorthWest* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -273,6 +287,7 @@ class HandleP1 : public Handle
 public:
 	HandleP1( LabelModelObject* owner );
 	virtual ~HandleP1();
+	virtual HandleP1* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////
@@ -295,6 +310,11 @@ class HandleP2 : public Handle
 public:
 	HandleP2( LabelModelObject* owner );
 	virtual ~HandleP2();
+
+	////////////////////////////
+	// Duplication
+	////////////////////////////
+	virtual HandleP2* clone( LabelModelObject* newOwner ) const;
 
 
 	////////////////////////////

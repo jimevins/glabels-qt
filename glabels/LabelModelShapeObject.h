@@ -35,7 +35,8 @@ class LabelModelShapeObject : public LabelModelObject
 	// Lifecycle Methods
 	///////////////////////////////////////////////////////////////
 protected:
-	LabelModelShapeObject( QObject* parent = 0 );
+	LabelModelShapeObject();
+	LabelModelShapeObject( const LabelModelShapeObject* object );
 public:
 	virtual ~LabelModelShapeObject();
 

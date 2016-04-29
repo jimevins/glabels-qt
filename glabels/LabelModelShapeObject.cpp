@@ -27,7 +27,7 @@
 ///
 /// Constructor
 ///
-LabelModelShapeObject::LabelModelShapeObject( QObject* parent ) : LabelModelObject(parent)
+LabelModelShapeObject::LabelModelShapeObject()
 {
 	mOutline = new Outline( this );
 
@@ -43,6 +43,17 @@ LabelModelShapeObject::LabelModelShapeObject( QObject* parent ) : LabelModelObje
 	mLineWidth       = 1.0;
 	mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
 	mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
+}
+
+
+///
+/// Copy constructor
+///
+LabelModelShapeObject::LabelModelShapeObject( const LabelModelShapeObject* object ) : LabelModelObject(object)
+{
+	mLineWidth       = object->mLineWidth;
+	mLineColorNode   = object->mLineColorNode;
+	mFillColorNode   = object->mFillColorNode;
 }
 
 

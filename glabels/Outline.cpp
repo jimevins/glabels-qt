@@ -61,10 +61,31 @@ Outline::Outline( LabelModelObject* owner )
 
 
 ///
+/// Outline Copy constructor
+///
+Outline::Outline( const Outline* outline, LabelModelObject* newOwner )
+	: mOwner(newOwner)
+{
+	mDashes = outline->mDashes;
+	mPen1   = outline->mPen1;
+	mPen2   = outline->mPen2;
+}
+
+
+///
 /// Outline Destructor
 ///
 Outline::~Outline()
 {
+}
+
+
+///
+/// Clone Outline
+///
+Outline* Outline::clone( LabelModelObject* newOwner ) const
+{
+	return new Outline( this, newOwner );
 }
 
 
