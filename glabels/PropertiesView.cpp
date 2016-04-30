@@ -21,6 +21,7 @@
 #include "PropertiesView.h"
 
 #include "LabelModel.h"
+#include "UndoRedoModel.h"
 #include "Settings.h"
 
 #include "libglabels/Db.h"
@@ -55,9 +56,10 @@ PropertiesView::~PropertiesView()
 ///
 /// Set Model
 ///
-void PropertiesView::setModel( LabelModel* model )
+void PropertiesView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 {
 	mModel = model;
+	mUndoRedoModel = undoRedoModel;
 
 	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 
@@ -171,11 +173,13 @@ void PropertiesView::onFormChanged()
 	}
 	else if ( frame->w() > frame->h() )
 	{
+		mUndoRedoModel->checkpoint( tr("Product Orientation") );
 		int index = orientationCombo->currentIndex();
 		mModel->setRotate( index == 1 );
 	}
 	else
 	{
+		mUndoRedoModel->checkpoint( tr("Product Orientation") );
 		int index = orientationCombo->currentIndex();
 		mModel->setRotate( index == 0 );
 	}
@@ -193,6 +197,8 @@ void PropertiesView::onChangeProductButtonClicked()
 	const glabels::Template* tmplate = selectProductDialog.tmplate();
 	if ( tmplate )
 	{
+		mUndoRedoModel->checkpoint( tr("Change Product") );
+
 		mModel->setTmplate( tmplate );
 
 		// Don't rotate circular or round labels

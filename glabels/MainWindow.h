@@ -37,6 +37,7 @@ class QScrollArea;
 
 // Forward References
 class LabelModel;
+class UndoRedoModel;
 class PropertiesView;
 class LabelEditor;
 class ObjectEditor;
@@ -148,6 +149,7 @@ private slots:
 	void onModifiedChanged();
 	void onSelectionChanged();
 	void onLabelChanged();
+	void onUndoRedoChanged();
 
 
 	/////////////////////////////////////
@@ -204,9 +206,11 @@ private:
 	QToolBar* fileToolBar;
 	QToolBar* editorToolBar;
 
+	LabelModel*          mModel;
+	UndoRedoModel*       mUndoRedoModel;
+
 	QListWidget*         mContents;
 	QStackedWidget*      mPages;
-	LabelModel*          mModel;
 	PropertiesView*      mPropertiesView;
 	QScrollArea*         mLabelEditorScrollArea;
 	LabelEditor*         mLabelEditor;

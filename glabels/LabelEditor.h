@@ -31,6 +31,7 @@
 // Forward References
 class LabelModel;
 class LabelModelObject;
+class UndoRedoModel;
 class Handle;
 
 
@@ -72,7 +73,7 @@ public:
 	// Model
 	/////////////////////////////////////
 public:
-	void setModel( LabelModel* model );
+	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
 
 
 	/////////////////////////////////////
@@ -184,6 +185,7 @@ private:
 	glabels::Distance    mStepSize;
 
 	LabelModel*          mModel;
+	UndoRedoModel*       mUndoRedoModel;
 
 	State                mState;
 

@@ -44,6 +44,7 @@
 #include "PrintView.h"
 #include "LabelModel.h"
 #include "LabelModelBoxObject.h"
+#include "UndoRedoModel.h"
 #include "Icons.h"
 #include "File.h"
 #include "Help.h"
@@ -163,8 +164,10 @@ LabelModel* MainWindow::model() const
 void MainWindow::setModel( LabelModel *label )
 {
 	mModel = label;
-	mPropertiesView->setModel( mModel );
-	mLabelEditor->setModel( mModel );
+	mUndoRedoModel = new UndoRedoModel( mModel );
+	
+	mPropertiesView->setModel( mModel, mUndoRedoModel );
+	mLabelEditor->setModel( mModel, mUndoRedoModel );
 	mObjectEditor->setModel( mModel );
 	mPrintView->setModel( mModel );
 
@@ -180,6 +183,7 @@ void MainWindow::setModel( LabelModel *label )
 	connect( mModel, SIGNAL(modifiedChanged()), this, SLOT(onModifiedChanged()) );
 	connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
 	connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
+	connect( mUndoRedoModel, SIGNAL(changed()), this, SLOT(onUndoRedoChanged()) );
 }
 
 
@@ -726,8 +730,8 @@ void MainWindow::setDocVerbsEnabled( bool enabled )
 {
 	fileSaveAction->setEnabled( enabled );
 	fileSaveAsAction->setEnabled( enabled );
-	editUndoAction->setEnabled( enabled );
-	editRedoAction->setEnabled( enabled );
+	editUndoAction->setEnabled( enabled && mUndoRedoModel->canUndo() );
+	editRedoAction->setEnabled( enabled && mUndoRedoModel->canRedo() );
 	editDeleteAction->setEnabled( enabled );
 	editSelectAllAction->setEnabled( enabled );
 	editUnSelectAllAction->setEnabled( enabled );
@@ -979,7 +983,7 @@ void MainWindow::fileExit()
 ///
 void MainWindow::editUndo()
 {
-	qDebug() << "ACTION: edit->Undo";
+	mUndoRedoModel->undo();
 }
 
 
@@ -988,7 +992,7 @@ void MainWindow::editUndo()
 ///
 void MainWindow::editRedo()
 {
-	qDebug() << "ACTION: edit->Redo";
+	mUndoRedoModel->redo();
 }
 
 
@@ -997,6 +1001,7 @@ void MainWindow::editRedo()
 ///
 void MainWindow::editCut()
 {
+	mUndoRedoModel->checkpoint( tr("Cut") );
 	mModel->cutSelection();
 }
 
@@ -1006,6 +1011,7 @@ void MainWindow::editCut()
 ///
 void MainWindow::editCopy()
 {
+	// Non-destructive -- do not checkpoint.
 	mModel->copySelection();
 }
 
@@ -1015,6 +1021,7 @@ void MainWindow::editCopy()
 ///
 void MainWindow::editPaste()
 {
+	mUndoRedoModel->checkpoint( tr("Paste") );
 	mModel->paste();
 }
 
@@ -1024,6 +1031,7 @@ void MainWindow::editPaste()
 ///
 void MainWindow::editDelete()
 {
+	mUndoRedoModel->checkpoint( tr("Delete") );
 	mModel->deleteSelection();
 }
 
@@ -1151,6 +1159,7 @@ void MainWindow::objectsCreateText()
 ///
 void MainWindow::objectsCreateBox()
 {
+	mUndoRedoModel->checkpoint( tr("Create Box") );
 	mLabelEditor->createBoxMode();
 }
 
@@ -1196,6 +1205,7 @@ void MainWindow::objectsCreateBarcode()
 ///
 void MainWindow::objectsOrderRaise()
 {
+	mUndoRedoModel->checkpoint( tr("Bring To Front") );
 	mModel->raiseSelectionToTop();
 }
 
@@ -1205,6 +1215,7 @@ void MainWindow::objectsOrderRaise()
 ///
 void MainWindow::objectsOrderLower()
 {
+	mUndoRedoModel->checkpoint( tr("Send To Back") );
 	mModel->lowerSelectionToBottom();
 }
 
@@ -1214,6 +1225,7 @@ void MainWindow::objectsOrderLower()
 ///
 void MainWindow::objectsXformRotateLeft()
 {
+	mUndoRedoModel->checkpoint( tr("Rotate Left") );
 	mModel->rotateSelectionLeft();
 }
 
@@ -1223,6 +1235,7 @@ void MainWindow::objectsXformRotateLeft()
 ///
 void MainWindow::objectsXformRotateRight()
 {
+	mUndoRedoModel->checkpoint( tr("Rotate Right") );
 	mModel->rotateSelectionRight();
 }
 
@@ -1232,6 +1245,7 @@ void MainWindow::objectsXformRotateRight()
 ///
 void MainWindow::objectsXformFlipHoriz()
 {
+	mUndoRedoModel->checkpoint( tr("Flip Horizontally") );
 	mModel->flipSelectionHoriz();
 }
 
@@ -1241,6 +1255,7 @@ void MainWindow::objectsXformFlipHoriz()
 ///
 void MainWindow::objectsXformFlipVert()
 {
+	mUndoRedoModel->checkpoint( tr("Flip Vertically") );
 	mModel->flipSelectionVert();
 }
 
@@ -1250,6 +1265,7 @@ void MainWindow::objectsXformFlipVert()
 ///
 void MainWindow::objectsAlignLeft()
 {
+	mUndoRedoModel->checkpoint( tr("Align Left") );
 	mModel->alignSelectionLeft();
 }
 
@@ -1259,6 +1275,7 @@ void MainWindow::objectsAlignLeft()
 ///
 void MainWindow::objectsAlignHCenter()
 {
+	mUndoRedoModel->checkpoint( tr("Align Center") );
 	mModel->alignSelectionHCenter();
 }
 
@@ -1268,6 +1285,7 @@ void MainWindow::objectsAlignHCenter()
 ///
 void MainWindow::objectsAlignRight()
 {
+	mUndoRedoModel->checkpoint( tr("Align Right") );
 	mModel->alignSelectionRight();
 }
 
@@ -1277,6 +1295,7 @@ void MainWindow::objectsAlignRight()
 ///
 void MainWindow::objectsAlignTop()
 {
+	mUndoRedoModel->checkpoint( tr("Align Top") );
 	mModel->alignSelectionTop();
 }
 
@@ -1286,6 +1305,7 @@ void MainWindow::objectsAlignTop()
 ///
 void MainWindow::objectsAlignVCenter()
 {
+	mUndoRedoModel->checkpoint( tr("Align Middle") );
 	mModel->alignSelectionVCenter();
 }
 
@@ -1295,6 +1315,7 @@ void MainWindow::objectsAlignVCenter()
 ///
 void MainWindow::objectsAlignBottom()
 {
+	mUndoRedoModel->checkpoint( tr("Align Bottom") );
 	mModel->alignSelectionBottom();
 }
 
@@ -1304,6 +1325,7 @@ void MainWindow::objectsAlignBottom()
 ///
 void MainWindow::objectsCenterHoriz()
 {
+	mUndoRedoModel->checkpoint( tr("Center Horizontally") );
 	mModel->centerSelectionHoriz();
 }
 
@@ -1313,6 +1335,7 @@ void MainWindow::objectsCenterHoriz()
 ///
 void MainWindow::objectsCenterVert()
 {
+	mUndoRedoModel->checkpoint( tr("Center Vertically") );
 	mModel->centerSelectionVert();
 }
 
@@ -1416,5 +1439,14 @@ void MainWindow::onSelectionChanged()
 ///
 void MainWindow::onLabelChanged()
 {
-	/* @TODO: update undo/redo verbs. */
+}
+
+
+///
+/// Undo/Redo changed handler
+///
+void MainWindow::onUndoRedoChanged()
+{
+	editUndoAction->setEnabled( mUndoRedoModel->canUndo() );
+	editRedoAction->setEnabled( mUndoRedoModel->canRedo() );
 }

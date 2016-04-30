@@ -25,7 +25,9 @@
 
 #include "libglabels/Units.h"
 
-class LabelModel;  // Forward reference
+// Forward references
+class LabelModel;
+class UndoRedoModel;
 	
 
 ///
@@ -47,7 +49,7 @@ public:
 	/////////////////////////////////
 	// Public methods
 	/////////////////////////////////
-	void setModel( LabelModel* model );
+	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
 
 
 	/////////////////////////////////
@@ -65,6 +67,7 @@ private slots:
 	/////////////////////////////////
 private:
 	LabelModel*    mModel;
+	UndoRedoModel* mUndoRedoModel;
 	glabels::Units mUnits;
 
 };

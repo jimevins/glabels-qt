@@ -28,6 +28,7 @@
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
+#include "UndoRedoModel.h"
 #include "Settings.h"
 #include "Cursors.h"
 
@@ -81,6 +82,7 @@ LabelEditor::LabelEditor( QScrollArea* scrollArea, QWidget* parent )
 	mState = IdleState;
 
 	mModel              = 0;
+	mUndoRedoModel      = 0;
 	mMarkupVisible      = true;
 	mGridVisible        = true;
 	mGridSpacing        = 18;
@@ -127,9 +129,10 @@ LabelEditor::qridVisible() const
 /// Model Parameter Setter
 ///
 void
-LabelEditor::setModel( LabelModel* model )
+LabelEditor::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 {
 	mModel = model;
+	mUndoRedoModel = undoRedoModel;
 
 	if ( model )
 	{
@@ -571,6 +574,7 @@ LabelEditor::mouseMoveEvent( QMouseEvent* event )
 			break;
 
 		case ArrowMove:
+			mUndoRedoModel->checkpoint( tr("Move") );
 			mModel->moveSelection( (xWorld - mMoveLastX),
 					       (yWorld - mMoveLastY) );
 			mMoveLastX = xWorld;
@@ -867,22 +871,27 @@ LabelEditor::keyPressEvent( QKeyEvent* event )
 		{
 
 		case Qt::Key_Left:
+			mUndoRedoModel->checkpoint( tr("Move") );
 			mModel->moveSelection( -mStepSize, glabels::Distance(0) );
 			break;
 
 		case Qt::Key_Up:
+			mUndoRedoModel->checkpoint( tr("Move") );
 			mModel->moveSelection( glabels::Distance(0), -mStepSize );
 			break;
 
 		case Qt::Key_Right:
+			mUndoRedoModel->checkpoint( tr("Move") );
 			mModel->moveSelection( mStepSize, glabels::Distance(0) );
 			break;
 
 		case Qt::Key_Down:
+			mUndoRedoModel->checkpoint( tr("Move") );
 			mModel->moveSelection( glabels::Distance(0), mStepSize );
 			break;
 
 		case Qt::Key_Delete:
+			mUndoRedoModel->checkpoint( tr("Delete") );
 			mModel->deleteSelection();
 			setCursor( Qt::ArrowCursor );
 			break;

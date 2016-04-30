@@ -51,6 +51,7 @@ set (glabels_sources
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
+  UndoRedoModel.cpp
   XmlLabelCreator.cpp
   XmlLabelParser.cpp
 )
@@ -87,6 +88,7 @@ set (glabels_qobject_headers
   SimplePreview.h
   StartupWizard.h
   TemplatePicker.h
+  UndoRedoModel.h
 )
 
 set (glabels_forms
