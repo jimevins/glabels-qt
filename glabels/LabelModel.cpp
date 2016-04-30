@@ -86,8 +86,12 @@ void LabelModel::restore( const LabelModel *savedModel )
 		mObjectList.append( object->clone() );
 	}
 
+	// Emit signals based on potential changes
 	emit changed();
 	emit selectionChanged();
+	emit modifiedChanged();
+	emit nameChanged();
+	emit sizeChanged();
 }
 
 

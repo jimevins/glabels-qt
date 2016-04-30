@@ -373,30 +373,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>orientationCombo</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>PropertiesView</receiver>
-   <slot>onFormChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>671</x>
-     <y>283</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>723</x>
-     <y>285</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>changeProductButton</sender>
    <signal>clicked()</signal>
    <receiver>PropertiesView</receiver>
    <slot>onChangeProductButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>684</x>
-     <y>192</y>
+     <x>311</x>
+     <y>221</y>
     </hint>
     <hint type="destinationlabel">
      <x>728</x>
@@ -404,9 +388,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>orientationCombo</sender>
+   <signal>activated(int)</signal>
+   <receiver>PropertiesView</receiver>
+   <slot>onOrientationActivated()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>280</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>802</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onChangeProductButtonClicked()</slot>
-  <slot>onFormChanged()</slot>
+  <slot>onOrientationActivated()</slot>
  </slots>
 </ui>

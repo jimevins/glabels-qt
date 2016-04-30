@@ -58,7 +58,7 @@ public:
 private slots:
 	void onSettingsChanged();
 	void onLabelSizeChanged();
-	void onFormChanged();
+	void onOrientationActivated();
 	void onChangeProductButtonClicked();
 
 
@@ -69,7 +69,7 @@ private:
 	LabelModel*    mModel;
 	UndoRedoModel* mUndoRedoModel;
 	glabels::Units mUnits;
-
+	int            mOldOrientationIndex;
 };
 
 

@@ -156,32 +156,38 @@ void PropertiesView::onLabelSizeChanged()
 	{
 		orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
 	}
+	mOldOrientationIndex = orientationCombo->currentIndex();
 }
 
 
 ///
-/// Form changed handler
+/// Orientation combo box changed handler
 ///
-void PropertiesView::onFormChanged()
+void PropertiesView::onOrientationActivated()
 {
 	const glabels::Template *tmplate = mModel->tmplate();
 	const glabels::Frame    *frame   = tmplate->frames().first();
 
-	if ( frame->w() == frame->h() )
+	// Make sure index actually changed.
+	int index = orientationCombo->currentIndex();
+	if ( index != mOldOrientationIndex )
 	{
-		mModel->setRotate( false );
-	}
-	else if ( frame->w() > frame->h() )
-	{
-		mUndoRedoModel->checkpoint( tr("Product Orientation") );
-		int index = orientationCombo->currentIndex();
-		mModel->setRotate( index == 1 );
-	}
-	else
-	{
-		mUndoRedoModel->checkpoint( tr("Product Orientation") );
-		int index = orientationCombo->currentIndex();
-		mModel->setRotate( index == 0 );
+		mOldOrientationIndex = index;
+
+		mUndoRedoModel->checkpoint( tr("Product Rotate") );
+
+		if ( frame->w() == frame->h() )
+		{
+			mModel->setRotate( false );
+		}
+		else if ( frame->w() > frame->h() )
+		{
+			mModel->setRotate( index == 1 );
+		}
+		else
+		{
+			mModel->setRotate( index == 0 );
+		}
 	}
 }
 
