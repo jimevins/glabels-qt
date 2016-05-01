@@ -24,9 +24,10 @@
 #include "ui_ObjectEditor.h"
 #include "libglabels/Distance.h"
 
-
-class LabelModel;  // Forward reference
-class LabelModelObject;  // Forward reference
+// Forward references
+class LabelModel;
+class LabelModelObject;
+class UndoRedoModel;
 	
 
 ///
@@ -47,7 +48,7 @@ public:
 	/////////////////////////////////
 	// Public methods
 	/////////////////////////////////
-	void setModel( LabelModel* model );
+	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
 
 
 	/////////////////////////////////
@@ -85,6 +86,7 @@ private slots:
 private:
 	LabelModel*              mModel;
 	LabelModelObject*        mObject;
+	UndoRedoModel*           mUndoRedoModel;
 	
 	glabels::Units           mUnits;
 	int                      mSpinDigits;

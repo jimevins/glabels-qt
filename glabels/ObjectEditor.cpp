@@ -24,6 +24,7 @@
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
+#include "UndoRedoModel.h"
 
 #include "Settings.h"
 
@@ -51,9 +52,10 @@ ObjectEditor::ObjectEditor( QWidget *parent )
 }
 
 	
-void ObjectEditor::setModel( LabelModel* model )
+void ObjectEditor::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 {
 	mModel = model;
+	mUndoRedoModel = undoRedoModel;
 
 	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 	connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
@@ -277,6 +279,8 @@ void ObjectEditor::onLineControlsChanged()
 	{
 		mBlocked = true;
 
+		mUndoRedoModel->checkpoint( tr("Line") );
+		
 		mObject->setLineWidth( glabels::Distance::pt(lineWidthSpin->value()) );
 		mObject->setLineColorNode( lineColorButton->colorNode() );
 
@@ -291,6 +295,8 @@ void ObjectEditor::onFillControlsChanged()
 	{
 		mBlocked = true;
 
+		mUndoRedoModel->checkpoint( tr("Fill") );
+		
 		mObject->setFillColorNode( fillColorButton->colorNode() );
 
 		mBlocked = false;
@@ -304,6 +310,8 @@ void ObjectEditor::onPositionControlsChanged()
 	{
 		mBlocked = true;
 
+		mUndoRedoModel->checkpoint( tr("Move") );
+		
 		glabels::Distance x = glabels::Distance(posXSpin->value(), mUnits);
 		glabels::Distance y = glabels::Distance(posYSpin->value(), mUnits);
 
@@ -320,6 +328,8 @@ void ObjectEditor::onRectSizeControlsChanged()
 	{
 		mBlocked = true;
 			
+		mUndoRedoModel->checkpoint( tr("Size") );
+		
 		glabels::Distance spinW = glabels::Distance(sizeWSpin->value(), mUnits);
 		glabels::Distance spinH = glabels::Distance(sizeHSpin->value(), mUnits);
 				
@@ -352,6 +362,8 @@ void ObjectEditor::onShadowControlsChanged()
 	{
 		mBlocked = true;
 
+		mUndoRedoModel->checkpoint( tr("Shadow") );
+		
 		mObject->setShadow( shadowEnableCheck->isChecked() );
 		mObject->setShadowX( glabels::Distance(shadowXSpin->value(), mUnits) );
 		mObject->setShadowY( glabels::Distance(shadowYSpin->value(), mUnits) );

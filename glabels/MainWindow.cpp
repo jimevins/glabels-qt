@@ -168,7 +168,7 @@ void MainWindow::setModel( LabelModel *label )
 	
 	mPropertiesView->setModel( mModel, mUndoRedoModel );
 	mLabelEditor->setModel( mModel, mUndoRedoModel );
-	mObjectEditor->setModel( mModel );
+	mObjectEditor->setModel( mModel, mUndoRedoModel );
 	mPrintView->setModel( mModel );
 
 	mContents->setEnabled( true );

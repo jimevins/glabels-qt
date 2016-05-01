@@ -81,9 +81,15 @@ void LabelModel::restore( const LabelModel *savedModel )
 	mFrame            = savedModel->mFrame;
 	mRotate           = savedModel->mRotate;
 
-	foreach ( LabelModelObject* object, savedModel->mObjectList )
+	foreach ( LabelModelObject* savedObject, savedModel->mObjectList )
 	{
-		mObjectList.append( object->clone() );
+		LabelModelObject* object = savedObject->clone();
+		
+		object->setParent( this );
+		mObjectList << object;
+
+		connect( object, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
+		connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 	}
 
 	// Emit signals based on potential changes
