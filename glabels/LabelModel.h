@@ -77,27 +77,27 @@ signals:
 	// Properties
 	/////////////////////////////////
 public:
-	inline bool isModified() const;
+	bool isModified() const;
 	void clearModified();
 
 	QString shortName();
-	inline const QString& fileName() const;
-	inline void setFileName( const QString &fileName );
+	const QString& fileName() const;
+	void setFileName( const QString &fileName );
 
-	inline int compressionLevel() const;
-	inline void setCompressionLevel( int compressionLevel );
+	int compressionLevel() const;
+	void setCompressionLevel( int compressionLevel );
 
-	inline const glabels::Template* tmplate() const;
-	inline const glabels::Frame* frame() const;
-	inline void setTmplate( const glabels::Template* tmplate );
+	const glabels::Template* tmplate() const;
+	const glabels::Frame* frame() const;
+	void setTmplate( const glabels::Template* tmplate );
 
-	inline bool rotate() const;
-	inline void setRotate( bool rotate );
+	bool rotate() const;
+	void setRotate( bool rotate );
 
-	inline glabels::Distance w() const;
-	inline glabels::Distance h() const;
+	glabels::Distance w() const;
+	glabels::Distance h() const;
 
-	inline const QList<LabelModelObject*>& objectList() const;
+	const QList<LabelModelObject*>& objectList() const;
 
 		
 	/////////////////////////////////
@@ -219,108 +219,6 @@ private:
 	QList<LabelModelObject*>  mObjectList;
 
 };
-
-
-
-/////////////////////////////////
-// INLINE METHODS
-/////////////////////////////////
-
-inline bool LabelModel::isModified() const
-{
-	return mModified;
-}
-
-
-inline const QString& LabelModel::fileName() const
-{
-	return mFileName;
-}
-
-
-inline void LabelModel::setFileName( const QString &fileName )
-{
-	if ( mFileName != fileName )
-	{
-		mFileName = fileName;
-		emit nameChanged();
-	}
-}
-
-
-inline int LabelModel::compressionLevel() const
-{
-	return mCompressionLevel;
-}
-
-
-inline void LabelModel::setCompressionLevel( int compressionLevel )
-{
-	mCompressionLevel = compressionLevel;
-}
-
-
-inline const glabels::Template* LabelModel::tmplate() const
-{
-	return mTmplate;
-}
-
-
-inline const glabels::Frame* LabelModel::frame() const
-{
-	return mFrame;
-}
-
-
-inline void LabelModel::setTmplate( const glabels::Template* tmplate )
-{
-	if (mTmplate != tmplate)
-	{
-		mTmplate = tmplate;
-		mFrame = tmplate->frames().first();
-		mModified = true;
-		emit changed();
-		emit sizeChanged();
-
-		Settings::addToRecentTemplateList( tmplate->name() );
-	}
-}
-
-
-inline bool LabelModel::rotate() const
-{
-	return mRotate;
-}
-
-
-inline void LabelModel::setRotate( bool rotate )
-{
-	if (mRotate != rotate)
-	{
-		mRotate = rotate;
-		mModified = true;
-		emit changed();
-		emit sizeChanged();
-	}
-}
-
-
-inline glabels::Distance LabelModel::w() const
-{
-	return mRotate ? mFrame->h() : mFrame->w();
-}
-
-
-inline glabels::Distance LabelModel::h() const
-{
-	return mRotate ? mFrame->w() : mFrame->h();
-}
-
-
-inline const QList<LabelModelObject*>& LabelModel::objectList() const
-{
-	return mObjectList;
-}
 
 
 #endif // LabelModel_h

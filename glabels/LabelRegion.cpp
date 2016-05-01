@@ -24,6 +24,81 @@
 #include <cmath>
 
 
+///
+/// Get x1
+///
+glabels::Distance LabelRegion::x1( void ) const
+{
+	return mX1;
+}
+
+
+///
+/// Set x1
+///
+void LabelRegion::setX1( const glabels::Distance& value )
+{
+	mX1 = value;
+}
+
+
+///
+/// Get y1
+///
+glabels::Distance LabelRegion::y1( void ) const
+{
+	return mY1;
+}
+
+
+///
+/// Set y1
+///
+void LabelRegion::setY1( const glabels::Distance& value )
+{
+	mY1 = value;
+}
+
+
+///
+/// Get x2
+///
+glabels::Distance LabelRegion::x2( void ) const
+{
+	return mX2;
+}
+
+
+///
+/// Set x2
+///
+void LabelRegion::setX2( const glabels::Distance& value )
+{
+	mX2 = value;
+}
+
+
+///
+/// Get y2
+///
+glabels::Distance LabelRegion::y2( void ) const
+{
+	return mY2;
+}
+
+
+///
+/// Set y2
+///
+void LabelRegion::setY2( const glabels::Distance& value )
+{
+	mY2 = value;
+}
+
+
+///
+/// Convert to a QRectF
+///
 QRectF LabelRegion::rect() const
 {
 	using std::min;

@@ -102,7 +102,143 @@ void LabelModel::restore( const LabelModel *savedModel )
 
 
 ///
-/// Short name.
+/// Is model modified?
+///
+bool LabelModel::isModified() const
+{
+	return mModified;
+}
+
+
+///
+/// Get filename
+///
+const QString& LabelModel::fileName() const
+{
+	return mFileName;
+}
+
+
+///
+/// Set filename
+///
+void LabelModel::setFileName( const QString &fileName )
+{
+	if ( mFileName != fileName )
+	{
+		mFileName = fileName;
+		emit nameChanged();
+	}
+}
+
+
+///
+/// Get compression level
+///
+int LabelModel::compressionLevel() const
+{
+	return mCompressionLevel;
+}
+
+
+///
+/// Set compression level
+///
+void LabelModel::setCompressionLevel( int compressionLevel )
+{
+	mCompressionLevel = compressionLevel;
+}
+
+
+///
+/// Get template
+///
+const glabels::Template* LabelModel::tmplate() const
+{
+	return mTmplate;
+}
+
+
+///
+/// Get frame
+///
+const glabels::Frame* LabelModel::frame() const
+{
+	return mFrame;
+}
+
+
+///
+/// Set template
+///
+void LabelModel::setTmplate( const glabels::Template* tmplate )
+{
+	if (mTmplate != tmplate)
+	{
+		mTmplate = tmplate;
+		mFrame = tmplate->frames().first();
+		mModified = true;
+		emit changed();
+		emit sizeChanged();
+
+		Settings::addToRecentTemplateList( tmplate->name() );
+	}
+}
+
+
+///
+/// Get rotation
+///
+bool LabelModel::rotate() const
+{
+	return mRotate;
+}
+
+
+///
+/// Set rotation
+///
+void LabelModel::setRotate( bool rotate )
+{
+	if (mRotate != rotate)
+	{
+		mRotate = rotate;
+		mModified = true;
+		emit changed();
+		emit sizeChanged();
+	}
+}
+
+
+///
+/// Get width
+///
+glabels::Distance LabelModel::w() const
+{
+	return mRotate ? mFrame->h() : mFrame->w();
+}
+
+
+///
+/// Get height
+///
+glabels::Distance LabelModel::h() const
+{
+	return mRotate ? mFrame->w() : mFrame->h();
+}
+
+
+///
+/// Get object list
+///
+const QList<LabelModelObject*>& LabelModel::objectList() const
+{
+	return mObjectList;
+}
+
+
+///
+/// Get short name.
 ///
 QString LabelModel::shortName()
 {
