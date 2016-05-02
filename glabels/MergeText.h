@@ -1,6 +1,6 @@
-/*  MergeField.h
+/*  MergeText.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2015  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,51 +18,50 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergeField_h
-#define MergeField_h
+#ifndef MergeText_h
+#define MergeText_h
 
-#include <QString>
+#include "Merge.h"
+
+#include <QFile>
 
 
 ///
-/// Merge Field Structure
+/// MergeText Backend
 ///
-struct MergeField
+struct MergeText : public Merge
 {
+
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
-public:
-	MergeField();
-	MergeField( const QString& key, const QString& value );
+protected:
+	MergeText( QChar delimiter, bool line1HasKeys );
+	MergeText( const MergeText* merge );
+	virtual ~MergeText();
 
 
 	/////////////////////////////////
-	// Properties
+	// Implementation of virtual methods
 	/////////////////////////////////
 public:
-	//
-	// Key Property
-	//
-	const QString key( void ) const;
-	void setKey( const QString& value );
-
-
-	//
-	// Value Property
-	//
-	const QString value( void ) const;
-	void setValue( const QString& value );
+	QList<QString> keyList() const;
+	QString primaryKey() const;
+protected:
+	void open();
+	void close();
+	MergeRecord* readNextRecord();
 
 
 	/////////////////////////////////
 	// Private data
 	/////////////////////////////////
 private:
-	QString mKey;
-	QString mValue;
+	QChar mDelimeter;
+	bool  mLine1HasKeys;
 
+	QFile mFile;
 };
 
 
-#endif // MergeField_h
+#endif // MergeText_h

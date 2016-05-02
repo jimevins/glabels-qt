@@ -1,6 +1,6 @@
-/*  MergeRecord.cpp
+/*  MergeNone.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2015  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "MergeRecord.h"
+#include "MergeNone.h"
 
 
 ///
 /// Constructor
 ///
-MergeRecord::MergeRecord() : mSelected( false )
+MergeNone::MergeNone() : Merge( Merge::NONE )
 {
 }
 
@@ -32,8 +32,15 @@ MergeRecord::MergeRecord() : mSelected( false )
 ///
 /// Constructor
 ///
-MergeRecord::MergeRecord( const MergeRecord* record )
-	: mSelected(record->mSelected), mFieldList(record->mFieldList)
+MergeNone::MergeNone( const MergeNone* merge ) : Merge( merge )
+{
+}
+
+
+///
+/// Destructor
+///
+MergeNone::~MergeNone()
 {
 }
 
@@ -41,52 +48,51 @@ MergeRecord::MergeRecord( const MergeRecord* record )
 ///
 /// Clone
 ///
-MergeRecord* MergeRecord::clone() const
+MergeNone* MergeNone::clone() const
 {
-	return new MergeRecord( this );
+	return new MergeNone( this );
 }
 
 
 ///
-/// Is record selected?
+/// Get key list
 ///
-bool MergeRecord::isSelected() const
+QList<QString> MergeNone::keyList() const
 {
-	return mSelected;
+	QList<QString> emptyList;
+	return emptyList;
 }
 
 
 ///
-/// Set selected on not selected
+/// Get primary key
 ///
-void MergeRecord::setSelected( bool value )
+QString MergeNone::primaryKey() const
 {
-	mSelected = value;
+	return "";
 }
 
 
 ///
-/// Is record empty?
+/// Open source
 ///
-bool MergeRecord::isEmpty() const
+void MergeNone::open()
 {
-	return mFieldList.size() == 0;
 }
 
 
 ///
-/// Get field list
+/// Close source
 ///
-const QList<MergeField>& MergeRecord::fieldList() const
+void MergeNone::close()
 {
-	return mFieldList;
 }
 
 
 ///
-/// Set field list
+/// Read next record
 ///
-void MergeRecord::setFieldList( QList<MergeField>& value )
+MergeRecord* MergeNone::readNextRecord()
 {
-	mFieldList = value;
+	return 0;
 }

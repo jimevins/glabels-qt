@@ -1,6 +1,6 @@
-/*  MergeField.h
+/*  MergeNone.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2015  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,51 +18,45 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergeField_h
-#define MergeField_h
+#ifndef MergeNone_h
+#define MergeNone_h
 
-#include <QString>
+#include "Merge.h"
 
 
 ///
-/// Merge Field Structure
+/// MergeNone Backend
 ///
-struct MergeField
+struct MergeNone : public Merge
 {
+
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
+protected:
+	MergeNone();
+	MergeNone( const MergeNone* merge );
+	virtual ~MergeNone();
+
+
+	/////////////////////////////////
+	// Object duplication
+	/////////////////////////////////
+	MergeNone* clone() const;
+
+
+	/////////////////////////////////
+	// Implementation of virtual methods
+	/////////////////////////////////
 public:
-	MergeField();
-	MergeField( const QString& key, const QString& value );
-
-
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	//
-	// Key Property
-	//
-	const QString key( void ) const;
-	void setKey( const QString& value );
-
-
-	//
-	// Value Property
-	//
-	const QString value( void ) const;
-	void setValue( const QString& value );
-
-
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	QString mKey;
-	QString mValue;
-
+	QList<QString> keyList() const;
+	QString primaryKey() const;
+protected:
+	void open();
+	void close();
+	MergeRecord* readNextRecord();
+		
 };
 
 
-#endif // MergeField_h
+#endif // MergeNone_h

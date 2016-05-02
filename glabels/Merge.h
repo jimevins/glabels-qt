@@ -29,7 +29,7 @@
 
 
 ///
-/// Merge Record Structure
+/// Merge Object
 ///
 struct Merge : QObject
 {
@@ -39,6 +39,7 @@ struct Merge : QObject
 	/////////////////////////////////
 	// Source Type
 	/////////////////////////////////
+public:
 	enum SourceType { NONE, FIXED, FILE };
 		
 		
@@ -46,21 +47,26 @@ struct Merge : QObject
 	// Life Cycle
 	/////////////////////////////////
 protected:
-	Merge( QString id, QString name, SourceType type );
+	Merge( SourceType type );
+	Merge( const Merge* merge );
 	virtual ~Merge();
+
+
+	/////////////////////////////////
+	// Object duplication
+	/////////////////////////////////
+	virtual Merge* clone() const = 0;
 
 
 	/////////////////////////////////
 	// Properties
 	/////////////////////////////////
 public:
-	inline QString id() const;
-	inline QString name() const;
-	inline SourceType type() const;
-	inline QString source() const;
+	SourceType type() const;
+	QString source() const;
 	void setSource( const QString& source );
 
-	inline const QList<MergeRecord*>& recordList( void ) const;
+	const QList<MergeRecord*>& recordList( void ) const;
 
 
 	/////////////////////////////////
@@ -98,47 +104,11 @@ signals:
 	// Private data
 	/////////////////////////////////
 private:
-	QString             mId;
-	QString             mName;
 	SourceType          mType;
 
 	QString             mSource;
-	bool                mSelected;
 	QList<MergeRecord*> mRecordList;
 };
-
-
-/////////////////////////////////
-// INLINE METHODS
-/////////////////////////////////
-QString Merge::id() const
-{
-	return mId;
-}
-
-
-QString Merge::name() const
-{
-	return mId;
-}
-
-
-Merge::SourceType Merge::type() const
-{
-	return mType;
-}
-
-
-QString Merge::source() const
-{
-	return mSource;
-}
-
-
-const QList<MergeRecord*>& Merge::recordList( void ) const
-{
-	return mRecordList;
-}
 
 
 #endif // Merge_h

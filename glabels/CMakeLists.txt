@@ -36,6 +36,8 @@ set (glabels_sources
   MergeField.cpp
   MergeView.cpp
   MergeRecord.cpp
+  MergeNone.cpp
+  MergeText.cpp
   ObjectEditor.cpp
   Outline.cpp
   PageRenderer.cpp

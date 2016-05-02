@@ -37,18 +37,25 @@ struct MergeRecord
 	/////////////////////////////////
 public:
 	MergeRecord();
+	MergeRecord( const MergeRecord* record );
+
+
+	/////////////////////////////////
+	// Object duplication
+	/////////////////////////////////
+	MergeRecord* clone() const;
 
 
 	/////////////////////////////////
 	// Properties
 	/////////////////////////////////
 public:
-	inline bool isSelected() const;
-	inline void setSelected( bool value );
-	inline bool empty() const;
+	bool isSelected() const;
+	void setSelected( bool value );
+	bool isEmpty() const;
 
-	inline const QList<MergeField>& fieldList() const;
-	inline void setFieldList( QList<MergeField>& value );
+	const QList<MergeField>& fieldList() const;
+	void setFieldList( QList<MergeField>& value );
 
 
 	/////////////////////////////////
@@ -58,39 +65,6 @@ private:
 	bool              mSelected;
 	QList<MergeField> mFieldList;
 };
-
-
-/////////////////////////////////
-// INLINE METHODS
-/////////////////////////////////
-bool MergeRecord::isSelected() const
-{
-	return mSelected;
-}
-
-
-void MergeRecord::setSelected( bool value )
-{
-	mSelected = value;
-}
-
-
-bool MergeRecord::empty() const
-{
-	return mFieldList.size() == 0;
-}
-
-
-const QList<MergeField>& MergeRecord::fieldList() const
-{
-	return mFieldList;
-}
-
-
-void MergeRecord::setFieldList( QList<MergeField>& value )
-{
-	mFieldList = value;
-}
 
 
 #endif // MergeRecord_h

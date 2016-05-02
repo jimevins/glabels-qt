@@ -24,9 +24,20 @@
 ///
 /// Constructor
 ///
-Merge::Merge( QString id, QString name, SourceType type )
-	: mId(id), mName(name), mType(type)
+Merge::Merge( SourceType type )	: mType(type)
 {
+}
+
+
+///
+/// Constructor
+///
+Merge::Merge( const Merge* merge ) : mType(merge->mType), mSource(merge->mSource)
+{
+	foreach ( MergeRecord* record, merge->mRecordList )
+	{
+		mRecordList << record->clone();
+	}
 }
 
 
@@ -35,6 +46,29 @@ Merge::Merge( QString id, QString name, SourceType type )
 ///
 Merge::~Merge()
 {
+	foreach ( MergeRecord* record, mRecordList )
+	{
+		delete record;
+	}
+	mRecordList.clear();
+}
+
+
+///
+/// Get type
+///
+Merge::SourceType Merge::type() const
+{
+	return mType;
+}
+
+
+///
+/// Get source
+///
+QString Merge::source() const
+{
+	return mSource;
 }
 
 
@@ -60,6 +94,15 @@ void Merge::setSource( const QString& source )
 	close();
 		
 	emit sourceChanged();
+}
+
+
+///
+/// Get record list
+///
+const QList<MergeRecord*>& Merge::recordList( void ) const
+{
+	return mRecordList;
 }
 
 

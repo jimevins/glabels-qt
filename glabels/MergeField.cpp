@@ -19,3 +19,57 @@
  */
 
 #include "MergeField.h"
+
+
+///
+/// Default constructor
+///
+MergeField::MergeField()
+{
+}
+
+
+///
+/// Constructor
+///
+MergeField::MergeField( const QString& key, const QString& value )
+{
+	mKey = key;
+	mValue = value;
+}
+
+
+///
+/// Get key
+///
+const QString MergeField::key( void ) const
+{
+	return mKey;
+}
+
+
+///
+/// Set key
+///
+void MergeField::setKey( const QString& value )
+{
+	mKey = value;
+}
+
+
+///
+/// Get value
+///
+const QString MergeField::value( void ) const
+{
+	return mValue;
+}
+
+
+///
+/// Set value
+///
+void MergeField::setValue( const QString& value )
+{
+	mValue = value;
+}
