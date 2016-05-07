@@ -33,11 +33,12 @@ set (glabels_sources
   LabelRegion.cpp
   MainWindow.cpp
   Merge.cpp
-  MergeField.cpp
+  MergeFactory.cpp
   MergeView.cpp
   MergeRecord.cpp
   MergeNone.cpp
   MergeText.cpp
+  MergeTextCsv.cpp
   ObjectEditor.cpp
   Outline.cpp
   PageRenderer.cpp

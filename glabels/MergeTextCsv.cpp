@@ -1,6 +1,6 @@
-/*  MergeField.cpp
+/*  MergeTextCsv.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,13 +18,13 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "MergeField.h"
+#include "MergeTextCsv.h"
 
 
 ///
-/// Default constructor
+/// Constructor
 ///
-MergeField::MergeField()
+MergeTextCsv::MergeTextCsv() : MergeText(',',false)
 {
 }
 
@@ -32,44 +32,32 @@ MergeField::MergeField()
 ///
 /// Constructor
 ///
-MergeField::MergeField( const QString& key, const QString& value )
+MergeTextCsv::MergeTextCsv( const MergeTextCsv* merge )	: MergeText( merge )
 {
-	mKey = key;
-	mValue = value;
 }
 
 
 ///
-/// Get key
+/// Destructor
 ///
-const QString MergeField::key( void ) const
+MergeTextCsv::~MergeTextCsv()
 {
-	return mKey;
 }
 
 
 ///
-/// Set key
+/// Clone
 ///
-void MergeField::setKey( const QString& value )
+MergeTextCsv* MergeTextCsv::clone() const
 {
-	mKey = value;
+	return new MergeTextCsv( this );
 }
 
 
 ///
-/// Get value
+/// Create
 ///
-const QString MergeField::value( void ) const
+Merge* MergeTextCsv::create()
 {
-	return mValue;
-}
-
-
-///
-/// Set value
-///
-void MergeField::setValue( const QString& value )
-{
-	mValue = value;
+	return new MergeTextCsv();
 }

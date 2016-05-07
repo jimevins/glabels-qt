@@ -1,6 +1,6 @@
 /*  MergeRecord.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -22,16 +22,15 @@
 #define MergeRecord_h
 
 #include <QString>
-#include <QList>
-
-#include "MergeField.h"
+#include <QMap>
 
 
 ///
-/// Merge Record Structure
+/// Merge Record
 ///
-struct MergeRecord
+struct MergeRecord : public QMap<QString,QString>
 {
+
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
@@ -52,18 +51,14 @@ public:
 public:
 	bool isSelected() const;
 	void setSelected( bool value );
-	bool isEmpty() const;
-
-	const QList<MergeField>& fieldList() const;
-	void setFieldList( QList<MergeField>& value );
 
 
 	/////////////////////////////////
 	// Private data
 	/////////////////////////////////
 private:
-	bool              mSelected;
-	QList<MergeField> mFieldList;
+	bool                  mSelected;
+
 };
 
 

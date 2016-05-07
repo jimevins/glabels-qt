@@ -1,4 +1,4 @@
-/*  MergeText.h
+/*  MergeTextCsv.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,59 +18,41 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergeText_h
-#define MergeText_h
+#ifndef MergeTextCsv_h
+#define MergeTextCsv_h
 
-#include "Merge.h"
-
-#include <QFile>
+#include "MergeText.h"
 
 
 ///
-/// MergeText Backend
+/// MergeTextCsv Backend
 ///
-struct MergeText : public Merge
+struct MergeTextCsv : public MergeText
 {
 
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
-protected:
-	MergeText( QChar delimiter, bool line1HasKeys );
-	MergeText( const MergeText* merge );
-	virtual ~MergeText();
+private:
+	MergeTextCsv();
+	MergeTextCsv( const MergeTextCsv* merge );
+	virtual ~MergeTextCsv();
 
 
 	/////////////////////////////////
-	// Implementation of virtual methods
+	// Object duplication
 	/////////////////////////////////
 public:
-	QList<QString> keyList() const;
-	QString primaryKey() const;
-protected:
-	void open();
-	void close();
-	MergeRecord* readNextRecord();
+	MergeTextCsv* clone() const;
 
 
 	/////////////////////////////////
-	// Private methods
+	// Static methods
 	/////////////////////////////////
-	QString keyFromIndex( int iField ) const;
-	QList<QString> parseLine();
-	
+public:
+	static Merge* create();
 
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	QChar mDelimeter;
-	bool  mLine1HasKeys;
-
-	QFile          mFile;
-	QList<QString> mKeys;
-	int            mNFieldsMax;
 };
 
 
-#endif // MergeText_h
+#endif // MergeTextCsv_h

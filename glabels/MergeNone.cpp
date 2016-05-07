@@ -55,6 +55,15 @@ MergeNone* MergeNone::clone() const
 
 
 ///
+/// Create
+///
+Merge* MergeNone::create()
+{
+	return new MergeNone();
+}
+
+
+///
 /// Get key list
 ///
 QList<QString> MergeNone::keyList() const

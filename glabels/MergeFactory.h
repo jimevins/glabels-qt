@@ -1,6 +1,6 @@
-/*  MergeField.h
+/*  MergeFactory.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,51 +18,55 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergeField_h
-#define MergeField_h
+#ifndef MergeFactory_h
+#define MergeFactory_h
 
-#include <QString>
+#include "Merge.h"
 
 
 ///
-/// Merge Field Structure
+/// MergeFactory
 ///
-struct MergeField
+struct MergeFactory
 {
+
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
+protected:
+	MergeFactory();
+
+
+	/////////////////////////////////
+	// Static methods
+	/////////////////////////////////
 public:
-	MergeField();
-	MergeField( const QString& key, const QString& value );
+	static void init();
+	static Merge* createMerge( const QString& id );
 
 
 	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	//
-	// Key Property
-	//
-	const QString key( void ) const;
-	void setKey( const QString& value );
-
-
-	//
-	// Value Property
-	//
-	const QString value( void ) const;
-	void setValue( const QString& value );
-
-
-	/////////////////////////////////
-	// Private data
+	// private methods
 	/////////////////////////////////
 private:
-	QString mKey;
-	QString mValue;
+	typedef Merge* (*CreateFct)();
+	
+	static void registerBackend( const QString& id, CreateFct create );
 
+
+	/////////////////////////////////
+	// private data
+	/////////////////////////////////
+	class BackendEntry
+	{
+	public:
+		QString   id;
+		CreateFct create;
+	};
+	
+	static QMap<QString,BackendEntry> mBackendMap;
+		
 };
 
 
-#endif // MergeField_h
+#endif // MergeFactory_h

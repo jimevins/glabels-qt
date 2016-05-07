@@ -1,6 +1,6 @@
 /*  MergeRecord.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -33,7 +33,7 @@ MergeRecord::MergeRecord() : mSelected( false )
 /// Constructor
 ///
 MergeRecord::MergeRecord( const MergeRecord* record )
-	: mSelected(record->mSelected), mFieldList(record->mFieldList)
+	: QMap<QString,QString>(*record), mSelected(record->mSelected)
 {
 }
 
@@ -62,31 +62,4 @@ bool MergeRecord::isSelected() const
 void MergeRecord::setSelected( bool value )
 {
 	mSelected = value;
-}
-
-
-///
-/// Is record empty?
-///
-bool MergeRecord::isEmpty() const
-{
-	return mFieldList.size() == 0;
-}
-
-
-///
-/// Get field list
-///
-const QList<MergeField>& MergeRecord::fieldList() const
-{
-	return mFieldList;
-}
-
-
-///
-/// Set field list
-///
-void MergeRecord::setFieldList( QList<MergeField>& value )
-{
-	mFieldList = value;
 }
