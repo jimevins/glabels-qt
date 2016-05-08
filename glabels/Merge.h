@@ -37,18 +37,12 @@ struct Merge : QObject
 
 
 	/////////////////////////////////
-	// Source Type
-	/////////////////////////////////
-public:
-	enum SourceType { NONE, FIXED, FILE };
-		
-		
-	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
 protected:
-	Merge( SourceType type );
+	Merge();
 	Merge( const Merge* merge );
+public:
 	virtual ~Merge();
 
 
@@ -62,7 +56,7 @@ protected:
 	// Properties
 	/////////////////////////////////
 public:
-	SourceType type() const;
+	QString id() const;
 	QString source() const;
 	void setSource( const QString& source );
 
@@ -103,9 +97,9 @@ signals:
 	/////////////////////////////////
 	// Private data
 	/////////////////////////////////
+protected:
+	QString             mId;
 private:
-	SourceType          mType;
-
 	QString             mSource;
 	QList<MergeRecord*> mRecordList;
 };

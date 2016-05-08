@@ -92,12 +92,16 @@ void LabelModel::restore( const LabelModel *savedModel )
 		connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 	}
 
+	delete mMerge;
+	mMerge = savedModel->mMerge->clone();
+
 	// Emit signals based on potential changes
 	emit changed();
 	emit selectionChanged();
 	emit modifiedChanged();
 	emit nameChanged();
 	emit sizeChanged();
+	emit mergeChanged();
 }
 
 
@@ -259,6 +263,33 @@ QString LabelModel::shortName()
 	{
 		QFileInfo fileInfo( mFileName );
 		return fileInfo.baseName();
+	}
+}
+
+
+///
+/// Get merge object
+///
+Merge* LabelModel::merge() const
+{
+	return mMerge;
+}
+
+
+///
+/// Set merge object
+///
+void LabelModel::setMerge( Merge* merge )
+{
+	if ( merge != mMerge )
+	{
+		if ( mMerge )
+		{
+			delete mMerge;
+		}
+		mMerge = merge;
+
+		emit mergeChanged();
 	}
 }
 

@@ -22,6 +22,7 @@
 #define MergeFactory_h
 
 #include "Merge.h"
+#include <QCoreApplication>
 
 
 ///
@@ -29,7 +30,16 @@
 ///
 struct MergeFactory
 {
+	Q_DECLARE_TR_FUNCTIONS(MergeFactory)
+	
 
+	/////////////////////////////////
+	// Source Type
+	/////////////////////////////////
+public:
+	enum SourceType { NONE, FIXED, FILE };
+		
+		
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
@@ -42,7 +52,12 @@ protected:
 	/////////////////////////////////
 public:
 	static void init();
+	
 	static Merge* createMerge( const QString& id );
+
+	static QList<QString> nameList();
+	static QString idToName( const QString& id );
+	static QString nameToId( const QString& name );
 
 
 	/////////////////////////////////
@@ -51,7 +66,10 @@ public:
 private:
 	typedef Merge* (*CreateFct)();
 	
-	static void registerBackend( const QString& id, CreateFct create );
+	static void registerBackend( const QString& id,
+	                             const QString& name,
+	                             SourceType     type,
+	                             CreateFct      create );
 
 
 	/////////////////////////////////
@@ -60,11 +78,14 @@ private:
 	class BackendEntry
 	{
 	public:
-		QString   id;
-		CreateFct create;
+		QString    id;
+		QString    name;
+		SourceType type;
+		CreateFct  create;
 	};
 	
-	static QMap<QString,BackendEntry> mBackendMap;
+	static QMap<QString,BackendEntry> mBackendIdMap;
+	static QMap<QString,BackendEntry> mBackendNameMap;
 		
 };
 

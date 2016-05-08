@@ -24,7 +24,7 @@
 ///
 /// Constructor
 ///
-Merge::Merge( SourceType type )	: mType(type)
+Merge::Merge()
 {
 }
 
@@ -32,7 +32,7 @@ Merge::Merge( SourceType type )	: mType(type)
 ///
 /// Constructor
 ///
-Merge::Merge( const Merge* merge ) : mType(merge->mType), mSource(merge->mSource)
+Merge::Merge( const Merge* merge ) : mSource(merge->mSource)
 {
 	foreach ( MergeRecord* record, merge->mRecordList )
 	{
@@ -55,11 +55,11 @@ Merge::~Merge()
 
 
 ///
-/// Get type
+/// Get id
 ///
-Merge::SourceType Merge::type() const
+QString Merge::id() const
 {
-	return mType;
+	return mId;
 }
 
 

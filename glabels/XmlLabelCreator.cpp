@@ -27,6 +27,7 @@
 //#include "LabelObjectLine.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
+#include "MergeNone.h"
 #include "libglabels/XmlTemplateCreator.h"
 #include "libglabels/XmlUtil.h"
 
@@ -96,7 +97,10 @@ XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label )
 
 	createObjectsNode( root, label );
 
-	// TODO merge node
+	if ( label->merge() && !dynamic_cast<MergeNone*>(label->merge()) )
+	{
+		createMergeNode( root, label );
+	}
 
 	createDataNode( root, label );
 }
@@ -261,7 +265,12 @@ XmlLabelCreator::createShadowAttrs( QDomElement &node, const LabelModelObject* o
 void
 XmlLabelCreator::createMergeNode( QDomElement &parent, const LabelModel* label )
 {
-	// TODO
+	QDomDocument doc = parent.ownerDocument();
+	QDomElement node = doc.createElement( "Merge" );
+	parent.appendChild( node );
+
+	glabels::XmlUtil::setStringAttr( node, "type", label->merge()->id() );
+	glabels::XmlUtil::setStringAttr( node, "src", label->merge()->source() );
 }
 
 

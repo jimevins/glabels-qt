@@ -25,6 +25,7 @@
 #include <QList>
 #include <QPainter>
 
+#include "Merge.h"
 #include "MergeRecord.h"
 #include "libglabels/Template.h"
 #include "Settings.h"
@@ -71,6 +72,7 @@ signals:
 	void sizeChanged();
 	void selectionChanged();
 	void modifiedChanged();
+	void mergeChanged();
 
 
 	/////////////////////////////////
@@ -99,6 +101,9 @@ public:
 
 	const QList<LabelModelObject*>& objectList() const;
 
+	Merge* merge() const;
+	void setMerge( Merge* merge );
+	
 		
 	/////////////////////////////////
 	// Manage objects
@@ -218,6 +223,7 @@ private:
 
 	QList<LabelModelObject*>  mObjectList;
 
+	Merge*                    mMerge;
 };
 
 

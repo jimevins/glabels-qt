@@ -27,6 +27,7 @@
 //#include "LabelObjectLine.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
+#include "MergeFactory.h"
 #include "libglabels/XmlTemplateParser.h"
 #include "libglabels/XmlUtil.h"
 
@@ -435,6 +436,15 @@ XmlLabelParser::parseShadowAttrs( const QDomElement &node, LabelModelObject* obj
 void
 XmlLabelParser::parseMergeNode( const QDomElement &node, LabelModel* label )
 {
+	using namespace glabels;
+
+	QString type = XmlUtil::getStringAttr( node, "type", "None" );
+	QString src  = XmlUtil::getStringAttr( node, "src", "" );
+
+	Merge* merge = MergeFactory::createMerge( type );
+	merge->setSource( src );
+
+	label->setMerge( merge );
 }
 
 

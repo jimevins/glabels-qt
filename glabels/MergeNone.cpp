@@ -24,8 +24,9 @@
 ///
 /// Constructor
 ///
-MergeNone::MergeNone() : Merge( Merge::NONE )
+MergeNone::MergeNone() : Merge()
 {
+	mId = "None";
 }
 
 
@@ -51,6 +52,15 @@ MergeNone::~MergeNone()
 MergeNone* MergeNone::clone() const
 {
 	return new MergeNone( this );
+}
+
+
+///
+/// Get ID
+///
+QString MergeNone::id()
+{
+	return "None";
 }
 
 

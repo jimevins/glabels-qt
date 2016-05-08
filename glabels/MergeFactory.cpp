@@ -27,7 +27,8 @@
 ///
 /// Static data
 ///
-QMap<QString,MergeFactory::BackendEntry> MergeFactory::mBackendMap;
+QMap<QString,MergeFactory::BackendEntry> MergeFactory::mBackendIdMap;
+QMap<QString,MergeFactory::BackendEntry> MergeFactory::mBackendNameMap;
 
 
 ///
@@ -35,8 +36,15 @@ QMap<QString,MergeFactory::BackendEntry> MergeFactory::mBackendMap;
 ///
 MergeFactory::MergeFactory()
 {
-	registerBackend( "None",     &MergeNone::create );
-	registerBackend( "Text/CSV", &MergeTextCsv::create );
+	registerBackend( MergeNone::id(),
+			 tr("None"),
+			 NONE,
+			 &MergeNone::create );
+	
+	registerBackend( MergeTextCsv::id(),
+			 tr("Text: Comma Separated Values (CSV)"),
+			 FILE,
+			 &MergeTextCsv::create );
 }
 
 
@@ -58,8 +66,8 @@ void MergeFactory::init()
 ///
 Merge* MergeFactory::createMerge( const QString& id )
 {
-	QMap<QString,BackendEntry>::iterator iBackend = mBackendMap.find( id );
-	if ( iBackend != mBackendMap.end() )
+	QMap<QString,BackendEntry>::iterator iBackend = mBackendIdMap.find( id );
+	if ( iBackend != mBackendIdMap.end() )
 	{
 		return iBackend->create();
 	}
@@ -69,16 +77,68 @@ Merge* MergeFactory::createMerge( const QString& id )
 
 
 ///
+/// Get name list
+///
+QList<QString> MergeFactory::nameList()
+{
+	QList<QString> list;
+	
+	foreach ( BackendEntry backend, mBackendIdMap )
+	{
+		list << backend.name;
+	}
+
+	return list;
+}
+
+
+///
+/// Convert ID to name
+///
+QString MergeFactory::idToName( const QString& id )
+{
+	if ( mBackendIdMap.contains( id ) )
+	{
+		return mBackendIdMap[id].name;
+	}
+	else
+	{
+		return tr("None");
+	}
+}
+
+
+///
+/// Convert name to ID
+///
+QString MergeFactory::nameToId( const QString& name )
+{
+	if ( mBackendNameMap.contains( name ) )
+	{
+		return mBackendNameMap[name].id;
+	}
+	else
+	{
+		return "None";
+	}
+}
+
+
+///
 /// Register backend
 ///
-void MergeFactory::registerBackend( const QString& id, CreateFct create )
+void MergeFactory::registerBackend( const QString& id,
+				    const QString& name,
+				    SourceType     type,
+				    CreateFct      create )
 {
 	BackendEntry backend;
 
-	backend.id     = id;
+	backend.name   = name;
+	backend.type   = type;
 	backend.create = create;
 	
-	mBackendMap[ id ] = backend;
+	mBackendIdMap[ id ] = backend;
 }
 
 

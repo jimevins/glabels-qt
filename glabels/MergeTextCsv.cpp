@@ -26,6 +26,7 @@
 ///
 MergeTextCsv::MergeTextCsv() : MergeText(',',false)
 {
+	mId = "Text/CSV";
 }
 
 
@@ -51,6 +52,15 @@ MergeTextCsv::~MergeTextCsv()
 MergeTextCsv* MergeTextCsv::clone() const
 {
 	return new MergeTextCsv( this );
+}
+
+
+///
+/// Get ID
+///
+QString MergeTextCsv::id()
+{
+	return "Text/CSV";
 }
 
 

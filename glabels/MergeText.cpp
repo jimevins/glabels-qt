@@ -24,7 +24,8 @@
 ///
 /// Constructor
 ///
-MergeText::MergeText( QChar delimiter, bool line1HasKeys ) : Merge( Merge::FILE ), mNFieldsMax(0)
+MergeText::MergeText( QChar delimiter, bool line1HasKeys )
+	: mNFieldsMax(0), mDelimeter(delimiter), mLine1HasKeys(line1HasKeys)
 {
 }
 
@@ -33,7 +34,9 @@ MergeText::MergeText( QChar delimiter, bool line1HasKeys ) : Merge( Merge::FILE 
 /// Constructor
 ///
 MergeText::MergeText( const MergeText* merge )
-	: Merge( merge ), mDelimeter(merge->mDelimeter), mLine1HasKeys(merge->mLine1HasKeys)
+	: Merge( merge ),
+	  mNFieldsMax(merge->mNFieldsMax),
+	  mDelimeter(merge->mDelimeter), mLine1HasKeys(merge->mLine1HasKeys)
 {
 }
 

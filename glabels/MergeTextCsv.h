@@ -43,6 +43,7 @@ private:
 	// Object duplication
 	/////////////////////////////////
 public:
+	static QString id();
 	MergeTextCsv* clone() const;
 
 

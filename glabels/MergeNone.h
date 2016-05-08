@@ -49,6 +49,7 @@ protected:
 	// Static methods
 	/////////////////////////////////
 public:
+	static QString id();
 	static Merge* create();
 
 
