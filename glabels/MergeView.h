@@ -24,7 +24,10 @@
 #include "ui_MergeView.h"
 
 
-class LabelModel;  // Forward reference
+// Forward references
+class LabelModel;
+class UndoRedoModel;
+class Merge;
 	
 
 ///
@@ -46,21 +49,34 @@ public:
 	/////////////////////////////////
 	// Public methods
 	/////////////////////////////////
-	void setModel( LabelModel* model );
+	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
 
 
 	/////////////////////////////////
 	// Slots
 	/////////////////////////////////
 private slots:
-	void onLabelChanged();
+	void onMergeChanged();
+
+
+	/////////////////////////////////
+	// Private methods
+	/////////////////////////////////
+private:
+	void loadHeaders( Merge* merge );
+	void loadTable( Merge* merge );
 
 
 	/////////////////////////////////
 	// Private Data
 	/////////////////////////////////
 private:
+	QStringList  mMergeFormatNames;
+	
 	LabelModel*  mModel;
+	UndoRedoModel* mUndoRedoModel;
+
+	QStringList mKeys;
 
 };
 

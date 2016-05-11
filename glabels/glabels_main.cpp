@@ -23,6 +23,7 @@
 
 #include "libglabels/Db.h"
 #include "Settings.h"
+#include "MergeFactory.h"
 #include "StartupWizard.h"
 
 
@@ -36,6 +37,7 @@ int main( int argc, char **argv )
 
 	Settings::init();
 	glabels::Db::init();
+	MergeFactory::init();
 	////// TEMPORARY TESTING ////////
 #if 0
 	glabels::Db::printKnownPapers();

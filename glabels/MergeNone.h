@@ -33,7 +33,7 @@ struct MergeNone : public Merge
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
-protected:
+public:
 	MergeNone();
 	MergeNone( const MergeNone* merge );
 	virtual ~MergeNone();
@@ -57,7 +57,7 @@ public:
 	// Implementation of virtual methods
 	/////////////////////////////////
 public:
-	QList<QString> keyList() const;
+	QStringList keyList() const;
 	QString primaryKey() const;
 protected:
 	void open();

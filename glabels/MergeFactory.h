@@ -23,6 +23,7 @@
 
 #include "Merge.h"
 #include <QCoreApplication>
+#include <QStringList>
 
 
 ///
@@ -55,9 +56,10 @@ public:
 	
 	static Merge* createMerge( const QString& id );
 
-	static QList<QString> nameList();
+	static QStringList nameList();
 	static QString idToName( const QString& id );
 	static QString nameToId( const QString& name );
+	static SourceType idToType( const QString& id );
 
 
 	/////////////////////////////////

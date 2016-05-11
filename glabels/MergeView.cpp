@@ -21,6 +21,7 @@
 #include "MergeView.h"
 
 #include "LabelModel.h"
+#include "MergeFactory.h"
 #include <QtDebug>
 
 
@@ -31,6 +32,9 @@ MergeView::MergeView( QWidget *parent )
 	: QWidget(parent), mModel(0)
 {
 	setupUi( this );
+
+	mMergeFormatNames = MergeFactory::nameList();
+	formatCombo->addItems( mMergeFormatNames );
 }
 
 
@@ -45,17 +49,114 @@ MergeView::~MergeView()
 ///
 /// Set Model
 ///
-void MergeView::setModel( LabelModel* model )
+void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 {
 	mModel = model;
+	mUndoRedoModel = undoRedoModel;
 
-	connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
+	onMergeChanged();
+	connect( mModel, SIGNAL(changed()), this, SLOT(onMergeChanged()) );
 }
 
 
 ///
-/// Label changed handler
+/// Merge changed handler
 ///
-void MergeView::onLabelChanged()
+void MergeView::onMergeChanged()
 {
+	int index = mMergeFormatNames.indexOf( MergeFactory::idToName( mModel->merge()->id() ) );
+	formatCombo->setCurrentIndex( index );
+
+	switch ( MergeFactory::idToType( mModel->merge()->id() ) )
+	{
+	case MergeFactory::NONE:
+	case MergeFactory::FIXED:
+		locationLabel->setEnabled( false );
+		locationButton->setEnabled( false );
+		locationButton->setText( "" );
+		break;
+
+	case MergeFactory::FILE:
+		locationLabel->setEnabled( true );
+		locationButton->setEnabled( true );
+		if ( mModel->merge()->source().isEmpty() )
+		{
+			locationButton->setText( "" );
+		}
+		else
+		{
+			locationButton->setText( mModel->merge()->source() );
+		}
+		break;
+
+	default:
+		qWarning( "MergeView::onMergeChanged()::Should not be reached!" );
+		break;
+	}
+
+	loadHeaders( mModel->merge() );
+	loadTable( mModel->merge() );
+}
+
+
+///
+/// Load headers
+///
+void MergeView::loadHeaders( Merge* merge )
+{
+	mKeys = merge->keyList();
+
+	recordsTable->setColumnCount( mKeys.size() + 1 );
+
+	QTableWidgetItem* item = new QTableWidgetItem();
+	item->setFlags( Qt::ItemIsEnabled );
+	recordsTable->setHorizontalHeaderItem( 0, item );
+
+	int iCol = 1;
+	foreach ( QString key, mKeys )
+	{
+		QTableWidgetItem* item = new QTableWidgetItem( key );
+		item->setFlags( Qt::ItemIsEnabled );
+		recordsTable->setHorizontalHeaderItem( iCol, item );
+
+		iCol++;
+	}
+}
+
+
+///
+/// Load table
+///
+void MergeView::loadTable( Merge* merge )
+{
+	const QList<MergeRecord*>& records = merge->recordList();
+	recordsTable->setRowCount( records.size() );
+
+	int iRow = 0;
+	foreach ( MergeRecord* record, records )
+	{
+		QTableWidgetItem* item = new QTableWidgetItem();
+		item->setFlags( Qt::ItemIsEnabled | Qt::ItemIsUserCheckable );
+		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
+		recordsTable->setItem( iRow, 0, item );
+		recordsTable->resizeColumnToContents( 0 );
+		
+		int iCol = 1;
+		foreach ( QString key, mKeys )
+		{
+			if ( record->contains( key ) )
+			{
+				QTableWidgetItem* item = new QTableWidgetItem( (*record)[key] );
+				item->setFlags( Qt::ItemIsEnabled );
+				recordsTable->setItem( iRow, iCol, item );
+				recordsTable->resizeColumnToContents( iCol );
+			}
+
+			iCol++;
+		}
+
+		iRow++;
+	}
+
+
 }

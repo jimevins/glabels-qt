@@ -26,7 +26,7 @@
 ///
 MergeTextCsv::MergeTextCsv() : MergeText(',',false)
 {
-	mId = "Text/CSV";
+	mId = "Text/Comma";
 }
 
 
@@ -60,7 +60,7 @@ MergeTextCsv* MergeTextCsv::clone() const
 ///
 QString MergeTextCsv::id()
 {
-	return "Text/CSV";
+	return "Text/Comma";
 }
 
 

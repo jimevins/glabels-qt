@@ -79,9 +79,9 @@ Merge* MergeFactory::createMerge( const QString& id )
 ///
 /// Get name list
 ///
-QList<QString> MergeFactory::nameList()
+QStringList MergeFactory::nameList()
 {
-	QList<QString> list;
+	QStringList list;
 	
 	foreach ( BackendEntry backend, mBackendIdMap )
 	{
@@ -120,6 +120,22 @@ QString MergeFactory::nameToId( const QString& name )
 	else
 	{
 		return "None";
+	}
+}
+
+
+///
+/// Convert ID to type
+///
+MergeFactory::SourceType MergeFactory::idToType( const QString& id )
+{
+	if ( mBackendIdMap.contains( id ) )
+	{
+		return mBackendIdMap[id].type;
+	}
+	else
+	{
+		return NONE;
 	}
 }
 

@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QStringList>
 #include <QList>
 
 #include "MergeRecord.h"
@@ -78,7 +79,7 @@ public:
 	// Virtual methods
 	/////////////////////////////////
 public:
-	virtual QList<QString> keyList() const = 0;
+	virtual QStringList keyList() const = 0;
 	virtual QString primaryKey() const = 0;
 protected:
 	virtual void open() = 0;

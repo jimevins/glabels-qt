@@ -45,7 +45,7 @@ protected:
 	// Implementation of virtual methods
 	/////////////////////////////////
 public:
-	QList<QString> keyList() const;
+	QStringList keyList() const;
 	QString primaryKey() const;
 protected:
 	void open();
@@ -57,7 +57,7 @@ protected:
 	// Private methods
 	/////////////////////////////////
 	QString keyFromIndex( int iField ) const;
-	QList<QString> parseLine();
+	QStringList parseLine();
 	
 
 	/////////////////////////////////
@@ -68,7 +68,7 @@ private:
 	bool  mLine1HasKeys;
 
 	QFile          mFile;
-	QList<QString> mKeys;
+	QStringList    mKeys;
 	int            mNFieldsMax;
 };
 

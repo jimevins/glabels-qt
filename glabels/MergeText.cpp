@@ -20,6 +20,9 @@
 
 #include "MergeText.h"
 
+#include <algorithm>
+#include <QtDebug>
+
 
 ///
 /// Constructor
@@ -52,9 +55,9 @@ MergeText::~MergeText()
 ///
 /// Get key list
 ///
-QList<QString> MergeText::keyList() const
+QStringList MergeText::keyList() const
 {
-	QList<QString> keys;
+	QStringList keys;
 	for ( int iField = 0; iField < mNFieldsMax; iField++ )
 	{
 		keys << keyFromIndex(iField);
@@ -89,6 +92,10 @@ void MergeText::open()
 		{
 			mKeys.clear();
 		}
+		else
+		{
+			mNFieldsMax = mKeys.size();
+		}
 	}
 }
 
@@ -110,7 +117,7 @@ void MergeText::close()
 ///
 MergeRecord* MergeText::readNextRecord()
 {
-	QList<QString> values = parseLine();
+	QStringList values = parseLine();
 	if ( !values.isEmpty() )
 	{
 		MergeRecord* record = new MergeRecord();
@@ -121,6 +128,7 @@ MergeRecord* MergeText::readNextRecord()
 			(*record)[ keyFromIndex(iField) ] = value;
 			iField++;
 		}
+		mNFieldsMax = std::max( mNFieldsMax, iField );
 
 		return record;
 	}
@@ -161,9 +169,9 @@ QString MergeText::keyFromIndex( int iField ) const
 /// Returns a list of fields.  A blank line is considered a line with one     
 /// empty field.  Returns an empty list when done.                             
 ///
-QList<QString> MergeText::parseLine()
+QStringList MergeText::parseLine()
 {
-	QList<QString> fields;
+	QStringList fields;
 	
 	enum State
 	{

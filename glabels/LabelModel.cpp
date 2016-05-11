@@ -28,6 +28,7 @@
 #include <QMimeData>
 #include <QtDebug>
 
+#include "MergeNone.h"
 #include "LabelModelObject.h"
 #include "LabelRegion.h"
 #include "XmlLabelCreator.h"
@@ -45,6 +46,7 @@ namespace
 ///
 LabelModel::LabelModel() : mUntitledInstance(0), mModified(true), mTmplate(0), mRotate(false)
 {
+	mMerge = new MergeNone();
 }
 
 
@@ -283,10 +285,7 @@ void LabelModel::setMerge( Merge* merge )
 {
 	if ( merge != mMerge )
 	{
-		if ( mMerge )
-		{
-			delete mMerge;
-		}
+		delete mMerge;
 		mMerge = merge;
 
 		emit mergeChanged();
