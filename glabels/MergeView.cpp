@@ -107,12 +107,14 @@ void MergeView::loadHeaders( Merge* merge )
 	mPrimaryKey = merge->primaryKey();
 	mKeys = merge->keyList();
 
-	recordsTable->setColumnCount( mKeys.size() );
+	recordsTable->setColumnCount( mKeys.size() + 1 );  // Include extra column
 
+	// First column = primay Key
 	QTableWidgetItem* item = new QTableWidgetItem( mPrimaryKey );
 	item->setFlags( Qt::ItemIsEnabled );
 	recordsTable->setHorizontalHeaderItem( 0, item );
 
+	// Starting on second column, one column per key, skip primary Key
 	int iCol = 1;
 	foreach ( QString key, mKeys )
 	{
@@ -126,6 +128,12 @@ void MergeView::loadHeaders( Merge* merge )
 		}
 
 	}
+
+	// Extra dummy column to fill any extra horizontal space
+	QTableWidgetItem* fillItem = new QTableWidgetItem();
+	fillItem->setFlags( Qt::NoItemFlags );
+	recordsTable->setHorizontalHeaderItem( iCol, fillItem );
+	recordsTable->horizontalHeader()->setStretchLastSection( true );
 }
 
 
@@ -140,6 +148,7 @@ void MergeView::loadTable( Merge* merge )
 	int iRow = 0;
 	foreach ( MergeRecord* record, records )
 	{
+		// First column for primay field
 		QTableWidgetItem* item = new QTableWidgetItem();
 		if ( record->contains( mPrimaryKey ) )
 		{
@@ -149,7 +158,8 @@ void MergeView::loadTable( Merge* merge )
 		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
 		recordsTable->setItem( iRow, 0, item );
 		recordsTable->resizeColumnToContents( 0 );
-		
+
+		// Starting on second column, one column per field (even if empty), skip primary field
 		int iCol = 1;
 		foreach ( QString key, mKeys )
 		{
@@ -166,6 +176,11 @@ void MergeView::loadTable( Merge* merge )
 				iCol++;
 			}
 		}
+
+		// Extra dummy column to fill any extra horizontal space
+		QTableWidgetItem* fillItem = new QTableWidgetItem();
+		fillItem->setFlags( Qt::NoItemFlags );
+		recordsTable->setItem( iRow, iCol, fillItem );
 
 		iRow++;
 	}
