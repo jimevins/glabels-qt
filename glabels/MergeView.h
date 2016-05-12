@@ -77,6 +77,7 @@ private:
 	UndoRedoModel* mUndoRedoModel;
 
 	QStringList mKeys;
+	QString     mPrimaryKey;
 
 };
 

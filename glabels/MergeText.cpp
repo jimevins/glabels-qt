@@ -71,7 +71,7 @@ QStringList MergeText::keyList() const
 ///
 QString MergeText::primaryKey() const
 {
-	keyFromIndex(0);
+	return keyFromIndex(0);
 }
 
 

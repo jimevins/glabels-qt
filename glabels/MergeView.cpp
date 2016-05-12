@@ -104,22 +104,27 @@ void MergeView::onMergeChanged()
 ///
 void MergeView::loadHeaders( Merge* merge )
 {
+	mPrimaryKey = merge->primaryKey();
 	mKeys = merge->keyList();
 
-	recordsTable->setColumnCount( mKeys.size() + 1 );
+	recordsTable->setColumnCount( mKeys.size() );
 
-	QTableWidgetItem* item = new QTableWidgetItem();
+	QTableWidgetItem* item = new QTableWidgetItem( mPrimaryKey );
 	item->setFlags( Qt::ItemIsEnabled );
 	recordsTable->setHorizontalHeaderItem( 0, item );
 
 	int iCol = 1;
 	foreach ( QString key, mKeys )
 	{
-		QTableWidgetItem* item = new QTableWidgetItem( key );
-		item->setFlags( Qt::ItemIsEnabled );
-		recordsTable->setHorizontalHeaderItem( iCol, item );
+		if ( key != mPrimaryKey )
+		{
+			QTableWidgetItem* item = new QTableWidgetItem( key );
+			item->setFlags( Qt::ItemIsEnabled );
+			recordsTable->setHorizontalHeaderItem( iCol, item );
 
-		iCol++;
+			iCol++;
+		}
+
 	}
 }
 
@@ -136,6 +141,10 @@ void MergeView::loadTable( Merge* merge )
 	foreach ( MergeRecord* record, records )
 	{
 		QTableWidgetItem* item = new QTableWidgetItem();
+		if ( record->contains( mPrimaryKey ) )
+		{
+			item->setText( (*record)[mPrimaryKey] );
+		}
 		item->setFlags( Qt::ItemIsEnabled | Qt::ItemIsUserCheckable );
 		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
 		recordsTable->setItem( iRow, 0, item );
@@ -144,15 +153,18 @@ void MergeView::loadTable( Merge* merge )
 		int iCol = 1;
 		foreach ( QString key, mKeys )
 		{
-			if ( record->contains( key ) )
+			if ( key != mPrimaryKey )
 			{
-				QTableWidgetItem* item = new QTableWidgetItem( (*record)[key] );
-				item->setFlags( Qt::ItemIsEnabled );
-				recordsTable->setItem( iRow, iCol, item );
-				recordsTable->resizeColumnToContents( iCol );
-			}
+				if ( record->contains( key ) )
+				{
+					QTableWidgetItem* item = new QTableWidgetItem( (*record)[key] );
+					item->setFlags( Qt::ItemIsEnabled );
+					recordsTable->setItem( iRow, iCol, item );
+					recordsTable->resizeColumnToContents( iCol );
+				}
 
-			iCol++;
+				iCol++;
+			}
 		}
 
 		iRow++;
