@@ -29,7 +29,7 @@
 /// Constructor
 ///
 MergeView::MergeView( QWidget *parent )
-	: QWidget(parent), mModel(0)
+	: QWidget(parent), mModel(0), mBlock(false)
 {
 	setupUi( this );
 
@@ -96,6 +96,76 @@ void MergeView::onMergeChanged()
 
 	loadHeaders( mModel->merge() );
 	loadTable( mModel->merge() );
+
+	connect( mModel->merge(), SIGNAL(sourceChanged()), this, SLOT(onMergeSourceChanged()) );
+	connect( mModel->merge(), SIGNAL(selectionChanged()), this, SLOT(onMergeSelectionChanged()) );
+
+	connect( recordsTable, SIGNAL(cellChanged(int,int)), this, SLOT(onCellChanged(int,int)) );
+}
+
+
+///
+/// Merge source changed handler
+///
+void MergeView::onMergeSourceChanged()
+{
+	loadHeaders( mModel->merge() );
+	loadTable( mModel->merge() );
+}
+
+
+///
+/// Merge selection changed handler
+///
+void MergeView::onMergeSelectionChanged()
+{
+	mBlock = true;  // Don't recurse
+	
+	const QList<MergeRecord*>& records = mModel->merge()->recordList();
+
+	int iRow = 0;
+	foreach ( MergeRecord* record, records )
+	{
+		QTableWidgetItem* item = recordsTable->item( iRow, 0 );
+		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
+
+		iRow++;
+	}
+
+	mBlock = false;
+}
+
+
+///
+/// Select all button clicked handler
+///
+void MergeView::onSelectAllButtonClicked()
+{
+	mModel->merge()->selectAll();
+}
+
+
+///
+/// Unselect all button clicked handler
+///
+void MergeView::onUnselectAllButtonClicked()
+{
+	mModel->merge()->unselectAll();
+}
+
+
+///
+/// Cell changed handler
+///
+void MergeView::onCellChanged( int iRow, int iCol )
+{
+	if ( !mBlock )
+	{
+		QTableWidgetItem* item = recordsTable->item( iRow, 0 );
+		bool state = (item->checkState() == Qt::Unchecked) ? false : true;
+		
+		mModel->merge()->setSelected( iRow, state );
+	}
 }
 
 
@@ -142,6 +212,8 @@ void MergeView::loadHeaders( Merge* merge )
 ///
 void MergeView::loadTable( Merge* merge )
 {
+	mBlock = true;
+
 	const QList<MergeRecord*>& records = merge->recordList();
 	recordsTable->setRowCount( records.size() );
 
@@ -185,5 +257,5 @@ void MergeView::loadTable( Merge* merge )
 		iRow++;
 	}
 
-
+	mBlock = false;
 }

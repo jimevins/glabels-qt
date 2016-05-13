@@ -57,6 +57,12 @@ public:
 	/////////////////////////////////
 private slots:
 	void onMergeChanged();
+	void onMergeSourceChanged();
+	void onMergeSelectionChanged();
+
+	void onSelectAllButtonClicked();
+	void onUnselectAllButtonClicked();
+	void onCellChanged( int iRow, int iCol );
 
 
 	/////////////////////////////////
@@ -78,6 +84,8 @@ private:
 
 	QStringList mKeys;
 	QString     mPrimaryKey;
+
+	bool mBlock;
 
 };
 

@@ -70,6 +70,7 @@ public:
 public:
 	void select( MergeRecord* record );
 	void unselect( MergeRecord* record );
+	void setSelected( int i, bool state = true );
 	void selectAll();
 	void unselectAll();
 	const QList<MergeRecord*> selectedRecords() const;

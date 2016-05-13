@@ -127,6 +127,19 @@ void Merge::unselect( MergeRecord* record )
 
 	
 ///
+/// Select/unselect i'th record
+///
+void Merge::setSelected( int i, bool state )
+{
+	if ( (i >= 0) && (i < mRecordList.size()) )
+	{
+		mRecordList[i]->setSelected( state );
+		emit selectionChanged();
+	}
+}
+
+
+///
 /// Select all records
 ///
 void Merge::selectAll()
