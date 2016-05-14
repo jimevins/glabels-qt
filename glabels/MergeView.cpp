@@ -22,6 +22,8 @@
 
 #include "LabelModel.h"
 #include "MergeFactory.h"
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QtDebug>
 
 
@@ -54,8 +56,18 @@ void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 	mModel = model;
 	mUndoRedoModel = undoRedoModel;
 
+	// Initialize CWD
+	if ( model->fileName().isEmpty() )
+	{
+		mCwd = ".";
+	}
+	else
+	{
+		mCwd = QFileInfo( model->fileName() ).absolutePath();
+	}
+
 	onMergeChanged();
-	connect( mModel, SIGNAL(changed()), this, SLOT(onMergeChanged()) );
+	connect( mModel, SIGNAL(mergeChanged()), this, SLOT(onMergeChanged()) );
 }
 
 
@@ -65,6 +77,7 @@ void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 void MergeView::onMergeChanged()
 {
 	int index = mMergeFormatNames.indexOf( MergeFactory::idToName( mModel->merge()->id() ) );
+	mOldFormatComboIndex = index;
 	formatCombo->setCurrentIndex( index );
 
 	switch ( MergeFactory::idToType( mModel->merge()->id() ) )
@@ -81,7 +94,7 @@ void MergeView::onMergeChanged()
 		locationButton->setEnabled( true );
 		if ( mModel->merge()->source().isEmpty() )
 		{
-			locationButton->setText( "" );
+			locationButton->setText( "Select file..." );
 		}
 		else
 		{
@@ -94,6 +107,8 @@ void MergeView::onMergeChanged()
 		break;
 	}
 
+	recordsTable->clear();
+	recordsTable->setColumnCount( 0 );
 	loadHeaders( mModel->merge() );
 	loadTable( mModel->merge() );
 
@@ -109,6 +124,10 @@ void MergeView::onMergeChanged()
 ///
 void MergeView::onMergeSourceChanged()
 {
+	locationButton->setText( mModel->merge()->source() );
+
+	recordsTable->clear();
+	recordsTable->setColumnCount( 0 );
 	loadHeaders( mModel->merge() );
 	loadTable( mModel->merge() );
 }
@@ -133,6 +152,38 @@ void MergeView::onMergeSelectionChanged()
 	}
 
 	mBlock = false;
+}
+
+
+///
+/// Format combo changed handler
+void MergeView::onFormatComboActivated()
+{
+	int index = formatCombo->currentIndex();
+	if ( index != mOldFormatComboIndex )
+	{
+		mOldFormatComboIndex = index;
+
+		mModel->setMerge( MergeFactory::createMerge( MergeFactory::indexToId(index) ) );
+	}
+}
+
+
+///
+/// Location button clicked handler
+///
+void MergeView::onLocationButtonClicked()
+{
+	QString fileName =
+                QFileDialog::getOpenFileName( this,
+                                              tr("Select merge file"),
+                                              mCwd,
+                                              tr("All files (*)") );
+        if ( !fileName.isEmpty() )
+        {
+		mModel->merge()->setSource( fileName );
+		mCwd = QFileInfo( fileName ).absolutePath(); // Update CWD
+        }
 }
 
 
@@ -177,33 +228,36 @@ void MergeView::loadHeaders( Merge* merge )
 	mPrimaryKey = merge->primaryKey();
 	mKeys = merge->keyList();
 
-	recordsTable->setColumnCount( mKeys.size() + 1 );  // Include extra column
-
-	// First column = primay Key
-	QTableWidgetItem* item = new QTableWidgetItem( mPrimaryKey );
-	item->setFlags( Qt::ItemIsEnabled );
-	recordsTable->setHorizontalHeaderItem( 0, item );
-
-	// Starting on second column, one column per key, skip primary Key
-	int iCol = 1;
-	foreach ( QString key, mKeys )
+	if ( mKeys.size() > 0 )
 	{
-		if ( key != mPrimaryKey )
-		{
-			QTableWidgetItem* item = new QTableWidgetItem( key );
-			item->setFlags( Qt::ItemIsEnabled );
-			recordsTable->setHorizontalHeaderItem( iCol, item );
+		recordsTable->setColumnCount( mKeys.size() + 1 );  // Include extra column
 
-			iCol++;
+		// First column = primay Key
+		QTableWidgetItem* item = new QTableWidgetItem( mPrimaryKey );
+		item->setFlags( Qt::ItemIsEnabled );
+		recordsTable->setHorizontalHeaderItem( 0, item );
+
+		// Starting on second column, one column per key, skip primary Key
+		int iCol = 1;
+		foreach ( QString key, mKeys )
+		{
+			if ( key != mPrimaryKey )
+			{
+				QTableWidgetItem* item = new QTableWidgetItem( key );
+				item->setFlags( Qt::ItemIsEnabled );
+				recordsTable->setHorizontalHeaderItem( iCol, item );
+
+				iCol++;
+			}
+
 		}
 
+		// Extra dummy column to fill any extra horizontal space
+		QTableWidgetItem* fillItem = new QTableWidgetItem();
+		fillItem->setFlags( Qt::NoItemFlags );
+		recordsTable->setHorizontalHeaderItem( iCol, fillItem );
+		recordsTable->horizontalHeader()->setStretchLastSection( true );
 	}
-
-	// Extra dummy column to fill any extra horizontal space
-	QTableWidgetItem* fillItem = new QTableWidgetItem();
-	fillItem->setFlags( Qt::NoItemFlags );
-	recordsTable->setHorizontalHeaderItem( iCol, fillItem );
-	recordsTable->horizontalHeader()->setStretchLastSection( true );
 }
 
 

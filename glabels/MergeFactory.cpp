@@ -141,6 +141,22 @@ MergeFactory::SourceType MergeFactory::idToType( const QString& id )
 
 
 ///
+/// Lookup ID from index
+///
+QString MergeFactory::indexToId( int index )
+{
+	QList<QString> ids = mBackendIdMap.keys();
+
+	if ( (index > 0) && (index < ids.size()) )
+	{
+		return ids[index];
+	}
+
+	return "None";
+}
+
+
+///
 /// Register backend
 ///
 void MergeFactory::registerBackend( const QString& id,

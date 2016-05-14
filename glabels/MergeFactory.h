@@ -60,6 +60,7 @@ public:
 	static QString idToName( const QString& id );
 	static QString nameToId( const QString& name );
 	static SourceType idToType( const QString& id );
+	static QString indexToId( int index );
 
 
 	/////////////////////////////////

@@ -60,6 +60,8 @@ private slots:
 	void onMergeSourceChanged();
 	void onMergeSelectionChanged();
 
+	void onFormatComboActivated();
+	void onLocationButtonClicked();
 	void onSelectAllButtonClicked();
 	void onUnselectAllButtonClicked();
 	void onCellChanged( int iRow, int iCol );
@@ -79,13 +81,16 @@ private:
 private:
 	QStringList  mMergeFormatNames;
 	
-	LabelModel*  mModel;
+	LabelModel*    mModel;
 	UndoRedoModel* mUndoRedoModel;
 
 	QStringList mKeys;
 	QString     mPrimaryKey;
 
+	QString mCwd;
+
 	bool mBlock;
+	int  mOldFormatComboIndex;
 
 };
 

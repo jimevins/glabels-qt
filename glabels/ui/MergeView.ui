@@ -147,11 +147,11 @@
    <sender>locationButton</sender>
    <signal>clicked()</signal>
    <receiver>MergeView</receiver>
-   <slot>onUnselectAllButtonClicked()</slot>
+   <slot>onLocationButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>175</x>
-     <y>85</y>
+     <x>174</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>570</x>
@@ -163,15 +163,15 @@
    <sender>formatCombo</sender>
    <signal>activated(int)</signal>
    <receiver>MergeView</receiver>
-   <slot>onFormatComboChanged()</slot>
+   <slot>onFormatComboActivated()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>166</x>
+     <x>162</x>
      <y>48</y>
     </hint>
     <hint type="destinationlabel">
-     <x>565</x>
-     <y>56</y>
+     <x>563</x>
+     <y>50</y>
     </hint>
    </hints>
   </connection>
@@ -180,6 +180,6 @@
   <slot>onSelectAllButtonClicked()</slot>
   <slot>onUnselectAllButtonClicked()</slot>
   <slot>onLocationButtonClicked()</slot>
-  <slot>onFormatComboChanged()</slot>
+  <slot>onFormatComboActivated()</slot>
  </slots>
 </ui>

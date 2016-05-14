@@ -24,7 +24,7 @@
 ///
 /// Constructor
 ///
-MergeRecord::MergeRecord() : mSelected( false )
+MergeRecord::MergeRecord() : mSelected( true )
 {
 }
 

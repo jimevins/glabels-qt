@@ -84,6 +84,7 @@ void MergeText::open()
 	mFile.open( QIODevice::ReadOnly|QIODevice::Text );
 
 	mKeys.clear();
+	mNFieldsMax = 0;
 
 	if ( mLine1HasKeys && mFile.isOpen() )
 	{
