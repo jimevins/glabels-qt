@@ -183,7 +183,9 @@ void LabelModel::setTmplate( const glabels::Template* tmplate )
 	{
 		mTmplate = tmplate;
 		mFrame = tmplate->frames().first();
-		mModified = true;
+
+		setModified();
+		
 		emit changed();
 		emit sizeChanged();
 
@@ -209,7 +211,9 @@ void LabelModel::setRotate( bool rotate )
 	if (mRotate != rotate)
 	{
 		mRotate = rotate;
-		mModified = true;
+
+		setModified();
+
 		emit changed();
 		emit sizeChanged();
 	}
@@ -288,8 +292,22 @@ void LabelModel::setMerge( Merge* merge )
 		delete mMerge;
 		mMerge = merge;
 
+		connect( mMerge, SIGNAL(sourceChanged()), this, SLOT(onMergeSourceChanged()) );
+
+		setModified();
+		
 		emit mergeChanged();
 	}
+}
+
+
+///
+/// Set modified status
+///
+void LabelModel::setModified()
+{
+	mModified = true;
+	emit modifiedChanged();
 }
 
 
@@ -314,10 +332,9 @@ void LabelModel::addObject( LabelModelObject* object )
 	connect( object, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
 	connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -331,10 +348,9 @@ void LabelModel::deleteObject( LabelModelObject* object )
 
 	disconnect( object, 0, this, 0 );
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 
 	delete object;
 }
@@ -388,10 +404,8 @@ Handle* LabelModel::handleAt( double                   scale,
 ///
 void LabelModel::onObjectChanged()
 {
-	mModified = true;
-
+	setModified();
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -400,10 +414,18 @@ void LabelModel::onObjectChanged()
 ///
 void LabelModel::onObjectMoved()
 {
-	mModified = true;
-
+	setModified();
 	emit changed();
-	emit modifiedChanged();
+}
+
+
+///
+/// Merge Source Changed Slot
+///
+void LabelModel::onMergeSourceChanged()
+{
+	setModified();
+	emit changed();
 }
 
 
@@ -641,11 +663,10 @@ void LabelModel::deleteSelection()
 		deleteObject( object );
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
 	emit selectionChanged();
-	emit modifiedChanged();
 }
 
 
@@ -667,10 +688,9 @@ void LabelModel::raiseSelectionToTop()
 		mObjectList.push_back( object );
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -692,10 +712,9 @@ void LabelModel::lowerSelectionToBottom()
 		mObjectList.push_front( object );
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -712,10 +731,9 @@ void LabelModel::rotateSelection( double thetaDegs )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -750,10 +768,9 @@ void LabelModel::flipSelectionHoriz()
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -770,10 +787,9 @@ void LabelModel::flipSelectionVert()
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -805,10 +821,9 @@ void LabelModel::alignSelectionLeft()
 		object->setPositionRelative( dx, 0 );
 	}
 		
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -840,10 +855,9 @@ void LabelModel::alignSelectionRight()
 		object->setPositionRelative( dx, 0 );
 	}
 		
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -892,10 +906,9 @@ void LabelModel::alignSelectionHCenter()
 		object->setPositionRelative( dx, 0 );
 	}
 		
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -927,10 +940,9 @@ void LabelModel::alignSelectionTop()
 		object->setPositionRelative( 0, dy );
 	}
 		
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -962,10 +974,9 @@ void LabelModel::alignSelectionBottom()
 		object->setPositionRelative( 0, dy );
 	}
 		
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1014,10 +1025,9 @@ void LabelModel::alignSelectionVCenter()
 		object->setPositionRelative( 0, dy );
 	}
 		
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1039,10 +1049,9 @@ void LabelModel::centerSelectionHoriz()
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1064,10 +1073,9 @@ void LabelModel::centerSelectionVert()
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1084,10 +1092,9 @@ void LabelModel::moveSelection( const glabels::Distance& dx, const glabels::Dist
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1104,10 +1111,9 @@ void LabelModel::setSelectionFontFamily( const QString &fontFamily )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1124,10 +1130,9 @@ void LabelModel::setSelectionFontSize( double fontSize )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1144,10 +1149,9 @@ void LabelModel::setSelectionFontWeight( QFont::Weight fontWeight )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1164,10 +1168,9 @@ void LabelModel::setSelectionFontItalicFlag( bool fontItalicFlag )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1184,10 +1187,9 @@ void LabelModel::setSelectionTextHAlign( Qt::Alignment textHAlign )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1204,10 +1206,9 @@ void LabelModel::setSelectionTextVAlign( Qt::Alignment textVAlign )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1224,10 +1225,9 @@ void LabelModel::setSelectionTextLineSpacing( double textLineSpacing )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1244,10 +1244,9 @@ void LabelModel::setSelectionTextColorNode( ColorNode textColorNode )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1264,10 +1263,9 @@ void LabelModel::setSelectionLineWidth( const glabels::Distance& lineWidth )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1284,10 +1282,9 @@ void LabelModel::setSelectionLineColorNode( ColorNode lineColorNode )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 
@@ -1304,10 +1301,9 @@ void LabelModel::setSelectionFillColorNode( ColorNode fillColorNode )
 		}
 	}
 
-	mModified = true;
+	setModified();
 
 	emit changed();
-	emit modifiedChanged();
 }
 
 

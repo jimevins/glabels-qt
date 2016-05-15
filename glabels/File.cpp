@@ -130,6 +130,8 @@ bool File::save( MainWindow *window )
 	}
 
 	XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
+	window->model()->clearModified();
+	
 	return true;
 }
 
@@ -170,6 +172,8 @@ bool File::saveAs( MainWindow *window )
 			
 		XmlLabelCreator::writeFile( window->model(), fileName );
 		window->model()->setFileName( fileName );
+		window->model()->clearModified();
+		
 		return true;
 	}
 

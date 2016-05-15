@@ -80,6 +80,7 @@ signals:
 	/////////////////////////////////
 public:
 	bool isModified() const;
+	void setModified();
 	void clearModified();
 
 	QString shortName();
@@ -207,6 +208,7 @@ public:
 private slots:
 	void onObjectChanged();
 	void onObjectMoved();
+	void onMergeSourceChanged();
 
 
 	/////////////////////////////////
