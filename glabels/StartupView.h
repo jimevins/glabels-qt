@@ -1,4 +1,4 @@
-/*  StartupWizard.cpp
+/*  StartupView.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,60 +18,44 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StartupWizard.h"
+#ifndef StartupView_h
+#define StartupView_h
 
-#include "File.h"
-#include <QtDebug>
+#include "ui_StartupView.h"
+
+class MainWindow; // Forward reference
 
 
 ///
-/// Constructor
+/// Startup View Widget
 ///
-StartupWizard::StartupWizard( QWidget *parent )
-	: QDialog(parent)
+class StartupView : public QWidget, public Ui_StartupView
 {
-	setupUi( this );
-
-	QString subtitle = tr("Label Designer");
-
-	QString markup = "<span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#333333;'>"
-		+ subtitle + "</span>";
-
-	titleLabel->setText( markup );
-}
+	Q_OBJECT
 
 
-///
-/// "New Project" Button Clicked Slot
-///
-void StartupWizard::onNewProjectButtonClicked()
-{
-	hide();
+	/////////////////////////////////
+	// Life Cycle
+	/////////////////////////////////
+public:
+	StartupView( MainWindow* window );
+
+
+	/////////////////////////////////
+	// Slots
+	/////////////////////////////////
+private slots:
+	void onNewProjectButtonClicked();
+	void onOpenProjectButtonClicked();
+
 	
-	if ( File::newLabel() )
-	{
-		close();
-	}
-	else
-	{
-		show();
-	}
-}
+	/////////////////////////////////
+	// Private data
+	/////////////////////////////////
+private:
+	MainWindow* mWindow;
+
+};
 
 
-///
-/// "Open Project" Button Clicked Slot
-///
-void StartupWizard::onOpenProjectButtonClicked()
-{
-	hide();
-	
-	if ( File::open() )
-	{
-		close();
-	}
-	else
-	{
-		show();
-	}
-}
+#endif // StartupView_h

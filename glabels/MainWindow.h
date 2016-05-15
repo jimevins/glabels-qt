@@ -38,6 +38,7 @@ class QScrollArea;
 // Forward References
 class LabelModel;
 class UndoRedoModel;
+class StartupView;
 class PropertiesView;
 class LabelEditor;
 class ObjectEditor;
@@ -161,6 +162,7 @@ private:
 	void createToolBars();
 	void createStatusBar();
 
+	QWidget* createWelcomePage();
 	QWidget* createPropertiesPage();
 	QWidget* createEditorPage();
 	QWidget* createMergePage();
@@ -210,7 +212,14 @@ private:
 	UndoRedoModel*       mUndoRedoModel;
 
 	QListWidget*         mContents;
+	QListWidgetItem*     mWelcomeButton;
+	QListWidgetItem*     mPropertiesButton;
+	QListWidgetItem*     mEditorButton;
+	QListWidgetItem*     mMergeButton;
+	QListWidgetItem*     mPrintButton;
+
 	QStackedWidget*      mPages;
+	StartupView*         mWelcomeView;
 	PropertiesView*      mPropertiesView;
 	QScrollArea*         mLabelEditorScrollArea;
 	LabelEditor*         mLabelEditor;

@@ -37,6 +37,7 @@
 
 #include "libglabels/Db.h"
 #include "PreferencesDialog.h"
+#include "StartupView.h"
 #include "PropertiesView.h"
 #include "LabelEditor.h"
 #include "ObjectEditor.h"
@@ -68,6 +69,7 @@ MainWindow::MainWindow()
 	createStatusBar();
 
 	// Build pages
+	QWidget* welcomePage = createWelcomePage();
 	QWidget* propertiesPage = createPropertiesPage();
 	QWidget* editorPage = createEditorPage();
 	QWidget* mergePage = createMergePage();
@@ -80,35 +82,43 @@ MainWindow::MainWindow()
 	mContents->setMinimumWidth(96);
 	mContents->setMaximumWidth(96);
 	mContents->setSpacing(6);
-	mContents->setEnabled( false );
 	
 	// Pages widget
 	mPages = new QStackedWidget();
-	mPages->setEnabled( false );
+
+	// Add "Welcome" page
+	mPages->addWidget( welcomePage );
+	mWelcomeButton = new QListWidgetItem(mContents);
+	mWelcomeButton->setText(tr("Welcome"));
+	mWelcomeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	// Add "Properties" page
 	mPages->addWidget( propertiesPage );
-	QListWidgetItem *propertiesButton = new QListWidgetItem(mContents);
-	propertiesButton->setText(tr("Properties"));
-	propertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	mPropertiesButton = new QListWidgetItem(mContents);
+	mPropertiesButton->setText(tr("Properties"));
+	mPropertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	// Add "Editor" page
 	mPages->addWidget( editorPage );
-	QListWidgetItem *editorButton = new QListWidgetItem(mContents);
-	editorButton->setText(tr("Editor"));
-	editorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	mEditorButton = new QListWidgetItem(mContents);
+	mEditorButton->setText(tr("Editor"));
+	mEditorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	// Add "Merge" page
 	mPages->addWidget( mergePage );
-	QListWidgetItem *mergeButton = new QListWidgetItem(mContents);
-	mergeButton->setText(tr("Merge"));
-	mergeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	mMergeButton = new QListWidgetItem(mContents);
+	mMergeButton->setText(tr("Merge"));
+	mMergeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	// Add "Print" page
 	mPages->addWidget( printPage );
-	QListWidgetItem *printButton = new QListWidgetItem(mContents);
-	printButton->setText(tr("Print"));
-	printButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+	mPrintButton = new QListWidgetItem(mContents);
+	mPrintButton->setText(tr("Print"));
+	mPrintButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+	// Set initial page selection
+	mWelcomeButton->setSelected( true );
+	mPages->setCurrentIndex(mContents->row(mWelcomeButton));
 
 	// Create central widget
 	QWidget *centralWidget = new QWidget();
@@ -172,8 +182,9 @@ void MainWindow::setModel( LabelModel *label )
 	mMergeView->setModel( mModel , mUndoRedoModel );
 	mPrintView->setModel( mModel );
 
-	mContents->setEnabled( true );
-	mPages->setEnabled( true );
+	mEditorButton->setSelected( true );
+	mPages->setCurrentIndex(mContents->row(mEditorButton));
+	
 	setDocVerbsEnabled( true );
 	setSelectionVerbsEnabled( false );
 	setMultiSelectionVerbsEnabled( false );
@@ -660,6 +671,17 @@ void MainWindow::createStatusBar()
 
 
 ///
+/// Create Welcome Page
+///
+QWidget* MainWindow::createWelcomePage()
+{
+	mWelcomeView = new StartupView( this );
+
+	return mWelcomeView;
+}
+
+
+///
 /// Create Properties Page
 ///
 QWidget* MainWindow::createPropertiesPage()
@@ -768,6 +790,13 @@ void MainWindow::setDocVerbsEnabled( bool enabled )
 	objectsCenterMenu->setEnabled( enabled );
 	objectsCenterHorizAction->setEnabled( enabled );
 	objectsCenterVertAction->setEnabled( enabled );
+
+	// Contents buttons
+	mWelcomeButton->setHidden( enabled );
+	mPropertiesButton->setHidden( !enabled );
+	mEditorButton->setHidden( !enabled );
+	mMergeButton->setHidden( !enabled );
+	mPrintButton->setHidden( !enabled );
 }
 
 

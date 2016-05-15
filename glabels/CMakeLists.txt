@@ -50,7 +50,7 @@ set (glabels_sources
   SelectProductDialog.cpp
   Settings.cpp
   SimplePreview.cpp
-  StartupWizard.cpp
+  StartupView.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
@@ -89,7 +89,7 @@ set (glabels_qobject_headers
   SelectProductDialog.h
   Settings.h
   SimplePreview.h
-  StartupWizard.h
+  StartupView.h
   TemplatePicker.h
   UndoRedoModel.h
 )
@@ -102,7 +102,7 @@ set (glabels_forms
   ui/PrintView.ui
   ui/PropertiesView.ui
   ui/SelectProductDialog.ui
-  ui/StartupWizard.ui
+  ui/StartupView.ui
 )
 
 set (glabels_resource_files

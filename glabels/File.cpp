@@ -36,9 +36,9 @@
 ///
 /// New Label Dialog
 ///
-bool File::newLabel( QWidget *parent )
+bool File::newLabel( MainWindow *window )
 {
-	SelectProductDialog dialog( parent );
+	SelectProductDialog dialog( window );
 	dialog.exec();
 
 	const glabels::Template* tmplate = dialog.tmplate();
@@ -51,9 +51,17 @@ bool File::newLabel( QWidget *parent )
 		const glabels::Frame* frame = tmplate->frames().first();
 		label->setRotate( frame->h() > frame->w() );
 
-		MainWindow *newWindow = new MainWindow();
-		newWindow->setModel( label );
-		newWindow->show();
+		// Either apply to current window or open a new one
+		if ( window->isEmpty() )
+		{
+			window->setModel( label );
+		}
+		else
+		{
+			MainWindow *newWindow = new MainWindow();
+			newWindow->setModel( label );
+			newWindow->show();
+		}
 
 		return true;
 	}
@@ -67,13 +75,13 @@ bool File::newLabel( QWidget *parent )
 ///
 /// Open File Dialog
 ///
-bool File::open( QWidget *parent )
+void File::open( MainWindow *window )
 {
 	QString fileName =
-		QFileDialog::getOpenFileName( parent,
+		QFileDialog::getOpenFileName( window,
 					      tr("Open label"),
 					      ".",
-					      tr("glabels project files (*.glabels);;All files (*)")
+					      tr("glabels files (*.glabels);;All files (*)")
 			);
 	if ( !fileName.isEmpty() )
 	{
@@ -82,11 +90,17 @@ bool File::open( QWidget *parent )
 		{
 			label->setFileName( fileName );
 				
-			MainWindow *newWindow = new MainWindow();
-			newWindow->setModel( label );
-			newWindow->show();
-
-			return true;
+			// Either apply to current window or open a new one
+			if ( window->isEmpty() )
+			{
+				window->setModel( label );
+			}
+			else
+			{
+				MainWindow *newWindow = new MainWindow();
+				newWindow->setModel( label );
+				newWindow->show();
+			}
 		}
 		else
 		{
@@ -97,8 +111,6 @@ bool File::open( QWidget *parent )
 			msgBox.exec();
 		}
 	}
-
-	return false;
 }
 
 

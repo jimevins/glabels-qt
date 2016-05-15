@@ -24,7 +24,7 @@
 #include "libglabels/Db.h"
 #include "Settings.h"
 #include "MergeFactory.h"
-#include "StartupWizard.h"
+#include "MainWindow.h"
 
 
 int main( int argc, char **argv )
@@ -48,8 +48,8 @@ int main( int argc, char **argv )
 	/////////////////////////////////
 
 	/// @TODO open file(s) from command line if present, otherwise start wizard
-	StartupWizard startupWizard;
-	startupWizard.show();
+	MainWindow mainWindow;
+	mainWindow.show();
 
 	return app.exec();
 }
