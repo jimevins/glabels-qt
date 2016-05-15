@@ -204,8 +204,11 @@ void File::close( MainWindow *window )
 ///
 void File::exit()
 {
-	foreach ( MainWindow* window, MainWindow::windowList() )
+	foreach ( QWidget* qwidget, QApplication::topLevelWidgets() )
 	{
-		window->close();
+		if ( MainWindow* window = qobject_cast<MainWindow*>(qwidget) )
+		{
+			window->close();
+		}
 	}
 }

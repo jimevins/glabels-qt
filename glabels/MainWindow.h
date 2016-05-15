@@ -70,8 +70,6 @@ public:
 	void setModel( LabelModel* label );
 	bool isEmpty() const;
 
-	static QList<MainWindow *> windowList();
-
 
 	/////////////////////////////////////
 	// Events
@@ -186,8 +184,6 @@ private:
 	// Private Data
 	/////////////////////////////////////
 private:
-	static    QList<MainWindow*> smWindowList;
-
 	QMenu*    fileMenu;
 	QMenu*    editMenu;
 	QMenu*    viewMenu;

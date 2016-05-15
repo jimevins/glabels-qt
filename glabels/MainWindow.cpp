@@ -53,12 +53,6 @@
 
 
 ///
-/// Static window list
-///
-QList<MainWindow*> MainWindow::smWindowList;
-
-
-///
 /// Constructor
 ///
 MainWindow::MainWindow()
@@ -146,8 +140,6 @@ MainWindow::MainWindow()
 #endif
 
 	readSettings();
-
-	smWindowList.push_back( this );
 }
 
 
@@ -156,7 +148,6 @@ MainWindow::MainWindow()
 ///
 MainWindow::~MainWindow()
 {
-	smWindowList.removeOne( this );
 }
 
 
@@ -206,14 +197,6 @@ void MainWindow::setModel( LabelModel *label )
 bool MainWindow::isEmpty() const
 {
 	return mModel == 0;
-}
-
-///
-/// Get window list
-///
-QList<MainWindow*> MainWindow::windowList()
-{
-	return smWindowList;
 }
 
 
