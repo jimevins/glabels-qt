@@ -79,7 +79,7 @@ void File::open( MainWindow *window )
 {
 	QString fileName =
 		QFileDialog::getOpenFileName( window,
-					      tr("Open label"),
+					      tr("gLabels - Open Project"),
 					      ".",
 					      tr("glabels files (*.glabels);;All files (*)")
 			);
@@ -141,7 +141,7 @@ bool File::saveAs( MainWindow *window )
 {
 	QString rawFileName =
 		QFileDialog::getSaveFileName( window,
-					      tr("Save Label As"),
+					      tr("gLabels - Save Project As"),
 					      ".",
 					      tr("glabels files (*.glabels);;All files (*)"),
 					      0,

@@ -869,12 +869,11 @@ void MainWindow::setTitle()
 	{
 		if ( mModel->isModified() )
 		{
-			setWindowTitle( mModel->shortName() + " " + tr("(modified)")
-					+ " - gLabels" );
+			setWindowTitle( "gLabels - " + mModel->shortName() + " " + tr("(modified)") );
 		}
 		else
 		{
-			setWindowTitle( mModel->shortName() + " - gLabels" );
+			setWindowTitle( "gLabels - " + mModel->shortName()  );
 		}
 	}
 }
