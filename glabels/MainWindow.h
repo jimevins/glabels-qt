@@ -179,6 +179,8 @@ private:
 	void readSettings();
 	void writeSettings();
 
+	bool isOkToClose();
+	
 
 	/////////////////////////////////////
 	// Private Data

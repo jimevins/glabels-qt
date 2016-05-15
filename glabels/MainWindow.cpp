@@ -33,6 +33,7 @@
 #include <QListWidget>
 #include <QStackedWidget>
 #include <QLabel>
+#include <QMessageBox>
 #include <QDebug>
 
 #include "libglabels/Db.h"
@@ -221,8 +222,15 @@ QList<MainWindow*> MainWindow::windowList()
 ///
 void MainWindow::closeEvent( QCloseEvent *event )
 {
-	writeSettings();
-	event->accept();
+	if ( isOkToClose() )
+	{
+		writeSettings();
+		event->accept();
+	}
+	else
+	{
+		event->ignore();
+	}
 }
 
 
@@ -918,6 +926,51 @@ void MainWindow::writeSettings()
 	settings.setValue( "showGrid",           viewGridAction->isChecked() );
 	settings.setValue( "showMarkup",         viewMarkupAction->isChecked() );
 	settings.endGroup();
+}
+
+
+///
+/// Is it ok to close window?
+///
+bool MainWindow::isOkToClose()
+{
+        bool ok = true;
+
+        if ( !this->isEmpty() )
+        {
+		if ( mModel->isModified() )
+		{
+			QString msg = tr("Save changes to project \"%1\" before closing?").arg( mModel->shortName() );
+			QString info = tr("Your changes will be lost if you don't save them.");
+
+			int ret = QMessageBox::warning( this,
+							tr( "Save project?" ),
+							"<b>" + msg + "</b><p>" + info + "</p>",
+							(QMessageBox::Save|QMessageBox::Discard|QMessageBox::Cancel),
+							QMessageBox::Save );
+
+			switch (ret) {
+			case QMessageBox::Save:
+				// Save was clicked
+				ok = File::save( this );
+				break;
+			case QMessageBox::Discard:
+				// Don't Save was clicked
+				ok = true;
+				break;
+			case QMessageBox::Cancel:
+				// Cancel was clicked
+				ok = false;
+				break;
+			default:
+				// should never be reached
+				ok = false;
+				break;
+			}
+		}
+        }
+
+	return ok;
 }
 
 

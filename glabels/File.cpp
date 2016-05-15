@@ -195,42 +195,7 @@ void File::print( MainWindow *window )
 ///
 void File::close( MainWindow *window )
 {
-	bool closeFlag = true;
-
-	if ( !window->isEmpty() )
-	{
-		QMessageBox msgBox;
-		msgBox.setText( tr("The document ") + window->model()->shortName() + tr(" has been modified.") );
-		msgBox.setInformativeText( tr("Do you want to save your changes?") );
-		msgBox.setStandardButtons( QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel );
-		msgBox.setDefaultButton( QMessageBox::Save );
-
-		int ret = msgBox.exec();
-
-		switch (ret) {
-		case QMessageBox::Save:
-			// Save was clicked
-			closeFlag = save( window );
-			break;
-		case QMessageBox::Discard:
-			// Don't Save was clicked
-			closeFlag = true;
-			break;
-		case QMessageBox::Cancel:
-			// Cancel was clicked
-			closeFlag = false;
-			break;
-		default:
-			// should never be reached
-			closeFlag = false;
-			break;
-		}
-	}
-
-	if ( closeFlag )
-	{
-		window->close();
-	}
+	window->close();
 }
 
 
@@ -241,6 +206,6 @@ void File::exit()
 {
 	foreach ( MainWindow* window, MainWindow::windowList() )
 	{
-		close( window );
+		window->close();
 	}
 }
