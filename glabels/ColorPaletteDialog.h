@@ -1,6 +1,6 @@
 /*  ColorPaletteDialog.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -58,6 +58,7 @@ signals:
 	// Public Methods
 	/////////////////////////////////
 public:
+	void   setColorNode( const ColorNode& colorNode );
 	void   setKeys( const QList<QString> keyList );
 	void   clearKeys();
 
@@ -87,7 +88,7 @@ private:
 	QColor        mDefaultColor;
 	ColorNode     mColorNode;
 
-	static const int PALETTE_COLS = 9;
+	static const int PALETTE_COLS = ColorHistory::MAX_COLORS;
 	static const int PALETTE_ROWS = 4;
 
 	typedef struct {

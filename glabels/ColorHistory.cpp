@@ -1,6 +1,6 @@
 /*  ColorHistory.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,6 +21,7 @@
 #include "ColorHistory.h"
 
 #include <QSettings>
+#include <QtDebug>
 
 
 ColorHistory::ColorHistory()
@@ -43,74 +44,69 @@ ColorHistory* ColorHistory::instance()
 
 void ColorHistory::addColor( const QColor &color )
 {
-	QColor oldColors[MAX_COLORS];
-	QColor newColors[MAX_COLORS];
-	int n;
+	QList<QColor> colorList = readColorList();
 
-	readColorArray( oldColors, &n );
+	// Remove any occurances of this color already in list
+	colorList.removeAll( color );
 
-	int i;
-	newColors[0] = color;
-	for ( i = 0; ( i < (MAX_COLORS-1) ) && (i < n); i++ )
+	// Now add to list
+	colorList.append( color );
+
+	// Remove oldest colors, if size exceeds current max
+	while ( colorList.size() > MAX_COLORS )
 	{
-		newColors[i+1] = oldColors[i];
+		colorList.removeFirst();
 	}
 
-	writeColorArray( newColors, i+1 );
+	writeColorList( colorList );
+	
 	emit changed();
 }
 
 
-QColor ColorHistory::getColor( int i )
+QList<QColor> ColorHistory::getColors()
 {
-	QColor colors[MAX_COLORS];
-	int n;
-
-	readColorArray( colors, &n );
-		
-	if ( (n > 0) && (i < n) )
-	{
-		return colors[i];
-	}
-	else
-	{
-		return QColor( 0, 0, 0, 0 );
-	}
+	return readColorList();
 }
 
 
-void ColorHistory::readColorArray( QColor array[MAX_COLORS], int* n )
+QList<QColor> ColorHistory::readColorList()
 {
+	QStringList defaultList;
 	QSettings settings;
 
 	settings.beginGroup( "ColorHistory" );
-
-	settings.beginReadArray( "history" );
-	*n = settings.value( "history/size", 0 ).toInt();
-	for ( int i = 0; i < *n; i++ )
-	{
-		settings.setArrayIndex(i);
-		array[i] = settings.value( "color" ).value<QColor>();
-	}
-	settings.endArray();
-
+	QStringList colorNameList = settings.value( "colors", defaultList ).toStringList();
 	settings.endGroup();
+
+	QList<QColor> colorList;
+	foreach ( QString colorName, colorNameList )
+	{
+		colorList << QColor( colorName );
+	}
+
+	// Remove oldest colors, if size exceeds current max
+	while ( colorList.size() > MAX_COLORS )
+	{
+		colorList.removeFirst();
+	}
+
+	return colorList;
 }
 
 
-void ColorHistory::writeColorArray( const QColor array[MAX_COLORS], int n )
+void ColorHistory::writeColorList( const QList<QColor>& colorList )
 {
-	QSettings settings;
-
-	settings.beginGroup( "ColorHistory" );
-
-	settings.beginWriteArray( "history" );
-	for ( int i = 0; (i < n) && (i < MAX_COLORS); i++ )
+	// Build name list
+	QStringList colorNameList;
+	foreach ( QColor color, colorList )
 	{
-		settings.setArrayIndex(i);
-		settings.setValue( "color", array[i] );
+		colorNameList << color.name();
 	}
-	settings.endArray();
 
+	// Save
+	QSettings settings;
+	settings.beginGroup( "ColorHistory" );
+	settings.setValue( "colors", colorNameList );
 	settings.endGroup();
 }

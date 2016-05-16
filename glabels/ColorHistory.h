@@ -1,6 +1,6 @@
 /*  ColorHistory.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -26,14 +26,14 @@
 
 
 ///
-/// Barcode Backends Database
+/// Color History
 ///
 class ColorHistory : public QObject
 {
 	Q_OBJECT
 
 public:
-	static const int MAX_COLORS = 10;
+	static const int MAX_COLORS = 9;
 
 	/////////////////////////////////
 	// Life Cycle
@@ -57,15 +57,15 @@ signals:
 	/////////////////////////////////
 public:
 	void   addColor( const QColor &color );
-	QColor getColor( int i );
+	QList<QColor> getColors();
 
 
 	/////////////////////////////////
 	// Private Methods
 	/////////////////////////////////
 private:
-	void readColorArray( QColor array[MAX_COLORS], int* n );
-	void writeColorArray( const QColor array[MAX_COLORS], int n );
+	QList<QColor> readColorList();
+	void writeColorList( const QList<QColor>& colorList );
 
 
 	/////////////////////////////////

@@ -1,6 +1,6 @@
 /*  ColorPaletteDialog.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -27,6 +27,8 @@
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QFrame>
+#include <QColorDialog>
+#include <QtDebug>
 
 
 ColorPaletteDialog::ColorTableEntry ColorPaletteDialog::mColorTable[] = {
@@ -160,6 +162,12 @@ ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
 }
 
 
+void ColorPaletteDialog::setColorNode( const ColorNode& colorNode )
+{
+	mColorNode = colorNode;
+}
+
+
 void ColorPaletteDialog::setKeys( const QList<QString> keyList )
 {
 	// TODO
@@ -197,7 +205,7 @@ void ColorPaletteDialog::onPaletteItemActivated( int id )
 void ColorPaletteDialog::onHistoryItemActivated( int id )
 {
 	mColorNode.setFieldFlag( false );
-	mColorNode.setColor( mColorHistory->getColor( id ) );
+	mColorNode.setColor( mColorHistory->getColors()[id] );
 	mColorNode.setKey( "" );
 
 	emit colorChanged( mColorNode, false );
@@ -207,8 +215,27 @@ void ColorPaletteDialog::onHistoryItemActivated( int id )
 
 void ColorPaletteDialog::onCustomColorItemActivated()
 {
-	// TODO
-	accept();
+	QColorDialog dlg( mColorNode.color(), this );
+	dlg.setWindowTitle( tr("Custom Color") );
+
+	if ( dlg.exec() )
+	{
+		ColorNode newColorNode;
+
+		newColorNode.setFieldFlag( false );
+		newColorNode.setColor( dlg.currentColor() );
+		newColorNode.setKey( "" );
+
+		if ( newColorNode != mColorNode )
+		{
+			mColorNode = newColorNode;
+			
+			mColorHistory->addColor( mColorNode.color() );
+
+			emit colorChanged( mColorNode, false );
+			accept();
+		}
+	}
 }
 
 
@@ -220,14 +247,19 @@ void ColorPaletteDialog::onColorHistoryChanged()
 
 void ColorPaletteDialog::loadCustomColorHistory()
 {
-	for ( int i = 0; i < PALETTE_COLS; i++ )
+	QList<QColor> colorList = mColorHistory->getColors();
+	
+	int id = 0;
+	foreach ( QColor color, colorList )
 	{
-		QColor color = mColorHistory->getColor( i );
+		mHistoryItem[id]->setColor( id, color, QString(tr("Custom color #%1").arg(id+1) ) );
+		mHistoryItem[id]->setEnabled( true );
+		id++;
+	}
 
-		if ( color.alpha() != 0 )
-		{
-			mHistoryItem[i]->setColor( i, color, QString(tr("Custom color #%d").arg(i) ) );
-			mHistoryItem[i]->setEnabled( true );
-		}
+	while ( id < PALETTE_ROWS )
+	{
+		mHistoryItem[id]->setEnabled( false );
+		id++;
 	}
 }

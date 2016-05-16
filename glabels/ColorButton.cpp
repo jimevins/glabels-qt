@@ -1,6 +1,6 @@
 /*  ColorButton.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -74,6 +74,8 @@ void ColorButton::setColorNode( ColorNode colorNode )
 		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
 		setText( "" );
 	}
+
+	mDialog->setColorNode( colorNode );
 }
 
 

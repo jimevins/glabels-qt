@@ -224,7 +224,7 @@ QStringList Settings::recentTemplateList()
 	QStringList defaultList;
 	
 	mInstance->beginGroup( "Recent" );
-	QStringList returnList = mInstance->value( "templateList", defaultList ).toStringList();
+	QStringList returnList = mInstance->value( "templates", defaultList ).toStringList();
 	mInstance->endGroup();
 
 	return returnList;
@@ -235,7 +235,7 @@ void Settings::addToRecentTemplateList( const QString& name )
 {
 	mInstance->beginGroup( "Recent" );
 
-	QStringList list = mInstance->value( "templateList" ).toStringList();
+	QStringList list = mInstance->value( "templates" ).toStringList();
 
 	list.removeAll( name );
 	list.prepend( name );
@@ -244,7 +244,7 @@ void Settings::addToRecentTemplateList( const QString& name )
 		list.removeLast();
 	}
 
-	mInstance->setValue( "templateList", list );
+	mInstance->setValue( "templates", list );
 
 	mInstance->endGroup();
 
