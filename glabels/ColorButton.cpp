@@ -28,7 +28,7 @@
 
 namespace
 {
-	const int SWATCH_W = 24;
+	const int SWATCH_W = 64;
 	const int SWATCH_H = 24;
 }
 
@@ -45,6 +45,7 @@ void ColorButton::init( const QString& defaultLabel, const QColor& defaultColor,
 	mColorNode = ColorNode( color );
 
 	setMinimumSize( QSize( 85, 34 ) );
+	setIconSize( QSize(SWATCH_W, SWATCH_H) );
 
 	setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
 	setText( "" );
