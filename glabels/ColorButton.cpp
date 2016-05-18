@@ -44,6 +44,8 @@ void ColorButton::init( const QString& defaultLabel, const QColor& defaultColor,
 	mDefaultColor = defaultColor;
 	mColorNode = ColorNode( color );
 
+	setMinimumSize( QSize( 85, 34 ) );
+
 	setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
 	setText( "" );
 	setCheckable( true );
@@ -67,7 +69,7 @@ void ColorButton::setColorNode( ColorNode colorNode )
 	if ( colorNode.fieldFlag() )
 	{
 		setIcon( QIcon() );
-		setText( colorNode.key() );
+		setText( QString("${%1}").arg( colorNode.key() ) );
 	}
 	else
 	{
@@ -155,8 +157,16 @@ void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
 	mColorNode = colorNode;
 	mIsDefault = isDefault;
 
-	setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
-	setText( "" );
+	if ( colorNode.fieldFlag() )
+	{
+		setIcon( QIcon() );
+		setText( QString("${%1}").arg( colorNode.key() ) );
+	}
+	else
+	{
+		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
+		setText( "" );
+	}
 		
 	emit colorChanged();
 }

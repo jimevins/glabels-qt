@@ -45,7 +45,7 @@ protected:
 	// Implementation of virtual methods
 	/////////////////////////////////
 public:
-	QStringList keyList() const;
+	QStringList keys() const;
 	QString primaryKey() const;
 protected:
 	void open();

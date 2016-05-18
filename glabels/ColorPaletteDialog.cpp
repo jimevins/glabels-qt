@@ -20,9 +20,6 @@
 
 #include "ColorPaletteDialog.h"
 
-#include "ColorPaletteItem.h"
-#include "ColorPaletteButtonItem.h"
-
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -153,12 +150,17 @@ ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
 	hline4->setLineWidth( 1 );
 	vLayout->addWidget( hline4 );
 
-	ColorPaletteButtonItem* mergeFieldButton = new ColorPaletteButtonItem( "TODO: Field Button" );
-	vLayout->addWidget( mergeFieldButton );
+	mMergeFieldButton = new ColorPaletteButtonItem( tr("Merge field") );
+	connect( mMergeFieldButton, SIGNAL(activated()), this, SLOT(onMergeFieldItemActivated()) );
+	mMergeFieldButton->setEnabled( false );
+	vLayout->addWidget( mMergeFieldButton );
 
 	setLayout( vLayout );
 
 	loadCustomColorHistory();
+
+	mFieldMenu = new FieldMenu();
+	connect( mFieldMenu, SIGNAL(keySelected(QString)), this, SLOT(onFieldMenuItemActivated(QString)) );
 }
 
 
@@ -168,15 +170,23 @@ void ColorPaletteDialog::setColorNode( const ColorNode& colorNode )
 }
 
 
-void ColorPaletteDialog::setKeys( const QList<QString> keyList )
+void ColorPaletteDialog::setKeys( const QStringList& keyList )
 {
-	// TODO
+	if ( keyList.size() > 0 )
+	{
+		mFieldMenu->setKeys( keyList );
+		mMergeFieldButton->setEnabled( true );
+	}
+	else
+	{
+		mMergeFieldButton->setEnabled( false );
+	}
 }
 
 
 void ColorPaletteDialog::clearKeys()
 {
-	// TODO
+	mMergeFieldButton->setEnabled( false );
 }
 
 
@@ -262,4 +272,22 @@ void ColorPaletteDialog::loadCustomColorHistory()
 		mHistoryItem[id]->setEnabled( false );
 		id++;
 	}
+}
+
+
+void ColorPaletteDialog::onMergeFieldItemActivated()
+{
+	QPoint pos( mMergeFieldButton->width(), 0 );
+	mFieldMenu->popup( mMergeFieldButton->mapToGlobal(pos) );
+}
+
+
+void ColorPaletteDialog::onFieldMenuItemActivated( QString key )
+{
+	mColorNode.setFieldFlag( true );
+	mColorNode.setColor( QColor("#eeeeec") );
+	mColorNode.setKey( key );
+
+	emit colorChanged( mColorNode, false );
+	accept();
 }

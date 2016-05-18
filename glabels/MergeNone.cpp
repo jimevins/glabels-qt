@@ -76,7 +76,7 @@ Merge* MergeNone::create()
 ///
 /// Get key list
 ///
-QStringList MergeNone::keyList() const
+QStringList MergeNone::keys() const
 {
 	QStringList emptyList;
 	return emptyList;

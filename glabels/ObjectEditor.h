@@ -69,6 +69,7 @@ private slots:
 	void onSettingsChanged();
 	void onLabelSizeChanged();
 	void onSelectionChanged();
+	void onMergeSourceChanged();
 	void onObjectChanged();
 	void onObjectMoved();
 	void onObjectDestroyed();

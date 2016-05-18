@@ -80,7 +80,7 @@ public:
 	// Virtual methods
 	/////////////////////////////////
 public:
-	virtual QStringList keyList() const = 0;
+	virtual QStringList keys() const = 0;
 	virtual QString primaryKey() const = 0;
 protected:
 	virtual void open() = 0;

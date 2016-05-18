@@ -59,9 +59,11 @@ void ObjectEditor::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 
 	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 	connect( mModel, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
+	connect( mModel, SIGNAL(mergeSourceChanged()), this, SLOT(onMergeSourceChanged()) );
 
 	onLabelSizeChanged();
 	onSelectionChanged();
+	onMergeSourceChanged();
 }
 
 	
@@ -246,6 +248,17 @@ void ObjectEditor::onSelectionChanged()
 }
 
 	
+void ObjectEditor::onMergeSourceChanged()
+{
+	if ( !mBlocked )
+	{
+		lineColorButton->setKeys( mModel->merge()->keys() );
+		fillColorButton->setKeys( mModel->merge()->keys() );
+		shadowColorButton->setKeys( mModel->merge()->keys() );
+	}
+}
+
+
 void ObjectEditor::onObjectChanged()
 {
 	if ( !mBlocked )

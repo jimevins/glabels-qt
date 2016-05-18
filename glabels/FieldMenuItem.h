@@ -43,7 +43,7 @@ public:
 	// Signals
 	/////////////////////////////////
 signals:
-	void activated( const QString& key );
+	void activated( QString key );
 
 
 	/////////////////////////////////

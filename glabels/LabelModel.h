@@ -73,6 +73,7 @@ signals:
 	void selectionChanged();
 	void modifiedChanged();
 	void mergeChanged();
+	void mergeSourceChanged();
 
 
 	/////////////////////////////////

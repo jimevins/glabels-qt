@@ -226,7 +226,7 @@ void MergeView::onCellChanged( int iRow, int iCol )
 void MergeView::loadHeaders( Merge* merge )
 {
 	mPrimaryKey = merge->primaryKey();
-	mKeys = merge->keyList();
+	mKeys = merge->keys();
 
 	if ( mKeys.size() > 0 )
 	{

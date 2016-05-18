@@ -55,7 +55,7 @@ MergeText::~MergeText()
 ///
 /// Get key list
 ///
-QStringList MergeText::keyList() const
+QStringList MergeText::keys() const
 {
 	QStringList keys;
 	for ( int iField = 0; iField < mNFieldsMax; iField++ )

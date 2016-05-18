@@ -43,21 +43,21 @@ public:
 	// Signals
 	/////////////////////////////////
 signals:
-	void keySelected( const QString& key );
+	void keySelected( QString key );
 
 
 	/////////////////////////////////
 	// Public Methods
 	/////////////////////////////////
 public:
-	void setKeys( const QList<QString>& keyList );
+	void setKeys( const QStringList& keyList );
 
 
 	/////////////////////////////////
 	// Slots
 	/////////////////////////////////
 private slots:
-	void onMenuItemActivated( const QString& key );
+	void onMenuItemActivated( QString key );
 
 
 	/////////////////////////////////

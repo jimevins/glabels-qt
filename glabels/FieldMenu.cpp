@@ -34,14 +34,14 @@ FieldMenu::FieldMenu()
 ///
 /// set keys
 ///
-void FieldMenu::setKeys( const QList<QString>& keyList )
+void FieldMenu::setKeys( const QStringList& keyList )
 {
 	clear();
 
 	foreach ( QString key, keyList )
 	{
 		FieldMenuItem* menuItem = new FieldMenuItem( key );
-		connect( menuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
+		connect( menuItem, SIGNAL(activated(QString)), this, SLOT(onMenuItemActivated(QString)) );
 
 		addAction( menuItem );
 	}
@@ -51,7 +51,7 @@ void FieldMenu::setKeys( const QList<QString>& keyList )
 ///
 /// onMenuItemActivated slot
 ///
-void FieldMenu::onMenuItemActivated( const QString& key )
+void FieldMenu::onMenuItemActivated( QString key )
 {
 	emit keySelected( key );
 }

@@ -27,6 +27,8 @@
 #include "ColorNode.h"
 #include "ColorHistory.h"
 #include "ColorPaletteItem.h"
+#include "ColorPaletteButtonItem.h"
+#include "FieldMenu.h"
 
 
 ///
@@ -59,7 +61,7 @@ signals:
 	/////////////////////////////////
 public:
 	void   setColorNode( const ColorNode& colorNode );
-	void   setKeys( const QList<QString> keyList );
+	void   setKeys( const QStringList& keyList );
 	void   clearKeys();
 
 
@@ -72,6 +74,8 @@ private slots:
 	void onHistoryItemActivated( int id );
 	void onCustomColorItemActivated();
 	void onColorHistoryChanged();
+	void onMergeFieldItemActivated();
+	void onFieldMenuItemActivated( QString key );
 
 
 	/////////////////////////////////
@@ -100,6 +104,9 @@ private:
 
 	ColorHistory* mColorHistory;
 	ColorPaletteItem* mHistoryItem[PALETTE_COLS];
+
+	FieldMenu* mFieldMenu;
+	ColorPaletteButtonItem* mMergeFieldButton;
 
 };
 

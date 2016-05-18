@@ -297,6 +297,7 @@ void LabelModel::setMerge( Merge* merge )
 		setModified();
 		
 		emit mergeChanged();
+		emit mergeSourceChanged();
 	}
 }
 
@@ -426,6 +427,7 @@ void LabelModel::onMergeSourceChanged()
 {
 	setModified();
 	emit changed();
+	emit mergeSourceChanged();
 }
 
 
