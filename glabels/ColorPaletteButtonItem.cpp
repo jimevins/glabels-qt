@@ -57,7 +57,7 @@ void ColorPaletteButtonItem::paintEvent( QPaintEvent* event )
 	//
 	// Draw background
 	//
-	if ( mHover )
+	if ( isEnabled() && mHover )
 	{
 		QLinearGradient gradient( 0, 0, 0, height() );
 		gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
@@ -76,7 +76,7 @@ void ColorPaletteButtonItem::paintEvent( QPaintEvent* event )
 	//
 	painter.setBrush( QBrush( Qt::NoBrush ) );
 
-	if ( mHover )
+	if ( isEnabled() && mHover )
 	{
 		painter.setPen( QPen( palette().color( QPalette::HighlightedText ) ) );
 	}
