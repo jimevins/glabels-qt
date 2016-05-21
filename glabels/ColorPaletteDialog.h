@@ -30,6 +30,8 @@
 #include "ColorPaletteButtonItem.h"
 #include "FieldMenu.h"
 
+class QComboBox; // Forward reference
+
 
 ///
 /// Color Palette Dialog
@@ -74,9 +76,11 @@ private slots:
 	void onHistoryItemActivated( int id );
 	void onCustomColorItemActivated();
 	void onColorHistoryChanged();
-	void onMergeFieldItemActivated();
-	void onFieldMenuItemActivated( QString key );
+	void onComboIndexChanged( int index );
 
+protected:
+	void showEvent( QShowEvent* event );
+	
 
 	/////////////////////////////////
 	// Private Methods
@@ -105,8 +109,8 @@ private:
 	ColorHistory* mColorHistory;
 	ColorPaletteItem* mHistoryItem[PALETTE_COLS];
 
-	FieldMenu* mFieldMenu;
-	ColorPaletteButtonItem* mMergeFieldButton;
+	QComboBox* mMergeFieldCombo;
+	QStringList mKeys;
 
 };
 

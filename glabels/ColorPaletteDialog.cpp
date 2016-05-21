@@ -25,6 +25,8 @@
 #include <QGridLayout>
 #include <QFrame>
 #include <QColorDialog>
+#include <QComboBox>
+#include <QStandardItemModel>
 #include <QtDebug>
 
 
@@ -141,7 +143,7 @@ ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
 	hline3->setLineWidth( 1 );
 	vLayout->addWidget( hline3 );
 
-	ColorPaletteButtonItem* customColorButton = new ColorPaletteButtonItem( tr("Custom color") );
+	ColorPaletteButtonItem* customColorButton = new ColorPaletteButtonItem( tr("Custom color...") );
 	connect( customColorButton, SIGNAL(activated()), this, SLOT(onCustomColorItemActivated()) );
 	vLayout->addWidget( customColorButton );
 
@@ -150,17 +152,22 @@ ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
 	hline4->setLineWidth( 1 );
 	vLayout->addWidget( hline4 );
 
-	mMergeFieldButton = new ColorPaletteButtonItem( tr("Merge field") );
-	connect( mMergeFieldButton, SIGNAL(activated()), this, SLOT(onMergeFieldItemActivated()) );
-	mMergeFieldButton->setEnabled( false );
-	vLayout->addWidget( mMergeFieldButton );
+	mMergeFieldCombo = new QComboBox();
+	mMergeFieldCombo->addItem( tr("Merge field...") );
+	mMergeFieldCombo->setMinimumSize( 34, 34 );
+	mMergeFieldCombo->setFrame( false );
+	mMergeFieldCombo->setEnabled( false );
+	connect( mMergeFieldCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboIndexChanged(int)) );
+	vLayout->addWidget( mMergeFieldCombo );
 
+	// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
+	const QStandardItemModel* model = qobject_cast<const QStandardItemModel*>(mMergeFieldCombo->model());
+	QStandardItem* item = model->item(0);
+	item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
+	
 	setLayout( vLayout );
 
 	loadCustomColorHistory();
-
-	mFieldMenu = new FieldMenu();
-	connect( mFieldMenu, SIGNAL(keySelected(QString)), this, SLOT(onFieldMenuItemActivated(QString)) );
 }
 
 
@@ -172,21 +179,35 @@ void ColorPaletteDialog::setColorNode( const ColorNode& colorNode )
 
 void ColorPaletteDialog::setKeys( const QStringList& keyList )
 {
+	mKeys = keyList;
+	
+	// Clear old keys, (all entries, except item 0)
+	for ( int index = mMergeFieldCombo->count()-1; index > 0; index-- )
+	{
+		mMergeFieldCombo->removeItem( index );
+	}
+
+	// Add new keys
 	if ( keyList.size() > 0 )
 	{
-		mFieldMenu->setKeys( keyList );
-		mMergeFieldButton->setEnabled( true );
+		mMergeFieldCombo->addItems( keyList );
+		mMergeFieldCombo->setEnabled( true );
 	}
 	else
 	{
-		mMergeFieldButton->setEnabled( false );
+		mMergeFieldCombo->setEnabled( false );
 	}
 }
 
 
 void ColorPaletteDialog::clearKeys()
 {
-	mMergeFieldButton->setEnabled( false );
+	
+	for ( int index = mMergeFieldCombo->count()-1; index > 0; index-- )
+	{
+		mMergeFieldCombo->removeItem( index );
+	}
+	mMergeFieldCombo->setEnabled( false );
 }
 
 
@@ -275,19 +296,23 @@ void ColorPaletteDialog::loadCustomColorHistory()
 }
 
 
-void ColorPaletteDialog::onMergeFieldItemActivated()
+void ColorPaletteDialog::onComboIndexChanged( int index )
 {
-	QPoint pos( mMergeFieldButton->width(), 0 );
-	mFieldMenu->popup( mMergeFieldButton->mapToGlobal(pos) );
+	if ( index != 0 )
+	{
+		mColorNode.setFieldFlag( true );
+		mColorNode.setColor( QColor("#eeeeec") );
+		mColorNode.setKey( mKeys[index-1] );
+
+		emit colorChanged( mColorNode, false );
+		accept();
+	}
 }
 
 
-void ColorPaletteDialog::onFieldMenuItemActivated( QString key )
+void ColorPaletteDialog::showEvent( QShowEvent* event )
 {
-	mColorNode.setFieldFlag( true );
-	mColorNode.setColor( QColor("#eeeeec") );
-	mColorNode.setKey( key );
+	mMergeFieldCombo->setCurrentIndex( 0 );
 
-	emit colorChanged( mColorNode, false );
-	accept();
+	QDialog::showEvent( event );
 }
