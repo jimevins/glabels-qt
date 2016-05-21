@@ -200,9 +200,61 @@ void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
 	
 void PageRenderer::printCropMarks( QPainter* painter ) const
 {
+	using namespace glabels;
+	
 	if ( mPrintCropMarks )
 	{
-		// TODO
+		painter->save();
+
+		painter->setBrush( QBrush( Qt::NoBrush ) );
+		painter->setPen( QPen( labelOutlineColor, labelOutlineWidth ) );
+
+		Distance w = mModel->frame()->w();
+		Distance h = mModel->frame()->h();
+
+		foreach ( Layout* layout, mModel->frame()->layouts() )
+		{
+			Distance xMin = layout->x0();
+			Distance yMin = layout->y0();
+			Distance xMax = layout->x0() + layout->dx()*(layout->nx()-1) + w;
+			Distance yMax = layout->y0() + layout->dy()*(layout->ny()-1) + h;
+
+			for ( int ix = 0; ix < layout->nx(); ix++ )
+			{
+				Distance x1 = xMin + ix*layout->dx();
+				Distance x2 = x1 + w;
+
+				Distance y1 = max( yMin-tickOffset, Distance::pt(0) );
+				Distance y2 = max( y1-tickLength, Distance::pt(0) );
+
+				Distance y3 = min( yMax+tickOffset, mModel->tmplate()->pageHeight() );
+				Distance y4 = min( y3+tickLength, mModel->tmplate()->pageHeight() );
+
+				painter->drawLine( x1.pt(), y1.pt(), x1.pt(), y2.pt() );
+				painter->drawLine( x2.pt(), y1.pt(), x2.pt(), y2.pt() );
+				painter->drawLine( x1.pt(), y3.pt(), x1.pt(), y4.pt() );
+				painter->drawLine( x2.pt(), y3.pt(), x2.pt(), y4.pt() );
+			}
+
+			for ( int iy = 0; iy < layout->ny(); iy++ )
+			{
+				Distance y1 = yMin + iy*layout->dy();
+				Distance y2 = y1 + h;
+
+				Distance x1 = max( xMin-tickOffset, Distance::pt(0) );
+				Distance x2 = max( x1-tickLength, Distance::pt(0) );
+
+				Distance x3 = min( xMax+tickOffset, mModel->tmplate()->pageWidth() );
+				Distance x4 = min( x3+tickLength, mModel->tmplate()->pageWidth() );
+
+				painter->drawLine( x1.pt(), y1.pt(), x2.pt(), y1.pt() );
+				painter->drawLine( x1.pt(), y2.pt(), x2.pt(), y2.pt() );
+				painter->drawLine( x3.pt(), y1.pt(), x4.pt(), y1.pt() );
+				painter->drawLine( x3.pt(), y2.pt(), x4.pt(), y2.pt() );
+			}
+		}
+
+		painter->restore();
 	}
 }
 
