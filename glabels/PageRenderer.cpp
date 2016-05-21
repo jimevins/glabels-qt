@@ -175,11 +175,12 @@ void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
 	for ( int i = iStart; i < iEnd; i++ )
 	{
 		painter->save();
+
 		painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
 			
 		painter->save();
-		clipLabel( painter );
 
+		clipLabel( painter );
 		printLabel( painter, 0 );
 
 		painter->restore();  // From before clip
@@ -224,7 +225,7 @@ void PageRenderer::printOutline( QPainter* painter ) const
 	
 void PageRenderer::clipLabel( QPainter* painter ) const
 {
-	// TODO: add clipPath() method to frame
+	painter->setClipPath( mModel->frame()->clipPath() );
 }
 
 	

@@ -66,6 +66,7 @@ namespace glabels
 		virtual bool isSimilarTo( Frame* other ) const = 0;
 
 		virtual const QPainterPath& path() const = 0;
+		virtual const QPainterPath& clipPath() const = 0;
 		virtual QPainterPath marginPath( const Distance& size ) const = 0;
 
 

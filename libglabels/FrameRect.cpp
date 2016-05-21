@@ -38,6 +38,10 @@ namespace glabels
 		: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
 	{
 		mPath.addRoundedRect( 0, 0, mW.pt(), mH.pt(), mR.pt(), mR.pt() );
+		
+		mClipPath.addRoundedRect( -mXWaste.pt(), -mYWaste.pt(),
+					  mW.pt() + 2*mXWaste.pt(), mH.pt() + 2*mYWaste.pt(),
+					  mR.pt(), mR.pt() );
 	}
 
 	
@@ -105,6 +109,12 @@ namespace glabels
 	const QPainterPath& FrameRect::path() const
 	{
 		return mPath;
+	}
+
+
+	const QPainterPath& FrameRect::clipPath() const
+	{
+		return mClipPath;
 	}
 
 

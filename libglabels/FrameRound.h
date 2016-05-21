@@ -49,6 +49,7 @@ namespace glabels
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
+		const QPainterPath& clipPath() const;
 		QPainterPath marginPath( const Distance& size ) const;
 
 
@@ -57,6 +58,7 @@ namespace glabels
 		Distance mWaste;
 
 		QPainterPath mPath;
+		QPainterPath mClipPath;
 
 	};
 

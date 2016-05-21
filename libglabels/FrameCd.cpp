@@ -41,22 +41,54 @@ namespace glabels
 		Distance wReal = (mW == 0) ? 2*mR1 : mW;
 		Distance hReal = (mH == 0) ? 2*mR1 : mH;
 
-		/*
-		 * Construct outer subpath (may be clipped if it's a business card CD)
-		 */
-		QPainterPath outerPath;
-		outerPath.addEllipse( (wReal/2 - r1).pt(), (hReal/2 - r1).pt(), 2*r1.pt(), 2*r1.pt() );
+		//
+		// Create path
+		//
+		{
+			/*
+			 * Construct outer subpath (may be clipped if it's a business card CD)
+			 */
+			QPainterPath outerPath;
+			outerPath.addEllipse( (wReal/2 - r1).pt(), (hReal/2 - r1).pt(), 2*r1.pt(), 2*r1.pt() );
 
-		QPainterPath clipPath;
-		clipPath.addRect( 0, 0, wReal.pt(), hReal.pt() );
+			QPainterPath clipPath;
+			clipPath.addRect( 0, 0, wReal.pt(), hReal.pt() );
 
-		mPath.addPath( outerPath & clipPath );
-		mPath.closeSubpath();
+			mPath.addPath( outerPath & clipPath );
+			mPath.closeSubpath();
 
-		/*
-		 * Add inner subpath
-		 */
-		mPath.addEllipse( (wReal/2 - r2).pt(), (hReal/2 - r2).pt(), 2*r2.pt(), 2*r2.pt() );
+			/*
+			 * Add inner subpath
+			 */
+			mPath.addEllipse( (wReal/2 - r2).pt(), (hReal/2 - r2).pt(), 2*r2.pt(), 2*r2.pt() );
+		}
+
+		//
+		// Create clip path
+		//
+		{
+			Distance r1Clip = mR1 + mWaste;
+			Distance r2Clip = mR2 - mWaste;
+			Distance wClip = (mW == 0) ? 2*r1Clip : mW + 2*mWaste;
+			Distance hClip = (mH == 0) ? 2*r1Clip : mH + 2*mWaste;
+
+			/*
+			 * Construct outer subpath (may be clipped if it's a business card CD)
+			 */
+			QPainterPath outerPath;
+			outerPath.addEllipse( (wReal/2 - r1Clip).pt(), (hReal/2 - r1Clip).pt(), 2*r1Clip.pt(), 2*r1Clip.pt() );
+
+			QPainterPath clipPath;
+			clipPath.addRect( -mWaste.pt(), -mWaste.pt(), wClip.pt(), hClip.pt() );
+
+			mClipPath.addPath( outerPath & clipPath );
+			mClipPath.closeSubpath();
+
+			/*
+			 * Add inner subpath
+			 */
+			mClipPath.addEllipse( (wReal/2 - r2Clip).pt(), (hReal/2 - r2Clip).pt(), 2*r2Clip.pt(), 2*r2Clip.pt() );
+		}
 	}
 
 
@@ -125,6 +157,12 @@ namespace glabels
 	const QPainterPath& FrameCd::path() const
 	{
 		return mPath;
+	}
+	
+
+	const QPainterPath& FrameCd::clipPath() const
+	{
+		return mClipPath;
 	}
 	
 

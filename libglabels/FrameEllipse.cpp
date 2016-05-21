@@ -36,6 +36,7 @@ namespace glabels
 		: mW(w), mH(h), mWaste(waste), Frame(id)
 	{
 		mPath.addEllipse( 0, 0, mW.pt(), mH.pt() );
+		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(), (mW+2*mWaste).pt(), (mH+2*mWaste).pt() );
 	}
 
 	FrameEllipse::FrameEllipse( const FrameEllipse& other )
@@ -101,6 +102,12 @@ namespace glabels
 	const QPainterPath& FrameEllipse::path() const
 	{
 		return mPath;
+	}
+
+	
+	const QPainterPath& FrameEllipse::clipPath() const
+	{
+		return mClipPath;
 	}
 
 	
