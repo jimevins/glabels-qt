@@ -46,6 +46,7 @@ bool File::newLabel( MainWindow *window )
 	{
 		LabelModel* label = new LabelModel();
 		label->setTmplate( tmplate );
+		label->clearModified();
 
 		// Intelligently decide to rotate label by default
 		const glabels::Frame* frame = tmplate->frames().first();
