@@ -1,6 +1,6 @@
 /*  MainWindow.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -174,7 +174,7 @@ void MainWindow::setModel( LabelModel *label )
 	mMergeView->setModel( mModel , mUndoRedoModel );
 	mPrintView->setModel( mModel );
 
-	mEditorButton->setSelected( true );
+	mContents->setCurrentItem( mEditorButton );
 	mPages->setCurrentIndex(mContents->row(mEditorButton));
 	
 	setDocVerbsEnabled( true );
@@ -964,7 +964,7 @@ void MainWindow::changePage(QListWidgetItem *current, QListWidgetItem *previous)
 {
     if (!current)
     {
-        current = previous;
+	    current = previous;
     }
 
     mPages->setCurrentIndex(mContents->row(current));
