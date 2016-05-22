@@ -77,7 +77,7 @@ void PrintView::onLabelSizeChanged()
 	copiesToSpin->setRange( copiesFromSpin->value(), nLabelsPerPage );
 	if ( copiesSheetsRadio->isChecked() )
 	{
-		mRenderer.setNLabels( copiesSheetsSpin->value()*nLabelsPerPage );
+		mRenderer.setNCopies( copiesSheetsSpin->value()*nLabelsPerPage );
 		mRenderer.setStartLabel( 0 );
 		copiesFromSpin->setValue( 1 );
 		copiesToSpin->setValue( nLabelsPerPage );
@@ -113,14 +113,14 @@ void PrintView::onFormChanged()
 		// TODO select between simple and merge
 		if ( copiesSheetsRadio->isChecked() )
 		{
-			mRenderer.setNLabels( copiesSheetsSpin->value()*nLabelsPerPage );
+			mRenderer.setNCopies( copiesSheetsSpin->value()*nLabelsPerPage );
 			mRenderer.setStartLabel( 0 );
 			copiesFromSpin->setValue( 1 );
 			copiesToSpin->setValue( nLabelsPerPage );
 		}
 		else
 		{
-			mRenderer.setNLabels( copiesToSpin->value() - copiesFromSpin->value() + 1 );
+			mRenderer.setNCopies( copiesToSpin->value() - copiesFromSpin->value() + 1 );
 			mRenderer.setStartLabel( copiesFromSpin->value() - 1 );
 			copiesSheetsSpin->setValue( 1 );
 		}

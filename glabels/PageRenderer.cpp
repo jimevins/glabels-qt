@@ -1,6 +1,6 @@
 /*  PageRenderer.cpp
  *
- *  Copyright (C) 2013-2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,6 +21,8 @@
 #include "PageRenderer.h"
 
 #include "LabelModel.h"
+#include "Merge.h"
+#include "MergeNone.h"
 #include "MergeRecord.h"
 
 #include <QPainter>
@@ -37,9 +39,9 @@ namespace
 
 
 PageRenderer::PageRenderer()
-	: mModel(0), mNLabels(0), mStartLabel(0),
+	: mModel(0), mNCopies(0), mStartLabel(0),
 	  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
-	  mIPage(0), mNPages(0)
+	  mIsMerge(false), mIPage(0), mNPages(0)
 {
 }
 
@@ -47,15 +49,17 @@ PageRenderer::PageRenderer()
 void PageRenderer::setModel( const LabelModel* model )
 {
 	mModel = model;
+	mMerge = mModel->merge();
 	mOrigins = mModel->frame()->getOrigins();
 	mNLabelsPerPage = mModel->frame()->nLabels();
+	mIsMerge = ( dynamic_cast<const MergeNone*>(mMerge) == 0 );
 	updateNPages();
 }
 
 	
-void PageRenderer::setNLabels( int nLabels )
+void PageRenderer::setNCopies( int nCopies )
 {
-	mNLabels = nLabels;
+	mNCopies = nCopies;
 	updateNPages();
 }
 
@@ -114,12 +118,17 @@ void PageRenderer::updateNPages()
 {
 	if ( mModel )
 	{
-		/// @TODO merge case
-			
-		int lastLabel = mStartLabel + mNLabels;
-			
-		mNPages = lastLabel / mNLabelsPerPage;
-		if ( lastLabel % mNLabelsPerPage )
+		if ( mIsMerge )
+		{
+			mLastLabel = mStartLabel + mNCopies*mMerge->nSelectedRecords();
+		}
+		else
+		{
+			mLastLabel = mStartLabel + mNCopies;
+		}
+		
+		mNPages = mLastLabel / mNLabelsPerPage;
+		if ( mLastLabel % mNLabelsPerPage )
 		{
 			mNPages++;
 		}
@@ -147,9 +156,14 @@ void PageRenderer::printPage( QPainter* painter, int iPage ) const
 {
 	if ( mModel )
 	{
-		/// @TODO merge case
-		
-		printSimplePage( painter, iPage );
+		if ( mIsMerge )
+		{
+			printMergePage( painter, iPage );
+		}
+		else
+		{
+			printSimplePage( painter, iPage );
+		}
 	}
 }
 
@@ -164,10 +178,9 @@ void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
 		iStart = mStartLabel;
 	}
 
-	int lastLabel = mStartLabel + mNLabels;
-	if ( (lastLabel / mNLabelsPerPage) == iPage )
+	if ( (mLastLabel / mNLabelsPerPage) == iPage )
 	{
-		iEnd = lastLabel % mNLabelsPerPage;
+		iEnd = mLastLabel % mNLabelsPerPage;
 	}
 
 	printCropMarks( painter );
@@ -194,7 +207,43 @@ void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
 	
 void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
 {
-	/// @TODO merge case
+	int iStart = 0;
+	int iEnd = mNLabelsPerPage;
+
+	if ( iPage == 0 )
+	{
+		iStart = mStartLabel;
+	}
+
+	if ( (mLastLabel / mNLabelsPerPage) == iPage )
+	{
+		iEnd = mLastLabel % mNLabelsPerPage;
+	}
+
+	const QList<MergeRecord*> records = mMerge->selectedRecords();
+	int iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
+
+	printCropMarks( painter );
+
+	for ( int i = iStart; i < iEnd; i++ )
+	{
+		painter->save();
+
+		painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
+			
+		painter->save();
+
+		clipLabel( painter );
+		printLabel( painter, records[iRecord] );
+
+		painter->restore();  // From before clip
+
+		printOutline( painter );
+			
+		painter->restore();  // From before translation
+
+		iRecord = (iRecord + 1) % records.size();
+	}
 }
 	
 	

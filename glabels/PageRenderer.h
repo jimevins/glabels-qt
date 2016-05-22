@@ -27,12 +27,11 @@
 #include <QVector>
 #include <QRect>
 
-
-class QPainter; // Forward reference
-
-
-class LabelModel; // Forward reference
-class MergeRecord; // Forward reference
+// Forward references
+class QPainter;
+class LabelModel;
+class Merge;
+class MergeRecord;
 
 
 ///
@@ -52,7 +51,7 @@ public:
 	/////////////////////////////////
 public:
 	void setModel( const LabelModel* model );
-	void setNLabels( int nLabels );
+	void setNCopies( int nCopies );
 	void setStartLabel( int startLabel );
 	void setPrintOutlines( bool printOutlinesFlag );
 	void setPrintCropMarks( bool printCropMarksFlag );
@@ -82,13 +81,17 @@ private:
 	/////////////////////////////////
 private:
 	const LabelModel* mModel;
-	int               mNLabels;
+	const Merge*      mMerge;
+	
+	int               mNCopies;
 	int               mStartLabel;
+	int               mLastLabel;
 	bool              mPrintOutlines;
 	bool              mPrintCropMarks;
 	bool              mPrintReverse;
 	int               mIPage;
 
+	bool              mIsMerge;
 	int               mNPages;
 	int               mNLabelsPerPage;
 

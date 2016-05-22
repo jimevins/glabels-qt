@@ -1,6 +1,6 @@
 /*  ColorNode.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -24,6 +24,8 @@
 #include <QString>
 #include <QColor>
 #include <stdint.h>
+
+class MergeRecord; // Forward reference
 
 
 ///
@@ -87,10 +89,7 @@ public:
 	/////////////////////////////////
 public:
 	uint32_t rgba( void ) const;
-		
-#if TODO
-	QColor expand( MergeRecord? record );
-#endif
+	QColor color( MergeRecord* record ) const;
 
 
 	/////////////////////////////////

@@ -68,11 +68,9 @@ LabelModelBoxObject* LabelModelBoxObject::clone() const
 ///
 void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const
 {
-	/// TODO expand colors based on record
-		
-	QColor lineColor = mLineColorNode.color();
-	QColor fillColor = mFillColorNode.color();
-	QColor shadowColor = mShadowColorNode.color();
+	QColor lineColor = mLineColorNode.color( record );
+	QColor fillColor = mFillColorNode.color( record );
+	QColor shadowColor = mShadowColorNode.color( record );
 
 	shadowColor.setAlphaF( mShadowOpacity );
 
@@ -115,10 +113,8 @@ void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRec
 ///
 void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const
 {
-	/// TODO expand colors based on record
-		
-	QColor lineColor = mLineColorNode.color();
-	QColor fillColor = mFillColorNode.color();
+	QColor lineColor = mLineColorNode.color( record );
+	QColor fillColor = mFillColorNode.color( record );
 
 	painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
 	painter->setBrush( fillColor );

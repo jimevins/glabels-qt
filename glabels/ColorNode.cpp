@@ -1,6 +1,6 @@
 /*  ColorNode.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -19,6 +19,8 @@
  */
 
 #include "ColorNode.h"
+
+#include "MergeRecord.h"
 
 
 ///
@@ -158,40 +160,28 @@ uint32_t ColorNode::rgba( void ) const
 }
 
 	
-#if TODO
-QColor ColorNode::expand( MergeRecord? record )
+QColor ColorNode::color( MergeRecord* record ) const
 {
-	if ( fieldFlag )
+	if ( mFieldFlag )
 	{
-		if ( record == null )
+		if ( record == 0 )
 		{
-			return QColor.fromRgba(0x00000000);
+			return mColor;
 		}
 		else
 		{
-			string? text = record.evalKey( key );
-			if ( text != null )
+			if ( record->contains( mKey ) )
 			{
-				Gdk.Color gdkColor = Gdk.Color();
-				if ( Gdk.Color.parse( text, out gdkColor ) )
-				{
-					Color color = Color.from_gdkColor( gdkColor );
-					return color;
-				}
-				else
-				{
-					return Color.fromRgba(0x00000000);
-				}
+				return QColor( (*record)[ mKey ] );
 			}
 			else
 			{
-				return Color.fromRgba(0x00000000);
+				return mColor;
 			}
 		}
 	}
 	else
 	{
-		return color;
+		return mColor;
 	}
 }
-#endif

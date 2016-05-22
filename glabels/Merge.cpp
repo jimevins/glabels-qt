@@ -1,6 +1,6 @@
 /*  Merge.cpp
  *
- *  Copyright (C) 2015  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2015-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -165,6 +165,25 @@ void Merge::unselectAll()
 }
 
 	
+///
+/// Return count of selected records
+///
+int Merge::nSelectedRecords() const
+{
+	int count = 0;
+
+	foreach ( MergeRecord* record, mRecordList )
+	{
+		if ( record->isSelected() )
+		{
+			count++;
+		}
+	}
+
+	return count;
+}
+
+
 ///
 /// Return list of selected records
 ///
