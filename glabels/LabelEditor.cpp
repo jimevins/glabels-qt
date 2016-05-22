@@ -28,6 +28,7 @@
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
+#include "LabelModelEllipseObject.h"
 #include "UndoRedoModel.h"
 #include "Settings.h"
 #include "Cursors.h"
@@ -326,6 +327,19 @@ LabelEditor::createBoxMode()
 
 
 ///
+/// Create ellipse mode
+///
+void
+LabelEditor::createEllipseMode()
+{
+	setCursor( Cursors::Ellipse() );
+
+	mCreateObjectType = Ellipse;
+	mState = CreateIdle;
+}
+
+
+///
 /// Resize Event Handler
 ///
 void
@@ -458,7 +472,7 @@ LabelEditor::mousePressEvent( QMouseEvent* event )
 					mCreateObject = new LabelModelBoxObject();
 					break;
 				case Ellipse:
-					// mCreateObject = new LabelModelEllipseObject();
+					mCreateObject = new LabelModelEllipseObject();
 					break;
 				case Line: 
 					// mCreateObject = new LabelModelLineObject();

@@ -24,6 +24,7 @@
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
+#include "LabelModelEllipseObject.h"
 #include "UndoRedoModel.h"
 
 #include "Merge/Merge.h"
@@ -213,6 +214,26 @@ void ObjectEditor::onSelectionChanged()
 			{
 				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
 				titleLabel->setText( "Box object properties" );
+
+				notebook->addTab( lineFillPage, "line/fill" );
+				notebook->addTab( posSizePage, "position/size" );
+				notebook->addTab( shadowPage, "shadow" );
+
+				sizeRectFrame->setVisible( true );
+				sizeResetImageButton->setVisible( false );
+				sizeLineFrame->setVisible( false );
+
+				loadLineFillPage();
+				loadPositionPage();
+				loadRectSizePage();
+				loadShadowPage();
+				
+				setEnabled( true );
+			}
+			else if ( dynamic_cast<LabelModelEllipseObject*>(mObject) )
+			{
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-ellipse.png") );
+				titleLabel->setText( "Ellipse object properties" );
 
 				notebook->addTab( lineFillPage, "line/fill" );
 				notebook->addTab( posSizePage, "position/size" );

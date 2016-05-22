@@ -46,6 +46,7 @@
 #include "PrintView.h"
 #include "LabelModel.h"
 #include "LabelModelBoxObject.h"
+#include "LabelModelEllipseObject.h"
 #include "UndoRedoModel.h"
 #include "Icons.h"
 #include "File.h"
@@ -1243,7 +1244,8 @@ void MainWindow::objectsCreateLine()
 ///
 void MainWindow::objectsCreateEllipse()
 {
-	qDebug() << "ACTION: objects->Create->Ellipse";
+	mUndoRedoModel->checkpoint( tr("Create Ellipse") );
+	mLabelEditor->createEllipseMode();
 }
 
 

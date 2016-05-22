@@ -23,7 +23,7 @@
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
-//#include "LabelObjectEllipse.h"
+#include "LabelModelEllipseObject.h"
 //#include "LabelObjectLine.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
@@ -129,6 +129,10 @@ XmlLabelCreator::addObjectsToNode( QDomElement &parent, const QList<LabelModelOb
 		{
 			createObjectBoxNode( parent, boxObject );
 		}
+		else if ( LabelModelEllipseObject* ellipseObject = dynamic_cast<LabelModelEllipseObject*>(object) )
+		{
+			createObjectEllipseNode( parent, ellipseObject );
+		}
 		// TODO: other object types
 		else
 		{
@@ -185,7 +189,44 @@ XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const LabelModelBoxOb
 void
 XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const LabelModelEllipseObject* object )
 {
-	// TODO
+	QDomDocument doc = parent.ownerDocument();
+	QDomElement node = doc.createElement( "Object-ellipse" );
+	parent.appendChild( node );
+
+	/* position attrs */
+	glabels::XmlUtil::setLengthAttr( node, "x", object->x0() );
+	glabels::XmlUtil::setLengthAttr( node, "y", object->y0() );
+
+	/* size attrs */
+	glabels::XmlUtil::setLengthAttr( node, "w", object->w() );
+	glabels::XmlUtil::setLengthAttr( node, "h", object->h() );
+
+	/* line attrs */
+	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
+	if ( object->lineColorNode().fieldFlag() )
+	{
+		glabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
+	}
+	else
+	{
+		glabels::XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
+	}
+
+	/* fill attrs */
+	if ( object->fillColorNode().fieldFlag() )
+	{
+		glabels::XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
+	}
+	else
+	{
+		glabels::XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
+	}
+
+	/* affine attrs */
+	createAffineAttrs( node, object );
+
+	/* shadow attrs */
+	createShadowAttrs( node, object );
 }
 
 
