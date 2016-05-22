@@ -23,13 +23,15 @@
 
 namespace merge
 {
+	static const QString ID = "Text/Comma";
+	
 	
 	///
 	/// Constructor
 	///
 	TextCsv::TextCsv() : Text(',',false)
 	{
-		mId = "Text/Comma";
+		mId = ID;
 	}
 
 
@@ -63,7 +65,7 @@ namespace merge
 	///
 	QString TextCsv::id()
 	{
-		return "Text/Comma";
+		return ID;
 	}
 
 

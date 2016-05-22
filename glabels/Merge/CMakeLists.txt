@@ -16,6 +16,13 @@ set (merge_sources
   None.cpp
   Text.cpp
   TextCsv.cpp
+  TextCsvKeys.cpp
+  TextTsv.cpp
+  TextTsvKeys.cpp
+  TextColon.cpp
+  TextColonKeys.cpp
+  TextSemicolon.cpp
+  TextSemicolonKeys.cpp
 )
 
 set (merge_qobject_headers

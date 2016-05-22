@@ -22,6 +22,13 @@
 
 #include "None.h"
 #include "TextCsv.h"
+#include "TextCsvKeys.h"
+#include "TextTsv.h"
+#include "TextTsvKeys.h"
+#include "TextColon.h"
+#include "TextColonKeys.h"
+#include "TextSemicolon.h"
+#include "TextSemicolonKeys.h"
 
 
 namespace merge
@@ -48,6 +55,41 @@ namespace merge
 				 tr("Text: Comma Separated Values (CSV)"),
 				 FILE,
 				 &TextCsv::create );
+
+		registerBackend( TextCsvKeys::id(),
+				 tr("Text: Comma Separated Values (CSV), keys on line 1"),
+				 FILE,
+				 &TextCsvKeys::create );
+
+		registerBackend( TextTsv::id(),
+				 tr("Text: Tab Separated Values (TSV)"),
+				 FILE,
+				 &TextTsv::create );
+
+		registerBackend( TextTsvKeys::id(),
+				 tr("Text: Tab Separated Values (TSV), keys on line 1"),
+				 FILE,
+				 &TextTsvKeys::create );
+
+		registerBackend( TextColon::id(),
+				 tr("Text: Colon Separated Values"),
+				 FILE,
+				 &TextColon::create );
+
+		registerBackend( TextColonKeys::id(),
+				 tr("Text: Colon Separated Values, keys on line 1"),
+				 FILE,
+				 &TextColonKeys::create );
+
+		registerBackend( TextSemicolon::id(),
+				 tr("Text: Semicolon Separated Values"),
+				 FILE,
+				 &TextSemicolon::create );
+
+		registerBackend( TextSemicolonKeys::id(),
+				 tr("Text: Semicolon Separated Values, keys on line 1"),
+				 FILE,
+				 &TextSemicolonKeys::create );
 	}
 
 

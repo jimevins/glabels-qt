@@ -1,4 +1,4 @@
-/*  Merge/TextCsv.h
+/*  Merge/TextColon.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef merge_TextCsv_h
-#define merge_TextCsv_h
+#ifndef merge_TextColon_h
+#define merge_TextColon_h
 
 #include "Text.h"
 
@@ -28,25 +28,25 @@ namespace merge
 {
 	
 	///
-	/// TextCsv Merge Backend
+	/// TextColon Merge Backend
 	///
-	struct TextCsv : public Text
+	struct TextColon : public Text
 	{
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	private:
-		TextCsv();
-		TextCsv( const TextCsv* merge );
-		virtual ~TextCsv();
+		TextColon();
+		TextColon( const TextColon* merge );
+		virtual ~TextColon();
 
 
 		/////////////////////////////////
 		// Object duplication
 		/////////////////////////////////
 	public:
-		TextCsv* clone() const;
+		TextColon* clone() const;
 
 
 		/////////////////////////////////
@@ -60,4 +60,4 @@ namespace merge
 
 }
 
-#endif // merge_TextCsv_h
+#endif // merge_TextColon_h

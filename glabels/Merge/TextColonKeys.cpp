@@ -1,4 +1,4 @@
-/*  Merge/TextCsv.h
+/*  Merge/TextColonKeys.cpp
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,46 +18,63 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef merge_TextCsv_h
-#define merge_TextCsv_h
-
-#include "Text.h"
+#include "TextColonKeys.h"
 
 
 namespace merge
 {
+	static const QString ID = "Text/Colon/Line1Keys";
+
 	
 	///
-	/// TextCsv Merge Backend
+	/// Constructor
 	///
-	struct TextCsv : public Text
+	TextColonKeys::TextColonKeys() : Text(':',true)
 	{
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextCsv();
-		TextCsv( const TextCsv* merge );
-		virtual ~TextCsv();
+		mId = ID;
+	}
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextCsv* clone() const;
+	///
+	/// Constructor
+	///
+	TextColonKeys::TextColonKeys( const TextColonKeys* merge ) : Text( merge )
+	{
+	}
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+	///
+	/// Destructor
+	///
+	TextColonKeys::~TextColonKeys()
+	{
+	}
 
-	};
+
+	///
+	/// Clone
+	///
+	TextColonKeys* TextColonKeys::clone() const
+	{
+		return new TextColonKeys( this );
+	}
+
+
+	///
+	/// Get ID
+	///
+	QString TextColonKeys::id()
+	{
+		return ID;
+	}
+
+
+	///
+	/// Create
+	///
+	Merge* TextColonKeys::create()
+	{
+		return new TextColonKeys();
+	}
 
 }
-
-#endif // merge_TextCsv_h

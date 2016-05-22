@@ -1,4 +1,4 @@
-/*  Merge/TextCsv.h
+/*  Merge/TextSemicolonKeys.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef merge_TextCsv_h
-#define merge_TextCsv_h
+#ifndef merge_TextSemicolonKeys_h
+#define merge_TextSemicolonKeys_h
 
 #include "Text.h"
 
@@ -28,25 +28,25 @@ namespace merge
 {
 	
 	///
-	/// TextCsv Merge Backend
+	/// TextSemicolonKeys Merge Backend
 	///
-	struct TextCsv : public Text
+	struct TextSemicolonKeys : public Text
 	{
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	private:
-		TextCsv();
-		TextCsv( const TextCsv* merge );
-		virtual ~TextCsv();
+		TextSemicolonKeys();
+		TextSemicolonKeys( const TextSemicolonKeys* merge );
+		virtual ~TextSemicolonKeys();
 
 
 		/////////////////////////////////
 		// Object duplication
 		/////////////////////////////////
 	public:
-		TextCsv* clone() const;
+		TextSemicolonKeys* clone() const;
 
 
 		/////////////////////////////////
@@ -60,4 +60,4 @@ namespace merge
 
 }
 
-#endif // merge_TextCsv_h
+#endif // merge_TextSemicolonKeys_h

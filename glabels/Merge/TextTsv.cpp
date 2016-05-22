@@ -1,4 +1,4 @@
-/*  Merge/TextCsv.h
+/*  Merge/TextTsv.cpp
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,46 +18,63 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef merge_TextCsv_h
-#define merge_TextCsv_h
-
-#include "Text.h"
+#include "TextTsv.h"
 
 
 namespace merge
 {
+	static const QString ID = "Text/Tab";
+
 	
 	///
-	/// TextCsv Merge Backend
+	/// Constructor
 	///
-	struct TextCsv : public Text
+	TextTsv::TextTsv() : Text('\t',false)
 	{
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextCsv();
-		TextCsv( const TextCsv* merge );
-		virtual ~TextCsv();
+		mId = ID;
+	}
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextCsv* clone() const;
+	///
+	/// Constructor
+	///
+	TextTsv::TextTsv( const TextTsv* merge ) : Text( merge )
+	{
+	}
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+	///
+	/// Destructor
+	///
+	TextTsv::~TextTsv()
+	{
+	}
 
-	};
+
+	///
+	/// Clone
+	///
+	TextTsv* TextTsv::clone() const
+	{
+		return new TextTsv( this );
+	}
+
+
+	///
+	/// Get ID
+	///
+	QString TextTsv::id()
+	{
+		return ID;
+	}
+
+
+	///
+	/// Create
+	///
+	Merge* TextTsv::create()
+	{
+		return new TextTsv();
+	}
 
 }
-
-#endif // merge_TextCsv_h

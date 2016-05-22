@@ -1,4 +1,4 @@
-/*  Merge/TextCsv.h
+/*  Merge/TextSemicolonKeys.cpp
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,46 +18,63 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef merge_TextCsv_h
-#define merge_TextCsv_h
-
-#include "Text.h"
+#include "TextSemicolonKeys.h"
 
 
 namespace merge
 {
-	
+	static const QString ID = "Text/Colon";
+
+
 	///
-	/// TextCsv Merge Backend
+	/// Constructor
 	///
-	struct TextCsv : public Text
+	TextSemicolonKeys::TextSemicolonKeys() : Text(';',true)
 	{
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextCsv();
-		TextCsv( const TextCsv* merge );
-		virtual ~TextCsv();
+		mId = ID;
+	}
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextCsv* clone() const;
+	///
+	/// Constructor
+	///
+	TextSemicolonKeys::TextSemicolonKeys( const TextSemicolonKeys* merge ) : Text( merge )
+	{
+	}
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+	///
+	/// Destructor
+	///
+	TextSemicolonKeys::~TextSemicolonKeys()
+	{
+	}
 
-	};
+
+	///
+	/// Clone
+	///
+	TextSemicolonKeys* TextSemicolonKeys::clone() const
+	{
+		return new TextSemicolonKeys( this );
+	}
+
+
+	///
+	/// Get ID
+	///
+	QString TextSemicolonKeys::id()
+	{
+		return ID;
+	}
+
+
+	///
+	/// Create
+	///
+	Merge* TextSemicolonKeys::create()
+	{
+		return new TextSemicolonKeys();
+	}
 
 }
-
-#endif // merge_TextCsv_h
