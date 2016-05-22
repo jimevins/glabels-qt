@@ -22,8 +22,8 @@
 #include <QApplication>
 
 #include "libglabels/Db.h"
+#include "Merge/MergeFactory.h"
 #include "Settings.h"
-#include "MergeFactory.h"
 #include "MainWindow.h"
 
 

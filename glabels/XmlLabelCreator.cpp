@@ -27,7 +27,7 @@
 //#include "LabelObjectLine.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
-#include "MergeNone.h"
+#include "Merge/MergeNone.h"
 #include "libglabels/XmlTemplateCreator.h"
 #include "libglabels/XmlUtil.h"
 

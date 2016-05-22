@@ -29,7 +29,7 @@
 #include "TextNode.h"
 #include "BarcodeStyle.h"
 #include "LabelRegion.h"
-#include "MergeRecord.h"
+#include "Merge/MergeRecord.h"
 
 
 ///

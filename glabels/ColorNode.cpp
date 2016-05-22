@@ -20,7 +20,7 @@
 
 #include "ColorNode.h"
 
-#include "MergeRecord.h"
+#include "Merge/MergeRecord.h"
 
 
 ///

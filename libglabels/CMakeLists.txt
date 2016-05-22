@@ -1,7 +1,14 @@
 cmake_minimum_required (VERSION 2.8)
 
+###############################################################################
+# gLabels libglabels subproject
+###############################################################################
 project (libglabels CXX)
 
+
+#=======================================
+# Sources
+#=======================================
 configure_file (Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h @ONLY)
 
 set (libglabels_sources
@@ -39,9 +46,16 @@ set (libglabels_resource_files
 qt4_wrap_cpp (libglabels_moc_sources ${libglabels_qobject_headers})
 qt4_add_resources(libglabels_qrc_sources ${libglabels_resource_files})
 
-include (${QT_USE_FILE})
+add_library (libglabels
+  ${libglabels_sources}
+  ${libglabels_moc_sources}
+  ${libglabels_qrc_sources}
+)
 
 
+#=======================================
+# Where to find stuff
+#=======================================
 include_directories (
   ${CMAKE_CURRENT_BINARY_DIR}
 )
@@ -49,6 +63,8 @@ include_directories (
 link_directories (
 )
 
-add_library (libglabels ${libglabels_sources} ${libglabels_moc_sources} ${libglabels_qrc_sources})
 
+#=======================================
+# Install
+#=======================================
 install (TARGETS libglabels ARCHIVE DESTINATION lib)

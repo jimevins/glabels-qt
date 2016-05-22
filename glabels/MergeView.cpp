@@ -21,7 +21,7 @@
 #include "MergeView.h"
 
 #include "LabelModel.h"
-#include "MergeFactory.h"
+#include "Merge/MergeFactory.h"
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QtDebug>

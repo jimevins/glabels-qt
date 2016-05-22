@@ -25,8 +25,6 @@
 #include <QList>
 #include <QPainter>
 
-#include "Merge.h"
-#include "MergeRecord.h"
 #include "libglabels/Template.h"
 #include "Settings.h"
 
@@ -35,6 +33,8 @@
 class LabelModelObject;
 class Handle;
 class LabelRegion;
+class Merge;
+class MergeRecord;
 class ColorNode;
 
 

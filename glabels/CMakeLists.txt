@@ -1,7 +1,14 @@
 cmake_minimum_required (VERSION 2.8)
 
+###############################################################################
+# gLabels application subproject
+###############################################################################
 project (app CXX)
 
+
+#=======================================
+# Sources
+#=======================================
 set (glabels_sources
   glabels_main.cpp
   AboutDialog.cpp
@@ -32,13 +39,7 @@ set (glabels_sources
   LabelModelShapeObject.cpp
   LabelRegion.cpp
   MainWindow.cpp
-  Merge.cpp
-  MergeFactory.cpp
   MergeView.cpp
-  MergeRecord.cpp
-  MergeNone.cpp
-  MergeText.cpp
-  MergeTextCsv.cpp
   ObjectEditor.cpp
   Outline.cpp
   PageRenderer.cpp
@@ -79,7 +80,6 @@ set (glabels_qobject_headers
   LabelModelBoxObject.h
   LabelModelShapeObject.h
   MainWindow.h
-  Merge.h
   MergeView.h
   ObjectEditor.h
   PreferencesDialog.h
@@ -115,9 +115,24 @@ qt4_wrap_cpp (glabels_moc_sources ${glabels_qobject_headers})
 qt4_wrap_ui (glabels_forms_headers ${glabels_forms})
 qt4_add_resources (glabels_qrc_sources ${glabels_resource_files})
 
-include (${QT_USE_FILE})
+add_executable (glabels-qt
+  ${glabels_sources}
+  ${glabels_moc_sources}
+  ${glabels_qrc_sources}
+  ${glabels_forms_headers}
+)
+
+target_link_libraries (glabels-qt
+  Merge
+  libglabels
+  ${QT_LIBRARIES}
+  ${ZLIB_LIBRARIES}
+)
 
 
+#=======================================
+# Where to find stuff
+#=======================================
 include_directories (
   ${ZLIB_INCLUDE_DIRS}
   ${CMAKE_CURRENT_BINARY_DIR}
@@ -129,13 +144,14 @@ link_directories (
   ${glabels_qt_SOURCE_DIR}/libglabels
 )
 
-add_executable (glabels-qt ${glabels_sources} ${glabels_moc_sources} ${glabels_qrc_sources} ${glabels_forms_headers})
 
-target_link_libraries (glabels-qt
-  libglabels
-  ${QT_LIBRARIES}
-  ${ZLIB_LIBRARIES}
-)
+#=======================================
+# Subdirectories
+#=======================================
+add_subdirectory (Merge)
 
 
+#=======================================
+# Install
+#=======================================
 install (TARGETS glabels-qt RUNTIME DESTINATION bin)

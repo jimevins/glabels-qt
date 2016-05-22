@@ -21,9 +21,9 @@
 #include "PageRenderer.h"
 
 #include "LabelModel.h"
-#include "Merge.h"
-#include "MergeNone.h"
-#include "MergeRecord.h"
+#include "Merge/Merge.h"
+#include "Merge/MergeNone.h"
+#include "Merge/MergeRecord.h"
 
 #include <QPainter>
 #include <QtDebug>

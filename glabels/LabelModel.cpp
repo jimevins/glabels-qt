@@ -28,7 +28,9 @@
 #include <QMimeData>
 #include <QtDebug>
 
-#include "MergeNone.h"
+#include "Merge/Merge.h"
+#include "Merge/MergeNone.h"
+#include "Merge/MergeRecord.h"
 #include "LabelModelObject.h"
 #include "LabelRegion.h"
 #include "XmlLabelCreator.h"

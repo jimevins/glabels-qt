@@ -26,6 +26,8 @@
 #include "LabelModelBoxObject.h"
 #include "UndoRedoModel.h"
 
+#include "Merge/Merge.h"
+
 #include "Settings.h"
 
 #include <cmath>
