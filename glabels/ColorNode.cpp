@@ -20,7 +20,7 @@
 
 #include "ColorNode.h"
 
-#include "Merge/MergeRecord.h"
+#include "Merge/Record.h"
 
 
 ///
@@ -160,7 +160,7 @@ uint32_t ColorNode::rgba( void ) const
 }
 
 	
-QColor ColorNode::color( MergeRecord* record ) const
+QColor ColorNode::color( merge::Record* record ) const
 {
 	if ( mFieldFlag )
 	{

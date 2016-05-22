@@ -1,4 +1,4 @@
-/*  Merge.h
+/*  Merge/Merge.h
  *
  *  Copyright (C) 2015-2016  Jim Evins <evins@snaught.com>
  *
@@ -18,95 +18,99 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef Merge_h
-#define Merge_h
+#ifndef merge_Merge_h
+#define merge_Merge_h
 
 #include <QObject>
 #include <QString>
 #include <QStringList>
 #include <QList>
 
-#include "MergeRecord.h"
 
-
-///
-/// Merge Object
-///
-struct Merge : QObject
+namespace merge
 {
-	Q_OBJECT
+	class Record; // Forward reference
 
-
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-protected:
-	Merge();
-	Merge( const Merge* merge );
-public:
-	virtual ~Merge();
-
-
-	/////////////////////////////////
-	// Object duplication
-	/////////////////////////////////
-	virtual Merge* clone() const = 0;
-
-
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	QString id() const;
-	QString source() const;
-	void setSource( const QString& source );
-
-	const QList<MergeRecord*>& recordList( void ) const;
-
-
-	/////////////////////////////////
-	// Selection methods
-	/////////////////////////////////
-public:
-	void select( MergeRecord* record );
-	void unselect( MergeRecord* record );
-	void setSelected( int i, bool state = true );
-	void selectAll();
-	void unselectAll();
 	
-	int nSelectedRecords() const;
-	const QList<MergeRecord*> selectedRecords() const;
+	///
+	/// Merge Object
+	///
+	struct Merge : QObject
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Virtual methods
-	/////////////////////////////////
-public:
-	virtual QStringList keys() const = 0;
-	virtual QString primaryKey() const = 0;
-protected:
-	virtual void open() = 0;
-	virtual void close() = 0;
-	virtual MergeRecord* readNextRecord() = 0;
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	protected:
+		Merge();
+		Merge( const Merge* merge );
+	public:
+		virtual ~Merge();
+
+
+		/////////////////////////////////
+		// Object duplication
+		/////////////////////////////////
+		virtual Merge* clone() const = 0;
+
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		QString id() const;
+		QString source() const;
+		void setSource( const QString& source );
+
+		const QList<Record*>& recordList( void ) const;
+
+
+		/////////////////////////////////
+		// Selection methods
+		/////////////////////////////////
+	public:
+		void select( Record* record );
+		void unselect( Record* record );
+		void setSelected( int i, bool state = true );
+		void selectAll();
+		void unselectAll();
+	
+		int nSelectedRecords() const;
+		const QList<Record*> selectedRecords() const;
+
+
+		/////////////////////////////////
+		// Virtual methods
+		/////////////////////////////////
+	public:
+		virtual QStringList keys() const = 0;
+		virtual QString primaryKey() const = 0;
+	protected:
+		virtual void open() = 0;
+		virtual void close() = 0;
+		virtual Record* readNextRecord() = 0;
 		
 
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void sourceChanged();
-	void selectionChanged();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void sourceChanged();
+		void selectionChanged();
 		
 
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-protected:
-	QString             mId;
-private:
-	QString             mSource;
-	QList<MergeRecord*> mRecordList;
-};
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	protected:
+		QString             mId;
+	private:
+		QString             mSource;
+		QList<Record*>      mRecordList;
+	};
 
+}
 
-#endif // Merge_h
+#endif // merge_Merge_h

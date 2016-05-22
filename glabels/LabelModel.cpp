@@ -28,9 +28,7 @@
 #include <QMimeData>
 #include <QtDebug>
 
-#include "Merge/Merge.h"
-#include "Merge/MergeNone.h"
-#include "Merge/MergeRecord.h"
+#include "Merge/None.h"
 #include "LabelModelObject.h"
 #include "LabelRegion.h"
 #include "XmlLabelCreator.h"
@@ -48,7 +46,7 @@ namespace
 ///
 LabelModel::LabelModel() : mUntitledInstance(0), mModified(true), mTmplate(0), mRotate(false)
 {
-	mMerge = new MergeNone();
+	mMerge = new merge::None();
 }
 
 
@@ -278,7 +276,7 @@ QString LabelModel::shortName()
 ///
 /// Get merge object
 ///
-Merge* LabelModel::merge() const
+merge::Merge* LabelModel::merge() const
 {
 	return mMerge;
 }
@@ -287,7 +285,7 @@ Merge* LabelModel::merge() const
 ///
 /// Set merge object
 ///
-void LabelModel::setMerge( Merge* merge )
+void LabelModel::setMerge( merge::Merge* merge )
 {
 	if ( merge != mMerge )
 	{
@@ -1399,7 +1397,7 @@ void LabelModel::paste()
 ///
 /// Draw label objects
 ///
-void LabelModel::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
+void LabelModel::draw( QPainter* painter, bool inEditor, merge::Record* record ) const
 {
 	foreach ( LabelModelObject* object, mObjectList )
 	{

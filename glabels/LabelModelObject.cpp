@@ -29,7 +29,6 @@
 #include "TextNode.h"
 #include "BarcodeStyle.h"
 #include "LabelRegion.h"
-#include "Merge/MergeRecord.h"
 
 
 ///
@@ -992,7 +991,7 @@ Handle* LabelModelObject::handleAt( double                   scale,
 ///
 /// Draw object + shadow
 ///
-void LabelModelObject::draw( QPainter* painter, bool inEditor, MergeRecord* record ) const
+void LabelModelObject::draw( QPainter* painter, bool inEditor, merge::Record* record ) const
 {
 	painter->save();
 	painter->translate( mX0.pt(), mY0.pt() );

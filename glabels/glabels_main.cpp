@@ -22,7 +22,7 @@
 #include <QApplication>
 
 #include "libglabels/Db.h"
-#include "Merge/MergeFactory.h"
+#include "Merge/Factory.h"
 #include "Settings.h"
 #include "MainWindow.h"
 
@@ -37,7 +37,7 @@ int main( int argc, char **argv )
 
 	Settings::init();
 	glabels::Db::init();
-	MergeFactory::init();
+	merge::Factory::init();
 	////// TEMPORARY TESTING ////////
 #if 0
 	glabels::Db::printKnownPapers();

@@ -22,8 +22,8 @@
 
 #include "LabelModel.h"
 #include "Merge/Merge.h"
-#include "Merge/MergeNone.h"
-#include "Merge/MergeRecord.h"
+#include "Merge/None.h"
+#include "Merge/Record.h"
 
 #include <QPainter>
 #include <QtDebug>
@@ -52,7 +52,7 @@ void PageRenderer::setModel( const LabelModel* model )
 	mMerge = mModel->merge();
 	mOrigins = mModel->frame()->getOrigins();
 	mNLabelsPerPage = mModel->frame()->nLabels();
-	mIsMerge = ( dynamic_cast<const MergeNone*>(mMerge) == 0 );
+	mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == 0 );
 	updateNPages();
 }
 
@@ -226,7 +226,7 @@ void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
 		iEnd = mLastLabel % mNLabelsPerPage;
 	}
 
-	const QList<MergeRecord*> records = mMerge->selectedRecords();
+	const QList<merge::Record*> records = mMerge->selectedRecords();
 	int iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
 
 	printCropMarks( painter );
@@ -336,7 +336,7 @@ void PageRenderer::clipLabel( QPainter* painter ) const
 }
 
 	
-void PageRenderer::printLabel( QPainter* painter, MergeRecord* record ) const
+void PageRenderer::printLabel( QPainter* painter, merge::Record* record ) const
 {
 	painter->save();
 

@@ -27,6 +27,7 @@
 #include <QPainter>
 
 #include "libglabels/Distance.h"
+#include "Merge/Record.h"
 #include "ColorNode.h"
 #include "TextNode.h"
 #include "BarcodeStyle.h"
@@ -36,7 +37,6 @@
 
 // Forward References
 class LabelRegion;
-class MergeRecord;
 
 
 ///
@@ -338,12 +338,12 @@ public:
 	// Drawing operations
 	///////////////////////////////////////////////////////////////
 public:
-	void draw( QPainter* painter, bool inEditor, MergeRecord* record ) const;
+	void draw( QPainter* painter, bool inEditor, merge::Record* record ) const;
 	void drawSelectionHighlight( QPainter* painter, double scale ) const;
 
 protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
-	virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const = 0;
+	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
+	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
 	virtual QPainterPath hoverPath( double scale ) const = 0;
 
 		

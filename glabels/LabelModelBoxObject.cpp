@@ -66,7 +66,7 @@ LabelModelBoxObject* LabelModelBoxObject::clone() const
 ///
 /// Draw shadow of object
 ///
-void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const
+void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
 {
 	QColor lineColor = mLineColorNode.color( record );
 	QColor fillColor = mFillColorNode.color( record );
@@ -111,7 +111,7 @@ void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, MergeRec
 ///
 /// Draw object itself
 ///
-void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const
+void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
 {
 	QColor lineColor = mLineColorNode.color( record );
 	QColor fillColor = mFillColorNode.color( record );

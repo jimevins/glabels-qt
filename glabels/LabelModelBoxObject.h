@@ -51,8 +51,8 @@ public:
 	// Drawing operations
 	///////////////////////////////////////////////////////////////
 protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, MergeRecord* record ) const;
-	virtual void drawObject( QPainter* painter, bool inEditor, MergeRecord* record ) const;
+	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
+	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
 	virtual QPainterPath hoverPath( double scale ) const;
 
 };

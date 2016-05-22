@@ -21,7 +21,7 @@
 #include "MergeView.h"
 
 #include "LabelModel.h"
-#include "Merge/MergeFactory.h"
+#include "Merge/Factory.h"
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QtDebug>
@@ -35,7 +35,7 @@ MergeView::MergeView( QWidget *parent )
 {
 	setupUi( this );
 
-	mMergeFormatNames = MergeFactory::nameList();
+	mMergeFormatNames = merge::Factory::nameList();
 	formatCombo->addItems( mMergeFormatNames );
 }
 
@@ -76,20 +76,20 @@ void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
 ///
 void MergeView::onMergeChanged()
 {
-	int index = mMergeFormatNames.indexOf( MergeFactory::idToName( mModel->merge()->id() ) );
+	int index = mMergeFormatNames.indexOf( merge::Factory::idToName( mModel->merge()->id() ) );
 	mOldFormatComboIndex = index;
 	formatCombo->setCurrentIndex( index );
 
-	switch ( MergeFactory::idToType( mModel->merge()->id() ) )
+	switch ( merge::Factory::idToType( mModel->merge()->id() ) )
 	{
-	case MergeFactory::NONE:
-	case MergeFactory::FIXED:
+	case merge::Factory::NONE:
+	case merge::Factory::FIXED:
 		locationLabel->setEnabled( false );
 		locationButton->setEnabled( false );
 		locationButton->setText( "" );
 		break;
 
-	case MergeFactory::FILE:
+	case merge::Factory::FILE:
 		locationLabel->setEnabled( true );
 		locationButton->setEnabled( true );
 		if ( mModel->merge()->source().isEmpty() )
@@ -140,10 +140,10 @@ void MergeView::onMergeSelectionChanged()
 {
 	mBlock = true;  // Don't recurse
 	
-	const QList<MergeRecord*>& records = mModel->merge()->recordList();
+	const QList<merge::Record*>& records = mModel->merge()->recordList();
 
 	int iRow = 0;
-	foreach ( MergeRecord* record, records )
+	foreach ( merge::Record* record, records )
 	{
 		QTableWidgetItem* item = recordsTable->item( iRow, 0 );
 		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
@@ -164,7 +164,7 @@ void MergeView::onFormatComboActivated()
 	{
 		mOldFormatComboIndex = index;
 
-		mModel->setMerge( MergeFactory::createMerge( MergeFactory::indexToId(index) ) );
+		mModel->setMerge( merge::Factory::createMerge( merge::Factory::indexToId(index) ) );
 	}
 }
 
@@ -223,7 +223,7 @@ void MergeView::onCellChanged( int iRow, int iCol )
 ///
 /// Load headers
 ///
-void MergeView::loadHeaders( Merge* merge )
+void MergeView::loadHeaders( merge::Merge* merge )
 {
 	mPrimaryKey = merge->primaryKey();
 	mKeys = merge->keys();
@@ -264,15 +264,15 @@ void MergeView::loadHeaders( Merge* merge )
 ///
 /// Load table
 ///
-void MergeView::loadTable( Merge* merge )
+void MergeView::loadTable( merge::Merge* merge )
 {
 	mBlock = true;
 
-	const QList<MergeRecord*>& records = merge->recordList();
+	const QList<merge::Record*>& records = merge->recordList();
 	recordsTable->setRowCount( records.size() );
 
 	int iRow = 0;
-	foreach ( MergeRecord* record, records )
+	foreach ( merge::Record* record, records )
 	{
 		// First column for primay field
 		QTableWidgetItem* item = new QTableWidgetItem();

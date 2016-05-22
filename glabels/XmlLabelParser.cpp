@@ -27,7 +27,7 @@
 //#include "LabelObjectLine.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
-#include "Merge/MergeFactory.h"
+#include "Merge/Factory.h"
 #include "libglabels/XmlTemplateParser.h"
 #include "libglabels/XmlUtil.h"
 
@@ -441,7 +441,7 @@ XmlLabelParser::parseMergeNode( const QDomElement &node, LabelModel* label )
 	QString type = XmlUtil::getStringAttr( node, "type", "None" );
 	QString src  = XmlUtil::getStringAttr( node, "src", "" );
 
-	Merge* merge = MergeFactory::createMerge( type );
+	merge::Merge* merge = merge::Factory::createMerge( type );
 	merge->setSource( src );
 
 	label->setMerge( merge );

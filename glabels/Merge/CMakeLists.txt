@@ -10,12 +10,12 @@ project (Merge CXX)
 # Sources
 #=======================================
 set (merge_sources
+  Factory.cpp
+  Record.cpp
   Merge.cpp
-  MergeFactory.cpp
-  MergeRecord.cpp
-  MergeNone.cpp
-  MergeText.cpp
-  MergeTextCsv.cpp
+  None.cpp
+  Text.cpp
+  TextCsv.cpp
 )
 
 set (merge_qobject_headers

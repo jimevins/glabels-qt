@@ -22,16 +22,16 @@
 #define MergeView_h
 
 #include "ui_MergeView.h"
+#include "Merge/Merge.h"
 
 
 // Forward references
 class LabelModel;
 class UndoRedoModel;
-class Merge;
 	
 
 ///
-/// Merge Property Editor Widget
+/// merge::Merge Property Editor Widget
 ///
 class MergeView : public QWidget, public Ui_MergeView
 {
@@ -71,8 +71,8 @@ private slots:
 	// Private methods
 	/////////////////////////////////
 private:
-	void loadHeaders( Merge* merge );
-	void loadTable( Merge* merge );
+	void loadHeaders( merge::Merge* merge );
+	void loadTable( merge::Merge* merge );
 
 
 	/////////////////////////////////

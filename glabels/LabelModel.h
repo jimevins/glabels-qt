@@ -26,6 +26,9 @@
 #include <QPainter>
 
 #include "libglabels/Template.h"
+#include "Merge/Merge.h"
+#include "Merge/Record.h"
+
 #include "Settings.h"
 
 
@@ -33,8 +36,6 @@
 class LabelModelObject;
 class Handle;
 class LabelRegion;
-class Merge;
-class MergeRecord;
 class ColorNode;
 
 
@@ -103,8 +104,8 @@ public:
 
 	const QList<LabelModelObject*>& objectList() const;
 
-	Merge* merge() const;
-	void setMerge( Merge* merge );
+	merge::Merge* merge() const;
+	void setMerge( merge::Merge* merge );
 	
 		
 	/////////////////////////////////
@@ -200,7 +201,7 @@ public:
 	// Drawing operations
 	/////////////////////////////////
 public:
-	void draw( QPainter* painter, bool inEditor = true, MergeRecord* record = 0 ) const;
+	void draw( QPainter* painter, bool inEditor = true, merge::Record* record = 0 ) const;
 
 		
 	/////////////////////////////////
@@ -226,7 +227,7 @@ private:
 
 	QList<LabelModelObject*>  mObjectList;
 
-	Merge*                    mMerge;
+	merge::Merge*             mMerge;
 };
 
 

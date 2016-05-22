@@ -1,4 +1,4 @@
-/*  Merge.cpp
+/*  Merge/Merge.cpp
  *
  *  Copyright (C) 2015-2016  Jim Evins <evins@snaught.com>
  *
@@ -20,184 +20,191 @@
 
 #include "Merge.h"
 
+#include "Record.h"
 
-///
-/// Constructor
-///
-Merge::Merge()
+
+namespace merge
 {
-}
 
-
-///
-/// Constructor
-///
-Merge::Merge( const Merge* merge ) : mSource(merge->mSource)
-{
-	foreach ( MergeRecord* record, merge->mRecordList )
+	///
+	/// Constructor
+	///
+	Merge::Merge()
 	{
-		mRecordList << record->clone();
 	}
-}
 
 
-///
-/// Destructor
-///
-Merge::~Merge()
-{
-	foreach ( MergeRecord* record, mRecordList )
+	///
+	/// Constructor
+	///
+	Merge::Merge( const Merge* merge ) : mSource(merge->mSource)
 	{
-		delete record;
+		foreach ( Record* record, merge->mRecordList )
+		{
+			mRecordList << record->clone();
+		}
 	}
-	mRecordList.clear();
-}
 
 
-///
-/// Get id
-///
-QString Merge::id() const
-{
-	return mId;
-}
-
-
-///
-/// Get source
-///
-QString Merge::source() const
-{
-	return mSource;
-}
-
-
-///
-/// Set source
-///
-void Merge::setSource( const QString& source )
-{
-	mSource = source;
-
-	// Clear out any old records
-	foreach ( MergeRecord* record, mRecordList )
+	///
+	/// Destructor
+	///
+	Merge::~Merge()
 	{
-		delete record;
+		foreach ( Record* record, mRecordList )
+		{
+			delete record;
+		}
+		mRecordList.clear();
 	}
-	mRecordList.clear();
 
-	open();
-	for ( MergeRecord* record = readNextRecord(); record != 0; record = readNextRecord() )
+
+	///
+	/// Get id
+	///
+	QString Merge::id() const
 	{
-		mRecordList.append( record );
+		return mId;
 	}
-	close();
+
+
+	///
+	/// Get source
+	///
+	QString Merge::source() const
+	{
+		return mSource;
+	}
+
+
+	///
+	/// Set source
+	///
+	void Merge::setSource( const QString& source )
+	{
+		mSource = source;
+
+		// Clear out any old records
+		foreach ( Record* record, mRecordList )
+		{
+			delete record;
+		}
+		mRecordList.clear();
+
+		open();
+		for ( Record* record = readNextRecord(); record != 0; record = readNextRecord() )
+		{
+			mRecordList.append( record );
+		}
+		close();
 		
-	emit sourceChanged();
-}
-
-
-///
-/// Get record list
-///
-const QList<MergeRecord*>& Merge::recordList( void ) const
-{
-	return mRecordList;
-}
-
-
-///
-/// Select matching record
-///
-void Merge::select( MergeRecord* record )
-{
-	record->setSelected( true );
-	emit selectionChanged();
-}
-	
-
-///
-/// Unselect matching record
-///
-void Merge::unselect( MergeRecord* record )
-{
-	record->setSelected( false );
-	emit selectionChanged();
-}
-
-	
-///
-/// Select/unselect i'th record
-///
-void Merge::setSelected( int i, bool state )
-{
-	if ( (i >= 0) && (i < mRecordList.size()) )
-	{
-		mRecordList[i]->setSelected( state );
-		emit selectionChanged();
+		emit sourceChanged();
 	}
-}
 
 
-///
-/// Select all records
-///
-void Merge::selectAll()
-{
-	foreach ( MergeRecord* record, mRecordList )
+	///
+	/// Get record list
+	///
+	const QList<Record*>& Merge::recordList( void ) const
+	{
+		return mRecordList;
+	}
+
+
+	///
+	/// Select matching record
+	///
+	void Merge::select( Record* record )
 	{
 		record->setSelected( true );
+		emit selectionChanged();
 	}
-	emit selectionChanged();
-}
-
 	
-///
-/// Unselect all records
-///
-void Merge::unselectAll()
-{
-	foreach ( MergeRecord* record, mRecordList )
+
+	///
+	/// Unselect matching record
+	///
+	void Merge::unselect( Record* record )
 	{
 		record->setSelected( false );
+		emit selectionChanged();
 	}
-	emit selectionChanged();
-}
 
 	
-///
-/// Return count of selected records
-///
-int Merge::nSelectedRecords() const
-{
-	int count = 0;
-
-	foreach ( MergeRecord* record, mRecordList )
+	///
+	/// Select/unselect i'th record
+	///
+	void Merge::setSelected( int i, bool state )
 	{
-		if ( record->isSelected() )
+		if ( (i >= 0) && (i < mRecordList.size()) )
 		{
-			count++;
+			mRecordList[i]->setSelected( state );
+			emit selectionChanged();
 		}
 	}
 
-	return count;
-}
 
-
-///
-/// Return list of selected records
-///
-const QList<MergeRecord*> Merge::selectedRecords() const
-{
-	QList<MergeRecord*> list;
-
-	foreach ( MergeRecord* record, mRecordList )
+	///
+	/// Select all records
+	///
+	void Merge::selectAll()
 	{
-		if ( record->isSelected() )
+		foreach ( Record* record, mRecordList )
 		{
-			list.append( record );
+			record->setSelected( true );
 		}
+		emit selectionChanged();
 	}
 
-	return list;
+	
+	///
+	/// Unselect all records
+	///
+	void Merge::unselectAll()
+	{
+		foreach ( Record* record, mRecordList )
+		{
+			record->setSelected( false );
+		}
+		emit selectionChanged();
+	}
+
+	
+	///
+	/// Return count of selected records
+	///
+	int Merge::nSelectedRecords() const
+	{
+		int count = 0;
+
+		foreach ( Record* record, mRecordList )
+		{
+			if ( record->isSelected() )
+			{
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+
+	///
+	/// Return list of selected records
+	///
+	const QList<Record*> Merge::selectedRecords() const
+	{
+		QList<Record*> list;
+
+		foreach ( Record* record, mRecordList )
+		{
+			if ( record->isSelected() )
+			{
+				list.append( record );
+			}
+		}
+
+		return list;
+	}
+
 }

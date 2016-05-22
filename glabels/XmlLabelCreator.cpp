@@ -27,7 +27,7 @@
 //#include "LabelObjectLine.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
-#include "Merge/MergeNone.h"
+#include "Merge/None.h"
 #include "libglabels/XmlTemplateCreator.h"
 #include "libglabels/XmlUtil.h"
 
@@ -97,7 +97,7 @@ XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label )
 
 	createObjectsNode( root, label );
 
-	if ( label->merge() && !dynamic_cast<MergeNone*>(label->merge()) )
+	if ( label->merge() && !dynamic_cast<merge::None*>(label->merge()) )
 	{
 		createMergeNode( root, label );
 	}

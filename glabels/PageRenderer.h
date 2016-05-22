@@ -24,14 +24,15 @@
 
 #include "libglabels/Point.h"
 
+#include "Merge/Merge.h"
+#include "Merge/Record.h"
+
 #include <QVector>
 #include <QRect>
 
 // Forward references
 class QPainter;
 class LabelModel;
-class Merge;
-class MergeRecord;
 
 
 ///
@@ -74,15 +75,15 @@ private:
 	void printCropMarks( QPainter* painter ) const;
 	void printOutline( QPainter* painter ) const;
 	void clipLabel( QPainter* painter ) const;
-	void printLabel( QPainter* painter, MergeRecord* record ) const;
+	void printLabel( QPainter* painter, merge::Record* record ) const;
 
 
 	/////////////////////////////////
 	// Private Data
 	/////////////////////////////////
 private:
-	const LabelModel* mModel;
-	const Merge*      mMerge;
+	const LabelModel*   mModel;
+	const merge::Merge* mMerge;
 	
 	int               mNCopies;
 	int               mStartLabel;

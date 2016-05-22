@@ -1,4 +1,4 @@
-/*  MergeTextCsv.h
+/*  Merge/TextCsv.h
  *
  *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
@@ -18,42 +18,46 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergeTextCsv_h
-#define MergeTextCsv_h
+#ifndef merge_TextCsv_h
+#define merge_TextCsv_h
 
-#include "MergeText.h"
+#include "Text.h"
 
 
-///
-/// MergeTextCsv Backend
-///
-struct MergeTextCsv : public MergeText
+namespace merge
 {
+	
+	///
+	/// TextCsv Merge Backend
+	///
+	struct TextCsv : public Text
+	{
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-private:
-	MergeTextCsv();
-	MergeTextCsv( const MergeTextCsv* merge );
-	virtual ~MergeTextCsv();
-
-
-	/////////////////////////////////
-	// Object duplication
-	/////////////////////////////////
-public:
-	static QString id();
-	MergeTextCsv* clone() const;
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	private:
+		TextCsv();
+		TextCsv( const TextCsv* merge );
+		virtual ~TextCsv();
 
 
-	/////////////////////////////////
-	// Static methods
-	/////////////////////////////////
-public:
-	static Merge* create();
+		/////////////////////////////////
+		// Object duplication
+		/////////////////////////////////
+	public:
+		static QString id();
+		TextCsv* clone() const;
 
-};
 
+		/////////////////////////////////
+		// Static methods
+		/////////////////////////////////
+	public:
+		static Merge* create();
 
-#endif // MergeTextCsv_h
+	};
+
+}
+
+#endif // merge_TextCsv_h

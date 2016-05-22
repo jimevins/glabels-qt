@@ -24,8 +24,7 @@
 #include <QString>
 #include <QColor>
 #include <stdint.h>
-
-class MergeRecord; // Forward reference
+#include "Merge/Record.h"
 
 
 ///
@@ -89,7 +88,7 @@ public:
 	/////////////////////////////////
 public:
 	uint32_t rgba( void ) const;
-	QColor color( MergeRecord* record ) const;
+	QColor color( merge::Record* record ) const;
 
 
 	/////////////////////////////////

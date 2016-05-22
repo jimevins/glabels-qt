@@ -1,4 +1,4 @@
-/*  MergeRecord.h
+/*  Merge/Record.h
  *
  *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
@@ -18,48 +18,52 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MergeRecord_h
-#define MergeRecord_h
+#ifndef merge_Record_h
+#define merge_Record_h
 
 #include <QString>
 #include <QMap>
 
 
-///
-/// Merge Record
-///
-struct MergeRecord : public QMap<QString,QString>
+namespace merge
 {
+	
+	///
+	/// Merge Record
+	///
+	struct Record : public QMap<QString,QString>
+	{
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	MergeRecord();
-	MergeRecord( const MergeRecord* record );
-
-
-	/////////////////////////////////
-	// Object duplication
-	/////////////////////////////////
-	MergeRecord* clone() const;
-
-
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	bool isSelected() const;
-	void setSelected( bool value );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		Record();
+		Record( const Record* record );
 
 
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	bool                  mSelected;
-
-};
+		/////////////////////////////////
+		// Object duplication
+		/////////////////////////////////
+		Record* clone() const;
 
 
-#endif // MergeRecord_h
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		bool isSelected() const;
+		void setSelected( bool value );
+
+
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		bool                  mSelected;
+
+	};
+
+}
+
+#endif // merge_Record_h

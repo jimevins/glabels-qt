@@ -1,6 +1,6 @@
-/*  MergeRecord.cpp
+/*  Merge/TextCsv.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,48 +18,61 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "MergeRecord.h"
+#include "TextCsv.h"
 
 
-///
-/// Constructor
-///
-MergeRecord::MergeRecord() : mSelected( true )
+namespace merge
 {
-}
+	
+	///
+	/// Constructor
+	///
+	TextCsv::TextCsv() : Text(',',false)
+	{
+		mId = "Text/Comma";
+	}
 
 
-///
-/// Constructor
-///
-MergeRecord::MergeRecord( const MergeRecord* record )
-	: QMap<QString,QString>(*record), mSelected(record->mSelected)
-{
-}
+	///
+	/// Constructor
+	///
+	TextCsv::TextCsv( const TextCsv* merge ) : Text( merge )
+	{
+	}
 
 
-///
-/// Clone
-///
-MergeRecord* MergeRecord::clone() const
-{
-	return new MergeRecord( this );
-}
+	///
+	/// Destructor
+	///
+	TextCsv::~TextCsv()
+	{
+	}
 
 
-///
-/// Is record selected?
-///
-bool MergeRecord::isSelected() const
-{
-	return mSelected;
-}
+	///
+	/// Clone
+	///
+	TextCsv* TextCsv::clone() const
+	{
+		return new TextCsv( this );
+	}
 
 
-///
-/// Set selected on not selected
-///
-void MergeRecord::setSelected( bool value )
-{
-	mSelected = value;
+	///
+	/// Get ID
+	///
+	QString TextCsv::id()
+	{
+		return "Text/Comma";
+	}
+
+
+	///
+	/// Create
+	///
+	Merge* TextCsv::create()
+	{
+		return new TextCsv();
+	}
+
 }
