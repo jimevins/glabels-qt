@@ -95,6 +95,12 @@ void PageRenderer::setIPage( int iPage )
 }
 
 	
+int PageRenderer::nItems() const
+{
+	return mLastLabel - mStartLabel;
+}
+			
+	
 int PageRenderer::nPages() const
 {
 	return mNPages;

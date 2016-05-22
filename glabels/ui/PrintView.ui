@@ -131,172 +131,7 @@
        <property name="title">
         <string>Copies</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QRadioButton" name="copiesLabelsRadio">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Labels from:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="copiesFromSpin">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>to:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="copiesToSpin">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QRadioButton" name="copiesSheetsRadio">
-            <property name="text">
-             <string>Sheets:</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="copiesSheetsSpin">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::MinimumExpanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="1">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::MinimumExpanding</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="mergeBox">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>300</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>350</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Merge options</string>
-       </property>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Start on label:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="mergeStartSpin">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>on 1st sheet</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::MinimumExpanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
@@ -307,7 +142,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="mergeCopiesSpin">
+           <widget class="QSpinBox" name="copiesSpin">
             <property name="minimum">
              <number>1</number>
             </property>
@@ -318,6 +153,54 @@
           </item>
           <item>
            <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::MinimumExpanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="copiesDescriptionLabel">
+          <property name="text">
+           <string notr="true">(Will print a total of xx items on nn pages.)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Start on position:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="copiesStartSpin">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>on 1st page</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -480,103 +363,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>copiesSheetsRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>copiesSheetsSpin</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>114</x>
-     <y>199</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>141</x>
-     <y>205</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesLabelsRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>copiesFromSpin</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>68</x>
-     <y>239</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>172</x>
-     <y>236</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesLabelsRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>copiesToSpin</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>143</x>
-     <y>239</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>266</x>
-     <y>236</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesSheetsSpin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>PrintView</receiver>
-   <slot>onFormChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>159</x>
-     <y>194</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>8</x>
-     <y>184</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesFromSpin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>PrintView</receiver>
-   <slot>onFormChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>186</x>
-     <y>243</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>3</x>
-     <y>236</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesToSpin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>PrintView</receiver>
-   <slot>onFormChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>282</x>
-     <y>241</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>4</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mergeStartSpin</sender>
+   <sender>copiesStartSpin</sender>
    <signal>valueChanged(int)</signal>
    <receiver>PrintView</receiver>
    <slot>onFormChanged()</slot>
@@ -592,7 +379,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>mergeCopiesSpin</sender>
+   <sender>copiesSpin</sender>
    <signal>valueChanged(int)</signal>
    <receiver>PrintView</receiver>
    <slot>onFormChanged()</slot>
@@ -668,22 +455,6 @@
     <hint type="destinationlabel">
      <x>1</x>
      <y>532</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesSheetsRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>PrintView</receiver>
-   <slot>onFormChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>55</x>
-     <y>207</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>3</x>
-     <y>213</y>
     </hint>
    </hints>
   </connection>

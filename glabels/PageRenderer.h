@@ -57,6 +57,7 @@ public:
 	void setPrintCropMarks( bool printCropMarksFlag );
 	void setPrintReverse( bool printReverseFlag );
 	void setIPage( int iPage );
+	int nItems() const;
 	int nPages() const;
 	QRectF pageRect() const;
 	void printPage( QPainter* painter ) const;

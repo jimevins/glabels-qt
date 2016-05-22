@@ -55,10 +55,6 @@ void PrintView::setModel( LabelModel* model )
 {
 	mModel = model;
 
-	// TODO set visibility based on merge selection
-	copiesBox->setVisible( true );
-	mergeBox->setVisible( false );
-		
 	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
 	connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
 
@@ -72,16 +68,7 @@ void PrintView::setModel( LabelModel* model )
 ///
 void PrintView::onLabelSizeChanged()
 {
-	int nLabelsPerPage = mModel->frame()->nLabels();
-	copiesFromSpin->setRange( 1, nLabelsPerPage );
-	copiesToSpin->setRange( copiesFromSpin->value(), nLabelsPerPage );
-	if ( copiesSheetsRadio->isChecked() )
-	{
-		mRenderer.setNCopies( copiesSheetsSpin->value()*nLabelsPerPage );
-		mRenderer.setStartLabel( 0 );
-		copiesFromSpin->setValue( 1 );
-		copiesToSpin->setValue( nLabelsPerPage );
-	}
+	copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
 
 	preview->setModel( mModel );
 	mRenderer.setModel( mModel );
@@ -106,24 +93,10 @@ void PrintView::onFormChanged()
 	{
 		mBlocked = true;
 			
-		int nLabelsPerPage = mModel->frame()->nLabels();
-		copiesFromSpin->setRange( 1, nLabelsPerPage );
-		copiesToSpin->setRange( copiesFromSpin->value(), nLabelsPerPage );
-
-		// TODO select between simple and merge
-		if ( copiesSheetsRadio->isChecked() )
-		{
-			mRenderer.setNCopies( copiesSheetsSpin->value()*nLabelsPerPage );
-			mRenderer.setStartLabel( 0 );
-			copiesFromSpin->setValue( 1 );
-			copiesToSpin->setValue( nLabelsPerPage );
-		}
-		else
-		{
-			mRenderer.setNCopies( copiesToSpin->value() - copiesFromSpin->value() + 1 );
-			mRenderer.setStartLabel( copiesFromSpin->value() - 1 );
-			copiesSheetsSpin->setValue( 1 );
-		}
+		mRenderer.setNCopies( copiesSpin->value() );
+		mRenderer.setStartLabel( copiesStartSpin->value() - 1 );
+		copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
+						 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
 
 		mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
 		mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
