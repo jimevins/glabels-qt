@@ -88,7 +88,16 @@
            <string notr="true">padding:8px;</string>
           </property>
           <property name="text">
-           <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;gLabels  &lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#909090;&quot;&gt;Label Designer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string notr="true"/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../images.qrc">:/images/glabels-label-designer.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -182,6 +191,7 @@
  </widget>
  <resources>
   <include location="../icons.qrc"/>
+  <include location="../images.qrc"/>
  </resources>
  <connections>
   <connection>

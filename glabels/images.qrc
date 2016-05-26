@@ -2,6 +2,7 @@
 
 <RCC version="1.0">
 <qresource>
+	<file>images/glabels-label-designer.png</file>
 	<file>images/glabels-logo.png</file>
 </qresource>
 </RCC>

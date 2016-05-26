@@ -33,12 +33,11 @@ AboutDialog::AboutDialog( QWidget *parent )
 {
 	setupUi( this );
 
-	QString subtitle = tr("Label Designer");
+	QString titleImage = ":images/glabels-label-designer.png";
 	QString version = "x.x.x";
 	QString description = tr("A program to create labels and business cards.");
 
-	QString markup = "<p><span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#333333;'>"
-		+ subtitle + "</span></p>"
+	QString markup = QString("<p><img src='%1'></p>").arg( titleImage )
 		+ "<p>" + version + "</p>"
 		+ "<p>" + description + "</p>"
 		+ "<p>Copyright &copy; 2016 Jim Evins <evins@snaught.com></p>";

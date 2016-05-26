@@ -33,12 +33,8 @@ StartupView::StartupView( MainWindow* window )
 {
 	setupUi( this );
 
-	QString subtitle = tr("Label Designer");
-
-	QString markup = "<span style='font-size:24pt; font-weight:600;'>gLabels  </span><span style='font-size:16pt; color:#333333;'>"
-		+ subtitle + "</span>";
-
-	titleLabel->setText( markup );
+	QString titleImage = ":images/glabels-label-designer.png";
+	titleLabel->setPixmap( QPixmap( titleImage ) );
 }
 
 
