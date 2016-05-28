@@ -59,6 +59,7 @@ private:
 	void loadLineFillPage();
 	void loadPositionPage();
 	void loadRectSizePage();
+	void loadLineSizePage();
 	void loadShadowPage();
 
 
@@ -77,6 +78,7 @@ private slots:
 	void onFillControlsChanged();
 	void onPositionControlsChanged();
 	void onRectSizeControlsChanged();
+	void onLineSizeControlsChanged();
 	void onShadowControlsChanged();
 	void onChanged();
 		

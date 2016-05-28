@@ -944,7 +944,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="groupBox_5">
+          <widget class="QGroupBox" name="fillFrame">
            <property name="title">
             <string>Fill</string>
            </property>
@@ -1252,6 +1252,18 @@
                <widget class="QDoubleSpinBox" name="sizeLineAngleSpin">
                 <property name="suffix">
                  <string notr="true"> °</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-180.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>180.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1948,8 +1960,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>90</x>
-     <y>112</y>
+     <x>153</x>
+     <y>132</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -2018,38 +2030,6 @@
     <hint type="destinationlabel">
      <x>4</x>
      <y>423</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sizeLineLengthSpin</sender>
-   <signal>valueChanged(double)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>129</x>
-     <y>391</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>395</x>
-     <y>568</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sizeLineAngleSpin</sender>
-   <signal>valueChanged(double)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>113</x>
-     <y>437</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>404</x>
-     <y>628</y>
     </hint>
    </hints>
   </connection>
@@ -2133,6 +2113,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>sizeLineLengthSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onLineSizeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>144</x>
+     <y>386</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>471</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeLineAngleSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onLineSizeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>437</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onChanged()</slot>
@@ -2142,5 +2154,6 @@
   <slot>onPositionControlsChanged()</slot>
   <slot>onRectSizeControlsChanged()</slot>
   <slot>onShadowControlsChanged()</slot>
+  <slot>onLineSizeControlsChanged()</slot>
  </slots>
 </ui>

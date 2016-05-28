@@ -86,7 +86,15 @@ LabelModelObject::LabelModelObject( const LabelModelObject* object )
 	{
 		mHandles.append( handle->clone( this ) );
 	}
-	mOutline         = object->mOutline->clone( this );
+	
+	if ( object->mOutline )
+	{
+		mOutline = object->mOutline->clone( this );
+	}
+	else
+	{
+		mOutline = 0;
+	}
 
 	mMatrix          = object->mMatrix;
 }

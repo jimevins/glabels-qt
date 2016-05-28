@@ -24,7 +24,7 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
-//#include "LabelObjectLine.h"
+#include "LabelModelLineObject.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
 #include "Merge/Factory.h"
@@ -266,11 +266,11 @@ XmlLabelParser::parseObjects( const QDomElement &node )
 		{
 			list.append( parseObjectEllipseNode( child.toElement() ) );
 		}
-#if 0
 		else if ( tagName == "Object-line" )
 		{
 			list.append( parseObjectLineNode( child.toElement() ) );
 		}
+#if 0
 		else if ( tagName == "Object-image" )
 		{
 			list.append( parseObjectImageNode( child.toElement() ) );
@@ -399,7 +399,36 @@ XmlLabelParser::parseObjectEllipseNode( const QDomElement &node )
 LabelModelLineObject*
 XmlLabelParser::parseObjectLineNode( const QDomElement &node )
 {
-	return 0;
+	using namespace glabels;
+
+	LabelModelLineObject* object = new LabelModelLineObject();
+
+
+	/* position attrs */
+	object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
+	object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+
+	/* size attrs */
+	object->setW( XmlUtil::getLengthAttr( node, "dx", 0 ) );
+	object->setH( XmlUtil::getLengthAttr( node, "dy", 0 ) );
+
+	/* line attrs */
+	object->setLineWidth( XmlUtil::getLengthAttr( node, "line_width", 1.0 ) );
+        {
+		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+
+		object->setLineColorNode( ColorNode( field_flag, color, key ) );
+	}
+
+	/* affine attrs */
+	parseAffineAttrs( node, object );
+
+	/* shadow attrs */
+	parseShadowAttrs( node, object );
+
+	return object;
 }
 
 

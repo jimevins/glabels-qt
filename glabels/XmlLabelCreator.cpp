@@ -24,7 +24,7 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
-//#include "LabelObjectLine.h"
+#include "LabelModelLineObject.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
 #include "Merge/None.h"
@@ -133,6 +133,10 @@ XmlLabelCreator::addObjectsToNode( QDomElement &parent, const QList<LabelModelOb
 		{
 			createObjectEllipseNode( parent, ellipseObject );
 		}
+		else if ( LabelModelLineObject* lineObject = dynamic_cast<LabelModelLineObject*>(object) )
+		{
+			createObjectLineNode( parent, lineObject );
+		}
 		// TODO: other object types
 		else
 		{
@@ -233,7 +237,34 @@ XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const LabelModelE
 void
 XmlLabelCreator::createObjectLineNode( QDomElement &parent, const LabelModelLineObject* object )
 {
-	// TODO
+	QDomDocument doc = parent.ownerDocument();
+	QDomElement node = doc.createElement( "Object-line" );
+	parent.appendChild( node );
+
+	/* position attrs */
+	glabels::XmlUtil::setLengthAttr( node, "x", object->x0() );
+	glabels::XmlUtil::setLengthAttr( node, "y", object->y0() );
+
+	/* size attrs */
+	glabels::XmlUtil::setLengthAttr( node, "dx", object->w() );
+	glabels::XmlUtil::setLengthAttr( node, "dy", object->h() );
+
+	/* line attrs */
+	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
+	if ( object->lineColorNode().fieldFlag() )
+	{
+		glabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
+	}
+	else
+	{
+		glabels::XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
+	}
+
+	/* affine attrs */
+	createAffineAttrs( node, object );
+
+	/* shadow attrs */
+	createShadowAttrs( node, object );
 }
 
 

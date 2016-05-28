@@ -1235,7 +1235,8 @@ void MainWindow::objectsCreateBox()
 ///
 void MainWindow::objectsCreateLine()
 {
-	qDebug() << "ACTION: objects->Create->Line";
+	mUndoRedoModel->checkpoint( tr("Create Line") );
+	mLabelEditor->createLineMode();
 }
 
 

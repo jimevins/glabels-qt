@@ -25,6 +25,7 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
+#include "LabelModelLineObject.h"
 #include "UndoRedoModel.h"
 
 #include "Merge/Merge.h"
@@ -140,6 +141,26 @@ void ObjectEditor::loadRectSizePage()
 }
 
 
+void ObjectEditor::loadLineSizePage()
+{
+	if ( mObject )
+	{
+		mBlocked = true;
+			
+		sizeLineLengthSpin->setDecimals( mSpinDigits );
+		sizeLineLengthSpin->setSingleStep( mSpinStep );
+		sizeLineLengthSpin->setSuffix( " " + mUnits.toIdString() );
+
+		double w = mObject->w().inUnits(mUnits);
+		double h = mObject->h().inUnits(mUnits);
+		sizeLineLengthSpin->setValue( sqrt( w*w + h*h ) );
+		sizeLineAngleSpin->setValue( (180/M_PI)*atan2( h, w ) );
+
+		mBlocked = false;			
+	}
+}
+
+
 void ObjectEditor::loadShadowPage()
 {
 	if ( mObject )
@@ -213,12 +234,13 @@ void ObjectEditor::onSelectionChanged()
 			if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
 			{
 				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
-				titleLabel->setText( "Box object properties" );
+				titleLabel->setText( tr("Box object properties") );
 
 				notebook->addTab( lineFillPage, "line/fill" );
 				notebook->addTab( posSizePage, "position/size" );
 				notebook->addTab( shadowPage, "shadow" );
 
+				fillFrame->setVisible( true );
 				sizeRectFrame->setVisible( true );
 				sizeResetImageButton->setVisible( false );
 				sizeLineFrame->setVisible( false );
@@ -233,12 +255,13 @@ void ObjectEditor::onSelectionChanged()
 			else if ( dynamic_cast<LabelModelEllipseObject*>(mObject) )
 			{
 				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-ellipse.png") );
-				titleLabel->setText( "Ellipse object properties" );
+				titleLabel->setText( tr("Ellipse object properties") );
 
 				notebook->addTab( lineFillPage, "line/fill" );
 				notebook->addTab( posSizePage, "position/size" );
 				notebook->addTab( shadowPage, "shadow" );
 
+				fillFrame->setVisible( true );
 				sizeRectFrame->setVisible( true );
 				sizeResetImageButton->setVisible( false );
 				sizeLineFrame->setVisible( false );
@@ -246,6 +269,27 @@ void ObjectEditor::onSelectionChanged()
 				loadLineFillPage();
 				loadPositionPage();
 				loadRectSizePage();
+				loadShadowPage();
+				
+				setEnabled( true );
+			}
+			else if ( dynamic_cast<LabelModelLineObject*>(mObject) )
+			{
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-line.png") );
+				titleLabel->setText( tr("Line object properties") );
+
+				notebook->addTab( lineFillPage, "line/fill" );
+				notebook->addTab( posSizePage, "position/size" );
+				notebook->addTab( shadowPage, "shadow" );
+
+				fillFrame->setVisible( false );
+				sizeRectFrame->setVisible( false );
+				sizeResetImageButton->setVisible( false );
+				sizeLineFrame->setVisible( true );
+
+				loadLineFillPage();
+				loadPositionPage();
+				loadLineSizePage();
 				loadShadowPage();
 				
 				setEnabled( true );
@@ -288,6 +332,7 @@ void ObjectEditor::onObjectChanged()
 	{
 		loadLineFillPage();
 		loadRectSizePage();
+		loadLineSizePage();
 		loadShadowPage();
 	}
 }
@@ -386,6 +431,24 @@ void ObjectEditor::onRectSizeControlsChanged()
 		{
 			mObject->setSize( spinW, spinH );
 		}
+			
+		mBlocked = false;
+	}
+}
+
+
+void ObjectEditor::onLineSizeControlsChanged()
+{
+	if ( !mBlocked )
+	{
+		mBlocked = true;
+			
+		mUndoRedoModel->checkpoint( tr("Size") );
+		
+		glabels::Distance spinLength = glabels::Distance(sizeLineLengthSpin->value(), mUnits);
+		double spinAngleRads = (M_PI/180)*sizeLineAngleSpin->value();
+				
+		mObject->setSize( spinLength*cos(spinAngleRads), spinLength*sin(spinAngleRads) );
 			
 		mBlocked = false;
 	}
