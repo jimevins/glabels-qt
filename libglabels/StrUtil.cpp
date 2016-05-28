@@ -151,7 +151,7 @@ namespace glabels
 				QString chunk1, chunk2;
 				bool   isnum1, isnum2;
 
-				if ( folded_s1.at( i1 ).isNumber() )
+				if ( (i1 < folded_s1.size()) && folded_s1.at( i1 ).isNumber() )
 				{
 					chunk1 = spanDigits( folded_s1, &i1 );
 					isnum1 = true;
@@ -162,7 +162,7 @@ namespace glabels
 					isnum1 = false;
 				}
                 
-				if ( folded_s2.at( i2 ).isNumber() )
+				if ( (i2 < folded_s2.size()) && folded_s2.at( i2 ).isNumber() )
 				{
 					chunk2 = spanDigits( folded_s2, &i2 );
 					isnum2 = true;

@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 2.8.12)
 
 ###############################################################################
 # gLabels application subproject
@@ -113,9 +113,9 @@ set (glabels_resource_files
   images.qrc
 )
 
-qt4_wrap_cpp (glabels_moc_sources ${glabels_qobject_headers})
-qt4_wrap_ui (glabels_forms_headers ${glabels_forms})
-qt4_add_resources (glabels_qrc_sources ${glabels_resource_files})
+qt5_wrap_cpp (glabels_moc_sources ${glabels_qobject_headers})
+qt5_wrap_ui (glabels_forms_headers ${glabels_forms})
+qt5_add_resources (glabels_qrc_sources ${glabels_resource_files})
 
 add_executable (glabels-qt
   ${glabels_sources}
@@ -127,7 +127,9 @@ add_executable (glabels-qt
 target_link_libraries (glabels-qt
   Merge
   libglabels
-  ${QT_LIBRARIES}
+  ${Qt5Widgets_LIBRARIES}
+  ${Qt5PrintSupport_LIBRARIES}
+  ${Qt5Xml_LIBRARIES}
   ${ZLIB_LIBRARIES}
 )
 
@@ -137,9 +139,10 @@ target_link_libraries (glabels-qt
 #=======================================
 include_directories (
   ${ZLIB_INCLUDE_DIRS}
-  ${CMAKE_CURRENT_BINARY_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}
   ${glabels_qt_SOURCE_DIR}
+  ${Qt5Widgets_INCLUDE_DIRS}
+  ${Qt5PrintSupport_INCLUDE_DIRS}
+  ${Qt5Xml_INCLUDE_DIRS}
 )
 
 link_directories (

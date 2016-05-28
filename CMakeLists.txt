@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 2.8.12)
 
 ###############################################################################
 # Top-Level gLabels project
@@ -29,17 +29,19 @@ if (WIN32)
 	# Make sure we can find MINGW libraries, e.g. zlib
 	set (CMAKE_PREFIX_PATH C:/MinGW )
 endif ()
-	
-find_package(Qt4 4.8.4 REQUIRED QtCore QtGui QtXml)
-find_package(ZLIB REQUIRED)
 
-include (${QT_USE_FILE})
+find_package(Qt5Widgets 5.4 REQUIRED)
+find_package(Qt5PrintSupport 5.4 REQUIRED)
+find_package(Qt5Xml 5.4 REQUIRED)
+
+find_package(ZLIB 1.2 REQUIRED)
 
 
 #=======================================
 # Compilation
 #=======================================
-add_definitions (-std=c++11 -g)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+add_definitions (-std=c++11 -g -fPIC)
 
 
 #=======================================

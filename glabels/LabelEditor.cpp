@@ -379,7 +379,7 @@ LabelEditor::mousePressEvent( QMouseEvent* event )
 		transform.scale( mScale, mScale );
 		transform.translate( mX0.pt(), mY0.pt() );
 
-		QPointF pWorld = transform.inverted().map( event->posF() );
+		QPointF pWorld = transform.inverted().map( event->pos() );
 		glabels::Distance xWorld = glabels::Distance::pt( pWorld.x() );
 		glabels::Distance yWorld = glabels::Distance::pt( pWorld.y() );
 
@@ -548,7 +548,7 @@ LabelEditor::mouseMoveEvent( QMouseEvent* event )
 		transform.scale( mScale, mScale );
 		transform.translate( mX0.pt(), mY0.pt() );
 
-		QPointF pWorld = transform.inverted().map( event->posF() );
+		QPointF pWorld = transform.inverted().map( event->pos() );
 		glabels::Distance xWorld = glabels::Distance::pt( pWorld.x() );
 		glabels::Distance yWorld = glabels::Distance::pt( pWorld.y() );
 
@@ -650,7 +650,7 @@ LabelEditor::mouseReleaseEvent( QMouseEvent* event )
 		transform.scale( mScale, mScale );
 		transform.translate( mX0.pt(), mY0.pt() );
 
-		QPointF pWorld = transform.inverted().map( event->posF() );
+		QPointF pWorld = transform.inverted().map( event->pos() );
 		glabels::Distance xWorld = glabels::Distance::pt( pWorld.x() );
 		glabels::Distance yWorld = glabels::Distance::pt( pWorld.y() );
 
@@ -1065,8 +1065,11 @@ LabelEditor::drawMarkupLayer( QPainter* painter )
 	{
 		painter->save();
 
+		QPen pen( markupLineColor, markupLineWidthPixels );
+		pen.setCosmetic( true );
+		
 		painter->setBrush( Qt::NoBrush );
-		painter->setPen( QPen( markupLineColor ) );
+		painter->setPen( pen );
 
 		if ( mModel->rotate() )
 		{

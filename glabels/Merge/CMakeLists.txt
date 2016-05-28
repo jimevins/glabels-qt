@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 2.8.12)
 
 ###############################################################################
 # gLabels Merge subsystem
@@ -29,21 +29,11 @@ set (merge_qobject_headers
   Merge.h
 )
 
-set (merge_forms
-)
-
-set (merge_resource_files
-)
-
-qt4_wrap_cpp (merge_moc_sources ${merge_qobject_headers})
-qt4_wrap_ui (merge_forms_headers ${merge_forms})
-qt4_add_resources (merge_qrc_sources ${merge_resource_files})
+qt5_wrap_cpp (merge_moc_sources ${merge_qobject_headers})
 
 add_library (Merge STATIC
   ${merge_sources}
   ${merge_moc_sources}
-  ${merge_qrc_sources}
-  ${merge_forms_headers}
 )
 
 
@@ -51,6 +41,7 @@ add_library (Merge STATIC
 # Where to find stuff
 #=======================================
 include_directories (
+  ${Qt5Widgets_INCLUDE_DIRS}
 )
 
 link_directories (

@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 2.8.12)
 
 ###############################################################################
 # gLabels libglabels subproject
@@ -43,8 +43,8 @@ set (libglabels_qobject_headers
 set (libglabels_resource_files
 )
 
-qt4_wrap_cpp (libglabels_moc_sources ${libglabels_qobject_headers})
-qt4_add_resources(libglabels_qrc_sources ${libglabels_resource_files})
+qt5_wrap_cpp (libglabels_moc_sources ${libglabels_qobject_headers})
+qt5_add_resources(libglabels_qrc_sources ${libglabels_resource_files})
 
 add_library (libglabels
   ${libglabels_sources}
@@ -57,7 +57,8 @@ add_library (libglabels
 # Where to find stuff
 #=======================================
 include_directories (
-  ${CMAKE_CURRENT_BINARY_DIR}
+  ${Qt5Widgets_INCLUDE_DIRS}
+  ${Qt5Xml_INCLUDE_DIRS}
 )
 
 link_directories (
