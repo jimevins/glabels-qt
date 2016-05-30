@@ -21,6 +21,7 @@
 #include "PreviewOverlayItem.h"
 
 #include "PageRenderer.h"
+#include <QtDebug>
 
 
 PreviewOverlayItem::PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent )

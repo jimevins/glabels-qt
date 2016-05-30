@@ -67,7 +67,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="pageSpin"/>
+        <widget class="QSpinBox" name="pageSpin">
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_6">
