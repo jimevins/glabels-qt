@@ -95,6 +95,7 @@ namespace merge
 		static QMap<QString,BackendEntry> mBackendIdMap;
 		static QMap<QString,BackendEntry> mBackendNameMap;
 		
+		static QStringList mNameList;
 	};
 
 }

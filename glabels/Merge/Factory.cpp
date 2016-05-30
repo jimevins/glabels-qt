@@ -40,6 +40,8 @@ namespace merge
 	QMap<QString,Factory::BackendEntry> Factory::mBackendIdMap;
 	QMap<QString,Factory::BackendEntry> Factory::mBackendNameMap;
 
+	QStringList Factory::mNameList;
+
 
 	///
 	/// Constructor
@@ -126,14 +128,7 @@ namespace merge
 	///
 	QStringList Factory::nameList()
 	{
-		QStringList list;
-	
-		foreach ( BackendEntry backend, mBackendIdMap )
-		{
-			list << backend.name;
-		}
-
-		return list;
+		return mNameList;
 	}
 
 
@@ -215,7 +210,10 @@ namespace merge
 		backend.type   = type;
 		backend.create = create;
 	
-		mBackendIdMap[ id ] = backend;
+		mBackendIdMap[ id ]     = backend;
+		mBackendNameMap[ name ] = backend;
+
+		mNameList << name;
 	}
 
 }

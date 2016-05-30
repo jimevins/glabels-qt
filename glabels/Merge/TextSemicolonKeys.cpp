@@ -23,7 +23,7 @@
 
 namespace merge
 {
-	static const QString ID = "Text/Colon";
+	static const QString ID = "Text/Semicolon/Keys";
 
 
 	///
