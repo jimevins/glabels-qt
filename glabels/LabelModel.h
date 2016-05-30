@@ -75,6 +75,7 @@ signals:
 	void modifiedChanged();
 	void mergeChanged();
 	void mergeSourceChanged();
+	void mergeSelectionChanged();
 
 
 	/////////////////////////////////
@@ -211,6 +212,7 @@ private slots:
 	void onObjectChanged();
 	void onObjectMoved();
 	void onMergeSourceChanged();
+	void onMergeSelectionChanged();
 
 
 	/////////////////////////////////

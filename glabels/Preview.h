@@ -46,11 +46,12 @@ public:
 
 
 	/////////////////////////////////
-	// Properties
+	// Renderer
 	/////////////////////////////////
 public:
-	void setModel( const LabelModel* model );
 	void setRenderer( const PageRenderer* renderer );
+private slots:
+	void onRendererChanged();
 
 
 	/////////////////////////////////////

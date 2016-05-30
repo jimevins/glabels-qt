@@ -54,33 +54,35 @@ PrintView::~PrintView()
 void PrintView::setModel( LabelModel* model )
 {
 	mModel = model;
+	mRenderer.setModel( mModel );
 
-	connect( mModel, SIGNAL(sizeChanged()), this, SLOT(onLabelSizeChanged()) );
-	connect( mModel, SIGNAL(changed()), this, SLOT(onLabelChanged()) );
+	connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
 
-	onLabelSizeChanged();
 	onFormChanged();
 }
 
 
 ///
-/// Label size changed handler
+/// Model changed handler
 ///
-void PrintView::onLabelSizeChanged()
+void PrintView::onModelChanged()
 {
-	copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
-
-	preview->setModel( mModel );
-	mRenderer.setModel( mModel );
+	updateView();
 }
 
 
 ///
-/// Label changed handler
+/// Update view
 ///
-void PrintView::onLabelChanged()
+void PrintView::updateView()
 {
-	preview->update();
+	copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
+
+	copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
+					 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
+
+	pageSpin->setRange( 1, mRenderer.nPages() );
+	nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
 }
 
 
@@ -95,20 +97,15 @@ void PrintView::onFormChanged()
 			
 		mRenderer.setNCopies( copiesSpin->value() );
 		mRenderer.setStartLabel( copiesStartSpin->value() - 1 );
-		copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
-						 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
 
 		mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
 		mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
 		mRenderer.setPrintReverse( printReverseCheck->isChecked() );
 
-		pageSpin->setRange( 1, mRenderer.nPages() );
-		nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
-
 		mRenderer.setIPage( pageSpin->value() - 1 );
 
-		preview->update();
-
+		updateView();
+		
 		mBlocked = false;
 	}
 }

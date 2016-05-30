@@ -38,8 +38,10 @@ class LabelModel;
 ///
 ///  PageRenderer Widget
 ///
-class PageRenderer
+class PageRenderer : public QObject
 {
+	Q_OBJECT
+	
 	/////////////////////////////////
 	// Life Cycle
 	/////////////////////////////////
@@ -52,6 +54,7 @@ public:
 	/////////////////////////////////
 public:
 	void setModel( const LabelModel* model );
+	const LabelModel* model() const;
 	void setNCopies( int nCopies );
 	void setStartLabel( int startLabel );
 	void setPrintOutlines( bool printOutlinesFlag );
@@ -63,6 +66,20 @@ public:
 	QRectF pageRect() const;
 	void printPage( QPainter* painter ) const;
 	void printPage( QPainter* painter, int iPage ) const;
+
+
+	/////////////////////////////////
+	// Signals
+	/////////////////////////////////
+signals:
+	void changed();
+	
+
+	/////////////////////////////////
+	// Private slots
+	/////////////////////////////////
+private slots:
+	void onModelChanged();
 
 
 	/////////////////////////////////

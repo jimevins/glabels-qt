@@ -104,6 +104,8 @@ void LabelModel::restore( const LabelModel *savedModel )
 	emit nameChanged();
 	emit sizeChanged();
 	emit mergeChanged();
+	emit mergeSourceChanged();
+	emit mergeSelectionChanged();
 }
 
 
@@ -293,9 +295,11 @@ void LabelModel::setMerge( merge::Merge* merge )
 		mMerge = merge;
 
 		connect( mMerge, SIGNAL(sourceChanged()), this, SLOT(onMergeSourceChanged()) );
+		connect( mMerge, SIGNAL(selectionChanged()), this, SLOT(onMergeSelectionChanged()) );
 
 		setModified();
 		
+		emit changed();
 		emit mergeChanged();
 		emit mergeSourceChanged();
 	}
@@ -428,6 +432,16 @@ void LabelModel::onMergeSourceChanged()
 	setModified();
 	emit changed();
 	emit mergeSourceChanged();
+}
+
+
+///
+/// Merge Selection Changed Slot
+///
+void LabelModel::onMergeSelectionChanged()
+{
+	emit changed();
+	emit mergeSelectionChanged();
 }
 
 

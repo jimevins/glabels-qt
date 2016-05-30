@@ -56,8 +56,8 @@ public:
 	// Slots
 	/////////////////////////////////
 private slots:
-	void onLabelChanged();
-	void onLabelSizeChanged();
+	void onModelChanged();
+	void updateView();
 	void onFormChanged();
 	void onPrintButtonClicked();
 

@@ -49,49 +49,78 @@ PageRenderer::PageRenderer()
 void PageRenderer::setModel( const LabelModel* model )
 {
 	mModel = model;
+
+	connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
+	
+	onModelChanged();
+}
+
+	
+const LabelModel* PageRenderer::model() const
+{
+	return mModel;
+}
+
+
+void PageRenderer::onModelChanged()
+{
 	mMerge = mModel->merge();
 	mOrigins = mModel->frame()->getOrigins();
 	mNLabelsPerPage = mModel->frame()->nLabels();
 	mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == 0 );
 	updateNPages();
+
+	emit changed();
 }
 
-	
+
 void PageRenderer::setNCopies( int nCopies )
 {
 	mNCopies = nCopies;
 	updateNPages();
+
+	emit changed();
 }
 
-	
+
 void PageRenderer::setStartLabel( int startLabel )
 {
 	mStartLabel = startLabel;
 	updateNPages();
+
+	emit changed();
 }
 
 	
 void PageRenderer::setPrintOutlines( bool printOutlinesFlag )
 {
 	mPrintOutlines = printOutlinesFlag;
+
+	emit changed();
 }
 
 	
 void PageRenderer::setPrintCropMarks( bool printCropMarksFlag )
 {
 	mPrintCropMarks = printCropMarksFlag;
+
+	emit changed();
 }
 
 	
 void PageRenderer::setPrintReverse( bool printReverseFlag )
 {
 	mPrintReverse = printReverseFlag;
+
+	emit changed();
 }
 
 	
 void PageRenderer::setIPage( int iPage )
 {
 	mIPage = iPage;
+
+	emit changed();
 }
 
 	
@@ -213,6 +242,7 @@ void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
 	
 void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
 {
+	int iRecord = 0;
 	int iStart = 0;
 	int iEnd = mNLabelsPerPage;
 
@@ -227,7 +257,10 @@ void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
 	}
 
 	const QList<merge::Record*> records = mMerge->selectedRecords();
-	int iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
+	if ( records.size() )
+	{
+		iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
+	}
 
 	printCropMarks( painter );
 

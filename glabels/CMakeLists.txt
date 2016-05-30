@@ -86,6 +86,7 @@ set (glabels_qobject_headers
   MainWindow.h
   MergeView.h
   ObjectEditor.h
+  PageRenderer.h
   PreferencesDialog.h
   PrintView.h
   PropertiesView.h

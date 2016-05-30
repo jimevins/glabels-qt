@@ -65,11 +65,23 @@ Preview::Preview( QWidget *parent )
 
 
 ///
-/// Set model
+/// Set renderer
 ///
-void Preview::setModel( const LabelModel* model )
+void Preview::setRenderer( const PageRenderer* renderer )
 {
-	mModel = model;
+	mRenderer = renderer;
+
+	connect( mRenderer, SIGNAL(changed()), this, SLOT(onRendererChanged()) );
+	onRendererChanged();
+}
+
+
+///
+/// Renderer changed handler
+///
+void Preview::onRendererChanged()
+{
+	mModel = mRenderer->model();
 
 	clearScene();
 
@@ -88,15 +100,6 @@ void Preview::setModel( const LabelModel* model )
 		drawLabels();
 		drawPreviewOverlay();
 	}
-}
-
-
-///
-/// Set renderer
-///
-void Preview::setRenderer( const PageRenderer* renderer )
-{
-	mRenderer = renderer;
 }
 
 
