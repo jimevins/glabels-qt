@@ -185,11 +185,11 @@ namespace merge
 	///
 	QString Factory::indexToId( int index )
 	{
-		QList<QString> ids = mBackendIdMap.keys();
-
-		if ( (index > 0) && (index < ids.size()) )
+		if ( (index > 0) && (index < mNameList.size()) )
 		{
-			return ids[index];
+			QString name = mNameList[index];
+			
+			return mBackendNameMap[ name ].id;
 		}
 
 		return "None";
@@ -206,6 +206,7 @@ namespace merge
 	{
 		BackendEntry backend;
 
+		backend.id     = id;
 		backend.name   = name;
 		backend.type   = type;
 		backend.create = create;
