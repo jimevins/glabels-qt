@@ -56,6 +56,7 @@ public:
 	/////////////////////////////////
 private:
 	void hidePages();
+	void loadImagePage();
 	void loadLineFillPage();
 	void loadPositionPage();
 	void loadRectSizePage();
@@ -76,6 +77,7 @@ private slots:
 	void onObjectDestroyed();
 	void onLineControlsChanged();
 	void onFillControlsChanged();
+	void onImageFileButtonClicked();
 	void onPositionControlsChanged();
 	void onRectSizeControlsChanged();
 	void onLineSizeControlsChanged();

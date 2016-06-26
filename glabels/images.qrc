@@ -4,5 +4,6 @@
 <qresource>
 	<file>images/glabels-label-designer.png</file>
 	<file>images/glabels-logo.png</file>
+	<file>images/checkerboard.png</file>
 </qresource>
 </RCC>

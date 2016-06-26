@@ -45,8 +45,6 @@
 #include "MergeView.h"
 #include "PrintView.h"
 #include "LabelModel.h"
-#include "LabelModelBoxObject.h"
-#include "LabelModelEllipseObject.h"
 #include "UndoRedoModel.h"
 #include "Icons.h"
 #include "File.h"
@@ -1255,7 +1253,8 @@ void MainWindow::objectsCreateEllipse()
 ///
 void MainWindow::objectsCreateImage()
 {
-	qDebug() << "ACTION: objects->Create->Image";
+	mUndoRedoModel->checkpoint( tr("Create Image") );
+	mLabelEditor->createImageMode();
 }
 
 

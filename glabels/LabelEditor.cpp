@@ -29,6 +29,7 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
+#include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
 #include "UndoRedoModel.h"
 #include "Settings.h"
@@ -341,6 +342,19 @@ LabelEditor::createEllipseMode()
 
 
 ///
+/// Create image mode
+///
+void
+LabelEditor::createImageMode()
+{
+	setCursor( Cursors::Image() );
+
+	mCreateObjectType = Image;
+	mState = CreateIdle;
+}
+
+
+///
 /// Create line mode
 ///
 void
@@ -492,7 +506,7 @@ LabelEditor::mousePressEvent( QMouseEvent* event )
 					mCreateObject = new LabelModelLineObject();
 					break;
 				case Image:
-					// mCreateObject = new LabelModelImageObject();
+					mCreateObject = new LabelModelImageObject();
 					break;
 				case Text:
 					// mCreateObject = new LabelModelTextObject();

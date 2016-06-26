@@ -25,6 +25,7 @@
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
+#include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
 #include "UndoRedoModel.h"
 
@@ -32,6 +33,7 @@
 
 #include "Settings.h"
 
+#include <QFileDialog>
 #include <cmath>
 #include <QtDebug>
 
@@ -79,6 +81,28 @@ void ObjectEditor::hidePages()
 	notebook->removeTab( notebook->indexOf(lineFillPage) );
 	notebook->removeTab( notebook->indexOf(posSizePage) );
 	notebook->removeTab( notebook->indexOf(shadowPage) );
+}
+
+
+void ObjectEditor::loadImagePage()
+{
+	if ( mObject )
+	{
+		mBlocked = true;
+
+		TextNode filenameNode = mObject->filenameNode();
+
+		if ( filenameNode.isField() )
+		{
+			imageFilenameLineEdit->setText( QString("${%1}").arg( filenameNode.data() ) );
+		}
+		else
+		{
+			imageFilenameLineEdit->setText( filenameNode.data() );
+		}
+
+		mBlocked = false;			
+	}
 }
 
 
@@ -273,6 +297,25 @@ void ObjectEditor::onSelectionChanged()
 				
 				setEnabled( true );
 			}
+			else if ( dynamic_cast<LabelModelImageObject*>(mObject) )
+			{
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-image.png") );
+				titleLabel->setText( tr("Image object properties") );
+
+				notebook->addTab( imagePage, "image" );
+				notebook->addTab( posSizePage, "position/size" );
+				notebook->addTab( shadowPage, "shadow" );
+
+				sizeRectFrame->setVisible( true );
+				sizeResetImageButton->setVisible( true );
+				sizeLineFrame->setVisible( false );
+
+				loadImagePage();
+				loadPositionPage();
+				loadShadowPage();
+				
+				setEnabled( true );
+			}
 			else if ( dynamic_cast<LabelModelLineObject*>(mObject) )
 			{
 				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-line.png") );
@@ -333,6 +376,7 @@ void ObjectEditor::onObjectChanged()
 		loadLineFillPage();
 		loadRectSizePage();
 		loadLineSizePage();
+		loadImagePage();
 		loadShadowPage();
 	}
 }
@@ -381,6 +425,21 @@ void ObjectEditor::onFillControlsChanged()
 		mObject->setFillColorNode( fillColorButton->colorNode() );
 
 		mBlocked = false;
+	}
+}
+
+
+void ObjectEditor::onImageFileButtonClicked()
+{
+	QString filename =
+		QFileDialog::getOpenFileName( this->window(),
+					      tr("gLabels - Select image file"),
+					      ".",
+					      tr("Image Files (*.png *.jpg *.bmp);;All files (*)") );
+	if ( !filename.isEmpty() )
+	{
+		mUndoRedoModel->checkpoint( tr("Set image") );
+		mObject->setFilenameNode( TextNode( false, filename ) );
 	}
 }
 

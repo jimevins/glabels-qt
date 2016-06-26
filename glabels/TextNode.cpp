@@ -37,7 +37,7 @@ namespace {
 /// Default Constructor
 ///
 TextNode::TextNode()
-	: mFieldFlag(false), mData("")
+	: mIsField(false), mData("")
 {
 }
 
@@ -45,8 +45,8 @@ TextNode::TextNode()
 ///
 /// Constructor from Data
 ///
-TextNode::TextNode( bool field_flag, const QString &data )
-	: mFieldFlag(field_flag), mData(data)
+TextNode::TextNode( bool isField, const QString &data )
+	: mIsField(isField), mData(data)
 {
 }
 
@@ -54,14 +54,14 @@ TextNode::TextNode( bool field_flag, const QString &data )
 ///
 /// Constructor from Parsing Next Token in Text
 ///
-TextNode::TextNode( const QString &text, int i_start, int &i_next )
+TextNode::TextNode( const QString &text, int iStart, int &iNext )
 {
 	State   state = START;
-	QString literal_text;
-	QString field_name;
-	bool    field_flag = false;
+	QString literalText;
+	QString fieldName;
+	bool    isField = false;
 
-	int i = i_start;
+	int i = iStart;
 
 	while ( state != DONE )
 	{
@@ -84,7 +84,7 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 				break;
 			default:
 				/* Start a literal text node. */
-				literal_text.append( c );
+				literalText.append( c );
 				i++;
 				state = LITERAL;
 				break;
@@ -105,7 +105,7 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 				state = DONE;
 				break;
 			default:
-				literal_text.append( c );
+				literalText.append( c );
 				i++;
 				state = LITERAL;
 				break;
@@ -116,26 +116,26 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 			switch (c.unicode()) {
 			case '{':
 				/* "${" indicates the start of a new field node, gather for literal too. */
-				literal_text.append( '$' );
+				literalText.append( '$' );
 				i++;
 				state = DONE;
 				break;
 			case '\n':
 				/* Append "$" to literal text, don't gather newline. */
-				literal_text.append( '$' );
+				literalText.append( '$' );
 				i++;
 				state = DONE;
 				break;
 			case 0:
 				/* Append "$" to literal text, don't gather null. */
-				literal_text.append( '$' );
+				literalText.append( '$' );
 				i++;
 				state = DONE;
 				break;
 			default:
 				/* Append "$" to literal text, gather this character too. */
-				literal_text.append( '$' );
-				literal_text.append( c );
+				literalText.append( '$' );
+				literalText.append( c );
 				i+=2;
 				state = LITERAL;
 				break;
@@ -146,7 +146,7 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 			switch (c.unicode()) {
 			case '{':
 				/* This is probably the begining of a field node, gather for literal too. */
-				literal_text.append( c );
+				literalText.append( c );
 				i++;
 				state = FIELD;
 				break;
@@ -158,7 +158,7 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 				break;
 			default:
 				/* The "$" was literal. */
-				literal_text.append( c );
+				literalText.append( c );
 				i++;
 				state = LITERAL;
 				break;
@@ -169,7 +169,7 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 			switch (c.unicode()) {
 			case '}':
 				/* We now finally know that this node is really field node. */
-				field_flag = true;
+				isField = true;
 				i++;
 				state = DONE;
 				break;
@@ -181,8 +181,8 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 				break;
 			default:
 				/* Gather for field name and literal, just in case. */
-				field_name.append( c );
-				literal_text.append( c );
+				fieldName.append( c );
+				literalText.append( c );
 				i++;
 				state = FIELD;
 				break;
@@ -193,10 +193,10 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 
 	}
 
-	mFieldFlag = field_flag;
-	mData      = field_flag ? field_name : literal_text;
+	mIsField = isField;
+	mData    = isField ? fieldName : literalText;
 
-	i_next = i;
+	iNext = i;
 }
 
 
@@ -205,8 +205,8 @@ TextNode::TextNode( const QString &text, int i_start, int &i_next )
 ///
 bool TextNode::operator==( const TextNode& other )
 {
-	return ( (mFieldFlag == other.mFieldFlag) &&
-		 (mData      == other.mData) );
+	return ( (mIsField == other.mIsField) &&
+		 (mData    == other.mData) );
 }
 
 
@@ -215,17 +215,17 @@ bool TextNode::operator==( const TextNode& other )
 ///
 bool TextNode::operator!=( const TextNode& other )
 {
-	return ( (mFieldFlag != other.mFieldFlag) ||
-		 (mData      != other.mData) );
+	return ( (mIsField != other.mIsField) ||
+		 (mData    != other.mData) );
 }
 
 
 ///
-/// Field Flag Property Getter
+/// isField? Property Getter
 ///
-bool TextNode::fieldFlag( void ) const
+bool TextNode::isField( void ) const
 {
-	return mFieldFlag;
+	return mIsField;
 }
 
 
@@ -238,47 +238,48 @@ const QString& TextNode::data( void ) const
 }
 
 
-#if TODO
-		public string expand( MergeRecord? record )
+///
+/// Get text, expand if necessary
+///
+QString TextNode::text( merge::Record* record ) const
+{
+	if ( mIsField )
+	{
+		if ( !record )
 		{
-			if ( field_flag )
+			return QString("${%1}").arg( mData );
+		}
+		else
+		{
+			if ( record->contains( mData ) )
 			{
-
-				if ( record == null )
-				{
-					return "${%s}".printf( data );
-				}
-				else
-				{
-					string? text = record.eval_key( data );
-					if ( text != null )
-					{
-						return text;
-					}
-					else
-					{
-						return "";
-					}
-				}
-
+				return (*record)[ mData ];
 			}
 			else
 			{
-				return data;
+				return "";
 			}
 		}
+	}
+	else
+	{
+		return mData;
+	}
+}
 
 
-		public bool is_empty_field( MergeRecord? record )
+///
+/// Is it an empty field
+///
+bool TextNode::isEmptyField( merge::Record* record ) const
+{
+	if ( record && mIsField )
+	{
+		if ( record->contains( mData ) )
 		{
-			if ( (record !=null) && field_flag )
-			{
-				string? text = record.eval_key( data );
-				return ( (text == null) || (text == "") );
-			}
-			else
-			{
-				return false;
-			}
+			return ( (*record)[mData].isEmpty() );
 		}
-#endif
+	}
+
+	return false;
+}

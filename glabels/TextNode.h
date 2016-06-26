@@ -22,6 +22,7 @@
 #define TextNode_h
 
 #include <QString>
+#include "Merge/Record.h"
 
 
 ///
@@ -36,7 +37,7 @@ struct TextNode
 public:
 	TextNode();
 
-	TextNode( bool field_flag, const QString &data );
+	TextNode( bool isField, const QString &data );
 
 	TextNode( const QString &text, int i_start, int &i_next );
 
@@ -55,9 +56,9 @@ public:
 	/////////////////////////////////
 public:
 	//
-	// Field Flag Property
+	// is field? Property
 	//
-	bool fieldFlag( void ) const;
+	bool isField( void ) const;
 
 	//
 	// Data Property
@@ -65,14 +66,11 @@ public:
 	const QString& data( void ) const;
 
 
-
 	/////////////////////////////////
 	// Methods
 	/////////////////////////////////
-#if TODO
-	string expand( MergeRecord? record );
-	bool is_empty_field( MergeRecord? record );
-#endif
+	QString text( merge::Record* record ) const;
+	bool isEmptyField( merge::Record* record ) const;
 
 
 	/////////////////////////////////
@@ -80,7 +78,7 @@ public:
 	/////////////////////////////////
 private:
 
-	bool    mFieldFlag;
+	bool    mIsField;
 	QString mData;
 
 };

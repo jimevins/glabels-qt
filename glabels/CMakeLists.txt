@@ -37,6 +37,7 @@ set (glabels_sources
   LabelModelObject.cpp
   LabelModelBoxObject.cpp
   LabelModelEllipseObject.cpp
+  LabelModelImageObject.cpp
   LabelModelLineObject.cpp
   LabelModelShapeObject.cpp
   LabelRegion.cpp
@@ -81,6 +82,7 @@ set (glabels_qobject_headers
   LabelModelObject.h
   LabelModelBoxObject.h
   LabelModelEllipseObject.h
+  LabelModelImageObject.h
   LabelModelLineObject.h
   LabelModelShapeObject.h
   MainWindow.h
