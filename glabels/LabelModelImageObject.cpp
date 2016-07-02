@@ -134,10 +134,13 @@ void LabelModelImageObject::drawShadow( QPainter* painter, bool inEditor, merge:
 	}
 	else
 	{
-		painter->setBrush( shadowColor );
-		painter->setPen( QPen( Qt::NoPen ) );
+		if ( mImage || inEditor )
+		{
+			painter->setBrush( shadowColor );
+			painter->setPen( QPen( Qt::NoPen ) );
 
-		painter->drawRect( destRect );
+			painter->drawRect( destRect );
+		}
 	}
 }
 
