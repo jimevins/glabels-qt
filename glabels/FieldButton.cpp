@@ -1,6 +1,6 @@
 /*  FieldButton.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -20,95 +20,84 @@
 
 #include "FieldButton.h"
 
+#include <QStandardItemModel>
+#include <QLineEdit>
+
 
 ///
 /// Constructor
 ///
 FieldButton::FieldButton( QWidget* parent )
-	: QPushButton(parent)
+	: QComboBox(parent)
 {
 	setEnabled( false );
 
-	mMenu = new FieldMenu();
-	setMenu( mMenu );
-
-	connect( mMenu, SIGNAL(keySelected(const QString&)), this, SLOT(onMenuKeySelected(const QString&)) );
+	connect( this, SIGNAL(currentIndexChanged(int)), this, SLOT(onIndexChanged(int)) );
 }
 
 
 void FieldButton::setName( const QString& name )
 {
-	if ( name.isNull() || name.isEmpty() )
+	mName = name;
+	if ( count() == 0 )
 	{
-		setText( tr("(None)") );
-		mLabelIsKey = false;
+		addItem( mName );
 	}
 	else
 	{
-		setText( name );
-		mLabelIsKey = true;
+		setItemText( 0, mName );
 	}
+
+	// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
+        const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
+        QStandardItem* item = itemModel->item(0);
+        item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
 }
 
 
-void FieldButton::setKeys( const QList<QString>& keyList )
+void FieldButton::setKeys( const QStringList& keyList )
 {
-	mMenu->setKeys( keyList );
+        // Clear old keys
+	clear();
+	addItem( mName );
 
-	if ( keyList.length() > 0 )
-	{
-		mKey = keyList.first();
-
-		if ( mLabelIsKey )
-		{
-			setText( mKey );
-		}
-		else
-		{
-			setText( tr("(None)") );
-		}
-
-		setEnabled( true );
-	}
-	else
-	{
-		setEnabled( false );
-	}
+	// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
+        const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
+        QStandardItem* item = itemModel->item(0);
+        item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
+	
+        // Add new keys
+        if ( keyList.size() > 0 )
+        {
+                addItems( keyList );
+                setEnabled( true );
+        }
+        else
+        {
+                setEnabled( false );
+        }
 }
 
 
 void FieldButton::clearKeys()
 {
-	if ( !mLabelIsKey )
-	{
-		setText( tr("(None)") );
-	}
-
+	clear();
+	addItem( mName );
+	
 	setEnabled( false );
 }
 
 
 
 ///
-/// key getter
-///
-QString FieldButton::key() const
-{
-	return mKey;
-}
-
-
-///
 /// onMenuKeySelected slot
 ///
-void FieldButton::onMenuKeySelected( const QString& key )
+void FieldButton::onIndexChanged( int index )
 {
-	mKey = key;
-
-	if ( mLabelIsKey )
+	if ( index > 0 )
 	{
-		setText( key );
-	}
+		emit keySelected( itemText(index) );
 
-	emit keySelected( key );
+		setCurrentIndex( 0 );
+	}
 }

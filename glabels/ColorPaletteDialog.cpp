@@ -153,7 +153,7 @@ ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
 	vLayout->addWidget( hline4 );
 
 	mMergeFieldCombo = new QComboBox();
-	mMergeFieldCombo->addItem( tr("Merge field...") );
+	mMergeFieldCombo->addItem( tr("Merge key...") );
 	mMergeFieldCombo->setMinimumSize( 34, 34 );
 	mMergeFieldCombo->setFrame( false );
 	mMergeFieldCombo->setEnabled( false );

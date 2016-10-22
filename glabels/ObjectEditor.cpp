@@ -50,6 +50,8 @@ ObjectEditor::ObjectEditor( QWidget *parent )
 	fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
 	shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
+	imageFieldCombo->setName( "Key" );
+
 	setEnabled( false );
 	hidePages();
 
@@ -362,9 +364,11 @@ void ObjectEditor::onMergeSourceChanged()
 {
 	if ( !mBlocked )
 	{
-		lineColorButton->setKeys( mModel->merge()->keys() );
-		fillColorButton->setKeys( mModel->merge()->keys() );
-		shadowColorButton->setKeys( mModel->merge()->keys() );
+		QStringList keys = mModel->merge()->keys();
+		lineColorButton->setKeys( keys );
+		fillColorButton->setKeys( keys );
+		imageFieldCombo->setKeys( keys );
+		shadowColorButton->setKeys( keys );
 	}
 }
 
@@ -441,6 +445,12 @@ void ObjectEditor::onImageFileButtonClicked()
 		mUndoRedoModel->checkpoint( tr("Set image") );
 		mObject->setFilenameNode( TextNode( false, filename ) );
 	}
+}
+
+
+void ObjectEditor::onImageKeySelected(QString key )
+{
+	qDebug() << "Key = " << key;
 }
 
 

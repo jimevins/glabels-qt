@@ -1,6 +1,6 @@
 /*  FieldButton.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -21,15 +21,14 @@
 #ifndef FieldButton_h
 #define FieldButton_h
 
-#include <QPushButton>
+#include <QComboBox>
 #include <QString>
-#include "FieldMenu.h"
 
 
 ///
 /// Field Button
 ///
-class FieldButton : public QPushButton
+class FieldButton : public QComboBox
 {
 	Q_OBJECT
 
@@ -44,14 +43,7 @@ public:
 	// Signals
 	/////////////////////////////////
 signals:
-	void keySelected( const QString& key );
-
-
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	QString key() const;
+	void keySelected( QString key );
 
 
 	/////////////////////////////////
@@ -59,7 +51,7 @@ public:
 	/////////////////////////////////
 public:
 	void setName( const QString& name = "" );
-	void setKeys( const QList<QString>& keyList );
+	void setKeys( const QStringList& keyList );
 	void clearKeys();
 
 
@@ -67,16 +59,14 @@ public:
 	// Slots
 	/////////////////////////////////
 private slots:
-	void onMenuKeySelected( const QString& key );
+	void onIndexChanged( int index );
 
 
 	/////////////////////////////////
 	// Private Data
 	/////////////////////////////////
 private:
-	FieldMenu*  mMenu;
-	QString     mKey;
-	bool        mLabelIsKey;
+	QString mName;
 
 };
 

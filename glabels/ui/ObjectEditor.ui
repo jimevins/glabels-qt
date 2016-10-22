@@ -451,7 +451,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="FieldButton" name="textInsertFieldButton">
+               <widget class="QPushButton" name="textInsertFieldButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -679,7 +679,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_16">
                 <item>
-                 <widget class="FieldButton" name="barcodeFieldButton">
+                 <widget class="QPushButton" name="barcodeFieldButton">
                   <property name="text">
                    <string/>
                   </property>
@@ -766,37 +766,8 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_12">
           <item row="0" column="0">
-           <layout class="QFormLayout" name="formLayout_8">
-            <property name="fieldGrowthPolicy">
-             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-            </property>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="imageFileButton">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>File...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="FieldButton" name="imageMergeFieldButton">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Merge field...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
              <widget class="QLineEdit" name="imageFilenameLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -817,6 +788,51 @@
                <string>None</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="1,0,1">
+              <item>
+               <widget class="QPushButton" name="imageFileButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Select File...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>or</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="FieldButton" name="imageFieldCombo">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Select Merge Field...</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
@@ -1488,10 +1504,10 @@
   </customwidget>
   <customwidget>
    <class>FieldButton</class>
-   <extends>QPushButton</extends>
+   <extends>QComboBox</extends>
    <header>FieldButton.h</header>
    <slots>
-    <signal>keySelected()</signal>
+    <signal>keySelected(QString)</signal>
    </slots>
   </customwidget>
  </customwidgets>
@@ -1570,8 +1586,8 @@
    <slot>onChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>223</x>
-     <y>202</y>
+     <x>236</x>
+     <y>200</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -1586,8 +1602,8 @@
    <slot>onChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>134</x>
-     <y>237</y>
+     <x>138</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1618,8 +1634,8 @@
    <slot>onChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>208</x>
-     <y>318</y>
+     <x>219</x>
+     <y>315</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1634,8 +1650,8 @@
    <slot>onChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>249</x>
-     <y>318</y>
+     <x>271</x>
+     <y>315</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -1682,8 +1698,8 @@
    <slot>onChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>267</x>
-     <y>360</y>
+     <x>271</x>
+     <y>357</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -1698,8 +1714,8 @@
    <slot>onChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>390</y>
+     <x>180</x>
+     <y>389</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -1906,8 +1922,8 @@
    <slot>onFillControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>237</y>
+     <x>146</x>
+     <y>236</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -1923,7 +1939,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>153</x>
-     <y>132</y>
+     <y>128</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1986,8 +2002,8 @@
    <slot>onResetImageSize()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>211</x>
-     <y>324</y>
+     <x>228</x>
+     <y>323</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -2066,8 +2082,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>115</x>
-     <y>229</y>
+     <x>151</x>
+     <y>227</y>
     </hint>
     <hint type="destinationlabel">
      <x>406</x>
@@ -2098,8 +2114,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>437</y>
+     <x>164</x>
+     <y>424</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -2124,18 +2140,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>imageMergeFieldButton</sender>
-   <signal>keySelected()</signal>
+   <sender>imageFieldCombo</sender>
+   <signal>keySelected(QString)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onImageKeySelected()</slot>
+   <slot>onImageKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>351</x>
-     <y>147</y>
+     <x>343</x>
+     <y>151</y>
     </hint>
     <hint type="destinationlabel">
-     <x>7</x>
-     <y>143</y>
+     <x>397</x>
+     <y>32</y>
     </hint>
    </hints>
   </connection>
@@ -2150,6 +2166,6 @@
   <slot>onShadowControlsChanged()</slot>
   <slot>onLineSizeControlsChanged()</slot>
   <slot>onImageFileButtonClicked()</slot>
-  <slot>onImageKeySelected()</slot>
+  <slot>onImageKeySelected(QString)</slot>
  </slots>
 </ui>

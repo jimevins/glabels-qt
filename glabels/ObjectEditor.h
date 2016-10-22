@@ -78,6 +78,7 @@ private slots:
 	void onLineControlsChanged();
 	void onFillControlsChanged();
 	void onImageFileButtonClicked();
+	void onImageKeySelected(QString key );
 	void onPositionControlsChanged();
 	void onRectSizeControlsChanged();
 	void onLineSizeControlsChanged();
