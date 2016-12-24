@@ -125,6 +125,7 @@ MainWindow::MainWindow()
 
 	setDocVerbsEnabled( false );
 	setPasteVerbsEnabled( false );
+	setWelcomeMode( true );
 	setTitle();
 
 	// Connect
@@ -179,6 +180,7 @@ void MainWindow::setModel( LabelModel *label )
 	setDocVerbsEnabled( true );
 	setSelectionVerbsEnabled( false );
 	setMultiSelectionVerbsEnabled( false );
+	setWelcomeMode( false );
 	setTitle();
 
 	connect( mLabelEditor, SIGNAL(contextMenuActivate()), this, SLOT(onContextMenuActivate()) );
@@ -737,12 +739,25 @@ QWidget* MainWindow::createPrintPage()
 
 
 ///
+/// Set enabled state of TOC buttons based on Welcome mode
+///
+void MainWindow::setWelcomeMode( bool enabled )
+{
+	mWelcomeButton->setHidden( !enabled );
+	mPropertiesButton->setHidden( enabled );
+	mEditorButton->setHidden( enabled );
+	mMergeButton->setHidden( enabled );
+	mPrintButton->setHidden( enabled );
+}
+
+
+///
 /// Set enabled state of actions associated with a document.
 ///
 void MainWindow::setDocVerbsEnabled( bool enabled )
 {
-	fileSaveAction->setEnabled( enabled );
-	fileSaveAsAction->setEnabled( enabled );
+	fileSaveAction->setEnabled( mModel && mModel->isModified() );
+	fileSaveAsAction->setEnabled( mModel );
 	editUndoAction->setEnabled( enabled && mUndoRedoModel->canUndo() );
 	editRedoAction->setEnabled( enabled && mUndoRedoModel->canRedo() );
 	editDeleteAction->setEnabled( enabled );
@@ -780,13 +795,6 @@ void MainWindow::setDocVerbsEnabled( bool enabled )
 	objectsCenterMenu->setEnabled( enabled );
 	objectsCenterHorizAction->setEnabled( enabled );
 	objectsCenterVertAction->setEnabled( enabled );
-
-	// Contents buttons
-	mWelcomeButton->setHidden( enabled );
-	mPropertiesButton->setHidden( !enabled );
-	mEditorButton->setHidden( !enabled );
-	mMergeButton->setHidden( !enabled );
-	mPrintButton->setHidden( !enabled );
 }
 
 
@@ -805,6 +813,7 @@ void MainWindow::setDocModifiedVerbsEnabled( bool enabled )
 void MainWindow::setPasteVerbsEnabled( bool enabled )
 {
 	editPasteAction->setEnabled( enabled );
+	contextPasteAction->setEnabled( enabled );
 }
 
 
@@ -966,7 +975,15 @@ void MainWindow::changePage(QListWidgetItem *current, QListWidgetItem *previous)
 	    current = previous;
     }
 
-    mPages->setCurrentIndex(mContents->row(current));
+    int row = mContents->row(current);
+    
+    mPages->setCurrentIndex(row);
+    bool isEditorPage = ( row == mContents->row(mEditorButton) );
+
+    setDocVerbsEnabled( isEditorPage );
+    setSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() );
+    setMultiSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionAtomic() );
+    setPasteVerbsEnabled( isEditorPage && mModel->canPaste() );
 }
 
 

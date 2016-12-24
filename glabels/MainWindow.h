@@ -166,6 +166,7 @@ private:
 	QWidget* createMergePage();
 	QWidget* createPrintPage();
 
+	void setWelcomeMode( bool );
 	void setDocVerbsEnabled( bool );
 	void setDocModifiedVerbsEnabled( bool );
 	void setPasteVerbsEnabled( bool );
