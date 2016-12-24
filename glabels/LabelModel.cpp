@@ -21,8 +21,6 @@
 #include "LabelModel.h"
 
 #include <QFileInfo>
-#include <algorithm>
-#include <cmath>
 #include <QApplication>
 #include <QClipboard>
 #include <QMimeData>
@@ -500,9 +498,6 @@ void LabelModel::unselectAll()
 ///
 void LabelModel::selectRegion( const LabelRegion &region )
 {
-	using std::min;
-	using std::max;
-
 	glabels::Distance rX1 = min( region.x1(), region.x2() );
 	glabels::Distance rY1 = min( region.y1(), region.y2() );
 	glabels::Distance rX2 = max( region.x1(), region.x2() );

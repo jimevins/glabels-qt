@@ -20,8 +20,6 @@
 
 #include "FrameRect.h"
 
-#include <cmath>
-
 #include "StrUtil.h"
 #include "privateConstants.h"
 

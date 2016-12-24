@@ -20,8 +20,6 @@
 
 #include "FrameCd.h"
 
-#include <cmath>
-
 #include "StrUtil.h"
 #include "privateConstants.h"
 #include <QtDebug>

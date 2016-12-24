@@ -20,7 +20,7 @@
 
 #include "StrUtil.h"
 
-#include <cmath>
+#include <QtMath>
 
 
 namespace
@@ -49,7 +49,7 @@ namespace glabels
                         for ( i=0; denom[i] != 0.0; i++ )
                         {
                                 product = x * denom[i];
-                                remainder = fabs(product - ((int)(product+0.5)));
+                                remainder = qFabs(product - ((int)(product+0.5)));
                                 if ( remainder < FRAC_EPSILON ) break;
                         }
 

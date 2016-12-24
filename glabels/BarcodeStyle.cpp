@@ -20,8 +20,6 @@
 
 #include "BarcodeStyle.h"
 
-#include <algorithm>
-
 
 ///
 /// Default Constructor
@@ -163,11 +161,9 @@ int BarcodeStyle::preferedN() const
 ///
 QString BarcodeStyle::exampleDigits( int n ) const
 {
-	using std::max;
-
 	if ( mCanFreeform )
 	{
-		return QString( max( n, 1 ), QChar('0') );
+		return QString( qMax( n, 1 ), QChar('0') );
 	}
 	else
 	{

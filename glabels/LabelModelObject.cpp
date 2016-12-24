@@ -21,8 +21,6 @@
 #include "LabelModelObject.h"
 
 #include <QFont>
-#include <algorithm>
-#include <cmath>
 #include <QtDebug>
 
 #include "ColorNode.h"
@@ -874,8 +872,7 @@ void LabelModelObject::setHHonorAspect( const glabels::Distance& h )
 ///
 LabelRegion LabelModelObject::getExtent()
 {
-	using std::min;
-	using std::max;
+	using namespace glabels;
 
 	QPointF a1( (   - lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
 	QPointF a2( (mW + lineWidth()/2).pt(), (   - lineWidth()/2).pt() );
@@ -888,10 +885,10 @@ LabelRegion LabelModelObject::getExtent()
 	a4 = mMatrix.map( a4 );
 
 	LabelRegion region;
-	region.setX1( glabels::Distance(min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) )) + mX0 );
-	region.setY1( glabels::Distance(min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) )) + mY0 );
-	region.setX2( glabels::Distance(max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) )) + mX0 );
-	region.setY2( glabels::Distance(max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) )) + mY0 );
+	region.setX1( min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) ) + mX0 );
+	region.setY1( min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) ) + mY0 );
+	region.setX2( max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) ) + mX0 );
+	region.setY2( max( a1.y(), max( a2.y(), max( a3.y(), a4.y() ) ) ) + mY0 );
 
 	return region;
 }

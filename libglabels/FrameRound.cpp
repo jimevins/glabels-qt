@@ -20,8 +20,6 @@
 
 #include "FrameRound.h"
 
-#include <cmath>
-
 #include "StrUtil.h"
 #include "privateConstants.h"
 

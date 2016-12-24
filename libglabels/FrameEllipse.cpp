@@ -20,8 +20,6 @@
 
 #include "FrameEllipse.h"
 
-#include <cmath>
-
 #include "StrUtil.h"
 #include "privateConstants.h"
 

@@ -20,8 +20,7 @@
 
 #include "LabelEditor.h"
 
-#include <algorithm>
-#include <cmath>
+#include <QtMath>
 #include <QMouseEvent>
 #include <QtDebug>
 
@@ -181,11 +180,11 @@ LabelEditor::zoomIn()
 	// Find closest standard zoom level to our current zoom
 	// Start with 2nd largest scale
 	int i_min = 1;
-	double dist_min = fabs( zoomLevels[1] - mZoom );
+	double dist_min = qFabs( zoomLevels[1] - mZoom );
 
 	for ( int i = 2; i < nZoomLevels; i++ )
 	{
-		double dist = fabs( zoomLevels[i] - mZoom );
+		double dist = qFabs( zoomLevels[i] - mZoom );
 		if ( dist < dist_min )
 		{
 			i_min = i;
@@ -207,11 +206,11 @@ LabelEditor::zoomOut()
 	// Find closest standard zoom level to our current zoom
 	// Start with largest scale, end on 2nd smallest
 	int i_min = 0;
-	double dist_min = fabs( zoomLevels[0] - mZoom );
+	double dist_min = qFabs( zoomLevels[0] - mZoom );
 
 	for ( int i = 1; i < (nZoomLevels-1); i++ )
 	{
-		double dist = fabs( zoomLevels[i] - mZoom );
+		double dist = qFabs( zoomLevels[i] - mZoom );
 		if ( dist < dist_min )
 		{
 			i_min = i;
@@ -240,19 +239,16 @@ LabelEditor::zoom1To1()
 void
 LabelEditor::zoomToFit()
 {
-	using std::min;
-	using std::max;
-
 	double wPixels = mScrollArea->maximumViewportSize().width();
 	double hPixels = mScrollArea->maximumViewportSize().height();
 	
 	double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w().pt();
 	double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h().pt();
-	double newZoom = min( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
+	double newZoom = qMin( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
 
 	// Limits
-	newZoom = min( newZoom, zoomLevels[0] );
-	newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
+	newZoom = qMin( newZoom, zoomLevels[0] );
+	newZoom = qMax( newZoom, zoomLevels[nZoomLevels-1] );
 
 	setZoomReal( newZoom, true );
 }
@@ -563,9 +559,6 @@ LabelEditor::mousePressEvent( QMouseEvent* event )
 void
 LabelEditor::mouseMoveEvent( QMouseEvent* event )
 {
-	using std::min;
-	using std::max;
-
 	if ( mModel )
 	{
 		/*
@@ -1211,9 +1204,6 @@ void LabelEditor::onSettingsChanged()
 ///
 void LabelEditor::onModelSizeChanged()
 {
-	using std::min;
-	using std::max;
-
 	if (mZoomToFitFlag)
 	{
 		double wPixels = mScrollArea->maximumViewportSize().width();
@@ -1221,11 +1211,11 @@ void LabelEditor::onModelSizeChanged()
 	
 		double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w().pt();
 		double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h().pt();
-		double newZoom = min( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
+		double newZoom = qMin( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
 
 		// Limits
-		newZoom = min( newZoom, zoomLevels[0] );
-		newZoom = max( newZoom, zoomLevels[nZoomLevels-1] );
+		newZoom = qMin( newZoom, zoomLevels[0] );
+		newZoom = qMax( newZoom, zoomLevels[nZoomLevels-1] );
 
 		mZoom = newZoom;
 	}

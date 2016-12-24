@@ -34,7 +34,7 @@
 #include "Settings.h"
 
 #include <QFileDialog>
-#include <cmath>
+#include <QtMath>
 #include <QtDebug>
 
 
@@ -180,7 +180,7 @@ void ObjectEditor::loadLineSizePage()
 		double w = mObject->w().inUnits(mUnits);
 		double h = mObject->h().inUnits(mUnits);
 		sizeLineLengthSpin->setValue( sqrt( w*w + h*h ) );
-		sizeLineAngleSpin->setValue( (180/M_PI)*atan2( h, w ) );
+		sizeLineAngleSpin->setValue( qRadiansToDegrees( qAtan2( h, w ) ) );
 
 		mBlocked = false;			
 	}
@@ -515,9 +515,9 @@ void ObjectEditor::onLineSizeControlsChanged()
 		mUndoRedoModel->checkpoint( tr("Size") );
 		
 		glabels::Distance spinLength = glabels::Distance(sizeLineLengthSpin->value(), mUnits);
-		double spinAngleRads = (M_PI/180)*sizeLineAngleSpin->value();
+		double spinAngleRads = qDegreesToRadians( sizeLineAngleSpin->value() );
 				
-		mObject->setSize( spinLength*cos(spinAngleRads), spinLength*sin(spinAngleRads) );
+		mObject->setSize( spinLength*qCos(spinAngleRads), spinLength*qSin(spinAngleRads) );
 			
 		mBlocked = false;
 	}

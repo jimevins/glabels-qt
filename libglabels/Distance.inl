@@ -20,7 +20,7 @@
 
 
 #include "Constants.h"
-#include <cmath>
+#include <QtMath>
 
 
 namespace glabels
@@ -195,7 +195,7 @@ namespace glabels
 
 	inline Distance fabs( const Distance& d )
 	{
-		return Distance::pt( std::fabs( d.mDPts ) );
+		return Distance::pt( qFabs( d.mDPts ) );
 	}
 
 	

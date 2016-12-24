@@ -20,9 +20,6 @@
 
 #include "LabelRegion.h"
 
-#include <algorithm>
-#include <cmath>
-
 
 ///
 /// Get x1
@@ -101,9 +98,6 @@ void LabelRegion::setY2( const glabels::Distance& value )
 ///
 QRectF LabelRegion::rect() const
 {
-	using std::min;
-	using std::fabs;
-
 	QRectF r;
 
 	r.setX( min( mX1, mX2 ).pt() );

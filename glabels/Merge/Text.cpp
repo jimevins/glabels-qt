@@ -21,7 +21,6 @@
 #include "Text.h"
 
 #include "Record.h"
-#include <algorithm>
 #include <QtDebug>
 
 
