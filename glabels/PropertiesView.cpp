@@ -26,6 +26,7 @@
 
 #include "libglabels/Db.h"
 #include "SelectProductDialog.h"
+#include <QStyledItemDelegate>
 #include <QtDebug>
 
 
@@ -36,6 +37,11 @@ PropertiesView::PropertiesView( QWidget *parent )
 	: QWidget(parent), mModel(0)
 {
 	setupUi( this );
+
+	// Hack to get orientationCombo item height to follow icon size plus some additional padding 
+	QStyledItemDelegate* itemDelegate = new QStyledItemDelegate();
+	orientationCombo->setItemDelegate( itemDelegate );
+	orientationCombo->setStyleSheet( "* QAbstractItemView::item { padding: 8px; }" );
 
 	similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
 	similarBrowser->viewport()->setAutoFillBackground(false);
