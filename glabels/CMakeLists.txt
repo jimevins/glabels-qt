@@ -25,6 +25,7 @@ set (glabels_sources
   ColorPaletteButtonItem.cpp
   ColorSwatch.cpp
   Cursors.cpp
+  EnumUtil.cpp
   FieldButton.cpp
   FieldMenu.cpp
   FieldMenuItem.cpp
@@ -40,6 +41,7 @@ set (glabels_sources
   LabelModelImageObject.cpp
   LabelModelLineObject.cpp
   LabelModelShapeObject.cpp
+  LabelModelTextObject.cpp
   LabelRegion.cpp
   MainWindow.cpp
   MergeView.cpp
@@ -85,6 +87,7 @@ set (glabels_qobject_headers
   LabelModelImageObject.h
   LabelModelLineObject.h
   LabelModelShapeObject.h
+  LabelModelTextObject.h
   MainWindow.h
   MergeView.h
   ObjectEditor.h

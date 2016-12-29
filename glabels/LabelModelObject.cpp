@@ -203,6 +203,7 @@ void LabelModelObject::setW( const glabels::Distance& value )
 	if ( mW != value )
 	{
 		mW = value;
+		sizeUpdated();
 		emit changed();
 	}
 }
@@ -225,6 +226,7 @@ void LabelModelObject::setH( const glabels::Distance& value )
 	if ( mH != value )
 	{
 		mH = value;
+		sizeUpdated();
 		emit changed();
 	}
 }
@@ -361,6 +363,25 @@ void LabelModelObject::setShadowColorNode( const ColorNode& value )
 	}
 }
 		
+
+///
+/// Virtual Text Property Default Getter
+/// (Overridden by concrete class)
+///
+QString LabelModelObject::text() const
+{
+	return "";
+}
+
+
+///
+/// Virtual Text Property Default Setter
+/// (Overridden by concrete class)
+///
+void LabelModelObject::setText( const QString& value )
+{
+}
+
 
 ///
 /// Virtual Font Family Property Default Getter
@@ -804,6 +825,7 @@ void LabelModelObject::setSize( const glabels::Distance& w,
 	mW = w;
 	mH = h;
 
+	sizeUpdated();
 	emit changed();
 }
 
@@ -844,6 +866,7 @@ void LabelModelObject::setWHonorAspect( const glabels::Distance& w )
 		mW = w;
 		mH = h;
 
+		sizeUpdated();
 		emit changed();
 	}
 }
@@ -862,6 +885,7 @@ void LabelModelObject::setHHonorAspect( const glabels::Distance& h )
 		mW = w;
 		mH = h;
 
+		sizeUpdated();
 		emit changed();
 	}
 }
@@ -1038,4 +1062,12 @@ void LabelModelObject::drawSelectionHighlight( QPainter* painter, double scale )
 	}
 		
 	painter->restore();
+}
+
+
+///
+/// Default sizeUpdated implementation.
+///
+void LabelModelObject::sizeUpdated()
+{
 }

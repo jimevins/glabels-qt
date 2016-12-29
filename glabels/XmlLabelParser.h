@@ -59,7 +59,7 @@ private:
 	static LabelModelImageObject* parseObjectImageNode( const QDomElement &node );
 	static LabelModelBarcodeObject* parseObjectBarcodeNode( const QDomElement &node );
 	static LabelModelTextObject* parseObjectTextNode( const QDomElement &node );
-	static void parseTopLevelSpanNode( const QDomElement &node, LabelModelTextObject* object );
+	static QString parsePNode( const QDomElement &node );
 	static void parseAffineAttrs( const QDomElement &node, LabelModelObject* object );
 	static void parseShadowAttrs( const QDomElement &node, LabelModelObject* object );
 	static void parseMergeNode( const QDomElement &node, LabelModel* label );

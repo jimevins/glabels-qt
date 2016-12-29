@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -106,6 +106,9 @@
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
                 <property name="flat">
                  <bool>false</bool>
                 </property>
@@ -123,6 +126,9 @@
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -135,6 +141,9 @@
                   <normaloff>:/icons/24x24/actions/glabels-align-text-right.png</normaloff>:/icons/24x24/actions/glabels-align-text-right.png</iconset>
                 </property>
                 <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -162,6 +171,9 @@
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
                 <property name="flat">
                  <bool>false</bool>
                 </property>
@@ -179,6 +191,9 @@
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -191,6 +206,9 @@
                   <normaloff>:/icons/24x24/actions/glabels-valign-text-bottom.png</normaloff>:/icons/24x24/actions/glabels-valign-text-bottom.png</iconset>
                 </property>
                 <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="autoExclusive">
                  <bool>true</bool>
                 </property>
                </widget>
@@ -207,7 +225,14 @@
             <item row="2" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_19">
               <item>
-               <widget class="QDoubleSpinBox" name="textLineSpacingSpin"/>
+               <widget class="QDoubleSpinBox" name="textLineSpacingSpin">
+                <property name="maximum">
+                 <double>3.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
               </item>
               <item>
                <spacer name="horizontalSpacer_16">
@@ -352,7 +377,17 @@
             <item row="1" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_18">
               <item>
-               <widget class="QDoubleSpinBox" name="textFontSizeSpin"/>
+               <widget class="QDoubleSpinBox" name="textFontSizeSpin">
+                <property name="decimals">
+                 <number>0</number>
+                </property>
+                <property name="minimum">
+                 <double>1.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
               </item>
               <item>
                <spacer name="horizontalSpacer_15">
@@ -1519,7 +1554,7 @@
    <sender>textFontFamilyCombo</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>254</x>
@@ -1535,7 +1570,7 @@
    <sender>textFontSizeSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>128</x>
@@ -1551,7 +1586,7 @@
    <sender>textFontBoldToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>125</x>
@@ -1567,7 +1602,7 @@
    <sender>textFontItalicToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>172</x>
@@ -1583,7 +1618,7 @@
    <sender>textFontUnderlineToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>236</x>
@@ -1599,7 +1634,7 @@
    <sender>textColorButton</sender>
    <signal>colorChanged()</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>138</x>
@@ -1615,7 +1650,7 @@
    <sender>textHAlignLeftToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>154</x>
@@ -1631,7 +1666,7 @@
    <sender>textHAlignCenterToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>219</x>
@@ -1647,7 +1682,7 @@
    <sender>textHAlignRightToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>271</x>
@@ -1663,7 +1698,7 @@
    <sender>textVAlignTopToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>161</x>
@@ -1679,7 +1714,7 @@
    <sender>textVAlignMiddleToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>209</x>
@@ -1695,7 +1730,7 @@
    <sender>textVAlignBottomToggle</sender>
    <signal>toggled(bool)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>271</x>
@@ -1711,7 +1746,7 @@
    <sender>textLineSpacingSpin</sender>
    <signal>valueChanged(double)</signal>
    <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
+   <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>180</x>
@@ -1720,22 +1755,6 @@
     <hint type="destinationlabel">
      <x>394</x>
      <y>485</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>textEdit</sender>
-   <signal>textChanged()</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>271</x>
-     <y>538</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>394</x>
-     <y>543</y>
     </hint>
    </hints>
   </connection>
@@ -2130,8 +2149,8 @@
    <slot>onImageFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>321</x>
-     <y>119</y>
+     <x>190</x>
+     <y>161</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -2155,6 +2174,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>textEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onTextControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>341</x>
+     <y>539</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>553</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onChanged()</slot>
@@ -2167,5 +2202,6 @@
   <slot>onLineSizeControlsChanged()</slot>
   <slot>onImageFileButtonClicked()</slot>
   <slot>onImageKeySelected(QString)</slot>
+  <slot>onTextControlsChanged()</slot>
  </slots>
 </ui>

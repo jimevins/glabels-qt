@@ -25,8 +25,10 @@
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelLineObject.h"
+#include "LabelModelTextObject.h"
 //#include "LabelObjectImage.h"
 //#include "LabelObjectBarcode.h"
+#include "EnumUtil.h"
 #include "Merge/Factory.h"
 #include "libglabels/XmlTemplateParser.h"
 #include "libglabels/XmlUtil.h"
@@ -34,6 +36,8 @@
 #include <QFile>
 #include <QByteArray>
 #include <zlib.h>
+#include <QTextDocument>
+#include <QTextCursor>
 #include <QtDebug>
 
 
@@ -200,6 +204,12 @@ XmlLabelParser::parseRootNode( const QDomElement &node )
 {
 	using namespace glabels;
 
+	QString version = XmlUtil::getStringAttr( node, "version", "" );
+	if ( version != "4.0" )
+	{
+		qWarning() << "TODO: compatability mode.";
+	}
+
 	LabelModel* label = new LabelModel();
 
 	/* Pass 1, extract data nodes to pre-load cache. */
@@ -270,6 +280,10 @@ XmlLabelParser::parseObjects( const QDomElement &node )
 		{
 			list.append( parseObjectLineNode( child.toElement() ) );
 		}
+		else if ( tagName == "Object-text" )
+		{
+			list.append( parseObjectTextNode( child.toElement() ) );
+		}
 #if 0
 		else if ( tagName == "Object-image" )
 		{
@@ -278,10 +292,6 @@ XmlLabelParser::parseObjects( const QDomElement &node )
 		else if ( tagName == "Object-barcode" )
 		{
 			list.append( parseObjectBarcodeNode( child.toElement() ) );
-		}
-		else if ( tagName == "Object-text" )
-		{
-			list.append( parseObjectTextNode( child.toElement() ) );
 		}
 #endif
 		else if ( !child.isComment() )
@@ -449,13 +459,78 @@ XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node )
 LabelModelTextObject*
 XmlLabelParser::parseObjectTextNode( const QDomElement &node )
 {
-	return 0;
+	using namespace glabels;
+
+	LabelModelTextObject* object = new LabelModelTextObject();
+
+
+	/* position attrs */
+	object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
+	object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+
+	/* size attrs */
+	object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
+	object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+
+	/* color attr */
+	{
+		QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+
+		object->setTextColorNode( ColorNode( field_flag, color, key ) );
+	}
+
+	/* font attrs */
+	object->setFontFamily( XmlUtil::getStringAttr( node, "font_family", "Sans" ) );
+	object->setFontSize( XmlUtil::getDoubleAttr( node, "font_size", 10 ) );
+	object->setFontWeight( EnumUtil::stringToWeight( XmlUtil::getStringAttr( node, "font_weight", "normal" ) ) );
+	object->setFontItalicFlag( XmlUtil::getBoolAttr( node, "font_italic", false ) );
+	object->setFontUnderlineFlag( XmlUtil::getBoolAttr( node, "font_underline", false ) );
+
+	/* text attrs */
+	object->setTextLineSpacing( XmlUtil::getDoubleAttr( node, "line_spacing", 1 ) );
+	object->setTextHAlign( EnumUtil::stringToHAlign( XmlUtil::getStringAttr( node, "align", "left" ) ) );
+	object->setTextVAlign( EnumUtil::stringToVAlign( XmlUtil::getStringAttr( node, "valign", "top" ) ) );
+
+	/* affine attrs */
+	parseAffineAttrs( node, object );
+
+	/* shadow attrs */
+	parseShadowAttrs( node, object );
+
+	/* deserialize contents. */
+	QTextDocument document;
+	QTextCursor cursor( &document );
+	bool firstBlock = true;
+	for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+	{
+		QString tagName = child.toElement().tagName();
+		
+		if ( tagName == "p" )
+		{
+			if ( !firstBlock )
+			{
+				cursor.insertBlock();
+			}
+			firstBlock = false;
+			cursor.insertText( parsePNode( child.toElement() ) );
+		}
+		else if ( !child.isComment() )
+		{
+			qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
+		}
+	}
+	object->setText( document.toPlainText() );
+
+	return object;
 }
 
 
-void
-XmlLabelParser::parseTopLevelSpanNode( const QDomElement &node, LabelModelTextObject* object )
+QString
+XmlLabelParser::parsePNode( const QDomElement &node )
 {
+	return node.text();
 }
 
 

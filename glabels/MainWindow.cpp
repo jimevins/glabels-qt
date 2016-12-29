@@ -1231,7 +1231,8 @@ void MainWindow::objectsArrowMode()
 ///
 void MainWindow::objectsCreateText()
 {
-	qDebug() << "ACTION: objects->Create->Text";
+	mUndoRedoModel->checkpoint( tr("Create Text") );
+	mLabelEditor->createTextMode();
 }
 
 

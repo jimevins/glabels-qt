@@ -162,6 +162,13 @@ public:
 	///////////////////////////////////////////////////////////////
 public:
 	//
+	// Virtual Text Property: text
+	//
+	virtual QString text() const;
+	virtual void setText( const QString &value );
+
+
+	//
 	// Virtual Text Property: fontFamily
 	//
 	virtual QString fontFamily() const;
@@ -345,6 +352,8 @@ protected:
 	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
 	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
 	virtual QPainterPath hoverPath( double scale ) const = 0;
+
+	virtual void sizeUpdated();
 
 		
 	///////////////////////////////////////////////////////////////

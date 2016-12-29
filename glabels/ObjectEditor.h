@@ -23,6 +23,8 @@
 
 #include "ui_ObjectEditor.h"
 #include "libglabels/Distance.h"
+#include <QButtonGroup>
+
 
 // Forward references
 class LabelModel;
@@ -61,6 +63,7 @@ private:
 	void loadPositionPage();
 	void loadRectSizePage();
 	void loadLineSizePage();
+	void loadTextPage();
 	void loadShadowPage();
 
 
@@ -82,6 +85,7 @@ private slots:
 	void onPositionControlsChanged();
 	void onRectSizeControlsChanged();
 	void onLineSizeControlsChanged();
+	void onTextControlsChanged();
 	void onShadowControlsChanged();
 	void onChanged();
 		
@@ -98,6 +102,9 @@ private:
 	int                      mSpinDigits;
 	double                   mSpinStep;
 	
+	QButtonGroup*            textHAlignGroup;
+	QButtonGroup*            textVAlignGroup;
+
 	bool                     mBlocked;
 
 };

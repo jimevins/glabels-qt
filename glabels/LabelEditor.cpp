@@ -30,6 +30,7 @@
 #include "LabelModelEllipseObject.h"
 #include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
+#include "LabelModelTextObject.h"
 #include "UndoRedoModel.h"
 #include "Settings.h"
 #include "Cursors.h"
@@ -364,6 +365,19 @@ LabelEditor::createLineMode()
 
 
 ///
+/// Create text mode
+///
+void
+LabelEditor::createTextMode()
+{
+	setCursor( Cursors::Text() );
+
+	mCreateObjectType = Text;
+	mState = CreateIdle;
+}
+
+
+///
 /// Resize Event Handler
 ///
 void
@@ -505,7 +519,7 @@ LabelEditor::mousePressEvent( QMouseEvent* event )
 					mCreateObject = new LabelModelImageObject();
 					break;
 				case Text:
-					// mCreateObject = new LabelModelTextObject();
+					mCreateObject = new LabelModelTextObject();
 					break;
 				case Barcode:
 					// mCreateObject = new LabelModelBarcodeObject();
@@ -705,7 +719,7 @@ LabelEditor::mouseReleaseEvent( QMouseEvent* event )
 					switch (mCreateObjectType)
 					{
 					case Text:
-						mCreateObject->setSize( 0, 0 );
+						mCreateObject->setSize( 72, 36 );
 						break;
 					case Line:
 						mCreateObject->setSize( 72, 0 );

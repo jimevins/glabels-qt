@@ -25,14 +25,18 @@
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelLineObject.h"
-//#include "LabelObjectImage.h"
-//#include "LabelObjectBarcode.h"
+#include "LabelModelImageObject.h"
+#include "LabelModelTextObject.h"
+//#include "LabelModelBarcodeObject.h"
+#include "EnumUtil.h"
 #include "Merge/None.h"
 #include "libglabels/XmlTemplateCreator.h"
 #include "libglabels/XmlUtil.h"
 
 #include <QFile>
 #include <QByteArray>
+#include <QTextDocument>
+#include <QTextBlock>
 #include <QtDebug>
 
 
@@ -92,6 +96,7 @@ XmlLabelCreator::createDoc( QDomDocument& doc, const LabelModel* label )
 
 	QDomElement root = doc.createElement( "Glabels-document" );
 	doc.appendChild( root );
+	glabels::XmlUtil::setStringAttr( root, "version", "4.0" );
 
 	glabels::XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
 
@@ -136,6 +141,10 @@ XmlLabelCreator::addObjectsToNode( QDomElement &parent, const QList<LabelModelOb
 		else if ( LabelModelLineObject* lineObject = dynamic_cast<LabelModelLineObject*>(object) )
 		{
 			createObjectLineNode( parent, lineObject );
+		}
+		else if ( LabelModelTextObject* textObject = dynamic_cast<LabelModelTextObject*>(object) )
+		{
+			createObjectTextNode( parent, textObject );
 		}
 		// TODO: other object types
 		else
@@ -285,14 +294,64 @@ XmlLabelCreator::createObjectBarcodeNode( QDomElement &parent, const LabelModelB
 void
 XmlLabelCreator::createObjectTextNode( QDomElement &parent, const LabelModelTextObject* object )
 {
-	// TODO
+	QDomDocument doc = parent.ownerDocument();
+	QDomElement node = doc.createElement( "Object-text" );
+	parent.appendChild( node );
+
+	/* position attrs */
+	glabels::XmlUtil::setLengthAttr( node, "x", object->x0() );
+	glabels::XmlUtil::setLengthAttr( node, "y", object->y0() );
+
+	/* size attrs */
+	glabels::XmlUtil::setLengthAttr( node, "w", object->w() );
+	glabels::XmlUtil::setLengthAttr( node, "h", object->h() );
+
+	/* color attr */
+	if ( object->textColorNode().fieldFlag() )
+	{
+		glabels::XmlUtil::setStringAttr( node, "color_field", object->textColorNode().key() );
+	}
+	else
+	{
+		glabels::XmlUtil::setUIntAttr( node, "color", object->textColorNode().rgba() );
+	}
+
+	/* font attrs */
+	glabels::XmlUtil::setStringAttr( node, "font_family", object->fontFamily() );
+	glabels::XmlUtil::setDoubleAttr( node, "font_size", object->fontSize() );
+	glabels::XmlUtil::setStringAttr( node, "font_weight", EnumUtil::weightToString( object->fontWeight() ) );
+	glabels::XmlUtil::setBoolAttr( node, "font_italic", object->fontItalicFlag() );
+	glabels::XmlUtil::setBoolAttr( node, "font_underline", object->fontUnderlineFlag() );
+
+	/* text attrs */
+	glabels::XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
+	glabels::XmlUtil::setStringAttr( node, "align", EnumUtil::hAlignToString( object->textHAlign() ) );
+	glabels::XmlUtil::setStringAttr( node, "valign", EnumUtil::vAlignToString( object->textVAlign() ) );
+
+	/* affine attrs */
+	createAffineAttrs( node, object );
+
+	/* shadow attrs */
+	createShadowAttrs( node, object );
+
+	/* serialize text contents */
+	QTextDocument document( object->text() );
+	int nBlocks = document.blockCount();
+	for ( int iBlock = 0; iBlock < nBlocks; iBlock++ )
+	{
+		createPNode( node, document.findBlockByNumber(iBlock).text() );
+	}
 }
 
 
 void
-XmlLabelCreator::createObjectTopLevelSpanNode( QDomElement &parent, const LabelModelTextObject* object )
+XmlLabelCreator::createPNode( QDomElement &parent, const QString& blockText )
 {
-	// TODO
+	QDomDocument doc = parent.ownerDocument();
+	QDomElement node = doc.createElement( "p" );
+	parent.appendChild( node );
+
+	node.appendChild( doc.createTextNode( blockText ) );
 }
 
 

@@ -27,6 +27,7 @@
 #include "LabelModelEllipseObject.h"
 #include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
+#include "LabelModelTextObject.h"
 #include "UndoRedoModel.h"
 
 #include "Merge/Merge.h"
@@ -46,8 +47,19 @@ ObjectEditor::ObjectEditor( QWidget *parent )
 {
 	setupUi( this );
 
+	textHAlignGroup = new QButtonGroup( this );
+	textHAlignGroup->addButton( textHAlignLeftToggle, Qt::AlignLeft );
+	textHAlignGroup->addButton( textHAlignCenterToggle, Qt::AlignHCenter );
+	textHAlignGroup->addButton( textHAlignRightToggle, Qt::AlignRight );
+
+	textVAlignGroup = new QButtonGroup( this );
+	textVAlignGroup->addButton( textVAlignTopToggle, Qt::AlignTop );
+	textVAlignGroup->addButton( textVAlignMiddleToggle, Qt::AlignVCenter );
+	textVAlignGroup->addButton( textVAlignBottomToggle, Qt::AlignBottom );
+
 	lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
 	fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
+	textColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 	shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
 	imageFieldCombo->setName( "Key" );
@@ -181,6 +193,28 @@ void ObjectEditor::loadLineSizePage()
 		double h = mObject->h().inUnits(mUnits);
 		sizeLineLengthSpin->setValue( sqrt( w*w + h*h ) );
 		sizeLineAngleSpin->setValue( qRadiansToDegrees( qAtan2( h, w ) ) );
+
+		mBlocked = false;			
+	}
+}
+
+
+void ObjectEditor::loadTextPage()
+{
+	if ( mObject )
+	{
+		mBlocked = true;
+
+		textFontFamilyCombo->setCurrentText( mObject->fontFamily() );
+		textFontSizeSpin->setValue( mObject->fontSize() );
+		textFontBoldToggle->setChecked( mObject->fontWeight() == QFont::Bold );
+		textFontItalicToggle->setChecked( mObject->fontItalicFlag() );
+		textFontUnderlineToggle->setChecked( mObject->fontUnderlineFlag() );
+		textColorButton->setColorNode( mObject->textColorNode() );
+		textHAlignGroup->button( mObject->textHAlign() )->setChecked( true );
+		textVAlignGroup->button( mObject->textVAlign() )->setChecked( true );
+		textLineSpacingSpin->setValue( mObject->textLineSpacing() );
+		textEdit->setText( mObject->text() );
 
 		mBlocked = false;			
 	}
@@ -335,6 +369,25 @@ void ObjectEditor::onSelectionChanged()
 				loadLineFillPage();
 				loadPositionPage();
 				loadLineSizePage();
+				loadShadowPage();
+				
+				setEnabled( true );
+			}
+			else if ( dynamic_cast<LabelModelTextObject*>(mObject) )
+			{
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-text.png") );
+				titleLabel->setText( tr("Text object properties") );
+
+				notebook->addTab( textPage, "text" );
+				notebook->addTab( posSizePage, "position/size" );
+				notebook->addTab( shadowPage, "shadow" );
+
+				sizeRectFrame->setVisible( true );
+				sizeResetImageButton->setVisible( false );
+				sizeLineFrame->setVisible( false );
+
+				loadTextPage();
+				loadPositionPage();
 				loadShadowPage();
 				
 				setEnabled( true );
@@ -519,6 +572,30 @@ void ObjectEditor::onLineSizeControlsChanged()
 				
 		mObject->setSize( spinLength*qCos(spinAngleRads), spinLength*qSin(spinAngleRads) );
 			
+		mBlocked = false;
+	}
+}
+
+
+void ObjectEditor::onTextControlsChanged()
+{
+	if ( !mBlocked )
+	{
+		mBlocked = true;
+
+		mUndoRedoModel->checkpoint( tr("Text") );
+		
+		mObject->setFontFamily( textFontFamilyCombo->currentText() );
+		mObject->setFontSize( textFontSizeSpin->value() );
+		mObject->setFontWeight( textFontBoldToggle->isChecked() ? QFont::Bold : QFont::Normal );
+		mObject->setFontItalicFlag( textFontItalicToggle->isChecked() );
+		mObject->setFontUnderlineFlag( textFontUnderlineToggle->isChecked() );
+		mObject->setTextColorNode( textColorButton->colorNode() );
+		mObject->setTextHAlign( Qt::AlignmentFlag( textHAlignGroup->checkedId() ) );
+		mObject->setTextVAlign( Qt::AlignmentFlag( textVAlignGroup->checkedId() ) );
+		mObject->setTextLineSpacing( textLineSpacingSpin->value() );
+		mObject->setText( textEdit->toPlainText() );
+
 		mBlocked = false;
 	}
 }
