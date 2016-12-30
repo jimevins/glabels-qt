@@ -39,8 +39,6 @@ public:
 
 	TextNode( bool isField, const QString &data );
 
-	TextNode( const QString &text, int i_start, int &i_next );
-
 
 	/////////////////////////////////
 	// Operators
