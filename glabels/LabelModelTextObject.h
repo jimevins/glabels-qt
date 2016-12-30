@@ -144,7 +144,9 @@ protected:
 private:
 	virtual void sizeUpdated();
 	void update();
-	void drawTextReal( QPainter* painter, const QColor& color ) const;
+	void drawTextInEditor( QPainter* painter, const QColor& color ) const;
+	void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;
+	QString expandText( QString text, merge::Record* record ) const;
 	
 
 	///////////////////////////////////////////////////////////////

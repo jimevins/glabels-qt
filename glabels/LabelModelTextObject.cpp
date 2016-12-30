@@ -24,6 +24,7 @@
 #include <QPen>
 #include <QTextDocument>
 #include <QTextBlock>
+#include <QRegularExpression>
 #include <QtDebug>
 
 
@@ -357,7 +358,11 @@ void LabelModelTextObject::drawShadow( QPainter* painter, bool inEditor, merge::
 
 		if ( inEditor )
 		{
-			drawTextReal( painter, shadowColor );
+			drawTextInEditor( painter, shadowColor );
+		}
+		else
+		{
+			drawText( painter, shadowColor, record );
 		}
 	}
 }
@@ -372,7 +377,11 @@ void LabelModelTextObject::drawObject( QPainter* painter, bool inEditor, merge::
 
 	if ( inEditor )
 	{
-		drawTextReal( painter, textColor );
+		drawTextInEditor( painter, textColor );
+	}
+	else
+	{
+		drawText( painter, textColor, record );
 	}
 }
 
@@ -396,7 +405,7 @@ void LabelModelTextObject::sizeUpdated()
 
 
 ///
-/// Update cached information
+/// Update cached information for editor view
 ///
 void LabelModelTextObject::update()
 {
@@ -480,9 +489,9 @@ void LabelModelTextObject::update()
 
 
 ///
-/// Actually draw text
+/// Draw text in editor from cached information
 ///
-void LabelModelTextObject::drawTextReal( QPainter* painter, const QColor& color ) const
+void LabelModelTextObject::drawTextInEditor( QPainter* painter, const QColor& color ) const
 {
 	if ( mText.isEmpty() )
 	{
@@ -499,4 +508,120 @@ void LabelModelTextObject::drawTextReal( QPainter* painter, const QColor& color 
 	{
 		layout->draw( painter, QPointF( 0, 0 ) );
 	}
+}
+
+
+///
+/// Draw text in final printout or preview
+///
+void
+LabelModelTextObject::drawText( QPainter* painter, const QColor&color, merge::Record* record ) const
+{
+	QFont font;
+	font.setFamily( mFontFamily );
+	font.setPointSizeF( mFontSize );
+	font.setWeight( mFontWeight );
+	font.setItalic( mFontItalicFlag );
+	font.setUnderline( mFontUnderlineFlag );
+
+	QTextOption textOption;
+	textOption.setAlignment( mTextHAlign );
+	textOption.setWrapMode( QTextOption::WordWrap );
+
+	QFontMetricsF fontMetrics( font );
+	double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
+
+	QTextDocument document( expandText( mText, record ) );
+
+	QList<QTextLayout*> layouts;
+
+	// Pass #1 -- do initial layouts
+	double x = 0;
+	double y = 0;
+	QRectF boundingRect;
+	for ( int i = 0; i < document.blockCount(); i++ )
+	{
+		QTextLayout* layout = new QTextLayout( document.findBlockByNumber(i).text() );
+		
+		layout->setFont( font );
+		layout->setTextOption( textOption );
+		layout->setCacheEnabled(true);
+
+		layout->beginLayout();
+		for ( QTextLine l = layout->createLine(); l.isValid(); l = layout->createLine() )
+		{
+			l.setLineWidth( mW.pt() - 2*marginPts );
+			l.setPosition( QPointF( x, y ) );
+			y += dy;
+		}
+		layout->endLayout();
+
+		layouts.append( layout );
+
+		boundingRect = layout->boundingRect().united( boundingRect );
+	}
+	double h = boundingRect.height();
+
+
+	// Pass #2 -- adjust layout positions for vertical alignment and create hover path
+	x = marginPts;
+	switch ( mTextVAlign )
+	{
+	case Qt::AlignVCenter:
+		y = mH.pt()/2 - h/2;
+		break;
+	case Qt::AlignBottom:
+		y = mH.pt() - h - marginPts;
+		break;
+	default:
+		y = marginPts;
+		break;
+	}
+	foreach ( QTextLayout* layout, layouts )
+	{
+		for ( int j = 0; j < layout->lineCount(); j++ )
+		{
+			QTextLine l = layout->lineAt(j);
+			l.setPosition( QPointF( x, y ) );
+			y += dy;
+		}
+	}
+
+	// Draw layouts
+	painter->setPen( QPen( color ) );
+	foreach ( QTextLayout* layout, layouts )
+	{
+		layout->draw( painter, QPointF( 0, 0 ) );
+	}
+
+	// Cleanup
+	qDeleteAll( layouts );
+}
+
+
+///
+/// Expand text by replacing fields with their values from the given record
+///
+QString LabelModelTextObject::expandText( QString text, merge::Record* record ) const
+{
+	if ( record )
+	{
+		foreach ( QString key, record->keys() )
+		{
+			// Special case: remove line when it contains only an empty field.
+			// e.g. an optional ${ADDR2} line.  To bypass this case, include
+			// whitespace at end of line.
+			if ( record->value(key).isEmpty() )
+			{
+				QStringList v = text.split( '\n' );
+				v.removeAll( "${"+key+"}" );
+				text = v.join( '\n' );
+			}
+
+			// Nominal case: simple replacement
+			text.replace( "${"+key+"}", record->value(key) );
+		}
+	}
+
+	return text;
 }
