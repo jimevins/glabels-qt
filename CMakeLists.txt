@@ -7,19 +7,15 @@ project (glabels_qt)
 
 
 #=======================================
-# Package and Version Information
+# Version Information
 #=======================================
-set (Package_Name "glabels-qt")
-set (Short_Name   "glabels-qt")
-set (Package_URL  "https://github.com/jimevins/glabels-qt")
+set (Website  "http://glabels.org")
 
-set (Major_Version   "0")
-set (Minor_Version   "0")
-set (Bugfix_Version  "0")
+set (Major_Version   "3")
+set (Minor_Version   "99")
+set (Micro_Version   "0")
 
-set (Package_Version "${Major_Version}.${Minor_Version}.${Bugfix_Version}")
-
-set (Unique_Package_Name ${Package_Name}-${API_Version})
+set (Full_Version "${Major_Version}.${Minor_Version}.${Micro_Version}")
 
 
 #=======================================

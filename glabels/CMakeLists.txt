@@ -7,6 +7,12 @@ project (app CXX)
 
 
 #=======================================
+# Auto-generate Version.h
+#=======================================
+configure_file (Version.h.in ${CMAKE_CURRENT_BINARY_DIR}/Version.h @ONLY)
+
+
+#=======================================
 # Sources
 #=======================================
 set (glabels_sources

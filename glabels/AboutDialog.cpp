@@ -20,6 +20,7 @@
 
 #include "AboutDialog.h"
 
+#include "Version.h"
 #include <QUrl>
 #include <QDesktopServices>
 #include <QtDebug>
@@ -33,14 +34,30 @@ AboutDialog::AboutDialog( QWidget *parent )
 {
 	setupUi( this );
 
-	QString titleImage = ":images/glabels-label-designer.png";
-	QString version = "x.x.x";
+	QString version = tr("Version") + " " + Version::STRING;
+	
 	QString description = tr("A program to create labels and business cards.");
+	
+	QString copyright = "Copyright &copy; 2017 Jim Evins <evins@snaught.com>";
+	
+	QString licenseParagraph1 =
+		tr( "gLabels is free software: you can redistribute it and/or modify "
+		    "it under the terms of the GNU General Public License as published by "
+		    "the Free Software Foundation, either version 3 of the License, or "
+		    "(at your option) any later version." );
 
-	QString markup = QString("<p><img src='%1'></p>").arg( titleImage )
-		+ "<p>" + version + "</p>"
-		+ "<p>" + description + "</p>"
-		+ "<p>Copyright &copy; 2016 Jim Evins <evins@snaught.com></p>";
+	QString licenseParagraph2 =
+		tr( "gLabels is distributed in the hope that it will be useful, "
+		    "but WITHOUT ANY WARRANTY; without even the implied warranty of "
+		    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
+		    "GNU General Public License for more details." );
+	
+	QString markup =
+		"<p align='center'>" + version + "</p>" +
+		"<p align='center'>" + description + "</p>" +
+		"<p align='center'>" + copyright + "</p>" +
+		"<p align='left'>"   + licenseParagraph1 + "</p>" +
+		"<p align='left'>"   + licenseParagraph2 + "</p>";
 
 	aboutLabel->setText( markup );
 }
@@ -60,5 +77,5 @@ void AboutDialog::onLicenseButtonClicked()
 ///
 void AboutDialog::onWebsiteButtonClicked()
 {
-	QDesktopServices::openUrl( QUrl("http://glabels.org/") );
+	QDesktopServices::openUrl( QUrl(Version::WEBSITE) );
 }
