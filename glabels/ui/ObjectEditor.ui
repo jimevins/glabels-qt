@@ -486,11 +486,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="textInsertFieldButton">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
+               <widget class="FieldButton" name="textInsertFieldCombo"/>
               </item>
               <item>
                <spacer name="horizontalSpacer_2">
@@ -1749,28 +1745,12 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>180</x>
+     <x>173</x>
      <y>389</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
      <y>485</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>textInsertFieldButton</sender>
-   <signal>keySelected()</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>215</x>
-     <y>652</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>396</x>
-     <y>638</y>
     </hint>
    </hints>
   </connection>
@@ -2190,6 +2170,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>textInsertFieldCombo</sender>
+   <signal>keySelected(QString)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onTextInsertFieldKeySelected(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>653</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>645</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onChanged()</slot>
@@ -2203,5 +2199,6 @@
   <slot>onImageFileButtonClicked()</slot>
   <slot>onImageKeySelected(QString)</slot>
   <slot>onTextControlsChanged()</slot>
+  <slot>onTextInsertFieldKeySelected(QString)</slot>
  </slots>
 </ui>

@@ -81,11 +81,12 @@ private slots:
 	void onLineControlsChanged();
 	void onFillControlsChanged();
 	void onImageFileButtonClicked();
-	void onImageKeySelected(QString key );
+	void onImageKeySelected( QString key );
 	void onPositionControlsChanged();
 	void onRectSizeControlsChanged();
 	void onLineSizeControlsChanged();
 	void onTextControlsChanged();
+	void onTextInsertFieldKeySelected( QString key );
 	void onShadowControlsChanged();
 	void onChanged();
 		

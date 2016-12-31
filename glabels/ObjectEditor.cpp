@@ -62,6 +62,7 @@ ObjectEditor::ObjectEditor( QWidget *parent )
 	textColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 	shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
+	textInsertFieldCombo->setName( "Insert Field" );
 	imageFieldCombo->setName( "Key" );
 
 	setEnabled( false );
@@ -420,6 +421,7 @@ void ObjectEditor::onMergeSourceChanged()
 		QStringList keys = mModel->merge()->keys();
 		lineColorButton->setKeys( keys );
 		fillColorButton->setKeys( keys );
+		textInsertFieldCombo->setKeys( keys );
 		imageFieldCombo->setKeys( keys );
 		shadowColorButton->setKeys( keys );
 	}
@@ -501,7 +503,7 @@ void ObjectEditor::onImageFileButtonClicked()
 }
 
 
-void ObjectEditor::onImageKeySelected(QString key )
+void ObjectEditor::onImageKeySelected( QString key )
 {
 	qDebug() << "Key = " << key;
 }
@@ -598,6 +600,12 @@ void ObjectEditor::onTextControlsChanged()
 
 		mBlocked = false;
 	}
+}
+
+
+void ObjectEditor::onTextInsertFieldKeySelected( QString key )
+{
+	textEdit->insertPlainText( "${" + key + "}" );
 }
 
 
