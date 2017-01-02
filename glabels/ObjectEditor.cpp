@@ -43,7 +43,7 @@
 /// Constructor
 ///
 ObjectEditor::ObjectEditor( QWidget *parent )
-	: mModel(0), mObject(0), mBlocked(false)
+	: mModel(0), mObject(0), mImageCwd("."), mBlocked(false)
 {
 	setupUi( this );
 
@@ -490,6 +490,17 @@ void ObjectEditor::onFillControlsChanged()
 
 void ObjectEditor::onImageFileButtonClicked()
 {
+	// Either use saved CWD from a previous open or the current file, if it exists
+	QString cwd = mImageCwd;
+	if ( !mObject->filenameNode().isField() )
+	{
+		QFileInfo fileInfo( mObject->filenameNode().data() );
+		if ( fileInfo.isFile() )
+		{
+			cwd = fileInfo.filePath();
+		}
+	}
+
 	QString filters =
 		tr("Image files (*.png *.jpg *.jpeg *.gif *.bmp *.pbm *.pgm *.ppm *.xbm *.xpm *.svg)") + ";;" +
 		tr("All files (*)") + ";;" +
@@ -507,12 +518,16 @@ void ObjectEditor::onImageFileButtonClicked()
 	QString filename =
 		QFileDialog::getOpenFileName( this->window(),
 					      tr("gLabels - Select image file"),
-					      ".", filters );
+					      cwd, filters );
 
 	if ( !filename.isEmpty() )
 	{
 		mUndoRedoModel->checkpoint( tr("Set image") );
 		mObject->setFilenameNode( TextNode( false, filename ) );
+
+		// Save CWD for next open
+		QFileInfo fileInfo( filename );
+		mImageCwd = fileInfo.absolutePath();
 	}
 }
 

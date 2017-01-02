@@ -106,6 +106,8 @@ private:
 	QButtonGroup*            textHAlignGroup;
 	QButtonGroup*            textVAlignGroup;
 
+	QString                  mImageCwd;
+
 	bool                     mBlocked;
 
 };
