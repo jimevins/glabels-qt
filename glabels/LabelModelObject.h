@@ -37,6 +37,7 @@
 
 // Forward References
 class LabelRegion;
+class Size;
 
 
 ///
@@ -240,7 +241,12 @@ public:
 	//
 	virtual TextNode filenameNode() const;
 	virtual void setFilenameNode( const TextNode &value );
-		
+
+	//
+	// Virtual Image Property: originalSize (read-only)
+	//
+	virtual Size originalSize() const;
+
 
 	///////////////////////////////////////////////////////////////
 	// Shape Properties Virtual Interface
@@ -329,7 +335,9 @@ public:
 public:
 	void setPosition( const glabels::Distance& x0, const glabels::Distance& y0 );
 	void setPositionRelative( const glabels::Distance& dx, const glabels::Distance& dy );
+	Size size() const;
 	void setSize( const glabels::Distance& w, const glabels::Distance& h );
+	void setSize( const Size& size );
 	void setSizeHonorAspect( const glabels::Distance& w, const glabels::Distance& h );
 	void setWHonorAspect( const glabels::Distance& w );
 	void setHHonorAspect( const glabels::Distance& h );

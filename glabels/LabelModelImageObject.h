@@ -58,6 +58,11 @@ public:
 	virtual TextNode filenameNode( void ) const;
 	virtual void setFilenameNode( const TextNode& value );
 
+	//
+	// Image Property: originalSize
+	//
+	virtual Size originalSize() const;
+	
 
 	///////////////////////////////////////////////////////////////
 	// Capability Implementations

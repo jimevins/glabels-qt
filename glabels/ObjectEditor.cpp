@@ -29,6 +29,7 @@
 #include "LabelModelLineObject.h"
 #include "LabelModelTextObject.h"
 #include "UndoRedoModel.h"
+#include "Size.h"
 
 #include "Merge/Merge.h"
 
@@ -175,6 +176,14 @@ void ObjectEditor::loadRectSizePage()
 		sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 		sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 
+		Size originalSize = mObject->originalSize();
+		QString originalSizeString = QString( "%1:  %2 x %3 %4" )
+			.arg( tr("Original size") )
+			.arg( originalSize.w().inUnits(mUnits), 0, 'f', mSpinDigits )
+			.arg( originalSize.h().inUnits(mUnits), 0, 'f', mSpinDigits )
+			.arg( mUnits.toIdString() );
+		sizeOriginalSizeLabel->setText( originalSizeString );
+
 		mBlocked = false;			
 	}
 }
@@ -303,7 +312,7 @@ void ObjectEditor::onSelectionChanged()
 
 				fillFrame->setVisible( true );
 				sizeRectFrame->setVisible( true );
-				sizeResetImageButton->setVisible( false );
+				sizeOriginalSizeGroup->setVisible( false );
 				sizeLineFrame->setVisible( false );
 
 				loadLineFillPage();
@@ -324,7 +333,7 @@ void ObjectEditor::onSelectionChanged()
 
 				fillFrame->setVisible( true );
 				sizeRectFrame->setVisible( true );
-				sizeResetImageButton->setVisible( false );
+				sizeOriginalSizeGroup->setVisible( false );
 				sizeLineFrame->setVisible( false );
 
 				loadLineFillPage();
@@ -344,11 +353,12 @@ void ObjectEditor::onSelectionChanged()
 				notebook->addTab( shadowPage, "shadow" );
 
 				sizeRectFrame->setVisible( true );
-				sizeResetImageButton->setVisible( true );
+				sizeOriginalSizeGroup->setVisible( true );
 				sizeLineFrame->setVisible( false );
 
 				loadImagePage();
 				loadPositionPage();
+				loadRectSizePage();
 				loadShadowPage();
 				
 				setEnabled( true );
@@ -364,7 +374,7 @@ void ObjectEditor::onSelectionChanged()
 
 				fillFrame->setVisible( false );
 				sizeRectFrame->setVisible( false );
-				sizeResetImageButton->setVisible( false );
+				sizeOriginalSizeGroup->setVisible( false );
 				sizeLineFrame->setVisible( true );
 
 				loadLineFillPage();
@@ -384,7 +394,7 @@ void ObjectEditor::onSelectionChanged()
 				notebook->addTab( shadowPage, "shadow" );
 
 				sizeRectFrame->setVisible( true );
-				sizeResetImageButton->setVisible( false );
+				sizeOriginalSizeGroup->setVisible( false );
 				sizeLineFrame->setVisible( false );
 
 				loadTextPage();
@@ -636,6 +646,12 @@ void ObjectEditor::onTextControlsChanged()
 void ObjectEditor::onTextInsertFieldKeySelected( QString key )
 {
 	textEdit->insertPlainText( "${" + key + "}" );
+}
+
+
+void ObjectEditor::onResetImageSize()
+{
+	mObject->setSize( mObject->originalSize() );
 }
 
 

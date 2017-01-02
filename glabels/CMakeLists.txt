@@ -62,6 +62,7 @@ set (glabels_sources
   SelectProductDialog.cpp
   Settings.cpp
   SimplePreview.cpp
+  Size.cpp
   StartupView.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp

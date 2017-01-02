@@ -87,6 +87,7 @@ private slots:
 	void onLineSizeControlsChanged();
 	void onTextControlsChanged();
 	void onTextInsertFieldKeySelected( QString key );
+	void onResetImageSize();
 	void onShadowControlsChanged();
 	void onChanged();
 		

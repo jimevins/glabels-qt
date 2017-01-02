@@ -27,6 +27,7 @@
 #include "TextNode.h"
 #include "BarcodeStyle.h"
 #include "LabelRegion.h"
+#include "Size.h"
 
 
 ///
@@ -574,6 +575,16 @@ void LabelModelObject::setFilenameNode( const TextNode& value )
 		
 
 ///
+/// Virtual Original Size Property Default Getter
+/// (Overridden by concrete class)
+///
+Size LabelModelObject::originalSize() const
+{
+	return Size( glabels::Distance::pt(0), glabels::Distance::pt(0) );
+}
+
+
+///
 /// Virtual Line Width Property Default Getter
 /// (Overridden by concrete class)
 ///
@@ -817,6 +828,15 @@ void LabelModelObject::setPositionRelative( const glabels::Distance& dx,
 
 
 ///
+/// Get Size
+///
+Size LabelModelObject::size() const
+{
+	return Size( mW, mH );
+}
+
+
+///
 /// Set Size
 ///
 void LabelModelObject::setSize( const glabels::Distance& w,
@@ -824,6 +844,19 @@ void LabelModelObject::setSize( const glabels::Distance& w,
 {
 	mW = w;
 	mH = h;
+
+	sizeUpdated();
+	emit changed();
+}
+
+
+///
+/// Set Size
+///
+void LabelModelObject::setSize( const Size& size )
+{
+	mW = size.w();
+	mH = size.h();
 
 	sizeUpdated();
 	emit changed();

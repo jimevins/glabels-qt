@@ -20,6 +20,7 @@
 
 #include "LabelModelImageObject.h"
 
+#include "Size.h"
 #include <QBrush>
 #include <QPen>
 #include <QImage>
@@ -115,6 +116,30 @@ void LabelModelImageObject::setFilenameNode( const TextNode& value )
 		
 		emit changed();
 	}
+}
+
+
+///
+/// Image originalSize Property Getter (assumes 72 DPI, i.e. 1pixel == 1pt)
+///
+Size LabelModelImageObject::originalSize() const
+{
+	Size size( glabels::Distance::pt(72), glabels::Distance::pt(72) );
+
+	if ( mImage )
+	{
+		QSize qsize = mImage->size();
+		size.setW( glabels::Distance::pt( qsize.width() ) );
+		size.setH( glabels::Distance::pt( qsize.height() ) );
+	}
+	else if ( mSvg )
+	{
+		QSize qsize = mSvg->defaultSize();
+		size.setW( glabels::Distance::pt( qsize.width() ) );
+		size.setH( glabels::Distance::pt( qsize.height() ) );
+	}
+
+	return size;
 }
 
 
