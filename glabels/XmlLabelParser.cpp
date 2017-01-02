@@ -25,9 +25,9 @@
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelLineObject.h"
+#include "LabelModelImageObject.h"
 #include "LabelModelTextObject.h"
-//#include "LabelObjectImage.h"
-//#include "LabelObjectBarcode.h"
+//#include "LabelModelBarcodeObject.h"
 #include "EnumUtil.h"
 #include "Merge/Factory.h"
 #include "libglabels/XmlTemplateParser.h"
@@ -284,11 +284,11 @@ XmlLabelParser::parseObjects( const QDomElement &node )
 		{
 			list.append( parseObjectTextNode( child.toElement() ) );
 		}
-#if 0
 		else if ( tagName == "Object-image" )
 		{
 			list.append( parseObjectImageNode( child.toElement() ) );
 		}
+#if 0
 		else if ( tagName == "Object-barcode" )
 		{
 			list.append( parseObjectBarcodeNode( child.toElement() ) );
@@ -445,7 +445,35 @@ XmlLabelParser::parseObjectLineNode( const QDomElement &node )
 LabelModelImageObject*
 XmlLabelParser::parseObjectImageNode( const QDomElement &node )
 {
-	return 0;
+	using namespace glabels;
+
+	LabelModelImageObject* object = new LabelModelImageObject();
+
+
+	/* position attrs */
+	object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
+	object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+
+	/* size attrs */
+	object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
+	object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+
+	/* file attrs */
+	{
+		QString key        = XmlUtil::getStringAttr( node, "src_field", "" );
+		bool    field_flag = !key.isEmpty();
+		QString filename   = XmlUtil::getStringAttr( node, "src", "" );
+
+		object->setFilenameNode( TextNode( field_flag, field_flag ? key : filename ) );
+	}
+        
+	/* affine attrs */
+	parseAffineAttrs( node, object );
+
+	/* shadow attrs */
+	parseShadowAttrs( node, object );
+
+	return object;
 }
 
 
@@ -541,10 +569,10 @@ XmlLabelParser::parseAffineAttrs( const QDomElement &node, LabelModelObject* obj
 
 	double a[6];
 
-	a[0] = XmlUtil::getDoubleAttr( node, "a0", 0.0 );
+	a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
 	a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
 	a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-	a[3] = XmlUtil::getDoubleAttr( node, "a3", 0.0 );
+	a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
 	a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
 	a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 

@@ -505,7 +505,8 @@ void ObjectEditor::onImageFileButtonClicked()
 
 void ObjectEditor::onImageKeySelected( QString key )
 {
-	qDebug() << "Key = " << key;
+	mUndoRedoModel->checkpoint( tr("Set image") );
+	mObject->setFilenameNode( TextNode( true, key ) );
 }
 
 

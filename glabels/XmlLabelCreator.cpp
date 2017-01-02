@@ -142,6 +142,10 @@ XmlLabelCreator::addObjectsToNode( QDomElement &parent, const QList<LabelModelOb
 		{
 			createObjectLineNode( parent, lineObject );
 		}
+		else if ( LabelModelImageObject* imageObject = dynamic_cast<LabelModelImageObject*>(object) )
+		{
+			createObjectImageNode( parent, imageObject );
+		}
 		else if ( LabelModelTextObject* textObject = dynamic_cast<LabelModelTextObject*>(object) )
 		{
 			createObjectTextNode( parent, textObject );
@@ -280,7 +284,34 @@ XmlLabelCreator::createObjectLineNode( QDomElement &parent, const LabelModelLine
 void
 XmlLabelCreator::createObjectImageNode( QDomElement &parent, const LabelModelImageObject* object )
 {
-	// TODO
+	QDomDocument doc = parent.ownerDocument();
+	QDomElement node = doc.createElement( "Object-image" );
+	parent.appendChild( node );
+
+	/* position attrs */
+	glabels::XmlUtil::setLengthAttr( node, "x", object->x0() );
+	glabels::XmlUtil::setLengthAttr( node, "y", object->y0() );
+
+	/* size attrs */
+	glabels::XmlUtil::setLengthAttr( node, "w", object->w() );
+	glabels::XmlUtil::setLengthAttr( node, "h", object->h() );
+
+	/* file attrs */
+	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
+	if ( object->filenameNode().isField() )
+	{
+		glabels::XmlUtil::setStringAttr( node, "src_field", object->filenameNode().data() );
+	}
+	else
+	{
+		glabels::XmlUtil::setStringAttr( node, "src", object->filenameNode().data() );
+	}
+
+	/* affine attrs */
+	createAffineAttrs( node, object );
+
+	/* shadow attrs */
+	createShadowAttrs( node, object );
 }
 
 
