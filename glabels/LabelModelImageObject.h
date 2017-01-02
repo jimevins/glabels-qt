@@ -23,6 +23,8 @@
 
 #include "LabelModelObject.h"
 
+#include <QSvgRenderer>
+
 
 ///
 /// Label Model Image Object
@@ -84,6 +86,7 @@ protected:
 protected:
 	TextNode       mFilenameNode;
 	QImage*        mImage;
+	QSvgRenderer*  mSvg;
 
 	static QImage* smDefaultImage;
 

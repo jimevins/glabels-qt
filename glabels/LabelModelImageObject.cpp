@@ -23,6 +23,8 @@
 #include <QBrush>
 #include <QPen>
 #include <QImage>
+#include <QFileInfo>
+#include <QtDebug>
 
 
 namespace
@@ -39,7 +41,7 @@ QImage* LabelModelImageObject::smDefaultImage = 0;
 ///
 /// Constructor
 ///
-LabelModelImageObject::LabelModelImageObject() : mImage(0)
+LabelModelImageObject::LabelModelImageObject() : mImage(0), mSvg(0)
 {
 	mOutline = new Outline( this );
 
@@ -152,7 +154,7 @@ void LabelModelImageObject::drawObject( QPainter* painter, bool inEditor, merge:
 {
 	QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
-	if ( inEditor && (mFilenameNode.isField() || !mImage ) )
+	if ( inEditor && (mFilenameNode.isField() || (!mImage && !mSvg) ) )
 	{
 		painter->save();
 		painter->setRenderHint( QPainter::SmoothPixmapTransform, false );
@@ -163,8 +165,13 @@ void LabelModelImageObject::drawObject( QPainter* painter, bool inEditor, merge:
 	{
 		painter->drawImage( destRect, *mImage );
 	}
+	else if ( mSvg )
+	{
+		mSvg->render( painter, destRect );
+	}
 	else if ( mFilenameNode.isField() )
 	{
+		// TODO
 	}
 }
 
@@ -190,37 +197,76 @@ void LabelModelImageObject::loadImage()
 	{
 		delete mImage;
 	}
+	if ( mSvg )
+	{
+		delete mSvg;
+	}
 
 	if ( mFilenameNode.isField() )
 	{
 		mImage = 0;
+		mSvg = 0;
 	}
 	else
 	{
 		QString filename = mFilenameNode.data();
-		mImage = new QImage( filename );
-		if ( mImage->isNull() )
+		QFileInfo fileInfo( filename );
+
+		if ( fileInfo.isReadable() )
 		{
-			mImage = 0;
-		}
-		else
-		{
-			double imageW = mImage->width();
-			double imageH = mImage->height();
-			double aspectRatio = imageH / imageW;
-			if ( mH > mW*aspectRatio )
+			if ( (fileInfo.suffix() == "svg") || (fileInfo.suffix() == "SVG") )
 			{
-				mH = mW*aspectRatio;
+				mSvg = new QSvgRenderer( filename );
+				if ( !mSvg->isValid() )
+				{
+					mSvg = 0;
+				}
+				else
+				{
+					// Adjust size based on aspect ratio of SVG image
+					QRectF rect = mSvg->viewBoxF();
+					double aspectRatio = rect.height() / rect.width();
+					if ( mH > mW*aspectRatio )
+					{
+						mH = mW*aspectRatio;
+					}
+					else
+					{
+						mW = mH/aspectRatio;
+					}
+				}
 			}
 			else
 			{
-				mW = mH/aspectRatio;
+				mImage = new QImage( filename );
+				if ( mImage->isNull() )
+				{
+					mImage = 0;
+				}
+				else
+				{
+					// Adjust size based on aspect ratio of image
+					double imageW = mImage->width();
+					double imageH = mImage->height();
+					double aspectRatio = imageH / imageW;
+					if ( mH > mW*aspectRatio )
+					{
+						mH = mW*aspectRatio;
+					}
+					else
+					{
+						mW = mH/aspectRatio;
+					}
+				}
 			}
 		}
 	}
 }
 
 
+///
+/// Create shadow image
+///
 QImage* LabelModelImageObject::createShadowImage( const QColor& color ) const
 {
 	int r = color.red();

@@ -144,6 +144,7 @@ target_link_libraries (glabels-qt
   ${Qt5Widgets_LIBRARIES}
   ${Qt5PrintSupport_LIBRARIES}
   ${Qt5Xml_LIBRARIES}
+  ${Qt5Svg_LIBRARIES}
   ${ZLIB_LIBRARIES}
 )
 
@@ -157,6 +158,7 @@ include_directories (
   ${Qt5Widgets_INCLUDE_DIRS}
   ${Qt5PrintSupport_INCLUDE_DIRS}
   ${Qt5Xml_INCLUDE_DIRS}
+  ${Qt5Svg_INCLUDE_DIRS}
 )
 
 link_directories (

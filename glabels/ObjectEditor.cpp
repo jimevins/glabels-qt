@@ -490,11 +490,25 @@ void ObjectEditor::onFillControlsChanged()
 
 void ObjectEditor::onImageFileButtonClicked()
 {
+	QString filters =
+		tr("Image files (*.png *.jpg *.jpeg *.gif *.bmp *.pbm *.pgm *.ppm *.xbm *.xpm *.svg)") + ";;" +
+		tr("All files (*)") + ";;" +
+		tr("PNG - Portable Network Graphics (*.png)") + ";;" +
+		tr("BMP - Windows Bitmap (*.bmp)") + ";;" +
+		tr("GIF - Graphics Interchange Format (*.gif)") + ";;" +
+		tr("JPEG - Joint Photographic Experts Group (*.jpg *.jpeg)") + ";;" +
+		tr("PBM - Portable Bitmap (*.pbm)") + ";;" +
+		tr("PGM - Portable Graymap (*.pgm)") + ";;" +
+		tr("PPM - Portable Pixmap (*.ppm)") + ";;" +
+		tr("SVG - Scalable Vector Graphics (*.svg)") + ";;" +
+		tr("XBM - X11 Bitmap (*.xbm)") + ";;" +
+		tr("XPM - X11 Pixmap (*.xpm)");
+		
 	QString filename =
 		QFileDialog::getOpenFileName( this->window(),
 					      tr("gLabels - Select image file"),
-					      ".",
-					      tr("Image Files (*.png *.jpg *.bmp);;All files (*)") );
+					      ".", filters );
+
 	if ( !filename.isEmpty() )
 	{
 		mUndoRedoModel->checkpoint( tr("Set image") );
