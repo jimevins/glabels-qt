@@ -1,4 +1,4 @@
-/*  LabelRegion.h
+/*  Region.h
  *
  *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LabelRegion_h
-#define LabelRegion_h
+#ifndef Region_h
+#define Region_h
 
 #include <QRectF>
 #include "libglabels/Distance.h"
@@ -28,8 +28,17 @@
 ///
 /// Label Region Type
 ///
-struct LabelRegion
+struct Region
 {
+
+	/////////////////////////////////
+	// Constructors
+	/////////////////////////////////
+public:
+	Region();
+	Region( const glabels::Distance& x1, const glabels::Distance& y1,
+	        const glabels::Distance& x2, const glabels::Distance& y2 );
+	
 
 	/////////////////////////////////
 	// Properties
@@ -82,4 +91,4 @@ private:
 };
 
 
-#endif // LabelRegion_h
+#endif // Region_h

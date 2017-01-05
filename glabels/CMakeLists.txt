@@ -48,7 +48,6 @@ set (glabels_sources
   LabelModelLineObject.cpp
   LabelModelShapeObject.cpp
   LabelModelTextObject.cpp
-  LabelRegion.cpp
   MainWindow.cpp
   MergeView.cpp
   ObjectEditor.cpp
@@ -59,6 +58,7 @@ set (glabels_sources
   PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  Region.cpp
   SelectProductDialog.cpp
   Settings.cpp
   SimplePreview.cpp

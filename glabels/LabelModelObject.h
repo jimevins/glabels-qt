@@ -36,7 +36,7 @@
 
 
 // Forward References
-class LabelRegion;
+class Region;
 class Size;
 
 
@@ -341,7 +341,7 @@ public:
 	void setSizeHonorAspect( const glabels::Distance& w, const glabels::Distance& h );
 	void setWHonorAspect( const glabels::Distance& w );
 	void setHHonorAspect( const glabels::Distance& h );
-	LabelRegion getExtent();
+	Region getExtent();
 	void rotate( double thetaDegs );
 	void flipHoriz();
 	void flipVert();

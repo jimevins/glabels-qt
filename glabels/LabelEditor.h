@@ -25,7 +25,7 @@
 #include <QScrollArea>
 #include <QPainter>
 
-#include "LabelRegion.h"
+#include "Region.h"
 
 
 // Forward References
@@ -191,7 +191,7 @@ private:
 
 	/* ArrowSelectRegion state */
 	bool                 mSelectRegionVisible;
-	LabelRegion          mSelectRegion;
+	Region               mSelectRegion;
 
 	/* ArrowMove state */
 	glabels::Distance    mMoveLastX;

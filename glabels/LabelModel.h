@@ -35,7 +35,7 @@
 // Forward References
 class LabelModelObject;
 class Handle;
-class LabelRegion;
+class Region;
 class ColorNode;
 
 
@@ -133,7 +133,7 @@ public:
 	void unselectObject( LabelModelObject* object );
 	void selectAll();
 	void unselectAll();
-	void selectRegion( const LabelRegion& region );
+	void selectRegion( const Region& region );
 	bool isSelectionEmpty();
 	bool isSelectionAtomic();
 

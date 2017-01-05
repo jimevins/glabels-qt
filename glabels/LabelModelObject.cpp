@@ -26,7 +26,7 @@
 #include "ColorNode.h"
 #include "TextNode.h"
 #include "BarcodeStyle.h"
-#include "LabelRegion.h"
+#include "Region.h"
 #include "Size.h"
 
 
@@ -927,7 +927,7 @@ void LabelModelObject::setHHonorAspect( const glabels::Distance& h )
 ///
 /// Get Extent of Bounding Box
 ///
-LabelRegion LabelModelObject::getExtent()
+Region LabelModelObject::getExtent()
 {
 	using namespace glabels;
 
@@ -941,7 +941,7 @@ LabelRegion LabelModelObject::getExtent()
 	a3 = mMatrix.map( a3 );
 	a4 = mMatrix.map( a4 );
 
-	LabelRegion region;
+	Region region;
 	region.setX1( min( a1.x(), min( a2.x(), min( a3.x(), a4.x() ) ) ) + mX0 );
 	region.setY1( min( a1.y(), min( a2.y(), min( a3.y(), a4.y() ) ) ) + mY0 );
 	region.setX2( max( a1.x(), max( a2.x(), max( a3.x(), a4.x() ) ) ) + mX0 );

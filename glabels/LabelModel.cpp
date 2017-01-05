@@ -28,7 +28,7 @@
 
 #include "Merge/None.h"
 #include "LabelModelObject.h"
-#include "LabelRegion.h"
+#include "Region.h"
 #include "XmlLabelCreator.h"
 #include "XmlLabelParser.h"
 
@@ -496,7 +496,7 @@ void LabelModel::unselectAll()
 ///
 /// Select Region
 ///
-void LabelModel::selectRegion( const LabelRegion &region )
+void LabelModel::selectRegion( const Region &region )
 {
 	glabels::Distance rX1 = min( region.x1(), region.x2() );
 	glabels::Distance rY1 = min( region.y1(), region.y2() );
@@ -505,7 +505,7 @@ void LabelModel::selectRegion( const LabelRegion &region )
 
 	foreach ( LabelModelObject* object, mObjectList )
 	{
-		LabelRegion objectExtent = object->getExtent();
+		Region objectExtent = object->getExtent();
 
 		if ( (objectExtent.x1() >= rX1) &&
 		     (objectExtent.x2() <= rX2) &&
@@ -820,14 +820,14 @@ void LabelModel::alignSelectionLeft()
 	glabels::Distance x1_min = 7200; /// Start with a very large value: 7200pts = 100in
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		if ( r.x1() < x1_min ) x1_min = r.x1();
 	}
 
 	/// Now adjust the object positions to line up the left edges at left-most edge.
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dx = x1_min - r.x1();
 		object->setPositionRelative( dx, 0 );
 	}
@@ -854,14 +854,14 @@ void LabelModel::alignSelectionRight()
 	glabels::Distance x1_max = -7200; /// Start with a very large negative value: 7200pts = 100in
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		if ( r.x1() > x1_max ) x1_max = r.x1();
 	}
 
 	/// Now adjust the object positions to line up the right edges at right-most edge.
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dx = x1_max - r.x1();
 		object->setPositionRelative( dx, 0 );
 	}
@@ -889,7 +889,7 @@ void LabelModel::alignSelectionHCenter()
 	int n = 0;
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		xsum += (r.x1() + r.x2()) / 2.0;
 		n++;
 	}
@@ -900,7 +900,7 @@ void LabelModel::alignSelectionHCenter()
 	glabels::Distance dxmin = fabs( xavg - xcenter );
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dx = fabs( xavg - (r.x1() + r.x2())/2.0 );
 		if ( dx < dxmin )
 		{
@@ -912,7 +912,7 @@ void LabelModel::alignSelectionHCenter()
 	/// Now adjust the object positions to line up with the center of this object.
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dx = xcenter - (r.x1() + r.x2())/2.0;
 		object->setPositionRelative( dx, 0 );
 	}
@@ -939,14 +939,14 @@ void LabelModel::alignSelectionTop()
 	glabels::Distance y1_min = 7200; /// Start with a very large value: 7200pts = 100in
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		if ( r.y1() < y1_min ) y1_min = r.y1();
 	}
 
 	/// Now adjust the object positions to line up the top edges at top-most edge.
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dy = y1_min - r.y1();
 		object->setPositionRelative( 0, dy );
 	}
@@ -973,14 +973,14 @@ void LabelModel::alignSelectionBottom()
 	glabels::Distance y1_max = -7200; /// Start with a very large negative value: 7200pts = 100in
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		if ( r.y1() > y1_max ) y1_max = r.y1();
 	}
 
 	/// Now adjust the object positions to line up the bottom edges at bottom-most edge.
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dy = y1_max - r.y1();
 		object->setPositionRelative( 0, dy );
 	}
@@ -1008,7 +1008,7 @@ void LabelModel::alignSelectionVCenter()
 	int n = 0;
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		ysum += (r.y1() + r.y2()) / 2.0;
 		n++;
 	}
@@ -1019,7 +1019,7 @@ void LabelModel::alignSelectionVCenter()
 	glabels::Distance dymin = fabs( yavg - ycenter );
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dy = fabs( yavg - (r.y1() + r.y2())/2.0 );
 		if ( dy < dymin )
 		{
@@ -1031,7 +1031,7 @@ void LabelModel::alignSelectionVCenter()
 	/// Now adjust the object positions to line up with the center of this object.
 	foreach ( LabelModelObject* object, selectedList )
 	{
-		LabelRegion r = object->getExtent();
+		Region r = object->getExtent();
 		glabels::Distance dy = ycenter - (r.y1() + r.y2())/2.0;
 		object->setPositionRelative( 0, dy );
 	}
@@ -1053,7 +1053,7 @@ void LabelModel::centerSelectionHoriz()
 	{
 		if ( object->isSelected() )
 		{
-			LabelRegion r = object->getExtent();
+			Region r = object->getExtent();
 			glabels::Distance xObjectCenter = (r.x1() + r.x2()) / 2.0;
 			glabels::Distance dx = xLabelCenter - xObjectCenter;
 			object->setPositionRelative( dx, 0 );
@@ -1077,7 +1077,7 @@ void LabelModel::centerSelectionVert()
 	{
 		if ( object->isSelected() )
 		{
-			LabelRegion r = object->getExtent();
+			Region r = object->getExtent();
 			glabels::Distance yObjectCenter = (r.y1() + r.y2()) / 2.0;
 			glabels::Distance dy = yLabelCenter - yObjectCenter;
 			object->setPositionRelative( 0, dy );

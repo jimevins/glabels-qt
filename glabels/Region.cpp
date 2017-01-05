@@ -1,4 +1,4 @@
-/*  LabelRegion.cpp
+/*  Region.cpp
  *
  *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
@@ -18,13 +18,31 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "LabelRegion.h"
+#include "Region.h"
+
+
+///
+/// Constructor
+///
+Region::Region() : mX1(0), mY1(0), mX2(0), mY2(0)
+{
+}
+
+
+///
+/// Constructor
+///
+Region::Region( const glabels::Distance& x1, const glabels::Distance& y1,
+	        const glabels::Distance& x2, const glabels::Distance& y2 )
+	: mX1(x1), mY1(y1), mX2(x2), mY2(y2)
+{
+}
 
 
 ///
 /// Get x1
 ///
-glabels::Distance LabelRegion::x1( void ) const
+glabels::Distance Region::x1( void ) const
 {
 	return mX1;
 }
@@ -33,7 +51,7 @@ glabels::Distance LabelRegion::x1( void ) const
 ///
 /// Set x1
 ///
-void LabelRegion::setX1( const glabels::Distance& value )
+void Region::setX1( const glabels::Distance& value )
 {
 	mX1 = value;
 }
@@ -42,7 +60,7 @@ void LabelRegion::setX1( const glabels::Distance& value )
 ///
 /// Get y1
 ///
-glabels::Distance LabelRegion::y1( void ) const
+glabels::Distance Region::y1( void ) const
 {
 	return mY1;
 }
@@ -51,7 +69,7 @@ glabels::Distance LabelRegion::y1( void ) const
 ///
 /// Set y1
 ///
-void LabelRegion::setY1( const glabels::Distance& value )
+void Region::setY1( const glabels::Distance& value )
 {
 	mY1 = value;
 }
@@ -60,7 +78,7 @@ void LabelRegion::setY1( const glabels::Distance& value )
 ///
 /// Get x2
 ///
-glabels::Distance LabelRegion::x2( void ) const
+glabels::Distance Region::x2( void ) const
 {
 	return mX2;
 }
@@ -69,7 +87,7 @@ glabels::Distance LabelRegion::x2( void ) const
 ///
 /// Set x2
 ///
-void LabelRegion::setX2( const glabels::Distance& value )
+void Region::setX2( const glabels::Distance& value )
 {
 	mX2 = value;
 }
@@ -78,7 +96,7 @@ void LabelRegion::setX2( const glabels::Distance& value )
 ///
 /// Get y2
 ///
-glabels::Distance LabelRegion::y2( void ) const
+glabels::Distance Region::y2( void ) const
 {
 	return mY2;
 }
@@ -87,7 +105,7 @@ glabels::Distance LabelRegion::y2( void ) const
 ///
 /// Set y2
 ///
-void LabelRegion::setY2( const glabels::Distance& value )
+void Region::setY2( const glabels::Distance& value )
 {
 	mY2 = value;
 }
@@ -96,7 +114,7 @@ void LabelRegion::setY2( const glabels::Distance& value )
 ///
 /// Convert to a QRectF
 ///
-QRectF LabelRegion::rect() const
+QRectF Region::rect() const
 {
 	QRectF r;
 
