@@ -31,7 +31,11 @@
 #include <QDebug>
 
 
-/// @TODO keep track of cwd between open/save dialogs
+///
+/// Static data
+///
+QString File::mCwd = ".";
+
 
 ///
 /// New Label Dialog
@@ -78,10 +82,21 @@ bool File::newLabel( MainWindow *window )
 ///
 void File::open( MainWindow *window )
 {
+	// Either use the saved CWD from a previous open/save or grab it from the path of the current file
+	QString cwd = mCwd;
+	if ( window->model() && !window->model()->fileName().isEmpty() )
+	{
+		QFileInfo fileInfo( window->model()->fileName() );
+		if ( fileInfo.isFile() )
+		{
+			cwd = fileInfo.absolutePath();
+		}
+	}
+	
 	QString fileName =
 		QFileDialog::getOpenFileName( window,
 					      tr("gLabels - Open Project"),
-					      ".",
+					      cwd,
 					      tr("glabels files (*.glabels);;All files (*)")
 			);
 	if ( !fileName.isEmpty() )
@@ -102,6 +117,9 @@ void File::open( MainWindow *window )
 				newWindow->setModel( label );
 				newWindow->show();
 			}
+
+			// Save CWD
+			mCwd = QFileInfo( fileName ).absolutePath();
 		}
 		else
 		{
@@ -132,7 +150,10 @@ bool File::save( MainWindow *window )
 
 	XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
 	window->model()->clearModified();
-	
+
+	// Save CWD
+	mCwd = QFileInfo( window->model()->fileName() ).absolutePath();
+
 	return true;
 }
 
@@ -142,14 +163,24 @@ bool File::save( MainWindow *window )
 ///
 bool File::saveAs( MainWindow *window )
 {
+	// Either use the saved CWD from a previous open/save or grab it from the path of the current file
+	QString cwd = mCwd;
+	if ( window->model() && !window->model()->fileName().isEmpty() )
+	{
+		QFileInfo fileInfo( window->model()->fileName() );
+		if ( fileInfo.isFile() )
+		{
+			cwd = fileInfo.filePath();
+		}
+	}
+	
 	QString rawFileName =
 		QFileDialog::getSaveFileName( window,
 					      tr("gLabels - Save Project As"),
-					      ".",
+					      cwd,
 					      tr("glabels files (*.glabels);;All files (*)"),
 					      0,
-					      QFileDialog::DontConfirmOverwrite
-			);
+					      QFileDialog::DontConfirmOverwrite	);
 	if ( !rawFileName.isEmpty() )
 	{
 		QString fileName = FileUtil::addExtension( rawFileName, ".glabels" );
@@ -175,19 +206,13 @@ bool File::saveAs( MainWindow *window )
 		window->model()->setFileName( fileName );
 		window->model()->clearModified();
 		
+		// Save CWD
+		mCwd = QFileInfo( fileName ).absolutePath();
+
 		return true;
 	}
 
 	return false;
-}
-
-
-///
-/// Print file
-///
-void File::print( MainWindow *window )
-{
-	qDebug() << "ACTION: file->print";
 }
 
 

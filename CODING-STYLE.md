@@ -1,3 +1,6 @@
+Glabels Coding Style
+====================
+
 Tabs vs. Spaces
 ---------------
 
@@ -13,7 +16,7 @@ See https://www.emacswiki.org/emacs/SmartTabs for more information.
 Indentation Style
 -----------------
 
-Glabels code uses the Allman (a.k.a "BSD Style") of code indentation.  I.e. the brace associated with a
+Glabels code uses the Allman style (a.k.a "BSD Style") of code indentation.  I.e. the brace associated with a
 control statement is placed on the next line, indented to the same level as the control statement.
 Statements within the braces are indented to the next level.
 
@@ -33,5 +36,7 @@ else
 	somethingElse();
 }
 ```
+
+Also applies to class and namespace declaration statements.
 
 See https://en.wikipedia.org/wiki/Indent_style#Allman_style for more information.

@@ -1,6 +1,6 @@
 /*  File.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -31,6 +31,8 @@ class MainWindow;
 ///
 /// File Actions
 ///
+/// Note: class provides a translation context for these static functions.
+///
 class File : public QObject
 {
 	Q_OBJECT
@@ -40,9 +42,12 @@ public:
 	static void open( MainWindow *window );
 	static bool save( MainWindow *window );
 	static bool saveAs( MainWindow *window );
-	static void print( MainWindow *window );
 	static void close( MainWindow *window );
 	static void exit();
+
+private:
+	static QString mCwd;
+	
 };
 
 
