@@ -1,6 +1,6 @@
 /*  TextNode.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -62,20 +62,38 @@ bool TextNode::operator!=( const TextNode& other )
 ///
 /// isField? Property Getter
 ///
-bool TextNode::isField( void ) const
+bool TextNode::isField() const
 {
 	return mIsField;
 }
 
 
 ///
+/// isField Flag Property Setter
+///
+void TextNode::setField( bool isField )
+{
+	mIsField = isField;
+}
+
+
+///
 /// Data Property Getter
 ///
-const QString& TextNode::data( void ) const
+const QString& TextNode::data() const
 {
 	return mData;
 }
 
+
+///
+/// Data Property Setter
+///
+void TextNode::setData( const QString& data )
+{
+	mData = data;
+}
+		
 
 ///
 /// Get text, expand if necessary

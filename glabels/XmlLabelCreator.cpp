@@ -176,7 +176,7 @@ XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const LabelModelBoxOb
 
 	/* line attrs */
 	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-	if ( object->lineColorNode().fieldFlag() )
+	if ( object->lineColorNode().isField() )
 	{
 		glabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
 	}
@@ -186,7 +186,7 @@ XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const LabelModelBoxOb
 	}
 
 	/* fill attrs */
-	if ( object->fillColorNode().fieldFlag() )
+	if ( object->fillColorNode().isField() )
 	{
 		glabels::XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
 	}
@@ -220,7 +220,7 @@ XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const LabelModelE
 
 	/* line attrs */
 	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-	if ( object->lineColorNode().fieldFlag() )
+	if ( object->lineColorNode().isField() )
 	{
 		glabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
 	}
@@ -230,7 +230,7 @@ XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const LabelModelE
 	}
 
 	/* fill attrs */
-	if ( object->fillColorNode().fieldFlag() )
+	if ( object->fillColorNode().isField() )
 	{
 		glabels::XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
 	}
@@ -264,7 +264,7 @@ XmlLabelCreator::createObjectLineNode( QDomElement &parent, const LabelModelLine
 
 	/* line attrs */
 	glabels::XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-	if ( object->lineColorNode().fieldFlag() )
+	if ( object->lineColorNode().isField() )
 	{
 		glabels::XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
 	}
@@ -338,7 +338,7 @@ XmlLabelCreator::createObjectTextNode( QDomElement &parent, const LabelModelText
 	glabels::XmlUtil::setLengthAttr( node, "h", object->h() );
 
 	/* color attr */
-	if ( object->textColorNode().fieldFlag() )
+	if ( object->textColorNode().isField() )
 	{
 		glabels::XmlUtil::setStringAttr( node, "color_field", object->textColorNode().key() );
 	}
@@ -410,7 +410,7 @@ XmlLabelCreator::createShadowAttrs( QDomElement &node, const LabelModelObject* o
 		glabels::XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
 		glabels::XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
 
-		if ( object->fillColorNode().fieldFlag() )
+		if ( object->fillColorNode().isField() )
 		{
 			glabels::XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
 		}

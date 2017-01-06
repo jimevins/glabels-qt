@@ -67,7 +67,7 @@ void ColorButton::setColorNode( ColorNode colorNode )
 
 	mColorNode = colorNode;
 
-	if ( colorNode.fieldFlag() )
+	if ( colorNode.isField() )
 	{
 		setIcon( QIcon() );
 		setText( QString("${%1}").arg( colorNode.key() ) );
@@ -86,7 +86,7 @@ void ColorButton::setColor( QColor color )
 {
 	mIsDefault = false;
 
-	mColorNode.setFieldFlag( false );
+	mColorNode.setField( false );
 	mColorNode.setColor( color );
 	mColorNode.setKey( "" );
 
@@ -99,7 +99,7 @@ void ColorButton::setToDefault()
 {
 	mIsDefault = true;
 
-	mColorNode.setFieldFlag( false );
+	mColorNode.setField( false );
 	mColorNode.setColor( mDefaultColor );
 	mColorNode.setKey( "" );
 
@@ -158,7 +158,7 @@ void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
 	mColorNode = colorNode;
 	mIsDefault = isDefault;
 
-	if ( colorNode.fieldFlag() )
+	if ( colorNode.isField() )
 	{
 		setIcon( QIcon() );
 		setText( QString("${%1}").arg( colorNode.key() ) );

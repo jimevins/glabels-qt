@@ -1,6 +1,6 @@
 /*  ColorNode.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -23,7 +23,7 @@
 
 #include <QString>
 #include <QColor>
-#include <stdint.h>
+#include <cstdint>
 #include "Merge/Record.h"
 
 
@@ -39,9 +39,9 @@ struct ColorNode
 public:
 	ColorNode();
 
-	ColorNode( bool fieldFlag, const QColor& color, const QString& key );
+	ColorNode( bool isField, const QColor& color, const QString& key );
 
-	ColorNode( bool fieldFlag, uint32_t rgba, const QString& key );
+	ColorNode( bool isField, uint32_t rgba, const QString& key );
 
 	ColorNode( const QColor& color );
 
@@ -64,30 +64,29 @@ public:
 	//
 	// Field Flag Property
 	//
-	bool fieldFlag( void ) const;
-	void setFieldFlag( bool fieldFlag );
+	bool isField() const;
+	void setField( bool isField );
 		
 
 	//
 	// Color Property
 	//
-	const QColor& color( void ) const;
+	const QColor& color() const;
 	void setColor( const QColor& color );
 
 
 	//
 	// Key Property
 	//
-	const QString& key( void ) const;
+	const QString& key() const;
 	void setKey( const QString& key );
-		
 
 
 	/////////////////////////////////
-	// Methods
+	// Misc. Methods
 	/////////////////////////////////
 public:
-	uint32_t rgba( void ) const;
+	uint32_t rgba() const;
 	QColor color( merge::Record* record ) const;
 
 
@@ -95,7 +94,7 @@ public:
 	// Private Data
 	/////////////////////////////////
 private:
-	bool    mFieldFlag;
+	bool    mIsField;
 	QColor  mColor;
 	QString mKey;
 

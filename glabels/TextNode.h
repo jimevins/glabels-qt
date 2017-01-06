@@ -1,6 +1,6 @@
 /*  TextNode.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -56,16 +56,18 @@ public:
 	//
 	// is field? Property
 	//
-	bool isField( void ) const;
+	bool isField() const;
+	void setField( bool isField );
 
 	//
 	// Data Property
 	//
-	const QString& data( void ) const;
+	const QString& data() const;
+	void setData( const QString& data );
 
 
 	/////////////////////////////////
-	// Methods
+	// Misc. Methods
 	/////////////////////////////////
 	QString text( merge::Record* record ) const;
 	bool isEmptyField( merge::Record* record ) const;

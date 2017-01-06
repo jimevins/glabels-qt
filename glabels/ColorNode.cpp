@@ -1,6 +1,6 @@
 /*  ColorNode.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -27,7 +27,7 @@
 /// Default Constructor
 ///
 ColorNode::ColorNode()
-	: mFieldFlag(false), mColor(QColor::fromRgba(0x00000000)), mKey("")
+	: mIsField(false), mColor(QColor::fromRgba(0x00000000)), mKey("")
 {
 }
 
@@ -35,8 +35,8 @@ ColorNode::ColorNode()
 ///
 /// Constructor From Data
 ///
-ColorNode::ColorNode( bool fieldFlag, const QColor& color, const QString& key )
-	: mFieldFlag(fieldFlag), mColor(color), mKey(key)
+ColorNode::ColorNode( bool isField, const QColor& color, const QString& key )
+	: mIsField(isField), mColor(color), mKey(key)
 {
 }
 
@@ -44,8 +44,8 @@ ColorNode::ColorNode( bool fieldFlag, const QColor& color, const QString& key )
 ///
 /// Constructor From Data
 ///
-ColorNode::ColorNode( bool fieldFlag, uint32_t rgba, const QString& key )
-	: mFieldFlag(fieldFlag), mKey(key)
+ColorNode::ColorNode( bool isField, uint32_t rgba, const QString& key )
+	: mIsField(isField), mKey(key)
 {
 	mColor = QColor( (rgba >> 24) & 0xFF,
 			 (rgba >> 16) & 0xFF,
@@ -58,7 +58,7 @@ ColorNode::ColorNode( bool fieldFlag, uint32_t rgba, const QString& key )
 /// Constructor From Color
 ///
 ColorNode::ColorNode( const QColor& color )
-	: mFieldFlag(false), mColor(color), mKey("")
+	: mIsField(false), mColor(color), mKey("")
 {
 }
 
@@ -67,7 +67,7 @@ ColorNode::ColorNode( const QColor& color )
 /// Constructor From Key
 ///
 ColorNode::ColorNode( const QString& key )
-	: mFieldFlag(true), mColor(QColor::fromRgba(0x00000000)), mKey(key)
+	: mIsField(true), mColor(QColor::fromRgba(0x00000000)), mKey(key)
 {
 }
 
@@ -77,9 +77,9 @@ ColorNode::ColorNode( const QString& key )
 ///
 bool ColorNode::operator==( const ColorNode& cn )
 {
-	return ( (mFieldFlag == cn.mFieldFlag) &&
-		 (mColor     == cn.mColor)     &&
-		 (mKey       == cn.mKey) );
+	return ( (mIsField == cn.mIsField) &&
+		 (mColor   == cn.mColor)   &&
+		 (mKey     == cn.mKey) );
 }
 
 
@@ -88,34 +88,34 @@ bool ColorNode::operator==( const ColorNode& cn )
 ///
 bool ColorNode::operator!=( const ColorNode& cn )
 {
-	return ( (mFieldFlag != cn.mFieldFlag) ||
-		 (mColor     != cn.mColor)     ||
-		 (mKey       != cn.mKey) );
+	return ( (mIsField != cn.mIsField) ||
+		 (mColor   != cn.mColor)   ||
+		 (mKey     != cn.mKey) );
 }
 
 
 ///
 /// Field Flag Property Getter
 ///
-bool ColorNode::fieldFlag( void ) const
+bool ColorNode::isField() const
 {
-	return mFieldFlag;
+	return mIsField;
 }
 		
 
 ///
 /// Field Flag Property Setter
 ///
-void ColorNode::setFieldFlag( bool fieldFlag )
+void ColorNode::setField( bool isField )
 {
-	mFieldFlag = fieldFlag;
+	mIsField = isField;
 }
 
 
 ///
 /// Color Property Getter
 ///
-const QColor& ColorNode::color( void ) const
+const QColor& ColorNode::color() const
 {
 	return mColor;
 }
@@ -133,7 +133,7 @@ void ColorNode::setColor( const QColor& color )
 ///
 /// Key Property Getter
 ///
-const QString& ColorNode::key( void ) const
+const QString& ColorNode::key() const
 {
 	return mKey;
 }
@@ -148,7 +148,10 @@ void ColorNode::setKey( const QString& key )
 }
 		
 
-uint32_t ColorNode::rgba( void ) const
+///
+/// Get color encoded as an RGBA 32-bit number
+///
+uint32_t ColorNode::rgba() const
 {
 	uint32_t c =
 		mColor.red()   << 24 |
@@ -159,10 +162,13 @@ uint32_t ColorNode::rgba( void ) const
 	return c;
 }
 
-	
+
+///
+/// Get color, expand if necessary
+///
 QColor ColorNode::color( merge::Record* record ) const
 {
-	if ( mFieldFlag )
+	if ( mIsField )
 	{
 		if ( record == 0 )
 		{

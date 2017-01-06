@@ -213,7 +213,7 @@ void ColorPaletteDialog::clearKeys()
 
 void ColorPaletteDialog::onDefaultItemActivated()
 {
-	mColorNode.setFieldFlag( false );
+	mColorNode.setField( false );
 	mColorNode.setColor( mDefaultColor );
 	mColorNode.setKey( "" );
 
@@ -224,7 +224,7 @@ void ColorPaletteDialog::onDefaultItemActivated()
 
 void ColorPaletteDialog::onPaletteItemActivated( int id )
 {
-	mColorNode.setFieldFlag( false );
+	mColorNode.setField( false );
 	mColorNode.setColor( QColor( mColorTable[id].colorSpec ) );
 	mColorNode.setKey( "" );
 
@@ -235,7 +235,7 @@ void ColorPaletteDialog::onPaletteItemActivated( int id )
 
 void ColorPaletteDialog::onHistoryItemActivated( int id )
 {
-	mColorNode.setFieldFlag( false );
+	mColorNode.setField( false );
 	mColorNode.setColor( mColorHistory->getColors()[id] );
 	mColorNode.setKey( "" );
 
@@ -253,7 +253,7 @@ void ColorPaletteDialog::onCustomColorItemActivated()
 	{
 		ColorNode newColorNode;
 
-		newColorNode.setFieldFlag( false );
+		newColorNode.setField( false );
 		newColorNode.setColor( dlg.currentColor() );
 		newColorNode.setKey( "" );
 
@@ -300,7 +300,7 @@ void ColorPaletteDialog::onComboIndexChanged( int index )
 {
 	if ( index != 0 )
 	{
-		mColorNode.setFieldFlag( true );
+		mColorNode.setField( true );
 		mColorNode.setColor( QColor("#eeeeec") );
 		mColorNode.setKey( mKeys[index-1] );
 
