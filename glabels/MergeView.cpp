@@ -20,11 +20,14 @@
 
 #include "MergeView.h"
 
-#include "LabelModel.h"
-#include "Merge/Factory.h"
+
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QtDebug>
+
+#include "LabelModel.h"
+
+#include "Merge/Factory.h"
 
 
 ///

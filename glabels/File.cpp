@@ -20,15 +20,17 @@
 
 #include "File.h"
 
-#include "MainWindow.h"
+
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QtDebug>
+
+#include "FileUtil.h"
 #include "LabelModel.h"
+#include "MainWindow.h"
 #include "SelectProductDialog.h"
 #include "XmlLabelParser.h"
 #include "XmlLabelCreator.h"
-#include "FileUtil.h"
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QDebug>
 
 
 ///

@@ -21,10 +21,12 @@
 #ifndef ObjectEditor_h
 #define ObjectEditor_h
 
-#include "ui_ObjectEditor.h"
-#include "libglabels/Distance.h"
+
 #include <QButtonGroup>
 
+#include "ui_ObjectEditor.h"
+
+#include "libglabels/Distance.h"
 
 // Forward references
 class LabelModel;

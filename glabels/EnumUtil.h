@@ -21,8 +21,9 @@
 #ifndef EnumUtil_h
 #define EnumUtil_h
 
-#include <QString>
+
 #include <QFont>
+#include <QString>
 #include <Qt>
 
 

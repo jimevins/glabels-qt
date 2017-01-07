@@ -20,6 +20,7 @@
 
 #include "Settings.h"
 
+
 #include <QLocale>
 #include <QString>
 #include <QtDebug>

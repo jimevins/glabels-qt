@@ -20,6 +20,7 @@
 
 #include "SimplePreview.h"
 
+
 #include <QGraphicsRectItem>
 #include <QGraphicsDropShadowEffect>
 #include <QtDebug>

@@ -21,9 +21,10 @@
 #ifndef MergeView_h
 #define MergeView_h
 
-#include "ui_MergeView.h"
-#include "Merge/Merge.h"
 
+#include "ui_MergeView.h"
+
+#include "Merge/Merge.h"
 
 // Forward references
 class LabelModel;

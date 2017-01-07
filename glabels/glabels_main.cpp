@@ -21,10 +21,12 @@
 
 #include <QApplication>
 
-#include "libglabels/Db.h"
-#include "Merge/Factory.h"
 #include "Settings.h"
 #include "MainWindow.h"
+
+#include "Merge/Factory.h"
+
+#include "libglabels/Db.h"
 
 
 int main( int argc, char **argv )

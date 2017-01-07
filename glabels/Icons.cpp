@@ -1,6 +1,6 @@
-/*  FieldMenu.cpp
+/*  Icons.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,40 +18,4 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "FieldMenu.h"
-
-#include "FieldMenuItem.h"
-
-
-///
-/// Constructor
-///
-FieldMenu::FieldMenu()
-{
-}
-
-
-///
-/// set keys
-///
-void FieldMenu::setKeys( const QStringList& keyList )
-{
-	clear();
-
-	foreach ( QString key, keyList )
-	{
-		FieldMenuItem* menuItem = new FieldMenuItem( key );
-		connect( menuItem, SIGNAL(activated(QString)), this, SLOT(onMenuItemActivated(QString)) );
-
-		addAction( menuItem );
-	}
-}
-
-
-///
-/// onMenuItemActivated slot
-///
-void FieldMenu::onMenuItemActivated( QString key )
-{
-	emit keySelected( key );
-}
+#include "Icons.h"

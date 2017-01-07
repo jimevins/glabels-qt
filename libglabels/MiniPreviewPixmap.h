@@ -24,13 +24,16 @@
 
 #include <QPixmap>
 #include <QPainter>
+
 #include "Point.h"
 
 
 namespace glabels
 {
-	class Template;  // Forward reference
-	class Frame;     // Forward reference
+
+	// Forward references
+	class Template;
+	class Frame;
 
 
 	class MiniPreviewPixmap : public QPixmap

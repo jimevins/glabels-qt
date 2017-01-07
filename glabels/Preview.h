@@ -21,13 +21,14 @@
 #ifndef Preview_h
 #define Preview_h
 
+
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
 #include "PageRenderer.h"
 
-
-class LabelModel; // Forward reference
+// Forward references
+class LabelModel;
 
 
 ///

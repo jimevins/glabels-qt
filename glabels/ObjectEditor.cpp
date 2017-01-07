@@ -21,6 +21,10 @@
 #include "ObjectEditor.h"
 
 
+#include <QFileDialog>
+#include <QtMath>
+#include <QtDebug>
+
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
@@ -28,16 +32,11 @@
 #include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
 #include "LabelModelTextObject.h"
-#include "UndoRedoModel.h"
+#include "Settings.h"
 #include "Size.h"
+#include "UndoRedoModel.h"
 
 #include "Merge/Merge.h"
-
-#include "Settings.h"
-
-#include <QFileDialog>
-#include <QtMath>
-#include <QtDebug>
 
 
 ///

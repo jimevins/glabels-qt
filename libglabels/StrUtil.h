@@ -21,6 +21,7 @@
 #ifndef glabels_StrUtil_h
 #define glabels_StrUtil_h
 
+
 #include <QString>
 
 

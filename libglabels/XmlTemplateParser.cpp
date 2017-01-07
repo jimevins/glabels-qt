@@ -20,13 +20,12 @@
 
 #include "XmlTemplateParser.h"
 
+
 #include <QFile>
 #include <QDomDocument>
 #include <QDomNode>
 #include <QtDebug>
 
-#include "Template.h"
-#include "XmlUtil.h"
 #include "Db.h"
 #include "FrameRect.h"
 #include "FrameCd.h"
@@ -34,6 +33,8 @@
 #include "FrameEllipse.h"
 #include "Layout.h"
 #include "Markup.h"
+#include "Template.h"
+#include "XmlUtil.h"
 
 
 namespace glabels

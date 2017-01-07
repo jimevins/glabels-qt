@@ -21,12 +21,12 @@
 #ifndef LabelEditor_h
 #define LabelEditor_h
 
-#include <QWidget>
-#include <QScrollArea>
+
 #include <QPainter>
+#include <QScrollArea>
+#include <QWidget>
 
 #include "Region.h"
-
 
 // Forward References
 class LabelModel;

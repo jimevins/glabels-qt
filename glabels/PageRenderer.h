@@ -22,16 +22,16 @@
 #define PageRenderer_h
 
 
-#include "libglabels/Point.h"
+#include <QPainter>
+#include <QRect>
+#include <QVector>
 
 #include "Merge/Merge.h"
 #include "Merge/Record.h"
 
-#include <QVector>
-#include <QRect>
+#include "libglabels/Point.h"
 
 // Forward references
-class QPainter;
 class LabelModel;
 
 

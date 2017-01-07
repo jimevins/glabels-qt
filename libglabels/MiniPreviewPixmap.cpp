@@ -20,6 +20,7 @@
 
 #include "MiniPreviewPixmap.h"
 
+
 #include "Template.h"
 
 

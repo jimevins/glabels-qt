@@ -20,6 +20,7 @@
 
 #include "ColorSwatch.h"
 
+
 #include <QPainter>
 
 

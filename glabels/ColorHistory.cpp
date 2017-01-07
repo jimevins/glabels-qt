@@ -20,6 +20,7 @@
 
 #include "ColorHistory.h"
 
+
 #include <QSettings>
 #include <QtDebug>
 

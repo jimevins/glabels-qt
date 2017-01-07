@@ -21,7 +21,9 @@
 #ifndef Size_h
 #define Size_h
 
+
 #include <QSizeF>
+
 #include "libglabels/Distance.h"
 
 

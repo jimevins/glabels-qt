@@ -21,9 +21,10 @@
 #ifndef glabels_XmlUtil_h
 #define glabels_XmlUtil_h
 
-#include <QString>
+
+#include <cstdint>
 #include <QDomElement>
-#include <stdint.h>
+#include <QString>
 
 #include "Distance.h"
 

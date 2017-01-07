@@ -21,22 +21,23 @@
 #ifndef LabelModel_h
 #define LabelModel_h
 
-#include <QObject>
-#include <QList>
-#include <QPainter>
 
-#include "libglabels/Template.h"
-#include "Merge/Merge.h"
-#include "Merge/Record.h"
+#include <QList>
+#include <QObject>
+#include <QPainter>
 
 #include "Settings.h"
 
+#include "Merge/Merge.h"
+#include "Merge/Record.h"
+
+#include "libglabels/Template.h"
 
 // Forward References
-class LabelModelObject;
-class Handle;
-class Region;
 class ColorNode;
+class Handle;
+class LabelModelObject;
+class Region;
 
 
 //////////////////////////////////////////////

@@ -22,8 +22,8 @@
 #define glabels_XmlVendorParser_h
 
 
-#include <QString>
 #include <QDomElement>
+#include <QString>
 
 
 namespace glabels

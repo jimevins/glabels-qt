@@ -21,7 +21,9 @@
 #ifndef TextNode_h
 #define TextNode_h
 
+
 #include <QString>
+
 #include "Merge/Record.h"
 
 

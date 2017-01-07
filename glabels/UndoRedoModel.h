@@ -21,10 +21,12 @@
 #ifndef UndoRedoModel_h
 #define UndoRedoModel_h
 
+
+#include <QList>
 #include <QObject>
 #include <QString>
-#include <QList>
 
+// Forward references
 class LabelModel;
 
 

@@ -20,12 +20,13 @@
 
 #include "Preview.h"
 
+
+#include <QGraphicsDropShadowEffect>
+#include <QGraphicsRectItem>
+#include <QtDebug>
+
 #include "LabelModel.h"
 #include "PreviewOverlayItem.h"
-
-#include <QGraphicsRectItem>
-#include <QGraphicsDropShadowEffect>
-#include <QtDebug>
 
 
 //

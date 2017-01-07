@@ -20,14 +20,15 @@
 
 #include "XmlPaperParser.h"
 
-#include <QFile>
+
 #include <QDomDocument>
 #include <QDomNode>
+#include <QFile>
 #include <QtDebug>
 
+#include "Db.h"
 #include "Paper.h"
 #include "XmlUtil.h"
-#include "Db.h"
 
 
 namespace glabels

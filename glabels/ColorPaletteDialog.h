@@ -21,16 +21,14 @@
 #ifndef ColorPaletteDialog_h
 #define ColorPaletteDialog_h
 
-#include <QObject>
+
+#include <QComboBox>
 #include <QDialog>
 
 #include "ColorNode.h"
 #include "ColorHistory.h"
 #include "ColorPaletteItem.h"
 #include "ColorPaletteButtonItem.h"
-#include "FieldMenu.h"
-
-class QComboBox; // Forward reference
 
 
 ///

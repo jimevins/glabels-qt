@@ -25,7 +25,7 @@
 #include <QPainter>
 #include <QPainterPath>
 
-
+// Forward references
 class LabelModelObject;
 
 

@@ -21,10 +21,11 @@
 #ifndef PreviewOverlayItem_h
 #define PreviewOverlayItem_h
 
+
 #include <QGraphicsItem>
 
-
-class PageRenderer; // Forward reference
+// Forward references
+class PageRenderer;
 
 
 ///

@@ -20,12 +20,14 @@
 
 #include "LabelModelImageObject.h"
 
-#include "Size.h"
+
 #include <QBrush>
-#include <QPen>
-#include <QImage>
 #include <QFileInfo>
+#include <QImage>
+#include <QPen>
 #include <QtDebug>
+
+#include "Size.h"
 
 
 namespace

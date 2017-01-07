@@ -22,8 +22,8 @@
 #define glabels_XmlTemplateParser_h
 
 
-#include <QString>
 #include <QDomElement>
+#include <QString>
 
 #include "Template.h"
 

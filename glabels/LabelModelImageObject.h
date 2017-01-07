@@ -21,9 +21,10 @@
 #ifndef LabelModelImageObject_h
 #define LabelModelImageObject_h
 
-#include "LabelModelObject.h"
 
 #include <QSvgRenderer>
+
+#include "LabelModelObject.h"
 
 
 ///

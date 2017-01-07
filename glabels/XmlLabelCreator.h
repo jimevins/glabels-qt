@@ -25,7 +25,7 @@
 #include <QObject>
 #include <QDomElement>
 
-
+// Forward references
 class LabelModel;
 class LabelModelObject;
 class LabelModelBoxObject;

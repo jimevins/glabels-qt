@@ -21,9 +21,9 @@
 #ifndef SimplePreview_h
 #define SimplePreview_h
 
+
 #include <QGraphicsView>
 #include <QGraphicsScene>
-
 #include <QList>
 
 #include "libglabels/Template.h"

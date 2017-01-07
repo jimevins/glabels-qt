@@ -20,14 +20,15 @@
 
 #include "LabelModelObject.h"
 
+
 #include <QFont>
 #include <QtDebug>
 
 #include "ColorNode.h"
-#include "TextNode.h"
 #include "BarcodeStyle.h"
 #include "Region.h"
 #include "Size.h"
+#include "TextNode.h"
 
 
 ///

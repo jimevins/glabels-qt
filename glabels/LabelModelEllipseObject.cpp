@@ -20,6 +20,7 @@
 
 #include "LabelModelEllipseObject.h"
 
+
 #include <QBrush>
 #include <QPen>
 

@@ -20,9 +20,10 @@
 
 #include "TemplatePickerItem.h"
 
-#include <QListWidgetItem>
-#include <QIcon>
+
 #include <QHBoxLayout>
+#include <QIcon>
+#include <QListWidgetItem>
 
 
 ///

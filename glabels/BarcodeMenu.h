@@ -21,7 +21,9 @@
 #ifndef BarcodeMenu_h
 #define BarcodeMenu_h
 
+
 #include <QMenu>
+
 #include "BarcodeStyle.h"
 
 

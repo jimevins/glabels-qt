@@ -20,8 +20,9 @@
 
 #include "FieldButton.h"
 
-#include <QStandardItemModel>
+
 #include <QLineEdit>
+#include <QStandardItemModel>
 
 
 ///

@@ -21,9 +21,9 @@
 #include "Outline.h"
 
 
-#include "LabelModelObject.h"
-
 #include <QColor>
+
+#include "LabelModelObject.h"
 
 
 namespace

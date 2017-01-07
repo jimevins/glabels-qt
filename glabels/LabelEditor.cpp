@@ -20,10 +20,12 @@
 
 #include "LabelEditor.h"
 
-#include <QtMath>
+
 #include <QMouseEvent>
+#include <QtMath>
 #include <QtDebug>
 
+#include "Cursors.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
@@ -31,9 +33,8 @@
 #include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
 #include "LabelModelTextObject.h"
-#include "UndoRedoModel.h"
 #include "Settings.h"
-#include "Cursors.h"
+#include "UndoRedoModel.h"
 
 #include "libglabels/Markup.h"
 #include "libglabels/FrameRect.h"

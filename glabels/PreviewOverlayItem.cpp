@@ -20,8 +20,10 @@
 
 #include "PreviewOverlayItem.h"
 
-#include "PageRenderer.h"
+
 #include <QtDebug>
+
+#include "PageRenderer.h"
 
 
 PreviewOverlayItem::PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent )

@@ -21,17 +21,16 @@
 #ifndef glabels_Template_h
 #define glabels_Template_h
 
+
 #include <QCoreApplication>
 #include <QString>
 #include <QStringList>
 #include <QList>
 
-#include <vector>
-
 #include "Distance.h"
-#include "Point.h"
 #include "Frame.h"
 #include "MiniPreviewPixmap.h"
+#include "Point.h"
 
 
 namespace glabels

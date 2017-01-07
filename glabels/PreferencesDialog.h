@@ -21,6 +21,7 @@
 #ifndef PreferencesDialog_h
 #define PreferencesDialog_h
 
+
 #include "ui_PreferencesDialog.h"
 
 
@@ -30,7 +31,6 @@
 class PreferencesDialog : public QDialog, public Ui_PreferencesDialog
 {
 	Q_OBJECT
-
 
 	/////////////////////////////////
 	// Life Cycle

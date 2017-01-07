@@ -21,8 +21,9 @@
 #ifndef ColorPaletteItem_h
 #define ColorPaletteItem_h
 
-#include <QWidget>
+
 #include <QColor>
+#include <QWidget>
 
 
 ///

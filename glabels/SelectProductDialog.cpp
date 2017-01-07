@@ -20,11 +20,13 @@
 
 #include "SelectProductDialog.h"
 
-#include "libglabels/Db.h"
-#include "TemplatePickerItem.h"
-#include "Settings.h"
 
 #include <QtDebug>
+
+#include "Settings.h"
+#include "TemplatePickerItem.h"
+
+#include "libglabels/Db.h"
 
 
 ///

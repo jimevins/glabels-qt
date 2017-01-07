@@ -21,6 +21,7 @@
 #ifndef ColorButton_h
 #define ColorButton_h
 
+
 #include <QPushButton>
 
 #include "ColorNode.h"

@@ -21,29 +21,27 @@
 #ifndef MainWindow_h
 #define MainWindow_h
 
+
+#include <QAction>
+#include <QCloseEvent>
+#include <QLabel>
+#include <QListWidget>
 #include <QMainWindow>
-
-class QAction;
-class QCloseEvent;
-class QMenuBar;
-class QMenu;
-class QToolBar;
-class QLabel;
-class QListWidget;
-class QListWidgetItem;
-class QStackedWidget;
-class QScrollArea;
-
+#include <QMenu>
+#include <QMenuBar>
+#include <QScrollArea>
+#include <QStackedWidget>
+#include <QToolBar>
 
 // Forward References
-class LabelModel;
-class UndoRedoModel;
-class StartupView;
-class PropertiesView;
 class LabelEditor;
-class ObjectEditor;
+class LabelModel;
 class MergeView;
+class ObjectEditor;
 class PrintView;
+class PropertiesView;
+class StartupView;
+class UndoRedoModel;
 
 
 ///

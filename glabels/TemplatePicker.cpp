@@ -20,6 +20,7 @@
 
 #include "TemplatePicker.h"
 
+
 #include <QIcon>
 
 #include "TemplatePickerItem.h"

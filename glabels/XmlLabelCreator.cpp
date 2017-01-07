@@ -20,24 +20,28 @@
 
 #include "XmlLabelCreator.h"
 
+
+#include <QByteArray>
+#include <QFile>
+#include <QTextBlock>
+#include <QTextDocument>
+#include <QtDebug>
+
+#include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
+//#include "LabelModelBarcodeObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelLineObject.h"
 #include "LabelModelImageObject.h"
 #include "LabelModelTextObject.h"
-//#include "LabelModelBarcodeObject.h"
-#include "EnumUtil.h"
+
 #include "Merge/None.h"
+
 #include "libglabels/XmlTemplateCreator.h"
 #include "libglabels/XmlUtil.h"
 
-#include <QFile>
-#include <QByteArray>
-#include <QTextDocument>
-#include <QTextBlock>
-#include <QtDebug>
 
 
 void

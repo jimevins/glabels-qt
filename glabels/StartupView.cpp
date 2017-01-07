@@ -20,9 +20,11 @@
 
 #include "StartupView.h"
 
+
+#include <QtDebug>
+
 #include "File.h"
 #include "MainWindow.h"
-#include <QtDebug>
 
 
 ///

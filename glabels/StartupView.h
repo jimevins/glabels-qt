@@ -21,9 +21,11 @@
 #ifndef StartupView_h
 #define StartupView_h
 
+
 #include "ui_StartupView.h"
 
-class MainWindow; // Forward reference
+// Forward references
+class MainWindow;
 
 
 ///

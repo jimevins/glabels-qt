@@ -20,8 +20,9 @@
 
 #include "FrameEllipse.h"
 
-#include "StrUtil.h"
+
 #include "privateConstants.h"
+#include "StrUtil.h"
 
 
 namespace glabels

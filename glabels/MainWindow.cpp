@@ -20,35 +20,37 @@
 
 #include "MainWindow.h"
 
-#include <QClipboard>
-#include <QSettings>
-#include <QStatusBar>
-#include <QFrame>
-#include <QScrollArea>
-#include <QAction>
-#include <QCloseEvent>
-#include <QMenuBar>
-#include <QMenu>
-#include <QToolBar>
-#include <QListWidget>
-#include <QStackedWidget>
-#include <QLabel>
-#include <QMessageBox>
-#include <QDebug>
 
-#include "libglabels/Db.h"
-#include "PreferencesDialog.h"
-#include "StartupView.h"
-#include "PropertiesView.h"
-#include "LabelEditor.h"
-#include "ObjectEditor.h"
-#include "MergeView.h"
-#include "PrintView.h"
-#include "LabelModel.h"
-#include "UndoRedoModel.h"
-#include "Icons.h"
+#include <QAction>
+#include <QClipboard>
+#include <QCloseEvent>
+#include <QFrame>
+#include <QLabel>
+#include <QListWidget>
+#include <QMenu>
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QScrollArea>
+#include <QSettings>
+#include <QStackedWidget>
+#include <QStatusBar>
+#include <QToolBar>
+#include <QtDebug>
+
 #include "File.h"
 #include "Help.h"
+#include "Icons.h"
+#include "LabelEditor.h"
+#include "LabelModel.h"
+#include "MergeView.h"
+#include "ObjectEditor.h"
+#include "PreferencesDialog.h"
+#include "PrintView.h"
+#include "PropertiesView.h"
+#include "StartupView.h"
+#include "UndoRedoModel.h"
+
+#include "libglabels/Db.h"
 
 
 ///

@@ -20,10 +20,12 @@
 
 #include "AboutDialog.h"
 
-#include "Version.h"
-#include <QUrl>
+
 #include <QDesktopServices>
+#include <QUrl>
 #include <QtDebug>
+
+#include "Version.h"
 
 
 ///

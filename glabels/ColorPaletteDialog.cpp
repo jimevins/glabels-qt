@@ -20,12 +20,12 @@
 
 #include "ColorPaletteDialog.h"
 
+
+#include <QColorDialog>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QGridLayout>
 #include <QFrame>
-#include <QColorDialog>
-#include <QComboBox>
+#include <QGridLayout>
 #include <QStandardItemModel>
 #include <QtDebug>
 

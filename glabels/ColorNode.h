@@ -21,9 +21,12 @@
 #ifndef ColorNode_h
 #define ColorNode_h
 
+
+#include <cstdint>
+
 #include <QString>
 #include <QColor>
-#include <cstdint>
+
 #include "Merge/Record.h"
 
 

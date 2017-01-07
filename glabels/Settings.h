@@ -23,8 +23,9 @@
 
 
 #include <QSettings>
-#include "libglabels/Distance.h"
 #include <QStringList>
+
+#include "libglabels/Distance.h"
 
 
 ///

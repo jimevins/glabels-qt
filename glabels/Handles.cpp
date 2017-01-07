@@ -21,10 +21,10 @@
 #include "Handles.h"
 
 
-#include "LabelModelObject.h"
-
 #include <QColor>
 #include <QtDebug>
+
+#include "LabelModelObject.h"
 
 
 namespace

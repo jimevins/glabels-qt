@@ -21,20 +21,23 @@
 #ifndef glabels_Frame_h
 #define glabels_Frame_h
 
+
 #include <QCoreApplication>
-#include <QString>
 #include <QList>
 #include <QPainterPath>
+#include <QString>
 #include <QVector>
 
 #include "Distance.h"
-#include "Point.h"
 #include "Layout.h"
+#include "Point.h"
 
 
 namespace glabels
 {
-	class Markup;  // Forward reference
+	
+	// Forward references
+	class Markup;
 
 
 	class Frame

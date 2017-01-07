@@ -20,14 +20,16 @@
 
 #include "PropertiesView.h"
 
-#include "LabelModel.h"
-#include "UndoRedoModel.h"
-#include "Settings.h"
 
-#include "libglabels/Db.h"
-#include "SelectProductDialog.h"
 #include <QStyledItemDelegate>
 #include <QtDebug>
+
+#include "LabelModel.h"
+#include "SelectProductDialog.h"
+#include "Settings.h"
+#include "UndoRedoModel.h"
+
+#include "libglabels/Db.h"
 
 
 ///

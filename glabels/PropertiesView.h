@@ -21,6 +21,7 @@
 #ifndef PropertiesView_h
 #define PropertiesView_h
 
+
 #include "ui_PropertiesView.h"
 
 #include "libglabels/Units.h"

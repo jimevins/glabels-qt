@@ -21,13 +21,14 @@
 #ifndef PrintView_h
 #define PrintView_h
 
-#include "ui_PrintView.h"
-#include "PageRenderer.h"
 
 #include <QPrinter>
 
+#include "ui_PrintView.h"
+#include "PageRenderer.h"
 
-class LabelModel;  // Forward reference
+// Forward references
+class LabelModel;
 	
 
 ///

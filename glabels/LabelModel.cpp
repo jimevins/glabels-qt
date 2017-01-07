@@ -20,17 +20,19 @@
 
 #include "LabelModel.h"
 
-#include <QFileInfo>
+
 #include <QApplication>
 #include <QClipboard>
+#include <QFileInfo>
 #include <QMimeData>
 #include <QtDebug>
 
-#include "Merge/None.h"
 #include "LabelModelObject.h"
 #include "Region.h"
 #include "XmlLabelCreator.h"
 #include "XmlLabelParser.h"
+
+#include "Merge/None.h"
 
 
 namespace

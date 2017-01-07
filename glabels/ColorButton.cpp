@@ -20,10 +20,12 @@
 
 #include "ColorButton.h"
 
-#include "ColorSwatch.h"
-#include <QIcon>
+
 #include <QHBoxLayout>
+#include <QIcon>
 #include <QtDebug>
+
+#include "ColorSwatch.h"
 
 
 namespace

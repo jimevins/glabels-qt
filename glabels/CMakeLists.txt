@@ -33,12 +33,11 @@ set (glabels_sources
   Cursors.cpp
   EnumUtil.cpp
   FieldButton.cpp
-  FieldMenu.cpp
-  FieldMenuItem.cpp
   File.cpp
   FileUtil.cpp
   Handles.cpp
   Help.cpp
+  Icons.cpp
   LabelEditor.cpp
   LabelModel.cpp
   LabelModelObject.cpp
@@ -83,8 +82,6 @@ set (glabels_qobject_headers
   ColorPaletteItem.h
   ColorPaletteButtonItem.h
   FieldButton.h
-  FieldMenu.h
-  FieldMenuItem.h
   File.h
   LabelEditor.h
   LabelModel.h

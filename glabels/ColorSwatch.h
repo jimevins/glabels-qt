@@ -21,6 +21,7 @@
 #ifndef ColorSwatch_h
 #define ColorSwatch_h
 
+
 #include <QPixmap>
 
 

@@ -21,19 +21,21 @@
 #ifndef LabelModelObject_h
 #define LabelModelObject_h
 
+
 #include <QObject>
 #include <QFont>
 #include <QMatrix>
 #include <QPainter>
 
-#include "libglabels/Distance.h"
-#include "Merge/Record.h"
 #include "ColorNode.h"
 #include "TextNode.h"
 #include "BarcodeStyle.h"
 #include "Handles.h"
 #include "Outline.h"
 
+#include "Merge/Record.h"
+
+#include "libglabels/Distance.h"
 
 // Forward References
 class Region;

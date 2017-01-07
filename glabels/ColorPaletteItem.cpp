@@ -21,8 +21,8 @@
 #include "ColorPaletteItem.h"
 
 
-#include <QPainter>
 #include <QMouseEvent>
+#include <QPainter>
 
 
 //

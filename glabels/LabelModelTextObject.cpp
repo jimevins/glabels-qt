@@ -20,6 +20,7 @@
 
 #include "LabelModelTextObject.h"
 
+
 #include <QBrush>
 #include <QPen>
 #include <QTextDocument>

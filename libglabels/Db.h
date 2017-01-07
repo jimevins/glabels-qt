@@ -23,14 +23,14 @@
 
 
 #include <QCoreApplication>
-#include <QString>
 #include <QDir>
 #include <QList>
+#include <QString>
 
-#include "Paper.h"
 #include "Category.h"
-#include "Vendor.h"
+#include "Paper.h"
 #include "Template.h"
+#include "Vendor.h"
 
 
 namespace glabels

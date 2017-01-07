@@ -20,14 +20,15 @@
 
 #include "XmlVendorParser.h"
 
-#include <QFile>
+
 #include <QDomDocument>
 #include <QDomNode>
+#include <QFile>
 #include <QtDebug>
 
+#include "Db.h"
 #include "Vendor.h"
 #include "XmlUtil.h"
-#include "Db.h"
 
 
 namespace glabels

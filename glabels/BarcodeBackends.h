@@ -21,12 +21,13 @@
 #ifndef BarcodeBackends_h
 #define BarcodeBackends_h
 
-#include "BarcodeStyle.h"
 
+#include <QList>
+#include <QMap>
 #include <QObject>
 #include <QString>
-#include <QMap>
-#include <QList>
+
+#include "BarcodeStyle.h"
 
 
 ///

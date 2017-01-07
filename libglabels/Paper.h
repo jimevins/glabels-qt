@@ -23,6 +23,7 @@
 
 
 #include <QString>
+
 #include "Distance.h"
 
 

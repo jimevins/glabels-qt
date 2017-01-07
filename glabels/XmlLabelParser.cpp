@@ -20,25 +20,29 @@
 
 #include "XmlLabelParser.h"
 
+
+#include <QByteArray>
+#include <QFile>
+#include <QTextCursor>
+#include <QTextDocument>
+#include <QtDebug>
+
+#include <zlib.h>
+
+#include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
+//#include "LabelModelBarcodeObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
-#include "LabelModelLineObject.h"
 #include "LabelModelImageObject.h"
+#include "LabelModelLineObject.h"
 #include "LabelModelTextObject.h"
-//#include "LabelModelBarcodeObject.h"
-#include "EnumUtil.h"
+
 #include "Merge/Factory.h"
+
 #include "libglabels/XmlTemplateParser.h"
 #include "libglabels/XmlUtil.h"
-
-#include <QFile>
-#include <QByteArray>
-#include <zlib.h>
-#include <QTextDocument>
-#include <QTextCursor>
-#include <QtDebug>
 
 
 LabelModel*

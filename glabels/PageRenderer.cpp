@@ -20,13 +20,14 @@
 
 #include "PageRenderer.h"
 
+
+#include <QtDebug>
+
 #include "LabelModel.h"
+
 #include "Merge/Merge.h"
 #include "Merge/None.h"
 #include "Merge/Record.h"
-
-#include <QPainter>
-#include <QtDebug>
 
 
 namespace

@@ -20,7 +20,8 @@
 
 #include "Layout.h"
 
-#include <math.h>
+
+#include <cmath>
 
 #include "privateConstants.h"
 

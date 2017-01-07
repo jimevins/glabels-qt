@@ -20,15 +20,16 @@
 
 #include "Db.h"
 
+
 #include <QApplication>
 #include <QtDebug>
 
 #include "Config.h"
 #include "StrUtil.h"
-#include "XmlPaperParser.h"
 #include "XmlCategoryParser.h"
-#include "XmlVendorParser.h"
+#include "XmlPaperParser.h"
 #include "XmlTemplateParser.h"
+#include "XmlVendorParser.h"
 
 
 namespace

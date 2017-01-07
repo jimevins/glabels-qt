@@ -21,9 +21,10 @@
 #ifndef LabelModelTextObject_h
 #define LabelModelTextObject_h
 
-#include "LabelModelObject.h"
 
 #include <QTextLayout>
+
+#include "LabelModelObject.h"
 
 
 ///

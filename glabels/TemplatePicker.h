@@ -21,9 +21,9 @@
 #ifndef TemplatePicker_h
 #define TemplatePicker_h
 
-#include <QListWidget>
 
 #include <QList>
+#include <QListWidget>
 
 #include "libglabels/Template.h"
 

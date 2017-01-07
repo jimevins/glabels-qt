@@ -21,6 +21,7 @@
 #ifndef LabelModelLineObject_h
 #define LabelModelLineObject_h
 
+
 #include "LabelModelObject.h"
 
 

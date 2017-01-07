@@ -20,9 +20,10 @@
 
 #include "Help.h"
 
-#include "AboutDialog.h"
 
-#include <iostream>
+#include <QtDebug>
+
+#include "AboutDialog.h"
 
 
 ///
@@ -30,7 +31,7 @@
 ///
 void Help::displayContents( QWidget *parent )
 {
-	std::cout << "TODO: Help::displayContents" << std::endl;
+	qDebug() << "TODO: Help::displayContents";
 }
 
 

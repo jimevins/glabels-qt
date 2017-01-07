@@ -20,14 +20,15 @@
 
 #include "XmlCategoryParser.h"
 
-#include <QFile>
+
 #include <QDomDocument>
 #include <QDomNode>
+#include <QFile>
 #include <QtDebug>
 
 #include "Category.h"
-#include "XmlUtil.h"
 #include "Db.h"
+#include "XmlUtil.h"
 
 
 namespace glabels

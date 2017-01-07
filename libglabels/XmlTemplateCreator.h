@@ -22,16 +22,16 @@
 #define glabels_XmlTemplateCreator_h
 
 
-#include <QString>
 #include <QDomElement>
+#include <QString>
 
-#include "Template.h"
-#include "FrameRect.h"
 #include "FrameCd.h"
-#include "FrameRound.h"
 #include "FrameEllipse.h"
+#include "FrameRect.h"
+#include "FrameRound.h"
 #include "Layout.h"
 #include "Markup.h"
+#include "Template.h"
 
 
 namespace glabels

@@ -21,8 +21,9 @@
 #ifndef ColorHistory_h
 #define ColorHistory_h
 
-#include <QObject>
+
 #include <QColor>
+#include <QObject>
 
 
 ///

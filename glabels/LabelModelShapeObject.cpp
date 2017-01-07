@@ -20,6 +20,7 @@
 
 #include "LabelModelShapeObject.h"
 
+
 #include <QBrush>
 #include <QPen>
 

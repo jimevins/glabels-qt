@@ -21,8 +21,10 @@
 #ifndef SelectProductDialog_h
 #define SelectProductDialog_h
 
-#include "ui_SelectProductDialog.h"
+
 #include <QBasicTimer>
+
+#include "ui_SelectProductDialog.h"
 
 
 ///

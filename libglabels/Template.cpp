@@ -20,6 +20,7 @@
 
 #include "Template.h"
 
+
 #include <QtDebug>
 
 #include "Db.h"

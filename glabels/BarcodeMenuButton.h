@@ -21,7 +21,9 @@
 #ifndef BarcodeMenuButton_h
 #define BarcodeMenuButton_h
 
+
 #include <QPushButton>
+
 #include "BarcodeMenu.h"
 #include "BarcodeStyle.h"
 

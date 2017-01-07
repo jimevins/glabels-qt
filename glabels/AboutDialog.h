@@ -21,6 +21,7 @@
 #ifndef AboutDialog_h
 #define AboutDialog_h
 
+
 #include "ui_AboutDialog.h"
 
 
