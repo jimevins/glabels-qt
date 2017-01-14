@@ -49,7 +49,7 @@ namespace glabels
 		Distance w() const;
 		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		QString sizeDescription( const Units& units ) const;
 
 		bool isSimilarTo( Frame* other ) const;
 
@@ -71,9 +71,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "FrameRect.inl"
 
 
 #endif // glabels_FrameRect_h

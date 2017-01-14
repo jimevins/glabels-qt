@@ -68,7 +68,4 @@ namespace glabels
 }
 
 
-#include "Layout.inl"
-
-
 #endif // glabels_Layout_h

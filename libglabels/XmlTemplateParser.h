@@ -58,4 +58,5 @@ namespace glabels
 
 }
 
+
 #endif // glabels_XmlTemplateParser_h

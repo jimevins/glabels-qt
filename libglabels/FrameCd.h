@@ -49,7 +49,7 @@ namespace glabels
 		Distance w() const;
 		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		QString sizeDescription( const Units& units ) const;
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
@@ -70,9 +70,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "FrameCd.inl"
 
 
 #endif // glabels_FrameCd_h

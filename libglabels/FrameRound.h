@@ -46,7 +46,7 @@ namespace glabels
 		Distance w() const;
 		Distance h() const;
 
-		const QString sizeDescription( const Units& units ) const;
+		QString sizeDescription( const Units& units ) const;
 		bool isSimilarTo( Frame* other ) const;
 
 		const QPainterPath& path() const;
@@ -64,9 +64,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "FrameRound.inl"
 
 
 #endif // glabels_FrameRound_h

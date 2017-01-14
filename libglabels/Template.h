@@ -65,24 +65,24 @@ namespace glabels
 					    const QString& equivPart );
 
 
-		const QString& brand() const;
-		const QString& part() const;
-		const QString& description() const;
+		QString brand() const;
+		QString part() const;
+		QString description() const;
 
-		const QString& paperId() const;
+		QString paperId() const;
 		Distance pageWidth() const;
 		Distance pageHeight() const;
 		bool isSizeIso() const;
 		bool isSizeUs() const;
 		bool isSizeOther() const;
 
-		const QString& equivPart() const;
+		QString equivPart() const;
 		void setEquivPart( const QString& value );
 
-		const QString& productUrl() const;
+		QString productUrl() const;
 		void setProductUrl( const QString& value );
 
-		const QString& name() const;
+		QString name() const;
 
 		void addCategory( const QString& categoryId );
 		void addFrame( Frame* frame );
@@ -121,9 +121,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "Template.inl"
 
 
 #endif // glabels_Template_h

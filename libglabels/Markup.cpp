@@ -44,6 +44,12 @@ namespace glabels
 	}
 
 
+	Distance MarkupMargin::size() const
+	{
+		return mSize;
+	}
+
+
 	MarkupLine::MarkupLine( const Distance& x1,
 				const Distance& y1,
 				const Distance& x2,
@@ -61,6 +67,30 @@ namespace glabels
 	}
 
 	
+	Distance MarkupLine::x1() const
+	{
+		return mX1;
+	}
+
+	
+	Distance MarkupLine::y1() const
+	{
+		return mY1;
+	}
+
+	
+	Distance MarkupLine::x2() const
+	{
+		return mX2;
+	}
+
+	
+	Distance MarkupLine::y2() const
+	{
+		return mY2;
+	}
+
+
 	MarkupRect::MarkupRect( const Distance& x1,
 				const Distance& y1,
 				const Distance& w,
@@ -78,6 +108,36 @@ namespace glabels
 	}
 	
 
+	Distance MarkupRect::x1() const
+	{
+		return mX1;
+	}
+
+	
+	Distance MarkupRect::y1() const
+	{
+		return mY1;
+	}
+
+	
+	Distance MarkupRect::w() const
+	{
+		return mW;
+	}
+
+	
+	Distance MarkupRect::h() const
+	{
+		return mH;
+	}
+
+	
+	Distance MarkupRect::r() const
+	{
+		return mR;
+	}
+
+	
 	MarkupEllipse::MarkupEllipse( const Distance& x1,
 				      const Distance& y1,
 				      const Distance& w,
@@ -94,6 +154,30 @@ namespace glabels
 	}
 
 	
+	Distance MarkupEllipse::x1() const
+	{
+		return mX1;
+	}
+
+	
+	Distance MarkupEllipse::y1() const
+	{
+		return mY1;
+	}
+
+	
+	Distance MarkupEllipse::w() const
+	{
+		return mW;
+	}
+
+	
+	Distance MarkupEllipse::h() const
+	{
+		return mH;
+	}
+
+
 	MarkupCircle::MarkupCircle( const Distance& x0,
 				    const Distance& y0,
 				    const Distance& r )
@@ -105,6 +189,24 @@ namespace glabels
 	Markup* MarkupCircle::dup() const
 	{
 		return new MarkupCircle( mX0, mY0, mR );
+	}
+
+
+	Distance MarkupCircle::x0() const
+	{
+		return mX0;
+	}
+
+	
+	Distance MarkupCircle::y0() const
+	{
+		return mY0;
+	}
+
+	
+	Distance MarkupCircle::r() const
+	{
+		return mR;
 	}
 
 }

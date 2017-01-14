@@ -62,7 +62,13 @@ namespace glabels
 	}
 	
 
-	const QString FrameEllipse::sizeDescription( const Units& units ) const
+	Distance FrameEllipse::waste() const
+	{
+		return mWaste;
+	}
+
+
+	QString FrameEllipse::sizeDescription( const Units& units ) const
 	{
 		if ( units.toEnum() == Units::IN )
 		{

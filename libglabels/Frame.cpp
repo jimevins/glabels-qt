@@ -50,6 +50,36 @@ namespace glabels
 	}
 
 
+	QString Frame::id() const
+	{
+		return mId;
+	}
+
+	
+	int Frame::nLabels() const
+	{
+		return mNLabels;
+	}
+
+	
+	QString Frame::layoutDescription() const
+	{
+		return mLayoutDescription;
+	}
+
+	
+	const QList<Layout*>& Frame::layouts() const
+	{
+		return mLayouts;
+	}
+
+	
+	const QList<Markup*>& Frame::markups() const
+	{
+		return mMarkups;
+	}
+	
+
 	QVector<Point> Frame::getOrigins() const
 	{
 		QVector<Point> origins( nLabels() );

@@ -34,6 +34,18 @@ namespace glabels
 	}
 
 
+	Distance Point::x() const
+	{
+		return mX;
+	}
+
+	
+	Distance Point::y() const
+	{
+		return mY;
+	}
+
+
 	bool Point::operator<( const Point &other ) const
 	{
 		if ( mY < other.mY )

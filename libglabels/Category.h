@@ -34,8 +34,8 @@ namespace glabels
 	public:
 		Category( const QString& id, const QString& name );
 
-		const QString& id() const;
-		const QString& name() const;
+		QString id() const;
+		QString name() const;
 
 
 	private:
@@ -45,9 +45,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "Category.inl"
 
 
 #endif // glabels_Category_h

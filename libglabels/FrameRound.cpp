@@ -62,7 +62,19 @@ namespace glabels
 	}
 
 	
-	const QString FrameRound::sizeDescription( const Units& units ) const
+	Distance FrameRound::r() const
+	{
+		return mR;
+	}
+
+
+	Distance FrameRound::waste() const
+	{
+		return mWaste;
+	}
+
+
+	QString FrameRound::sizeDescription( const Units& units ) const
 	{
 		if ( units.toEnum() == Units::IN )
 		{

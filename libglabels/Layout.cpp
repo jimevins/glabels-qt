@@ -47,6 +47,42 @@ namespace glabels
 	}
 
 
+	int Layout::nx() const
+	{
+		return mNx;
+	}
+
+		
+	int Layout::ny() const
+	{
+		return mNy;
+	}
+		
+
+	Distance Layout::x0() const
+	{
+		return mX0;
+	}
+
+		
+	Distance Layout::y0() const
+	{
+		return mY0;
+	}
+		
+
+	Distance Layout::dx() const
+	{
+		return mDx;
+	}
+
+		
+	Distance Layout::dy() const
+	{
+		return mDy;
+	}
+
+
 	bool Layout::isSimilarTo( const Layout *other )
 	{
 		return ( (mNx == other->mNx)                           &&

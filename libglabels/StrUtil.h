@@ -39,4 +39,5 @@ namespace glabels
 
 }
 
+
 #endif // glabels_StrUtil_h

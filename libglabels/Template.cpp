@@ -124,6 +124,102 @@ namespace glabels
 	}
 
 
+	QString Template::brand() const
+	{
+		return mBrand;
+	}
+
+	
+	QString Template::part() const
+	{
+		return mPart;
+	}
+
+	
+	QString Template::description() const
+	{
+		return mDescription;
+	}
+	
+
+	QString Template::paperId() const
+	{
+		return mPaperId;
+	}
+
+	
+	Distance Template::pageWidth() const
+	{
+		return mPageWidth;
+	}
+
+	
+	Distance Template::pageHeight() const
+	{
+		return mPageHeight;
+	}
+
+	
+	bool Template::isSizeIso() const
+	{
+		return mIsSizeIso;
+	}
+
+	
+	bool Template::isSizeUs() const
+	{
+		return mIsSizeUs;
+	}
+
+	
+	bool Template::isSizeOther() const
+	{
+		return !mIsSizeIso && !mIsSizeUs;
+	}
+	
+
+	QString Template::equivPart() const
+	{
+		return mEquivPart;
+	}
+
+	
+	void Template::setEquivPart( const QString& value )
+	{
+		mEquivPart = value;
+	}
+	
+
+	QString Template::productUrl() const
+	{
+		return mProductUrl;
+	}
+
+	
+	void Template::setProductUrl( const QString& value )
+	{
+		mProductUrl = value;
+	}
+	
+
+	QString Template::name() const
+	{
+		return mName;
+	}
+	
+
+	const MiniPreviewPixmap& Template::preview() const
+	{
+		return mPreview;
+	}
+	
+
+	const QList<Frame*>& Template::frames() const
+	{
+		return mFrames;
+	}
+
+
 	void Template::addCategory( const QString& categoryId )
 	{
 		mCategoryIds << categoryId;

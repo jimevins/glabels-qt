@@ -28,4 +28,16 @@ namespace glabels
 	{
 	}
 
+
+	QString Vendor::name() const
+	{
+		return mName;
+	}
+
+	
+	QString Vendor::url() const
+	{
+		return mUrl;
+	}
+
 }

@@ -117,7 +117,25 @@ namespace glabels
 	}
 
 
-	const QString FrameCd::sizeDescription( const Units& units ) const
+	Distance FrameCd::r1() const
+	{
+		return mR1;
+	}
+
+	
+	Distance FrameCd::r2() const
+	{
+		return mR2;
+	}
+
+	
+	Distance FrameCd::waste() const
+	{
+		return mWaste;
+	}
+	
+
+	QString FrameCd::sizeDescription( const Units& units ) const
 	{
 		if ( units.toEnum() == Units::IN )
 		{

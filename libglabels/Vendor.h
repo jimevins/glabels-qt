@@ -33,8 +33,8 @@ namespace glabels
 	public:
 		Vendor( const QString &name, const QString &url );
 
-		const QString& name() const;
-		const QString& url() const;
+		QString name() const;
+		QString url() const;
 
 	private:
 		QString mName;
@@ -42,9 +42,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "Vendor.inl"
 
 
 #endif // glabels_Vendor_h

@@ -29,6 +29,18 @@ namespace glabels
 	{
 	}
 
+
+	QString Category::id() const
+	{
+		return mId;
+	}
+
+
+	QString Category::name() const
+	{
+		return mName;
+	}
+
 }
 
 

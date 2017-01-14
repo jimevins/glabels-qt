@@ -49,7 +49,4 @@ namespace glabels
 }
 
 
-#include "Point.inl"
-
-
 #endif // glabels_Point_h

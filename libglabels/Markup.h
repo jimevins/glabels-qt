@@ -153,7 +153,4 @@ namespace glabels
 }
 
 
-#include "Markup.inl"
-
-
 #endif // glabels_Markup_h

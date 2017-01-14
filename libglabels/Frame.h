@@ -51,9 +51,9 @@ namespace glabels
 	public:
 		virtual Frame* dup() const = 0;
 
-		const QString& id() const;
+		QString id() const;
 		int nLabels() const;
-		const QString& layoutDescription() const;
+		QString layoutDescription() const;
 		const QList<Layout*>& layouts() const;
 		const QList<Markup*>& markups() const;
 
@@ -65,7 +65,7 @@ namespace glabels
 		virtual Distance w() const = 0;
 		virtual Distance h() const = 0;
 
-		virtual const QString sizeDescription( const Units& units ) const = 0;
+		virtual QString sizeDescription( const Units& units ) const = 0;
 		virtual bool isSimilarTo( Frame* other ) const = 0;
 
 		virtual const QPainterPath& path() const = 0;
@@ -83,9 +83,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "Frame.inl"
 
 
 #endif // glabels_Frame_h

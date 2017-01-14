@@ -43,4 +43,5 @@ namespace glabels
 
 }
 
+
 #endif // glabels_XmlVendorParser_h

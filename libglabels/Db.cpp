@@ -81,6 +81,60 @@ namespace glabels
 	}
 
 
+	const QList<Paper*>& Db::papers()
+	{
+		return mPapers;
+	}
+
+
+	const QStringList& Db::paperIds()
+	{
+		return mPaperIds;
+	}
+
+
+	const QStringList& Db::paperNames()
+	{
+		return mPaperNames;
+	}
+
+
+	const QList<Category*>& Db::categories()
+	{
+		return mCategories;
+	}
+
+
+	const QStringList& Db::categoryIds()
+	{
+		return mCategoryIds;
+	}
+
+
+	const QStringList& Db::categoryNames()
+	{
+		return mCategoryNames;
+	}
+
+
+	const QList<Vendor*>& Db::vendors()
+	{
+		return mVendors;
+	}
+
+
+	const QStringList& Db::vendorNames()
+	{
+		return mVendorNames;
+	}
+
+
+	const QList<Template*>& Db::templates()
+	{
+		return mTemplates;
+	}
+
+
 	void Db::registerPaper( Paper *paper )
 	{
 		if ( !isPaperIdKnown( paper->id() ) )
@@ -96,7 +150,7 @@ namespace glabels
 	}
 
 
-	const Paper *Db::lookupPaperFromName( const QString &name )
+	const Paper *Db::lookupPaperFromName( const QString& name )
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
@@ -117,7 +171,7 @@ namespace glabels
 	}
 
 
-	const Paper *Db::lookupPaperFromId( const QString &id )
+	const Paper *Db::lookupPaperFromId( const QString& id )
 	{
 		if ( id.isNull() || id.isEmpty() )
 		{
@@ -138,7 +192,7 @@ namespace glabels
 	}
 
 
-	const QString &Db::lookupPaperIdFromName( const QString &name )
+	QString Db::lookupPaperIdFromName( const QString& name )
 	{
 		if ( !name.isNull() && !name.isEmpty() )
 		{
@@ -154,7 +208,7 @@ namespace glabels
 	}
 
 
-	const QString &Db::lookupPaperNameFromId( const QString &id )
+	QString Db::lookupPaperNameFromId( const QString& id )
 	{
 		if ( !id.isNull() && !id.isEmpty() )
 		{
@@ -175,7 +229,7 @@ namespace glabels
 	}
 
 
-	bool Db::isPaperIdKnown( const QString &id )
+	bool Db::isPaperIdKnown( const QString& id )
 	{
 		foreach ( Paper *paper, mPapers )
 		{
@@ -189,7 +243,7 @@ namespace glabels
 	}
 
 
-	bool Db::isPaperIdOther( const QString &id )
+	bool Db::isPaperIdOther( const QString& id )
 	{
 		return ( id == "Other" );
 	}
@@ -210,7 +264,7 @@ namespace glabels
 	}
 
 
-	const Category *Db::lookupCategoryFromName( const QString &name )
+	const Category *Db::lookupCategoryFromName( const QString& name )
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
@@ -231,7 +285,7 @@ namespace glabels
 	}
 
 
-	const Category *Db::lookupCategoryFromId( const QString &id )
+	const Category *Db::lookupCategoryFromId( const QString& id )
 	{
 		if ( id.isNull() || id.isEmpty() )
 		{
@@ -252,7 +306,7 @@ namespace glabels
 	}
 
 
-	const QString &Db::lookupCategoryIdFromName( const QString &name )
+	QString Db::lookupCategoryIdFromName( const QString& name )
 	{
 		if ( !name.isNull() && !name.isEmpty() )
 		{
@@ -268,7 +322,7 @@ namespace glabels
 	}
 
 
-	const QString &Db::lookupCategoryNameFromId( const QString &id )
+	QString Db::lookupCategoryNameFromId( const QString& id )
 	{
 		if ( !id.isNull() && !id.isEmpty() )
 		{
@@ -284,7 +338,7 @@ namespace glabels
 	}
 
 
-	bool Db::isCategoryIdKnown( const QString &id )
+	bool Db::isCategoryIdKnown( const QString& id )
 	{
 		foreach ( Category *category, mCategories )
 		{
@@ -312,7 +366,7 @@ namespace glabels
 	}
 
 
-	const Vendor *Db::lookupVendorFromName( const QString &name )
+	const Vendor *Db::lookupVendorFromName( const QString& name )
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
@@ -333,7 +387,7 @@ namespace glabels
 	}
 
 
-	const QString &Db::lookupVendorUrlFromName( const QString &name )
+	QString Db::lookupVendorUrlFromName( const QString& name )
 	{
 		if ( !name.isNull() && !name.isEmpty() )
 		{
@@ -349,7 +403,7 @@ namespace glabels
 	}
 
 
-	bool Db::isVendorNameKnown( const QString &name )
+	bool Db::isVendorNameKnown( const QString& name )
 	{
 		foreach ( Vendor *vendor, mVendors )
 		{
@@ -377,7 +431,7 @@ namespace glabels
 	}
 
 
-	const Template *Db::lookupTemplateFromName( const QString &name )
+	const Template *Db::lookupTemplateFromName( const QString& name )
 	{
 		if ( name.isNull() || name.isEmpty() )
 		{
@@ -398,7 +452,7 @@ namespace glabels
 	}
 
 
-	const Template *Db::lookupTemplateFromBrandPart( const QString &brand, const QString &part )
+	const Template *Db::lookupTemplateFromBrandPart( const QString& brand, const QString& part )
 	{
 		if ( brand.isNull() || brand.isEmpty() || part.isNull() || part.isEmpty() )
 		{
@@ -419,7 +473,7 @@ namespace glabels
 	}
 
 
-	bool Db::isTemplateKnown( const QString &brand, const QString &part )
+	bool Db::isTemplateKnown( const QString& brand, const QString& part )
 	{
 		foreach ( Template *tmplate, mTemplates )
 		{
@@ -433,7 +487,7 @@ namespace glabels
 	}
 
 
-	QStringList Db::getNameListOfSimilarTemplates( const QString &name )
+	QStringList Db::getNameListOfSimilarTemplates( const QString& name )
 	{
 		QStringList list;
 
@@ -465,13 +519,13 @@ namespace glabels
 	}
 
 
-	void Db::deleteUserTemplateByName( const QString &name )
+	void Db::deleteUserTemplateByName( const QString& name )
 	{
 		// TODO
 	}
 
 
-	void Db::deleteUserTemplateByBrandPart( const QString &brand, const QString &part )
+	void Db::deleteUserTemplateByBrandPart( const QString& brand, const QString& part )
 	{
 		// TODO
 	}
@@ -568,7 +622,7 @@ namespace glabels
 	}
 
 
-	void Db::readPapersFromDir( const QDir &dir )
+	void Db::readPapersFromDir( const QDir& dir )
 	{
 		XmlPaperParser parser;
 
@@ -588,7 +642,7 @@ namespace glabels
 	}
 
 
-	void Db::readCategoriesFromDir( const QDir &dir )
+	void Db::readCategoriesFromDir( const QDir& dir )
 	{
 		XmlCategoryParser parser;
 
@@ -608,7 +662,7 @@ namespace glabels
 	}
 
 
-	void Db::readVendorsFromDir( const QDir &dir )
+	void Db::readVendorsFromDir( const QDir& dir )
 	{
 		XmlVendorParser parser;
 
@@ -632,7 +686,7 @@ namespace glabels
 	}
 
 
-	void Db::readTemplatesFromDir( const QDir &dir )
+	void Db::readTemplatesFromDir( const QDir& dir )
 	{
 		QStringList filters;
 		filters << "*-templates.xml" << "*.template";

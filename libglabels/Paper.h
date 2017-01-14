@@ -39,20 +39,20 @@ namespace glabels
 		       const Distance& height,
 		       const QString&  pwgSize );
 
-		inline const QString& id() const;
-		inline const QString& name() const;
+		QString id() const;
+		QString name() const;
 
 		/* Width */
-		inline Distance width() const;
+		Distance width() const;
 
 		/* Height */
-		inline Distance height() const;
+		Distance height() const;
 
 		/* PWG 5101.1-2002 size name */
-		inline QString pwgSize() const;
+		QString pwgSize() const;
 
-		inline bool isSizeIso() const;
-		inline bool isSizeUs() const;
+		bool isSizeIso() const;
+		bool isSizeUs() const;
 
 	private:
 		QString  mId;
@@ -63,9 +63,6 @@ namespace glabels
 	};
 
 }
-
-
-#include "Paper.inl"
 
 
 #endif // glabels_Paper_h
