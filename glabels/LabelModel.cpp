@@ -558,7 +558,7 @@ bool LabelModel::isSelectionAtomic()
 		}
 	}
 
-	return (nSelected == 1);
+	return nSelected == 1;
 }
 
 

@@ -78,9 +78,9 @@ ColorNode::ColorNode( const QString& key )
 ///
 bool ColorNode::operator==( const ColorNode& cn )
 {
-	return ( (mIsField == cn.mIsField) &&
-		 (mColor   == cn.mColor)   &&
-		 (mKey     == cn.mKey) );
+	return (mIsField == cn.mIsField) &&
+	       (mColor   == cn.mColor)   &&
+	       (mKey     == cn.mKey);
 }
 
 
@@ -89,9 +89,9 @@ bool ColorNode::operator==( const ColorNode& cn )
 ///
 bool ColorNode::operator!=( const ColorNode& cn )
 {
-	return ( (mIsField != cn.mIsField) ||
-		 (mColor   != cn.mColor)   ||
-		 (mKey     != cn.mKey) );
+	return (mIsField != cn.mIsField) ||
+	       (mColor   != cn.mColor)   ||
+	       (mKey     != cn.mKey);
 }
 
 

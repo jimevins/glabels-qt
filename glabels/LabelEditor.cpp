@@ -262,7 +262,7 @@ LabelEditor::zoomToFit()
 bool
 LabelEditor::isZoomMax() const
 {
-	return ( mZoom >= zoomLevels[0] );
+	return mZoom >= zoomLevels[0];
 }
 
 
@@ -272,7 +272,7 @@ LabelEditor::isZoomMax() const
 bool
 LabelEditor::isZoomMin() const
 {
-	return ( mZoom <= zoomLevels[nZoomLevels-1] );
+	return mZoom <= zoomLevels[nZoomLevels-1];
 }
 
 

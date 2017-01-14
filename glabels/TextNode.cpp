@@ -44,8 +44,8 @@ TextNode::TextNode( bool isField, const QString &data )
 ///
 bool TextNode::operator==( const TextNode& other )
 {
-	return ( (mIsField == other.mIsField) &&
-		 (mData    == other.mData) );
+	return (mIsField == other.mIsField) &&
+	       (mData    == other.mData);
 }
 
 
@@ -54,8 +54,8 @@ bool TextNode::operator==( const TextNode& other )
 ///
 bool TextNode::operator!=( const TextNode& other )
 {
-	return ( (mIsField != other.mIsField) ||
-		 (mData    != other.mData) );
+	return (mIsField != other.mIsField) ||
+	       (mData    != other.mData);
 }
 
 
@@ -93,7 +93,7 @@ void TextNode::setData( const QString& data )
 {
 	mData = data;
 }
-		
+
 
 ///
 /// Get text, expand if necessary
@@ -134,7 +134,7 @@ bool TextNode::isEmptyField( merge::Record* record ) const
 	{
 		if ( record->contains( mData ) )
 		{
-			return ( (*record)[mData].isEmpty() );
+			return (*record)[mData].isEmpty();
 		}
 	}
 
