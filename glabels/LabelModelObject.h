@@ -27,15 +27,15 @@
 #include <QMatrix>
 #include <QPainter>
 
-#include "ColorNode.h"
-#include "TextNode.h"
 #include "BarcodeStyle.h"
+#include "ColorNode.h"
+#include "Distance.h"
 #include "Handles.h"
 #include "Outline.h"
+#include "TextNode.h"
 
 #include "Merge/Record.h"
 
-#include "libglabels/Distance.h"
 
 // Forward References
 class Region;

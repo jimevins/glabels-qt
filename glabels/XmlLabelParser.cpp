@@ -38,11 +38,10 @@
 #include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
 #include "LabelModelTextObject.h"
+#include "XmlTemplateParser.h"
+#include "XmlUtil.h"
 
 #include "Merge/Factory.h"
-
-#include "libglabels/XmlTemplateParser.h"
-#include "libglabels/XmlUtil.h"
 
 
 LabelModel*

@@ -24,7 +24,7 @@
 
 #include "ui_PropertiesView.h"
 
-#include "libglabels/Units.h"
+#include "Units.h"
 
 // Forward references
 class LabelModel;

@@ -37,6 +37,7 @@
 #include <QToolBar>
 #include <QtDebug>
 
+#include "Db.h"
 #include "File.h"
 #include "Help.h"
 #include "Icons.h"
@@ -49,8 +50,6 @@
 #include "PropertiesView.h"
 #include "StartupView.h"
 #include "UndoRedoModel.h"
-
-#include "libglabels/Db.h"
 
 
 ///

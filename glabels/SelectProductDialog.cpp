@@ -23,10 +23,9 @@
 
 #include <QtDebug>
 
+#include "Db.h"
 #include "Settings.h"
 #include "TemplatePickerItem.h"
-
-#include "libglabels/Db.h"
 
 
 ///

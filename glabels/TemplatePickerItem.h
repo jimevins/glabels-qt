@@ -25,7 +25,7 @@
 #include <QLabel>
 #include <QListWidget>
 
-#include "libglabels/Template.h"
+#include "Template.h"
 
 
 ///

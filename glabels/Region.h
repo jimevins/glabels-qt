@@ -24,7 +24,7 @@
 
 #include <QRectF>
 
-#include "libglabels/Distance.h"
+#include "Distance.h"
 
 
 ///

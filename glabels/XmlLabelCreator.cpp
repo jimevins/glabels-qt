@@ -36,12 +36,10 @@
 #include "LabelModelLineObject.h"
 #include "LabelModelImageObject.h"
 #include "LabelModelTextObject.h"
+#include "XmlTemplateCreator.h"
+#include "XmlUtil.h"
 
 #include "Merge/None.h"
-
-#include "libglabels/XmlTemplateCreator.h"
-#include "libglabels/XmlUtil.h"
-
 
 
 void

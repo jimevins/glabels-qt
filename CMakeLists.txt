@@ -49,5 +49,4 @@ endif ()
 # Subdirectories
 #=======================================
 add_subdirectory (glabels)
-add_subdirectory (libglabels)
 

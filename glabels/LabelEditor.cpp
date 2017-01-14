@@ -26,6 +26,10 @@
 #include <QtDebug>
 
 #include "Cursors.h"
+#include "FrameCd.h"
+#include "FrameEllipse.h"
+#include "FrameRect.h"
+#include "FrameRound.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
@@ -33,14 +37,9 @@
 #include "LabelModelImageObject.h"
 #include "LabelModelLineObject.h"
 #include "LabelModelTextObject.h"
+#include "Markup.h"
 #include "Settings.h"
 #include "UndoRedoModel.h"
-
-#include "libglabels/Markup.h"
-#include "libglabels/FrameRect.h"
-#include "libglabels/FrameRound.h"
-#include "libglabels/FrameEllipse.h"
-#include "libglabels/FrameCd.h"
 
 
 //

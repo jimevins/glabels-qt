@@ -26,7 +26,7 @@
 
 #include "ui_ObjectEditor.h"
 
-#include "libglabels/Distance.h"
+#include "Distance.h"
 
 // Forward references
 class LabelModel;

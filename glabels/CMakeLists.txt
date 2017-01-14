@@ -10,6 +10,7 @@ project (app CXX)
 # Auto-generate Version.h
 #=======================================
 configure_file (Version.h.in ${CMAKE_CURRENT_BINARY_DIR}/Version.h @ONLY)
+configure_file (Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h @ONLY)
 
 
 #=======================================
@@ -23,6 +24,7 @@ set (glabels_sources
   BarcodeMenuButton.cpp
   BarcodeMenuItem.cpp
   BarcodeStyle.cpp
+  Category.cpp
   ColorButton.cpp
   ColorHistory.cpp
   ColorNode.cpp
@@ -31,10 +33,17 @@ set (glabels_sources
   ColorPaletteButtonItem.cpp
   ColorSwatch.cpp
   Cursors.cpp
+  Db.cpp
+  Distance.cpp
   EnumUtil.cpp
   FieldButton.cpp
   File.cpp
   FileUtil.cpp
+  Frame.cpp
+  FrameCd.cpp
+  FrameEllipse.cpp
+  FrameRect.cpp
+  FrameRound.cpp
   Handles.cpp
   Help.cpp
   Icons.cpp
@@ -47,11 +56,16 @@ set (glabels_sources
   LabelModelLineObject.cpp
   LabelModelShapeObject.cpp
   LabelModelTextObject.cpp
+  Layout.cpp
   MainWindow.cpp
+  Markup.cpp
   MergeView.cpp
+  MiniPreviewPixmap.cpp
   ObjectEditor.cpp
   Outline.cpp
   PageRenderer.cpp
+  Paper.cpp
+  Point.cpp
   PreferencesDialog.cpp
   PrintView.cpp
   PropertiesView.cpp
@@ -63,12 +77,22 @@ set (glabels_sources
   SimplePreview.cpp
   Size.cpp
   StartupView.cpp
+  StrUtil.cpp
+  Template.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   TextNode.cpp
   UndoRedoModel.cpp
+  Units.cpp
+  Vendor.cpp
+  XmlCategoryParser.cpp
   XmlLabelCreator.cpp
   XmlLabelParser.cpp
+  XmlPaperParser.cpp
+  XmlTemplateCreator.cpp
+  XmlTemplateParser.cpp
+  XmlUtil.cpp
+  XmlVendorParser.cpp
 )
 
 set (glabels_qobject_headers
@@ -138,7 +162,6 @@ add_executable (glabels-qt
 
 target_link_libraries (glabels-qt
   Merge
-  libglabels
   ${Qt5Widgets_LIBRARIES}
   ${Qt5PrintSupport_LIBRARIES}
   ${Qt5Xml_LIBRARIES}

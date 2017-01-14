@@ -26,10 +26,10 @@
 #include <QRect>
 #include <QVector>
 
+#include "Point.h"
+
 #include "Merge/Merge.h"
 #include "Merge/Record.h"
-
-#include "libglabels/Point.h"
 
 // Forward references
 class LabelModel;

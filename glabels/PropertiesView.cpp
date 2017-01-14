@@ -24,12 +24,11 @@
 #include <QStyledItemDelegate>
 #include <QtDebug>
 
+#include "Db.h"
 #include "LabelModel.h"
 #include "SelectProductDialog.h"
 #include "Settings.h"
 #include "UndoRedoModel.h"
-
-#include "libglabels/Db.h"
 
 
 ///

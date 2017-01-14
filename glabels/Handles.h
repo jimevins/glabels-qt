@@ -25,7 +25,7 @@
 #include <QPainter>
 #include <QPainterPath>
 
-#include "libglabels/Distance.h"
+#include "Distance.h"
 
 // Forward References
 class LabelModelObject;

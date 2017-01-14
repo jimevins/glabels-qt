@@ -26,7 +26,7 @@
 #include <QGraphicsScene>
 #include <QList>
 
-#include "libglabels/Template.h"
+#include "Template.h"
 
 
 ///

@@ -24,7 +24,7 @@
 
 #include <QSizeF>
 
-#include "libglabels/Distance.h"
+#include "Distance.h"
 
 
 ///

@@ -27,11 +27,10 @@
 #include <QPainter>
 
 #include "Settings.h"
+#include "Template.h"
 
 #include "Merge/Merge.h"
 #include "Merge/Record.h"
-
-#include "libglabels/Template.h"
 
 // Forward References
 class ColorNode;
