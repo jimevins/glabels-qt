@@ -29,60 +29,63 @@
 #include "Template.h"
 
 
-///
-/// Simple Preview Widget
-///
-class SimplePreview : public QGraphicsView
+namespace glabels
 {
-	Q_OBJECT
+
+	///
+	/// Simple Preview Widget
+	///
+	class SimplePreview : public QGraphicsView
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	SimplePreview( QWidget *parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		SimplePreview( QWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	void setTemplate( const glabels::Template *tmplate );
-	void setRotate( bool rotateFlag );
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		void setTemplate( const Template *tmplate );
+		void setRotate( bool rotateFlag );
 
 
-	/////////////////////////////////////
-	// Event handlers
-	/////////////////////////////////////
-protected:
-	void resizeEvent( QResizeEvent* event );
+		/////////////////////////////////////
+		// Event handlers
+		/////////////////////////////////////
+	protected:
+		void resizeEvent( QResizeEvent* event );
 
 		
-	/////////////////////////////////
-	// Internal Methods
-	/////////////////////////////////
-private:
-	void update();
-	void clearScene();
-	void drawPaper( const glabels::Distance& pw, const glabels::Distance& ph );
-	void drawLabels();
-	void drawLabel( const glabels::Distance& x,
-	                const glabels::Distance& y,
-	                const QPainterPath&      path );
-	void drawArrow();
+		/////////////////////////////////
+		// Internal Methods
+		/////////////////////////////////
+	private:
+		void update();
+		void clearScene();
+		void drawPaper( const Distance& pw, const Distance& ph );
+		void drawLabels();
+		void drawLabel( const Distance& x, const Distance& y, const QPainterPath& path );
+		void drawArrow();
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	const glabels::Template *mTmplate;
-	bool                     mRotateFlag;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		const Template          *mTmplate;
+		bool                     mRotateFlag;
 
-	QGraphicsScene          *mScene;
+		QGraphicsScene          *mScene;
 
-};
+	};
+
+}
 
 
 #endif // SimplePreview_h

@@ -25,16 +25,20 @@
 #include <QWidget>
 
 
-///
-/// Help Actions
-///
-namespace Help
+namespace glabels
 {
 
-	void displayContents( QWidget *parent );
-	void displayAbout( QWidget *parent );
+	///
+	/// Help Actions
+	///
+	namespace Help
+	{
+
+		void displayContents( QWidget *parent );
+		void displayAbout( QWidget *parent );
+
+	}
 
 }
-
 
 #endif // Help_h

@@ -25,29 +25,34 @@
 #include "ui_AboutDialog.h"
 
 
-///
-/// About Dialog Widget
-///
-class AboutDialog : public QDialog, public Ui_AboutDialog
+namespace glabels
 {
-	Q_OBJECT
+	
+	///
+	/// About Dialog Widget
+	///
+	class AboutDialog : public QDialog, public Ui_AboutDialog
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	AboutDialog( QWidget *parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		AboutDialog( QWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onLicenseButtonClicked();
-	void onWebsiteButtonClicked();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onLicenseButtonClicked();
+		void onWebsiteButtonClicked();
 
-};
+	};
+
+}
 
 
 #endif // AboutDialog_h

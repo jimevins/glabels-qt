@@ -32,18 +32,26 @@
 #include "XmlVendorParser.h"
 
 
-namespace
-{
-	bool partNameLessThan( const glabels::Template *a, const glabels::Template *b )
-	{
-		return glabels::StrUtil::comparePartNames( a->name(), b->name() ) < 0;
-	}
-}
-
-
 namespace glabels
 {
+	
+	//
+	// Private
+	//
+	namespace
+	{
+		const QString    empty = "";
+	
+		bool partNameLessThan( const Template *a, const Template *b )
+		{
+			return StrUtil::comparePartNames( a->name(), b->name() ) < 0;
+		}
+	}
 
+
+	//
+	// Static data
+	//
 	QList<Paper*>    Db::mPapers;
 	QStringList      Db::mPaperIds;
 	QStringList      Db::mPaperNames;
@@ -53,10 +61,9 @@ namespace glabels
 	QList<Vendor*>   Db::mVendors;
 	QStringList      Db::mVendorNames;
 	QList<Template*> Db::mTemplates;
+	QString          Db::mPaperNameOther;
 
-	QString Db::mPaperNameOther;
-	QString Db::mEmpty = "";
-
+	
 	Db::Db()
 	{
 		mPaperNameOther = tr("Other");
@@ -204,7 +211,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown paper name: " << name;
-		return mEmpty;
+		return empty;
 	}
 
 
@@ -225,7 +232,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown paper id: " << id;
-		return mEmpty;
+		return empty;
 	}
 
 
@@ -318,7 +325,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown category name: " << name;
-		return mEmpty;
+		return empty;
 	}
 
 
@@ -334,7 +341,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown category id: " << id;
-		return mEmpty;
+		return empty;
 	}
 
 
@@ -399,7 +406,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown vendor name: " << name;
-		return mEmpty;
+		return empty;
 	}
 
 

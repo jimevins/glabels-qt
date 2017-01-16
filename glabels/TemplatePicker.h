@@ -28,40 +28,45 @@
 #include "Template.h"
 
 
-///
-/// Template Picker Widget
-///
-class TemplatePicker : public QListWidget
+namespace glabels
 {
-	Q_OBJECT
+
+	///
+	/// Template Picker Widget
+	///
+	class TemplatePicker : public QListWidget
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	TemplatePicker( QWidget *parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		TemplatePicker( QWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	void setTemplates( const QList <glabels::Template*> &tmplates );
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		void setTemplates( const QList <Template*> &tmplates );
 
 
-	/////////////////////////////////
-	// Methods
-	/////////////////////////////////
-	void applyFilter( const QString& searchString,
-	                  bool isoMask, bool usMask, bool otherMask,
-	                  bool anyCategory, const QStringList& categoryIds );
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
+		void applyFilter( const QString& searchString,
+		                  bool isoMask, bool usMask, bool otherMask,
+		                  bool anyCategory, const QStringList& categoryIds );
 
-	void applyFilter( const QStringList& names );
+		void applyFilter( const QStringList& names );
 
-	const glabels::Template *selectedTemplate();
+		const Template *selectedTemplate();
 
-};
+	};
+
+}
 
 
 #endif // TemplatePicker_h

@@ -21,101 +21,106 @@
 #include "EnumUtil.h"
 
 
-namespace EnumUtil
+namespace glabels
 {
-
-	QString weightToString( QFont::Weight weight )
+	
+	namespace EnumUtil
 	{
-		switch (weight)
+
+		QString weightToString( QFont::Weight weight )
 		{
-		case QFont::Bold:
-			return "bold";
-			break;
-		default:
-			return "normal";
-			break;
+			switch (weight)
+			{
+			case QFont::Bold:
+				return "bold";
+				break;
+			default:
+				return "normal";
+				break;
+			}
 		}
-	}
 
 
-	QFont::Weight stringToWeight( const QString& string )
-	{
-		if ( string == "bold" )
+		QFont::Weight stringToWeight( const QString& string )
 		{
-			return QFont::Bold;
+			if ( string == "bold" )
+			{
+				return QFont::Bold;
+			}
+			else
+			{
+				return QFont::Normal;
+			}
 		}
-		else
-		{
-			return QFont::Normal;
-		}
-	}
 
 
-	QString hAlignToString( Qt::Alignment align )
-	{
-		switch (align)
+		QString hAlignToString( Qt::Alignment align )
 		{
-		case Qt::AlignRight:
-			return "right";
-			break;
-		case Qt::AlignHCenter:
-			return "center";
-			break;
-		default:
-			return "left";
-			break;
+			switch (align)
+			{
+			case Qt::AlignRight:
+				return "right";
+				break;
+			case Qt::AlignHCenter:
+				return "center";
+				break;
+			default:
+				return "left";
+				break;
+			}
 		}
-	}
 
 
-	Qt::Alignment stringToHAlign( const QString& string )
-	{
-		if ( string == "right" )
+		Qt::Alignment stringToHAlign( const QString& string )
 		{
-			return Qt::AlignRight;
+			if ( string == "right" )
+			{
+				return Qt::AlignRight;
+			}
+			else if ( string == "center" )
+			{
+				return Qt::AlignHCenter;
+			}
+			else
+			{
+				return Qt::AlignLeft;
+			}
 		}
-		else if ( string == "center" )
-		{
-			return Qt::AlignHCenter;
-		}
-		else
-		{
-			return Qt::AlignLeft;
-		}
-	}
 
 
-	QString vAlignToString( Qt::Alignment align )
-	{
-		switch (align)
+		QString vAlignToString( Qt::Alignment align )
 		{
-		case Qt::AlignBottom:
-			return "bottom";
-			break;
-		case Qt::AlignVCenter:
-			return "center";
-			break;
-		default:
-			return "top";
-			break;
+			switch (align)
+			{
+			case Qt::AlignBottom:
+				return "bottom";
+				break;
+			case Qt::AlignVCenter:
+				return "center";
+				break;
+			default:
+				return "top";
+				break;
+			}
 		}
-	}
 
 
-	Qt::Alignment stringToVAlign( const QString& string )
-	{
-		if ( string == "bottom" )
+		Qt::Alignment stringToVAlign( const QString& string )
 		{
-			return Qt::AlignBottom;
+			if ( string == "bottom" )
+			{
+				return Qt::AlignBottom;
+			}
+			else if ( string == "center" )
+			{
+				return Qt::AlignVCenter;
+			}
+			else
+			{
+				return Qt::AlignTop;
+			}
 		}
-		else if ( string == "center" )
-		{
-			return Qt::AlignVCenter;
-		}
-		else
-		{
-			return Qt::AlignTop;
-		}
+
 	}
 
 }

@@ -28,6 +28,9 @@
 namespace glabels
 {
 
+	//
+	// Static data
+	//
 	Units XmlUtil::mUnits;
 
 

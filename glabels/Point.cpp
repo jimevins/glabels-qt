@@ -26,11 +26,13 @@ namespace glabels
 
 	Point::Point() : mX(Distance(0)), mY(Distance(0))
 	{
+		// empty
 	}
 
 
 	Point::Point( Distance x, Distance y ) : mX(x), mY(y)
 	{
+		// empty
 	}
 
 

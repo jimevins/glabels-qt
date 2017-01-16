@@ -31,6 +31,7 @@ namespace glabels
 		      const QString&  pwgSize )
 		: mId(id), mName(name), mWidth(width), mHeight(height), mPwgSize(pwgSize)
 	{
+		// empty
 	}
 
 

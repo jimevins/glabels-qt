@@ -35,7 +35,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>4</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -372,7 +372,7 @@
             <item row="3" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_23">
               <item>
-               <widget class="ColorButton" name="textColorButton">
+               <widget class="glabels::ColorButton" name="textColorButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -451,7 +451,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="FieldButton" name="textInsertFieldCombo"/>
+               <widget class="glabels::FieldButton" name="textInsertFieldCombo"/>
               </item>
               <item>
                <spacer name="horizontalSpacer_2">
@@ -535,7 +535,7 @@
             <item row="3" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_22">
               <item>
-               <widget class="ColorButton" name="barcodeColorButton">
+               <widget class="glabels::ColorButton" name="barcodeColorButton">
                 <property name="text">
                  <string/>
                 </property>
@@ -814,7 +814,7 @@
                </widget>
               </item>
               <item>
-               <widget class="FieldButton" name="imageFieldCombo">
+               <widget class="glabels::FieldButton" name="imageFieldCombo">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -933,7 +933,7 @@
               <item row="1" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_21">
                 <item>
-                 <widget class="ColorButton" name="lineColorButton">
+                 <widget class="glabels::ColorButton" name="lineColorButton">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -987,7 +987,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="ColorButton" name="fillColorButton">
+               <widget class="glabels::ColorButton" name="fillColorButton">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -1199,7 +1199,16 @@
              <property name="spacing">
               <number>15</number>
              </property>
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
@@ -1457,7 +1466,7 @@
             <item row="2" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_24">
               <item>
-               <widget class="ColorButton" name="shadowColorButton">
+               <widget class="glabels::ColorButton" name="shadowColorButton">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -1545,20 +1554,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ColorButton</class>
+   <class>glabels::ColorButton</class>
    <extends>QPushButton</extends>
    <header>ColorButton.h</header>
-   <slots>
-    <signal>colorChanged()</signal>
-   </slots>
   </customwidget>
   <customwidget>
-   <class>FieldButton</class>
+   <class>glabels::FieldButton</class>
    <extends>QComboBox</extends>
    <header>FieldButton.h</header>
-   <slots>
-    <signal>keySelected(QString)</signal>
-   </slots>
   </customwidget>
  </customwidgets>
  <resources>

@@ -23,7 +23,7 @@
 
 #include <QtDebug>
 
-#include "privateConstants.h"
+#include "Constants.h"
 #include "StrUtil.h"
 
 
@@ -96,6 +96,7 @@ namespace glabels
 		: mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
 		  mPath(other.mPath), Frame(other)
 	{
+		// empty
 	}
 
 	
@@ -160,10 +161,10 @@ namespace glabels
 	{
 		if ( FrameCd *otherCd = dynamic_cast<FrameCd*>(other) )
 		{
-			if ( (fabs( mW  - otherCd->mW )  <= Constants::EPSILON) &&
-			     (fabs( mH  - otherCd->mH )  <= Constants::EPSILON) &&
-			     (fabs( mR1 - otherCd->mR1 ) <= Constants::EPSILON) &&
-			     (fabs( mR2 - otherCd->mR2 ) <= Constants::EPSILON) )
+			if ( (fabs( mW  - otherCd->mW )  <= EPSILON) &&
+			     (fabs( mH  - otherCd->mH )  <= EPSILON) &&
+			     (fabs( mR1 - otherCd->mR1 ) <= EPSILON) &&
+			     (fabs( mR2 - otherCd->mR2 ) <= EPSILON) )
 			{
 				return true;
 			}

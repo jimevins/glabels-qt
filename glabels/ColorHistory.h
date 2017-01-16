@@ -26,55 +26,60 @@
 #include <QObject>
 
 
-///
-/// Color History
-///
-class ColorHistory : public QObject
+namespace glabels
 {
-	Q_OBJECT
 
-public:
-	static const int MAX_COLORS = 9;
+	///
+	/// Color History
+	///
+	class ColorHistory : public QObject
+	{
+		Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-private:
-	ColorHistory();
+	public:
+		static const int MAX_COLORS = 9;
 
-public:
-	static ColorHistory* instance();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	private:
+		ColorHistory();
 
-
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void changed();
-
-
-	/////////////////////////////////
-	// Public Methods
-	/////////////////////////////////
-public:
-	void   addColor( const QColor &color );
-	QList<QColor> getColors();
+	public:
+		static ColorHistory* instance();
 
 
-	/////////////////////////////////
-	// Private Methods
-	/////////////////////////////////
-private:
-	QList<QColor> readColorList();
-	void writeColorList( const QList<QColor>& colorList );
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void changed();
 
 
-	/////////////////////////////////
-	// Private Members
-	/////////////////////////////////
-private:
+		/////////////////////////////////
+		// Public Methods
+		/////////////////////////////////
+	public:
+		void   addColor( const QColor &color );
+		QList<QColor> getColors();
 
-};
+
+		/////////////////////////////////
+		// Private Methods
+		/////////////////////////////////
+	private:
+		QList<QColor> readColorList();
+		void writeColorList( const QList<QColor>& colorList );
+
+
+		/////////////////////////////////
+		// Private Members
+		/////////////////////////////////
+	private:
+
+	};
+
+}
 
 
 #endif // ColorHistory_h

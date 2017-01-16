@@ -27,70 +27,75 @@
 #include "Distance.h"
 
 
-///
-/// Label Region Type
-///
-struct Region
+namespace glabels
 {
 
-	/////////////////////////////////
-	// Constructors
-	/////////////////////////////////
-public:
-	Region();
-	Region( const glabels::Distance& x1, const glabels::Distance& y1,
-	        const glabels::Distance& x2, const glabels::Distance& y2 );
+	///
+	/// Label Region Type
+	///
+	struct Region
+	{
+
+		/////////////////////////////////
+		// Constructors
+		/////////////////////////////////
+	public:
+		Region();
+		Region( const Distance& x1, const Distance& y1,
+		        const Distance& x2, const Distance& y2 );
 	
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	//
-	// X1 Property
-	//
-	glabels::Distance x1( void ) const;
-	void setX1( const glabels::Distance& value );
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		//
+		// X1 Property
+		//
+		Distance x1( void ) const;
+		void setX1( const Distance& value );
 
 
-	//
-	// Y1 Property
-	//
-	glabels::Distance y1( void ) const;
-	void setY1( const glabels::Distance& value );
+		//
+		// Y1 Property
+		//
+		Distance y1( void ) const;
+		void setY1( const Distance& value );
 
 
-	//
-	// X2 Property
-	//
-	glabels::Distance x2( void ) const;
-	void setX2( const glabels::Distance& value );
+		//
+		// X2 Property
+		//
+		Distance x2( void ) const;
+		void setX2( const Distance& value );
 
 
 
-	//
-	// Y2 Property
-	//
-	glabels::Distance y2( void ) const;
-	void setY2( const glabels::Distance& value );
+		//
+		// Y2 Property
+		//
+		Distance y2( void ) const;
+		void setY2( const Distance& value );
 
 
-	/////////////////////////////////
-	// Methods
-	/////////////////////////////////
-public:
-	QRectF rect() const;
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
+	public:
+		QRectF rect() const;
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	glabels::Distance mX1;
-	glabels::Distance mY1;
-	glabels::Distance mX2;
-	glabels::Distance mY2;
-};
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		Distance mX1;
+		Distance mY1;
+		Distance mX2;
+		Distance mY2;
+	};
+
+}
 
 
 #endif // Region_h

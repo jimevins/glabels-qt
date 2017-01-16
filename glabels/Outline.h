@@ -25,49 +25,55 @@
 #include <QPainter>
 #include <QPainterPath>
 
-// Forward references
-class LabelModelObject;
 
-
-///
-/// Outline Base Class
-///
-class Outline
+namespace glabels
 {
-	////////////////////////////
-	// Lifecycle Methods
-	////////////////////////////
-public:
-	Outline( LabelModelObject* owner );
-	Outline( const Outline* outline, LabelModelObject* newOwner );
-	virtual ~Outline();
+
+	// Forward references
+	class LabelModelObject;
+
+
+	///
+	/// Outline Base Class
+	///
+	class Outline
+	{
+		////////////////////////////
+		// Lifecycle Methods
+		////////////////////////////
+	public:
+		Outline( LabelModelObject* owner );
+		Outline( const Outline* outline, LabelModelObject* newOwner );
+		virtual ~Outline();
 
 	
-	////////////////////////////
-	// Duplication
-	////////////////////////////
-	Outline* clone( LabelModelObject* newOwner ) const;
+		////////////////////////////
+		// Duplication
+		////////////////////////////
+		Outline* clone( LabelModelObject* newOwner ) const;
 
 
-	////////////////////////////
-	// Drawing Methods
-	////////////////////////////
-public:
-	void draw( QPainter* painter ) const;
-	QPainterPath hoverPath( double scale ) const;
+		////////////////////////////
+		// Drawing Methods
+		////////////////////////////
+	public:
+		void draw( QPainter* painter ) const;
+		QPainterPath hoverPath( double scale ) const;
 
 
-	////////////////////////////
-	// Private Data
-	////////////////////////////
-private:
-	LabelModelObject* mOwner;
+		////////////////////////////
+		// Private Data
+		////////////////////////////
+	private:
+		LabelModelObject* mOwner;
 
-	QVector<qreal> mDashes;
-	QPen           mPen1;
-	QPen           mPen2;
+		QVector<qreal> mDashes;
+		QPen           mPen1;
+		QPen           mPen2;
 	
-};
+	};
+
+}
 
 
 #endif // Outline_h

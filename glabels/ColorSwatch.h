@@ -25,19 +25,24 @@
 #include <QPixmap>
 
 
-///
-/// Simple Preview Widget
-///
-class ColorSwatch : public QPixmap
+namespace glabels
 {
+	
+	///
+	/// Simple Preview Widget
+	///
+	class ColorSwatch : public QPixmap
+	{
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ColorSwatch( int w, int h, const QColor& color );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ColorSwatch( int w, int h, const QColor& color );
 
-};
+	};
+
+}
 
 
 #endif // ColorSwatch_h

@@ -24,31 +24,37 @@
 
 #include <QObject>
 
-// Forward References
-class MainWindow;
 
-
-///
-/// File Actions
-///
-/// Note: class provides a translation context for these static functions.
-///
-class File : public QObject
+namespace glabels
 {
-	Q_OBJECT
 
-public:
-	static bool newLabel( MainWindow *window = 0 );
-	static void open( MainWindow *window );
-	static bool save( MainWindow *window );
-	static bool saveAs( MainWindow *window );
-	static void close( MainWindow *window );
-	static void exit();
+	// Forward References
+	class MainWindow;
 
-private:
-	static QString mCwd;
+
+	///
+	/// File Actions
+	///
+	/// Note: class provides a translation context for these static functions.
+	///
+	class File : public QObject
+	{
+		Q_OBJECT
+
+	public:
+		static bool newLabel( MainWindow *window = 0 );
+		static void open( MainWindow *window );
+		static bool save( MainWindow *window );
+		static bool saveAs( MainWindow *window );
+		static void close( MainWindow *window );
+		static void exit();
+
+	private:
+		static QString mCwd;
 	
-};
+	};
+
+}
 
 
 #endif // File_h

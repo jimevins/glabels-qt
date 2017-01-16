@@ -28,65 +28,70 @@
 #include "Distance.h"
 
 
-///
-/// Settings Singleton Class
-///
-class Settings : public QSettings
+namespace glabels
 {
-	Q_OBJECT
+
+	///
+	/// Settings Singleton Class
+	///
+	class Settings : public QSettings
+	{
+		Q_OBJECT
 	
-public:
-	enum class PageSizeFamilty { ISO, US, };
+	public:
+		enum class PageSizeFamilty { ISO, US, };
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-private:
-	Settings();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	private:
+		Settings();
 
-public:
-	static void init();
-	static Settings* instance();
+	public:
+		static void init();
+		static Settings* instance();
 
 	
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void changed();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void changed();
 	
 
-	/////////////////////////////////
-	// Accessors
-	/////////////////////////////////
-public:
-	static glabels::Units units();
-	static void setUnits( const glabels::Units& units );
+		/////////////////////////////////
+		// Accessors
+		/////////////////////////////////
+	public:
+		static Units units();
+		static void setUnits( const Units& units );
 
-	static bool searchIsoPaperSizes();
-	static void setSearchIsoPaperSizes( bool searchIsoPaperSizes );
+		static bool searchIsoPaperSizes();
+		static void setSearchIsoPaperSizes( bool searchIsoPaperSizes );
 
-	static bool searchUsPaperSizes();
-	static void setSearchUsPaperSizes( bool searchUsPaperSizes );
+		static bool searchUsPaperSizes();
+		static void setSearchUsPaperSizes( bool searchUsPaperSizes );
 
-	static bool searchOtherPaperSizes();
-	static void setSearchOtherPaperSizes( bool searchOtherPaperSizes );
+		static bool searchOtherPaperSizes();
+		static void setSearchOtherPaperSizes( bool searchOtherPaperSizes );
 
-	static bool searchAllCategories();
-	static void setSearchAllCategories( bool searchAllCategories );
+		static bool searchAllCategories();
+		static void setSearchAllCategories( bool searchAllCategories );
 
-	static QStringList searchCategoryList();
-	static void setSearchCategoryList( const QStringList& searchCategoryList );
+		static QStringList searchCategoryList();
+		static void setSearchCategoryList( const QStringList& searchCategoryList );
 
-	static QStringList recentTemplateList();
-	static void addToRecentTemplateList( const QString& name );
+		static QStringList recentTemplateList();
+		static void addToRecentTemplateList( const QString& name );
 
 
-private:
-	static Settings* mInstance;
+	private:
+		static Settings* mInstance;
 
-};
+	};
+
+}
 
 
 #endif // Settings_h

@@ -31,86 +31,91 @@
 #include "ColorPaletteButtonItem.h"
 
 
-///
-/// Color Palette Dialog
-///
-class ColorPaletteDialog : public QDialog
+namespace glabels
 {
-	Q_OBJECT
+
+	///
+	/// Color Palette Dialog
+	///
+	class ColorPaletteDialog : public QDialog
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ColorPaletteDialog( const QString& defaultLabel,
-	                    const QColor&  defaultColor,
-	                    const QColor&  color,
-	                    QWidget*       parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ColorPaletteDialog( const QString& defaultLabel,
+		                    const QColor&  defaultColor,
+		                    const QColor&  color,
+		                    QWidget*       parent = 0 );
 
 
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void colorChanged( ColorNode colorNode, bool isDefault );
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void colorChanged( ColorNode colorNode, bool isDefault );
 
 
-	/////////////////////////////////
-	// Public Methods
-	/////////////////////////////////
-public:
-	void   setColorNode( const ColorNode& colorNode );
-	void   setKeys( const QStringList& keyList );
-	void   clearKeys();
+		/////////////////////////////////
+		// Public Methods
+		/////////////////////////////////
+	public:
+		void   setColorNode( const ColorNode& colorNode );
+		void   setKeys( const QStringList& keyList );
+		void   clearKeys();
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onDefaultItemActivated();
-	void onPaletteItemActivated( int id );
-	void onHistoryItemActivated( int id );
-	void onCustomColorItemActivated();
-	void onColorHistoryChanged();
-	void onComboIndexChanged( int index );
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onDefaultItemActivated();
+		void onPaletteItemActivated( int id );
+		void onHistoryItemActivated( int id );
+		void onCustomColorItemActivated();
+		void onColorHistoryChanged();
+		void onComboIndexChanged( int index );
 
-protected:
-	void showEvent( QShowEvent* event );
+	protected:
+		void showEvent( QShowEvent* event );
 	
 
-	/////////////////////////////////
-	// Private Methods
-	/////////////////////////////////
-private:
-	void loadCustomColorHistory();
+		/////////////////////////////////
+		// Private Methods
+		/////////////////////////////////
+	private:
+		void loadCustomColorHistory();
 
 
-	/////////////////////////////////
-	// Private Members
-	/////////////////////////////////
-private:
-	QColor        mDefaultColor;
-	ColorNode     mColorNode;
+		/////////////////////////////////
+		// Private Members
+		/////////////////////////////////
+	private:
+		QColor        mDefaultColor;
+		ColorNode     mColorNode;
 
-	static const int PALETTE_COLS = ColorHistory::MAX_COLORS;
-	static const int PALETTE_ROWS = 4;
+		static const int PALETTE_COLS = ColorHistory::MAX_COLORS;
+		static const int PALETTE_ROWS = 4;
 
-	typedef struct {
-		QString colorSpec;
-		QString name;
-	} ColorTableEntry;
+		typedef struct {
+			QString colorSpec;
+			QString name;
+		} ColorTableEntry;
 
-	static ColorTableEntry mColorTable[];
+		static ColorTableEntry mColorTable[];
 
-	ColorHistory* mColorHistory;
-	ColorPaletteItem* mHistoryItem[PALETTE_COLS];
+		ColorHistory* mColorHistory;
+		ColorPaletteItem* mHistoryItem[PALETTE_COLS];
 
-	QComboBox* mMergeFieldCombo;
-	QStringList mKeys;
+		QComboBox* mMergeFieldCombo;
+		QStringList mKeys;
 
-};
+	};
+
+}
 
 
 #endif // ColorPaletteDialog_h

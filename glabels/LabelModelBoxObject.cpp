@@ -25,134 +25,146 @@
 #include <QPen>
 
 
-namespace
+namespace glabels
 {
-	const double slopPixels = 2;
-}
 
-
-///
-/// Constructor
-///
-LabelModelBoxObject::LabelModelBoxObject()
-{
-}
-
-
-///
-/// Copy constructor
-///
-LabelModelBoxObject::LabelModelBoxObject( const LabelModelBoxObject* object ) : LabelModelShapeObject( object )
-{
-}
-
-
-///
-/// Destructor
-///
-LabelModelBoxObject::~LabelModelBoxObject()
-{
-}
-
-
-///
-/// Clone
-///
-LabelModelBoxObject* LabelModelBoxObject::clone() const
-{
-	return new LabelModelBoxObject( this );
-}
-
-
-///
-/// Draw shadow of object
-///
-void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
-{
-	QColor lineColor = mLineColorNode.color( record );
-	QColor fillColor = mFillColorNode.color( record );
-	QColor shadowColor = mShadowColorNode.color( record );
-
-	shadowColor.setAlphaF( mShadowOpacity );
-
-	if ( fillColor.alpha() )
+	//
+	// Private
+	//
+	namespace
 	{
-		painter->setPen( Qt::NoPen );
-		painter->setBrush( shadowColor );
+		const double slopPixels = 2;
+	}
 
-		if ( lineColor.alpha() )
+
+	///
+	/// Constructor
+	///
+	LabelModelBoxObject::LabelModelBoxObject()
+	{
+		// empty
+	}
+
+
+	///
+	/// Copy constructor
+	///
+	LabelModelBoxObject::LabelModelBoxObject( const LabelModelBoxObject* object )
+		: LabelModelShapeObject( object )
+	{
+		// empty
+	}
+
+
+	///
+	/// Destructor
+	///
+	LabelModelBoxObject::~LabelModelBoxObject()
+	{
+		// empty
+	}
+
+
+	///
+	/// Clone
+	///
+	LabelModelBoxObject* LabelModelBoxObject::clone() const
+	{
+		return new LabelModelBoxObject( this );
+	}
+
+
+	///
+	/// Draw shadow of object
+	///
+	void LabelModelBoxObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+	{
+		QColor lineColor = mLineColorNode.color( record );
+		QColor fillColor = mFillColorNode.color( record );
+		QColor shadowColor = mShadowColorNode.color( record );
+
+		shadowColor.setAlphaF( mShadowOpacity );
+
+		if ( fillColor.alpha() )
 		{
-			/* Has FILL and OUTLINE: adjust size to account for line width. */
-			painter->drawRect( QRectF( -mLineWidth.pt()/2,
-						   -mLineWidth.pt()/2,
-						   (mW + mLineWidth).pt(),
-						   (mH + mLineWidth).pt() ) );
+			painter->setPen( Qt::NoPen );
+			painter->setBrush( shadowColor );
+
+			if ( lineColor.alpha() )
+			{
+				/* Has FILL and OUTLINE: adjust size to account for line width. */
+				painter->drawRect( QRectF( -mLineWidth.pt()/2,
+				                           -mLineWidth.pt()/2,
+				                           (mW + mLineWidth).pt(),
+				                           (mH + mLineWidth).pt() ) );
+			}
+			else
+			{
+				/* Has FILL, but no OUTLINE. */
+				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			}
 		}
 		else
 		{
-			/* Has FILL, but no OUTLINE. */
-			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-		}
-	}
-	else
-	{
-		if ( lineColor.alpha() )
-		{
-			/* Has only OUTLINE. */
-			painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
-			painter->setBrush( Qt::NoBrush );
+			if ( lineColor.alpha() )
+			{
+				/* Has only OUTLINE. */
+				painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
+				painter->setBrush( Qt::NoBrush );
 
-			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			}
 		}
-	}
 		
-}
+	}
 
 	
-///
-/// Draw object itself
-///
-void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
-{
-	QColor lineColor = mLineColorNode.color( record );
-	QColor fillColor = mFillColorNode.color( record );
-
-	painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
-	painter->setBrush( fillColor );
-
-	painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-}
-
-
-///
-/// Path to test for hover condition
-///
-QPainterPath LabelModelBoxObject::hoverPath( double scale ) const
-{
-	double s = 1 / scale;
-
-	QPainterPath path;
-
-	if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
+	///
+	/// Draw object itself
+	///
+	void LabelModelBoxObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
 	{
-		path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
-	}
-	else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
-	{
-		path.addRect( 0, 0, mW.pt(), mH.pt() );
-	}
-	else if ( mLineColorNode.color().alpha() )
-	{
-		path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
-			      (-mLineWidth.pt()/2) - s*slopPixels,
-			      (mW + mLineWidth).pt() + s*2*slopPixels,
-			      (mH + mLineWidth).pt() + s*2*slopPixels );
-		path.closeSubpath();
-		path.addRect( mLineWidth.pt()/2 + s*slopPixels,
-			      mLineWidth.pt()/2 + s*slopPixels,
-			      (mW - mLineWidth).pt() - s*2*slopPixels,
-			      (mH - mLineWidth).pt() - s*2*slopPixels );
+		QColor lineColor = mLineColorNode.color( record );
+		QColor fillColor = mFillColorNode.color( record );
+
+		painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
+		painter->setBrush( fillColor );
+
+		painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 	}
 
-	return path;
+
+	///
+	/// Path to test for hover condition
+	///
+	QPainterPath LabelModelBoxObject::hoverPath( double scale ) const
+	{
+		double s = 1 / scale;
+
+		QPainterPath path;
+
+		if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
+		{
+			path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
+		}
+		else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
+		{
+			path.addRect( 0, 0, mW.pt(), mH.pt() );
+		}
+		else if ( mLineColorNode.color().alpha() )
+		{
+			path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
+			              (-mLineWidth.pt()/2) - s*slopPixels,
+			              (mW + mLineWidth).pt() + s*2*slopPixels,
+			              (mH + mLineWidth).pt() + s*2*slopPixels );
+			path.closeSubpath();
+			path.addRect( mLineWidth.pt()/2 + s*slopPixels,
+			              mLineWidth.pt()/2 + s*slopPixels,
+			              (mW - mLineWidth).pt() - s*2*slopPixels,
+			              (mH - mLineWidth).pt() - s*2*slopPixels );
+		}
+
+		return path;
+	}
+
 }

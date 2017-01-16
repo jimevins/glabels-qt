@@ -26,55 +26,61 @@
 #include <QFile>
 
 
-namespace merge
+namespace glabels
 {
-	
-	///
-	/// Text Merge Backend
-	///
-	struct Text : public Merge
+
+	namespace merge
 	{
+	
+		///
+		/// Text Merge Backend
+		///
+		struct Text : public Merge
+		{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	protected:
-		Text( QChar delimiter, bool line1HasKeys );
-		Text( const Text* merge );
-		virtual ~Text();
-
-
-		/////////////////////////////////
-		// Implementation of virtual methods
-		/////////////////////////////////
-	public:
-		QStringList keys() const;
-		QString primaryKey() const;
-	protected:
-		void open();
-		void close();
-		Record* readNextRecord();
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		protected:
+			Text( QChar delimiter, bool line1HasKeys );
+			Text( const Text* merge );
+			virtual ~Text();
 
 
-		/////////////////////////////////
-		// Private methods
-		/////////////////////////////////
-		QString keyFromIndex( int iField ) const;
-		QStringList parseLine();
+			/////////////////////////////////
+			// Implementation of virtual methods
+			/////////////////////////////////
+		public:
+			QStringList keys() const;
+			QString primaryKey() const;
+		protected:
+			void open();
+			void close();
+			Record* readNextRecord();
+
+
+			/////////////////////////////////
+			// Private methods
+			/////////////////////////////////
+			QString keyFromIndex( int iField ) const;
+			QStringList parseLine();
 	
 
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	private:
-		QChar mDelimeter;
-		bool  mLine1HasKeys;
+			/////////////////////////////////
+			// Private data
+			/////////////////////////////////
+		private:
+			QChar mDelimeter;
+			bool  mLine1HasKeys;
 
-		QFile          mFile;
-		QStringList    mKeys;
-		int            mNFieldsMax;
-	};
+			QFile          mFile;
+			QStringList    mKeys;
+			int            mNFieldsMax;
+		};
+
+	}
 
 }
+
 
 #endif // merge_Text_h

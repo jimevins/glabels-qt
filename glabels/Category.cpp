@@ -27,6 +27,7 @@ namespace glabels
 	Category::Category( const QString &id, const QString &name )
 		: mId(id), mName(name)
 	{
+		// empty
 	}
 
 

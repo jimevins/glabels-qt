@@ -25,89 +25,95 @@
 #include <QtDebug>
 
 
-ColorHistory::ColorHistory()
+namespace glabels
 {
-}
 
-
-ColorHistory* ColorHistory::instance()
-{
-	static ColorHistory* singletonInstance = 0;
-
-	if ( singletonInstance == 0 )
+	ColorHistory::ColorHistory()
 	{
-		singletonInstance = new ColorHistory();
+		// empty
 	}
 
-	return singletonInstance;
-}
 
-
-void ColorHistory::addColor( const QColor &color )
-{
-	QList<QColor> colorList = readColorList();
-
-	// Remove any occurances of this color already in list
-	colorList.removeAll( color );
-
-	// Now add to list
-	colorList.append( color );
-
-	// Remove oldest colors, if size exceeds current max
-	while ( colorList.size() > MAX_COLORS )
+	ColorHistory* ColorHistory::instance()
 	{
-		colorList.removeFirst();
+		static ColorHistory* singletonInstance = 0;
+
+		if ( singletonInstance == 0 )
+		{
+			singletonInstance = new ColorHistory();
+		}
+
+		return singletonInstance;
 	}
 
-	writeColorList( colorList );
+
+	void ColorHistory::addColor( const QColor &color )
+	{
+		QList<QColor> colorList = readColorList();
+
+		// Remove any occurances of this color already in list
+		colorList.removeAll( color );
+
+		// Now add to list
+		colorList.append( color );
+
+		// Remove oldest colors, if size exceeds current max
+		while ( colorList.size() > MAX_COLORS )
+		{
+			colorList.removeFirst();
+		}
+
+		writeColorList( colorList );
 	
-	emit changed();
-}
-
-
-QList<QColor> ColorHistory::getColors()
-{
-	return readColorList();
-}
-
-
-QList<QColor> ColorHistory::readColorList()
-{
-	QStringList defaultList;
-	QSettings settings;
-
-	settings.beginGroup( "ColorHistory" );
-	QStringList colorNameList = settings.value( "colors", defaultList ).toStringList();
-	settings.endGroup();
-
-	QList<QColor> colorList;
-	foreach ( QString colorName, colorNameList )
-	{
-		colorList << QColor( colorName );
+		emit changed();
 	}
 
-	// Remove oldest colors, if size exceeds current max
-	while ( colorList.size() > MAX_COLORS )
+
+	QList<QColor> ColorHistory::getColors()
 	{
-		colorList.removeFirst();
+		return readColorList();
 	}
 
-	return colorList;
-}
 
-
-void ColorHistory::writeColorList( const QList<QColor>& colorList )
-{
-	// Build name list
-	QStringList colorNameList;
-	foreach ( QColor color, colorList )
+	QList<QColor> ColorHistory::readColorList()
 	{
-		colorNameList << color.name();
+		QStringList defaultList;
+		QSettings settings;
+
+		settings.beginGroup( "ColorHistory" );
+		QStringList colorNameList = settings.value( "colors", defaultList ).toStringList();
+		settings.endGroup();
+
+		QList<QColor> colorList;
+		foreach ( QString colorName, colorNameList )
+		{
+			colorList << QColor( colorName );
+		}
+
+		// Remove oldest colors, if size exceeds current max
+		while ( colorList.size() > MAX_COLORS )
+		{
+			colorList.removeFirst();
+		}
+
+		return colorList;
 	}
 
-	// Save
-	QSettings settings;
-	settings.beginGroup( "ColorHistory" );
-	settings.setValue( "colors", colorNameList );
-	settings.endGroup();
+
+	void ColorHistory::writeColorList( const QList<QColor>& colorList )
+	{
+		// Build name list
+		QStringList colorNameList;
+		foreach ( QColor color, colorList )
+		{
+			colorNameList << color.name();
+		}
+
+		// Save
+		QSettings settings;
+		settings.beginGroup( "ColorHistory" );
+		settings.setValue( "colors", colorNameList );
+		settings.endGroup();
+	}
+
 }

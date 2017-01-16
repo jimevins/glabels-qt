@@ -24,40 +24,46 @@
 #include "Text.h"
 
 
-namespace merge
+namespace glabels
 {
-	
-	///
-	/// TextCsv Merge Backend
-	///
-	struct TextCsv : public Text
+
+	namespace merge
 	{
+	
+		///
+		/// TextCsv Merge Backend
+		///
+		struct TextCsv : public Text
+		{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextCsv();
-		TextCsv( const TextCsv* merge );
-		virtual ~TextCsv();
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		private:
+			TextCsv();
+			TextCsv( const TextCsv* merge );
+			virtual ~TextCsv();
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextCsv* clone() const;
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+		public:
+			TextCsv* clone() const;
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+			/////////////////////////////////
+			// Static methods
+			/////////////////////////////////
+		public:
+			static QString id();
+			static Merge* create();
 
-	};
+		};
+
+	}
 
 }
+
 
 #endif // merge_TextCsv_h

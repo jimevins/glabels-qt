@@ -26,96 +26,103 @@
 #include <QObject>
 #include <QString>
 
-// Forward references
-class LabelModel;
 
-
-///
-/// UndoRedoModel
-///
-struct UndoRedoModel : QObject
+namespace glabels
 {
-	Q_OBJECT
+
+	// Forward references
+	class LabelModel;
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	UndoRedoModel( LabelModel* model );
-	virtual ~UndoRedoModel();
+	///
+	/// UndoRedoModel
+	///
+	struct UndoRedoModel : QObject
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Public Methods
-	/////////////////////////////////
-public:
-	void checkpoint( const QString& description );
-	void undo();
-	void redo();
-	bool canUndo() const;
-	bool canRedo() const;
-	QString undoDescription() const;
-	QString redoDescription() const;
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		UndoRedoModel( LabelModel* model );
+		virtual ~UndoRedoModel();
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onSelectionChanged();
+		/////////////////////////////////
+		// Public Methods
+		/////////////////////////////////
+	public:
+		void checkpoint( const QString& description );
+		void undo();
+		void redo();
+		bool canUndo() const;
+		bool canRedo() const;
+		QString undoDescription() const;
+		QString redoDescription() const;
+
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onSelectionChanged();
 		
 
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void changed();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void changed();
 		
 
-	/////////////////////////////////
-	// Private types
-	/////////////////////////////////
-private:
-	class State
-	{
-	public:
-		State( LabelModel* model, const QString& description );
-		~State();
-
-		LabelModel* model;
-		QString     description;
-	};
-
-	class Stack
-	{
-	public:
-		Stack();
-		~Stack();
-
-		void push( State* state );
-		State* pop();
-		const State* topState() const;
-		bool isEmpty() const;
-		void clear();
-
+		/////////////////////////////////
+		// Private types
+		/////////////////////////////////
 	private:
-		QList<State*> list;
+		class State
+		{
+		public:
+			State( LabelModel* model, const QString& description );
+			~State();
+
+			LabelModel* model;
+			QString     description;
+		};
+
+		class Stack
+		{
+		public:
+			Stack();
+			~Stack();
+
+			void push( State* state );
+			State* pop();
+			const State* topState() const;
+			bool isEmpty() const;
+			void clear();
+
+		private:
+			QList<State*> list;
+		};
+	
+
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		LabelModel         *mModel;
+
+		Stack               mUndoStack;
+		Stack               mRedoStack;
+	
+		bool                mNewSelection;
+		QString             mLastDescription;
+
 	};
-	
 
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	LabelModel         *mModel;
+}
 
-	Stack               mUndoStack;
-	Stack               mRedoStack;
-	
-	bool                mNewSelection;
-	QString             mLastDescription;
-
-};
 
 #endif // UndoRedoModel_h

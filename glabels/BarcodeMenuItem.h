@@ -27,48 +27,53 @@
 #include "BarcodeStyle.h"
 
 
-///
-/// Barcode Menu Item
-///
-class BarcodeMenuItem : public QAction
+namespace glabels
 {
-	Q_OBJECT
+	
+	///
+	/// Barcode Menu Item
+	///
+	class BarcodeMenuItem : public QAction
+	{
+		Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = 0 );
-
-
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void activated( const BarcodeStyle* bcStyle );
-
-
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	const BarcodeStyle* bcStyle() const;
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = 0 );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onTriggered();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void activated( const BarcodeStyle* bcStyle );
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	const BarcodeStyle* mBcStyle;
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		const BarcodeStyle* bcStyle() const;
 
-};
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onTriggered();
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		const BarcodeStyle* mBcStyle;
+
+	};
+
+}
 
 
 #endif // BarcodeMenuItem_h

@@ -28,33 +28,38 @@
 #include "Template.h"
 
 
-///
-/// Template Picker Item Widget
-///
-class TemplatePickerItem : public QListWidgetItem
+namespace glabels
 {
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	TemplatePickerItem( glabels::Template *tmplate, QListWidget *parent = 0 );
+	///
+	/// Template Picker Item Widget
+	///
+	class TemplatePickerItem : public QListWidgetItem
+	{
+
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		TemplatePickerItem( Template *tmplate, QListWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	const glabels::Template *tmplate() const;
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		const Template *tmplate() const;
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	glabels::Template *mTmplate;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		Template *mTmplate;
 
-};
+	};
+
+}
 
 
 #endif // TemplatePickerItem_h

@@ -31,6 +31,7 @@ namespace glabels
 	const double PTS_PER_CM    =  (10.0*PTS_PER_MM);
 	const double PTS_PER_PICA  =  12.0;
 
+	const Distance EPSILON( 0.5, Units::PT );
 }
 
 #endif // glabels_Constants_h

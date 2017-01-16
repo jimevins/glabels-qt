@@ -21,60 +21,65 @@
 #include "TextSemicolonKeys.h"
 
 
-namespace merge
+namespace glabels
 {
-	static const QString ID = "Text/Semicolon/Keys";
 
-
-	///
-	/// Constructor
-	///
-	TextSemicolonKeys::TextSemicolonKeys() : Text(';',true)
+	namespace merge
 	{
-		mId = ID;
-	}
+		static const QString ID = "Text/Semicolon/Keys";
 
 
-	///
-	/// Constructor
-	///
-	TextSemicolonKeys::TextSemicolonKeys( const TextSemicolonKeys* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextSemicolonKeys::TextSemicolonKeys() : Text(';',true)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextSemicolonKeys::~TextSemicolonKeys()
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextSemicolonKeys::TextSemicolonKeys( const TextSemicolonKeys* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextSemicolonKeys* TextSemicolonKeys::clone() const
-	{
-		return new TextSemicolonKeys( this );
-	}
+		///
+		/// Destructor
+		///
+		TextSemicolonKeys::~TextSemicolonKeys()
+		{
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextSemicolonKeys::id()
-	{
-		return ID;
-	}
+		///
+		/// Clone
+		///
+		TextSemicolonKeys* TextSemicolonKeys::clone() const
+		{
+			return new TextSemicolonKeys( this );
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextSemicolonKeys::create()
-	{
-		return new TextSemicolonKeys();
+		///
+		/// Get ID
+		///
+		QString TextSemicolonKeys::id()
+		{
+			return ID;
+		}
+
+
+		///
+		/// Create
+		///
+		Merge* TextSemicolonKeys::create()
+		{
+			return new TextSemicolonKeys();
+		}
+
 	}
 
 }

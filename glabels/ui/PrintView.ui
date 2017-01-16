@@ -26,7 +26,7 @@
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <item>
-      <widget class="Preview" name="preview" native="true">
+      <widget class="glabels::Preview" name="preview" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -109,7 +109,16 @@
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>12</number>
+     </property>
+     <property name="topMargin">
+      <number>12</number>
+     </property>
+     <property name="rightMargin">
+      <number>12</number>
+     </property>
+     <property name="bottomMargin">
       <number>12</number>
      </property>
      <item>
@@ -340,7 +349,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Preview</class>
+   <class>glabels::Preview</class>
    <extends>QWidget</extends>
    <header>Preview.h</header>
    <container>1</container>

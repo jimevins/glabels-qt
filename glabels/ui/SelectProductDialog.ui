@@ -170,7 +170,16 @@
                 <item>
                  <widget class="QWidget" name="categoriesCheckContainer" native="true">
                   <layout class="QGridLayout" name="gridLayout">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <property name="spacing">
@@ -252,7 +261,7 @@
         </widget>
        </item>
        <item>
-        <widget class="TemplatePicker" name="templatePicker">
+        <widget class="glabels::TemplatePicker" name="templatePicker">
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
@@ -290,7 +299,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TemplatePicker</class>
+   <class>glabels::TemplatePicker</class>
    <extends>QListWidget</extends>
    <header>TemplatePicker.h</header>
   </customwidget>

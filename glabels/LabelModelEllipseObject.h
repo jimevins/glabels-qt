@@ -25,37 +25,42 @@
 #include "LabelModelShapeObject.h"
 
 
-///
-/// Label Model Ellipse Object
-///
-class LabelModelEllipseObject : public LabelModelShapeObject
+namespace glabels
 {
-	Q_OBJECT
 
-	///////////////////////////////////////////////////////////////
-	// Lifecycle Methods
-	///////////////////////////////////////////////////////////////
-public:
-	LabelModelEllipseObject();
-	LabelModelEllipseObject( const LabelModelEllipseObject* object );
-	virtual ~LabelModelEllipseObject();
+	///
+	/// Label Model Ellipse Object
+	///
+	class LabelModelEllipseObject : public LabelModelShapeObject
+	{
+		Q_OBJECT
+
+		///////////////////////////////////////////////////////////////
+		// Lifecycle Methods
+		///////////////////////////////////////////////////////////////
+	public:
+		LabelModelEllipseObject();
+		LabelModelEllipseObject( const LabelModelEllipseObject* object );
+		virtual ~LabelModelEllipseObject();
 
 	
-	///////////////////////////////////////////////////////////////
-	// Object duplication
-	///////////////////////////////////////////////////////////////
-	virtual LabelModelEllipseObject* clone() const;
+		///////////////////////////////////////////////////////////////
+		// Object duplication
+		///////////////////////////////////////////////////////////////
+		virtual LabelModelEllipseObject* clone() const;
 
 
-	///////////////////////////////////////////////////////////////
-	// Drawing operations
-	///////////////////////////////////////////////////////////////
-protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual QPainterPath hoverPath( double scale ) const;
+		///////////////////////////////////////////////////////////////
+		// Drawing operations
+		///////////////////////////////////////////////////////////////
+	protected:
+		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual QPainterPath hoverPath( double scale ) const;
 
-};
+	};
+
+}
 
 
 #endif // LabelModelEllipseObject_h

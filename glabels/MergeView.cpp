@@ -30,289 +30,302 @@
 #include "Merge/Factory.h"
 
 
-///
-/// Constructor
-///
-MergeView::MergeView( QWidget *parent )
-	: QWidget(parent), mModel(0), mBlock(false)
+namespace glabels
 {
-	setupUi( this );
 
-	mMergeFormatNames = merge::Factory::nameList();
-	formatCombo->addItems( mMergeFormatNames );
-}
-
-
-///
-/// Destructor
-///
-MergeView::~MergeView()
-{
-}
-
-
-///
-/// Set Model
-///
-void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
-{
-	mModel = model;
-	mUndoRedoModel = undoRedoModel;
-
-	// Initialize CWD
-	if ( model->fileName().isEmpty() )
+	///
+	/// Constructor
+	///
+	MergeView::MergeView( QWidget *parent )
+		: QWidget(parent), mModel(0), mBlock(false)
 	{
-		mCwd = ".";
-	}
-	else
-	{
-		mCwd = QFileInfo( model->fileName() ).absolutePath();
+		setupUi( this );
+
+		mMergeFormatNames = merge::Factory::nameList();
+		formatCombo->addItems( mMergeFormatNames );
 	}
 
-	onMergeChanged();
-	connect( mModel, SIGNAL(mergeChanged()), this, SLOT(onMergeChanged()) );
-}
 
-
-///
-/// Merge changed handler
-///
-void MergeView::onMergeChanged()
-{
-	int index = mMergeFormatNames.indexOf( merge::Factory::idToName( mModel->merge()->id() ) );
-	mOldFormatComboIndex = index;
-	formatCombo->setCurrentIndex( index );
-
-	switch ( merge::Factory::idToType( mModel->merge()->id() ) )
+	///
+	/// Destructor
+	///
+	MergeView::~MergeView()
 	{
-	case merge::Factory::NONE:
-	case merge::Factory::FIXED:
-		locationLabel->setEnabled( false );
-		locationButton->setEnabled( false );
-		locationButton->setText( "" );
-		break;
+		// empty
+	}
 
-	case merge::Factory::FILE:
-		locationLabel->setEnabled( true );
-		locationButton->setEnabled( true );
-		if ( mModel->merge()->source().isEmpty() )
+
+	///
+	/// Set Model
+	///
+	void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
+	{
+		mModel = model;
+		mUndoRedoModel = undoRedoModel;
+
+		// Initialize CWD
+		if ( model->fileName().isEmpty() )
 		{
-			locationButton->setText( "Select file..." );
+			mCwd = ".";
 		}
 		else
 		{
-			locationButton->setText( mModel->merge()->source() );
+			mCwd = QFileInfo( model->fileName() ).absolutePath();
 		}
-		break;
 
-	default:
-		qWarning( "MergeView::onMergeChanged()::Should not be reached!" );
-		break;
+		onMergeChanged();
+		connect( mModel, SIGNAL(mergeChanged()), this, SLOT(onMergeChanged()) );
 	}
 
-	recordsTable->clear();
-	recordsTable->setColumnCount( 0 );
-	loadHeaders( mModel->merge() );
-	loadTable( mModel->merge() );
 
-	connect( mModel->merge(), SIGNAL(sourceChanged()), this, SLOT(onMergeSourceChanged()) );
-	connect( mModel->merge(), SIGNAL(selectionChanged()), this, SLOT(onMergeSelectionChanged()) );
-
-	connect( recordsTable, SIGNAL(cellChanged(int,int)), this, SLOT(onCellChanged(int,int)) );
-}
-
-
-///
-/// Merge source changed handler
-///
-void MergeView::onMergeSourceChanged()
-{
-	locationButton->setText( mModel->merge()->source() );
-
-	recordsTable->clear();
-	recordsTable->setColumnCount( 0 );
-	loadHeaders( mModel->merge() );
-	loadTable( mModel->merge() );
-}
-
-
-///
-/// Merge selection changed handler
-///
-void MergeView::onMergeSelectionChanged()
-{
-	mBlock = true;  // Don't recurse
-	
-	const QList<merge::Record*>& records = mModel->merge()->recordList();
-
-	int iRow = 0;
-	foreach ( merge::Record* record, records )
+	///
+	/// Merge changed handler
+	///
+	void MergeView::onMergeChanged()
 	{
-		QTableWidgetItem* item = recordsTable->item( iRow, 0 );
-		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
-
-		iRow++;
-	}
-
-	mBlock = false;
-}
-
-
-///
-/// Format combo changed handler
-void MergeView::onFormatComboActivated()
-{
-	int index = formatCombo->currentIndex();
-	if ( index != mOldFormatComboIndex )
-	{
+		QString name = merge::Factory::idToName( mModel->merge()->id() );
+		int index = mMergeFormatNames.indexOf( name );
 		mOldFormatComboIndex = index;
+		formatCombo->setCurrentIndex( index );
 
-		mModel->setMerge( merge::Factory::createMerge( merge::Factory::indexToId(index) ) );
-	}
-}
-
-
-///
-/// Location button clicked handler
-///
-void MergeView::onLocationButtonClicked()
-{
-	QString fileName =
-                QFileDialog::getOpenFileName( this,
-                                              tr("Select merge file"),
-                                              mCwd,
-                                              tr("All files (*)") );
-        if ( !fileName.isEmpty() )
-        {
-		mModel->merge()->setSource( fileName );
-		mCwd = QFileInfo( fileName ).absolutePath(); // Update CWD
-        }
-}
-
-
-///
-/// Select all button clicked handler
-///
-void MergeView::onSelectAllButtonClicked()
-{
-	mModel->merge()->selectAll();
-}
-
-
-///
-/// Unselect all button clicked handler
-///
-void MergeView::onUnselectAllButtonClicked()
-{
-	mModel->merge()->unselectAll();
-}
-
-
-///
-/// Cell changed handler
-///
-void MergeView::onCellChanged( int iRow, int iCol )
-{
-	if ( !mBlock )
-	{
-		QTableWidgetItem* item = recordsTable->item( iRow, 0 );
-		bool state = (item->checkState() == Qt::Unchecked) ? false : true;
-		
-		mModel->merge()->setSelected( iRow, state );
-	}
-}
-
-
-///
-/// Load headers
-///
-void MergeView::loadHeaders( merge::Merge* merge )
-{
-	mPrimaryKey = merge->primaryKey();
-	mKeys = merge->keys();
-
-	if ( mKeys.size() > 0 )
-	{
-		recordsTable->setColumnCount( mKeys.size() + 1 );  // Include extra column
-
-		// First column = primay Key
-		QTableWidgetItem* item = new QTableWidgetItem( mPrimaryKey );
-		item->setFlags( Qt::ItemIsEnabled );
-		recordsTable->setHorizontalHeaderItem( 0, item );
-
-		// Starting on second column, one column per key, skip primary Key
-		int iCol = 1;
-		foreach ( QString key, mKeys )
+		switch ( merge::Factory::idToType( mModel->merge()->id() ) )
 		{
-			if ( key != mPrimaryKey )
-			{
-				QTableWidgetItem* item = new QTableWidgetItem( key );
-				item->setFlags( Qt::ItemIsEnabled );
-				recordsTable->setHorizontalHeaderItem( iCol, item );
+		case merge::Factory::NONE:
+		case merge::Factory::FIXED:
+			locationLabel->setEnabled( false );
+			locationButton->setEnabled( false );
+			locationButton->setText( "" );
+			break;
 
-				iCol++;
+		case merge::Factory::FILE:
+			locationLabel->setEnabled( true );
+			locationButton->setEnabled( true );
+			if ( mModel->merge()->source().isEmpty() )
+			{
+				locationButton->setText( "Select file..." );
 			}
-
-		}
-
-		// Extra dummy column to fill any extra horizontal space
-		QTableWidgetItem* fillItem = new QTableWidgetItem();
-		fillItem->setFlags( Qt::NoItemFlags );
-		recordsTable->setHorizontalHeaderItem( iCol, fillItem );
-		recordsTable->horizontalHeader()->setStretchLastSection( true );
-	}
-}
-
-
-///
-/// Load table
-///
-void MergeView::loadTable( merge::Merge* merge )
-{
-	mBlock = true;
-
-	const QList<merge::Record*>& records = merge->recordList();
-	recordsTable->setRowCount( records.size() );
-
-	int iRow = 0;
-	foreach ( merge::Record* record, records )
-	{
-		// First column for primay field
-		QTableWidgetItem* item = new QTableWidgetItem();
-		if ( record->contains( mPrimaryKey ) )
-		{
-			item->setText( (*record)[mPrimaryKey] );
-		}
-		item->setFlags( Qt::ItemIsEnabled | Qt::ItemIsUserCheckable );
-		item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
-		recordsTable->setItem( iRow, 0, item );
-		recordsTable->resizeColumnToContents( 0 );
-
-		// Starting on second column, one column per field (even if empty), skip primary field
-		int iCol = 1;
-		foreach ( QString key, mKeys )
-		{
-			if ( key != mPrimaryKey )
+			else
 			{
-				if ( record->contains( key ) )
+				locationButton->setText( mModel->merge()->source() );
+			}
+			break;
+
+		default:
+			qWarning( "MergeView::onMergeChanged()::Should not be reached!" );
+			break;
+		}
+
+		recordsTable->clear();
+		recordsTable->setColumnCount( 0 );
+		loadHeaders( mModel->merge() );
+		loadTable( mModel->merge() );
+
+		connect( mModel->merge(), SIGNAL(sourceChanged()),
+		         this, SLOT(onMergeSourceChanged()) );
+		
+		connect( mModel->merge(), SIGNAL(selectionChanged()),
+		         this, SLOT(onMergeSelectionChanged()) );
+
+		connect( recordsTable, SIGNAL(cellChanged(int,int)),
+		         this, SLOT(onCellChanged(int,int)) );
+	}
+
+
+	///
+	/// Merge source changed handler
+	///
+	void MergeView::onMergeSourceChanged()
+	{
+		locationButton->setText( mModel->merge()->source() );
+
+		recordsTable->clear();
+		recordsTable->setColumnCount( 0 );
+		loadHeaders( mModel->merge() );
+		loadTable( mModel->merge() );
+	}
+
+
+	///
+	/// Merge selection changed handler
+	///
+	void MergeView::onMergeSelectionChanged()
+	{
+		mBlock = true;  // Don't recurse
+	
+		const QList<merge::Record*>& records = mModel->merge()->recordList();
+
+		int iRow = 0;
+		foreach ( merge::Record* record, records )
+		{
+			QTableWidgetItem* item = recordsTable->item( iRow, 0 );
+			item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
+
+			iRow++;
+		}
+
+		mBlock = false;
+	}
+
+
+	///
+	/// Format combo changed handler
+	///
+	void MergeView::onFormatComboActivated()
+	{
+		int index = formatCombo->currentIndex();
+		if ( index != mOldFormatComboIndex )
+		{
+			mOldFormatComboIndex = index;
+
+			QString id = merge::Factory::indexToId(index);
+			mModel->setMerge( merge::Factory::createMerge( id ) );
+		}
+	}
+
+
+	///
+	/// Location button clicked handler
+	///
+	void MergeView::onLocationButtonClicked()
+	{
+		QString fileName =
+			QFileDialog::getOpenFileName( this,
+			                              tr("Select merge file"),
+			                              mCwd,
+			                              tr("All files (*)") );
+		if ( !fileName.isEmpty() )
+		{
+			mModel->merge()->setSource( fileName );
+			mCwd = QFileInfo( fileName ).absolutePath(); // Update CWD
+		}
+	}
+
+
+	///
+	/// Select all button clicked handler
+	///
+	void MergeView::onSelectAllButtonClicked()
+	{
+		mModel->merge()->selectAll();
+	}
+
+
+	///
+	/// Unselect all button clicked handler
+	///
+	void MergeView::onUnselectAllButtonClicked()
+	{
+		mModel->merge()->unselectAll();
+	}
+
+
+	///
+	/// Cell changed handler
+	///
+	void MergeView::onCellChanged( int iRow, int iCol )
+	{
+		if ( !mBlock )
+		{
+			QTableWidgetItem* item = recordsTable->item( iRow, 0 );
+			bool state = (item->checkState() == Qt::Unchecked) ? false : true;
+		
+			mModel->merge()->setSelected( iRow, state );
+		}
+	}
+
+
+	///
+	/// Load headers
+	///
+	void MergeView::loadHeaders( merge::Merge* merge )
+	{
+		mPrimaryKey = merge->primaryKey();
+		mKeys = merge->keys();
+
+		if ( mKeys.size() > 0 )
+		{
+			recordsTable->setColumnCount( mKeys.size() + 1 );  // Include extra column
+
+			// First column = primay Key
+			QTableWidgetItem* item = new QTableWidgetItem( mPrimaryKey );
+			item->setFlags( Qt::ItemIsEnabled );
+			recordsTable->setHorizontalHeaderItem( 0, item );
+
+			// Starting on second column, one column per key, skip primary Key
+			int iCol = 1;
+			foreach ( QString key, mKeys )
+			{
+				if ( key != mPrimaryKey )
 				{
-					QTableWidgetItem* item = new QTableWidgetItem( (*record)[key] );
+					QTableWidgetItem* item = new QTableWidgetItem( key );
 					item->setFlags( Qt::ItemIsEnabled );
-					recordsTable->setItem( iRow, iCol, item );
-					recordsTable->resizeColumnToContents( iCol );
+					recordsTable->setHorizontalHeaderItem( iCol, item );
+
+					iCol++;
 				}
 
-				iCol++;
 			}
+
+			// Extra dummy column to fill any extra horizontal space
+			QTableWidgetItem* fillItem = new QTableWidgetItem();
+			fillItem->setFlags( Qt::NoItemFlags );
+			recordsTable->setHorizontalHeaderItem( iCol, fillItem );
+			recordsTable->horizontalHeader()->setStretchLastSection( true );
 		}
-
-		// Extra dummy column to fill any extra horizontal space
-		QTableWidgetItem* fillItem = new QTableWidgetItem();
-		fillItem->setFlags( Qt::NoItemFlags );
-		recordsTable->setItem( iRow, iCol, fillItem );
-
-		iRow++;
 	}
 
-	mBlock = false;
+
+	///
+	/// Load table
+	///
+	void MergeView::loadTable( merge::Merge* merge )
+	{
+		mBlock = true;
+
+		const QList<merge::Record*>& records = merge->recordList();
+		recordsTable->setRowCount( records.size() );
+
+		int iRow = 0;
+		foreach ( merge::Record* record, records )
+		{
+			// First column for primay field
+			QTableWidgetItem* item = new QTableWidgetItem();
+			if ( record->contains( mPrimaryKey ) )
+			{
+				item->setText( (*record)[mPrimaryKey] );
+			}
+			item->setFlags( Qt::ItemIsEnabled | Qt::ItemIsUserCheckable );
+			item->setCheckState( record->isSelected() ? Qt::Checked : Qt::Unchecked );
+			recordsTable->setItem( iRow, 0, item );
+			recordsTable->resizeColumnToContents( 0 );
+
+			// Starting on 2nd column, 1 column per field, skip primary field
+			int iCol = 1;
+			foreach ( QString key, mKeys )
+			{
+				if ( key != mPrimaryKey )
+				{
+					if ( record->contains( key ) )
+					{
+						QTableWidgetItem* item = new QTableWidgetItem( (*record)[key] );
+						item->setFlags( Qt::ItemIsEnabled );
+						recordsTable->setItem( iRow, iCol, item );
+						recordsTable->resizeColumnToContents( iCol );
+					}
+
+					iCol++;
+				}
+			}
+
+			// Extra dummy column to fill any extra horizontal space
+			QTableWidgetItem* fillItem = new QTableWidgetItem();
+			fillItem->setFlags( Qt::NoItemFlags );
+			recordsTable->setItem( iRow, iCol, fillItem );
+
+			iRow++;
+		}
+
+		mBlock = false;
+	}
+
 }

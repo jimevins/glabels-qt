@@ -32,205 +32,208 @@
 #include "Merge/Merge.h"
 #include "Merge/Record.h"
 
-// Forward References
-class ColorNode;
-class Handle;
-class LabelModelObject;
-class Region;
 
-
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-// LabelModel
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-class LabelModel : public QObject
+namespace glabels
 {
-	Q_OBJECT
+
+	// Forward References
+	class ColorNode;
+	class Handle;
+	class LabelModelObject;
+	class Region;
+
+	///
+	/// LabelModel
+	///
+	class LabelModel : public QObject
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Lifecycle
-	/////////////////////////////////
-public:
-	LabelModel();
-	virtual ~LabelModel() {}
+		/////////////////////////////////
+		// Lifecycle
+		/////////////////////////////////
+	public:
+		LabelModel();
+		virtual ~LabelModel() {}
 
 	
-	/////////////////////////////////
-	// Save/restore model state
-	/////////////////////////////////
-	LabelModel* save() const;
-	void restore( const LabelModel *savedModel );
+		/////////////////////////////////
+		// Save/restore model state
+		/////////////////////////////////
+		LabelModel* save() const;
+		void restore( const LabelModel *savedModel );
 	
 
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void changed();
-	void nameChanged();
-	void sizeChanged();
-	void selectionChanged();
-	void modifiedChanged();
-	void mergeChanged();
-	void mergeSourceChanged();
-	void mergeSelectionChanged();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void changed();
+		void nameChanged();
+		void sizeChanged();
+		void selectionChanged();
+		void modifiedChanged();
+		void mergeChanged();
+		void mergeSourceChanged();
+		void mergeSelectionChanged();
 
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	bool isModified() const;
-	void setModified();
-	void clearModified();
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		bool isModified() const;
+		void setModified();
+		void clearModified();
 
-	QString shortName();
-	const QString& fileName() const;
-	void setFileName( const QString &fileName );
+		QString shortName();
+		const QString& fileName() const;
+		void setFileName( const QString &fileName );
 
-	int compressionLevel() const;
-	void setCompressionLevel( int compressionLevel );
+		int compressionLevel() const;
+		void setCompressionLevel( int compressionLevel );
 
-	const glabels::Template* tmplate() const;
-	const glabels::Frame* frame() const;
-	void setTmplate( const glabels::Template* tmplate );
+		const Template* tmplate() const;
+		const Frame* frame() const;
+		void setTmplate( const Template* tmplate );
 
-	bool rotate() const;
-	void setRotate( bool rotate );
+		bool rotate() const;
+		void setRotate( bool rotate );
 
-	glabels::Distance w() const;
-	glabels::Distance h() const;
+		Distance w() const;
+		Distance h() const;
 
-	const QList<LabelModelObject*>& objectList() const;
+		const QList<LabelModelObject*>& objectList() const;
 
-	merge::Merge* merge() const;
-	void setMerge( merge::Merge* merge );
+		merge::Merge* merge() const;
+		void setMerge( merge::Merge* merge );
 	
 		
-	/////////////////////////////////
-	// Manage objects
-	/////////////////////////////////
-public:
-	void addObject( LabelModelObject* object );
-	void deleteObject( LabelModelObject* object );
+		/////////////////////////////////
+		// Manage objects
+		/////////////////////////////////
+	public:
+		void addObject( LabelModelObject* object );
+		void deleteObject( LabelModelObject* object );
 
-	LabelModelObject* objectAt( double                   scale,
-	                            const glabels::Distance& x,
-	                            const glabels::Distance& y ) const;
+		LabelModelObject* objectAt( double          scale,
+		                            const Distance& x,
+		                            const Distance& y ) const;
 		
-	Handle* handleAt( double                   scale,
-	                  const glabels::Distance& x,
-	                  const glabels::Distance& y ) const;
+		Handle* handleAt( double          scale,
+		                  const Distance& x,
+		                  const Distance& y ) const;
 
 
-	/////////////////////////////////
-	// Manipulate selection
-	/////////////////////////////////
-public:
-	void selectObject( LabelModelObject* object );
-	void unselectObject( LabelModelObject* object );
-	void selectAll();
-	void unselectAll();
-	void selectRegion( const Region& region );
-	bool isSelectionEmpty();
-	bool isSelectionAtomic();
+		/////////////////////////////////
+		// Manipulate selection
+		/////////////////////////////////
+	public:
+		void selectObject( LabelModelObject* object );
+		void unselectObject( LabelModelObject* object );
+		void selectAll();
+		void unselectAll();
+		void selectRegion( const Region& region );
+		bool isSelectionEmpty();
+		bool isSelectionAtomic();
 
 
-	/////////////////////////////////
-	// Get selected objects
-	/////////////////////////////////
-public:
-	QList<LabelModelObject*> getSelection();
-	LabelModelObject* getFirstSelectedObject();
+		/////////////////////////////////
+		// Get selected objects
+		/////////////////////////////////
+	public:
+		QList<LabelModelObject*> getSelection();
+		LabelModelObject* getFirstSelectedObject();
 
 
-	/////////////////////////////////
-	// Query selection capabilities
-	/////////////////////////////////
-public:
-	bool canSelectionText();
-	bool canSelectionFill();
-	bool canSelectionLineColor();
-	bool canSelectionLineWidth();
+		/////////////////////////////////
+		// Query selection capabilities
+		/////////////////////////////////
+	public:
+		bool canSelectionText();
+		bool canSelectionFill();
+		bool canSelectionLineColor();
+		bool canSelectionLineWidth();
 
 
-	/////////////////////////////////
-	// Operations on selections
-	/////////////////////////////////
-public:
-	void deleteSelection();
-	void raiseSelectionToTop();
-	void lowerSelectionToBottom();
-	void rotateSelection( double thetaDegs );
-	void rotateSelectionLeft();
-	void rotateSelectionRight();
-	void flipSelectionHoriz();
-	void flipSelectionVert();
-	void alignSelectionLeft();
-	void alignSelectionRight();
-	void alignSelectionHCenter();
-	void alignSelectionTop();
-	void alignSelectionBottom();
-	void alignSelectionVCenter();
-	void centerSelectionHoriz();
-	void centerSelectionVert();
-	void moveSelection( const glabels::Distance& dx, const glabels::Distance& dy );
-	void setSelectionFontFamily( const QString& fontFamily );
-	void setSelectionFontSize( double fontSize );
-	void setSelectionFontWeight( QFont::Weight fontWeight );
-	void setSelectionFontItalicFlag( bool fontItalicFlag );
-	void setSelectionTextHAlign( Qt::Alignment textHAlign );
-	void setSelectionTextVAlign( Qt::Alignment textVAlign );
-	void setSelectionTextLineSpacing( double textLineSpacing );
-	void setSelectionTextColorNode( ColorNode textColorNode );
-	void setSelectionLineWidth( const glabels::Distance& lineWidth );
-	void setSelectionLineColorNode( ColorNode lineColorNode );
-	void setSelectionFillColorNode( ColorNode fillColorNode );
+		/////////////////////////////////
+		// Operations on selections
+		/////////////////////////////////
+	public:
+		void deleteSelection();
+		void raiseSelectionToTop();
+		void lowerSelectionToBottom();
+		void rotateSelection( double thetaDegs );
+		void rotateSelectionLeft();
+		void rotateSelectionRight();
+		void flipSelectionHoriz();
+		void flipSelectionVert();
+		void alignSelectionLeft();
+		void alignSelectionRight();
+		void alignSelectionHCenter();
+		void alignSelectionTop();
+		void alignSelectionBottom();
+		void alignSelectionVCenter();
+		void centerSelectionHoriz();
+		void centerSelectionVert();
+		void moveSelection( const Distance& dx, const Distance& dy );
+		void setSelectionFontFamily( const QString& fontFamily );
+		void setSelectionFontSize( double fontSize );
+		void setSelectionFontWeight( QFont::Weight fontWeight );
+		void setSelectionFontItalicFlag( bool fontItalicFlag );
+		void setSelectionTextHAlign( Qt::Alignment textHAlign );
+		void setSelectionTextVAlign( Qt::Alignment textVAlign );
+		void setSelectionTextLineSpacing( double textLineSpacing );
+		void setSelectionTextColorNode( ColorNode textColorNode );
+		void setSelectionLineWidth( const Distance& lineWidth );
+		void setSelectionLineColorNode( ColorNode lineColorNode );
+		void setSelectionFillColorNode( ColorNode fillColorNode );
 
 
-	/////////////////////////////////
-	// Clipboard operations
-	/////////////////////////////////
-	void copySelection();
-	void cutSelection();
-	bool canPaste();
-	void paste();
+		/////////////////////////////////
+		// Clipboard operations
+		/////////////////////////////////
+		void copySelection();
+		void cutSelection();
+		bool canPaste();
+		void paste();
 	
-	/////////////////////////////////
-	// Drawing operations
-	/////////////////////////////////
-public:
-	void draw( QPainter* painter, bool inEditor = true, merge::Record* record = 0 ) const;
+		/////////////////////////////////
+		// Drawing operations
+		/////////////////////////////////
+	public:
+		void draw( QPainter* painter, bool inEditor = true, merge::Record* record = 0 ) const;
 
 		
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onObjectChanged();
-	void onObjectMoved();
-	void onMergeSourceChanged();
-	void onMergeSelectionChanged();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onObjectChanged();
+		void onObjectMoved();
+		void onMergeSourceChanged();
+		void onMergeSelectionChanged();
 
 
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	int                       mUntitledInstance;
-	bool                      mModified;
-	QString                   mFileName;
-	int                       mCompressionLevel;
-	const glabels::Template*  mTmplate;
-	const glabels::Frame*     mFrame;
-	bool                      mRotate;
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		int                       mUntitledInstance;
+		bool                      mModified;
+		QString                   mFileName;
+		int                       mCompressionLevel;
+		const Template*           mTmplate;
+		const Frame*              mFrame;
+		bool                      mRotate;
 
-	QList<LabelModelObject*>  mObjectList;
+		QList<LabelModelObject*>  mObjectList;
 
-	merge::Merge*             mMerge;
-};
+		merge::Merge*             mMerge;
+	};
+
+}
 
 
 #endif // LabelModel_h

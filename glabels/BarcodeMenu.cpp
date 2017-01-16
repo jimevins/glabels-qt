@@ -25,38 +25,43 @@
 #include "BarcodeMenuItem.h"
 
 
-///
-/// Constructor
-///
-BarcodeMenu::BarcodeMenu()
+namespace glabels
 {
-	foreach ( QString name, BarcodeBackends::getNameList() )
+	
+	///
+	/// Constructor
+	///
+	BarcodeMenu::BarcodeMenu()
 	{
-		const BarcodeStyle* bcStyle = BarcodeBackends::lookupStyleFromName( name );
+		foreach ( QString name, BarcodeBackends::getNameList() )
+		{
+			const BarcodeStyle* bcStyle = BarcodeBackends::lookupStyleFromName( name );
 
-		BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
-		connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
+			BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+			connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
 
-		addAction( bcMenuItem );
+			addAction( bcMenuItem );
+		}
 	}
-}
 
 
-///
-/// bcStyle getter
-///
-const BarcodeStyle* BarcodeMenu::bcStyle() const
-{
-	return mBcStyle;
-}
+	///
+	/// bcStyle getter
+	///
+	const BarcodeStyle* BarcodeMenu::bcStyle() const
+	{
+		return mBcStyle;
+	}
 
 
-///
-/// onMenuItemActivated slot
-///
-void BarcodeMenu::onMenuItemActivated( BarcodeStyle *bcStyle )
-{
-	mBcStyle = bcStyle;
+	///
+	/// onMenuItemActivated slot
+	///
+	void BarcodeMenu::onMenuItemActivated( BarcodeStyle *bcStyle )
+	{
+		mBcStyle = bcStyle;
 
-	emit styleChanged();
+		emit styleChanged();
+	}
+
 }

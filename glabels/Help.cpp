@@ -26,20 +26,25 @@
 #include "AboutDialog.h"
 
 
-///
-/// Display Help Contents
-///
-void Help::displayContents( QWidget *parent )
+namespace glabels
 {
-	qDebug() << "TODO: Help::displayContents";
-}
+
+	///
+	/// Display Help Contents
+	///
+	void Help::displayContents( QWidget *parent )
+	{
+		qDebug() << "TODO: Help::displayContents";
+	}
 
 
-///
-/// Display Help->About Dialog
-///
-void Help::displayAbout( QWidget *parent )
-{
-	AboutDialog dialog( parent );
-	dialog.exec();
+	///
+	/// Display Help->About Dialog
+	///
+	void Help::displayAbout( QWidget *parent )
+	{
+		AboutDialog dialog( parent );
+		dialog.exec();
+	}
+
 }

@@ -25,80 +25,85 @@
 #include <QStandardItemModel>
 
 
-///
-/// Constructor
-///
-FieldButton::FieldButton( QWidget* parent )
-	: QComboBox(parent)
+namespace glabels
 {
-	setEnabled( false );
 
-	connect( this, SIGNAL(currentIndexChanged(int)), this, SLOT(onIndexChanged(int)) );
-}
-
-
-void FieldButton::setName( const QString& name )
-{
-	mName = name;
-	if ( count() == 0 )
+	///
+	/// Constructor
+	///
+	FieldButton::FieldButton( QWidget* parent )
+		: QComboBox(parent)
 	{
+		setEnabled( false );
+
+		connect( this, SIGNAL(currentIndexChanged(int)), this, SLOT(onIndexChanged(int)) );
+	}
+
+
+	void FieldButton::setName( const QString& name )
+	{
+		mName = name;
+		if ( count() == 0 )
+		{
+			addItem( mName );
+		}
+		else
+		{
+			setItemText( 0, mName );
+		}
+
+		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
+		const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
+		QStandardItem* item = itemModel->item(0);
+		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
+	}
+
+
+	void FieldButton::setKeys( const QStringList& keyList )
+	{
+		// Clear old keys
+		clear();
 		addItem( mName );
-	}
-	else
-	{
-		setItemText( 0, mName );
-	}
 
-	// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-        const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
-        QStandardItem* item = itemModel->item(0);
-        item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
-}
-
-
-void FieldButton::setKeys( const QStringList& keyList )
-{
-        // Clear old keys
-	clear();
-	addItem( mName );
-
-	// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-        const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
-        QStandardItem* item = itemModel->item(0);
-        item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
+		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
+		const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
+		QStandardItem* item = itemModel->item(0);
+		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
 	
-        // Add new keys
-        if ( keyList.size() > 0 )
-        {
-                addItems( keyList );
-                setEnabled( true );
-        }
-        else
-        {
-                setEnabled( false );
-        }
-}
-
-
-void FieldButton::clearKeys()
-{
-	clear();
-	addItem( mName );
-	
-	setEnabled( false );
-}
-
-
-
-///
-/// onMenuKeySelected slot
-///
-void FieldButton::onIndexChanged( int index )
-{
-	if ( index > 0 )
-	{
-		emit keySelected( itemText(index) );
-
-		setCurrentIndex( 0 );
+		// Add new keys
+		if ( keyList.size() > 0 )
+		{
+			addItems( keyList );
+			setEnabled( true );
+		}
+		else
+		{
+			setEnabled( false );
+		}
 	}
+
+
+	void FieldButton::clearKeys()
+	{
+		clear();
+		addItem( mName );
+	
+		setEnabled( false );
+	}
+
+
+
+	///
+	/// onMenuKeySelected slot
+	///
+	void FieldButton::onIndexChanged( int index )
+	{
+		if ( index > 0 )
+		{
+			emit keySelected( itemText(index) );
+
+			setCurrentIndex( 0 );
+		}
+	}
+
 }

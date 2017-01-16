@@ -24,233 +24,240 @@
 #include "LabelModel.h"
 
 
-///
-/// Constructor
-///
-UndoRedoModel::UndoRedoModel( LabelModel* model )
+namespace glabels
 {
-	mModel = model;
-	mNewSelection = true;
 
-	connect( model, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
-}
-
-
-///
-/// Destructor
-///
-UndoRedoModel::~UndoRedoModel()
-{
-}
-
-
-///
-/// Checkpoint
-///
-void UndoRedoModel::checkpoint( const QString& description )
-{
-	//
-	// Do not perform consecutive checkpoints that are identical.
-	// E.g. moving an object by dragging, would produce a large number
-	// of incremental checkpoints -- what we really want is a single
-	// checkpoint so that we can undo the entire dragging effort with
-	// one "undo"
-	//
-	if ( mNewSelection || (description != mLastDescription) )
+	///
+	/// Constructor
+	///
+	UndoRedoModel::UndoRedoModel( LabelModel* model )
 	{
+		mModel = model;
+		mNewSelection = true;
 
-		/* Sever old redo "thread" */
-		mRedoStack.clear();
+		connect( model, SIGNAL(selectionChanged()), this, SLOT(onSelectionChanged()) );
+	}
 
-		/* Save state onto undo stack. */
-		State* stateNow = new State( mModel, description );
-		mUndoStack.push( stateNow );
 
-		/* Track consecutive checkpoints. */
-		mNewSelection = false;
-		mLastDescription = description;
+	///
+	/// Destructor
+	///
+	UndoRedoModel::~UndoRedoModel()
+	{
+		// empty
+	}
+
+
+	///
+	/// Checkpoint
+	///
+	void UndoRedoModel::checkpoint( const QString& description )
+	{
+		//
+		// Do not perform consecutive checkpoints that are identical.
+		// E.g. moving an object by dragging, would produce a large number
+		// of incremental checkpoints -- what we really want is a single
+		// checkpoint so that we can undo the entire dragging effort with
+		// one "undo"
+		//
+		if ( mNewSelection || (description != mLastDescription) )
+		{
+
+			/* Sever old redo "thread" */
+			mRedoStack.clear();
+
+			/* Save state onto undo stack. */
+			State* stateNow = new State( mModel, description );
+			mUndoStack.push( stateNow );
+
+			/* Track consecutive checkpoints. */
+			mNewSelection = false;
+			mLastDescription = description;
+
+			emit changed();
+		}
+	}
+
+
+	///
+	/// Undo
+	///
+	void UndoRedoModel::undo()
+	{
+		State* oldState = mUndoStack.pop();
+		State* stateNow = new State( mModel, oldState->description );
+
+		mRedoStack.push( stateNow );
+
+		mModel->restore( oldState->model );
+		delete oldState;
+	
+		mNewSelection = true;
 
 		emit changed();
 	}
-}
-
-
-///
-/// Undo
-///
-void UndoRedoModel::undo()
-{
-	State* oldState = mUndoStack.pop();
-	State* stateNow = new State( mModel, oldState->description );
-
-	mRedoStack.push( stateNow );
-
-	mModel->restore( oldState->model );
-	delete oldState;
-	
-	mNewSelection = true;
-
-	emit changed();
-}
 	
 
-///
-/// Redo
-///
-void UndoRedoModel::redo()
-{
-	State* oldState = mRedoStack.pop();
-	State* stateNow = new State( mModel, oldState->description );
-
-	mUndoStack.push( stateNow );
-
-	mModel->restore( oldState->model );
-	delete oldState;
-	
-	mNewSelection = true;
-
-	emit changed();
-}
-	
-
-///
-/// Can we undo?
-///
-bool UndoRedoModel::canUndo() const
-{
-	return !mUndoStack.isEmpty();
-}
-
-	
-///
-/// Can we redo?
-///
-bool UndoRedoModel::canRedo() const
-{
-	return !mRedoStack.isEmpty();
-}
-
-	
-///
-/// Undo description
-///
-QString UndoRedoModel::undoDescription() const
-{
-	if ( canUndo() )
+	///
+	/// Redo
+	///
+	void UndoRedoModel::redo()
 	{
-		return mUndoStack.topState()->description;
-	}
-	else
-	{
-		return "";
-	}
-}
+		State* oldState = mRedoStack.pop();
+		State* stateNow = new State( mModel, oldState->description );
 
+		mUndoStack.push( stateNow );
+
+		mModel->restore( oldState->model );
+		delete oldState;
 	
-///
-/// Redo description
-///
-QString UndoRedoModel::redoDescription() const
-{
-	if ( canRedo() )
-	{
-		return mRedoStack.topState()->description;
+		mNewSelection = true;
+
+		emit changed();
 	}
-	else
-	{
-		return "";
-	}
-}
-
-	
-///
-/// Selection changed handler
-///
-void UndoRedoModel::onSelectionChanged()
-{
-	mNewSelection = true;
-}
-
-
-///
-/// State constructor
-///
-UndoRedoModel::State::State( LabelModel* model, const QString& description )
-{
-	this->model = model->save();
-	this->description = description;
-}
-
-
-///
-/// State destructor
-///
-UndoRedoModel::State::~State()
-{
-	delete model;
-}
-
-
-///
-/// Stack constructor
-///
-UndoRedoModel::Stack::Stack()
-{
-}
-
-
-///
-/// Stack destructor
-///
-UndoRedoModel::Stack::~Stack()
-{
-	clear();
-}
-
-
-///
-/// Push state onto stack
-///
-void UndoRedoModel::Stack::push( UndoRedoModel::State* state )
-{
-	list.push_front( state );
-}
 	
 
-///
-/// Pop state from stack
-///
-UndoRedoModel::State* UndoRedoModel::Stack::pop()
-{
-	return list.takeFirst();
-}
-
-
-///
-/// Peek at state at top of stack
-///
-const UndoRedoModel::State* UndoRedoModel::Stack::topState() const
-{
-	return list.first();
-}
-
-
-///
-/// Is stack empty?
-///
-bool UndoRedoModel::Stack::isEmpty() const
-{
-	return list.isEmpty();
-}
-
-
-///
-/// Clear stack
-///
-void UndoRedoModel::Stack::clear()
-{
-	while ( !isEmpty() )
+	///
+	/// Can we undo?
+	///
+	bool UndoRedoModel::canUndo() const
 	{
-		delete pop();
+		return !mUndoStack.isEmpty();
 	}
+
+	
+	///
+	/// Can we redo?
+	///
+	bool UndoRedoModel::canRedo() const
+	{
+		return !mRedoStack.isEmpty();
+	}
+
+	
+	///
+	/// Undo description
+	///
+	QString UndoRedoModel::undoDescription() const
+	{
+		if ( canUndo() )
+		{
+			return mUndoStack.topState()->description;
+		}
+		else
+		{
+			return "";
+		}
+	}
+
+	
+	///
+	/// Redo description
+	///
+	QString UndoRedoModel::redoDescription() const
+	{
+		if ( canRedo() )
+		{
+			return mRedoStack.topState()->description;
+		}
+		else
+		{
+			return "";
+		}
+	}
+
+	
+	///
+	/// Selection changed handler
+	///
+	void UndoRedoModel::onSelectionChanged()
+	{
+		mNewSelection = true;
+	}
+
+
+	///
+	/// State constructor
+	///
+	UndoRedoModel::State::State( LabelModel* model, const QString& description )
+	{
+		this->model = model->save();
+		this->description = description;
+	}
+
+
+	///
+	/// State destructor
+	///
+	UndoRedoModel::State::~State()
+	{
+		delete model;
+	}
+
+
+	///
+	/// Stack constructor
+	///
+	UndoRedoModel::Stack::Stack()
+	{
+		// empty
+	}
+
+
+	///
+	/// Stack destructor
+	///
+	UndoRedoModel::Stack::~Stack()
+	{
+		clear();
+	}
+
+
+	///
+	/// Push state onto stack
+	///
+	void UndoRedoModel::Stack::push( UndoRedoModel::State* state )
+	{
+		list.push_front( state );
+	}
+	
+
+	///
+	/// Pop state from stack
+	///
+	UndoRedoModel::State* UndoRedoModel::Stack::pop()
+	{
+		return list.takeFirst();
+	}
+
+
+	///
+	/// Peek at state at top of stack
+	///
+	const UndoRedoModel::State* UndoRedoModel::Stack::topState() const
+	{
+		return list.first();
+	}
+
+
+	///
+	/// Is stack empty?
+	///
+	bool UndoRedoModel::Stack::isEmpty() const
+	{
+		return list.isEmpty();
+	}
+
+
+	///
+	/// Clear stack
+	///
+	void UndoRedoModel::Stack::clear()
+	{
+		while ( !isEmpty() )
+		{
+			delete pop();
+		}
+	}
+
 }

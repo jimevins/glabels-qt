@@ -24,51 +24,57 @@
 #include "Merge.h"
 
 
-namespace merge
+namespace glabels
 {
-	
-	///
-	/// None Merge Backend
-	///
-	struct None : public Merge
+
+	namespace merge
 	{
+	
+		///
+		/// None Merge Backend
+		///
+		struct None : public Merge
+		{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		None();
-		None( const None* merge );
-		virtual ~None();
-
-
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-		None* clone() const;
-
-
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		public:
+			None();
+			None( const None* merge );
+			virtual ~None();
 
 
-		/////////////////////////////////
-		// Implementation of virtual methods
-		/////////////////////////////////
-	public:
-		QStringList keys() const;
-		QString primaryKey() const;
-	protected:
-		void open();
-		void close();
-		Record* readNextRecord();
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+			None* clone() const;
+
+
+			/////////////////////////////////
+			// Static methods
+			/////////////////////////////////
+		public:
+			static QString id();
+			static Merge* create();
+
+
+			/////////////////////////////////
+			// Implementation of virtual methods
+			/////////////////////////////////
+		public:
+			QStringList keys() const;
+			QString primaryKey() const;
+		protected:
+			void open();
+			void close();
+			Record* readNextRecord();
 		
-	};
+		};
+
+	}
 
 }
+
 
 #endif // merge_None_h

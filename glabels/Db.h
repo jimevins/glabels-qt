@@ -131,8 +131,8 @@ namespace glabels
 
 		static QList<Template*> mTemplates;
 
-		static QString mPaperNameOther;
-		static QString mEmpty;
+		static QString          mPaperNameOther;
+
 	};
 
 }

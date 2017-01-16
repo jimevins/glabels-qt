@@ -24,40 +24,46 @@
 #include "Text.h"
 
 
-namespace merge
+namespace glabels
 {
-	
-	///
-	/// TextSemicolonKeys Merge Backend
-	///
-	struct TextSemicolonKeys : public Text
+
+	namespace merge
 	{
+	
+		///
+		/// TextSemicolonKeys Merge Backend
+		///
+		struct TextSemicolonKeys : public Text
+		{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextSemicolonKeys();
-		TextSemicolonKeys( const TextSemicolonKeys* merge );
-		virtual ~TextSemicolonKeys();
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		private:
+			TextSemicolonKeys();
+			TextSemicolonKeys( const TextSemicolonKeys* merge );
+			virtual ~TextSemicolonKeys();
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextSemicolonKeys* clone() const;
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+		public:
+			TextSemicolonKeys* clone() const;
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+			/////////////////////////////////
+			// Static methods
+			/////////////////////////////////
+		public:
+			static QString id();
+			static Merge* create();
 
-	};
+		};
+
+	}
 
 }
+
 
 #endif // merge_TextSemicolonKeys_h

@@ -23,7 +23,7 @@
 
 #include <cmath>
 
-#include "privateConstants.h"
+#include "Constants.h"
 
 
 namespace glabels
@@ -37,6 +37,7 @@ namespace glabels
 		        const Distance& dy )
 		: mNx(nx), mNy(ny), mX0(x0), mY0(y0), mDx(dx), mDy(dy)
 	{
+		// empty
 	}
 
 	
@@ -44,6 +45,7 @@ namespace glabels
 		: mNx(other.mNx), mNy(other.mNy), mX0(other.mX0), mY0(other.mY0),
 		  mDx(other.mDx), mDy(other.mDy)
 	{
+		// empty
 	}
 
 
@@ -85,12 +87,12 @@ namespace glabels
 
 	bool Layout::isSimilarTo( const Layout *other )
 	{
-		return ( (mNx == other->mNx)                           &&
-			 (mNy == other->mNy)                           &&
-			 (fabs(mX0 - other->mX0) < Constants::EPSILON) &&
-			 (fabs(mY0 - other->mY0) < Constants::EPSILON) &&
-			 (fabs(mDx - other->mDx) < Constants::EPSILON) &&
-			 (fabs(mDy - other->mDy) < Constants::EPSILON) );
+		return ( (mNx == other->mNx)                &&
+			 (mNy == other->mNy)                &&
+			 (fabs(mX0 - other->mX0) < EPSILON) &&
+			 (fabs(mY0 - other->mY0) < EPSILON) &&
+			 (fabs(mDx - other->mDx) < EPSILON) &&
+			 (fabs(mDy - other->mDy) < EPSILON) );
 	}
 
 

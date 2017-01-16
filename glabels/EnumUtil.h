@@ -27,17 +27,22 @@
 #include <Qt>
 
 
-namespace EnumUtil
+namespace glabels
 {
 
-	QString weightToString( QFont::Weight weight );
-	QFont::Weight stringToWeight( const QString& string );
+	namespace EnumUtil
+	{
 
-	QString hAlignToString( Qt::Alignment align );
-	Qt::Alignment stringToHAlign( const QString& string );
+		QString weightToString( QFont::Weight weight );
+		QFont::Weight stringToWeight( const QString& string );
 
-	QString vAlignToString( Qt::Alignment align );
-	Qt::Alignment stringToVAlign( const QString& string );
+		QString hAlignToString( Qt::Alignment align );
+		Qt::Alignment stringToHAlign( const QString& string );
+
+		QString vAlignToString( Qt::Alignment align );
+		Qt::Alignment stringToVAlign( const QString& string );
+
+	}
 
 }
 

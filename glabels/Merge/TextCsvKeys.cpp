@@ -21,60 +21,65 @@
 #include "TextCsvKeys.h"
 
 
-namespace merge
+namespace glabels
 {
-	static const QString ID = "Text/Comma/Line1Keys";
+
+	namespace merge
+	{
+		static const QString ID = "Text/Comma/Line1Keys";
 	
 	
-	///
-	/// Constructor
-	///
-	TextCsvKeys::TextCsvKeys() : Text(',',true)
-	{
-		mId = ID;
-	}
+		///
+		/// Constructor
+		///
+		TextCsvKeys::TextCsvKeys() : Text(',',true)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Constructor
-	///
-	TextCsvKeys::TextCsvKeys( const TextCsvKeys* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextCsvKeys::TextCsvKeys( const TextCsvKeys* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextCsvKeys::~TextCsvKeys()
-	{
-	}
+		///
+		/// Destructor
+		///
+		TextCsvKeys::~TextCsvKeys()
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextCsvKeys* TextCsvKeys::clone() const
-	{
-		return new TextCsvKeys( this );
-	}
+		///
+		/// Clone
+		///
+		TextCsvKeys* TextCsvKeys::clone() const
+		{
+			return new TextCsvKeys( this );
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextCsvKeys::id()
-	{
-		return ID;
-	}
+		///
+		/// Get ID
+		///
+		QString TextCsvKeys::id()
+		{
+			return ID;
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextCsvKeys::create()
-	{
-		return new TextCsvKeys();
+		///
+		/// Create
+		///
+		Merge* TextCsvKeys::create()
+		{
+			return new TextCsvKeys();
+		}
+
 	}
 
 }

@@ -21,7 +21,7 @@
 #include "FrameRect.h"
 
 
-#include "privateConstants.h"
+#include "Constants.h"
 #include "StrUtil.h"
 
 
@@ -48,6 +48,7 @@ namespace glabels
 		: mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
 		  mYWaste(other.mYWaste), mPath(other.mPath), Frame(other)
 	{
+		// empty
 	}
 
 	
@@ -113,8 +114,8 @@ namespace glabels
 	{
 		if ( FrameRect *otherRect = dynamic_cast<FrameRect*>(other) )
 		{
-			if ( (fabs( mW - otherRect->mW ) <= Constants::EPSILON) &&
-			     (fabs( mH - otherRect->mH ) <= Constants::EPSILON) )
+			if ( (fabs( mW - otherRect->mW ) <= EPSILON) &&
+			     (fabs( mH - otherRect->mH ) <= EPSILON) )
 			{
 				return true;
 			}

@@ -24,58 +24,63 @@
 #include "Settings.h"
 
 
-///
-/// Constructor
-///
-PreferencesDialog::PreferencesDialog( QWidget *parent )
-	: QDialog(parent)
+namespace glabels
 {
-	setupUi( this );
 
-	switch ( Settings::units().toEnum() )
+	///
+	/// Constructor
+	///
+	PreferencesDialog::PreferencesDialog( QWidget *parent )
+		: QDialog(parent)
 	{
-	case glabels::Units::IN:
-		unitsInchesRadio->setChecked( true );
-		break;
-	case glabels::Units::MM:
-		unitsMillimetersRadio->setChecked( true );
-		break;
-	case glabels::Units::CM:
-		unitsCentimetersRadio->setChecked( true );
-		break;
-	case glabels::Units::PC:
-		unitsPicasRadio->setChecked( true );
-		break;
-	default:
-		unitsPointsRadio->setChecked( true );
-		break;
+		setupUi( this );
+
+		switch ( Settings::units().toEnum() )
+		{
+		case Units::IN:
+			unitsInchesRadio->setChecked( true );
+			break;
+		case Units::MM:
+			unitsMillimetersRadio->setChecked( true );
+			break;
+		case Units::CM:
+			unitsCentimetersRadio->setChecked( true );
+			break;
+		case Units::PC:
+			unitsPicasRadio->setChecked( true );
+			break;
+		default:
+			unitsPointsRadio->setChecked( true );
+			break;
+		}
 	}
-}
 
 
-///
-/// Units Radios Changed
-///
-void PreferencesDialog::onUnitsRadiosChanged()
-{
-	if ( unitsInchesRadio->isChecked() )
+	///
+	/// Units Radios Changed
+	///
+	void PreferencesDialog::onUnitsRadiosChanged()
 	{
-		Settings::setUnits( glabels::Units::in() );
+		if ( unitsInchesRadio->isChecked() )
+		{
+			Settings::setUnits( Units::in() );
+		}
+		else if ( unitsMillimetersRadio->isChecked() )
+		{
+			Settings::setUnits( Units::mm() );
+		}
+		else if ( unitsCentimetersRadio->isChecked() )
+		{
+			Settings::setUnits( Units::cm() );
+		}
+		else if ( unitsPicasRadio->isChecked() )
+		{
+			Settings::setUnits( Units::pc() );
+		}
+		else
+		{
+			Settings::setUnits( Units::pt() );
+		}
 	}
-	else if ( unitsMillimetersRadio->isChecked() )
-	{
-		Settings::setUnits( glabels::Units::mm() );
-	}
-	else if ( unitsCentimetersRadio->isChecked() )
-	{
-		Settings::setUnits( glabels::Units::cm() );
-	}
-	else if ( unitsPicasRadio->isChecked() )
-	{
-		Settings::setUnits( glabels::Units::pc() );
-	}
-	else
-	{
-		Settings::setUnits( glabels::Units::pt() );
-	}
+
 }

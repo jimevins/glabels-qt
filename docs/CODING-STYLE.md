@@ -57,7 +57,38 @@ information.
 - Never use parens in return statements when not necessary.
 
 
-File Organization
+Naming
+------
+
+### Type Names
+
+- Start with a capital letter.
+- Each new word is capitalized.
+- No underscores.
+
+
+### Variable Names
+
+- Start each variable name with a lowercase letter.
+- Each subsequent word is capitalized.
+- No underscores.
+- Data members start with a lowercase "m" with the 2nd letter capitalized.
+- Use "i" prefix for indexes and "n" prefix for total number of indexes.
+
+
+### Function names
+
+- Start each function name with a lowercase letter.
+- Each subsequent word is capitalized.
+- No underscores.
+
+
+### Constant Names
+
+- TBD (currently not uniform)
+
+
+Code Organization
 -----------------
 
 Generally code is organized into modules.  Usually a module defines a single
@@ -87,6 +118,7 @@ All header files should have an ifndef guard to prevent multiple inclusion.
 #endif // ns_Module_h
 ```
 
+
 ### Include Directives
 
 Header files should be included in the following order.
@@ -111,3 +143,8 @@ glabels header files.
 Do not use forward declarations to any external entities.  Use the appropriate
 include directives instead.
 
+
+### Namespaces
+
+- Private definitions are placed in unnamed namespaces to limit scope to the current translation unit.
+- All other glabels code is placed in the top-level "glabels" namespace.

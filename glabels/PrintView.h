@@ -27,53 +27,59 @@
 #include "ui_PrintView.h"
 #include "PageRenderer.h"
 
-// Forward references
-class LabelModel;
+
+namespace glabels
+{
+
+	// Forward references
+	class LabelModel;
 	
 
-///
-/// Print View Widget
-///
-class PrintView : public QWidget, public Ui_PrintView
-{
-	Q_OBJECT
+	///
+	/// Print View Widget
+	///
+	class PrintView : public QWidget, public Ui_PrintView
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	PrintView( QWidget *parent = 0 );
-	~PrintView();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		PrintView( QWidget *parent = 0 );
+		~PrintView();
 
 
-	/////////////////////////////////
-	// Public methods
-	/////////////////////////////////
-	void setModel( LabelModel* model );
+		/////////////////////////////////
+		// Public methods
+		/////////////////////////////////
+		void setModel( LabelModel* model );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onModelChanged();
-	void updateView();
-	void onFormChanged();
-	void onPrintButtonClicked();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onModelChanged();
+		void updateView();
+		void onFormChanged();
+		void onPrintButtonClicked();
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	LabelModel*  mModel;
-	QPrinter*    mPrinter;
-	PageRenderer mRenderer;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		LabelModel*  mModel;
+		QPrinter*    mPrinter;
+		PageRenderer mRenderer;
 
-	bool         mBlocked;
+		bool         mBlocked;
 
-};
+	};
+
+}
 
 
 #endif // PrintView_h

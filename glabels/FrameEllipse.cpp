@@ -21,7 +21,7 @@
 #include "FrameEllipse.h"
 
 
-#include "privateConstants.h"
+#include "Constants.h"
 #include "StrUtil.h"
 
 
@@ -41,6 +41,7 @@ namespace glabels
 	FrameEllipse::FrameEllipse( const FrameEllipse& other )
 		: mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
 	{
+		// empty
 	}
 
 	
@@ -94,8 +95,8 @@ namespace glabels
 	{
 		if ( FrameEllipse* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
 		{
-			if ( (fabs( mW - otherEllipse->mW ) <= Constants::EPSILON) &&
-			     (fabs( mH - otherEllipse->mH ) <= Constants::EPSILON) )
+			if ( (fabs( mW - otherEllipse->mW ) <= EPSILON) &&
+			     (fabs( mH - otherEllipse->mH ) <= EPSILON) )
 			{
 				return true;
 			}

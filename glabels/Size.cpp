@@ -21,67 +21,74 @@
 #include "Size.h"
 
 
-///
-/// Constructor
-///
-Size::Size() : mW(0), mH(0)
+namespace glabels
 {
-}
+
+	///
+	/// Constructor
+	///
+	Size::Size() : mW(0), mH(0)
+	{
+		// empty
+	}
 
 
-///
-/// Constructor
-///
-Size::Size( const glabels::Distance& w, const glabels::Distance& h ) : mW(w), mH(h)
-{
-}
+	///
+	/// Constructor
+	///
+	Size::Size( const Distance& w, const Distance& h ) : mW(w), mH(h)
+	{
+		// empty
+	}
 
 
-///
-/// Get w
-///
-glabels::Distance Size::w( void ) const
-{
-	return mW;
-}
+	///
+	/// Get w
+	///
+	Distance Size::w( void ) const
+	{
+		return mW;
+	}
 
 
-///
-/// Set w
-///
-void Size::setW( const glabels::Distance& value )
-{
-	mW = value;
-}
+	///
+	/// Set w
+	///
+	void Size::setW( const Distance& value )
+	{
+		mW = value;
+	}
 
 
-///
-/// Get h
-///
-glabels::Distance Size::h( void ) const
-{
-	return mH;
-}
+	///
+	/// Get h
+	///
+	Distance Size::h( void ) const
+	{
+		return mH;
+	}
 
 
-///
-/// Set h
-///
-void Size::setH( const glabels::Distance& value )
-{
-	mH = value;
-}
+	///
+	/// Set h
+	///
+	void Size::setH( const Distance& value )
+	{
+		mH = value;
+	}
 
 
-///
-/// Convert to a QSizeF
-///
-QSizeF Size::qSizeF() const
-{
-	QSizeF s;
+	///
+	/// Convert to a QSizeF
+	///
+	QSizeF Size::qSizeF() const
+	{
+		QSizeF s;
 
-	s.setWidth( mW.pt() );
-	s.setHeight( mH.pt() );
+		s.setWidth( mW.pt() );
+		s.setHeight( mH.pt() );
 
-	return s;
+		return s;
+	}
+
 }

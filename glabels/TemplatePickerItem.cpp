@@ -26,27 +26,30 @@
 #include <QListWidgetItem>
 
 
-///
-/// Constructor
-///
-TemplatePickerItem::TemplatePickerItem( glabels::Template *tmplate,
-					QListWidget       *parent )
-	: QListWidgetItem(parent)
+namespace glabels
 {
-	mTmplate = tmplate;
 
-	setIcon( QIcon(tmplate->preview()) );
-	setText( tmplate->name() );
+	///
+	/// Constructor
+	///
+	TemplatePickerItem::TemplatePickerItem( Template *tmplate, QListWidget *parent )
+		: QListWidgetItem(parent)
+	{
+		mTmplate = tmplate;
 
-	setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
+		setIcon( QIcon(tmplate->preview()) );
+		setText( tmplate->name() );
+
+		setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
+	}
+
+
+	///
+	/// Template Property Getter
+	///
+	const Template *TemplatePickerItem::tmplate() const
+	{
+		return mTmplate;
+	}
+
 }
-
-
-///
-/// Template Property Getter
-///
-const glabels::Template *TemplatePickerItem::tmplate() const
-{
-	return mTmplate;
-}
-

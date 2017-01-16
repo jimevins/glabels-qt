@@ -33,81 +33,34 @@
 #include "XmlLabelCreator.h"
 
 
-///
-/// Static data
-///
-QString File::mCwd = ".";
-
-
-///
-/// New Label Dialog
-///
-bool File::newLabel( MainWindow *window )
+namespace glabels
 {
-	SelectProductDialog dialog( window );
-	dialog.exec();
 
-	const glabels::Template* tmplate = dialog.tmplate();
-	if ( tmplate )
+	//
+	// Static data
+	//
+	QString File::mCwd = ".";
+
+
+	///
+	/// New Label Dialog
+	///
+	bool File::newLabel( MainWindow *window )
 	{
-		LabelModel* label = new LabelModel();
-		label->setTmplate( tmplate );
-		label->clearModified();
+		SelectProductDialog dialog( window );
+		dialog.exec();
 
-		// Intelligently decide to rotate label by default
-		const glabels::Frame* frame = tmplate->frames().first();
-		label->setRotate( frame->h() > frame->w() );
-
-		// Either apply to current window or open a new one
-		if ( window->isEmpty() )
+		const Template* tmplate = dialog.tmplate();
+		if ( tmplate )
 		{
-			window->setModel( label );
-		}
-		else
-		{
-			MainWindow *newWindow = new MainWindow();
-			newWindow->setModel( label );
-			newWindow->show();
-		}
+			LabelModel* label = new LabelModel();
+			label->setTmplate( tmplate );
+			label->clearModified();
 
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
+			// Intelligently decide to rotate label by default
+			const Frame* frame = tmplate->frames().first();
+			label->setRotate( frame->h() > frame->w() );
 
-
-///
-/// Open File Dialog
-///
-void File::open( MainWindow *window )
-{
-	// Either use the saved CWD from a previous open/save or grab it from the path of the current file
-	QString cwd = mCwd;
-	if ( window->model() && !window->model()->fileName().isEmpty() )
-	{
-		QFileInfo fileInfo( window->model()->fileName() );
-		if ( fileInfo.isFile() )
-		{
-			cwd = fileInfo.absolutePath();
-		}
-	}
-	
-	QString fileName =
-		QFileDialog::getOpenFileName( window,
-					      tr("gLabels - Open Project"),
-					      cwd,
-					      tr("glabels files (*.glabels);;All files (*)")
-			);
-	if ( !fileName.isEmpty() )
-	{
-		LabelModel *label = XmlLabelParser::readFile( fileName );
-		if ( label )
-		{
-			label->setFileName( fileName );
-				
 			// Either apply to current window or open a new one
 			if ( window->isEmpty() )
 			{
@@ -120,123 +73,175 @@ void File::open( MainWindow *window )
 				newWindow->show();
 			}
 
-			// Save CWD
-			mCwd = QFileInfo( fileName ).absolutePath();
+			return true;
 		}
 		else
 		{
-			QMessageBox msgBox;
-			msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
-			msgBox.setStandardButtons( QMessageBox::Ok );
-			msgBox.setDefaultButton( QMessageBox::Ok );
-			msgBox.exec();
+			return false;
 		}
 	}
-}
 
 
-///
-/// Save file
-///
-bool File::save( MainWindow *window )
-{
-	if ( window->model()->fileName().isEmpty() )
+	///
+	/// Open File Dialog
+	///
+	void File::open( MainWindow *window )
 	{
-		return saveAs( window );
-	}
-
-	if ( !window->model()->isModified() )
-	{
-		return true;
-	}
-
-	XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
-	window->model()->clearModified();
-
-	// Save CWD
-	mCwd = QFileInfo( window->model()->fileName() ).absolutePath();
-
-	return true;
-}
-
-
-///
-/// Save file as
-///
-bool File::saveAs( MainWindow *window )
-{
-	// Either use the saved CWD from a previous open/save or grab it from the path of the current file
-	QString cwd = mCwd;
-	if ( window->model() && !window->model()->fileName().isEmpty() )
-	{
-		QFileInfo fileInfo( window->model()->fileName() );
-		if ( fileInfo.isFile() )
+		// Either use the saved CWD from a previous open/save or grab it from the path of the current file
+		QString cwd = mCwd;
+		if ( window->model() && !window->model()->fileName().isEmpty() )
 		{
-			cwd = fileInfo.filePath();
-		}
-	}
-	
-	QString rawFileName =
-		QFileDialog::getSaveFileName( window,
-					      tr("gLabels - Save Project As"),
-					      cwd,
-					      tr("glabels files (*.glabels);;All files (*)"),
-					      0,
-					      QFileDialog::DontConfirmOverwrite	);
-	if ( !rawFileName.isEmpty() )
-	{
-		QString fileName = FileUtil::addExtension( rawFileName, ".glabels" );
-			
-			
-		if ( QFileInfo(fileName).exists() )
-		{
-			QMessageBox msgBox( window );
-			msgBox.setWindowTitle( tr("Save Label As") );
-			msgBox.setIcon( QMessageBox::Warning );
-			msgBox.setText( tr("%1 already exists.").arg(fileName) );
-			msgBox.setInformativeText( tr("Do you want to replace it?") );
-			msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
-			msgBox.setDefaultButton( QMessageBox::No );
-
-			if ( msgBox.exec() == QMessageBox::No )
+			QFileInfo fileInfo( window->model()->fileName() );
+			if ( fileInfo.isFile() )
 			{
-				return saveAs( window );
+				cwd = fileInfo.absolutePath();
 			}
 		}
-			
-		XmlLabelCreator::writeFile( window->model(), fileName );
-		window->model()->setFileName( fileName );
+	
+		QString fileName =
+			QFileDialog::getOpenFileName( window,
+			                              tr("gLabels - Open Project"),
+			                              cwd,
+			                              tr("glabels files (*.glabels);;All files (*)")
+				);
+		if ( !fileName.isEmpty() )
+		{
+			LabelModel *label = XmlLabelParser::readFile( fileName );
+			if ( label )
+			{
+				label->setFileName( fileName );
+				
+				// Either apply to current window or open a new one
+				if ( window->isEmpty() )
+				{
+					window->setModel( label );
+				}
+				else
+				{
+					MainWindow *newWindow = new MainWindow();
+					newWindow->setModel( label );
+					newWindow->show();
+				}
+
+				// Save CWD
+				mCwd = QFileInfo( fileName ).absolutePath();
+			}
+			else
+			{
+				QMessageBox msgBox;
+				msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
+				msgBox.setStandardButtons( QMessageBox::Ok );
+				msgBox.setDefaultButton( QMessageBox::Ok );
+				msgBox.exec();
+			}
+		}
+	}
+
+
+	///
+	/// Save file
+	///
+	bool File::save( MainWindow *window )
+	{
+		if ( window->model()->fileName().isEmpty() )
+		{
+			return saveAs( window );
+		}
+
+		if ( !window->model()->isModified() )
+		{
+			return true;
+		}
+
+		XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
 		window->model()->clearModified();
-		
+
 		// Save CWD
-		mCwd = QFileInfo( fileName ).absolutePath();
+		mCwd = QFileInfo( window->model()->fileName() ).absolutePath();
 
 		return true;
 	}
 
-	return false;
-}
 
-
-///
-/// Close file
-///
-void File::close( MainWindow *window )
-{
-	window->close();
-}
-
-
-///
-/// Exit, closing all windows
-///
-void File::exit()
-{
-	foreach ( QWidget* qwidget, QApplication::topLevelWidgets() )
+	///
+	/// Save file as
+	///
+	bool File::saveAs( MainWindow *window )
 	{
-		if ( MainWindow* window = qobject_cast<MainWindow*>(qwidget) )
+		// Either use the saved CWD from a previous open/save or grab it from the path of the current file
+		QString cwd = mCwd;
+		if ( window->model() && !window->model()->fileName().isEmpty() )
 		{
-			window->close();
+			QFileInfo fileInfo( window->model()->fileName() );
+			if ( fileInfo.isFile() )
+			{
+				cwd = fileInfo.filePath();
+			}
+		}
+	
+		QString rawFileName =
+			QFileDialog::getSaveFileName( window,
+			                              tr("gLabels - Save Project As"),
+			                              cwd,
+			                              tr("glabels files (*.glabels);;All files (*)"),
+			                              0,
+			                              QFileDialog::DontConfirmOverwrite	);
+		if ( !rawFileName.isEmpty() )
+		{
+			QString fileName = FileUtil::addExtension( rawFileName, ".glabels" );
+			
+			
+			if ( QFileInfo(fileName).exists() )
+			{
+				QMessageBox msgBox( window );
+				msgBox.setWindowTitle( tr("Save Label As") );
+				msgBox.setIcon( QMessageBox::Warning );
+				msgBox.setText( tr("%1 already exists.").arg(fileName) );
+				msgBox.setInformativeText( tr("Do you want to replace it?") );
+				msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
+				msgBox.setDefaultButton( QMessageBox::No );
+
+				if ( msgBox.exec() == QMessageBox::No )
+				{
+					return saveAs( window );
+				}
+			}
+			
+			XmlLabelCreator::writeFile( window->model(), fileName );
+			window->model()->setFileName( fileName );
+			window->model()->clearModified();
+		
+			// Save CWD
+			mCwd = QFileInfo( fileName ).absolutePath();
+
+			return true;
+		}
+
+		return false;
+	}
+
+
+	///
+	/// Close file
+	///
+	void File::close( MainWindow *window )
+	{
+		window->close();
+	}
+
+
+	///
+	/// Exit, closing all windows
+	///
+	void File::exit()
+	{
+		foreach ( QWidget* qwidget, QApplication::topLevelWidgets() )
+		{
+			if ( MainWindow* window = qobject_cast<MainWindow*>(qwidget) )
+			{
+				window->close();
+			}
 		}
 	}
+
 }

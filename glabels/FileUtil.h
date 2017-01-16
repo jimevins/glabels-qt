@@ -25,10 +25,15 @@
 #include <QString>
 
 
-namespace FileUtil
+namespace glabels
 {
 
-	QString addExtension( const QString& rawFilename, const QString& extension );
+	namespace FileUtil
+	{
+
+		QString addExtension( const QString& rawFilename, const QString& extension );
+
+	}
 
 }
 

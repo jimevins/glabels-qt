@@ -27,67 +27,72 @@
 #include "ui_SelectProductDialog.h"
 
 
-///
-/// New Label Dialog Widget
-///
-class SelectProductDialog : public QDialog, public Ui_SelectProductDialog
+namespace glabels
 {
-	Q_OBJECT
+	
+	///
+	/// New Label Dialog Widget
+	///
+	class SelectProductDialog : public QDialog, public Ui_SelectProductDialog
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	SelectProductDialog( QWidget *parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		SelectProductDialog( QWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Accessors
-	/////////////////////////////////
-	const glabels::Template* tmplate() const;
+		/////////////////////////////////
+		// Accessors
+		/////////////////////////////////
+		const Template* tmplate() const;
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onModeTabChanged();
-	void onSearchEntryTextChanged();
-	void onSearchClearButtonClicked();
-	void onPageSizeCheckClicked();
-	void onCategoryRadioClicked();
-	void onCategoryCheckClicked();
-	void onTemplatePickerSelectionChanged();
-	void onCancelButtonClicked();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onModeTabChanged();
+		void onSearchEntryTextChanged();
+		void onSearchClearButtonClicked();
+		void onPageSizeCheckClicked();
+		void onCategoryRadioClicked();
+		void onCategoryCheckClicked();
+		void onTemplatePickerSelectionChanged();
+		void onCancelButtonClicked();
 
 		
-	/////////////////////////////////
-	// Events
-	/////////////////////////////////
-protected:
-	void timerEvent(QTimerEvent *event);
+		/////////////////////////////////
+		// Events
+		/////////////////////////////////
+	protected:
+		void timerEvent(QTimerEvent *event);
 
 
-        /////////////////////////////////
-	// Private methods
-	/////////////////////////////////
-private:
-	void loadCategoryList();
+		/////////////////////////////////
+		// Private methods
+		/////////////////////////////////
+	private:
+		void loadCategoryList();
 	
 
-        /////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	QBasicTimer mTimer;
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		QBasicTimer mTimer;
 
-	QMap<QCheckBox*,QString> mCheckToCategoryMap;
-	QStringList              mCategoryIdList;
+		QMap<QCheckBox*,QString> mCheckToCategoryMap;
+		QStringList              mCategoryIdList;
 
-	bool mCanceled;
+		bool mCanceled;
 
-};
+	};
+
+}
 
 
 #endif // SelectProductDialog_h

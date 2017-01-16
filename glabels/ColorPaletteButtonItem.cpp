@@ -25,96 +25,101 @@
 #include <QPainter>
 
 
-//
-// Private Configuration Data
-//
-namespace
+namespace glabels
 {
-	const int     border = 4;
-	const int     hBox = 25;
-	const int     outlineWidthPixels = 1;
-}
-
-
-///
-/// Constructor From Data
-///
-ColorPaletteButtonItem::ColorPaletteButtonItem( const QString& text, QWidget* parent )
-	: QWidget(parent), mText(text), mHover(false)
-{
-	setSizePolicy( QSizePolicy( QSizePolicy::Preferred, QSizePolicy::Fixed ) );
-	setMinimumSize( hBox+2*border+1, hBox+2*border+1 );
-}
-
-
-///
-/// Paint Event
-///
-void ColorPaletteButtonItem::paintEvent( QPaintEvent* event )
-{
-	QPainter painter(this);
 
 	//
-	// Draw background
+	// Private
 	//
-	if ( isEnabled() && mHover )
+	namespace
 	{
-		QLinearGradient gradient( 0, 0, 0, height() );
-		gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
-		gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
-		painter.setBrush( QBrush( gradient ) );
+		const int     border = 4;
+		const int     hBox = 25;
+		const int     outlineWidthPixels = 1;
+	}
+
+
+	///
+	/// Constructor From Data
+	///
+	ColorPaletteButtonItem::ColorPaletteButtonItem( const QString& text, QWidget* parent )
+		: QWidget(parent), mText(text), mHover(false)
+	{
+		setSizePolicy( QSizePolicy( QSizePolicy::Preferred, QSizePolicy::Fixed ) );
+		setMinimumSize( hBox+2*border+1, hBox+2*border+1 );
+	}
+
+
+	///
+	/// Paint Event
+	///
+	void ColorPaletteButtonItem::paintEvent( QPaintEvent* event )
+	{
+		QPainter painter(this);
+
+		//
+		// Draw background
+		//
+		if ( isEnabled() && mHover )
+		{
+			QLinearGradient gradient( 0, 0, 0, height() );
+			gradient.setColorAt( 0, palette().color( QPalette::Highlight ).lighter() );
+			gradient.setColorAt( 1, palette().color( QPalette::Highlight ) );
+			painter.setBrush( QBrush( gradient ) );
 			
-		QPen pen( palette().color( QPalette::Text ) );
-		pen.setWidth( outlineWidthPixels );
-		painter.setPen( pen );
+			QPen pen( palette().color( QPalette::Text ) );
+			pen.setWidth( outlineWidthPixels );
+			painter.setPen( pen );
 
-		painter.drawRect( 0, 0, width()-1, height()-1 );
+			painter.drawRect( 0, 0, width()-1, height()-1 );
+		}
+
+		//
+		// Draw text
+		//
+		painter.setBrush( QBrush( Qt::NoBrush ) );
+
+		if ( isEnabled() && mHover )
+		{
+			painter.setPen( QPen( palette().color( QPalette::HighlightedText ) ) );
+		}
+		else
+		{
+			painter.setPen( QPen( palette().color( QPalette::Text ) ) );
+		}
+
+		QRect textRect( border, border, width()-2*border, hBox );
+
+		painter.drawText( textRect, Qt::AlignLeft|Qt::AlignVCenter, mText );
 	}
 
-	//
-	// Draw text
-	//
-	painter.setBrush( QBrush( Qt::NoBrush ) );
 
-	if ( isEnabled() && mHover )
+	///
+	/// Enter Event
+	///
+	void ColorPaletteButtonItem::enterEvent( QEvent* event )
 	{
-		painter.setPen( QPen( palette().color( QPalette::HighlightedText ) ) );
+		mHover = true;
+		update();
 	}
-	else
+
+
+	///
+	/// Leave Event
+	///
+	void ColorPaletteButtonItem::leaveEvent( QEvent* event )
 	{
-		painter.setPen( QPen( palette().color( QPalette::Text ) ) );
+		mHover = false;
+		update();
 	}
-
-	QRect textRect( border, border, width()-2*border, hBox );
-
-	painter.drawText( textRect, Qt::AlignLeft|Qt::AlignVCenter, mText );
-}
-
-
-///
-/// Enter Event
-///
-void ColorPaletteButtonItem::enterEvent( QEvent* event )
-{
-	mHover = true;
-	update();
-}
-
-
-///
-/// Leave Event
-///
-void ColorPaletteButtonItem::leaveEvent( QEvent* event )
-{
-	mHover = false;
-	update();
-}
 
 	
-///
-/// Mouse Press Event
-///
-void ColorPaletteButtonItem::mousePressEvent( QMouseEvent* event )
-{
-	emit activated();
+	///
+	/// Mouse Press Event
+	///
+	void ColorPaletteButtonItem::mousePressEvent( QMouseEvent* event )
+	{
+		emit activated();
+	}
+
 }

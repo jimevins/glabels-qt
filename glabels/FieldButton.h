@@ -26,50 +26,55 @@
 #include <QString>
 
 
-///
-/// Field Button
-///
-class FieldButton : public QComboBox
+namespace glabels
 {
-	Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	FieldButton( QWidget* parent = 0 );
+	///
+	/// Field Button
+	///
+	class FieldButton : public QComboBox
+	{
+		Q_OBJECT
 
-
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void keySelected( QString key );
-
-
-	/////////////////////////////////
-	// Public Methods
-	/////////////////////////////////
-public:
-	void setName( const QString& name = "" );
-	void setKeys( const QStringList& keyList );
-	void clearKeys();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		FieldButton( QWidget* parent = 0 );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onIndexChanged( int index );
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void keySelected( QString key );
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	QString mName;
+		/////////////////////////////////
+		// Public Methods
+		/////////////////////////////////
+	public:
+		void setName( const QString& name = "" );
+		void setKeys( const QStringList& keyList );
+		void clearKeys();
 
-};
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onIndexChanged( int index );
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		QString mName;
+
+	};
+
+}
 
 
 #endif // FieldButton_h

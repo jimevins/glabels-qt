@@ -25,142 +25,147 @@
 #include <QPen>
 
 
-///
-/// Constructor
-///
-LabelModelShapeObject::LabelModelShapeObject()
+namespace glabels
 {
-	mOutline = new Outline( this );
 
-	mHandles << new HandleNorthWest( this );
-	mHandles << new HandleNorth( this );
-	mHandles << new HandleNorthEast( this );
-	mHandles << new HandleEast( this );
-	mHandles << new HandleSouthEast( this );
-	mHandles << new HandleSouth( this );
-	mHandles << new HandleSouthWest( this );
-	mHandles << new HandleWest( this );
-
-	mLineWidth       = 1.0;
-	mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
-	mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
-}
-
-
-///
-/// Copy constructor
-///
-LabelModelShapeObject::LabelModelShapeObject( const LabelModelShapeObject* object ) : LabelModelObject(object)
-{
-	mLineWidth       = object->mLineWidth;
-	mLineColorNode   = object->mLineColorNode;
-	mFillColorNode   = object->mFillColorNode;
-}
-
-
-///
-/// Destructor
-///
-LabelModelShapeObject::~LabelModelShapeObject()
-{
-	delete mOutline;
-
-	foreach( Handle* handle, mHandles )
+	///
+	/// Constructor
+	///
+	LabelModelShapeObject::LabelModelShapeObject()
 	{
-		delete handle;
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		mLineWidth       = 1.0;
+		mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
+		mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
 	}
-	mHandles.clear();
-}
 
 
-///
-/// Line Width Property Getter
-///
-glabels::Distance LabelModelShapeObject::lineWidth( void ) const
-{
-	return mLineWidth;
-}
-
-
-///
-/// Line Width Property Setter
-///
-void LabelModelShapeObject::setLineWidth( const glabels::Distance& value )
-{
-	if ( mLineWidth != value )
+	///
+	/// Copy constructor
+	///
+	LabelModelShapeObject::LabelModelShapeObject( const LabelModelShapeObject* object ) : LabelModelObject(object)
 	{
-		mLineWidth = value;
-		emit changed();
+		mLineWidth       = object->mLineWidth;
+		mLineColorNode   = object->mLineColorNode;
+		mFillColorNode   = object->mFillColorNode;
 	}
-}
 
 
-///
-/// Line Color Node Property Getter
-///
-ColorNode LabelModelShapeObject::lineColorNode( void ) const
-{
-	return mLineColorNode;
-}
-
-
-///
-/// Line Color Node Property Setter
-///
-void LabelModelShapeObject::setLineColorNode( const ColorNode& value )
-{
-	if ( mLineColorNode != value )
+	///
+	/// Destructor
+	///
+	LabelModelShapeObject::~LabelModelShapeObject()
 	{
-		mLineColorNode = value;
-		emit changed();
+		delete mOutline;
+
+		foreach( Handle* handle, mHandles )
+		{
+			delete handle;
+		}
+		mHandles.clear();
 	}
-}
+
+
+	///
+	/// Line Width Property Getter
+	///
+	Distance LabelModelShapeObject::lineWidth( void ) const
+	{
+		return mLineWidth;
+	}
+
+
+	///
+	/// Line Width Property Setter
+	///
+	void LabelModelShapeObject::setLineWidth( const Distance& value )
+	{
+		if ( mLineWidth != value )
+		{
+			mLineWidth = value;
+			emit changed();
+		}
+	}
+
+
+	///
+	/// Line Color Node Property Getter
+	///
+	ColorNode LabelModelShapeObject::lineColorNode( void ) const
+	{
+		return mLineColorNode;
+	}
+
+
+	///
+	/// Line Color Node Property Setter
+	///
+	void LabelModelShapeObject::setLineColorNode( const ColorNode& value )
+	{
+		if ( mLineColorNode != value )
+		{
+			mLineColorNode = value;
+			emit changed();
+		}
+	}
 		
 
-///
-/// Fill Color Node Property Getter
-///
-ColorNode LabelModelShapeObject::fillColorNode( void ) const
-{
-	return mFillColorNode;
-}
-
-
-///
-/// Fill Color Node Property Setter
-///
-void LabelModelShapeObject::setFillColorNode( const ColorNode& value )
-{
-	if ( mFillColorNode != value )
+	///
+	/// Fill Color Node Property Getter
+	///
+	ColorNode LabelModelShapeObject::fillColorNode( void ) const
 	{
-		mFillColorNode = value;
-		emit changed();
+		return mFillColorNode;
 	}
-}
+
+
+	///
+	/// Fill Color Node Property Setter
+	///
+	void LabelModelShapeObject::setFillColorNode( const ColorNode& value )
+	{
+		if ( mFillColorNode != value )
+		{
+			mFillColorNode = value;
+			emit changed();
+		}
+	}
 		
 
-///
-/// Can Fill Capability Implementation
-///
-bool LabelModelShapeObject::canFill()
-{
-	return true;
-}
+	///
+	/// Can Fill Capability Implementation
+	///
+	bool LabelModelShapeObject::canFill()
+	{
+		return true;
+	}
 
 
-///
-/// Can Line Color Capability Implementation
-///
-bool LabelModelShapeObject::canLineColor()
-{
-	return true;
-}
+	///
+	/// Can Line Color Capability Implementation
+	///
+	bool LabelModelShapeObject::canLineColor()
+	{
+		return true;
+	}
 
 
-///
-/// Can Line Width Capability Implementation
-///
-bool LabelModelShapeObject::canLineWidth()
-{
-	return true;
+	///
+	/// Can Line Width Capability Implementation
+	///
+	bool LabelModelShapeObject::canLineWidth()
+	{
+		return true;
+	}
+
 }

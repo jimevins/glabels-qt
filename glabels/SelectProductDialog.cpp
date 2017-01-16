@@ -28,210 +28,216 @@
 #include "TemplatePickerItem.h"
 
 
-///
-/// Constructor
-///
-SelectProductDialog::SelectProductDialog( QWidget *parent )
-	: QDialog(parent), mCanceled(false)
+namespace glabels
 {
-	setupUi( this );
-
-	pageSizeIsoCheck->setChecked( Settings::searchIsoPaperSizes() );
-	pageSizeUsCheck->setChecked( Settings::searchUsPaperSizes() );
-	pageSizeOtherCheck->setChecked( Settings::searchOtherPaperSizes() );
-
-	allCategoriesRadio->setChecked( Settings::searchAllCategories() );
-	selectedCategoriesRadio->setChecked( !Settings::searchAllCategories() );
-
-	categoriesCheckContainer->setEnabled( !Settings::searchAllCategories() );
-	mCategoryIdList = Settings::searchCategoryList();
 	
-	QList<glabels::Category*> categories = glabels::Db::categories();
-	foreach ( glabels::Category *category, categories )
+	///
+	/// Constructor
+	///
+	SelectProductDialog::SelectProductDialog( QWidget *parent )
+		: QDialog(parent), mCanceled(false)
 	{
-		QCheckBox* check = new QCheckBox( category->name() );
-		check->setChecked( mCategoryIdList.contains( category->id() ) );
-		categoriesLayout->addWidget( check );
+		setupUi( this );
 
-		mCheckToCategoryMap[check] = category->id();
+		pageSizeIsoCheck->setChecked( Settings::searchIsoPaperSizes() );
+		pageSizeUsCheck->setChecked( Settings::searchUsPaperSizes() );
+		pageSizeOtherCheck->setChecked( Settings::searchOtherPaperSizes() );
 
-		connect( check, SIGNAL(clicked()), this, SLOT(onCategoryCheckClicked()) );
-	}
+		allCategoriesRadio->setChecked( Settings::searchAllCategories() );
+		selectedCategoriesRadio->setChecked( !Settings::searchAllCategories() );
 
-	QList<glabels::Template*> tmplates = glabels::Db::templates();
-	templatePicker->setTemplates( tmplates );
-
-	if ( Settings::recentTemplateList().count() > 0 )
-	{
-		modeNotebook->setCurrentIndex(1);
-	}
-
-	onModeTabChanged();
-}
-
-///
-/// Get selected template
-///
-const glabels::Template* SelectProductDialog::tmplate() const
-{
-	if ( !mCanceled )
-	{
-		return templatePicker->selectedTemplate();
-	}
-	else
-	{
-		return 0;
-	}
-}
-
-
-///
-/// Mode Notebook Tab Changed Slot
-///
-void SelectProductDialog::onModeTabChanged()
-{
-	switch (modeNotebook->currentIndex())
-	{
-	case 0:
-		// Search Tab
-		templatePicker->applyFilter( searchEntry->text(),
-					     pageSizeIsoCheck->isChecked(),
-					     pageSizeUsCheck->isChecked(),
-					     pageSizeOtherCheck->isChecked(),
-					     allCategoriesRadio->isChecked(),
-					     mCategoryIdList );
-		break;
-	case 1:
-		// Recent Tab
-		templatePicker->applyFilter( Settings::recentTemplateList() );
-		break;
-	default:
-		qDebug() << "onModeTabChanged(): unknown tab!";
-	}
-}
-
-
-///
-/// Search Entry Text Changed Slot
-///
-void SelectProductDialog::onSearchEntryTextChanged()
-{
-	templatePicker->applyFilter( searchEntry->text(),
-				     pageSizeIsoCheck->isChecked(),
-				     pageSizeUsCheck->isChecked(),
-				     pageSizeOtherCheck->isChecked(),
-				     allCategoriesRadio->isChecked(),
-				     mCategoryIdList );
-}
-
-
-///
-/// Search Entry Text Changed Slot
-///
-void SelectProductDialog::onSearchClearButtonClicked()
-{
-	searchEntry->setText( "" );
-}
-
-
-///
-/// Page Size Check Clicked Slot
-///
-void SelectProductDialog::onPageSizeCheckClicked()
-{
-	Settings::setSearchIsoPaperSizes( pageSizeIsoCheck->isChecked() );
-	Settings::setSearchUsPaperSizes( pageSizeUsCheck->isChecked() );
-	Settings::setSearchOtherPaperSizes( pageSizeOtherCheck->isChecked() );
-
-	templatePicker->applyFilter( searchEntry->text(),
-				     pageSizeIsoCheck->isChecked(),
-				     pageSizeUsCheck->isChecked(),
-				     pageSizeOtherCheck->isChecked(),
-				     allCategoriesRadio->isChecked(),
-				     mCategoryIdList );
-}
-
-
-///
-/// Category Radio Clicked Slot
-///
-void SelectProductDialog::onCategoryRadioClicked()
-{
-	categoriesCheckContainer->setEnabled( selectedCategoriesRadio->isChecked() );
-	loadCategoryList();
-
-	templatePicker->applyFilter( searchEntry->text(),
-				     pageSizeIsoCheck->isChecked(),
-				     pageSizeUsCheck->isChecked(),
-				     pageSizeOtherCheck->isChecked(),
-				     allCategoriesRadio->isChecked(),
-				     mCategoryIdList );
-
-	Settings::setSearchAllCategories( allCategoriesRadio->isChecked() );
-}
-
-
-///
-/// Category Check Clicked Slot
-///
-void SelectProductDialog::onCategoryCheckClicked()
-{
-	loadCategoryList();
-
-	templatePicker->applyFilter( searchEntry->text(),
-				     pageSizeIsoCheck->isChecked(),
-				     pageSizeUsCheck->isChecked(),
-				     pageSizeOtherCheck->isChecked(),
-				     allCategoriesRadio->isChecked(),
-				     mCategoryIdList );
-
-
-	Settings::setSearchCategoryList( mCategoryIdList );
-}
-
-
-///
-/// Template Picker Selection Changed Slot
-///
-void SelectProductDialog::onTemplatePickerSelectionChanged()
-{
-	// Delay close.  This should make the selection more apparent to the user.
-	mTimer.start( 125, this );
-}
-
-
-///
-/// Cancel Button Clicked Slot
-///
-void SelectProductDialog::onCancelButtonClicked()
-{
-	mCanceled = true;
-	close();
-}
-
-
-///
-/// Cancel Button Clicked Slot
-///
-void SelectProductDialog::timerEvent( QTimerEvent *event )
-{
-	mTimer.stop();
-	close();
-}
-
-
-///
-/// Load category list
-///
-void SelectProductDialog::loadCategoryList()
-{
-	mCategoryIdList.clear();
-
-	foreach( QCheckBox* check, mCheckToCategoryMap.keys() )
-	{
-		if ( check->isChecked() )
+		categoriesCheckContainer->setEnabled( !Settings::searchAllCategories() );
+		mCategoryIdList = Settings::searchCategoryList();
+	
+		QList<Category*> categories = Db::categories();
+		foreach ( Category *category, categories )
 		{
-			mCategoryIdList.append( mCheckToCategoryMap[check] );
+			QCheckBox* check = new QCheckBox( category->name() );
+			check->setChecked( mCategoryIdList.contains( category->id() ) );
+			categoriesLayout->addWidget( check );
+
+			mCheckToCategoryMap[check] = category->id();
+
+			connect( check, SIGNAL(clicked()), this, SLOT(onCategoryCheckClicked()) );
+		}
+
+		QList<Template*> tmplates = Db::templates();
+		templatePicker->setTemplates( tmplates );
+
+		if ( Settings::recentTemplateList().count() > 0 )
+		{
+			modeNotebook->setCurrentIndex(1);
+		}
+
+		onModeTabChanged();
+	}
+
+	
+	///
+	/// Get selected template
+	///
+	const Template* SelectProductDialog::tmplate() const
+	{
+		if ( !mCanceled )
+		{
+			return templatePicker->selectedTemplate();
+		}
+		else
+		{
+			return 0;
 		}
 	}
+
+
+	///
+	/// Mode Notebook Tab Changed Slot
+	///
+	void SelectProductDialog::onModeTabChanged()
+	{
+		switch (modeNotebook->currentIndex())
+		{
+		case 0:
+			// Search Tab
+			templatePicker->applyFilter( searchEntry->text(),
+			                             pageSizeIsoCheck->isChecked(),
+			                             pageSizeUsCheck->isChecked(),
+			                             pageSizeOtherCheck->isChecked(),
+			                             allCategoriesRadio->isChecked(),
+			                             mCategoryIdList );
+			break;
+		case 1:
+			// Recent Tab
+			templatePicker->applyFilter( Settings::recentTemplateList() );
+			break;
+		default:
+			qDebug() << "onModeTabChanged(): unknown tab!";
+		}
+	}
+
+
+	///
+	/// Search Entry Text Changed Slot
+	///
+	void SelectProductDialog::onSearchEntryTextChanged()
+	{
+		templatePicker->applyFilter( searchEntry->text(),
+		                             pageSizeIsoCheck->isChecked(),
+		                             pageSizeUsCheck->isChecked(),
+		                             pageSizeOtherCheck->isChecked(),
+		                             allCategoriesRadio->isChecked(),
+		                             mCategoryIdList );
+	}
+
+
+	///
+	/// Search Entry Text Changed Slot
+	///
+	void SelectProductDialog::onSearchClearButtonClicked()
+	{
+		searchEntry->setText( "" );
+	}
+
+
+	///
+	/// Page Size Check Clicked Slot
+	///
+	void SelectProductDialog::onPageSizeCheckClicked()
+	{
+		Settings::setSearchIsoPaperSizes( pageSizeIsoCheck->isChecked() );
+		Settings::setSearchUsPaperSizes( pageSizeUsCheck->isChecked() );
+		Settings::setSearchOtherPaperSizes( pageSizeOtherCheck->isChecked() );
+
+		templatePicker->applyFilter( searchEntry->text(),
+		                             pageSizeIsoCheck->isChecked(),
+		                             pageSizeUsCheck->isChecked(),
+		                             pageSizeOtherCheck->isChecked(),
+		                             allCategoriesRadio->isChecked(),
+		                             mCategoryIdList );
+	}
+
+
+	///
+	/// Category Radio Clicked Slot
+	///
+	void SelectProductDialog::onCategoryRadioClicked()
+	{
+		categoriesCheckContainer->setEnabled( selectedCategoriesRadio->isChecked() );
+		loadCategoryList();
+
+		templatePicker->applyFilter( searchEntry->text(),
+		                             pageSizeIsoCheck->isChecked(),
+		                             pageSizeUsCheck->isChecked(),
+		                             pageSizeOtherCheck->isChecked(),
+		                             allCategoriesRadio->isChecked(),
+		                             mCategoryIdList );
+
+		Settings::setSearchAllCategories( allCategoriesRadio->isChecked() );
+	}
+
+
+	///
+	/// Category Check Clicked Slot
+	///
+	void SelectProductDialog::onCategoryCheckClicked()
+	{
+		loadCategoryList();
+
+		templatePicker->applyFilter( searchEntry->text(),
+		                             pageSizeIsoCheck->isChecked(),
+		                             pageSizeUsCheck->isChecked(),
+		                             pageSizeOtherCheck->isChecked(),
+		                             allCategoriesRadio->isChecked(),
+		                             mCategoryIdList );
+
+
+		Settings::setSearchCategoryList( mCategoryIdList );
+	}
+
+
+	///
+	/// Template Picker Selection Changed Slot
+	///
+	void SelectProductDialog::onTemplatePickerSelectionChanged()
+	{
+		// Delay close.  This should make the selection more apparent to the user.
+		mTimer.start( 125, this );
+	}
+
+
+	///
+	/// Cancel Button Clicked Slot
+	///
+	void SelectProductDialog::onCancelButtonClicked()
+	{
+		mCanceled = true;
+		close();
+	}
+
+
+	///
+	/// Cancel Button Clicked Slot
+	///
+	void SelectProductDialog::timerEvent( QTimerEvent *event )
+	{
+		mTimer.stop();
+		close();
+	}
+
+
+	///
+	/// Load category list
+	///
+	void SelectProductDialog::loadCategoryList()
+	{
+		mCategoryIdList.clear();
+
+		foreach( QCheckBox* check, mCheckToCategoryMap.keys() )
+		{
+			if ( check->isChecked() )
+			{
+				mCategoryIdList.append( mCheckToCategoryMap[check] );
+			}
+		}
+	}
+
 }

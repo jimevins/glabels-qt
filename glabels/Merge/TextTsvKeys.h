@@ -24,40 +24,46 @@
 #include "Text.h"
 
 
-namespace merge
+namespace glabels
 {
-	
-	///
-	/// TextTsvKeys Merge Backend
-	///
-	struct TextTsvKeys : public Text
+
+	namespace merge
 	{
+	
+		///
+		/// TextTsvKeys Merge Backend
+		///
+		struct TextTsvKeys : public Text
+		{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextTsvKeys();
-		TextTsvKeys( const TextTsvKeys* merge );
-		virtual ~TextTsvKeys();
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		private:
+			TextTsvKeys();
+			TextTsvKeys( const TextTsvKeys* merge );
+			virtual ~TextTsvKeys();
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextTsvKeys* clone() const;
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+		public:
+			TextTsvKeys* clone() const;
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+			/////////////////////////////////
+			// Static methods
+			/////////////////////////////////
+		public:
+			static QString id();
+			static Merge* create();
 
-	};
+		};
+
+	}
 
 }
+
 
 #endif // merge_TextTsvKeys_h

@@ -30,78 +30,83 @@
 #include "Merge/Record.h"
 
 
-///
-/// Color Node Type
-///
-struct ColorNode
+namespace glabels
 {
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ColorNode();
+	///
+	/// Color Node Type
+	///
+	struct ColorNode
+	{
 
-	ColorNode( bool isField, const QColor& color, const QString& key );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ColorNode();
 
-	ColorNode( bool isField, uint32_t rgba, const QString& key );
+		ColorNode( bool isField, const QColor& color, const QString& key );
 
-	ColorNode( const QColor& color );
+		ColorNode( bool isField, uint32_t rgba, const QString& key );
 
-	ColorNode( const QString& key );
+		ColorNode( const QColor& color );
 
-
-	/////////////////////////////////
-	// Operators
-	/////////////////////////////////
-public:
-	bool operator==( const ColorNode& cn );
-
-	bool operator!=( const ColorNode& cn );
+		ColorNode( const QString& key );
 
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	//
-	// Field Flag Property
-	//
-	bool isField() const;
-	void setField( bool isField );
+		/////////////////////////////////
+		// Operators
+		/////////////////////////////////
+	public:
+		bool operator==( const ColorNode& cn );
+
+		bool operator!=( const ColorNode& cn );
+
+
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		//
+		// Field Flag Property
+		//
+		bool isField() const;
+		void setField( bool isField );
 		
 
-	//
-	// Color Property
-	//
-	const QColor& color() const;
-	void setColor( const QColor& color );
+		//
+		// Color Property
+		//
+		const QColor& color() const;
+		void setColor( const QColor& color );
 
 
-	//
-	// Key Property
-	//
-	const QString& key() const;
-	void setKey( const QString& key );
+		//
+		// Key Property
+		//
+		const QString& key() const;
+		void setKey( const QString& key );
 
 
-	/////////////////////////////////
-	// Misc. Methods
-	/////////////////////////////////
-public:
-	uint32_t rgba() const;
-	QColor color( merge::Record* record ) const;
+		/////////////////////////////////
+		// Misc. Methods
+		/////////////////////////////////
+	public:
+		uint32_t rgba() const;
+		QColor color( merge::Record* record ) const;
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	bool    mIsField;
-	QColor  mColor;
-	QString mKey;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		bool    mIsField;
+		QColor  mColor;
+		QString mKey;
 
-};
+	};
+
+}
 
 
 #endif // ColorNode_h

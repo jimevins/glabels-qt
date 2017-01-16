@@ -25,27 +25,32 @@
 #include "ui_PreferencesDialog.h"
 
 
-///
-/// New Label Dialog Widget
-///
-class PreferencesDialog : public QDialog, public Ui_PreferencesDialog
+namespace glabels
 {
-	Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	PreferencesDialog( QWidget *parent = 0 );
+	///
+	/// New Label Dialog Widget
+	///
+	class PreferencesDialog : public QDialog, public Ui_PreferencesDialog
+	{
+		Q_OBJECT
+
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		PreferencesDialog( QWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onUnitsRadiosChanged();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onUnitsRadiosChanged();
 
-};
+	};
+
+}
 
 
 #endif // PreferencesDialog_h

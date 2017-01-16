@@ -26,228 +26,237 @@
 #include <QtDebug>
 
 
-Settings* Settings::mInstance = 0;
-
-
-Settings::Settings()
+namespace glabels
 {
-}
+
+	//
+	// Static data
+	//
+	Settings* Settings::mInstance = 0;
 
 
-void Settings::init()
-{
-	if ( mInstance == 0 )
+	Settings::Settings()
 	{
-		mInstance = new Settings();
-	}
-}
-
-
-Settings* Settings::instance()
-{
-	init();
-
-	return mInstance;
-}
-
-
-glabels::Units Settings::units()
-{
-	// Guess at a suitable default
-	QString defaultIdString;
-	if ( QLocale::system().measurementSystem() == QLocale::ImperialSystem )
-	{
-		defaultIdString = glabels::Units(glabels::Units::IN).toIdString();
-	}
-	else
-	{
-		defaultIdString = glabels::Units(glabels::Units::MM).toIdString();
-	}
-	
-	mInstance->beginGroup( "Locale" );
-	QString idString = mInstance->value( "units", defaultIdString ).toString();
-	mInstance->endGroup();
-
-	return glabels::Units( idString );
-}
-
-
-void Settings::setUnits( const glabels::Units& units )
-{
-	QString idString = units.toIdString();
-
-	mInstance->beginGroup( "Locale" );
-	mInstance->setValue( "units", idString );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
-bool Settings::searchIsoPaperSizes()
-{
-	// Guess at a suitable default
-	bool defaultValue;
-	switch (QLocale::system().country())
-	{
-	case QLocale::UnitedStates:
-	case QLocale::Canada:
-		defaultValue = false;
-		break;
-
-	default:
-		defaultValue = true;
-		break;
-	}
-	
-	mInstance->beginGroup( "Search" );
-	bool returnValue = mInstance->value( "isoPaperSizes", defaultValue ).toBool();
-	mInstance->endGroup();
-
-	return returnValue;
-}
-
-
-void Settings::setSearchIsoPaperSizes( bool searchIsoPaperSizes )
-{
-	mInstance->beginGroup( "Search" );
-	mInstance->setValue( "isoPaperSizes", searchIsoPaperSizes );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
-bool Settings::searchUsPaperSizes()
-{
-	// Guess at a suitable default
-	bool defaultValue;
-	switch (QLocale::system().country())
-	{
-	case QLocale::UnitedStates:
-	case QLocale::Canada:
-		defaultValue = true;
-		break;
-
-	default:
-		defaultValue = false;
-		break;
-	}
-	
-	mInstance->beginGroup( "Search" );
-	bool returnValue = mInstance->value( "usPaperSizes", defaultValue ).toBool();
-	mInstance->endGroup();
-
-	return returnValue;
-}
-
-
-void Settings::setSearchUsPaperSizes( bool searchUsPaperSizes )
-{
-	mInstance->beginGroup( "Search" );
-	mInstance->setValue( "usPaperSizes", searchUsPaperSizes );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
-bool Settings::searchOtherPaperSizes()
-{
-	// Guess at a suitable default
-	bool defaultValue = true;
-	
-	mInstance->beginGroup( "Search" );
-	bool returnValue = mInstance->value( "otherPaperSizes", defaultValue ).toBool();
-	mInstance->endGroup();
-
-	return returnValue;
-}
-
-
-void Settings::setSearchOtherPaperSizes( bool searchOtherPaperSizes )
-{
-	mInstance->beginGroup( "Search" );
-	mInstance->setValue( "otherPaperSizes", searchOtherPaperSizes );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
-bool Settings::searchAllCategories()
-{
-	// Guess at a suitable default
-	bool defaultValue = true;
-	
-	mInstance->beginGroup( "Search" );
-	bool returnValue = mInstance->value( "allCategories", defaultValue ).toBool();
-	mInstance->endGroup();
-
-	return returnValue;
-}
-
-
-void Settings::setSearchAllCategories( bool searchAllCategories )
-{
-	mInstance->beginGroup( "Search" );
-	mInstance->setValue( "allCategories", searchAllCategories );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
-QStringList Settings::searchCategoryList()
-{
-	QStringList defaultList;
-	
-	mInstance->beginGroup( "Search" );
-	QStringList returnList = mInstance->value( "categoryList", defaultList ).toStringList();
-	mInstance->endGroup();
-
-	return returnList;
-}
-
-
-void Settings::setSearchCategoryList( const QStringList& searchCategoryList )
-{
-	mInstance->beginGroup( "Search" );
-	mInstance->setValue( "categoryList", searchCategoryList );
-	mInstance->endGroup();
-
-	emit mInstance->changed();
-}
-
-
-QStringList Settings::recentTemplateList()
-{
-	QStringList defaultList;
-	
-	mInstance->beginGroup( "Recent" );
-	QStringList returnList = mInstance->value( "templates", defaultList ).toStringList();
-	mInstance->endGroup();
-
-	return returnList;
-}
-
-
-void Settings::addToRecentTemplateList( const QString& name )
-{
-	mInstance->beginGroup( "Recent" );
-
-	QStringList list = mInstance->value( "templates" ).toStringList();
-
-	list.removeAll( name );
-	list.prepend( name );
-	while ( list.count() > 10 )
-	{
-		list.removeLast();
+		// empty
 	}
 
-	mInstance->setValue( "templates", list );
 
-	mInstance->endGroup();
+	void Settings::init()
+	{
+		if ( mInstance == 0 )
+		{
+			mInstance = new Settings();
+		}
+	}
 
-	emit mInstance->changed();
+
+	Settings* Settings::instance()
+	{
+		init();
+
+		return mInstance;
+	}
+
+
+	Units Settings::units()
+	{
+		// Guess at a suitable default
+		QString defaultIdString;
+		if ( QLocale::system().measurementSystem() == QLocale::ImperialSystem )
+		{
+			defaultIdString = Units(Units::IN).toIdString();
+		}
+		else
+		{
+			defaultIdString = Units(Units::MM).toIdString();
+		}
+	
+		mInstance->beginGroup( "Locale" );
+		QString idString = mInstance->value( "units", defaultIdString ).toString();
+		mInstance->endGroup();
+
+		return Units( idString );
+	}
+
+
+	void Settings::setUnits( const Units& units )
+	{
+		QString idString = units.toIdString();
+
+		mInstance->beginGroup( "Locale" );
+		mInstance->setValue( "units", idString );
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
+
+	bool Settings::searchIsoPaperSizes()
+	{
+		// Guess at a suitable default
+		bool defaultValue;
+		switch (QLocale::system().country())
+		{
+		case QLocale::UnitedStates:
+		case QLocale::Canada:
+			defaultValue = false;
+			break;
+
+		default:
+			defaultValue = true;
+			break;
+		}
+	
+		mInstance->beginGroup( "Search" );
+		bool returnValue = mInstance->value( "isoPaperSizes", defaultValue ).toBool();
+		mInstance->endGroup();
+
+		return returnValue;
+	}
+
+
+	void Settings::setSearchIsoPaperSizes( bool searchIsoPaperSizes )
+	{
+		mInstance->beginGroup( "Search" );
+		mInstance->setValue( "isoPaperSizes", searchIsoPaperSizes );
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
+
+	bool Settings::searchUsPaperSizes()
+	{
+		// Guess at a suitable default
+		bool defaultValue;
+		switch (QLocale::system().country())
+		{
+		case QLocale::UnitedStates:
+		case QLocale::Canada:
+			defaultValue = true;
+			break;
+
+		default:
+			defaultValue = false;
+			break;
+		}
+	
+		mInstance->beginGroup( "Search" );
+		bool returnValue = mInstance->value( "usPaperSizes", defaultValue ).toBool();
+		mInstance->endGroup();
+
+		return returnValue;
+	}
+
+
+	void Settings::setSearchUsPaperSizes( bool searchUsPaperSizes )
+	{
+		mInstance->beginGroup( "Search" );
+		mInstance->setValue( "usPaperSizes", searchUsPaperSizes );
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
+
+	bool Settings::searchOtherPaperSizes()
+	{
+		// Guess at a suitable default
+		bool defaultValue = true;
+	
+		mInstance->beginGroup( "Search" );
+		bool returnValue = mInstance->value( "otherPaperSizes", defaultValue ).toBool();
+		mInstance->endGroup();
+
+		return returnValue;
+	}
+
+
+	void Settings::setSearchOtherPaperSizes( bool searchOtherPaperSizes )
+	{
+		mInstance->beginGroup( "Search" );
+		mInstance->setValue( "otherPaperSizes", searchOtherPaperSizes );
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
+
+	bool Settings::searchAllCategories()
+	{
+		// Guess at a suitable default
+		bool defaultValue = true;
+	
+		mInstance->beginGroup( "Search" );
+		bool returnValue = mInstance->value( "allCategories", defaultValue ).toBool();
+		mInstance->endGroup();
+
+		return returnValue;
+	}
+
+
+	void Settings::setSearchAllCategories( bool searchAllCategories )
+	{
+		mInstance->beginGroup( "Search" );
+		mInstance->setValue( "allCategories", searchAllCategories );
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
+
+	QStringList Settings::searchCategoryList()
+	{
+		QStringList defaultList;
+	
+		mInstance->beginGroup( "Search" );
+		QStringList returnList = mInstance->value( "categoryList", defaultList ).toStringList();
+		mInstance->endGroup();
+
+		return returnList;
+	}
+
+
+	void Settings::setSearchCategoryList( const QStringList& searchCategoryList )
+	{
+		mInstance->beginGroup( "Search" );
+		mInstance->setValue( "categoryList", searchCategoryList );
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
+
+	QStringList Settings::recentTemplateList()
+	{
+		QStringList defaultList;
+	
+		mInstance->beginGroup( "Recent" );
+		QStringList returnList = mInstance->value( "templates", defaultList ).toStringList();
+		mInstance->endGroup();
+
+		return returnList;
+	}
+
+
+	void Settings::addToRecentTemplateList( const QString& name )
+	{
+		mInstance->beginGroup( "Recent" );
+
+		QStringList list = mInstance->value( "templates" ).toStringList();
+
+		list.removeAll( name );
+		list.prepend( name );
+		while ( list.count() > 10 )
+		{
+			list.removeLast();
+		}
+
+		mInstance->setValue( "templates", list );
+
+		mInstance->endGroup();
+
+		emit mInstance->changed();
+	}
+
 }

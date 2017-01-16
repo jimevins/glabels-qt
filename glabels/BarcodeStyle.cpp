@@ -21,37 +21,41 @@
 #include "BarcodeStyle.h"
 
 
-///
-/// Default Constructor
-///
-BarcodeStyle::BarcodeStyle ()
-	: mId( "" ),
-	  mBackendId( "" ),
-	  mName( "" ),
-	  mCanText( false ),
-	  mTextOptional( false ),
-	  mCanChecksum( false ),
-	  mChecksumOptional( false ),
-	  mDefaultDigits( "" ),
-	  mCanFreeform( false ),
-	  mPreferedN( 0 )
+namespace glabels
 {
-}
+	
+	///
+	/// Default Constructor
+	///
+	BarcodeStyle::BarcodeStyle ()
+		: mId( "" ),
+		  mBackendId( "" ),
+		  mName( "" ),
+		  mCanText( false ),
+		  mTextOptional( false ),
+		  mCanChecksum( false ),
+		  mChecksumOptional( false ),
+		  mDefaultDigits( "" ),
+		  mCanFreeform( false ),
+		  mPreferedN( 0 )
+	{
+		// empty
+	}
 
 
-///
-/// Constructor From Data
-///
-BarcodeStyle::BarcodeStyle ( const QString& id,
-			     const QString& backendId,
-			     const QString& name,
-			     bool           canText,
-			     bool           textOptional,
-			     bool           canChecksum,
-			     bool           checksumOptional,
-			     const QString& defaultDigits,
-			     bool           canFreeform,
-			     int            preferedN )
+	///
+	/// Constructor From Data
+	///
+	BarcodeStyle::BarcodeStyle ( const QString& id,
+	                             const QString& backendId,
+	                             const QString& name,
+	                             bool           canText,
+	                             bool           textOptional,
+	                             bool           canChecksum,
+	                             bool           checksumOptional,
+	                             const QString& defaultDigits,
+	                             bool           canFreeform,
+	                             int            preferedN )
 	: mId( id ),
 	  mBackendId( backendId ),
 	  mName( name ),
@@ -62,111 +66,114 @@ BarcodeStyle::BarcodeStyle ( const QString& id,
 	  mDefaultDigits( defaultDigits ),
 	  mCanFreeform( canFreeform ),
 	  mPreferedN( preferedN )
-{
-}
-
-
-///
-/// ID Property Getter
-///
-const QString& BarcodeStyle::id() const
-{
-	return mId;
-}
-
-
-///
-/// Backend ID Property Getter
-///
-const QString& BarcodeStyle::backendId() const
-{
-	return mBackendId;
-}
-
-
-///
-/// Name Property Getter
-///
-const QString& BarcodeStyle::name() const
-{
-	return mName;
-}
-
-
-///
-/// Can Text Property Getter
-///
-bool BarcodeStyle::canText() const
-{
-	return mCanText;
-}
-
-
-///
-/// Text Optional Property Getter
-///
-bool BarcodeStyle::textOptional() const
-{
-	return mTextOptional;
-}
-
-
-///
-/// Can Checksum Property Getter
-///
-bool BarcodeStyle::canChecksum() const
-{
-	return mCanChecksum;
-}
-
-
-///
-/// Checksum Optional Property Getter
-///
-bool BarcodeStyle::checksumOptional() const
-{
-	return mChecksumOptional;
-}
-
-
-///
-/// Default Digits Property Getter
-///
-const QString& BarcodeStyle::defaultDigits() const
-{
-	return mDefaultDigits;
-}
-
-
-///
-/// Can Freeform Property Getter
-///
-bool BarcodeStyle::canFreeform() const
-{
-	return mCanFreeform;
-}
-
-
-///
-/// Prefered N Property Getter
-///
-int BarcodeStyle::preferedN() const
-{
-	return mPreferedN;
-}
-
-
-///
-/// Generate Example Digits
-///
-QString BarcodeStyle::exampleDigits( int n ) const
-{
-	if ( mCanFreeform )
 	{
-		return QString( qMax( n, 1 ), QChar('0') );
+		// empty
 	}
-	else
+
+
+	///
+	/// ID Property Getter
+	///
+	const QString& BarcodeStyle::id() const
+	{
+		return mId;
+	}
+
+
+	///
+	/// Backend ID Property Getter
+	///
+	const QString& BarcodeStyle::backendId() const
+	{
+		return mBackendId;
+	}
+
+
+	///
+	/// Name Property Getter
+	///
+	const QString& BarcodeStyle::name() const
+	{
+		return mName;
+	}
+
+
+	///
+	/// Can Text Property Getter
+	///
+	bool BarcodeStyle::canText() const
+	{
+		return mCanText;
+	}
+
+
+	///
+	/// Text Optional Property Getter
+	///
+	bool BarcodeStyle::textOptional() const
+	{
+		return mTextOptional;
+	}
+
+
+	///
+	/// Can Checksum Property Getter
+	///
+	bool BarcodeStyle::canChecksum() const
+	{
+		return mCanChecksum;
+	}
+
+
+	///
+	/// Checksum Optional Property Getter
+	///
+	bool BarcodeStyle::checksumOptional() const
+	{
+		return mChecksumOptional;
+	}
+
+
+	///
+	/// Default Digits Property Getter
+	///
+	const QString& BarcodeStyle::defaultDigits() const
 	{
 		return mDefaultDigits;
 	}
+
+
+	///
+	/// Can Freeform Property Getter
+	///
+	bool BarcodeStyle::canFreeform() const
+	{
+		return mCanFreeform;
+	}
+
+
+	///
+	/// Prefered N Property Getter
+	///
+	int BarcodeStyle::preferedN() const
+	{
+		return mPreferedN;
+	}
+
+
+	///
+	/// Generate Example Digits
+	///
+	QString BarcodeStyle::exampleDigits( int n ) const
+	{
+		if ( mCanFreeform )
+		{
+			return QString( qMax( n, 1 ), QChar('0') );
+		}
+		else
+		{
+			return mDefaultDigits;
+		}
+	}
+
 }

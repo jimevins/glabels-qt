@@ -25,37 +25,42 @@
 #include "LabelModelShapeObject.h"
 
 
-///
-/// Label Model Box Object
-///
-class LabelModelBoxObject : public LabelModelShapeObject
+namespace glabels
 {
-	Q_OBJECT
 
-	///////////////////////////////////////////////////////////////
-	// Lifecycle Methods
-	///////////////////////////////////////////////////////////////
-public:
-	LabelModelBoxObject();
-	LabelModelBoxObject( const LabelModelBoxObject* object );
-	virtual ~LabelModelBoxObject();
+	///
+	/// Label Model Box Object
+	///
+	class LabelModelBoxObject : public LabelModelShapeObject
+	{
+		Q_OBJECT
+
+		///////////////////////////////////////////////////////////////
+		// Lifecycle Methods
+		///////////////////////////////////////////////////////////////
+	public:
+		LabelModelBoxObject();
+		LabelModelBoxObject( const LabelModelBoxObject* object );
+		virtual ~LabelModelBoxObject();
 
 	
-	///////////////////////////////////////////////////////////////
-	// Object duplication
-	///////////////////////////////////////////////////////////////
-	virtual LabelModelBoxObject* clone() const;
+		///////////////////////////////////////////////////////////////
+		// Object duplication
+		///////////////////////////////////////////////////////////////
+		virtual LabelModelBoxObject* clone() const;
 
 
-	///////////////////////////////////////////////////////////////
-	// Drawing operations
-	///////////////////////////////////////////////////////////////
-protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual QPainterPath hoverPath( double scale ) const;
+		///////////////////////////////////////////////////////////////
+		// Drawing operations
+		///////////////////////////////////////////////////////////////
+	protected:
+		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual QPainterPath hoverPath( double scale ) const;
 
-};
+	};
+
+}
 
 
 #endif // LabelModelBoxObject_h

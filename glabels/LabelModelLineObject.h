@@ -25,71 +25,76 @@
 #include "LabelModelObject.h"
 
 
-///
-/// Label Model Line Object
-///
-class LabelModelLineObject : public LabelModelObject
+namespace glabels
 {
-	Q_OBJECT
 
-	///////////////////////////////////////////////////////////////
-	// Lifecycle Methods
-	///////////////////////////////////////////////////////////////
-public:
-	LabelModelLineObject();
-	LabelModelLineObject( const LabelModelLineObject* object );
-	virtual ~LabelModelLineObject();
+	///
+	/// Label Model Line Object
+	///
+	class LabelModelLineObject : public LabelModelObject
+	{
+		Q_OBJECT
 
-
-	///////////////////////////////////////////////////////////////
-	// Object duplication
-	///////////////////////////////////////////////////////////////
-	virtual LabelModelLineObject* clone() const;
-
-
-	///////////////////////////////////////////////////////////////
-	// Property Implementations
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Line Property: lineWidth
-	//
-	virtual glabels::Distance lineWidth( void ) const;
-	virtual void setLineWidth( const glabels::Distance& value );
+		///////////////////////////////////////////////////////////////
+		// Lifecycle Methods
+		///////////////////////////////////////////////////////////////
+	public:
+		LabelModelLineObject();
+		LabelModelLineObject( const LabelModelLineObject* object );
+		virtual ~LabelModelLineObject();
 
 
-	//
-	// Line Property: lineColorNode
-	//
-	virtual ColorNode lineColorNode( void ) const;
-	virtual void setLineColorNode( const ColorNode& value );
+		///////////////////////////////////////////////////////////////
+		// Object duplication
+		///////////////////////////////////////////////////////////////
+		virtual LabelModelLineObject* clone() const;
+
+
+		///////////////////////////////////////////////////////////////
+		// Property Implementations
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Line Property: lineWidth
+		//
+		virtual Distance lineWidth( void ) const;
+		virtual void setLineWidth( const Distance& value );
+
+
+		//
+		// Line Property: lineColorNode
+		//
+		virtual ColorNode lineColorNode( void ) const;
+		virtual void setLineColorNode( const ColorNode& value );
 		
 
-	///////////////////////////////////////////////////////////////
-	// Capability Implementations
-	///////////////////////////////////////////////////////////////
-public:
-	virtual bool canLineColor();
-	virtual bool canLineWidth();
+		///////////////////////////////////////////////////////////////
+		// Capability Implementations
+		///////////////////////////////////////////////////////////////
+	public:
+		virtual bool canLineColor();
+		virtual bool canLineWidth();
 
 
-	///////////////////////////////////////////////////////////////
-	// Drawing operations
-	///////////////////////////////////////////////////////////////
-protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual QPainterPath hoverPath( double scale ) const;
+		///////////////////////////////////////////////////////////////
+		// Drawing operations
+		///////////////////////////////////////////////////////////////
+	protected:
+		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual QPainterPath hoverPath( double scale ) const;
 
 
-	///////////////////////////////////////////////////////////////
-	// Private Members
-	///////////////////////////////////////////////////////////////
-protected:
-	glabels::Distance    mLineWidth;
-	ColorNode            mLineColorNode;
+		///////////////////////////////////////////////////////////////
+		// Private Members
+		///////////////////////////////////////////////////////////////
+	protected:
+		Distance    mLineWidth;
+		ColorNode   mLineColorNode;
 
-};
+	};
+
+}
 
 
 #endif // LabelModelLineObject_h

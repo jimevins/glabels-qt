@@ -28,92 +28,98 @@
 
 #include "Distance.h"
 
-// Forward references
-class LabelModel;
-class LabelModelObject;
-class UndoRedoModel;
-	
 
-///
-/// Object Editor Widget
-///
-class ObjectEditor : public QWidget, public Ui_ObjectEditor
+namespace glabels
 {
-	Q_OBJECT
+
+	// Forward references
+	class LabelModel;
+	class LabelModelObject;
+	class UndoRedoModel;
+	
+
+	///
+	/// Object Editor Widget
+	///
+	class ObjectEditor : public QWidget, public Ui_ObjectEditor
+	{
+		Q_OBJECT
 
 		
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ObjectEditor( QWidget *parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ObjectEditor( QWidget *parent = 0 );
 
 
-	/////////////////////////////////
-	// Public methods
-	/////////////////////////////////
-	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+		/////////////////////////////////
+		// Public methods
+		/////////////////////////////////
+		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
 
 
-	/////////////////////////////////
-	// Private methods
-	/////////////////////////////////
-private:
-	void hidePages();
-	void loadImagePage();
-	void loadLineFillPage();
-	void loadPositionPage();
-	void loadRectSizePage();
-	void loadLineSizePage();
-	void loadTextPage();
-	void loadShadowPage();
+		/////////////////////////////////
+		// Private methods
+		/////////////////////////////////
+	private:
+		void hidePages();
+		void loadImagePage();
+		void loadLineFillPage();
+		void loadPositionPage();
+		void loadRectSizePage();
+		void loadLineSizePage();
+		void loadTextPage();
+		void loadShadowPage();
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onSettingsChanged();
-	void onLabelSizeChanged();
-	void onSelectionChanged();
-	void onMergeSourceChanged();
-	void onObjectChanged();
-	void onObjectMoved();
-	void onObjectDestroyed();
-	void onLineControlsChanged();
-	void onFillControlsChanged();
-	void onImageFileButtonClicked();
-	void onImageKeySelected( QString key );
-	void onPositionControlsChanged();
-	void onRectSizeControlsChanged();
-	void onLineSizeControlsChanged();
-	void onTextControlsChanged();
-	void onTextInsertFieldKeySelected( QString key );
-	void onResetImageSize();
-	void onShadowControlsChanged();
-	void onChanged();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onSettingsChanged();
+		void onLabelSizeChanged();
+		void onSelectionChanged();
+		void onMergeSourceChanged();
+		void onObjectChanged();
+		void onObjectMoved();
+		void onObjectDestroyed();
+		void onLineControlsChanged();
+		void onFillControlsChanged();
+		void onImageFileButtonClicked();
+		void onImageKeySelected( QString key );
+		void onPositionControlsChanged();
+		void onRectSizeControlsChanged();
+		void onLineSizeControlsChanged();
+		void onTextControlsChanged();
+		void onTextInsertFieldKeySelected( QString key );
+		void onResetImageSize();
+		void onShadowControlsChanged();
+		void onChanged();
 		
 
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	LabelModel*              mModel;
-	LabelModelObject*        mObject;
-	UndoRedoModel*           mUndoRedoModel;
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		LabelModel*              mModel;
+		LabelModelObject*        mObject;
+		UndoRedoModel*           mUndoRedoModel;
 	
-	glabels::Units           mUnits;
-	int                      mSpinDigits;
-	double                   mSpinStep;
+		Units                    mUnits;
+		int                      mSpinDigits;
+		double                   mSpinStep;
 	
-	QButtonGroup*            textHAlignGroup;
-	QButtonGroup*            textVAlignGroup;
+		QButtonGroup*            textHAlignGroup;
+		QButtonGroup*            textVAlignGroup;
 
-	QString                  mImageCwd;
+		QString                  mImageCwd;
 
-	bool                     mBlocked;
+		bool                     mBlocked;
 
-};
+	};
+
+}
 
 
 #endif // ObjectEditor_h

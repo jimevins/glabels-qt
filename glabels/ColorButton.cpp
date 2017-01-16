@@ -28,148 +28,159 @@
 #include "ColorSwatch.h"
 
 
-namespace
+namespace glabels
 {
-	const int SWATCH_W = 64;
-	const int SWATCH_H = 24;
-}
-
-
-ColorButton::ColorButton( QWidget* parent )
-	: QPushButton( parent )
-{
-}
-
-
-void ColorButton::init( const QString& defaultLabel, const QColor& defaultColor, const QColor&  color )
-{
-	mDefaultColor = defaultColor;
-	mColorNode = ColorNode( color );
-
-	setMinimumSize( QSize( 85, 34 ) );
-	setIconSize( QSize(SWATCH_W, SWATCH_H) );
-
-	setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
-	setText( "" );
-	setCheckable( true );
-
-	mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
-
-	connect( this, SIGNAL(toggled(bool)), this, SLOT(onButtonToggled(bool)) );
-	connect( mDialog, SIGNAL(colorChanged(ColorNode,bool)),
-		 this, SLOT(onPaletteDialogChanged(ColorNode,bool)) );
-	connect( mDialog, SIGNAL(accepted()), this, SLOT(onPaletteDialogAccepted()) );
-	connect( mDialog, SIGNAL(rejected()), this, SLOT(onPaletteDialogRejected()) );
-}
-
-
-void ColorButton::setColorNode( ColorNode colorNode )
-{
-	mIsDefault = false;
-
-	mColorNode = colorNode;
-
-	if ( colorNode.isField() )
+	
+	//
+	// Private
+	//
+	namespace
 	{
-		setIcon( QIcon() );
-		setText( QString("${%1}").arg( colorNode.key() ) );
+		const int SWATCH_W = 64;
+		const int SWATCH_H = 24;
 	}
-	else
+
+
+	ColorButton::ColorButton( QWidget* parent )
+		: QPushButton( parent )
 	{
-		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
+		// empty
+	}
+
+
+	void ColorButton::init( const QString& defaultLabel,
+	                        const QColor& defaultColor,
+	                        const QColor&  color )
+	{
+		mDefaultColor = defaultColor;
+		mColorNode = ColorNode( color );
+
+		setMinimumSize( QSize( 85, 34 ) );
+		setIconSize( QSize(SWATCH_W, SWATCH_H) );
+
+		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
+		setText( "" );
+		setCheckable( true );
+
+		mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
+
+		connect( this, SIGNAL(toggled(bool)), this, SLOT(onButtonToggled(bool)) );
+		connect( mDialog, SIGNAL(colorChanged(ColorNode,bool)),
+		         this, SLOT(onPaletteDialogChanged(ColorNode,bool)) );
+		connect( mDialog, SIGNAL(accepted()), this, SLOT(onPaletteDialogAccepted()) );
+		connect( mDialog, SIGNAL(rejected()), this, SLOT(onPaletteDialogRejected()) );
+	}
+
+
+	void ColorButton::setColorNode( ColorNode colorNode )
+	{
+		mIsDefault = false;
+
+		mColorNode = colorNode;
+
+		if ( colorNode.isField() )
+		{
+			setIcon( QIcon() );
+			setText( QString("${%1}").arg( colorNode.key() ) );
+		}
+		else
+		{
+			setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
+			setText( "" );
+		}
+
+		mDialog->setColorNode( colorNode );
+	}
+
+
+	void ColorButton::setColor( QColor color )
+	{
+		mIsDefault = false;
+
+		mColorNode.setField( false );
+		mColorNode.setColor( color );
+		mColorNode.setKey( "" );
+
+		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
 		setText( "" );
 	}
 
-	mDialog->setColorNode( colorNode );
-}
 
-
-void ColorButton::setColor( QColor color )
-{
-	mIsDefault = false;
-
-	mColorNode.setField( false );
-	mColorNode.setColor( color );
-	mColorNode.setKey( "" );
-
-	setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, color ) ) );
-	setText( "" );
-}
-
-
-void ColorButton::setToDefault()
-{
-	mIsDefault = true;
-
-	mColorNode.setField( false );
-	mColorNode.setColor( mDefaultColor );
-	mColorNode.setKey( "" );
-
-	setIcon( QIcon(ColorSwatch( SWATCH_W, SWATCH_H, mDefaultColor ) ) );
-	setText( "" );
-}
-
-
-ColorNode ColorButton::colorNode()
-{
-	return mColorNode;
-}
-
-
-void ColorButton::setKeys( const QList<QString> keyList )
-{
-	mDialog->setKeys( keyList );
-}
-
-
-void ColorButton::clearKeys()
-{
-	mDialog->clearKeys();
-}
-
-
-void ColorButton::onButtonToggled( bool checked )
-{
-	if ( checked )
+	void ColorButton::setToDefault()
 	{
-		///
-		/// @TODO: improve positioning of dialog -- near edges of screen.
-		///
-		QPoint dialogPos( 0, height() );
-		mDialog->move( mapToGlobal(dialogPos) );
+		mIsDefault = true;
 
-		mDialog->show();
-	}
-}
+		mColorNode.setField( false );
+		mColorNode.setColor( mDefaultColor );
+		mColorNode.setKey( "" );
 
-
-void ColorButton::onPaletteDialogAccepted()
-{
-	setChecked( false );
-}
-
-
-void ColorButton::onPaletteDialogRejected()
-{
-	setChecked( false );
-}
-
-
-void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
-{
-	mColorNode = colorNode;
-	mIsDefault = isDefault;
-
-	if ( colorNode.isField() )
-	{
-		setIcon( QIcon() );
-		setText( QString("${%1}").arg( colorNode.key() ) );
-	}
-	else
-	{
-		setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
+		setIcon( QIcon(ColorSwatch( SWATCH_W, SWATCH_H, mDefaultColor ) ) );
 		setText( "" );
 	}
+
+
+	ColorNode ColorButton::colorNode()
+	{
+		return mColorNode;
+	}
+
+
+	void ColorButton::setKeys( const QList<QString> keyList )
+	{
+		mDialog->setKeys( keyList );
+	}
+
+
+	void ColorButton::clearKeys()
+	{
+		mDialog->clearKeys();
+	}
+
+
+	void ColorButton::onButtonToggled( bool checked )
+	{
+		if ( checked )
+		{
+			///
+			/// @TODO: improve positioning of dialog -- near edges of screen.
+			///
+			QPoint dialogPos( 0, height() );
+			mDialog->move( mapToGlobal(dialogPos) );
+
+			mDialog->show();
+		}
+	}
+
+
+	void ColorButton::onPaletteDialogAccepted()
+	{
+		setChecked( false );
+	}
+
+
+	void ColorButton::onPaletteDialogRejected()
+	{
+		setChecked( false );
+	}
+
+
+	void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
+	{
+		mColorNode = colorNode;
+		mIsDefault = isDefault;
+
+		if ( colorNode.isField() )
+		{
+			setIcon( QIcon() );
+			setText( QString("${%1}").arg( colorNode.key() ) );
+		}
+		else
+		{
+			setIcon( QIcon( ColorSwatch( SWATCH_W, SWATCH_H, colorNode.color() ) ) );
+			setText( "" );
+		}
 		
-	emit colorChanged();
+		emit colorChanged();
+	}
+
 }

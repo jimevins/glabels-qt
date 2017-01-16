@@ -36,9 +36,9 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-qt" );
 
-	Settings::init();
+	glabels::Settings::init();
 	glabels::Db::init();
-	merge::Factory::init();
+	glabels::merge::Factory::init();
 	////// TEMPORARY TESTING ////////
 #if 0
 	glabels::Db::printKnownPapers();
@@ -49,7 +49,7 @@ int main( int argc, char **argv )
 	/////////////////////////////////
 
 	/// @TODO open file(s) from command line if present, otherwise start wizard
-	MainWindow mainWindow;
+	glabels::MainWindow mainWindow;
 	mainWindow.show();
 
 	return app.exec();

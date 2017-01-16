@@ -26,52 +26,58 @@
 
 #include "Units.h"
 
-// Forward references
-class LabelModel;
-class UndoRedoModel;
+
+namespace glabels
+{
+
+	// Forward references
+	class LabelModel;
+	class UndoRedoModel;
 	
 
-///
-/// Properties View Widget
-///
-class PropertiesView : public QWidget, public Ui_PropertiesView
-{
-	Q_OBJECT
+	///
+	/// Properties View Widget
+	///
+	class PropertiesView : public QWidget, public Ui_PropertiesView
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	PropertiesView( QWidget *parent = 0 );
-	~PropertiesView();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		PropertiesView( QWidget *parent = 0 );
+		~PropertiesView();
 
 
-	/////////////////////////////////
-	// Public methods
-	/////////////////////////////////
-	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+		/////////////////////////////////
+		// Public methods
+		/////////////////////////////////
+		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onSettingsChanged();
-	void onLabelSizeChanged();
-	void onOrientationActivated();
-	void onChangeProductButtonClicked();
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onSettingsChanged();
+		void onLabelSizeChanged();
+		void onOrientationActivated();
+		void onChangeProductButtonClicked();
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	LabelModel*    mModel;
-	UndoRedoModel* mUndoRedoModel;
-	glabels::Units mUnits;
-	int            mOldOrientationIndex;
-};
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		LabelModel*    mModel;
+		UndoRedoModel* mUndoRedoModel;
+		Units          mUnits;
+		int            mOldOrientationIndex;
+	};
+
+}
 
 
 #endif // PropertiesView_h

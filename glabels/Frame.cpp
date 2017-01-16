@@ -30,6 +30,7 @@ namespace glabels
 	Frame::Frame( const QString& id )
 		: mId(id), mNLabels(0), mLayoutDescription("")
 	{
+		// empty
 	}
 
 

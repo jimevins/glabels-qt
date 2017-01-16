@@ -30,363 +30,370 @@
 #include "Merge/Record.h"
 
 
-namespace
+namespace glabels
 {
-	const QColor labelOutlineColor( 0, 0, 0 );
-	const double labelOutlineWidth = 0.25;
-	const double tickOffset = 2.25;
-	const double tickLength = 18;
-}
-
-
-PageRenderer::PageRenderer()
-	: mModel(0), mNCopies(0), mStartLabel(0),
-	  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
-	  mIsMerge(false), mIPage(0), mNPages(0)
-{
-}
-
-
-void PageRenderer::setModel( const LabelModel* model )
-{
-	mModel = model;
-
-	connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
 	
-	onModelChanged();
-}
-
-	
-const LabelModel* PageRenderer::model() const
-{
-	return mModel;
-}
-
-
-void PageRenderer::onModelChanged()
-{
-	mMerge = mModel->merge();
-	mOrigins = mModel->frame()->getOrigins();
-	mNLabelsPerPage = mModel->frame()->nLabels();
-	mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == 0 );
-	updateNPages();
-
-	emit changed();
-}
-
-
-void PageRenderer::setNCopies( int nCopies )
-{
-	mNCopies = nCopies;
-	updateNPages();
-
-	emit changed();
-}
-
-
-void PageRenderer::setStartLabel( int startLabel )
-{
-	mStartLabel = startLabel;
-	updateNPages();
-
-	emit changed();
-}
-
-	
-void PageRenderer::setPrintOutlines( bool printOutlinesFlag )
-{
-	mPrintOutlines = printOutlinesFlag;
-
-	emit changed();
-}
-
-	
-void PageRenderer::setPrintCropMarks( bool printCropMarksFlag )
-{
-	mPrintCropMarks = printCropMarksFlag;
-
-	emit changed();
-}
-
-	
-void PageRenderer::setPrintReverse( bool printReverseFlag )
-{
-	mPrintReverse = printReverseFlag;
-
-	emit changed();
-}
-
-	
-void PageRenderer::setIPage( int iPage )
-{
-	mIPage = iPage;
-
-	emit changed();
-}
-
-	
-int PageRenderer::nItems() const
-{
-	return mLastLabel - mStartLabel;
-}
-			
-	
-int PageRenderer::nPages() const
-{
-	return mNPages;
-}
-			
-	
-QRectF PageRenderer::pageRect() const
-{
-	if ( mModel )
+	//
+	// Private
+	//
+	namespace
 	{
-		return QRectF( 0, 0, mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
+		const QColor labelOutlineColor( 0, 0, 0 );
+		const double labelOutlineWidth = 0.25;
+		const double tickOffset = 2.25;
+		const double tickLength = 18;
 	}
-	else
+
+
+	PageRenderer::PageRenderer()
+		: mModel(0), mNCopies(0), mStartLabel(0),
+		  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
+		  mIsMerge(false), mIPage(0), mNPages(0)
 	{
-		return QRectF( 0, 0, 0, 0 );
+		// empty
 	}
-}
+
+
+	void PageRenderer::setModel( const LabelModel* model )
+	{
+		mModel = model;
+
+		connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
+	
+		onModelChanged();
+	}
+
+	
+	const LabelModel* PageRenderer::model() const
+	{
+		return mModel;
+	}
+
+
+	void PageRenderer::onModelChanged()
+	{
+		mMerge = mModel->merge();
+		mOrigins = mModel->frame()->getOrigins();
+		mNLabelsPerPage = mModel->frame()->nLabels();
+		mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == 0 );
+		updateNPages();
+
+		emit changed();
+	}
+
+
+	void PageRenderer::setNCopies( int nCopies )
+	{
+		mNCopies = nCopies;
+		updateNPages();
+
+		emit changed();
+	}
+
+
+	void PageRenderer::setStartLabel( int startLabel )
+	{
+		mStartLabel = startLabel;
+		updateNPages();
+
+		emit changed();
+	}
+
+	
+	void PageRenderer::setPrintOutlines( bool printOutlinesFlag )
+	{
+		mPrintOutlines = printOutlinesFlag;
+
+		emit changed();
+	}
+
+	
+	void PageRenderer::setPrintCropMarks( bool printCropMarksFlag )
+	{
+		mPrintCropMarks = printCropMarksFlag;
+
+		emit changed();
+	}
+
+	
+	void PageRenderer::setPrintReverse( bool printReverseFlag )
+	{
+		mPrintReverse = printReverseFlag;
+
+		emit changed();
+	}
+
+	
+	void PageRenderer::setIPage( int iPage )
+	{
+		mIPage = iPage;
+
+		emit changed();
+	}
+
+	
+	int PageRenderer::nItems() const
+	{
+		return mLastLabel - mStartLabel;
+	}
 			
 	
-void PageRenderer::updateNPages()
-{
-	if ( mModel )
+	int PageRenderer::nPages() const
 	{
-		if ( mIsMerge )
+		return mNPages;
+	}
+			
+	
+	QRectF PageRenderer::pageRect() const
+	{
+		if ( mModel )
 		{
-			mLastLabel = mStartLabel + mNCopies*mMerge->nSelectedRecords();
+			return QRectF( 0, 0, mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
 		}
 		else
 		{
-			mLastLabel = mStartLabel + mNCopies;
+			return QRectF( 0, 0, 0, 0 );
 		}
+	}
+			
+	
+	void PageRenderer::updateNPages()
+	{
+		if ( mModel )
+		{
+			if ( mIsMerge )
+			{
+				mLastLabel = mStartLabel + mNCopies*mMerge->nSelectedRecords();
+			}
+			else
+			{
+				mLastLabel = mStartLabel + mNCopies;
+			}
 		
-		mNPages = mLastLabel / mNLabelsPerPage;
-		if ( mLastLabel % mNLabelsPerPage )
-		{
-			mNPages++;
-		}
-	}
-	else
-	{
-		mNPages = 0;
-	}
-}
-
-	
-///
-/// Print page using persistent page number
-///
-void PageRenderer::printPage( QPainter* painter ) const
-{
-	printPage( painter, mIPage );
-}
-
-
-///
-/// Print page
-///
-void PageRenderer::printPage( QPainter* painter, int iPage ) const
-{
-	if ( mModel )
-	{
-		if ( mIsMerge )
-		{
-			printMergePage( painter, iPage );
+			mNPages = mLastLabel / mNLabelsPerPage;
+			if ( mLastLabel % mNLabelsPerPage )
+			{
+				mNPages++;
+			}
 		}
 		else
 		{
-			printSimplePage( painter, iPage );
+			mNPages = 0;
 		}
 	}
-}
-
-
-void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
-{
-	int iStart = 0;
-	int iEnd = mNLabelsPerPage;
-
-	if ( iPage == 0 )
-	{
-		iStart = mStartLabel;
-	}
-
-	if ( (mLastLabel / mNLabelsPerPage) == iPage )
-	{
-		iEnd = mLastLabel % mNLabelsPerPage;
-	}
-
-	printCropMarks( painter );
-
-	for ( int i = iStart; i < iEnd; i++ )
-	{
-		painter->save();
-
-		painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
-			
-		painter->save();
-
-		clipLabel( painter );
-		printLabel( painter, 0 );
-
-		painter->restore();  // From before clip
-
-		printOutline( painter );
-			
-		painter->restore();  // From before translation
-	}
-}
 
 	
-void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
-{
-	int iRecord = 0;
-	int iStart = 0;
-	int iEnd = mNLabelsPerPage;
-
-	if ( iPage == 0 )
+	///
+	/// Print page using persistent page number
+	///
+	void PageRenderer::printPage( QPainter* painter ) const
 	{
-		iStart = mStartLabel;
+		printPage( painter, mIPage );
 	}
 
-	if ( (mLastLabel / mNLabelsPerPage) == iPage )
+
+	///
+	/// Print page
+	///
+	void PageRenderer::printPage( QPainter* painter, int iPage ) const
 	{
-		iEnd = mLastLabel % mNLabelsPerPage;
-	}
-
-	const QList<merge::Record*> records = mMerge->selectedRecords();
-	if ( records.size() )
-	{
-		iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
-	}
-
-	printCropMarks( painter );
-
-	for ( int i = iStart; i < iEnd; i++ )
-	{
-		painter->save();
-
-		painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
-			
-		painter->save();
-
-		clipLabel( painter );
-		printLabel( painter, records[iRecord] );
-
-		painter->restore();  // From before clip
-
-		printOutline( painter );
-			
-		painter->restore();  // From before translation
-
-		iRecord = (iRecord + 1) % records.size();
-	}
-}
-	
-	
-void PageRenderer::printCropMarks( QPainter* painter ) const
-{
-	using namespace glabels;
-	
-	if ( mPrintCropMarks )
-	{
-		painter->save();
-
-		painter->setBrush( QBrush( Qt::NoBrush ) );
-		painter->setPen( QPen( labelOutlineColor, labelOutlineWidth ) );
-
-		Distance w = mModel->frame()->w();
-		Distance h = mModel->frame()->h();
-
-		foreach ( Layout* layout, mModel->frame()->layouts() )
+		if ( mModel )
 		{
-			Distance xMin = layout->x0();
-			Distance yMin = layout->y0();
-			Distance xMax = layout->x0() + layout->dx()*(layout->nx()-1) + w;
-			Distance yMax = layout->y0() + layout->dy()*(layout->ny()-1) + h;
-
-			for ( int ix = 0; ix < layout->nx(); ix++ )
+			if ( mIsMerge )
 			{
-				Distance x1 = xMin + ix*layout->dx();
-				Distance x2 = x1 + w;
-
-				Distance y1 = max( yMin-tickOffset, Distance::pt(0) );
-				Distance y2 = max( y1-tickLength, Distance::pt(0) );
-
-				Distance y3 = min( yMax+tickOffset, mModel->tmplate()->pageHeight() );
-				Distance y4 = min( y3+tickLength, mModel->tmplate()->pageHeight() );
-
-				painter->drawLine( x1.pt(), y1.pt(), x1.pt(), y2.pt() );
-				painter->drawLine( x2.pt(), y1.pt(), x2.pt(), y2.pt() );
-				painter->drawLine( x1.pt(), y3.pt(), x1.pt(), y4.pt() );
-				painter->drawLine( x2.pt(), y3.pt(), x2.pt(), y4.pt() );
+				printMergePage( painter, iPage );
 			}
-
-			for ( int iy = 0; iy < layout->ny(); iy++ )
+			else
 			{
-				Distance y1 = yMin + iy*layout->dy();
-				Distance y2 = y1 + h;
-
-				Distance x1 = max( xMin-tickOffset, Distance::pt(0) );
-				Distance x2 = max( x1-tickLength, Distance::pt(0) );
-
-				Distance x3 = min( xMax+tickOffset, mModel->tmplate()->pageWidth() );
-				Distance x4 = min( x3+tickLength, mModel->tmplate()->pageWidth() );
-
-				painter->drawLine( x1.pt(), y1.pt(), x2.pt(), y1.pt() );
-				painter->drawLine( x1.pt(), y2.pt(), x2.pt(), y2.pt() );
-				painter->drawLine( x3.pt(), y1.pt(), x4.pt(), y1.pt() );
-				painter->drawLine( x3.pt(), y2.pt(), x4.pt(), y2.pt() );
+				printSimplePage( painter, iPage );
 			}
 		}
-
-		painter->restore();
 	}
-}
+
+
+	void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
+	{
+		int iStart = 0;
+		int iEnd = mNLabelsPerPage;
+
+		if ( iPage == 0 )
+		{
+			iStart = mStartLabel;
+		}
+
+		if ( (mLastLabel / mNLabelsPerPage) == iPage )
+		{
+			iEnd = mLastLabel % mNLabelsPerPage;
+		}
+
+		printCropMarks( painter );
+
+		for ( int i = iStart; i < iEnd; i++ )
+		{
+			painter->save();
+
+			painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
+			
+			painter->save();
+
+			clipLabel( painter );
+			printLabel( painter, 0 );
+
+			painter->restore();  // From before clip
+
+			printOutline( painter );
+			
+			painter->restore();  // From before translation
+		}
+	}
 
 	
-void PageRenderer::printOutline( QPainter* painter ) const
-{
-	if ( mPrintOutlines )
+	void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
+	{
+		int iRecord = 0;
+		int iStart = 0;
+		int iEnd = mNLabelsPerPage;
+
+		if ( iPage == 0 )
+		{
+			iStart = mStartLabel;
+		}
+
+		if ( (mLastLabel / mNLabelsPerPage) == iPage )
+		{
+			iEnd = mLastLabel % mNLabelsPerPage;
+		}
+
+		const QList<merge::Record*> records = mMerge->selectedRecords();
+		if ( records.size() )
+		{
+			iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
+		}
+
+		printCropMarks( painter );
+
+		for ( int i = iStart; i < iEnd; i++ )
+		{
+			painter->save();
+
+			painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
+			
+			painter->save();
+
+			clipLabel( painter );
+			printLabel( painter, records[iRecord] );
+
+			painter->restore();  // From before clip
+
+			printOutline( painter );
+			
+			painter->restore();  // From before translation
+
+			iRecord = (iRecord + 1) % records.size();
+		}
+	}
+	
+	
+	void PageRenderer::printCropMarks( QPainter* painter ) const
+	{
+		if ( mPrintCropMarks )
+		{
+			painter->save();
+
+			painter->setBrush( QBrush( Qt::NoBrush ) );
+			painter->setPen( QPen( labelOutlineColor, labelOutlineWidth ) );
+
+			Distance w = mModel->frame()->w();
+			Distance h = mModel->frame()->h();
+
+			foreach ( Layout* layout, mModel->frame()->layouts() )
+			{
+				Distance xMin = layout->x0();
+				Distance yMin = layout->y0();
+				Distance xMax = layout->x0() + layout->dx()*(layout->nx()-1) + w;
+				Distance yMax = layout->y0() + layout->dy()*(layout->ny()-1) + h;
+
+				for ( int ix = 0; ix < layout->nx(); ix++ )
+				{
+					Distance x1 = xMin + ix*layout->dx();
+					Distance x2 = x1 + w;
+
+					Distance y1 = max( yMin-tickOffset, Distance::pt(0) );
+					Distance y2 = max( y1-tickLength, Distance::pt(0) );
+
+					Distance y3 = min( yMax+tickOffset, mModel->tmplate()->pageHeight() );
+					Distance y4 = min( y3+tickLength, mModel->tmplate()->pageHeight() );
+
+					painter->drawLine( x1.pt(), y1.pt(), x1.pt(), y2.pt() );
+					painter->drawLine( x2.pt(), y1.pt(), x2.pt(), y2.pt() );
+					painter->drawLine( x1.pt(), y3.pt(), x1.pt(), y4.pt() );
+					painter->drawLine( x2.pt(), y3.pt(), x2.pt(), y4.pt() );
+				}
+
+				for ( int iy = 0; iy < layout->ny(); iy++ )
+				{
+					Distance y1 = yMin + iy*layout->dy();
+					Distance y2 = y1 + h;
+
+					Distance x1 = max( xMin-tickOffset, Distance::pt(0) );
+					Distance x2 = max( x1-tickLength, Distance::pt(0) );
+
+					Distance x3 = min( xMax+tickOffset, mModel->tmplate()->pageWidth() );
+					Distance x4 = min( x3+tickLength, mModel->tmplate()->pageWidth() );
+
+					painter->drawLine( x1.pt(), y1.pt(), x2.pt(), y1.pt() );
+					painter->drawLine( x1.pt(), y2.pt(), x2.pt(), y2.pt() );
+					painter->drawLine( x3.pt(), y1.pt(), x4.pt(), y1.pt() );
+					painter->drawLine( x3.pt(), y2.pt(), x4.pt(), y2.pt() );
+				}
+			}
+
+			painter->restore();
+		}
+	}
+
+	
+	void PageRenderer::printOutline( QPainter* painter ) const
+	{
+		if ( mPrintOutlines )
+		{
+			painter->save();
+
+			painter->setBrush( QBrush( Qt::NoBrush ) );
+			painter->setPen( QPen( labelOutlineColor, labelOutlineWidth ) );
+
+			painter->drawPath( mModel->frame()->path() );
+			
+			painter->restore();
+		}
+	}
+
+	
+	void PageRenderer::clipLabel( QPainter* painter ) const
+	{
+		painter->setClipPath( mModel->frame()->clipPath() );
+	}
+
+	
+	void PageRenderer::printLabel( QPainter* painter, merge::Record* record ) const
 	{
 		painter->save();
 
-		painter->setBrush( QBrush( Qt::NoBrush ) );
-		painter->setPen( QPen( labelOutlineColor, labelOutlineWidth ) );
+		if ( mModel->rotate() )
+		{
+			painter->rotate( -90.0 );
+			painter->translate( -mModel->w().pt(), 0 );
+		}
 
-		painter->drawPath( mModel->frame()->path() );
-			
+		if ( mPrintReverse )
+		{
+			painter->translate( mModel->w().pt(), 0 );
+			painter->scale( -1, 1 );
+		}
+
+		mModel->draw( painter, false, record );
+
 		painter->restore();
 	}
-}
 
-	
-void PageRenderer::clipLabel( QPainter* painter ) const
-{
-	painter->setClipPath( mModel->frame()->clipPath() );
-}
-
-	
-void PageRenderer::printLabel( QPainter* painter, merge::Record* record ) const
-{
-	painter->save();
-
-	if ( mModel->rotate() )
-	{
-		painter->rotate( -90.0 );
-		painter->translate( -mModel->w().pt(), 0 );
-	}
-
-	if ( mPrintReverse )
-	{
-		painter->translate( mModel->w().pt(), 0 );
-		painter->scale( -1, 1 );
-	}
-
-	mModel->draw( painter, false, record );
-
-	painter->restore();
 }

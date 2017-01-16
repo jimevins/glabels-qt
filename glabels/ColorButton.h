@@ -28,67 +28,72 @@
 #include "ColorPaletteDialog.h"
 
 
-///
-/// Color Button
-///
-class ColorButton : public QPushButton
+namespace glabels
 {
-	Q_OBJECT
+	
+	///
+	/// Color Button
+	///
+	class ColorButton : public QPushButton
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ColorButton( QWidget* parent = 0 );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ColorButton( QWidget* parent = 0 );
 
 
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void colorChanged();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void colorChanged();
 
 
-	/////////////////////////////////
-	// Public Methods
-	/////////////////////////////////
-public:
-	void   init( const QString& defaultLabel, const QColor& defaultColor, const QColor& color );
-	void   setColorNode( ColorNode colorNode );
-	void   setColor( QColor color );
-	void   setToDefault();
-	ColorNode colorNode();
-	void   setKeys( const QList<QString> keyList );
-	void   clearKeys();
+		/////////////////////////////////
+		// Public Methods
+		/////////////////////////////////
+	public:
+		void   init( const QString& defaultLabel, const QColor& defaultColor, const QColor& color );
+		void   setColorNode( ColorNode colorNode );
+		void   setColor( QColor color );
+		void   setToDefault();
+		ColorNode colorNode();
+		void   setKeys( const QList<QString> keyList );
+		void   clearKeys();
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onButtonToggled( bool checked );
-	void onPaletteDialogAccepted();
-	void onPaletteDialogRejected();
-	void onPaletteDialogChanged( ColorNode colorNode, bool isDefault );
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onButtonToggled( bool checked );
+		void onPaletteDialogAccepted();
+		void onPaletteDialogRejected();
+		void onPaletteDialogChanged( ColorNode colorNode, bool isDefault );
 
 
-	/////////////////////////////////
-	// Private Methods
-	/////////////////////////////////
-private:
+		/////////////////////////////////
+		// Private Methods
+		/////////////////////////////////
+	private:
 
 
-	/////////////////////////////////
-	// Private Members
-	/////////////////////////////////
-private:
-	QColor              mDefaultColor;
-	bool                mIsDefault;
-	ColorNode           mColorNode;
+		/////////////////////////////////
+		// Private Members
+		/////////////////////////////////
+	private:
+		QColor              mDefaultColor;
+		bool                mIsDefault;
+		ColorNode           mColorNode;
 
-	ColorPaletteDialog* mDialog;
-};
+		ColorPaletteDialog* mDialog;
+	};
+
+}
 
 
 #endif // ColorButton_h

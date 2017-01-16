@@ -29,171 +29,174 @@
 #include "PreviewOverlayItem.h"
 
 
-//
-// Private Configuration Data
-//
-namespace
+namespace glabels
 {
-        const QColor  paperColor( 255, 255, 255 );
-        const QColor  paperOutlineColor( 0, 0, 0 );
-	const double  paperOutlineWidthPixels = 1;
 
-        const QColor  shadowColor( 64, 64, 64 );
-	const double  shadowOffsetPixels = 3;
-	const double  shadowRadiusPixels = 12;
-
-        const QColor  labelColor( 255, 255, 255 );
-        const QColor  labelOutlineColor( 215, 215, 215 );
-	const double  labelOutlineWidthPixels = 1;
-}
-
-
-///
-/// Constructor
-///
-Preview::Preview( QWidget *parent )
-	: mModel(0), mRenderer(0), QGraphicsView(parent)
-{
-	mScene = new QGraphicsScene();
-	setScene( mScene );
-
-	setAttribute(Qt::WA_TranslucentBackground);
-	viewport()->setAutoFillBackground(false);
-
-	setFrameStyle( QFrame::NoFrame );
-	setRenderHints( QPainter::Antialiasing );
-}
-
-
-///
-/// Set renderer
-///
-void Preview::setRenderer( const PageRenderer* renderer )
-{
-	mRenderer = renderer;
-
-	connect( mRenderer, SIGNAL(changed()), this, SLOT(onRendererChanged()) );
-	onRendererChanged();
-}
-
-
-///
-/// Renderer changed handler
-///
-void Preview::onRendererChanged()
-{
-	mModel = mRenderer->model();
-
-	clearScene();
-
-	if ( mModel != NULL )
+	//
+	// Private
+	//
+	namespace
 	{
-		// Set scene up with a 5% margin around paper
-		glabels::Distance x = -0.05 * mModel->tmplate()->pageWidth();
-		glabels::Distance y = -0.05 * mModel->tmplate()->pageHeight();
-		glabels::Distance w = 1.10 * mModel->tmplate()->pageWidth();
-		glabels::Distance h = 1.10 * mModel->tmplate()->pageHeight();
+		const QColor  paperColor( 255, 255, 255 );
+		const QColor  paperOutlineColor( 0, 0, 0 );
+		const double  paperOutlineWidthPixels = 1;
 
-		mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
+		const QColor  shadowColor( 64, 64, 64 );
+		const double  shadowOffsetPixels = 3;
+		const double  shadowRadiusPixels = 12;
+
+		const QColor  labelColor( 255, 255, 255 );
+		const QColor  labelOutlineColor( 215, 215, 215 );
+		const double  labelOutlineWidthPixels = 1;
+	}
+
+
+	///
+	/// Constructor
+	///
+	Preview::Preview( QWidget *parent )
+		: mModel(0), mRenderer(0), QGraphicsView(parent)
+	{
+		mScene = new QGraphicsScene();
+		setScene( mScene );
+
+		setAttribute(Qt::WA_TranslucentBackground);
+		viewport()->setAutoFillBackground(false);
+
+		setFrameStyle( QFrame::NoFrame );
+		setRenderHints( QPainter::Antialiasing );
+	}
+
+
+	///
+	/// Set renderer
+	///
+	void Preview::setRenderer( const PageRenderer* renderer )
+	{
+		mRenderer = renderer;
+
+		connect( mRenderer, SIGNAL(changed()), this, SLOT(onRendererChanged()) );
+		onRendererChanged();
+	}
+
+
+	///
+	/// Renderer changed handler
+	///
+	void Preview::onRendererChanged()
+	{
+		mModel = mRenderer->model();
+
+		clearScene();
+
+		if ( mModel != NULL )
+		{
+			// Set scene up with a 5% margin around paper
+			Distance x = -0.05 * mModel->tmplate()->pageWidth();
+			Distance y = -0.05 * mModel->tmplate()->pageHeight();
+			Distance w = 1.10 * mModel->tmplate()->pageWidth();
+			Distance h = 1.10 * mModel->tmplate()->pageHeight();
+
+			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
+			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
+
+			drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
+			drawLabels();
+			drawPreviewOverlay();
+		}
+	}
+
+
+	///
+	/// Resize Event Handler
+	///
+	void Preview::resizeEvent( QResizeEvent* event )
+	{
 		fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
-
-		drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
-		drawLabels();
-		drawPreviewOverlay();
 	}
-}
 
 
-///
-/// Resize Event Handler
-///
-void Preview::resizeEvent( QResizeEvent* event )
-{
-	fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
-}
-
-
-///
-/// Clear View
-///
-void Preview::clearScene()
-{
-	foreach ( QGraphicsItem *item, mScene->items() )
+	///
+	/// Clear View
+	///
+	void Preview::clearScene()
 	{
-		mScene->removeItem( item );
-		delete item;
+		foreach ( QGraphicsItem *item, mScene->items() )
+		{
+			mScene->removeItem( item );
+			delete item;
+		}
 	}
-}
 
 
-///
-/// Draw Paper
-///
-void Preview::drawPaper( const glabels::Distance& pw, const glabels::Distance& ph )
-{
-	QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
-	shadowEffect->setColor( shadowColor );
-	shadowEffect->setOffset( shadowOffsetPixels );
-	shadowEffect->setBlurRadius( shadowRadiusPixels );
+	///
+	/// Draw Paper
+	///
+	void Preview::drawPaper( const Distance& pw, const Distance& ph )
+	{
+		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+		shadowEffect->setColor( shadowColor );
+		shadowEffect->setOffset( shadowOffsetPixels );
+		shadowEffect->setBlurRadius( shadowRadiusPixels );
 
-	QBrush brush( paperColor );
-	QPen pen( paperOutlineColor );
-	pen.setCosmetic( true );
-	pen.setWidthF( paperOutlineWidthPixels );
+		QBrush brush( paperColor );
+		QPen pen( paperOutlineColor );
+		pen.setCosmetic( true );
+		pen.setWidthF( paperOutlineWidthPixels );
 
-	QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
-	pageItem->setBrush( brush );
-	pageItem->setPen( pen );
-	pageItem->setGraphicsEffect( shadowEffect );
+		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
+		pageItem->setBrush( brush );
+		pageItem->setPen( pen );
+		pageItem->setGraphicsEffect( shadowEffect );
 				
-	mScene->addItem( pageItem );
-}
-
-
-///
-/// Draw Labels on Paper
-///
-void Preview::drawLabels()
-{
-	glabels::Frame *frame = mModel->tmplate()->frames().first();
-
-	foreach (glabels::Point origin, frame->getOrigins() )
-	{
-		drawLabel( origin.x(), origin.y(), frame->path() );
+		mScene->addItem( pageItem );
 	}
-}
 
 
-///
-/// Draw a Single Label at x,y
-///
-void Preview::drawLabel( const glabels::Distance& x,
-			 const glabels::Distance& y,
-			 const QPainterPath&      path )
-{
-	QBrush brush( Qt::NoBrush );
-	QPen pen( labelOutlineColor );
-	pen.setStyle( Qt::DotLine );
-	pen.setCosmetic( true );
-	pen.setWidthF( labelOutlineWidthPixels );
-
-	QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
-	labelOutlineItem->setBrush( brush );
-	labelOutlineItem->setPen( pen );
-	labelOutlineItem->setPos( x.pt(), y.pt() );
-
-	mScene->addItem( labelOutlineItem );
-}
-
-
-///
-/// Draw Preview Overlay
-///
-void Preview::drawPreviewOverlay()
-{
-	if ( mRenderer )
+	///
+	/// Draw Labels on Paper
+	///
+	void Preview::drawLabels()
 	{
-		PreviewOverlayItem* overlayItem = new PreviewOverlayItem( mRenderer );
-		mScene->addItem( overlayItem );
+		Frame *frame = mModel->tmplate()->frames().first();
+
+		foreach (Point origin, frame->getOrigins() )
+		{
+			drawLabel( origin.x(), origin.y(), frame->path() );
+		}
 	}
+
+
+	///
+	/// Draw a Single Label at x,y
+	///
+	void Preview::drawLabel( const Distance& x, const Distance& y, const QPainterPath& path )
+	{
+		QBrush brush( Qt::NoBrush );
+		QPen pen( labelOutlineColor );
+		pen.setStyle( Qt::DotLine );
+		pen.setCosmetic( true );
+		pen.setWidthF( labelOutlineWidthPixels );
+
+		QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
+		labelOutlineItem->setBrush( brush );
+		labelOutlineItem->setPen( pen );
+		labelOutlineItem->setPos( x.pt(), y.pt() );
+
+		mScene->addItem( labelOutlineItem );
+	}
+
+
+	///
+	/// Draw Preview Overlay
+	///
+	void Preview::drawPreviewOverlay()
+	{
+		if ( mRenderer )
+		{
+			PreviewOverlayItem* overlayItem = new PreviewOverlayItem( mRenderer );
+			mScene->addItem( overlayItem );
+		}
+	}
+
 }

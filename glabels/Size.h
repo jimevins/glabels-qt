@@ -27,53 +27,58 @@
 #include "Distance.h"
 
 
-///
-/// Size Type
-///
-class Size
+namespace glabels
 {
 
-	/////////////////////////////////
-	// Constructors
-	/////////////////////////////////
-public:
-	Size();
-	Size( const glabels::Distance& w, const glabels::Distance& h );
+	///
+	/// Size Type
+	///
+	class Size
+	{
+
+		/////////////////////////////////
+		// Constructors
+		/////////////////////////////////
+	public:
+		Size();
+		Size( const Distance& w, const Distance& h );
 	
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	//
-	// w Property
-	//
-	glabels::Distance w( void ) const;
-	void setW( const glabels::Distance& value );
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		//
+		// w Property
+		//
+		Distance w( void ) const;
+		void setW( const Distance& value );
 
 
-	//
-	// H Property
-	//
-	glabels::Distance h( void ) const;
-	void setH( const glabels::Distance& value );
+		//
+		// H Property
+		//
+		Distance h( void ) const;
+		void setH( const Distance& value );
 
 
-	/////////////////////////////////
-	// Methods
-	/////////////////////////////////
-public:
-	QSizeF qSizeF() const;
+		/////////////////////////////////
+		// Methods
+		/////////////////////////////////
+	public:
+		QSizeF qSizeF() const;
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	glabels::Distance mW;
-	glabels::Distance mH;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		Distance mW;
+		Distance mH;
 
-};
+	};
+
+}
 
 
 #endif // Size_h

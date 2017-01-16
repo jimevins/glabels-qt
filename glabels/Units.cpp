@@ -31,6 +31,7 @@ namespace glabels
 
 	Units::Units() : mEnumValue(PT)
 	{
+		// empty
 	}
 
 	
@@ -179,19 +180,19 @@ namespace glabels
 		
 		switch (mEnumValue)
 		{
-		case glabels::Units::PT:
+		case Units::PT:
 			value = 0.01;
 			break;
-		case glabels::Units::IN:
+		case Units::IN:
 			value = 0.001;
 			break;
-		case glabels::Units::MM:
+		case Units::MM:
 			value = 0.01;
 			break;
-		case glabels::Units::CM:
+		case Units::CM:
 			value = 0.001;
 			break;
-		case glabels::Units::PC:
+		case Units::PC:
 			value = 0.01;
 			break;
 		}
@@ -206,19 +207,19 @@ namespace glabels
 		
 		switch (mEnumValue)
 		{
-		case glabels::Units::PT:
+		case Units::PT:
 			digits = 2;
 			break;
-		case glabels::Units::IN:
+		case Units::IN:
 			digits = 3;
 			break;
-		case glabels::Units::MM:
+		case Units::MM:
 			digits = 2;
 			break;
-		case glabels::Units::CM:
+		case Units::CM:
 			digits = 3;
 			break;
-		case glabels::Units::PC:
+		case Units::PC:
 			digits = 2;
 			break;
 		}

@@ -24,38 +24,44 @@
 
 #include <QGraphicsItem>
 
-// Forward references
-class PageRenderer;
 
-
-///
-///  PreviewOverlayItem Widget
-///
-class PreviewOverlayItem : public QGraphicsItem
+namespace glabels
 {
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = 0 );
+	// Forward references
+	class PageRenderer;
 
 
-	/////////////////////////////////////
-	// Virtual method implementations
-	/////////////////////////////////////
-public:
-	QRectF boundingRect() const;
-	void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget );
+	///
+	///  PreviewOverlayItem Widget
+	///
+	class PreviewOverlayItem : public QGraphicsItem
+	{
+
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = 0 );
+
+
+		/////////////////////////////////////
+		// Virtual method implementations
+		/////////////////////////////////////
+	public:
+		QRectF boundingRect() const;
+		void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget );
 
 		
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	const PageRenderer* mRenderer;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		const PageRenderer* mRenderer;
 
-};
+	};
+
+}
 
 
 #endif // PreviewOverlayItem_h

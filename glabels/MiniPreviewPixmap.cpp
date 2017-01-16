@@ -24,23 +24,27 @@
 #include "Template.h"
 
 
-namespace
-{
-	const QColor paperColor( 217, 217, 217 );
-	const QColor paperOutlineColor( 0, 0, 0 );
-	const double paperOutlineWidthPixels = 1.0;
-
-	const QColor labelColor( 242, 242, 242 );
-	const QColor labelOutlineColor( 64, 64, 64 );
-	const double labelOutlineWidthPixels = 1.0;
-}
-
-
 namespace glabels
 {
 
+	//
+	// Private
+	//
+	namespace
+	{
+		const QColor paperColor( 217, 217, 217 );
+		const QColor paperOutlineColor( 0, 0, 0 );
+		const double paperOutlineWidthPixels = 1.0;
+
+		const QColor labelColor( 242, 242, 242 );
+		const QColor labelOutlineColor( 64, 64, 64 );
+		const double labelOutlineWidthPixels = 1.0;
+	}
+
+
 	MiniPreviewPixmap::MiniPreviewPixmap()
 	{
+		// empty
 	}
 
 

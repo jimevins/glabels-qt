@@ -27,32 +27,37 @@
 #include "MainWindow.h"
 
 
-///
-/// Constructor
-///
-StartupView::StartupView( MainWindow* window )
-	: QWidget(window), mWindow(window)
+namespace glabels
 {
-	setupUi( this );
 
-	QString titleImage = ":images/glabels-label-designer.png";
-	titleLabel->setPixmap( QPixmap( titleImage ) );
-}
+	///
+	/// Constructor
+	///
+	StartupView::StartupView( MainWindow* window )
+		: QWidget(window), mWindow(window)
+	{
+		setupUi( this );
 
-
-///
-/// "New Project" Button Clicked Slot
-///
-void StartupView::onNewProjectButtonClicked()
-{
-	File::newLabel( mWindow );
-}
+		QString titleImage = ":images/glabels-label-designer.png";
+		titleLabel->setPixmap( QPixmap( titleImage ) );
+	}
 
 
-///
-/// "Open Project" Button Clicked Slot
-///
-void StartupView::onOpenProjectButtonClicked()
-{
-	File::open( mWindow );
+	///
+	/// "New Project" Button Clicked Slot
+	///
+	void StartupView::onNewProjectButtonClicked()
+	{
+		File::newLabel( mWindow );
+	}
+
+
+	///
+	/// "Open Project" Button Clicked Slot
+	///
+	void StartupView::onOpenProjectButtonClicked()
+	{
+		File::open( mWindow );
+	}
+
 }

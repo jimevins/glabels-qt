@@ -37,366 +37,371 @@
 #include "Merge/Record.h"
 
 
-// Forward References
-class Region;
-class Size;
-
-
-///
-/// Label Model Object Base Class
-///
-class LabelModelObject : public QObject
+namespace glabels
 {
-	Q_OBJECT
 
-	///////////////////////////////////////////////////////////////
-	// Lifecycle Methods
-	///////////////////////////////////////////////////////////////
-protected:
-	LabelModelObject();
-	LabelModelObject( const LabelModelObject* object );
-public:
-	virtual ~LabelModelObject();
+	// Forward References
+	class Region;
+	class Size;
 
 
-	///////////////////////////////////////////////////////////////
-	// Object duplication
-	///////////////////////////////////////////////////////////////
-	virtual LabelModelObject* clone() const = 0;
+	///
+	/// Label Model Object Base Class
+	///
+	class LabelModelObject : public QObject
+	{
+		Q_OBJECT
+
+		///////////////////////////////////////////////////////////////
+		// Lifecycle Methods
+		///////////////////////////////////////////////////////////////
+	protected:
+		LabelModelObject();
+		LabelModelObject( const LabelModelObject* object );
+	public:
+		virtual ~LabelModelObject();
+
+
+		///////////////////////////////////////////////////////////////
+		// Object duplication
+		///////////////////////////////////////////////////////////////
+		virtual LabelModelObject* clone() const = 0;
 
 	
-	///////////////////////////////////////////////////////////////
-	// Signals
-	///////////////////////////////////////////////////////////////
-signals:
-	void moved();
-	void changed();
+		///////////////////////////////////////////////////////////////
+		// Signals
+		///////////////////////////////////////////////////////////////
+	signals:
+		void moved();
+		void changed();
 
 
-	///////////////////////////////////////////////////////////////
-	// Common Properties
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// ID Property.
-	//
-	int id() const;
+		///////////////////////////////////////////////////////////////
+		// Common Properties
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// ID Property.
+		//
+		int id() const;
 
-	//
-	// Selected Property.
-	//
-	bool isSelected() const;
-	void select( bool value = true );
-	void unselect();
+		//
+		// Selected Property.
+		//
+		bool isSelected() const;
+		void select( bool value = true );
+		void unselect();
 
 
-	//
-	// x0 Property ( x coordinate of origin )
-	//
-	glabels::Distance x0() const;
-	void setX0( const glabels::Distance& value );
+		//
+		// x0 Property ( x coordinate of origin )
+		//
+		Distance x0() const;
+		void setX0( const Distance& value );
 		
 
-	//
-	// y0 Property ( y coordinate of origin )
-	//
-	glabels::Distance y0() const;
-	void setY0( const glabels::Distance& value );
+		//
+		// y0 Property ( y coordinate of origin )
+		//
+		Distance y0() const;
+		void setY0( const Distance& value );
 		
 
-	//
-	// w Property ( width of bounding box )
-	//
-	glabels::Distance w() const;
-	void setW( const glabels::Distance& value );
+		//
+		// w Property ( width of bounding box )
+		//
+		Distance w() const;
+		void setW( const Distance& value );
 		
 
-	//
-	// h Property ( height of bounding box )
-	//
-	glabels::Distance h() const;
-	void setH( const glabels::Distance& value );
+		//
+		// h Property ( height of bounding box )
+		//
+		Distance h() const;
+		void setH( const Distance& value );
 
 
-	//
-	// Transformation Matrix Property
-	//
-	QMatrix matrix() const;
-	void setMatrix( const QMatrix& value );
+		//
+		// Transformation Matrix Property
+		//
+		QMatrix matrix() const;
+		void setMatrix( const QMatrix& value );
 
 
-	//
-	// Shadow State Property
-	//
-	bool shadow() const;
-	void setShadow( bool value );
+		//
+		// Shadow State Property
+		//
+		bool shadow() const;
+		void setShadow( bool value );
 
 
-	//
-	// Shadow x Offset Property
-	//
-	glabels::Distance shadowX() const;
-	void setShadowX( const glabels::Distance& value );
+		//
+		// Shadow x Offset Property
+		//
+		Distance shadowX() const;
+		void setShadowX( const Distance& value );
 		
 
-	//
-	// Shadow y Offset Property
-	//
-	glabels::Distance shadowY() const;
-	void setShadowY( const glabels::Distance& value );
+		//
+		// Shadow y Offset Property
+		//
+		Distance shadowY() const;
+		void setShadowY( const Distance& value );
 		
 
-	//
-	// Shadow opacity Property
-	//
-	double shadowOpacity() const;
-	void setShadowOpacity( double value );
+		//
+		// Shadow opacity Property
+		//
+		double shadowOpacity() const;
+		void setShadowOpacity( double value );
 		
 
-	//
-	// Shadow Color Property
-	//
-	ColorNode shadowColorNode() const;
-	void setShadowColorNode( const ColorNode& value );
+		//
+		// Shadow Color Property
+		//
+		ColorNode shadowColorNode() const;
+		void setShadowColorNode( const ColorNode& value );
 		
 
-	///////////////////////////////////////////////////////////////
-	// Text Properties Virtual Interface
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Virtual Text Property: text
-	//
-	virtual QString text() const;
-	virtual void setText( const QString &value );
+		///////////////////////////////////////////////////////////////
+		// Text Properties Virtual Interface
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Virtual Text Property: text
+		//
+		virtual QString text() const;
+		virtual void setText( const QString &value );
 
 
-	//
-	// Virtual Text Property: fontFamily
-	//
-	virtual QString fontFamily() const;
-	virtual void setFontFamily( const QString &value );
+		//
+		// Virtual Text Property: fontFamily
+		//
+		virtual QString fontFamily() const;
+		virtual void setFontFamily( const QString &value );
 
 
-	//
-	// Virtual Text Property: fontSize
-	//
-	virtual double fontSize() const;
-	virtual void setFontSize( double value );
+		//
+		// Virtual Text Property: fontSize
+		//
+		virtual double fontSize() const;
+		virtual void setFontSize( double value );
 
 
-	//
-	// Virtual Text Property: fontWeight
-	//
-	virtual QFont::Weight fontWeight() const;
-	virtual void setFontWeight( QFont::Weight value );
+		//
+		// Virtual Text Property: fontWeight
+		//
+		virtual QFont::Weight fontWeight() const;
+		virtual void setFontWeight( QFont::Weight value );
 
 
-	//
-	// Virtual Text Property: fontItalicFlag
-	//
-	virtual bool fontItalicFlag() const;
-	virtual void setFontItalicFlag( bool value );
+		//
+		// Virtual Text Property: fontItalicFlag
+		//
+		virtual bool fontItalicFlag() const;
+		virtual void setFontItalicFlag( bool value );
 
 
-	//
-	// Virtual Text Property: fontUnderlineFlag
-	//
-	virtual bool fontUnderlineFlag() const;
-	virtual void setFontUnderlineFlag( bool value );
+		//
+		// Virtual Text Property: fontUnderlineFlag
+		//
+		virtual bool fontUnderlineFlag() const;
+		virtual void setFontUnderlineFlag( bool value );
 
 
-	//
-	// Virtual Text Property: textColorNode
-	//
-	virtual ColorNode textColorNode() const;
-	virtual void setTextColorNode( const ColorNode &value );
+		//
+		// Virtual Text Property: textColorNode
+		//
+		virtual ColorNode textColorNode() const;
+		virtual void setTextColorNode( const ColorNode &value );
 		
 
-	//
-	// Virtual Text Property: textHAlign
-	//
-	virtual Qt::Alignment textHAlign() const;
-	virtual void setTextHAlign( Qt::Alignment value );
+		//
+		// Virtual Text Property: textHAlign
+		//
+		virtual Qt::Alignment textHAlign() const;
+		virtual void setTextHAlign( Qt::Alignment value );
 
 
-	//
-	// Virtual Text Property: textVAlign
-	//
-	virtual Qt::Alignment textVAlign() const;
-	virtual void setTextVAlign( Qt::Alignment value );
+		//
+		// Virtual Text Property: textVAlign
+		//
+		virtual Qt::Alignment textVAlign() const;
+		virtual void setTextVAlign( Qt::Alignment value );
 
 
-	//
-	// Virtual Text Property: textLineSpacing
-	//
-	virtual double textLineSpacing() const;
-	virtual void setTextLineSpacing( double value );
+		//
+		// Virtual Text Property: textLineSpacing
+		//
+		virtual double textLineSpacing() const;
+		virtual void setTextLineSpacing( double value );
 
 
-	///////////////////////////////////////////////////////////////
-	// Image Properties Virtual Interface
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Virtual Image Property: filenameNode
-	//
-	virtual TextNode filenameNode() const;
-	virtual void setFilenameNode( const TextNode &value );
+		///////////////////////////////////////////////////////////////
+		// Image Properties Virtual Interface
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Virtual Image Property: filenameNode
+		//
+		virtual TextNode filenameNode() const;
+		virtual void setFilenameNode( const TextNode &value );
 
-	//
-	// Virtual Image Property: originalSize (read-only)
-	//
-	virtual Size originalSize() const;
-
-
-	///////////////////////////////////////////////////////////////
-	// Shape Properties Virtual Interface
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Virtual Shape Property: lineWidth
-	//
-	virtual glabels::Distance lineWidth() const;
-	virtual void setLineWidth( const glabels::Distance& value );
+		//
+		// Virtual Image Property: originalSize (read-only)
+		//
+		virtual Size originalSize() const;
 
 
-	//
-	// Virtual Shape Property: lineColorNode
-	//
-	virtual ColorNode lineColorNode() const;
-	virtual void setLineColorNode( const ColorNode &value );
+		///////////////////////////////////////////////////////////////
+		// Shape Properties Virtual Interface
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Virtual Shape Property: lineWidth
+		//
+		virtual Distance lineWidth() const;
+		virtual void setLineWidth( const Distance& value );
+
+
+		//
+		// Virtual Shape Property: lineColorNode
+		//
+		virtual ColorNode lineColorNode() const;
+		virtual void setLineColorNode( const ColorNode &value );
 		
 
-	//
-	// Virtual Shape Property: fillColorNode
-	//
-	virtual ColorNode fillColorNode() const;
-	virtual void setFillColorNode( const ColorNode &value );
+		//
+		// Virtual Shape Property: fillColorNode
+		//
+		virtual ColorNode fillColorNode() const;
+		virtual void setFillColorNode( const ColorNode &value );
 		
 
-	///////////////////////////////////////////////////////////////
-	// Barcode Properties Virtual Interface
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Virtual Barcode Property: bcDataNode
-	//
-	virtual TextNode bcDataNode() const;
-	virtual void setBcDataNode( const TextNode &value );
+		///////////////////////////////////////////////////////////////
+		// Barcode Properties Virtual Interface
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Virtual Barcode Property: bcDataNode
+		//
+		virtual TextNode bcDataNode() const;
+		virtual void setBcDataNode( const TextNode &value );
 		
 
-	//
-	// Virtual Barcode Property: bcTextFlag
-	//
-	virtual bool bcTextFlag() const;
-	virtual void setBcTextFlag( bool value );
+		//
+		// Virtual Barcode Property: bcTextFlag
+		//
+		virtual bool bcTextFlag() const;
+		virtual void setBcTextFlag( bool value );
 
 
-	//
-	// Virtual Barcode Property: bcChecksumFlag
-	//
-	virtual bool bcChecksumFlag() const;
-	virtual void setBcChecksumFlag( bool value );
+		//
+		// Virtual Barcode Property: bcChecksumFlag
+		//
+		virtual bool bcChecksumFlag() const;
+		virtual void setBcChecksumFlag( bool value );
 
 
-	//
-	// Virtual Barcode Property: bcColorNode
-	//
-	virtual ColorNode bcColorNode() const;
-	virtual void setBcColorNode( const ColorNode &value );
+		//
+		// Virtual Barcode Property: bcColorNode
+		//
+		virtual ColorNode bcColorNode() const;
+		virtual void setBcColorNode( const ColorNode &value );
 		
 
-	//
-	// Virtual Barcode Property: bcStyle
-	//
-	virtual BarcodeStyle bcStyle() const;
-	virtual void setBcStyle( const BarcodeStyle &value );
+		//
+		// Virtual Barcode Property: bcStyle
+		//
+		virtual BarcodeStyle bcStyle() const;
+		virtual void setBcStyle( const BarcodeStyle &value );
 		
 
-	//
-	// Virtual Barcode Property: bcFormatDigits
-	//
-	virtual int bcFormatDigits() const;
-	virtual void setBcFormatDigits( int value );
+		//
+		// Virtual Barcode Property: bcFormatDigits
+		//
+		virtual int bcFormatDigits() const;
+		virtual void setBcFormatDigits( int value );
 
 
-	///////////////////////////////////////////////////////////////
-	// Capabilities (Overridden by concrete classes.)
-	///////////////////////////////////////////////////////////////
-public:
-	virtual bool canText() const;
-	virtual bool canFill() const;
-	virtual bool canLineColor() const;
-	virtual bool canLineWidth() const;
+		///////////////////////////////////////////////////////////////
+		// Capabilities (Overridden by concrete classes.)
+		///////////////////////////////////////////////////////////////
+	public:
+		virtual bool canText() const;
+		virtual bool canFill() const;
+		virtual bool canLineColor() const;
+		virtual bool canLineWidth() const;
 
 
-	///////////////////////////////////////////////////////////////
-	// Position and Size methods
-	///////////////////////////////////////////////////////////////
-public:
-	void setPosition( const glabels::Distance& x0, const glabels::Distance& y0 );
-	void setPositionRelative( const glabels::Distance& dx, const glabels::Distance& dy );
-	Size size() const;
-	void setSize( const glabels::Distance& w, const glabels::Distance& h );
-	void setSize( const Size& size );
-	void setSizeHonorAspect( const glabels::Distance& w, const glabels::Distance& h );
-	void setWHonorAspect( const glabels::Distance& w );
-	void setHHonorAspect( const glabels::Distance& h );
-	Region getExtent();
-	void rotate( double thetaDegs );
-	void flipHoriz();
-	void flipVert();
-	bool isLocatedAt( double scale, const glabels::Distance& x, const glabels::Distance& y ) const;
-	Handle* handleAt( double scale, const glabels::Distance& x, const glabels::Distance& y ) const;
+		///////////////////////////////////////////////////////////////
+		// Position and Size methods
+		///////////////////////////////////////////////////////////////
+	public:
+		void setPosition( const Distance& x0, const Distance& y0 );
+		void setPositionRelative( const Distance& dx, const Distance& dy );
+		Size size() const;
+		void setSize( const Distance& w, const Distance& h );
+		void setSize( const Size& size );
+		void setSizeHonorAspect( const Distance& w, const Distance& h );
+		void setWHonorAspect( const Distance& w );
+		void setHHonorAspect( const Distance& h );
+		Region getExtent();
+		void rotate( double thetaDegs );
+		void flipHoriz();
+		void flipVert();
+		bool isLocatedAt( double scale, const Distance& x, const Distance& y ) const;
+		Handle* handleAt( double scale, const Distance& x, const Distance& y ) const;
 
 
-	///////////////////////////////////////////////////////////////
-	// Drawing operations
-	///////////////////////////////////////////////////////////////
-public:
-	void draw( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	void drawSelectionHighlight( QPainter* painter, double scale ) const;
+		///////////////////////////////////////////////////////////////
+		// Drawing operations
+		///////////////////////////////////////////////////////////////
+	public:
+		void draw( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		void drawSelectionHighlight( QPainter* painter, double scale ) const;
 
-protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
-	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
-	virtual QPainterPath hoverPath( double scale ) const = 0;
+	protected:
+		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
+		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
+		virtual QPainterPath hoverPath( double scale ) const = 0;
 
-	virtual void sizeUpdated();
+		virtual void sizeUpdated();
 
 		
-	///////////////////////////////////////////////////////////////
-	// Protected Members
-	///////////////////////////////////////////////////////////////
-protected:
-	bool              mSelectedFlag;
+		///////////////////////////////////////////////////////////////
+		// Protected Members
+		///////////////////////////////////////////////////////////////
+	protected:
+		bool              mSelectedFlag;
 
-	glabels::Distance mX0;
-	glabels::Distance mY0;
-	glabels::Distance mW;
-	glabels::Distance mH;
+		Distance          mX0;
+		Distance          mY0;
+		Distance          mW;
+		Distance          mH;
 
-	bool              mShadowState;
-	glabels::Distance mShadowX;
-	glabels::Distance mShadowY;
-	double            mShadowOpacity;
-	ColorNode         mShadowColorNode;
+		bool              mShadowState;
+		Distance          mShadowX;
+		Distance          mShadowY;
+		double            mShadowOpacity;
+		ColorNode         mShadowColorNode;
 
-	QList<Handle*>    mHandles;
-	Outline*          mOutline;
+		QList<Handle*>    mHandles;
+		Outline*          mOutline;
 
 
-	///////////////////////////////////////////////////////////////
-	// Private Members
-	///////////////////////////////////////////////////////////////
-private:
-	static int msNextId;
-	int        mId;
+		///////////////////////////////////////////////////////////////
+		// Private Members
+		///////////////////////////////////////////////////////////////
+	private:
+		static int msNextId;
+		int        mId;
 
-	QMatrix    mMatrix;
+		QMatrix    mMatrix;
 
-};
+	};
+
+}
 
 
 #endif // LabelModelObject_h

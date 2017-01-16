@@ -25,134 +25,146 @@
 #include <QPen>
 
 
-namespace
+namespace glabels
 {
-	const double slopPixels = 2;
-}
 
-
-///
-/// Constructor
-///
-LabelModelEllipseObject::LabelModelEllipseObject()
-{
-}
-
-
-///
-/// Copy constructor
-///
-LabelModelEllipseObject::LabelModelEllipseObject( const LabelModelEllipseObject* object ) : LabelModelShapeObject( object )
-{
-}
-
-
-///
-/// Destructor
-///
-LabelModelEllipseObject::~LabelModelEllipseObject()
-{
-}
-
-
-///
-/// Clone
-///
-LabelModelEllipseObject* LabelModelEllipseObject::clone() const
-{
-	return new LabelModelEllipseObject( this );
-}
-
-
-///
-/// Draw shadow of object
-///
-void LabelModelEllipseObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
-{
-	QColor lineColor = mLineColorNode.color( record );
-	QColor fillColor = mFillColorNode.color( record );
-	QColor shadowColor = mShadowColorNode.color( record );
-
-	shadowColor.setAlphaF( mShadowOpacity );
-
-	if ( fillColor.alpha() )
+	//
+	// Private
+	//
+	namespace
 	{
-		painter->setPen( Qt::NoPen );
-		painter->setBrush( shadowColor );
+		const double slopPixels = 2;
+	}
 
-		if ( lineColor.alpha() )
+
+	///
+	/// Constructor
+	///
+	LabelModelEllipseObject::LabelModelEllipseObject()
+	{
+		// empty
+	}
+
+
+	///
+	/// Copy constructor
+	///
+	LabelModelEllipseObject::LabelModelEllipseObject( const LabelModelEllipseObject* object )
+		: LabelModelShapeObject( object )
+	{
+		// empty
+	}
+
+
+	///
+	/// Destructor
+	///
+	LabelModelEllipseObject::~LabelModelEllipseObject()
+	{
+		// empty
+	}
+
+
+	///
+	/// Clone
+	///
+	LabelModelEllipseObject* LabelModelEllipseObject::clone() const
+	{
+		return new LabelModelEllipseObject( this );
+	}
+
+
+	///
+	/// Draw shadow of object
+	///
+	void LabelModelEllipseObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+	{
+		QColor lineColor = mLineColorNode.color( record );
+		QColor fillColor = mFillColorNode.color( record );
+		QColor shadowColor = mShadowColorNode.color( record );
+
+		shadowColor.setAlphaF( mShadowOpacity );
+
+		if ( fillColor.alpha() )
 		{
-			/* Has FILL and OUTLINE: adjust size to account for line width. */
-			painter->drawEllipse( QRectF( -mLineWidth.pt()/2,
-						      -mLineWidth.pt()/2,
-						      (mW + mLineWidth).pt(),
-						      (mH + mLineWidth).pt() ) );
+			painter->setPen( Qt::NoPen );
+			painter->setBrush( shadowColor );
+
+			if ( lineColor.alpha() )
+			{
+				/* Has FILL and OUTLINE: adjust size to account for line width. */
+				painter->drawEllipse( QRectF( -mLineWidth.pt()/2,
+				                              -mLineWidth.pt()/2,
+				                              (mW + mLineWidth).pt(),
+				                              (mH + mLineWidth).pt() ) );
+			}
+			else
+			{
+				/* Has FILL, but no OUTLINE. */
+				painter->drawEllipse( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			}
 		}
 		else
 		{
-			/* Has FILL, but no OUTLINE. */
-			painter->drawEllipse( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-		}
-	}
-	else
-	{
-		if ( lineColor.alpha() )
-		{
-			/* Has only OUTLINE. */
-			painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
-			painter->setBrush( Qt::NoBrush );
+			if ( lineColor.alpha() )
+			{
+				/* Has only OUTLINE. */
+				painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
+				painter->setBrush( Qt::NoBrush );
 
-			painter->drawEllipse( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+				painter->drawEllipse( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			}
 		}
-	}
 		
-}
+	}
 
 	
-///
-/// Draw object itself
-///
-void LabelModelEllipseObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
-{
-	QColor lineColor = mLineColorNode.color( record );
-	QColor fillColor = mFillColorNode.color( record );
-
-	painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
-	painter->setBrush( fillColor );
-
-	painter->drawEllipse( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-}
-
-
-///
-/// Path to test for hover condition
-///
-QPainterPath LabelModelEllipseObject::hoverPath( double scale ) const
-{
-	double s = 1 / scale;
-
-	QPainterPath path;
-
-	if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
+	///
+	/// Draw object itself
+	///
+	void LabelModelEllipseObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
 	{
-		path.addEllipse( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
-	}
-	else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
-	{
-		path.addEllipse( 0, 0, mW.pt(), mH.pt() );
-	}
-	else if ( mLineColorNode.color().alpha() )
-	{
-		path.addEllipse( (-mLineWidth.pt()/2) - s*slopPixels,
-				 (-mLineWidth.pt()/2) - s*slopPixels,
-				 (mW + mLineWidth).pt() + s*2*slopPixels,
-				 (mH + mLineWidth).pt() + s*2*slopPixels );
-		path.closeSubpath();
-		path.addEllipse( mLineWidth.pt()/2 + s*slopPixels,
-				 mLineWidth.pt()/2 + s*slopPixels,
-				 (mW - mLineWidth).pt() - s*2*slopPixels,
-				 (mH - mLineWidth).pt() - s*2*slopPixels );
+		QColor lineColor = mLineColorNode.color( record );
+		QColor fillColor = mFillColorNode.color( record );
+
+		painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
+		painter->setBrush( fillColor );
+
+		painter->drawEllipse( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 	}
 
-	return path;
+
+	///
+	/// Path to test for hover condition
+	///
+	QPainterPath LabelModelEllipseObject::hoverPath( double scale ) const
+	{
+		double s = 1 / scale;
+
+		QPainterPath path;
+
+		if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
+		{
+			path.addEllipse( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
+		}
+		else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
+		{
+			path.addEllipse( 0, 0, mW.pt(), mH.pt() );
+		}
+		else if ( mLineColorNode.color().alpha() )
+		{
+			path.addEllipse( (-mLineWidth.pt()/2) - s*slopPixels,
+			                 (-mLineWidth.pt()/2) - s*slopPixels,
+			                 (mW + mLineWidth).pt() + s*2*slopPixels,
+			                 (mH + mLineWidth).pt() + s*2*slopPixels );
+			path.closeSubpath();
+			path.addEllipse( mLineWidth.pt()/2 + s*slopPixels,
+			                 mLineWidth.pt()/2 + s*slopPixels,
+			                 (mW - mLineWidth).pt() - s*2*slopPixels,
+			                 (mH - mLineWidth).pt() - s*2*slopPixels );
+		}
+
+		return path;
+	}
+
 }

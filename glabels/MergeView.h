@@ -26,74 +26,80 @@
 
 #include "Merge/Merge.h"
 
-// Forward references
-class LabelModel;
-class UndoRedoModel;
-	
 
-///
-/// merge::Merge Property Editor Widget
-///
-class MergeView : public QWidget, public Ui_MergeView
+namespace glabels
 {
-	Q_OBJECT
 
-
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	MergeView( QWidget *parent = 0 );
-	~MergeView();
-
-
-	/////////////////////////////////
-	// Public methods
-	/////////////////////////////////
-	void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
-
-
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onMergeChanged();
-	void onMergeSourceChanged();
-	void onMergeSelectionChanged();
-
-	void onFormatComboActivated();
-	void onLocationButtonClicked();
-	void onSelectAllButtonClicked();
-	void onUnselectAllButtonClicked();
-	void onCellChanged( int iRow, int iCol );
-
-
-	/////////////////////////////////
-	// Private methods
-	/////////////////////////////////
-private:
-	void loadHeaders( merge::Merge* merge );
-	void loadTable( merge::Merge* merge );
-
-
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	QStringList  mMergeFormatNames;
+	// Forward references
+	class LabelModel;
+	class UndoRedoModel;
 	
-	LabelModel*    mModel;
-	UndoRedoModel* mUndoRedoModel;
 
-	QStringList mKeys;
-	QString     mPrimaryKey;
+	///
+	/// merge::Merge Property Editor Widget
+	///
+	class MergeView : public QWidget, public Ui_MergeView
+	{
+		Q_OBJECT
 
-	QString mCwd;
 
-	bool mBlock;
-	int  mOldFormatComboIndex;
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		MergeView( QWidget *parent = 0 );
+		~MergeView();
 
-};
+
+		/////////////////////////////////
+		// Public methods
+		/////////////////////////////////
+		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onMergeChanged();
+		void onMergeSourceChanged();
+		void onMergeSelectionChanged();
+
+		void onFormatComboActivated();
+		void onLocationButtonClicked();
+		void onSelectAllButtonClicked();
+		void onUnselectAllButtonClicked();
+		void onCellChanged( int iRow, int iCol );
+
+
+		/////////////////////////////////
+		// Private methods
+		/////////////////////////////////
+	private:
+		void loadHeaders( merge::Merge* merge );
+		void loadTable( merge::Merge* merge );
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		QStringList  mMergeFormatNames;
+	
+		LabelModel*    mModel;
+		UndoRedoModel* mUndoRedoModel;
+
+		QStringList mKeys;
+		QString     mPrimaryKey;
+
+		QString mCwd;
+
+		bool mBlock;
+		int  mOldFormatComboIndex;
+
+	};
+
+}
 
 
 #endif // MergeView_h

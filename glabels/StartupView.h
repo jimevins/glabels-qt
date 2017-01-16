@@ -24,40 +24,46 @@
 
 #include "ui_StartupView.h"
 
-// Forward references
-class MainWindow;
 
-
-///
-/// Startup View Widget
-///
-class StartupView : public QWidget, public Ui_StartupView
+namespace glabels
 {
-	Q_OBJECT
+
+	// Forward references
+	class MainWindow;
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	StartupView( MainWindow* window );
+	///
+	/// Startup View Widget
+	///
+	class StartupView : public QWidget, public Ui_StartupView
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onNewProjectButtonClicked();
-	void onOpenProjectButtonClicked();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		StartupView( MainWindow* window );
+
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onNewProjectButtonClicked();
+		void onOpenProjectButtonClicked();
 
 	
-	/////////////////////////////////
-	// Private data
-	/////////////////////////////////
-private:
-	MainWindow* mWindow;
+		/////////////////////////////////
+		// Private data
+		/////////////////////////////////
+	private:
+		MainWindow* mWindow;
 
-};
+	};
+
+}
 
 
 #endif // StartupView_h

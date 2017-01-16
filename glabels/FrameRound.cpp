@@ -21,7 +21,7 @@
 #include "FrameRound.h"
 
 
-#include "privateConstants.h"
+#include "Constants.h"
 #include "StrUtil.h"
 
 
@@ -34,13 +34,15 @@ namespace glabels
 		: mR(r), mWaste(waste), Frame(id)
 	{
 		mPath.addEllipse( 0, 0, 2*mR.pt(), 2*mR.pt() );
-		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(), 2*(mR+mWaste).pt(), 2*(mR+mWaste).pt() );
+		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(),
+		                      2*(mR+mWaste).pt(), 2*(mR+mWaste).pt() );
 	}
 	
 
 	FrameRound::FrameRound( const FrameRound& other )
 		: mR(other.mR), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
 	{
+		// empty
 	}
 	
 
@@ -99,7 +101,7 @@ namespace glabels
 	{
 		if ( FrameRound *otherRound = dynamic_cast<FrameRound*>(other) )
 		{
-			if ( fabs( mR - otherRound->mR ) <= Constants::EPSILON )
+			if ( fabs( mR - otherRound->mR ) <= EPSILON )
 			{
 				return true;
 			}

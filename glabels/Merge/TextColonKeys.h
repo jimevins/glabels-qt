@@ -24,40 +24,46 @@
 #include "Text.h"
 
 
-namespace merge
+namespace glabels
 {
-	
-	///
-	/// TextColonKeys Merge Backend
-	///
-	struct TextColonKeys : public Text
+
+	namespace merge
 	{
+	
+		///
+		/// TextColonKeys Merge Backend
+		///
+		struct TextColonKeys : public Text
+		{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	private:
-		TextColonKeys();
-		TextColonKeys( const TextColonKeys* merge );
-		virtual ~TextColonKeys();
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		private:
+			TextColonKeys();
+			TextColonKeys( const TextColonKeys* merge );
+			virtual ~TextColonKeys();
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-	public:
-		TextColonKeys* clone() const;
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+		public:
+			TextColonKeys* clone() const;
 
 
-		/////////////////////////////////
-		// Static methods
-		/////////////////////////////////
-	public:
-		static QString id();
-		static Merge* create();
+			/////////////////////////////////
+			// Static methods
+			/////////////////////////////////
+		public:
+			static QString id();
+			static Merge* create();
 
-	};
+		};
+
+	}
 
 }
+
 
 #endif // merge_TextColonKeys_h

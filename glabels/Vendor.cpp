@@ -26,6 +26,7 @@ namespace glabels
 
 	Vendor::Vendor( const QString &name, const QString &url ) : mName(name), mUrl(url)
 	{
+		// empty
 	}
 
 

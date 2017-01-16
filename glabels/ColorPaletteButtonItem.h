@@ -26,45 +26,50 @@
 #include <QWidget>
 
 
-///
-/// Color Palette Item
-///
-class ColorPaletteButtonItem : public QWidget
+namespace glabels
 {
-	Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ColorPaletteButtonItem( const QString& text, QWidget* parent = 0 );
+	///
+	/// Color Palette Item
+	///
+	class ColorPaletteButtonItem : public QWidget
+	{
+		Q_OBJECT
 
-
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void activated();
-
-
-	/////////////////////////////////
-	// Event handlers
-	/////////////////////////////////
-protected:
-	void paintEvent( QPaintEvent* event );
-	void enterEvent( QEvent* event );
-	void leaveEvent( QEvent* event );
-	void mousePressEvent( QMouseEvent* event );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ColorPaletteButtonItem( const QString& text, QWidget* parent = 0 );
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	QString mText;
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void activated();
 
-	bool        mHover;
-};
+
+		/////////////////////////////////
+		// Event handlers
+		/////////////////////////////////
+	protected:
+		void paintEvent( QPaintEvent* event );
+		void enterEvent( QEvent* event );
+		void leaveEvent( QEvent* event );
+		void mousePressEvent( QMouseEvent* event );
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		QString mText;
+
+		bool        mHover;
+	};
+
+}
 
 
 #endif // ColorPaletteButtonItem_h

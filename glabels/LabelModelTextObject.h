@@ -27,148 +27,153 @@
 #include "LabelModelObject.h"
 
 
-///
-/// Label Model Line Object
-///
-class LabelModelTextObject : public LabelModelObject
+namespace glabels
 {
-	Q_OBJECT
 
-	///////////////////////////////////////////////////////////////
-	// Lifecycle Methods
-	///////////////////////////////////////////////////////////////
-public:
-	LabelModelTextObject();
-	LabelModelTextObject( const LabelModelTextObject* object );
-	virtual ~LabelModelTextObject();
+	///
+	/// Label Model Line Object
+	///
+	class LabelModelTextObject : public LabelModelObject
+	{
+		Q_OBJECT
 
-
-	///////////////////////////////////////////////////////////////
-	// Object duplication
-	///////////////////////////////////////////////////////////////
-	virtual LabelModelTextObject* clone() const;
-
-
-	///////////////////////////////////////////////////////////////
-	// Property Implementations
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Text Property: text
-	//
-	virtual QString text() const;
-	virtual void setText( const QString &value );
+		///////////////////////////////////////////////////////////////
+		// Lifecycle Methods
+		///////////////////////////////////////////////////////////////
+	public:
+		LabelModelTextObject();
+		LabelModelTextObject( const LabelModelTextObject* object );
+		virtual ~LabelModelTextObject();
 
 
-	//
-	// Text Property: fontFamily
-	//
-	virtual QString fontFamily() const;
-	virtual void setFontFamily( const QString &value );
+		///////////////////////////////////////////////////////////////
+		// Object duplication
+		///////////////////////////////////////////////////////////////
+		virtual LabelModelTextObject* clone() const;
 
 
-	//
-	// Text Property: fontSize
-	//
-	virtual double fontSize() const;
-	virtual void setFontSize( double value );
+		///////////////////////////////////////////////////////////////
+		// Property Implementations
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Text Property: text
+		//
+		virtual QString text() const;
+		virtual void setText( const QString &value );
 
 
-	//
-	// Text Property: fontWeight
-	//
-	virtual QFont::Weight fontWeight() const;
-	virtual void setFontWeight( QFont::Weight value );
+		//
+		// Text Property: fontFamily
+		//
+		virtual QString fontFamily() const;
+		virtual void setFontFamily( const QString &value );
 
 
-	//
-	// Text Property: fontItalicFlag
-	//
-	virtual bool fontItalicFlag() const;
-	virtual void setFontItalicFlag( bool value );
+		//
+		// Text Property: fontSize
+		//
+		virtual double fontSize() const;
+		virtual void setFontSize( double value );
 
 
-	//
-	// Text Property: fontUnderlineFlag
-	//
-	virtual bool fontUnderlineFlag() const;
-	virtual void setFontUnderlineFlag( bool value );
+		//
+		// Text Property: fontWeight
+		//
+		virtual QFont::Weight fontWeight() const;
+		virtual void setFontWeight( QFont::Weight value );
 
 
-	//
-	// Text Property: textColorNode
-	//
-	virtual ColorNode textColorNode() const;
-	virtual void setTextColorNode( const ColorNode &value );
+		//
+		// Text Property: fontItalicFlag
+		//
+		virtual bool fontItalicFlag() const;
+		virtual void setFontItalicFlag( bool value );
+
+
+		//
+		// Text Property: fontUnderlineFlag
+		//
+		virtual bool fontUnderlineFlag() const;
+		virtual void setFontUnderlineFlag( bool value );
+
+
+		//
+		// Text Property: textColorNode
+		//
+		virtual ColorNode textColorNode() const;
+		virtual void setTextColorNode( const ColorNode &value );
 		
 
-	//
-	// Text Property: textHAlign
-	//
-	virtual Qt::Alignment textHAlign() const;
-	virtual void setTextHAlign( Qt::Alignment value );
+		//
+		// Text Property: textHAlign
+		//
+		virtual Qt::Alignment textHAlign() const;
+		virtual void setTextHAlign( Qt::Alignment value );
 
 
-	//
-	// Text Property: textVAlign
-	//
-	virtual Qt::Alignment textVAlign() const;
-	virtual void setTextVAlign( Qt::Alignment value );
+		//
+		// Text Property: textVAlign
+		//
+		virtual Qt::Alignment textVAlign() const;
+		virtual void setTextVAlign( Qt::Alignment value );
 
 
-	//
-	// Text Property: textLineSpacing
-	//
-	virtual double textLineSpacing() const;
-	virtual void setTextLineSpacing( double value );
+		//
+		// Text Property: textLineSpacing
+		//
+		virtual double textLineSpacing() const;
+		virtual void setTextLineSpacing( double value );
 
 
-	///////////////////////////////////////////////////////////////
-	// Capability Implementations
-	///////////////////////////////////////////////////////////////
-public:
-	virtual bool canText();
+		///////////////////////////////////////////////////////////////
+		// Capability Implementations
+		///////////////////////////////////////////////////////////////
+	public:
+		virtual bool canText();
 
 
-	///////////////////////////////////////////////////////////////
-	// Drawing operations
-	///////////////////////////////////////////////////////////////
-protected:
-	virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-	virtual QPainterPath hoverPath( double scale ) const;
+		///////////////////////////////////////////////////////////////
+		// Drawing operations
+		///////////////////////////////////////////////////////////////
+	protected:
+		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
+		virtual QPainterPath hoverPath( double scale ) const;
 
 
-	///////////////////////////////////////////////////////////////
-	// Private methods
-	///////////////////////////////////////////////////////////////
-private:
-	virtual void sizeUpdated();
-	void update();
-	void drawTextInEditor( QPainter* painter, const QColor& color ) const;
-	void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;
-	QString expandText( QString text, merge::Record* record ) const;
+		///////////////////////////////////////////////////////////////
+		// Private methods
+		///////////////////////////////////////////////////////////////
+	private:
+		virtual void sizeUpdated();
+		void update();
+		void drawTextInEditor( QPainter* painter, const QColor& color ) const;
+		void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;
+		QString expandText( QString text, merge::Record* record ) const;
 	
 
-	///////////////////////////////////////////////////////////////
-	// Private Members
-	///////////////////////////////////////////////////////////////
-private:
-	QString              mText;
-	QString              mFontFamily;
-	double               mFontSize;
-	QFont::Weight        mFontWeight;
-	bool                 mFontItalicFlag;
-	bool                 mFontUnderlineFlag;
-	ColorNode            mTextColorNode;
-	Qt::Alignment        mTextHAlign;
-	Qt::Alignment        mTextVAlign;
-	double               mTextLineSpacing;
+		///////////////////////////////////////////////////////////////
+		// Private Members
+		///////////////////////////////////////////////////////////////
+	private:
+		QString              mText;
+		QString              mFontFamily;
+		double               mFontSize;
+		QFont::Weight        mFontWeight;
+		bool                 mFontItalicFlag;
+		bool                 mFontUnderlineFlag;
+		ColorNode            mTextColorNode;
+		Qt::Alignment        mTextHAlign;
+		Qt::Alignment        mTextVAlign;
+		double               mTextLineSpacing;
 
-	QList<QTextLayout*>  mEditorLayouts;
-	QPainterPath         mHoverPath;
+		QList<QTextLayout*>  mEditorLayouts;
+		QPainterPath         mHoverPath;
 
-};
+	};
+
+}
 
 
 #endif // LabelModelTextObject_h

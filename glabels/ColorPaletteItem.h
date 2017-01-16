@@ -26,59 +26,64 @@
 #include <QWidget>
 
 
-///
-/// Color Palette Item
-///
-class ColorPaletteItem : public QWidget
+namespace glabels
 {
-	Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	ColorPaletteItem( int            id,
-	                  const QColor&  color,
-	                  const QString& tip,
-	                  QWidget*       parent = 0 );
+	///
+	/// Color Palette Item
+	///
+	class ColorPaletteItem : public QWidget
+	{
+		Q_OBJECT
 
-
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void activated( int id );
-
-
-	/////////////////////////////////
-	// Public Methods
-	/////////////////////////////////
-public:
-	void setColor( int            id,
-	               const QColor&  color,
-	               const QString& tip );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ColorPaletteItem( int            id,
+		                  const QColor&  color,
+		                  const QString& tip,
+		                  QWidget*       parent = 0 );
 
 
-	/////////////////////////////////
-	// Event handlers
-	/////////////////////////////////
-protected:
-	void paintEvent( QPaintEvent* event );
-	void enterEvent( QEvent* event );
-	void leaveEvent( QEvent* event );
-	void mousePressEvent( QMouseEvent* event );
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void activated( int id );
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	int     mId;
-	QColor  mColor;
-	QString mTip;
+		/////////////////////////////////
+		// Public Methods
+		/////////////////////////////////
+	public:
+		void setColor( int            id,
+		               const QColor&  color,
+		               const QString& tip );
 
-	bool        mHover;
-};
+
+		/////////////////////////////////
+		// Event handlers
+		/////////////////////////////////
+	protected:
+		void paintEvent( QPaintEvent* event );
+		void enterEvent( QEvent* event );
+		void leaveEvent( QEvent* event );
+		void mousePressEvent( QMouseEvent* event );
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		int     mId;
+		QColor  mColor;
+		QString mTip;
+
+		bool        mHover;
+	};
+
+}
 
 
 #endif // ColorPaletteItem_h

@@ -27,64 +27,68 @@
 
 #include "PageRenderer.h"
 
-// Forward references
-class LabelModel;
 
-
-///
-///  Preview Widget
-///
-class Preview : public QGraphicsView
+namespace glabels
 {
-	Q_OBJECT
+	
+	// Forward references
+	class LabelModel;
 
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	Preview( QWidget *parent = 0 );
+	///
+	///  Preview Widget
+	///
+	class Preview : public QGraphicsView
+	{
+		Q_OBJECT
 
 
-	/////////////////////////////////
-	// Renderer
-	/////////////////////////////////
-public:
-	void setRenderer( const PageRenderer* renderer );
-private slots:
-	void onRendererChanged();
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		Preview( QWidget *parent = 0 );
 
 
-	/////////////////////////////////////
-	// Event handlers
-	/////////////////////////////////////
-protected:
-	void resizeEvent( QResizeEvent* event );
+		/////////////////////////////////
+		// Renderer
+		/////////////////////////////////
+	public:
+		void setRenderer( const PageRenderer* renderer );
+	private slots:
+		void onRendererChanged();
+
+
+		/////////////////////////////////////
+		// Event handlers
+		/////////////////////////////////////
+	protected:
+		void resizeEvent( QResizeEvent* event );
 
 		
-	/////////////////////////////////
-	// Internal Methods
-	/////////////////////////////////
-private:
-	void clearScene();
-	void drawPaper( const glabels::Distance& pw, const glabels::Distance& ph );
-	void drawLabels();
-	void drawLabel( const glabels::Distance& x,
-	                const glabels::Distance& y,
-	                const QPainterPath&      path );
+		/////////////////////////////////
+		// Internal Methods
+		/////////////////////////////////
+	private:
+		void clearScene();
+		void drawPaper( const Distance& pw, const Distance& ph );
+		void drawLabels();
+		void drawLabel( const Distance& x, const Distance& y, const QPainterPath& path );
 		
-	void drawPreviewOverlay();
+		void drawPreviewOverlay();
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	const LabelModel*   mModel;
-	const PageRenderer* mRenderer;    
-	QGraphicsScene*     mScene;
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		const LabelModel*   mModel;
+		const PageRenderer* mRenderer;    
+		QGraphicsScene*     mScene;
 
-};
+	};
+
+}
 
 
 #endif // Preview_h

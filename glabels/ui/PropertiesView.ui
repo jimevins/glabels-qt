@@ -29,7 +29,7 @@
    <item row="0" column="4">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="SimplePreview" name="preview">
+      <widget class="glabels::SimplePreview" name="preview">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -42,7 +42,16 @@
    </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="margin">
+     <property name="leftMargin">
+      <number>12</number>
+     </property>
+     <property name="topMargin">
+      <number>12</number>
+     </property>
+     <property name="rightMargin">
+      <number>12</number>
+     </property>
+     <property name="bottomMargin">
       <number>12</number>
      </property>
      <item>
@@ -362,10 +371,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SimplePreview</class>
+   <class>glabels::SimplePreview</class>
    <extends>QGraphicsView</extends>
    <header>SimplePreview.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

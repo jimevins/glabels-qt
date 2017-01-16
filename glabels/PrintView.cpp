@@ -27,126 +27,131 @@
 #include "LabelModel.h"
 
 
-///
-/// Constructor
-///
-PrintView::PrintView( QWidget *parent )
-	: QWidget(parent), mModel(0), mBlocked(false)
+namespace glabels
 {
-	setupUi( this );
-	preview->setRenderer( &mRenderer );
 
-	mPrinter = new QPrinter( QPrinter::HighResolution );
-}
-
-
-///
-/// Destructor
-///
-PrintView::~PrintView()
-{
-	delete mPrinter;
-}
-
-
-///
-/// Set Model
-///
-void PrintView::setModel( LabelModel* model )
-{
-	mModel = model;
-	mRenderer.setModel( mModel );
-
-	connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
-
-	onFormChanged();
-}
-
-
-///
-/// Model changed handler
-///
-void PrintView::onModelChanged()
-{
-	updateView();
-}
-
-
-///
-/// Update view
-///
-void PrintView::updateView()
-{
-	copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
-
-	copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
-					 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
-
-	pageSpin->setRange( 1, mRenderer.nPages() );
-	nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
-}
-
-
-///
-/// Form changed handler
-///
-void PrintView::onFormChanged()
-{
-	if ( !mBlocked )
+	///
+	/// Constructor
+	///
+	PrintView::PrintView( QWidget *parent )
+		: QWidget(parent), mModel(0), mBlocked(false)
 	{
-		mBlocked = true;
-			
-		mRenderer.setNCopies( copiesSpin->value() );
-		mRenderer.setStartLabel( copiesStartSpin->value() - 1 );
+		setupUi( this );
+		preview->setRenderer( &mRenderer );
 
-		mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
-		mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
-		mRenderer.setPrintReverse( printReverseCheck->isChecked() );
-
-		mRenderer.setIPage( pageSpin->value() - 1 );
-
-		updateView();
-		
-		mBlocked = false;
+		mPrinter = new QPrinter( QPrinter::HighResolution );
 	}
-}
 
 
-///
-/// Print Button Clicked handler
-///
-void PrintView::onPrintButtonClicked()
-{
-	QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
-	mPrinter->setPaperSize( pageSize, QPrinter::Point );
-	mPrinter->setFullPage( true );
-	mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
-
-	QPrintDialog printDialog( mPrinter, this );
-
-	printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
-	printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
-	printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
-	printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
-	printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
-	printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
-
-	if ( printDialog.exec() == QDialog::Accepted )
+	///
+	/// Destructor
+	///
+	PrintView::~PrintView()
 	{
-		QPainter painter( mPrinter );
-			
-		QSizeF sizePx  = mPrinter->paperSize( QPrinter::DevicePixel );
-		QSizeF sizePts = mPrinter->paperSize( QPrinter::Point );
-		painter.scale( sizePx.width()/sizePts.width(), sizePx.height()/sizePts.height() );
+		delete mPrinter;
+	}
 
-		for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
+
+	///
+	/// Set Model
+	///
+	void PrintView::setModel( LabelModel* model )
+	{
+		mModel = model;
+		mRenderer.setModel( mModel );
+
+		connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
+
+		onFormChanged();
+	}
+
+
+	///
+	/// Model changed handler
+	///
+	void PrintView::onModelChanged()
+	{
+		updateView();
+	}
+
+
+	///
+	/// Update view
+	///
+	void PrintView::updateView()
+	{
+		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
+
+		copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
+		                                 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
+
+		pageSpin->setRange( 1, mRenderer.nPages() );
+		nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
+	}
+
+
+	///
+	/// Form changed handler
+	///
+	void PrintView::onFormChanged()
+	{
+		if ( !mBlocked )
 		{
-			if ( iPage )
-			{
-				mPrinter->newPage();
-			}
+			mBlocked = true;
+			
+			mRenderer.setNCopies( copiesSpin->value() );
+			mRenderer.setStartLabel( copiesStartSpin->value() - 1 );
 
-			mRenderer.printPage( &painter, iPage );
+			mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
+			mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
+			mRenderer.setPrintReverse( printReverseCheck->isChecked() );
+
+			mRenderer.setIPage( pageSpin->value() - 1 );
+
+			updateView();
+		
+			mBlocked = false;
 		}
 	}
+
+
+	///
+	/// Print Button Clicked handler
+	///
+	void PrintView::onPrintButtonClicked()
+	{
+		QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
+		mPrinter->setPaperSize( pageSize, QPrinter::Point );
+		mPrinter->setFullPage( true );
+		mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
+
+		QPrintDialog printDialog( mPrinter, this );
+
+		printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
+		printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
+		printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
+		printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
+		printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
+		printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
+
+		if ( printDialog.exec() == QDialog::Accepted )
+		{
+			QPainter painter( mPrinter );
+			
+			QSizeF sizePx  = mPrinter->paperSize( QPrinter::DevicePixel );
+			QSizeF sizePts = mPrinter->paperSize( QPrinter::Point );
+			painter.scale( sizePx.width()/sizePts.width(), sizePx.height()/sizePts.height() );
+
+			for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
+			{
+				if ( iPage )
+				{
+					mPrinter->newPage();
+				}
+
+				mRenderer.printPage( &painter, iPage );
+			}
+		}
+	}
+
 }

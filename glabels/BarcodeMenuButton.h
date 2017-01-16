@@ -28,49 +28,54 @@
 #include "BarcodeStyle.h"
 
 
-///
-/// Barcode Menu Button
-///
-class BarcodeMenuButton : public QPushButton
+namespace glabels
 {
-	Q_OBJECT
+	
+	///
+	/// Barcode Menu Button
+	///
+	class BarcodeMenuButton : public QPushButton
+	{
+		Q_OBJECT
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	BarcodeMenuButton( QWidget* parent = 0 );
-
-
-	/////////////////////////////////
-	// Signals
-	/////////////////////////////////
-signals:
-	void styleChanged();
-
-
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	const BarcodeStyle* bcStyle() const;
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		BarcodeMenuButton( QWidget* parent = 0 );
 
 
-	/////////////////////////////////
-	// Slots
-	/////////////////////////////////
-private slots:
-	void onMenuStyleChanged();
+		/////////////////////////////////
+		// Signals
+		/////////////////////////////////
+	signals:
+		void styleChanged();
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
-	BarcodeMenu*  mMenu;
-	const BarcodeStyle* mBcStyle;
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		const BarcodeStyle* bcStyle() const;
 
-};
+
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onMenuStyleChanged();
+
+
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+		BarcodeMenu*  mMenu;
+		const BarcodeStyle* mBcStyle;
+
+	};
+
+}
 
 
 #endif // BarcodeMenuButton_h

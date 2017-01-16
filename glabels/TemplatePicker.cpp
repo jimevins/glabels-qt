@@ -26,123 +26,128 @@
 #include "TemplatePickerItem.h"
 
 
-///
-/// Constructor
-///
-TemplatePicker::TemplatePicker( QWidget *parent ) : QListWidget(parent)
+namespace glabels
 {
-	setViewMode( QListView::IconMode );
-	setResizeMode( QListView::Adjust );
-	setSpacing( 24 );
-	setWordWrap( true );
-	setUniformItemSizes( true );
-	setIconSize( QSize(glabels::TEMPLATE_PREVIEW_SIZE, glabels::TEMPLATE_PREVIEW_SIZE) );
-}
 
-
-///
-/// Set List of Templates to Pick From
-///
-void TemplatePicker::setTemplates( const QList <glabels::Template*> &tmplates )
-{
-	foreach (glabels::Template *tmplate, tmplates)
+	///
+	/// Constructor
+	///
+	TemplatePicker::TemplatePicker( QWidget *parent ) : QListWidget(parent)
 	{
-		TemplatePickerItem *item = new TemplatePickerItem( tmplate, this );
+		setViewMode( QListView::IconMode );
+		setResizeMode( QListView::Adjust );
+		setSpacing( 24 );
+		setWordWrap( true );
+		setUniformItemSizes( true );
+		setIconSize( QSize(TEMPLATE_PREVIEW_SIZE, TEMPLATE_PREVIEW_SIZE) );
 	}
-}
 
 
-///
-/// Apply Filter to Narrow Template Choices by search criteria
-///
-void TemplatePicker::applyFilter( const QString& searchString,
-				  bool isoMask, bool usMask, bool otherMask,
-				  bool anyCategory, const QStringList& categoryIds )
-{
-	foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
+	///
+	/// Set List of Templates to Pick From
+	///
+	void TemplatePicker::setTemplates( const QList <Template*> &tmplates )
 	{
-		TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
-
-		bool nameMask = tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive );
-		
-		bool sizeMask =
-			(isoMask   && tItem->tmplate()->isSizeIso())   ||
-			(usMask    && tItem->tmplate()->isSizeUs())    ||
-			(otherMask && tItem->tmplate()->isSizeOther());
-
-		bool categoryMask;
-		if ( anyCategory )
+		foreach (Template *tmplate, tmplates)
 		{
-			categoryMask = true;
+			TemplatePickerItem *item = new TemplatePickerItem( tmplate, this );
 		}
-		else
+	}
+
+
+	///
+	/// Apply Filter to Narrow Template Choices by search criteria
+	///
+	void TemplatePicker::applyFilter( const QString& searchString,
+	                                  bool isoMask, bool usMask, bool otherMask,
+	                                  bool anyCategory, const QStringList& categoryIds )
+	{
+		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 		{
-			categoryMask = false;
-			foreach ( QString id, categoryIds )
+			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
+
+			bool nameMask = tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive );
+		
+			bool sizeMask =
+				(isoMask   && tItem->tmplate()->isSizeIso())   ||
+				(usMask    && tItem->tmplate()->isSizeUs())    ||
+				(otherMask && tItem->tmplate()->isSizeOther());
+
+			bool categoryMask;
+			if ( anyCategory )
 			{
-				categoryMask = categoryMask || tItem->tmplate()->hasCategory( id );
+				categoryMask = true;
+			}
+			else
+			{
+				categoryMask = false;
+				foreach ( QString id, categoryIds )
+				{
+					categoryMask = categoryMask || tItem->tmplate()->hasCategory( id );
+				}
+			}
+		
+
+			if (  nameMask && sizeMask && categoryMask )
+			{
+				item->setHidden( false );
+			}
+			else
+			{
+				item->setHidden( true );
+				item->setSelected( false );
 			}
 		}
-		
-
-		if (  nameMask && sizeMask && categoryMask )
-		{
-			item->setHidden( false );
-		}
-		else
-		{
-			item->setHidden( true );
-			item->setSelected( false );
-		}
 	}
-}
 
 
-///
-/// Apply Filter to Narrow Template Choices by a list of names
-///
-void TemplatePicker::applyFilter( const QStringList& names )
-{
-	foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
+	///
+	/// Apply Filter to Narrow Template Choices by a list of names
+	///
+	void TemplatePicker::applyFilter( const QStringList& names )
 	{
-		TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
-
-		bool match = false;
-		foreach ( QString name, names )
+		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 		{
-			if ( tItem->tmplate()->name() == name )
+			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
+
+			bool match = false;
+			foreach ( QString name, names )
 			{
-				match = true;
-				break;
+				if ( tItem->tmplate()->name() == name )
+				{
+					match = true;
+					break;
+				}
+			}
+
+			if (  match )
+			{
+				item->setHidden( false );
+			}
+			else
+			{
+				item->setHidden( true );
+				item->setSelected( false );
 			}
 		}
+	}
 
-		if (  match )
+
+	///
+	/// Get Currently Selected Template
+	///
+	const Template *TemplatePicker::selectedTemplate()
+	{
+		QList<QListWidgetItem *> items = selectedItems();
+		if ( items.isEmpty() )
 		{
-			item->setHidden( false );
+			return NULL;
 		}
 		else
 		{
-			item->setHidden( true );
-			item->setSelected( false );
+			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
+			return tItem->tmplate();
 		}
 	}
-}
 
-
-///
-/// Get Currently Selected Template
-///
-const glabels::Template *TemplatePicker::selectedTemplate()
-{
-	QList<QListWidgetItem *> items = selectedItems();
-	if ( items.isEmpty() )
-	{
-		return NULL;
-	}
-	else
-	{
-		TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
-		return tItem->tmplate();
-	}
 }

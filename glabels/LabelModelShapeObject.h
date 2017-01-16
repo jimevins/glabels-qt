@@ -25,66 +25,71 @@
 #include "LabelModelObject.h"
 
 
-///
-/// Label Model Shape Object (Box or Ellipse)
-///
-class LabelModelShapeObject : public LabelModelObject
+namespace glabels
 {
-	Q_OBJECT
 
-	///////////////////////////////////////////////////////////////
-	// Lifecycle Methods
-	///////////////////////////////////////////////////////////////
-protected:
-	LabelModelShapeObject();
-	LabelModelShapeObject( const LabelModelShapeObject* object );
-public:
-	virtual ~LabelModelShapeObject();
+	///
+	/// Label Model Shape Object (Box or Ellipse)
+	///
+	class LabelModelShapeObject : public LabelModelObject
+	{
+		Q_OBJECT
 
-
-	///////////////////////////////////////////////////////////////
-	// Property Implementations
-	///////////////////////////////////////////////////////////////
-public:
-	//
-	// Shape Property: lineWidth
-	//
-	virtual glabels::Distance lineWidth( void ) const;
-	virtual void setLineWidth( const glabels::Distance& value );
+		///////////////////////////////////////////////////////////////
+		// Lifecycle Methods
+		///////////////////////////////////////////////////////////////
+	protected:
+		LabelModelShapeObject();
+		LabelModelShapeObject( const LabelModelShapeObject* object );
+	public:
+		virtual ~LabelModelShapeObject();
 
 
-	//
-	// Shape Property: lineColorNode
-	//
-	virtual ColorNode lineColorNode( void ) const;
-	virtual void setLineColorNode( const ColorNode& value );
+		///////////////////////////////////////////////////////////////
+		// Property Implementations
+		///////////////////////////////////////////////////////////////
+	public:
+		//
+		// Shape Property: lineWidth
+		//
+		virtual Distance lineWidth( void ) const;
+		virtual void setLineWidth( const Distance& value );
+
+
+		//
+		// Shape Property: lineColorNode
+		//
+		virtual ColorNode lineColorNode( void ) const;
+		virtual void setLineColorNode( const ColorNode& value );
 		
 
-	//
-	// Shape Property: fillColorNode
-	//
-	virtual ColorNode fillColorNode( void ) const;
-	virtual void setFillColorNode( const ColorNode& value );
+		//
+		// Shape Property: fillColorNode
+		//
+		virtual ColorNode fillColorNode( void ) const;
+		virtual void setFillColorNode( const ColorNode& value );
 		
 
-	///////////////////////////////////////////////////////////////
-	// Capability Implementations
-	///////////////////////////////////////////////////////////////
-public:
-	virtual bool canFill();
-	virtual bool canLineColor();
-	virtual bool canLineWidth();
+		///////////////////////////////////////////////////////////////
+		// Capability Implementations
+		///////////////////////////////////////////////////////////////
+	public:
+		virtual bool canFill();
+		virtual bool canLineColor();
+		virtual bool canLineWidth();
 
 
-	///////////////////////////////////////////////////////////////
-	// Private Members
-	///////////////////////////////////////////////////////////////
-protected:
-	glabels::Distance    mLineWidth;
-	ColorNode            mLineColorNode;
-	ColorNode            mFillColorNode;
+		///////////////////////////////////////////////////////////////
+		// Private Members
+		///////////////////////////////////////////////////////////////
+	protected:
+		Distance             mLineWidth;
+		ColorNode            mLineColorNode;
+		ColorNode            mFillColorNode;
 
-};
+	};
+
+}
 
 
 #endif // LabelModelShapeObject_h

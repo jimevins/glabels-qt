@@ -27,63 +27,68 @@
 #include "Merge/Record.h"
 
 
-///
-/// Text Node Type
-///
-struct TextNode
+namespace glabels
 {
 
-	/////////////////////////////////
-	// Life Cycle
-	/////////////////////////////////
-public:
-	TextNode();
+	///
+	/// Text Node Type
+	///
+	struct TextNode
+	{
 
-	TextNode( bool isField, const QString &data );
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		TextNode();
 
-
-	/////////////////////////////////
-	// Operators
-	/////////////////////////////////
-public:
-	bool operator==( const TextNode& other );
-
-	bool operator!=( const TextNode& other );
+		TextNode( bool isField, const QString &data );
 
 
-	/////////////////////////////////
-	// Properties
-	/////////////////////////////////
-public:
-	//
-	// is field? Property
-	//
-	bool isField() const;
-	void setField( bool isField );
+		/////////////////////////////////
+		// Operators
+		/////////////////////////////////
+	public:
+		bool operator==( const TextNode& other );
 
-	//
-	// Data Property
-	//
-	const QString& data() const;
-	void setData( const QString& data );
+		bool operator!=( const TextNode& other );
 
 
-	/////////////////////////////////
-	// Misc. Methods
-	/////////////////////////////////
-	QString text( merge::Record* record ) const;
-	bool isEmptyField( merge::Record* record ) const;
+		/////////////////////////////////
+		// Properties
+		/////////////////////////////////
+	public:
+		//
+		// is field? Property
+		//
+		bool isField() const;
+		void setField( bool isField );
+
+		//
+		// Data Property
+		//
+		const QString& data() const;
+		void setData( const QString& data );
 
 
-	/////////////////////////////////
-	// Private Data
-	/////////////////////////////////
-private:
+		/////////////////////////////////
+		// Misc. Methods
+		/////////////////////////////////
+		QString text( merge::Record* record ) const;
+		bool isEmptyField( merge::Record* record ) const;
 
-	bool    mIsField;
-	QString mData;
 
-};
+		/////////////////////////////////
+		// Private Data
+		/////////////////////////////////
+	private:
+
+		bool    mIsField;
+		QString mData;
+
+	};
+
+}
 
 
 #endif // TextNode_h
