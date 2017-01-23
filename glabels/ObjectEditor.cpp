@@ -313,7 +313,7 @@ namespace glabels
 
 				if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
 				{
-					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.png") );
+					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.svg") );
 					titleLabel->setText( tr("Box object properties") );
 
 					notebook->addTab( lineFillPage, "line/fill" );
@@ -334,7 +334,7 @@ namespace glabels
 				}
 				else if ( dynamic_cast<LabelModelEllipseObject*>(mObject) )
 				{
-					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-ellipse.png") );
+					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-ellipse.svg") );
 					titleLabel->setText( tr("Ellipse object properties") );
 
 					notebook->addTab( lineFillPage, "line/fill" );
@@ -355,7 +355,7 @@ namespace glabels
 				}
 				else if ( dynamic_cast<LabelModelImageObject*>(mObject) )
 				{
-					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-image.png") );
+					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-image.svg") );
 					titleLabel->setText( tr("Image object properties") );
 
 					notebook->addTab( imagePage, "image" );
@@ -375,7 +375,7 @@ namespace glabels
 				}
 				else if ( dynamic_cast<LabelModelLineObject*>(mObject) )
 				{
-					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-line.png") );
+					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-line.svg") );
 					titleLabel->setText( tr("Line object properties") );
 
 					notebook->addTab( lineFillPage, "line/fill" );
@@ -396,7 +396,7 @@ namespace glabels
 				}
 				else if ( dynamic_cast<LabelModelTextObject*>(mObject) )
 				{
-					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-text.png") );
+					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-text.svg") );
 					titleLabel->setText( tr("Text object properties") );
 
 					notebook->addTab( textPage, "text" );

@@ -2,6 +2,7 @@
 
 <RCC version="1.0">
 <qresource>
+
 	<file>icons/16x16/actions/edit-clear.png</file>
 	<file>icons/16x16/actions/edit-find.png</file>
 	<file>icons/16x16/actions/glabels-align-bottom.png</file>
@@ -30,25 +31,34 @@
 	<file>icons/16x16/actions/glabels-rotate-right.png</file>
 	<file>icons/16x16/actions/glabels-text.png</file>
 	<file>icons/16x16/apps/glabels.png</file>
+	
+	<file>icons/22x22/actions/glabels-arrow.svg</file>
+	<file>icons/22x22/actions/glabels-barcode.svg</file>
+	<file>icons/22x22/actions/glabels-box.svg</file>
+	<file>icons/22x22/actions/glabels-ellipse.svg</file>
+	<file>icons/22x22/actions/glabels-image.svg</file>
+	<file>icons/22x22/actions/glabels-line.svg</file>
+	<file>icons/22x22/actions/glabels-text.svg</file>
+	
 	<file>icons/24x24/actions/edit-clear.png</file>
 	<file>icons/24x24/actions/edit-find.png</file>
 	<file>icons/24x24/actions/glabels-align-text-center.png</file>
 	<file>icons/24x24/actions/glabels-align-text-left.png</file>
 	<file>icons/24x24/actions/glabels-align-text-right.png</file>
-	<file>icons/24x24/actions/glabels-arrow.png</file>
-	<file>icons/24x24/actions/glabels-barcode.png</file>
-	<file>icons/24x24/actions/glabels-box.png</file>
+	<file>icons/24x24/actions/glabels-arrow.svg</file>
+	<file>icons/24x24/actions/glabels-barcode.svg</file>
+	<file>icons/24x24/actions/glabels-box.svg</file>
 	<file>icons/24x24/actions/glabels-bucket-fill.png</file>
-	<file>icons/24x24/actions/glabels-ellipse.png</file>
+	<file>icons/24x24/actions/glabels-ellipse.svg</file>
 	<file>icons/24x24/actions/glabels-format-text-bold.png</file>
 	<file>icons/24x24/actions/glabels-format-text-italic.png</file>
 	<file>icons/24x24/actions/glabels-format-text-underline.png</file>
-	<file>icons/24x24/actions/glabels-image.png</file>
-	<file>icons/24x24/actions/glabels-line.png</file>
+	<file>icons/24x24/actions/glabels-image.svg</file>
+	<file>icons/24x24/actions/glabels-line.svg</file>
 	<file>icons/24x24/actions/glabels-merge.png</file>
 	<file>icons/24x24/actions/glabels-object-properties.png</file>
 	<file>icons/24x24/actions/glabels-pencil.png</file>
-	<file>icons/24x24/actions/glabels-text.png</file>
+	<file>icons/24x24/actions/glabels-text.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-bottom.png</file>
 	<file>icons/24x24/actions/glabels-valign-text-middle.png</file>
 	<file>icons/24x24/actions/glabels-valign-text-top.png</file>
@@ -65,12 +75,16 @@
 	<file>icons/24x24/actions/zoom-original.png</file>
 	<file>icons/24x24/actions/zoom-out.png</file>
 	<file>icons/24x24/apps/glabels.png</file>
+
 	<file>icons/32x32/apps/glabels.png</file>
 	<file>icons/32x32/actions/file-print.png</file>
 	<file>icons/32x32/actions/horizontal-orientation.png</file>
 	<file>icons/32x32/actions/select-product.png</file>
 	<file>icons/32x32/actions/vertical-orientation.png</file>
+
 	<file>icons/48x48/apps/glabels.png</file>
+
 	<file>icons/scalable/apps/glabels.svg</file>
+
 </qresource>
 </RCC>

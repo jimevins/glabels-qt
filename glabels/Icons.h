@@ -40,7 +40,8 @@ namespace glabels
 			Arrow()
 			{
 				addFile( ":icons/16x16/actions/glabels-arrow.png" );
-				addFile( ":icons/24x24/actions/glabels-arrow.png" );
+				addFile( ":icons/22x22/actions/glabels-arrow.svg" );
+				addFile( ":icons/24x24/actions/glabels-arrow.svg" );
 			}
 		};
 
@@ -51,7 +52,8 @@ namespace glabels
 			Barcode()
 			{
 				addFile( ":icons/16x16/actions/glabels-barcode.png" );
-				addFile( ":icons/24x24/actions/glabels-barcode.png" );
+				addFile( ":icons/22x22/actions/glabels-barcode.svg" );
+				addFile( ":icons/24x24/actions/glabels-barcode.svg" );
 			}
 		};
 
@@ -62,7 +64,8 @@ namespace glabels
 			Box()
 			{
 				addFile( ":icons/16x16/actions/glabels-box.png" );
-				addFile( ":icons/24x24/actions/glabels-box.png" );
+				addFile( ":icons/22x22/actions/glabels-box.svg" );
+				addFile( ":icons/24x24/actions/glabels-box.svg" );
 			}
 		};
 
@@ -73,7 +76,8 @@ namespace glabels
 			Ellipse()
 			{
 				addFile( ":icons/16x16/actions/glabels-ellipse.png" );
-				addFile( ":icons/24x24/actions/glabels-ellipse.png" );
+				addFile( ":icons/22x22/actions/glabels-ellipse.svg" );
+				addFile( ":icons/24x24/actions/glabels-ellipse.svg" );
 			}
 		};
 
@@ -84,7 +88,8 @@ namespace glabels
 			Image()
 			{
 				addFile( ":icons/16x16/actions/glabels-image.png" );
-				addFile( ":icons/24x24/actions/glabels-image.png" );
+				addFile( ":icons/22x22/actions/glabels-image.svg" );
+				addFile( ":icons/24x24/actions/glabels-image.svg" );
 			}
 		};
 
@@ -95,7 +100,8 @@ namespace glabels
 			Line()
 			{
 				addFile( ":icons/16x16/actions/glabels-line.png" );
-				addFile( ":icons/24x24/actions/glabels-line.png" );
+				addFile( ":icons/22x22/actions/glabels-line.svg" );
+				addFile( ":icons/24x24/actions/glabels-line.svg" );
 			}
 		};
 
@@ -106,7 +112,8 @@ namespace glabels
 			Text()
 			{
 				addFile( ":icons/16x16/actions/glabels-text.png" );
-				addFile( ":icons/24x24/actions/glabels-text.png" );
+				addFile( ":icons/22x22/actions/glabels-text.svg" );
+				addFile( ":icons/24x24/actions/glabels-text.svg" );
 			}
 		};
 
