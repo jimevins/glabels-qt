@@ -35,7 +35,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>5</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -66,7 +66,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-align-text-left.png</normaloff>:/icons/24x24/actions/glabels-align-text-left.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-align-text-left.svg</normaloff>:/icons/22x22/actions/glabels-align-text-left.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -86,7 +92,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-align-text-center.png</normaloff>:/icons/24x24/actions/glabels-align-text-center.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-align-text-center.svg</normaloff>:/icons/22x22/actions/glabels-align-text-center.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -103,7 +115,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-align-text-right.png</normaloff>:/icons/24x24/actions/glabels-align-text-right.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-align-text-right.svg</normaloff>:/icons/22x22/actions/glabels-align-text-right.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -131,7 +149,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-valign-text-top.png</normaloff>:/icons/24x24/actions/glabels-valign-text-top.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-valign-text-top.svg</normaloff>:/icons/22x22/actions/glabels-valign-text-top.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -151,7 +175,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-valign-text-middle.png</normaloff>:/icons/24x24/actions/glabels-valign-text-middle.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-valign-text-middle.svg</normaloff>:/icons/22x22/actions/glabels-valign-text-middle.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -168,7 +198,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-valign-text-bottom.png</normaloff>:/icons/24x24/actions/glabels-valign-text-bottom.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-valign-text-bottom.svg</normaloff>:/icons/22x22/actions/glabels-valign-text-bottom.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -1199,16 +1235,7 @@
              <property name="spacing">
               <number>15</number>
              </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
+             <property name="margin">
               <number>0</number>
              </property>
              <item>

@@ -146,6 +146,8 @@ namespace glabels
 			AlignLeft()
 			{
 				addFile( ":icons/16x16/actions/glabels-align-left.png" );
+				addFile( ":icons/22x22/actions/glabels-align-left.svg" );
+				addFile( ":icons/24x24/actions/glabels-align-left.svg" );
 			}
 		};
 
@@ -280,12 +282,46 @@ namespace glabels
 		};
 
 
+		class AlignTextLeft : public QIcon
+		{
+		public:
+			AlignTextLeft()
+			{
+				addFile( ":icons/22x22/actions/glabels-align-text-left.svg" );
+				addFile( ":icons/24x24/actions/glabels-align-text-left.svg" );
+			}
+		};
+
+
+		class AlignTextCenter : public QIcon
+		{
+		public:
+			AlignTextCenter()
+			{
+				addFile( ":icons/22x22/actions/glabels-align-text-center.svg" );
+				addFile( ":icons/24x24/actions/glabels-align-text-center.svg" );
+			}
+		};
+
+
+		class AlignTextRight : public QIcon
+		{
+		public:
+			AlignTextRight()
+			{
+				addFile( ":icons/22x22/actions/glabels-align-text-right.svg" );
+				addFile( ":icons/24x24/actions/glabels-align-text-right.svg" );
+			}
+		};
+
+
 		class AlignTextBottom : public QIcon
 		{
 		public:
 			AlignTextBottom()
 			{
-				addFile( ":icons/24x24/actions/glabels-align-text-bottom.png" );
+				addFile( ":icons/22x22/actions/glabels-valign-text-bottom.svg" );
+				addFile( ":icons/24x24/actions/glabels-valign-text-bottom.svg" );
 			}
 		};
 
@@ -295,7 +331,8 @@ namespace glabels
 		public:
 			AlignTextMiddle()
 			{
-				addFile( ":icons/24x24/actions/glabels-align-text-middle.png" );
+				addFile( ":icons/22x22/actions/glabels-valign-text-middle.svg" );
+				addFile( ":icons/24x24/actions/glabels-valign-text-middle.svg" );
 			}
 		};
 
@@ -305,7 +342,8 @@ namespace glabels
 		public:
 			AlignTextTop()
 			{
-				addFile( ":icons/24x24/actions/glabels-align-text-top.png" );
+				addFile( ":icons/22x22/actions/glabels-valign-text-top.svg" );
+				addFile( ":icons/24x24/actions/glabels-valign-text-top.svg" );
 			}
 		};
 

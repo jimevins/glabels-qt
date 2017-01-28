@@ -32,6 +32,9 @@
 	<file>icons/16x16/actions/glabels-text.png</file>
 	<file>icons/16x16/apps/glabels.png</file>
 	
+	<file>icons/22x22/actions/glabels-align-text-center.svg</file>
+	<file>icons/22x22/actions/glabels-align-text-left.svg</file>
+	<file>icons/22x22/actions/glabels-align-text-right.svg</file>
 	<file>icons/22x22/actions/glabels-arrow.svg</file>
 	<file>icons/22x22/actions/glabels-barcode.svg</file>
 	<file>icons/22x22/actions/glabels-box.svg</file>
@@ -39,12 +42,15 @@
 	<file>icons/22x22/actions/glabels-image.svg</file>
 	<file>icons/22x22/actions/glabels-line.svg</file>
 	<file>icons/22x22/actions/glabels-text.svg</file>
+	<file>icons/22x22/actions/glabels-valign-text-bottom.svg</file>
+	<file>icons/22x22/actions/glabels-valign-text-middle.svg</file>
+	<file>icons/22x22/actions/glabels-valign-text-top.svg</file>
 	
 	<file>icons/24x24/actions/edit-clear.png</file>
 	<file>icons/24x24/actions/edit-find.png</file>
-	<file>icons/24x24/actions/glabels-align-text-center.png</file>
-	<file>icons/24x24/actions/glabels-align-text-left.png</file>
-	<file>icons/24x24/actions/glabels-align-text-right.png</file>
+	<file>icons/24x24/actions/glabels-align-text-center.svg</file>
+	<file>icons/24x24/actions/glabels-align-text-left.svg</file>
+	<file>icons/24x24/actions/glabels-align-text-right.svg</file>
 	<file>icons/24x24/actions/glabels-arrow.svg</file>
 	<file>icons/24x24/actions/glabels-barcode.svg</file>
 	<file>icons/24x24/actions/glabels-box.svg</file>
@@ -59,9 +65,9 @@
 	<file>icons/24x24/actions/glabels-object-properties.png</file>
 	<file>icons/24x24/actions/glabels-pencil.png</file>
 	<file>icons/24x24/actions/glabels-text.svg</file>
-	<file>icons/24x24/actions/glabels-valign-text-bottom.png</file>
-	<file>icons/24x24/actions/glabels-valign-text-middle.png</file>
-	<file>icons/24x24/actions/glabels-valign-text-top.png</file>
+	<file>icons/24x24/actions/glabels-valign-text-bottom.svg</file>
+	<file>icons/24x24/actions/glabels-valign-text-middle.svg</file>
+	<file>icons/24x24/actions/glabels-valign-text-top.svg</file>
 	<file>icons/24x24/actions/edit-copy.png</file>
 	<file>icons/24x24/actions/edit-cut.png</file>
 	<file>icons/24x24/actions/edit-paste.png</file>
