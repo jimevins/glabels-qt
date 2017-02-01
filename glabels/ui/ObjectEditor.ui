@@ -315,7 +315,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-format-text-bold.png</normaloff>:/icons/24x24/actions/glabels-format-text-bold.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-format-text-bold.svg</normaloff>:/icons/22x22/actions/glabels-format-text-bold.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -332,7 +338,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-format-text-italic.png</normaloff>:/icons/24x24/actions/glabels-format-text-italic.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-format-text-italic.svg</normaloff>:/icons/22x22/actions/glabels-format-text-italic.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -346,7 +358,13 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/24x24/actions/glabels-format-text-underline.png</normaloff>:/icons/24x24/actions/glabels-format-text-underline.png</iconset>
+                  <normaloff>:/icons/22x22/actions/glabels-format-text-underline.svg</normaloff>:/icons/22x22/actions/glabels-format-text-underline.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>

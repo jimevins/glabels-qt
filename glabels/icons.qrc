@@ -39,6 +39,9 @@
 	<file>icons/22x22/actions/glabels-barcode.svg</file>
 	<file>icons/22x22/actions/glabels-box.svg</file>
 	<file>icons/22x22/actions/glabels-ellipse.svg</file>
+	<file>icons/22x22/actions/glabels-format-text-bold.svg</file>
+	<file>icons/22x22/actions/glabels-format-text-italic.svg</file>
+	<file>icons/22x22/actions/glabels-format-text-underline.svg</file>
 	<file>icons/22x22/actions/glabels-image.svg</file>
 	<file>icons/22x22/actions/glabels-line.svg</file>
 	<file>icons/22x22/actions/glabels-text.svg</file>
@@ -56,9 +59,9 @@
 	<file>icons/24x24/actions/glabels-box.svg</file>
 	<file>icons/24x24/actions/glabels-bucket-fill.png</file>
 	<file>icons/24x24/actions/glabels-ellipse.svg</file>
-	<file>icons/24x24/actions/glabels-format-text-bold.png</file>
-	<file>icons/24x24/actions/glabels-format-text-italic.png</file>
-	<file>icons/24x24/actions/glabels-format-text-underline.png</file>
+	<file>icons/24x24/actions/glabels-format-text-bold.svg</file>
+	<file>icons/24x24/actions/glabels-format-text-italic.svg</file>
+	<file>icons/24x24/actions/glabels-format-text-underline.svg</file>
 	<file>icons/24x24/actions/glabels-image.svg</file>
 	<file>icons/24x24/actions/glabels-line.svg</file>
 	<file>icons/24x24/actions/glabels-merge.png</file>
