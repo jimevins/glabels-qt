@@ -39,9 +39,9 @@ namespace glabels
 		public:
 			Arrow()
 			{
-				addFile( ":icons/16x16/actions/glabels-arrow.png" );
-				addFile( ":icons/22x22/actions/glabels-arrow.svg" );
-				addFile( ":icons/24x24/actions/glabels-arrow.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-arrow.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-arrow.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-arrow.svg" ) );
 			}
 		};
 
@@ -51,9 +51,9 @@ namespace glabels
 		public:
 			Barcode()
 			{
-				addFile( ":icons/16x16/actions/glabels-barcode.png" );
-				addFile( ":icons/22x22/actions/glabels-barcode.svg" );
-				addFile( ":icons/24x24/actions/glabels-barcode.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-barcode.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-barcode.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-barcode.svg" ) );
 			}
 		};
 
@@ -63,9 +63,9 @@ namespace glabels
 		public:
 			Box()
 			{
-				addFile( ":icons/16x16/actions/glabels-box.png" );
-				addFile( ":icons/22x22/actions/glabels-box.svg" );
-				addFile( ":icons/24x24/actions/glabels-box.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-box.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-box.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-box.svg" ) );
 			}
 		};
 
@@ -75,9 +75,9 @@ namespace glabels
 		public:
 			Ellipse()
 			{
-				addFile( ":icons/16x16/actions/glabels-ellipse.png" );
-				addFile( ":icons/22x22/actions/glabels-ellipse.svg" );
-				addFile( ":icons/24x24/actions/glabels-ellipse.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-ellipse.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-ellipse.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-ellipse.svg" ) );
 			}
 		};
 
@@ -87,9 +87,9 @@ namespace glabels
 		public:
 			Image()
 			{
-				addFile( ":icons/16x16/actions/glabels-image.png" );
-				addFile( ":icons/22x22/actions/glabels-image.svg" );
-				addFile( ":icons/24x24/actions/glabels-image.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-image.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-image.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-image.svg" ) );
 			}
 		};
 
@@ -99,9 +99,9 @@ namespace glabels
 		public:
 			Line()
 			{
-				addFile( ":icons/16x16/actions/glabels-line.png" );
-				addFile( ":icons/22x22/actions/glabels-line.svg" );
-				addFile( ":icons/24x24/actions/glabels-line.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-line.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-line.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-line.svg" ) );
 			}
 		};
 
@@ -111,9 +111,9 @@ namespace glabels
 		public:
 			Text()
 			{
-				addFile( ":icons/16x16/actions/glabels-text.png" );
-				addFile( ":icons/22x22/actions/glabels-text.svg" );
-				addFile( ":icons/24x24/actions/glabels-text.svg" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-text.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-text.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-text.svg" ) );
 			}
 		};
 
@@ -146,8 +146,8 @@ namespace glabels
 			AlignLeft()
 			{
 				addFile( ":icons/16x16/actions/glabels-align-left.png" );
-				addFile( ":icons/22x22/actions/glabels-align-left.svg" );
-				addFile( ":icons/24x24/actions/glabels-align-left.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-left.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-left.svg" ) );
 			}
 		};
 
@@ -287,8 +287,8 @@ namespace glabels
 		public:
 			AlignTextLeft()
 			{
-				addFile( ":icons/22x22/actions/glabels-align-text-left.svg" );
-				addFile( ":icons/24x24/actions/glabels-align-text-left.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-text-left.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-text-left.svg" ) );
 			}
 		};
 
@@ -298,8 +298,8 @@ namespace glabels
 		public:
 			AlignTextCenter()
 			{
-				addFile( ":icons/22x22/actions/glabels-align-text-center.svg" );
-				addFile( ":icons/24x24/actions/glabels-align-text-center.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-text-center.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-text-center.svg" ) );
 			}
 		};
 
@@ -309,8 +309,8 @@ namespace glabels
 		public:
 			AlignTextRight()
 			{
-				addFile( ":icons/22x22/actions/glabels-align-text-right.svg" );
-				addFile( ":icons/24x24/actions/glabels-align-text-right.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-text-right.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-text-right.svg" ) );
 			}
 		};
 
@@ -320,8 +320,8 @@ namespace glabels
 		public:
 			AlignTextBottom()
 			{
-				addFile( ":icons/22x22/actions/glabels-valign-text-bottom.svg" );
-				addFile( ":icons/24x24/actions/glabels-valign-text-bottom.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-valign-text-bottom.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-valign-text-bottom.svg" ) );
 			}
 		};
 
@@ -331,8 +331,8 @@ namespace glabels
 		public:
 			AlignTextMiddle()
 			{
-				addFile( ":icons/22x22/actions/glabels-valign-text-middle.svg" );
-				addFile( ":icons/24x24/actions/glabels-valign-text-middle.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-valign-text-middle.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-valign-text-middle.svg" ) );
 			}
 		};
 
@@ -342,8 +342,8 @@ namespace glabels
 		public:
 			AlignTextTop()
 			{
-				addFile( ":icons/22x22/actions/glabels-valign-text-top.svg" );
-				addFile( ":icons/24x24/actions/glabels-valign-text-top.svg" );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-valign-text-top.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-valign-text-top.svg" ) );
 			}
 		};
 

@@ -11,17 +11,17 @@
 	<file>icons/16x16/actions/glabels-align-right.png</file>
 	<file>icons/16x16/actions/glabels-align-top.png</file>
 	<file>icons/16x16/actions/glabels-align-vcenter.png</file>
-	<file>icons/16x16/actions/glabels-arrow.png</file>
-	<file>icons/16x16/actions/glabels-barcode.png</file>
-	<file>icons/16x16/actions/glabels-box.png</file>
+	<file>icons/16x16/actions/glabels-arrow.svg</file>
+	<file>icons/16x16/actions/glabels-barcode.svg</file>
+	<file>icons/16x16/actions/glabels-box.svg</file>
 	<file>icons/16x16/actions/glabels-bucket-fill.png</file>
 	<file>icons/16x16/actions/glabels-center-horiz.png</file>
 	<file>icons/16x16/actions/glabels-center-vert.png</file>
-	<file>icons/16x16/actions/glabels-ellipse.png</file>
+	<file>icons/16x16/actions/glabels-ellipse.svg</file>
 	<file>icons/16x16/actions/glabels-flip-horiz.png</file>
 	<file>icons/16x16/actions/glabels-flip-vert.png</file>
-	<file>icons/16x16/actions/glabels-image.png</file>
-	<file>icons/16x16/actions/glabels-line.png</file>
+	<file>icons/16x16/actions/glabels-image.svg</file>
+	<file>icons/16x16/actions/glabels-line.svg</file>
 	<file>icons/16x16/actions/glabels-merge.png</file>
 	<file>icons/16x16/actions/glabels-object-properties.png</file>
 	<file>icons/16x16/actions/glabels-order-bottom.png</file>
@@ -29,7 +29,7 @@
 	<file>icons/16x16/actions/glabels-pencil.png</file>
 	<file>icons/16x16/actions/glabels-rotate-left.png</file>
 	<file>icons/16x16/actions/glabels-rotate-right.png</file>
-	<file>icons/16x16/actions/glabels-text.png</file>
+	<file>icons/16x16/actions/glabels-text.svg</file>
 	<file>icons/16x16/apps/glabels.png</file>
 	
 	<file>icons/22x22/actions/glabels-align-text-center.svg</file>
