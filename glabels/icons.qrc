@@ -4,7 +4,6 @@
 <qresource>
 
 	<file>icons/16x16/actions/edit-clear.png</file>
-	<file>icons/16x16/actions/edit-find.png</file>
 	<file>icons/16x16/actions/glabels-align-bottom.png</file>
 	<file>icons/16x16/actions/glabels-align-hcenter.png</file>
 	<file>icons/16x16/actions/glabels-align-left.png</file>
@@ -14,7 +13,6 @@
 	<file>icons/16x16/actions/glabels-arrow.svg</file>
 	<file>icons/16x16/actions/glabels-barcode.svg</file>
 	<file>icons/16x16/actions/glabels-box.svg</file>
-	<file>icons/16x16/actions/glabels-bucket-fill.png</file>
 	<file>icons/16x16/actions/glabels-center-horiz.png</file>
 	<file>icons/16x16/actions/glabels-center-vert.png</file>
 	<file>icons/16x16/actions/glabels-ellipse.svg</file>
@@ -26,10 +24,13 @@
 	<file>icons/16x16/actions/glabels-object-properties.png</file>
 	<file>icons/16x16/actions/glabels-order-bottom.png</file>
 	<file>icons/16x16/actions/glabels-order-top.png</file>
-	<file>icons/16x16/actions/glabels-pencil.png</file>
 	<file>icons/16x16/actions/glabels-rotate-left.png</file>
 	<file>icons/16x16/actions/glabels-rotate-right.png</file>
 	<file>icons/16x16/actions/glabels-text.svg</file>
+	<file>icons/16x16/actions/glabels-zoom-in.svg</file>
+	<file>icons/16x16/actions/glabels-zoom-one-to-one.svg</file>
+	<file>icons/16x16/actions/glabels-zoom-out.svg</file>
+	<file>icons/16x16/actions/glabels-zoom-to-fit.svg</file>
 	<file>icons/16x16/apps/glabels.png</file>
 	
 	<file>icons/22x22/actions/glabels-align-text-center.svg</file>
@@ -48,16 +49,18 @@
 	<file>icons/22x22/actions/glabels-valign-text-bottom.svg</file>
 	<file>icons/22x22/actions/glabels-valign-text-middle.svg</file>
 	<file>icons/22x22/actions/glabels-valign-text-top.svg</file>
+	<file>icons/22x22/actions/glabels-zoom-in.svg</file>
+	<file>icons/22x22/actions/glabels-zoom-one-to-one.svg</file>
+	<file>icons/22x22/actions/glabels-zoom-out.svg</file>
+	<file>icons/22x22/actions/glabels-zoom-to-fit.svg</file>
 	
 	<file>icons/24x24/actions/edit-clear.png</file>
-	<file>icons/24x24/actions/edit-find.png</file>
 	<file>icons/24x24/actions/glabels-align-text-center.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-left.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-right.svg</file>
 	<file>icons/24x24/actions/glabels-arrow.svg</file>
 	<file>icons/24x24/actions/glabels-barcode.svg</file>
 	<file>icons/24x24/actions/glabels-box.svg</file>
-	<file>icons/24x24/actions/glabels-bucket-fill.png</file>
 	<file>icons/24x24/actions/glabels-ellipse.svg</file>
 	<file>icons/24x24/actions/glabels-format-text-bold.svg</file>
 	<file>icons/24x24/actions/glabels-format-text-italic.svg</file>
@@ -66,7 +69,6 @@
 	<file>icons/24x24/actions/glabels-line.svg</file>
 	<file>icons/24x24/actions/glabels-merge.png</file>
 	<file>icons/24x24/actions/glabels-object-properties.png</file>
-	<file>icons/24x24/actions/glabels-pencil.png</file>
 	<file>icons/24x24/actions/glabels-text.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-bottom.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-middle.svg</file>

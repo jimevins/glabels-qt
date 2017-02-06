@@ -348,24 +348,24 @@ namespace glabels
 		connect( viewMarkupAction, SIGNAL(toggled(bool)), this, SLOT(viewMarkup(bool)) );
 
 		viewZoomInAction = new QAction( tr("Zoom &In"), this );
-		viewZoomInAction->setIcon( QIcon::fromTheme( "zoom-in", Icons::ZoomIn() ) );
+		viewZoomInAction->setIcon( Icons::ZoomIn() );
 		viewZoomInAction->setShortcut( QKeySequence::ZoomIn );
 		viewZoomInAction->setStatusTip( tr("Increase magnification") );
 		connect( viewZoomInAction, SIGNAL(triggered()), this, SLOT(viewZoomIn()) );
 
 		viewZoomOutAction = new QAction( tr("Zoom &Out"), this );
-		viewZoomOutAction->setIcon( QIcon::fromTheme( "zoom-out", Icons::ZoomOut() ) );
+		viewZoomOutAction->setIcon( Icons::ZoomOut() );
 		viewZoomOutAction->setShortcut( QKeySequence::ZoomOut );
 		viewZoomOutAction->setStatusTip( tr("Decrease magnification") );
 		connect( viewZoomOutAction, SIGNAL(triggered()), this, SLOT(viewZoomOut()) );
 
 		viewZoom1To1Action = new QAction( tr("Zoom &1 to 1"), this );
-		viewZoom1To1Action->setIcon( QIcon::fromTheme( "zoom-original", Icons::ZoomOriginal() ) );
+		viewZoom1To1Action->setIcon( Icons::ZoomOriginal() );
 		viewZoom1To1Action->setStatusTip( tr("Restore scale to 100%") );
 		connect( viewZoom1To1Action, SIGNAL(triggered()), this, SLOT(viewZoom1To1()) );
 
 		viewZoomToFitAction = new QAction( tr("Zoom to &Fit"), this );
-		viewZoomToFitAction->setIcon( QIcon::fromTheme( "zoom-fit-best", Icons::ZoomBestFit() ) );
+		viewZoomToFitAction->setIcon( Icons::ZoomBestFit() );
 		viewZoomToFitAction->setStatusTip( tr("Set scale to fit window") );
 		connect( viewZoomToFitAction, SIGNAL(triggered()), this, SLOT(viewZoomToFit()) );
 

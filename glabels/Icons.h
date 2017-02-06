@@ -348,28 +348,6 @@ namespace glabels
 		};
 
 
-		class BucketFill : public QIcon
-		{
-		public:
-			BucketFill()
-			{
-				addFile( ":icons/16x16/actions/glabels-bucket-fill.png" );
-				addFile( ":icons/24x24/actions/glabels-bucket-fill.png" );
-			}
-		};
-
-
-		class Pencil : public QIcon
-		{
-		public:
-			Pencil()
-			{
-				addFile( ":icons/16x16/actions/glabels-pencil.png" );
-				addFile( ":icons/24x24/actions/glabels-pencil.png" );
-			}
-		};
-
-
 		class Glabels : public QIcon
 		{
 		public:
@@ -470,7 +448,8 @@ namespace glabels
 		public:
 			ZoomBestFit()
 			{
-				addFile( ":icons/24x24/actions/zoom-best-fit.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-to-fit.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-to-fit.svg" ) );
 			}
 		};
 
@@ -480,7 +459,8 @@ namespace glabels
 		public:
 			ZoomIn()
 			{
-				addFile( ":icons/24x24/actions/zoom-in.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-in.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-in.svg" ) );
 			}
 		};
 
@@ -490,7 +470,8 @@ namespace glabels
 		public:
 			ZoomOriginal()
 			{
-				addFile( ":icons/24x24/actions/zoom-original.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-one-to-one.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-one-to-one.svg" ) );
 			}
 		};
 
@@ -500,7 +481,8 @@ namespace glabels
 		public:
 			ZoomOut()
 			{
-				addFile( ":icons/24x24/actions/zoom-out.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-out.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-out.svg" ) );
 			}
 		};
 
