@@ -125,7 +125,7 @@ Header files should be included in the following order.
 
 1. header file for this module (e.g. this would be "Foo.h" in "Foo.cpp").
 2. C system header files (preference is for the C++ version if available,
-   e.g. <cmath> instead of <math.h>.
+   e.g. \<cmath> instead of \<math.h>.
 3. C++ system header files (e.g. STL files)
 4. Qt header files
 5. Other libraries' header files
