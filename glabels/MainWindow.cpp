@@ -230,25 +230,25 @@ namespace glabels
 	{
 		/* File actions */
 		fileNewAction = new QAction( tr("&New..."), this );
-		fileNewAction->setIcon( QIcon::fromTheme( "document-new", Icons::FileNew() ) );
+		fileNewAction->setIcon( Icons::FileNew() );
 		fileNewAction->setShortcut( QKeySequence::New );
 		fileNewAction->setStatusTip( tr("Create a new gLabels project") );
 		connect( fileNewAction, SIGNAL(triggered()), this, SLOT(fileNew()) );
 
 		fileOpenAction = new QAction( tr("&Open..."), this );
-		fileOpenAction->setIcon( QIcon::fromTheme( "document-open", Icons::FileOpen() ) );
+		fileOpenAction->setIcon( Icons::FileOpen() );
 		fileOpenAction->setShortcut( QKeySequence::Open );
 		fileOpenAction->setStatusTip( tr("Open an existing gLabels project") );
 		connect( fileOpenAction, SIGNAL(triggered()), this, SLOT(fileOpen()) );
 
 		fileSaveAction = new QAction( tr("&Save"), this );
-		fileSaveAction->setIcon( QIcon::fromTheme( "document-save", Icons::FileSave() ) );
+		fileSaveAction->setIcon( Icons::FileSave() );
 		fileSaveAction->setShortcut( QKeySequence::Save );
 		fileSaveAction->setStatusTip( tr("Save current gLabels project") );
 		connect( fileSaveAction, SIGNAL(triggered()), this, SLOT(fileSave()) );
 
 		fileSaveAsAction = new QAction( tr("Save &As..."), this );
-		fileSaveAsAction->setIcon( QIcon::fromTheme( "document-save-as", Icons::FileSaveAs() ) );
+		fileSaveAsAction->setIcon( Icons::FileSaveAs() );
 		fileSaveAsAction->setShortcut( QKeySequence::SaveAs );
 		fileSaveAsAction->setStatusTip( tr("Save current gLabels project to a different name") );
 		connect( fileSaveAsAction, SIGNAL(triggered()), this, SLOT(fileSaveAs()) );
@@ -284,19 +284,19 @@ namespace glabels
 		connect( editRedoAction, SIGNAL(triggered()), this, SLOT(editRedo()) );
 
 		editCutAction = new QAction( tr("Cut"), this );
-		editCutAction->setIcon( QIcon::fromTheme( "edit-cut", Icons::EditCut() ) );
+		editCutAction->setIcon( Icons::EditCut() );
 		editCutAction->setShortcut( QKeySequence::Cut );
 		editCutAction->setStatusTip( tr("Cut the selection") );
 		connect( editCutAction, SIGNAL(triggered()), this, SLOT(editCut()) );
 
 		editCopyAction = new QAction( tr("&Copy"), this );
-		editCopyAction->setIcon( QIcon::fromTheme( "edit-copy", Icons::EditCopy() ) );
+		editCopyAction->setIcon( Icons::EditCopy() );
 		editCopyAction->setShortcut( QKeySequence::Copy );
 		editCopyAction->setStatusTip( tr("Copy the selection") );
 		connect( editCopyAction, SIGNAL(triggered()), this, SLOT(editCopy()) );
 
 		editPasteAction = new QAction( tr("&Paste"), this );
-		editPasteAction->setIcon( QIcon::fromTheme( "edit-paste", Icons::EditPaste() ) );
+		editPasteAction->setIcon( Icons::EditPaste() );
 		editPasteAction->setShortcut( QKeySequence::Paste );
 		editPasteAction->setStatusTip( tr("Paste the clipboard") );
 		connect( editPasteAction, SIGNAL(triggered()), this, SLOT(editPaste()) );
@@ -492,17 +492,17 @@ namespace glabels
 
 		/* Context menu version of edit actions */
 		contextCutAction = new QAction( tr("Cut"), this );
-		contextCutAction->setIcon( QIcon::fromTheme( "edit-cut", Icons::EditCut() ) );
+		contextCutAction->setIcon( Icons::EditCut() );
 		contextCutAction->setStatusTip( tr("Cut the selection") );
 		connect( contextCutAction, SIGNAL(triggered()), this, SLOT(editCut()) );
 
 		contextCopyAction = new QAction( tr("&Copy"), this );
-		contextCopyAction->setIcon( QIcon::fromTheme( "edit-copy", Icons::EditCopy() ) );
+		contextCopyAction->setIcon( Icons::EditCopy() );
 		contextCopyAction->setStatusTip( tr("Copy the selection") );
 		connect( contextCopyAction, SIGNAL(triggered()), this, SLOT(editCopy()) );
 
 		contextPasteAction = new QAction( tr("&Paste"), this );
-		contextPasteAction->setIcon( QIcon::fromTheme( "edit-paste", Icons::EditPaste() ) );
+		contextPasteAction->setIcon( Icons::EditPaste() );
 		contextPasteAction->setStatusTip( tr("Paste the clipboard") );
 		connect( contextPasteAction, SIGNAL(triggered()), this, SLOT(editPaste()) );
 

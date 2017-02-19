@@ -4,6 +4,13 @@
 <qresource>
 
 	<file>icons/16x16/actions/edit-clear.svg</file>
+	<file>icons/16x16/actions/edit-copy.svg</file>
+	<file>icons/16x16/actions/edit-cut.svg</file>
+	<file>icons/16x16/actions/edit-paste.svg</file>
+	<file>icons/16x16/actions/file-new.svg</file>
+	<file>icons/16x16/actions/file-open.svg</file>
+	<file>icons/16x16/actions/file-save.svg</file>
+	<file>icons/16x16/actions/file-save-as.svg</file>
 	<file>icons/16x16/actions/glabels-align-bottom.svg</file>
 	<file>icons/16x16/actions/glabels-align-hcenter.svg</file>
 	<file>icons/16x16/actions/glabels-align-left.svg</file>
@@ -31,6 +38,13 @@
 	<file>icons/16x16/actions/glabels-zoom-to-fit.svg</file>
 	<file>icons/16x16/apps/glabels.png</file>
 	
+	<file>icons/22x22/actions/edit-copy.svg</file>
+	<file>icons/22x22/actions/edit-cut.svg</file>
+	<file>icons/22x22/actions/edit-paste.svg</file>
+	<file>icons/22x22/actions/file-new.svg</file>
+	<file>icons/22x22/actions/file-open.svg</file>
+	<file>icons/22x22/actions/file-save.svg</file>
+	<file>icons/22x22/actions/file-save-as.svg</file>
 	<file>icons/22x22/actions/glabels-align-text-center.svg</file>
 	<file>icons/22x22/actions/glabels-align-text-left.svg</file>
 	<file>icons/22x22/actions/glabels-align-text-right.svg</file>
@@ -52,6 +66,13 @@
 	<file>icons/22x22/actions/glabels-zoom-out.svg</file>
 	<file>icons/22x22/actions/glabels-zoom-to-fit.svg</file>
 	
+	<file>icons/24x24/actions/edit-copy.svg</file>
+	<file>icons/24x24/actions/edit-cut.svg</file>
+	<file>icons/24x24/actions/edit-paste.svg</file>
+	<file>icons/24x24/actions/file-new.svg</file>
+	<file>icons/24x24/actions/file-open.svg</file>
+	<file>icons/24x24/actions/file-save.svg</file>
+	<file>icons/24x24/actions/file-save-as.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-center.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-left.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-right.svg</file>
@@ -69,21 +90,13 @@
 	<file>icons/24x24/actions/glabels-valign-text-bottom.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-middle.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-top.svg</file>
-	<file>icons/24x24/actions/edit-copy.png</file>
-	<file>icons/24x24/actions/edit-cut.png</file>
-	<file>icons/24x24/actions/edit-paste.png</file>
-	<file>icons/24x24/actions/file-new.png</file>
-	<file>icons/24x24/actions/file-open.png</file>
-	<file>icons/24x24/actions/file-print.png</file>
-	<file>icons/24x24/actions/file-save-as.png</file>
-	<file>icons/24x24/actions/file-save.png</file>
 	<file>icons/24x24/apps/glabels.png</file>
 
-	<file>icons/32x32/apps/glabels.png</file>
 	<file>icons/32x32/actions/file-print.png</file>
 	<file>icons/32x32/actions/horizontal-orientation.png</file>
 	<file>icons/32x32/actions/select-product.png</file>
 	<file>icons/32x32/actions/vertical-orientation.png</file>
+	<file>icons/32x32/apps/glabels.png</file>
 
 	<file>icons/48x48/apps/glabels.png</file>
 

@@ -363,7 +363,9 @@ namespace glabels
 		public:
 			EditCopy()
 			{
-				addFile( ":icons/24x24/actions/edit-copy.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/edit-copy.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/edit-copy.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/edit-copy.svg" ) );
 			}
 		};
 
@@ -373,7 +375,9 @@ namespace glabels
 		public:
 			EditCut()
 			{
-				addFile( ":icons/24x24/actions/edit-cut.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/edit-cut.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/edit-cut.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/edit-cut.svg" ) );
 			}
 		};
 
@@ -383,7 +387,9 @@ namespace glabels
 		public:
 			EditPaste()
 			{
-				addFile( ":icons/24x24/actions/edit-paste.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/edit-paste.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/edit-paste.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/edit-paste.svg" ) );
 			}
 		};
 
@@ -393,7 +399,9 @@ namespace glabels
 		public:
 			FileNew()
 			{
-				addFile( ":icons/24x24/actions/file-new.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/file-new.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/file-new.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/file-new.svg" ) );
 			}
 		};
 
@@ -403,7 +411,9 @@ namespace glabels
 		public:
 			FileOpen()
 			{
-				addFile( ":icons/24x24/actions/file-open.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/file-open.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/file-open.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/file-open.svg" ) );
 			}
 		};
 
@@ -413,7 +423,6 @@ namespace glabels
 		public:
 			FilePrint()
 			{
-				addFile( ":icons/24x24/actions/file-print.png" );
 				addFile( ":icons/32x32/actions/file-print.png" );
 			}
 		};
@@ -424,7 +433,9 @@ namespace glabels
 		public:
 			FileSave()
 			{
-				addFile( ":icons/24x24/actions/file-save.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/file-save.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/file-save.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/file-save.svg" ) );
 			}
 		};
 
@@ -434,7 +445,9 @@ namespace glabels
 		public:
 			FileSaveAs()
 			{
-				addFile( ":icons/24x24/actions/file-save-as.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/file-save-as.svg" ) );
+				addPixmap( QPixmap( ":icons/22x22/actions/file-save-as.svg" ) );
+				addPixmap( QPixmap( ":icons/24x24/actions/file-save-as.svg" ) );
 			}
 		};
 
