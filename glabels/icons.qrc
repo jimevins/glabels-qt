@@ -3,29 +3,27 @@
 <RCC version="1.0">
 <qresource>
 
-	<file>icons/16x16/actions/edit-clear.png</file>
-	<file>icons/16x16/actions/glabels-align-bottom.png</file>
-	<file>icons/16x16/actions/glabels-align-hcenter.png</file>
-	<file>icons/16x16/actions/glabels-align-left.png</file>
-	<file>icons/16x16/actions/glabels-align-right.png</file>
-	<file>icons/16x16/actions/glabels-align-top.png</file>
-	<file>icons/16x16/actions/glabels-align-vcenter.png</file>
+	<file>icons/16x16/actions/edit-clear.svg</file>
+	<file>icons/16x16/actions/glabels-align-bottom.svg</file>
+	<file>icons/16x16/actions/glabels-align-hcenter.svg</file>
+	<file>icons/16x16/actions/glabels-align-left.svg</file>
+	<file>icons/16x16/actions/glabels-align-right.svg</file>
+	<file>icons/16x16/actions/glabels-align-top.svg</file>
+	<file>icons/16x16/actions/glabels-align-vcenter.svg</file>
 	<file>icons/16x16/actions/glabels-arrow.svg</file>
 	<file>icons/16x16/actions/glabels-barcode.svg</file>
 	<file>icons/16x16/actions/glabels-box.svg</file>
-	<file>icons/16x16/actions/glabels-center-horiz.png</file>
-	<file>icons/16x16/actions/glabels-center-vert.png</file>
+	<file>icons/16x16/actions/glabels-center-horiz.svg</file>
+	<file>icons/16x16/actions/glabels-center-vert.svg</file>
 	<file>icons/16x16/actions/glabels-ellipse.svg</file>
-	<file>icons/16x16/actions/glabels-flip-horiz.png</file>
-	<file>icons/16x16/actions/glabels-flip-vert.png</file>
+	<file>icons/16x16/actions/glabels-flip-horiz.svg</file>
+	<file>icons/16x16/actions/glabels-flip-vert.svg</file>
 	<file>icons/16x16/actions/glabels-image.svg</file>
 	<file>icons/16x16/actions/glabels-line.svg</file>
-	<file>icons/16x16/actions/glabels-merge.png</file>
-	<file>icons/16x16/actions/glabels-object-properties.png</file>
-	<file>icons/16x16/actions/glabels-order-bottom.png</file>
-	<file>icons/16x16/actions/glabels-order-top.png</file>
-	<file>icons/16x16/actions/glabels-rotate-left.png</file>
-	<file>icons/16x16/actions/glabels-rotate-right.png</file>
+	<file>icons/16x16/actions/glabels-order-bottom.svg</file>
+	<file>icons/16x16/actions/glabels-order-top.svg</file>
+	<file>icons/16x16/actions/glabels-rotate-left.svg</file>
+	<file>icons/16x16/actions/glabels-rotate-right.svg</file>
 	<file>icons/16x16/actions/glabels-text.svg</file>
 	<file>icons/16x16/actions/glabels-zoom-in.svg</file>
 	<file>icons/16x16/actions/glabels-zoom-one-to-one.svg</file>
@@ -54,7 +52,6 @@
 	<file>icons/22x22/actions/glabels-zoom-out.svg</file>
 	<file>icons/22x22/actions/glabels-zoom-to-fit.svg</file>
 	
-	<file>icons/24x24/actions/edit-clear.png</file>
 	<file>icons/24x24/actions/glabels-align-text-center.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-left.svg</file>
 	<file>icons/24x24/actions/glabels-align-text-right.svg</file>
@@ -67,8 +64,7 @@
 	<file>icons/24x24/actions/glabels-format-text-underline.svg</file>
 	<file>icons/24x24/actions/glabels-image.svg</file>
 	<file>icons/24x24/actions/glabels-line.svg</file>
-	<file>icons/24x24/actions/glabels-merge.png</file>
-	<file>icons/24x24/actions/glabels-object-properties.png</file>
+	<file>icons/24x24/actions/glabels-object-properties.svg</file>
 	<file>icons/24x24/actions/glabels-text.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-bottom.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-middle.svg</file>
@@ -81,10 +77,6 @@
 	<file>icons/24x24/actions/file-print.png</file>
 	<file>icons/24x24/actions/file-save-as.png</file>
 	<file>icons/24x24/actions/file-save.png</file>
-	<file>icons/24x24/actions/zoom-best-fit.png</file>
-	<file>icons/24x24/actions/zoom-in.png</file>
-	<file>icons/24x24/actions/zoom-original.png</file>
-	<file>icons/24x24/actions/zoom-out.png</file>
 	<file>icons/24x24/apps/glabels.png</file>
 
 	<file>icons/32x32/apps/glabels.png</file>

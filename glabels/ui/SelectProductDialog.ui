@@ -70,7 +70,7 @@
                  </property>
                  <property name="icon">
                   <iconset resource="../icons.qrc">
-                   <normaloff>:/icons/16x16/actions/edit-clear.png</normaloff>:/icons/16x16/actions/edit-clear.png</iconset>
+                   <normaloff>:/icons/16x16/actions/edit-clear.svg</normaloff>:/icons/16x16/actions/edit-clear.svg</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -170,16 +170,7 @@
                 <item>
                  <widget class="QWidget" name="categoriesCheckContainer" native="true">
                   <layout class="QGridLayout" name="gridLayout">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
+                   <property name="margin">
                     <number>0</number>
                    </property>
                    <property name="spacing">

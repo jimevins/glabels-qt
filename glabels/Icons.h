@@ -123,7 +123,6 @@ namespace glabels
 		public:
 			Merge()
 			{
-				addFile( ":icons/16x16/actions/glabels-merge.png" );
 				addFile( ":icons/24x24/actions/glabels-merge.png" );
 			}
 		};
@@ -134,8 +133,7 @@ namespace glabels
 		public:
 			ObjectProperties()
 			{
-				addFile( ":icons/16x16/actions/glabels-object-properties.png" );
-				addFile( ":icons/24x24/actions/glabels-object-properties.png" );
+				addPixmap( QPixmap( ":icons/24x24/actions/glabels-object-properties.svg" ) );
 			}
 		};
 
@@ -145,9 +143,7 @@ namespace glabels
 		public:
 			AlignLeft()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-left.png" );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-left.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-left.svg" ) );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-left.svg" ) );
 			}
 		};
 
@@ -157,7 +153,7 @@ namespace glabels
 		public:
 			AlignHCenter()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-hcenter.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-hcenter.svg" ) );
 			}
 		};
 
@@ -167,7 +163,7 @@ namespace glabels
 		public:
 			AlignRight()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-right.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-right.svg" ) );
 			}
 		};
 
@@ -177,7 +173,7 @@ namespace glabels
 		public:
 			AlignBottom()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-bottom.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-bottom.svg" ) );
 			}
 		};
 
@@ -187,7 +183,7 @@ namespace glabels
 		public:
 			AlignVCenter()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-vcenter.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-vcenter.svg" ) );
 			}
 		};
 
@@ -197,7 +193,7 @@ namespace glabels
 		public:
 			AlignTop()
 			{
-				addFile( ":icons/16x16/actions/glabels-align-top.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-top.svg" ) );
 			}
 		};
 
@@ -207,7 +203,7 @@ namespace glabels
 		public:
 			CenterHoriz()
 			{
-				addFile( ":icons/16x16/actions/glabels-center-horiz.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-center-horiz.svg" ) );
 			}
 		};
 
@@ -217,7 +213,7 @@ namespace glabels
 		public:
 			CenterVert()
 			{
-				addFile( ":icons/16x16/actions/glabels-center-vert.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-center-vert.svg" ) );
 			}
 		};
 
@@ -227,7 +223,7 @@ namespace glabels
 		public:
 			FlipHoriz()
 			{
-				addFile( ":icons/16x16/actions/glabels-flip-horiz.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-flip-horiz.svg" ) );
 			}
 		};
 
@@ -237,7 +233,7 @@ namespace glabels
 		public:
 			FlipVert()
 			{
-				addFile( ":icons/16x16/actions/glabels-flip-vert.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-flip-vert.svg" ) );
 			}
 		};
 
@@ -247,7 +243,7 @@ namespace glabels
 		public:
 			RotateLeft()
 			{
-				addFile( ":icons/16x16/actions/glabels-rotate-left.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-rotate-left.svg" ) );
 			}
 		};
 
@@ -257,7 +253,7 @@ namespace glabels
 		public:
 			RotateRight()
 			{
-				addFile( ":icons/16x16/actions/glabels-rotate-right.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-rotate-right.svg" ) );
 			}
 		};
 
@@ -267,7 +263,7 @@ namespace glabels
 		public:
 			OrderBottom()
 			{
-				addFile( ":icons/16x16/actions/glabels-order-bottom.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-order-bottom.svg" ) );
 			}
 		};
 
@@ -277,7 +273,7 @@ namespace glabels
 		public:
 			OrderTop()
 			{
-				addFile( ":icons/16x16/actions/glabels-order-top.png" );
+				addPixmap( QPixmap( ":icons/16x16/actions/glabels-order-top.svg" ) );
 			}
 		};
 

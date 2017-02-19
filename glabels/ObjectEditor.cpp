@@ -426,7 +426,7 @@ namespace glabels
 			{
 				mObject = 0;
 
-				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.png") );
+				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.svg") );
 				titleLabel->setText( "Object properties" );
 				setEnabled( false );
 			}
