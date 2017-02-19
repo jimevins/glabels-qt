@@ -92,10 +92,10 @@
 	<file>icons/24x24/actions/glabels-valign-text-top.svg</file>
 	<file>icons/24x24/apps/glabels.png</file>
 
-	<file>icons/32x32/actions/file-print.png</file>
-	<file>icons/32x32/actions/horizontal-orientation.png</file>
-	<file>icons/32x32/actions/select-product.png</file>
-	<file>icons/32x32/actions/vertical-orientation.png</file>
+	<file>icons/32x32/actions/label-orientation-horiz.svg</file>
+	<file>icons/32x32/actions/label-orientation-vert.svg</file>
+	<file>icons/32x32/actions/print.svg</file>
+	<file>icons/32x32/actions/select-product.svg</file>
 	<file>icons/32x32/apps/glabels.png</file>
 
 	<file>icons/48x48/apps/glabels.png</file>

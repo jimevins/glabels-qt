@@ -42,16 +42,7 @@
    </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="leftMargin">
-      <number>12</number>
-     </property>
-     <property name="topMargin">
-      <number>12</number>
-     </property>
-     <property name="rightMargin">
-      <number>12</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>12</number>
      </property>
      <item>
@@ -245,7 +236,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/32x32/actions/select-product.png</normaloff>:/icons/32x32/actions/select-product.png</iconset>
+            <normaloff>:/icons/32x32/actions/select-product.svg</normaloff>:/icons/32x32/actions/select-product.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -295,7 +286,7 @@
              </property>
              <property name="icon">
               <iconset resource="../icons.qrc">
-               <normaloff>:/icons/32x32/actions/horizontal-orientation.png</normaloff>:/icons/32x32/actions/horizontal-orientation.png</iconset>
+               <normaloff>:/icons/32x32/actions/label-orientation-horiz.svg</normaloff>:/icons/32x32/actions/label-orientation-horiz.svg</iconset>
              </property>
             </item>
             <item>
@@ -304,7 +295,7 @@
              </property>
              <property name="icon">
               <iconset resource="../icons.qrc">
-               <normaloff>:/icons/32x32/actions/vertical-orientation.png</normaloff>:/icons/32x32/actions/vertical-orientation.png</iconset>
+               <normaloff>:/icons/32x32/actions/label-orientation-vert.svg</normaloff>:/icons/32x32/actions/label-orientation-vert.svg</iconset>
              </property>
             </item>
            </widget>

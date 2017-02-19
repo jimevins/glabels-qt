@@ -423,7 +423,7 @@ namespace glabels
 		public:
 			FilePrint()
 			{
-				addFile( ":icons/32x32/actions/file-print.png" );
+				addPixmap( QPixmap( ":icons/32x32/actions/print.svg" ) );
 			}
 		};
 

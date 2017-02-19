@@ -109,16 +109,7 @@
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
-     <property name="leftMargin">
-      <number>12</number>
-     </property>
-     <property name="topMargin">
-      <number>12</number>
-     </property>
-     <property name="rightMargin">
-      <number>12</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>12</number>
      </property>
      <item>
@@ -286,22 +277,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="printButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>300</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
+      <widget class="QPushButton" name="printButton">
        <property name="styleSheet">
         <string notr="true">text-align:left; padding:3px;</string>
        </property>
@@ -310,16 +286,13 @@
        </property>
        <property name="icon">
         <iconset resource="../icons.qrc">
-         <normaloff>:/icons/32x32/actions/file-print.png</normaloff>:/icons/32x32/actions/file-print.png</iconset>
+         <normaloff>:/icons/32x32/actions/print.svg</normaloff>:/icons/32x32/actions/print.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
          <width>32</width>
          <height>32</height>
         </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextBesideIcon</enum>
        </property>
       </widget>
      </item>
@@ -360,30 +333,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>printButton</sender>
-   <signal>clicked()</signal>
-   <receiver>PrintView</receiver>
-   <slot>onPrintButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>45</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>4</x>
-     <y>50</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>copiesStartSpin</sender>
    <signal>valueChanged(int)</signal>
    <receiver>PrintView</receiver>
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>317</y>
+     <x>221</x>
+     <y>124</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -398,8 +355,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>126</x>
-     <y>347</y>
+     <x>161</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
@@ -414,8 +371,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>87</x>
-     <y>407</y>
+     <x>114</x>
+     <y>220</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
@@ -430,8 +387,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>57</x>
-     <y>436</y>
+     <x>84</x>
+     <y>248</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -446,8 +403,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>466</y>
+     <x>88</x>
+     <y>276</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -462,12 +419,28 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>569</x>
-     <y>536</y>
+     <x>645</x>
+     <y>745</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
      <y>532</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>printButton</sender>
+   <signal>clicked()</signal>
+   <receiver>PrintView</receiver>
+   <slot>onPrintButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>249</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>277</y>
     </hint>
    </hints>
   </connection>
