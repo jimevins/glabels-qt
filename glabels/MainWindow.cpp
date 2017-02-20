@@ -68,8 +68,8 @@ namespace glabels
 
 		// Build pages
 		QWidget* welcomePage = createWelcomePage();
-		QWidget* propertiesPage = createPropertiesPage();
 		QWidget* editorPage = createEditorPage();
+		QWidget* propertiesPage = createPropertiesPage();
 		QWidget* mergePage = createMergePage();
 		QWidget* printPage = createPrintPage();
 
@@ -90,17 +90,17 @@ namespace glabels
 		mWelcomeButton->setText(tr("Welcome"));
 		mWelcomeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
+		// Add "Editor" page
+		mPages->addWidget( editorPage );
+		mEditorButton = new QListWidgetItem(mContents);
+		mEditorButton->setText(tr("Home"));
+		mEditorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
 		// Add "Properties" page
 		mPages->addWidget( propertiesPage );
 		mPropertiesButton = new QListWidgetItem(mContents);
 		mPropertiesButton->setText(tr("Properties"));
 		mPropertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
-		// Add "Editor" page
-		mPages->addWidget( editorPage );
-		mEditorButton = new QListWidgetItem(mContents);
-		mEditorButton->setText(tr("Editor"));
-		mEditorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 		// Add "Merge" page
 		mPages->addWidget( mergePage );

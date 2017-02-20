@@ -37,8 +37,10 @@ namespace glabels
 		: QWidget(parent), mModel(0), mBlocked(false)
 	{
 		setupUi( this );
-		preview->setRenderer( &mRenderer );
 
+		titleLabel->setText( QString( "<span style='font-size:18pt;'>%1</span>" ).arg( tr("Print") ) );
+
+		preview->setRenderer( &mRenderer );
 		mPrinter = new QPrinter( QPrinter::HighResolution );
 	}
 

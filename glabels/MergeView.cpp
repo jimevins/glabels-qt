@@ -41,6 +41,8 @@ namespace glabels
 	{
 		setupUi( this );
 
+		titleLabel->setText( QString( "<span style='font-size:18pt;'>%1</span>" ).arg( tr("Merge") ) );
+
 		mMergeFormatNames = merge::Factory::nameList();
 		formatCombo->addItems( mMergeFormatNames );
 	}

@@ -46,6 +46,13 @@
       <number>12</number>
      </property>
      <item>
+      <widget class="QLabel" name="titleLabel">
+       <property name="text">
+        <string notr="true">&lt;span style=&quot; font-size:18pt;&quot;&gt;Properties&lt;/span&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QGroupBox" name="productGroupBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -378,8 +385,8 @@
    <slot>onChangeProductButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>221</y>
+     <x>309</x>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
      <x>728</x>
@@ -394,8 +401,8 @@
    <slot>onOrientationActivated()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>285</x>
-     <y>280</y>
+     <x>308</x>
+     <y>334</y>
     </hint>
     <hint type="destinationlabel">
      <x>802</x>
