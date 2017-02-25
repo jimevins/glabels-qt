@@ -61,6 +61,8 @@ namespace glabels
 	MainWindow::MainWindow()
 		: mModel(0)
 	{
+		setWindowIcon( Icons::Glabels() );
+
 		createActions();
 		createMenus();
 		createToolBars();

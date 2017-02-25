@@ -118,16 +118,6 @@ namespace glabels
 		};
 
 
-		class Merge : public QIcon
-		{
-		public:
-			Merge()
-			{
-				addFile( ":icons/24x24/actions/glabels-merge.png" );
-			}
-		};
-
-
 		class ObjectProperties : public QIcon
 		{
 		public:
@@ -349,10 +339,10 @@ namespace glabels
 		public:
 			Glabels()
 			{
-				addFile( ":icons/16x16/apps/glabels.png" );
-				addFile( ":icons/24x24/apps/glabels.png" );
-				addFile( ":icons/32x32/apps/glabels.png" );
-				addFile( ":icons/48x48/apps/glabels.png" );
+				addFile( ":icons/16x16/apps/glabels.svg" );
+				addFile( ":icons/22x22/apps/glabels.svg" );
+				addFile( ":icons/32x32/apps/glabels.svg" );
+				addFile( ":icons/48x48/apps/glabels.svg" );
 				addFile( ":icons/scalable/apps/glabels.svg" );
 			}
 		};

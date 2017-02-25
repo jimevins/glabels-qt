@@ -36,7 +36,7 @@
 	<file>icons/16x16/actions/glabels-zoom-one-to-one.svg</file>
 	<file>icons/16x16/actions/glabels-zoom-out.svg</file>
 	<file>icons/16x16/actions/glabels-zoom-to-fit.svg</file>
-	<file>icons/16x16/apps/glabels.png</file>
+	<file>icons/16x16/apps/glabels.svg</file>
 	
 	<file>icons/22x22/actions/edit-copy.svg</file>
 	<file>icons/22x22/actions/edit-cut.svg</file>
@@ -65,6 +65,7 @@
 	<file>icons/22x22/actions/glabels-zoom-one-to-one.svg</file>
 	<file>icons/22x22/actions/glabels-zoom-out.svg</file>
 	<file>icons/22x22/actions/glabels-zoom-to-fit.svg</file>
+	<file>icons/22x22/apps/glabels.svg</file>
 	
 	<file>icons/24x24/actions/edit-copy.svg</file>
 	<file>icons/24x24/actions/edit-cut.svg</file>
@@ -90,15 +91,14 @@
 	<file>icons/24x24/actions/glabels-valign-text-bottom.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-middle.svg</file>
 	<file>icons/24x24/actions/glabels-valign-text-top.svg</file>
-	<file>icons/24x24/apps/glabels.png</file>
 
 	<file>icons/32x32/actions/label-orientation-horiz.svg</file>
 	<file>icons/32x32/actions/label-orientation-vert.svg</file>
 	<file>icons/32x32/actions/print.svg</file>
 	<file>icons/32x32/actions/select-product.svg</file>
-	<file>icons/32x32/apps/glabels.png</file>
+	<file>icons/32x32/apps/glabels.svg</file>
 
-	<file>icons/48x48/apps/glabels.png</file>
+	<file>icons/48x48/apps/glabels.svg</file>
 
 	<file>icons/scalable/apps/glabels.svg</file>
 
