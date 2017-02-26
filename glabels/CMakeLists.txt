@@ -153,11 +153,18 @@ qt5_wrap_cpp (glabels_moc_sources ${glabels_qobject_headers})
 qt5_wrap_ui (glabels_forms_headers ${glabels_forms})
 qt5_add_resources (glabels_qrc_sources ${glabels_resource_files})
 
+if (WIN32)
+  # Windows resource file
+  set (glabels_win_rc glabels.rc)
+endif ()
+
+
 add_executable (glabels-qt
   ${glabels_sources}
   ${glabels_moc_sources}
   ${glabels_qrc_sources}
   ${glabels_forms_headers}
+  ${glabels_win_rc}
 )
 
 target_link_libraries (glabels-qt

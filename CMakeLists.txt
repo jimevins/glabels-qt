@@ -39,9 +39,9 @@ find_package(ZLIB 1.2 REQUIRED)
 #=======================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-add_definitions (-std=c++11 -g)
+add_compile_options (-std=c++11 -g)
 if (NOT WIN32)
-	add_definitions (-fPIC)
+	add_compile_options (-fPIC)
 endif ()
 
 
