@@ -22,15 +22,18 @@
 #define glabels_Version_h
 
 
-namespace Version
+namespace glabels
 {
-	const QString WEBSITE = "@Website@";
+	namespace Version
+	{
+		const QString WEBSITE = "@Website@";
 
-	const int     MAJOR   = @Major_Version@;
-	const int     MINOR   = @Minor_Version@;
-	const int     MICRO   = @Micro_Version@;
+		const int     MAJOR   = @Major_Version@;
+		const int     MINOR   = @Minor_Version@;
+		const int     MICRO   = @Micro_Version@;
 
-	const QString STRING  = "@Full_Version@";
+		const QString STRING  = "@Full_Version@";
+	}
 }
 
 

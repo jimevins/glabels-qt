@@ -1,9 +1,9 @@
 cmake_minimum_required (VERSION 2.8.12)
 
 ###############################################################################
-# Top-Level gLabels project
+# gLabels Label Designer Project
 ###############################################################################
-project (glabels_qt)
+project (glabels)
 
 
 #=======================================
@@ -41,3 +41,25 @@ add_subdirectory (glabels)
 add_subdirectory (templates)
 add_subdirectory (data)
 
+
+#=======================================
+# Print configuration information
+#=======================================
+message (STATUS "")
+message (STATUS "Project name ............ " ${CMAKE_PROJECT_NAME})
+message (STATUS "Project version ......... " ${Full_Version})
+message (STATUS "Installation prefix ..... " ${CMAKE_INSTALL_PREFIX})
+message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
+message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAKE_CXX_COMPILER} " " ${CMAKE_CXX_COMPILER_VERSION})
+message (STATUS "Qt version .............. " ${Qt5Core_VERSION})
+message (STATUS "zlib version ............ " ${ZLIB_VERSION_STRING})
+message (STATUS "")
+
+#
+# Uncomment to print all CMake variables
+#
+# get_cmake_property(_variableNames VARIABLES)
+# foreach (_variableName ${_variableNames})
+#   message(STATUS "${_variableName}=${${_variableName}}")
+# endforeach()
+  

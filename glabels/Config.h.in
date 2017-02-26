@@ -27,7 +27,7 @@ namespace glabels
 
 	namespace Config
 	{
-		const QString PROJECT_SOURCE_DIR    = "@glabels_qt_SOURCE_DIR@";
+		const QString PROJECT_SOURCE_DIR    = "@glabels_SOURCE_DIR@";
 	}
 
 }
