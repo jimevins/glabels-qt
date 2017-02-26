@@ -200,10 +200,6 @@ include_directories (
   ${Qt5Svg_INCLUDE_DIRS}
 )
 
-link_directories (
-  ${glabels_qt_SOURCE_DIR}/libglabels
-)
-
 
 #=======================================
 # Subdirectories
@@ -215,3 +211,14 @@ add_subdirectory (Merge)
 # Install
 #=======================================
 install (TARGETS glabels-qt RUNTIME DESTINATION bin)
+
+install (FILES icons/scalable/apps/glabels.svg DESTINATION share/icons/hicolor/scalable/apps)
+install (FILES icons/16x16/apps/glabels.svg    DESTINATION share/icons/hicolor/16x16/apps)
+install (FILES icons/22x22/apps/glabels.svg    DESTINATION share/icons/hicolor/22x22/apps)
+install (FILES icons/32x32/apps/glabels.svg    DESTINATION share/icons/hicolor/32x32/apps)
+install (FILES icons/48x48/apps/glabels.svg    DESTINATION share/icons/hicolor/48x48/apps)
+
+install (FILES icons/scalable/mimetypes/x-glabels-project.svg DESTINATION share/icons/hicolor/scalable/mimetypes)
+install (FILES icons/16x16/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/16x16/mimetypes)
+install (FILES icons/22x22/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/22x22/mimetypes)
+install (FILES icons/24x24/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/24x24/mimetypes)

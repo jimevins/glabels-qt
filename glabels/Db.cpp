@@ -23,6 +23,7 @@
 
 #include <QApplication>
 #include <QtDebug>
+#include <QtGlobal>
 
 #include "Config.h"
 #include "StrUtil.h"
@@ -604,22 +605,24 @@ namespace glabels
 
 	QDir Db::systemTemplatesDir()
 	{
-		QDir dir(QApplication::applicationDirPath());
+		QDir dir;
 
-		if ( dir.dirName() == "bin" )
+		// First, try finding templates directory relative to application path
+		dir.cd( QApplication::applicationDirPath() );
+		if ( (dir.dirName() == "bin") &&
+		     dir.cdUp() && dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "templates" ) )
 		{
-			dir.cdUp();
-			dir.cd( "share" );
-			dir.cd( "libglabels-3.0" ); // TODO: install qt version
-		}
-		else
-		{
-			// Working out of build directory
-			dir.cd( Config::PROJECT_SOURCE_DIR );
+			return dir;
 		}
 
-		dir.cd( "templates" );
-		return dir;
+		// Next, try running out of the source directory.
+		if ( dir.cd( Config::PROJECT_SOURCE_DIR ) && dir.cd( "templates" ) )
+		{
+			return dir;
+		}
+
+		qFatal( "Cannot find template directory!" );
+		return QDir("/");
 	}
 
 
