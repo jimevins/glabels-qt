@@ -220,26 +220,6 @@
 
   <!-- ************************* -->
   <!--                           -->
-  <!-- Online Labels             -->
-  <!--                           -->
-  <!-- ************************* -->
-
-  <!-- =================================================================== -->
-  <!-- Online Labels OL1025 Round Labels.                                  -->
-  <!-- =================================================================== -->
-  <Template brand="Online Labels" part="OL1025" size="US-Letter" _description="Round Labels">
-    <Meta category="label"/>
-    <Meta category="round-label"/>
-    <Meta product_url="http://www.onlinelabels.com/OL1025.htm"/>
-    <Label-round id="0" radius="0.5in" waste="0.062in">
-      <Markup-margin size="0.125in"/>
-      <Layout nx="7" ny="9" x0="0.375in" y0="0.5in" dx="1.125in" dy="1.125in"/>
-    </Label-round>
-  </Template>
-
-
-  <!-- ************************* -->
-  <!--                           -->
   <!-- Southworth                -->
   <!--                           -->
   <!-- ************************* -->

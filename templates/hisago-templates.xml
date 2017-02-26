@@ -1,0 +1,1246 @@
+<?xml version="1.0"?>
+<Glabels-templates>
+
+  <Template brand="Hisago" part="ELM001" size="A4" _description="Labels A4">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM001"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM002" size="A4" _description="Labels A5">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM002"/>
+    <Label-rectangle id="0" width="210mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="2" x0="0mm" y0="0mm" dx="210mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM003" size="A4" _description="Labels A6">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM003"/>
+    <Label-rectangle id="0" width="105mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="2" x0="0mm" y0="0mm" dx="105mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM004" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM004"/>
+    <Label-rectangle id="0" width="105mm" height="99mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="3" x0="0mm" y0="0mm" dx="105mm" dy="99mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM005" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM005"/>
+    <Label-rectangle id="0" width="98mm" height="68mm" round="1.5mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="5mm" y0="12.5mm" dx="102mm" dy="68mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM006" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM006"/>
+    <Label-rectangle id="0" width="86.4mm" height="50.8mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="18.6mm" y0="21.2mm" dx="86.4mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM007" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM007"/>
+    <Label-rectangle id="0" width="83.8mm" height="42.3mm" round="1.5mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="20.3mm" y0="20.3mm" dx="87.6mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM008" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM008"/>
+    <Label-rectangle id="0" width="86.4mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="18.6mm" y0="21.2mm" dx="86.4mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM009" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM009"/>
+    <Label-rectangle id="0" width="70mm" height="42.3mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="6" x0="0mm" y0="21.2mm" dx="70mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM010" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM010"/>
+    <Label-rectangle id="0" width="42mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="5" ny="4" x0="0mm" y0="0mm" dx="42mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM011" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM011"/>
+    <Label-rectangle id="0" width="70mm" height="42.42857mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="0mm" dx="70mm" dy="42.42857mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM012" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM012"/>
+    <Label-rectangle id="0" width="66mm" height="33.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="6mm" y0="12.9mm" dx="66mm" dy="33.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM013" size="A4" _description="Shipping labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM013"/>
+    <Label-rectangle id="0" width="80mm" height="115mm" round="0" x_waste="0" y_waste="0">
+      <Layout nx="2" ny="2" x0="25mm" y0="33.5mm" dx="80mm" dy="115mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM014" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM014"/>
+    <Label-rectangle id="0" width="105mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="0mm" y0="0mm" dx="105mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM015" size="A4" _description="Shipping labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM015"/>
+    <Label-rectangle id="0" width="92mm" height="60mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="25mm" y0="13mm" dx="92mm" dy="60mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM016" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM016"/>
+    <Label-rectangle id="0" width="85mm" height="50mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="20mm" y0="23mm" dx="85mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM017" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM017"/>
+    <Label-rectangle id="0" width="83.8mm" height="42.3mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="19.3mm" y0="21.5mm" dx="87.6mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM018" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM018"/>
+    <Label-rectangle id="0" width="84mm" height="42mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="19mm" y0="22.5mm" dx="88mm" dy="42mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM022" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM022"/>
+    <Label-rectangle id="0" width="48.3mm" height="25.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="4" ny="11" x0="8.4mm" y0="8.8mm" dx="48.3mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM023" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM023"/>
+    <Label-rectangle id="0" width="38.1mm" height="21.2mm" round="1mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="5" ny="13" x0="4.75mm" y0="10.92mm" dx="40.6mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM024" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM024"/>
+    <Label-rectangle id="0" width="63mm" height="120mm" round="2mm" x_waste="0" y_waste="1mm">
+      <Layout nx="2" ny="4" x0="10.5mm" y0="23.5mm" dx="63mm" dy="130mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM025" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM025"/>
+    <Label-rectangle id="0" width="97mm" height="69mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="2" ny="4" x0="8mm" y0="10.5mm" dx="97mm" dy="69mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM032" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM032"/>
+    <Label-rectangle id="0" width="53.3mm" height="25.4mm" round="1.5mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="3" ny="10" x0="19mm" y0="21.5mm" dx="57.1mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM033" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM033"/>
+    <Label-rectangle id="0" width="60mm" height="20mm" round="1mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="3" ny="12" x0="12mm" y0="12mm" dx="63mm" dy="23mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM034" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM043"/>
+    <Label-rectangle id="0" width="45mm" height="10mm" round="1mm" x_waste="0.5mm" y_waste="0.5mm">
+      <Layout nx="4" ny="23" x0="12mm" y0="11.5mm" dx="47mm" dy="12mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM035" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM035"/>
+    <Label-rectangle id="0" width="35mm" height="12mm" round="1mm" x_waste="0.5mm" y_waste="0.5mm">
+      <Layout nx="5" ny="19" x0="13mm" y0="16.5mm" dx="37mm" dy="14mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM036" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM036"/>
+    <Label-rectangle id="0" width="35mm" height="8mm" round="1mm" x_waste="0.5mm" y_waste="0.5mm">
+      <Layout nx="5" ny="25" x0="13.5mm" y0="12.5mm" dx="37mm" dy="11mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM037" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM037"/>
+    <Label-rectangle id="0" width="28mm" height="8mm" round="1mm" x_waste="0.5mm" y_waste="0.5mm">
+      <Layout nx="6" ny="25" x0="13.5mm" y0="12.5mm" dx="31mm" dy="11mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELM038" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM038"/>
+    <Label-rectangle id="0" width="20mm" height="8mm" round="1mm" x_waste="0.5mm" y_waste="0.5mm">
+      <Layout nx="8" ny="25" x0="14.5mm" y0="12.5mm" dx="23mm" dy="11mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="ELG001" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELG001"/>
+  </Template>
+
+  <Template brand="Hisago" part="ELG006" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELG006"/>
+  </Template>
+
+  <Template brand="Hisago" part="ELG007" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELG007"/>
+  </Template>
+
+  <Template brand="Hisago" part="ELG008" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELG008"/>
+  </Template>
+
+  <Template brand="Hisago" part="ELG010" equiv="ELM010">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELG010"/>
+  </Template>
+
+  <Template brand="Hisago" part="ELG011" equiv="ELM011">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELG011"/>
+  </Template>
+
+  <Template brand="Hisago" part="A4TL" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=A4TL"/>
+  </Template>
+
+  <Template brand="Hisago" part="A4TS" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=A4TS"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB860" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB860"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB862"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP860" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP860"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP862"/>
+  </Template>
+
+  <Template brand="Hisago" part="SB860" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=SB860"/>
+  </Template>
+
+  <Template brand="Hisago" part="SB862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=SB862"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3022" equiv="ELM002">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3022"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3023" equiv="ELM003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3023"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3024" equiv="ELM004">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3024"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3025" equiv="ELM005">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3025"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3026" equiv="ELM014">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3026"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB861" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB861"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB961" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB961"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3001" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3001"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3027" equiv="ELM018">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3027"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP861" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP861"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP861A" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP861A"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP861C" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP861C"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP861P" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP861P"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP861Y" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP861Y"/>
+  </Template>
+
+  <Template brand="Hisago" part="SB861" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP861"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB863" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB863"/>
+    <Label-rectangle id="0" width="35mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="6" ny="4" x0="0mm" y0="0mm" dx="35mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB865" size="B4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB863"/>
+    <Label-rectangle id="0" width="42.83333mm" height="91mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="6" ny="4" x0="0mm" y0="0mm" dx="42.83333mm" dy="91mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3002" equiv="ELM010">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3002"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3003" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3003"/>
+    <Label-rectangle id="0" width="70mm" height="33.9mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="0mm" y0="12.7mm" dx="70mm" dy="33.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3004" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3004"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3005" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3005"/>
+    <Label-rectangle id="0" width="83.8mm" height="42.3mm" round="1.5mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="19.3mm" y0="21.5mm" dx="87.6mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3006" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3006"/>
+    <Label-rectangle id="0" width="83mm" height="36mm" round="1.5mm" x_waste="0.4mm" y_waste="0mm">
+      <Layout nx="2" ny="7" x0="21mm" y0="25mm" dx="85mm" dy="36mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3007" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3007"/>
+    <Label-rectangle id="0" width="70mm" height="38.1mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="14.8mm" dx="70mm" dy="38.1mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3008" equiv="ELM012">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3008"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3009" equiv="ELM009">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3009"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP866" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP866"/>
+    <Label-rectangle id="0" width="90.2mm" height="42.3mm" round="1.5mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="2" ny="6" x0="17mm" y0="20mm" dx="92.7mm" dy="42.3mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP869" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP869"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB871" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB871"/>
+    <Label-rectangle id="0" width="45.7mm" height="25.4mm" round="1mm" x_waste="0.5mm" y_waste="0mm">
+      <Layout nx="4" ny="9" x0="10.2mm" y0="31.8mm" dx="48.2mm" dy="25.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB900" equiv="ELM032">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB900"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB901" equiv="ELM022">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB901"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB902" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB902"/>
+    <Label-rectangle id="0" width="36mm" height="12mm" round="1mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="4" ny="15" x0="27mm" y0="24mm" dx="40mm" dy="16mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3010" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3010"/>
+    <Label-rectangle id="0" width="83.8mm" height="21.2mm" round="1mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="4" ny="12" x0="19.3mm" y0="21.5mm" dx="87.6mm" dy="21.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3011" equiv="ELM023">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3011"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3012" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3012"/>
+    <Label-rectangle id="0" width="36mm" height="8mm" round="1mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="4" ny="20" x0="27mm" y0="24mm" dx="40mm" dy="12mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3013" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3013"/>
+    <Label-rectangle id="0" width="20mm" height="8mm" round="1mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="6" ny="20" x0="35mm" y0="24mm" dx="24mm" dy="12mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3014" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3014"/>
+    <Label-rectangle id="0" width="44mm" height="25mm" round="1mm" x_waste="0.6mm" y_waste="0mm">
+      <Layout nx="4" ny="10" x0="14mm" y0="20mm" dx="46mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3015" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3015"/>
+    <Label-rectangle id="0" width="20mm" height="24mm" round="1mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="6" ny="10" x0="30mm" y0="15mm" dx="26mm" dy="23mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP871" equiv="GB871">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP871"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB3019" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3019"/>
+    <Label-round id="0" radius="20mm" waste="1.5mm">
+      <Layout nx="4" ny="6" x0="16mm" y0="13.5mm" dx="46mm" dy="46mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Hisago" part="GB3020" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3020"/>
+    <Label-round id="0" radius="30mm" waste="1.5mm">
+      <Layout nx="3" ny="4" x0="8mm" y0="18mm" dx="67mm" dy="67mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Hisago" part="OP3016" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3016"/>
+    <Label-rectangle id="0" width="26mm" height="26mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="6" ny="10" x0="27mm" y0="17mm" dx="26mm" dy="26mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3017" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3017"/>
+    <Label-rectangle id="0" width="10mm" height="10mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="10" ny="18" x0="32.5mm" y0="16mm" dx="15mm" dy="15mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3018" size="A4" _description="Round labels">
+    <Meta category="label"/>
+    <Meta category="round-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3018"/>
+    <Label-round id="0" radius="5.5mm" waste="1mm">
+      <Layout nx="10" ny="15" x0="32mm" y0="38mm" dx="15mm" dy="15mm"/>
+    </Label-round>
+  </Template>
+
+  <Template brand="Hisago" part="OP3019" equiv="GB3019">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3019"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3020" equiv="GB3020">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3020"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3021" size="A4" _description="Elliptical labels">
+    <Meta category="label"/>
+    <Meta category="elliptical-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3021"/>
+    <Label-rectangle id="0" width="40mm" height="20mm" waste="1mm">
+      <Layout nx="4" ny="10" x0="16mm" y0="21.5mm" dx="46mm" dy="26mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3030" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3030"/>
+    <Label-rectangle id="0" width="40mm" height="40mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="5" ny="7" x0="5mm" y0="8.5mm" dx="40mm" dy="40mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB3201" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3201"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+      <Markup-line x1="0mm" y1="148.5mm" x2="210mm" y2="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB3202" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3202"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+      <Markup-line x1="0mm" y1="99mm" x2="210mm" y2="99mm"/>
+      <Markup-line x1="0mm" y1="198mm" x2="210mm" y2="198mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB3203" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3203"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+      <Markup-line x1="0mm" y1="148.5mm" x2="210mm" y2="148.5mm"/>
+      <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB3205" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3205"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+      <Markup-line x1="0mm" y1="99mm" x2="210mm" y2="99mm"/>
+      <Markup-line x1="0mm" y1="198mm" x2="210mm" y2="198mm"/>
+      <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB3206" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB32065"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+      <Markup-line x1="0mm" y1="74.25mm" x2="210mm" y2="74.25mm"/>
+      <Markup-line x1="0mm" y1="148.5mm" x2="210mm" y2="148.5mm"/>
+      <Markup-line x1="0mm" y1="222.75mm" x2="210mm" y2="222.75mm"/>
+      <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="297mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="GB3305" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3305"/>
+    <Label-rectangle id="0" width="93mm" height="47.4mm" round="1.5mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="2" ny="5" x0="6mm" y0="6mm" dx="105mm" dy="59.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3201" equiv="GB3201">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3201"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3203" equiv="GB3203">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3203"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP3204" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3204"/>
+    <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
+      <Markup-line x1="0mm" y1="59.4mm" x2="210mm" y2="59.4mm"/>
+      <Markup-line x1="0mm" y1="118.8mm" x2="210mm" y2="118.8mm"/>
+      <Markup-line x1="0mm" y1="178.2mm" x2="210mm" y2="178.2mm"/>
+      <Markup-line x1="0mm" y1="237.6mm" x2="210mm" y2="237.6mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP3205" equiv="GB3205">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3205"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3004" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3004"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3008" equiv="ELM012">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3008"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3011" equiv="ELM023">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3011"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3019" equiv="GB3019">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3019"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3020" equiv="GB3020">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3020"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3022" equiv="ELM002">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3022"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3023" equiv="ELM003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3023"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3024" equiv="ELM004">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3024"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3026" equiv="ELM014">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3026"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPH3030" equiv="OP3030">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPH3030"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPL3008" equiv="ELM012">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPL3008"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPL861" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPL861"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPL862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPL862"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPL871" equiv="GB871">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPL871"/>
+  </Template>
+
+  <Template brand="Hisago" part="OPL902" equiv="GB902">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OPL902"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3004S" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3004S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3008S" equiv="ELM012">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3008S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3011S" equiv="ELM023">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3011S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3019S" equiv="GB3019">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3019S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3020S" equiv="GB3020">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3020S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3021S" equiv="OP3021">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3021S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3029S" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3029S"/>
+    <Label-rectangle id="0" width="70mm" height="42.4mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="3" ny="7" x0="0mm" y0="0mm" dx="70mm" dy="42.4mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="CJK3030S" equiv="OP3030">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK3030S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK861S" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK861S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJK862S" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJK862S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3001S" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3001S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3004S" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3004S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3008S" equiv="ELM012">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3008S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3011S" equiv="ELM023">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3011S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3019S" equiv="GB3019">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3019S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3020S" equiv="GB3020">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3020S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3029S" equiv="CJK3029S">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3029S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM3030S" equiv="OP3030">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM3030S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM861S" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM861S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJM862S" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJM862S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJ3300NS" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJ3300NS"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJ5300NS" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJ5300NS"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH3011S" equiv="ELM023">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH3011S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH3019S" equiv="GB3019">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH3019S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH3020S" equiv="GB3020">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH3020S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH3021S" equiv="OP3021">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH3021S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH3030S" equiv="OP3030">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH3030S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH861S" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH861S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH862S" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH862S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH871S" equiv="GB871">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH871S"/>
+  </Template>
+
+  <Template brand="Hisago" part="CJH902S" equiv="GB902">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=CJH902S"/>
+  </Template>
+
+  <Template brand="Hisago" part="QCJ862S" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=QCJ862S"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLP700S" size="A4" _description="Square labels">
+    <Meta category="label"/>
+    <Meta category="square-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLP700S"/>
+    <Label-rectangle id="0" width="92mm" height="92mm" round="2mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="2" ny="3" x0="10mm" y0="7mm" dx="98mm" dy="95.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="KLP701S" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLP701S"/>
+    <Label-rectangle id="0" width="64mm" height="33.9mm" round="1.5mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="8" x0="6.5mm" y0="12.9mm" dx="66.5mm" dy="33.9mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="KLP702S" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLP702S"/>
+    <Label-rectangle id="0" width="150mm" height="50mm" round="1.5mm" x_waste="1.5mm" y_waste="1.5mm">
+      <Layout nx="1" ny="5" x0="30mm" y0="13.5mm" dx="150mm" dy="55mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="KLP861S" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLP861S"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLP862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLP862"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLP862S" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLP862S"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLPA700S" equiv="KLP700S">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLPA700S"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLPA701S" equiv="KLP701S">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLPA701S"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLPA702S" equiv="KLP702S">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLPA702S"/>
+  </Template>
+
+  <Template brand="Hisago" part="KLPA861S" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=KLPA861S"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB861" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB861"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB863" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB863"/>
+    <Label-rectangle id="0" width="35mm" height="74.2mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="6" ny="4" x0="0mm" y0="0mm" dx="35mm" dy="74.2mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB868" size="A4" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB868"/>
+    <Label-rectangle id="0" width="89mm" height="48mm" round="2mm" x_waste="0.6mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="10mm" y0="25mm" dx="91mm" dy="48mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB881" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB881"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB883" equiv="OP3003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB883"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB888" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB888"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB907" equiv="ELM009">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB907"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB983" equiv="CJK3029S">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB983"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB985" equiv="ELM010">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB985"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCOP861" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCOP861"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB871" equiv="GB871">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB871"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB902" equiv="GB902">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB902"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCOP871" equiv="GB871">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCOP871"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCOP902" equiv="GB902">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCOP902"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCGB862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCGB862"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCOP862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCOP862"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK862" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK862"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK862S" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK862S"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK881" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK881"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK881S" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK881S"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK883" equiv="OP3003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK883"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK883S" equiv="OP3003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK883S"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK888" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK888"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK888S" equiv="ELM006">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK888S"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK901" equiv="ELM022">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK901"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSCK901S" equiv="ELM022">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSCK901S"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSC001" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSC001"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSC002" equiv="ELM008">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSC002"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSC003" equiv="ELM009">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSC003"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSC004" equiv="ELM010">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSC004"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSC005" equiv="CJK3029S">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSC005"/>
+  </Template>
+
+  <Template brand="Hisago" part="FSC006" equiv="OP3003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=FSC006"/>
+  </Template>
+
+  <Template brand="Hisago" part="GB2600" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB2600"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP2501" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2501"/>
+    <Label-rectangle id="0" width="100mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="100mm" dy="148mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP2502" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2502"/>
+    <Label-rectangle id="0" width="81mm" height="45mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="3" x0="9.5mm" y0="6.5mm" dx="81mm" dy="45mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP2503" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2503"/>
+    <Label-rectangle id="0" width="44mm" height="25mm" round="1mm" x_waste="0.6mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="5mm" y0="8mm" dx="46mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP2504" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2504"/>
+    <Label-rectangle id="0" width="90mm" height="5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Layout nx="1" ny="25" x0="5mm" y0="11.5mm" dx="90mm" dy="5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP2505" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2505"/>
+    <Label-rectangle id="0" width="16mm" height="3mm" round="0mm" x_waste="1mm" y_waste="1mm">
+      <Layout nx="4" ny="20" x0="12mm" y0="15mm" dx="20mm" dy="6mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP2600" equiv="ELM001">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2600"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP2601" equiv="ELM003">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2601"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP2602" equiv="ELM007">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2602"/>
+  </Template>
+
+  <Template brand="Hisago" part="OP2603" equiv="GB871">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP2603"/>
+  </Template>
+
+  <!-- OP1920-B -->
+  <!-- OP1920-C -->
+  <!-- OP1920-G -->
+  <!-- OP1920-P -->
+  <!-- OP920    -->
+  <!-- OP920-B  -->
+  <!-- OP920-R  -->
+
+  <Template brand="Hisago" part="OP1903-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1903-N"/>
+    <Label-rectangle id="0" width="74mm" height="10mm" round="1mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="12" x0="13mm" y0="14mm" dx="74mm" dy="10mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1904-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1904-N"/>
+    <Label-rectangle id="0" width="12mm" height="120mm" round="1mm" x_waste="0mm" y_waste="1mm">
+      <Layout nx="7" ny="1" x0="8mm" y0="14mm" dx="12mm" dy="120mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1905-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1905-N"/>
+    <Label-rectangle id="0" width="44mm" height="25mm" round="1mm" x_waste="0.6mm" y_waste="0mm">
+      <Layout nx="2" ny="5" x0="5mm" y0="8mm" dx="46mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1906-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1906-N"/>
+    <Label-rectangle id="0" width="90mm" height="25mm" round="1mm" x_waste="1mm" y_waste="0mm">
+      <Layout nx="1" ny="5" x0="5mm" y0="8mm" dx="90mm" dy="25mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1900-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1900-N"/>
+    <Label-rectangle id="0" width="43mm" height="13mm" round="1mm" x_waste="0.6mm" y_waste="0mm">
+      <Layout nx="2" ny="9" x0="6mm" y0="15mm" dx="45mm" dy="13mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1901-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1901-N"/>
+    <Label-rectangle id="0" width="28mm" height="13mm" round="1mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="9" x0="5mm" y0="15mm" dx="31mm" dy="13mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1902-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1902-N"/>
+    <Label-rectangle id="0" width="28mm" height="8mm" round="1mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="3" ny="14" x0="5mm" y0="16mm" dx="31mm" dy="8mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1907-N" size="Other" width="100mm" height="148mm" _description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1907-N"/>
+    <Label-rectangle id="0" width="20mm" height="24mm" round="1mm" x_waste="0.8mm" y_waste="0mm">
+      <Layout nx="4" ny="5" x0="5mm" y0="14mm" dx="23mm" dy="24mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Hisago" part="OP1907-W" equiv="OP1907-N">
+    <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP1907-W"/>
+  </Template>
+
+  <!-- OP1909-BN  -->
+  <!-- OP1909-CN  -->
+  <!-- OP1909-GN  -->
+  <!-- OP1909-PN  -->
+
+</Glabels-templates>
+
