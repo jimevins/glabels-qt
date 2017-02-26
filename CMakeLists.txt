@@ -35,17 +35,6 @@ find_package(ZLIB 1.2 REQUIRED)
 
 
 #=======================================
-# Compilation
-#=======================================
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-add_compile_options (-std=c++11 -g)
-if (NOT WIN32)
-	add_compile_options (-fPIC)
-endif ()
-
-
-#=======================================
 # Subdirectories
 #=======================================
 add_subdirectory (glabels)

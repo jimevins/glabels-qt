@@ -7,6 +7,17 @@ project (app CXX)
 
 
 #=======================================
+# Compilation
+#=======================================
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+add_compile_options (-std=c++11 -g)
+if (NOT WIN32)
+	add_compile_options (-fPIC)
+endif ()
+
+
+#=======================================
 # Auto-generate Version.h
 #=======================================
 configure_file (Version.h.in ${CMAKE_CURRENT_BINARY_DIR}/Version.h @ONLY)
