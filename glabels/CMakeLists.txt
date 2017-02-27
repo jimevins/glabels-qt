@@ -5,7 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_compile_options (-std=c++11 -g)
 if (NOT WIN32)
-	add_compile_options (-fPIC)
+   add_compile_options (-fPIC)
 endif ()
 
 
@@ -161,8 +161,7 @@ if (WIN32)
   set (glabels_win_rc glabels.rc)
 endif ()
 
-
-add_executable (glabels-qt
+add_executable (glabels-qt WIN32
   ${glabels_sources}
   ${glabels_moc_sources}
   ${glabels_qrc_sources}
@@ -214,3 +213,20 @@ install (FILES icons/scalable/mimetypes/x-glabels-project.svg DESTINATION share/
 install (FILES icons/16x16/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/16x16/mimetypes)
 install (FILES icons/22x22/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/22x22/mimetypes)
 install (FILES icons/24x24/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/24x24/mimetypes)
+
+if (MINGW)
+   # Install supporting DLLs
+   install (FILES
+            ${MINGW_BIN_DIR}/libgcc_s_dw2-1.dll
+            ${MINGW_BIN_DIR}/libstdc++-6.dll
+            ${MINGW_BIN_DIR}/zlib1.dll
+	    ${QT_BIN_DIR}/libwinpthread-1.dll
+	    ${QT_BIN_DIR}/Qt5Core.dll
+	    ${QT_BIN_DIR}/Qt5Gui.dll
+	    ${QT_BIN_DIR}/Qt5PrintSupport.dll
+	    ${QT_BIN_DIR}/Qt5Widgets.dll
+	    ${QT_BIN_DIR}/Qt5Svg.dll
+	    ${QT_BIN_DIR}/Qt5Xml.dll
+            DESTINATION bin
+   )
+endif ()

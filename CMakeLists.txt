@@ -21,15 +21,25 @@ set (Full_Version "${Major_Version}.${Minor_Version}.${Micro_Version}")
 #=======================================
 # Dependencies
 #=======================================
-if (WIN32)
-	# Make sure we can find MINGW libraries, e.g. zlib
-	set (CMAKE_PREFIX_PATH C:/MinGW )
+if (MINGW)
+   # Locate MINGW directories
+   string (REPLACE "/g++.exe" "" MINGW_BIN_DIR  ${CMAKE_CXX_COMPILER})
+   string (REPLACE "/bin"     "" MINGW_BASE_DIR ${MINGW_BIN_DIR})
+
+   # Make sure we can find MINGW libraries, e.g. zlib
+   set (CMAKE_PREFIX_PATH ${MINGW_BASE_DIR} )
 endif ()
 
 find_package(Qt5Widgets 5.4 REQUIRED)
 find_package(Qt5PrintSupport 5.4 REQUIRED)
 find_package(Qt5Xml 5.4 REQUIRED)
 find_package(Qt5Svg 5.4 REQUIRED)
+
+if (MINGW)
+   # Locate Qt directories
+   execute_process (COMMAND qtpaths --install-prefix OUTPUT_VARIABLE QT_BASE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+   set (QT_BIN_DIR ${QT_BASE_DIR}/bin)
+endif ()
 
 find_package(ZLIB 1.2 REQUIRED)
 
@@ -53,6 +63,12 @@ message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
 message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAKE_CXX_COMPILER} " " ${CMAKE_CXX_COMPILER_VERSION})
 message (STATUS "Qt version .............. " ${Qt5Core_VERSION})
 message (STATUS "zlib version ............ " ${ZLIB_VERSION_STRING})
+
+if (MINGW)
+   message (STATUS "MinGW location .......... " ${MINGW_BASE_DIR})
+   message (STATUS "MinGW Qt location ....... " ${QT_BASE_DIR})
+endif ()
+
 message (STATUS "")
 
 #
