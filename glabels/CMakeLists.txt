@@ -215,18 +215,18 @@ install (FILES icons/22x22/mimetypes/x-glabels-project.svg    DESTINATION share/
 install (FILES icons/24x24/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/24x24/mimetypes)
 
 if (MINGW)
-   # Install supporting DLLs
-   install (FILES
-            ${MINGW_BIN_DIR}/libgcc_s_dw2-1.dll
-            ${MINGW_BIN_DIR}/libstdc++-6.dll
-            ${MINGW_BIN_DIR}/zlib1.dll
-	    ${QT_BIN_DIR}/libwinpthread-1.dll
-	    ${QT_BIN_DIR}/Qt5Core.dll
-	    ${QT_BIN_DIR}/Qt5Gui.dll
-	    ${QT_BIN_DIR}/Qt5PrintSupport.dll
-	    ${QT_BIN_DIR}/Qt5Widgets.dll
-	    ${QT_BIN_DIR}/Qt5Svg.dll
-	    ${QT_BIN_DIR}/Qt5Xml.dll
-            DESTINATION bin
+   # Install Windows runtime DLLs in application bin
+   set (runtime_dlls
+     ${MINGW_BIN_DIR}/libgcc_s_dw2-1.dll
+     ${MINGW_BIN_DIR}/libstdc++-6.dll
+     ${MINGW_BIN_DIR}/zlib1.dll
+     ${QT_BIN_DIR}/libwinpthread-1.dll
+     ${QT_BIN_DIR}/Qt5Core.dll
+     ${QT_BIN_DIR}/Qt5Gui.dll
+     ${QT_BIN_DIR}/Qt5PrintSupport.dll
+     ${QT_BIN_DIR}/Qt5Widgets.dll
+     ${QT_BIN_DIR}/Qt5Svg.dll
+     ${QT_BIN_DIR}/Qt5Xml.dll
    )
+   install (FILES ${runtime_dlls} DESTINATION bin)
 endif ()
