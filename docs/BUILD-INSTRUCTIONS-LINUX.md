@@ -9,7 +9,7 @@ gLabels Linux Build Instructions
 - zlib 1.2+ Development Package
 
 > Even if the above library packages are installed, their corresponding development packages
-> may also need to be installed.  Development packages are usually named somegthing like
+> may also need to be installed.  Development packages are usually named something like
 > libraryName-dev or libraryName-devel.
 
 # Cloning/Downloading
@@ -23,7 +23,7 @@ $ git clone https://github.com/jimevins/glabels-qt.git
 
 # Compiling and Install
 
-gLabels uses the CMake meta build system.  Use the following commands to build and install gLabels:
+gLabels uses the CMake meta build system.  Use the following commands to build and install gLabels (assuming you are still in the directory that you ran `git clone` from):
 
 ```
 $ cd ./glabels-qt
