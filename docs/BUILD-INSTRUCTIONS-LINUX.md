@@ -1,7 +1,7 @@
 gLabels Linux Build Instructions
 ================================
 
-# Prerequisites
+## Prerequisites
 
 - g++
 - CMake 2.8.12+
@@ -12,7 +12,7 @@ gLabels Linux Build Instructions
 > may also need to be installed.  Development packages are usually named something like
 > libraryName-dev or libraryName-devel.
 
-# Cloning/Downloading
+## Cloning/Downloading
 
 To clone the gLabels source:
 
@@ -21,7 +21,7 @@ $ git clone https://github.com/jimevins/glabels-qt.git
 ```
 
 
-# Compiling and Install
+## Compiling and Install
 
 gLabels uses the CMake meta build system.  Use the following commands to build and install gLabels (assuming you are still in the directory that you ran `git clone` from):
 
