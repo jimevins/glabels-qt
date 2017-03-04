@@ -13,8 +13,8 @@ MSYS/MINGW
 ### Prerequisites
 
 - MSYS/MINGW, including the following packages
-  . mingw32-gcc-g++
-  . mingw32-libz
+  + mingw32-gcc-g++
+  + mingw32-libz
 - CMake 2.8.12+
 - Qt5 5.4+ for MINGW
 
@@ -40,7 +40,7 @@ gLabels uses the CMake meta build system.  From the MSYS shell, type the followi
 $ cd glabels-qt-master
 $ mkdir build
 $ cd build
-$ cmake ..
+$ cmake -G "MSYS Makefiles" ..
 $ make install
 ```
 
