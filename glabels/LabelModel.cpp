@@ -28,7 +28,9 @@
 #include <QtDebug>
 
 #include "LabelModelObject.h"
+#include "LabelModelTextObject.h"
 #include "Region.h"
+#include "Size.h"
 #include "XmlLabelCreator.h"
 #include "XmlLabelParser.h"
 
@@ -1370,11 +1372,11 @@ namespace glabels
 		}
 		else if ( mimeData->hasImage() )
 		{
-			// TODO: return true
+			return true;
 		}
 		else if ( mimeData->hasText() )
 		{
-			// TODO: return true
+			return true;
 		}
 		return false;
 	}
@@ -1390,6 +1392,7 @@ namespace glabels
 
 		if ( mimeData->hasFormat( MIME_TYPE ) )
 		{
+			// Native objects
 			QByteArray buffer = mimeData->data( MIME_TYPE );
 			QList <LabelModelObject*> objects = XmlLabelParser::deserializeObjects( buffer );
 
@@ -1402,11 +1405,18 @@ namespace glabels
 		}
 		else if ( mimeData->hasImage() )
 		{
+			// Create object from clipboard image
 			// TODO: create an image object from image
 		}
 		else if ( mimeData->hasText() )
 		{
-			// TODO: create a text object from text
+			// Create object from clipboard text
+			LabelModelTextObject* object = new LabelModelTextObject();
+			object->setText( mimeData->text() );
+			object->setSize( object->naturalSize() );
+			object->setPosition( (w()-object->w())/2.0, (h()-object->h())/2.0 );
+			addObject( object );
+			selectObject( object );
 		}
 	}
 

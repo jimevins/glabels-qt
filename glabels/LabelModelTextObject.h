@@ -126,6 +126,12 @@ namespace glabels
 		virtual void setTextLineSpacing( double value );
 
 
+		//
+		// Property: naturalSize
+		//
+		virtual Size naturalSize() const;
+
+
 		///////////////////////////////////////////////////////////////
 		// Capability Implementations
 		///////////////////////////////////////////////////////////////

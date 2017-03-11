@@ -28,6 +28,8 @@
 #include <QRegularExpression>
 #include <QtDebug>
 
+#include "Size.h"
+
 
 namespace glabels
 {
@@ -86,6 +88,8 @@ namespace glabels
 		mTextHAlign        = object->mTextHAlign;
 		mTextVAlign        = object->mTextVAlign;
 		mTextLineSpacing   = object->mTextLineSpacing;
+
+		update(); // Initialize cached editor layouts
 	}
 
 
@@ -340,6 +344,55 @@ namespace glabels
 			update();
 			emit changed();
 		}
+	}
+
+
+	///
+	/// NaturalSize Property Getter
+	///
+	Size LabelModelTextObject::naturalSize() const
+	{
+		QFont font;
+		font.setFamily( mFontFamily );
+		font.setPointSizeF( mFontSize );
+		font.setWeight( mFontWeight );
+		font.setItalic( mFontItalicFlag );
+		font.setUnderline( mFontUnderlineFlag );
+
+		QTextOption textOption;
+		textOption.setAlignment( mTextHAlign );
+		textOption.setWrapMode( QTextOption::WordWrap );
+
+		QFontMetricsF fontMetrics( font );
+		double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
+
+		QString displayText = mText.isEmpty() ? tr("Text") : mText;
+		QTextDocument document( displayText );
+
+		// Do layouts
+		double x = 0;
+		double y = 0;
+		QRectF boundingRect;
+		for ( int i = 0; i < document.blockCount(); i++ )
+		{
+			QTextLayout* layout = new QTextLayout( document.findBlockByNumber(i).text() );
+		
+			layout->setFont( font );
+			layout->setTextOption( textOption );
+			layout->setCacheEnabled(true);
+
+			layout->beginLayout();
+			for ( QTextLine l = layout->createLine(); l.isValid(); l = layout->createLine() )
+			{
+				l.setPosition( QPointF( x, y ) );
+				y += dy;
+			}
+			layout->endLayout();
+
+			boundingRect = layout->boundingRect().united( boundingRect );
+		}
+
+		return Size( boundingRect.width() + 2*marginPts, boundingRect.height() + 2*marginPts );
 	}
 
 

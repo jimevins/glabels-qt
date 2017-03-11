@@ -371,6 +371,16 @@ namespace glabels
 		
 
 	///
+	/// Virtual Natural Size Property Default Getter
+	/// (Overridden by concrete class)
+	///
+	Size LabelModelObject::naturalSize() const
+	{
+		return Size( Distance::pt(0), Distance::pt(0) );
+	}
+
+
+	///
 	/// Virtual Text Property Default Getter
 	/// (Overridden by concrete class)
 	///
@@ -589,16 +599,6 @@ namespace glabels
 		// empty
 	}
 		
-
-	///
-	/// Virtual Original Size Property Default Getter
-	/// (Overridden by concrete class)
-	///
-	Size LabelModelObject::originalSize() const
-	{
-		return Size( Distance::pt(0), Distance::pt(0) );
-	}
-
 
 	///
 	/// Virtual Line Width Property Default Getter

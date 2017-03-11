@@ -163,6 +163,12 @@ namespace glabels
 		void setShadowColorNode( const ColorNode& value );
 		
 
+		//
+		// Natural Size Property (read-only)
+		//
+		virtual Size naturalSize() const;
+
+
 		///////////////////////////////////////////////////////////////
 		// Text Properties Virtual Interface
 		///////////////////////////////////////////////////////////////
@@ -246,11 +252,6 @@ namespace glabels
 		//
 		virtual TextNode filenameNode() const;
 		virtual void setFilenameNode( const TextNode &value );
-
-		//
-		// Virtual Image Property: originalSize (read-only)
-		//
-		virtual Size originalSize() const;
 
 
 		///////////////////////////////////////////////////////////////

@@ -186,7 +186,7 @@ namespace glabels
 			sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 			sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 
-			Size originalSize = mObject->originalSize();
+			Size originalSize = mObject->naturalSize();
 			QString originalSizeString = QString( "%1:  %2 x %3 %4" )
 				.arg( tr("Original size") )
 				.arg( originalSize.w().inUnits(mUnits), 0, 'f', mSpinDigits )
@@ -662,7 +662,7 @@ namespace glabels
 
 	void ObjectEditor::onResetImageSize()
 	{
-		mObject->setSize( mObject->originalSize() );
+		mObject->setSize( mObject->naturalSize() );
 	}
 
 

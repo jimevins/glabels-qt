@@ -120,9 +120,9 @@ namespace glabels
 
 
 	///
-	/// Image originalSize Property Getter (assumes 72 DPI, i.e. 1pixel == 1pt)
+	/// naturalSize Property Getter (assumes 72 DPI, i.e. 1pixel == 1pt)
 	///
-	Size LabelModelImageObject::originalSize() const
+	Size LabelModelImageObject::naturalSize() const
 	{
 		Size size( Distance::pt(72), Distance::pt(72) );
 

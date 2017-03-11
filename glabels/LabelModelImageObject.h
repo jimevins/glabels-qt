@@ -63,9 +63,9 @@ namespace glabels
 		virtual void setFilenameNode( const TextNode& value );
 
 		//
-		// Image Property: originalSize
+		// Property: naturalSize
 		//
-		virtual Size originalSize() const;
+		virtual Size naturalSize() const;
 	
 
 		///////////////////////////////////////////////////////////////
