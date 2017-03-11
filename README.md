@@ -7,12 +7,12 @@
 
 gLabels-qt is the development repository for the next major version of gLabels (4.0).
 
-## What's new in glabels-4.0?
+## What's new in gLabels-qt?
 
-- Based on Qt instead of Gtk.
-- Unlike previous versions, glabels-4.0 should be a cross-platform application.  So far, it
-  has been built and tested under Linux and Windows (using MSYS/MINGW toolchain).
-- It has a new general UI which helps guide the user through typical workflows.
+- Based on the Qt cross-platform framework.
+- Unlike previous versions, glabels-qt is a cross-platform application.  So far, it
+  has been built and tested under both Linux and Windows 7 (using MSYS/MINGW toolchain).
+- Updated general UI which helps guide the user through typical workflows.
 
 ## Status
 
@@ -24,9 +24,16 @@ It is still missing several features to bring it in parity with glabels-3.4.  Th
 - Product template designer
 - Online manual
 
+## Build Instructions
+
+- [Linux Build Instructions](docs/BUILD-INSTRUCTIONS-LINUX.md)
+- [Windows Build Instructions](docs/BUILD-INSTRUCTIONS-WINDOWS.md)
+- Mac Build Instructions (TBD)
+
 ## Help Needed
 
-* Help is needed to add support to build and package glabels for other platforms.  These include
+* Help is needed to add support to build and package glabels for various platforms and packaging systems.
+These include
 
   - Windows (VisualStudio)
   - Windows (MINGW 64bit)
