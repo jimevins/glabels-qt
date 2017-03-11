@@ -27,22 +27,17 @@ export PATH=/c/Qt/Qt5.6.0/5.6/mingw49_32/bin:${PATH}
 The exact path will depend on the version of Qt and MINGW you have installed.
 
 
-### Cloning/Downloading
-
-To download, select **Download ZIP** on the [glabels-qt Github page](https://github.com/jimevins/glabels-qt).  Unzip this file into your MSYS home directory (e.g. */mingw/msys/1.0/home/yourname*).
-
-
-### Compiling and Install
+### Compile and Install
 
 gLabels uses the CMake meta build system.  From the MSYS shell, type the following commands:
 
-```
-$ cd glabels-qt-master
+<pre>
+$ cd <i>glabels_source_directory</i>
 $ mkdir build
 $ cd build
 $ cmake -G "MSYS Makefiles" ..
 $ make install
-```
+</pre>
 
 
 

@@ -12,24 +12,15 @@ gLabels Linux Build Instructions
 > may also need to be installed.  Development packages are usually named something like
 > libraryName-dev or libraryName-devel.
 
-## Cloning/Downloading
+## Compile and Install
 
-To clone the gLabels source:
+gLabels uses the CMake meta build system.  Use the following commands to build and install gLabels:
 
-```
-$ git clone https://github.com/jimevins/glabels-qt.git
-```
-
-
-## Compiling and Install
-
-gLabels uses the CMake meta build system.  Use the following commands to build and install gLabels (assuming you are still in the directory that you ran `git clone` from):
-
-```
-$ cd ./glabels-qt
+<pre>
+$ cd <i>glabels_source_directory</i>
 $ mkdir build
 $ cd build
 $ cmake ..
 $ make
 $ sudo make install
-```
+</pre>
