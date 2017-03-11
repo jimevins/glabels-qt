@@ -63,6 +63,11 @@ namespace glabels
 		virtual void setFilenameNode( const TextNode& value );
 
 		//
+		// Image Property: image
+		//
+		virtual void setImage( const QImage& value );
+
+		//
 		// Property: naturalSize
 		//
 		virtual Size naturalSize() const;

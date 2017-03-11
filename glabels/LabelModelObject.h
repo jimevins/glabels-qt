@@ -254,6 +254,12 @@ namespace glabels
 		virtual void setFilenameNode( const TextNode &value );
 
 
+		//
+		// Virtual Image Property: image
+		//
+		virtual void setImage( const QImage& value );
+
+
 		///////////////////////////////////////////////////////////////
 		// Shape Properties Virtual Interface
 		///////////////////////////////////////////////////////////////

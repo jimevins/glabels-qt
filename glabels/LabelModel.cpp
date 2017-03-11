@@ -29,6 +29,7 @@
 
 #include "LabelModelObject.h"
 #include "LabelModelTextObject.h"
+#include "LabelModelImageObject.h"
 #include "Region.h"
 #include "Size.h"
 #include "XmlLabelCreator.h"
@@ -1406,7 +1407,13 @@ namespace glabels
 		else if ( mimeData->hasImage() )
 		{
 			// Create object from clipboard image
-			// TODO: create an image object from image
+			LabelModelImageObject* object = new LabelModelImageObject();
+			object->setImage( qvariant_cast<QImage>(mimeData->imageData()) );
+			object->setSize( object->naturalSize() );
+			object->setPosition( (w()-object->w())/2.0, (h()-object->h())/2.0 );
+			addObject( object );
+			unselectAll();
+			selectObject( object );
 		}
 		else if ( mimeData->hasText() )
 		{
@@ -1416,6 +1423,7 @@ namespace glabels
 			object->setSize( object->naturalSize() );
 			object->setPosition( (w()-object->w())/2.0, (h()-object->h())/2.0 );
 			addObject( object );
+			unselectAll();
 			selectObject( object );
 		}
 	}

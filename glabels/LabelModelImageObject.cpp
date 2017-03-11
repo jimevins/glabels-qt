@@ -120,6 +120,31 @@ namespace glabels
 
 
 	///
+	/// Image Property Default Setter
+	///
+	void LabelModelImageObject::setImage( const QImage& value )
+	{
+		if ( !value.isNull() )
+		{
+			if ( mImage )
+			{
+				delete mImage;
+			}
+			if ( mSvg )
+			{
+				delete mSvg;
+			}
+
+			mImage = new QImage(value);
+			quint16 cs = qChecksum( (const char*)mImage->constBits(), mImage->byteCount() );
+			mFilenameNode = TextNode( false, QString("%image_%1%").arg( cs ) );
+
+			emit changed();
+		}
+	}
+		
+
+	///
 	/// naturalSize Property Getter (assumes 72 DPI, i.e. 1pixel == 1pt)
 	///
 	Size LabelModelImageObject::naturalSize() const
