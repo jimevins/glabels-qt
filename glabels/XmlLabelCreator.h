@@ -68,7 +68,7 @@ namespace glabels
 		static void createShadowAttrs( QDomElement &node, const LabelModelObject* object );
 		static void createMergeNode( QDomElement &parent, const LabelModel* label );
 		static void createDataNode( QDomElement &parent, const LabelModel* label );
-		static void createPixdataNode( QDomElement &parent, const LabelModel* label, const QString& name );
+		static void createPngFileNode( QDomElement &parent, const QString& name, const QImage& image );
 		static void createSvgFileNode( QDomElement &parent, const LabelModel* label, const QString& name );
 
 	};

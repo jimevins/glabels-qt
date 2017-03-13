@@ -25,6 +25,7 @@
 #include <QFile>
 #include <QTextBlock>
 #include <QTextDocument>
+#include <QBuffer>
 #include <QtDebug>
 
 #include "EnumUtil.h"
@@ -36,6 +37,7 @@
 #include "LabelModelLineObject.h"
 #include "LabelModelImageObject.h"
 #include "LabelModelTextObject.h"
+#include "DataCache.h"
 #include "XmlTemplateCreator.h"
 #include "XmlUtil.h"
 
@@ -444,14 +446,37 @@ namespace glabels
 	void
 	XmlLabelCreator::createDataNode( QDomElement &parent, const LabelModel* label )
 	{
-		// TODO
+		QDomDocument doc = parent.ownerDocument();
+		QDomElement node = doc.createElement( "Data" );
+		parent.appendChild( node );
+
+		DataCache data( label );
+
+		foreach ( QString name, data.imageNames() )
+		{
+			createPngFileNode( node, name, data.getImage( name ) );
+		}
 	}
 
 
 	void
-	XmlLabelCreator::createPixdataNode( QDomElement &parent, const LabelModel* label, const QString& name )
+	XmlLabelCreator::createPngFileNode( QDomElement &parent, const QString& name, const QImage& image )
 	{
-		// TODO
+		QDomDocument doc = parent.ownerDocument();
+		QDomElement node = doc.createElement( "File" );
+		parent.appendChild( node );
+
+		XmlUtil::setStringAttr( node, "name", name );
+		XmlUtil::setStringAttr( node, "mimetype", "image/png" );
+		XmlUtil::setStringAttr( node, "encoding", "base64" );
+
+		QByteArray ba;
+		QBuffer buffer(&ba);
+		buffer.open(QIODevice::WriteOnly);
+		image.save(&buffer, "PNG");
+		QByteArray ba64 = ba.toBase64();
+
+		node.appendChild( doc.createTextNode( QString( ba64 ) ) );
 	}
 
 

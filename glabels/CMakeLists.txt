@@ -36,6 +36,7 @@ set (glabels_sources
   ColorPaletteButtonItem.cpp
   ColorSwatch.cpp
   Cursors.cpp
+  DataCache.cpp
   Db.cpp
   Distance.cpp
   EnumUtil.cpp

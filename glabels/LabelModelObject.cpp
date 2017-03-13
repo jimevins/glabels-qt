@@ -601,10 +601,30 @@ namespace glabels
 		
 
 	///
+	/// Virtual Image Property Default Getter
+	/// (Overridden by concrete class)
+	///
+	const QImage* LabelModelObject::image() const
+	{
+		return 0;
+	}
+
+
+	///
 	/// Virtual Image Property Default Setter
 	/// (Overridden by concrete class)
 	///
 	void LabelModelObject::setImage( const QImage& value )
+	{
+		// empty
+	}
+		
+
+	///
+	/// Virtual Image Property Default Setter
+	/// (Overridden by concrete class)
+	///
+	void LabelModelObject::setImage( const QString& name, const QImage& value )
 	{
 		// empty
 	}

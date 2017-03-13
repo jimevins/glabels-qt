@@ -120,7 +120,16 @@ namespace glabels
 
 
 	///
-	/// Image Property Default Setter
+	/// Image image Property Getter
+	///
+	const QImage* LabelModelImageObject::image() const
+	{
+		return mImage;
+	}
+
+
+	///
+	/// Image Property Setter
 	///
 	void LabelModelImageObject::setImage( const QImage& value )
 	{
@@ -138,6 +147,30 @@ namespace glabels
 			mImage = new QImage(value);
 			quint16 cs = qChecksum( (const char*)mImage->constBits(), mImage->byteCount() );
 			mFilenameNode = TextNode( false, QString("%image_%1%").arg( cs ) );
+
+			emit changed();
+		}
+	}
+		
+
+	///
+	/// Image Property Setter
+	///
+	void LabelModelImageObject::setImage( const QString& name, const QImage& value )
+	{
+		if ( !value.isNull() )
+		{
+			if ( mImage )
+			{
+				delete mImage;
+			}
+			if ( mSvg )
+			{
+				delete mSvg;
+			}
+
+			mImage = new QImage(value);
+			mFilenameNode = TextNode( false, name );
 
 			emit changed();
 		}
@@ -246,18 +279,15 @@ namespace glabels
 		if ( mImage )
 		{
 			delete mImage;
+			mImage = 0;
 		}
 		if ( mSvg )
 		{
 			delete mSvg;
-		}
-
-		if ( mFilenameNode.isField() )
-		{
-			mImage = 0;
 			mSvg = 0;
 		}
-		else
+
+		if ( !mFilenameNode.isField() )
 		{
 			QString filename = mFilenameNode.data();
 			QFileInfo fileInfo( filename );

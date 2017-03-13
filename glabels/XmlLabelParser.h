@@ -38,6 +38,7 @@ namespace glabels
 	class LabelModelImageObject;
 	class LabelModelBarcodeObject;
 	class LabelModelTextObject;
+	class DataCache;
 
 
 	///
@@ -55,21 +56,21 @@ namespace glabels
 	private:
 		static void gunzip( const QByteArray& gzippedData, QByteArray& data );
 		static LabelModel* parseRootNode( const QDomElement &node );
-		static QList<LabelModelObject*> parseObjects( const QDomElement &node );
-		static void parseObjectsNode( const QDomElement &node, LabelModel* label );
+		static QList<LabelModelObject*> parseObjects( const QDomElement &node, const DataCache& data );
+		static void parseObjectsNode( const QDomElement &node, const DataCache& data, LabelModel* label );
 		static LabelModelBoxObject* parseObjectBoxNode( const QDomElement &node );
 		static LabelModelEllipseObject* parseObjectEllipseNode( const QDomElement &node );
 		static LabelModelLineObject* parseObjectLineNode( const QDomElement &node );
-		static LabelModelImageObject* parseObjectImageNode( const QDomElement &node );
+		static LabelModelImageObject* parseObjectImageNode( const QDomElement &node, const DataCache& data );
 		static LabelModelBarcodeObject* parseObjectBarcodeNode( const QDomElement &node );
 		static LabelModelTextObject* parseObjectTextNode( const QDomElement &node );
 		static QString parsePNode( const QDomElement &node );
 		static void parseAffineAttrs( const QDomElement &node, LabelModelObject* object );
 		static void parseShadowAttrs( const QDomElement &node, LabelModelObject* object );
 		static void parseMergeNode( const QDomElement &node, LabelModel* label );
-		static void parseDataNode( const QDomElement &node, LabelModel* label );
-		static void parsePixdataNode( const QDomElement &node, LabelModel* label );
-		static void parseFileNode( const QDomElement &node, LabelModel* label );
+		static void parseDataNode( const QDomElement &node, DataCache& data );
+		static void parsePixdataNode( const QDomElement &node, DataCache& data );
+		static void parseFileNode( const QDomElement &node, DataCache& data );
 
 	};
 

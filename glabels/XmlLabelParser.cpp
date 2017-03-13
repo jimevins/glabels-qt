@@ -40,6 +40,7 @@
 #include "LabelModelTextObject.h"
 #include "XmlTemplateParser.h"
 #include "XmlUtil.h"
+#include "DataCache.h"
 
 #include "Merge/Factory.h"
 
@@ -151,7 +152,7 @@ namespace glabels
 			return list;
 		}
 
-		return parseObjects( root );
+		return parseObjects( root, DataCache() );
 	}
 
 
@@ -217,11 +218,12 @@ namespace glabels
 		LabelModel* label = new LabelModel();
 
 		/* Pass 1, extract data nodes to pre-load cache. */
+		DataCache data;
 		for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 		{
 			if ( child.toElement().tagName() == "Data" )
 			{
-				parseDataNode( child.toElement(), label );
+				parseDataNode( child.toElement(), data );
 			}
 		}
 
@@ -242,7 +244,7 @@ namespace glabels
 			}
 			else if ( tagName == "Objects" )
 			{
-				parseObjectsNode( child.toElement(), label );
+				parseObjectsNode( child.toElement(), data, label );
 			}
 			else if ( tagName == "Merge" )
 			{
@@ -264,7 +266,7 @@ namespace glabels
 
 
 	QList<LabelModelObject*>
-	XmlLabelParser::parseObjects( const QDomElement &node )
+	XmlLabelParser::parseObjects( const QDomElement &node, const DataCache& data )
 	{
 		QList<LabelModelObject*> list;
 
@@ -290,7 +292,7 @@ namespace glabels
 			}
 			else if ( tagName == "Object-image" )
 			{
-				list.append( parseObjectImageNode( child.toElement() ) );
+				list.append( parseObjectImageNode( child.toElement(), data ) );
 			}
 #if 0
 			else if ( tagName == "Object-barcode" )
@@ -309,9 +311,9 @@ namespace glabels
 
 
 	void
-	XmlLabelParser::parseObjectsNode( const QDomElement &node, LabelModel* label )
+	XmlLabelParser::parseObjectsNode( const QDomElement &node, const DataCache& data, LabelModel* label )
 	{
-		QList<LabelModelObject*> list = parseObjects( node );
+		QList<LabelModelObject*> list = parseObjects( node, data );
 
 		foreach ( LabelModelObject* object, list )
 		{
@@ -441,7 +443,7 @@ namespace glabels
 
 
 	LabelModelImageObject*
-	XmlLabelParser::parseObjectImageNode( const QDomElement &node )
+	XmlLabelParser::parseObjectImageNode( const QDomElement &node, const DataCache& data )
 	{
 		LabelModelImageObject* object = new LabelModelImageObject();
 
@@ -460,7 +462,21 @@ namespace glabels
 			bool    field_flag = !key.isEmpty();
 			QString filename   = XmlUtil::getStringAttr( node, "src", "" );
 
-			object->setFilenameNode( TextNode( field_flag, field_flag ? key : filename ) );
+			if ( field_flag )
+			{
+				object->setFilenameNode( TextNode( true, key ) );
+			}
+			else
+			{
+				if ( data.hasImage( filename ) )
+				{
+					object->setImage( filename, data.getImage( filename ) );
+				}
+				else
+				{
+					object->setFilenameNode( TextNode( false, filename ) );
+				}
+			}
 		}
         
 		/* affine attrs */
@@ -607,23 +623,48 @@ namespace glabels
 
 
 	void
-	XmlLabelParser::parseDataNode( const QDomElement &node, LabelModel* label )
+	XmlLabelParser::parseDataNode( const QDomElement &node, DataCache& data )
 	{
-		// TODO
+		for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+		{
+			QString tagName = child.toElement().tagName();
+		
+			if ( tagName == "File" )
+			{
+				parseFileNode( child.toElement(), data );
+			}
+			else if ( !child.isComment() )
+			{
+				qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
+			}
+		}
 	}
 
 
 	void
-	XmlLabelParser::parsePixdataNode( const QDomElement &node, LabelModel* label )
+	XmlLabelParser::parsePixdataNode( const QDomElement& node, DataCache& data )
 	{
-		// TODO
+		// TODO, compatability with glabels-3
 	}
 
 
 	void
-	XmlLabelParser::parseFileNode( const QDomElement &node, LabelModel* label )
+	XmlLabelParser::parseFileNode( const QDomElement& node, DataCache& data )
 	{
-		// TODO
+		QString name     = XmlUtil::getStringAttr( node, "name", "" );
+		QString mimetype = XmlUtil::getStringAttr( node, "mimetype", "image/png" );
+		QString encoding = XmlUtil::getStringAttr( node, "encoding", "base64" );
+
+		if ( mimetype == "image/png" )
+		{
+			QByteArray ba64 = node.text().toUtf8();
+			QByteArray ba = QByteArray::fromBase64( ba64 );
+			QImage image;
+			image.loadFromData( ba, "PNG" );
+
+			data.addImage( name, image );
+		}
+
 	}
 
 }
