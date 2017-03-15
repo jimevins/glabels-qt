@@ -55,8 +55,7 @@ namespace glabels
 	private:
 		static void createDoc( QDomDocument& doc, const LabelModel* label );
 		static void createRootNode( const LabelModel* label );
-		static void createObjectsNode( QDomElement &parent, const LabelModel* label );
-		static void addObjectsToNode( QDomElement &parent, const QList<LabelModelObject*>& objects );
+		static void createObjectsNode( QDomElement &parent, const QList<LabelModelObject*>& objects, bool rotate );
 		static void createObjectBoxNode( QDomElement &parent, const LabelModelBoxObject* object );
 		static void createObjectEllipseNode( QDomElement &parent, const LabelModelEllipseObject* object );
 		static void createObjectLineNode( QDomElement &parent, const LabelModelLineObject* object );
@@ -67,7 +66,7 @@ namespace glabels
 		static void createAffineAttrs( QDomElement &node, const LabelModelObject* object );
 		static void createShadowAttrs( QDomElement &node, const LabelModelObject* object );
 		static void createMergeNode( QDomElement &parent, const LabelModel* label );
-		static void createDataNode( QDomElement &parent, const LabelModel* label );
+		static void createDataNode( QDomElement &parent, const QList<LabelModelObject*>& objects );
 		static void createPngFileNode( QDomElement &parent, const QString& name, const QImage& image );
 		static void createSvgFileNode( QDomElement &parent, const LabelModel* label, const QString& name );
 

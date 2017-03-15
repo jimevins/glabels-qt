@@ -32,9 +32,9 @@ namespace glabels
 	}
 
 
-	DataCache::DataCache( const LabelModel* model )
+	DataCache::DataCache( const QList<LabelModelObject*>& objects )
 	{
-		foreach( LabelModelObject* object, model->objectList() )
+		foreach( LabelModelObject* object, objects )
 		{
 			if ( LabelModelImageObject* imageObject = dynamic_cast<LabelModelImageObject*>(object) )
 			{

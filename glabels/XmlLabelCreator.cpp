@@ -88,8 +88,10 @@ namespace glabels
 
 		QDomElement root = doc.createElement( "Glabels-objects" );
 		doc.appendChild( root );
+		XmlUtil::setStringAttr( root, "version", "4.0" );
 
-		addObjectsToNode( root, objects );
+		createDataNode( root, objects );
+		createObjectsNode( root, objects, false );
 
 		buffer = doc.toByteArray( 2 );
 	}
@@ -107,60 +109,53 @@ namespace glabels
 
 		XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
 
-		createObjectsNode( root, label );
+		createObjectsNode( root, label->objectList(), label->rotate() );
 
 		if ( label->merge() && !dynamic_cast<merge::None*>(label->merge()) )
 		{
 			createMergeNode( root, label );
 		}
 
-		createDataNode( root, label );
+		createDataNode( root, label->objectList() );
 	}
 
 
 	void
-	XmlLabelCreator::createObjectsNode( QDomElement &parent, const LabelModel* label )
+	XmlLabelCreator::createObjectsNode( QDomElement &parent, const QList<LabelModelObject*>& objects, bool rotate )
 	{
 		QDomDocument doc = parent.ownerDocument();
 		QDomElement node = doc.createElement( "Objects" );
 		parent.appendChild( node );
 
 		XmlUtil::setStringAttr( node, "id", "0" );
-		XmlUtil::setBoolAttr( node, "rotate", label->rotate() );
+		XmlUtil::setBoolAttr( node, "rotate", rotate );
 
-		addObjectsToNode( node, label->objectList() );
-	}
-
-
-	void
-	XmlLabelCreator::addObjectsToNode( QDomElement &parent, const QList<LabelModelObject*>& objects )
-	{
 		foreach ( LabelModelObject* object, objects )
 		{
 			if ( LabelModelBoxObject* boxObject = dynamic_cast<LabelModelBoxObject*>(object) )
 			{
-				createObjectBoxNode( parent, boxObject );
+				createObjectBoxNode( node, boxObject );
 			}
 			else if ( LabelModelEllipseObject* ellipseObject = dynamic_cast<LabelModelEllipseObject*>(object) )
 			{
-				createObjectEllipseNode( parent, ellipseObject );
+				createObjectEllipseNode( node, ellipseObject );
 			}
 			else if ( LabelModelLineObject* lineObject = dynamic_cast<LabelModelLineObject*>(object) )
 			{
-				createObjectLineNode( parent, lineObject );
+				createObjectLineNode( node, lineObject );
 			}
 			else if ( LabelModelImageObject* imageObject = dynamic_cast<LabelModelImageObject*>(object) )
 			{
-				createObjectImageNode( parent, imageObject );
+				createObjectImageNode( node, imageObject );
 			}
 			else if ( LabelModelTextObject* textObject = dynamic_cast<LabelModelTextObject*>(object) )
 			{
-				createObjectTextNode( parent, textObject );
+				createObjectTextNode( node, textObject );
 			}
 			// TODO: other object types
 			else
 			{
-				Q_ASSERT_X( false, "XmlLabelCreator::addObjectsToNode", "Invalid object type." );
+				Q_ASSERT_X( false, "XmlLabelCreator::createObjectsNode", "Invalid object type." );
 			}
 		}
 	}
@@ -444,13 +439,13 @@ namespace glabels
 
 
 	void
-	XmlLabelCreator::createDataNode( QDomElement &parent, const LabelModel* label )
+	XmlLabelCreator::createDataNode( QDomElement &parent, const QList<LabelModelObject*>& objects )
 	{
 		QDomDocument doc = parent.ownerDocument();
 		QDomElement node = doc.createElement( "Data" );
 		parent.appendChild( node );
 
-		DataCache data( label );
+		DataCache data( objects );
 
 		foreach ( QString name, data.imageNames() )
 		{

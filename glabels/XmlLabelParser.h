@@ -56,8 +56,7 @@ namespace glabels
 	private:
 		static void gunzip( const QByteArray& gzippedData, QByteArray& data );
 		static LabelModel* parseRootNode( const QDomElement &node );
-		static QList<LabelModelObject*> parseObjects( const QDomElement &node, const DataCache& data );
-		static void parseObjectsNode( const QDomElement &node, const DataCache& data, LabelModel* label );
+		static QList<LabelModelObject*> parseObjectsNode( const QDomElement &node, const DataCache& data );
 		static LabelModelBoxObject* parseObjectBoxNode( const QDomElement &node );
 		static LabelModelEllipseObject* parseObjectEllipseNode( const QDomElement &node );
 		static LabelModelLineObject* parseObjectLineNode( const QDomElement &node );

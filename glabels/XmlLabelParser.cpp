@@ -152,7 +152,25 @@ namespace glabels
 			return list;
 		}
 
-		return parseObjects( root, DataCache() );
+		/* Pass 1, extract data nodes to pre-load cache. */
+		DataCache data;
+		for ( QDomNode child = root.firstChild(); !child.isNull(); child = child.nextSibling() )
+		{
+			if ( child.toElement().tagName() == "Data" )
+			{
+				parseDataNode( child.toElement(), data );
+			}
+		}
+
+		/* Pass 2, now extract objects. */
+		for ( QDomNode child = root.firstChild(); !child.isNull(); child = child.nextSibling() )
+		{
+			if ( child.toElement().tagName() == "Objects" )
+			{
+				list = parseObjectsNode( child.toElement(), data );
+			}
+		}
+		return list;
 	}
 
 
@@ -244,7 +262,11 @@ namespace glabels
 			}
 			else if ( tagName == "Objects" )
 			{
-				parseObjectsNode( child.toElement(), data, label );
+				QList<LabelModelObject*> list = parseObjectsNode( child.toElement(), data );
+				foreach ( LabelModelObject* object, list )
+				{
+					label->addObject( object );
+				}
 			}
 			else if ( tagName == "Merge" )
 			{
@@ -266,7 +288,7 @@ namespace glabels
 
 
 	QList<LabelModelObject*>
-	XmlLabelParser::parseObjects( const QDomElement &node, const DataCache& data )
+	XmlLabelParser::parseObjectsNode( const QDomElement &node, const DataCache& data )
 	{
 		QList<LabelModelObject*> list;
 
@@ -307,18 +329,6 @@ namespace glabels
 		}
 
 		return list;
-	}
-
-
-	void
-	XmlLabelParser::parseObjectsNode( const QDomElement &node, const DataCache& data, LabelModel* label )
-	{
-		QList<LabelModelObject*> list = parseObjects( node, data );
-
-		foreach ( LabelModelObject* object, list )
-		{
-			label->addObject( object );
-		}
 	}
 
 

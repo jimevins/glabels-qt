@@ -33,7 +33,7 @@ namespace glabels
 	public:
 		DataCache();
 		
-		DataCache( const LabelModel* model );
+		DataCache( const QList<LabelModelObject*>& objects );
 
 		bool hasImage( const QString& name ) const;
 		QImage getImage( const QString& name ) const;
