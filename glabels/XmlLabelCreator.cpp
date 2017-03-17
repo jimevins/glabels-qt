@@ -169,33 +169,16 @@ namespace glabels
 		parent.appendChild( node );
 
 		/* position attrs */
-		XmlUtil::setLengthAttr( node, "x", object->x0() );
-		XmlUtil::setLengthAttr( node, "y", object->y0() );
+		createPositionAttrs( node, object );
 
 		/* size attrs */
-		XmlUtil::setLengthAttr( node, "w", object->w() );
-		XmlUtil::setLengthAttr( node, "h", object->h() );
+		createSizeAttrs( node, object );
 
 		/* line attrs */
-		XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-		if ( object->lineColorNode().isField() )
-		{
-			XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
-		}
+		createLineAttrs( node, object );
 
 		/* fill attrs */
-		if ( object->fillColorNode().isField() )
-		{
-			XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
-		}
+		createFillAttrs( node, object );
 
 		/* affine attrs */
 		createAffineAttrs( node, object );
@@ -213,33 +196,16 @@ namespace glabels
 		parent.appendChild( node );
 
 		/* position attrs */
-		XmlUtil::setLengthAttr( node, "x", object->x0() );
-		XmlUtil::setLengthAttr( node, "y", object->y0() );
+		createPositionAttrs( node, object );
 
 		/* size attrs */
-		XmlUtil::setLengthAttr( node, "w", object->w() );
-		XmlUtil::setLengthAttr( node, "h", object->h() );
+		createSizeAttrs( node, object );
 
 		/* line attrs */
-		XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-		if ( object->lineColorNode().isField() )
-		{
-			XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
-		}
+		createLineAttrs( node, object );
 
 		/* fill attrs */
-		if ( object->fillColorNode().isField() )
-		{
-			XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
-		}
+		createFillAttrs( node, object );
 
 		/* affine attrs */
 		createAffineAttrs( node, object );
@@ -257,23 +223,14 @@ namespace glabels
 		parent.appendChild( node );
 
 		/* position attrs */
-		XmlUtil::setLengthAttr( node, "x", object->x0() );
-		XmlUtil::setLengthAttr( node, "y", object->y0() );
+		createPositionAttrs( node, object );
 
-		/* size attrs */
+		/* size attrs of line */
 		XmlUtil::setLengthAttr( node, "dx", object->w() );
 		XmlUtil::setLengthAttr( node, "dy", object->h() );
 
 		/* line attrs */
-		XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-		if ( object->lineColorNode().isField() )
-		{
-			XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
-		}
+		createLineAttrs( node, object );
 
 		/* affine attrs */
 		createAffineAttrs( node, object );
@@ -291,15 +248,12 @@ namespace glabels
 		parent.appendChild( node );
 
 		/* position attrs */
-		XmlUtil::setLengthAttr( node, "x", object->x0() );
-		XmlUtil::setLengthAttr( node, "y", object->y0() );
+		createPositionAttrs( node, object );
 
 		/* size attrs */
-		XmlUtil::setLengthAttr( node, "w", object->w() );
-		XmlUtil::setLengthAttr( node, "h", object->h() );
+		createSizeAttrs( node, object );
 
 		/* file attrs */
-		XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
 		if ( object->filenameNode().isField() )
 		{
 			XmlUtil::setStringAttr( node, "src_field", object->filenameNode().data() );
@@ -332,12 +286,10 @@ namespace glabels
 		parent.appendChild( node );
 
 		/* position attrs */
-		XmlUtil::setLengthAttr( node, "x", object->x0() );
-		XmlUtil::setLengthAttr( node, "y", object->y0() );
+		createPositionAttrs( node, object );
 
 		/* size attrs */
-		XmlUtil::setLengthAttr( node, "w", object->w() );
-		XmlUtil::setLengthAttr( node, "h", object->h() );
+		createSizeAttrs( node, object );
 
 		/* color attr */
 		if ( object->textColorNode().isField() )
@@ -385,6 +337,51 @@ namespace glabels
 		parent.appendChild( node );
 
 		node.appendChild( doc.createTextNode( blockText ) );
+	}
+
+
+	void
+	XmlLabelCreator::createPositionAttrs( QDomElement &node, const LabelModelObject* object )
+	{
+		XmlUtil::setLengthAttr( node, "x", object->x0() );
+		XmlUtil::setLengthAttr( node, "y", object->y0() );
+	}
+
+	
+	void
+	XmlLabelCreator::createSizeAttrs( QDomElement &node, const LabelModelObject* object )
+	{
+		XmlUtil::setLengthAttr( node, "w", object->w() );
+		XmlUtil::setLengthAttr( node, "h", object->h() );
+	}
+
+	
+	void
+	XmlLabelCreator::createLineAttrs( QDomElement &node, const LabelModelObject* object )
+	{
+		XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
+		if ( object->lineColorNode().isField() )
+		{
+			XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
+		}
+		else
+		{
+			XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
+		}
+	}
+
+	
+	void
+	XmlLabelCreator::createFillAttrs( QDomElement &node, const LabelModelObject* object )
+	{
+		if ( object->fillColorNode().isField() )
+		{
+			XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
+		}
+		else
+		{
+			XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
+		}
 	}
 
 

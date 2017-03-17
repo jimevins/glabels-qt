@@ -1,7 +1,10 @@
 #=======================================
 # Template Files
 #=======================================
-set (template_dtd glabels-3.0.dtd)
+set (dtd_files
+  glabels-3.0.dtd
+  glabels-4.0.dtd
+)
 
 set (template_files
   ascom-iso-templates.xml
@@ -49,6 +52,6 @@ set (other_db_files
 #=======================================
 # Install
 #=======================================
-install (FILES ${template_dtd}   DESTINATION share/glabels-qt/templates)
+install (FILES ${dtd_files}      DESTINATION share/glabels-qt/templates)
 install (FILES ${template_files} DESTINATION share/glabels-qt/templates)
 install (FILES ${other_db_files} DESTINATION share/glabels-qt/templates)

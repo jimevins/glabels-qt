@@ -63,6 +63,10 @@ namespace glabels
 		static void createObjectBarcodeNode( QDomElement &parent, const LabelModelBarcodeObject* object );
 		static void createObjectTextNode( QDomElement &parent, const LabelModelTextObject* object );
 		static void createPNode( QDomElement &parent, const QString& blockText );
+		static void createPositionAttrs( QDomElement &node, const LabelModelObject* object );
+		static void createSizeAttrs( QDomElement &node, const LabelModelObject* object );
+		static void createLineAttrs( QDomElement &node, const LabelModelObject* object );
+		static void createFillAttrs( QDomElement &node, const LabelModelObject* object );
 		static void createAffineAttrs( QDomElement &node, const LabelModelObject* object );
 		static void createShadowAttrs( QDomElement &node, const LabelModelObject* object );
 		static void createMergeNode( QDomElement &parent, const LabelModel* label );

@@ -339,31 +339,16 @@ namespace glabels
 
 
 		/* position attrs */
-		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
-		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+		parsePositionAttrs( node, object );
 
 		/* size attrs */
-		object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
-		object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+		parseSizeAttrs( node, object );
 
 		/* line attrs */
-		object->setLineWidth( XmlUtil::getLengthAttr( node, "line_width", 1.0 ) );
-		{
-			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
-
-			object->setLineColorNode( ColorNode( field_flag, color, key ) );
-		}
+		parseLineAttrs( node, object );
 
 		/* fill attrs */
-		{
-			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
-
-			object->setFillColorNode( ColorNode( field_flag, color, key ) );
-		}
+		parseFillAttrs( node, object );
         
 		/* affine attrs */
 		parseAffineAttrs( node, object );
@@ -382,31 +367,16 @@ namespace glabels
 
 
 		/* position attrs */
-		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
-		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+		parsePositionAttrs( node, object );
 
 		/* size attrs */
-		object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
-		object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+		parseSizeAttrs( node, object );
 
 		/* line attrs */
-		object->setLineWidth( XmlUtil::getLengthAttr( node, "line_width", 1.0 ) );
-		{
-			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
-
-			object->setLineColorNode( ColorNode( field_flag, color, key ) );
-		}
+		parseLineAttrs( node, object );
 
 		/* fill attrs */
-		{
-			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
-
-			object->setFillColorNode( ColorNode( field_flag, color, key ) );
-		}
+		parseFillAttrs( node, object );
         
 		/* affine attrs */
 		parseAffineAttrs( node, object );
@@ -425,22 +395,14 @@ namespace glabels
 
 
 		/* position attrs */
-		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
-		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+		parsePositionAttrs( node, object );
 
-		/* size attrs */
+		/* size attrs of line */
 		object->setW( XmlUtil::getLengthAttr( node, "dx", 0 ) );
 		object->setH( XmlUtil::getLengthAttr( node, "dy", 0 ) );
 
 		/* line attrs */
-		object->setLineWidth( XmlUtil::getLengthAttr( node, "line_width", 1.0 ) );
-		{
-			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
-
-			object->setLineColorNode( ColorNode( field_flag, color, key ) );
-		}
+		parseLineAttrs( node, object );
 
 		/* affine attrs */
 		parseAffineAttrs( node, object );
@@ -459,33 +421,29 @@ namespace glabels
 
 
 		/* position attrs */
-		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
-		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+		parsePositionAttrs( node, object );
 
 		/* size attrs */
-		object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
-		object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+		parseSizeAttrs( node, object );
 
 		/* file attrs */
-		{
-			QString key        = XmlUtil::getStringAttr( node, "src_field", "" );
-			bool    field_flag = !key.isEmpty();
-			QString filename   = XmlUtil::getStringAttr( node, "src", "" );
+		QString key        = XmlUtil::getStringAttr( node, "src_field", "" );
+		bool    field_flag = !key.isEmpty();
+		QString filename   = XmlUtil::getStringAttr( node, "src", "" );
 
-			if ( field_flag )
+		if ( field_flag )
+		{
+			object->setFilenameNode( TextNode( true, key ) );
+		}
+		else
+		{
+			if ( data.hasImage( filename ) )
 			{
-				object->setFilenameNode( TextNode( true, key ) );
+				object->setImage( filename, data.getImage( filename ) );
 			}
 			else
 			{
-				if ( data.hasImage( filename ) )
-				{
-					object->setImage( filename, data.getImage( filename ) );
-				}
-				else
-				{
-					object->setFilenameNode( TextNode( false, filename ) );
-				}
+				object->setFilenameNode( TextNode( false, filename ) );
 			}
 		}
         
@@ -513,21 +471,17 @@ namespace glabels
 
 
 		/* position attrs */
-		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
-		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+		parsePositionAttrs( node, object );
 
 		/* size attrs */
-		object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
-		object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+		parseSizeAttrs( node, object );
 
 		/* color attr */
-		{
-			QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+		QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
 
-			object->setTextColorNode( ColorNode( field_flag, color, key ) );
-		}
+		object->setTextColorNode( ColorNode( field_flag, color, key ) );
 
 		/* font attrs */
 		object->setFontFamily( XmlUtil::getStringAttr( node, "font_family", "Sans" ) );
@@ -579,6 +533,46 @@ namespace glabels
 	XmlLabelParser::parsePNode( const QDomElement &node )
 	{
 		return node.text();
+	}
+
+
+	void
+	XmlLabelParser::parsePositionAttrs( const QDomElement &node, LabelModelObject* object )
+	{
+		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
+		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
+	}
+
+	
+	void
+	XmlLabelParser::parseSizeAttrs( const QDomElement &node, LabelModelObject* object )
+	{
+		object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
+		object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
+	}
+
+	
+	void
+	XmlLabelParser::parseLineAttrs( const QDomElement &node, LabelModelObject* object )
+	{
+		object->setLineWidth( XmlUtil::getLengthAttr( node, "line_width", 1.0 ) );
+
+		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+
+		object->setLineColorNode( ColorNode( field_flag, color, key ) );
+	}
+
+	
+	void
+	XmlLabelParser::parseFillAttrs( const QDomElement &node, LabelModelObject* object )
+	{
+		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+
+		object->setFillColorNode( ColorNode( field_flag, color, key ) );
 	}
 
 
