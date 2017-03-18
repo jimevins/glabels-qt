@@ -42,7 +42,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	LabelModelImageObject::LabelModelImageObject() : mImage(0), mSvg(0)
+	LabelModelImageObject::LabelModelImageObject() : mImage(0), mSvgRenderer(0)
 	{
 		mOutline = new Outline( this );
 
@@ -138,10 +138,12 @@ namespace glabels
 			if ( mImage )
 			{
 				delete mImage;
+				mImage = 0;
 			}
-			if ( mSvg )
+			if ( mSvgRenderer )
 			{
-				delete mSvg;
+				delete mSvgRenderer;
+				mSvgRenderer = 0;
 			}
 
 			mImage = new QImage(value);
@@ -163,13 +165,51 @@ namespace glabels
 			if ( mImage )
 			{
 				delete mImage;
+				mImage = 0;
 			}
-			if ( mSvg )
+			if ( mSvgRenderer )
 			{
-				delete mSvg;
+				delete mSvgRenderer;
+				mSvgRenderer = 0;
 			}
 
 			mImage = new QImage(value);
+			mFilenameNode = TextNode( false, name );
+
+			emit changed();
+		}
+	}
+		
+
+	///
+	/// Image svg Property Getter
+	///
+	QByteArray LabelModelImageObject::svg() const
+	{
+		return mSvg;
+	}
+
+
+	///
+	/// Image svgSource Property Setter
+	///
+	void LabelModelImageObject::setSvg( const QString& name, const QByteArray& value )
+	{
+		if ( !value.isEmpty() )
+		{
+			if ( mImage )
+			{
+				delete mImage;
+				mImage = 0;
+			}
+			if ( mSvgRenderer )
+			{
+				delete mSvgRenderer;
+				mSvgRenderer = 0;
+			}
+
+			mSvg = value;
+			mSvgRenderer = new QSvgRenderer( mSvg );
 			mFilenameNode = TextNode( false, name );
 
 			emit changed();
@@ -190,9 +230,9 @@ namespace glabels
 			size.setW( Distance::pt( qsize.width() ) );
 			size.setH( Distance::pt( qsize.height() ) );
 		}
-		else if ( mSvg )
+		else if ( mSvgRenderer )
 		{
-			QSize qsize = mSvg->defaultSize();
+			QSize qsize = mSvgRenderer->defaultSize();
 			size.setW( Distance::pt( qsize.width() ) );
 			size.setH( Distance::pt( qsize.height() ) );
 		}
@@ -237,7 +277,7 @@ namespace glabels
 	{
 		QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
-		if ( inEditor && (mFilenameNode.isField() || (!mImage && !mSvg) ) )
+		if ( inEditor && (mFilenameNode.isField() || (!mImage && !mSvgRenderer) ) )
 		{
 			painter->save();
 			painter->setRenderHint( QPainter::SmoothPixmapTransform, false );
@@ -248,9 +288,9 @@ namespace glabels
 		{
 			painter->drawImage( destRect, *mImage );
 		}
-		else if ( mSvg )
+		else if ( mSvgRenderer )
 		{
-			mSvg->render( painter, destRect );
+			mSvgRenderer->render( painter, destRect );
 		}
 		else if ( mFilenameNode.isField() )
 		{
@@ -281,10 +321,10 @@ namespace glabels
 			delete mImage;
 			mImage = 0;
 		}
-		if ( mSvg )
+		if ( mSvgRenderer )
 		{
-			delete mSvg;
-			mSvg = 0;
+			delete mSvgRenderer;
+			mSvgRenderer = 0;
 		}
 
 		if ( !mFilenameNode.isField() )
@@ -296,23 +336,29 @@ namespace glabels
 			{
 				if ( (fileInfo.suffix() == "svg") || (fileInfo.suffix() == "SVG") )
 				{
-					mSvg = new QSvgRenderer( filename );
-					if ( !mSvg->isValid() )
+					QFile file( filename );
+					if ( file.open( QFile::ReadOnly ) )
 					{
-						mSvg = 0;
-					}
-					else
-					{
-						// Adjust size based on aspect ratio of SVG image
-						QRectF rect = mSvg->viewBoxF();
-						double aspectRatio = rect.height() / rect.width();
-						if ( mH > mW*aspectRatio )
+						mSvg = file.readAll();
+						file.close();
+						mSvgRenderer = new QSvgRenderer( mSvg );
+						if ( !mSvgRenderer->isValid() )
 						{
-							mH = mW*aspectRatio;
+							mSvgRenderer = 0;
 						}
 						else
 						{
-							mW = mH/aspectRatio;
+							// Adjust size based on aspect ratio of SVG image
+							QRectF rect = mSvgRenderer->viewBoxF();
+							double aspectRatio = rect.height() / rect.width();
+							if ( mH > mW*aspectRatio )
+							{
+								mH = mW*aspectRatio;
+							}
+							else
+							{
+								mW = mH/aspectRatio;
+							}
 						}
 					}
 				}

@@ -448,6 +448,11 @@ namespace glabels
 		{
 			createPngFileNode( node, name, data.getImage( name ) );
 		}
+
+		foreach ( QString name, data.svgNames() )
+		{
+			createSvgFileNode( node, name, data.getSvg( name ) );
+		}
 	}
 
 
@@ -473,9 +478,17 @@ namespace glabels
 
 
 	void
-	XmlLabelCreator::createSvgFileNode( QDomElement &parent, const LabelModel* label, const QString& name )
+	XmlLabelCreator::createSvgFileNode( QDomElement &parent, const QString& name, const QByteArray& svg )
 	{
-		// TODO
+		QDomDocument doc = parent.ownerDocument();
+		QDomElement node = doc.createElement( "File" );
+		parent.appendChild( node );
+
+		XmlUtil::setStringAttr( node, "name", name );
+		XmlUtil::setStringAttr( node, "mimetype", "image/svg+xml" );
+		XmlUtil::setStringAttr( node, "encoding", "cdata" );
+
+		node.appendChild( doc.createCDATASection( QString( svg ) ) );
 	}
 
 }

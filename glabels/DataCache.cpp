@@ -47,7 +47,11 @@ namespace glabels
 					}
 					else
 					{
-						// TODO handle SVG files
+						QByteArray svg = imageObject->svg();
+						if ( !svg.isEmpty() )
+						{
+							addSvg( filenameNode.data(), svg );
+						}
 					}
 				}
 			}
@@ -76,6 +80,30 @@ namespace glabels
 	QList<QString> DataCache::imageNames() const
 	{
 		return mImageMap.keys();
+	}
+
+	
+	bool DataCache::hasSvg( const QString& name ) const
+	{
+		return mSvgMap.contains( name );
+	}
+
+
+	QByteArray DataCache::getSvg( const QString& name ) const
+	{
+		return mSvgMap[ name ];
+	}
+
+
+	void DataCache::addSvg( const QString& name, const QByteArray& svg )
+	{
+		mSvgMap[ name ] = svg;
+	}
+
+
+	QList<QString> DataCache::svgNames() const
+	{
+		return mSvgMap.keys();
 	}
 
 	

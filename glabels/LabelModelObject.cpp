@@ -631,6 +631,26 @@ namespace glabels
 		
 
 	///
+	/// Virtual SVG Property Default Getter
+	/// (Overridden by concrete class)
+	///
+	QByteArray LabelModelObject::svg() const
+	{
+		return QByteArray();
+	}
+
+
+	///
+	/// Virtual SVG Property Default Setter
+	/// (Overridden by concrete class)
+	///
+	void LabelModelObject::setSvg( const QString& name, const QByteArray& value )
+	{
+		// empty
+	}
+		
+
+	///
 	/// Virtual Line Width Property Default Getter
 	/// (Overridden by concrete class)
 	///

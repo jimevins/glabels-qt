@@ -70,6 +70,12 @@ namespace glabels
 		virtual void setImage( const QString& name, const QImage& value );
 
 		//
+		// Image Property: svg
+		//
+		virtual QByteArray svg() const;
+		virtual void setSvg( const QString& name, const QByteArray& value );
+
+		//
 		// Property: naturalSize
 		//
 		virtual Size naturalSize() const;
@@ -102,7 +108,8 @@ namespace glabels
 	protected:
 		TextNode       mFilenameNode;
 		QImage*        mImage;
-		QSvgRenderer*  mSvg;
+		QSvgRenderer*  mSvgRenderer;
+		QByteArray     mSvg;
 
 		static QImage* smDefaultImage;
 

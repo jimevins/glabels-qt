@@ -441,8 +441,13 @@ namespace glabels
 			{
 				object->setImage( filename, data.getImage( filename ) );
 			}
+			else if ( data.hasSvg( filename ) )
+			{
+				object->setSvg( filename, data.getSvg( filename ) );
+			}
 			else
 			{
+				qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
 				object->setFilenameNode( TextNode( false, filename ) );
 			}
 		}
@@ -668,7 +673,10 @@ namespace glabels
 
 			data.addImage( name, image );
 		}
-
+		else if ( mimetype == "image/svg+xml" )
+		{
+			data.addSvg( name, node.text().toUtf8() );
+		}
 	}
 
 }

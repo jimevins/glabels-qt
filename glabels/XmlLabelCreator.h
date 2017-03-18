@@ -72,7 +72,7 @@ namespace glabels
 		static void createMergeNode( QDomElement &parent, const LabelModel* label );
 		static void createDataNode( QDomElement &parent, const QList<LabelModelObject*>& objects );
 		static void createPngFileNode( QDomElement &parent, const QString& name, const QImage& image );
-		static void createSvgFileNode( QDomElement &parent, const LabelModel* label, const QString& name );
+		static void createSvgFileNode( QDomElement &parent, const QString& name, const QByteArray& svg );
 
 	};
 
