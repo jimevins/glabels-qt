@@ -68,6 +68,23 @@ namespace glabels
 	LabelModelImageObject::LabelModelImageObject( const LabelModelImageObject* object ) : LabelModelObject(object)
 	{
 		mFilenameNode = object->mFilenameNode;
+		if ( object->mImage )
+		{
+			mImage = new QImage( *object->mImage );
+		}
+		else
+		{
+			mImage = 0;
+		}
+		if ( object->mSvgRenderer )
+		{
+			mSvgRenderer = new QSvgRenderer( object->mSvg );
+		}
+		else
+		{
+			mSvgRenderer = 0;
+		}
+		mSvg = object->mSvg;
 	}
 
 
@@ -83,6 +100,15 @@ namespace glabels
 			delete handle;
 		}
 		mHandles.clear();
+
+		if ( mImage )
+		{
+			delete mImage;
+		}
+		if ( mSvgRenderer )
+		{
+			delete mSvgRenderer;
+		}
 	}
 
 
