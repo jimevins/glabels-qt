@@ -65,14 +65,14 @@ Some characteristics of the development branch:
 Version numbering
 -----------------
 
-- Versions are numbered major.minor.micro (e.g. 4.0.3)
-- major version indicates a major change in architecture or technology
- - 2.x.x was based on gtk+-2
- - 3.x.x was based on gtk+-3
- - 4.x.x is based on qt-5
-- minor version indicates a minor change in features or design
+* Versions are numbered major.minor.micro (e.g. 4.0.3)
+* major version indicates a major change in architecture or technology
+  - 2.x.x was based on gtk+-2
+  - 3.x.x was based on gtk+-3
+  - 4.x.x is based on qt-5
+* minor version indicates a minor change in features or design
  - even minor versions are from a stable branch
  - odd minor versions are from a development branch
-- micro version indicates a bugfix release
- - See above for release characteristics within a stable branch
+* micro version indicates a bugfix release
+  - See above for release characteristics within a stable branch
  
