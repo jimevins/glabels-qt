@@ -38,7 +38,7 @@ namespace glabels
 	/// Constructor
 	///
 	PropertiesView::PropertiesView( QWidget *parent )
-		: QWidget(parent), mModel(0)
+		: QWidget(parent), mModel(nullptr)
 	{
 		setupUi( this );
 
@@ -108,7 +108,7 @@ namespace glabels
 		preview->setRotate( isRotated );
 
 		const Vendor *vendor = Db::lookupVendorFromName( tmplate->brand() );
-		if ( (vendor != NULL) && (vendor->url() != NULL) )
+		if ( (vendor != nullptr) && (vendor->url() != nullptr) )
 		{
 			QString markup = QString( "<a href='%1'>%2</a>" )
 				.arg( vendor->url() ).arg( vendor->name() );
@@ -119,7 +119,7 @@ namespace glabels
 			vendorLabel->setText( tmplate->brand() );
 		}
 
-		if ( tmplate->productUrl() != NULL )
+		if ( tmplate->productUrl() != nullptr )
 		{
 			QString markup = QString( "<a href='%1'>%2</a>" )
 				.arg( tmplate->productUrl() ).arg( tmplate->part() );

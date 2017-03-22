@@ -42,7 +42,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		BarcodeMenuButton( QWidget* parent = 0 );
+		BarcodeMenuButton( QWidget* parent = nullptr );
 
 
 		/////////////////////////////////

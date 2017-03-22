@@ -95,7 +95,7 @@ namespace glabels
 		QString url  = XmlUtil::getStringAttr( node, "url", "" );
 
 		Vendor *vendor = new Vendor( name, url );
-		if ( vendor != NULL )
+		if ( vendor != nullptr )
 		{
 			Db::registerVendor( vendor );
 		}

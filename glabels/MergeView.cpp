@@ -37,7 +37,7 @@ namespace glabels
 	/// Constructor
 	///
 	MergeView::MergeView( QWidget *parent )
-		: QWidget(parent), mModel(0), mBlock(false)
+		: QWidget(parent), mModel(nullptr), mBlock(false)
 	{
 		setupUi( this );
 

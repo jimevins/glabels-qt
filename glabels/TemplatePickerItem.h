@@ -41,7 +41,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		TemplatePickerItem( Template *tmplate, QListWidget *parent = 0 );
+		TemplatePickerItem( Template *tmplate, QListWidget *parent = nullptr );
 
 
 		/////////////////////////////////

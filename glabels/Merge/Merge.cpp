@@ -95,7 +95,7 @@ namespace glabels
 			mRecordList.clear();
 
 			open();
-			for ( Record* record = readNextRecord(); record != 0; record = readNextRecord() )
+			for ( Record* record = readNextRecord(); record != nullptr; record = readNextRecord() )
 			{
 				mRecordList.append( record );
 			}

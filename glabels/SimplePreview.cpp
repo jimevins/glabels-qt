@@ -59,7 +59,7 @@ namespace glabels
 	/// Constructor
 	///
 	SimplePreview::SimplePreview( QWidget *parent )
-		: mTmplate(NULL), mRotateFlag(false), QGraphicsView(parent)
+		: mTmplate(nullptr), mRotateFlag(false), QGraphicsView(parent)
 	{
 		mScene = new QGraphicsScene();
 		setScene( mScene );
@@ -108,7 +108,7 @@ namespace glabels
 	{
 		clearScene();
 
-		if ( mTmplate != NULL )
+		if ( mTmplate != nullptr )
 		{
 			// Set scene up with a 5% margin around paper
 			Distance x = -0.05 * mTmplate->pageWidth();

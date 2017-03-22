@@ -42,7 +42,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = 0 );
+		PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = nullptr );
 
 
 		/////////////////////////////////////

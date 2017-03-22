@@ -41,7 +41,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = 0 );
+		BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = nullptr );
 
 
 		/////////////////////////////////

@@ -42,7 +42,7 @@ namespace glabels
 	///
 	LabelModelLineObject::LabelModelLineObject()
 	{
-		mOutline = 0;
+		mOutline = nullptr;
 
 		mHandles << new HandleP1( this );
 		mHandles << new HandleP2( this );

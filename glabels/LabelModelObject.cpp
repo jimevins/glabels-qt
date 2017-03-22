@@ -43,7 +43,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	LabelModelObject::LabelModelObject() : QObject(0)
+	LabelModelObject::LabelModelObject() : QObject(nullptr)
 	{
 		mId = msNextId++;
 
@@ -61,7 +61,7 @@ namespace glabels
 
 		mSelectedFlag = false;
 
-		mOutline = 0;
+		mOutline = nullptr;
 	}
 
 
@@ -96,7 +96,7 @@ namespace glabels
 		}
 		else
 		{
-			mOutline = 0;
+			mOutline = nullptr;
 		}
 
 		mMatrix          = object->mMatrix;
@@ -606,7 +606,7 @@ namespace glabels
 	///
 	const QImage* LabelModelObject::image() const
 	{
-		return 0;
+		return nullptr;
 	}
 
 
@@ -1119,7 +1119,7 @@ namespace glabels
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 

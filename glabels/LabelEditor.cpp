@@ -85,8 +85,8 @@ namespace glabels
 	{
 		mState = IdleState;
 
-		mModel              = 0;
-		mUndoRedoModel      = 0;
+		mModel              = nullptr;
+		mUndoRedoModel      = nullptr;
 		mMarkupVisible      = true;
 		mGridVisible        = true;
 		mGridSpacing        = 18;
@@ -433,10 +433,10 @@ namespace glabels
 
 				case IdleState:
 				{
-					LabelModelObject* object = 0;
-					Handle* handle = 0;
+					LabelModelObject* object = nullptr;
+					Handle* handle = nullptr;
 					if ( mModel->isSelectionAtomic() &&
-					     (handle = mModel->handleAt( mScale, xWorld, yWorld )) != 0 )
+					     (handle = mModel->handleAt( mScale, xWorld, yWorld )) != nullptr )
 					{
 						//
 						// Start an object resize
@@ -447,7 +447,7 @@ namespace glabels
 
 						mState = ArrowResize;
 					}
-					else if ( (object = mModel->objectAt( mScale, xWorld, yWorld )) != 0 )
+					else if ( (object = mModel->objectAt( mScale, xWorld, yWorld )) != nullptr )
 					{
 						//
 						// Start a Move Selection (adjusting selection if necessary)

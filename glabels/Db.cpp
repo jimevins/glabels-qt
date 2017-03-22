@@ -175,7 +175,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown paper name: " << name;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -196,7 +196,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown paper ID: " << id;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -205,7 +205,7 @@ namespace glabels
 		if ( !name.isNull() && !name.isEmpty() )
 		{
 			const Paper *paper = lookupPaperFromName( name );
-			if ( paper != NULL )
+			if ( paper != nullptr )
 			{
 				return paper->id();
 			}
@@ -226,7 +226,7 @@ namespace glabels
 			}
 
 			const Paper *paper = lookupPaperFromId( id );
-			if ( paper != NULL )
+			if ( paper != nullptr )
 			{
 				return paper->name();
 			}
@@ -289,7 +289,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown category name: \"%s\"." << name;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -310,7 +310,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown category ID: " << id;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -319,7 +319,7 @@ namespace glabels
 		if ( !name.isNull() && !name.isEmpty() )
 		{
 			const Category *category = lookupCategoryFromName( name );
-			if ( category != NULL )
+			if ( category != nullptr )
 			{
 				return category->id();
 			}
@@ -335,7 +335,7 @@ namespace glabels
 		if ( !id.isNull() && !id.isEmpty() )
 		{
 			const Category *category = lookupCategoryFromId( id );
-			if ( category != NULL )
+			if ( category != nullptr )
 			{
 				return category->name();
 			}
@@ -391,7 +391,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown vendor name: " << name;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -400,7 +400,7 @@ namespace glabels
 		if ( !name.isNull() && !name.isEmpty() )
 		{
 			const Vendor *vendor = lookupVendorFromName( name );
-			if ( vendor != NULL )
+			if ( vendor != nullptr )
 			{
 				return vendor->url();
 			}
@@ -456,7 +456,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown template name: " << name;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -477,7 +477,7 @@ namespace glabels
 		}
 
 		qWarning() << "Unknown template brand, part: " << brand << ", " << part;
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -500,7 +500,7 @@ namespace glabels
 		QStringList list;
 
 		const Template *tmplate1 = lookupTemplateFromName( name );
-		if ( tmplate1 == NULL )
+		if ( tmplate1 == nullptr )
 		{
 			qWarning() << "Unknown template name: " << name;
 			return list;

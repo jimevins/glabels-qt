@@ -47,7 +47,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		PropertiesView( QWidget *parent = 0 );
+		PropertiesView( QWidget *parent = nullptr );
 		~PropertiesView() override;
 
 

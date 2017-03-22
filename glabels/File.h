@@ -42,7 +42,7 @@ namespace glabels
 		Q_OBJECT
 
 	public:
-		static bool newLabel( MainWindow *window = 0 );
+		static bool newLabel( MainWindow *window = nullptr );
 		static void open( MainWindow *window );
 		static bool save( MainWindow *window );
 		static bool saveAs( MainWindow *window );

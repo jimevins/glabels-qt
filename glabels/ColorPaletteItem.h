@@ -43,7 +43,7 @@ namespace glabels
 		ColorPaletteItem( int            id,
 		                  const QColor&  color,
 		                  const QString& tip,
-		                  QWidget*       parent = 0 );
+		                  QWidget*       parent = nullptr );
 
 
 		/////////////////////////////////

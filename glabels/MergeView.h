@@ -47,7 +47,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		MergeView( QWidget *parent = 0 );
+		MergeView( QWidget *parent = nullptr );
 		~MergeView() override;
 
 

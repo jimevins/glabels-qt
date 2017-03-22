@@ -42,7 +42,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		SelectProductDialog( QWidget *parent = 0 );
+		SelectProductDialog( QWidget *parent = nullptr );
 
 
 		/////////////////////////////////

@@ -36,9 +36,9 @@ namespace glabels
 
 	ColorHistory* ColorHistory::instance()
 	{
-		static ColorHistory* singletonInstance = 0;
+		static ColorHistory* singletonInstance = nullptr;
 
-		if ( singletonInstance == 0 )
+		if ( singletonInstance == nullptr )
 		{
 			singletonInstance = new ColorHistory();
 		}

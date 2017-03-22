@@ -84,7 +84,7 @@ namespace glabels
 			if ( child.toElement().tagName() == "Template" )
 			{
 				Template *tmplate = parseTemplateNode( child.toElement() );
-				if ( tmplate != NULL )
+				if ( tmplate != nullptr )
 				{
 					Db::registerTemplate( tmplate );
 				}
@@ -121,15 +121,15 @@ namespace glabels
 			else
 			{
 				qWarning() << "Error: missing name or brand/part attributes.";
-				return NULL;
+				return nullptr;
 			}
 		}
 
 
-		Template *tmplate = NULL;
+		Template *tmplate = nullptr;
 
 		QString equivPart = XmlUtil::getStringAttr( node, "equiv", "" );
-		if ( equivPart != NULL )
+		if ( equivPart != nullptr )
 		{
 			tmplate = Template::fromEquiv( brand, part, equivPart );
 
@@ -155,10 +155,10 @@ namespace glabels
 			if ( !Db::isPaperIdOther( paperId ) )
 			{
 				const Paper *paper = Db::lookupPaperFromId( paperId );
-				if ( paper == NULL )
+				if ( paper == nullptr )
 				{
 					qWarning() << "Error: unknown paper ID: " << paperId;
-					return NULL;
+					return nullptr;
 				}
 
 				tmplate = new Template( brand, part, description,

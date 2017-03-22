@@ -47,7 +47,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		Preview( QWidget *parent = 0 );
+		Preview( QWidget *parent = nullptr );
 
 
 		/////////////////////////////////

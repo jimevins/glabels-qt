@@ -32,7 +32,7 @@ namespace glabels
 	//
 	// Static data
 	//
-	Settings* Settings::mInstance = 0;
+	Settings* Settings::mInstance = nullptr;
 
 
 	Settings::Settings()
@@ -43,7 +43,7 @@ namespace glabels
 
 	void Settings::init()
 	{
-		if ( mInstance == 0 )
+		if ( mInstance == nullptr )
 		{
 			mInstance = new Settings();
 		}

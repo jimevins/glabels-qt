@@ -43,7 +43,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		TemplatePicker( QWidget *parent = 0 );
+		TemplatePicker( QWidget *parent = nullptr );
 
 
 		/////////////////////////////////

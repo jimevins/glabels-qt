@@ -59,7 +59,7 @@ namespace glabels
 	/// Constructor
 	///
 	MainWindow::MainWindow()
-		: mModel(0)
+		: mModel(nullptr)
 	{
 		setWindowIcon( Icons::Glabels() );
 
@@ -204,7 +204,7 @@ namespace glabels
 	///
 	bool MainWindow::isEmpty() const
 	{
-		return mModel == 0;
+		return mModel == nullptr;
 	}
 
 
@@ -867,7 +867,7 @@ namespace glabels
 	///
 	void MainWindow::setTitle()
 	{
-		if ( mModel == 0 )
+		if ( mModel == nullptr )
 		{
 			setWindowTitle( "gLabels" );
 		}

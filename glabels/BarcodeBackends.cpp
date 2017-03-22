@@ -79,9 +79,9 @@ namespace glabels
 
 	void BarcodeBackends::init( void )
 	{
-		static BarcodeBackends* singletonInstance = NULL;
+		static BarcodeBackends* singletonInstance = nullptr;
                 
-		if ( singletonInstance == NULL )
+		if ( singletonInstance == nullptr )
 		{
 			singletonInstance = new BarcodeBackends();
 		}
@@ -132,7 +132,7 @@ namespace glabels
 			return i.value();
 		}
 		
-		return 0;
+		return nullptr;
 	}
 
 
@@ -144,7 +144,7 @@ namespace glabels
 			return i.value();
 		}
 		
-		return 0;
+		return nullptr;
 	}
 
 

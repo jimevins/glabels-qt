@@ -184,7 +184,7 @@ namespace glabels
 			                              tr("gLabels - Save Project As"),
 			                              cwd,
 			                              tr("glabels files (*.glabels);;All files (*)"),
-			                              0,
+			                              nullptr,
 			                              QFileDialog::DontConfirmOverwrite	);
 		if ( !rawFileName.isEmpty() )
 		{

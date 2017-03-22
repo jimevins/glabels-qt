@@ -46,7 +46,7 @@ namespace glabels
 	/// Constructor
 	///
 	ObjectEditor::ObjectEditor( QWidget *parent )
-		: mModel(0), mObject(0), mImageCwd("."), mBlocked(false)
+		: mModel(nullptr), mObject(nullptr), mImageCwd("."), mBlocked(false)
 	{
 		setupUi( this );
 
@@ -302,7 +302,7 @@ namespace glabels
 		{
 			if ( mObject )
 			{
-				disconnect( mObject, 0, this, 0 );
+				disconnect( mObject, nullptr, this, nullptr );
 			}
 
 			hidePages();
@@ -424,7 +424,7 @@ namespace glabels
 			}
 			else
 			{
-				mObject = 0;
+				mObject = nullptr;
 
 				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.svg") );
 				titleLabel->setText( "Object properties" );
@@ -472,8 +472,8 @@ namespace glabels
 
 	void ObjectEditor::onObjectDestroyed()
 	{
-		disconnect( mObject, 0, this, 0 );
-		mObject = 0;
+		disconnect( mObject, nullptr, this, nullptr );
+		mObject = nullptr;
 	}
 	
 	

@@ -203,7 +203,7 @@ namespace glabels
 		// Drawing operations
 		/////////////////////////////////
 	public:
-		void draw( QPainter* painter, bool inEditor = true, merge::Record* record = 0 ) const;
+		void draw( QPainter* painter, bool inEditor = true, merge::Record* record = nullptr ) const;
 
 		
 		/////////////////////////////////

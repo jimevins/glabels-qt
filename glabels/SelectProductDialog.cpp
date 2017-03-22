@@ -84,7 +84,7 @@ namespace glabels
 		}
 		else
 		{
-			return 0;
+			return nullptr;
 		}
 	}
 

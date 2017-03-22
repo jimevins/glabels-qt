@@ -50,7 +50,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ObjectEditor( QWidget *parent = 0 );
+		ObjectEditor( QWidget *parent = nullptr );
 
 
 		/////////////////////////////////

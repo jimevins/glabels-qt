@@ -57,7 +57,7 @@ namespace glabels
 		{
 			qWarning() << "Error: Cannot read file " << qPrintable(fileName)
 			           << ": " << file.errorString();
-			return 0;
+			return nullptr;
 		}
 
 		QDomDocument doc;
@@ -85,7 +85,7 @@ namespace glabels
 			qWarning() << "Error: Parse error at line " << errorLine
 			           << "column " << errorColumn
 			           << ": " << errorString;
-			return 0;
+			return nullptr;
 		}
 	
 
@@ -93,7 +93,7 @@ namespace glabels
 		if ( root.tagName() != "Glabels-document" )
 		{
 			qWarning() << "Error: Not a Glabels-document file";
-			return 0;
+			return nullptr;
 		}
 
 		return parseRootNode( root );
@@ -113,14 +113,14 @@ namespace glabels
 			qWarning() << "Error: Parse error at line " << errorLine
 			           << "column " << errorColumn
 			           << ": " << errorString;
-			return 0;
+			return nullptr;
 		}
 
 		QDomElement root = doc.documentElement();
 		if ( root.tagName() != "Glabels-document" )
 		{
 			qWarning() << "Error: Not a Glabels-document file";
-			return 0;
+			return nullptr;
 		}
 
 		return parseRootNode( root );
@@ -253,11 +253,11 @@ namespace glabels
 			if ( tagName == "Template" )
 			{
 				Template* tmplate = XmlTemplateParser().parseTemplateNode( child.toElement() );
-				if ( tmplate == 0 )
+				if ( tmplate == nullptr )
 				{
 					qWarning() << "Unable to parse template";
 					delete label;
-					return 0;
+					return nullptr;
 				}
 				label->setTmplate( tmplate );
 			}
@@ -466,7 +466,7 @@ namespace glabels
 	LabelModelBarcodeObject*
 	XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node )
 	{
-		return 0;
+		return nullptr;
 	}
 
 

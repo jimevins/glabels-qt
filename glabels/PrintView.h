@@ -47,7 +47,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		PrintView( QWidget *parent = 0 );
+		PrintView( QWidget *parent = nullptr );
 		~PrintView() override;
 
 

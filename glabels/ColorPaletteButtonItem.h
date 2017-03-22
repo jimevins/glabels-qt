@@ -40,7 +40,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorPaletteButtonItem( const QString& text, QWidget* parent = 0 );
+		ColorPaletteButtonItem( const QString& text, QWidget* parent = nullptr );
 
 
 		/////////////////////////////////

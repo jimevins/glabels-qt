@@ -92,7 +92,7 @@ namespace glabels
 	Template* Template::fullPage( const QString& paperId )
 	{
 		// TODO
-		return NULL;
+		return nullptr;
 	}
 
 
@@ -102,7 +102,7 @@ namespace glabels
 				       const QString& equivPart )
 	{
 		const Template* other = Db::lookupTemplateFromBrandPart( brand, equivPart );
-		if ( other != NULL )
+		if ( other != nullptr )
 		{
 			Template* tmplate = other->dup();
 
@@ -119,7 +119,7 @@ namespace glabels
 			qWarning() << "Error: cannot create equivalent template for "
 				   << brand << ", " << equivPart
 				   << ". Forward references not supported.";
-			return NULL;
+			return nullptr;
 		}
 	}
 

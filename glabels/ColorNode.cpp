@@ -178,7 +178,7 @@ namespace glabels
 	{
 		if ( mIsField )
 		{
-			if ( record == 0 )
+			if ( record == nullptr )
 			{
 				return mColor;
 			}

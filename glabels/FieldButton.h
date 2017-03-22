@@ -40,7 +40,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		FieldButton( QWidget* parent = 0 );
+		FieldButton( QWidget* parent = nullptr );
 
 
 		/////////////////////////////////

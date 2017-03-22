@@ -53,7 +53,7 @@ namespace glabels
 	///
 	/// Default constructor.
 	///
-	LabelModel::LabelModel() : mUntitledInstance(0), mModified(true), mTmplate(0), mRotate(false)
+	LabelModel::LabelModel() : mUntitledInstance(0), mModified(true), mTmplate(nullptr), mRotate(false)
 	{
 		mMerge = new merge::None();
 	}
@@ -360,7 +360,7 @@ namespace glabels
 		object->unselect();
 		mObjectList.removeOne( object );
 
-		disconnect( object, 0, this, 0 );
+		disconnect( object, nullptr, this, nullptr );
 
 		setModified();
 
@@ -389,7 +389,7 @@ namespace glabels
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 
@@ -409,7 +409,7 @@ namespace glabels
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 
@@ -603,7 +603,7 @@ namespace glabels
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 

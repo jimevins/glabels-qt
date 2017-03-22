@@ -43,7 +43,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorButton( QWidget* parent = 0 );
+		ColorButton( QWidget* parent = nullptr );
 
 
 		/////////////////////////////////

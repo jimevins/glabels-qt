@@ -46,7 +46,7 @@ namespace glabels
 
 
 	PageRenderer::PageRenderer()
-		: mModel(0), mNCopies(0), mStartLabel(0),
+		: mModel(nullptr), mNCopies(0), mStartLabel(0),
 		  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
 		  mIsMerge(false), mIPage(0), mNPages(0)
 	{
@@ -75,7 +75,7 @@ namespace glabels
 		mMerge = mModel->merge();
 		mOrigins = mModel->frame()->getOrigins();
 		mNLabelsPerPage = mModel->frame()->nLabels();
-		mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == 0 );
+		mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == nullptr );
 		updateNPages();
 
 		emit changed();
@@ -237,7 +237,7 @@ namespace glabels
 			painter->save();
 
 			clipLabel( painter );
-			printLabel( painter, 0 );
+			printLabel( painter, nullptr );
 
 			painter->restore();  // From before clip
 

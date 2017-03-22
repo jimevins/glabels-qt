@@ -36,13 +36,13 @@ namespace glabels
 	///
 	/// Static data
 	///
-	QImage* LabelModelImageObject::smDefaultImage = 0;
+	QImage* LabelModelImageObject::smDefaultImage = nullptr;
 
 
 	///
 	/// Constructor
 	///
-	LabelModelImageObject::LabelModelImageObject() : mImage(0), mSvgRenderer(0)
+	LabelModelImageObject::LabelModelImageObject() : mImage(nullptr), mSvgRenderer(nullptr)
 	{
 		mOutline = new Outline( this );
 
@@ -55,7 +55,7 @@ namespace glabels
 		mHandles << new HandleSouthWest( this );
 		mHandles << new HandleWest( this );
 
-		if ( smDefaultImage == 0 )
+		if ( smDefaultImage == nullptr )
 		{
 			smDefaultImage = new QImage( ":images/checkerboard.png" );
 		}
@@ -74,7 +74,7 @@ namespace glabels
 		}
 		else
 		{
-			mImage = 0;
+			mImage = nullptr;
 		}
 		if ( object->mSvgRenderer )
 		{
@@ -82,7 +82,7 @@ namespace glabels
 		}
 		else
 		{
-			mSvgRenderer = 0;
+			mSvgRenderer = nullptr;
 		}
 		mSvg = object->mSvg;
 	}
@@ -164,12 +164,12 @@ namespace glabels
 			if ( mImage )
 			{
 				delete mImage;
-				mImage = 0;
+				mImage = nullptr;
 			}
 			if ( mSvgRenderer )
 			{
 				delete mSvgRenderer;
-				mSvgRenderer = 0;
+				mSvgRenderer = nullptr;
 			}
 
 			mImage = new QImage(value);
@@ -191,12 +191,12 @@ namespace glabels
 			if ( mImage )
 			{
 				delete mImage;
-				mImage = 0;
+				mImage = nullptr;
 			}
 			if ( mSvgRenderer )
 			{
 				delete mSvgRenderer;
-				mSvgRenderer = 0;
+				mSvgRenderer = nullptr;
 			}
 
 			mImage = new QImage(value);
@@ -226,12 +226,12 @@ namespace glabels
 			if ( mImage )
 			{
 				delete mImage;
-				mImage = 0;
+				mImage = nullptr;
 			}
 			if ( mSvgRenderer )
 			{
 				delete mSvgRenderer;
-				mSvgRenderer = 0;
+				mSvgRenderer = nullptr;
 			}
 
 			mSvg = value;
@@ -345,12 +345,12 @@ namespace glabels
 		if ( mImage )
 		{
 			delete mImage;
-			mImage = 0;
+			mImage = nullptr;
 		}
 		if ( mSvgRenderer )
 		{
 			delete mSvgRenderer;
-			mSvgRenderer = 0;
+			mSvgRenderer = nullptr;
 		}
 
 		if ( !mFilenameNode.isField() )
@@ -370,7 +370,7 @@ namespace glabels
 						mSvgRenderer = new QSvgRenderer( mSvg );
 						if ( !mSvgRenderer->isValid() )
 						{
-							mSvgRenderer = 0;
+							mSvgRenderer = nullptr;
 						}
 						else
 						{
@@ -393,7 +393,7 @@ namespace glabels
 					mImage = new QImage( filename );
 					if ( mImage->isNull() )
 					{
-						mImage = 0;
+						mImage = nullptr;
 					}
 					else
 					{

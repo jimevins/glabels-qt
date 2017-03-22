@@ -141,7 +141,7 @@ namespace glabels
 		QList<QListWidgetItem *> items = selectedItems();
 		if ( items.isEmpty() )
 		{
-			return NULL;
+			return nullptr;
 		}
 		else
 		{

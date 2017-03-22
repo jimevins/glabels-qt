@@ -139,7 +139,7 @@ namespace glabels
 
 				return record;
 			}
-			return 0;
+			return nullptr;
 		}
 
 

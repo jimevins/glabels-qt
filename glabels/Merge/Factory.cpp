@@ -102,7 +102,7 @@ namespace glabels
 		///
 		void Factory::init()
 		{
-			static Factory* singletonInstance = 0;
+			static Factory* singletonInstance = nullptr;
 			if ( !singletonInstance )
 			{
 				singletonInstance = new Factory();

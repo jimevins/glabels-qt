@@ -49,7 +49,7 @@ namespace glabels
 		ColorPaletteDialog( const QString& defaultLabel,
 		                    const QColor&  defaultColor,
 		                    const QColor&  color,
-		                    QWidget*       parent = 0 );
+		                    QWidget*       parent = nullptr );
 
 
 		/////////////////////////////////

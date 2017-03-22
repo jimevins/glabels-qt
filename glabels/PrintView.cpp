@@ -34,7 +34,7 @@ namespace glabels
 	/// Constructor
 	///
 	PrintView::PrintView( QWidget *parent )
-		: QWidget(parent), mModel(0), mBlocked(false)
+		: QWidget(parent), mModel(nullptr), mBlocked(false)
 	{
 		setupUi( this );
 

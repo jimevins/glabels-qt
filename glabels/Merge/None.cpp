@@ -119,7 +119,7 @@ namespace glabels
 		///
 		Record* None::readNextRecord()
 		{
-			return 0;
+			return nullptr;
 		}
 
 	}

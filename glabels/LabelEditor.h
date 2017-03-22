@@ -50,7 +50,7 @@ namespace glabels
 		// Lifecycle
 		/////////////////////////////////////
 	public:
-		LabelEditor( QScrollArea* scrollArea, QWidget* parent = 0 );
+		LabelEditor( QScrollArea* scrollArea, QWidget* parent = nullptr );
 
 
 		/////////////////////////////////////
