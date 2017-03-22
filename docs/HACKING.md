@@ -71,8 +71,8 @@ Version numbering
   - 3.x.x was based on gtk+-3
   - 4.x.x is based on qt-5
 * minor version indicates a minor change in features or design
- - even minor versions are from a stable branch
- - odd minor versions are from a development branch
+  - even minor versions are from a stable branch
+  - odd minor versions are from a development branch
 * micro version indicates a bugfix release
   - See above for release characteristics within a stable branch
  
