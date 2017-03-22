@@ -256,6 +256,7 @@ namespace glabels
 				if ( tmplate == 0 )
 				{
 					qWarning() << "Unable to parse template";
+					delete label;
 					return 0;
 				}
 				label->setTmplate( tmplate );

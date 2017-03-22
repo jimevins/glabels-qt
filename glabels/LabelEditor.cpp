@@ -889,7 +889,7 @@ namespace glabels
 			case Handle::SW:
 				x0 += x2 - mResizeObject->w().pt();
 				break;
-			defaule:
+			default:
 				break;
 			}
 		}

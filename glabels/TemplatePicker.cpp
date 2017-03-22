@@ -50,7 +50,7 @@ namespace glabels
 	{
 		foreach (Template *tmplate, tmplates)
 		{
-			TemplatePickerItem *item = new TemplatePickerItem( tmplate, this );
+			new TemplatePickerItem( tmplate, this );
 		}
 	}
 

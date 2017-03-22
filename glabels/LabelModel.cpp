@@ -602,6 +602,8 @@ namespace glabels
 				return object;
 			}
 		}
+
+		return 0;
 	}
 
 
