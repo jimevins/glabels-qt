@@ -44,19 +44,19 @@ namespace glabels
 		protected:
 			Text( QChar delimiter, bool line1HasKeys );
 			Text( const Text* merge );
-			virtual ~Text();
+			~Text() override;
 
 
 			/////////////////////////////////
 			// Implementation of virtual methods
 			/////////////////////////////////
 		public:
-			QStringList keys() const;
-			QString primaryKey() const;
+			QStringList keys() const override;
+			QString primaryKey() const override;
 		protected:
-			void open();
-			void close();
-			Record* readNextRecord();
+			void open() override;
+			void close() override;
+			Record* readNextRecord() override;
 
 
 			/////////////////////////////////

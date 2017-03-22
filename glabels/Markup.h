@@ -50,7 +50,7 @@ namespace glabels
 
 		Distance size() const;
 
-		Markup* dup() const;
+		Markup* dup() const override;
 
 	private:
 		const Frame* mFrame;
@@ -71,7 +71,7 @@ namespace glabels
 		Distance x2() const;
 		Distance y2() const;
 
-		Markup* dup() const;
+		Markup* dup() const override;
 
 	private:
 		Distance  mX1;
@@ -96,7 +96,7 @@ namespace glabels
 		Distance h() const;
 		Distance r() const;
 
-		Markup* dup() const;
+		Markup* dup() const override;
 
 	private:
 		Distance  mX1;
@@ -120,7 +120,7 @@ namespace glabels
 		Distance w() const;
 		Distance h() const;
 
-		Markup* dup() const;
+		Markup* dup() const override;
 
 	private:
 		Distance  mX1;
@@ -141,7 +141,7 @@ namespace glabels
 		Distance y0() const;
 		Distance r() const;
 
-		Markup* dup() const;
+		Markup* dup() const override;
 
 	private:
 		Distance  mX0;

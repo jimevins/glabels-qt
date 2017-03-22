@@ -107,16 +107,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleNorth( LabelModelObject* owner );
-		virtual ~HandleNorth();
-		virtual HandleNorth* clone( LabelModelObject* newOwner ) const;
+		~HandleNorth() override;
+		HandleNorth* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -130,16 +130,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleNorthEast( LabelModelObject* owner );
-		virtual ~HandleNorthEast();
-		virtual HandleNorthEast* clone( LabelModelObject* newOwner ) const;
+		~HandleNorthEast() override;
+		HandleNorthEast* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -153,16 +153,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleEast( LabelModelObject* owner );
-		virtual ~HandleEast();
-		virtual HandleEast* clone( LabelModelObject* newOwner ) const;
+		~HandleEast() override;
+		HandleEast* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -176,16 +176,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleSouthEast( LabelModelObject* owner );
-		virtual ~HandleSouthEast();
-		virtual HandleSouthEast* clone( LabelModelObject* newOwner ) const;
+		~HandleSouthEast() override;
+		HandleSouthEast* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -199,16 +199,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleSouth( LabelModelObject* owner );
-		virtual ~HandleSouth();
-		virtual HandleSouth* clone( LabelModelObject* newOwner ) const;
+		~HandleSouth() override;
+		HandleSouth* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -222,16 +222,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleSouthWest( LabelModelObject* owner );
-		virtual ~HandleSouthWest();
-		virtual HandleSouthWest* clone( LabelModelObject* newOwner ) const;
+		~HandleSouthWest() override;
+		HandleSouthWest* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -245,16 +245,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleWest( LabelModelObject* owner );
-		virtual ~HandleWest();
-		virtual HandleWest* clone( LabelModelObject* newOwner ) const;
+		~HandleWest() override;
+		HandleWest* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -268,16 +268,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleNorthWest( LabelModelObject* owner );
-		virtual ~HandleNorthWest();
-		virtual HandleNorthWest* clone( LabelModelObject* newOwner ) const;
+		~HandleNorthWest() override;
+		HandleNorthWest* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -291,16 +291,16 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleP1( LabelModelObject* owner );
-		virtual ~HandleP1();
-		virtual HandleP1* clone( LabelModelObject* newOwner ) const;
+		~HandleP1() override;
+		HandleP1* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 
@@ -314,20 +314,20 @@ namespace glabels
 		////////////////////////////
 	public:
 		HandleP2( LabelModelObject* owner );
-		virtual ~HandleP2();
+		~HandleP2() override;
 
 		////////////////////////////
 		// Duplication
 		////////////////////////////
-		virtual HandleP2* clone( LabelModelObject* newOwner ) const;
+		HandleP2* clone( LabelModelObject* newOwner ) const override;
 
 
 		////////////////////////////
 		// Drawing Methods
 		////////////////////////////
 	public:
-		virtual void  draw( QPainter* painter, double scale ) const;
-		virtual QPainterPath path( double scale ) const;
+		void  draw( QPainter* painter, double scale ) const override;
+		QPainterPath path( double scale ) const override;
 	};
 
 }

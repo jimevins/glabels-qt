@@ -42,13 +42,13 @@ namespace glabels
 		public:
 			None();
 			None( const None* merge );
-			virtual ~None();
+			~None() override;
 
 
 			/////////////////////////////////
 			// Object duplication
 			/////////////////////////////////
-			None* clone() const;
+			None* clone() const override;
 
 
 			/////////////////////////////////
@@ -63,12 +63,12 @@ namespace glabels
 			// Implementation of virtual methods
 			/////////////////////////////////
 		public:
-			QStringList keys() const;
-			QString primaryKey() const;
+			QStringList keys() const override;
+			QString primaryKey() const override;
 		protected:
-			void open();
-			void close();
-			Record* readNextRecord();
+			void open() override;
+			void close() override;
+			Record* readNextRecord() override;
 		
 		};
 

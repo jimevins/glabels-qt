@@ -42,14 +42,14 @@ namespace glabels
 		private:
 			TextSemicolonKeys();
 			TextSemicolonKeys( const TextSemicolonKeys* merge );
-			virtual ~TextSemicolonKeys();
+			~TextSemicolonKeys() override;
 
 
 			/////////////////////////////////
 			// Object duplication
 			/////////////////////////////////
 		public:
-			TextSemicolonKeys* clone() const;
+			TextSemicolonKeys* clone() const override;
 
 
 			/////////////////////////////////

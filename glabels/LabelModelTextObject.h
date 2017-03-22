@@ -43,13 +43,13 @@ namespace glabels
 	public:
 		LabelModelTextObject();
 		LabelModelTextObject( const LabelModelTextObject* object );
-		virtual ~LabelModelTextObject();
+		~LabelModelTextObject() override;
 
 
 		///////////////////////////////////////////////////////////////
 		// Object duplication
 		///////////////////////////////////////////////////////////////
-		virtual LabelModelTextObject* clone() const;
+		LabelModelTextObject* clone() const override;
 
 
 		///////////////////////////////////////////////////////////////
@@ -59,77 +59,77 @@ namespace glabels
 		//
 		// Text Property: text
 		//
-		virtual QString text() const;
-		virtual void setText( const QString &value );
+		QString text() const override;
+		void setText( const QString &value ) override;
 
 
 		//
 		// Text Property: fontFamily
 		//
-		virtual QString fontFamily() const;
-		virtual void setFontFamily( const QString &value );
+		QString fontFamily() const override;
+		void setFontFamily( const QString &value ) override;
 
 
 		//
 		// Text Property: fontSize
 		//
-		virtual double fontSize() const;
-		virtual void setFontSize( double value );
+		double fontSize() const override;
+		void setFontSize( double value ) override;
 
 
 		//
 		// Text Property: fontWeight
 		//
-		virtual QFont::Weight fontWeight() const;
-		virtual void setFontWeight( QFont::Weight value );
+		QFont::Weight fontWeight() const override;
+		void setFontWeight( QFont::Weight value ) override;
 
 
 		//
 		// Text Property: fontItalicFlag
 		//
-		virtual bool fontItalicFlag() const;
-		virtual void setFontItalicFlag( bool value );
+		bool fontItalicFlag() const override;
+		void setFontItalicFlag( bool value ) override;
 
 
 		//
 		// Text Property: fontUnderlineFlag
 		//
-		virtual bool fontUnderlineFlag() const;
-		virtual void setFontUnderlineFlag( bool value );
+		bool fontUnderlineFlag() const override;
+		void setFontUnderlineFlag( bool value ) override;
 
 
 		//
 		// Text Property: textColorNode
 		//
-		virtual ColorNode textColorNode() const;
-		virtual void setTextColorNode( const ColorNode &value );
+		ColorNode textColorNode() const override;
+		void setTextColorNode( const ColorNode &value ) override;
 		
 
 		//
 		// Text Property: textHAlign
 		//
-		virtual Qt::Alignment textHAlign() const;
-		virtual void setTextHAlign( Qt::Alignment value );
+		Qt::Alignment textHAlign() const override;
+		void setTextHAlign( Qt::Alignment value ) override;
 
 
 		//
 		// Text Property: textVAlign
 		//
-		virtual Qt::Alignment textVAlign() const;
-		virtual void setTextVAlign( Qt::Alignment value );
+		Qt::Alignment textVAlign() const override;
+		void setTextVAlign( Qt::Alignment value ) override;
 
 
 		//
 		// Text Property: textLineSpacing
 		//
-		virtual double textLineSpacing() const;
-		virtual void setTextLineSpacing( double value );
+		double textLineSpacing() const override;
+		void setTextLineSpacing( double value ) override;
 
 
 		//
 		// Property: naturalSize
 		//
-		virtual Size naturalSize() const;
+		Size naturalSize() const override;
 
 
 		///////////////////////////////////////////////////////////////
@@ -143,16 +143,16 @@ namespace glabels
 		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	protected:
-		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual QPainterPath hoverPath( double scale ) const;
+		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		QPainterPath hoverPath( double scale ) const override;
 
 
 		///////////////////////////////////////////////////////////////
 		// Private methods
 		///////////////////////////////////////////////////////////////
 	private:
-		virtual void sizeUpdated();
+		void sizeUpdated() override;
 		void update();
 		void drawTextInEditor( QPainter* painter, const QColor& color ) const;
 		void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;

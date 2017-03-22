@@ -41,22 +41,22 @@ namespace glabels
 	public:
 		LabelModelEllipseObject();
 		LabelModelEllipseObject( const LabelModelEllipseObject* object );
-		virtual ~LabelModelEllipseObject();
+		~LabelModelEllipseObject() override;
 
 	
 		///////////////////////////////////////////////////////////////
 		// Object duplication
 		///////////////////////////////////////////////////////////////
-		virtual LabelModelEllipseObject* clone() const;
+		LabelModelEllipseObject* clone() const override;
 
 
 		///////////////////////////////////////////////////////////////
 		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	protected:
-		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual QPainterPath hoverPath( double scale ) const;
+		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		QPainterPath hoverPath( double scale ) const override;
 
 	};
 

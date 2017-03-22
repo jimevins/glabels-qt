@@ -42,7 +42,7 @@ namespace glabels
 		LabelModelShapeObject();
 		LabelModelShapeObject( const LabelModelShapeObject* object );
 	public:
-		virtual ~LabelModelShapeObject();
+		~LabelModelShapeObject() override;
 
 
 		///////////////////////////////////////////////////////////////
@@ -52,22 +52,22 @@ namespace glabels
 		//
 		// Shape Property: lineWidth
 		//
-		virtual Distance lineWidth( void ) const;
-		virtual void setLineWidth( const Distance& value );
+		Distance lineWidth( void ) const override;
+		void setLineWidth( const Distance& value ) override;
 
 
 		//
 		// Shape Property: lineColorNode
 		//
-		virtual ColorNode lineColorNode( void ) const;
-		virtual void setLineColorNode( const ColorNode& value );
+		ColorNode lineColorNode( void ) const override;
+		void setLineColorNode( const ColorNode& value ) override;
 		
 
 		//
 		// Shape Property: fillColorNode
 		//
-		virtual ColorNode fillColorNode( void ) const;
-		virtual void setFillColorNode( const ColorNode& value );
+		ColorNode fillColorNode( void ) const override;
+		void setFillColorNode( const ColorNode& value ) override;
 		
 
 		///////////////////////////////////////////////////////////////

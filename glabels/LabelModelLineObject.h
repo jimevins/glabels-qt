@@ -41,13 +41,13 @@ namespace glabels
 	public:
 		LabelModelLineObject();
 		LabelModelLineObject( const LabelModelLineObject* object );
-		virtual ~LabelModelLineObject();
+		~LabelModelLineObject() override;
 
 
 		///////////////////////////////////////////////////////////////
 		// Object duplication
 		///////////////////////////////////////////////////////////////
-		virtual LabelModelLineObject* clone() const;
+		LabelModelLineObject* clone() const override;
 
 
 		///////////////////////////////////////////////////////////////
@@ -57,15 +57,15 @@ namespace glabels
 		//
 		// Line Property: lineWidth
 		//
-		virtual Distance lineWidth( void ) const;
-		virtual void setLineWidth( const Distance& value );
+		Distance lineWidth( void ) const override;
+		void setLineWidth( const Distance& value ) override;
 
 
 		//
 		// Line Property: lineColorNode
 		//
-		virtual ColorNode lineColorNode( void ) const;
-		virtual void setLineColorNode( const ColorNode& value );
+		ColorNode lineColorNode( void ) const override;
+		void setLineColorNode( const ColorNode& value ) override;
 		
 
 		///////////////////////////////////////////////////////////////
@@ -80,9 +80,9 @@ namespace glabels
 		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	protected:
-		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual QPainterPath hoverPath( double scale ) const;
+		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		QPainterPath hoverPath( double scale ) const override;
 
 
 		///////////////////////////////////////////////////////////////

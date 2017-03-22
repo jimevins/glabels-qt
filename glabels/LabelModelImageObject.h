@@ -43,13 +43,13 @@ namespace glabels
 	public:
 		LabelModelImageObject();
 		LabelModelImageObject( const LabelModelImageObject* object );
-		virtual ~LabelModelImageObject();
+		~LabelModelImageObject() override;
 
 
 		///////////////////////////////////////////////////////////////
 		// Object duplication
 		///////////////////////////////////////////////////////////////
-		virtual LabelModelImageObject* clone() const;
+		LabelModelImageObject* clone() const override;
 
 
 		///////////////////////////////////////////////////////////////
@@ -59,26 +59,26 @@ namespace glabels
 		//
 		// Image Property: filenameNode
 		//
-		virtual TextNode filenameNode( void ) const;
-		virtual void setFilenameNode( const TextNode& value );
+		TextNode filenameNode( void ) const override;
+		void setFilenameNode( const TextNode& value ) override;
 
 		//
 		// Image Property: image
 		//
-		virtual const QImage* image() const;
-		virtual void setImage( const QImage& value );
-		virtual void setImage( const QString& name, const QImage& value );
+		const QImage* image() const override;
+		void setImage( const QImage& value ) override;
+		void setImage( const QString& name, const QImage& value ) override;
 
 		//
 		// Image Property: svg
 		//
-		virtual QByteArray svg() const;
-		virtual void setSvg( const QString& name, const QByteArray& value );
+		QByteArray svg() const override;
+		void setSvg( const QString& name, const QByteArray& value ) override;
 
 		//
 		// Property: naturalSize
 		//
-		virtual Size naturalSize() const;
+		Size naturalSize() const override;
 	
 
 		///////////////////////////////////////////////////////////////
@@ -90,9 +90,9 @@ namespace glabels
 		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	protected:
-		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual QPainterPath hoverPath( double scale ) const;
+		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		QPainterPath hoverPath( double scale ) const override;
 
 
 		///////////////////////////////////////////////////////////////

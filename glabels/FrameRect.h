@@ -40,22 +40,22 @@ namespace glabels
 
 		FrameRect( const FrameRect& other );
 
-		Frame* dup() const;
+		Frame* dup() const override;
 
 		Distance r() const;
 		Distance xWaste() const;
 		Distance yWaste() const;
 
-		Distance w() const;
-		Distance h() const;
+		Distance w() const override;
+		Distance h() const override;
 
-		QString sizeDescription( const Units& units ) const;
+		QString sizeDescription( const Units& units ) const override;
 
-		bool isSimilarTo( Frame* other ) const;
+		bool isSimilarTo( Frame* other ) const override;
 
-		const QPainterPath& path() const;
-		const QPainterPath& clipPath() const;
-		QPainterPath marginPath( const Distance& size ) const;
+		const QPainterPath& path() const override;
+		const QPainterPath& clipPath() const override;
+		QPainterPath marginPath( const Distance& size ) const override;
 
 
 	private:

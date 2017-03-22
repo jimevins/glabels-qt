@@ -48,7 +48,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		PrintView( QWidget *parent = 0 );
-		~PrintView();
+		~PrintView() override;
 
 
 		/////////////////////////////////

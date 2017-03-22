@@ -49,8 +49,8 @@ namespace glabels
 		// Virtual method implementations
 		/////////////////////////////////////
 	public:
-		QRectF boundingRect() const;
-		void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget );
+		QRectF boundingRect() const override;
+		void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
 
 		
 		/////////////////////////////////

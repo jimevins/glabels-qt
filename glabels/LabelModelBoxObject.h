@@ -41,22 +41,22 @@ namespace glabels
 	public:
 		LabelModelBoxObject();
 		LabelModelBoxObject( const LabelModelBoxObject* object );
-		virtual ~LabelModelBoxObject();
+		~LabelModelBoxObject() override;
 
 	
 		///////////////////////////////////////////////////////////////
 		// Object duplication
 		///////////////////////////////////////////////////////////////
-		virtual LabelModelBoxObject* clone() const;
+		LabelModelBoxObject* clone() const override;
 
 
 		///////////////////////////////////////////////////////////////
 		// Drawing operations
 		///////////////////////////////////////////////////////////////
 	protected:
-		virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const;
-		virtual QPainterPath hoverPath( double scale ) const;
+		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+		QPainterPath hoverPath( double scale ) const override;
 
 	};
 

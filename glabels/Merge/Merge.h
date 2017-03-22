@@ -52,7 +52,7 @@ namespace glabels
 			Merge();
 			Merge( const Merge* merge );
 		public:
-			virtual ~Merge();
+			~Merge() override;
 
 
 			/////////////////////////////////

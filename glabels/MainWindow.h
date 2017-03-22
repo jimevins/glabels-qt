@@ -61,7 +61,7 @@ namespace glabels
 		/////////////////////////////////////
 	public:
 		MainWindow();
-		virtual ~MainWindow();
+		~MainWindow() override;
 
 
 		/////////////////////////////////////
@@ -77,7 +77,7 @@ namespace glabels
 		// Events
 		/////////////////////////////////////
 	protected:
-		void closeEvent( QCloseEvent *event );
+		void closeEvent( QCloseEvent *event ) override;
 
 
 		/////////////////////////////////////

@@ -42,14 +42,14 @@ namespace glabels
 		private:
 			TextCsv();
 			TextCsv( const TextCsv* merge );
-			virtual ~TextCsv();
+			~TextCsv() override;
 
 
 			/////////////////////////////////
 			// Object duplication
 			/////////////////////////////////
 		public:
-			TextCsv* clone() const;
+			TextCsv* clone() const override;
 
 
 			/////////////////////////////////

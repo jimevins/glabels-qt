@@ -42,14 +42,14 @@ namespace glabels
 		private:
 			TextColon();
 			TextColon( const TextColon* merge );
-			virtual ~TextColon();
+			~TextColon() override;
 
 
 			/////////////////////////////////
 			// Object duplication
 			/////////////////////////////////
 		public:
-			TextColon* clone() const;
+			TextColon* clone() const override;
 
 
 			/////////////////////////////////

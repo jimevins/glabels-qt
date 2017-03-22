@@ -47,7 +47,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		UndoRedoModel( LabelModel* model );
-		virtual ~UndoRedoModel();
+		~UndoRedoModel() override;
 
 
 		/////////////////////////////////

@@ -80,7 +80,7 @@ namespace glabels
 		void onComboIndexChanged( int index );
 
 	protected:
-		void showEvent( QShowEvent* event );
+		void showEvent( QShowEvent* event ) override;
 	
 
 		/////////////////////////////////

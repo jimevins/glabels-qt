@@ -42,14 +42,14 @@ namespace glabels
 		private:
 			TextColonKeys();
 			TextColonKeys( const TextColonKeys* merge );
-			virtual ~TextColonKeys();
+			~TextColonKeys() override;
 
 
 			/////////////////////////////////
 			// Object duplication
 			/////////////////////////////////
 		public:
-			TextColonKeys* clone() const;
+			TextColonKeys* clone() const override;
 
 
 			/////////////////////////////////

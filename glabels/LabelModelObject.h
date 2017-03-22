@@ -59,7 +59,7 @@ namespace glabels
 		LabelModelObject();
 		LabelModelObject( const LabelModelObject* object );
 	public:
-		virtual ~LabelModelObject();
+		~LabelModelObject() override;
 
 
 		///////////////////////////////////////////////////////////////

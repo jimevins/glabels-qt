@@ -55,7 +55,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		LabelModel();
-		virtual ~LabelModel() {}
+		~LabelModel() override {}
 
 	
 		/////////////////////////////////
