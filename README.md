@@ -22,6 +22,7 @@ gLabels-qt has been under off-and-on development since October 2013.
 It is still missing several features to bring it in parity with glabels-3.4.  These include
 
 - Barcode objects
+- Compatability with older glabels files
 - Internationalization
 - Product template designer
 - Online manual
