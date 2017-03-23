@@ -52,21 +52,21 @@ namespace glabels
 		//
 		// Shape Property: lineWidth
 		//
-		Distance lineWidth( void ) const override;
+		Distance lineWidth() const override;
 		void setLineWidth( const Distance& value ) override;
 
 
 		//
 		// Shape Property: lineColorNode
 		//
-		ColorNode lineColorNode( void ) const override;
+		ColorNode lineColorNode() const override;
 		void setLineColorNode( const ColorNode& value ) override;
 		
 
 		//
 		// Shape Property: fillColorNode
 		//
-		ColorNode fillColorNode( void ) const override;
+		ColorNode fillColorNode() const override;
 		void setFillColorNode( const ColorNode& value ) override;
 		
 

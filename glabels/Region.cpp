@@ -47,7 +47,7 @@ namespace glabels
 	///
 	/// Get x1
 	///
-	Distance Region::x1( void ) const
+	Distance Region::x1() const
 	{
 		return mX1;
 	}
@@ -65,7 +65,7 @@ namespace glabels
 	///
 	/// Get y1
 	///
-	Distance Region::y1( void ) const
+	Distance Region::y1() const
 	{
 		return mY1;
 	}
@@ -83,7 +83,7 @@ namespace glabels
 	///
 	/// Get x2
 	///
-	Distance Region::x2( void ) const
+	Distance Region::x2() const
 	{
 		return mX2;
 	}
@@ -101,7 +101,7 @@ namespace glabels
 	///
 	/// Get y2
 	///
-	Distance Region::y2( void ) const
+	Distance Region::y2() const
 	{
 		return mY2;
 	}

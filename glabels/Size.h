@@ -51,14 +51,14 @@ namespace glabels
 		//
 		// w Property
 		//
-		Distance w( void ) const;
+		Distance w() const;
 		void setW( const Distance& value );
 
 
 		//
 		// H Property
 		//
-		Distance h( void ) const;
+		Distance h() const;
 		void setH( const Distance& value );
 
 

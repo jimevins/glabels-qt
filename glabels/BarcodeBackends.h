@@ -46,7 +46,7 @@ namespace glabels
 		BarcodeBackends();
 
 	public:
-		static void init( void );
+		static void init();
 
 		/////////////////////////////////
 		// Public Methods

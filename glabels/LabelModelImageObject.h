@@ -59,7 +59,7 @@ namespace glabels
 		//
 		// Image Property: filenameNode
 		//
-		TextNode filenameNode( void ) const override;
+		TextNode filenameNode() const override;
 		void setFilenameNode( const TextNode& value ) override;
 
 		//

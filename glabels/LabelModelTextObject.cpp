@@ -120,7 +120,7 @@ namespace glabels
 	///
 	/// Text Property Getter
 	///
-	QString LabelModelTextObject::text( void ) const
+	QString LabelModelTextObject::text() const
 	{
 		return mText;
 	}
@@ -143,7 +143,7 @@ namespace glabels
 	///
 	/// FontFamily Property Getter
 	///
-	QString LabelModelTextObject::fontFamily( void ) const
+	QString LabelModelTextObject::fontFamily() const
 	{
 		return mFontFamily;
 	}
@@ -166,7 +166,7 @@ namespace glabels
 	///
 	/// FontSize Property Getter
 	///
-	double LabelModelTextObject::fontSize( void ) const
+	double LabelModelTextObject::fontSize() const
 	{
 		return mFontSize;
 	}
@@ -189,7 +189,7 @@ namespace glabels
 	///
 	/// FontWeight Property Getter
 	///
-	QFont::Weight LabelModelTextObject::fontWeight( void ) const
+	QFont::Weight LabelModelTextObject::fontWeight() const
 	{
 		return mFontWeight;
 	}
@@ -212,7 +212,7 @@ namespace glabels
 	///
 	/// FontItalicFlag Property Getter
 	///
-	bool LabelModelTextObject::fontItalicFlag( void ) const
+	bool LabelModelTextObject::fontItalicFlag() const
 	{
 		return mFontItalicFlag;
 	}
@@ -235,7 +235,7 @@ namespace glabels
 	///
 	/// FontUnderlineFlag Property Getter
 	///
-	bool LabelModelTextObject::fontUnderlineFlag( void ) const
+	bool LabelModelTextObject::fontUnderlineFlag() const
 	{
 		return mFontUnderlineFlag;
 	}
@@ -258,7 +258,7 @@ namespace glabels
 	///
 	/// Text Color Node Property Getter
 	///
-	ColorNode LabelModelTextObject::textColorNode( void ) const
+	ColorNode LabelModelTextObject::textColorNode() const
 	{
 		return mTextColorNode;
 	}
@@ -281,7 +281,7 @@ namespace glabels
 	///
 	/// TextHAlign Property Getter
 	///
-	Qt::Alignment LabelModelTextObject::textHAlign( void ) const
+	Qt::Alignment LabelModelTextObject::textHAlign() const
 	{
 		return mTextHAlign;
 	}
@@ -304,7 +304,7 @@ namespace glabels
 	///
 	/// TextVAlign Property Getter
 	///
-	Qt::Alignment LabelModelTextObject::textVAlign( void ) const
+	Qt::Alignment LabelModelTextObject::textVAlign() const
 	{
 		return mTextVAlign;
 	}
@@ -327,7 +327,7 @@ namespace glabels
 	///
 	/// TextLineSpacing Property Getter
 	///
-	double LabelModelTextObject::textLineSpacing( void ) const
+	double LabelModelTextObject::textLineSpacing() const
 	{
 		return mTextLineSpacing;
 	}

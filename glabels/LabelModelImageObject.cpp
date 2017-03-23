@@ -124,7 +124,7 @@ namespace glabels
 	///
 	/// Image filenameNode Property Getter
 	///
-	TextNode LabelModelImageObject::filenameNode( void ) const
+	TextNode LabelModelImageObject::filenameNode() const
 	{
 		return mFilenameNode;
 	}

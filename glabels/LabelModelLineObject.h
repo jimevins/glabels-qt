@@ -57,14 +57,14 @@ namespace glabels
 		//
 		// Line Property: lineWidth
 		//
-		Distance lineWidth( void ) const override;
+		Distance lineWidth() const override;
 		void setLineWidth( const Distance& value ) override;
 
 
 		//
 		// Line Property: lineColorNode
 		//
-		ColorNode lineColorNode( void ) const override;
+		ColorNode lineColorNode() const override;
 		void setLineColorNode( const ColorNode& value ) override;
 		
 

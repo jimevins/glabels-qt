@@ -108,7 +108,7 @@ namespace glabels
 		///
 		/// Get record list
 		///
-		const QList<Record*>& Merge::recordList( void ) const
+		const QList<Record*>& Merge::recordList( ) const
 		{
 			return mRecordList;
 		}

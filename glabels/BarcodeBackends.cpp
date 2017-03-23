@@ -77,7 +77,7 @@ namespace glabels
 	}
 
 
-	void BarcodeBackends::init( void )
+	void BarcodeBackends::init()
 	{
 		static BarcodeBackends* singletonInstance = nullptr;
                 

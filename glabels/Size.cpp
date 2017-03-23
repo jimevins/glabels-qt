@@ -45,7 +45,7 @@ namespace glabels
 	///
 	/// Get w
 	///
-	Distance Size::w( void ) const
+	Distance Size::w() const
 	{
 		return mW;
 	}
@@ -63,7 +63,7 @@ namespace glabels
 	///
 	/// Get h
 	///
-	Distance Size::h( void ) const
+	Distance Size::h() const
 	{
 		return mH;
 	}

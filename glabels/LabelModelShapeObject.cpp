@@ -79,7 +79,7 @@ namespace glabels
 	///
 	/// Line Width Property Getter
 	///
-	Distance LabelModelShapeObject::lineWidth( void ) const
+	Distance LabelModelShapeObject::lineWidth() const
 	{
 		return mLineWidth;
 	}
@@ -101,7 +101,7 @@ namespace glabels
 	///
 	/// Line Color Node Property Getter
 	///
-	ColorNode LabelModelShapeObject::lineColorNode( void ) const
+	ColorNode LabelModelShapeObject::lineColorNode() const
 	{
 		return mLineColorNode;
 	}
@@ -123,7 +123,7 @@ namespace glabels
 	///
 	/// Fill Color Node Property Getter
 	///
-	ColorNode LabelModelShapeObject::fillColorNode( void ) const
+	ColorNode LabelModelShapeObject::fillColorNode() const
 	{
 		return mFillColorNode;
 	}
