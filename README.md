@@ -23,6 +23,7 @@ It is still missing several features to bring it in parity with glabels-3.4.  Th
 
 - Barcode objects
 - Compatability with older glabels files
+- Batch mode
 - Internationalization
 - Product template designer
 - Online manual
