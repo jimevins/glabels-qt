@@ -30,6 +30,8 @@ namespace glabels
 
 	class FrameCd : public Frame
 	{
+		Q_DECLARE_TR_FUNCTIONS(FrameCd)
+
 	public:
 		FrameCd( const Distance& r1,
 		         const Distance& r2,

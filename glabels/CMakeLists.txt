@@ -101,6 +101,7 @@ set (glabels_sources
 
 set (glabels_qobject_headers
   AboutDialog.h
+  BarcodeBackends.h
   BarcodeMenu.h
   BarcodeMenuButton.h
   BarcodeMenuItem.h

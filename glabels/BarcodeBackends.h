@@ -38,7 +38,9 @@ namespace glabels
 	///
 	class BarcodeBackends : public QObject
 	{
+		Q_OBJECT
 
+	  
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////

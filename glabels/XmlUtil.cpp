@@ -22,6 +22,7 @@
 
 
 #include <QTextStream>
+#include <QCoreApplication>
 #include <QtDebug>
 
 
@@ -192,7 +193,6 @@ namespace glabels
 	{
 		init();
 
-		// TODO: are translations done in a compatable way, so that we can use "_name" attributes?
 		QString i18nString = node.attribute( QString("_").append(name), "" );
 
 		if ( i18nString == "" )
@@ -200,7 +200,7 @@ namespace glabels
 			return node.attribute( name, default_value );
 		}
 
-		return i18nString;
+		return QCoreApplication::translate( "XmlStrings", i18nString.toUtf8().constData() );
 	}
 
 

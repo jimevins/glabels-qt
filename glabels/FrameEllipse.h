@@ -30,6 +30,7 @@ namespace glabels
 
 	class FrameEllipse : public Frame
 	{
+		Q_DECLARE_TR_FUNCTIONS(FrameEllipse)
 		
 	public:
 		FrameEllipse( const Distance& w,

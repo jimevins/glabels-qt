@@ -30,6 +30,7 @@ namespace glabels
 
 	class FrameRound : public Frame
 	{
+		Q_DECLARE_TR_FUNCTIONS(FrameRound)
 
 	public:
 		FrameRound( const Distance& r,

@@ -34,6 +34,7 @@ find_package(Qt5Widgets 5.4 REQUIRED)
 find_package(Qt5PrintSupport 5.4 REQUIRED)
 find_package(Qt5Xml 5.4 REQUIRED)
 find_package(Qt5Svg 5.4 REQUIRED)
+find_package(Qt5LinguistTools)
 
 if (MINGW)
    # Locate Qt directories
@@ -49,6 +50,7 @@ find_package(ZLIB 1.2 REQUIRED)
 #=======================================
 add_subdirectory (glabels)
 add_subdirectory (templates)
+add_subdirectory (translations)
 add_subdirectory (data)
 
 

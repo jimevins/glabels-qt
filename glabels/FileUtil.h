@@ -23,6 +23,7 @@
 
 
 #include <QString>
+#include <QDir>
 
 
 namespace glabels
@@ -33,6 +34,10 @@ namespace glabels
 
 		QString addExtension( const QString& rawFilename, const QString& extension );
 
+		QDir systemTemplatesDir();
+		QDir userTemplatesDir();
+
+		QDir translationsDir();
 	}
 
 }

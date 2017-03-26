@@ -21,12 +21,12 @@
 #include "Db.h"
 
 
-#include <QApplication>
 #include <QtDebug>
 #include <QtGlobal>
 
 #include "Config.h"
 #include "StrUtil.h"
+#include "FileUtil.h"
 #include "XmlCategoryParser.h"
 #include "XmlPaperParser.h"
 #include "XmlTemplateParser.h"
@@ -603,32 +603,9 @@ namespace glabels
 	}
 
 
-	QDir Db::systemTemplatesDir()
-	{
-		QDir dir;
-
-		// First, try finding templates directory relative to application path
-		dir.cd( QApplication::applicationDirPath() );
-		if ( (dir.dirName() == "bin") &&
-		     dir.cdUp() && dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "templates" ) )
-		{
-			return dir;
-		}
-
-		// Next, try running out of the source directory.
-		if ( dir.cd( Config::PROJECT_SOURCE_DIR ) && dir.cd( "templates" ) )
-		{
-			return dir;
-		}
-
-		qFatal( "Cannot find template directory!" );
-		return QDir("/");
-	}
-
-
 	void Db::readPapers()
 	{
-		readPapersFromDir( systemTemplatesDir() );
+		readPapersFromDir( FileUtil::systemTemplatesDir() );
 	}
 
 
@@ -648,7 +625,7 @@ namespace glabels
 
 	void Db::readCategories()
 	{
-		readCategoriesFromDir( systemTemplatesDir() );
+		readCategoriesFromDir( FileUtil::systemTemplatesDir() );
 	}
 
 
@@ -668,7 +645,7 @@ namespace glabels
 
 	void Db::readVendors()
 	{
-		readVendorsFromDir( systemTemplatesDir() );
+		readVendorsFromDir( FileUtil::systemTemplatesDir() );
 	}
 
 
@@ -688,7 +665,7 @@ namespace glabels
 
 	void Db::readTemplates()
 	{
-		readTemplatesFromDir( systemTemplatesDir() );
+		readTemplatesFromDir( FileUtil::systemTemplatesDir() );
 
 		// TODO: Read user directories
 

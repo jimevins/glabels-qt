@@ -30,6 +30,8 @@ namespace glabels
 
 	class FrameRect : public Frame
 	{
+		Q_DECLARE_TR_FUNCTIONS(FrameRect)
+
 	public:
 		FrameRect( const Distance& w,
 			   const Distance& h,

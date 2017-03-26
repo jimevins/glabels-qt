@@ -25,7 +25,7 @@ It is still missing several features to bring it in parity with glabels-3.4.  Th
 - Compatability with older glabels files
 - Batch mode
 - Internationalization
-- Product template designer
+- Custom product templates designer
 - Online manual
 
 ## Build Instructions
@@ -48,7 +48,7 @@ These include
 
 * Help is needed writing online documentation.
 
-* Help is needed setting up internationalization and writing translations.
+* Help is needed writing translations.
 
 * Suggestions.
 

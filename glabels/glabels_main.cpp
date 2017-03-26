@@ -20,7 +20,11 @@
 
 
 #include <QApplication>
+#include <QLocale>
+#include <QTranslator>
+#include <QtDebug>
 
+#include "FileUtil.h"
 #include "Db.h"
 #include "MainWindow.h"
 #include "Settings.h"
@@ -36,19 +40,39 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-qt" );
 
+	//
+	// Setup translators
+	//
+	QLocale locale = QLocale::system();
+	QString translationsDir = glabels::FileUtil::translationsDir().canonicalPath();
+	
+	QTranslator glabelsTranslator;
+	if ( glabelsTranslator.load( locale, "glabels", "_", translationsDir ) )
+	{
+		app.installTranslator(&glabelsTranslator);
+	}
+
+	QTranslator templatesTranslator;
+	if ( templatesTranslator.load( locale, "templates", "_", translationsDir ) )
+	{
+		app.installTranslator(&templatesTranslator);
+	}
+
+	
+	//
+	// Initialize subsystems
+	//
 	glabels::Settings::init();
 	glabels::Db::init();
 	glabels::merge::Factory::init();
-	////// TEMPORARY TESTING ////////
-#if 0
-	glabels::Db::printKnownPapers();
-	glabels::Db::printKnownCategories();
-	glabels::Db::printKnownVendors();
-	glabels::Db::printKnownTemplates();
-#endif
-	/////////////////////////////////
 
+	
 	/// @TODO open file(s) from command line if present, otherwise start wizard
+
+	
+	//
+	// Launch main window
+	//
 	glabels::MainWindow mainWindow;
 	mainWindow.show();
 
