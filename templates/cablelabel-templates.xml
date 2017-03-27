@@ -13,9 +13,9 @@
 
 
   <!-- ============================================================ -->
-  <!-- Cable Label Co CableBug: Mini Labels                         -->
+  <!-- Cable Label Co CableBug: Mini labels                         -->
   <!-- ============================================================ -->
-  <Template brand="Cable Label Co" part="CableBug" size="A4" _description="Mini Labels">
+  <Template brand="Cable Label Co" part="CableBug" size="A4" _description="Mini labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="46.7mm" height="7mm" round="0mm" x_waste="0mm" y_waste="0mm">

@@ -29,7 +29,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha P68.  Business Cards.                                	   -->
+  <!-- Geha P68.  Business cards.                                	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="P68" size="A4" _description="Business cards">
     <Meta category="card"/>
@@ -44,7 +44,7 @@
   <Template brand="Geha" part="P69" equiv="P68"/>
 
   <!-- =================================================================== -->
-  <!-- Geha P70.  Business Cards.                                	   -->
+  <!-- Geha P70.  Business cards.                                	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="P70" size="A4" _description="Business cards">
     <Meta category="card"/>
@@ -61,7 +61,7 @@
   <Template brand="Geha" part="P73" equiv="P70"/>
 
   <!-- =================================================================== -->
-  <!-- Geha P76.  Greeting Cards.                                	   -->
+  <!-- Geha P76.  Greeting cards.                                	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="P76" size="A4" _description="Greeting cards">
     <Meta category="card"/>
@@ -77,7 +77,7 @@
   <Template brand="Geha" part="P77" equiv="P76"/>
 
   <!-- =================================================================== -->
-  <!-- Geha P78.  Greeting Cards.                                	   -->
+  <!-- Geha P78.  Greeting cards.                                	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="P78" size="A4" _description="Greeting cards">
     <Meta category="card"/>
@@ -93,9 +93,9 @@
   <Template brand="Geha" part="P79" equiv="P78"/>
 
   <!-- =================================================================== -->
-  <!-- Geha P80.  Arch File inserts.                                	   -->
+  <!-- Geha P80.  Arch file inserts.                                	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="P80" size="A4" _description="Arch File inserts">
+  <Template brand="Geha" part="P80" size="A4" _description="Arch file inserts">
     <Meta category="card"/>
     <Meta product_url="http://www.geha.de/index.php?id=837&amp;pid=90891"/>
     <Label-rectangle id="0" width="188mm" height="48mm" round="0mm" x_waste="11mm" y_waste="0mm">
@@ -105,9 +105,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha P81.  Arch File inserts.                                	   -->
+  <!-- Geha P81.  Arch file inserts.                                	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="P81" size="A4" _description="Arch File inserts">
+  <Template brand="Geha" part="P81" size="A4" _description="Arch file inserts">
     <Meta category="card"/>
     <Meta product_url="http://www.geha.de/index.php?id=837&amp;pid=90914"/>
     <Label-rectangle id="0" width="188mm" height="26mm" round="0mm" x_waste="11mm" y_waste="0mm">
@@ -117,9 +117,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z20.  CD/DVD Labels and inlet.                             	   -->
+  <!-- Geha Z20.  CD/DVD labels and inlet.                             	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z20-1" size="A4" _description="CD/DVD Labels">
+  <Template brand="Geha" part="Z20-1" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30200"/>
@@ -131,7 +131,7 @@
 
   <Template brand="Geha" part="Z21-1" equiv="Z20-1"/>
 
-  <Template brand="Geha" part="Z20-2" size="A4" _description="CD/DVD Inlet">
+  <Template brand="Geha" part="Z20-2" size="A4" _description="CD/DVD inlet">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta category="rectangle-label"/>
@@ -145,9 +145,9 @@
   <Template brand="Geha" part="Z21-2" equiv="Z20-2"/>
 
   <!-- =================================================================== -->
-  <!-- Geha Z22.  CD/DVD Labels.                                     	   -->
+  <!-- Geha Z22.  CD/DVD labels.                                     	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z22" size="A4" _description="CD/DVD Labels">
+  <Template brand="Geha" part="Z22" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30101"/>
@@ -174,9 +174,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z25-1.  Video Tape Spine Labels.                           	   -->
+  <!-- Geha Z25-1.  Video tape spine labels.                           	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z25-1" size="A4" _description="Video Tape Spine Labels">
+  <Template brand="Geha" part="Z25-1" size="A4" _description="Video tape spine labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="media"/>
@@ -189,9 +189,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z25-2.  Video Tape Face Labels.                           	   -->
+  <!-- Geha Z25-2.  Video tape face labels.                           	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z25-2" size="A4" _description="Video Tape Face Labels">
+  <Template brand="Geha" part="Z25-2" size="A4" _description="Video tape face labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="media"/>
@@ -203,7 +203,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z40.  Photo Labels.                                     	   -->
+  <!-- Geha Z40.  Photo labels.                                     	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="Z40" size="A4" _description="Photo labels">
     <Meta category="label"/>
@@ -220,7 +220,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z41.  Photo Labels.                                     	   -->
+  <!-- Geha Z41.  Photo labels.                                     	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="Z41" size="A4" _description="Photo labels">
     <Meta category="label"/>
@@ -237,7 +237,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z45.  Photo Labels.                                     	   -->
+  <!-- Geha Z45.  Photo labels.                                     	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="Z45" size="A4" _description="Photo labels">
     <Meta category="label"/>
@@ -254,7 +254,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z46.  Passport Photo Labels.                               	   -->
+  <!-- Geha Z46.  Passport photo labels.                               	   -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="Z46" size="A4" _description="Passport photo labels">
     <Meta category="label"/>
@@ -269,9 +269,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z50.  Large Address Labels.                               	   -->
+  <!-- Geha Z50.  Large address labels.                               	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z50" size="A4" _description="Large Address Labels">
+  <Template brand="Geha" part="Z50" size="A4" _description="Large address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="mail"/>
@@ -283,9 +283,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z51.  Medium Address Labels.                               	   -->
+  <!-- Geha Z51.  Medium Address labels.                               	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z51" size="A4" _description="Address Labels">
+  <Template brand="Geha" part="Z51" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="mail"/>
@@ -297,9 +297,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z52.  Address Labels.                               	   -->
+  <!-- Geha Z52.  Address labels.                               	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z52" size="A4" _description="Address Labels">
+  <Template brand="Geha" part="Z52" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="mail"/>
@@ -311,9 +311,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z53.  Address Labels.                                     	   -->
+  <!-- Geha Z53.  Address labels.                                     	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z53" size="A4" _description="Address Labels">
+  <Template brand="Geha" part="Z53" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="mail"/>
@@ -325,9 +325,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z54.  Address Labels.                               	   -->
+  <!-- Geha Z54.  Address labels.                               	   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z54" size="A4" _description="Address Labels">
+  <Template brand="Geha" part="Z54" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta category="rectangle-label"/>
@@ -340,9 +340,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z80.  Arch File Labels.					   -->
+  <!-- Geha Z80.  Arch file labels.					   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z80" size="A4" _description="Arch File Labels">
+  <Template brand="Geha" part="Z80" size="A4" _description="Arch file labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30002"/>
@@ -357,9 +357,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Geha Z81.  Arch File Labels.					   -->
+  <!-- Geha Z81.  Arch file labels.					   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z81" size="A4" _description="Arch File Labels">
+  <Template brand="Geha" part="Z81" size="A4" _description="Arch file labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30026"/>
@@ -373,9 +373,9 @@
   <Template brand="Geha" part="Z89" equiv="Z81"/>
 
   <!-- =================================================================== -->
-  <!-- Geha Z90.  Multi-Purpose Labels.					   -->
+  <!-- Geha Z90.  Multipurpose labels.					   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z90" size="A4" _description="Multi-Purpose Labels">
+  <Template brand="Geha" part="Z90" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30804"/>
@@ -386,9 +386,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z91.  Multi-Purpose Labels.					   -->
+  <!-- Geha Z91.  Multipurpose labels.					   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z91" size="A4" _description="Multi-Purpose Labels">
+  <Template brand="Geha" part="Z91" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30828"/>
@@ -399,9 +399,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z92.  Multi-Purpose Labels.					   -->
+  <!-- Geha Z92.  Multipurpose labels.					   -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z92" size="A4" _description="Multi-Purpose Labels">
+  <Template brand="Geha" part="Z92" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30842"/>

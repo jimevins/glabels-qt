@@ -7,9 +7,9 @@
   <!-- ******************************************************************** -->
 
   <!-- =================================================================== -->
-  <!-- PEARL: Adress Labels, 70mm x 36mm, 24 per sheet                     -->
+  <!-- PEARL: Address labels, 70mm x 36mm, 24 per sheet                    -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="PE-8004" size="A4" _description="Address Labels">
+  <Template brand="PEARL" part="PE-8004" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-PE8004-2204.shtml"/>
@@ -37,9 +37,9 @@
   <Template brand="PEARL" part="VM-6585" equiv="VM-6085"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Adress Labels, 48.8mm x 25.4mm, 40 per sheet                 -->
+  <!-- PEARL: Address labels, 48.8mm x 25.4mm, 40 per sheet                -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="PE-8008" size="A4" _description="Address Labels">
+  <Template brand="PEARL" part="PE-8008" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-PE8008-2204.shtml"/>
@@ -52,9 +52,9 @@
   <Template brand="PEARL" part="PE-8018" equiv="PE-8008"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Labels, 210mm x 297mm, 1 per sheet                           -->
+  <!-- PEARL: labels, 210mm x 297mm, 1 per sheet                           -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="PE-8007" size="A4" _description="Labels A4">
+  <Template brand="PEARL" part="PE-8007" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-PE8007-2204.shtml"/>
@@ -131,7 +131,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Bottle labels, 100mm x 130mm, 4 per sheet                    -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-5217" size="A4" _description="Bottle labels">
+  <Template brand="PEARL" part="VM-5217" size="A4" _description="Bottle/jar labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM5217-2200.shtml"/>
@@ -174,9 +174,9 @@
   <Template brand="PEARL" part="VM-5721" equiv="VM-5221"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Address Labels, 25.4mm x 16.9mm, 102 per sheet               -->
+  <!-- PEARL: Address labels, 25.4mm x 16.9mm, 102 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6083" size="A4" _description="Address Labels">
+  <Template brand="PEARL" part="VM-6083" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6083-2204.shtml"/>
@@ -189,9 +189,9 @@
   <Template brand="PEARL" part="VM-6583" equiv="VM-6083"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Labels, 105mm x 148 mm, 1 per sheet                          -->
+  <!-- PEARL: labels, 105mm x 148 mm, 1 per sheet                          -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6096" size="A6" _description="Labels A6">
+  <Template brand="PEARL" part="VM-6096" size="A6" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6096-2204.shtml"/>
@@ -204,9 +204,9 @@
   <Template brand="PEARL" part="VM-6596" equiv="VM-6096"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Labels, 148mm x 210 mm, 1 per sheet                          -->
+  <!-- PEARL: labels, 148mm x 210 mm, 1 per sheet                          -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6097" size="A5" _description="Labels A5">
+  <Template brand="PEARL" part="VM-6097" size="A5" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6097-2204.shtml"/>
@@ -237,7 +237,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Photo labels, 210mm x 297mm, 1 per sheet                     -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6206" size="A4" _description="Photo labels semiglossy">
+  <Template brand="PEARL" part="VM-6206" size="A4" _description="Photo labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="photo"/>
@@ -251,9 +251,9 @@
   <Template brand="PEARL" part="VM-6706" equiv="VM-6206"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Address Labels, 96.5mm x 42.3mm, 12 per sheet                -->
+  <!-- PEARL: Address labels, 96.5mm x 42.3mm, 12 per sheet                -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6232" size="A4" _description="Address Labels (STAMPIT)">
+  <Template brand="PEARL" part="VM-6232" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6232-2201.shtml"/>
@@ -266,9 +266,9 @@
   <Template brand="PEARL" part="VM-6732" equiv="VM-6232"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Address Labels, 105mm x 74mm, 8 per sheet                    -->
+  <!-- PEARL: Address labels, 105mm x 74mm, 8 per sheet                    -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6233" size="A4" _description="Address Labels (STAMPIT)">
+  <Template brand="PEARL" part="VM-6233" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6233-2204.shtml"/>
@@ -281,9 +281,9 @@
   <Template brand="PEARL" part="VM-6733" equiv="VM-6233"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Address Labels, 99.1mm x 57mm, 10 per sheet                  -->
+  <!-- PEARL: Address labels, 99.1mm x 57mm, 10 per sheet                  -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6234" size="A4" _description="Address Labels">
+  <Template brand="PEARL" part="VM-6234" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6234-2204.shtml"/>
@@ -324,9 +324,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Address Labels, 105mm x 41mm, 14 per sheet                   -->
+  <!-- PEARL: Address labels, 105mm x 41mm, 14 per sheet                   -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-8005" size="A4" _description="Address Labels">
+  <Template brand="PEARL" part="VM-8005" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-PE8005-2204.shtml"/>
@@ -359,7 +359,7 @@
   <!-- PEARL: Inlet for CD boxes (front), 120mm x 120mm, 1 per sheet       -->
   <!-- =================================================================== -->
 
-  <Template brand="PEARL" part="VM-5513-1" size="A4" _description="CD inlet (front)">
+  <Template brand="PEARL" part="VM-5513-1" size="A4" _description="CD/DVD inlet (front)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM5513-2214.shtml"/>
@@ -373,7 +373,7 @@
   <!-- PEARL: Inlet for CD boxes (back), 150mm x 117.5mm, 1 per sheet      -->
   <!-- =================================================================== -->
 
-  <Template brand="PEARL" part="VM-5513-2" size="A4" _description="CD inlet (back)">
+  <Template brand="PEARL" part="VM-5513-2" size="A4" _description="CD/DVD inlet (back)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM5513-2214.shtml"/>
@@ -407,7 +407,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Passport photo labels, 45mm x 54mm, 12 per sheet        -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-5040" size="A4" _description="Passport photo labels glossy">
+  <Template brand="Sattleford" part="VM-5040" size="A4" _description="Passport photo labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="photo"/>
@@ -423,7 +423,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Business cards, 86mm x 54mm, 10 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-5061" size="A4" _description="Business cards punched">
+  <Template brand="Sattleford" part="VM-5061" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.pearl.de/a-VM5061-2014.shtml"/>
@@ -438,7 +438,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-6059" size="A4" _description="Business cards punched dull">
+  <Template brand="Sattleford" part="VM-6059" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.pearl.de/a-VM6059-2013.shtml"/>
@@ -453,7 +453,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-6066" size="A4" _description="Business cards high glossy">
+  <Template brand="Sattleford" part="VM-6066" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.pearl.de/a-VM6066-2013.shtml"/>
@@ -483,7 +483,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Passport photo labels, 45mm x 55mm, 12 per sheet        -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-6102" size="A4" _description="Passport photo labels glossy">
+  <Template brand="Sattleford" part="VM-6102" size="A4" _description="Passport photo labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="photo"/>
@@ -499,7 +499,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Foldable business cards, 180mm x 50mm, 5 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-6200" size="A4" _description="Business cards glossy, both sides printable">
+  <Template brand="Sattleford" part="VM-6200" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta category="foldable"/>
@@ -515,7 +515,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Business cards, 85mm x 54mm, 10 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-6253" size="A4" _description="Business cards punched glossy">
+  <Template brand="Sattleford" part="VM-6253" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.pearl.de/a-VM6253-2013.shtml"/>
@@ -530,7 +530,7 @@
   <!-- =================================================================== -->
   <!-- Sattleford: Foldable business cards, 170mm x 54mm, 5 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Sattleford" part="VM-6356" size="A4" _description="Foldable business cards glossy/dull">
+  <Template brand="Sattleford" part="VM-6356" size="A4" _description="Foldable business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta category="foldable"/>
@@ -600,7 +600,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: Membership cards, 85mm x 54.25mm, 8 per sheet          -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6310" size="A4" _description="Membership cards, both sides printable">
+  <Template brand="Your Design" part="VM-6310" size="A4" _description="Membership cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta print="mirrored"/>
@@ -617,7 +617,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet          		   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6352" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6352" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6352-2213.shtml"/>
@@ -631,7 +631,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6353" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6353" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6353-2213.shtml"/>
@@ -645,7 +645,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6354" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6354" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6354-2213.shtml"/>
@@ -659,7 +659,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6355" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6355" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6355-2213.shtml"/>
@@ -673,7 +673,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 2 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6542" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6542" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6542-2213.shtml"/>
@@ -686,7 +686,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 2 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6754" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6754" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6754-2213.shtml"/>
@@ -699,7 +699,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6852" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6852" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6852-2213.shtml"/>
@@ -713,7 +713,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6853" size="A4" _description="CD/DVD Labels">
+  <Template brand="PEARL" part="VM-6853" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6853-2213.shtml"/>
@@ -727,7 +727,7 @@
   <!-- =================================================================== -->
   <!-- Your Design: CD/DVD labels, 3 per sheet         			   -->
   <!-- =================================================================== -->
-  <Template brand="Your Design" part="VM-6854" size="A4" _description="CD/DVD Labels">
+  <Template brand="Your Design" part="VM-6854" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6854-2213.shtml"/>

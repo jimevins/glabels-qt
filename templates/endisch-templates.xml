@@ -628,7 +628,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Endisch" part="6510518x" size="A4" _description="Labels A6">
+  <Template brand="Endisch" part="6510518x" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/105x148_e.html"/>
@@ -698,7 +698,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Endisch" part="6521018x" size="A4" _description="Labels A5">
+  <Template brand="Endisch" part="6521018x" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/210x148_e.html"/>
@@ -707,7 +707,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Endisch" part="6521029x" size="A4" _description="Labels A4">
+  <Template brand="Endisch" part="6521029x" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.endihaft.de/en/endisch_labels/laser/210x297_e.html"/>
@@ -718,7 +718,7 @@
 
 
 
-  <Template brand="Endisch" part="65420297" size="A3" _description="Labels A3">
+  <Template brand="Endisch" part="65420297" size="A3" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="297mm" height="420mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -726,7 +726,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Endisch" part="SRA3450320" size="SRA3" _description="Labels SRA3">
+  <Template brand="Endisch" part="SRA3450320" size="SRA3" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="320mm" height="450mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -736,7 +736,7 @@
 
 
 
-  <Template brand="Endisch" part="B104147A5" size="A5" _description="Labels A4">
+  <Template brand="Endisch" part="B104147A5" size="A5" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="148mm" height="105mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -744,7 +744,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Endisch" part="B200147A5" size="A5" _description="Labels A4">
+  <Template brand="Endisch" part="B200147A5" size="A5" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="148mm" height="200mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -752,7 +752,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Endisch" part="B210148A5" size="A5" _description="Labels A4">
+  <Template brand="Endisch" part="B210148A5" size="A5" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="148mm" height="210mm" round="0mm" x_waste="0mm" y_waste="0mm">

@@ -15,7 +15,7 @@
   <!-- =================================================================== -->
   <!-- Data Becker Etiketten Paket: Ordnerrucken, 6 per sheet              -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4283" size="A4" _description="Arch File Labels (small)">
+  <Template brand="Herma" part="4283" size="A4" _description="Small arch file labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="544.252" height="110.551" round="5">
       <Markup-margin size="5"/>
@@ -30,7 +30,7 @@
   <!-- =================================================================== -->
   <!-- Data Becker Etiketten Paket: Ordnerrucken, 4 per sheet              -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4284" size="A4" _description="Arch File Labels (large)">
+  <Template brand="Herma" part="4284" size="A4" _description="Large arch file labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="544.252" height="174.331" round="5">
       <Markup-margin size="5"/>
@@ -45,7 +45,7 @@
   <!-- =================================================================== -->
   <!-- Herma Musteretiketten: Ordnerrucken, 192 x 38 mm, 7 per sheet       -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4293" size="A4" _description="Arch File Labels">
+  <Template brand="Herma" part="4293" size="A4" _description="Arch file labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="544.252" height="107.716" round="5">
       <Markup-margin size="5"/>
@@ -57,9 +57,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Herma 4464: Mailing Labels - 3 columns, 70 x 37.125 mm, 24 per sheet-->
+  <!-- Herma 4464: Mailing labels - 3 columns, 70 x 37.125 mm, 24 per sheet-->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4464" size="A4" _description="Mailing Labels">
+  <Template brand="Herma" part="4464" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="199" height="105" round="0">
@@ -72,7 +72,7 @@
   <!-- =================================================================== -->
   <!-- Otto Versand: Allzweck Etiketten, 38 x 21,2 mm, 65 per sheet        -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4606" size="A4" _description="Allround Labels">
+  <Template brand="Herma" part="4606" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="107.716" height="60.0945" round="0">
       <Markup-margin size="5"/>
@@ -86,7 +86,7 @@
   <!-- =================================================================== -->
   <!-- Herma Musteretiketten: Allzweck Etiketten, 48,3 x 16,9 mm           -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4607" size="A4" _description="Allround Labels">
+  <Template brand="Herma" part="4607" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="136.913" height="47.9055" round="0">
       <Markup-margin size="5"/>
@@ -100,7 +100,7 @@
   <!-- =================================================================== -->
   <!-- Herma Musteretiketten: Allzweck Etiketten, 44 per sheet             -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4102" size="A4" _description="Allround Labels">
+  <Template brand="Herma" part="4102" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="136.913" height="72" round="0">
       <Markup-margin size="5"/>
@@ -128,7 +128,7 @@
   <!-- =================================================================== -->
   <!-- Herma Musteretiketten: Allzweck Etiketten, 24 per sheet             -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4614" size="A4" _description="Allround Labels">
+  <Template brand="Herma" part="4614" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="187.086" height="95.811" round="0">
       <Markup-margin size="5"/>
@@ -141,9 +141,9 @@
 
   
   <!-- =================================================================== -->
-  <!-- Herma 4620: Mailing Labels - 2 columns, 107 x 37 mm, 16 per sheet   -->
+  <!-- Herma 4620: Mailing labels - 2 columns, 107 x 37 mm, 16 per sheet   -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4620" size="A4" _description="Mailing Labels">
+  <Template brand="Herma" part="4620" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="298" height="105" round="0">
@@ -154,9 +154,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Herma Musteretiketten: Adress Etiketten, 24 per sheet               -->
+  <!-- Herma Musteretiketten: Address Etiketten, 24 per sheet              -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4625" size="A4" _description="Mailing Labels">
+  <Template brand="Herma" part="4625" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="297.638" height="119.905" round="0">
@@ -172,7 +172,7 @@
   <!-- =================================================================== -->
   <!-- Data Becker Etiketten Paket: Video Etiketten, 12 per sheet          -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4828" size="A4" _description="Video Labels (face only)">
+  <Template brand="Herma" part="4828" size="A4" _description="Video labels (face only)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="223.086" height="131.811" round="5">
@@ -185,9 +185,9 @@
 
   
   <!-- =================================================================== -->
-  <!-- Herma 4093: CD/DVD Labels, 2 per sheet                              -->
+  <!-- Herma 4093: CD/DVD labels, 2 per sheet                              -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4093" size="A4" _description="CD/DVD Labels">
+  <Template brand="Herma" part="4093" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="164.409pt" hole="58.1102pt" waste="9pt">
@@ -226,7 +226,7 @@
   <!-- =================================================================== -->
   <!-- Data Becker Etiketten Paket: Disketten Etiketten, 10 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="8803" size="A4" _description="Diskette Labels (face only)">
+  <Template brand="Herma" part="8803" size="A4" _description="Diskette labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="198.425" height="144" round="5">
@@ -238,9 +238,9 @@
   <Template brand="Herma" part="8839" equiv="8803"/>
 
   <!-- =================================================================== -->
-  <!-- Herma 4457: Superprint Labels 105mm x 48mm, 12 per sheet            -->
+  <!-- Herma 4457: Superprint labels 105mm x 48mm, 12 per sheet            -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4457" size="A4" _description="Rectangular Labels">
+  <Template brand="Herma" part="4457" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="105mm" height="48mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -250,7 +250,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Herma 10809: Superprint Labels 105mm x 148mm, 4 per sheet           -->
+  <!-- Herma 10809: Superprint labels 105mm x 148mm, 4 per sheet           -->
   <!-- =================================================================== -->
     <Template brand="Herma" part="10809" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
@@ -262,7 +262,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Herma 4097: Rectangular Labels 45.72mm x 21.2mm, 2 per sheet        -->
+  <!-- Herma 4097: Rectangular labels 45.72mm x 21.2mm, 2 per sheet        -->
   <!-- =================================================================== -->
 
   <Template brand="Herma" part="4097" size="A4" _description="Rectangular labels">
@@ -290,7 +290,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- Herma 4098: Rectangular Labels 63.5mm x 29.6mm, 27 per sheet        -->
+  <!-- Herma 4098: Rectangular labels 63.5mm x 29.6mm, 27 per sheet        -->
   <!-- =================================================================== -->
   <Template brand="Herma" part="4098" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
@@ -319,7 +319,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- Herma 4099: Rectangular Labels 96mm x 50.8mm, 10 per sheet	   -->
+  <!-- Herma 4099: Rectangular labels 96mm x 50.8mm, 10 per sheet	   -->
   <!-- =================================================================== -->
   <Template brand="Herma" part="4099" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
@@ -342,7 +342,7 @@
   <Template brand="Herma" part="10307" equiv="4099"/>
 
   <!-- =================================================================== -->
-  <!-- Herma 4100: Rectangular Labels 30.48mm x 16.93mm, 96 per sheet	   -->
+  <!-- Herma 4100: Rectangular labels 30.48mm x 16.93mm, 96 per sheet	   -->
   <!-- =================================================================== -->
   <Template brand="Herma" part="4100" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
@@ -358,7 +358,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- Herma 4101: Rectangular Labels 43.2mm x 10.3mm, 88 per sheet	   -->
+  <!-- Herma 4101: Rectangular labels 43.2mm x 10.3mm, 88 per sheet	   -->
   <!-- =================================================================== -->
   <Template brand="Herma" part="4101" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
@@ -372,7 +372,7 @@
   <Template brand="Herma" part="4111" equiv="4101"/>
 
   <!-- =================================================================== -->
-  <!-- Herma 4103: Rectangular Labels 63.5mm x 38.1mm, 21 per sheet	   -->
+  <!-- Herma 4103: Rectangular labels 63.5mm x 38.1mm, 21 per sheet	   -->
   <!-- =================================================================== -->
   <Template brand="Herma" part="4103" size="A4" _description="Rectangular labels">
     <Meta category="label"/>

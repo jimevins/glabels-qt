@@ -8,9 +8,9 @@
   <!-- ******************************************************************** -->
 
   <!-- =================================================================== -->
-  <!-- Zweckform 4760: Lever Arch File Labels, slim, 7 per sheet           -->
+  <!-- Zweckform 4760: Lever arch file labels, slim, 7 per sheet           -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="4760" size="A4" _description="Lever Arch File Labels">
+  <Template brand="Zweckform" part="4760" size="A4" _description="Lever arch file labels">
     <Meta category="label"/>
     <Meta category="filing"/>
     <Label-rectangle id="0" width="544.252pt" height="107.717pt" round="5.66929pt" waste="0pt">
@@ -20,9 +20,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 4761: Lever Arch File Labels, wide, 4 per sheet           -->
+  <!-- Zweckform 4761: Lever arch file labels, wide, 4 per sheet           -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="4761" size="A4" _description="Lever Arch File Labels">
+  <Template brand="Zweckform" part="4761" size="A4" _description="Lever arch file labels">
     <Meta category="label"/>
     <Meta category="filing"/>
     <Label-rectangle id="0" width="544.25" height="172.9" round="5">
@@ -34,7 +34,7 @@
   <!-- =================================================================== -->
   <!-- Zweckform 3477: Address labels                                      -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3477" size="A4" _description="Address Labels">
+  <Template brand="Zweckform" part="3477" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="105mm" height="41mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -44,9 +44,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3651: Rectangular Labels, 52 x 29.5 mm, 40 per sheet      -->
+  <!-- Zweckform 3651: Rectangular labels, 52 x 29.5 mm, 40 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3651" size="A4" _description="Rectangular Labels">
+  <Template brand="Zweckform" part="3651" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="147.4016" height="83.6220" round="0">  
       <Markup-margin size="5"/>
@@ -55,9 +55,9 @@
   </Template>
 
   <!-- ====================================================================-->
-  <!-- Zweckform 3654: CD Labels  2 per Template                              -->
+  <!-- Zweckform 3654: CD/DVD labels  2 per Template                       -->
   <!-- ====================================================================-->
-  <Template brand="Zweckform" part="3654" size="A4" _description="CD/DVD Labels">
+  <Template brand="Zweckform" part="3654" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="165.78" hole="58.09" waste="5">
@@ -67,9 +67,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3659: Rectangular Labels, 97 x 42.125 mm, 12 per sheet    -->
+  <!-- Zweckform 3659: Rectangular labels, 97 x 42.125 mm, 12 per sheet    -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3659" size="A4" _description="Mailing Labels">
+  <Template brand="Zweckform" part="3659" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="274" height="120.5" round="0">  
@@ -79,9 +79,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3669:  Rectangular Labels, 70 x 50.8mm, 15 per sheet      -->
+  <!-- Zweckform 3669:  Rectangular labels, 70 x 50.8mm, 15 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3669" size="A4" _description="QSL-Karten Etiketten 70mm x 50,8mm">
+  <Template brand="Zweckform" part="3669" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="198.425" height="144" round="0">
       <Markup-margin size="5"/>
@@ -90,9 +90,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3688: Lever Arch File Labels, wide, 4 per sheet           -->
+  <!-- Zweckform 3688: Lever arch file labels, wide, 4 per sheet           -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3688" size="A4" _description="Lever Arch File Labels">
+  <Template brand="Zweckform" part="3688" size="A4" _description="Lever arch file labels">
     <Meta category="label"/>
     <Meta category="filing"/>
     <Label-rectangle id="0" width="544.252pt" height="172.913pt" round="0pt" waste="0pt">
@@ -102,9 +102,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 4732: Multi-purpose Stick+Lift labels                     -->
+  <!-- Zweckform 4732: Multipurpose Stick+Lift labels                      -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="4732" size="A4" _description="Multi-purpose Stick+Lift Labels">
+  <Template brand="Zweckform" part="4732" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="102.047pt" height="48.189pt" round="5.66929pt" waste="0pt">
       <Markup-margin size="5.66929pt"/>
@@ -113,9 +113,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 4746: Video Labels, 147,32 x 20 mm, 13 per sheet          -->
+  <!-- Zweckform 4746: Video labels, 147,32 x 20 mm, 13 per sheet          -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="4746" size="A4" _description="Video Labels (back)">
+  <Template brand="Zweckform" part="4746" size="A4" _description="Video tape spine labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="416.6" height="56.6929" round="5">
@@ -125,9 +125,9 @@
   </Template>
   
   <!-- =================================================================== -->
-  <!-- Zweckform 4780: Allround Labels, 48,5 x 25,4 mm, 40 per sheet       -->
+  <!-- Zweckform 4780: Multipurpose labels, 48,5 x 25,4 mm, 40 per sheet   -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="4780" size="A4" _description="Allround Labels">
+  <Template brand="Zweckform" part="4780" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="137.48" height="72" round="0">
       <Markup-margin size="5"/>
@@ -136,9 +136,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3474: Address Labels, 70 x 37 mm, 24 per sheet            -->
+  <!-- Zweckform 3474: Address labels, 70 x 37 mm, 24 per sheet            -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3474" size="A4" _description="Address Labels">
+  <Template brand="Zweckform" part="3474" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="70mm" height="37mm" round="0">
@@ -148,9 +148,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3475: Address Labels, 70 x 30 mm, 24 per sheet            -->
+  <!-- Zweckform 3475: Address labels, 70 x 30 mm, 24 per sheet            -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3475" size="A4" _description="Address Labels">
+  <Template brand="Zweckform" part="3475" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="198.570" height="102.121" round="0">
@@ -160,9 +160,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3490: Rectangular Labels, 70 x 36 mm, 24 per sheet        -->
+  <!-- Zweckform 3490: Rectangular labels, 70 x 36 mm, 24 per sheet        -->
   <!-- =================================================================== -->
-   <Template brand="Zweckform" part="3490" size="A4" _description="Rectangular Copier Labels">
+   <Template brand="Zweckform" part="3490" size="A4" _description="Rectangular labels">
      <Meta category="label"/>
      <Label-rectangle id="0" width="198.425" height="102.047" round="0">
       <Markup-margin size="5"/>
@@ -171,9 +171,9 @@
    </Template>
 		      
   <!-- =================================================================== -->
-  <!-- Zweckform 4781: Rectangular Labels, 97 x 42.3 mm, 12 per sheet      -->
+  <!-- Zweckform 4781: Rectangular labels, 97 x 42.3 mm, 12 per sheet      -->
   <!-- =================================================================== -->
-   <Template brand="Zweckform" part="4781" size="A4" _description="Rectangular Copier Labels">
+   <Template brand="Zweckform" part="4781" size="A4" _description="Rectangular labels">
      <Meta category="label"/>
      <Label-rectangle id="0" width="274.960" height="119.905" round="0">
       <Markup-margin size="5"/>
@@ -184,7 +184,7 @@
   <!-- =================================================================== -->
   <!-- Zweckform 6091: Correction and Cover, 64.6 x 33.8 mm, 24 per sheet  -->
   <!-- =================================================================== -->
-   <Template brand="Zweckform" part="6091" size="A4" _description="Correction and Cover-up Labels">
+   <Template brand="Zweckform" part="6091" size="A4" _description="Correction labels">
      <Meta category="label"/>
      <Label-rectangle id="0" width="183.118" height="95.811" round="0">
       <Markup-margin size="5"/>
@@ -193,9 +193,9 @@
    </Template>
    
   <!-- =================================================================== -->
-  <!-- Zweckform 6015: CD Labels, 2 per Template                           -->
+  <!-- Zweckform 6015: CD/DVD labels, 2 per Template                       -->
   <!-- =================================================================== -->
-   <Template brand="Zweckform" part="6015" size="A4" _description="CD/DVD Labels">
+   <Template brand="Zweckform" part="6015" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
      <Label-cd id="0" radius="165.827" hole="58.110" waste="5">
@@ -205,9 +205,9 @@
    </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 6021: Allround Labels                                     -->
+  <!-- Zweckform 6021: Multipurpose labels                                 -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="6021" size="A4" _description="Allround Labels">
+  <Template brand="Zweckform" part="6021" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="130.392pt" height="47.9055pt" round="0pt" waste="0pt">
       <Markup-margin size="5pt"/>
@@ -217,9 +217,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Zweckform J8435: CD Inlets Booklet part                         -->
+  <!-- Zweckform J8435: CD/DVD inlets Booklet part                     -->
   <!-- =============================================================== -->
-  <Template brand="Zweckform" part="J8435A" size="A4" _description="CD Booklet">
+  <Template brand="Zweckform" part="J8435A" size="A4" _description="CD/DVD booklet">
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="125mm" round="0">
       <Markup-margin size="2mm"/>
@@ -232,9 +232,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Zweckform J8435: CD Inlets Inlet part                           -->
+  <!-- Zweckform J8435: CD/DVD inlets Inlet part                       -->
   <!-- =============================================================== -->
-  <Template brand="Zweckform" part="J8435B" size="A4" _description="CD Inlet">
+  <Template brand="Zweckform" part="J8435B" size="A4" _description="CD/DVD inlet">
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="122mm" round="0">
       <Markup-margin size="2mm"/>
@@ -248,9 +248,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Zweckform 32010: Business Cards, 54.0 x 85.0 mm, 10 per sheet       -->
+  <!-- Zweckform 32010: Business cards, 54.0 x 85.0 mm, 10 per sheet       -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="32010" size="A4" _description="Business Cards">
+  <Template brand="Zweckform" part="32010" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="240.94" height="153.07" round="0">
@@ -261,9 +261,9 @@
 
 
   <!-- ============================================================ -->
-  <!-- Avery 32015: Business Cards                                  -->
+  <!-- Avery 32015: Business cards                                  -->
   <!-- ============================================================ -->
-  <Template brand="Zweckform" part="32015" size="A4" _description="Business Cards">
+  <Template brand="Zweckform" part="32015" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="85mm" height="54mm" round="0mm">
@@ -273,9 +273,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Zweckform 3348: Adress Labels.                                      -->
+  <!-- Zweckform 3348: Address labels.                                     -->
   <!-- =================================================================== -->
-  <Template brand="Zweckform" part="3348" size="A4" _description="Address Labels">
+  <Template brand="Zweckform" part="3348" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="189.921pt" height="107.717pt" round="0pt" x_waste="0pt" y_waste="0pt">

@@ -20,11 +20,12 @@ set (templates_ts_files
 
 qt5_create_translation (glabels_qm_files
   ${CMAKE_SOURCE_DIR}/glabels ${glabels_ts_files}
+  OPTIONS -no-obsolete
 )
 
 qt5_create_translation (templates_qm_files
   ${CMAKE_CURRENT_BINARY_DIR}/template-strings.h ${templates_ts_files}
-  OPTIONS -locations none
+  OPTIONS -no-obsolete -locations none
 )
 
 add_custom_target (update_translations DEPENDS ${glabels_qm_files} ${templates_qm_files})

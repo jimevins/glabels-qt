@@ -12,6 +12,13 @@ The glabels coding style is documented in the file
 See below for additional guidelines.
 
 
+Product Template Designers:
+===========================
+
+Guidelines for designing product templates are documentd in the file
+[PRODUCT-TEMPLATES.md](PRODUCT-TEMPLATES.md) located in this directory.
+
+
 Translators:
 ============
 

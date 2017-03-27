@@ -13,9 +13,9 @@
 
 
   <!-- ============================================================ -->
-  <!-- Desmat A4ST-3CD - CD Labels, 3 per sheet                     -->
+  <!-- Desmat A4ST-3CD - CD/DVD labels, 3 per sheet                 -->
   <!-- ============================================================ -->
-  <Template brand="Desmat" part="A4ST-3CD" size="A4" _description="CD Labels">
+  <Template brand="Desmat" part="A4ST-3CD" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.desmat.com/product.php?id=34"/>

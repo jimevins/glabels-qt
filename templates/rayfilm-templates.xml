@@ -964,7 +964,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="0922" size="A4" _description="Labels A6">
+  <Template brand="Rayfilm" part="0922" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=0922&amp;vzhled=1"/>
@@ -1139,7 +1139,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="1122" size="A4" _description="Labels A5">
+  <Template brand="Rayfilm" part="1122" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1122&amp;vzhled=1"/>
@@ -1148,7 +1148,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="1123" size="A4" _description="Labels A4">
+  <Template brand="Rayfilm" part="1123" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1123&amp;vzhled=1"/>
@@ -1157,7 +1157,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="1123A3" size="A3" _description="Labels A3">
+  <Template brand="Rayfilm" part="1123A3" size="A3" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=1123A3&amp;vzhled=1"/>
@@ -1166,7 +1166,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="SRA3" size="SRA3" _description="Labels SRA3">
+  <Template brand="Rayfilm" part="SRA3" size="SRA3" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="320mm" height="450mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -1268,7 +1268,7 @@
 
 
 
-  <Template brand="Rayfilm" part="CD32" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD32" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD32&amp;vzhled=1"/>
@@ -1277,7 +1277,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CD13 (medium)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD13 (medium)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD13&amp;vzhled=1"/>
@@ -1286,7 +1286,7 @@
       <Layout nx="1" ny="1" x0="11mm" y0="156mm" dx="116mm" dy="116mm"/>
     </Label-cd>
   </Template>
-  <Template brand="Rayfilm" part="CD13 (box1)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD13 (box1)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="45mm" height="116mm" round="3.45mm" x_waste="1mm" y_waste="1mm">
@@ -1294,7 +1294,7 @@
       <Layout nx="1" ny="1" x0="154mm" y0="156mm" dx="45mm" dy="116mm"/>
     </Label-rectangle>
   </Template>
-  <Template brand="Rayfilm" part="CD13 (box2)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD13 (box2)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="6mm" height="116mm" round="0mm" x_waste="1mm" y_waste="1mm">
@@ -1303,7 +1303,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="CD02" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD02" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD02&amp;vzhled=1"/>
@@ -1312,7 +1312,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CD03 (medium)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD03 (medium)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD03&amp;vzhled=1"/>
@@ -1321,7 +1321,7 @@
       <Layout nx="1" ny="1" x0="81.5mm" y0="155mm" dx="118mm" dy="118mm"/>
     </Label-cd>
   </Template>
-  <Template brand="Rayfilm" part="CD03 (box1)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD03 (box1)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="45mm" height="116mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -1329,7 +1329,7 @@
       <Layout nx="1" ny="1" x0="10.5mm" y0="155mm" dx="45mm" dy="116mm"/>
     </Label-rectangle>
   </Template>
-  <Template brand="Rayfilm" part="CD03 (box2)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD03 (box2)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="6mm" height="116mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -1338,7 +1338,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="CD04 (medium)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD04 (medium)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD04&amp;vzhled=1"/>
@@ -1346,7 +1346,7 @@
       <Layout nx="1" ny="2" x0="46.5mm" y0="25mm" dx="118mm" dy="127mm"/>
     </Label-cd>
   </Template>
-  <Template brand="Rayfilm" part="CD04 (box)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD04 (box)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="25mm" height="80mm" round="0mm" x_waste="1mm" y_waste="1mm">
@@ -1354,7 +1354,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="CD05" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD05" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD05&amp;vzhled=1"/>
@@ -1363,7 +1363,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CD06 (medium)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD06 (medium)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD06&amp;vzhled=1"/>
@@ -1371,7 +1371,7 @@
       <Layout nx="1" ny="2" x0="46.5mm" y0="16mm" dx="148mm" dy="127mm"/>
     </Label-cd>
   </Template>
-  <Template brand="Rayfilm" part="CD06 (box)" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD06 (box)" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="7mm" height="119mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -1382,7 +1382,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="CD07" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD07" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD07&amp;vzhled=1"/>
@@ -1391,7 +1391,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CD08" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD08" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD08&amp;vzhled=1"/>
@@ -1400,7 +1400,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CD09" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD09" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD09&amp;vzhled=1"/>
@@ -1410,7 +1410,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CD12" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD12" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD12&amp;vzhled=1"/>
@@ -1421,7 +1421,7 @@
 
 
 
-  <Template brand="Rayfilm" part="CD35" size="A4" _description="CD/DVD Labels">
+  <Template brand="Rayfilm" part="CD35" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CD35&amp;vzhled=1"/>
@@ -1430,7 +1430,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Rayfilm" part="CRD1" size="A4" _description="Business card CD Labels">
+  <Template brand="Rayfilm" part="CRD1" size="A4" _description="Business card CD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=CRD1&amp;vzhled=1"/>
@@ -1440,7 +1440,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="SCD1" size="A4" _description="Mini CD Labels">
+  <Template brand="Rayfilm" part="SCD1" size="A4" _description="Mini CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=SCD1&amp;vzhled=1"/>
@@ -1476,7 +1476,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="VIZ1" size="A4" _description="Business Cards">
+  <Template brand="Rayfilm" part="VIZ1" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=VIZ1&amp;vzhled=1"/>
@@ -1486,7 +1486,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="VIZ2" size="A4" _description="Business Cards">
+  <Template brand="Rayfilm" part="VIZ2" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=VIZ2&amp;vzhled=1"/>
@@ -1496,7 +1496,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Rayfilm" part="VIZ3" size="A4" _description="Business Cards">
+  <Template brand="Rayfilm" part="VIZ3" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Meta product_url="http://www.rayfilm.cz/e-shop/index2.php?detail_search=4&amp;skupina=-10&amp;9amp6803amp1=VIZ3&amp;vzhled=1"/>

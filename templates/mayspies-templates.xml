@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
-  <Template brand="Mayspies" part="090352" size="A4" _description="CD/DVD Labels">
+  <Template brand="Mayspies" part="090352" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.mayspies.com/index.php?menu_ID=43"/>

@@ -12,7 +12,7 @@
   <!-- ******************************************************************** -->
 
 
-  <Template brand="Maco" part="LL5805" size="US-Letter" _description="Address Labels">
+  <Template brand="Maco" part="LL5805" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="2.625in" height="1in" round="0.0625in">
@@ -22,7 +22,7 @@
   </Template>
 
 
-  <Template brand="Maco" part="ML-1225" size="US-Letter" _description="Round Labels">
+  <Template brand="Maco" part="ML-1225" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Label-round id="0" radius="1.25in" waste="0pt">

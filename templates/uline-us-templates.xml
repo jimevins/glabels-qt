@@ -12,7 +12,7 @@
   <!-- ******************************************************************** -->
 
 
-  <Template brand="Uline" part="S-5044" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Uline" part="S-5044" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta category="mail"/>

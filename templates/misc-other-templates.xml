@@ -13,9 +13,9 @@
   <!-- ******************************************************************** -->
 
   <!-- =================================================================== -->
-  <!-- Merax CD Labels                                                     -->
+  <!-- Merax CD labels                                                     -->
   <!-- =================================================================== -->
-  <Template brand="Merax" part="CD Labels" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Merax" part="CD labels" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.merax.com/products/Labels/cddvd.html"/>
@@ -35,10 +35,10 @@
   <!-- ************************* -->
 
   <!-- =================================================================== -->
-  <!-- OfficeMax 86112: Multi-Purpose Labels, 2'' x 4'', 3 per sheet       -->
+  <!-- OfficeMax 86112: Multipurpose labels, 2'' x 4'', 3 per sheet        -->
   <!-- =================================================================== -->
   <Template brand="OfficeMax" part="86112" size="Other" width="297pt" height="450pt"
-            _description="Multi-Purpose Labels">
+            _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="288pt" height="144pt" round="9pt" waste="0pt">
       <Markup-margin size="9pt"/>

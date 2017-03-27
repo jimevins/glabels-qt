@@ -3,55 +3,55 @@
 <Glabels-paper-sizes>
 
   <!-- Most popular (at top of list) -->
-  <Paper-size id="A4"           _name="A4"           pwg_size="iso_a4"       width="210mm" height="297mm"/>
-  <Paper-size id="US-Letter"    _name="US Letter"    pwg_size="na_letter"    width="8.5in" height="11in"/>
+  <Paper-size id="A4"           name="A4"           pwg_size="iso_a4"       width="210mm" height="297mm"/>
+  <Paper-size id="US-Letter"    name="US Letter"    pwg_size="na_letter"    width="8.5in" height="11in"/>
 
   <!-- Other US paper sizes -->
-  <Paper-size id="US-Legal"     _name="US Legal"     pwg_size="na_legal"     width="8.5in"  height="14in"/>
-  <Paper-size id="US-Executive" _name="US Executive" pwg_size="na_executive" width="7.25in" height="10.5in"/>
+  <Paper-size id="US-Legal"     name="US Legal"     pwg_size="na_legal"     width="8.5in"  height="14in"/>
+  <Paper-size id="US-Executive" name="US Executive" pwg_size="na_executive" width="7.25in" height="10.5in"/>
 
   <!-- Other ISO A series sizes -->
-  <Paper-size id="A0"           _name="A0"           pwg_size="iso_a0"       width="841mm" height="1189mm"/>
-  <Paper-size id="A1"           _name="A1"           pwg_size="iso_a1"       width="594mm" height="841mm"/>
-  <Paper-size id="A2"           _name="A2"           pwg_size="iso_a2"       width="420mm" height="594mm"/>
-  <Paper-size id="A3"           _name="A3"           pwg_size="iso_a3"       width="297mm" height="420mm"/>
-  <Paper-size id="A5"           _name="A5"           pwg_size="iso_a5"       width="148mm" height="210mm"/>
-  <Paper-size id="A6"           _name="A6"           pwg_size="iso_a6"       width="105mm" height="148mm"/>
-  <Paper-size id="A7"           _name="A7"           pwg_size="iso_a7"       width="74mm"  height="105mm"/>
-  <Paper-size id="A8"           _name="A8"           pwg_size="iso_a8"       width="52mm"  height="74mm"/>
-  <Paper-size id="A9"           _name="A9"           pwg_size="iso_a9"       width="37mm"  height="52mm"/>
-  <Paper-size id="A10"          _name="A10"          pwg_size="iso_a10"      width="26mm"  height="37mm"/>
+  <Paper-size id="A0"           name="A0"           pwg_size="iso_a0"       width="841mm" height="1189mm"/>
+  <Paper-size id="A1"           name="A1"           pwg_size="iso_a1"       width="594mm" height="841mm"/>
+  <Paper-size id="A2"           name="A2"           pwg_size="iso_a2"       width="420mm" height="594mm"/>
+  <Paper-size id="A3"           name="A3"           pwg_size="iso_a3"       width="297mm" height="420mm"/>
+  <Paper-size id="A5"           name="A5"           pwg_size="iso_a5"       width="148mm" height="210mm"/>
+  <Paper-size id="A6"           name="A6"           pwg_size="iso_a6"       width="105mm" height="148mm"/>
+  <Paper-size id="A7"           name="A7"           pwg_size="iso_a7"       width="74mm"  height="105mm"/>
+  <Paper-size id="A8"           name="A8"           pwg_size="iso_a8"       width="52mm"  height="74mm"/>
+  <Paper-size id="A9"           name="A9"           pwg_size="iso_a9"       width="37mm"  height="52mm"/>
+  <Paper-size id="A10"          name="A10"          pwg_size="iso_a10"      width="26mm"  height="37mm"/>
 
   <!-- ISO B series sizes -->
-  <Paper-size id="B0"           _name="B0"           pwg_size="iso_b0"       width="1000mm" height="1414mm"/>
-  <Paper-size id="B1"           _name="B1"           pwg_size="iso_b1"       width="707mm"  height="1000mm"/>
-  <Paper-size id="B2"           _name="B2"           pwg_size="iso_b2"       width="500mm"  height="707mm"/>
-  <Paper-size id="B3"           _name="B3"           pwg_size="iso_b3"       width="353mm"  height="500mm"/>
-  <Paper-size id="B4"           _name="B4"           pwg_size="iso_b4"       width="250mm"  height="353mm"/>
-  <Paper-size id="B5"           _name="B5"           pwg_size="iso_b5"       width="176mm"  height="250mm"/>
-  <Paper-size id="B6"           _name="B6"           pwg_size="iso_b6"       width="125mm"  height="176mm"/>
-  <Paper-size id="B7"           _name="B7"           pwg_size="iso_b7"       width="88mm"   height="125mm"/>
-  <Paper-size id="B8"           _name="B8"           pwg_size="iso_b8"       width="62mm"   height="88mm"/>
-  <Paper-size id="B9"           _name="B9"           pwg_size="iso_b9"       width="44mm"   height="62mm"/>
-  <Paper-size id="B10"          _name="B10"          pwg_size="iso_b10"      width="31mm"   height="44mm"/>
+  <Paper-size id="B0"           name="B0"           pwg_size="iso_b0"       width="1000mm" height="1414mm"/>
+  <Paper-size id="B1"           name="B1"           pwg_size="iso_b1"       width="707mm"  height="1000mm"/>
+  <Paper-size id="B2"           name="B2"           pwg_size="iso_b2"       width="500mm"  height="707mm"/>
+  <Paper-size id="B3"           name="B3"           pwg_size="iso_b3"       width="353mm"  height="500mm"/>
+  <Paper-size id="B4"           name="B4"           pwg_size="iso_b4"       width="250mm"  height="353mm"/>
+  <Paper-size id="B5"           name="B5"           pwg_size="iso_b5"       width="176mm"  height="250mm"/>
+  <Paper-size id="B6"           name="B6"           pwg_size="iso_b6"       width="125mm"  height="176mm"/>
+  <Paper-size id="B7"           name="B7"           pwg_size="iso_b7"       width="88mm"   height="125mm"/>
+  <Paper-size id="B8"           name="B8"           pwg_size="iso_b8"       width="62mm"   height="88mm"/>
+  <Paper-size id="B9"           name="B9"           pwg_size="iso_b9"       width="44mm"   height="62mm"/>
+  <Paper-size id="B10"          name="B10"          pwg_size="iso_b10"      width="31mm"   height="44mm"/>
 
   <!-- Envelopes -->
-  <Paper-size id="number10"     _name="#10 Envelope"     pwg_size="na_number-10" width="4.125in" height="9.5in"/>
-  <Paper-size id="monarch"      _name="Monarch Envelope" pwg_size="na_monarch"   width="3.875in" height="7.5in"/>
-  <Paper-size id="c5"           _name="C5"               pwg_size="iso_c5"       width="162mm"   height="229mm"/>
-  <Paper-size id="c6"           _name="C6"               pwg_size="iso_c6"       width="114mm"   height="162mm"/>
-  <Paper-size id="dl"           _name="DL"               pwg_size="iso_dl"       width="110mm"   height="220mm"/>
+  <Paper-size id="number10"     name="#10 Envelope"     pwg_size="na_number-10" width="4.125in" height="9.5in"/>
+  <Paper-size id="monarch"      name="Monarch Envelope" pwg_size="na_monarch"   width="3.875in" height="7.5in"/>
+  <Paper-size id="c5"           name="C5"               pwg_size="iso_c5"       width="162mm"   height="229mm"/>
+  <Paper-size id="c6"           name="C6"               pwg_size="iso_c6"       width="114mm"   height="162mm"/>
+  <Paper-size id="dl"           name="DL"               pwg_size="iso_dl"       width="110mm"   height="220mm"/>
 
   <!-- ISO 217 -->
-  <Paper-size id="RA0"          _name="RA0"          pwg_size="iso_ra0"		width="860mm" height="1220mm"/>
-  <Paper-size id="RA1"          _name="RA1"          pwg_size="iso_ra1"		width="610mm" height="860mm"/>
-  <Paper-size id="RA2"          _name="RA2"          pwg_size="iso_ra2"		width="430mm" height="610mm"/>
-  <Paper-size id="RA3"          _name="RA3"          pwg_size="iso_ra3"		width="305mm" height="430mm"/>
-  <Paper-size id="RA4"          _name="RA4"          pwg_size="iso_ra4"		width="215mm" height="305mm"/>
-  <Paper-size id="SRA0"         _name="SRA0"         pwg_size="iso_sra0"	width="900mm" height="1280mm"/>
-  <Paper-size id="SRA1"         _name="SRA1"         pwg_size="iso_sra1"	width="640mm" height="900mm"/>
-  <Paper-size id="SRA2"         _name="SRA2"         pwg_size="iso_sra2"	width="450mm" height="640mm"/>
-  <Paper-size id="SRA3"         _name="SRA3"         pwg_size="iso_sra3"	width="320mm" height="450mm"/>
-  <Paper-size id="SRA4"         _name="SRA4"         pwg_size="iso_sra4"	width="225mm" height="320mm"/>
+  <Paper-size id="RA0"          name="RA0"          pwg_size="iso_ra0"		width="860mm" height="1220mm"/>
+  <Paper-size id="RA1"          name="RA1"          pwg_size="iso_ra1"		width="610mm" height="860mm"/>
+  <Paper-size id="RA2"          name="RA2"          pwg_size="iso_ra2"		width="430mm" height="610mm"/>
+  <Paper-size id="RA3"          name="RA3"          pwg_size="iso_ra3"		width="305mm" height="430mm"/>
+  <Paper-size id="RA4"          name="RA4"          pwg_size="iso_ra4"		width="215mm" height="305mm"/>
+  <Paper-size id="SRA0"         name="SRA0"         pwg_size="iso_sra0"	width="900mm" height="1280mm"/>
+  <Paper-size id="SRA1"         name="SRA1"         pwg_size="iso_sra1"	width="640mm" height="900mm"/>
+  <Paper-size id="SRA2"         name="SRA2"         pwg_size="iso_sra2"	width="450mm" height="640mm"/>
+  <Paper-size id="SRA3"         name="SRA3"         pwg_size="iso_sra3"	width="320mm" height="450mm"/>
+  <Paper-size id="SRA4"         name="SRA4"         pwg_size="iso_sra4"	width="225mm" height="320mm"/>
 
 </Glabels-paper-sizes>

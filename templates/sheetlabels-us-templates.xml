@@ -9,7 +9,7 @@
   <!-- ******************************************************************** -->
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 4 per sheet	         	   -->
+  <!-- SheetLabels: Rectangular labels, 4 per sheet	         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL1" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -23,7 +23,7 @@
   
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 4 per sheet	         	   -->
+  <!-- SheetLabels: Rectangular labels, 4 per sheet	         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL10" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -36,9 +36,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Address Labels, 20 per sheet	         	   -->
+  <!-- SheetLabels: Address labels, 20 per sheet	         	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL100" size="US-Letter" _description="Address Labels">
+  <Template brand="SheetLabels" part="SL100" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL100"/>
@@ -49,9 +49,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Address Labels, 14 per sheet        		   -->
+  <!-- SheetLabels: Address labels, 14 per sheet        		   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL101" size="US-Letter" _description="Address Labels">
+  <Template brand="SheetLabels" part="SL101" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL101"/>
@@ -63,9 +63,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Shipping Labels, 10 per sheet        		   -->
+  <!-- SheetLabels: Shipping labels, 10 per sheet        		   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL102" size="US-Letter" _description="Shipping Labels">
+  <Template brand="SheetLabels" part="SL102" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL102"/>
@@ -76,9 +76,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Shipping Labels, 6 per sheet                           -->
+  <!-- SheetLabels: Shipping labels, 6 per sheet                           -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL103" size="US-Letter" _description="Shipping Labels">
+  <Template brand="SheetLabels" part="SL103" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL103"/>
@@ -89,9 +89,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Shipping Labels, 6 per sheet	         		   -->
+  <!-- SheetLabels: Shipping labels, 6 per sheet                           -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL104" size="US-Letter" _description="Shipping Labels">
+  <Template brand="SheetLabels" part="SL104" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL104"/>
@@ -102,9 +102,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Return Address Labels, 80 per sheet        		   -->
+  <!-- SheetLabels: Return address labels, 80 per sheet        		   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL105" size="US-Letter" _description="Return Address Labels">
+  <Template brand="SheetLabels" part="SL105" size="US-Letter" _description="Return address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
   <Meta product_url="http://www.sheet-labels.com/labels/SL105"/>
@@ -115,9 +115,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 12 per sheet	        		   -->
+  <!-- SheetLabels: Round labels, 12 per sheet	        		   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL107" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL107" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL107"/>
@@ -128,9 +128,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 12 per sheet	        		   -->
+  <!-- SheetLabels: Round labels, 12 per sheet	        		   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL108" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL108" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL108"/>
@@ -141,9 +141,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Filing Labels, 30 per sheet	        		   -->
+  <!-- SheetLabels: Filing labels, 30 per sheet	        		   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL109" size="US-Letter" _description="Filing Labels">
+  <Template brand="SheetLabels" part="SL109" size="US-Letter" _description="Filing labels">
     <Meta category="label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL109"/>
     <Label-rectangle id="0" width="3.4375in" height="0.666666667in" round="0.0625in">
@@ -153,9 +153,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangle Labels, 18 per sheet                         -->
+  <!-- SheetLabels: Rectangular labels, 18 per sheet                       -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL11" size="US-Letter" _description="Shipping Labels">
+  <Template brand="SheetLabels" part="SL11" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL11"/>
     <Label-rectangle id="0" width="2.3125in" height="1.4375in" round="0in" x_waste="0.125in" y_waste="0.125in">
@@ -165,9 +165,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: CD/DVD Labels (face only), 2 per sheet         	   -->
+  <!-- SheetLabels: CD/DVD labels (face only), 2 per sheet         	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL110" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="SheetLabels" part="SL110" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL110"/>
@@ -178,9 +178,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: CD/DVD Labels (face only), 3 per sheet         	   -->
+  <!-- SheetLabels: CD/DVD labels (face only), 3 per sheet         	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL113" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="SheetLabels" part="SL113" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL113"/>
@@ -193,7 +193,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 63 per sheet                             -->
+  <!-- SheetLabels: Round labels, 63 per sheet                             -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL114" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
@@ -206,7 +206,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 108 per sheet                            -->
+  <!-- SheetLabels: Round labels, 108 per sheet                            -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL115" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
@@ -219,9 +219,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Mailing Labels, 12 per sheet                           -->
+  <!-- SheetLabels: Mailing labels, 12 per sheet                           -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL116" size="US-Letter" _description="Address Labels">
+  <Template brand="SheetLabels" part="SL116" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL116"/>
@@ -232,9 +232,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Diskette Labels, 2_3/4'' x 2_3/4'', 9 per sheet	   -->
+  <!-- SheetLabels: Diskette labels, 2_3/4'' x 2_3/4'', 9 per sheet	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL121" size="US-Letter" _description="Diskette Labels">
+  <Template brand="SheetLabels" part="SL121" size="US-Letter" _description="Diskette labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL121"/>
@@ -245,10 +245,10 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: CD/DVD Labels (face only), 2 per sheet         	   -->
+  <!-- SheetLabels: CD/DVD labels (face only), 2 per sheet         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL122" size="US-Letter"
-         _description="CD/DVD Labels (Disc Labels)">
+         _description="CD/DVD labels (disc labels)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL122"/>
@@ -264,9 +264,9 @@
   
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 20 per sheet		         	   -->
+  <!-- SheetLabels: Round labels, 20 per sheet		         	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL123" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL123" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL123"/>
@@ -278,9 +278,9 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 30 per sheet		         	           -->
+  <!-- SheetLabels: Round labels, 30 per sheet                             -->
   <!-- =================================================================== -->  
-  <Template brand="SheetLabels" part="SL125" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL125" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL125"/>
@@ -292,9 +292,9 @@
   
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 6 per sheet		         	   -->
+  <!-- SheetLabels: Round labels, 6 per sheet		         	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL128" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL128" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL128"/>
@@ -306,9 +306,9 @@
   
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 1 per sheet				   -->
+  <!-- SheetLabels: Round labels, 1 per sheet				   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL129" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL129" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL129"/>
@@ -320,7 +320,7 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 4 per sheet	         	   -->
+  <!-- SheetLabels: Rectangular labels, 4 per sheet	         	   -->
   <!-- =================================================================== -->  
   <Template brand="SheetLabels" part="SL145" size="US-Letter" _description="Rectangular labels">
 	<Meta category="label"/>
@@ -333,9 +333,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 4 per sheet	         	   -->
+  <!-- SheetLabels: Round labels, 4 per sheet                              -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL200" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL200" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL200"/>
@@ -347,9 +347,9 @@
 
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Elliptical Labels, 10 per sheet	         	           -->
+  <!-- SheetLabels: Elliptical labels, 10 per sheet                        -->
   <!-- =================================================================== -->  
-  <Template brand="SheetLabels" part="SL201" size="US-Letter" _description="Oval bottle labels">
+  <Template brand="SheetLabels" part="SL201" size="US-Letter" _description="Oval bottle/jar labels">
     <Meta category="label"/>
     <Meta category="elliptical-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL201"/>
@@ -361,9 +361,9 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Round Labels, 6 per sheet	         	               -->
+  <!-- SheetLabels: Round labels, 6 per sheet                              -->
   <!-- =================================================================== --> 
-  <Template brand="SheetLabels" part="SL228" size="US-Letter" _description="Round Labels">
+  <Template brand="SheetLabels" part="SL228" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL228"/>
@@ -375,10 +375,10 @@
 
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: VCR Labels, 1_7/8'' x 3_1/16'', 10 per sheet 	   -->
+  <!-- SheetLabels: VCR labels, 1_7/8'' x 3_1/16'', 10 per sheet 	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL302" size="US-Letter"
-         _description="Video Tape Face Labels">
+         _description="Video tape face labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL302"/>
@@ -390,9 +390,9 @@
   
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Bottle Labels, 3 per sheet	         	               -->
+  <!-- SheetLabels: Bottle labels, 3 per sheet                             -->
   <!-- =================================================================== -->  
-  <Template brand="SheetLabels" part="SL303" size="US-Letter" _description="Bottle labels">
+  <Template brand="SheetLabels" part="SL303" size="US-Letter" _description="Bottle/jar labels">
 	<Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL303"/>
@@ -404,9 +404,9 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Bottle Labels, 5 per sheet	         	               -->
+  <!-- SheetLabels: Bottle labels, 5 per sheet                             -->
   <!-- =================================================================== -->  
-  <Template brand="SheetLabels" part="SL304" size="US-Letter" _description="Bottle labels">
+  <Template brand="SheetLabels" part="SL304" size="US-Letter" _description="Bottle/jar labels">
 	<Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL304"/>
@@ -418,7 +418,7 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 2 per sheet	         	           -->
+  <!-- SheetLabels: Rectangular labels, 2 per sheet                        -->
   <!-- =================================================================== -->  
   <Template brand="SheetLabels" part="SL517" size="US-Letter" _description="Rectangular labels">
 	<Meta category="label"/>
@@ -432,7 +432,7 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 4 per sheet	         	           -->
+  <!-- SheetLabels: Rectangular labels, 4 per sheet                        -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL522" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -446,7 +446,7 @@
   
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 5 per sheet	         	           -->
+  <!-- SheetLabels: Rectangular labels, 5 per sheet                        -->
   <!-- =================================================================== --> 
   <Template brand="SheetLabels" part="SL527" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -460,7 +460,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 10 per sheet        	           -->
+  <!-- SheetLabels: Rectangular labels, 10 per sheet        	           -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL529" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -474,7 +474,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 6 per sheet         	           -->
+  <!-- SheetLabels: Rectangular labels, 6 per sheet         	           -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL530" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -488,9 +488,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Mailing Labels, 10 per sheet                           -->
+  <!-- SheetLabels: Mailing labels, 10 per sheet                           -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL540" size="US-Letter" _description="Address Labels">
+  <Template brand="SheetLabels" part="SL540" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL540"/>
@@ -501,9 +501,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Address Labels, 1'' x 4'', 20 per sheet        	   -->
+  <!-- SheetLabels: Address labels, 1'' x 4'', 20 per sheet        	   -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL550" size="US-Letter" _description="Address Labels">
+  <Template brand="SheetLabels" part="SL550" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL550"/>
@@ -515,7 +515,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 21 per sheet	         	   -->
+  <!-- SheetLabels: Rectangular labels, 21 per sheet	         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL552" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -528,7 +528,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 40 per sheet	         	   -->
+  <!-- SheetLabels: Rectangular labels, 40 per sheet	         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL556" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -542,7 +542,7 @@
 
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: Rectangular Labels, 50 per sheet	         	   -->
+  <!-- SheetLabels: Rectangular labels, 50 per sheet	         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL559" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
@@ -555,10 +555,10 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- SheetLabels: CD/DVD Labels (face only), 2 per sheet         	   -->
+  <!-- SheetLabels: CD/DVD labels (face only), 2 per sheet         	   -->
   <!-- =================================================================== -->
   <Template brand="SheetLabels" part="SL563" size="US-Letter"
-         _description="CD/DVD Labels (Disc Labels)">
+         _description="CD/DVD labels (disc labels)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL563"/>
@@ -573,9 +573,9 @@
   </Template>
   
   <!-- =================================================================== -->
-  <!-- SheetLabels: Mailing Labels, 6 per sheet         	           -->
+  <!-- SheetLabels: Mailing labels, 6 per sheet         	           -->
   <!-- =================================================================== -->
-  <Template brand="SheetLabels" part="SL573" size="US-Letter" _description="Mailing Labels">
+  <Template brand="SheetLabels" part="SL573" size="US-Letter" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL573"/>

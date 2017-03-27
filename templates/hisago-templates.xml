@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Glabels-templates>
 
-  <Template brand="Hisago" part="ELM001" size="A4" _description="Labels A4">
+  <Template brand="Hisago" part="ELM001" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM001"/>
@@ -10,7 +10,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Hisago" part="ELM002" size="A4" _description="Labels A5">
+  <Template brand="Hisago" part="ELM002" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM002"/>
@@ -19,7 +19,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Hisago" part="ELM003" size="A4" _description="Labels A6">
+  <Template brand="Hisago" part="ELM003" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=ELM003"/>
@@ -616,8 +616,8 @@
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3201"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
-      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
       <Markup-line x1="0mm" y1="148.5mm" x2="210mm" y2="148.5mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
     </Label-rectangle>
   </Template>
 
@@ -626,9 +626,9 @@
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3202"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
-      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
       <Markup-line x1="0mm" y1="99mm" x2="210mm" y2="99mm"/>
       <Markup-line x1="0mm" y1="198mm" x2="210mm" y2="198mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
     </Label-rectangle>
   </Template>
 
@@ -637,9 +637,9 @@
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3203"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
-      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
       <Markup-line x1="0mm" y1="148.5mm" x2="210mm" y2="148.5mm"/>
       <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="297mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
     </Label-rectangle>
   </Template>
 
@@ -648,10 +648,10 @@
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB3205"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
-      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
       <Markup-line x1="0mm" y1="99mm" x2="210mm" y2="99mm"/>
       <Markup-line x1="0mm" y1="198mm" x2="210mm" y2="198mm"/>
       <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="297mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
     </Label-rectangle>
   </Template>
 
@@ -660,11 +660,11 @@
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=GB32065"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
-      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
       <Markup-line x1="0mm" y1="74.25mm" x2="210mm" y2="74.25mm"/>
       <Markup-line x1="0mm" y1="148.5mm" x2="210mm" y2="148.5mm"/>
       <Markup-line x1="0mm" y1="222.75mm" x2="210mm" y2="222.75mm"/>
       <Markup-line x1="105mm" y1="0mm" x2="105mm" y2="297mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
     </Label-rectangle>
   </Template>
 
@@ -690,11 +690,11 @@
     <Meta category="rectangle-label"/>
     <Meta product_url="https://www.hisago.co.jp/Search/detail.asp?id=OP3204"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
-      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
       <Markup-line x1="0mm" y1="59.4mm" x2="210mm" y2="59.4mm"/>
       <Markup-line x1="0mm" y1="118.8mm" x2="210mm" y2="118.8mm"/>
       <Markup-line x1="0mm" y1="178.2mm" x2="210mm" y2="178.2mm"/>
       <Markup-line x1="0mm" y1="237.6mm" x2="210mm" y2="237.6mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="210mm" dy="297mm"/>
     </Label-rectangle>
   </Template>
 

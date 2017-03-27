@@ -13,9 +13,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery L4730 family: Mini Labels                          -->
+  <!-- Avery L4730 family: Mini labels                          -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="L4730" size="A4" _description="Mini Labels">
+  <Template brand="Avery" part="L4730" size="A4" _description="Mini labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="17.8mm" height="10mm" round="1.6mm" x_waste="0mm" y_waste="0mm">
@@ -26,9 +26,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery L4732 family: Mini Labels                                     -->
+  <!-- Avery L4732 family: Mini labels                                     -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="L4732" size="A4" _description="Mini Labels">
+  <Template brand="Avery" part="L4732" size="A4" _description="Mini labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="35.6mm" height="16.9mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
@@ -39,9 +39,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery L4770 family: Mini Labels                                     -->
+  <!-- Avery L4770 family: Mini labels                                     -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="L4770" size="A4" _description="Mini Labels">
+  <Template brand="Avery" part="L4770" size="A4" _description="Mini labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="45.7mm" height="25.4mm" round="1.5mm" x_waste="0mm" y_waste="0mm">
@@ -56,9 +56,9 @@
   <Template brand="Avery" part="L7654" equiv="L4770"/>
 
   <!-- =================================================================== -->
-  <!-- Avery L4785 family: Name Badges, 10 per sheet                       -->
+  <!-- Avery L4785 family: Name badges, 10 per sheet                       -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="L4785" size="A4" _description="Self-Adhesive Name Badges (Acetate Silk)">
+  <Template brand="Avery" part="L4785" size="A4" _description="Name badge labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.avery.co.uk/avery/en_gb/Products/Naming/Self-Adhesive-Name-Badges/White-self-adhesive-name-badges_L4785_20.htm"/>
@@ -73,9 +73,9 @@
   <Template brand="Avery" part="L4787" equiv="L4785"/>
 
   <!-- =================================================================== -->
-  <!-- Avery L6015 family: CD/DVD Labels, 2 per sheet                      -->
+  <!-- Avery L6015 family: CD/DVD labels, 2 per sheet                      -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="L6015" size="A4" _description="CD/DVD Labels">
+  <Template brand="Avery" part="L6015" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="165.827pt" hole="58.1102pt" waste="9.07087pt">
@@ -86,9 +86,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery 6121 family: Allround labels.                                 -->
+  <!-- Avery 6121 family: Multipurpose labels.                             -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="6121" size="A4" _description="Allround labels">
+  <Template brand="Avery" part="6121" size="A4" _description="Multipurpose labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="107.928pt" height="60.12pt" round="0pt" x_waste="0pt" y_waste="0pt">
       <Markup-margin size="8.496pt"/>
@@ -178,7 +178,7 @@
   <!-- =================================================================== -->
   <!-- Avery 7165 family: Address labels                                   -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="7165" size="A4" _description="Address Labels">
+  <Template brand="Avery" part="7165" size="A4" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="280.8pt" height="191.991pt" round="0pt" waste="0pt">
@@ -207,9 +207,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery 7414 family: Business Cards, 52mm x 90mm, 10 per sheet        -->
+  <!-- Avery 7414 family: Business cards, 52mm x 90mm, 10 per sheet        -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="7414" size="A4" _description="Business Cards">
+  <Template brand="Avery" part="7414" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="255.1" height="147.4" round="0">
@@ -222,9 +222,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery 7664 family: Diskette Labels, 70mm x 71.9 mm, 8 per sheet     -->
+  <!-- Avery 7664 family: Diskette labels, 70mm x 71.9 mm, 8 per sheet     -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="7664" size="A4" _description="Diskette Labels">
+  <Template brand="Avery" part="7664" size="A4" _description="Diskette labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="70mm" height="71.9mm" round="2.5mm">
@@ -237,9 +237,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery L7676 family: CD/DVD Labels, 2 per sheet                      -->
+  <!-- Avery L7676 family: CD/DVD labels, 2 per sheet                      -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="L7676" size="A4" _description="CD/DVD Labels">
+  <Template brand="Avery" part="L7676" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="165.827pt" hole="24.9449pt" waste="5.66929pt">
@@ -249,9 +249,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Avery J8157: Mailing Labels, 33 per sheet	                   -->
+  <!-- Avery J8157: Mailing labels, 33 per sheet	                   -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="J8157" size="A4" _description="Mailing Labels">
+  <Template brand="Avery" part="J8157" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="64mm" height="24.3mm" round="3mm" x_waste="0mm" y_waste="0mm">
@@ -262,9 +262,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Avery 8414 family: Business Cards, 50.8 x 87.0 mm, 10 per sheet     -->
+  <!-- Avery 8414 family: Business cards, 50.8 x 87.0 mm, 10 per sheet     -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="8414" size="A4" _description="Business Cards">
+  <Template brand="Avery" part="8414" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="246.6" height="144" round="0">
@@ -277,9 +277,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Avery J8435: CD Inlets Booklet part                             -->
+  <!-- Avery J8435: CD/DVD inlets Booklet part                         -->
   <!-- =============================================================== -->
-  <Template brand="Avery" part="8435A" size="A4" _description="CD Booklet">
+  <Template brand="Avery" part="8435A" size="A4" _description="CD/DVD booklet">
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="125mm" round="0">
       <Markup-margin size="2mm"/>
@@ -293,9 +293,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Avery J8435: CD Inlets Inlet part                           -->
+  <!-- Avery J8435: CD/DVD inlets Inlet part                           -->
   <!-- =============================================================== -->
-  <Template brand="Avery" part="8435B" size="A4" _description="CD Inlet">
+  <Template brand="Avery" part="8435B" size="A4" _description="CD/DVD inlet">
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="122mm" round="0">
       <Markup-margin size="2mm"/>
@@ -312,7 +312,7 @@
   <!-- =================================================================== -->
   <!-- Avery 8651 family: Mailing labels, 38.1 x 21.2 mm, 65 per sheet     -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="8651" size="A4" _description="Mini Address Labels">
+  <Template brand="Avery" part="8651" size="A4" _description="Mini address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="108" height="60.09" round="5">
@@ -331,7 +331,7 @@
   <!-- =================================================================== -->
   <!-- Avery 8658 family: Identification labels                            -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="8658" size="A4" _description="Identification Labels">
+  <Template brand="Avery" part="8658" size="A4" _description="ID labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="25.4mm" height="10mm" round="1mm" x_waste="0mm" y_waste="0mm">
       <Markup-margin size="2mm"/>
@@ -359,9 +359,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Avery J8676A: CD/DVD Labels 2 per sheet                         -->
+  <!-- Avery J8676A: CD/DVD labels 2 per sheet                         -->
   <!-- =============================================================== -->
-  <Template brand="Avery" part="8676" size="A4" _description="CD/DVD Labels">
+  <Template brand="Avery" part="8676" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="166.5" hole="17" waste="5">
@@ -374,9 +374,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Avery 18036 Mailing Labels, 70mm x 32mm, 27 per sheet           -->
+  <!-- Avery 18036 Mailing labels, 70mm x 32mm, 27 per sheet           -->
   <!-- =============================================================== -->
-  <Template brand="Avery" part="18036" size="A4" _description="Mailing Labels">
+  <Template brand="Avery" part="18036" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="198" height="91" round="0">
@@ -387,9 +387,9 @@
 
 
   <!-- ============================================================ -->
-  <!-- Avery 32015: Business Cards                                  -->
+  <!-- Avery 32015: Business cards                                  -->
   <!-- ============================================================ -->
-  <Template brand="Avery" part="32015" size="A4" _description="Business Cards">
+  <Template brand="Avery" part="32015" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="85mm" height="54mm" round="0mm">
@@ -402,9 +402,9 @@
 
 
   <!-- ============================================================ -->
-  <!-- Avery 38931 Family: Rectangular Labels                       -->
+  <!-- Avery 38931 Family: Rectangular labels                       -->
   <!-- ============================================================ -->
-  <Template brand="Avery" part="38931" size="A4" _description="Rectangular Labels">
+  <Template brand="Avery" part="38931" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="70mm" height="25mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -418,9 +418,9 @@
   
   
   <!-- ============================================================ -->
-  <!-- Avery C32011-10: Business Cards		                    -->
+  <!-- Avery C32011-10: Business cards		                    -->
   <!-- ============================================================ -->
-  <Template brand="Avery" part="C32011-10" size="A4" _description="Business Cards">
+  <Template brand="Avery" part="C32011-10" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="85mm" height="54mm" round="0mm" x_waste="0mm" y_waste="0mm">

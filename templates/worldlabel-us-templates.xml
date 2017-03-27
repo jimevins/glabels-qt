@@ -11,7 +11,7 @@
   <!-- ******************************************************************** -->
   <!-- ******************************************************************** -->
 
-  <Template brand="Worldlabel" part="WL-25" size="US-Letter" _description="Return Address Labels">
+  <Template brand="Worldlabel" part="WL-25" size="US-Letter" _description="Return address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="1.75in" height="0.5in" round="0.0625in">
@@ -20,7 +20,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-75" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-75" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="4in" height="1in" round="0.0625in">
@@ -29,7 +29,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-100" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-100" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="4in" height="1.333333333in" round="0.0625in">
@@ -39,7 +39,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-125" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Worldlabel" part="WL-125" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="4in" height="2in" round="0.125in">
@@ -48,7 +48,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-150" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Worldlabel" part="WL-150" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="4in" height="3.333333333in" round="0.125in">
@@ -57,7 +57,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-157" size="US-Letter" _description="File Folder Labels">
+  <Template brand="Worldlabel" part="WL-157" size="US-Letter" _description="File folder labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="3.4375in" height="0.9375in" round="0.0625in" waste="5pt">
       <Markup-margin size="0.0625in"/>
@@ -65,7 +65,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-159" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Worldlabel" part="WL-159" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="8.12992in" height="5in" round="0.0625in" waste="0">
@@ -74,7 +74,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-160" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-160" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="2.375in" height="1.25in" round="0.0625in" waste="0.125in">
@@ -83,7 +83,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-161" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-161" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="3.75in" height="1.25in" round="0.0625in" waste="5pt">
@@ -92,7 +92,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-171" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Worldlabel" part="WL-171" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="3.75in" height="2.0in" round="0.0625in" waste="0.125">
@@ -101,7 +101,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-172" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Worldlabel" part="WL-172" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="3.75in" height="3.0in" round="0.0625in" waste="0.125">
@@ -110,7 +110,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-175" size="US-Letter" _description="Full Sheet Labels">
+  <Template brand="Worldlabel" part="WL-175" size="US-Letter" _description="Full-page labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="8.5in" height="11.in" round="0">
       <Markup-margin size="0.0625in"/>
@@ -118,7 +118,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-200" size="US-Letter" _description="Filing Labels">
+  <Template brand="Worldlabel" part="WL-200" size="US-Letter" _description="Filing labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="3.4375in" height="0.666666667in" round="0.0625in">
       <Markup-margin size="0.0625in"/>
@@ -126,7 +126,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-225" size="US-Letter" _description="Diskette Labels">
+  <Template brand="Worldlabel" part="WL-225" size="US-Letter" _description="Diskette labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="2.75in" height="2.75in" round="0.0625in">
@@ -135,7 +135,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-250" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-250" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="4in" height="1.5in" round="0.0625in">
@@ -144,7 +144,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-325" size="US-Letter" _description="Round Labels">
+  <Template brand="Worldlabel" part="WL-325" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Label-round id="0" radius="0.8125in" waste="0pt">
@@ -153,7 +153,7 @@
     </Label-round>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-350" size="US-Letter" _description="Round Labels">
+  <Template brand="Worldlabel" part="WL-350" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Label-round id="0" radius="1.25in" waste="0pt">
@@ -162,7 +162,7 @@
     </Label-round>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-375" size="US-Letter" _description="Round Labels">
+  <Template brand="Worldlabel" part="WL-375" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Label-round id="0" radius="1.65625in" waste="0pt">
@@ -171,7 +171,7 @@
     </Label-round>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-625" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-625" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="4.25in" height="2in" round="0in">
@@ -180,7 +180,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-875" size="US-Letter" _description="Address Labels">
+  <Template brand="Worldlabel" part="WL-875" size="US-Letter" _description="Address labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="2.625in" height="1in" round="0.0625in">
@@ -189,7 +189,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-1125" size="US-Letter" _description="Video Tape Face Labels">
+  <Template brand="Worldlabel" part="WL-1125" size="US-Letter" _description="Video tape face labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="220" height="133" round="5">
@@ -198,7 +198,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-1150" size="US-Letter" _description="Video Tape Spine Labels">
+  <Template brand="Worldlabel" part="WL-1150" size="US-Letter" _description="Video tape spine labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="414" height="48" round="5">
@@ -207,7 +207,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-1200" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Worldlabel" part="WL-1200" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="166.5pt" hole="58.5pt" waste="9pt">
@@ -216,7 +216,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-5075" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Worldlabel" part="WL-5075" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="2.3125in" hole="0.8125in" waste="0.0625in">
@@ -229,7 +229,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Worldlabel" part="WL-5100" size="US-Letter" _description="Shipping Labels">
+  <Template brand="Worldlabel" part="WL-5100" size="US-Letter" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="3.5in" height="5in" round="0.0625in" waste="0in">

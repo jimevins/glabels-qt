@@ -458,7 +458,7 @@
   </Template>
 
 
-  <Template brand="Begalabel" part="M-200 (medium)" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Begalabel" part="M-200 (medium)" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.begalabel.com/4-5-8-CD-&amp;-DVD-Label-2-per-sheet-p68.html"/>
@@ -475,7 +475,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="M-400" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Begalabel" part="M-400" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.begalabel.com/4-1-2-CD-&amp;-DVD-Label-2-per-sheet-p69.html"/>
@@ -484,7 +484,7 @@
     </Label-cd>
   </Template>
 
-  <Template brand="Begalabel" part="M-600 (medium)" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Begalabel" part="M-600 (medium)" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.begalabel.com/Neato-Compatible-4.52-CD-&amp;-DVD-Label--3-per-sheet-p70.html"/>
@@ -510,7 +510,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="M-800 (medium)" size="US-Letter" _description="CD/DVD Labels">
+  <Template brand="Begalabel" part="M-800 (medium)" size="US-Letter" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.begalabel.com/4-1-2-Inch-CD-&amp;-DVD-Label-2-per-sheet-p71.html"/>
@@ -527,7 +527,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="M-1000" size="US-Letter" _description="Cassette Tape Face">
+  <Template brand="Begalabel" part="M-1000" size="US-Letter" _description="Cassette labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.begalabel.com/3-1-2-x-1-2-3-Inch-Cassette-Tape-Face-Label-12-per-sheet-p76.html"/>

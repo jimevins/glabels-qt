@@ -9,7 +9,7 @@
   <Category id="rectangle-label"  _name="Rectangular labels"/>
   <Category id="card"             _name="Any card"/>
   <Category id="business-card"    _name="Business cards"/>
-  <Category id="name-badge"       _name="Name Badge"/>
+  <Category id="name-badge"       _name="Name badges"/>
   <Category id="media"            _name="CD/DVD or other media"/>
   <Category id="mail"             _name="Mailing/shipping products"/>
   <Category id="foldable"         _name="Foldable cards"/>

@@ -24,9 +24,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- Dataline 57125: Business Cards, 54.0 x 86.0 mm, 10 per sheet        -->
+  <!-- Dataline 57125: Business cards, 54.0 x 86.0 mm, 10 per sheet        -->
   <!-- =================================================================== -->
-  <Template brand="Dataline" part="57125" size="A4" _description="Business Cards">
+  <Template brand="Dataline" part="57125" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="86.00mm" height="54.00mm" round="0">
@@ -36,7 +36,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Dataline 57126: Business Cards, 90.0 x 50.8 mm, 10 per sheet        -->
+  <!-- Dataline 57126: Business cards, 90.0 x 50.8 mm, 10 per sheet        -->
   <!-- =================================================================== -->
   <Template brand="Dataline" part="57126" size="A4" _description="Business cards">
     <Meta category="card"/>
@@ -48,7 +48,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Dataline 57127: Membership Cards, 86.0 x 54.0 mm, 10 per sheet      -->
+  <!-- Dataline 57127: Membership cards, 86.0 x 54.0 mm, 10 per sheet      -->
   <!-- =================================================================== -->
   <Template brand="Dataline" part="57127" size="A4" _description="Membership cards">
     <Meta category="card"/>
@@ -59,9 +59,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Dataline 57130: Shipping Labels, 199.6 x 289.1 mm, 1 per sheet      -->
+  <!-- Dataline 57130: Shipping labels, 199.6 x 289.1 mm, 1 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Dataline" part="57130" size="A4" _description="Shipping Labels">
+  <Template brand="Dataline" part="57130" size="A4" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="199.6mm" height="289.1mm" round="0mm" x_waste="2mm" y_waste="2mm">
@@ -71,9 +71,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Dataline 57131: Shipping Labels, 199.6 x 143.5 mm, 2 per sheet      -->
+  <!-- Dataline 57131: Shipping labels, 199.6 x 143.5 mm, 2 per sheet      -->
   <!-- =================================================================== -->
-  <Template brand="Dataline" part="57131" size="A4" _description="Shipping Labels">
+  <Template brand="Dataline" part="57131" size="A4" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="199.6mm" height="143.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -83,9 +83,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Dataline 57132: Shipping Labels, 99.1 x 139 mm, 1 per sheet  	   -->
+  <!-- Dataline 57132: Shipping labels, 99.1 x 139 mm, 1 per sheet  	   -->
   <!-- =================================================================== -->
-  <Template brand="Dataline" part="57132" size="A4" _description="Shipping Labels">
+  <Template brand="Dataline" part="57132" size="A4" _description="Shipping labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="99.1mm" height="139mm" round="0mm" x_waste="0mm" y_waste="0mm">

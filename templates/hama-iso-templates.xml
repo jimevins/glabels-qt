@@ -92,9 +92,9 @@
   <Template brand="Hama" part="50403" equiv="50402"/>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50430. CD inlets.				                    -->
+  <!-- Hama 50430. CD/DVD inlets.				            -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50430" size="A4" _description="CD inlet">
+  <Template brand="Hama" part="50430" size="A4" _description="CD/DVD inlet">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="119.5mm" height="119.5mm" round="0mm" x_waste="10mm" y_waste="0mm">
@@ -106,9 +106,9 @@
   <Template brand="Hama" part="50431" equiv="50430"/>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50432. CD inlets.				                    -->
+  <!-- Hama 50432. CD/DVD inlets.				            -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50432-1" size="A4" _description="CD inlet (front)">
+  <Template brand="Hama" part="50432-1" size="A4" _description="CD/DVD inlet (front)">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="151mm" height="121mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -118,7 +118,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Hama" part="50432-2" size="A4" _description="CD inlet (back)">
+  <Template brand="Hama" part="50432-2" size="A4" _description="CD/DVD inlet (back)">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="151mm" height="117.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -243,7 +243,7 @@
   <!-- ==================================================================== -->
   <!-- Hama 50455. Rectangular labels.			                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50455" size="A4" _description="Rectangular Labels">
+  <Template brand="Hama" part="50455" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="105mm" height="148mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -303,9 +303,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50480. Arch File labels.			                    -->
+  <!-- Hama 50480. Arch file labels.			                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50480" size="A4" _description="Arch File Labels">
+  <Template brand="Hama" part="50480" size="A4" _description="Arch file labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="190mm" height="38mm" round="0mm" x_waste="10mm" y_waste="0mm">
@@ -315,9 +315,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50485. Arch File labels.			                    -->
+  <!-- Hama 50485. Arch file labels.			                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50485" size="A4" _description="Arch File labels">
+  <Template brand="Hama" part="50485" size="A4" _description="Arch file labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="190mm" height="58mm" round="0mm" x_waste="10mm" y_waste="0mm">

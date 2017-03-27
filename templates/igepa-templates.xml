@@ -210,7 +210,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Igepa" part="EA-2100x2970" size="A4" _description="Labels A4">
+  <Template brand="Igepa" part="EA-2100x2970" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="210mm" height="297mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -219,7 +219,7 @@
   </Template>
 
 
-  <Template brand="Igepa" part="EA-1900x380W" size="A4" _description="Lever Arch File Labels">
+  <Template brand="Igepa" part="EA-1900x380W" size="A4" _description="Lever arch file labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="192mm" height="38mm" round="2.5mm" x_waste="0mm" y_waste="0mm">
@@ -227,7 +227,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Igepa" part="EA-1900x610W" size="A4" _description="Lever Arch File Labels">
+  <Template brand="Igepa" part="EA-1900x610W" size="A4" _description="Lever arch file labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="192mm" height="61mm" round="2.5mm" x_waste="0mm" y_waste="0mm">
@@ -236,7 +236,7 @@
   </Template>
 
 
-  <Template brand="Igepa" part="EA-CD-ROM2Q" size="A4" _description="CD/DVD Labels">
+  <Template brand="Igepa" part="EA-CD-ROM2Q" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
     <Meta category="media"/>
     <Label-cd id="0" radius="58.5mm" hole="20.5mm" waste="0mm">

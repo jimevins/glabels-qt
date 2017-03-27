@@ -31,9 +31,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- DECAdry DLW-1734: Mailing Labels.                                   -->
+  <!-- DECAdry DLW-1734: Mailing labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="DECAdry" part="DLW-1734" size="A4" _description="Mailing Labels">
+  <Template brand="DECAdry" part="DLW-1734" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="99.1mm" height="67.7mm" round="2mm" x_waste="0mm" y_waste="0mm">
@@ -46,9 +46,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- DECAdry DLW-1786: Mailing Labels.                                   -->
+  <!-- DECAdry DLW-1786: Mailing labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="DECAdry" part="DLW-1786" size="A4" _description="Mailing Labels">
+  <Template brand="DECAdry" part="DLW-1786" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="105mm" height="39mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -61,9 +61,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- DECAdry DLW-1787: Mailing Labels.                                   -->
+  <!-- DECAdry DLW-1787: Mailing labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="DECAdry" part="DLW-1787" size="A4" _description="Mailing Labels">
+  <Template brand="DECAdry" part="DLW-1787" size="A4" _description="Mailing labels">
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="70mm" height="35mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -76,9 +76,9 @@
 
 
   <!-- =================================================================== -->
-  <!-- DECAdry OCC-3342 Business Cards.                                    -->
+  <!-- DECAdry OCC-3342 Business cards.                                    -->
   <!-- =================================================================== -->
-  <Template brand="DECAdry" part="OCC-3342" size="A4" _description="Business Cards">
+  <Template brand="DECAdry" part="OCC-3342" size="A4" _description="Business cards">
     <Meta category="card"/>
     <Meta category="business-card"/>
     <Label-rectangle id="0" width="240.945pt" height="153.071pt" round="0pt" x_waste="0pt" y_waste="0pt">
