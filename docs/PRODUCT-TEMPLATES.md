@@ -114,460 +114,152 @@ Property      | Description
 ![Label-rectangle properties](images/glabels-template-rect-label.png)
 
 
-  <!-- ************************ -->
-  <!-- BEGIN Label-ellipse Node -->
-  <!-- ************************ -->
-  <section id="template-label-ellipse-node">
-    <title>*Label-ellipse* Node</title>
+*Label-ellipse* Node
+--------------------
 
-    <p>A *Label-ellipse* node describes the
-      dimensions of a single label or business card that is elliptic
-      in shape.</p>
+A *Label-ellipse* node describes the dimensions of a single label or business card that is elliptical
+in shape.
 
-    <table frame="all" rules="rows">
-      <tr>
-        <td><p>Property</p></td>  <td><p>Description</p></td>
-      </tr>
-      <tr>
-        <td><p></p></td>  <td><p></p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*id*</p></td>
-        <td><p>Reserved for future use.  Should always be 0.</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*width*</p></td>
-        <td><p>Width of the ellipse</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*height*</p></td>
-        <td><p>Height of the ellipse</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*waste*</p></td>
-        <td><p>Amount of waste (over-print) to allow.  This is useful
-            for minimizing alignment problems when using non-white
-            backgrounds (e.g. images).</p></td>
-      </tr>
-    </table>
+Property      | Description
+--------------|------------
+*id*          | Reserved for future use.  Should always be 0.
+*width*       | Width of label or card. E.g. `width="29mm"`
+*height*      | Height of label or card. E.g. `height="100mm"`
+*waste*       | Amount of waste (over-print) to allow.  This is useful for minimizing alignment problems when using non-white backgrounds (e.g. images).
 
-    <!-- ==== Figure ==== -->
-    <figure>
-      <desc><span>Label-ellipse</span> parameters</desc>
-      <media type="image" src="figures/glabels-template-ellipse-label.png" mime="image/png" style="right">
-        <p>*Label-ellipse* parameters</p>
-      </media>
-    </figure>
-    <!-- ==== End of Figure ==== -->
-
-  </section>
-  <!-- ************************ -->
-  <!-- END Label-ellipse Node   -->
-  <!-- ************************ -->
+![Label-ellipse properties](images/glabels-template-ellipse-label.png)
 
 
-  <!-- ********************** -->
-  <!-- BEGIN Label-round Node -->
-  <!-- ********************** -->
-  <section id="template-label-round-node">
-    <title>*Label-round* Node</title>
+*Label-round* Node
+------------------
 
-    <p>A *Label-round* node describes the dimensions
-      of a simple round label (not a CD).</p>
+A *Label-round* node describes the dimensions of a simple round label (not a CD).
 
-    <table frame="all" rules="rows">
-      <tr>
-        <td><p>Property</p></td>  <td><p>Description</p></td>
-      </tr>
-      <tr>
-        <td><p></p></td>  <td><p></p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*id*</p></td>
-        <td><p>Reserved for future use.  Should always be 0.</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*radius*</p></td>
-        <td><p>Radius (1/2 diameter) of label</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*waste*</p></td>
-        <td><p>Amount of waste (over-print) to allow.  This is useful
-                for minimizing alignment problems when using non-white
-                backgrounds (e.g. images).</p></td>
-      </tr>
-    </table>
+Property      | Description
+--------------|------------
+*id*          | Reserved for future use.  Should always be 0.
+*radius*      | Radius (1/2 diameter) of label or card. E.g. `radius="14.5mm"`
+*waste*       | Amount of waste (over-print) to allow.  This is useful for minimizing alignment problems when using non-white backgrounds (e.g. images).
 
-    <!-- ==== Figure ==== -->
-    <figure>
-      <desc>*Label-ellipse* parameters</desc>
-      <media its:translate="no" type="image" src="figures/glabels-template-circle-label.png" mime="image/png" style="right">
-        <p>*Label-ellipse* parameters</p>
-      </media>
-    </figure>
-    <!-- ==== End of Figure ==== -->
-
-  </section>
-  <!-- ********************** -->
-  <!-- END Label-round Node   -->
-  <!-- ********************** -->
+![Label-round properties](images/glabels-template-round-label.png)
 
 
-  <!-- ******************* -->
-  <!-- BEGIN Label-cd Node -->
-  <!-- ******************* -->
-  <section id="template-label-cd-node">
-    <title>*Label-cd* Node</title>
+*Label-cd* Node
+---------------
 
-    <p>A *Label-cd* node describes the dimensions
-      of a CD, DVD, or business card CD.</p>
+A *Label-cd* node describes the dimensions of a CD, DVD, or business card CD.
 
-    <table frame="all" rules="rows">
-      <tr>
-        <td><p>Property</p></td>  <td><p>Description</p></td>
-      </tr>
-      <tr>
-        <td><p></p></td>  <td><p></p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*id*</p></td>
-        <td><p>Reserved for future use.  Should always be 0.</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*radius*</p></td>
-        <td><p>Outer radius of label</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*hole*</p></td>
-        <td><p>Radius of concentric hole</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*width*</p></td>
-        <td><p>If present, the label is clipped to the given width.
-                      (Useful for "business card CDs").</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*height*</p></td>
-        <td><p>If present, the label is clipped to the given height.
-                      (Useful for "business card CDs").</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*waste*</p></td>
-        <td><p>Amount of waste (over-print) to allow.  This is useful
-                      for minimizing alignment problems when using non-white
-                      backgrounds (e.g. images).</p></td>
-      </tr>
-    </table>
+Property      | Description
+--------------|------------
+*id*          | Reserved for future use.  Should always be 0.
+*radius*      | Outer radius (1/2 diameter) of label. E.g. `radius="58.5mm"`
+*hole*        | Radius (1/2 diameter) of concentric hole. E.g. `hole="18mm"`
+*width*       | If present, the label is clipped to the given Width. (For use with business card CDs.)
+*height*      | If present, the label is clipped to the given height. (For use with business card CDs.)
+*waste*       | Amount of waste (over-print) to allow.  This is useful for minimizing alignment problems when using non-white backgrounds (e.g. images).
 
-    <!-- ==== Figure ==== -->
-    <figure>
-      <desc>*Label-cd* parameters</desc>
-      <media its:translate="no" type="image" src="figures/glabels-template-cd-label.png" mime="image/png" style="right">
-        <p>CD label parameters</p>
-      </media>
-    </figure>
-    <!-- ==== End of Figure ==== -->
-
-  </section>
-  <!-- ******************* -->
-  <!-- END Label-cd Node   -->
-  <!-- ******************* -->
+![Label-cd properties](images/glabels-template-cd-label.png)
 
 
-  <!-- ***************** -->
-  <!-- BEGIN Markup Node -->
-  <!-- ***************** -->
-  <section id="template-markup">
-    <title>*Markup* Nodes</title>
+*Markup* Nodes
+--------------
 
-    <p>Templates may contain optional markup nodes.  These nodes are used to describe
-    a simple set of markup lines that are visible in the <app>glabels</app> drawing canvas, but
-    not visible when printed.  These lines can represent margins, fold lines, center lines,
-    special areas, or other helpful hints to the user of a template.</p>
+Templates may contain optional markup nodes.  These nodes are used to describe
+a simple set of markup lines that are visible in the *glabels* drawing canvas, but
+not visible when printed.  These lines can represent margins, fold lines, center lines,
+special areas, or other helpful hints to the user of a template.
 
 
-    <!-- ======================== -->
-    <!-- BEGIN Markup-margin Node -->
-    <!-- ======================== -->
-    <section id="template-markup-margin-node">
-      <title>*Markup-margin* Node</title>
+### *Markup-margin* Node
 
-      <p>A *Markup-margin* describes a margin along
-      all edges of a label.</p>
+A *Markup-margin* describes a margin along all edges of a label.
 
-      <table frame="all" rules="rows">
-        <tr>
-          <td><p>Property</p></td>  <td><p>Description</p></td>
-        </tr>
-        <tr>
-          <td><p></p></td>  <td><p></p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*size*</p></td>
-          <td><p>Size of the margin.  I.e. the distance of the margin
-                        line from the edge of the card/label.</p></td>
-        </tr>
-      </table>
-    </section>
-    <!-- ======================== -->
-    <!-- END Markup-margin Node   -->
-    <!-- ======================== -->
+Property      | Description
+--------------|------------
+*size*        | Size of the margin.  I.e. the distance of the margin line from the edge of the card/label.
 
 
-    <!-- ====================== -->
-    <!-- BEGIN Markup-line Node -->
-    <!-- ====================== -->
-    <section id="template-markup-line-node">
-      <title>*Markup-line* Node</title>
+### *Markup-line* Node
 
-      <p>A *Markup-line* node describes a markup line.</p>
+A *Markup-line* node describes a markup line.
 
-      <table frame="all" rules="rows">
-        <tr>
-          <td><p>Property</p></td>  <td><p>Description</p></td>
-        </tr>
-        <tr>
-          <td><p></p></td>  <td><p></p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*x1*</p></td>
-          <td><p>x coordinate of 1st endpoint of the line segment.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*y1*</p></td>
-          <td><p>y coordinate of 1st endpoint of the line segment.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*x2*</p></td>
-          <td><p>x coordinate of 2nd endpoint of the line segment.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*y2*</p></td>
-          <td><p>y coordinate of 2nd endpoint of the line segment.</p></td>
-        </tr>
-      </table>
-    </section>
-    <!-- ====================== -->
-    <!-- END Markup-line Node   -->
-    <!-- ====================== -->
+Property      | Description
+--------------|------------
+*x1*          | X coordinate of 1st endpoint of the line segment.
+*y1*          | Y coordinate of 1st endpoint of the line segment.
+*x2*          | X coordinate of 2nd endpoint of the line segment.
+*y2*          | Y coordinate of 2nd endpoint of the line segment.
 
 
-    <!-- ======================== -->
-    <!-- BEGIN Markup-circle Node -->
-    <!-- ======================== -->
-    <section id="template-markup-circle-node">
-      <title>*Markup-circle* Node</title>
+### *Markup-circle* Node
 
-      <p>A *Markup-circle* describes a markup circle.</p>
+A *Markup-circle* describes a markup circle.
 
-      <table frame="all" rules="rows">
-        <tr>
-          <td><p>Property</p></td>  <td><p>Description</p></td>
-        </tr>
-        <tr>
-          <td><p></p></td>  <td><p></p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*x0*</p></td>
-          <td><p>x coordinate of circle origin (center).</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*y0*</p></td>
-          <td><p>y coordinate of circle origin (center).</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*radius*</p></td>
-          <td><p>Radius of circle.</p></td>
-        </tr>
-      </table>
-    </section>
-    <!-- ======================== -->
-    <!-- END Markup-circle Node   -->
-    <!-- ======================== -->
+Property      | Description
+--------------|------------
+*x0*          | X coordinate of circle origin (center).
+*y0*          | Y coordinate of circle origin (center).
+*radius*      | Radius of circle.
 
 
-    <!-- ====================== -->
-    <!-- BEGIN Markup-rect Node -->
-    <!-- ====================== -->
-    <section id="template-markup-rect-node">
-      <title>*Markup-rect* Node</title>
+### *Markup-rect* Node
 
-      <p>A *Markup-rect* describes a markup rectangle.</p>
+A *Markup-rect* describes a markup rectangle.
 
-      <table frame="all" rules="rows">
-        <tr>
-          <td><p>Property</p></td>  <td><p>Description</p></td>
-        </tr>
-        <tr>
-          <td><p></p></td>  <td><p></p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*x1*</p></td>
-          <td><p>x coordinate of upper left corner of rectangle.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*y1*</p></td>
-          <td><p>y coordinate of upper left corner of rectangle.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*w*</p></td>
-          <td><p>Width of rectangle.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*h*</p></td>
-          <td><p>Height of rectangle.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*r*</p></td>
-          <td><p>Radius of rounded corners of rectangle.</p></td>
-        </tr>
-      </table>
-    </section>
-    <!-- ====================== -->
-    <!-- END Markup-rect Node   -->
-    <!-- ====================== -->
+Property      | Description
+--------------|------------
+*x1*          | X coordinate of upper left corner of rectangle.
+*y1*          | Y coordinate of upper left corner of rectangle.
+*w*           | Width of rectangle.
+*h*           | Height of rectangle.
+*r*           | Radius of rounded corners of rectangle.
 
 
-    <!-- ========================= -->
-    <!-- BEGIN Markup-ellipse Node -->
-    <!-- ========================= -->
-    <section id="template-markup-ellipse-node">
-      <title>*Markup-ellipse* Node</title>
+### *Markup-ellipse* Node
 
-      <p>A *Markup-ellipse* describes a markup ellipse.</p>
+A *Markup-ellipse* describes a markup ellipse.
 
-      <table frame="all" rules="rows">
-        <tr>
-          <td><p>Property</p></td>  <td><p>Description</p></td>
-        </tr>
-        <tr>
-          <td><p></p></td>  <td><p></p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*x1*</p></td>
-          <td><p>x coordinate of upper left corner of ellipse.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*y1*</p></td>
-          <td><p>y coordinate of upper left corner of ellipse.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*w*</p></td>
-          <td><p>Width of ellipse.</p></td>
-        </tr>
-        <tr>
-          <td its:translate="no"><p>*h*</p></td>
-          <td><p>Height of ellipse.</p></td>
-        </tr>
-      </table>
-    </section>
-    <!-- ========================= -->
-    <!-- END Markup-ellipse Node   -->
-    <!-- ========================= -->
-
-  </section>
-  <!-- ***************** -->
-  <!-- END Markup Node   -->
-  <!-- ***************** -->
+Property      | Description
+--------------|------------
+*x1*          | X coordinate of upper left corner of ellipse bounding box.
+*y1*          | Y coordinate of upper left corner of ellipse bounding box.
+*w*           | Width of ellipse.
+*h*           | Height of ellipse.
 
 
-  <!-- ***************** -->
-  <!-- BEGIN Layout Node -->
-  <!-- ***************** -->
-  <section id="template-layout-node">
-    <title>*Layout* Node</title>
+*Layout* Node
+-------------
 
-    <p>A label node may contain multiple *Layout*
-      children.  If labels are arranged in a simple grid pattern, only
-      one layout is needed.  However, if labels are arranged in multiple
-      grids, such as a running bond pattern, multiple
-      *Layout* tags can be used.</p>
-    <p>A common example for multiple layouts is a sheet with three
-       CD labels:</p>
+A label node may contain multiple *Layout* children.  If labels are arranged in a simple grid pattern, only
+one layout is needed.  However, if labels are arranged in multiple grids, such as a running bond pattern,
+multiple *Layout* tags can be used.
 
-    <!-- ==== Figure ==== -->
-    <figure>
-      <desc>CD label sheet</desc>
-      <media its:translate="no" type="image" src="figures/layouts-cdlabel.png" mime="image/png" style="right">
-        <p>CD label sheet</p>
-      </media>
-    </figure>
-    <!-- ==== End of Figure ==== -->
+A common example for multiple layouts is a sheet with three CD labels:
 
-    <p>The two labels on the left edge can be assigned to a grid, assuming we
-       can define the coordinates for the top left label and the distance to
-       the second label properly. The distance to the left edge is common to
-       these labels. The third one on the right edge has no common distance
-       values with the other ones, that's why we have to define a second layout,
-       with unique coordinates for the top left corner of that label.</p>
+![CD Label layout example](images/layouts-cdlabel.png)
 
-	<note style="tip">
-	<p>You can define multiple layouts only if the labels on the sheet
-        have the same shape. If your sheet contains different shapes, you have
-        to define each shape in another template separately. Future versions
-        of <app>gLabels</app> will probably be able to concatenate such sheets
-        with different shapes within a single template.</p>
-      </note>
+The two labels on the left edge can be assigned to a grid, assuming we
+can define the coordinates for the top left label and the distance to
+the second label properly. The distance to the left edge is common to
+these labels. The third one on the right edge has no common distance
+values with the other ones, that's why we have to define a second layout,
+with unique coordinates for the top left corner of that label.
 
-	<note style="tip">
-	<p>A single label can always be treated as a grid of one.</p>
-      </note>
+> You can define multiple layouts only if the labels on the sheet
+> have the same shape. If your sheet contains different shapes, you have
+> to define each shape in another template separately. Future versions
+> of <app>gLabels</app> will probably be able to concatenate such sheets
+> with different shapes within a single template.</p>
 
-    <table frame="all" rules="rows">
-      <tr>
-        <td><p>Property</p></td>  <td><p>Description</p></td>
-      </tr>
-      <tr>
-        <td><p></p></td>  <td><p></p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*nx*</p></td>
-        <td><p>Number of labels/cards across in the grid (horizontal)</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*ny*</p></td>
-        <td><p>Number of labels/cards across in the grid (vertical)</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*x0*</p></td>
-        <td><p>Distance from left edge of sheet to the left edge of
-            the left column of cards/labels in the layout.</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*y0*</p></td>
-        <td><p>Distance from the top edge of sheet to the top edge of
-             the top row of labels/cards in the layout.</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*dx*</p></td>
-        <td><p>Horizontal pitch of grid.</p></td>
-      </tr>
-      <tr>
-        <td its:translate="no"><p>*dy*</p></td>
-        <td><p>Vertical pitch of grid.</p></td>
-      </tr>
-    </table>
+> A single label can always be treated as a grid of one.
 
-    <!-- ==== Figure ==== -->
-    <figure>
-      <desc>*Layout* parameters</desc>
-      <media its:translate="no" type="image" src="figures/glabels-template-layout.png" mime="image/png" style="right">
-        <p><span>Layout</span> Parameters</p>
-      </media>
-    </figure>
-    <!-- ==== End of Figure ==== -->
+Property      | Description
+--------------|------------
+*nx*          | Number of labels/cards in the grid in the X direction (horizontal).
+*ny*          | Number of labels/cards in the grid in the Y direction (vertical).
+*x0*          | Distance from left edge of sheet to the left edge of the left column of cards/labels in the layout.
+*y0*          | Distance from the top edge of sheet to the top edge of the top row of labels/cards in the layout.
+*dx*          | Horizontal pitch of grid.
+*dy*          | Vertical pitch of grid.
 
-  </section>
-  <!-- ***************** -->
-  <!-- END Layout Node   -->
-  <!-- ***************** -->
-
-
-</page>
-
-
-
-
-
-
-
+![Layout example](images/glabels-template-layout.png)
