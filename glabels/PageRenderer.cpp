@@ -20,14 +20,13 @@
 
 #include "PageRenderer.h"
 
-
-#include <QtDebug>
-
 #include "LabelModel.h"
 
 #include "Merge/Merge.h"
 #include "Merge/None.h"
 #include "Merge/Record.h"
+
+#include <QtDebug>
 
 
 namespace glabels
@@ -396,4 +395,4 @@ namespace glabels
 		painter->restore();
 	}
 
-}
+} // namespace glabels

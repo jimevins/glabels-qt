@@ -20,10 +20,9 @@
 
 #include "Template.h"
 
+#include "Db.h"
 
 #include <QtDebug>
-
-#include "Db.h"
 
 
 namespace glabels
@@ -298,5 +297,4 @@ namespace glabels
 	}
 
 
-}
-
+} // namespace glabels

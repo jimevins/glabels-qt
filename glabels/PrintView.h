@@ -22,10 +22,11 @@
 #define PrintView_h
 
 
-#include <QPrinter>
-
 #include "ui_PrintView.h"
+
 #include "PageRenderer.h"
+
+#include <QPrinter>
 
 
 namespace glabels

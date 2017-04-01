@@ -21,6 +21,7 @@
 #ifndef merge_Factory_h
 #define merge_Factory_h
 
+
 #include <QCoreApplication>
 #include <QStringList>
 #include <QMap>

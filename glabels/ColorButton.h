@@ -22,10 +22,10 @@
 #define ColorButton_h
 
 
-#include <QPushButton>
-
 #include "ColorNode.h"
 #include "ColorPaletteDialog.h"
+
+#include <QPushButton>
 
 
 namespace glabels

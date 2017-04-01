@@ -22,10 +22,10 @@
 #define Handles_h
 
 
+#include "Distance.h"
+
 #include <QPainter>
 #include <QPainterPath>
-
-#include "Distance.h"
 
 
 namespace glabels

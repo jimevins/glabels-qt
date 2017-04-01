@@ -20,7 +20,6 @@
 
 #include "ColorPaletteDialog.h"
 
-
 #include <QColorDialog>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -324,4 +323,4 @@ namespace glabels
 		QDialog::showEvent( event );
 	}
 
-}
+} // namespace glabels

@@ -20,7 +20,6 @@
 
 #include "Frame.h"
 
-
 #include "Markup.h"
 
 
@@ -134,4 +133,4 @@ namespace glabels
 		mMarkups << markup;
 	}
 
-}
+} // namespace glabels

@@ -20,7 +20,6 @@
 
 #include "BarcodeMenu.h"
 
-
 #include "BarcodeBackends.h"
 #include "BarcodeMenuItem.h"
 
@@ -64,4 +63,4 @@ namespace glabels
 		emit styleChanged();
 	}
 
-}
+} // namespace glabels

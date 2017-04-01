@@ -22,9 +22,9 @@
 #define BarcodeMenuItem_h
 
 
-#include <QAction>
-
 #include "BarcodeStyle.h"
+
+#include <QAction>
 
 
 namespace glabels

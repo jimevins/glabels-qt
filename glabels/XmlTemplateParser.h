@@ -22,10 +22,10 @@
 #define glabels_XmlTemplateParser_h
 
 
+#include "Template.h"
+
 #include <QDomElement>
 #include <QString>
-
-#include "Template.h"
 
 
 namespace glabels

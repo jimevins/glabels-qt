@@ -20,6 +20,7 @@
 
 #include "LabelModelTextObject.h"
 
+#include "Size.h"
 
 #include <QBrush>
 #include <QPen>
@@ -27,8 +28,6 @@
 #include <QTextBlock>
 #include <QRegularExpression>
 #include <QtDebug>
-
-#include "Size.h"
 
 
 namespace glabels
@@ -693,4 +692,4 @@ namespace glabels
 		return text;
 	}
 
-}
+} // namespace glabels

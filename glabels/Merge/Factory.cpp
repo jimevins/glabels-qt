@@ -219,6 +219,6 @@ namespace glabels
 			mNameList << name;
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

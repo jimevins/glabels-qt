@@ -107,4 +107,4 @@ namespace glabels
 	}
 
 	
-}
+} // namespace glabels

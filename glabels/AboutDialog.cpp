@@ -20,12 +20,11 @@
 
 #include "AboutDialog.h"
 
+#include "Version.h"
 
 #include <QDesktopServices>
 #include <QUrl>
 #include <QtDebug>
-
-#include "Version.h"
 
 
 namespace glabels
@@ -85,4 +84,4 @@ namespace glabels
 		QDesktopServices::openUrl( QUrl(Version::WEBSITE) );
 	}
 
-}
+} // namespace glabels

@@ -22,9 +22,9 @@
 #define glabels_Markup_h
 
 
-#include <QPainterPath>
-
 #include "Frame.h"
+
+#include <QPainterPath>
 
 
 namespace glabels

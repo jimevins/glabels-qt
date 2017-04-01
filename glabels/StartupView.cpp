@@ -20,11 +20,10 @@
 
 #include "StartupView.h"
 
-
-#include <QtDebug>
-
 #include "File.h"
 #include "MainWindow.h"
+
+#include <QtDebug>
 
 
 namespace glabels
@@ -60,4 +59,4 @@ namespace glabels
 		File::open( mWindow );
 	}
 
-}
+} // namespace glabels

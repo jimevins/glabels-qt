@@ -20,14 +20,6 @@
 
 #include "XmlLabelCreator.h"
 
-
-#include <QByteArray>
-#include <QFile>
-#include <QTextBlock>
-#include <QTextDocument>
-#include <QBuffer>
-#include <QtDebug>
-
 #include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
@@ -42,6 +34,13 @@
 #include "XmlUtil.h"
 
 #include "Merge/None.h"
+
+#include <QByteArray>
+#include <QFile>
+#include <QTextBlock>
+#include <QTextDocument>
+#include <QBuffer>
+#include <QtDebug>
 
 
 namespace glabels
@@ -491,4 +490,4 @@ namespace glabels
 		node.appendChild( doc.createCDATASection( QString( svg ) ) );
 	}
 
-}
+} // namespace glabels

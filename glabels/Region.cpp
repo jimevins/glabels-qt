@@ -131,4 +131,4 @@ namespace glabels
 		return r;
 	}
 
-}
+} // namespace glabels

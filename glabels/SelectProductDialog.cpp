@@ -20,12 +20,11 @@
 
 #include "SelectProductDialog.h"
 
-
-#include <QtDebug>
-
 #include "Db.h"
 #include "Settings.h"
 #include "TemplatePickerItem.h"
+
+#include <QtDebug>
 
 
 namespace glabels
@@ -240,4 +239,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

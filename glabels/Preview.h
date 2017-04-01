@@ -22,10 +22,10 @@
 #define Preview_h
 
 
+#include "PageRenderer.h"
+
 #include <QGraphicsView>
 #include <QGraphicsScene>
-
-#include "PageRenderer.h"
 
 
 namespace glabels

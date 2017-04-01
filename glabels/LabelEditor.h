@@ -22,11 +22,11 @@
 #define LabelEditor_h
 
 
+#include "Region.h"
+
 #include <QPainter>
 #include <QScrollArea>
 #include <QWidget>
-
-#include "Region.h"
 
 
 namespace glabels

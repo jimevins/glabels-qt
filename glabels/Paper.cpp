@@ -76,4 +76,4 @@ namespace glabels
 		return mPwgSize.startsWith( "na_" );
 	}
 
-}
+} // namespace glabels

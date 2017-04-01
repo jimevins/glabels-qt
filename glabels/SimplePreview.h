@@ -22,11 +22,11 @@
 #define SimplePreview_h
 
 
+#include "Template.h"
+
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QList>
-
-#include "Template.h"
 
 
 namespace glabels

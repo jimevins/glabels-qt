@@ -22,10 +22,10 @@
 #define glabels_MiniPreviewPixmap_h
 
 
+#include "Point.h"
+
 #include <QPixmap>
 #include <QPainter>
-
-#include "Point.h"
 
 
 namespace glabels

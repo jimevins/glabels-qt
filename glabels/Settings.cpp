@@ -20,7 +20,6 @@
 
 #include "Settings.h"
 
-
 #include <QLocale>
 #include <QString>
 #include <QtDebug>
@@ -259,4 +258,4 @@ namespace glabels
 		emit mInstance->changed();
 	}
 
-}
+} // namespace glabels

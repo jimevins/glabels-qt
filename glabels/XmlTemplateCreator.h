@@ -22,9 +22,6 @@
 #define glabels_XmlTemplateCreator_h
 
 
-#include <QDomElement>
-#include <QString>
-
 #include "FrameCd.h"
 #include "FrameEllipse.h"
 #include "FrameRect.h"
@@ -32,6 +29,9 @@
 #include "Layout.h"
 #include "Markup.h"
 #include "Template.h"
+
+#include <QDomElement>
+#include <QString>
 
 
 namespace glabels

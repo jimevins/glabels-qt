@@ -22,11 +22,11 @@
 #define ObjectEditor_h
 
 
-#include <QButtonGroup>
-
 #include "ui_ObjectEditor.h"
 
 #include "Distance.h"
+
+#include <QButtonGroup>
 
 
 namespace glabels

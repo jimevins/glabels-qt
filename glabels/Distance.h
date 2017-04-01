@@ -22,10 +22,10 @@
 #define glabels_Distance_h
 
 
+#include "Units.h"
+
 #include <QCoreApplication>
 #include <QString>
-
-#include "Units.h"
 
 
 namespace glabels

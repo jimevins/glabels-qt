@@ -20,7 +20,6 @@
 
 #include "Distance.h"
 
-
 #include <QTextStream>
 #include <QtDebug>
 
@@ -204,4 +203,5 @@ namespace glabels
 		Units units(unitsId);
 		return QString::number( inUnits(units) ) + units.toIdString();
 	}
-}
+
+} // namespace glabels

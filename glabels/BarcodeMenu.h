@@ -22,9 +22,9 @@
 #define BarcodeMenu_h
 
 
-#include <QMenu>
-
 #include "BarcodeStyle.h"
+
+#include <QMenu>
 
 
 namespace glabels

@@ -22,9 +22,9 @@
 #define LabelModelTextObject_h
 
 
-#include <QTextLayout>
-
 #include "LabelModelObject.h"
+
+#include <QTextLayout>
 
 
 namespace glabels

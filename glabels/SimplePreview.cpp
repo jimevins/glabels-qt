@@ -20,7 +20,6 @@
 
 #include "SimplePreview.h"
 
-
 #include <QGraphicsRectItem>
 #include <QGraphicsDropShadowEffect>
 #include <QtDebug>
@@ -255,4 +254,4 @@ namespace glabels
 		mScene->addItem( upItem );
 	}
 
-}
+} // namespace glabels

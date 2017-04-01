@@ -20,7 +20,6 @@
 
 #include "FrameEllipse.h"
 
-
 #include "Constants.h"
 #include "StrUtil.h"
 
@@ -128,5 +127,4 @@ namespace glabels
 		return path;
 	}
 
-}
-
+} // namespace glabels

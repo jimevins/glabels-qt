@@ -70,6 +70,6 @@ namespace glabels
 			mSelected = value;
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

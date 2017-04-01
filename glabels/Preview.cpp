@@ -20,13 +20,12 @@
 
 #include "Preview.h"
 
+#include "LabelModel.h"
+#include "PreviewOverlayItem.h"
 
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsRectItem>
 #include <QtDebug>
-
-#include "LabelModel.h"
-#include "PreviewOverlayItem.h"
 
 
 namespace glabels
@@ -199,4 +198,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

@@ -67,4 +67,4 @@ namespace glabels
 		// empty
 	}
 
-}
+} // namespace glabels

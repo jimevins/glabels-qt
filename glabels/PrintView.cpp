@@ -20,11 +20,10 @@
 
 #include "PrintView.h"
 
+#include "LabelModel.h"
 
 #include <QPrintDialog>
 #include <QtDebug>
-
-#include "LabelModel.h"
 
 
 namespace glabels
@@ -156,4 +155,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

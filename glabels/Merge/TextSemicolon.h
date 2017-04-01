@@ -21,6 +21,7 @@
 #ifndef merge_TextSemicolon_h
 #define merge_TextSemicolon_h
 
+
 #include "Text.h"
 
 

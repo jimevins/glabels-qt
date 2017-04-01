@@ -20,7 +20,6 @@
 
 #include "ColorPaletteButtonItem.h"
 
-
 #include <QMouseEvent>
 #include <QPainter>
 
@@ -122,4 +121,4 @@ namespace glabels
 		emit activated();
 	}
 
-}
+} // namespace glabels

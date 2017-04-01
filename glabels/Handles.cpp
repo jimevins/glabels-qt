@@ -20,11 +20,10 @@
 
 #include "Handles.h"
 
+#include "LabelModelObject.h"
 
 #include <QColor>
 #include <QtDebug>
-
-#include "LabelModelObject.h"
 
 
 namespace glabels
@@ -586,4 +585,4 @@ namespace glabels
 		return pathAt( scale, mOwner->w(), mOwner->h() );
 	}
 
-}
+} // namespace glabels

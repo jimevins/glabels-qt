@@ -20,7 +20,6 @@
 
 #include "MiniPreviewPixmap.h"
 
-
 #include "Template.h"
 
 
@@ -135,5 +134,4 @@ namespace glabels
 		painter.restore();
 	}
 
-}
-
+} // namespace glabels

@@ -20,17 +20,16 @@
 
 #include "File.h"
 
-
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QtDebug>
-
 #include "FileUtil.h"
 #include "LabelModel.h"
 #include "MainWindow.h"
 #include "SelectProductDialog.h"
 #include "XmlLabelParser.h"
 #include "XmlLabelCreator.h"
+
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QtDebug>
 
 
 namespace glabels
@@ -244,4 +243,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

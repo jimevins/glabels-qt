@@ -20,15 +20,14 @@
 
 #include "XmlPaperParser.h"
 
+#include "Db.h"
+#include "Paper.h"
+#include "XmlUtil.h"
 
 #include <QDomDocument>
 #include <QDomNode>
 #include <QFile>
 #include <QtDebug>
-
-#include "Db.h"
-#include "Paper.h"
-#include "XmlUtil.h"
 
 
 namespace glabels
@@ -38,7 +37,7 @@ namespace glabels
 	{
 		QFile file( fileName );
 
-		if ( !file.open( QFile::ReadOnly | QFile::Text) )
+		if ( !file.open( QFile::ReadOnly | QFile::Text ) )
 		{
 			qWarning() << "Error: Cannot read file " << fileName
 				   << ": " << file.errorString();
@@ -106,5 +105,4 @@ namespace glabels
 		}
 	}
 
-}
-
+} // namespace glabels

@@ -20,7 +20,6 @@
 
 #include "ColorHistory.h"
 
-
 #include <QSettings>
 #include <QtDebug>
 
@@ -116,4 +115,4 @@ namespace glabels
 		settings.endGroup();
 	}
 
-}
+} // namespace glabels

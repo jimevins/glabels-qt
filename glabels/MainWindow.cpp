@@ -20,23 +20,6 @@
 
 #include "MainWindow.h"
 
-
-#include <QAction>
-#include <QClipboard>
-#include <QCloseEvent>
-#include <QFrame>
-#include <QLabel>
-#include <QListWidget>
-#include <QMenu>
-#include <QMenuBar>
-#include <QMessageBox>
-#include <QScrollArea>
-#include <QSettings>
-#include <QStackedWidget>
-#include <QStatusBar>
-#include <QToolBar>
-#include <QtDebug>
-
 #include "Db.h"
 #include "File.h"
 #include "Help.h"
@@ -50,6 +33,13 @@
 #include "PropertiesView.h"
 #include "StartupView.h"
 #include "UndoRedoModel.h"
+
+#include <QClipboard>
+#include <QFrame>
+#include <QMessageBox>
+#include <QSettings>
+#include <QStatusBar>
+#include <QtDebug>
 
 
 namespace glabels
@@ -1544,4 +1534,4 @@ namespace glabels
 		editRedoAction->setEnabled( mUndoRedoModel->canRedo() );
 	}
 
-}
+} // namespace glabels

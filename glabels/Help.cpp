@@ -20,10 +20,9 @@
 
 #include "Help.h"
 
+#include "AboutDialog.h"
 
 #include <QtDebug>
-
-#include "AboutDialog.h"
 
 
 namespace glabels
@@ -47,4 +46,4 @@ namespace glabels
 		dialog.exec();
 	}
 
-}
+} // namespace glabels

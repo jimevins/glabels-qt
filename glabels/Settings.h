@@ -22,10 +22,10 @@
 #define Settings_h
 
 
+#include "Distance.h"
+
 #include <QSettings>
 #include <QStringList>
-
-#include "Distance.h"
 
 
 namespace glabels

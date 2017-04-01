@@ -20,7 +20,6 @@
 
 #include "FrameRect.h"
 
-
 #include "Constants.h"
 #include "StrUtil.h"
 
@@ -149,5 +148,4 @@ namespace glabels
 	}
 
 
-}
-
+} // namespace glabels

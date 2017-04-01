@@ -20,7 +20,6 @@
 
 #include "TemplatePickerItem.h"
 
-
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QListWidgetItem>
@@ -52,4 +51,4 @@ namespace glabels
 		return mTmplate;
 	}
 
-}
+} // namespace glabels

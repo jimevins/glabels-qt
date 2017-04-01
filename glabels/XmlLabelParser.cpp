@@ -20,15 +20,6 @@
 
 #include "XmlLabelParser.h"
 
-
-#include <QByteArray>
-#include <QFile>
-#include <QTextCursor>
-#include <QTextDocument>
-#include <QtDebug>
-
-#include <zlib.h>
-
 #include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
@@ -43,6 +34,14 @@
 #include "DataCache.h"
 
 #include "Merge/Factory.h"
+
+#include <QByteArray>
+#include <QFile>
+#include <QTextCursor>
+#include <QTextDocument>
+#include <QtDebug>
+
+#include <zlib.h>
 
 
 namespace glabels
@@ -680,4 +679,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

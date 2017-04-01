@@ -20,7 +20,6 @@
 
 #include "LabelModelEllipseObject.h"
 
-
 #include <QBrush>
 #include <QPen>
 
@@ -167,4 +166,4 @@ namespace glabels
 		return path;
 	}
 
-}
+} // namespace glabels

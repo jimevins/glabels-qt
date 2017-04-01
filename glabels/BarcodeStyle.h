@@ -21,6 +21,7 @@
 #ifndef BarcodeStyle_h
 #define BarcodeStyle_h
 
+
 #include <QString>
 
 

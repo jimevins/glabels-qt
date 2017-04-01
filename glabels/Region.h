@@ -22,9 +22,9 @@
 #define Region_h
 
 
-#include <QRectF>
-
 #include "Distance.h"
+
+#include <QRectF>
 
 
 namespace glabels

@@ -20,12 +20,11 @@
 
 #include "ColorButton.h"
 
+#include "ColorSwatch.h"
 
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QtDebug>
-
-#include "ColorSwatch.h"
 
 
 namespace glabels
@@ -183,4 +182,4 @@ namespace glabels
 		emit colorChanged();
 	}
 
-}
+} // namespace glabels

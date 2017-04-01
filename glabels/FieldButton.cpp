@@ -20,7 +20,6 @@
 
 #include "FieldButton.h"
 
-
 #include <QLineEdit>
 #include <QStandardItemModel>
 
@@ -106,4 +105,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

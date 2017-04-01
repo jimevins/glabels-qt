@@ -20,9 +20,9 @@
 
 #include "FileUtil.h"
 
-#include <QApplication>
-
 #include "Config.h"
+
+#include <QApplication>
 
 
 namespace glabels
@@ -84,4 +84,4 @@ namespace glabels
 		return QDir("/");
 	}
 
-}
+} // namespace glabels

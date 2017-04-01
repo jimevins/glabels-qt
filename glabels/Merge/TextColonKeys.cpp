@@ -80,6 +80,6 @@ namespace glabels
 			return new TextColonKeys();
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

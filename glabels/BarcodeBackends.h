@@ -22,12 +22,12 @@
 #define BarcodeBackends_h
 
 
+#include "BarcodeStyle.h"
+
 #include <QList>
 #include <QMap>
 #include <QObject>
 #include <QString>
-
-#include "BarcodeStyle.h"
 
 
 namespace glabels

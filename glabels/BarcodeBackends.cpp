@@ -180,4 +180,4 @@ namespace glabels
 		mStyleNameMap.insert( fqName, style );
 	}
 
-}
+} // namespace glabels

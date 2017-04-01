@@ -209,4 +209,4 @@ namespace glabels
 		return mR;
 	}
 
-}
+} // namespace glabels

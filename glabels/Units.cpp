@@ -20,7 +20,6 @@
 
 #include "Units.h"
 
-
 #include <QTextStream>
 #include <QtDebug>
 
@@ -257,4 +256,4 @@ namespace glabels
 	}
 
 
-}
+} // namespace glabels

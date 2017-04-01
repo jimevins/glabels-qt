@@ -176,4 +176,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

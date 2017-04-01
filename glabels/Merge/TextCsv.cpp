@@ -80,6 +80,6 @@ namespace glabels
 			return new TextCsv();
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

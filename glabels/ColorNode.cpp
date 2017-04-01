@@ -20,7 +20,6 @@
 
 #include "ColorNode.h"
 
-
 #include "Merge/Record.h"
 
 
@@ -200,4 +199,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

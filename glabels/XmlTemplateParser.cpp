@@ -20,12 +20,6 @@
 
 #include "XmlTemplateParser.h"
 
-
-#include <QFile>
-#include <QDomDocument>
-#include <QDomNode>
-#include <QtDebug>
-
 #include "Db.h"
 #include "FrameRect.h"
 #include "FrameCd.h"
@@ -35,6 +29,11 @@
 #include "Markup.h"
 #include "Template.h"
 #include "XmlUtil.h"
+
+#include <QFile>
+#include <QDomDocument>
+#include <QDomNode>
+#include <QtDebug>
 
 
 namespace glabels
@@ -406,5 +405,4 @@ namespace glabels
 		frame->addMarkup( new MarkupEllipse( x1, y1, w, h ) );
 	}
 
-}
-
+} // namespace glabels

@@ -20,10 +20,9 @@
 
 #include "Outline.h"
 
+#include "LabelModelObject.h"
 
 #include <QColor>
-
-#include "LabelModelObject.h"
 
 
 namespace glabels
@@ -133,4 +132,4 @@ namespace glabels
 		return path;
 	}
 
-}
+} // namespace glabels

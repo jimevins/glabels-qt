@@ -80,6 +80,6 @@ namespace glabels
 			return new TextSemicolonKeys();
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

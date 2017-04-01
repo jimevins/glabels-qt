@@ -61,4 +61,4 @@ namespace glabels
 		return false;
 	}
 
-}
+} // namespace glabels

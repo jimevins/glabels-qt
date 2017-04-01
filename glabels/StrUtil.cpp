@@ -20,7 +20,6 @@
 
 #include "StrUtil.h"
 
-
 #include <QtMath>
 
 
@@ -209,5 +208,4 @@ namespace glabels
 	}
 
 
-}
-
+} // namespace glabels

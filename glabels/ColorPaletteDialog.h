@@ -22,13 +22,13 @@
 #define ColorPaletteDialog_h
 
 
-#include <QComboBox>
-#include <QDialog>
-
 #include "ColorNode.h"
 #include "ColorHistory.h"
 #include "ColorPaletteItem.h"
 #include "ColorPaletteButtonItem.h"
+
+#include <QComboBox>
+#include <QDialog>
 
 
 namespace glabels

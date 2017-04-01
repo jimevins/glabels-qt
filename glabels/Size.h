@@ -22,9 +22,9 @@
 #define Size_h
 
 
-#include <QSizeF>
-
 #include "Distance.h"
+
+#include <QSizeF>
 
 
 namespace glabels

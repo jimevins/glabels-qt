@@ -22,9 +22,9 @@
 #define LabelModelImageObject_h
 
 
-#include <QSvgRenderer>
-
 #include "LabelModelObject.h"
+
+#include <QSvgRenderer>
 
 
 namespace glabels

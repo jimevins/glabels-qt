@@ -20,10 +20,9 @@
 
 #include "TemplatePicker.h"
 
+#include "TemplatePickerItem.h"
 
 #include <QIcon>
-
-#include "TemplatePickerItem.h"
 
 
 namespace glabels
@@ -150,4 +149,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

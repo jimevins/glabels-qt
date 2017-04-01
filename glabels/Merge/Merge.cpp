@@ -210,6 +210,6 @@ namespace glabels
 			return list;
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

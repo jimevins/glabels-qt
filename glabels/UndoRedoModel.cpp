@@ -20,7 +20,6 @@
 
 #include "UndoRedoModel.h"
 
-
 #include "LabelModel.h"
 
 
@@ -260,4 +259,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

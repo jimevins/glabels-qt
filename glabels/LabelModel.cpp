@@ -20,13 +20,6 @@
 
 #include "LabelModel.h"
 
-
-#include <QApplication>
-#include <QClipboard>
-#include <QFileInfo>
-#include <QMimeData>
-#include <QtDebug>
-
 #include "LabelModelObject.h"
 #include "LabelModelTextObject.h"
 #include "LabelModelImageObject.h"
@@ -36,6 +29,12 @@
 #include "XmlLabelParser.h"
 
 #include "Merge/None.h"
+
+#include <QApplication>
+#include <QClipboard>
+#include <QFileInfo>
+#include <QMimeData>
+#include <QtDebug>
 
 
 namespace glabels
@@ -1442,4 +1441,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

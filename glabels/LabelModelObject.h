@@ -22,11 +22,6 @@
 #define LabelModelObject_h
 
 
-#include <QObject>
-#include <QFont>
-#include <QMatrix>
-#include <QPainter>
-
 #include "BarcodeStyle.h"
 #include "ColorNode.h"
 #include "Distance.h"
@@ -35,6 +30,11 @@
 #include "TextNode.h"
 
 #include "Merge/Record.h"
+
+#include <QObject>
+#include <QFont>
+#include <QMatrix>
+#include <QPainter>
 
 
 namespace glabels

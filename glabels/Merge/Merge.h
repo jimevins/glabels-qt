@@ -21,6 +21,7 @@
 #ifndef merge_Merge_h
 #define merge_Merge_h
 
+
 #include <QObject>
 #include <QString>
 #include <QStringList>

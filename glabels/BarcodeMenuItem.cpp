@@ -53,4 +53,4 @@ namespace glabels
 		emit activated( mBcStyle );
 	}
 
-}
+} // namespace glabels

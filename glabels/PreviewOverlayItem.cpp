@@ -20,10 +20,9 @@
 
 #include "PreviewOverlayItem.h"
 
+#include "PageRenderer.h"
 
 #include <QtDebug>
-
-#include "PageRenderer.h"
 
 
 namespace glabels
@@ -47,4 +46,4 @@ namespace glabels
 		mRenderer->printPage( painter );
 	}
 
-}
+} // namespace glabels

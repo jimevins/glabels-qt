@@ -91,4 +91,4 @@ namespace glabels
 		return s;
 	}
 
-}
+} // namespace glabels

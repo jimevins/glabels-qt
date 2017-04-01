@@ -21,6 +21,7 @@
 #include "Text.h"
 
 #include "Record.h"
+
 #include <QtDebug>
 
 
@@ -415,6 +416,6 @@ namespace glabels
 			return fields;
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

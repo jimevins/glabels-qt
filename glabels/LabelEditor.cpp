@@ -20,11 +20,6 @@
 
 #include "LabelEditor.h"
 
-
-#include <QMouseEvent>
-#include <QtMath>
-#include <QtDebug>
-
 #include "Cursors.h"
 #include "FrameCd.h"
 #include "FrameEllipse.h"
@@ -40,6 +35,10 @@
 #include "Markup.h"
 #include "Settings.h"
 #include "UndoRedoModel.h"
+
+#include <QMouseEvent>
+#include <QtMath>
+#include <QtDebug>
 
 
 namespace glabels
@@ -1250,4 +1249,4 @@ namespace glabels
 		emit zoomChanged();
 	}
 
-}
+} // namespace glabels

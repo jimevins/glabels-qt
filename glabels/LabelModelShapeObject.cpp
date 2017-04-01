@@ -20,7 +20,6 @@
 
 #include "LabelModelShapeObject.h"
 
-
 #include <QBrush>
 #include <QPen>
 
@@ -168,4 +167,4 @@ namespace glabels
 		return true;
 	}
 
-}
+} // namespace glabels

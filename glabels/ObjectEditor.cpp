@@ -20,11 +20,6 @@
 
 #include "ObjectEditor.h"
 
-
-#include <QFileDialog>
-#include <QtMath>
-#include <QtDebug>
-
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBoxObject.h"
@@ -37,6 +32,10 @@
 #include "UndoRedoModel.h"
 
 #include "Merge/Merge.h"
+
+#include <QFileDialog>
+#include <QtMath>
+#include <QtDebug>
 
 
 namespace glabels
@@ -697,4 +696,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

@@ -4,6 +4,10 @@ Glabels Coding Style
 This file describes the coding style used in all glabels source code.  Any
 patches or pull requests should adhere to this style.
 
+:bulb: **Note:** The top-level glabels source directory includes a *.clang-format* file.
+This file can be used with `clang-format` to reformat code to a reasonable approximation
+of the style described here.
+
 
 Formatting
 ----------
@@ -124,12 +128,12 @@ All header files should have an ifndef guard to prevent multiple inclusion.
 Header files should be included in the following order.
 
 1. header file for this module (e.g. this would be "Foo.h" in "Foo.cpp").
-2. C system header files (preference is for the C++ version if available,
-   e.g. \<cmath> instead of \<math.h>.
+2. Glabels header files.
+3. Qt header files
 3. C++ system header files (e.g. STL files)
-4. Qt header files
+4. C system header files (preference is for the C++ version if available,
+   e.g. \<cmath> instead of \<math.h>.
 5. Other libraries' header files
-6. Other glabels header files.
 
 Paths used in include directives should always be relative to either the
 glabels source directory or an appropriate base directory for each library.

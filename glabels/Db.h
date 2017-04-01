@@ -22,15 +22,15 @@
 #define glabels_Db_h
 
 
-#include <QCoreApplication>
-#include <QDir>
-#include <QList>
-#include <QString>
-
 #include "Category.h"
 #include "Paper.h"
 #include "Template.h"
 #include "Vendor.h"
+
+#include <QCoreApplication>
+#include <QDir>
+#include <QList>
+#include <QString>
 
 
 namespace glabels

@@ -41,4 +41,4 @@ namespace glabels
 		return mUrl;
 	}
 
-}
+} // namespace glabels

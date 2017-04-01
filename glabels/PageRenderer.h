@@ -22,14 +22,14 @@
 #define PageRenderer_h
 
 
-#include <QPainter>
-#include <QRect>
-#include <QVector>
-
 #include "Point.h"
 
 #include "Merge/Merge.h"
 #include "Merge/Record.h"
+
+#include <QPainter>
+#include <QRect>
+#include <QVector>
 
 
 namespace glabels

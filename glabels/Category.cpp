@@ -42,6 +42,4 @@ namespace glabels
 		return mName;
 	}
 
-}
-
-
+} // namespace glabels

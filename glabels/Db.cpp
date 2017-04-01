@@ -20,10 +20,6 @@
 
 #include "Db.h"
 
-
-#include <QtDebug>
-#include <QtGlobal>
-
 #include "Config.h"
 #include "StrUtil.h"
 #include "FileUtil.h"
@@ -31,6 +27,9 @@
 #include "XmlPaperParser.h"
 #include "XmlTemplateParser.h"
 #include "XmlVendorParser.h"
+
+#include <QtDebug>
+#include <QtGlobal>
 
 
 namespace glabels
@@ -686,4 +685,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

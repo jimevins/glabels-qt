@@ -122,6 +122,6 @@ namespace glabels
 			return nullptr;
 		}
 
-	}
+	} // namespace merge
 
-}
+} // namespace glabels

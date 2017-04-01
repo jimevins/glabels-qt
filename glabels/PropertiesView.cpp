@@ -20,15 +20,14 @@
 
 #include "PropertiesView.h"
 
-
-#include <QStyledItemDelegate>
-#include <QtDebug>
-
 #include "Db.h"
 #include "LabelModel.h"
 #include "SelectProductDialog.h"
 #include "Settings.h"
 #include "UndoRedoModel.h"
+
+#include <QStyledItemDelegate>
+#include <QtDebug>
 
 
 namespace glabels
@@ -233,4 +232,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

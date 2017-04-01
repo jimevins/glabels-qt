@@ -22,15 +22,15 @@
 #define glabels_Frame_h
 
 
+#include "Distance.h"
+#include "Layout.h"
+#include "Point.h"
+
 #include <QCoreApplication>
 #include <QList>
 #include <QPainterPath>
 #include <QString>
 #include <QVector>
-
-#include "Distance.h"
-#include "Layout.h"
-#include "Point.h"
 
 
 namespace glabels

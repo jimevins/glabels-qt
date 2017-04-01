@@ -22,12 +22,12 @@
 #define ColorNode_h
 
 
-#include <cstdint>
+#include "Merge/Record.h"
 
 #include <QString>
 #include <QColor>
 
-#include "Merge/Record.h"
+#include <cstdint>
 
 
 namespace glabels

@@ -20,11 +20,10 @@
 
 #include "FrameCd.h"
 
-
-#include <QtDebug>
-
 #include "Constants.h"
 #include "StrUtil.h"
+
+#include <QtDebug>
 
 
 namespace glabels
@@ -215,5 +214,4 @@ namespace glabels
 		return path;
 	}
 
-}
-
+} // namespace glabels

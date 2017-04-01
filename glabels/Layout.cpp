@@ -20,10 +20,9 @@
 
 #include "Layout.h"
 
+#include "Constants.h"
 
 #include <cmath>
-
-#include "Constants.h"
 
 
 namespace glabels
@@ -102,4 +101,4 @@ namespace glabels
 		return other;
 	}
 
-}
+} // namespace glabels

@@ -20,7 +20,6 @@
 
 #include "PreferencesDialog.h"
 
-
 #include "Settings.h"
 
 
@@ -83,4 +82,4 @@ namespace glabels
 		}
 	}
 
-}
+} // namespace glabels

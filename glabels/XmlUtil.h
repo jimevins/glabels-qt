@@ -22,11 +22,12 @@
 #define glabels_XmlUtil_h
 
 
-#include <cstdint>
+#include "Distance.h"
+
 #include <QDomElement>
 #include <QString>
 
-#include "Distance.h"
+#include <cstdint>
 
 
 namespace glabels

@@ -22,15 +22,15 @@
 #define LabelModel_h
 
 
-#include <QList>
-#include <QObject>
-#include <QPainter>
-
 #include "Settings.h"
 #include "Template.h"
 
 #include "Merge/Merge.h"
 #include "Merge/Record.h"
+
+#include <QList>
+#include <QObject>
+#include <QPainter>
 
 
 namespace glabels

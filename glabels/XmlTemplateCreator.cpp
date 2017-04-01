@@ -20,14 +20,13 @@
 
 #include "XmlTemplateCreator.h"
 
+#include "Db.h"
+#include "Template.h"
+#include "XmlUtil.h"
 
 #include <QDomNode>
 #include <QFile>
 #include <QtDebug>
-
-#include "Db.h"
-#include "Template.h"
-#include "XmlUtil.h"
 
 
 namespace glabels
@@ -331,5 +330,4 @@ namespace glabels
 		XmlUtil::setLengthAttr( node, "h",  markup->h() );
 	}
 
-}
-
+} // namespace glabels

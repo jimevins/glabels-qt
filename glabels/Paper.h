@@ -22,9 +22,9 @@
 #define glabels_Paper_h
 
 
-#include <QString>
-
 #include "Distance.h"
+
+#include <QString>
 
 
 namespace glabels

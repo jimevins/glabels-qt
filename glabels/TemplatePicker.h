@@ -22,10 +22,10 @@
 #define TemplatePicker_h
 
 
+#include "Template.h"
+
 #include <QList>
 #include <QListWidget>
-
-#include "Template.h"
 
 
 namespace glabels

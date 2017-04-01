@@ -20,7 +20,6 @@
 
 #include "ColorSwatch.h"
 
-
 #include <QPainter>
 
 
@@ -58,4 +57,4 @@ namespace glabels
 		painter.drawRect( 1, 1, w-2, h-2 );
 	}
 
-}
+} // namespace glabels

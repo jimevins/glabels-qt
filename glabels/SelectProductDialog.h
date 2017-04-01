@@ -22,9 +22,9 @@
 #define SelectProductDialog_h
 
 
-#include <QBasicTimer>
-
 #include "ui_SelectProductDialog.h"
+
+#include <QBasicTimer>
 
 
 namespace glabels

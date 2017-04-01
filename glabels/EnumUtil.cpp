@@ -123,4 +123,4 @@ namespace glabels
 
 	}
 
-}
+} // namespace glabels

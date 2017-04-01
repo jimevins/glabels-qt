@@ -20,15 +20,14 @@
 
 #include "LabelModelObject.h"
 
-
-#include <QFont>
-#include <QtDebug>
-
 #include "ColorNode.h"
 #include "BarcodeStyle.h"
 #include "Region.h"
 #include "Size.h"
 #include "TextNode.h"
+
+#include <QFont>
+#include <QtDebug>
 
 
 namespace glabels
@@ -1179,4 +1178,4 @@ namespace glabels
 		// empty
 	}
 
-}
+} // namespace glabels

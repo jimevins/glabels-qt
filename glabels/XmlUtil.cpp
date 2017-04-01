@@ -20,7 +20,6 @@
 
 #include "XmlUtil.h"
 
-
 #include <QTextStream>
 #include <QCoreApplication>
 #include <QtDebug>
@@ -291,4 +290,4 @@ namespace glabels
 		node.setAttribute( name, QString::number(value.inUnits(mUnits)) + mUnits.toIdString() );
 	}
 
-}
+} // namespace glabels
