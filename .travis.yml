@@ -12,7 +12,6 @@ install:
     - source /opt/qt54/bin/qt54-env.sh
 
 script:
-  - cd glabels
   - mkdir build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
