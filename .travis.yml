@@ -8,7 +8,7 @@ before_install:
     - sudo apt-get update -qq
     
 install: 
-    - sudo apt-get -y install qt58-meta qt58base qt58scxml qt58xmlpatterns qt58svg zlib1g-dev
+    - sudo apt-get -y install qt58meta qt58base qt58scxml qt58xmlpatterns qt58svg zlib1g-dev
     - source /opt/qt58/bin/qt58-env.sh
 
 script:
