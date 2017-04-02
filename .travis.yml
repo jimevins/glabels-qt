@@ -8,7 +8,7 @@ before_install:
     - sudo apt-get update -qq
     
 install: 
-    - sudo apt-get -y install qt54base qt54xmlpatterns qt54svg zlib1g-dev
+    - sudo apt-get -y install qt54base qt54xmlpatterns qt58translations qt58tools qt54svg zlib1g-dev
     - source /opt/qt54/bin/qt54-env.sh
 
 script:
