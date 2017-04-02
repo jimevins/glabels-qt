@@ -16,7 +16,7 @@ script:
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   - make -j4
-  - sudo make INSTALL_ROOT=appdir install ; sudo chown -R $USER appdir ; find appdir/
+  - sudo make DESTIDR=appdir install ; sudo chown -R $USER appdir ; find appdir/
 
 after_success:
   - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
