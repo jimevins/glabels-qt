@@ -18,18 +18,18 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include <QApplication>
-#include <QLocale>
-#include <QTranslator>
-#include <QtDebug>
-
 #include "FileUtil.h"
 #include "Db.h"
 #include "MainWindow.h"
 #include "Settings.h"
 
 #include "Merge/Factory.h"
+
+#include <QApplication>
+#include <QLibraryInfo>
+#include <QLocale>
+#include <QTranslator>
+#include <QtDebug>
 
 
 int main( int argc, char **argv )
@@ -44,16 +44,23 @@ int main( int argc, char **argv )
 	// Setup translators
 	//
 	QLocale locale = QLocale::system();
-	QString translationsDir = glabels::FileUtil::translationsDir().canonicalPath();
+	QString qtTranslationsDir = QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+	QString myTranslationsDir = glabels::FileUtil::translationsDir().canonicalPath();
 	
+	QTranslator qtTranslator;
+	if ( qtTranslator.load( locale, "qt", "_", qtTranslationsDir ) )
+	{
+		app.installTranslator(&qtTranslator);
+	}
+
 	QTranslator glabelsTranslator;
-	if ( glabelsTranslator.load( locale, "glabels", "_", translationsDir ) )
+	if ( glabelsTranslator.load( locale, "glabels", "_", myTranslationsDir ) )
 	{
 		app.installTranslator(&glabelsTranslator);
 	}
 
 	QTranslator templatesTranslator;
-	if ( templatesTranslator.load( locale, "templates", "_", translationsDir ) )
+	if ( templatesTranslator.load( locale, "templates", "_", myTranslationsDir ) )
 	{
 		app.installTranslator(&templatesTranslator);
 	}
