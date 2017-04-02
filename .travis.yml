@@ -4,12 +4,12 @@ sudo: require
 dist: trusty
 
 before_install:
-    - sudo add-apt-repository ppa:beineri/opt-qt58-trusty -y
+    - sudo add-apt-repository ppa:beineri/opt-qt542-trusty -y
     - sudo apt-get update -qq
     
 install: 
-    - sudo apt-get -y install qt58meta qt58base qt58scxml qt58xmlpatterns qt58svg zlib1g-dev
-    - source /opt/qt58/bin/qt58-env.sh
+    - sudo apt-get -y install qt54base qt54xmlpatterns qt54svg zlib1g-dev
+    - source /opt/qt54/bin/qt54-env.sh
 
 script:
   - cd glabels
