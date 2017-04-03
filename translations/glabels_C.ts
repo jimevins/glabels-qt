@@ -1971,4 +1971,17 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../glabels/glabels_main.cpp" line="78"/>
+        <source>gLabels Label Designer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels_main.cpp" line="82"/>
+        <source>gLabels project files to open, optionally.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

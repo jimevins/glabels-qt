@@ -20,12 +20,16 @@
 
 #include "FileUtil.h"
 #include "Db.h"
+#include "LabelModel.h"
 #include "MainWindow.h"
 #include "Settings.h"
+#include "Version.h"
+#include "XmlLabelParser.h"
 
 #include "Merge/Factory.h"
 
 #include <QApplication>
+#include <QCommandLineParser>
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QTranslator>
@@ -39,6 +43,7 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationName( "glabels.org" );
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-qt" );
+	QCoreApplication::setApplicationVersion( glabels::Version::STRING );
 
 	//
 	// Setup translators
@@ -65,6 +70,18 @@ int main( int argc, char **argv )
 		app.installTranslator(&templatesTranslator);
 	}
 
+
+	//
+	// Parse command line
+	//
+	QCommandLineParser parser;
+	parser.setApplicationDescription( QCoreApplication::translate( "main", "gLabels Label Designer" ) );
+	parser.addHelpOption();
+	parser.addVersionOption();
+	parser.addPositionalArgument( "files",
+	                              QCoreApplication::translate( "main", "gLabels project files to open, optionally." ),
+	                              "[files...]" );
+	parser.process( app );
 	
 	//
 	// Initialize subsystems
@@ -74,14 +91,33 @@ int main( int argc, char **argv )
 	glabels::merge::Factory::init();
 
 	
-	/// @TODO open file(s) from command line if present, otherwise start wizard
+	//
+	// Open each file in its own main window
+	//
+	bool openedFiles = false;
+	foreach ( QString filename, parser.positionalArguments() )
+	{
+		glabels::LabelModel *label = glabels::XmlLabelParser::readFile( filename );
+		if ( label )
+		{
+			label->setFileName( filename );
+			glabels::MainWindow *newWindow = new glabels::MainWindow();
+			newWindow->setModel( label );
+			newWindow->show();
+			openedFiles = true;
+		}
+	}
 
 	
 	//
 	// Launch main window
 	//
-	glabels::MainWindow mainWindow;
-	mainWindow.show();
+	if ( !openedFiles )
+	{
+		glabels::MainWindow *mainWindow = new glabels::MainWindow();
+		mainWindow->show();
+	}
 
+	
 	return app.exec();
 }
