@@ -30,6 +30,10 @@ It is still missing several features to bring it in parity with glabels-3.4.  Th
 - Custom product templates designer
 - Online manual
 
+## Download
+
+The latest [AppImage](http://appimage.org/) for Linux can be downloaded from an URL that can be found in the latest [Travis CI build log](https://travis-ci.org/jimevins/glabels-qt) (toward the end). It should run on many distributions. Just download, [make executable](http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80), and run.
+
 ## Build Instructions
 
 - [Linux Build Instructions](docs/BUILD-INSTRUCTIONS-LINUX.md)
@@ -46,7 +50,6 @@ These include
   - Mac
   - Linux (flatpak)
   - Linux (snap)
-  - Linux (appimage)
 
 * Help is needed writing online documentation.
 
