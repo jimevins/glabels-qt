@@ -9,7 +9,7 @@ Acknowledgments
 
 gLabels includes contributions from
 
-* [probonopb](https://github.com/probonopd) - travis-ci setup, appImage
+* [probonopd](https://github.com/probonopd) - travis-ci setup, appImage
 
 
 Translations
