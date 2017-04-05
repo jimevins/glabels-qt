@@ -3,8 +3,18 @@ gLabels Author
 
 Jim Evins <evins@snaught.com>
 
+
 Acknowledgments
 ===============
+
+gLabels includes contributions from
+
+* [probonopb](https://github.com/probonopd) - travis-ci setup, appImage
+
+
+Translations
+------------
+* TBD.
 
 
 Product Templates

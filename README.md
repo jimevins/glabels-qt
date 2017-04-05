@@ -11,12 +11,14 @@ gLabels-qt is the development repository for the next major version of gLabels (
 
 ![screenshot](docs/images/screenshot.png)
 
+
 ## What's new in gLabels-qt?
 
 - Based on the Qt cross-platform framework.
 - Unlike previous versions, glabels-qt is a cross-platform application.  So far, it
   has been built and tested under both Linux and Windows 7 (using MSYS/MINGW toolchain).
 - Updated UI based on typical workflows.
+
 
 ## Status
 
@@ -30,11 +32,38 @@ It is still missing several features to bring it in parity with glabels-3.4.  Th
 - Custom product templates designer
 - Online manual
 
+
+## Download
+
+### Latest Release
+
+There are currently no official releases of gLabels-qt.
+
+### Continuous Integration Snapshots
+
+Continuous integration snapshots are not official releases.  These snapshots represent the latest
+bleading-edge development (unstable) code.  Please, DO NOT use it in a production environment.  Do not
+expect compatability or consistency of features between snapshots.
+
+#### Linux AppImage
+
+Download, make it executable, and run!  See [appImage.org](http:appimage.org).
+
+- **[gLabels_Label_Designer_4-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/gLabels_Label_Designer_4-x86_64.AppImage)**
+
+
+#### Source
+
+- **[Source Code (TAR.GZ)](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz)**
+- **[Source Code (ZIP)](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz)**
+
+
 ## Build Instructions
 
 - [Linux Build Instructions](docs/BUILD-INSTRUCTIONS-LINUX.md)
 - [Windows Build Instructions](docs/BUILD-INSTRUCTIONS-WINDOWS.md)
 - Mac Build Instructions (TBD)
+
 
 ## Help Needed
 
@@ -46,7 +75,6 @@ These include
   - Mac
   - Linux (flatpak)
   - Linux (snap)
-  - Linux (appimage)
 
 * Help is needed writing online documentation.
 
