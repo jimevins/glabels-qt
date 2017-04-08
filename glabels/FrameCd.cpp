@@ -35,7 +35,7 @@ namespace glabels
 			  const Distance& h,
 			  const Distance& waste,
 			  const QString&  id )
-		: mR1(r1), mR2(r2), mW(w), mH(h), mWaste(waste), Frame(id)
+		: Frame(id), mR1(r1), mR2(r2), mW(w), mH(h), mWaste(waste)
 	{
 		Distance wReal = (mW == 0) ? 2*mR1 : mW;
 		Distance hReal = (mH == 0) ? 2*mR1 : mH;
@@ -92,8 +92,9 @@ namespace glabels
 
 
 	FrameCd::FrameCd( const FrameCd& other )
-		: mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
-		  mPath(other.mPath), Frame(other)
+		: Frame(other),
+		  mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
+		  mPath(other.mPath)
 	{
 		// empty
 	}

@@ -99,7 +99,9 @@ namespace glabels
 		                               const Distance& value );
 
 	private:
-		static Units mUnits;
+		Units mUnits;
+
+		static XmlUtil* mInstance;
 
 	};
 

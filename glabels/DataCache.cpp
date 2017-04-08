@@ -43,7 +43,7 @@ namespace glabels
 				{
 					if ( const QImage* image = imageObject->image() )
 					{
-						addImage( filenameNode.data(), *imageObject->image() );
+						addImage( filenameNode.data(), *image );
 					}
 					else
 					{

@@ -54,7 +54,7 @@ namespace glabels
 	/// Constructor
 	///
 	Preview::Preview( QWidget *parent )
-		: mModel(nullptr), mRenderer(nullptr), QGraphicsView(parent)
+		: QGraphicsView(parent), mModel(nullptr), mRenderer(nullptr)
 	{
 		mScene = new QGraphicsScene();
 		setScene( mScene );

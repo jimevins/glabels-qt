@@ -31,7 +31,7 @@ namespace glabels
 	//
 	// Static data
 	//
-	Units XmlUtil::mUnits;
+	XmlUtil* XmlUtil::mInstance = nullptr;
 
 
 	XmlUtil::XmlUtil()
@@ -42,7 +42,10 @@ namespace glabels
 
 	void XmlUtil::init()
 	{
-		static XmlUtil* xmlUtil = new XmlUtil();
+		if ( mInstance == nullptr )
+		{
+			mInstance = new XmlUtil();
+		}
 	}
 
 
@@ -50,7 +53,7 @@ namespace glabels
 	{
 		init();
 
-		return mUnits;
+		return mInstance->mUnits;
 	}
 
 
@@ -58,7 +61,7 @@ namespace glabels
 	{
 		init();
 
-		mUnits = units;
+		mInstance->mUnits = units;
 	}
 
 
@@ -287,7 +290,8 @@ namespace glabels
 	{
 		init();
 
-		node.setAttribute( name, QString::number(value.inUnits(mUnits)) + mUnits.toIdString() );
+		Units units = mInstance->mUnits;
+		node.setAttribute( name, QString::number(value.inUnits(units)) + units.toIdString() );
 	}
 
 } // namespace glabels

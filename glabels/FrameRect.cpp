@@ -33,7 +33,7 @@ namespace glabels
 			      const Distance& xWaste,
 			      const Distance& yWaste,
 			      const QString&  id )
-		: mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste), Frame(id)
+		: Frame(id), mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste)
 	{
 		mPath.addRoundedRect( 0, 0, mW.pt(), mH.pt(), mR.pt(), mR.pt() );
 		
@@ -44,8 +44,9 @@ namespace glabels
 
 	
 	FrameRect::FrameRect( const FrameRect &other )
-		: mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
-		  mYWaste(other.mYWaste), mPath(other.mPath), Frame(other)
+		: Frame(other),
+		  mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
+		  mYWaste(other.mYWaste), mPath(other.mPath)
 	{
 		// empty
 	}

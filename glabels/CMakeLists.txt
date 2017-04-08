@@ -8,6 +8,9 @@ if (NOT WIN32)
    add_compile_options (-fPIC)
 endif ()
 
+# Uncomment to build with pedantic flags
+#add_compile_options (-Werror -Wall -Wpedantic)
+
 
 #=======================================
 # Auto-generate Version.h

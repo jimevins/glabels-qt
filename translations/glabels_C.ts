@@ -97,8 +97,8 @@
 <context>
     <name>FrameCd</name>
     <message>
-        <location filename="../glabels/FrameCd.cpp" line="147"/>
-        <location filename="../glabels/FrameCd.cpp" line="154"/>
+        <location filename="../glabels/FrameCd.cpp" line="148"/>
+        <location filename="../glabels/FrameCd.cpp" line="155"/>
         <source>diameter</source>
         <translation type="unfinished"></translation>
     </message>

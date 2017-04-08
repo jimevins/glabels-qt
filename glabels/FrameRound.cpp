@@ -30,7 +30,7 @@ namespace glabels
 	FrameRound::FrameRound( const Distance& r,
 				const Distance& waste,
 				const QString&  id )
-		: mR(r), mWaste(waste), Frame(id)
+		: Frame(id), mR(r), mWaste(waste)
 	{
 		mPath.addEllipse( 0, 0, 2*mR.pt(), 2*mR.pt() );
 		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(),
@@ -39,7 +39,7 @@ namespace glabels
 	
 
 	FrameRound::FrameRound( const FrameRound& other )
-		: mR(other.mR), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
+		: Frame(other), mR(other.mR), mWaste(other.mWaste), mPath(other.mPath)
 	{
 		// empty
 	}

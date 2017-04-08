@@ -35,7 +35,7 @@ namespace glabels
 		/// Constructor
 		///
 		Text::Text( QChar delimiter, bool line1HasKeys )
-			: mNFieldsMax(0), mDelimeter(delimiter), mLine1HasKeys(line1HasKeys)
+			: mDelimeter(delimiter), mLine1HasKeys(line1HasKeys), mNFieldsMax(0)
 		{
 		}
 
@@ -45,8 +45,8 @@ namespace glabels
 		///
 		Text::Text( const Text* merge )
 			: Merge( merge ),
-			  mNFieldsMax(merge->mNFieldsMax),
-			  mDelimeter(merge->mDelimeter), mLine1HasKeys(merge->mLine1HasKeys)
+			  mDelimeter(merge->mDelimeter), mLine1HasKeys(merge->mLine1HasKeys),
+			  mNFieldsMax(merge->mNFieldsMax)
 		{
 		}
 

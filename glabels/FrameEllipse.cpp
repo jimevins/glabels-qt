@@ -31,14 +31,14 @@ namespace glabels
 				    const Distance& h,
 				    const Distance& waste,
 				    const QString&  id )
-		: mW(w), mH(h), mWaste(waste), Frame(id)
+		: Frame(id), mW(w), mH(h), mWaste(waste)
 	{
 		mPath.addEllipse( 0, 0, mW.pt(), mH.pt() );
 		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(), (mW+2*mWaste).pt(), (mH+2*mWaste).pt() );
 	}
 
 	FrameEllipse::FrameEllipse( const FrameEllipse& other )
-		: mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath), Frame(other)
+		: Frame(other), mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath)
 	{
 		// empty
 	}

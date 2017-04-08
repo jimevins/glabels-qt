@@ -47,7 +47,7 @@ namespace glabels
 	PageRenderer::PageRenderer()
 		: mModel(nullptr), mNCopies(0), mStartLabel(0),
 		  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
-		  mIsMerge(false), mIPage(0), mNPages(0)
+		  mIPage(0), mIsMerge(false), mNPages(0)
 	{
 		// empty
 	}
