@@ -1,0 +1,29 @@
+The gLabels official distribution is an aggregate of several components.
+Each component is licensed as follows
+
+
+GLABELS:
+
+   The gLabels application, and other portions of the official gLabels
+   distribution not explicitly licensed otherwise, are licensed under the
+   GNU GENERAL PUBLIC LICENSE (GPL); either version 3 of the License, or
+   (at your option) any later version -- see the 'COPYING' file in this
+   directory for details.
+
+
+DOCUMENTATION:
+
+   The gLabels documentation, located in the "docs/" and "help/" subdirectories,
+   is licensed under the CreativeCommons Attribution-Share Alike 3.0 Unported
+   license.  See 'COPYING-DOCS' in this directory for details, or visit
+   'http://creativecommons.org/licenses/by-sa/3.0/'.
+
+
+TEMPLATE DATABASE:
+
+   The XML files in the "templates/" subdirectory constitute the glabels
+   label database.  No copyright is claimed on the facts contained within
+   the database and can be used for any purpose.  However, to clear up any
+   ambiguity, the DTD file that defines the format of these files is
+   licensed using the MIT/X license, see 'COPYING-TEMPLATES' in this
+   directory for details.
