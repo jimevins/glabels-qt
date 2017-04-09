@@ -48,6 +48,7 @@ find_package(ZLIB 1.2 REQUIRED)
 #=======================================
 # Subdirectories
 #=======================================
+add_subdirectory (glbarcode)
 add_subdirectory (glabels)
 add_subdirectory (templates)
 add_subdirectory (translations)

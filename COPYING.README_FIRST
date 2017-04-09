@@ -11,6 +11,14 @@ GLABELS:
    directory for details.
 
 
+GLBARCODE:
+
+   gLabels currently includes a version of the glbarcode++ library, located in
+   the "glbarcode/" subdirectory.  It is licensed under the GNU LESSER GENERAL
+   PUBLIC LICENSE (LGPL); either version 3 of the License, or (at your option)
+   any later version -- see the 'COPYING-LIB
+
+
 DOCUMENTATION:
 
    The gLabels documentation, located in the "docs/" and "help/" subdirectories,
