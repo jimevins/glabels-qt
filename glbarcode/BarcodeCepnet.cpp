@@ -27,7 +27,7 @@ namespace glbarcode
 	/*
 	 * Static CEPNET barcode creation method
 	 */
-	Barcode* BarcodeCepnet::create( void )
+	Barcode* BarcodeCepnet::create( )
 	{
 		return new BarcodeCepnet();
 	}

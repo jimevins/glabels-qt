@@ -56,7 +56,7 @@ namespace glbarcode
                 /**
                  * Destructor
                  */
-		virtual ~QtRenderer();
+		~QtRenderer() override;
 
                 /** Assignment operator.
                  *
@@ -85,13 +85,13 @@ namespace glbarcode
 		/*
                  * Virtual methods implemented by QtRenderer.
                  */
-		void drawBegin( double w, double h );
-		void drawEnd();
-		void drawLine( double x, double y, double w, double h );
-		void drawBox( double x, double y, double w, double h );
-		void drawText( double x, double y, double size, const std::string& text );
-		void drawRing( double x, double y, double r, double w );
-		void drawHexagon( double x, double y, double h );
+		void drawBegin( double w, double h ) override;
+		void drawEnd() override;
+		void drawLine( double x, double y, double w, double h ) override;
+		void drawBox( double x, double y, double w, double h ) override;
+		void drawText( double x, double y, double size, const std::string& text ) override;
+		void drawRing( double x, double y, double r, double w ) override;
+		void drawHexagon( double x, double y, double h ) override;
 
 		/**
                  * Private data

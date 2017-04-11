@@ -27,7 +27,7 @@ namespace glbarcode
 	/*
 	 * Static Postnet-9 barcode creation method
 	 */
-	Barcode* BarcodePostnet9::create( void )
+	Barcode* BarcodePostnet9::create( )
 	{
 		return new BarcodePostnet9();
 	}

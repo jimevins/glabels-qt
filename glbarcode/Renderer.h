@@ -82,7 +82,7 @@ namespace glbarcode
 		 * Required virtual method to perform rendering cleanup, such as closing devices
 		 * and/or drawing contexts.
 		 */
-		virtual void drawEnd( void ) = 0;
+		virtual void drawEnd() = 0;
 
 
 		/**

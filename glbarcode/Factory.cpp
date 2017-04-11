@@ -63,11 +63,11 @@ namespace glbarcode
 	}
 
 
-	void Factory::init( void )
+	void Factory::init( )
 	{
-		static Factory* singletonInstance = NULL;
+		static Factory* singletonInstance = nullptr;
 		
-		if ( singletonInstance == NULL )
+		if ( singletonInstance == nullptr )
 		{
 			singletonInstance = new Factory();
 		}
@@ -92,7 +92,7 @@ namespace glbarcode
 	}
 
 
-	TypeIdList Factory::getSupportedTypes( void )
+	TypeIdList Factory::getSupportedTypes( )
 	{
 		init();
 
@@ -111,7 +111,7 @@ namespace glbarcode
 			return i->second();
 		}
 
-		return NULL;
+		return nullptr;
 	}
 
 

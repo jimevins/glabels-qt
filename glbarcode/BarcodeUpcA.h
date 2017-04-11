@@ -44,7 +44,7 @@ namespace glbarcode
 		 *
 		 * Used by glbarcode::BarcodeFactory
 		 */
-		static Barcode* create( void );
+		static Barcode* create();
 
 
 		/**
@@ -54,9 +54,9 @@ namespace glbarcode
 
 
 	private:
-		bool validateDigits( int nDigits );
+		bool validateDigits( int nDigits ) override;
 
-		std::string preprocess( const std::string& rawData );
+		std::string preprocess( const std::string& rawData ) override;
 
 		void vectorizeText( const std::string& displayText,
 		                    double             size1,
@@ -66,7 +66,7 @@ namespace glbarcode
 		                    double             y1,
 		                    double             x2Left,
 		                    double             x2Right,
-		                    double             y2 );
+		                    double             y2 ) override;
 
 	};
 

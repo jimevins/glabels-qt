@@ -30,7 +30,7 @@ namespace glbarcode
 	/*
 	 * Static UPC-A barcode creation method
 	 */
-	Barcode* BarcodeUpcA::create( void )
+	Barcode* BarcodeUpcA::create( )
 	{
 		return new BarcodeUpcA();
 	}

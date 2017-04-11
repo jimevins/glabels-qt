@@ -52,11 +52,11 @@ namespace glbarcode
 		 *
 		 * Used by glbarcode::BarcodeFactory
 		 */
-		static Barcode* create( void );
+		static Barcode* create();
 
 
 	private:
-		bool validateDigits( int nDigits );
+		bool validateDigits( int nDigits ) override;
 
 	};
 

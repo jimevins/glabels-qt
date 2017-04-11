@@ -69,7 +69,7 @@ namespace glbarcode
 	/*
 	 * Static Postnet barcode creation method
 	 */
-	Barcode* BarcodePostnet::create( void )
+	Barcode* BarcodePostnet::create( )
 	{
 		return new BarcodePostnet();
 	}
@@ -153,10 +153,9 @@ namespace glbarcode
 		double x = POSTNET_HORIZ_MARGIN;
 		for ( unsigned int i=0; i < codedData.size(); i++ )
 		{
-			double length, width;
-
 			double y = POSTNET_VERT_MARGIN;
 
+			double length = 0;
 			switch ( codedData[i] )
 			{
 			case '0':
@@ -170,7 +169,8 @@ namespace glbarcode
 				// Not reached
 				break;
 			}
-			width = POSTNET_BAR_WIDTH;
+			
+			double width = POSTNET_BAR_WIDTH;
 
 			addLine( x, y, width, length );
 

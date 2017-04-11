@@ -76,7 +76,7 @@ namespace glbarcode
 	}
 
 
-	bool Barcode::showText( void ) const
+	bool Barcode::showText( ) const
 	{
 		return d->mShowTextFlag;
 	}
@@ -89,7 +89,7 @@ namespace glbarcode
 	}
 
 
-	bool Barcode::checksum( void ) const
+	bool Barcode::checksum( ) const
 	{
 		return d->mChecksumFlag;
 	}
@@ -101,7 +101,7 @@ namespace glbarcode
 	}
 
 
-	bool Barcode::isEmpty( void ) const
+	bool Barcode::isEmpty( ) const
 	{
 		return d->mIsEmpty;
 	}
@@ -113,7 +113,7 @@ namespace glbarcode
 	}
 
 
-	bool Barcode::isDataValid( void ) const
+	bool Barcode::isDataValid( ) const
 	{
 		return d->mIsDataValid;
 	}
@@ -125,13 +125,13 @@ namespace glbarcode
 	}
 
 
-	double Barcode::width( void ) const
+	double Barcode::width( ) const
 	{
 		return d->mW;
 	}
 
 
-	double Barcode::height( void ) const
+	double Barcode::height( ) const
 	{
 		return d->mH;
 	}
@@ -149,7 +149,7 @@ namespace glbarcode
 	}
 
 
-	void Barcode::clear( void )
+	void Barcode::clear( )
 	{
 		std::list<DrawingPrimitive*>::iterator primitive;
 

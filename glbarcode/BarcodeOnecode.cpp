@@ -294,7 +294,7 @@ namespace
 	class Int104
 	{
 	public:
-		Int104( void )
+		Int104( )
 		{
 			for ( int i = 0; i < 13; i++ )
 			{
@@ -352,7 +352,7 @@ namespace glbarcode
 	/*
 	 * Static Onecode barcode creation method
 	 */
-	Barcode* BarcodeOnecode::create( void )
+	Barcode* BarcodeOnecode::create( )
 	{
 		return new BarcodeOnecode();
 	}
@@ -515,7 +515,7 @@ namespace glbarcode
 		for ( unsigned int i = 0; i < codedData.size(); i++ )
 		{
 			double y = ONECODE_VERT_MARGIN;
-			double length;
+			double length = 0;
 
 			switch ( codedData[i] )
 			{
@@ -539,6 +539,7 @@ namespace glbarcode
 				// Not reached
 				break;
 			}
+			
 			double width = ONECODE_BAR_WIDTH;
 
 			addLine( x, y, width, length );

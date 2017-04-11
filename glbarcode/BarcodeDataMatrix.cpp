@@ -303,7 +303,7 @@ namespace
 
 		if ( nRawCw > 1558 )
 		{
-			return NULL;
+			return nullptr;
 		}
 
 		int iParam = 0;
@@ -569,7 +569,7 @@ namespace glbarcode
 	/*
 	 * Static DataMatrix barcode creation method
 	 */
-	Barcode* BarcodeDataMatrix::create( void )
+	Barcode* BarcodeDataMatrix::create( )
 	{
 		return new BarcodeDataMatrix();
 	}
@@ -600,7 +600,7 @@ namespace glbarcode
 		 * Determine parameters for "best size"
 		 */
 		const DMParameterEntry * p = ecc200BestSizeParams( nRawCw );
-		if ( p == NULL )
+		if ( p == nullptr )
 		{
 			return false;
 		}

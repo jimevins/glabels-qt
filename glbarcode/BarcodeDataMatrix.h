@@ -44,14 +44,14 @@ namespace glbarcode
 		 *
 		 * Used by glbarcode::BarcodeFactory
 		 */
-		static Barcode* create( void );
+		static Barcode* create();
 
 
 	private:
-		bool validate( const std::string& rawData );
+		bool validate( const std::string& rawData ) override;
 
 		bool encode( const std::string& cookedData,
-		             Matrix<bool>&      encodedData );
+		             Matrix<bool>&      encodedData ) override;
 
 	};
 

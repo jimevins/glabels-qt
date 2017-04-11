@@ -73,7 +73,7 @@ namespace glbarcode
 	}
 
 
-	QPainter* QtRenderer::painter( void ) const
+	QPainter* QtRenderer::painter( ) const
 	{
 		return d->painter;
 	}
@@ -97,7 +97,7 @@ namespace glbarcode
 	}
 
 
-	void QtRenderer::drawEnd( void )
+	void QtRenderer::drawEnd( )
 	{
 		if ( d->painter )
 		{
@@ -110,10 +110,10 @@ namespace glbarcode
 	{
 		if ( d->painter )
 		{
-			double x = x + w/2; // Offset line origin by 1/2 line width.
+			double x1 = x + w/2; // Offset line origin by 1/2 line width.
 
 			d->painter->setPen( QPen( d->color, w ) );
-			d->painter->drawLine( QPointF(x, y), QPointF(x, y+h) );
+			d->painter->drawLine( QPointF(x1, y), QPointF(x1, y+h) );
 		}
 	}
 

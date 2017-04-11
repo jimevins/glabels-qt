@@ -56,7 +56,7 @@ namespace glbarcode
 		/**
 		 * Destructor.
 		 */
-		virtual ~Barcode2dBase();
+		~Barcode2dBase() override;
 
 
 		/**
@@ -75,7 +75,7 @@ namespace glbarcode
 		 */
 		Barcode& build( const std::string&    data,
 		                double                w = 0,
-		                double                h = 0 );
+		                double                h = 0 ) override;
 
 
 	protected:

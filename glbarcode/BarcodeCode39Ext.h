@@ -114,15 +114,15 @@ namespace glbarcode
 		 *
 		 * Used by glbarcode::BarcodeFactory
 		 */
-		static Barcode* create( void );
+		static Barcode* create();
 
 
 	private:
-		bool validate( const std::string& rawData );
+		bool validate( const std::string& rawData ) override;
 
-		std::string preprocess( const std::string& rawData );
+		std::string preprocess( const std::string& rawData ) override;
 
-		std::string prepareText( const std::string& rawData );
+		std::string prepareText( const std::string& rawData ) override;
 
 	};
 

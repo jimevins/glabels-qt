@@ -30,7 +30,7 @@ namespace glbarcode
 	/*
 	 * Static EAN-13 barcode creation method
 	 */
-	Barcode* BarcodeEan13::create( void )
+	Barcode* BarcodeEan13::create( )
 	{
 		return new BarcodeEan13();
 	}

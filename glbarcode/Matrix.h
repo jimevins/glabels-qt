@@ -37,7 +37,7 @@ namespace glbarcode
 		/**
 		 * Default constructor.
 		 */
-		Matrix() : mNx(0), mNy(0), mData(NULL) { }
+		Matrix() : mNx(0), mNy(0), mData(nullptr) { }
 
 
 		/**
@@ -45,7 +45,7 @@ namespace glbarcode
 		 */
 		Matrix( int nx, int ny ) : mNx(nx),
 			                   mNy(ny),
-			                   mData((nx > 0 && ny > 0) ? new T[nx * ny] : NULL) { }
+			                   mData((nx > 0 && ny > 0) ? new T[nx * ny] : nullptr) { }
 
 
 		/**
@@ -53,7 +53,7 @@ namespace glbarcode
 		 */
 		Matrix( const Matrix<T>& src ) : mNx(src.mNx),
 			                         mNy(src.mNy),
-			                         mData((src.mNx > 0 && src.mNy > 0) ? new T[src.mNx * src.mNy] : NULL)
+			                         mData((src.mNx > 0 && src.mNy > 0) ? new T[src.mNx * src.mNy] : nullptr)
 		{
 			for ( int iy = 0; iy < mNy; iy++ )
 			{
@@ -74,7 +74,7 @@ namespace glbarcode
 			int              nx,
 			int              ny ) : mNx(nx),
 			                        mNy(ny),
-			                        mData((nx > 0 && ny > 0) ? new T[nx * ny] : NULL)
+			                        mData((nx > 0 && ny > 0) ? new T[nx * ny] : nullptr)
 		{
 			for ( int iy = 0; iy < mNy; iy++ )
 			{
@@ -97,7 +97,7 @@ namespace glbarcode
 		 */
 		~Matrix()
 		{
-			if ( mData != NULL )
+			if ( mData != nullptr )
 			{
 				delete[] mData;
 			}
@@ -127,13 +127,13 @@ namespace glbarcode
 		 */
 		inline void resize( int nx, int ny )
 		{
-			if ( mData != NULL )
+			if ( mData != nullptr )
 			{
 				delete[] mData;
 			}
 			mNx = nx;
 			mNy = ny;
-			mData = (nx > 0 && ny > 0) ? new T[nx * ny] : NULL;
+			mData = (nx > 0 && ny > 0) ? new T[nx * ny] : nullptr;
 		}
 
 
@@ -142,7 +142,7 @@ namespace glbarcode
 		 *
 		 * @returns Value of "nx" parameter
 		 */
-		inline int nx( void ) const
+		inline int nx() const
 		{
 			return mNx;
 		}
@@ -153,7 +153,7 @@ namespace glbarcode
 		 *
 		 * @returns Value of "ny" parameter
 		 */
-		inline int ny( void ) const
+		inline int ny() const
 		{
 			return mNy;
 		}

@@ -83,7 +83,7 @@ namespace glbarcode
 		 *
 		 * @sa setShowText()
 		 */
-		bool showText( void ) const;
+		bool showText() const;
 
 
 		/**
@@ -105,7 +105,7 @@ namespace glbarcode
 		 *
 		 * @sa setChecksum()
 		 */
-		bool checksum( void ) const;
+		bool checksum() const;
 
 
 		/**
@@ -138,7 +138,7 @@ namespace glbarcode
 		 *
 		 * @sa setIsEmpty()
 		 */
-		bool isEmpty( void ) const;
+		bool isEmpty() const;
 
 
 		/**
@@ -149,7 +149,7 @@ namespace glbarcode
 		 *
 		 * @sa setIsDataValid()
 		 */
-		bool isDataValid( void ) const;
+		bool isDataValid() const;
 
 
 		/**
@@ -159,7 +159,7 @@ namespace glbarcode
 		 *
 		 * @sa setWidth()
 		 */
-		double width( void ) const;
+		double width() const;
 
 
 		/**
@@ -169,14 +169,14 @@ namespace glbarcode
 		 *
 		 * @sa setHeight()
 		 */
-		double height( void ) const;
+		double height() const;
 
 
 	protected:
 		/**
 		 * Clear drawing primitives.
 		 */
-		void clear( void );
+		void clear();
 
 
 		/**

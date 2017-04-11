@@ -77,21 +77,21 @@ namespace glbarcode
 		 *
 		 * Used by glbarcode::BarcodeFactory
 		 */
-		static Barcode* create( void );
+		static Barcode* create();
 
 
 	private:
-		bool validate( const std::string& rawData );
+		bool validate( const std::string& rawData ) override;
 
-		std::string encode( const std::string& cookedData );
+		std::string encode( const std::string& cookedData ) override;
 
-		std::string prepareText( const std::string& rawData );
+		std::string prepareText( const std::string& rawData ) override;
 
 		void vectorize( const std::string& codedData,
 		                const std::string& displayText,
 		                const std::string& cookedData,
 		                double&            w,
-		                double&            h );
+		                double&            h ) override;
 	};
 
 }

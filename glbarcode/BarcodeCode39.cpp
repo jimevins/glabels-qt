@@ -103,7 +103,7 @@ namespace glbarcode
 	/*
 	 * Static Code39 barcode creation method
 	 */
-	Barcode* BarcodeCode39::create( void )
+	Barcode* BarcodeCode39::create( )
 	{
 		return new BarcodeCode39();
 	}

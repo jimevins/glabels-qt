@@ -48,7 +48,7 @@ namespace glbarcode
 		/**
 		 * Barcode creation function signature.
 		 */
-		typedef Barcode* (*BarcodeCreateFct)( void );
+		typedef Barcode* (*BarcodeCreateFct)();
 
 
 	private:
@@ -66,7 +66,7 @@ namespace glbarcode
 		 * is optional for an application to call init(), because glbarcode++ will automatically
 		 * initialize the factory on demand.
 		 */
-		static void init( void );
+		static void init();
 
 		
 		/**
@@ -97,7 +97,7 @@ namespace glbarcode
 		/**
 		 * Get list of supported types.
 		 */
-		static TypeIdList getSupportedTypes( void );
+		static TypeIdList getSupportedTypes();
 
 
 	private:
