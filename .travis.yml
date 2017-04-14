@@ -26,8 +26,9 @@ after_success:
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
   - ls -lh ./gLabels*.AppImage
+  - mv ./gLabels*.AppImage glabels-continous-x86_64.AppImage
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-  - bash ./upload.sh gLabels*.AppImage
+  - bash ./upload.sh glabels-continous-x86_64.AppImage
   
 branches:
   except:

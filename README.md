@@ -47,7 +47,7 @@ expect compatability or consistency of features between snapshots.
 
 | Platform | Files |
 |:---------|:------|
-| Linux x86_64 [AppImage](http:appimage.org): *Download, make it executable, and run!* | [gLabels_Label_Designer_4-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/gLabels_Label_Designer_4-x86_64.AppImage) |
+| Linux x86_64 [AppImage](http:appimage.org): *Download, make it executable, and run!* | [glabels-continous-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-continuous-x86_64.AppImage) |
 | Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
 | Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
 
