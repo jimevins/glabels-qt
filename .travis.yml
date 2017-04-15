@@ -17,10 +17,11 @@ script:
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   - make -j4
   - sudo make DESTDIR=appdir install ; sudo chown -R $USER appdir ; find appdir/
-  - ldd glabels/glabels-qt
-  - ldd appdir/usr/bin/glabels-qt
 
 after_success:
+  - ldd appdir/usr/bin/glabels-qt
+  - which qmake
+  - qmake -query
   - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
