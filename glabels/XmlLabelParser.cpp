@@ -262,6 +262,7 @@ namespace glabels
 			}
 			else if ( tagName == "Objects" )
 			{
+				label->setRotate( parseRotateAttr( child.toElement() ) );
 				QList<LabelModelObject*> list = parseObjectsNode( child.toElement(), data );
 				foreach ( LabelModelObject* object, list )
 				{
@@ -541,6 +542,13 @@ namespace glabels
 	}
 
 
+	bool
+	XmlLabelParser::parseRotateAttr( const QDomElement &node )
+	{
+		return XmlUtil::getBoolAttr( node, "rotate", false );
+	}
+
+	
 	void
 	XmlLabelParser::parsePositionAttrs( const QDomElement &node, LabelModelObject* object )
 	{

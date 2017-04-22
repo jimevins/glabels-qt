@@ -64,6 +64,7 @@ namespace glabels
 		static LabelModelBarcodeObject* parseObjectBarcodeNode( const QDomElement &node );
 		static LabelModelTextObject* parseObjectTextNode( const QDomElement &node );
 		static QString parsePNode( const QDomElement &node );
+		static bool parseRotateAttr( const QDomElement &node );
 		static void parsePositionAttrs( const QDomElement &node, LabelModelObject* object );
 		static void parseSizeAttrs( const QDomElement &node, LabelModelObject* object );
 		static void parseLineAttrs( const QDomElement &node, LabelModelObject* object );

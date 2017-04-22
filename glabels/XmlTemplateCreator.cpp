@@ -87,7 +87,7 @@ namespace glabels
 		if ( tmplate->isSizeOther() )
 		{
 			XmlUtil::setLengthAttr( node, "width", tmplate->pageWidth() );
-			XmlUtil::setLengthAttr( node, "height", tmplate->pageWidth() );
+			XmlUtil::setLengthAttr( node, "height", tmplate->pageHeight() );
 		}
 
 
