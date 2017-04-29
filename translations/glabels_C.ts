@@ -800,6 +800,8 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="60"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="135"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="148"/>
         <source>Code 39</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1115,16 +1117,16 @@
 <context>
     <name>glabels::LabelEditor</name>
     <message>
-        <location filename="../glabels/LabelEditor.cpp" line="626"/>
-        <location filename="../glabels/LabelEditor.cpp" line="923"/>
-        <location filename="../glabels/LabelEditor.cpp" line="928"/>
-        <location filename="../glabels/LabelEditor.cpp" line="933"/>
-        <location filename="../glabels/LabelEditor.cpp" line="938"/>
+        <location filename="../glabels/LabelEditor.cpp" line="640"/>
+        <location filename="../glabels/LabelEditor.cpp" line="937"/>
+        <location filename="../glabels/LabelEditor.cpp" line="942"/>
+        <location filename="../glabels/LabelEditor.cpp" line="947"/>
+        <location filename="../glabels/LabelEditor.cpp" line="952"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/LabelEditor.cpp" line="943"/>
+        <location filename="../glabels/LabelEditor.cpp" line="957"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1486,7 +1488,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="401"/>
-        <location filename="../glabels/MainWindow.cpp" line="1290"/>
+        <location filename="../glabels/MainWindow.cpp" line="1291"/>
         <source>Bring To Front</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1497,7 +1499,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="406"/>
-        <location filename="../glabels/MainWindow.cpp" line="1300"/>
+        <location filename="../glabels/MainWindow.cpp" line="1301"/>
         <source>Send To Back</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1508,7 +1510,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="411"/>
-        <location filename="../glabels/MainWindow.cpp" line="1310"/>
+        <location filename="../glabels/MainWindow.cpp" line="1311"/>
         <source>Rotate Left</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1519,7 +1521,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="416"/>
-        <location filename="../glabels/MainWindow.cpp" line="1320"/>
+        <location filename="../glabels/MainWindow.cpp" line="1321"/>
         <source>Rotate Right</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1530,7 +1532,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="421"/>
-        <location filename="../glabels/MainWindow.cpp" line="1330"/>
+        <location filename="../glabels/MainWindow.cpp" line="1331"/>
         <source>Flip Horizontally</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1541,7 +1543,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="426"/>
-        <location filename="../glabels/MainWindow.cpp" line="1340"/>
+        <location filename="../glabels/MainWindow.cpp" line="1341"/>
         <source>Flip Vertically</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1552,7 +1554,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="431"/>
-        <location filename="../glabels/MainWindow.cpp" line="1350"/>
+        <location filename="../glabels/MainWindow.cpp" line="1351"/>
         <source>Align Left</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1563,7 +1565,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="436"/>
-        <location filename="../glabels/MainWindow.cpp" line="1360"/>
+        <location filename="../glabels/MainWindow.cpp" line="1361"/>
         <source>Align Center</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1574,7 +1576,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="441"/>
-        <location filename="../glabels/MainWindow.cpp" line="1370"/>
+        <location filename="../glabels/MainWindow.cpp" line="1371"/>
         <source>Align Right</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1585,7 +1587,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="446"/>
-        <location filename="../glabels/MainWindow.cpp" line="1380"/>
+        <location filename="../glabels/MainWindow.cpp" line="1381"/>
         <source>Align Top</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1596,7 +1598,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="451"/>
-        <location filename="../glabels/MainWindow.cpp" line="1390"/>
+        <location filename="../glabels/MainWindow.cpp" line="1391"/>
         <source>Align Middle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1607,7 +1609,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="456"/>
-        <location filename="../glabels/MainWindow.cpp" line="1400"/>
+        <location filename="../glabels/MainWindow.cpp" line="1401"/>
         <source>Align Bottom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1618,7 +1620,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="461"/>
-        <location filename="../glabels/MainWindow.cpp" line="1410"/>
+        <location filename="../glabels/MainWindow.cpp" line="1411"/>
         <source>Center Horizontally</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1629,7 +1631,7 @@
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="466"/>
-        <location filename="../glabels/MainWindow.cpp" line="1420"/>
+        <location filename="../glabels/MainWindow.cpp" line="1421"/>
         <source>Center Vertically</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1776,6 +1778,11 @@
     <message>
         <location filename="../glabels/MainWindow.cpp" line="1271"/>
         <source>Create Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="1281"/>
+        <source>Create Barcode</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

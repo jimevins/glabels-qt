@@ -1278,7 +1278,8 @@ namespace glabels
 	///
 	void MainWindow::objectsCreateBarcode()
 	{
-		qDebug() << "ACTION: objects->Create->Barcode";
+		mUndoRedoModel->checkpoint( tr("Create Barcode") );
+		mLabelEditor->createBarcodeMode();
 	}
 
 

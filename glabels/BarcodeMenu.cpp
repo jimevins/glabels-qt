@@ -34,7 +34,7 @@ namespace glabels
 	{
 		foreach ( QString name, BarcodeBackends::getNameList() )
 		{
-			const BarcodeStyle* bcStyle = BarcodeBackends::lookupStyleFromName( name );
+			BarcodeStyle bcStyle = BarcodeBackends::lookupStyleFromName( name );
 
 			BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
 			connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
@@ -47,7 +47,7 @@ namespace glabels
 	///
 	/// bcStyle getter
 	///
-	const BarcodeStyle* BarcodeMenu::bcStyle() const
+	BarcodeStyle BarcodeMenu::bcStyle() const
 	{
 		return mBcStyle;
 	}
@@ -56,7 +56,7 @@ namespace glabels
 	///
 	/// onMenuItemActivated slot
 	///
-	void BarcodeMenu::onMenuItemActivated( BarcodeStyle *bcStyle )
+	void BarcodeMenu::onMenuItemActivated( BarcodeStyle bcStyle )
 	{
 		mBcStyle = bcStyle;
 

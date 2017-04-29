@@ -57,6 +57,7 @@ set (glabels_sources
   LabelEditor.cpp
   LabelModel.cpp
   LabelModelObject.cpp
+  LabelModelBarcodeObject.cpp
   LabelModelBoxObject.cpp
   LabelModelEllipseObject.cpp
   LabelModelImageObject.cpp
@@ -118,6 +119,7 @@ set (glabels_qobject_headers
   LabelEditor.h
   LabelModel.h
   LabelModelObject.h
+  LabelModelBarcodeObject.h
   LabelModelBoxObject.h
   LabelModelEllipseObject.h
   LabelModelImageObject.h
@@ -176,6 +178,7 @@ add_executable (glabels-qt WIN32
 
 target_link_libraries (glabels-qt
   Merge
+  glbarcode
   ${Qt5Widgets_LIBRARIES}
   ${Qt5PrintSupport_LIBRARIES}
   ${Qt5Xml_LIBRARIES}
@@ -194,6 +197,10 @@ include_directories (
   ${Qt5PrintSupport_INCLUDE_DIRS}
   ${Qt5Xml_INCLUDE_DIRS}
   ${Qt5Svg_INCLUDE_DIRS}
+)
+
+link_directories (
+  ${glabels_qt_SOURCE_DIR}/glbarcode
 )
 
 

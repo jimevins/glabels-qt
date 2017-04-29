@@ -37,7 +37,7 @@ namespace glabels
 		setMenu( mMenu );
 
 		mBcStyle = BarcodeBackends::lookupStyleFromId( "" ); // Default style
-		setText( mBcStyle->name() );
+		setText( mBcStyle.name() );
 
 		connect( mMenu, SIGNAL(styleChanged()), this, SLOT(onMenuStyleChanged()) );
 	}
@@ -46,7 +46,7 @@ namespace glabels
 	///
 	/// bcStyle getter
 	///
-	const BarcodeStyle* BarcodeMenuButton::bcStyle() const
+	BarcodeStyle BarcodeMenuButton::bcStyle() const
 	{
 		return mBcStyle;
 	}
@@ -58,7 +58,7 @@ namespace glabels
 	void BarcodeMenuButton::onMenuStyleChanged()
 	{
 		mBcStyle = mMenu->bcStyle();
-		setText( mBcStyle->name() );
+		setText( mBcStyle.name() );
 
 		emit styleChanged();
 	}

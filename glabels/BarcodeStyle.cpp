@@ -176,4 +176,13 @@ namespace glabels
 		}
 	}
 
+
+	///
+	/// "Not equals" operator
+	///
+	bool BarcodeStyle::operator!=( const BarcodeStyle& other ) const
+	{
+		return mId != other.mId;
+	}
+	
 } // namespace glabels

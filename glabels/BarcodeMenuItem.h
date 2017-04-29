@@ -41,21 +41,21 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		BarcodeMenuItem( const BarcodeStyle* bcStyle, QObject* parent = nullptr );
+		BarcodeMenuItem( const BarcodeStyle& bcStyle, QObject* parent = nullptr );
 
 
 		/////////////////////////////////
 		// Signals
 		/////////////////////////////////
 	signals:
-		void activated( const BarcodeStyle* bcStyle );
+		void activated( const BarcodeStyle& bcStyle );
 
 
 		/////////////////////////////////
 		// Properties
 		/////////////////////////////////
 	public:
-		const BarcodeStyle* bcStyle() const;
+		BarcodeStyle bcStyle() const;
 
 
 		/////////////////////////////////
@@ -69,7 +69,7 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		const BarcodeStyle* mBcStyle;
+		BarcodeStyle mBcStyle;
 
 	};
 

@@ -55,21 +55,21 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		const BarcodeStyle* bcStyle() const;
+		BarcodeStyle bcStyle() const;
 
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onMenuItemActivated( BarcodeStyle *bcStyle );
+		void onMenuItemActivated( BarcodeStyle bcStyle );
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		BarcodeStyle* mBcStyle;
+		BarcodeStyle mBcStyle;
 
 	};
 

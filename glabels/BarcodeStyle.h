@@ -31,7 +31,7 @@ namespace glabels
 	///
 	/// Barcode Style Type
 	///
-	struct BarcodeStyle
+	class BarcodeStyle
 	{
 
 		/////////////////////////////////
@@ -81,6 +81,13 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		QString exampleDigits( int n ) const;
+
+
+		/////////////////////////////////
+		// Operators
+		/////////////////////////////////
+	public:
+		bool operator!=( const BarcodeStyle& other ) const;
 
 
 		/////////////////////////////////

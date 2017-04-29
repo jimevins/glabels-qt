@@ -124,7 +124,7 @@ namespace glabels
 	}
 
 
-	const BarcodeStyle* BarcodeBackends::lookupStyleFromId( const QString& id )
+	BarcodeStyle BarcodeBackends::lookupStyleFromId( const QString& id )
 	{
 		StyleMap::iterator i = mStyleIdMap.find( id );
 		if ( i != mStyleIdMap.end()  )
@@ -132,11 +132,12 @@ namespace glabels
 			return i.value();
 		}
 		
-		return nullptr;
+		return BarcodeStyle( QString("code39"), QString(""), tr("Code 39"),
+		                     true, true, true, true, QString("1234567890"), true, 10 );
 	}
 
 
-	const BarcodeStyle* BarcodeBackends::lookupStyleFromName( const QString& name )
+	BarcodeStyle BarcodeBackends::lookupStyleFromName( const QString& name )
 	{
 		StyleMap::iterator i = mStyleNameMap.find( name );
 		if ( i != mStyleNameMap.end()  )
@@ -144,7 +145,8 @@ namespace glabels
 			return i.value();
 		}
 		
-		return nullptr;
+		return BarcodeStyle( QString("code39"), QString(""), tr("Code 39"),
+		                     true, true, true, true, QString("1234567890"), true, 10 );
 	}
 
 
@@ -167,11 +169,11 @@ namespace glabels
 	                                     bool           canFreeForm,
 	                                     int            preferedN )
 	{
-		BarcodeStyle* style = new BarcodeStyle( QString(id), QString(backendId), name,
-		                                        canText, textOptional,
-		                                        canChecksum, checksumOptional,
-		                                        QString(defaultDigits),
-		                                        canFreeForm, preferedN );
+		BarcodeStyle style( QString(id), QString(backendId), name,
+		                    canText, textOptional,
+		                    canChecksum, checksumOptional,
+		                    QString(defaultDigits),
+		                    canFreeForm, preferedN );
 
 		QString fqName = QString(backendId) + QString(".") + name; // Name may not be unique
 

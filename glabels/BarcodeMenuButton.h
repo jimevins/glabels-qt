@@ -56,7 +56,7 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		const BarcodeStyle* bcStyle() const;
+		BarcodeStyle bcStyle() const;
 
 
 		/////////////////////////////////
@@ -70,8 +70,8 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		BarcodeMenu*  mMenu;
-		const BarcodeStyle* mBcStyle;
+		BarcodeMenu* mMenu;
+		BarcodeStyle mBcStyle;
 
 	};
 

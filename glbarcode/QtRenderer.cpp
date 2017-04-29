@@ -112,7 +112,7 @@ namespace glbarcode
 		{
 			double x1 = x + w/2; // Offset line origin by 1/2 line width.
 
-			d->painter->setPen( QPen( d->color, w ) );
+			d->painter->setPen( QPen( d->color, w, Qt::SolidLine, Qt::FlatCap ) );
 			d->painter->drawLine( QPointF(x1, y), QPointF(x1, y+h) );
 		}
 	}
@@ -145,7 +145,7 @@ namespace glbarcode
 			QRect rect = fm.boundingRect( QString::fromStdString(text) );
 
 			double xCorner = x - rect.width()/2.0;
-			double yCorner = y - rect.height() + fm.descent();
+			double yCorner = y + fm.descent();
 		
 			d->painter->drawText( QPointF(xCorner, yCorner), QString::fromStdString(text) );
 		}

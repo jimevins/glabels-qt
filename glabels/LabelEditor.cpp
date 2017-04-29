@@ -27,6 +27,7 @@
 #include "FrameRound.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
+#include "LabelModelBarcodeObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelImageObject.h"
@@ -378,6 +379,19 @@ namespace glabels
 
 
 	///
+	/// Create barcode mode
+	///
+	void
+	LabelEditor::createBarcodeMode()
+	{
+		setCursor( Cursors::Barcode() );
+
+		mCreateObjectType = Barcode;
+		mState = CreateIdle;
+	}
+
+
+	///
 	/// Resize Event Handler
 	///
 	void
@@ -522,7 +536,7 @@ namespace glabels
 						mCreateObject = new LabelModelTextObject();
 						break;
 					case Barcode:
-						// mCreateObject = new LabelModelBarcodeObject();
+						mCreateObject = new LabelModelBarcodeObject();
 						break;
 					default:
 						qDebug() << "LabelEditor::mousePressEvent: Invalid creation type. Should not happen!";

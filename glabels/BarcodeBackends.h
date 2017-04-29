@@ -60,8 +60,8 @@ namespace glabels
 		static const QList<QString>& getBackendNameList();
 		static const QList<QString>& getNameList();
 
-		static const BarcodeStyle* lookupStyleFromId( const QString& id );
-		static const BarcodeStyle* lookupStyleFromName( const QString& name );
+		static BarcodeStyle lookupStyleFromId( const QString& id );
+		static BarcodeStyle lookupStyleFromName( const QString& name );
 
 
 		/////////////////////////////////
@@ -89,7 +89,7 @@ namespace glabels
 		static BackendMap mBackendIdMap;
 		static BackendMap mBackendNameMap;
 
-		typedef QMap<QString,BarcodeStyle*> StyleMap;
+		typedef QMap<QString,BarcodeStyle> StyleMap;
 		static StyleMap mStyleIdMap;
 		static StyleMap mStyleNameMap;
 
