@@ -191,8 +191,8 @@ target_link_libraries (glabels-qt
 # Where to find stuff
 #=======================================
 include_directories (
+  ${glabels_SOURCE_DIR}
   ${ZLIB_INCLUDE_DIRS}
-  ${glabels_qt_SOURCE_DIR}
   ${Qt5Widgets_INCLUDE_DIRS}
   ${Qt5PrintSupport_INCLUDE_DIRS}
   ${Qt5Xml_INCLUDE_DIRS}
@@ -200,7 +200,6 @@ include_directories (
 )
 
 link_directories (
-  ${glabels_qt_SOURCE_DIR}/glbarcode
 )
 
 
