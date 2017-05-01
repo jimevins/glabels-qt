@@ -70,6 +70,7 @@ namespace glabels
 		void loadRectSizePage();
 		void loadLineSizePage();
 		void loadTextPage();
+		void loadBarcodePage();
 		void loadShadowPage();
 
 
@@ -93,6 +94,7 @@ namespace glabels
 		void onLineSizeControlsChanged();
 		void onTextControlsChanged();
 		void onTextInsertFieldKeySelected( QString key );
+		void onBarcodeControlsChanged();
 		void onResetImageSize();
 		void onShadowControlsChanged();
 		void onChanged();

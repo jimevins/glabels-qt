@@ -1807,134 +1807,139 @@
 <context>
     <name>glabels::ObjectEditor</name>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="190"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="192"/>
         <source>Original size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="316"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="333"/>
         <source>Box object properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="337"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="354"/>
         <source>Ellipse object properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="358"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="375"/>
         <source>Image object properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="378"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="395"/>
         <source>Line object properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="399"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="416"/>
         <source>Text object properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="485"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="435"/>
+        <source>Barcode object properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ObjectEditor.cpp" line="519"/>
         <source>Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="501"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="535"/>
         <source>Fill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="524"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="558"/>
         <source>Image files (*.png *.jpg *.jpeg *.gif *.bmp *.pbm *.pgm *.ppm *.xbm *.xpm *.svg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="525"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="559"/>
         <source>All files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="526"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="560"/>
         <source>PNG - Portable Network Graphics (*.png)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="527"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="561"/>
         <source>BMP - Windows Bitmap (*.bmp)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="528"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="562"/>
         <source>GIF - Graphics Interchange Format (*.gif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="529"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="563"/>
         <source>JPEG - Joint Photographic Experts Group (*.jpg *.jpeg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="530"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="564"/>
         <source>PBM - Portable Bitmap (*.pbm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="531"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="565"/>
         <source>PGM - Portable Graymap (*.pgm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="532"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="566"/>
         <source>PPM - Portable Pixmap (*.ppm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="533"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="567"/>
         <source>SVG - Scalable Vector Graphics (*.svg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="534"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="568"/>
         <source>XBM - X11 Bitmap (*.xbm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="535"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="569"/>
         <source>XPM - X11 Pixmap (*.xpm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="539"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="573"/>
         <source>gLabels - Select image file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="544"/>
-        <location filename="../glabels/ObjectEditor.cpp" line="556"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="578"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="590"/>
         <source>Set image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="567"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="601"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="585"/>
         <location filename="../glabels/ObjectEditor.cpp" line="619"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="653"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="638"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="672"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ObjectEditor.cpp" line="674"/>
+        <location filename="../glabels/ObjectEditor.cpp" line="723"/>
         <source>Shadow</source>
         <translation type="unfinished"></translation>
     </message>

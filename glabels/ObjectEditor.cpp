@@ -22,6 +22,7 @@
 
 #include "LabelModel.h"
 #include "LabelModelObject.h"
+#include "LabelModelBarcodeObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelImageObject.h"
@@ -62,6 +63,7 @@ namespace glabels
 		lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
 		fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
 		textColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
+		barcodeColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 		shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
 		textInsertFieldCombo->setName( "Insert Field" );
@@ -240,6 +242,21 @@ namespace glabels
 	}
 
 
+	void ObjectEditor::loadBarcodePage()
+	{
+		if ( mObject )
+		{
+			mBlocked = true;
+
+			barcodeShowTextCheck->setChecked( mObject->bcTextFlag() );
+			barcodeChecksumCheck->setChecked( mObject->bcChecksumFlag() );
+			barcodeColorButton->setColorNode( mObject->bcColorNode() );
+
+			mBlocked = false;			
+		}
+	}
+
+
 	void ObjectEditor::loadShadowPage()
 	{
 		if ( mObject )
@@ -409,6 +426,23 @@ namespace glabels
 					loadTextPage();
 					loadPositionPage();
 					loadShadowPage();
+				
+					setEnabled( true );
+				}
+				else if ( dynamic_cast<LabelModelBarcodeObject*>(mObject) )
+				{
+					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-barcode.svg") );
+					titleLabel->setText( tr("Barcode object properties") );
+
+					notebook->addTab( barcodePage, "barcode" );
+					notebook->addTab( posSizePage, "position/size" );
+
+					sizeRectFrame->setVisible( true );
+					sizeOriginalSizeGroup->setVisible( false );
+					sizeLineFrame->setVisible( false );
+
+					loadBarcodePage();
+					loadPositionPage();
 				
 					setEnabled( true );
 				}
@@ -656,6 +690,21 @@ namespace glabels
 	void ObjectEditor::onTextInsertFieldKeySelected( QString key )
 	{
 		textEdit->insertPlainText( "${" + key + "}" );
+	}
+
+
+	void ObjectEditor::onBarcodeControlsChanged()
+	{
+		if ( !mBlocked )
+		{
+			mBlocked = true;
+
+			mObject->setBcTextFlag( barcodeShowTextCheck->isChecked() );
+			mObject->setBcChecksumFlag( barcodeChecksumCheck->isChecked() );
+			mObject->setBcColorNode( barcodeColorButton->colorNode() );
+
+			mBlocked = false;
+		}
 	}
 
 

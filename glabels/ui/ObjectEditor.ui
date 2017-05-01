@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>853</height>
+    <height>859</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -1574,7 +1574,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../icons.qrc">:/icons/24x24/actions/glabels-object-properties.png</pixmap>
+        <pixmap>:/icons/24x24/actions/glabels-object-properties.png</pixmap>
        </property>
       </widget>
      </item>
@@ -1602,6 +1602,9 @@
    <class>glabels::ColorButton</class>
    <extends>QPushButton</extends>
    <header>ColorButton.h</header>
+   <slots>
+    <signal>colorChanged()</signal>
+   </slots>
   </customwidget>
   <customwidget>
    <class>glabels::FieldButton</class>
@@ -1652,8 +1655,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>125</x>
-     <y>183</y>
+     <x>111</x>
+     <y>220</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1668,8 +1671,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>200</y>
+     <x>154</x>
+     <y>220</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1684,8 +1687,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>236</x>
-     <y>200</y>
+     <x>197</x>
+     <y>220</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -1700,8 +1703,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>235</y>
+     <x>121</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1716,8 +1719,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>310</y>
+     <x>148</x>
+     <y>352</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1732,8 +1735,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>219</x>
-     <y>315</y>
+     <x>191</x>
+     <y>352</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1748,8 +1751,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>271</x>
-     <y>315</y>
+     <x>234</x>
+     <y>352</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -1764,8 +1767,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>161</x>
-     <y>357</y>
+     <x>148</x>
+     <y>398</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -1780,8 +1783,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>209</x>
-     <y>352</y>
+     <x>191</x>
+     <y>398</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1796,8 +1799,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>271</x>
-     <y>357</y>
+     <x>234</x>
+     <y>398</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -1812,140 +1815,12 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>173</x>
-     <y>389</y>
+     <x>195</x>
+     <y>438</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
      <y>485</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeTypeCombo</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>162</x>
-     <y>113</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>394</x>
-     <y>114</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeShowTextCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>172</x>
-     <y>151</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>397</x>
-     <y>145</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeChecksumCheck</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>175</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>5</x>
-     <y>174</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeColorButton</sender>
-   <signal>colorChanged()</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>125</x>
-     <y>210</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1</x>
-     <y>211</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeLiteralRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>55</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>0</x>
-     <y>271</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeKeyRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>57</x>
-     <y>387</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>2</x>
-     <y>391</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeTextEdit</sender>
-   <signal>textChanged()</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>333</x>
-     <y>299</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>0</x>
-     <y>312</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeDigitsSpin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>206</x>
-     <y>446</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>393</x>
-     <y>476</y>
     </hint>
    </hints>
   </connection>
@@ -1956,8 +1831,8 @@
    <slot>onLineControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>117</y>
+     <x>182</x>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
      <x>392</x>
@@ -1972,8 +1847,8 @@
    <slot>onLineControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>105</x>
-     <y>150</y>
+     <x>129</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -1988,8 +1863,8 @@
    <slot>onFillControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>236</y>
+     <x>128</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -2004,8 +1879,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>153</x>
-     <y>128</y>
+     <x>172</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -2020,8 +1895,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>112</x>
-     <y>160</y>
+     <x>172</x>
+     <y>174</y>
     </hint>
     <hint type="destinationlabel">
      <x>325</x>
@@ -2036,8 +1911,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>135</x>
-     <y>223</y>
+     <x>172</x>
+     <y>258</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -2052,8 +1927,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>98</x>
-     <y>262</y>
+     <x>172</x>
+     <y>298</y>
     </hint>
     <hint type="destinationlabel">
      <x>0</x>
@@ -2068,8 +1943,8 @@
    <slot>onResetImageSize()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>228</x>
-     <y>323</y>
+     <x>201</x>
+     <y>368</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -2084,12 +1959,12 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>58</x>
-     <y>84</y>
+     <x>68</x>
+     <y>80</y>
     </hint>
     <hint type="destinationlabel">
      <x>183</x>
-     <y>-5</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -2100,8 +1975,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>125</x>
-     <y>127</y>
+     <x>172</x>
+     <y>136</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -2116,12 +1991,12 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
-     <y>151</y>
+     <x>172</x>
+     <y>176</y>
     </hint>
     <hint type="destinationlabel">
      <x>294</x>
-     <y>-2</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -2132,11 +2007,11 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>106</x>
-     <y>194</y>
+     <x>128</x>
+     <y>216</y>
     </hint>
     <hint type="destinationlabel">
-     <x>405</x>
+     <x>399</x>
      <y>410</y>
     </hint>
    </hints>
@@ -2148,11 +2023,11 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>151</x>
-     <y>227</y>
+     <x>167</x>
+     <y>258</y>
     </hint>
     <hint type="destinationlabel">
-     <x>406</x>
+     <x>399</x>
      <y>503</y>
     </hint>
    </hints>
@@ -2164,8 +2039,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>144</x>
-     <y>386</y>
+     <x>172</x>
+     <y>452</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -2180,8 +2055,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>164</x>
-     <y>424</y>
+     <x>181</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -2196,8 +2071,8 @@
    <slot>onImageFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>190</x>
-     <y>161</y>
+     <x>125</x>
+     <y>172</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -2212,8 +2087,8 @@
    <slot>onImageKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>343</x>
-     <y>151</y>
+     <x>313</x>
+     <y>172</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -2244,12 +2119,140 @@
    <slot>onTextInsertFieldKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>231</x>
-     <y>653</y>
+     <x>240</x>
+     <y>699</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
      <y>645</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeTypeCombo</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeShowTextCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeChecksumCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeLiteralRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>331</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeKeyRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>401</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>377</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeDigitsSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>216</x>
+     <y>485</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>532</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeTextEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>369</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeColorButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>89</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>454</y>
     </hint>
    </hints>
   </connection>
@@ -2267,5 +2270,6 @@
   <slot>onImageKeySelected(QString)</slot>
   <slot>onTextControlsChanged()</slot>
   <slot>onTextInsertFieldKeySelected(QString)</slot>
+  <slot>onBarcodeControlsChanged()</slot>
  </slots>
 </ui>
