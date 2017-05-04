@@ -95,6 +95,7 @@ namespace glabels
 		void onTextControlsChanged();
 		void onTextInsertFieldKeySelected( QString key );
 		void onBarcodeControlsChanged();
+		void onBarcodeInsertFieldKeySelected( QString key );
 		void onResetImageSize();
 		void onShadowControlsChanged();
 		void onChanged();

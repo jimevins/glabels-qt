@@ -299,10 +299,10 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		//
-		// Virtual Barcode Property: bcDataNode
+		// Virtual Barcode Property: bcData
 		//
-		virtual TextNode bcDataNode() const;
-		virtual void setBcDataNode( const TextNode &value );
+		virtual QString bcData() const;
+		virtual void setBcData( const QString& value );
 		
 
 		//

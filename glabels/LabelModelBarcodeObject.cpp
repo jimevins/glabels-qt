@@ -65,7 +65,7 @@ namespace glabels
 		mBcTextFlag     = mBcStyle.canText();
 		mBcChecksumFlag = mBcStyle.canChecksum();
 		mBcFormatDigits = mBcStyle.preferedN();
-		mBcDataNode     = TextNode( false, mBcStyle.defaultDigits() );
+		mBcData         = mBcStyle.defaultDigits();
 		mBcColorNode    = ColorNode( Qt::black );
 
 		update(); // Initialize cached editor layouts
@@ -82,7 +82,7 @@ namespace glabels
 		mBcTextFlag     = object->mBcTextFlag;
 		mBcChecksumFlag = object->mBcChecksumFlag;
 		mBcFormatDigits = object->mBcFormatDigits;
-		mBcDataNode     = object->mBcDataNode;
+		mBcData         = object->mBcData;
 		mBcColorNode    = object->mBcColorNode;
 
 		mEditorBarcode = nullptr;
@@ -117,22 +117,22 @@ namespace glabels
 
 
 	///
-	/// bcDataNode Property Getter
+	/// bcData Property Getter
 	///
-	TextNode LabelModelBarcodeObject::bcDataNode() const
+	QString LabelModelBarcodeObject::bcData() const
 	{
-		return mBcDataNode;
+		return mBcData;
 	}
 
 
 	///
-	/// bcDataNode Property Setter
+	/// bcData Property Setter
 	///
-	void LabelModelBarcodeObject::setBcDataNode( const TextNode& value )
+	void LabelModelBarcodeObject::setBcData( const QString& value )
 	{
-		if ( mBcDataNode != value )
+		if ( mBcData != value )
 		{
-			mBcDataNode = value;
+			mBcData = value;
 			update();
 			emit changed();
 		}
@@ -331,14 +331,7 @@ namespace glabels
 		mEditorBarcode->setChecksum(mBcChecksumFlag);
 		mEditorBarcode->setShowText(mBcTextFlag);
 
-		if ( mBcDataNode.isField() )
-		{
-			mEditorBarcode->build( mBcStyle.defaultDigits().toStdString(), mW.pt(), mH.pt() );
-		}
-		else
-		{
-			mEditorBarcode->build( mBcDataNode.data().toStdString(), mW.pt(), mH.pt() );
-		}
+		mEditorBarcode->build( mBcData.toStdString(), mW.pt(), mH.pt() );
 
 		mW = Distance::pt( mEditorBarcode->width() );
 		mH = Distance::pt( mEditorBarcode->height() );
@@ -386,7 +379,7 @@ namespace glabels
 		bc->setChecksum(mBcChecksumFlag);
 		bc->setShowText(mBcTextFlag);
 
-		bc->build( mBcDataNode.text(record).toStdString(), mW.pt(), mH.pt() );
+		bc->build( mBcData.toStdString(), mW.pt(), mH.pt() );
 
 		glbarcode::QtRenderer renderer(painter);
 		bc->render( renderer );

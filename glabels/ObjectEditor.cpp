@@ -67,6 +67,7 @@ namespace glabels
 		shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
 
 		textInsertFieldCombo->setName( "Insert Field" );
+		barcodeInsertFieldCombo->setName( "Insert Field" );
 		imageFieldCombo->setName( "Key" );
 
 		setEnabled( false );
@@ -251,6 +252,7 @@ namespace glabels
 			barcodeShowTextCheck->setChecked( mObject->bcTextFlag() );
 			barcodeChecksumCheck->setChecked( mObject->bcChecksumFlag() );
 			barcodeColorButton->setColorNode( mObject->bcColorNode() );
+			barcodeDataEdit->setText( mObject->bcData() );
 
 			mBlocked = false;			
 		}
@@ -475,6 +477,7 @@ namespace glabels
 			lineColorButton->setKeys( keys );
 			fillColorButton->setKeys( keys );
 			textInsertFieldCombo->setKeys( keys );
+			barcodeInsertFieldCombo->setKeys( keys );
 			imageFieldCombo->setKeys( keys );
 			shadowColorButton->setKeys( keys );
 		}
@@ -702,9 +705,16 @@ namespace glabels
 			mObject->setBcTextFlag( barcodeShowTextCheck->isChecked() );
 			mObject->setBcChecksumFlag( barcodeChecksumCheck->isChecked() );
 			mObject->setBcColorNode( barcodeColorButton->colorNode() );
+			mObject->setBcData( barcodeDataEdit->toPlainText() );
 
 			mBlocked = false;
 		}
+	}
+
+
+	void ObjectEditor::onBarcodeInsertFieldKeySelected( QString key )
+	{
+		barcodeDataEdit->insertPlainText( "${" + key + "}" );
 	}
 
 

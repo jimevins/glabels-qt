@@ -710,12 +710,12 @@ namespace glabels
 		
 
 	///
-	/// Virtual Barcode Data Node Property Default Getter
+	/// Virtual Barcode Data Property Default Getter
 	/// (Overridden by concrete class)
 	///
-	TextNode LabelModelObject::bcDataNode() const
+	QString LabelModelObject::bcData() const
 	{
-		return TextNode();
+		return QString();
 	}
 
 
@@ -723,7 +723,7 @@ namespace glabels
 	/// Virtual Barcode Data Node Property Default Setter
 	/// (Overridden by concrete class)
 	///
-	void LabelModelObject::setBcDataNode( const TextNode &value )
+	void LabelModelObject::setBcData( const QString& value )
 	{
 		// empty
 	}

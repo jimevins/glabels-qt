@@ -35,7 +35,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -631,169 +631,44 @@
        <item row="1" column="0">
         <widget class="QGroupBox" name="groupBox_8">
          <property name="title">
-          <string>Data</string>
+          <string>Barcode data</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_10">
+         <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0">
-           <layout class="QFormLayout" name="formLayout_12">
+           <layout class="QGridLayout" name="gridLayout_10">
             <item row="0" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QRadioButton" name="barcodeLiteralRadio">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Literal:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
-            <item row="0" column="1">
-             <widget class="QPlainTextEdit" name="barcodeTextEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>240</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
+             <widget class="QTextEdit" name="barcodeDataEdit"/>
             </item>
             <item row="1" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_4">
+             <layout class="QHBoxLayout" name="horizontalLayout_15">
               <item>
-               <widget class="QRadioButton" name="barcodeKeyRadio">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Key:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_2">
+               <spacer name="horizontalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
-                  <height>40</height>
+                  <width>40</width>
+                  <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
-             </layout>
-            </item>
-            <item row="1" column="1">
-             <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_16">
-                <item>
-                 <widget class="QPushButton" name="barcodeFieldButton">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_13">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
+               <widget class="glabels::FieldButton" name="barcodeInsertFieldCombo"/>
               </item>
               <item>
-               <layout class="QGridLayout" name="gridLayout_11">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_21">
-                  <property name="text">
-                   <string>format:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLabel" name="barcodeFormatLabel">
-                  <property name="text">
-                   <string>0000000000</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_24">
-                  <property name="text">
-                   <string>digits:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_15">
-                  <item>
-                   <widget class="QSpinBox" name="barcodeDigitsSpin"/>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_12">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
+               <spacer name="horizontalSpacer_12">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>
@@ -1610,6 +1485,9 @@
    <class>glabels::FieldButton</class>
    <extends>QComboBox</extends>
    <header>FieldButton.h</header>
+   <slots>
+    <signal>keySelected(QString)</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>
@@ -2177,70 +2055,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>barcodeLiteralRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onBarcodeControlsChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>68</x>
-     <y>302</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>5</x>
-     <y>331</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeKeyRadio</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onBarcodeControlsChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>39</x>
-     <y>401</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>2</x>
-     <y>377</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeDigitsSpin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onBarcodeControlsChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>216</x>
-     <y>485</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>397</x>
-     <y>532</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>barcodeTextEdit</sender>
-   <signal>textChanged()</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onBarcodeControlsChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>242</x>
-     <y>333</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>4</x>
-     <y>369</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>barcodeColorButton</sender>
    <signal>colorChanged()</signal>
    <receiver>ObjectEditor</receiver>
@@ -2253,6 +2067,38 @@
     <hint type="destinationlabel">
      <x>1</x>
      <y>454</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeDataEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>255</x>
+     <y>405</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>534</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>barcodeInsertFieldCombo</sender>
+   <signal>keySelected(QString)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onBarcodeInsertFieldKeySelected(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>203</x>
+     <y>486</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>625</y>
     </hint>
    </hints>
   </connection>
@@ -2271,5 +2117,6 @@
   <slot>onTextControlsChanged()</slot>
   <slot>onTextInsertFieldKeySelected(QString)</slot>
   <slot>onBarcodeControlsChanged()</slot>
+  <slot>onBarcodeInsertFieldKeySelected(QString)</slot>
  </slots>
 </ui>

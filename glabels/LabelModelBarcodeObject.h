@@ -57,10 +57,10 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
                 //
-                // Barcode Property: bcDataNode
+                // Barcode Property: bcData
                 //
-                TextNode bcDataNode() const override;
-                void setBcDataNode( const TextNode &value ) override;
+		QString bcData() const override;
+                void setBcData( const QString &value ) override;
                 
 
                 //
@@ -134,7 +134,7 @@ namespace glabels
 		bool         mBcTextFlag;
 		bool         mBcChecksumFlag;
 		int          mBcFormatDigits;
-		TextNode     mBcDataNode;
+		QString      mBcData;
 		ColorNode    mBcColorNode;
 
 		glbarcode::Barcode* mEditorBarcode;
