@@ -735,6 +735,9 @@ namespace glabels
 						case Text:
 							mCreateObject->setSize( 72, 36 );
 							break;
+						case Barcode:
+							mCreateObject->setSize( 72, 36 );
+							break;
 						case Line:
 							mCreateObject->setSize( 72, 0 );
 							break;

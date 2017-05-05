@@ -42,6 +42,8 @@ namespace glabels
 	//
 	namespace
 	{
+		const QColor emptyFillColor = QColor( 128, 128, 128, 128 );
+		const Distance pad = Distance::pt(4);
 	}
 
 
@@ -65,7 +67,7 @@ namespace glabels
 		mBcTextFlag     = mBcStyle.canText();
 		mBcChecksumFlag = mBcStyle.canChecksum();
 		mBcFormatDigits = mBcStyle.preferedN();
-		mBcData         = mBcStyle.defaultDigits();
+		mBcData         = "";
 		mBcColorNode    = ColorNode( Qt::black );
 
 		update(); // Initialize cached editor layouts
@@ -261,22 +263,7 @@ namespace glabels
 	                                          bool           inEditor,
 	                                          merge::Record* record ) const
 	{
-		QColor bcColor = mBcColorNode.color( record );
-
-		if ( bcColor.alpha() )
-		{
-			QColor shadowColor = mShadowColorNode.color( record );
-			shadowColor.setAlphaF( mShadowOpacity );
-
-			if ( inEditor )
-			{
-				drawBcInEditor( painter, shadowColor );
-			}
-			else
-			{
-				drawBc( painter, shadowColor, record );
-			}
-		}
+		// Barcodes don't support shadows.
 	}
 
 	
@@ -333,11 +320,14 @@ namespace glabels
 
 		mEditorBarcode->build( mBcData.toStdString(), mW.pt(), mH.pt() );
 
-		mW = Distance::pt( mEditorBarcode->width() );
-		mH = Distance::pt( mEditorBarcode->height() );
+		if ( mEditorBarcode->isDataValid() )
+		{
+			mW = Distance::pt( mEditorBarcode->width() );
+			mH = Distance::pt( mEditorBarcode->height() );
+		}
 
 		QPainterPath path;
-		path.addRect( 0, 0, mEditorBarcode->width(), mEditorBarcode->height() );
+		path.addRect( 0, 0, mW.pt(), mH.pt() );
 		mHoverPath = path;
 	}
 
@@ -354,13 +344,43 @@ namespace glabels
 			glbarcode::QtRenderer renderer(painter);
 			mEditorBarcode->render( renderer );
 		}
-		else if ( mEditorBarcode->isEmpty() )
-		{
-			// FIXME: display "Empty"
-		}
 		else
 		{
-			// FIXME: display "Invalid data"
+			QString text;
+
+			if ( mEditorBarcode->isEmpty() )
+			{
+				text = tr("No barcode data");
+			}
+			else
+			{
+				text = tr("Invalid barcode data");
+			}
+
+			painter->setPen( Qt::NoPen );
+			painter->setBrush( QBrush( emptyFillColor ) );
+			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+
+			QFont font( "Sans" );
+			font.setPointSizeF( 6 );
+
+			QFontMetricsF fm(font);
+			QRectF textRect = fm.boundingRect( text );
+
+			double wPts = (mW - 2*pad).pt();
+			double hPts = (mH - 2*pad).pt();
+			if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
+			{
+				double scaleX = wPts / textRect.width();
+				double scaleY = hPts / textRect.height();
+				font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+			}
+
+			painter->setFont( font );
+			painter->setPen( QPen( color ) );
+			painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
+			                   Qt::AlignCenter,
+			                   text );
 		}
 	}
 

@@ -1093,15 +1093,15 @@
     <name>glabels::LabelEditor</name>
     <message>
         <location filename="../glabels/LabelEditor.cpp" line="640"/>
-        <location filename="../glabels/LabelEditor.cpp" line="937"/>
-        <location filename="../glabels/LabelEditor.cpp" line="942"/>
-        <location filename="../glabels/LabelEditor.cpp" line="947"/>
-        <location filename="../glabels/LabelEditor.cpp" line="952"/>
+        <location filename="../glabels/LabelEditor.cpp" line="940"/>
+        <location filename="../glabels/LabelEditor.cpp" line="945"/>
+        <location filename="../glabels/LabelEditor.cpp" line="950"/>
+        <location filename="../glabels/LabelEditor.cpp" line="955"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/LabelEditor.cpp" line="957"/>
+        <location filename="../glabels/LabelEditor.cpp" line="960"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1111,6 +1111,19 @@
     <message>
         <location filename="../glabels/LabelModel.cpp" line="276"/>
         <source>Untitled</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>glabels::LabelModelBarcodeObject</name>
+    <message>
+        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="353"/>
+        <source>No barcode data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="357"/>
+        <source>Invalid barcode data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
