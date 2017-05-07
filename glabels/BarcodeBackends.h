@@ -54,14 +54,8 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
-		static QString BackendIdToName( const QString& backendId );
-		static QString BackendNameToId( const QString& backendName );
-
-		static const QList<QString>& getBackendNameList();
-		static const QList<QString>& getNameList();
-
-		static BarcodeStyle lookupStyleFromId( const QString& id );
-		static BarcodeStyle lookupStyleFromName( const QString& name );
+		static const QList<BarcodeStyle>& styleList();
+		static const BarcodeStyle& defaultStyle();
 
 
 		/////////////////////////////////
@@ -88,13 +82,9 @@ namespace glabels
 		typedef QMap<QString,QString> BackendMap;
 		static BackendMap mBackendIdMap;
 		static BackendMap mBackendNameMap;
-
-		typedef QMap<QString,BarcodeStyle> StyleMap;
-		static StyleMap mStyleIdMap;
-		static StyleMap mStyleNameMap;
-
 		static QList<QString> mBackendNameList;
-		static QList<QString> mNameList;
+
+		static QList<BarcodeStyle> mStyleList;
 
 	};
 

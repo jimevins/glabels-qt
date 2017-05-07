@@ -249,8 +249,24 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			barcodeShowTextCheck->setChecked( mObject->bcTextFlag() );
-			barcodeChecksumCheck->setChecked( mObject->bcChecksumFlag() );
+			BarcodeStyle bcStyle = mObject->bcStyle();
+
+			barcodeShowTextCheck->setEnabled( bcStyle.textOptional() );
+			barcodeChecksumCheck->setEnabled( bcStyle.checksumOptional() );
+
+			// May need to adjust current text flag, if style changed
+			bool textFlag = (mObject->bcTextFlag() && bcStyle.canText())
+				||  (bcStyle.canText() && !bcStyle.textOptional());
+			mObject->setBcTextFlag( textFlag );
+
+			// May need to adjust current checksum flag, if style changed
+			bool csFlag = (mObject->bcChecksumFlag() && bcStyle.canChecksum())
+				||  (bcStyle.canChecksum() && !bcStyle.checksumOptional());
+			mObject->setBcChecksumFlag( csFlag );
+
+			barcodeStyleButton->setBcStyle( bcStyle );
+			barcodeShowTextCheck->setChecked( textFlag );
+			barcodeChecksumCheck->setChecked( csFlag );
 			barcodeColorButton->setColorNode( mObject->bcColorNode() );
 			barcodeDataEdit->setText( mObject->bcData() );
 
@@ -702,8 +718,24 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			mObject->setBcTextFlag( barcodeShowTextCheck->isChecked() );
-			mObject->setBcChecksumFlag( barcodeChecksumCheck->isChecked() );
+			BarcodeStyle bcStyle = barcodeStyleButton->bcStyle();
+
+			barcodeShowTextCheck->setEnabled( bcStyle.textOptional() );
+			barcodeChecksumCheck->setEnabled( bcStyle.checksumOptional() );
+
+			// May need to adjust current text flag, if style changed
+			bool textFlag = (barcodeShowTextCheck->isChecked() && bcStyle.canText())
+				||  (bcStyle.canText() && !bcStyle.textOptional());
+			barcodeShowTextCheck->setChecked( textFlag );
+
+			// May need to adjust current checksum flag, if style changed
+			bool csFlag = (barcodeChecksumCheck->isChecked() && bcStyle.canChecksum())
+				||  (bcStyle.canChecksum() && !bcStyle.checksumOptional());
+			barcodeChecksumCheck->setChecked( csFlag );
+
+			mObject->setBcStyle( bcStyle );
+			mObject->setBcTextFlag( textFlag );
+			mObject->setBcChecksumFlag( csFlag );
 			mObject->setBcColorNode( barcodeColorButton->colorNode() );
 			mObject->setBcData( barcodeDataEdit->toPlainText() );
 

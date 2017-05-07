@@ -49,7 +49,7 @@ namespace glabels
 		// Signals
 		/////////////////////////////////
 	signals:
-		void styleChanged();
+		void selectionChanged();
 
 
 		/////////////////////////////////
@@ -57,13 +57,14 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		BarcodeStyle bcStyle() const;
+		void setBcStyle( const BarcodeStyle& bcStyle );
 
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onMenuStyleChanged();
+		void onMenuSelectionChanged();
 
 
 		/////////////////////////////////

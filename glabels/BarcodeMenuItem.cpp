@@ -20,6 +20,8 @@
 
 #include "BarcodeMenuItem.h"
 
+#include <QtDebug>
+
 
 namespace glabels
 {

@@ -18,6 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "BarcodeBackends.h"
 #include "FileUtil.h"
 #include "Db.h"
 #include "LabelModel.h"
@@ -89,6 +90,7 @@ int main( int argc, char **argv )
 	glabels::Settings::init();
 	glabels::Db::init();
 	glabels::merge::Factory::init();
+	glabels::BarcodeBackends::init();
 
 	
 	//

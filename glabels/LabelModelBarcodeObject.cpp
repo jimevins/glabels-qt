@@ -44,6 +44,8 @@ namespace glabels
 	{
 		const QColor emptyFillColor = QColor( 128, 128, 128, 128 );
 		const Distance pad = Distance::pt(4);
+		const Distance minW = Distance::pt(18);
+		const Distance minH = Distance::pt(18);
 	}
 
 
@@ -63,7 +65,7 @@ namespace glabels
 		mHandles << new HandleSouthWest( this );
 		mHandles << new HandleWest( this );
 
-		mBcStyle        = BarcodeBackends::lookupStyleFromId( "code39" );
+		mBcStyle        = BarcodeBackends::defaultStyle();
 		mBcTextFlag     = mBcStyle.canText();
 		mBcChecksumFlag = mBcStyle.canChecksum();
 		mBcFormatDigits = mBcStyle.preferedN();
@@ -315,6 +317,12 @@ namespace glabels
 			delete mEditorBarcode;
 		}
 		mEditorBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		if ( !mEditorBarcode )
+		{
+			qWarning() << "Invalid barcode style" << mBcStyle.id() << "using \"code39\".";
+			mBcStyle = BarcodeBackends::defaultStyle();
+			mEditorBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		}
 		mEditorBarcode->setChecksum(mBcChecksumFlag);
 		mEditorBarcode->setShowText(mBcTextFlag);
 
@@ -324,6 +332,11 @@ namespace glabels
 		{
 			mW = Distance::pt( mEditorBarcode->width() );
 			mH = Distance::pt( mEditorBarcode->height() );
+		}
+		else
+		{
+			mW = max( mW, minW );
+			mH = max( mH, minH );
 		}
 
 		QPainterPath path;

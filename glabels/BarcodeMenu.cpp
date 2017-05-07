@@ -23,6 +23,8 @@
 #include "BarcodeBackends.h"
 #include "BarcodeMenuItem.h"
 
+#include <QtDebug>
+
 
 namespace glabels
 {
@@ -32,12 +34,11 @@ namespace glabels
 	///
 	BarcodeMenu::BarcodeMenu()
 	{
-		foreach ( QString name, BarcodeBackends::getNameList() )
+		foreach ( const BarcodeStyle& bcStyle, BarcodeBackends::styleList() )
 		{
-			BarcodeStyle bcStyle = BarcodeBackends::lookupStyleFromName( name );
-
 			BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
-			connect( bcMenuItem, SIGNAL(activated()), this, SLOT(onMenuItemActivated) );
+			connect( bcMenuItem, SIGNAL(activated(const BarcodeStyle&)),
+			         this, SLOT(onMenuItemActivated(const BarcodeStyle&)) );
 
 			addAction( bcMenuItem );
 		}
@@ -56,11 +57,11 @@ namespace glabels
 	///
 	/// onMenuItemActivated slot
 	///
-	void BarcodeMenu::onMenuItemActivated( BarcodeStyle bcStyle )
+	void BarcodeMenu::onMenuItemActivated( const BarcodeStyle& bcStyle )
 	{
 		mBcStyle = bcStyle;
 
-		emit styleChanged();
+		emit selectionChanged();
 	}
 
 } // namespace glabels

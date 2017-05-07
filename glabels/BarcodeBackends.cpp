@@ -29,16 +29,25 @@ namespace glabels
 	//
 	BarcodeBackends::BackendMap BarcodeBackends::mBackendIdMap;
 	BarcodeBackends::BackendMap BarcodeBackends::mBackendNameMap;
-
-	BarcodeBackends::StyleMap BarcodeBackends::mStyleIdMap;
-	BarcodeBackends::StyleMap BarcodeBackends::mStyleNameMap;
-
 	QList<QString> BarcodeBackends::mBackendNameList;
-	QList<QString> BarcodeBackends::mNameList;
 
+	QList<BarcodeStyle> BarcodeBackends::mStyleList;
+	
 
 	BarcodeBackends::BarcodeBackends()
 	{
+		registerStyle( "code39", "", tr("Code 39"),
+		               true, true, true, true, "1234567890", true, 10 );
+
+		registerStyle( "code39ext", "", tr("Code 39 Extended"),
+		               true, true, true, true, "1234567890", true, 10 );
+
+		registerStyle( "upc-a", "", tr("UPC-A"),
+		               true, false, true, false, "12345678901", false, 11 );
+
+		registerStyle( "ean-13", "", tr("EAN-13"),
+		               true, false, true, false, "123456789012", false, 12 );
+
 		registerStyle( "postnet", "", tr("POSTNET (any)"),
 		               false, false, true, false, "12345-6789-12", false, 11 );
 
@@ -57,23 +66,12 @@ namespace glabels
 		registerStyle( "onecode", "", tr("USPS Intelligent Mail"),
 		               false, false, true, false, "12345678901234567890", false, 20 );
 
-		registerStyle( "code39", "", tr("Code 39"),
-		               true, true, true, true, "1234567890", true, 10 );
-
-		registerStyle( "code39ext", "", tr("Code 39 Extended"),
-		               true, true, true, true, "1234567890", true, 10 );
-
-		registerStyle( "upc-A", "", tr("UPC-A"),
-		               true, false, true, false, "12345678901", false, 11 );
-
-		registerStyle( "ean-13", "", tr("EAN-13"),
-		               true, false, true, false, "123456789012", false, 12 );
-
 		registerStyle( "datamatrix", "", tr("DataMatrix"),
 		               false, false, true, false, "1234567890AB", false, 12 );
 
 		registerStyle( "qrcode", "", tr("QRCode"),
 		               false, false, true, false, "1234567890AB", false, 12 );
+
 	}
 
 
@@ -88,65 +86,15 @@ namespace glabels
 	}
 
 
-	QString BarcodeBackends::BackendIdToName( const QString& backendId )
+	const QList<BarcodeStyle>& BarcodeBackends::styleList()
 	{
-		BackendMap::iterator i = mBackendIdMap.find( backendId );
-		if ( i != mBackendIdMap.end()  )
-		{
-			return i.value();
-		}
-		
-		return "";
+		return mStyleList;
 	}
 
 
-	QString BarcodeBackends::BackendNameToId( const QString& backendName )
+	const BarcodeStyle& BarcodeBackends::defaultStyle()
 	{
-		BackendMap::iterator i = mBackendNameMap.find( backendName );
-		if ( i != mBackendNameMap.end()  )
-		{
-			return i.value();
-		}
-		
-		return "";
-	}
-
-
-	const QList<QString>& BarcodeBackends::getBackendNameList()
-	{
-		return mBackendNameList;
-	}
-
-
-	const QList<QString>& BarcodeBackends::getNameList()
-	{
-		return mNameList;
-	}
-
-
-	BarcodeStyle BarcodeBackends::lookupStyleFromId( const QString& id )
-	{
-		StyleMap::iterator i = mStyleIdMap.find( id );
-		if ( i != mStyleIdMap.end()  )
-		{
-			return i.value();
-		}
-		
-		return BarcodeStyle( QString("code39"), QString(""), tr("Code 39"),
-		                     true, true, true, true, QString("1234567890"), true, 10 );
-	}
-
-
-	BarcodeStyle BarcodeBackends::lookupStyleFromName( const QString& name )
-	{
-		StyleMap::iterator i = mStyleNameMap.find( name );
-		if ( i != mStyleNameMap.end()  )
-		{
-			return i.value();
-		}
-		
-		return BarcodeStyle( QString("code39"), QString(""), tr("Code 39"),
-		                     true, true, true, true, QString("1234567890"), true, 10 );
+		return mStyleList[0];
 	}
 
 
@@ -175,11 +123,7 @@ namespace glabels
 		                    QString(defaultDigits),
 		                    canFreeForm, preferedN );
 
-		QString fqName = QString(backendId) + QString(".") + name; // Name may not be unique
-
-		mNameList.append( name );
-		mStyleIdMap.insert( id, style );
-		mStyleNameMap.insert( fqName, style );
+		mStyleList.append( style );
 	}
 
 } // namespace glabels
