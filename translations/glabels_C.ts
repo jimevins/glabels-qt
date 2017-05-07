@@ -1122,7 +1122,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="357"/>
+        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="361"/>
         <source>Invalid barcode data</source>
         <translation type="unfinished"></translation>
     </message>

@@ -23,6 +23,7 @@
 
 
 #include "LabelModelObject.h"
+#include "RawText.h"
 
 #include <QTextLayout>
 
@@ -163,7 +164,7 @@ namespace glabels
 		// Private Members
 		///////////////////////////////////////////////////////////////
 	private:
-		QString              mText;
+		RawText              mText;
 		QString              mFontFamily;
 		double               mFontSize;
 		QFont::Weight        mFontWeight;

@@ -24,6 +24,8 @@
 
 #include "LabelModelObject.h"
 
+#include "RawText.h"
+
 #include "glbarcode/Barcode.h"
 
 
@@ -134,7 +136,7 @@ namespace glabels
 		bool         mBcTextFlag;
 		bool         mBcChecksumFlag;
 		int          mBcFormatDigits;
-		QString      mBcData;
+		RawText      mBcData;
 		ColorNode    mBcColorNode;
 
 		glbarcode::Barcode* mEditorBarcode;

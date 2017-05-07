@@ -123,7 +123,7 @@ namespace glabels
 	///
 	QString LabelModelBarcodeObject::bcData() const
 	{
-		return mBcData;
+		return mBcData.toString();
 	}
 
 
@@ -132,7 +132,7 @@ namespace glabels
 	///
 	void LabelModelBarcodeObject::setBcData( const QString& value )
 	{
-		if ( mBcData != value )
+		if ( mBcData.toString() != value )
 		{
 			mBcData = value;
 			update();
@@ -348,9 +348,13 @@ namespace glabels
 		{
 			QString text;
 
-			if ( mEditorBarcode->isEmpty() )
+			if ( mBcData.isEmpty() )
 			{
 				text = tr("No barcode data");
+			}
+			else if ( mBcData.hasPlaceHolders() )
+			{
+				text = mBcData.toString();
 			}
 			else
 			{

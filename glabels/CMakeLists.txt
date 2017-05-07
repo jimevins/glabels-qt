@@ -79,6 +79,7 @@ set (glabels_sources
   PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  RawText.cpp
   Region.cpp
   SelectProductDialog.cpp
   Settings.cpp

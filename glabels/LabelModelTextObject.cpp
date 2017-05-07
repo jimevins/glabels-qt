@@ -121,7 +121,7 @@ namespace glabels
 	///
 	QString LabelModelTextObject::text() const
 	{
-		return mText;
+		return mText.toString();
 	}
 
 
@@ -130,7 +130,7 @@ namespace glabels
 	///
 	void LabelModelTextObject::setText( const QString& value )
 	{
-		if ( mText != value )
+		if ( mText.toString() != value )
 		{
 			mText = value;
 			update();
@@ -365,7 +365,7 @@ namespace glabels
 		QFontMetricsF fontMetrics( font );
 		double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
 
-		QString displayText = mText.isEmpty() ? tr("Text") : mText;
+		QString displayText = mText.isEmpty() ? tr("Text") : mText.toString();
 		QTextDocument document( displayText );
 
 		// Do layouts
@@ -487,7 +487,7 @@ namespace glabels
 		QFontMetricsF fontMetrics( font );
 		double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
 
-		QString displayText = mText.isEmpty() ? tr("Text") : mText;
+		QString displayText = mText.isEmpty() ? tr("Text") : mText.toString();
 		QTextDocument document( displayText );
 
 		qDeleteAll( mEditorLayouts );
@@ -597,7 +597,7 @@ namespace glabels
 		QFontMetricsF fontMetrics( font );
 		double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
 
-		QTextDocument document( expandText( mText, record ) );
+		QTextDocument document( mText.expand( record ) );
 
 		QList<QTextLayout*> layouts;
 
@@ -662,34 +662,6 @@ namespace glabels
 
 		// Cleanup
 		qDeleteAll( layouts );
-	}
-
-
-	///
-	/// Expand text by replacing fields with their values from the given record
-	///
-	QString LabelModelTextObject::expandText( QString text, merge::Record* record ) const
-	{
-		if ( record )
-		{
-			foreach ( QString key, record->keys() )
-			{
-				// Special case: remove line when it contains only an empty field.
-				// e.g. an optional ${ADDR2} line.  To bypass this case, include
-				// whitespace at end of line.
-				if ( record->value(key).isEmpty() )
-				{
-					QStringList v = text.split( '\n' );
-					v.removeAll( "${"+key+"}" );
-					text = v.join( '\n' );
-				}
-
-				// Nominal case: simple replacement
-				text.replace( "${"+key+"}", record->value(key) );
-			}
-		}
-
-		return text;
 	}
 
 } // namespace glabels
