@@ -20,10 +20,11 @@
 
 #include "XmlLabelParser.h"
 
+#include "BarcodeBackends.h"
 #include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
-//#include "LabelModelBarcodeObject.h"
+#include "LabelModelBarcodeObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelImageObject.h"
@@ -317,12 +318,10 @@ namespace glabels
 			{
 				list.append( parseObjectImageNode( child.toElement(), data ) );
 			}
-#if 0
 			else if ( tagName == "Object-barcode" )
 			{
 				list.append( parseObjectBarcodeNode( child.toElement() ) );
 			}
-#endif
 			else if ( !child.isComment() )
 			{
 				qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
@@ -466,7 +465,33 @@ namespace glabels
 	LabelModelBarcodeObject*
 	XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node )
 	{
-		return nullptr;
+		LabelModelBarcodeObject* object = new LabelModelBarcodeObject();
+
+
+		/* position attrs */
+		parsePositionAttrs( node, object );
+
+		/* size attrs */
+		parseSizeAttrs( node, object );
+
+		/* barcode attrs */
+		BarcodeStyle bcStyle = BarcodeBackends::style( XmlUtil::getStringAttr( node, "backend", "" ),
+		                                               XmlUtil::getStringAttr( node, "style", "") );
+		object->setBcStyle( bcStyle );
+		object->setBcTextFlag( XmlUtil::getBoolAttr( node, "text", true ) );
+		object->setBcChecksumFlag( XmlUtil::getBoolAttr( node, "checksum", true ) );
+
+		QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+		object->setBcColorNode( ColorNode( field_flag, color, key ) );
+
+		object->setBcData( XmlUtil::getStringAttr( node, "data", "" ) );
+
+		/* affine attrs */
+		parseAffineAttrs( node, object );
+
+		return object;
 	}
 
 

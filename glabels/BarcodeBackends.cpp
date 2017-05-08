@@ -98,6 +98,20 @@ namespace glabels
 	}
 
 
+	const BarcodeStyle& BarcodeBackends::style( const QString& backendId, const QString& StyleId )
+	{
+		foreach ( const BarcodeStyle& bcStyle, mStyleList )
+		{
+			if ( (bcStyle.backendId() == backendId) && (bcStyle.id() == StyleId) )
+			{
+				return bcStyle;
+			}
+		}
+
+		return defaultStyle();
+	}
+
+
 	void BarcodeBackends::registerBackend( QString& id, QString& name)
 	{
 		mBackendNameList.append( name );

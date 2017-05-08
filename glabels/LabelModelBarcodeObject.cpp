@@ -72,6 +72,8 @@ namespace glabels
 		mBcData         = "";
 		mBcColorNode    = ColorNode( Qt::black );
 
+		mEditorBarcode = nullptr;
+
 		update(); // Initialize cached editor layouts
 	}
 

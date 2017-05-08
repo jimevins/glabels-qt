@@ -411,11 +411,8 @@
                  checksum         %BOOLEAN_TYPE;          #REQUIRED
                  color            %UINT_TYPE;             #IMPLIED
                  color_field      %STRING_TYPE;           #IMPLIED
-                 data             %STRING_TYPE;           #IMPLIED
-                 field            %STRING_TYPE;           #IMPLIED
-                 format           %UINT_TYPE;             #IMPLIED
+                 data             %STRING_TYPE;           #REQUIRED
                  %affine_attrs;
-                 %shadow_attrs;
 >
 
 

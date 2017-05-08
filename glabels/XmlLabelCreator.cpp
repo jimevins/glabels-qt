@@ -23,7 +23,7 @@
 #include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
-//#include "LabelModelBarcodeObject.h"
+#include "LabelModelBarcodeObject.h"
 #include "LabelModelBoxObject.h"
 #include "LabelModelEllipseObject.h"
 #include "LabelModelLineObject.h"
@@ -147,11 +147,14 @@ namespace glabels
 			{
 				createObjectImageNode( node, imageObject );
 			}
+			else if ( LabelModelBarcodeObject* barcodeObject = dynamic_cast<LabelModelBarcodeObject*>(object) )
+			{
+				createObjectBarcodeNode( node, barcodeObject );
+			}
 			else if ( LabelModelTextObject* textObject = dynamic_cast<LabelModelTextObject*>(object) )
 			{
 				createObjectTextNode( node, textObject );
 			}
-			// TODO: other object types
 			else
 			{
 				Q_ASSERT_X( false, "XmlLabelCreator::createObjectsNode", "Invalid object type." );
@@ -273,7 +276,33 @@ namespace glabels
 	void
 	XmlLabelCreator::createObjectBarcodeNode( QDomElement &parent, const LabelModelBarcodeObject* object )
 	{
-		// TODO
+		QDomDocument doc = parent.ownerDocument();
+		QDomElement node = doc.createElement( "Object-barcode" );
+		parent.appendChild( node );
+
+		/* position attrs */
+		createPositionAttrs( node, object );
+
+		/* size attrs */
+		createSizeAttrs( node, object );
+
+		/* barcode attrs */
+		XmlUtil::setStringAttr( node, "backend", object->bcStyle().backendId() );
+		XmlUtil::setStringAttr( node, "style", object->bcStyle().id() );
+		XmlUtil::setBoolAttr( node, "text", object->bcTextFlag() );
+		XmlUtil::setBoolAttr( node, "checksum", object->bcChecksumFlag() );
+		if ( object->bcColorNode().isField() )
+		{
+			XmlUtil::setStringAttr( node, "color_field", object->bcColorNode().key() );
+		}
+		else
+		{
+			XmlUtil::setUIntAttr( node, "color", object->bcColorNode().rgba() );
+		}
+		XmlUtil::setStringAttr( node, "data", object->bcData() );
+
+		/* affine attrs */
+		createAffineAttrs( node, object );
 	}
 
 

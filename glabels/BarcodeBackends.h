@@ -56,6 +56,7 @@ namespace glabels
 	public:
 		static const QList<BarcodeStyle>& styleList();
 		static const BarcodeStyle& defaultStyle();
+		static const BarcodeStyle& style( const QString& backendId, const QString& StyleId );
 
 
 		/////////////////////////////////
