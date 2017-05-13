@@ -125,6 +125,7 @@ namespace glabels
 
 		void drawBcInEditor( QPainter* painter, const QColor& color ) const;
 		void drawBc( QPainter* painter, const QColor& color, merge::Record* record ) const;
+		void drawPlaceHolder( QPainter* painter, const QColor& color, const QString& text ) const;
 
 	
 

@@ -348,64 +348,33 @@ namespace glabels
 
 
 	///
-	/// Draw text in editor from cached information
+	/// Draw barcode in editor from cached information
 	///
 	void LabelModelBarcodeObject::drawBcInEditor( QPainter* painter, const QColor& color ) const
 	{
-		painter->setPen( QPen( color ) );
-		
-		if ( mEditorBarcode->isDataValid() )
+		if ( mBcData.isEmpty() )
 		{
+			drawPlaceHolder( painter, color, tr("No barcode data") );
+		}
+		else if ( mBcData.hasPlaceHolders() )
+		{
+			drawPlaceHolder( painter, color, mBcData.toString() );
+		}
+		else if ( mEditorBarcode->isDataValid() )
+		{
+			painter->setPen( QPen( color ) );
 			glbarcode::QtRenderer renderer(painter);
 			mEditorBarcode->render( renderer );
 		}
 		else
 		{
-			QString text;
-
-			if ( mBcData.isEmpty() )
-			{
-				text = tr("No barcode data");
-			}
-			else if ( mBcData.hasPlaceHolders() )
-			{
-				text = mBcData.toString();
-			}
-			else
-			{
-				text = tr("Invalid barcode data");
-			}
-
-			painter->setPen( Qt::NoPen );
-			painter->setBrush( QBrush( emptyFillColor ) );
-			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-
-			QFont font( "Sans" );
-			font.setPointSizeF( 6 );
-
-			QFontMetricsF fm(font);
-			QRectF textRect = fm.boundingRect( text );
-
-			double wPts = (mW - 2*pad).pt();
-			double hPts = (mH - 2*pad).pt();
-			if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
-			{
-				double scaleX = wPts / textRect.width();
-				double scaleY = hPts / textRect.height();
-				font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
-			}
-
-			painter->setFont( font );
-			painter->setPen( QPen( color ) );
-			painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
-			                   Qt::AlignCenter,
-			                   text );
+			drawPlaceHolder( painter, color, tr("Invalid barcode data") );
 		}
 	}
 
 
 	///
-	/// Draw text in final printout or preview
+	/// Draw barcode in final printout or preview
 	///
 	void
 	LabelModelBarcodeObject::drawBc( QPainter*      painter,
@@ -424,4 +393,40 @@ namespace glabels
 		bc->render( renderer );
 	}
 
+
+	///
+	/// Draw place holder in editor
+	///
+	void
+	LabelModelBarcodeObject::drawPlaceHolder( QPainter*      painter,
+	                                          const QColor&  color,
+	                                          const QString& text ) const
+	{
+		painter->setPen( Qt::NoPen );
+		painter->setBrush( QBrush( emptyFillColor ) );
+		painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+
+		QFont font( "Sans" );
+		font.setPointSizeF( 6 );
+
+		QFontMetricsF fm(font);
+		QRectF textRect = fm.boundingRect( text );
+
+		double wPts = (mW - 2*pad).pt();
+		double hPts = (mH - 2*pad).pt();
+		if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
+		{
+			double scaleX = wPts / textRect.width();
+			double scaleY = hPts / textRect.height();
+			font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+		}
+
+		painter->setFont( font );
+		painter->setPen( QPen( color ) );
+		painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
+		                   Qt::AlignCenter,
+		                   text );
+	}
+
+	
 } // namespace glabels
