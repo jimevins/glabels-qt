@@ -128,21 +128,11 @@ namespace glbarcode
 		double minW = MIN_CELL_SIZE*encodedData.nx() + 2*MIN_CELL_SIZE;
 		double minH = MIN_CELL_SIZE*encodedData.ny() + 2*MIN_CELL_SIZE;
 
-		if ( (w <= minW) && (h <= minH) )
+		if ( (w <= minW) || (h <= minH) )
 		{
 			scale = 1;
 			w     = minW;
 			h     = minH;
-		}
-		else if ( w <= minW )
-		{
-			scale = h / minH;
-			w     = scale * minW;
-		}
-		else if ( h <= minH )
-		{
-			scale = w / minW;
-			h     = scale * minH;
 		}
 		else
 		{
