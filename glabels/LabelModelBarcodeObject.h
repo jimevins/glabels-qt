@@ -141,6 +141,7 @@ namespace glabels
 		ColorNode    mBcColorNode;
 
 		glbarcode::Barcode* mEditorBarcode;
+		glbarcode::Barcode* mEditorDefaultBarcode;
 		
 		QPainterPath mHoverPath;
 

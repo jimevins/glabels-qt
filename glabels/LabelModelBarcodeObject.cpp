@@ -42,7 +42,7 @@ namespace glabels
 	//
 	namespace
 	{
-		const QColor emptyFillColor = QColor( 128, 128, 128, 128 );
+		const QColor fillColor = QColor( 224, 224, 224, 255 );
 		const Distance pad = Distance::pt(4);
 		const Distance minW = Distance::pt(18);
 		const Distance minH = Distance::pt(18);
@@ -73,6 +73,7 @@ namespace glabels
 		mBcColorNode    = ColorNode( Qt::black );
 
 		mEditorBarcode = nullptr;
+		mEditorDefaultBarcode = nullptr;
 
 		update(); // Initialize cached editor layouts
 	}
@@ -92,6 +93,8 @@ namespace glabels
 		mBcColorNode    = object->mBcColorNode;
 
 		mEditorBarcode = nullptr;
+		mEditorDefaultBarcode = nullptr;
+
 		update(); // Initialize cached editor layouts
 	}
 
@@ -314,6 +317,9 @@ namespace glabels
 	///
 	void LabelModelBarcodeObject::update()
 	{
+		//
+		// Build barcode from data
+		//
 		if ( mEditorBarcode )
 		{
 			delete mEditorBarcode;
@@ -330,6 +336,28 @@ namespace glabels
 
 		mEditorBarcode->build( mBcData.toStdString(), mW.pt(), mH.pt() );
 
+		//
+		// Build a place holder barcode to display in editor, if cannot display actual barcode
+		//
+		if ( mEditorDefaultBarcode )
+		{
+			delete mEditorDefaultBarcode;
+		}
+		mEditorDefaultBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		if ( !mEditorDefaultBarcode )
+		{
+			qWarning() << "Invalid barcode style" << mBcStyle.id() << "using \"code39\".";
+			mBcStyle = BarcodeBackends::defaultStyle();
+			mEditorDefaultBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		}
+		mEditorDefaultBarcode->setChecksum(mBcChecksumFlag);
+		mEditorDefaultBarcode->setShowText(mBcTextFlag);
+
+		mEditorDefaultBarcode->build( mBcStyle.defaultDigits().toStdString(), mW.pt(), mH.pt() );
+
+		//
+		// Adjust size
+		//
 		if ( mEditorBarcode->isDataValid() )
 		{
 			mW = Distance::pt( mEditorBarcode->width() );
@@ -337,8 +365,8 @@ namespace glabels
 		}
 		else
 		{
-			mW = max( mW, minW );
-			mH = max( mH, minH );
+			mW = Distance::pt( mEditorDefaultBarcode->width() );
+			mH = Distance::pt( mEditorDefaultBarcode->height() );
 		}
 
 		QPainterPath path;
@@ -395,22 +423,37 @@ namespace glabels
 
 
 	///
-	/// Draw place holder in editor
+	/// Draw barcode place holder in editor
 	///
 	void
 	LabelModelBarcodeObject::drawPlaceHolder( QPainter*      painter,
 	                                          const QColor&  color,
 	                                          const QString& text ) const
 	{
+		QString shortText = text.left( 32 ); // Don't let the text get out of hand
+		
+		//
+		// Render box
+		//
 		painter->setPen( Qt::NoPen );
-		painter->setBrush( QBrush( emptyFillColor ) );
+		painter->setBrush( QBrush( fillColor ) );
 		painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
 
+		//
+		// Render default barcode
+		//
+		painter->setPen( QPen( color ) );
+		glbarcode::QtRenderer renderer(painter);
+		mEditorDefaultBarcode->render( renderer );
+
+		//
+		// Determine font size for text
+		//
 		QFont font( "Sans" );
 		font.setPointSizeF( 6 );
 
-		QFontMetricsF fm(font);
-		QRectF textRect = fm.boundingRect( text );
+		QFontMetricsF fm( font );
+		QRectF textRect = fm.boundingRect( shortText );
 
 		double wPts = (mW - 2*pad).pt();
 		double hPts = (mH - 2*pad).pt();
@@ -421,11 +464,27 @@ namespace glabels
 			font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
 		}
 
+		//
+		// Render hole for text (font size may have changed above)
+		//
+		fm = QFontMetricsF( font );
+		textRect = fm.boundingRect( shortText );
+		
+		QRectF holeRect( (mW.pt() - textRect.width())/2 - pad.pt(),
+		                 (mH.pt() - textRect.height())/2 - pad.pt(),
+		                 textRect.width() + 2*pad.pt(),
+		                 textRect.height() + 2*pad.pt() );
+
+		painter->setPen( Qt::NoPen );
+		painter->setBrush( QBrush( fillColor ) );
+		painter->drawRect( holeRect );
+
+		//
+		// Render text
+		//
 		painter->setFont( font );
 		painter->setPen( QPen( color ) );
-		painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
-		                   Qt::AlignCenter,
-		                   text );
+		painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ), Qt::AlignCenter, shortText );
 	}
 
 	
