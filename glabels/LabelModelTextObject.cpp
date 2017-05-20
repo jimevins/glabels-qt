@@ -119,6 +119,8 @@ namespace glabels
 		mTextHAlign        = textHAlign;
 		mTextVAlign        = textVAlign;
 		mTextLineSpacing   = textLineSpacing;
+
+		update(); // Initialize cached editor layouts
 	}
 
 	
