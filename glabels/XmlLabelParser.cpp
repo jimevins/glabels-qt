@@ -21,7 +21,6 @@
 #include "XmlLabelParser.h"
 
 #include "BarcodeBackends.h"
-#include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBarcodeObject.h"
@@ -615,14 +614,14 @@ namespace glabels
 		/* font attrs */
 		QString       fontFamily        = XmlUtil::getStringAttr( node, "font_family", "Sans" );
 		double        fontSize          = XmlUtil::getDoubleAttr( node, "font_size", 10 );
-		QFont::Weight fontWeight        = EnumUtil::stringToWeight( XmlUtil::getStringAttr( node, "font_weight", "normal" ) );
+		QFont::Weight fontWeight        = XmlUtil::getWeightAttr( node, "font_weight", QFont::Normal );
 		bool          fontItalicFlag    = XmlUtil::getBoolAttr( node, "font_italic", false );
 		bool          fontUnderlineFlag = XmlUtil::getBoolAttr( node, "font_underline", false );
 
 		/* text attrs */
 		double textLineSpacing   = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
-		Qt::Alignment textHAlign = EnumUtil::stringToHAlign( XmlUtil::getStringAttr( node, "align", "left" ) );
-		Qt::Alignment textVAlign = EnumUtil::stringToVAlign( XmlUtil::getStringAttr( node, "valign", "top" ) );
+		Qt::Alignment textHAlign = XmlUtil::getAlignmentAttr( node, "align", Qt::AlignLeft );
+		Qt::Alignment textVAlign = XmlUtil::getAlignmentAttr( node, "valign", Qt::AlignTop );
 
 		/* affine attrs */
 		double a[6];

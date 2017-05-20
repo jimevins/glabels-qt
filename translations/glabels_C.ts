@@ -1128,8 +1128,8 @@
 <context>
     <name>glabels::LabelModelTextObject</name>
     <message>
-        <location filename="../glabels/LabelModelTextObject.cpp" line="419"/>
-        <location filename="../glabels/LabelModelTextObject.cpp" line="541"/>
+        <location filename="../glabels/LabelModelTextObject.cpp" line="421"/>
+        <location filename="../glabels/LabelModelTextObject.cpp" line="543"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>

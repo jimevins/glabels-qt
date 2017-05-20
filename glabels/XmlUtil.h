@@ -25,7 +25,9 @@
 #include "Distance.h"
 
 #include <QDomElement>
+#include <QFont>
 #include <QString>
+#include <Qt>
 
 #include <cstdint>
 
@@ -74,6 +76,15 @@ namespace glabels
 		                               const QString&     name,
 		                               const Distance&    default_value );
 
+		static QFont::Weight getWeightAttr( const QDomElement& node,
+		                                    const QString&     name,
+		                                    QFont::Weight      default_value );
+
+		static Qt::Alignment getAlignmentAttr( const QDomElement& node,
+		                                       const QString&     name,
+		                                       Qt::Alignment      default_value );
+
+
 		static void     setStringAttr( QDomElement&   node,
 		                               const QString& name,
 		                               const QString& value );
@@ -98,6 +109,15 @@ namespace glabels
 		                               const QString&  name,
 		                               const Distance& value );
 
+		static void     setWeightAttr( QDomElement&    node,
+		                               const QString&  name,
+		                               QFont::Weight   value );
+
+		static void     setAlignmentAttr( QDomElement&    node,
+		                                  const QString&  name,
+		                                  Qt::Alignment   value );
+
+		
 	private:
 		Units mUnits;
 

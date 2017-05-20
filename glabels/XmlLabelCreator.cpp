@@ -20,7 +20,6 @@
 
 #include "XmlLabelCreator.h"
 
-#include "EnumUtil.h"
 #include "LabelModel.h"
 #include "LabelModelObject.h"
 #include "LabelModelBarcodeObject.h"
@@ -332,14 +331,14 @@ namespace glabels
 		/* font attrs */
 		XmlUtil::setStringAttr( node, "font_family", object->fontFamily() );
 		XmlUtil::setDoubleAttr( node, "font_size", object->fontSize() );
-		XmlUtil::setStringAttr( node, "font_weight", EnumUtil::weightToString( object->fontWeight() ) );
+		XmlUtil::setWeightAttr( node, "font_weight", object->fontWeight() );
 		XmlUtil::setBoolAttr( node, "font_italic", object->fontItalicFlag() );
 		XmlUtil::setBoolAttr( node, "font_underline", object->fontUnderlineFlag() );
 
 		/* text attrs */
 		XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
-		XmlUtil::setStringAttr( node, "align", EnumUtil::hAlignToString( object->textHAlign() ) );
-		XmlUtil::setStringAttr( node, "valign", EnumUtil::vAlignToString( object->textVAlign() ) );
+		XmlUtil::setAlignmentAttr( node, "align", object->textHAlign() );
+		XmlUtil::setAlignmentAttr( node, "valign", object->textVAlign() );
 
 		/* affine attrs */
 		createAffineAttrs( node, object );

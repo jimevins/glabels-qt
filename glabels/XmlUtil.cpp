@@ -234,6 +234,68 @@ namespace glabels
 	}
 
 
+	QFont::Weight XmlUtil::getWeightAttr( const QDomElement& node,
+	                                      const QString&     name,
+	                                      QFont::Weight      default_value )
+	{
+		init();
+
+		QString valueString = node.attribute( name, "" );
+		if ( valueString != "" )
+		{
+			if ( valueString == "bold" )
+			{
+				return QFont::Bold;
+			}
+			else if ( valueString == "normal" )
+			{
+				return QFont::Normal;
+			}
+		}
+
+		return default_value;
+	}
+
+
+	Qt::Alignment XmlUtil::getAlignmentAttr( const QDomElement& node,
+	                                         const QString&     name,
+	                                         Qt::Alignment      default_value )
+	{
+		init();
+
+		QString valueString = node.attribute( name, "" );
+		if ( valueString != "" )
+		{
+                        if ( valueString == "right" )
+                        {
+                                return Qt::AlignRight;
+                        }
+                        else if ( valueString == "hcenter" )
+                        {
+                                return Qt::AlignHCenter;
+                        }
+                        else if ( valueString == "left" )
+                        {
+                                return Qt::AlignLeft;
+                        }
+                        else if ( valueString == "bottom" )
+                        {
+                                return Qt::AlignBottom;
+                        }
+                        else if ( valueString == "vcenter" )
+                        {
+                                return Qt::AlignVCenter;
+                        }
+                        else if ( valueString == "top" )
+                        {
+                                return Qt::AlignTop;
+                        }
+		}
+
+		return default_value;
+	}
+
+
 	void XmlUtil::setStringAttr( QDomElement&   node,
 				     const QString& name,
 				     const QString& value )
@@ -294,4 +356,52 @@ namespace glabels
 		node.setAttribute( name, QString::number(value.inUnits(units)) + units.toIdString() );
 	}
 
+
+	void XmlUtil::setWeightAttr( QDomElement&    node,
+	                             const QString&  name,
+	                             QFont::Weight   value )
+	{
+		switch (value)
+		{
+		case QFont::Bold:
+			node.setAttribute( name, "bold" );
+			break;
+		default:
+			node.setAttribute( name, "normal" );
+			break;
+		}
+	}
+	
+
+	void XmlUtil::setAlignmentAttr( QDomElement&    node,
+	                                const QString&  name,
+	                                Qt::Alignment   value )
+	{
+		switch (value)
+		{
+		case Qt::AlignRight:
+			node.setAttribute( name, "right" );
+			break;
+		case Qt::AlignHCenter:
+			node.setAttribute( name, "hcenter" );
+			break;
+		case Qt::AlignLeft:
+			node.setAttribute( name, "left" );
+			break;
+		case Qt::AlignBottom:
+			node.setAttribute( name, "bottom" );
+			break;
+		case Qt::AlignVCenter:
+			node.setAttribute( name, "vcenter" );
+			break;
+		case Qt::AlignTop:
+			node.setAttribute( name, "top" );
+			break;
+		default:
+			node.setAttribute( name, "left" );
+			break;
+		}
+	}
+
+	
 } // namespace glabels

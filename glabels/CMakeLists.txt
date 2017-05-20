@@ -42,7 +42,6 @@ set (glabels_sources
   DataCache.cpp
   Db.cpp
   Distance.cpp
-  EnumUtil.cpp
   FieldButton.cpp
   File.cpp
   FileUtil.cpp
