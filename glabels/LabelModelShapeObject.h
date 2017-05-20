@@ -40,6 +40,21 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	protected:
 		LabelModelShapeObject();
+
+		LabelModelShapeObject( const Distance&  x0,
+		                       const Distance&  y0,
+		                       const Distance&  w,
+		                       const Distance&  h,
+		                       const Distance&  lineWidth,
+		                       const ColorNode& lineColorNode,
+		                       const ColorNode& fillColorNode,
+		                       const QMatrix&   matrix,
+		                       bool             shadowState,
+		                       const Distance&  shadowX,
+		                       const Distance&  shadowY,
+		                       double           shadowOpacity,
+		                       const ColorNode& shadowColorNode );
+
 		LabelModelShapeObject( const LabelModelShapeObject* object );
 	public:
 		~LabelModelShapeObject() override;

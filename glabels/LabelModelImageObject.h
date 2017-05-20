@@ -42,7 +42,47 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		LabelModelImageObject();
+
+		LabelModelImageObject( const Distance&  x0,
+		                       const Distance&  y0,
+		                       const Distance&  w,
+		                       const Distance&  h,
+		                       const TextNode&  filenameNode,
+		                       const QMatrix&   matrix = QMatrix(),
+		                       bool             shadowState = false,
+		                       const Distance&  shadowX = 0,
+		                       const Distance&  shadowY = 0,
+		                       double           shadowOpacity = 1.0,
+		                       const ColorNode& shadowColorNode = ColorNode() );
+
+		LabelModelImageObject( const Distance&  x0,
+		                       const Distance&  y0,
+		                       const Distance&  w,
+		                       const Distance&  h,
+		                       const QString&   filename,
+		                       const QImage&    image,
+		                       const QMatrix&   matrix = QMatrix(),
+		                       bool             shadowState = false,
+		                       const Distance&  shadowX = 0,
+		                       const Distance&  shadowY = 0,
+		                       double           shadowOpacity = 1.0,
+		                       const ColorNode& shadowColorNode = ColorNode() );
+
+		LabelModelImageObject( const Distance&   x0,
+		                       const Distance&   y0,
+		                       const Distance&   w,
+		                       const Distance&   h,
+		                       const QString&    filename,
+		                       const QByteArray& svg,
+		                       const QMatrix&    matrix = QMatrix(),
+		                       bool              shadowState = false,
+		                       const Distance&   shadowX = 0,
+		                       const Distance&   shadowY = 0,
+		                       double            shadowOpacity = 1.0,
+		                       const ColorNode&  shadowColorNode = ColorNode() );
+
 		LabelModelImageObject( const LabelModelImageObject* object );
+		
 		~LabelModelImageObject() override;
 
 

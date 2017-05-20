@@ -65,6 +65,40 @@ namespace glabels
 
 
 	///
+	/// Constructor
+	///
+	LabelModelObject::LabelModelObject( const Distance&  x0,
+	                                    const Distance&  y0,
+	                                    const Distance&  w,
+	                                    const Distance&  h,
+	                                    const QMatrix&   matrix,
+	                                    bool             shadowState,
+	                                    const Distance&  shadowX,
+	                                    const Distance&  shadowY,
+	                                    double           shadowOpacity,
+	                                    const ColorNode& shadowColorNode ) : QObject(nullptr)
+	{
+		mId = msNextId++;
+
+		mX0 = x0;
+		mY0 = y0;
+		mW  = w;
+		mH  = h;
+		mMatrix = matrix;
+
+		mShadowState     = shadowState;
+		mShadowX         = shadowX;
+		mShadowY         = shadowY;
+		mShadowColorNode = shadowColorNode;
+		mShadowOpacity   = shadowOpacity;
+
+		mSelectedFlag = false;
+
+		mOutline = nullptr;
+	}
+	
+		
+	///
 	/// Copy constructor
 	///
 	LabelModelObject::LabelModelObject( const LabelModelObject* object )

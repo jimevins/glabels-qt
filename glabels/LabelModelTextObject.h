@@ -43,7 +43,30 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		LabelModelTextObject();
+		
+		LabelModelTextObject( const Distance&  x0,
+		                      const Distance&  y0,
+		                      const Distance&  w,
+		                      const Distance&  h,
+		                      const QString&   text,
+		                      const QString&   fontFamily,
+		                      double           fontSize,
+		                      QFont::Weight    fontWeight,
+		                      bool             fontItalicFlag,
+		                      bool             fontUnderlineFlag,
+		                      ColorNode        textColorNode,
+		                      Qt::Alignment    textHAlign,
+		                      Qt::Alignment    textVAlign,
+		                      double           textLineSpacing,
+		                      const QMatrix&   matrix = QMatrix(),
+		                      bool             shadowState = false,
+		                      const Distance&  shadowX = 0,
+		                      const Distance&  shadowY = 0,
+		                      double           shadowOpacity = 1.0,
+		                      const ColorNode& shadowColorNode = ColorNode() );
+
 		LabelModelTextObject( const LabelModelTextObject* object );
+		
 		~LabelModelTextObject() override;
 
 

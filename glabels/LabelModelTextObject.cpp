@@ -72,6 +72,57 @@ namespace glabels
 
 
 	///
+	/// Constructor
+	///
+	LabelModelTextObject::LabelModelTextObject( const Distance&  x0,
+	                                            const Distance&  y0,
+	                                            const Distance&  w,
+	                                            const Distance&  h,
+	                                            const QString&   text,
+	                                            const QString&   fontFamily,
+	                                            double           fontSize,
+	                                            QFont::Weight    fontWeight,
+	                                            bool             fontItalicFlag,
+	                                            bool             fontUnderlineFlag,
+	                                            ColorNode        textColorNode,
+	                                            Qt::Alignment    textHAlign,
+	                                            Qt::Alignment    textVAlign,
+	                                            double           textLineSpacing,
+	                                            const QMatrix&   matrix,
+	                                            bool             shadowState,
+	                                            const Distance&  shadowX,
+	                                            const Distance&  shadowY,
+	                                            double           shadowOpacity,
+	                                            const ColorNode& shadowColorNode )
+	: LabelModelObject( x0, y0, w, h,
+	                    matrix,
+	                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+	{
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		mText              = text;
+		mFontFamily        = fontFamily;
+		mFontSize          = fontSize;
+		mFontWeight        = fontWeight;
+		mFontItalicFlag    = fontItalicFlag;
+		mFontUnderlineFlag = fontUnderlineFlag;
+		mTextColorNode     = textColorNode;
+		mTextHAlign        = textHAlign;
+		mTextVAlign        = textVAlign;
+		mTextLineSpacing   = textLineSpacing;
+	}
+
+	
+	///
 	/// Copy constructor
 	///
 	LabelModelTextObject::LabelModelTextObject( const LabelModelTextObject* object )

@@ -80,6 +80,45 @@ namespace glabels
 
 
 	///
+	/// Constructor
+	///
+	LabelModelBarcodeObject::LabelModelBarcodeObject( const Distance&     x0,
+	                                                  const Distance&     y0,
+	                                                  const Distance&     w,
+	                                                  const Distance&     h,
+	                                                  const BarcodeStyle& bcStyle,
+	                                                  bool                bcTextFlag,
+	                                                  bool                bcChecksumFlag,
+	                                                  QString             bcData,
+	                                                  const ColorNode&    bcColorNode,
+	                                                  const QMatrix&      matrix )
+	: LabelModelObject( x0, y0, w, h, matrix )
+	{
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		mBcStyle        = bcStyle;
+		mBcTextFlag     = bcTextFlag;
+		mBcChecksumFlag = bcChecksumFlag;
+		mBcData         = bcData;
+		mBcColorNode    = bcColorNode;
+
+		mEditorBarcode = nullptr;
+		mEditorDefaultBarcode = nullptr;
+
+		update(); // Initialize cached editor layouts
+	}
+	
+
+	///
 	/// Copy constructor
 	///
 	LabelModelBarcodeObject::LabelModelBarcodeObject( const LabelModelBarcodeObject* object )

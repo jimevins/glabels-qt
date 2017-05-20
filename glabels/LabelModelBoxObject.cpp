@@ -46,6 +46,31 @@ namespace glabels
 
 
 	///
+	/// Constructor
+	///
+	LabelModelBoxObject::LabelModelBoxObject( const Distance&  x0,
+	                                          const Distance&  y0,
+	                                          const Distance&  w,
+	                                          const Distance&  h,
+	                                          const Distance&  lineWidth,
+	                                          const ColorNode& lineColorNode,
+	                                          const ColorNode& fillColorNode,
+	                                          const QMatrix&   matrix,
+	                                          bool             shadowState,
+	                                          const Distance&  shadowX,
+	                                          const Distance&  shadowY,
+	                                          double           shadowOpacity,
+	                                          const ColorNode& shadowColorNode )
+	: LabelModelShapeObject( x0, y0, w, h,
+	                         lineWidth, lineColorNode, fillColorNode,
+	                         matrix,
+	                         shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+	{
+		// empty
+	}
+
+
+	///
 	/// Copy constructor
 	///
 	LabelModelBoxObject::LabelModelBoxObject( const LabelModelBoxObject* object )

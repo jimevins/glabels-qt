@@ -44,7 +44,20 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		LabelModelBarcodeObject();
+
+		LabelModelBarcodeObject( const Distance&     x0,
+		                         const Distance&     y0,
+		                         const Distance&     w,
+		                         const Distance&     h,
+		                         const BarcodeStyle& bcStyle,
+		                         bool                bcTextFlag,
+		                         bool                bcChecksumFlag,
+		                         QString             bcData,
+		                         const ColorNode&    bcColorNode,
+		                         const QMatrix&      matrix = QMatrix() );
+
 		LabelModelBarcodeObject( const LabelModelBarcodeObject* object );
+
 		~LabelModelBarcodeObject() override;
 
 

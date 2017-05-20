@@ -1115,12 +1115,12 @@
 <context>
     <name>glabels::LabelModelBarcodeObject</name>
     <message>
-        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="385"/>
+        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="424"/>
         <source>No barcode data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="399"/>
+        <location filename="../glabels/LabelModelBarcodeObject.cpp" line="438"/>
         <source>Invalid barcode data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1128,8 +1128,8 @@
 <context>
     <name>glabels::LabelModelTextObject</name>
     <message>
-        <location filename="../glabels/LabelModelTextObject.cpp" line="368"/>
-        <location filename="../glabels/LabelModelTextObject.cpp" line="490"/>
+        <location filename="../glabels/LabelModelTextObject.cpp" line="419"/>
+        <location filename="../glabels/LabelModelTextObject.cpp" line="541"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>

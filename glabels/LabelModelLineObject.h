@@ -40,7 +40,22 @@ namespace glabels
 		///////////////////////////////////////////////////////////////
 	public:
 		LabelModelLineObject();
+
+		LabelModelLineObject( const Distance&  x0,
+		                      const Distance&  y0,
+		                      const Distance&  w,
+		                      const Distance&  h,
+		                      const Distance&  lineWidth,
+		                      const ColorNode& lineColorNode,
+		                      const QMatrix&   matrix = QMatrix(),
+		                      bool             shadowState = false,
+		                      const Distance&  shadowX = 0,
+		                      const Distance&  shadowY = 0,
+		                      double           shadowOpacity = 1.0,
+		                      const ColorNode& shadowColorNode = ColorNode() );
+
 		LabelModelLineObject( const LabelModelLineObject* object );
+		
 		~LabelModelLineObject() override;
 
 

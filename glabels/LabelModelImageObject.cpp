@@ -62,6 +62,130 @@ namespace glabels
 
 
 	///
+	/// Constructor
+	///
+	LabelModelImageObject::LabelModelImageObject( const Distance&  x0,
+	                                              const Distance&  y0,
+	                                              const Distance&  w,
+	                                              const Distance&  h,
+	                                              const TextNode&  filenameNode,
+	                                              const QMatrix&   matrix,
+	                                              bool             shadowState,
+	                                              const Distance&  shadowX,
+	                                              const Distance&  shadowY,
+	                                              double           shadowOpacity,
+	                                              const ColorNode& shadowColorNode )
+	: LabelModelObject( x0, y0, w, h,
+	                    matrix,
+	                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+	{
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		if ( smDefaultImage == nullptr )
+		{
+			smDefaultImage = new QImage( ":images/checkerboard.png" );
+		}
+
+		mFilenameNode = filenameNode;
+
+		mImage = nullptr;
+		mSvgRenderer = nullptr;
+	}
+
+	
+	///
+	/// Constructor
+	///
+	LabelModelImageObject::LabelModelImageObject( const Distance&  x0,
+	                                              const Distance&  y0,
+	                                              const Distance&  w,
+	                                              const Distance&  h,
+	                                              const QString&   filename,
+	                                              const QImage&    image,
+	                                              const QMatrix&   matrix,
+	                                              bool             shadowState,
+	                                              const Distance&  shadowX,
+	                                              const Distance&  shadowY,
+	                                              double           shadowOpacity,
+	                                              const ColorNode& shadowColorNode )
+	: LabelModelObject( x0, y0, w, h,
+	                    matrix,
+	                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+	{
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		if ( smDefaultImage == nullptr )
+		{
+			smDefaultImage = new QImage( ":images/checkerboard.png" );
+		}
+
+		mImage = new QImage(image);
+		mFilenameNode = TextNode( false, filename );
+		mSvgRenderer = nullptr;
+	}
+
+
+	///
+	/// Constructor
+	///
+	LabelModelImageObject::LabelModelImageObject( const Distance&   x0,
+	                                              const Distance&   y0,
+	                                              const Distance&   w,
+	                                              const Distance&   h,
+	                                              const QString&    filename,
+	                                              const QByteArray& svg,
+	                                              const QMatrix&    matrix,
+	                                              bool              shadowState,
+	                                              const Distance&   shadowX,
+	                                              const Distance&   shadowY,
+	                                              double            shadowOpacity,
+	                                              const ColorNode&  shadowColorNode )
+	: LabelModelObject( x0, y0, w, h,
+	                    matrix,
+	                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+	{
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		if ( smDefaultImage == nullptr )
+		{
+			smDefaultImage = new QImage( ":images/checkerboard.png" );
+		}
+
+		mSvg = svg;
+		mSvgRenderer = new QSvgRenderer( mSvg );
+		mFilenameNode = TextNode( false, filename );
+		mImage = nullptr;
+	}
+
+
+	///
 	/// Copy constructor
 	///
 	LabelModelImageObject::LabelModelImageObject( const LabelModelImageObject* object ) : LabelModelObject(object)

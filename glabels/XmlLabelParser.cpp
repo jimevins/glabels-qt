@@ -335,202 +335,314 @@ namespace glabels
 	LabelModelBoxObject*
 	XmlLabelParser::parseObjectBoxNode( const QDomElement &node )
 	{
-		LabelModelBoxObject* object = new LabelModelBoxObject();
-
-
 		/* position attrs */
-		parsePositionAttrs( node, object );
+		Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
+		Distance y0 = XmlUtil::getLengthAttr( node, "y", 0.0 );
 
 		/* size attrs */
-		parseSizeAttrs( node, object );
+		Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
+		Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 		/* line attrs */
-		parseLineAttrs( node, object );
+		Distance lineWidth = XmlUtil::getLengthAttr( node, "line_width", 1.0 );
+
+		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+		ColorNode lineColorNode( field_flag, color, key );
 
 		/* fill attrs */
-		parseFillAttrs( node, object );
+		key        = XmlUtil::getStringAttr( node, "fill_color_field", "" );
+		field_flag = !key.isEmpty();
+		color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+		ColorNode fillColorNode( field_flag, color, key );
         
 		/* affine attrs */
-		parseAffineAttrs( node, object );
+		double a[6];
+		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
+		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
+		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
+		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
+		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
+		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
 		/* shadow attrs */
-		parseShadowAttrs( node, object );
+		bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
+		Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
+		Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
+		double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
 
-		return object;
+		key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
+		field_flag = !key.isEmpty();
+		color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+		ColorNode shadowColorNode( field_flag, color, key );
+
+		return new LabelModelBoxObject( x0, y0, w, h,
+		                                lineWidth, lineColorNode,
+		                                fillColorNode,
+		                                QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+		                                shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 	}
 
 
 	LabelModelEllipseObject*
 	XmlLabelParser::parseObjectEllipseNode( const QDomElement &node )
 	{
-		LabelModelEllipseObject* object = new LabelModelEllipseObject();
-
-
 		/* position attrs */
-		parsePositionAttrs( node, object );
+		Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
+		Distance y0 = XmlUtil::getLengthAttr( node, "y", 0.0 );
 
 		/* size attrs */
-		parseSizeAttrs( node, object );
+		Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
+		Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 		/* line attrs */
-		parseLineAttrs( node, object );
+		Distance lineWidth = XmlUtil::getLengthAttr( node, "line_width", 1.0 );
+
+		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+		ColorNode lineColorNode( field_flag, color, key );
 
 		/* fill attrs */
-		parseFillAttrs( node, object );
+		key        = XmlUtil::getStringAttr( node, "fill_color_field", "" );
+		field_flag = !key.isEmpty();
+		color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+		ColorNode fillColorNode( field_flag, color, key );
         
 		/* affine attrs */
-		parseAffineAttrs( node, object );
+		double a[6];
+		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
+		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
+		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
+		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
+		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
+		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
 		/* shadow attrs */
-		parseShadowAttrs( node, object );
+		bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
+		Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
+		Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
+		double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
 
-		return object;
+		key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
+		field_flag = !key.isEmpty();
+		color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+		ColorNode shadowColorNode( field_flag, color, key );
+
+		return new LabelModelEllipseObject( x0, y0, w, h,
+		                                    lineWidth, lineColorNode,
+		                                    fillColorNode,
+		                                    QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+		                                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 	}
 
 
 	LabelModelLineObject*
 	XmlLabelParser::parseObjectLineNode( const QDomElement &node )
 	{
-		LabelModelLineObject* object = new LabelModelLineObject();
-
-
 		/* position attrs */
-		parsePositionAttrs( node, object );
+		Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
+		Distance y0 = XmlUtil::getLengthAttr( node, "y", 0.0 );
 
 		/* size attrs of line */
-		object->setW( XmlUtil::getLengthAttr( node, "dx", 0 ) );
-		object->setH( XmlUtil::getLengthAttr( node, "dy", 0 ) );
+		Distance dx = XmlUtil::getLengthAttr( node, "dx", 0 );
+		Distance dy = XmlUtil::getLengthAttr( node, "dy", 0 );
 
 		/* line attrs */
-		parseLineAttrs( node, object );
+		Distance lineWidth = XmlUtil::getLengthAttr( node, "line_width", 1.0 );
+
+		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
+		bool     field_flag = !key.isEmpty();
+		uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+		ColorNode lineColorNode( field_flag, color, key );
 
 		/* affine attrs */
-		parseAffineAttrs( node, object );
+		double a[6];
+		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
+		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
+		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
+		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
+		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
+		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
 		/* shadow attrs */
-		parseShadowAttrs( node, object );
+		bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
+		Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
+		Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
+		double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
 
-		return object;
+		key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
+		field_flag = !key.isEmpty();
+		color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+		ColorNode shadowColorNode( field_flag, color, key );
+
+		return new LabelModelLineObject( x0, y0, dx, dy,
+		                                 lineWidth, lineColorNode,
+		                                 QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+		                                 shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 	}
 
 
 	LabelModelImageObject*
 	XmlLabelParser::parseObjectImageNode( const QDomElement &node, const DataCache& data )
 	{
-		LabelModelImageObject* object = new LabelModelImageObject();
-
-
 		/* position attrs */
-		parsePositionAttrs( node, object );
+		Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
+		Distance y0 = XmlUtil::getLengthAttr( node, "y", 0.0 );
 
 		/* size attrs */
-		parseSizeAttrs( node, object );
+		Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
+		Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 		/* file attrs */
 		QString key        = XmlUtil::getStringAttr( node, "src_field", "" );
 		bool    field_flag = !key.isEmpty();
 		QString filename   = XmlUtil::getStringAttr( node, "src", "" );
+		TextNode filenameNode( field_flag, field_flag ? key : filename );
 
-		if ( field_flag )
+		/* affine attrs */
+		double a[6];
+		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
+		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
+		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
+		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
+		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
+		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+
+		/* shadow attrs */
+		bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
+		Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
+		Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
+		double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
+
+		key            = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
+		field_flag     = !key.isEmpty();
+		uint32_t color = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+		ColorNode shadowColorNode( field_flag, color, key );
+
+		if ( filenameNode.isField() )
 		{
-			object->setFilenameNode( TextNode( true, key ) );
+			return new LabelModelImageObject( x0, y0, w, h,
+			                                  filenameNode,
+			                                  QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+			                                  shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 		else
 		{
 			if ( data.hasImage( filename ) )
 			{
-				object->setImage( filename, data.getImage( filename ) );
+				return new LabelModelImageObject( x0, y0, w, h,
+				                                  filename, data.getImage( filename ),
+				                                  QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+				                                  shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
 			else if ( data.hasSvg( filename ) )
 			{
-				object->setSvg( filename, data.getSvg( filename ) );
+				return new LabelModelImageObject( x0, y0, w, h,
+				                                  filename, data.getSvg( filename ),
+				                                  QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+				                                  shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
 			else
 			{
 				qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
-				object->setFilenameNode( TextNode( false, filename ) );
+				return new LabelModelImageObject( x0, y0, w, h,
+				                                  filenameNode,
+				                                  QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+				                                  shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
 		}
-        
-		/* affine attrs */
-		parseAffineAttrs( node, object );
-
-		/* shadow attrs */
-		parseShadowAttrs( node, object );
-
-		return object;
 	}
 
 
 	LabelModelBarcodeObject*
 	XmlLabelParser::parseObjectBarcodeNode( const QDomElement &node )
 	{
-		LabelModelBarcodeObject* object = new LabelModelBarcodeObject();
-
-
 		/* position attrs */
-		parsePositionAttrs( node, object );
+		Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
+		Distance y0 = XmlUtil::getLengthAttr( node, "y", 0.0 );
 
 		/* size attrs */
-		parseSizeAttrs( node, object );
+		Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
+		Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 		/* barcode attrs */
 		BarcodeStyle bcStyle = BarcodeBackends::style( XmlUtil::getStringAttr( node, "backend", "" ),
 		                                               XmlUtil::getStringAttr( node, "style", "") );
-		object->setBcStyle( bcStyle );
-		object->setBcTextFlag( XmlUtil::getBoolAttr( node, "text", true ) );
-		object->setBcChecksumFlag( XmlUtil::getBoolAttr( node, "checksum", true ) );
+		bool bcTextFlag = XmlUtil::getBoolAttr( node, "text", true );
+		bool bcChecksumFlag = XmlUtil::getBoolAttr( node, "checksum", true );
 
 		QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
 		bool     field_flag = !key.isEmpty();
 		uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
-		object->setBcColorNode( ColorNode( field_flag, color, key ) );
+		ColorNode bcColorNode( field_flag, color, key );
 
-		object->setBcData( XmlUtil::getStringAttr( node, "data", "" ) );
+		QString bcData = XmlUtil::getStringAttr( node, "data", "" );
 
 		/* affine attrs */
-		parseAffineAttrs( node, object );
+		double a[6];
+		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
+		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
+		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
+		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
+		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
+		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
-		return object;
+		return new LabelModelBarcodeObject( x0, y0, w, h,
+		                                    bcStyle, bcTextFlag, bcChecksumFlag, bcData, bcColorNode,
+		                                    QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ) );
 	}
 
 
 	LabelModelTextObject*
 	XmlLabelParser::parseObjectTextNode( const QDomElement &node )
 	{
-		LabelModelTextObject* object = new LabelModelTextObject();
-
-
 		/* position attrs */
-		parsePositionAttrs( node, object );
+		Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
+		Distance y0 = XmlUtil::getLengthAttr( node, "y", 0.0 );
 
 		/* size attrs */
-		parseSizeAttrs( node, object );
+		Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
+		Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 		/* color attr */
 		QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
 		bool     field_flag = !key.isEmpty();
 		uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
-
-		object->setTextColorNode( ColorNode( field_flag, color, key ) );
+		ColorNode textColorNode( field_flag, color, key );
 
 		/* font attrs */
-		object->setFontFamily( XmlUtil::getStringAttr( node, "font_family", "Sans" ) );
-		object->setFontSize( XmlUtil::getDoubleAttr( node, "font_size", 10 ) );
-		object->setFontWeight( EnumUtil::stringToWeight( XmlUtil::getStringAttr( node, "font_weight", "normal" ) ) );
-		object->setFontItalicFlag( XmlUtil::getBoolAttr( node, "font_italic", false ) );
-		object->setFontUnderlineFlag( XmlUtil::getBoolAttr( node, "font_underline", false ) );
+		QString       fontFamily        = XmlUtil::getStringAttr( node, "font_family", "Sans" );
+		double        fontSize          = XmlUtil::getDoubleAttr( node, "font_size", 10 );
+		QFont::Weight fontWeight        = EnumUtil::stringToWeight( XmlUtil::getStringAttr( node, "font_weight", "normal" ) );
+		bool          fontItalicFlag    = XmlUtil::getBoolAttr( node, "font_italic", false );
+		bool          fontUnderlineFlag = XmlUtil::getBoolAttr( node, "font_underline", false );
 
 		/* text attrs */
-		object->setTextLineSpacing( XmlUtil::getDoubleAttr( node, "line_spacing", 1 ) );
-		object->setTextHAlign( EnumUtil::stringToHAlign( XmlUtil::getStringAttr( node, "align", "left" ) ) );
-		object->setTextVAlign( EnumUtil::stringToVAlign( XmlUtil::getStringAttr( node, "valign", "top" ) ) );
+		double textLineSpacing   = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
+		Qt::Alignment textHAlign = EnumUtil::stringToHAlign( XmlUtil::getStringAttr( node, "align", "left" ) );
+		Qt::Alignment textVAlign = EnumUtil::stringToVAlign( XmlUtil::getStringAttr( node, "valign", "top" ) );
 
 		/* affine attrs */
-		parseAffineAttrs( node, object );
+		double a[6];
+		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
+		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
+		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
+		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
+		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
+		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
 		/* shadow attrs */
-		parseShadowAttrs( node, object );
+		bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
+		Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
+		Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
+		double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
+
+		key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
+		field_flag = !key.isEmpty();
+		color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+		ColorNode shadowColorNode( field_flag, color, key );
 
 		/* deserialize contents. */
 		QTextDocument document;
@@ -554,9 +666,14 @@ namespace glabels
 				qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
 			}
 		}
-		object->setText( document.toPlainText() );
+		QString text = document.toPlainText();
 
-		return object;
+		return new LabelModelTextObject( x0, y0, w, h,
+		                                 text,
+		                                 fontFamily, fontSize, fontWeight, fontItalicFlag, fontUnderlineFlag,
+		                                 textColorNode, textHAlign, textVAlign, textLineSpacing,
+		                                 QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+		                                 shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 	}
 
 
@@ -574,83 +691,6 @@ namespace glabels
 	}
 
 	
-	void
-	XmlLabelParser::parsePositionAttrs( const QDomElement &node, LabelModelObject* object )
-	{
-		object->setX0( XmlUtil::getLengthAttr( node, "x", 0.0 ) );
-		object->setY0( XmlUtil::getLengthAttr( node, "y", 0.0 ) );
-	}
-
-	
-	void
-	XmlLabelParser::parseSizeAttrs( const QDomElement &node, LabelModelObject* object )
-	{
-		object->setW( XmlUtil::getLengthAttr( node, "w", 0 ) );
-		object->setH( XmlUtil::getLengthAttr( node, "h", 0 ) );
-	}
-
-	
-	void
-	XmlLabelParser::parseLineAttrs( const QDomElement &node, LabelModelObject* object )
-	{
-		object->setLineWidth( XmlUtil::getLengthAttr( node, "line_width", 1.0 ) );
-
-		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-		bool     field_flag = !key.isEmpty();
-		uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
-
-		object->setLineColorNode( ColorNode( field_flag, color, key ) );
-	}
-
-	
-	void
-	XmlLabelParser::parseFillAttrs( const QDomElement &node, LabelModelObject* object )
-	{
-		QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
-		bool     field_flag = !key.isEmpty();
-		uint32_t color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
-
-		object->setFillColorNode( ColorNode( field_flag, color, key ) );
-	}
-
-
-	void
-	XmlLabelParser::parseAffineAttrs( const QDomElement &node, LabelModelObject* object )
-	{
-		double a[6];
-
-		a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-		a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-		a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-		a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-		a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-		a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
-
-		object->setMatrix( QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ) );
-	}
-
-
-	void
-	XmlLabelParser::parseShadowAttrs( const QDomElement &node, LabelModelObject* object )
-	{
-		object->setShadow( XmlUtil::getBoolAttr( node, "shadow", false ) );
-
-		if ( object->shadow() )
-		{
-			object->setShadowX( XmlUtil::getLengthAttr( node, "shadow_x", 0.0 ) );
-			object->setShadowY( XmlUtil::getLengthAttr( node, "shadow_y", 0.0 ) );
-
-			QString  key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
-			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
-
-			object->setShadowColorNode( ColorNode( field_flag, color, key ) );
-
-			object->setShadowOpacity( XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 ) );
-		}
-	}
-
-
 	void
 	XmlLabelParser::parseMergeNode( const QDomElement &node, LabelModel* label )
 	{

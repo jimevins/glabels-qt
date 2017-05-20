@@ -52,6 +52,41 @@ namespace glabels
 
 
 	///
+	/// Constructor
+	///
+	LabelModelLineObject::LabelModelLineObject( const Distance&  x0,
+	                                            const Distance&  y0,
+	                                            const Distance&  dx,
+	                                            const Distance&  dy,
+	                                            const Distance&  lineWidth,
+	                                            const ColorNode& lineColorNode,
+	                                            const QMatrix&   matrix,
+	                                            bool             shadowState,
+	                                            const Distance&  shadowX,
+	                                            const Distance&  shadowY,
+	                                            double           shadowOpacity,
+	                                            const ColorNode& shadowColorNode )
+	: LabelModelObject( x0, y0, dx, dy,
+	                    matrix,
+	                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+	{
+		mOutline = new Outline( this );
+
+		mHandles << new HandleNorthWest( this );
+		mHandles << new HandleNorth( this );
+		mHandles << new HandleNorthEast( this );
+		mHandles << new HandleEast( this );
+		mHandles << new HandleSouthEast( this );
+		mHandles << new HandleSouth( this );
+		mHandles << new HandleSouthWest( this );
+		mHandles << new HandleWest( this );
+
+		mLineWidth       = lineWidth;
+		mLineColorNode   = lineColorNode;
+	}
+
+	
+	///
 	/// Copy constructor
 	///
 	LabelModelLineObject::LabelModelLineObject( const LabelModelLineObject* object )
