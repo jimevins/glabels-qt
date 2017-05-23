@@ -5,6 +5,11 @@ cmake_minimum_required (VERSION 2.8.12)
 ###############################################################################
 project (glabels)
 
+#
+# Path for locally defined cmake modules
+#
+set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+
 
 #=======================================
 # Version Information
@@ -44,6 +49,11 @@ endif ()
 
 find_package(ZLIB 1.2 REQUIRED)
 
+#
+# Optional dependencies
+#
+find_package (LibQrencode QUIET)
+
 
 #=======================================
 # Subdirectories
@@ -67,10 +77,16 @@ message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAK
 message (STATUS "Qt version .............. " ${Qt5Core_VERSION})
 message (STATUS "zlib version ............ " ${ZLIB_VERSION_STRING})
 
+if (LIBQRENCODE_FOUND)
+  message (STATUS "qrencode (optional)...... " ${LIBQRENCODE_VERSION_STRING})
+else (LIBQRENCODE_FOUND)
+  message (STATUS "qrencode (optional)...... No.")
+endif (LIBQRENCODE_FOUND)
+
 if (MINGW)
    message (STATUS "MinGW location .......... " ${MINGW_BASE_DIR})
    message (STATUS "MinGW Qt location ....... " ${QT_BASE_DIR})
-endif ()
+endif (MINGW)
 
 message (STATUS "")
 

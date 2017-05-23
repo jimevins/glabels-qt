@@ -57,6 +57,8 @@ namespace glabels
 		/////////////////////////////////
 		const QString& id() const;
 
+		QString fullId() const;
+
 		const QString& backendId() const;
 
 		const QString& name() const;

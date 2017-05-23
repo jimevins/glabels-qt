@@ -11,6 +11,13 @@ endif ()
 # Uncomment to build with pedantic flags
 #add_compile_options (-Werror -Wall -Wpedantic)
 
+if (${LIBQRENCODE_FOUND})
+  add_definitions (-DHAVE_QRENCODE=1)
+else (${LIBQRENCODE_FOUND})
+  set (LIBQRENCODE_INCLUDE_DIR "")
+  set (LIBQRENCODE_LIBRARIES "")
+endif (${LIBQRENCODE_FOUND})
+
 
 #=======================================
 # Auto-generate Version.h
@@ -177,6 +184,7 @@ add_executable (glabels-qt WIN32
 )
 
 target_link_libraries (glabels-qt
+  Barcode
   Merge
   glbarcode
   ${Qt5Widgets_LIBRARIES}
@@ -184,6 +192,7 @@ target_link_libraries (glabels-qt
   ${Qt5Xml_LIBRARIES}
   ${Qt5Svg_LIBRARIES}
   ${ZLIB_LIBRARIES}
+  ${LIBQRENCODE_LIBRARIES}
 )
 
 
@@ -197,6 +206,7 @@ include_directories (
   ${Qt5PrintSupport_INCLUDE_DIRS}
   ${Qt5Xml_INCLUDE_DIRS}
   ${Qt5Svg_INCLUDE_DIRS}
+  ${LIBQRENCODE_INCLUDE_DIR}
 )
 
 link_directories (
@@ -206,6 +216,7 @@ link_directories (
 #=======================================
 # Subdirectories
 #=======================================
+add_subdirectory (BarcodeBackends)
 add_subdirectory (Merge)
 
 

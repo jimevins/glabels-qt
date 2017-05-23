@@ -20,6 +20,12 @@
 
 #include "BarcodeBackends.h"
 
+#include "glbarcode/Factory.h"
+
+#if HAVE_QRENCODE
+#include "BarcodeBackends/QrEncode.h"
+#endif // HAVE_QRENCODE
+
 
 namespace glabels
 {
@@ -27,9 +33,8 @@ namespace glabels
 	//
 	// Static data
 	//
-	BarcodeBackends::BackendMap BarcodeBackends::mBackendIdMap;
-	BarcodeBackends::BackendMap BarcodeBackends::mBackendNameMap;
-	QList<QString> BarcodeBackends::mBackendNameList;
+	QStringList BarcodeBackends::mBackendIdList;
+	QMap<QString,QString> BarcodeBackends::mBackendNameMap;
 
 	QList<BarcodeStyle> BarcodeBackends::mStyleList;
 	
@@ -66,11 +71,20 @@ namespace glabels
 		registerStyle( "onecode", "", tr("USPS Intelligent Mail"),
 		               false, false, true, false, "12345678901234567890", false, 20 );
 
-		registerStyle( "datamatrix", "", tr("DataMatrix"),
+		registerStyle( "datamatrix", "", tr("IEC16022 (DataMatrix)"),
 		               false, false, true, false, "1234567890AB", false, 12 );
 
-		registerStyle( "qrcode", "", tr("QRCode"),
+#if HAVE_QRENCODE
+		//
+		// Libqrencode backend
+		//
+		registerBackend( "qrencode", "QREncode" );
+		
+		glbarcode::Factory::registerType( "qrencode::qrcode", barcode::QrEncode::createQrCode );
+
+		registerStyle( "qrcode", "qrencode", tr("IEC18004 (QRCode)"),
 		               false, false, true, false, "1234567890AB", false, 12 );
+#endif // HAVE_QRENCODE
 
 	}
 
@@ -86,6 +100,18 @@ namespace glabels
 	}
 
 
+	const QStringList& BarcodeBackends::backendList()
+	{
+		return mBackendIdList;
+	}
+
+	
+	QString BarcodeBackends::backendName( const QString& backendId )
+	{
+		return mBackendNameMap[ backendId ];
+	}
+
+	
 	const QList<BarcodeStyle>& BarcodeBackends::styleList()
 	{
 		return mStyleList;
@@ -112,29 +138,28 @@ namespace glabels
 	}
 
 
-	void BarcodeBackends::registerBackend( QString& id, QString& name)
+	void BarcodeBackends::registerBackend( const QString& backendId, const QString& backendName )
 	{
-		mBackendNameList.append( name );
-		mBackendIdMap.insert( id, name );
-		mBackendNameMap.insert( name, id );
+		mBackendIdList.append( backendId );
+		mBackendNameMap[ backendId ] = backendName;
 	}
 
 
-	void BarcodeBackends::registerStyle( const char*    id,
-	                                     const char*    backendId,
+	void BarcodeBackends::registerStyle( const QString& id,
+	                                     const QString& backendId,
 	                                     const QString& name,
 	                                     bool           canText,
 	                                     bool           textOptional,
 	                                     bool           canChecksum,
 	                                     bool           checksumOptional,
-	                                     const char*    defaultDigits,
+	                                     const QString& defaultDigits,
 	                                     bool           canFreeForm,
 	                                     int            preferedN )
 	{
-		BarcodeStyle style( QString(id), QString(backendId), name,
+		BarcodeStyle style( id, backendId, name,
 		                    canText, textOptional,
 		                    canChecksum, checksumOptional,
-		                    QString(defaultDigits),
+		                    defaultDigits,
 		                    canFreeForm, preferedN );
 
 		mStyleList.append( style );

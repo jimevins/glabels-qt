@@ -54,6 +54,8 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
+		static const QStringList& backendList();
+		static QString backendName( const QString& backendId );
 		static const QList<BarcodeStyle>& styleList();
 		static const BarcodeStyle& defaultStyle();
 		static const BarcodeStyle& style( const QString& backendId, const QString& StyleId );
@@ -63,16 +65,16 @@ namespace glabels
 		// Private Methods
 		/////////////////////////////////
 	private:
-		static void registerBackend( QString &id, QString &name);
+		static void registerBackend( const QString &backendId, const QString &backendName );
 
-		static void registerStyle( const char*    id,
-		                           const char*    backendId,
+		static void registerStyle( const QString& id,
+		                           const QString& backendId,
 		                           const QString& name,
 		                           bool           canText,
 		                           bool           textOptional,
 		                           bool           canChecksum,
 		                           bool           checksumOptional,
-		                           const char*    defaultDigits,
+		                           const QString& defaultDigits,
 		                           bool           canFreeForm,
 		                           int            preferedN );
 
@@ -80,10 +82,8 @@ namespace glabels
 		/////////////////////////////////
 		// Private Members
 		/////////////////////////////////
-		typedef QMap<QString,QString> BackendMap;
-		static BackendMap mBackendIdMap;
-		static BackendMap mBackendNameMap;
-		static QList<QString> mBackendNameList;
+		static QStringList mBackendIdList;
+		static QMap<QString,QString> mBackendNameMap;
 
 		static QList<BarcodeStyle> mStyleList;
 

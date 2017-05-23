@@ -36,11 +36,31 @@ namespace glabels
 	{
 		foreach ( const BarcodeStyle& bcStyle, BarcodeBackends::styleList() )
 		{
-			BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
-			connect( bcMenuItem, SIGNAL(activated(const BarcodeStyle&)),
-			         this, SLOT(onMenuItemActivated(const BarcodeStyle&)) );
+			if ( bcStyle.backendId() == "" )
+			{
+				BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+				connect( bcMenuItem, SIGNAL(activated(const BarcodeStyle&)),
+				         this, SLOT(onMenuItemActivated(const BarcodeStyle&)) );
 
-			addAction( bcMenuItem );
+				addAction( bcMenuItem );
+			}
+		}
+
+		foreach ( const QString& backendId, BarcodeBackends::backendList() )
+		{
+			QMenu* subMenu = addMenu( BarcodeBackends::backendName( backendId ) );
+			
+			foreach ( const BarcodeStyle& bcStyle, BarcodeBackends::styleList() )
+			{
+				if ( bcStyle.backendId() == backendId )
+				{
+					BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+					connect( bcMenuItem, SIGNAL(activated(const BarcodeStyle&)),
+					         this, SLOT(onMenuItemActivated(const BarcodeStyle&)) );
+
+					subMenu->addAction( bcMenuItem );
+				}
+			}
 		}
 	}
 

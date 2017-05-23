@@ -363,10 +363,10 @@ namespace glabels
 		{
 			delete mEditorBarcode;
 		}
-		mEditorBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		mEditorBarcode = glbarcode::Factory::createBarcode( mBcStyle.fullId().toStdString() );
 		if ( !mEditorBarcode )
 		{
-			qWarning() << "Invalid barcode style" << mBcStyle.id() << "using \"code39\".";
+			qWarning() << "Invalid barcode style" << mBcStyle.fullId() << "using \"code39\".";
 			mBcStyle = BarcodeBackends::defaultStyle();
 			mEditorBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
 		}
@@ -382,10 +382,10 @@ namespace glabels
 		{
 			delete mEditorDefaultBarcode;
 		}
-		mEditorDefaultBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		mEditorDefaultBarcode = glbarcode::Factory::createBarcode( mBcStyle.fullId().toStdString() );
 		if ( !mEditorDefaultBarcode )
 		{
-			qWarning() << "Invalid barcode style" << mBcStyle.id() << "using \"code39\".";
+			qWarning() << "Invalid barcode style" << mBcStyle.fullId() << "using \"code39\".";
 			mBcStyle = BarcodeBackends::defaultStyle();
 			mEditorDefaultBarcode = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
 		}

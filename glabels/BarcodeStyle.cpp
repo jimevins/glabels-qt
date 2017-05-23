@@ -81,6 +81,22 @@ namespace glabels
 
 
 	///
+	/// Full ID Property Getter
+	///
+	QString BarcodeStyle::fullId() const
+	{
+		if ( mBackendId == "" )
+		{
+			return mId;
+		}
+		else
+		{
+			return mBackendId + "::" + mId;
+		}
+	}
+
+
+	///
 	/// Backend ID Property Getter
 	///
 	const QString& BarcodeStyle::backendId() const
