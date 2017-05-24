@@ -21,35 +21,37 @@
 #ifndef barcode_QrEncode_h
 #define barcode_QrEncode_h
 
+#if HAVE_QRENCODE
 
 #include "glbarcode/Barcode2dBase.h"
 
 
 namespace glabels
 {
-	namespace barcode
+	namespace QrEncode
 	{
 
 		/**
-		 * LibQREncode barcode backend
+		 * QrEncode::QrCode QR Code Barcode
 		 *
 		 * Implements glbarcode::Barcode2dBase.
 		 */
-		class QrEncode : public glbarcode::Barcode2dBase
+		class QrCode : public glbarcode::Barcode2dBase
 		{
 		public:
-			static Barcode* createQrCode();
-
+			static Barcode* create();
 
 		private:
 			bool validate( const std::string& rawData ) override;
 
 			bool encode( const std::string&       cookedData,
 			             glbarcode::Matrix<bool>& encodedData ) override;
-
 		};
 
 	}
 }
+
+
+#endif // HAVE_QRENCODE
 
 #endif // barcode_QrEncode_h

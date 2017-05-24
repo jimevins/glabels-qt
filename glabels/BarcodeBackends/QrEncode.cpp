@@ -27,22 +27,22 @@
 
 namespace glabels
 {
-	namespace barcode
+	namespace QrEncode
 	{
 
 		/*
 		 * Static QrCode barcode creation method
 		 */
-		glbarcode::Barcode* QrEncode::createQrCode()
+		glbarcode::Barcode* QrCode::create()
 		{
-			return new QrEncode();
+			return new QrCode();
 		}
 
 
 		/*
-		 * QrEncode data validation, implements glbarcode::Barcode2dBase::validate()
+		 * QrCode data validation, implements glbarcode::Barcode2dBase::validate()
 		 */
-		bool QrEncode::validate( const std::string& rawData )
+		bool QrCode::validate( const std::string& rawData )
 		{
 			if ( rawData.size() == 0 )
 			{
@@ -53,9 +53,9 @@ namespace glabels
 
 
 		/*
-		 * QrEncode data encoding, implements glbarcode::Barcode2dBase::encode()
+		 * QrCode data encoding, implements glbarcode::Barcode2dBase::encode()
 		 */
-		bool QrEncode::encode( const std::string& cookedData, glbarcode::Matrix<bool>& encodedData )
+		bool QrCode::encode( const std::string& cookedData, glbarcode::Matrix<bool>& encodedData )
 		{
 			QRcode *qrcode = QRcode_encodeString( cookedData.c_str(), 0, QR_ECLEVEL_M, QR_MODE_8, 1 );
 			if ( qrcode == NULL )

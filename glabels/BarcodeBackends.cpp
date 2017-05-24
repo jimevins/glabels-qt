@@ -22,9 +22,7 @@
 
 #include "glbarcode/Factory.h"
 
-#if HAVE_QRENCODE
 #include "BarcodeBackends/QrEncode.h"
-#endif // HAVE_QRENCODE
 
 
 namespace glabels
@@ -80,7 +78,7 @@ namespace glabels
 		//
 		registerBackend( "qrencode", "QREncode" );
 		
-		glbarcode::Factory::registerType( "qrencode::qrcode", barcode::QrEncode::createQrCode );
+		glbarcode::Factory::registerType( "qrencode::qrcode", QrEncode::QrCode::create );
 
 		registerStyle( "qrcode", "qrencode", tr("IEC18004 (QRCode)"),
 		               false, false, true, false, "1234567890AB", false, 12 );
