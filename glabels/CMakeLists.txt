@@ -11,6 +11,13 @@ endif ()
 # Uncomment to build with pedantic flags
 #add_compile_options (-Werror -Wall -Wpedantic)
 
+if (${GNUBARCODE_FOUND})
+  add_definitions (-DHAVE_GNU_BARCODE=1)
+else (${GNUBARCODE_FOUND})
+  set (GNUBARCODE_INCLUDE_DIR "")
+  set (GNUBARCODE_LIBRARIES "")
+endif (${GNUBARCODE_FOUND})
+
 if (${LIBQRENCODE_FOUND})
   add_definitions (-DHAVE_QRENCODE=1)
 else (${LIBQRENCODE_FOUND})

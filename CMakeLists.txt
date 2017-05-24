@@ -52,6 +52,7 @@ find_package(ZLIB 1.2 REQUIRED)
 #
 # Optional dependencies
 #
+find_package (GnuBarcode QUIET)
 find_package (LibQrencode QUIET)
 
 
@@ -76,6 +77,12 @@ message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
 message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAKE_CXX_COMPILER} " " ${CMAKE_CXX_COMPILER_VERSION})
 message (STATUS "Qt version .............. " ${Qt5Core_VERSION})
 message (STATUS "zlib version ............ " ${ZLIB_VERSION_STRING})
+
+if (GNUBARCODE_FOUND)
+  message (STATUS "GNU Barcode (optional)... " ${GNUBARCODE_VERSION_STRING})
+else (GNUBARCODE_FOUND)
+  message (STATUS "GNU Barcode (optional)... No.")
+endif (GNUBARCODE_FOUND)
 
 if (LIBQRENCODE_FOUND)
   message (STATUS "qrencode (optional)...... " ${LIBQRENCODE_VERSION_STRING})

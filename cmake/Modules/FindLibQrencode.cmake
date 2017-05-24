@@ -5,7 +5,6 @@
 #  LIBQRENCODE_INCLUDE_DIR - The LibQrencode include directory
 #  LIBQRENCODE_LIBRARIES - The libraries needed to use LibQrencode
 #  LIBQRENCODE_DEFINITIONS - Compiler switches required for using LibQrencode
-#  LIBQRENCODE_XMLLINT_EXECUTABLE - The XML checking tool xmllint coming with LibQrencode
 #  LIBQRENCODE_VERSION_STRING - the version of LibQrencode found
 
 # use pkg-config to get the directories and then use these values with find_path() and find_library()
