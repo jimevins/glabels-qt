@@ -2,6 +2,7 @@
 # Sources
 #=======================================
 set (barcode_sources
+  GnuBarcode.cpp
   QrEncode.cpp
 )
 

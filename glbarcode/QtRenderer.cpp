@@ -23,6 +23,14 @@
 #include <QFont>
 #include <QFontMetrics>
 #include <QString>
+#include <QTextLayout>
+#include <QtDebug>
+
+
+namespace
+{
+	const double FONT_SCALE = 0.75;
+}
 
 
 namespace glbarcode
@@ -136,18 +144,20 @@ namespace glbarcode
 		{
 			d->painter->setPen( QPen( d->color ) );
 
-			QFont font = d->painter->font();
+			QFont font;
 			font.setStyleHint( QFont::Monospace );
-			font.setPointSizeF( size );
-			d->painter->setFont( font );
+			font.setFamily( "monospace" );
+			font.setPointSizeF( FONT_SCALE*size );
 
-			QFontMetrics fm( font );
-			QRect rect = fm.boundingRect( QString::fromStdString(text) );
-
-			double xCorner = x - rect.width()/2.0;
-			double yCorner = y + fm.descent();
+			QFontMetricsF fm( font );
+			double xCorner = x - fm.width( QString::fromStdString(text) )/2.0;
+			double yCorner = y - fm.ascent();
 		
-			d->painter->drawText( QPointF(xCorner, yCorner), QString::fromStdString(text) );
+			QTextLayout layout( QString::fromStdString(text), font );
+			layout.beginLayout();
+			layout.createLine();
+			layout.endLayout();
+			layout.draw( d->painter, QPointF(xCorner, yCorner) );
 		}
 	}
 

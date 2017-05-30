@@ -122,7 +122,7 @@ namespace glabels
 	void PrintView::onPrintButtonClicked()
 	{
 		QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
-		mPrinter->setPaperSize( pageSize, QPrinter::Point );
+		mPrinter->setPageSize( QPageSize(pageSize, QPageSize::Point) );
 		mPrinter->setFullPage( true );
 		mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
 
@@ -139,9 +139,9 @@ namespace glabels
 		{
 			QPainter painter( mPrinter );
 			
-			QSizeF sizePx  = mPrinter->paperSize( QPrinter::DevicePixel );
-			QSizeF sizePts = mPrinter->paperSize( QPrinter::Point );
-			painter.scale( sizePx.width()/sizePts.width(), sizePx.height()/sizePts.height() );
+			QRectF rectPx  = mPrinter->paperRect( QPrinter::DevicePixel );
+			QRectF rectPts = mPrinter->paperRect( QPrinter::Point );
+			painter.scale( rectPx.width()/rectPts.width(), rectPx.height()/rectPts.height() );
 
 			for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
 			{

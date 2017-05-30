@@ -22,6 +22,7 @@
 
 #include "glbarcode/Factory.h"
 
+#include "BarcodeBackends/GnuBarcode.h"
 #include "BarcodeBackends/QrEncode.h"
 
 
@@ -71,6 +72,18 @@ namespace glabels
 
 		registerStyle( "datamatrix", "", tr("IEC16022 (DataMatrix)"),
 		               false, false, true, false, "1234567890AB", false, 12 );
+
+#if HAVE_GNU_BARCODE
+		//
+		// Libqrencode backend
+		//
+		registerBackend( "gnu-barcode", "GNU Barcode" );
+		
+		glbarcode::Factory::registerType( "gnu-barcode::ean", GnuBarcode::Ean::create );
+
+		registerStyle( "ean", "gnu-barcode", tr("EAN (any)"),
+		               true, true, true, false, "000000000000 00000", false, 17 );
+#endif // HAVE_GNU_BARCODE
 
 #if HAVE_QRENCODE
 		//

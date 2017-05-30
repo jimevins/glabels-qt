@@ -22,7 +22,7 @@
 
 #include "QrEncode.h"
 
-#include "qrencode.h"
+#include <qrencode.h>
 
 
 namespace glabels

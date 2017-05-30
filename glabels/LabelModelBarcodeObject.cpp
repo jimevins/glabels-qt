@@ -450,7 +450,7 @@ namespace glabels
 	{
 		painter->setPen( QPen( color ) );
 
-		glbarcode::Barcode* bc = glbarcode::Factory::createBarcode( mBcStyle.id().toStdString() );
+		glbarcode::Barcode* bc = glbarcode::Factory::createBarcode( mBcStyle.fullId().toStdString() );
 		bc->setChecksum(mBcChecksumFlag);
 		bc->setShowText(mBcTextFlag);
 
