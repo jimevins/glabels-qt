@@ -10,6 +10,7 @@ endif ()
 
 # Uncomment to build with pedantic flags
 #add_compile_options (-Werror -Wall -Wpedantic)
+#add_definitions (-DQT_DISABLE_DEPRECATED_BEFORE=0x050400)
 
 if (${GNUBARCODE_FOUND})
   add_definitions (-DHAVE_GNU_BARCODE=1)

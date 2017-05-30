@@ -22,6 +22,8 @@
 
 #include "Markup.h"
 
+#include <algorithm>
+
 
 namespace glabels
 {
@@ -96,7 +98,7 @@ namespace glabels
 			}
 		}
 
-		qStableSort( origins.begin(), origins.end() );
+		std::stable_sort( origins.begin(), origins.end() );
 
 		return origins;
 	}

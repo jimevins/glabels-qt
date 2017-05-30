@@ -27,7 +27,7 @@
 <context>
     <name>Db</name>
     <message>
-        <location filename="../glabels/Db.cpp" line="69"/>
+        <location filename="../glabels/Db.cpp" line="71"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
@@ -84,12 +84,12 @@
 <context>
     <name>Frame</name>
     <message>
-        <location filename="../glabels/Frame.cpp" line="120"/>
+        <location filename="../glabels/Frame.cpp" line="122"/>
         <source>%1 x %2 (%3 per sheet)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/Frame.cpp" line="126"/>
+        <location filename="../glabels/Frame.cpp" line="128"/>
         <source>%1 per sheet</source>
         <translation type="unfinished"></translation>
     </message>

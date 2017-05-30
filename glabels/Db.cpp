@@ -31,6 +31,8 @@
 #include <QtDebug>
 #include <QtGlobal>
 
+#include <algorithm>
+
 
 namespace glabels
 {
@@ -668,7 +670,7 @@ namespace glabels
 
 		// TODO: Read user directories
 
-		qStableSort( mTemplates.begin(), mTemplates.end(), partNameLessThan );
+		std::stable_sort( mTemplates.begin(), mTemplates.end(), partNameLessThan );
 	}
 
 
