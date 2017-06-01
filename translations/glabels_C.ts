@@ -779,12 +779,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="84"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="90"/>
         <source>EAN (any)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../glabels/BarcodeBackends.cpp" line="92"/>
+        <source>EAN-8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/BarcodeBackends.cpp" line="94"/>
+        <source>EAN-8+2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="96"/>
+        <source>EAN-8+5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/BarcodeBackends.cpp" line="100"/>
+        <source>EAN-13+2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/BarcodeBackends.cpp" line="102"/>
+        <source>EAN-13+5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/BarcodeBackends.cpp" line="114"/>
         <source>IEC18004 (QRCode)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -805,6 +830,7 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="52"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="98"/>
         <source>EAN-13</source>
         <translation type="unfinished"></translation>
     </message>

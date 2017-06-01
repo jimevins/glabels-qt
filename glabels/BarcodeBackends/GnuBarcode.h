@@ -76,6 +76,90 @@ namespace glabels
 			std::string encode( const std::string& cookedData ) override;
 		};
 
+
+		/**
+		 * EAN-8 Barcode
+		 */
+		class Ean8 : public Base
+		{
+		public:
+			static Barcode* create();
+			
+		protected:
+			bool validate( const std::string& rawData ) override;
+			std::string encode( const std::string& cookedData ) override;
+		};
+
+
+		/**
+		 * EAN-8+2 Barcode
+		 */
+		class Ean8_2 : public Base
+		{
+		public:
+			static Barcode* create();
+			
+		protected:
+			bool validate( const std::string& rawData ) override;
+			std::string encode( const std::string& cookedData ) override;
+		};
+
+
+		/**
+		 * EAN-8+5 Barcode
+		 */
+		class Ean8_5 : public Base
+		{
+		public:
+			static Barcode* create();
+			
+		protected:
+			bool validate( const std::string& rawData ) override;
+			std::string encode( const std::string& cookedData ) override;
+		};
+
+
+		/**
+		 * EAN-13 Barcode
+		 */
+		class Ean13 : public Base
+		{
+		public:
+			static Barcode* create();
+			
+		protected:
+			bool validate( const std::string& rawData ) override;
+			std::string encode( const std::string& cookedData ) override;
+		};
+
+
+		/**
+		 * EAN-13+2 Barcode
+		 */
+		class Ean13_2 : public Base
+		{
+		public:
+			static Barcode* create();
+			
+		protected:
+			bool validate( const std::string& rawData ) override;
+			std::string encode( const std::string& cookedData ) override;
+		};
+
+
+		/**
+		 * EAN-13+5 Barcode
+		 */
+		class Ean13_5 : public Base
+		{
+		public:
+			static Barcode* create();
+			
+		protected:
+			bool validate( const std::string& rawData ) override;
+			std::string encode( const std::string& cookedData ) override;
+		};
+
 	}
 }
 

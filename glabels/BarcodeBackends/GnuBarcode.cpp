@@ -344,7 +344,6 @@ namespace glabels
 		}
 
 
-		
 		glbarcode::Barcode* Ean::create()
 		{
 			return new Ean();
@@ -368,6 +367,121 @@ namespace glabels
 			return ""; // Actual encoding is done in vectorize
 		}
 		
+
+		glbarcode::Barcode* Ean8::create()
+		{
+			return new Ean8();
+		}
+
+		
+		bool Ean8::validate( const std::string& rawData )
+		{
+			return isNumericLengthValid(  rawData,  7,  8 );
+		}
+
+		
+		std::string Ean8::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		glbarcode::Barcode* Ean8_2::create()
+		{
+			return new Ean8_2();
+		}
+
+		
+		bool Ean8_2::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData,  7,  8 ) && isNumericLength2Valid( rawData, 2, 2 );
+		}
+
+		
+		std::string Ean8_2::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		glbarcode::Barcode* Ean8_5::create()
+		{
+			return new Ean8_5();
+		}
+
+		
+		bool Ean8_5::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData,  7,  8 ) && isNumericLength2Valid( rawData, 5, 5 );
+		}
+
+		
+		std::string Ean8_5::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		glbarcode::Barcode* Ean13::create()
+		{
+			return new Ean13();
+		}
+
+		
+		bool Ean13::validate( const std::string& rawData )
+		{
+			return isNumericLengthValid(  rawData, 12, 13 );
+		}
+
+		
+		std::string Ean13::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		glbarcode::Barcode* Ean13_2::create()
+		{
+			return new Ean13_2();
+		}
+
+		
+		bool Ean13_2::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 12, 13 ) && isNumericLength2Valid( rawData, 2, 2 );
+		}
+
+		
+		std::string Ean13_2::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		glbarcode::Barcode* Ean13_5::create()
+		{
+			return new Ean13_5();
+		}
+
+		
+		bool Ean13_5::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 12, 13 ) && isNumericLength2Valid( rawData, 5, 5 );
+		}
+
+		
+		std::string Ean13_5::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
 	}
 }
 

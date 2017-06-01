@@ -79,9 +79,27 @@ namespace glabels
 		//
 		registerBackend( "gnu-barcode", "GNU Barcode" );
 		
-		glbarcode::Factory::registerType( "gnu-barcode::ean", GnuBarcode::Ean::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean",      GnuBarcode::Ean::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean-8",    GnuBarcode::Ean8::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean-8+2",  GnuBarcode::Ean8_2::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean-8+5",  GnuBarcode::Ean8_5::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean-13",   GnuBarcode::Ean13::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean-13+2", GnuBarcode::Ean13_2::create );
+		glbarcode::Factory::registerType( "gnu-barcode::ean-13+5", GnuBarcode::Ean13_5::create );
 
 		registerStyle( "ean", "gnu-barcode", tr("EAN (any)"),
+		               true, true, true, false, "000000000000 00000", false, 17 );
+		registerStyle( "ean-8", "gnu-barcode", tr("EAN-8"),
+		               true, true, true, false, "0000000", false, 7 );
+		registerStyle( "ean-8+2", "gnu-barcode", tr("EAN-8+2"),
+		               true, true, true, false, "0000000 00", false, 9 );
+		registerStyle( "ean-8+5", "gnu-barcode", tr("EAN-8+5"),
+		               true, true, true, false, "0000000 00000", false, 12 );
+		registerStyle( "ean-13", "gnu-barcode", tr("EAN-13"),
+		               true, true, true, false, "000000000000", false, 12 );
+		registerStyle( "ean-13+2", "gnu-barcode", tr("EAN-13+2"),
+		               true, true, true, false, "000000000000 00", false, 14 );
+		registerStyle( "ean-13+5", "gnu-barcode", tr("EAN-13+5"),
 		               true, true, true, false, "000000000000 00000", false, 17 );
 #endif // HAVE_GNU_BARCODE
 
