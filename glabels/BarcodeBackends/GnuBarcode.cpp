@@ -61,13 +61,9 @@ namespace glabels
 
 			for ( unsigned int i = 0; i < data.size(); i++ )
 			{
-				if ( (data[i] & 0x80) == 0 )
+				if ( isdigit(data[i]) )
 				{
 					n++;
-				}
-				else
-				{
-					return false;
 				}
 			}
 
@@ -344,6 +340,9 @@ namespace glabels
 		}
 
 
+		//////////////////////////////////////////////////////
+		// EAN Barcode (Any)
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean::create()
 		{
 			return new Ean();
@@ -368,6 +367,9 @@ namespace glabels
 		}
 		
 
+		//////////////////////////////////////////////////////
+		// EAN-8 Barcode
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean8::create()
 		{
 			return new Ean8();
@@ -387,6 +389,9 @@ namespace glabels
 		}
 		
 
+		//////////////////////////////////////////////////////
+		// EAN-8+2 Barcode
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean8_2::create()
 		{
 			return new Ean8_2();
@@ -406,6 +411,9 @@ namespace glabels
 		}
 		
 
+		//////////////////////////////////////////////////////
+		// EAN-8+5 Barcode
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean8_5::create()
 		{
 			return new Ean8_5();
@@ -425,6 +433,9 @@ namespace glabels
 		}
 		
 
+		//////////////////////////////////////////////////////
+		// EAN-13 Barcode
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean13::create()
 		{
 			return new Ean13();
@@ -444,6 +455,9 @@ namespace glabels
 		}
 		
 
+		//////////////////////////////////////////////////////
+		// EAN-13+2 Barcode
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean13_2::create()
 		{
 			return new Ean13_2();
@@ -463,6 +477,9 @@ namespace glabels
 		}
 		
 
+		//////////////////////////////////////////////////////
+		// EAN-13+5 Barcode
+		//////////////////////////////////////////////////////
 		glbarcode::Barcode* Ean13_5::create()
 		{
 			return new Ean13_5();
@@ -478,6 +495,407 @@ namespace glabels
 		std::string Ean13_5::encode( const std::string& cookedData )
 		{
 			flags = BARCODE_EAN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC Barcode (Any)
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Upc::create()
+		{
+			return new Upc();
+		}
+
+		
+		bool Upc::validate( const std::string& rawData )
+		{
+			return      isNumericLengthValid( rawData, 6, 8 )
+				||  isNumericLengthValid( rawData, 11, 12 )
+				|| (isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 2, 2 ))
+				|| (isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 5, 5 ))
+				|| (isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 2, 2 ))
+				|| (isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 5, 5 ));
+		}
+
+		
+		std::string Upc::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC-A Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* UpcA::create()
+		{
+			return new UpcA();
+		}
+
+		
+		bool UpcA::validate( const std::string& rawData )
+		{
+			return isNumericLengthValid( rawData, 11, 12 );
+		}
+
+		
+		std::string UpcA::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC-A+2 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* UpcA_2::create()
+		{
+			return new UpcA_2();
+		}
+
+		
+		bool UpcA_2::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 2, 2 );
+		}
+
+		
+		std::string UpcA_2::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC-A+5 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* UpcA_5::create()
+		{
+			return new UpcA_5();
+		}
+
+		
+		bool UpcA_5::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 5, 5 );
+		}
+
+		
+		std::string UpcA_5::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC-E Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* UpcE::create()
+		{
+			return new UpcE();
+		}
+
+		
+		bool UpcE::validate( const std::string& rawData )
+		{
+			return isNumericLengthValid( rawData, 6, 8 );
+		}
+
+		
+		std::string UpcE::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC-E+2 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* UpcE_2::create()
+		{
+			return new UpcE_2();
+		}
+
+		
+		bool UpcE_2::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 2, 2 );
+		}
+
+		
+		std::string UpcE_2::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// UPC-E+5 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* UpcE_5::create()
+		{
+			return new UpcE_5();
+		}
+
+		
+		bool UpcE_5::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 5, 5 );
+		}
+
+		
+		std::string UpcE_5::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_UPC;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// ISBN Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Isbn::create()
+		{
+			return new Isbn();
+		}
+
+		
+		bool Isbn::validate( const std::string& rawData )
+		{
+			return isNumericLengthValid( rawData, 9, 10 );
+		}
+
+		
+		std::string Isbn::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_ISBN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// ISBN+5 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Isbn_5::create()
+		{
+			return new Isbn_5();
+		}
+
+		
+		bool Isbn_5::validate( const std::string& rawData )
+		{
+			return isNumericLength1Valid( rawData, 9, 10 ) && isNumericLength2Valid( rawData, 5, 5 );
+		}
+
+		
+		std::string Isbn_5::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_ISBN;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// Code39 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Code39::create()
+		{
+			return new Code39();
+		}
+
+		
+		bool Code39::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Code39::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_39;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// Code128 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Code128::create()
+		{
+			return new Code128();
+		}
+
+		
+		bool Code128::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Code128::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_128;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// Code128C Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Code128C::create()
+		{
+			return new Code128C();
+		}
+
+		
+		bool Code128C::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Code128C::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_128C;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// Code128B Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Code128B::create()
+		{
+			return new Code128B();
+		}
+
+		
+		bool Code128B::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Code128B::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_128B;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// I25 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* I25::create()
+		{
+			return new I25();
+		}
+
+		
+		bool I25::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string I25::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_I25;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// CBR Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Cbr::create()
+		{
+			return new Cbr();
+		}
+
+		
+		bool Cbr::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Cbr::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_CBR;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// MSI Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Msi::create()
+		{
+			return new Msi();
+		}
+
+		
+		bool Msi::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Msi::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_MSI;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// PLS Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Pls::create()
+		{
+			return new Pls();
+		}
+
+		
+		bool Pls::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Pls::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_PLS;
+			return ""; // Actual encoding is done in vectorize
+		}
+		
+
+		//////////////////////////////////////////////////////
+		// Code93 Barcode
+		//////////////////////////////////////////////////////
+		glbarcode::Barcode* Code93::create()
+		{
+			return new Code93();
+		}
+
+		
+		bool Code93::validate( const std::string& rawData )
+		{
+			return isAscii( rawData );
+		}
+
+		
+		std::string Code93::encode( const std::string& cookedData )
+		{
+			flags = BARCODE_93;
 			return ""; // Actual encoding is done in vectorize
 		}
 		

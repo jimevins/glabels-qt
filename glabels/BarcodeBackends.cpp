@@ -75,7 +75,7 @@ namespace glabels
 
 #if HAVE_GNU_BARCODE
 		//
-		// Libqrencode backend
+		// GNU Barcode backend
 		//
 		registerBackend( "gnu-barcode", "GNU Barcode" );
 		
@@ -86,6 +86,24 @@ namespace glabels
 		glbarcode::Factory::registerType( "gnu-barcode::ean-13",   GnuBarcode::Ean13::create );
 		glbarcode::Factory::registerType( "gnu-barcode::ean-13+2", GnuBarcode::Ean13_2::create );
 		glbarcode::Factory::registerType( "gnu-barcode::ean-13+5", GnuBarcode::Ean13_5::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc",      GnuBarcode::Upc::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc-a",    GnuBarcode::UpcA::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc-a+2",  GnuBarcode::UpcA_2::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc-a+5",  GnuBarcode::UpcA_5::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc-e",    GnuBarcode::UpcE::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc-e+2",  GnuBarcode::UpcE_2::create );
+		glbarcode::Factory::registerType( "gnu-barcode::upc-e+5",  GnuBarcode::UpcE_5::create );
+		glbarcode::Factory::registerType( "gnu-barcode::isbn",     GnuBarcode::Isbn::create );
+		glbarcode::Factory::registerType( "gnu-barcode::isbn+5",   GnuBarcode::Isbn_5::create );
+		glbarcode::Factory::registerType( "gnu-barcode::code39",   GnuBarcode::Code39::create );
+		glbarcode::Factory::registerType( "gnu-barcode::code128",  GnuBarcode::Code128::create );
+		glbarcode::Factory::registerType( "gnu-barcode::code128c", GnuBarcode::Code128C::create );
+		glbarcode::Factory::registerType( "gnu-barcode::code128b", GnuBarcode::Code128B::create );
+		glbarcode::Factory::registerType( "gnu-barcode::i25",      GnuBarcode::I25::create );
+		glbarcode::Factory::registerType( "gnu-barcode::cbr",      GnuBarcode::Cbr::create );
+		glbarcode::Factory::registerType( "gnu-barcode::msi",      GnuBarcode::Msi::create );
+		glbarcode::Factory::registerType( "gnu-barcode::pls",      GnuBarcode::Pls::create );
+		glbarcode::Factory::registerType( "gnu-barcode::code93",   GnuBarcode::Code93::create );
 
 		registerStyle( "ean", "gnu-barcode", tr("EAN (any)"),
 		               true, true, true, false, "000000000000 00000", false, 17 );
@@ -101,6 +119,42 @@ namespace glabels
 		               true, true, true, false, "000000000000 00", false, 14 );
 		registerStyle( "ean-13+5", "gnu-barcode", tr("EAN-13+5"),
 		               true, true, true, false, "000000000000 00000", false, 17 );
+		registerStyle( "upc", "gnu-barcode", tr("UPC (UPC-A or UPC-E)"),
+		                true, true, true, false, "00000000000 00000", false, 16 );
+		registerStyle( "upc-a", "gnu-barcode", tr("UPC-A"),
+		                true, true, true, false, "00000000000", false, 11 );
+		registerStyle( "upc-a+2", "gnu-barcode", tr("UPC-A +2"),
+		                true, true, true, false, "00000000000 00", false, 13 );
+		registerStyle( "upc-a+5", "gnu-barcode", tr("UPC-A +5"),
+		                true, true, true, false, "00000000000 00000", false, 16 );
+		registerStyle( "upc-e", "gnu-barcode", tr("UPC-E"),
+		                true, true, true, false, "000000", false, 6 );
+		registerStyle( "upc-e+2", "gnu-barcode", tr("UPC-E +2"),
+		                true, true, true, false, "000000 00", false, 8 );
+		registerStyle( "upc-e+5", "gnu-barcode", tr("UPC-E +5"),
+		                true, true, true, false, "000000 00000", false, 11 );
+		registerStyle( "isbn", "gnu-barcode", tr("ISBN"),
+		                true, true, true, true, "0-00000-000-0", false, 10 );
+		registerStyle( "isbn+5", "gnu-barcode", tr("ISBN +5"),
+		                true, true, true, true, "0-00000-000-0 00000", false, 15 );
+		registerStyle( "code39", "gnu-barcode", tr("Code 39"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "code128", "gnu-barcode", tr("Code 128"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "code128c", "gnu-barcode", tr("Code 128C"),
+		                true, true, true, false, "0000000000", true, 10 );
+		registerStyle( "code128b", "gnu-barcode", tr("Code 128B"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "i25", "gnu-barcode", tr("Interleaved 2 of 5"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "cbr", "gnu-barcode", tr("Codabar"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "msi", "gnu-barcode", tr("MSI"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "pls", "gnu-barcode", tr("Plessey"),
+		                true, true, true, true, "0000000000", true, 10 );
+		registerStyle( "code93", "gnu-barcode", tr("Code 93"),
+		                true, true, true, false, "0000000000", true, 10 );
 #endif // HAVE_GNU_BARCODE
 
 #if HAVE_QRENCODE
