@@ -4,6 +4,7 @@
 set (barcode_sources
   GnuBarcode.cpp
   QrEncode.cpp
+  Zint.cpp
 )
 
 add_library (Barcode STATIC

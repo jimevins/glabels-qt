@@ -26,6 +26,13 @@ else (${LIBQRENCODE_FOUND})
   set (LIBQRENCODE_LIBRARIES "")
 endif (${LIBQRENCODE_FOUND})
 
+if (${LIBZINT_FOUND})
+  add_definitions (-DHAVE_ZINT=1)
+else (${LIBZINT_FOUND})
+  set (LIBZINT_INCLUDE_DIR "")
+  set (LIBZINT_LIBRARIES "")
+endif (${LIBZINT_FOUND})
+
 
 #=======================================
 # Auto-generate Version.h
@@ -202,6 +209,7 @@ target_link_libraries (glabels-qt
   ${ZLIB_LIBRARIES}
   ${GNUBARCODE_LIBRARIES}
   ${LIBQRENCODE_LIBRARIES}
+  ${LIBZINT_LIBRARIES}
 )
 
 
@@ -217,6 +225,7 @@ include_directories (
   ${Qt5Svg_INCLUDE_DIRS}
   ${GNUBARCODE_INCLUDE_DIR}
   ${LIBQRENCODE_INCLUDE_DIR}
+  ${LIBZINT_INCLUDE_DIR}
 )
 
 link_directories (

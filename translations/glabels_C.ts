@@ -744,175 +744,180 @@
 <context>
     <name>glabels::BarcodeBackends</name>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="55"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="56"/>
         <source>POSTNET (any)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="58"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="59"/>
         <source>POSTNET-5 (ZIP only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="61"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="62"/>
         <source>POSTNET-9 (ZIP+4)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="64"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="65"/>
         <source>POSTNET-11 (DPBC)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="67"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="68"/>
         <source>CEPNET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="70"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="71"/>
         <source>USPS Intelligent Mail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="73"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="74"/>
         <source>IEC16022 (DataMatrix)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="108"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="109"/>
         <source>EAN (any)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="110"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="111"/>
         <source>EAN-8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="112"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="113"/>
         <source>EAN-8+2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="114"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="115"/>
         <source>EAN-8+5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="118"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="119"/>
         <source>EAN-13+2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="120"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="121"/>
         <source>EAN-13+5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="122"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="123"/>
         <source>UPC (UPC-A or UPC-E)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="126"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="127"/>
         <source>UPC-A +2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="128"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="129"/>
         <source>UPC-A +5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="130"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="131"/>
         <source>UPC-E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="132"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="133"/>
         <source>UPC-E +2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="134"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="135"/>
         <source>UPC-E +5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="136"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="137"/>
         <source>ISBN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="138"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="139"/>
         <source>ISBN +5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="142"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="143"/>
         <source>Code 128</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="144"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="145"/>
         <source>Code 128C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="146"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="147"/>
         <source>Code 128B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="148"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="149"/>
         <source>Interleaved 2 of 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="150"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="151"/>
         <source>Codabar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="152"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="153"/>
         <source>MSI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="154"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="155"/>
         <source>Plessey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="156"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="157"/>
         <source>Code 93</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="168"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="169"/>
         <source>IEC18004 (QRCode)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="43"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="140"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="181"/>
+        <source>Austraila Post Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/BarcodeBackends.cpp" line="44"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="141"/>
         <source>Code 39</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="46"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="47"/>
         <source>Code 39 Extended</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="49"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="124"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="50"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="125"/>
         <source>UPC-A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="52"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="116"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="53"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="117"/>
         <source>EAN-13</source>
         <translation type="unfinished"></translation>
     </message>

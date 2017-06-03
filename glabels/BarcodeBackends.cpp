@@ -24,6 +24,7 @@
 
 #include "BarcodeBackends/GnuBarcode.h"
 #include "BarcodeBackends/QrEncode.h"
+#include "BarcodeBackends/Zint.h"
 
 
 namespace glabels
@@ -168,6 +169,18 @@ namespace glabels
 		registerStyle( "qrcode", "qrencode", tr("IEC18004 (QRCode)"),
 		               false, false, true, false, "1234567890AB", false, 12 );
 #endif // HAVE_QRENCODE
+
+#if HAVE_ZINT
+		//
+		// Zint barcode backend
+		//
+		registerBackend( "zint", "Zint" );
+		
+		glbarcode::Factory::registerType( "zint::ausp",      Zint::AusP::create );
+
+		registerStyle( "ausp", "zint", tr("Austraila Post Standard"),
+		               false, false, true, false, "12345678901234567890123", true, 23 );
+#endif // HAVE_ZINT
 
 	}
 

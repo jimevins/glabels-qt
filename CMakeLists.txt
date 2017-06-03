@@ -54,7 +54,7 @@ find_package(ZLIB 1.2 REQUIRED)
 #
 find_package (GnuBarcode QUIET)
 find_package (LibQrencode QUIET)
-
+find_package (LibZint QUIET)
 
 #=======================================
 # Subdirectories
@@ -89,6 +89,12 @@ if (LIBQRENCODE_FOUND)
 else (LIBQRENCODE_FOUND)
   message (STATUS "qrencode (optional)...... No.")
 endif (LIBQRENCODE_FOUND)
+
+if (LIBZINT_FOUND)
+  message (STATUS "libzint (optional)....... " ${LIBZINT_VERSION_STRING})
+else (LIBZINT_FOUND)
+  message (STATUS "libzint (optional)....... No.")
+endif (LIBZINT_FOUND)
 
 if (MINGW)
    message (STATUS "MinGW location .......... " ${MINGW_BASE_DIR})
