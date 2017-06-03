@@ -52,9 +52,9 @@ find_package(ZLIB 1.2 REQUIRED)
 #
 # Optional dependencies
 #
-find_package (GnuBarcode QUIET)
-find_package (LibQrencode QUIET)
-find_package (LibZint QUIET)
+find_package (GnuBarcode 0.98 QUIET)
+find_package (LibQrencode 3.4 QUIET)
+find_package (LibZint 2.6 QUIET)
 
 #=======================================
 # Subdirectories
