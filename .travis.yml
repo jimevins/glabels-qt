@@ -4,11 +4,11 @@ sudo: require
 dist: trusty
 
 before_install:
-    - sudo add-apt-repository ppa:beineri/opt-qt58-trusty -y
+    - sudo add-apt-repository ppa:beineri/opt-qt591-trusty -y
     - sudo apt-get update -qq
     
 install: 
-    - sudo apt-get -y install qt58base qt58xmlpatterns qt58translations qt58tools qt58svg zlib1g-dev
+    - sudo apt-get -y install qt59base qt59svg qt59tools zlib1g-dev
     - source /opt/qt5*/bin/qt5*-env.sh
 
 script:
@@ -19,16 +19,16 @@ script:
   - sudo make DESTDIR=appdir install ; sudo chown -R $USER appdir ; find appdir/
 
 after_success:
-  - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
+  - wget -c "https://github.com/jimevins/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - export LD_LIBRARY_PATH=/opt/qt58/lib/:$LD_LIBRARY_PATH
+  - export LD_LIBRARY_PATH=/opt/qt*/lib/:$LD_LIBRARY_PATH
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
   - ls -lh ./gLabels*.AppImage
   - mv ./gLabels*.AppImage glabels-continuous-x86_64.AppImage
-  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  - wget -c https://github.com/jimevins/uploadtool/raw/master/upload.sh
   - bash ./upload.sh glabels-continuous-x86_64.AppImage
   
 branches:
