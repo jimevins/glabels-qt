@@ -38,7 +38,7 @@ namespace glabels
 		setSpacing( 24 );
 		setWordWrap( true );
 		setUniformItemSizes( true );
-		setIconSize( QSize(TEMPLATE_PREVIEW_SIZE, TEMPLATE_PREVIEW_SIZE) );
+		setIconSize( QSize(TemplatePickerItem::SIZE, TemplatePickerItem::SIZE) );
 	}
 
 

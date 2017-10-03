@@ -28,6 +28,7 @@
 #include "Merge/Record.h"
 
 #include <QPainter>
+#include <QPrinter>
 #include <QRect>
 #include <QVector>
 
@@ -50,7 +51,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		PageRenderer();
+		PageRenderer( const LabelModel* model = nullptr );
 
 
 		/////////////////////////////////
@@ -68,6 +69,7 @@ namespace glabels
 		int nItems() const;
 		int nPages() const;
 		QRectF pageRect() const;
+		void print( QPrinter* printer ) const;
 		void printPage( QPainter* painter ) const;
 		void printPage( QPainter* painter, int iPage ) const;
 

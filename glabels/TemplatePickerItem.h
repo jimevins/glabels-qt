@@ -36,6 +36,8 @@ namespace glabels
 	///
 	class TemplatePickerItem : public QListWidgetItem
 	{
+	public:
+		static const int SIZE = 80;
 
 		/////////////////////////////////
 		// Life Cycle

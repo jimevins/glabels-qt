@@ -207,12 +207,6 @@ namespace glabels
 	}
 	
 
-	const MiniPreviewPixmap& Template::preview() const
-	{
-		return mPreview;
-	}
-	
-
 	const QList<Frame*>& Template::frames() const
 	{
 		return mFrames;
@@ -228,12 +222,6 @@ namespace glabels
 	void Template::addFrame( Frame* frame )
 	{
 		mFrames << frame;
-	}
-
-
-	void Template::initPreview()
-	{
-		mPreview = MiniPreviewPixmap( this, TEMPLATE_PREVIEW_SIZE, TEMPLATE_PREVIEW_SIZE );
 	}
 
 

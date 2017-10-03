@@ -54,8 +54,8 @@ namespace glabels
 
 		if ( !file.open( QFile::ReadOnly ) )
 		{
-			qWarning() << "Error: Cannot read file " << qPrintable(fileName)
-			           << ": " << file.errorString();
+			qWarning() << "Error: Cannot read file" << fileName
+			           << ":" << file.errorString();
 			return nullptr;
 		}
 

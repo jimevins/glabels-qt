@@ -44,12 +44,15 @@ namespace glabels
 	}
 
 
-	PageRenderer::PageRenderer()
+	PageRenderer::PageRenderer( const LabelModel* model )
 		: mModel(nullptr), mNCopies(0), mStartLabel(0),
 		  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
 		  mIPage(0), mIsMerge(false), mNPages(0)
 	{
-		// empty
+		if ( model )
+		{
+			setModel( model );
+		}
 	}
 
 
@@ -182,6 +185,34 @@ namespace glabels
 	}
 
 	
+	///
+	/// Print
+	///
+	void PageRenderer::print( QPrinter* printer ) const
+	{
+		QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
+		printer->setPageSize( QPageSize(pageSize, QPageSize::Point) );
+		printer->setFullPage( true );
+		printer->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
+
+		QPainter painter( printer );
+			
+		QRectF rectPx  = printer->paperRect( QPrinter::DevicePixel );
+		QRectF rectPts = printer->paperRect( QPrinter::Point );
+		painter.scale( rectPx.width()/rectPts.width(), rectPx.height()/rectPts.height() );
+
+		for ( int iPage = 0; iPage < mNPages; iPage++ )
+		{
+			if ( iPage )
+			{
+				printer->newPage();
+			}
+
+			printPage( &painter, iPage );
+		}
+	}
+
+
 	///
 	/// Print page using persistent page number
 	///

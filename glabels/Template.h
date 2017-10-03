@@ -36,9 +36,6 @@
 namespace glabels
 {
 
-	const int TEMPLATE_PREVIEW_SIZE = 80;
-
-
 	class Template
 	{
 		Q_DECLARE_TR_FUNCTIONS(Template)
@@ -87,9 +84,6 @@ namespace glabels
 		void addCategory( const QString& categoryId );
 		void addFrame( Frame* frame );
 
-		void initPreview();
-		const MiniPreviewPixmap& preview() const;
-
 		const QList<Frame*>& frames() const;
 
 		bool operator==( const Template& other ) const;
@@ -116,8 +110,6 @@ namespace glabels
 		QStringList    mCategoryIds;
 
 		QList<Frame*>  mFrames;
-
-		MiniPreviewPixmap mPreview;
 	};
 
 }

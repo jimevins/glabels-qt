@@ -20,6 +20,8 @@
 
 #include "TemplatePickerItem.h"
 
+#include "MiniPreviewPixmap.h"
+
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QListWidgetItem>
@@ -36,9 +38,9 @@ namespace glabels
 	{
 		mTmplate = tmplate;
 
-		setIcon( QIcon(tmplate->preview()) );
+		setIcon( QIcon( MiniPreviewPixmap( tmplate, SIZE, SIZE ) ) );
 		setText( tmplate->name() );
-
+		
 		setFlags( Qt::ItemIsSelectable | Qt::ItemIsEnabled );
 	}
 

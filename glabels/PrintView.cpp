@@ -41,6 +41,7 @@ namespace glabels
 
 		preview->setRenderer( &mRenderer );
 		mPrinter = new QPrinter( QPrinter::HighResolution );
+		mPrinter->setColorMode( QPrinter::Color );
 	}
 
 
@@ -121,11 +122,6 @@ namespace glabels
 	///
 	void PrintView::onPrintButtonClicked()
 	{
-		QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
-		mPrinter->setPageSize( QPageSize(pageSize, QPageSize::Point) );
-		mPrinter->setFullPage( true );
-		mPrinter->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
-
 		QPrintDialog printDialog( mPrinter, this );
 
 		printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
@@ -137,21 +133,7 @@ namespace glabels
 
 		if ( printDialog.exec() == QDialog::Accepted )
 		{
-			QPainter painter( mPrinter );
-			
-			QRectF rectPx  = mPrinter->paperRect( QPrinter::DevicePixel );
-			QRectF rectPts = mPrinter->paperRect( QPrinter::Point );
-			painter.scale( rectPx.width()/rectPts.width(), rectPx.height()/rectPts.height() );
-
-			for ( int iPage = 0; iPage < mRenderer.nPages(); iPage++ )
-			{
-				if ( iPage )
-				{
-					mPrinter->newPage();
-				}
-
-				mRenderer.printPage( &painter, iPage );
-			}
+			mRenderer.print( mPrinter );
 		}
 	}
 

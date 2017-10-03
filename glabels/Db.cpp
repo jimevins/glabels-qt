@@ -430,7 +430,6 @@ namespace glabels
 	{
 		if ( !isTemplateKnown( tmplate->brand(), tmplate->part() ) )
 		{
-			tmplate->initPreview();
 			mTemplates << tmplate;
 		}
 		else

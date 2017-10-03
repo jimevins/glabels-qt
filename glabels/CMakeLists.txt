@@ -44,6 +44,10 @@ configure_file (Config.h.in ${CMAKE_CURRENT_BINARY_DIR}/Config.h @ONLY)
 #=======================================
 # Sources
 #=======================================
+
+#
+# glabels executable
+#
 set (glabels_sources
   glabels_main.cpp
   AboutDialog.cpp
@@ -203,6 +207,101 @@ target_link_libraries (glabels-qt
   Merge
   glbarcode
   ${Qt5Widgets_LIBRARIES}
+  ${Qt5PrintSupport_LIBRARIES}
+  ${Qt5Xml_LIBRARIES}
+  ${Qt5Svg_LIBRARIES}
+  ${ZLIB_LIBRARIES}
+  ${GNUBARCODE_LIBRARIES}
+  ${LIBQRENCODE_LIBRARIES}
+  ${LIBZINT_LIBRARIES}
+)
+
+
+#
+# glabels-batch executable
+#
+set (glabels-batch_sources
+  glabels-batch_main.cpp
+  BarcodeBackends.cpp
+  BarcodeStyle.cpp
+  Category.cpp
+  ColorNode.cpp
+  DataCache.cpp
+  Db.cpp
+  Distance.cpp
+  FileUtil.cpp
+  Frame.cpp
+  FrameCd.cpp
+  FrameEllipse.cpp
+  FrameRect.cpp
+  FrameRound.cpp
+  Handles.cpp
+  LabelModel.cpp
+  LabelModelObject.cpp
+  LabelModelBarcodeObject.cpp
+  LabelModelBoxObject.cpp
+  LabelModelEllipseObject.cpp
+  LabelModelImageObject.cpp
+  LabelModelLineObject.cpp
+  LabelModelShapeObject.cpp
+  LabelModelTextObject.cpp
+  Layout.cpp
+  Markup.cpp
+  Outline.cpp
+  PageRenderer.cpp
+  Paper.cpp
+  Point.cpp
+  RawText.cpp
+  Region.cpp
+  Settings.cpp
+  Size.cpp
+  StrUtil.cpp
+  Template.cpp
+  TextNode.cpp
+  Units.cpp
+  Vendor.cpp
+  XmlCategoryParser.cpp
+  XmlLabelCreator.cpp
+  XmlLabelParser.cpp
+  XmlPaperParser.cpp
+  XmlTemplateCreator.cpp
+  XmlTemplateParser.cpp
+  XmlUtil.cpp
+  XmlVendorParser.cpp
+)
+
+set (glabels-batch_qobject_headers
+  BarcodeBackends.h
+  LabelModel.h
+  LabelModelObject.h
+  LabelModelBarcodeObject.h
+  LabelModelBoxObject.h
+  LabelModelEllipseObject.h
+  LabelModelImageObject.h
+  LabelModelLineObject.h
+  LabelModelShapeObject.h
+  LabelModelTextObject.h
+  PageRenderer.h
+  Settings.h
+)
+
+qt5_wrap_cpp (glabels-batch_moc_sources ${glabels-batch_qobject_headers})
+
+if (WIN32)
+  # Windows resource file
+  set (glabels-batch_win_rc glabels-batch.rc)
+endif ()
+
+add_executable (glabels-batch-qt WIN32
+  ${glabels-batch_sources}
+  ${glabels-batch_moc_sources}
+  ${glabels-batch_win_rc}
+)
+
+target_link_libraries (glabels-batch-qt
+  Barcode
+  Merge
+  glbarcode
   ${Qt5PrintSupport_LIBRARIES}
   ${Qt5Xml_LIBRARIES}
   ${Qt5Svg_LIBRARIES}

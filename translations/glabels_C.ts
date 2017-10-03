@@ -825,7 +825,7 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="131"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="445"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="439"/>
         <source>UPC-E</source>
         <translation type="unfinished"></translation>
     </message>
@@ -841,7 +841,7 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="137"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="379"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="373"/>
         <source>ISBN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -852,7 +852,7 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="143"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="307"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="301"/>
         <source>Code 128</source>
         <translation type="unfinished"></translation>
     </message>
@@ -868,13 +868,13 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="149"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="376"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="370"/>
         <source>Interleaved 2 of 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="151"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="268"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="265"/>
         <source>Codabar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -890,7 +890,7 @@
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="157"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="304"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="298"/>
         <source>Code 93</source>
         <translation type="unfinished"></translation>
     </message>
@@ -920,282 +920,282 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="261"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="259"/>
         <source>Aztec Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="265"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="262"/>
         <source>Aztec Rune</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="273"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="268"/>
         <source>Code One</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="277"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="271"/>
         <source>Code 11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="280"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="274"/>
         <source>Code 16K</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="283"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="277"/>
         <source>Code 2 of 5 Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="286"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="280"/>
         <source>Code 2 of 5 IATA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="289"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="283"/>
         <source>Code 2 of 5 Data Logic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="292"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="286"/>
         <source>Code 32 (Italian Pharmacode)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="301"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="295"/>
         <source>Code 49</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="310"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="304"/>
         <source>Code 128 (Mode C supression)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="313"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="307"/>
         <source>DAFT Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="316"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="310"/>
         <source>Data Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="319"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="313"/>
         <source>Deutsche Post Leitcode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="322"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="316"/>
         <source>Deutsche Post Identcode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="325"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="319"/>
         <source>Dutch Post KIX Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="328"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="322"/>
         <source>EAN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="331"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="325"/>
         <source>Grid Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="334"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="328"/>
         <source>GS1-128</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="337"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="331"/>
         <source>GS1 DataBar-14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="346"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="340"/>
         <source>GS1 DataBar-14 Stacked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="349"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="343"/>
         <source>GS1 DataBar-14 Stacked Omni.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="352"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="346"/>
         <source>GS1 DataBar Extended Stacked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="355"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="349"/>
         <source>HIBC Code 128</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="358"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="352"/>
         <source>HIBC Code 39</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="361"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="355"/>
         <source>HIBC Data Matrix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="364"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="358"/>
         <source>HIBC QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="367"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="361"/>
         <source>HIBC PDF417</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="370"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="364"/>
         <source>HIBC Micro PDF417</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="373"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="367"/>
         <source>HIBC Aztec Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="382"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="376"/>
         <source>ITF-14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="385"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="379"/>
         <source>Japanese Postal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="388"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="382"/>
         <source>Korean Postal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="391"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="385"/>
         <source>LOGMARS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="394"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="388"/>
         <source>Maxicode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="397"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="391"/>
         <source>Micro PDF417</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="400"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="394"/>
         <source>Micro QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="403"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="397"/>
         <source>MSI Plessey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="406"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="400"/>
         <source>NVE-18</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="409"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="403"/>
         <source>PDF417</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="412"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="406"/>
         <source>PDF417 Truncated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="415"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="409"/>
         <source>PLANET</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="418"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="412"/>
         <source>PostNet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="421"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="415"/>
         <source>Pharmacode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="424"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="418"/>
         <source>Pharmacode 2-track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="427"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="421"/>
         <source>Pharmazentral Nummer (PZN)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="430"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="424"/>
         <source>QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="433"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="427"/>
         <source>Royal Mail 4-State</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="436"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="430"/>
         <source>Telepen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="439"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="433"/>
         <source>Telepen Numeric</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="448"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="442"/>
         <source>USPS One Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/BarcodeBackends.cpp" line="451"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="445"/>
         <source>UK Plessey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="44"/>
         <location filename="../glabels/BarcodeBackends.cpp" line="141"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="295"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="289"/>
         <source>Code 39</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="47"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="298"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="292"/>
         <source>Code 39 Extended</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/BarcodeBackends.cpp" line="50"/>
         <location filename="../glabels/BarcodeBackends.cpp" line="125"/>
-        <location filename="../glabels/BarcodeBackends.cpp" line="442"/>
+        <location filename="../glabels/BarcodeBackends.cpp" line="436"/>
         <source>UPC-A</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2340,7 +2340,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PrintView.cpp" line="86"/>
+        <location filename="../glabels/PrintView.cpp" line="87"/>
         <source>(Will print a total of %1 items on %2 pages.)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2376,6 +2376,66 @@
     <message>
         <location filename="../glabels/glabels_main.cpp" line="79"/>
         <source>gLabels Label Designer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="82"/>
+        <source>Send output to &lt;printer&gt;. (Default=&quot;%1&quot;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="83"/>
+        <source>printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="87"/>
+        <source>Set output filename to &lt;filename&gt;. (Default=&quot;output.pdf&quot;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="88"/>
+        <source>filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="92"/>
+        <source>Set number of sheets to &lt;n&gt;. (Default=1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="96"/>
+        <source>Set number of copies to &lt;n&gt;. (Default=1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="100"/>
+        <source>Set starting label on 1st page to &lt;n&gt;. (Default=1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="104"/>
+        <source>Print label outlines.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="107"/>
+        <source>Print crop marks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="110"/>
+        <source>Print in reverse (mirror image).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="115"/>
+        <source>gLabels Label Designer (Batch Front-end)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/glabels-batch_main.cpp" line="120"/>
+        <source>gLabels project file to print.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
