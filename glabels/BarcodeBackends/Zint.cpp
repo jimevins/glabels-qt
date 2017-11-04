@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if HAVE_GNU_BARCODE
+#if HAVE_ZINT
 
 #include "Zint.h"
 
