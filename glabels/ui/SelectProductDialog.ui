@@ -7,11 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>997</width>
-    <height>661</height>
+    <height>823</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>gLabels - Select Product</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>
@@ -95,14 +104,9 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>146</width>
-                 <height>87</height>
+                 <width>0</width>
+                 <height>0</height>
                 </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>9</pointsize>
-                </font>
                </property>
                <property name="autoFillBackground">
                 <bool>false</bool>
@@ -117,29 +121,33 @@
                 <bool>false</bool>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
-                <property name="spacing">
-                 <number>3</number>
-                </property>
                 <item>
-                 <widget class="QCheckBox" name="pageSizeIsoCheck">
-                  <property name="text">
-                   <string>ISO sizes</string>
+                 <layout class="QVBoxLayout" name="verticalLayout">
+                  <property name="spacing">
+                   <number>3</number>
                   </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="pageSizeUsCheck">
-                  <property name="text">
-                   <string>US sizes</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="pageSizeOtherCheck">
-                  <property name="text">
-                   <string>Other</string>
-                  </property>
-                 </widget>
+                  <item>
+                   <widget class="QCheckBox" name="pageSizeIsoCheck">
+                    <property name="text">
+                     <string>ISO sizes</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="pageSizeUsCheck">
+                    <property name="text">
+                     <string>US sizes</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="pageSizeOtherCheck">
+                    <property name="text">
+                     <string>Other</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </widget>
@@ -170,7 +178,16 @@
                 <item>
                  <widget class="QWidget" name="categoriesCheckContainer" native="true">
                   <layout class="QGridLayout" name="gridLayout">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <property name="spacing">
@@ -202,7 +219,7 @@
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>40</height>
+               <height>3</height>
               </size>
              </property>
             </spacer>
@@ -253,6 +270,12 @@
        </item>
        <item>
         <widget class="glabels::TemplatePicker" name="templatePicker">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
@@ -299,22 +322,6 @@
   <include location="../icons.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>pageSizeOtherCheck</sender>
-   <signal>clicked()</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onPageSizeCheckClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>75</x>
-     <y>207</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>8</x>
-     <y>168</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pageSizeUsCheck</sender>
    <signal>clicked()</signal>

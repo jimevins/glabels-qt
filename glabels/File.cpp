@@ -46,7 +46,7 @@ namespace glabels
 	///
 	bool File::newLabel( MainWindow *window )
 	{
-		SelectProductDialog dialog( window );
+		SelectProductDialog dialog;
 		dialog.exec();
 
 		const Template* tmplate = dialog.tmplate();

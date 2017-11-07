@@ -587,72 +587,72 @@
 <context>
     <name>SelectProductDialog</name>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="14"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="20"/>
         <source>gLabels - Select Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="34"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="43"/>
         <source>Search all</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="62"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="71"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="111"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="115"/>
         <source>Filter by paper size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="126"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="132"/>
         <source>ISO sizes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="133"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="139"/>
         <source>US sizes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="140"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="146"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="150"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="158"/>
         <source>Filter by category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="159"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="167"/>
         <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="166"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="174"/>
         <source>Selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="213"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="230"/>
         <source>Search entire product database.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="224"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="241"/>
         <source>Recent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="230"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="247"/>
         <source>Select from recently used products.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="281"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="298"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"></translation>
     </message>
