@@ -15,6 +15,7 @@ set (merge_sources
   TextColonKeys.cpp
   TextSemicolon.cpp
   TextSemicolonKeys.cpp
+  SubstitutionField.cpp
 )
 
 set (merge_qobject_headers
@@ -43,6 +44,7 @@ link_directories (
 #=======================================
 # Subdirectories
 #=======================================
+add_subdirectory (unit_tests)
 
 
 #=======================================

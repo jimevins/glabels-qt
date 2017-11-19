@@ -35,11 +35,11 @@ if (MINGW)
    set (CMAKE_PREFIX_PATH ${MINGW_BASE_DIR} )
 endif ()
 
-find_package(Qt5Widgets 5.4 REQUIRED)
-find_package(Qt5PrintSupport 5.4 REQUIRED)
-find_package(Qt5Xml 5.4 REQUIRED)
-find_package(Qt5Svg 5.4 REQUIRED)
-find_package(Qt5LinguistTools)
+find_package (Qt5Widgets 5.4 REQUIRED)
+find_package (Qt5PrintSupport 5.4 REQUIRED)
+find_package (Qt5Xml 5.4 REQUIRED)
+find_package (Qt5Svg 5.4 REQUIRED)
+find_package (Qt5LinguistTools)
 
 if (MINGW)
    # Locate Qt directories
@@ -47,7 +47,7 @@ if (MINGW)
    set (QT_BIN_DIR ${QT_BASE_DIR}/bin)
 endif ()
 
-find_package(ZLIB 1.2 REQUIRED)
+find_package (ZLIB 1.2 REQUIRED)
 
 #
 # Optional dependencies
@@ -55,6 +55,17 @@ find_package(ZLIB 1.2 REQUIRED)
 find_package (GnuBarcode 0.98 QUIET)
 find_package (LibQrencode 3.4 QUIET)
 find_package (LibZint 2.6 QUIET)
+# Unit testing support
+find_package (Qt5Test 5.4 QUIET)
+
+
+#=======================================
+# Unit Testing
+#=======================================
+if (Qt5Test_FOUND)
+  enable_testing ()
+endif ()
+
 
 #=======================================
 # Subdirectories
@@ -95,6 +106,12 @@ if (LIBZINT_FOUND)
 else (LIBZINT_FOUND)
   message (STATUS "libzint (optional)....... No.")
 endif (LIBZINT_FOUND)
+
+if (Qt5Test_FOUND)
+  message (STATUS "QtTest (optional)........ " ${Qt5Test_VERSION})
+else (Qt5Test_FOUND)
+  message (STATUS "QtTest (optional)........ No.")
+endif (Qt5Test_FOUND)
 
 if (MINGW)
    message (STATUS "MinGW location .......... " ${MINGW_BASE_DIR})

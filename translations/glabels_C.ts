@@ -652,7 +652,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/SelectProductDialog.ui" line="298"/>
+        <location filename="../glabels/ui/SelectProductDialog.ui" line="304"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"></translation>
     </message>
