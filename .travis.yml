@@ -16,6 +16,7 @@ script:
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   - make -j4
+  - make test
   - sudo make DESTDIR=appdir install ; sudo chown -R $USER appdir ; find appdir/
 
 after_success:
