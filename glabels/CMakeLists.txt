@@ -112,6 +112,7 @@ set (glabels_sources
   Size.cpp
   StartupView.cpp
   StrUtil.cpp
+  SubstitutionField.cpp
   Template.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
@@ -256,6 +257,7 @@ set (glabels-batch_sources
   Settings.cpp
   Size.cpp
   StrUtil.cpp
+  SubstitutionField.cpp
   Template.cpp
   TextNode.cpp
   Units.cpp
@@ -336,6 +338,7 @@ link_directories (
 #=======================================
 add_subdirectory (BarcodeBackends)
 add_subdirectory (Merge)
+add_subdirectory (unit_tests)
 
 
 #=======================================

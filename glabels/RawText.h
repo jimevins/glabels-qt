@@ -22,7 +22,7 @@
 #define RawText_h
 
 
-#include "Merge/Record.h"
+#include "SubstitutionField.h"
 
 #include <QString>
 
@@ -56,10 +56,25 @@ namespace glabels
 
 		
 		/////////////////////////////////
+		// Private Methods
+		/////////////////////////////////
+	private:
+		void tokenize();
+		
+		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
 		QString mString;
+
+		struct Token
+		{
+			bool              isField;
+			QString           text;
+			SubstitutionField field;
+		};
+		
+		QList<Token> mTokens;
 
 	};
 

@@ -30,6 +30,7 @@ namespace glabels
 	///
 	RawText::RawText( const QString& string ) : mString(string)
 	{
+		tokenize();
 	}
 
 
@@ -38,6 +39,7 @@ namespace glabels
 	///
 	RawText::RawText( const char* cString ) : mString(QString(cString))
 	{
+		tokenize();
 	}
 
 	
@@ -64,24 +66,17 @@ namespace glabels
 	///
 	QString RawText::expand( merge::Record* record ) const
 	{
-		QString text = mString;
+		QString text;
 		
-		if ( record )
+		foreach ( const Token& token, mTokens )
 		{
-			foreach ( QString key, record->keys() )
+			if ( token.isField )
 			{
-				// Special case: remove line when it contains only an empty field.
-				// e.g. an optional ${ADDR2} line.  To bypass this case, include
-				// whitespace at end of line.
-				if ( record->value(key).isEmpty() )
-				{
-					QStringList v = text.split( '\n' );
-					v.removeAll( "${"+key+"}" );
-					text = v.join( '\n' );
-				}
-
-				// Nominal case: simple replacement
-				text.replace( "${"+key+"}", record->value(key) );
+				text += token.field.evaluate( record );
+			}
+			else
+			{
+				text += token.text;
 			}
 		}
 
@@ -107,4 +102,48 @@ namespace glabels
 		return mString.isEmpty();
 	}
 
+
+	///
+	/// Tokenize string
+	///
+	void RawText::tokenize()
+	{
+		Token token;
+
+		QStringRef s = &mString;
+		while ( s.size() )
+		{
+			SubstitutionField field;
+			if ( SubstitutionField::parse( s, field ) )
+			{
+				// Finalize current text token, if apropos
+				if ( !token.text.isEmpty() )
+				{
+					token.isField = false;
+					mTokens.append( token );
+				}
+				
+				// Create and finalize field token
+				token.isField = true;
+				token.text = "";
+				token.field = field;
+				mTokens.append( token );
+			}
+			else
+			{
+				token.text += s[0];
+				s = s.mid(1);
+			}
+		}
+
+		// Finalize last text token, if apropos
+		if ( !token.text.isEmpty() )
+		{
+			token.isField = false;
+			mTokens.append( token );
+		}
+				
+	}
+
+	
 } // namespace glabels

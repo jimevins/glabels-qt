@@ -30,3 +30,4 @@ core
 *.safe
 *.sav*
 .directory
+TEST-DATA

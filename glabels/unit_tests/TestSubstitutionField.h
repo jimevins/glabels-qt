@@ -26,12 +26,15 @@ class TestSubstitutionField : public QObject
 	Q_OBJECT
 
 private slots:
+	void parseValid();
+	void parseInvalid();
 	void construction();
 	void simpleEvaluation();
 	void defaultValueEvaluation();
 	void formattedStringEvaluation();
 	void formattedFloatEvaluation();
 	void formattedIntEvaluation();
+	void newLineEvaluation();
 };
 
 

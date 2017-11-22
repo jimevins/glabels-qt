@@ -3,19 +3,19 @@ DRAFT gLabels Substitution Field Specification
 
 > :warning: This is a very early draft specification.  There is no guarantee that any of the capabilities will be implemented as described in gLabels 4.0.  Prior to 4.0, this specification is subject to change.
 
-This specification describes gLabels substitution fields.  Substitution fields can be embedded in the data of gLabels text and barcode objects.  When printing, these fields are replaced with their respective values.  Fields can represent document merge fields or built-in variables. 
+This specification describes gLabels substitution fields.  Substitution fields can be embedded in the data of gLabels text and barcode objects.  When printing, these fields are replaced with their respective values.  Fields can represent document merge fields or user defined variables.
+
+In its simplest and most common form, the format is simply `${ field-name }`.  For example `${FIRST_NAME}`.  However, modifiers can be added to the field to control how values are printed. 
 
 Syntax
 ------
 The general syntax of a substitution field is
 
 ```ebnf
-substitution-field = "${", field-name, [ ":" modifiers ], "}" ;
-modifiers          = modifier, [ ":", modifiers ] ;
-modifier           = format-modifier | default-value-modifier ;
+substitution-field = "${" field-name [ ":" modifiers ] "}" ;
+modifiers          = modifier [ ":" modifiers ] ;
+modifier           = format-modifier | default-value-modifier | new-line-modifier;
 ```
-
-In its simplest and most common form, the format is simply `${ field-name }`.  For example `${FIRST_NAME}`.
 
 Modifiers
 ---------
@@ -23,7 +23,7 @@ Modifiers
 A format modifier is used to control the format of numerical and string values.  It is a subset of a single printf format placeholder.  Its syntax is
 
 ```ebnf
-format-modifier = "%", [ flags ], [ width ], [ ".", precision ], type ;
+format-modifier = "%" [ flags ] [ width ] [ ".", precision ] type ;
 ```
 
 #### Flags
@@ -57,7 +57,7 @@ Character | Description
 `s`       | string value.
 
 ### Default-Value-Modifier (`=`)
-The default value modifier is used to set a default value for the field if its value is undefined.  It can also be used to set the initial value of some built-in variables, such as `${LABEL_NUMBER}`. Its syntax is
+The default value modifier is used to set a default value for the field if its value is undefined or empty. Its syntax is
 
 ```ebnf
 default-value-modifier = "=" value ;
@@ -71,15 +71,38 @@ Escape sequence | actual character
 `\}`            | right bracket `}`
 `\\`            | backslash `\`
 
+> :arrow_right: This modifier does not modify the value of a variable, it only uses this value if the variable is not defined.  For example, if the variable `${x}` is undefined, the string "`${x:=1} ${x:=2}`" would be printed as "`1 2`".  Otherwise, if `${x}` was defined as "`3`", it would be printed as "`3 3`".
+
+### New-Line-Modifier ('n')
+This modifier is used to prepend a newline to the printed value, if the value is undefined or empty.  Its syntax is simply:
+
+```ebnf
+new-line-modifier = "n" ;
+```
+
+For example, this modifier is primarily intended to handle the following use case:
+```
+${NAME}
+${ADDR1}${ADDR2:n}
+${CITY} ${STATE} ${ZIP}
+```
+`${ADDR2}` would be printed on its own line, only if it is set and non-empty.
+
+
 Document Merge Fields
 ---------------------
 Document merge fields are the primary source of substitution fields.  A document merge field represents a field from an external data source, such as a CSV file.
 
+User Defined Variables
+----------------------
+Alternatively, merge fields can refer to user defined variables.
+
 Built-In Variables
 ------------------
-### LABEL_NUMBER
-### PAGE_NUMBER
-### DATE
-### TIME
-### FILE_NAME
+Potentially, merge fields may also refer to built-in variables.  Candidates include:
+ - LABEL_NUMBER
+ - PAGE_NUMBER
+ - DATE
+ - TIME
+ - FILE_NAME
 
