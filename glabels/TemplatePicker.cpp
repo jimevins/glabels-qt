@@ -45,9 +45,9 @@ namespace glabels
 	///
 	/// Set List of Templates to Pick From
 	///
-	void TemplatePicker::setTemplates( const QList <Template*> &tmplates )
+	void TemplatePicker::setTemplates( const QList <model::Template*> &tmplates )
 	{
-		foreach (Template *tmplate, tmplates)
+		foreach (model::Template *tmplate, tmplates)
 		{
 			new TemplatePickerItem( tmplate, this );
 		}
@@ -135,7 +135,7 @@ namespace glabels
 	///
 	/// Get Currently Selected Template
 	///
-	const Template *TemplatePicker::selectedTemplate()
+	const model::Template *TemplatePicker::selectedTemplate()
 	{
 		QList<QListWidgetItem *> items = selectedItems();
 		if ( items.isEmpty() )

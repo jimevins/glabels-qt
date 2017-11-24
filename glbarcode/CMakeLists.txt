@@ -1,21 +1,9 @@
-#=======================================
-# Compilation
-#=======================================
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-add_compile_options (-std=c++11 -g)
-if (NOT WIN32)
-   add_compile_options (-fPIC)
-endif ()
-
-# Uncomment to build with pedantic flags
-#add_compile_options (-Werror -Wall -Wpedantic)
-
+project (glbarcode LANGUAGES CXX)
 
 #=======================================
 # Sources
 #=======================================
-set (LIB_SOURCES
+set (GLBARCODE_SOURCES
   Factory.cpp
   Barcode.cpp
   Barcode1dBase.cpp
@@ -38,15 +26,21 @@ set (LIB_SOURCES
   QtRenderer.cpp
 )
 
-add_library (glbarcode
-  ${LIB_SOURCES}
+#=====================================
+# Target
+#=====================================
+add_library (glbarcode STATIC
+  ${GLBARCODE_SOURCES}
 )
 
-
-#=======================================
-# Where to find stuff
-#=======================================
-include_directories (
-  ${Qt5Widgets_INCLUDE_DIRS}
+target_compile_features (glbarcode
+  PUBLIC cxx_std_11
 )
 
+target_include_directories (glbarcode
+  PUBLIC ..
+)
+
+target_link_libraries (glbarcode
+  Qt5::Widgets
+)

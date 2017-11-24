@@ -20,11 +20,11 @@
 
 #include "PropertiesView.h"
 
-#include "Db.h"
-#include "LabelModel.h"
 #include "SelectProductDialog.h"
-#include "Settings.h"
 #include "UndoRedoModel.h"
+
+#include "model/Db.h"
+#include "model/Settings.h"
 
 #include <QStyledItemDelegate>
 #include <QtDebug>
@@ -51,7 +51,7 @@ namespace glabels
 		similarBrowser->setAttribute(Qt::WA_TranslucentBackground);
 		similarBrowser->viewport()->setAutoFillBackground(false);
 
-		connect( Settings::instance(), SIGNAL(changed()),
+		connect( model::Settings::instance(), SIGNAL(changed()),
 		         this, SLOT(onSettingsChanged()) );
 		
 		onSettingsChanged();
@@ -70,7 +70,7 @@ namespace glabels
 	///
 	/// Set Model
 	///
-	void PropertiesView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
+	void PropertiesView::setModel( model::Model* model, UndoRedoModel* undoRedoModel )
 	{
 		mModel = model;
 		mUndoRedoModel = undoRedoModel;
@@ -86,7 +86,7 @@ namespace glabels
 	///
 	void PropertiesView::onSettingsChanged()
 	{
-		mUnits = Settings::units();
+		mUnits = model::Settings::units();
 		if (mModel)
 		{
 			onLabelSizeChanged();
@@ -99,14 +99,14 @@ namespace glabels
 	///
 	void PropertiesView::onLabelSizeChanged()
 	{
-		const Template *tmplate   = mModel->tmplate();
-		const Frame    *frame     = tmplate->frames().first();
-		bool            isRotated = mModel->rotate();
+		const model::Template* tmplate   = mModel->tmplate();
+		const model::Frame*    frame     = tmplate->frames().first();
+		bool                   isRotated = mModel->rotate();
 
 		preview->setTemplate( tmplate );
 		preview->setRotate( isRotated );
 
-		const Vendor *vendor = Db::lookupVendorFromName( tmplate->brand() );
+		const model::Vendor* vendor = model::Db::lookupVendorFromName( tmplate->brand() );
 		if ( (vendor != nullptr) && (vendor->url() != nullptr) )
 		{
 			QString markup = QString( "<a href='%1'>%2</a>" )
@@ -131,7 +131,7 @@ namespace glabels
 
 		descriptionLabel->setText( tmplate->description() );
 
-		QString pgSizeString = Db::lookupPaperNameFromId( tmplate->paperId() );
+		QString pgSizeString = model::Db::lookupPaperNameFromId( tmplate->paperId() );
 		pageSizeLabel->setText( pgSizeString );
 
 		QString labelSizeString = frame->sizeDescription( mUnits );
@@ -140,7 +140,7 @@ namespace glabels
 		QString layoutString = frame->layoutDescription();
 		layoutLabel->setText( layoutString );
 
-		QStringList list = Db::getNameListOfSimilarTemplates( tmplate->name() );
+		QStringList list = model::Db::getNameListOfSimilarTemplates( tmplate->name() );
 		if ( list.isEmpty() )
 		{
 			similarProductsGroupBox->hide();
@@ -181,8 +181,8 @@ namespace glabels
 	///
 	void PropertiesView::onOrientationActivated()
 	{
-		const Template *tmplate = mModel->tmplate();
-		const Frame    *frame   = tmplate->frames().first();
+		const model::Template* tmplate = mModel->tmplate();
+		const model::Frame*    frame   = tmplate->frames().first();
 
 		// Make sure index actually changed.
 		int index = orientationCombo->currentIndex();
@@ -216,7 +216,7 @@ namespace glabels
 		SelectProductDialog selectProductDialog( this );
 		selectProductDialog.exec();
 
-		const Template* tmplate = selectProductDialog.tmplate();
+		const model::Template* tmplate = selectProductDialog.tmplate();
 		if ( tmplate )
 		{
 			mUndoRedoModel->checkpoint( tr("Change Product") );
@@ -224,7 +224,7 @@ namespace glabels
 			mModel->setTmplate( tmplate );
 
 			// Don't rotate circular or round labels
-			const Frame *frame = tmplate->frames().first();
+			const model::Frame *frame = tmplate->frames().first();
 			if ( frame->w() == frame->h() )
 			{
 				mModel->setRotate( false );

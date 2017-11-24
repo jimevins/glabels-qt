@@ -20,7 +20,7 @@
 
 #include "PreviewOverlayItem.h"
 
-#include "PageRenderer.h"
+#include "model/PageRenderer.h"
 
 #include <QtDebug>
 
@@ -28,7 +28,7 @@
 namespace glabels
 {
 
-	PreviewOverlayItem::PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent )
+	PreviewOverlayItem::PreviewOverlayItem( const model::PageRenderer* renderer, QGraphicsItem* parent )
 		: QGraphicsItem(parent), mRenderer(renderer)
 	{
 		// empty

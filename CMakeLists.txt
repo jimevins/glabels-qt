@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 2.8.12)
 ###############################################################################
 # gLabels Label Designer Project
 ###############################################################################
-project (glabels)
+project (glabels-qt)
 
 #
 # Path for locally defined cmake modules
@@ -35,6 +35,7 @@ if (MINGW)
    set (CMAKE_PREFIX_PATH ${MINGW_BASE_DIR} )
 endif ()
 
+find_package (Qt5Core 5.4 REQUIRED)
 find_package (Qt5Widgets 5.4 REQUIRED)
 find_package (Qt5PrintSupport 5.4 REQUIRED)
 find_package (Qt5Xml 5.4 REQUIRED)
@@ -71,7 +72,10 @@ endif ()
 # Subdirectories
 #=======================================
 add_subdirectory (glbarcode)
+add_subdirectory (backends)
+add_subdirectory (model)
 add_subdirectory (glabels)
+add_subdirectory (glabels-batch)
 add_subdirectory (templates)
 add_subdirectory (translations)
 add_subdirectory (data)

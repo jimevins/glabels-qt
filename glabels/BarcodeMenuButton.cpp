@@ -20,8 +20,9 @@
 
 #include "BarcodeMenuButton.h"
 
-#include "BarcodeBackends.h"
 #include "BarcodeMenuItem.h"
+
+#include "barcode/Backends.h"
 
 #include <QtDebug>
 
@@ -38,7 +39,7 @@ namespace glabels
 		mMenu = new BarcodeMenu();
 		setMenu( mMenu );
 
-		mBcStyle = BarcodeBackends::defaultStyle();
+		mBcStyle = barcode::Backends::defaultStyle();
 		setText( mBcStyle.name() );
 
 		connect( mMenu, SIGNAL(selectionChanged()), this, SLOT(onMenuSelectionChanged()) );
@@ -48,7 +49,7 @@ namespace glabels
 	///
 	/// bcStyle getter
 	///
-	BarcodeStyle BarcodeMenuButton::bcStyle() const
+	barcode::Style BarcodeMenuButton::bcStyle() const
 	{
 		return mBcStyle;
 	}
@@ -57,7 +58,7 @@ namespace glabels
 	///
 	/// bcStyle setter
 	///
-	void BarcodeMenuButton::setBcStyle( const BarcodeStyle& bcStyle )
+	void BarcodeMenuButton::setBcStyle( const barcode::Style& bcStyle )
 	{
 		mBcStyle = bcStyle;
 		setText( mBcStyle.name() );

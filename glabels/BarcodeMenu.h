@@ -22,7 +22,7 @@
 #define BarcodeMenu_h
 
 
-#include "BarcodeStyle.h"
+#include "barcode/Style.h"
 
 #include <QMenu>
 
@@ -55,21 +55,21 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		BarcodeStyle bcStyle() const;
+		barcode::Style bcStyle() const;
 
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onMenuItemActivated( const BarcodeStyle& bcStyle );
+		void onMenuItemActivated( const barcode::Style& bcStyle );
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		BarcodeStyle mBcStyle;
+		barcode::Style mBcStyle;
 
 	};
 

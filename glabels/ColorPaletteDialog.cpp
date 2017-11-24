@@ -90,7 +90,7 @@ namespace glabels
 		connect( mColorHistory, SIGNAL(changed()), this, SLOT(onColorHistoryChanged()) );
 
 		mDefaultColor = defaultColor;
-		mColorNode = ColorNode( color );
+		mColorNode = model::ColorNode( color );
 
 		setStyleSheet( ".glabels--ColorPaletteDialog {background: white; border: 1px solid black}" );
 		setWindowFlags( Qt::Popup | Qt::FramelessWindowHint );
@@ -177,7 +177,7 @@ namespace glabels
 	}
 
 
-	void ColorPaletteDialog::setColorNode( const ColorNode& colorNode )
+	void ColorPaletteDialog::setColorNode( const model::ColorNode& colorNode )
 	{
 		mColorNode = colorNode;
 	}
@@ -257,7 +257,7 @@ namespace glabels
 
 		if ( dlg.exec() )
 		{
-			ColorNode newColorNode;
+			model::ColorNode newColorNode;
 
 			newColorNode.setField( false );
 			newColorNode.setColor( dlg.currentColor() );

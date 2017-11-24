@@ -20,7 +20,6 @@
 
 #include "Preview.h"
 
-#include "LabelModel.h"
 #include "PreviewOverlayItem.h"
 
 #include <QGraphicsDropShadowEffect>
@@ -70,7 +69,7 @@ namespace glabels
 	///
 	/// Set renderer
 	///
-	void Preview::setRenderer( const PageRenderer* renderer )
+	void Preview::setRenderer( const model::PageRenderer* renderer )
 	{
 		mRenderer = renderer;
 
@@ -91,10 +90,10 @@ namespace glabels
 		if ( mModel != nullptr )
 		{
 			// Set scene up with a 5% margin around paper
-			Distance x = -0.05 * mModel->tmplate()->pageWidth();
-			Distance y = -0.05 * mModel->tmplate()->pageHeight();
-			Distance w = 1.10 * mModel->tmplate()->pageWidth();
-			Distance h = 1.10 * mModel->tmplate()->pageHeight();
+			model::Distance x = -0.05 * mModel->tmplate()->pageWidth();
+			model::Distance y = -0.05 * mModel->tmplate()->pageHeight();
+			model::Distance w = 1.10 * mModel->tmplate()->pageWidth();
+			model::Distance h = 1.10 * mModel->tmplate()->pageHeight();
 
 			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
 			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
@@ -131,7 +130,7 @@ namespace glabels
 	///
 	/// Draw Paper
 	///
-	void Preview::drawPaper( const Distance& pw, const Distance& ph )
+	void Preview::drawPaper( const model::Distance& pw, const model::Distance& ph )
 	{
 		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
@@ -157,9 +156,9 @@ namespace glabels
 	///
 	void Preview::drawLabels()
 	{
-		Frame *frame = mModel->tmplate()->frames().first();
+		model::Frame *frame = mModel->tmplate()->frames().first();
 
-		foreach (Point origin, frame->getOrigins() )
+		foreach (model::Point origin, frame->getOrigins() )
 		{
 			drawLabel( origin.x(), origin.y(), frame->path() );
 		}
@@ -169,7 +168,7 @@ namespace glabels
 	///
 	/// Draw a Single Label at x,y
 	///
-	void Preview::drawLabel( const Distance& x, const Distance& y, const QPainterPath& path )
+	void Preview::drawLabel( const model::Distance& x, const model::Distance& y, const QPainterPath& path )
 	{
 		QBrush brush( Qt::NoBrush );
 		QPen pen( labelOutlineColor );

@@ -20,7 +20,7 @@
 
 #include "UndoRedoModel.h"
 
-#include "LabelModel.h"
+#include "model/Model.h"
 
 
 namespace glabels
@@ -29,7 +29,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	UndoRedoModel::UndoRedoModel( LabelModel* model )
+	UndoRedoModel::UndoRedoModel( model::Model* model )
 	{
 		mModel = model;
 		mNewSelection = true;
@@ -178,7 +178,7 @@ namespace glabels
 	///
 	/// State constructor
 	///
-	UndoRedoModel::State::State( LabelModel* model, const QString& description )
+	UndoRedoModel::State::State( model::Model* model, const QString& description )
 	{
 		this->model = model->save();
 		this->description = description;

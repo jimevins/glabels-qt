@@ -29,7 +29,7 @@ namespace glabels
 	///
 	/// Constructor From Data
 	///
-	BarcodeMenuItem::BarcodeMenuItem( const BarcodeStyle& bcStyle, QObject* parent )
+	BarcodeMenuItem::BarcodeMenuItem( const barcode::Style& bcStyle, QObject* parent )
 		: QAction(parent), mBcStyle(bcStyle)
 	{
 		setText( bcStyle.name() );
@@ -41,7 +41,7 @@ namespace glabels
 	///
 	/// bcStyle Property Getter
 	///
-	BarcodeStyle BarcodeMenuItem::bcStyle() const
+	barcode::Style BarcodeMenuItem::bcStyle() const
 	{
 		return mBcStyle;
 	}

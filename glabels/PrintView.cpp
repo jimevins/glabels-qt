@@ -20,8 +20,6 @@
 
 #include "PrintView.h"
 
-#include "LabelModel.h"
-
 #include <QPrintDialog>
 #include <QtDebug>
 
@@ -57,7 +55,7 @@ namespace glabels
 	///
 	/// Set Model
 	///
-	void PrintView::setModel( LabelModel* model )
+	void PrintView::setModel( model::Model* model )
 	{
 		mModel = model;
 		mRenderer.setModel( mModel );

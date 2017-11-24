@@ -22,8 +22,9 @@
 #define ColorButton_h
 
 
-#include "ColorNode.h"
 #include "ColorPaletteDialog.h"
+
+#include "model/ColorNode.h"
 
 #include <QPushButton>
 
@@ -58,10 +59,10 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		void   init( const QString& defaultLabel, const QColor& defaultColor, const QColor& color );
-		void   setColorNode( ColorNode colorNode );
+		void   setColorNode( model::ColorNode colorNode );
 		void   setColor( QColor color );
 		void   setToDefault();
-		ColorNode colorNode();
+		model::ColorNode colorNode();
 		void   setKeys( const QList<QString> keyList );
 		void   clearKeys();
 
@@ -73,7 +74,7 @@ namespace glabels
 		void onButtonToggled( bool checked );
 		void onPaletteDialogAccepted();
 		void onPaletteDialogRejected();
-		void onPaletteDialogChanged( ColorNode colorNode, bool isDefault );
+		void onPaletteDialogChanged( model::ColorNode colorNode, bool isDefault );
 
 
 		/////////////////////////////////
@@ -88,7 +89,7 @@ namespace glabels
 	private:
 		QColor              mDefaultColor;
 		bool                mIsDefault;
-		ColorNode           mColorNode;
+		model::ColorNode    mColorNode;
 
 		ColorPaletteDialog* mDialog;
 	};

@@ -21,21 +21,22 @@
 #include "LabelEditor.h"
 
 #include "Cursors.h"
-#include "FrameCd.h"
-#include "FrameEllipse.h"
-#include "FrameRect.h"
-#include "FrameRound.h"
-#include "LabelModel.h"
-#include "LabelModelObject.h"
-#include "LabelModelBarcodeObject.h"
-#include "LabelModelBoxObject.h"
-#include "LabelModelEllipseObject.h"
-#include "LabelModelImageObject.h"
-#include "LabelModelLineObject.h"
-#include "LabelModelTextObject.h"
-#include "Markup.h"
-#include "Settings.h"
 #include "UndoRedoModel.h"
+
+#include "model/FrameCd.h"
+#include "model/FrameEllipse.h"
+#include "model/FrameRect.h"
+#include "model/FrameRound.h"
+#include "model/Model.h"
+#include "model/ModelObject.h"
+#include "model/ModelBarcodeObject.h"
+#include "model/ModelBoxObject.h"
+#include "model/ModelEllipseObject.h"
+#include "model/ModelImageObject.h"
+#include "model/ModelLineObject.h"
+#include "model/ModelTextObject.h"
+#include "model/Markup.h"
+#include "model/Settings.h"
 
 #include <QMouseEvent>
 #include <QtMath>
@@ -66,7 +67,7 @@ namespace glabels
 
 		const QColor  gridLineColor( 192, 192, 192 );
 		const double  gridLineWidthPixels = 1;
-		const Distance gridSpacing = Distance::pt(9); // TODO: determine from locale.
+		const model::Distance gridSpacing = model::Distance::pt(9); // TODO: determine from locale.
 
 		const QColor  markupLineColor( 240, 99, 99 );
 		const double  markupLineWidthPixels = 1;
@@ -94,7 +95,7 @@ namespace glabels
 		setMouseTracking( true );
 		setFocusPolicy(Qt::StrongFocus);
 
-		connect( Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
+		connect( model::Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
 		onSettingsChanged();
 	}
 
@@ -133,7 +134,7 @@ namespace glabels
 	/// Model Parameter Setter
 	///
 	void
-	LabelEditor::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
+	LabelEditor::setModel( model::Model* model, UndoRedoModel* undoRedoModel )
 	{
 		mModel = model;
 		mUndoRedoModel = undoRedoModel;
@@ -246,7 +247,7 @@ namespace glabels
 	
 		double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w().pt();
 		double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h().pt();
-		double newZoom = qMin( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
+		double newZoom = qMin( x_scale, y_scale ) * model::PTS_PER_INCH / physicalDpiX();
 
 		// Limits
 		newZoom = qMin( newZoom, zoomLevels[0] );
@@ -286,7 +287,7 @@ namespace glabels
 		mZoomToFitFlag = zoomToFitFlag;
 
 		/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
-		mScale = zoom * physicalDpiX() / PTS_PER_INCH;
+		mScale = zoom * physicalDpiX() / model::PTS_PER_INCH;
 
 		setMinimumSize( mScale*mModel->w().pt() + ZOOM_TO_FIT_PAD,
 		                mScale*mModel->h().pt() + ZOOM_TO_FIT_PAD );
@@ -432,8 +433,8 @@ namespace glabels
 			transform.translate( mX0.pt(), mY0.pt() );
 
 			QPointF pWorld = transform.inverted().map( event->pos() );
-			Distance xWorld = Distance::pt( pWorld.x() );
-			Distance yWorld = Distance::pt( pWorld.y() );
+			model::Distance xWorld = model::Distance::pt( pWorld.x() );
+			model::Distance yWorld = model::Distance::pt( pWorld.y() );
 
 		
 			if ( event->button() & Qt::LeftButton )
@@ -446,8 +447,8 @@ namespace glabels
 
 				case IdleState:
 				{
-					LabelModelObject* object = nullptr;
-					Handle* handle = nullptr;
+					model::ModelObject* object = nullptr;
+					model::Handle* handle = nullptr;
 					if ( mModel->isSelectionAtomic() &&
 					     (handle = mModel->handleAt( mScale, xWorld, yWorld )) != nullptr )
 					{
@@ -521,22 +522,22 @@ namespace glabels
 					switch ( mCreateObjectType )
 					{
 					case Box:
-						mCreateObject = new LabelModelBoxObject();
+						mCreateObject = new model::ModelBoxObject();
 						break;
 					case Ellipse:
-						mCreateObject = new LabelModelEllipseObject();
+						mCreateObject = new model::ModelEllipseObject();
 						break;
 					case Line: 
-						mCreateObject = new LabelModelLineObject();
+						mCreateObject = new model::ModelLineObject();
 						break;
 					case Image:
-						mCreateObject = new LabelModelImageObject();
+						mCreateObject = new model::ModelImageObject();
 						break;
 					case Text:
-						mCreateObject = new LabelModelTextObject();
+						mCreateObject = new model::ModelTextObject();
 						break;
 					case Barcode:
-						mCreateObject = new LabelModelBarcodeObject();
+						mCreateObject = new model::ModelBarcodeObject();
 						break;
 					default:
 						qDebug() << "LabelEditor::mousePressEvent: Invalid creation type. Should not happen!";
@@ -598,8 +599,8 @@ namespace glabels
 			transform.translate( mX0.pt(), mY0.pt() );
 
 			QPointF pWorld = transform.inverted().map( event->pos() );
-			Distance xWorld = Distance::pt( pWorld.x() );
-			Distance yWorld = Distance::pt( pWorld.y() );
+			model::Distance xWorld = model::Distance::pt( pWorld.x() );
+			model::Distance yWorld = model::Distance::pt( pWorld.y() );
 
 		
 			/*
@@ -700,8 +701,8 @@ namespace glabels
 			transform.translate( mX0.pt(), mY0.pt() );
 
 			QPointF pWorld = transform.inverted().map( event->pos() );
-			Distance xWorld = Distance::pt( pWorld.x() );
-			Distance yWorld = Distance::pt( pWorld.y() );
+			model::Distance xWorld = model::Distance::pt( pWorld.x() );
+			model::Distance yWorld = model::Distance::pt( pWorld.y() );
 
 		
 			if ( event->button() & Qt::LeftButton )
@@ -779,11 +780,11 @@ namespace glabels
 	/// Handle resize motion
 	///
 	void
-	LabelEditor::handleResizeMotion( const Distance& xWorld,
-	                                 const Distance& yWorld )
+	LabelEditor::handleResizeMotion( const model::Distance& xWorld,
+	                                 const model::Distance& yWorld )
 	{
 		QPointF p( xWorld.pt(), yWorld.pt() );
-		Handle::Location location = mResizeHandle->location();
+		model::Handle::Location location = mResizeHandle->location();
 	
 		/*
 		 * Change point to object relative coordinates
@@ -809,39 +810,39 @@ namespace glabels
 		double w, h;
 		switch ( location )
 		{
-		case Handle::NW:
+		case model::Handle::NW:
 			w = std::max( x2 - p.x(), 0.0 );
 			h = std::max( y2 - p.y(), 0.0 );
 			break;
-		case Handle::N:
+		case model::Handle::N:
 			w = x2 - x1;
 			h = std::max( y2 - p.y(), 0.0 );
 			break;
-		case Handle::NE:
+		case model::Handle::NE:
 			w = std::max( p.x() - x1, 0.0 );
 			h = std::max( y2 - p.y(), 0.0 );
 			break;
-		case Handle::E:
+		case model::Handle::E:
 			w = std::max( p.x() - x1, 0.0 );
 			h = y2 - y1;
 			break;
-		case Handle::SE:
+		case model::Handle::SE:
 			w = std::max( p.x() - x1, 0.0 );
 			h = std::max( p.y() - y1, 0.0 );
 			break;
-		case Handle::S:
+		case model::Handle::S:
 			w = x2 - x1;
 			h = std::max( p.y() - y1, 0.0 );
 			break;
-		case Handle::SW:
+		case model::Handle::SW:
 			w = std::max( x2 - p.x(), 0.0 );
 			h = std::max( p.y() - y1, 0.0 );
 			break;
-		case Handle::W:
+		case model::Handle::W:
 			w = std::max( x2 - p.x(), 0.0 );
 			h = y2 - y1;
 			break;
-		case Handle::P1:
+		case model::Handle::P1:
 			x1 = p.x();
 			y1 = p.y();
 			w  = x2 - p.x();
@@ -849,7 +850,7 @@ namespace glabels
 			x0 = x0 + x1;
 			y0 = y0 + y1;
 			break;
-		case Handle::P2:
+		case model::Handle::P2:
 			w  = p.x() - x1;
 			h  = p.y() - y1;
 			x0 = x0 + x1;
@@ -862,30 +863,30 @@ namespace glabels
 		/*
 		 * Set size
 		 */
-		if ( !(location == Handle::P1) && !(location == Handle::P2) )
+		if ( !(location == model::Handle::P1) && !(location == model::Handle::P2) )
 		{
 			if ( mResizeHonorAspect )
 			{
 				switch ( location )
 				{
-				case Handle::E:
-				case Handle::W:
-					mResizeObject->setWHonorAspect( Distance::pt(w) );
+				case model::Handle::E:
+				case model::Handle::W:
+					mResizeObject->setWHonorAspect( model::Distance::pt(w) );
 					break;
-				case Handle::N:
-				case Handle::S:
-					mResizeObject->setHHonorAspect( Distance::pt(h) );
+				case model::Handle::N:
+				case model::Handle::S:
+					mResizeObject->setHHonorAspect( model::Distance::pt(h) );
 					break;
 				default:
-					mResizeObject->setSizeHonorAspect( Distance::pt(w),
-					                                   Distance::pt(h) );
+					mResizeObject->setSizeHonorAspect( model::Distance::pt(w),
+					                                   model::Distance::pt(h) );
 					break;
 				}
 			}
 			else
 			{
-				mResizeObject->setSize( Distance::pt(w),
-				                        Distance::pt(h) );
+				mResizeObject->setSize( model::Distance::pt(w),
+				                        model::Distance::pt(h) );
 			}
 
 			/*
@@ -893,16 +894,16 @@ namespace glabels
 			 */
 			switch ( location )
 			{
-			case Handle::NW:
+			case model::Handle::NW:
 				x0 += x2 - mResizeObject->w().pt();
 				y0 += y2 - mResizeObject->h().pt();
 				break;
-			case Handle::N:
-			case Handle::NE:
+			case model::Handle::N:
+			case model::Handle::NE:
 				y0 += y2 - mResizeObject->h().pt();
 				break;
-			case Handle::W:
-			case Handle::SW:
+			case model::Handle::W:
+			case model::Handle::SW:
 				x0 += x2 - mResizeObject->w().pt();
 				break;
 			default:
@@ -911,8 +912,8 @@ namespace glabels
 		}
 		else
 		{
-			mResizeObject->setSize( Distance::pt(w),
-			                        Distance::pt(h) );
+			mResizeObject->setSize( model::Distance::pt(w),
+			                        model::Distance::pt(h) );
 		}
 
 		/*
@@ -921,8 +922,8 @@ namespace glabels
 		QPointF p0( x0, y0 );
 		p0 = mResizeObject->matrix().map( p0 );
 		p0 += QPointF( mResizeObject->x0().pt(), mResizeObject->y0().pt() );
-		mResizeObject->setPosition( Distance::pt(p0.x()),
-		                            Distance::pt(p0.y()) );
+		mResizeObject->setPosition( model::Distance::pt(p0.x()),
+		                            model::Distance::pt(p0.y()) );
 	}
 
 
@@ -938,22 +939,22 @@ namespace glabels
 
 			case Qt::Key_Left:
 				mUndoRedoModel->checkpoint( tr("Move") );
-				mModel->moveSelection( -mStepSize, Distance(0) );
+				mModel->moveSelection( -mStepSize, model::Distance(0) );
 				break;
 
 			case Qt::Key_Up:
 				mUndoRedoModel->checkpoint( tr("Move") );
-				mModel->moveSelection( Distance(0), -mStepSize );
+				mModel->moveSelection( model::Distance(0), -mStepSize );
 				break;
 
 			case Qt::Key_Right:
 				mUndoRedoModel->checkpoint( tr("Move") );
-				mModel->moveSelection( mStepSize, Distance(0) );
+				mModel->moveSelection( mStepSize, model::Distance(0) );
 				break;
 
 			case Qt::Key_Down:
 				mUndoRedoModel->checkpoint( tr("Move") );
-				mModel->moveSelection( Distance(0), mStepSize );
+				mModel->moveSelection( model::Distance(0), mStepSize );
 				break;
 
 			case Qt::Key_Delete:
@@ -1063,11 +1064,11 @@ namespace glabels
 	{
 		if ( mGridVisible )
 		{
-			Distance w = mModel->frame()->w();
-			Distance h = mModel->frame()->h();
+			model::Distance w = mModel->frame()->w();
+			model::Distance h = mModel->frame()->h();
 
-			Distance x0, y0;
-			if ( dynamic_cast<const FrameRect*>( mModel->frame() ) )
+			model::Distance x0, y0;
+			if ( dynamic_cast<const model::FrameRect*>( mModel->frame() ) )
 			{
 				x0 = gridSpacing;
 				y0 = gridSpacing;
@@ -1092,12 +1093,12 @@ namespace glabels
 			pen.setCosmetic( true );
 			painter->setPen( pen );
 
-			for ( Distance x = x0; x < w; x += gridSpacing )
+			for ( model::Distance x = x0; x < w; x += gridSpacing )
 			{
 				painter->drawLine( x.pt(), 0, x.pt(), h.pt() );
 			}
 
-			for ( Distance y = y0; y < h; y += gridSpacing )
+			for ( model::Distance y = y0; y < h; y += gridSpacing )
 			{
 				painter->drawLine( 0, y.pt(), w.pt(), y.pt() );
 			}
@@ -1129,7 +1130,7 @@ namespace glabels
 				painter->translate( -mModel->frame()->w().pt(), 0 );
 			}
 
-			foreach( Markup* markup, mModel->frame()->markups() )
+			foreach( model::Markup* markup, mModel->frame()->markups() )
 			{
 				painter->drawPath( markup->path() );
 			}
@@ -1184,7 +1185,7 @@ namespace glabels
 	{
 		painter->save();
 
-		foreach ( LabelModelObject* object, mModel->objectList() )
+		foreach ( model::ModelObject* object, mModel->objectList() )
 		{
 			if ( object->isSelected() )
 			{
@@ -1224,9 +1225,9 @@ namespace glabels
 	///
 	void LabelEditor::onSettingsChanged()
 	{
-		Units units = Settings::units();
+		model::Units units = model::Settings::units();
 	
-		mStepSize = Distance( units.resolution(), units );
+		mStepSize = model::Distance( units.resolution(), units );
 	}
 
 
@@ -1242,7 +1243,7 @@ namespace glabels
 	
 			double x_scale = ( wPixels - ZOOM_TO_FIT_PAD ) / mModel->w().pt();
 			double y_scale = ( hPixels - ZOOM_TO_FIT_PAD ) / mModel->h().pt();
-			double newZoom = qMin( x_scale, y_scale ) * PTS_PER_INCH / physicalDpiX();
+			double newZoom = qMin( x_scale, y_scale ) * model::PTS_PER_INCH / physicalDpiX();
 
 			// Limits
 			newZoom = qMin( newZoom, zoomLevels[0] );
@@ -1252,7 +1253,7 @@ namespace glabels
 		}
 
 		/* Actual scale depends on DPI of display (assume DpiX == DpiY). */
-		mScale = mZoom * physicalDpiX() / PTS_PER_INCH;
+		mScale = mZoom * physicalDpiX() / model::PTS_PER_INCH;
 
 		setMinimumSize( mScale*mModel->w().pt() + ZOOM_TO_FIT_PAD,
 		                mScale*mModel->h().pt() + ZOOM_TO_FIT_PAD );

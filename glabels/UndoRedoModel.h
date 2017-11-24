@@ -22,6 +22,8 @@
 #define UndoRedoModel_h
 
 
+#include "model/Model.h"
+
 #include <QList>
 #include <QObject>
 #include <QString>
@@ -29,10 +31,6 @@
 
 namespace glabels
 {
-
-	// Forward references
-	class LabelModel;
-
 
 	///
 	/// UndoRedoModel
@@ -46,7 +44,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		UndoRedoModel( LabelModel* model );
+		UndoRedoModel( model::Model* model );
 		~UndoRedoModel() override;
 
 
@@ -84,11 +82,11 @@ namespace glabels
 		class State
 		{
 		public:
-			State( LabelModel* model, const QString& description );
+			State( model::Model* model, const QString& description );
 			~State();
 
-			LabelModel* model;
-			QString     description;
+			model::Model* model;
+			QString       description;
 		};
 
 		class Stack
@@ -112,13 +110,13 @@ namespace glabels
 		// Private data
 		/////////////////////////////////
 	private:
-		LabelModel         *mModel;
+		model::Model*  mModel;
 
-		Stack               mUndoStack;
-		Stack               mRedoStack;
+		Stack          mUndoStack;
+		Stack          mRedoStack;
 	
-		bool                mNewSelection;
-		QString             mLastDescription;
+		bool           mNewSelection;
+		QString        mLastDescription;
 
 	};
 

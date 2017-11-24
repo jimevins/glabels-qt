@@ -22,7 +22,9 @@
 #define Preview_h
 
 
-#include "PageRenderer.h"
+#include "model/Distance.h"
+#include "model/Model.h"
+#include "model/PageRenderer.h"
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -31,10 +33,6 @@
 namespace glabels
 {
 	
-	// Forward references
-	class LabelModel;
-
-
 	///
 	///  Preview Widget
 	///
@@ -54,7 +52,7 @@ namespace glabels
 		// Renderer
 		/////////////////////////////////
 	public:
-		void setRenderer( const PageRenderer* renderer );
+		void setRenderer( const model::PageRenderer* renderer );
 	private slots:
 		void onRendererChanged();
 
@@ -71,9 +69,9 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		void clearScene();
-		void drawPaper( const Distance& pw, const Distance& ph );
+		void drawPaper( const model::Distance& pw, const model::Distance& ph );
 		void drawLabels();
-		void drawLabel( const Distance& x, const Distance& y, const QPainterPath& path );
+		void drawLabel( const model::Distance& x, const model::Distance& y, const QPainterPath& path );
 		
 		void drawPreviewOverlay();
 
@@ -82,9 +80,9 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		const LabelModel*   mModel;
-		const PageRenderer* mRenderer;    
-		QGraphicsScene*     mScene;
+		const model::Model*        mModel;
+		const model::PageRenderer* mRenderer;    
+		QGraphicsScene*            mScene;
 
 	};
 

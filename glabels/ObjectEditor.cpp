@@ -20,19 +20,20 @@
 
 #include "ObjectEditor.h"
 
-#include "LabelModel.h"
-#include "LabelModelObject.h"
-#include "LabelModelBarcodeObject.h"
-#include "LabelModelBoxObject.h"
-#include "LabelModelEllipseObject.h"
-#include "LabelModelImageObject.h"
-#include "LabelModelLineObject.h"
-#include "LabelModelTextObject.h"
-#include "Settings.h"
-#include "Size.h"
 #include "UndoRedoModel.h"
 
-#include "Merge/Merge.h"
+#include "model/Model.h"
+#include "model/ModelObject.h"
+#include "model/ModelBarcodeObject.h"
+#include "model/ModelBoxObject.h"
+#include "model/ModelEllipseObject.h"
+#include "model/ModelImageObject.h"
+#include "model/ModelLineObject.h"
+#include "model/ModelTextObject.h"
+#include "model/Settings.h"
+#include "model/Size.h"
+
+#include "merge/Merge.h"
 
 #include <QFileDialog>
 #include <QtMath>
@@ -73,14 +74,14 @@ namespace glabels
 		setEnabled( false );
 		hidePages();
 
-		connect( Settings::instance(), SIGNAL(changed()),
+		connect( model::Settings::instance(), SIGNAL(changed()),
 		         this, SLOT(onSettingsChanged()) );
 		
 		onSettingsChanged();
 	}
 
 	
-	void ObjectEditor::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
+	void ObjectEditor::setModel( model::Model* model, UndoRedoModel* undoRedoModel )
 	{
 		mModel = model;
 		mUndoRedoModel = undoRedoModel;
@@ -117,7 +118,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			TextNode filenameNode = mObject->filenameNode();
+			model::TextNode filenameNode = mObject->filenameNode();
 
 			if ( filenameNode.isField() )
 			{
@@ -188,7 +189,7 @@ namespace glabels
 			sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 			sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 
-			Size originalSize = mObject->naturalSize();
+			model::Size originalSize = mObject->naturalSize();
 			QString originalSizeString = QString( "%1:  %2 x %3 %4" )
 				.arg( tr("Original size") )
 				.arg( originalSize.w().inUnits(mUnits), 0, 'f', mSpinDigits )
@@ -249,7 +250,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			BarcodeStyle bcStyle = mObject->bcStyle();
+			barcode::Style bcStyle = mObject->bcStyle();
 
 			barcodeShowTextCheck->setEnabled( bcStyle.textOptional() );
 			barcodeChecksumCheck->setEnabled( bcStyle.checksumOptional() );
@@ -302,7 +303,7 @@ namespace glabels
 
 	void ObjectEditor::onSettingsChanged()
 	{
-		mUnits = Settings::units();
+		mUnits = model::Settings::units();
 		mSpinDigits = mUnits.resolutionDigits();
 		mSpinStep = mUnits.resolution();
 
@@ -318,7 +319,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			Distance whMax = std::max( mModel->w(), mModel->h() );
+			model::Distance whMax = std::max( mModel->w(), mModel->h() );
 			
 			posXSpin->setRange( -whMax.inUnits(mUnits), 2*whMax.inUnits(mUnits) );
 			posYSpin->setRange( -whMax.inUnits(mUnits), 2*whMax.inUnits(mUnits) );
@@ -345,7 +346,7 @@ namespace glabels
 			{
 				mObject = mModel->getFirstSelectedObject();
 
-				if ( dynamic_cast<LabelModelBoxObject*>(mObject) )
+				if ( dynamic_cast<model::ModelBoxObject*>(mObject) )
 				{
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.svg") );
 					titleLabel->setText( tr("Box object properties") );
@@ -366,7 +367,7 @@ namespace glabels
 				
 					setEnabled( true );
 				}
-				else if ( dynamic_cast<LabelModelEllipseObject*>(mObject) )
+				else if ( dynamic_cast<model::ModelEllipseObject*>(mObject) )
 				{
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-ellipse.svg") );
 					titleLabel->setText( tr("Ellipse object properties") );
@@ -387,7 +388,7 @@ namespace glabels
 				
 					setEnabled( true );
 				}
-				else if ( dynamic_cast<LabelModelImageObject*>(mObject) )
+				else if ( dynamic_cast<model::ModelImageObject*>(mObject) )
 				{
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-image.svg") );
 					titleLabel->setText( tr("Image object properties") );
@@ -407,7 +408,7 @@ namespace glabels
 				
 					setEnabled( true );
 				}
-				else if ( dynamic_cast<LabelModelLineObject*>(mObject) )
+				else if ( dynamic_cast<model::ModelLineObject*>(mObject) )
 				{
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-line.svg") );
 					titleLabel->setText( tr("Line object properties") );
@@ -428,7 +429,7 @@ namespace glabels
 				
 					setEnabled( true );
 				}
-				else if ( dynamic_cast<LabelModelTextObject*>(mObject) )
+				else if ( dynamic_cast<model::ModelTextObject*>(mObject) )
 				{
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-text.svg") );
 					titleLabel->setText( tr("Text object properties") );
@@ -447,7 +448,7 @@ namespace glabels
 				
 					setEnabled( true );
 				}
-				else if ( dynamic_cast<LabelModelBarcodeObject*>(mObject) )
+				else if ( dynamic_cast<model::ModelBarcodeObject*>(mObject) )
 				{
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-barcode.svg") );
 					titleLabel->setText( tr("Barcode object properties") );
@@ -537,7 +538,7 @@ namespace glabels
 
 			mUndoRedoModel->checkpoint( tr("Line") );
 		
-			mObject->setLineWidth( Distance::pt(lineWidthSpin->value()) );
+			mObject->setLineWidth( model::Distance::pt(lineWidthSpin->value()) );
 			mObject->setLineColorNode( lineColorButton->colorNode() );
 
 			mBlocked = false;
@@ -595,7 +596,7 @@ namespace glabels
 		if ( !filename.isEmpty() )
 		{
 			mUndoRedoModel->checkpoint( tr("Set image") );
-			mObject->setFilenameNode( TextNode( false, filename ) );
+			mObject->setFilenameNode( model::TextNode( false, filename ) );
 
 			// Save CWD for next open
 			QFileInfo fileInfo( filename );
@@ -607,7 +608,7 @@ namespace glabels
 	void ObjectEditor::onImageKeySelected( QString key )
 	{
 		mUndoRedoModel->checkpoint( tr("Set image") );
-		mObject->setFilenameNode( TextNode( true, key ) );
+		mObject->setFilenameNode( model::TextNode( true, key ) );
 	}
 
 
@@ -619,8 +620,8 @@ namespace glabels
 
 			mUndoRedoModel->checkpoint( tr("Move") );
 		
-			Distance x = Distance(posXSpin->value(), mUnits);
-			Distance y = Distance(posYSpin->value(), mUnits);
+			model::Distance x = model::Distance(posXSpin->value(), mUnits);
+			model::Distance y = model::Distance(posYSpin->value(), mUnits);
 
 			mObject->setPosition( x, y );
 
@@ -637,8 +638,8 @@ namespace glabels
 			
 			mUndoRedoModel->checkpoint( tr("Size") );
 		
-			Distance spinW = Distance(sizeWSpin->value(), mUnits);
-			Distance spinH = Distance(sizeHSpin->value(), mUnits);
+			model::Distance spinW = model::Distance(sizeWSpin->value(), mUnits);
+			model::Distance spinH = model::Distance(sizeHSpin->value(), mUnits);
 				
 			if ( sizeAspectCheck->isChecked() )
 			{
@@ -671,7 +672,7 @@ namespace glabels
 			
 			mUndoRedoModel->checkpoint( tr("Size") );
 		
-			Distance spinLength = Distance(sizeLineLengthSpin->value(), mUnits);
+			model::Distance spinLength = model::Distance(sizeLineLengthSpin->value(), mUnits);
 			double spinAngleRads = qDegreesToRadians( sizeLineAngleSpin->value() );
 				
 			mObject->setSize( spinLength*qCos(spinAngleRads),
@@ -718,7 +719,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			BarcodeStyle bcStyle = barcodeStyleButton->bcStyle();
+			barcode::Style bcStyle = barcodeStyleButton->bcStyle();
 
 			barcodeShowTextCheck->setEnabled( bcStyle.textOptional() );
 			barcodeChecksumCheck->setEnabled( bcStyle.checksumOptional() );
@@ -765,8 +766,8 @@ namespace glabels
 			mUndoRedoModel->checkpoint( tr("Shadow") );
 		
 			mObject->setShadow( shadowEnableCheck->isChecked() );
-			mObject->setShadowX( Distance(shadowXSpin->value(), mUnits) );
-			mObject->setShadowY( Distance(shadowYSpin->value(), mUnits) );
+			mObject->setShadowX( model::Distance(shadowXSpin->value(), mUnits) );
+			mObject->setShadowY( model::Distance(shadowYSpin->value(), mUnits) );
 			mObject->setShadowColorNode( shadowColorButton->colorNode() );
 			mObject->setShadowOpacity( shadowOpacitySpin->value()/100.0 );
 

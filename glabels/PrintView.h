@@ -24,17 +24,14 @@
 
 #include "ui_PrintView.h"
 
-#include "PageRenderer.h"
+#include "model/Model.h"
+#include "model/PageRenderer.h"
 
 #include <QPrinter>
 
 
 namespace glabels
 {
-
-	// Forward references
-	class LabelModel;
-	
 
 	///
 	/// Print View Widget
@@ -55,7 +52,7 @@ namespace glabels
 		/////////////////////////////////
 		// Public methods
 		/////////////////////////////////
-		void setModel( LabelModel* model );
+		void setModel( model::Model* model );
 
 
 		/////////////////////////////////
@@ -72,9 +69,9 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		LabelModel*  mModel;
-		QPrinter*    mPrinter;
-		PageRenderer mRenderer;
+		model::Model*       mModel;
+		QPrinter*           mPrinter;
+		model::PageRenderer mRenderer;
 
 		bool         mBlocked;
 

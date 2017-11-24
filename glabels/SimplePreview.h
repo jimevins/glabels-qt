@@ -22,7 +22,7 @@
 #define SimplePreview_h
 
 
-#include "Template.h"
+#include "model/Template.h"
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -51,7 +51,7 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		void setTemplate( const Template *tmplate );
+		void setTemplate( const model::Template *tmplate );
 		void setRotate( bool rotateFlag );
 
 
@@ -68,9 +68,9 @@ namespace glabels
 	private:
 		void update();
 		void clearScene();
-		void drawPaper( const Distance& pw, const Distance& ph );
+		void drawPaper( const model::Distance& pw, const model::Distance& ph );
 		void drawLabels();
-		void drawLabel( const Distance& x, const Distance& y, const QPainterPath& path );
+		void drawLabel( const model::Distance& x, const model::Distance& y, const QPainterPath& path );
 		void drawArrow();
 
 
@@ -78,10 +78,10 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		const Template          *mTmplate;
-		bool                     mRotateFlag;
+		const model::Template* mTmplate;
+		bool                   mRotateFlag;
 
-		QGraphicsScene          *mScene;
+		QGraphicsScene* mScene;
 
 	};
 

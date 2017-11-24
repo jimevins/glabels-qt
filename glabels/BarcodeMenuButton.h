@@ -23,7 +23,8 @@
 
 
 #include "BarcodeMenu.h"
-#include "BarcodeStyle.h"
+
+#include "barcode/Style.h"
 
 #include <QPushButton>
 
@@ -56,8 +57,8 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		BarcodeStyle bcStyle() const;
-		void setBcStyle( const BarcodeStyle& bcStyle );
+		barcode::Style bcStyle() const;
+		void setBcStyle( const barcode::Style& bcStyle );
 
 
 		/////////////////////////////////
@@ -72,7 +73,7 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		BarcodeMenu* mMenu;
-		BarcodeStyle mBcStyle;
+		barcode::Style mBcStyle;
 
 	};
 

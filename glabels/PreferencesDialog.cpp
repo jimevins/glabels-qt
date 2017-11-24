@@ -20,7 +20,7 @@
 
 #include "PreferencesDialog.h"
 
-#include "Settings.h"
+#include "model/Settings.h"
 
 
 namespace glabels
@@ -34,18 +34,18 @@ namespace glabels
 	{
 		setupUi( this );
 
-		switch ( Settings::units().toEnum() )
+		switch ( model::Settings::units().toEnum() )
 		{
-		case Units::IN:
+		case model::Units::IN:
 			unitsInchesRadio->setChecked( true );
 			break;
-		case Units::MM:
+		case model::Units::MM:
 			unitsMillimetersRadio->setChecked( true );
 			break;
-		case Units::CM:
+		case model::Units::CM:
 			unitsCentimetersRadio->setChecked( true );
 			break;
-		case Units::PC:
+		case model::Units::PC:
 			unitsPicasRadio->setChecked( true );
 			break;
 		default:
@@ -62,23 +62,23 @@ namespace glabels
 	{
 		if ( unitsInchesRadio->isChecked() )
 		{
-			Settings::setUnits( Units::in() );
+			model::Settings::setUnits( model::Units::in() );
 		}
 		else if ( unitsMillimetersRadio->isChecked() )
 		{
-			Settings::setUnits( Units::mm() );
+			model::Settings::setUnits( model::Units::mm() );
 		}
 		else if ( unitsCentimetersRadio->isChecked() )
 		{
-			Settings::setUnits( Units::cm() );
+			model::Settings::setUnits( model::Units::cm() );
 		}
 		else if ( unitsPicasRadio->isChecked() )
 		{
-			Settings::setUnits( Units::pc() );
+			model::Settings::setUnits( model::Units::pc() );
 		}
 		else
 		{
-			Settings::setUnits( Units::pt() );
+			model::Settings::setUnits( model::Units::pt() );
 		}
 	}
 

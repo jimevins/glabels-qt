@@ -20,8 +20,9 @@
 
 #include "BarcodeMenu.h"
 
-#include "BarcodeBackends.h"
 #include "BarcodeMenuItem.h"
+
+#include "barcode/Backends.h"
 
 #include <QtDebug>
 
@@ -34,29 +35,29 @@ namespace glabels
 	///
 	BarcodeMenu::BarcodeMenu()
 	{
-		foreach ( const BarcodeStyle& bcStyle, BarcodeBackends::styleList() )
+		foreach ( const barcode::Style& bcStyle, barcode::Backends::styleList() )
 		{
 			if ( bcStyle.backendId() == "" )
 			{
 				BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
-				connect( bcMenuItem, SIGNAL(activated(const BarcodeStyle&)),
-				         this, SLOT(onMenuItemActivated(const BarcodeStyle&)) );
+				connect( bcMenuItem, SIGNAL(activated(const barcode::Style&)),
+				         this, SLOT(onMenuItemActivated(const barcode::Style&)) );
 
 				addAction( bcMenuItem );
 			}
 		}
 
-		foreach ( const QString& backendId, BarcodeBackends::backendList() )
+		foreach ( const QString& backendId, barcode::Backends::backendList() )
 		{
-			QMenu* subMenu = addMenu( BarcodeBackends::backendName( backendId ) );
+			QMenu* subMenu = addMenu( barcode::Backends::backendName( backendId ) );
 			
-			foreach ( const BarcodeStyle& bcStyle, BarcodeBackends::styleList() )
+			foreach ( const barcode::Style& bcStyle, barcode::Backends::styleList() )
 			{
 				if ( bcStyle.backendId() == backendId )
 				{
 					BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
-					connect( bcMenuItem, SIGNAL(activated(const BarcodeStyle&)),
-					         this, SLOT(onMenuItemActivated(const BarcodeStyle&)) );
+					connect( bcMenuItem, SIGNAL(activated(const barcode::Style&)),
+					         this, SLOT(onMenuItemActivated(const barcode::Style&)) );
 
 					subMenu->addAction( bcMenuItem );
 				}
@@ -68,7 +69,7 @@ namespace glabels
 	///
 	/// bcStyle getter
 	///
-	BarcodeStyle BarcodeMenu::bcStyle() const
+	barcode::Style BarcodeMenu::bcStyle() const
 	{
 		return mBcStyle;
 	}
@@ -77,7 +78,7 @@ namespace glabels
 	///
 	/// onMenuItemActivated slot
 	///
-	void BarcodeMenu::onMenuItemActivated( const BarcodeStyle& bcStyle )
+	void BarcodeMenu::onMenuItemActivated( const barcode::Style& bcStyle )
 	{
 		mBcStyle = bcStyle;
 

@@ -20,9 +20,7 @@
 
 #include "MergeView.h"
 
-#include "LabelModel.h"
-
-#include "Merge/Factory.h"
+#include "merge/Factory.h"
 
 #include <QFileDialog>
 #include <QFileInfo>
@@ -59,7 +57,7 @@ namespace glabels
 	///
 	/// Set Model
 	///
-	void MergeView::setModel( LabelModel* model, UndoRedoModel* undoRedoModel )
+	void MergeView::setModel( model::Model* model, UndoRedoModel* undoRedoModel )
 	{
 		mModel = model;
 		mUndoRedoModel = undoRedoModel;

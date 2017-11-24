@@ -24,14 +24,14 @@
 
 #include "ui_PropertiesView.h"
 
-#include "Units.h"
+#include "model/Model.h"
+#include "model/Units.h"
 
 
 namespace glabels
 {
 
 	// Forward references
-	class LabelModel;
 	class UndoRedoModel;
 	
 
@@ -54,7 +54,7 @@ namespace glabels
 		/////////////////////////////////
 		// Public methods
 		/////////////////////////////////
-		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+		void setModel( model::Model* model, UndoRedoModel* undoRedoModel );
 
 
 		/////////////////////////////////
@@ -71,10 +71,10 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		LabelModel*    mModel;
-		UndoRedoModel* mUndoRedoModel;
-		Units          mUnits;
-		int            mOldOrientationIndex;
+		model::Model*      mModel;
+		UndoRedoModel*     mUndoRedoModel;
+		model::Units       mUnits;
+		int                mOldOrientationIndex;
 	};
 
 }

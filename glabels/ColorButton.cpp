@@ -52,7 +52,7 @@ namespace glabels
 	                        const QColor&  color )
 	{
 		mDefaultColor = defaultColor;
-		mColorNode = ColorNode( color );
+		mColorNode = model::ColorNode( color );
 
 		setMinimumSize( QSize( 85, 34 ) );
 		setIconSize( QSize(SWATCH_W, SWATCH_H) );
@@ -64,14 +64,14 @@ namespace glabels
 		mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
 
 		connect( this, SIGNAL(toggled(bool)), this, SLOT(onButtonToggled(bool)) );
-		connect( mDialog, SIGNAL(colorChanged(ColorNode,bool)),
-		         this, SLOT(onPaletteDialogChanged(ColorNode,bool)) );
+		connect( mDialog, SIGNAL(colorChanged(model::ColorNode,bool)),
+		         this, SLOT(onPaletteDialogChanged(model::ColorNode,bool)) );
 		connect( mDialog, SIGNAL(accepted()), this, SLOT(onPaletteDialogAccepted()) );
 		connect( mDialog, SIGNAL(rejected()), this, SLOT(onPaletteDialogRejected()) );
 	}
 
 
-	void ColorButton::setColorNode( ColorNode colorNode )
+	void ColorButton::setColorNode( model::ColorNode colorNode )
 	{
 		mIsDefault = false;
 
@@ -118,7 +118,7 @@ namespace glabels
 	}
 
 
-	ColorNode ColorButton::colorNode()
+	model::ColorNode ColorButton::colorNode()
 	{
 		return mColorNode;
 	}
@@ -163,7 +163,7 @@ namespace glabels
 	}
 
 
-	void ColorButton::onPaletteDialogChanged( ColorNode colorNode, bool isDefault )
+	void ColorButton::onPaletteDialogChanged( model::ColorNode colorNode, bool isDefault )
 	{
 		mColorNode = colorNode;
 		mIsDefault = isDefault;

@@ -22,7 +22,10 @@
 #define LabelEditor_h
 
 
-#include "Region.h"
+#include "model/Handles.h"
+#include "model/Model.h"
+#include "model/ModelObject.h"
+#include "model/Region.h"
 
 #include <QPainter>
 #include <QScrollArea>
@@ -33,10 +36,7 @@ namespace glabels
 {
 
 	// Forward References
-	class LabelModel;
-	class LabelModelObject;
 	class UndoRedoModel;
-	class Handle;
 
 
 	///
@@ -59,7 +59,7 @@ namespace glabels
 	signals:
 		void contextMenuActivate();
 		void zoomChanged();
-		void pointerMoved( const Distance& x, const Distance& y );
+		void pointerMoved( const model::Distance& x, const model::Distance& y );
 		void pointerExited();
 		void modeChanged();
 
@@ -77,7 +77,7 @@ namespace glabels
 		// Model
 		/////////////////////////////////////
 	public:
-		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+		void setModel( model::Model* model, UndoRedoModel* undoRedoModel );
 
 
 		/////////////////////////////////////
@@ -132,8 +132,8 @@ namespace glabels
 		// Private methods
 		/////////////////////////////////////
 	private:
-		void handleResizeMotion( const Distance& xWorld,
-		                         const Distance& yWorld );
+		void handleResizeMotion( const model::Distance& xWorld,
+		                         const model::Distance& yWorld );
 
 		void drawBgLayer( QPainter* painter );
 		void drawGridLayer( QPainter* painter );
@@ -179,38 +179,38 @@ namespace glabels
 		double               mZoom;
 		bool                 mZoomToFitFlag;
 		double               mScale;
-		Distance             mX0;
-		Distance             mY0;
+		model::Distance      mX0;
+		model::Distance      mY0;
 
 		bool                 mMarkupVisible;
 		bool                 mGridVisible;
 
 		double               mGridSpacing;
-		Distance             mStepSize;
+		model::Distance      mStepSize;
 
-		LabelModel*          mModel;
+		model::Model*        mModel;
 		UndoRedoModel*       mUndoRedoModel;
 
 		State                mState;
 
 		/* ArrowSelectRegion state */
 		bool                 mSelectRegionVisible;
-		Region               mSelectRegion;
+		model::Region        mSelectRegion;
 
 		/* ArrowMove state */
-		Distance             mMoveLastX;
-		Distance             mMoveLastY;
+		model::Distance      mMoveLastX;
+		model::Distance      mMoveLastY;
 
 		/* ArrowResize state */
-		LabelModelObject*    mResizeObject;
-		Handle*              mResizeHandle;
+		model::ModelObject*  mResizeObject;
+		model::Handle*       mResizeHandle;
 		bool                 mResizeHonorAspect;
 
 		/* CreateDrag state */
 		CreateType           mCreateObjectType;
-		LabelModelObject*    mCreateObject;
-		Distance             mCreateX0;
-		Distance             mCreateY0;
+		model::ModelObject*  mCreateObject;
+		model::Distance      mCreateX0;
+		model::Distance      mCreateY0;
 
 
 	};

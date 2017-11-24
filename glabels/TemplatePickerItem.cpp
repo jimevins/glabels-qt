@@ -33,7 +33,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	TemplatePickerItem::TemplatePickerItem( Template *tmplate, QListWidget *parent )
+	TemplatePickerItem::TemplatePickerItem( model::Template *tmplate, QListWidget *parent )
 		: QListWidgetItem(parent)
 	{
 		mTmplate = tmplate;
@@ -48,7 +48,7 @@ namespace glabels
 	///
 	/// Template Property Getter
 	///
-	const Template *TemplatePickerItem::tmplate() const
+	const model::Template *TemplatePickerItem::tmplate() const
 	{
 		return mTmplate;
 	}

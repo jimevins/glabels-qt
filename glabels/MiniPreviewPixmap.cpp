@@ -20,7 +20,7 @@
 
 #include "MiniPreviewPixmap.h"
 
-#include "Template.h"
+#include "model/Template.h"
 
 
 namespace glabels
@@ -47,14 +47,14 @@ namespace glabels
 	}
 
 
-	MiniPreviewPixmap::MiniPreviewPixmap( const Template* tmplate, int width, int height )
+	MiniPreviewPixmap::MiniPreviewPixmap( const model::Template* tmplate, int width, int height )
 		: QPixmap( width, height )
 	{
 		draw( tmplate, width, height );
 	}
 
 
-	void MiniPreviewPixmap::draw( const Template* tmplate, int width, int height )
+	void MiniPreviewPixmap::draw( const model::Template* tmplate, int width, int height )
 	{
 		fill( Qt::transparent );
 
@@ -76,8 +76,8 @@ namespace glabels
 		}
 		painter.scale( scale, scale );
 
-		Distance xOffset = ( Distance::pt(width/scale) - tmplate->pageWidth() ) / 2;
-		Distance yOffset = ( Distance::pt(height/scale) - tmplate->pageHeight() ) / 2;
+		model::Distance xOffset = ( model::Distance::pt(width/scale) - tmplate->pageWidth() ) / 2;
+		model::Distance yOffset = ( model::Distance::pt(height/scale) - tmplate->pageHeight() ) / 2;
 		painter.translate( xOffset.pt(), yOffset.pt() );
 
 		drawPaper( painter, tmplate, scale );
@@ -85,7 +85,7 @@ namespace glabels
 	}
 
 
-	void MiniPreviewPixmap::drawPaper( QPainter& painter, const Template* tmplate, double scale )
+	void MiniPreviewPixmap::drawPaper( QPainter& painter, const model::Template* tmplate, double scale )
 	{
 		QBrush brush( paperColor );
 		QPen pen( paperOutlineColor );
@@ -101,7 +101,7 @@ namespace glabels
 	}
 
 
-	void MiniPreviewPixmap::drawLabelOutlines( QPainter& painter, const Template* tmplate, double scale )
+	void MiniPreviewPixmap::drawLabelOutlines( QPainter& painter, const model::Template* tmplate, double scale )
 	{
 		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
@@ -112,10 +112,10 @@ namespace glabels
 		painter.setBrush( brush );
 		painter.setPen( pen );
 
-		Frame *frame = tmplate->frames().first();
-		QVector<Point> origins = frame->getOrigins();
+		model::Frame *frame = tmplate->frames().first();
+		QVector<model::Point> origins = frame->getOrigins();
 
-		foreach ( Point p0, origins )
+		foreach ( model::Point p0, origins )
 		{
 			drawLabelOutline( painter, frame, p0 );
 		}
@@ -124,7 +124,7 @@ namespace glabels
 	}
 
 
-	void MiniPreviewPixmap::drawLabelOutline( QPainter& painter, const Frame* frame, const Point& p0 )
+	void MiniPreviewPixmap::drawLabelOutline( QPainter& painter, const model::Frame* frame, const model::Point& p0 )
 	{
 		painter.save();
 

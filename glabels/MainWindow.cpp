@@ -20,12 +20,10 @@
 
 #include "MainWindow.h"
 
-#include "Db.h"
 #include "File.h"
 #include "Help.h"
 #include "Icons.h"
 #include "LabelEditor.h"
-#include "LabelModel.h"
 #include "MergeView.h"
 #include "ObjectEditor.h"
 #include "PreferencesDialog.h"
@@ -33,6 +31,9 @@
 #include "PropertiesView.h"
 #include "StartupView.h"
 #include "UndoRedoModel.h"
+
+#include "model/Db.h"
+#include "model/Model.h"
 
 #include <QClipboard>
 #include <QFrame>
@@ -151,7 +152,7 @@ namespace glabels
 	///
 	/// Get model accessor
 	///
-	LabelModel* MainWindow::model() const
+	model::Model* MainWindow::model() const
 	{
 		return mModel;
 	}
@@ -160,9 +161,9 @@ namespace glabels
 	///
 	/// Set model accessor
 	///
-	void MainWindow::setModel( LabelModel *label )
+	void MainWindow::setModel( model::Model* model )
 	{
-		mModel = label;
+		mModel = model;
 		mUndoRedoModel = new UndoRedoModel( mModel );
 	
 		mPropertiesView->setModel( mModel, mUndoRedoModel );

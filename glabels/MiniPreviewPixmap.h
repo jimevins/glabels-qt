@@ -22,7 +22,9 @@
 #define glabels_MiniPreviewPixmap_h
 
 
-#include "Point.h"
+#include "model/Frame.h"
+#include "model/Point.h"
+#include "model/Template.h"
 
 #include <QPixmap>
 #include <QPainter>
@@ -31,25 +33,20 @@
 namespace glabels
 {
 
-	// Forward references
-	class Template;
-	class Frame;
-
-
 	class MiniPreviewPixmap : public QPixmap
 	{
 		
 	public:
 		MiniPreviewPixmap();
 
-		MiniPreviewPixmap( const Template* tmplate, int width, int height );
+		MiniPreviewPixmap( const model::Template* tmplate, int width, int height );
 
 		
 	private:
-		void draw( const Template* tmplate, int width, int height );
-		void drawPaper( QPainter& painter, const Template* tmplate, double scale );
-		void drawLabelOutlines( QPainter& painter, const Template* tmplate, double scale );
-		void drawLabelOutline( QPainter& painter, const Frame *frame, const Point& point0 );
+		void draw( const model::Template* tmplate, int width, int height );
+		void drawPaper( QPainter& painter, const model::Template* tmplate, double scale );
+		void drawLabelOutlines( QPainter& painter, const model::Template* tmplate, double scale );
+		void drawLabelOutline( QPainter& painter, const model::Frame *frame, const model::Point& point0 );
 		
 	};
 

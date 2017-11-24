@@ -2,7 +2,7 @@
 # Once done this will define
 #
 #  LIBQRENCODE_FOUND - System has LibQrencode
-#  LIBQRENCODE_INCLUDE_DIR - The LibQrencode include directory
+#  LIBQRENCODE_INCLUDE_DIRS - The LibQrencode include directory
 #  LIBQRENCODE_LIBRARIES - The libraries needed to use LibQrencode
 #  LIBQRENCODE_DEFINITIONS - Compiler switches required for using LibQrencode
 #  LIBQRENCODE_VERSION_STRING - the version of LibQrencode found
@@ -19,11 +19,31 @@ find_path(LIBQRENCODE_INCLUDE_DIR NAMES qrencode.h
    PATH_SUFFIXES libqrencode
    )
 
-find_library(LIBQRENCODE_LIBRARIES NAMES qrencode libqrencode
+find_library(LIBQRENCODE_LIBRARY NAMES qrencode libqrencode
    HINTS
    ${PC_LIBQRENCODE_LIBDIR}
    ${PC_LIBQRENCODE_LIBRARY_DIRS}
    )
+
+if (LIBQRENCODE_LIBRARY AND LIBQRENCODE_INCLUDE_DIR)
+  
+  set (LIBQRENCODE_INCLUDE_DIRS ${LIBQRENCODE_INCLUDE_DIR})
+  set (LIBQRENCODE_LIBRARIES ${LIBQRENCODE_LIBRARY})
+  set (LIBQRENCODE_DEFINITIONS "")
+
+  if (NOT TARGET QRENCODE::QRENCODE)
+    
+    add_library (QRENCODE::QRENCODE UNKNOWN IMPORTED)
+    set_target_properties (QRENCODE::QRENCODE PROPERTIES
+      INTERFACE_COMPILE_DEFINITIONS     "${LIBQRENCODE_DEFINITIONS}"
+      INTERFACE_INCLUDE_DIRECTORIES     "${LIBQRENCODE_INCLUDE_DIRS}"
+      IMPORTED_LINK_INTERFACE_LANGUAGES "C"
+      IMPORTED_LOCATION                 "${LIBQRENCODE_LIBRARY}"
+    )
+    
+  endif ()
+
+endif ()
 
 if(PC_LIBQRENCODE_VERSION)
     set(LIBQRENCODE_VERSION_STRING ${PC_LIBQRENCODE_VERSION})
@@ -32,8 +52,8 @@ endif()
 # handle the QUIETLY and REQUIRED arguments and set LIBQRENCODE_FOUND to TRUE if
 # all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(LibQrencode
-                                  REQUIRED_VARS LIBQRENCODE_LIBRARIES LIBQRENCODE_INCLUDE_DIR
+find_package_handle_standard_args(LibQrencode
+                                  REQUIRED_VARS LIBQRENCODE_LIBRARY LIBQRENCODE_INCLUDE_DIR
                                   VERSION_VAR LIBQRENCODE_VERSION_STRING)
 
-mark_as_advanced(LIBQRENCODE_INCLUDE_DIR LIBQRENCODE_LIBRARIES)
+mark_as_advanced(LIBQRENCODE_INCLUDE_DIR LIBQRENCODE_LIBRARY)

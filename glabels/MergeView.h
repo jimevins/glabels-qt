@@ -24,14 +24,15 @@
 
 #include "ui_MergeView.h"
 
-#include "Merge/Merge.h"
+#include "model/Model.h"
+
+#include "merge/Merge.h"
 
 
 namespace glabels
 {
 
 	// Forward references
-	class LabelModel;
 	class UndoRedoModel;
 	
 
@@ -54,7 +55,7 @@ namespace glabels
 		/////////////////////////////////
 		// Public methods
 		/////////////////////////////////
-		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+		void setModel( model::Model* model, UndoRedoModel* undoRedoModel );
 
 
 		/////////////////////////////////
@@ -86,7 +87,7 @@ namespace glabels
 	private:
 		QStringList  mMergeFormatNames;
 	
-		LabelModel*    mModel;
+		model::Model*  mModel;
 		UndoRedoModel* mUndoRedoModel;
 
 		QStringList mKeys;

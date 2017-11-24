@@ -22,15 +22,13 @@
 #define PreviewOverlayItem_h
 
 
+#include "model/PageRenderer.h"
+
 #include <QGraphicsItem>
 
 
 namespace glabels
 {
-
-	// Forward references
-	class PageRenderer;
-
 
 	///
 	///  PreviewOverlayItem Widget
@@ -42,7 +40,7 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		PreviewOverlayItem( const PageRenderer* renderer, QGraphicsItem* parent = nullptr );
+		PreviewOverlayItem( const model::PageRenderer* renderer, QGraphicsItem* parent = nullptr );
 
 
 		/////////////////////////////////////
@@ -57,7 +55,7 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		const PageRenderer* mRenderer;
+		const model::PageRenderer* mRenderer;
 
 	};
 

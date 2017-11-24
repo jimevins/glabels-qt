@@ -22,10 +22,11 @@
 #define ColorPaletteDialog_h
 
 
-#include "ColorNode.h"
 #include "ColorHistory.h"
 #include "ColorPaletteItem.h"
 #include "ColorPaletteButtonItem.h"
+
+#include "model/ColorNode.h"
 
 #include <QComboBox>
 #include <QDialog>
@@ -56,14 +57,14 @@ namespace glabels
 		// Signals
 		/////////////////////////////////
 	signals:
-		void colorChanged( ColorNode colorNode, bool isDefault );
+		void colorChanged( model::ColorNode colorNode, bool isDefault );
 
 
 		/////////////////////////////////
 		// Public Methods
 		/////////////////////////////////
 	public:
-		void   setColorNode( const ColorNode& colorNode );
+		void   setColorNode( const model::ColorNode& colorNode );
 		void   setKeys( const QStringList& keyList );
 		void   clearKeys();
 
@@ -94,8 +95,8 @@ namespace glabels
 		// Private Members
 		/////////////////////////////////
 	private:
-		QColor        mDefaultColor;
-		ColorNode     mColorNode;
+		QColor           mDefaultColor;
+		model::ColorNode mColorNode;
 
 		static const int PALETTE_COLS = ColorHistory::MAX_COLORS;
 		static const int PALETTE_ROWS = 4;

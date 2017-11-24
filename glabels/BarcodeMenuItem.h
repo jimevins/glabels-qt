@@ -22,7 +22,7 @@
 #define BarcodeMenuItem_h
 
 
-#include "BarcodeStyle.h"
+#include "barcode/Style.h"
 
 #include <QAction>
 
@@ -41,21 +41,21 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		BarcodeMenuItem( const BarcodeStyle& bcStyle, QObject* parent = nullptr );
+		BarcodeMenuItem( const barcode::Style& bcStyle, QObject* parent = nullptr );
 
 
 		/////////////////////////////////
 		// Signals
 		/////////////////////////////////
 	signals:
-		void activated( const BarcodeStyle& bcStyle );
+		void activated( const barcode::Style& bcStyle );
 
 
 		/////////////////////////////////
 		// Properties
 		/////////////////////////////////
 	public:
-		BarcodeStyle bcStyle() const;
+		barcode::Style bcStyle() const;
 
 
 		/////////////////////////////////
@@ -69,7 +69,7 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		BarcodeStyle mBcStyle;
+		barcode::Style mBcStyle;
 
 	};
 

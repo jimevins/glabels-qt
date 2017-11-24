@@ -22,7 +22,7 @@
 #define TemplatePicker_h
 
 
-#include "Template.h"
+#include "model/Template.h"
 
 #include <QList>
 #include <QListWidget>
@@ -50,7 +50,7 @@ namespace glabels
 		// Properties
 		/////////////////////////////////
 	public:
-		void setTemplates( const QList <Template*> &tmplates );
+		void setTemplates( const QList <model::Template*> &tmplates );
 
 
 		/////////////////////////////////
@@ -62,7 +62,7 @@ namespace glabels
 
 		void applyFilter( const QStringList& names );
 
-		const Template *selectedTemplate();
+		const model::Template *selectedTemplate();
 
 	};
 

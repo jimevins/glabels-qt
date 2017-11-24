@@ -24,7 +24,8 @@
 
 #include "ui_ObjectEditor.h"
 
-#include "Distance.h"
+#include "model/Model.h"
+#include "model/ModelObject.h"
 
 #include <QButtonGroup>
 
@@ -33,8 +34,6 @@ namespace glabels
 {
 
 	// Forward references
-	class LabelModel;
-	class LabelModelObject;
 	class UndoRedoModel;
 	
 
@@ -56,7 +55,7 @@ namespace glabels
 		/////////////////////////////////
 		// Public methods
 		/////////////////////////////////
-		void setModel( LabelModel* model, UndoRedoModel* undoRedoModel );
+		void setModel( model::Model* model, UndoRedoModel* undoRedoModel );
 
 
 		/////////////////////////////////
@@ -105,11 +104,11 @@ namespace glabels
 		// Private data
 		/////////////////////////////////
 	private:
-		LabelModel*              mModel;
-		LabelModelObject*        mObject;
+		model::Model*            mModel;
+		model::ModelObject*      mObject;
 		UndoRedoModel*           mUndoRedoModel;
 	
-		Units                    mUnits;
+		model::Units             mUnits;
 		int                      mSpinDigits;
 		double                   mSpinStep;
 	

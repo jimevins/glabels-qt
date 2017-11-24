@@ -20,7 +20,7 @@
 
 #include "AboutDialog.h"
 
-#include "Version.h"
+#include "model/Version.h"
 
 #include <QDesktopServices>
 #include <QUrl>
@@ -38,7 +38,7 @@ namespace glabels
 	{
 		setupUi( this );
 
-		QString version = tr("Version") + " " + Version::STRING;
+		QString version = tr("Version") + " " + model::Version::STRING;
 	
 		QString description = tr("A program to create labels and business cards.");
 	
@@ -81,7 +81,7 @@ namespace glabels
 	///
 	void AboutDialog::onWebsiteButtonClicked()
 	{
-		QDesktopServices::openUrl( QUrl(Version::WEBSITE) );
+		QDesktopServices::openUrl( QUrl(model::Version::WEBSITE) );
 	}
 
 } // namespace glabels
