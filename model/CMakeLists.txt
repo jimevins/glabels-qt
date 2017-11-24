@@ -92,7 +92,7 @@ target_include_directories (Model
 target_link_libraries (Model
   Barcode
   Merge
-  Qt5::Widgets
+  Qt5::Core
   Qt5::PrintSupport
   Qt5::Xml
   Qt5::Svg

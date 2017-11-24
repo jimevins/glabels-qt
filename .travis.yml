@@ -8,7 +8,7 @@ before_install:
     - sudo apt-get update -qq
     
 install: 
-    - sudo apt-get -y install qt59base qt59svg qt59tools zlib1g-dev
+    - sudo apt-get -y install qt59base qt59svg qt59tools zlib1g-dev xvfb
     - source /opt/qt5*/bin/qt5*-env.sh
 
 script:
@@ -16,7 +16,7 @@ script:
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   - make -j4
-  - make test
+  - xvfb-run make test
   - sudo make DESTDIR=appdir install ; sudo chown -R $USER appdir ; find appdir/
 
 after_success:
