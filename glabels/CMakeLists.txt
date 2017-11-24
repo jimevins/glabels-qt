@@ -102,9 +102,10 @@ add_executable (glabels-qt WIN32
   ${glabels_win_rc}
 )
 
-target_compile_features (glabels-qt
-  PUBLIC cxx_std_11
-)
+#target_compile_features (glabels-qt
+#  PUBLIC cxx_std_11
+#)
+set_property (TARGET glabels-qt PROPERTY CXX_STANDARD 11)
 
 target_include_directories (glabels-qt
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}
