@@ -26,21 +26,24 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class XmlVendorParser
+	namespace model
 	{
-	public:
-		XmlVendorParser() {}
 
-		bool readFile( const QString &fileName );
+		class XmlVendorParser
+		{
+		public:
+			XmlVendorParser() {}
 
-	private:
-		void parseRootNode( const QDomElement &node );
-		void parseVendorNode( const QDomElement &node );
-	};
+			bool readFile( const QString &fileName );
 
+		private:
+			void parseRootNode( const QDomElement &node );
+			void parseVendorNode( const QDomElement &node );
+		};
+
+	}
 }
 
 

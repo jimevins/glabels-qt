@@ -21,61 +21,64 @@
 #include "TextTsv.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
+	namespace merge
+	{
 
-	static const QString ID = "Text/Tab";
+		static const QString ID = "Text/Tab";
 
 	
-	///
-	/// Constructor
-	///
-	TextTsv::TextTsv() : Text('\t',false)
-	{
-		mId = ID;
-	}
+		///
+		/// Constructor
+		///
+		TextTsv::TextTsv() : Text('\t',false)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Constructor
-	///
-	TextTsv::TextTsv( const TextTsv* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextTsv::TextTsv( const TextTsv* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextTsv::~TextTsv()
-	{
-	}
+		///
+		/// Destructor
+		///
+		TextTsv::~TextTsv()
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextTsv* TextTsv::clone() const
-	{
-		return new TextTsv( this );
-	}
+		///
+		/// Clone
+		///
+		TextTsv* TextTsv::clone() const
+		{
+			return new TextTsv( this );
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextTsv::id()
-	{
-		return ID;
-	}
+		///
+		/// Get ID
+		///
+		QString TextTsv::id()
+		{
+			return ID;
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextTsv::create()
-	{
-		return new TextTsv();
-	}
+		///
+		/// Create
+		///
+		Merge* TextTsv::create()
+		{
+			return new TextTsv();
+		}
 
-} // namespace glabels::merge
+	} // namespace merge
+} // namespace glabels

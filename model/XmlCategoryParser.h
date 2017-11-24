@@ -26,21 +26,24 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class XmlCategoryParser
+	namespace model
 	{
-	public:
-		XmlCategoryParser() {}
 
-		bool readFile( const QString &fileName );
+		class XmlCategoryParser
+		{
+		public:
+			XmlCategoryParser() {}
 
-	private:
-		void parseRootNode( const QDomElement &node );
-		void parseCategoryNode( const QDomElement &node );
-	};
+			bool readFile( const QString &fileName );
 
+		private:
+			void parseRootNode( const QDomElement &node );
+			void parseCategoryNode( const QDomElement &node );
+		};
+
+	}
 }
 
 

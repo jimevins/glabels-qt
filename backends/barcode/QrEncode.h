@@ -26,28 +26,31 @@
 #include "glbarcode/Barcode2dBase.h"
 
 
-namespace glabels::barcode
+namespace glabels
 {
-	namespace QrEncode
+	namespace barcode
 	{
-
-		/**
-		 * QrEncode::QrCode QR Code Barcode
-		 *
-		 * Implements glbarcode::Barcode2dBase.
-		 */
-		class QrCode : public glbarcode::Barcode2dBase
+		namespace QrEncode
 		{
-		public:
-			static Barcode* create();
 
-		private:
-			bool validate( const std::string& rawData ) override;
+			/**
+			 * QrEncode::QrCode QR Code Barcode
+			 *
+			 * Implements glbarcode::Barcode2dBase.
+			 */
+			class QrCode : public glbarcode::Barcode2dBase
+			{
+			public:
+				static Barcode* create();
 
-			bool encode( const std::string&       cookedData,
-			             glbarcode::Matrix<bool>& encodedData ) override;
-		};
+			private:
+				bool validate( const std::string& rawData ) override;
 
+				bool encode( const std::string&       cookedData,
+				             glbarcode::Matrix<bool>& encodedData ) override;
+			};
+
+		}
 	}
 }
 

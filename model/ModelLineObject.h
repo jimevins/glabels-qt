@@ -25,90 +25,93 @@
 #include "ModelObject.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Model Line Object
-	///
-	class ModelLineObject : public ModelObject
+	namespace model
 	{
-		Q_OBJECT
 
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		ModelLineObject();
+		///
+		/// Label Model Line Object
+		///
+		class ModelLineObject : public ModelObject
+		{
+			Q_OBJECT
 
-		ModelLineObject( const Distance&  x0,
-		                 const Distance&  y0,
-		                 const Distance&  w,
-		                 const Distance&  h,
-		                 const Distance&  lineWidth,
-		                 const ColorNode& lineColorNode,
-		                 const QMatrix&   matrix = QMatrix(),
-		                 bool             shadowState = false,
-		                 const Distance&  shadowX = 0,
-		                 const Distance&  shadowY = 0,
-		                 double           shadowOpacity = 1.0,
-		                 const ColorNode& shadowColorNode = ColorNode() );
+			///////////////////////////////////////////////////////////////
+			// Lifecycle Methods
+			///////////////////////////////////////////////////////////////
+		public:
+			ModelLineObject();
 
-		ModelLineObject( const ModelLineObject* object );
+			ModelLineObject( const Distance&  x0,
+			                 const Distance&  y0,
+			                 const Distance&  w,
+			                 const Distance&  h,
+			                 const Distance&  lineWidth,
+			                 const ColorNode& lineColorNode,
+			                 const QMatrix&   matrix = QMatrix(),
+			                 bool             shadowState = false,
+			                 const Distance&  shadowX = 0,
+			                 const Distance&  shadowY = 0,
+			                 double           shadowOpacity = 1.0,
+			                 const ColorNode& shadowColorNode = ColorNode() );
+
+			ModelLineObject( const ModelLineObject* object );
 		
-		~ModelLineObject() override;
+			~ModelLineObject() override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Object duplication
-		///////////////////////////////////////////////////////////////
-		ModelLineObject* clone() const override;
+			///////////////////////////////////////////////////////////////
+			// Object duplication
+			///////////////////////////////////////////////////////////////
+			ModelLineObject* clone() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Property Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		//
-		// Line Property: lineWidth
-		//
-		Distance lineWidth() const override;
-		void setLineWidth( const Distance& value ) override;
+			///////////////////////////////////////////////////////////////
+			// Property Implementations
+			///////////////////////////////////////////////////////////////
+		public:
+			//
+			// Line Property: lineWidth
+			//
+			Distance lineWidth() const override;
+			void setLineWidth( const Distance& value ) override;
 
 
-		//
-		// Line Property: lineColorNode
-		//
-		ColorNode lineColorNode() const override;
-		void setLineColorNode( const ColorNode& value ) override;
+			//
+			// Line Property: lineColorNode
+			//
+			ColorNode lineColorNode() const override;
+			void setLineColorNode( const ColorNode& value ) override;
 		
 
-		///////////////////////////////////////////////////////////////
-		// Capability Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		virtual bool canLineColor();
-		virtual bool canLineWidth();
+			///////////////////////////////////////////////////////////////
+			// Capability Implementations
+			///////////////////////////////////////////////////////////////
+		public:
+			virtual bool canLineColor();
+			virtual bool canLineWidth();
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		QPainterPath hoverPath( double scale ) const override;
+			///////////////////////////////////////////////////////////////
+			// Drawing operations
+			///////////////////////////////////////////////////////////////
+		protected:
+			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			QPainterPath hoverPath( double scale ) const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Private Members
-		///////////////////////////////////////////////////////////////
-	protected:
-		Distance    mLineWidth;
-		ColorNode   mLineColorNode;
+			///////////////////////////////////////////////////////////////
+			// Private Members
+			///////////////////////////////////////////////////////////////
+		protected:
+			Distance    mLineWidth;
+			ColorNode   mLineColorNode;
 
-	};
+		};
 
+	}
 }
 
 

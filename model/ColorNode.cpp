@@ -23,180 +23,183 @@
 #include "merge/Record.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Default Constructor
-	///
-	ColorNode::ColorNode()
-		: mIsField(false), mColor(QColor::fromRgba(0x00000000)), mKey("")
+	namespace model
 	{
-		// empty
-	}
 
-
-	///
-	/// Constructor From Data
-	///
-	ColorNode::ColorNode( bool isField, const QColor& color, const QString& key )
-		: mIsField(isField), mColor(color), mKey(key)
-	{
-		// empty
-	}
-
-
-	///
-	/// Constructor From Data
-	///
-	ColorNode::ColorNode( bool isField, uint32_t rgba, const QString& key )
-		: mIsField(isField), mKey(key)
-	{
-		mColor = QColor( (rgba >> 24) & 0xFF,
-		                 (rgba >> 16) & 0xFF,
-		                 (rgba >>  8) & 0xFF,
-		                 (rgba      ) & 0xFF );
-	}
-
-
-	///
-	/// Constructor From Color
-	///
-	ColorNode::ColorNode( const QColor& color )
-		: mIsField(false), mColor(color), mKey("")
-	{
-		// empty
-	}
-
-
-	///
-	/// Constructor From Key
-	///
-	ColorNode::ColorNode( const QString& key )
-		: mIsField(true), mColor(QColor::fromRgba(0x00000000)), mKey(key)
-	{
-		// empty
-	}
-
-
-	///
-	/// == Operator
-	///
-	bool ColorNode::operator==( const ColorNode& cn )
-	{
-		return (mIsField == cn.mIsField) &&
-			(mColor   == cn.mColor)   &&
-			(mKey     == cn.mKey);
-	}
-
-
-	///
-	/// != Operator
-	///
-	bool ColorNode::operator!=( const ColorNode& cn )
-	{
-		return (mIsField != cn.mIsField) ||
-			(mColor   != cn.mColor)   ||
-			(mKey     != cn.mKey);
-	}
-
-
-	///
-	/// Field Flag Property Getter
-	///
-	bool ColorNode::isField() const
-	{
-		return mIsField;
-	}
-		
-
-	///
-	/// Field Flag Property Setter
-	///
-	void ColorNode::setField( bool isField )
-	{
-		mIsField = isField;
-	}
-
-
-	///
-	/// Color Property Getter
-	///
-	const QColor& ColorNode::color() const
-	{
-		return mColor;
-	}
-
-
-	///
-	/// Color Property Setter
-	///
-	void ColorNode::setColor( const QColor& color )
-	{
-		mColor = color;
-	}
-		
-
-	///
-	/// Key Property Getter
-	///
-	const QString& ColorNode::key() const
-	{
-		return mKey;
-	}
-
-
-	///
-	/// Key Property Setter
-	///
-	void ColorNode::setKey( const QString& key )
-	{
-		mKey = key;
-	}
-		
-
-	///
-	/// Get color encoded as an RGBA 32-bit number
-	///
-	uint32_t ColorNode::rgba() const
-	{
-		uint32_t c =
-			mColor.red()   << 24 |
-			mColor.green() << 16 |
-			mColor.blue()  <<  8 |
-			mColor.alpha();
-
-		return c;
-	}
-
-
-	///
-	/// Get color, expand if necessary
-	///
-	QColor ColorNode::color( merge::Record* record ) const
-	{
-		if ( mIsField )
+		///
+		/// Default Constructor
+		///
+		ColorNode::ColorNode()
+			: mIsField(false), mColor(QColor::fromRgba(0x00000000)), mKey("")
 		{
-			if ( record == nullptr )
-			{
-				return mColor;
-			}
-			else
-			{
-				if ( record->contains( mKey ) )
-				{
-					return QColor( (*record)[ mKey ] );
-				}
-				else
-				{
-					return mColor;
-				}
-			}
+			// empty
 		}
-		else
+
+
+		///
+		/// Constructor From Data
+		///
+		ColorNode::ColorNode( bool isField, const QColor& color, const QString& key )
+			: mIsField(isField), mColor(color), mKey(key)
+		{
+			// empty
+		}
+
+
+		///
+		/// Constructor From Data
+		///
+		ColorNode::ColorNode( bool isField, uint32_t rgba, const QString& key )
+			: mIsField(isField), mKey(key)
+		{
+			mColor = QColor( (rgba >> 24) & 0xFF,
+			                 (rgba >> 16) & 0xFF,
+			                 (rgba >>  8) & 0xFF,
+			                 (rgba      ) & 0xFF );
+		}
+
+
+		///
+		/// Constructor From Color
+		///
+		ColorNode::ColorNode( const QColor& color )
+			: mIsField(false), mColor(color), mKey("")
+		{
+			// empty
+		}
+
+
+		///
+		/// Constructor From Key
+		///
+		ColorNode::ColorNode( const QString& key )
+			: mIsField(true), mColor(QColor::fromRgba(0x00000000)), mKey(key)
+		{
+			// empty
+		}
+
+
+		///
+		/// == Operator
+		///
+		bool ColorNode::operator==( const ColorNode& cn )
+		{
+			return (mIsField == cn.mIsField) &&
+				(mColor   == cn.mColor)   &&
+				(mKey     == cn.mKey);
+		}
+
+
+		///
+		/// != Operator
+		///
+		bool ColorNode::operator!=( const ColorNode& cn )
+		{
+			return (mIsField != cn.mIsField) ||
+				(mColor   != cn.mColor)   ||
+				(mKey     != cn.mKey);
+		}
+
+
+		///
+		/// Field Flag Property Getter
+		///
+		bool ColorNode::isField() const
+		{
+			return mIsField;
+		}
+		
+
+		///
+		/// Field Flag Property Setter
+		///
+		void ColorNode::setField( bool isField )
+		{
+			mIsField = isField;
+		}
+
+
+		///
+		/// Color Property Getter
+		///
+		const QColor& ColorNode::color() const
 		{
 			return mColor;
 		}
-	}
 
-} // namespace glabels::model
+
+		///
+		/// Color Property Setter
+		///
+		void ColorNode::setColor( const QColor& color )
+		{
+			mColor = color;
+		}
+		
+
+		///
+		/// Key Property Getter
+		///
+		const QString& ColorNode::key() const
+		{
+			return mKey;
+		}
+
+
+		///
+		/// Key Property Setter
+		///
+		void ColorNode::setKey( const QString& key )
+		{
+			mKey = key;
+		}
+		
+
+		///
+		/// Get color encoded as an RGBA 32-bit number
+		///
+		uint32_t ColorNode::rgba() const
+		{
+			uint32_t c =
+				mColor.red()   << 24 |
+				mColor.green() << 16 |
+				mColor.blue()  <<  8 |
+				mColor.alpha();
+
+			return c;
+		}
+
+
+		///
+		/// Get color, expand if necessary
+		///
+		QColor ColorNode::color( merge::Record* record ) const
+		{
+			if ( mIsField )
+			{
+				if ( record == nullptr )
+				{
+					return mColor;
+				}
+				else
+				{
+					if ( record->contains( mKey ) )
+					{
+						return QColor( (*record)[ mKey ] );
+					}
+					else
+					{
+						return mColor;
+					}
+				}
+			}
+			else
+			{
+				return mColor;
+			}
+		}
+
+	}
+}

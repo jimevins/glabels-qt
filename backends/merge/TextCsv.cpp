@@ -21,61 +21,64 @@
 #include "TextCsv.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
+	namespace merge
+	{
 
-	static const QString ID = "Text/Comma";
+		static const QString ID = "Text/Comma";
 	
 	
-	///
-	/// Constructor
-	///
-	TextCsv::TextCsv() : Text(',',false)
-	{
-		mId = ID;
-	}
+		///
+		/// Constructor
+		///
+		TextCsv::TextCsv() : Text(',',false)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Constructor
-	///
-	TextCsv::TextCsv( const TextCsv* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextCsv::TextCsv( const TextCsv* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextCsv::~TextCsv()
-	{
-	}
+		///
+		/// Destructor
+		///
+		TextCsv::~TextCsv()
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextCsv* TextCsv::clone() const
-	{
-		return new TextCsv( this );
-	}
+		///
+		/// Clone
+		///
+		TextCsv* TextCsv::clone() const
+		{
+			return new TextCsv( this );
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextCsv::id()
-	{
-		return ID;
-	}
+		///
+		/// Get ID
+		///
+		QString TextCsv::id()
+		{
+			return ID;
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextCsv::create()
-	{
-		return new TextCsv();
-	}
+		///
+		/// Create
+		///
+		Merge* TextCsv::create()
+		{
+			return new TextCsv();
+		}
 
-} // namespace glabels::merge
+	} // namespace merge
+} // namespace glabels

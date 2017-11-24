@@ -25,46 +25,49 @@
 #include "Distance.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Layout
+	namespace model
 	{
+
+		class Layout
+		{
 		
-	public:
-		Layout( int             nx,
-		        int             ny,
-		        const Distance& x0,
-		        const Distance& y0,
-		        const Distance& dx,
-		        const Distance& dy );
+		public:
+			Layout( int             nx,
+			        int             ny,
+			        const Distance& x0,
+			        const Distance& y0,
+			        const Distance& dx,
+			        const Distance& dy );
 
-		Layout( const Layout &other );
+			Layout( const Layout &other );
 
-		int nx() const;
-		int ny() const;
+			int nx() const;
+			int ny() const;
 
-		Distance x0() const;
-		Distance y0() const;
+			Distance x0() const;
+			Distance y0() const;
 
-		Distance dx() const;
-		Distance dy() const;
+			Distance dx() const;
+			Distance dy() const;
 
-		bool isSimilarTo( const Layout *other );
+			bool isSimilarTo( const Layout *other );
 
-		Layout* dup() const;
+			Layout* dup() const;
 
 
-	private:
-		int      mNx;
-		int      mNy;
-		Distance mX0;
-		Distance mY0;
-		Distance mDx;
-		Distance mDy;
+		private:
+			int      mNx;
+			int      mNy;
+			Distance mX0;
+			Distance mY0;
+			Distance mDx;
+			Distance mDy;
 		
-	};
+		};
 
+	}
 }
 
 

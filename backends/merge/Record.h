@@ -26,45 +26,48 @@
 #include <QMap>
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	///
-	/// Merge Record
-	///
-	struct Record : public QMap<QString,QString>
+	namespace merge
 	{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		Record();
-		Record( const Record* record );
+		///
+		/// Merge Record
+		///
+		struct Record : public QMap<QString,QString>
+		{
+
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		public:
+			Record();
+			Record( const Record* record );
 
 
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-		Record* clone() const;
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+			Record* clone() const;
 
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		bool isSelected() const;
-		void setSelected( bool value );
+			/////////////////////////////////
+			// Properties
+			/////////////////////////////////
+		public:
+			bool isSelected() const;
+			void setSelected( bool value );
 
 
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	private:
-		bool                  mSelected;
+			/////////////////////////////////
+			// Private data
+			/////////////////////////////////
+		private:
+			bool                  mSelected;
 
-	};
+		};
 
+	}
 }
 
 

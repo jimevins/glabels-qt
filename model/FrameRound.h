@@ -25,45 +25,48 @@
 #include "Frame.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class FrameRound : public Frame
+	namespace model
 	{
-		Q_DECLARE_TR_FUNCTIONS(FrameRound)
 
-	public:
-		FrameRound( const Distance& r,
-		            const Distance& waste,
-		            const QString&  id = "0" );
+		class FrameRound : public Frame
+		{
+			Q_DECLARE_TR_FUNCTIONS(FrameRound)
 
-		FrameRound( const FrameRound &other );
+		public:
+			FrameRound( const Distance& r,
+			            const Distance& waste,
+			            const QString&  id = "0" );
 
-		Frame *dup() const override;
+			FrameRound( const FrameRound &other );
 
-		Distance r() const;
-		Distance waste() const;
+			Frame *dup() const override;
 
-		Distance w() const override;
-		Distance h() const override;
+			Distance r() const;
+			Distance waste() const;
 
-		QString sizeDescription( const Units& units ) const override;
-		bool isSimilarTo( Frame* other ) const override;
+			Distance w() const override;
+			Distance h() const override;
 
-		const QPainterPath& path() const override;
-		const QPainterPath& clipPath() const override;
-		QPainterPath marginPath( const Distance& size ) const override;
+			QString sizeDescription( const Units& units ) const override;
+			bool isSimilarTo( Frame* other ) const override;
+
+			const QPainterPath& path() const override;
+			const QPainterPath& clipPath() const override;
+			QPainterPath marginPath( const Distance& size ) const override;
 
 
-	private:
-		Distance mR;
-		Distance mWaste;
+		private:
+			Distance mR;
+			Distance mWaste;
 
-		QPainterPath mPath;
-		QPainterPath mClipPath;
+			QPainterPath mPath;
+			QPainterPath mClipPath;
 
-	};
+		};
 
+	}
 }
 
 

@@ -26,53 +26,56 @@
 #include <QPainterPath>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	// Forward references
-	class ModelObject;
-
-
-	///
-	/// Outline Base Class
-	///
-	class Outline
+	namespace model
 	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		Outline( ModelObject* owner );
-		Outline( const Outline* outline, ModelObject* newOwner );
-		virtual ~Outline();
+
+		// Forward references
+		class ModelObject;
+
+
+		///
+		/// Outline Base Class
+		///
+		class Outline
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			Outline( ModelObject* owner );
+			Outline( const Outline* outline, ModelObject* newOwner );
+			virtual ~Outline();
 
 	
-		////////////////////////////
-		// Duplication
-		////////////////////////////
-		Outline* clone( ModelObject* newOwner ) const;
+			////////////////////////////
+			// Duplication
+			////////////////////////////
+			Outline* clone( ModelObject* newOwner ) const;
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void draw( QPainter* painter ) const;
-		QPainterPath hoverPath( double scale ) const;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void draw( QPainter* painter ) const;
+			QPainterPath hoverPath( double scale ) const;
 
 
-		////////////////////////////
-		// Private Data
-		////////////////////////////
-	private:
-		ModelObject* mOwner;
+			////////////////////////////
+			// Private Data
+			////////////////////////////
+		private:
+			ModelObject* mOwner;
 
-		QVector<qreal> mDashes;
-		QPen           mPen1;
-		QPen           mPen2;
+			QVector<qreal> mDashes;
+			QPen           mPen1;
+			QPen           mPen2;
 	
-	};
+		};
 
+	}
 }
 
 

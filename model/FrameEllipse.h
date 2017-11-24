@@ -25,46 +25,49 @@
 #include "Frame.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class FrameEllipse : public Frame
+	namespace model
 	{
-		Q_DECLARE_TR_FUNCTIONS(FrameEllipse)
+
+		class FrameEllipse : public Frame
+		{
+			Q_DECLARE_TR_FUNCTIONS(FrameEllipse)
 		
-	public:
-		FrameEllipse( const Distance& w,
-		              const Distance& h,
-		              const Distance& waste,
-		              const QString&  id = "0" );
+		public:
+			FrameEllipse( const Distance& w,
+			              const Distance& h,
+			              const Distance& waste,
+			              const QString&  id = "0" );
 
-		FrameEllipse( const FrameEllipse& other );
+			FrameEllipse( const FrameEllipse& other );
 
-		Frame* dup() const override;
+			Frame* dup() const override;
 
-		Distance waste() const;
+			Distance waste() const;
 
-		Distance w() const override;
-		Distance h() const override;
+			Distance w() const override;
+			Distance h() const override;
 
-		QString sizeDescription( const Units& units ) const override;
-		bool isSimilarTo( Frame* other ) const override;
+			QString sizeDescription( const Units& units ) const override;
+			bool isSimilarTo( Frame* other ) const override;
 
-		const QPainterPath& path() const override;
-		const QPainterPath& clipPath() const override;
-		QPainterPath marginPath( const Distance& size ) const override;
+			const QPainterPath& path() const override;
+			const QPainterPath& clipPath() const override;
+			QPainterPath marginPath( const Distance& size ) const override;
 
 
-	private:
-		Distance mW;
-		Distance mH;
-		Distance mWaste;
+		private:
+			Distance mW;
+			Distance mH;
+			Distance mWaste;
 
-		QPainterPath mPath;
-		QPainterPath mClipPath;
+			QPainterPath mPath;
+			QPainterPath mClipPath;
 
-	};
+		};
 
+	}
 }
 
 

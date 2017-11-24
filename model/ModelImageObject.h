@@ -27,134 +27,137 @@
 #include <QSvgRenderer>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Model Image Object
-	///
-	class ModelImageObject : public ModelObject
+	namespace model
 	{
-		Q_OBJECT
 
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		ModelImageObject();
+		///
+		/// Label Model Image Object
+		///
+		class ModelImageObject : public ModelObject
+		{
+			Q_OBJECT
 
-		ModelImageObject( const Distance&  x0,
-		                  const Distance&  y0,
-		                  const Distance&  w,
-		                  const Distance&  h,
-		                  const TextNode&  filenameNode,
-		                  const QMatrix&   matrix = QMatrix(),
-		                  bool             shadowState = false,
-		                  const Distance&  shadowX = 0,
-		                  const Distance&  shadowY = 0,
-		                  double           shadowOpacity = 1.0,
-		                  const ColorNode& shadowColorNode = ColorNode() );
+			///////////////////////////////////////////////////////////////
+			// Lifecycle Methods
+			///////////////////////////////////////////////////////////////
+		public:
+			ModelImageObject();
 
-		ModelImageObject( const Distance&  x0,
-		                  const Distance&  y0,
-		                  const Distance&  w,
-		                  const Distance&  h,
-		                  const QString&   filename,
-		                  const QImage&    image,
-		                  const QMatrix&   matrix = QMatrix(),
-		                  bool             shadowState = false,
-		                  const Distance&  shadowX = 0,
-		                  const Distance&  shadowY = 0,
-		                  double           shadowOpacity = 1.0,
-		                  const ColorNode& shadowColorNode = ColorNode() );
+			ModelImageObject( const Distance&  x0,
+			                  const Distance&  y0,
+			                  const Distance&  w,
+			                  const Distance&  h,
+			                  const TextNode&  filenameNode,
+			                  const QMatrix&   matrix = QMatrix(),
+			                  bool             shadowState = false,
+			                  const Distance&  shadowX = 0,
+			                  const Distance&  shadowY = 0,
+			                  double           shadowOpacity = 1.0,
+			                  const ColorNode& shadowColorNode = ColorNode() );
 
-		ModelImageObject( const Distance&   x0,
-		                  const Distance&   y0,
-		                  const Distance&   w,
-		                  const Distance&   h,
-		                  const QString&    filename,
-		                  const QByteArray& svg,
-		                  const QMatrix&    matrix = QMatrix(),
-		                  bool              shadowState = false,
-		                  const Distance&   shadowX = 0,
-		                  const Distance&   shadowY = 0,
-		                  double            shadowOpacity = 1.0,
-		                  const ColorNode&  shadowColorNode = ColorNode() );
+			ModelImageObject( const Distance&  x0,
+			                  const Distance&  y0,
+			                  const Distance&  w,
+			                  const Distance&  h,
+			                  const QString&   filename,
+			                  const QImage&    image,
+			                  const QMatrix&   matrix = QMatrix(),
+			                  bool             shadowState = false,
+			                  const Distance&  shadowX = 0,
+			                  const Distance&  shadowY = 0,
+			                  double           shadowOpacity = 1.0,
+			                  const ColorNode& shadowColorNode = ColorNode() );
 
-		ModelImageObject( const ModelImageObject* object );
+			ModelImageObject( const Distance&   x0,
+			                  const Distance&   y0,
+			                  const Distance&   w,
+			                  const Distance&   h,
+			                  const QString&    filename,
+			                  const QByteArray& svg,
+			                  const QMatrix&    matrix = QMatrix(),
+			                  bool              shadowState = false,
+			                  const Distance&   shadowX = 0,
+			                  const Distance&   shadowY = 0,
+			                  double            shadowOpacity = 1.0,
+			                  const ColorNode&  shadowColorNode = ColorNode() );
+
+			ModelImageObject( const ModelImageObject* object );
 		
-		~ModelImageObject() override;
+			~ModelImageObject() override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Object duplication
-		///////////////////////////////////////////////////////////////
-		ModelImageObject* clone() const override;
+			///////////////////////////////////////////////////////////////
+			// Object duplication
+			///////////////////////////////////////////////////////////////
+			ModelImageObject* clone() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Property Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		//
-		// Image Property: filenameNode
-		//
-		TextNode filenameNode() const override;
-		void setFilenameNode( const TextNode& value ) override;
+			///////////////////////////////////////////////////////////////
+			// Property Implementations
+			///////////////////////////////////////////////////////////////
+		public:
+			//
+			// Image Property: filenameNode
+			//
+			TextNode filenameNode() const override;
+			void setFilenameNode( const TextNode& value ) override;
 
-		//
-		// Image Property: image
-		//
-		const QImage* image() const override;
-		void setImage( const QImage& value ) override;
-		void setImage( const QString& name, const QImage& value ) override;
+			//
+			// Image Property: image
+			//
+			const QImage* image() const override;
+			void setImage( const QImage& value ) override;
+			void setImage( const QString& name, const QImage& value ) override;
 
-		//
-		// Image Property: svg
-		//
-		QByteArray svg() const override;
-		void setSvg( const QString& name, const QByteArray& value ) override;
+			//
+			// Image Property: svg
+			//
+			QByteArray svg() const override;
+			void setSvg( const QString& name, const QByteArray& value ) override;
 
-		//
-		// Property: naturalSize
-		//
-		Size naturalSize() const override;
+			//
+			// Property: naturalSize
+			//
+			Size naturalSize() const override;
 	
 
-		///////////////////////////////////////////////////////////////
-		// Capability Implementations
-		///////////////////////////////////////////////////////////////
+			///////////////////////////////////////////////////////////////
+			// Capability Implementations
+			///////////////////////////////////////////////////////////////
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		QPainterPath hoverPath( double scale ) const override;
+			///////////////////////////////////////////////////////////////
+			// Drawing operations
+			///////////////////////////////////////////////////////////////
+		protected:
+			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			QPainterPath hoverPath( double scale ) const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Private
-		///////////////////////////////////////////////////////////////
-		void loadImage();
-		QImage* createShadowImage( const QColor& color ) const;
+			///////////////////////////////////////////////////////////////
+			// Private
+			///////////////////////////////////////////////////////////////
+			void loadImage();
+			QImage* createShadowImage( const QColor& color ) const;
 	
 
-		///////////////////////////////////////////////////////////////
-		// Private Members
-		///////////////////////////////////////////////////////////////
-	protected:
-		TextNode       mFilenameNode;
-		QImage*        mImage;
-		QSvgRenderer*  mSvgRenderer;
-		QByteArray     mSvg;
+			///////////////////////////////////////////////////////////////
+			// Private Members
+			///////////////////////////////////////////////////////////////
+		protected:
+			TextNode       mFilenameNode;
+			QImage*        mImage;
+			QSvgRenderer*  mSvgRenderer;
+			QByteArray     mSvg;
 
-		static QImage* smDefaultImage;
+			static QImage* smDefaultImage;
 
-	};
+		};
 
+	}
 }
 
 

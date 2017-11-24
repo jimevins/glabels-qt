@@ -25,80 +25,83 @@
 #include <cmath>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	Layout::Layout( int             nx,
-		        int             ny,
-		        const Distance& x0,
-		        const Distance& y0,
-		        const Distance& dx,
-		        const Distance& dy )
-		: mNx(nx), mNy(ny), mX0(x0), mY0(y0), mDx(dx), mDy(dy)
+	namespace model
 	{
-		// empty
-	}
+
+		Layout::Layout( int             nx,
+		                int             ny,
+		                const Distance& x0,
+		                const Distance& y0,
+		                const Distance& dx,
+		                const Distance& dy )
+			: mNx(nx), mNy(ny), mX0(x0), mY0(y0), mDx(dx), mDy(dy)
+		{
+			// empty
+		}
 
 	
-	Layout::Layout( const Layout& other )
-		: mNx(other.mNx), mNy(other.mNy), mX0(other.mX0), mY0(other.mY0),
-		  mDx(other.mDx), mDy(other.mDy)
-	{
-		// empty
-	}
+		Layout::Layout( const Layout& other )
+			: mNx(other.mNx), mNy(other.mNy), mX0(other.mX0), mY0(other.mY0),
+			  mDx(other.mDx), mDy(other.mDy)
+		{
+			// empty
+		}
 
 
-	int Layout::nx() const
-	{
-		return mNx;
-	}
-
-		
-	int Layout::ny() const
-	{
-		return mNy;
-	}
-		
-
-	Distance Layout::x0() const
-	{
-		return mX0;
-	}
+		int Layout::nx() const
+		{
+			return mNx;
+		}
 
 		
-	Distance Layout::y0() const
-	{
-		return mY0;
-	}
+		int Layout::ny() const
+		{
+			return mNy;
+		}
 		
 
-	Distance Layout::dx() const
-	{
-		return mDx;
-	}
+		Distance Layout::x0() const
+		{
+			return mX0;
+		}
 
 		
-	Distance Layout::dy() const
-	{
-		return mDy;
+		Distance Layout::y0() const
+		{
+			return mY0;
+		}
+		
+
+		Distance Layout::dx() const
+		{
+			return mDx;
+		}
+
+		
+		Distance Layout::dy() const
+		{
+			return mDy;
+		}
+
+
+		bool Layout::isSimilarTo( const Layout *other )
+		{
+			return ( (mNx == other->mNx)                &&
+			         (mNy == other->mNy)                &&
+			         (fabs(mX0 - other->mX0) < EPSILON) &&
+			         (fabs(mY0 - other->mY0) < EPSILON) &&
+			         (fabs(mDx - other->mDx) < EPSILON) &&
+			         (fabs(mDy - other->mDy) < EPSILON) );
+		}
+
+
+		Layout* Layout::dup() const
+		{
+			Layout *other = new Layout( *this );
+			return other;
+		}
+
 	}
-
-
-	bool Layout::isSimilarTo( const Layout *other )
-	{
-		return ( (mNx == other->mNx)                &&
-			 (mNy == other->mNy)                &&
-			 (fabs(mX0 - other->mX0) < EPSILON) &&
-			 (fabs(mY0 - other->mY0) < EPSILON) &&
-			 (fabs(mDx - other->mDx) < EPSILON) &&
-			 (fabs(mDy - other->mDy) < EPSILON) );
-	}
-
-
-	Layout* Layout::dup() const
-	{
-		Layout *other = new Layout( *this );
-		return other;
-	}
-
-} // namespace glabels::model
+}

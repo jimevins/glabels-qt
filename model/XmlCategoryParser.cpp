@@ -30,74 +30,78 @@
 #include <QtDebug>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	bool XmlCategoryParser::readFile( const QString &fileName )
+	namespace model
 	{
-		QFile file( fileName );
 
-		if ( !file.open( QFile::ReadOnly | QFile::Text) )
+		bool XmlCategoryParser::readFile( const QString &fileName )
 		{
-			qWarning() << "Error: Cannot read file " << fileName
-				   << ": " << file.errorString();
-			return false;
-		}
+			QFile file( fileName );
 
-
-		QDomDocument doc;
-		QString      errorString;
-		int          errorLine;
-		int          errorColumn;
-
-		if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
-		{
-			qWarning() << "Error: Parse error at line " << errorLine
-				   << "column " << errorColumn
-				   << ": " << errorString;
-			return false;
-		}
-
-		QDomElement root = doc.documentElement();
-		if ( root.tagName() != "Glabels-categories" )
-		{
-			qWarning() << "Error: Not a Glabels-categories file.";
-			return false;
-		}
-
-		parseRootNode( root );
-		return true;
-	}
-
-
-	void XmlCategoryParser::parseRootNode( const QDomElement &node )
-	{
-		for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
-		{
-			if ( child.toElement().tagName() == "Category" )
+			if ( !file.open( QFile::ReadOnly | QFile::Text) )
 			{
-				parseCategoryNode( child.toElement() );
+				qWarning() << "Error: Cannot read file " << fileName
+				           << ": " << file.errorString();
+				return false;
 			}
-			else if ( !child.isComment() )
+
+
+			QDomDocument doc;
+			QString      errorString;
+			int          errorLine;
+			int          errorColumn;
+
+			if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
 			{
-				qWarning() << "Warning: bad element: "
-					   << child.toElement().tagName()
-					   << ", Ignored.";
+				qWarning() << "Error: Parse error at line " << errorLine
+				           << "column " << errorColumn
+				           << ": " << errorString;
+				return false;
+			}
+
+			QDomElement root = doc.documentElement();
+			if ( root.tagName() != "Glabels-categories" )
+			{
+				qWarning() << "Error: Not a Glabels-categories file.";
+				return false;
+			}
+
+			parseRootNode( root );
+			return true;
+		}
+
+
+		void XmlCategoryParser::parseRootNode( const QDomElement &node )
+		{
+			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+			{
+				if ( child.toElement().tagName() == "Category" )
+				{
+					parseCategoryNode( child.toElement() );
+				}
+				else if ( !child.isComment() )
+				{
+					qWarning() << "Warning: bad element: "
+					           << child.toElement().tagName()
+					           << ", Ignored.";
+				}
 			}
 		}
-	}
 
 
-	void XmlCategoryParser::parseCategoryNode( const QDomElement &node )
-	{
-		QString id   = XmlUtil::getStringAttr( node, "id", "" );
-		QString name = XmlUtil::getI18nAttr( node, "name", "" );
-
-		Category *category = new Category( id, name );
-		if ( category != nullptr )
+		void XmlCategoryParser::parseCategoryNode( const QDomElement &node )
 		{
-			Db::registerCategory( category );
-		}
-	}
+			QString id   = XmlUtil::getStringAttr( node, "id", "" );
+			QString name = XmlUtil::getI18nAttr( node, "name", "" );
 
-} // namespace glabels::model
+			Category *category = new Category( id, name );
+			if ( category != nullptr )
+			{
+				Db::registerCategory( category );
+			}
+		}
+
+
+	}
+}

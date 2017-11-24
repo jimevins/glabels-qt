@@ -27,57 +27,60 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Raw Text Type
-	///
-	struct RawText
+	namespace model
 	{
 
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	public:
-		RawText() = default;
-		RawText( const QString& string );
-		RawText( const char* cString );
-
-
-		/////////////////////////////////
-		// Misc. Methods
-		/////////////////////////////////
-		QString toString() const;
-		std::string toStdString() const;
-		QString expand( merge::Record* record ) const;
-		bool hasPlaceHolders() const;
-		bool isEmpty() const;
-
-		
-		/////////////////////////////////
-		// Private Methods
-		/////////////////////////////////
-	private:
-		void tokenize();
-		
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		QString mString;
-
-		struct Token
+		///
+		/// Raw Text Type
+		///
+		struct RawText
 		{
-			bool              isField;
-			QString           text;
-			SubstitutionField field;
-		};
+
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		public:
+			RawText() = default;
+			RawText( const QString& string );
+			RawText( const char* cString );
+
+
+			/////////////////////////////////
+			// Misc. Methods
+			/////////////////////////////////
+			QString toString() const;
+			std::string toStdString() const;
+			QString expand( merge::Record* record ) const;
+			bool hasPlaceHolders() const;
+			bool isEmpty() const;
+
 		
-		QList<Token> mTokens;
+			/////////////////////////////////
+			// Private Methods
+			/////////////////////////////////
+		private:
+			void tokenize();
+		
+			/////////////////////////////////
+			// Private Data
+			/////////////////////////////////
+		private:
+			QString mString;
 
-	};
+			struct Token
+			{
+				bool              isField;
+				QString           text;
+				SubstitutionField field;
+			};
+		
+			QList<Token> mTokens;
 
+		};
+
+	}
 }
 
 

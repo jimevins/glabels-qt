@@ -30,74 +30,78 @@
 #include <QtDebug>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	bool XmlVendorParser::readFile( const QString &fileName )
+	namespace model
 	{
-		QFile file( fileName );
 
-		if ( !file.open( QFile::ReadOnly | QFile::Text) )
+		bool XmlVendorParser::readFile( const QString &fileName )
 		{
-			qWarning() << "Error: Cannot read file " << fileName
-				   << ": " << file.errorString();
-			return false;
-		}
+			QFile file( fileName );
 
-
-		QDomDocument doc;
-		QString      errorString;
-		int          errorLine;
-		int          errorColumn;
-
-		if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
-		{
-			qWarning() << "Error: Parse error at line " << errorLine
-				   << "column " << errorColumn
-				   << ": " << errorString;
-			return false;
-		}
-
-		QDomElement root = doc.documentElement();
-		if ( root.tagName() != "Glabels-vendors" )
-		{
-			qWarning() << "Error: Not a Glabels-vendors file.";
-			return false;
-		}
-
-		parseRootNode( root );
-		return true;
-	}
-
-
-	void XmlVendorParser::parseRootNode( const QDomElement &node )
-	{
-		for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
-		{
-			if ( child.toElement().tagName() == "Vendor" )
+			if ( !file.open( QFile::ReadOnly | QFile::Text) )
 			{
-				parseVendorNode( child.toElement() );
+				qWarning() << "Error: Cannot read file " << fileName
+				           << ": " << file.errorString();
+				return false;
 			}
-			else if ( !child.isComment() )
+
+
+			QDomDocument doc;
+			QString      errorString;
+			int          errorLine;
+			int          errorColumn;
+
+			if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
 			{
-				qWarning() << "Warning: bad element: "
-					   << child.toElement().tagName()
-					   << ", Ignored.";
+				qWarning() << "Error: Parse error at line " << errorLine
+				           << "column " << errorColumn
+				           << ": " << errorString;
+				return false;
+			}
+
+			QDomElement root = doc.documentElement();
+			if ( root.tagName() != "Glabels-vendors" )
+			{
+				qWarning() << "Error: Not a Glabels-vendors file.";
+				return false;
+			}
+
+			parseRootNode( root );
+			return true;
+		}
+
+
+		void XmlVendorParser::parseRootNode( const QDomElement &node )
+		{
+			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+			{
+				if ( child.toElement().tagName() == "Vendor" )
+				{
+					parseVendorNode( child.toElement() );
+				}
+				else if ( !child.isComment() )
+				{
+					qWarning() << "Warning: bad element: "
+					           << child.toElement().tagName()
+					           << ", Ignored.";
+				}
 			}
 		}
-	}
 
 
-	void XmlVendorParser::parseVendorNode( const QDomElement &node )
-	{
-		QString name = XmlUtil::getStringAttr( node, "name", "" );
-		QString url  = XmlUtil::getStringAttr( node, "url", "" );
-
-		Vendor *vendor = new Vendor( name, url );
-		if ( vendor != nullptr )
+		void XmlVendorParser::parseVendorNode( const QDomElement &node )
 		{
-			Db::registerVendor( vendor );
-		}
-	}
+			QString name = XmlUtil::getStringAttr( node, "name", "" );
+			QString url  = XmlUtil::getStringAttr( node, "url", "" );
 
-} // namespace glabels::model
+			Vendor *vendor = new Vendor( name, url );
+			if ( vendor != nullptr )
+			{
+				Db::registerVendor( vendor );
+			}
+		}
+
+
+	}
+}

@@ -25,27 +25,30 @@
 #include "Distance.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Point
+	namespace model
 	{
-	public:
-		Point();
+
+		class Point
+		{
+		public:
+			Point();
 		
-		Point( Distance x, Distance y );
+			Point( Distance x, Distance y );
 
-		Distance x() const;
-		Distance y() const;
+			Distance x() const;
+			Distance y() const;
 
-		bool operator<( const Point &other ) const;
+			bool operator<( const Point &other ) const;
 
 
-	private:
-		Distance  mX;
-		Distance  mY;
-	};
+		private:
+			Distance  mX;
+			Distance  mY;
+		};
 
+	}
 }
 
 

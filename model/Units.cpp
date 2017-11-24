@@ -24,236 +24,239 @@
 #include <QtDebug>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-
-	Units::Units() : mEnumValue(PT)
+	namespace model
 	{
-		// empty
-	}
+
+
+		Units::Units() : mEnumValue(PT)
+		{
+			// empty
+		}
 
 	
-	Units::Units( Units::Enum enumValue ) : mEnumValue(enumValue)
-	{
-		switch (enumValue)
+		Units::Units( Units::Enum enumValue ) : mEnumValue(enumValue)
 		{
-		case PT:
-		case IN:
-		case MM:
-		case CM:
-		case PC:
-			/* Catch all valid enum values. */
-			break;
-		default:
-			/* Catch invalid enum values, reset to PT. */
-			qWarning() << "Bad Units::Enum value = " << enumValue << ".";
-			mEnumValue = PT;
-			break;
+			switch (enumValue)
+			{
+			case PT:
+			case IN:
+			case MM:
+			case CM:
+			case PC:
+				/* Catch all valid enum values. */
+				break;
+			default:
+				/* Catch invalid enum values, reset to PT. */
+				qWarning() << "Bad Units::Enum value = " << enumValue << ".";
+				mEnumValue = PT;
+				break;
+			}
 		}
-	}
 
 
-	Units::Units( const QString& idString )
-	{
-		if ( idString == "pt" )
+		Units::Units( const QString& idString )
 		{
-			mEnumValue = PT;
+			if ( idString == "pt" )
+			{
+				mEnumValue = PT;
+			}
+			else if ( idString == "in" )
+			{
+				mEnumValue = IN;
+			}
+			else if ( idString == "mm" )
+			{
+				mEnumValue = MM;
+			}
+			else if ( idString == "cm" )
+			{
+				mEnumValue = CM;
+			}
+			else if ( idString == "pc" )
+			{
+				mEnumValue = PC;
+			}
+			else
+			{
+				mEnumValue = PT;
+			}
 		}
-		else if ( idString == "in" )
-		{
-			mEnumValue = IN;
-		}
-		else if ( idString == "mm" )
-		{
-			mEnumValue = MM;
-		}
-		else if ( idString == "cm" )
-		{
-			mEnumValue = CM;
-		}
-		else if ( idString == "pc" )
-		{
-			mEnumValue = PC;
-		}
-		else
-		{
-			mEnumValue = PT;
-		}
-	}
 
 
-	Units Units::pt()
-	{
-		return Units(PT);
-	}
+		Units Units::pt()
+		{
+			return Units(PT);
+		}
 
 	
-	Units Units::in()
-	{
-		return Units(IN);
-	}
+		Units Units::in()
+		{
+			return Units(IN);
+		}
 
 	
-	Units Units::mm()
-	{
-		return Units(MM);
-	}
+		Units Units::mm()
+		{
+			return Units(MM);
+		}
 
 	
-	Units Units::cm()
-	{
-		return Units(CM);
-	}
+		Units Units::cm()
+		{
+			return Units(CM);
+		}
 
 	
-	Units Units::pc()
-	{
-		return Units(PC);
-	}
+		Units Units::pc()
+		{
+			return Units(PC);
+		}
 
 
-	Units::Enum Units::toEnum() const
-	{
-		return mEnumValue;
-	}
+		Units::Enum Units::toEnum() const
+		{
+			return mEnumValue;
+		}
 	
 	
-	QString Units::toIdString() const
-	{
-		QString idString;
+		QString Units::toIdString() const
+		{
+			QString idString;
 		
-		switch (mEnumValue)
-		{
-		case Units::PT:
-			idString = "pt";
-			break;
-		case Units::IN:
-			idString = "in";
-			break;
-		case Units::MM:
-			idString = "mm";
-			break;
-		case Units::CM:
-			idString = "cm";
-			break;
-		case Units::PC:
-			idString = "pc";
-			break;
-		}
+			switch (mEnumValue)
+			{
+			case Units::PT:
+				idString = "pt";
+				break;
+			case Units::IN:
+				idString = "in";
+				break;
+			case Units::MM:
+				idString = "mm";
+				break;
+			case Units::CM:
+				idString = "cm";
+				break;
+			case Units::PC:
+				idString = "pc";
+				break;
+			}
 
-		return idString;
-	}
+			return idString;
+		}
 
 	
-	QString Units::toTrName() const
-	{
-		QString nameString;
-		
-		switch (mEnumValue)
+		QString Units::toTrName() const
 		{
-		case Units::PT:
-			nameString = tr("points");
-			break;
-		case Units::IN:
-			nameString = tr("inches");
-			break;
-		case Units::MM:
-			nameString = tr("mm");
-			break;
-		case Units::CM:
-			nameString = tr("cm");
-			break;
-		case Units::PC:
-			nameString = tr("picas");
-			break;
+			QString nameString;
+		
+			switch (mEnumValue)
+			{
+			case Units::PT:
+				nameString = tr("points");
+				break;
+			case Units::IN:
+				nameString = tr("inches");
+				break;
+			case Units::MM:
+				nameString = tr("mm");
+				break;
+			case Units::CM:
+				nameString = tr("cm");
+				break;
+			case Units::PC:
+				nameString = tr("picas");
+				break;
+			}
+
+			return nameString;
 		}
 
-		return nameString;
-	}
 
-
-	double Units::resolution() const
-	{
-		double value;
-		
-		switch (mEnumValue)
+		double Units::resolution() const
 		{
-		case Units::PT:
-			value = 0.01;
-			break;
-		case Units::IN:
-			value = 0.001;
-			break;
-		case Units::MM:
-			value = 0.01;
-			break;
-		case Units::CM:
-			value = 0.001;
-			break;
-		case Units::PC:
-			value = 0.01;
-			break;
-		}
+			double value;
+		
+			switch (mEnumValue)
+			{
+			case Units::PT:
+				value = 0.01;
+				break;
+			case Units::IN:
+				value = 0.001;
+				break;
+			case Units::MM:
+				value = 0.01;
+				break;
+			case Units::CM:
+				value = 0.001;
+				break;
+			case Units::PC:
+				value = 0.01;
+				break;
+			}
 
-		return value;
-	}
+			return value;
+		}
 
 	
-	int Units::resolutionDigits() const
-	{
-		int digits;
+		int Units::resolutionDigits() const
+		{
+			int digits;
 		
-		switch (mEnumValue)
-		{
-		case Units::PT:
-			digits = 2;
-			break;
-		case Units::IN:
-			digits = 3;
-			break;
-		case Units::MM:
-			digits = 2;
-			break;
-		case Units::CM:
-			digits = 3;
-			break;
-		case Units::PC:
-			digits = 2;
-			break;
+			switch (mEnumValue)
+			{
+			case Units::PT:
+				digits = 2;
+				break;
+			case Units::IN:
+				digits = 3;
+				break;
+			case Units::MM:
+				digits = 2;
+				break;
+			case Units::CM:
+				digits = 3;
+				break;
+			case Units::PC:
+				digits = 2;
+				break;
+			}
+
+			return digits;
 		}
 
-		return digits;
-	}
 
-
-	bool Units::isIdValid( const QString& idString )
-	{
-		bool retValue = false;
+		bool Units::isIdValid( const QString& idString )
+		{
+			bool retValue = false;
 		
-		if ( idString == "pt" )
-		{
-			retValue = true;
-		}
-		else if ( idString == "in" )
-		{
-			retValue = true;
-		}
-		else if ( idString == "mm" )
-		{
-			retValue = true;
-		}
-		else if ( idString == "cm" )
-		{
-			retValue = true;
-		}
-		else if ( idString == "pc" )
-		{
-			retValue = true;
+			if ( idString == "pt" )
+			{
+				retValue = true;
+			}
+			else if ( idString == "in" )
+			{
+				retValue = true;
+			}
+			else if ( idString == "mm" )
+			{
+				retValue = true;
+			}
+			else if ( idString == "cm" )
+			{
+				retValue = true;
+			}
+			else if ( idString == "pc" )
+			{
+				retValue = true;
+			}
+
+			return retValue;
 		}
 
-		return retValue;
+
 	}
-
-
-} // namespace glabels::model
+}

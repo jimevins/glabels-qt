@@ -24,184 +24,187 @@
 #include <QPen>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Constructor
-	///
-	ModelShapeObject::ModelShapeObject()
+	namespace model
 	{
-		mOutline = new Outline( this );
 
-		mHandles << new HandleNorthWest( this );
-		mHandles << new HandleNorth( this );
-		mHandles << new HandleNorthEast( this );
-		mHandles << new HandleEast( this );
-		mHandles << new HandleSouthEast( this );
-		mHandles << new HandleSouth( this );
-		mHandles << new HandleSouthWest( this );
-		mHandles << new HandleWest( this );
+		///
+		/// Constructor
+		///
+		ModelShapeObject::ModelShapeObject()
+		{
+			mOutline = new Outline( this );
 
-		mLineWidth       = 1.0;
-		mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
-		mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
-	}
+			mHandles << new HandleNorthWest( this );
+			mHandles << new HandleNorth( this );
+			mHandles << new HandleNorthEast( this );
+			mHandles << new HandleEast( this );
+			mHandles << new HandleSouthEast( this );
+			mHandles << new HandleSouth( this );
+			mHandles << new HandleSouthWest( this );
+			mHandles << new HandleWest( this );
+
+			mLineWidth       = 1.0;
+			mLineColorNode   = ColorNode( QColor( 0, 0, 0 ) );
+			mFillColorNode   = ColorNode( QColor( 0, 255, 0 ) );
+		}
 
 
-	///
-	/// Constructor
-	///
-	ModelShapeObject::ModelShapeObject( const Distance&  x0,
-	                                    const Distance&  y0,
-	                                    const Distance&  w,
-	                                    const Distance&  h,
-	                                    const Distance&  lineWidth,
-	                                    const ColorNode& lineColorNode,
-	                                    const ColorNode& fillColorNode,
-	                                    const QMatrix&   matrix,
-	                                    bool             shadowState,
-	                                    const Distance&  shadowX,
-	                                    const Distance&  shadowY,
-	                                    double           shadowOpacity,
-	                                    const ColorNode& shadowColorNode )
-	: ModelObject( x0, y0, w, h,
-	               matrix,
-	               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
-	{
-		mOutline = new Outline( this );
+		///
+		/// Constructor
+		///
+		ModelShapeObject::ModelShapeObject( const Distance&  x0,
+		                                    const Distance&  y0,
+		                                    const Distance&  w,
+		                                    const Distance&  h,
+		                                    const Distance&  lineWidth,
+		                                    const ColorNode& lineColorNode,
+		                                    const ColorNode& fillColorNode,
+		                                    const QMatrix&   matrix,
+		                                    bool             shadowState,
+		                                    const Distance&  shadowX,
+		                                    const Distance&  shadowY,
+		                                    double           shadowOpacity,
+		                                    const ColorNode& shadowColorNode )
+		: ModelObject( x0, y0, w, h,
+		               matrix,
+		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+		{
+			mOutline = new Outline( this );
 
-		mHandles << new HandleNorthWest( this );
-		mHandles << new HandleNorth( this );
-		mHandles << new HandleNorthEast( this );
-		mHandles << new HandleEast( this );
-		mHandles << new HandleSouthEast( this );
-		mHandles << new HandleSouth( this );
-		mHandles << new HandleSouthWest( this );
-		mHandles << new HandleWest( this );
+			mHandles << new HandleNorthWest( this );
+			mHandles << new HandleNorth( this );
+			mHandles << new HandleNorthEast( this );
+			mHandles << new HandleEast( this );
+			mHandles << new HandleSouthEast( this );
+			mHandles << new HandleSouth( this );
+			mHandles << new HandleSouthWest( this );
+			mHandles << new HandleWest( this );
 
-		mLineWidth       = lineWidth;
-		mLineColorNode   = lineColorNode;
-		mFillColorNode   = fillColorNode;
-	}
+			mLineWidth       = lineWidth;
+			mLineColorNode   = lineColorNode;
+			mFillColorNode   = fillColorNode;
+		}
 
 	
-	///
-	/// Copy constructor
-	///
-	ModelShapeObject::ModelShapeObject( const ModelShapeObject* object ) : ModelObject(object)
-	{
-		mLineWidth       = object->mLineWidth;
-		mLineColorNode   = object->mLineColorNode;
-		mFillColorNode   = object->mFillColorNode;
-	}
-
-
-	///
-	/// Destructor
-	///
-	ModelShapeObject::~ModelShapeObject()
-	{
-		delete mOutline;
-
-		foreach( Handle* handle, mHandles )
+		///
+		/// Copy constructor
+		///
+		ModelShapeObject::ModelShapeObject( const ModelShapeObject* object ) : ModelObject(object)
 		{
-			delete handle;
+			mLineWidth       = object->mLineWidth;
+			mLineColorNode   = object->mLineColorNode;
+			mFillColorNode   = object->mFillColorNode;
 		}
-		mHandles.clear();
-	}
 
 
-	///
-	/// Line Width Property Getter
-	///
-	Distance ModelShapeObject::lineWidth() const
-	{
-		return mLineWidth;
-	}
-
-
-	///
-	/// Line Width Property Setter
-	///
-	void ModelShapeObject::setLineWidth( const Distance& value )
-	{
-		if ( mLineWidth != value )
+		///
+		/// Destructor
+		///
+		ModelShapeObject::~ModelShapeObject()
 		{
-			mLineWidth = value;
-			emit changed();
+			delete mOutline;
+
+			foreach( Handle* handle, mHandles )
+			{
+				delete handle;
+			}
+			mHandles.clear();
 		}
-	}
 
 
-	///
-	/// Line Color Node Property Getter
-	///
-	ColorNode ModelShapeObject::lineColorNode() const
-	{
-		return mLineColorNode;
-	}
-
-
-	///
-	/// Line Color Node Property Setter
-	///
-	void ModelShapeObject::setLineColorNode( const ColorNode& value )
-	{
-		if ( mLineColorNode != value )
+		///
+		/// Line Width Property Getter
+		///
+		Distance ModelShapeObject::lineWidth() const
 		{
-			mLineColorNode = value;
-			emit changed();
+			return mLineWidth;
 		}
-	}
+
+
+		///
+		/// Line Width Property Setter
+		///
+		void ModelShapeObject::setLineWidth( const Distance& value )
+		{
+			if ( mLineWidth != value )
+			{
+				mLineWidth = value;
+				emit changed();
+			}
+		}
+
+
+		///
+		/// Line Color Node Property Getter
+		///
+		ColorNode ModelShapeObject::lineColorNode() const
+		{
+			return mLineColorNode;
+		}
+
+
+		///
+		/// Line Color Node Property Setter
+		///
+		void ModelShapeObject::setLineColorNode( const ColorNode& value )
+		{
+			if ( mLineColorNode != value )
+			{
+				mLineColorNode = value;
+				emit changed();
+			}
+		}
 		
 
-	///
-	/// Fill Color Node Property Getter
-	///
-	ColorNode ModelShapeObject::fillColorNode() const
-	{
-		return mFillColorNode;
-	}
-
-
-	///
-	/// Fill Color Node Property Setter
-	///
-	void ModelShapeObject::setFillColorNode( const ColorNode& value )
-	{
-		if ( mFillColorNode != value )
+		///
+		/// Fill Color Node Property Getter
+		///
+		ColorNode ModelShapeObject::fillColorNode() const
 		{
-			mFillColorNode = value;
-			emit changed();
+			return mFillColorNode;
 		}
-	}
+
+
+		///
+		/// Fill Color Node Property Setter
+		///
+		void ModelShapeObject::setFillColorNode( const ColorNode& value )
+		{
+			if ( mFillColorNode != value )
+			{
+				mFillColorNode = value;
+				emit changed();
+			}
+		}
 		
 
-	///
-	/// Can Fill Capability Implementation
-	///
-	bool ModelShapeObject::canFill()
-	{
-		return true;
+		///
+		/// Can Fill Capability Implementation
+		///
+		bool ModelShapeObject::canFill()
+		{
+			return true;
+		}
+
+
+		///
+		/// Can Line Color Capability Implementation
+		///
+		bool ModelShapeObject::canLineColor()
+		{
+			return true;
+		}
+
+
+		///
+		/// Can Line Width Capability Implementation
+		///
+		bool ModelShapeObject::canLineWidth()
+		{
+			return true;
+		}
+
 	}
-
-
-	///
-	/// Can Line Color Capability Implementation
-	///
-	bool ModelShapeObject::canLineColor()
-	{
-		return true;
-	}
-
-
-	///
-	/// Can Line Width Capability Implementation
-	///
-	bool ModelShapeObject::canLineWidth()
-	{
-		return true;
-	}
-
-} // namespace glabels::model
+}

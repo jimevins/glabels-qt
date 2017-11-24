@@ -21,25 +21,28 @@
 #include "Category.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	Category::Category( const QString &id, const QString &name )
-		: mId(id), mName(name)
+	namespace model
 	{
-		// empty
+
+		Category::Category( const QString &id, const QString &name )
+			: mId(id), mName(name)
+		{
+			// empty
+		}
+
+
+		QString Category::id() const
+		{
+			return mId;
+		}
+
+
+		QString Category::name() const
+		{
+			return mName;
+		}
+
 	}
-
-
-	QString Category::id() const
-	{
-		return mId;
-	}
-
-
-	QString Category::name() const
-	{
-		return mName;
-	}
-
-} // namespace glabels::model
+}

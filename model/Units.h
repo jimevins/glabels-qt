@@ -26,43 +26,46 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-
-	class Units
+	namespace model
 	{
-		Q_DECLARE_TR_FUNCTIONS(Units)
 
-	public:
-		enum Enum { PT, IN, MM, CM, PC };
 
-		Units();
-		Units( Enum enumValue );
-		Units( const QString& idString );
+		class Units
+		{
+			Q_DECLARE_TR_FUNCTIONS(Units)
 
-		static Units pt();
-		static Units in();
-		static Units mm();
-		static Units cm();
-		static Units pc();
+		public:
+			enum Enum { PT, IN, MM, CM, PC };
 
-		Enum toEnum() const;
+			Units();
+			Units( Enum enumValue );
+			Units( const QString& idString );
+
+			static Units pt();
+			static Units in();
+			static Units mm();
+			static Units cm();
+			static Units pc();
+
+			Enum toEnum() const;
 		
-		QString toIdString() const;
-		QString toTrName() const;
+			QString toIdString() const;
+			QString toTrName() const;
 
-		double resolution() const;
-		int resolutionDigits() const;
+			double resolution() const;
+			int resolutionDigits() const;
 
-		static bool isIdValid( const QString& unitsId );
+			static bool isIdValid( const QString& unitsId );
 
 		
-	private:
-		Enum mEnumValue;
+		private:
+			Enum mEnumValue;
 
-	};
+		};
 
+	}
 }
 
 

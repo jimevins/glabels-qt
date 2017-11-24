@@ -42,480 +42,484 @@
 #include <QtDebug>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	void
-	XmlLabelCreator::writeFile( const Model* label, const QString& fileName )
+	namespace model
 	{
-		QDomDocument doc;
 
-		createDoc( doc, label );
-		QByteArray buffer = doc.toByteArray( 2 );
-
-		QFile file( fileName );
-
-		if ( !file.open( QFile::WriteOnly | QFile::Text) )
+		void
+		XmlLabelCreator::writeFile( const Model* label, const QString& fileName )
 		{
-			qWarning() << "Error: Cannot write file " << fileName
-			           << ": " << file.errorString();
+			QDomDocument doc;
+
+			createDoc( doc, label );
+			QByteArray buffer = doc.toByteArray( 2 );
+
+			QFile file( fileName );
+
+			if ( !file.open( QFile::WriteOnly | QFile::Text) )
+			{
+				qWarning() << "Error: Cannot write file " << fileName
+				           << ": " << file.errorString();
+			}
+
+			file.write( buffer.data(), buffer.size() );
 		}
 
-		file.write( buffer.data(), buffer.size() );
-	}
 
-
-	void
-	XmlLabelCreator::writeBuffer( const Model* label, QByteArray& buffer )
-	{
-		QDomDocument doc;
-
-		createDoc( doc, label );
-		buffer = doc.toByteArray( 2 );
-	}
-
-
-	void
-	XmlLabelCreator::serializeObjects( const QList<ModelObject*>& objects,
-	                                   QByteArray&                     buffer )
-	{
-		QDomDocument doc;
-
-		QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
-		doc.appendChild( xmlNode );
-
-		QDomElement root = doc.createElement( "Glabels-objects" );
-		doc.appendChild( root );
-		XmlUtil::setStringAttr( root, "version", "4.0" );
-
-		createDataNode( root, objects );
-		createObjectsNode( root, objects, false );
-
-		buffer = doc.toByteArray( 2 );
-	}
-
-
-	void
-	XmlLabelCreator::createDoc( QDomDocument& doc, const Model* label )
-	{
-		QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
-		doc.appendChild( xmlNode );
-
-		QDomElement root = doc.createElement( "Glabels-document" );
-		doc.appendChild( root );
-		XmlUtil::setStringAttr( root, "version", "4.0" );
-
-		XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
-
-		createObjectsNode( root, label->objectList(), label->rotate() );
-
-		if ( label->merge() && !dynamic_cast<merge::None*>(label->merge()) )
+		void
+		XmlLabelCreator::writeBuffer( const Model* label, QByteArray& buffer )
 		{
-			createMergeNode( root, label );
+			QDomDocument doc;
+
+			createDoc( doc, label );
+			buffer = doc.toByteArray( 2 );
 		}
 
-		createDataNode( root, label->objectList() );
-	}
 
-
-	void
-	XmlLabelCreator::createObjectsNode( QDomElement &parent, const QList<ModelObject*>& objects, bool rotate )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Objects" );
-		parent.appendChild( node );
-
-		XmlUtil::setStringAttr( node, "id", "0" );
-		XmlUtil::setBoolAttr( node, "rotate", rotate );
-
-		foreach ( ModelObject* object, objects )
+		void
+		XmlLabelCreator::serializeObjects( const QList<ModelObject*>& objects,
+		                                   QByteArray&                     buffer )
 		{
-			if ( ModelBoxObject* boxObject = dynamic_cast<ModelBoxObject*>(object) )
+			QDomDocument doc;
+
+			QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
+			doc.appendChild( xmlNode );
+
+			QDomElement root = doc.createElement( "Glabels-objects" );
+			doc.appendChild( root );
+			XmlUtil::setStringAttr( root, "version", "4.0" );
+
+			createDataNode( root, objects );
+			createObjectsNode( root, objects, false );
+
+			buffer = doc.toByteArray( 2 );
+		}
+
+
+		void
+		XmlLabelCreator::createDoc( QDomDocument& doc, const Model* label )
+		{
+			QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
+			doc.appendChild( xmlNode );
+
+			QDomElement root = doc.createElement( "Glabels-document" );
+			doc.appendChild( root );
+			XmlUtil::setStringAttr( root, "version", "4.0" );
+
+			XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
+
+			createObjectsNode( root, label->objectList(), label->rotate() );
+
+			if ( label->merge() && !dynamic_cast<merge::None*>(label->merge()) )
 			{
-				createObjectBoxNode( node, boxObject );
+				createMergeNode( root, label );
 			}
-			else if ( ModelEllipseObject* ellipseObject = dynamic_cast<ModelEllipseObject*>(object) )
+
+			createDataNode( root, label->objectList() );
+		}
+
+
+		void
+		XmlLabelCreator::createObjectsNode( QDomElement &parent, const QList<ModelObject*>& objects, bool rotate )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Objects" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "id", "0" );
+			XmlUtil::setBoolAttr( node, "rotate", rotate );
+
+			foreach ( ModelObject* object, objects )
 			{
-				createObjectEllipseNode( node, ellipseObject );
+				if ( ModelBoxObject* boxObject = dynamic_cast<ModelBoxObject*>(object) )
+				{
+					createObjectBoxNode( node, boxObject );
+				}
+				else if ( ModelEllipseObject* ellipseObject = dynamic_cast<ModelEllipseObject*>(object) )
+				{
+					createObjectEllipseNode( node, ellipseObject );
+				}
+				else if ( ModelLineObject* lineObject = dynamic_cast<ModelLineObject*>(object) )
+				{
+					createObjectLineNode( node, lineObject );
+				}
+				else if ( ModelImageObject* imageObject = dynamic_cast<ModelImageObject*>(object) )
+				{
+					createObjectImageNode( node, imageObject );
+				}
+				else if ( ModelBarcodeObject* barcodeObject = dynamic_cast<ModelBarcodeObject*>(object) )
+				{
+					createObjectBarcodeNode( node, barcodeObject );
+				}
+				else if ( ModelTextObject* textObject = dynamic_cast<ModelTextObject*>(object) )
+				{
+					createObjectTextNode( node, textObject );
+				}
+				else
+				{
+					Q_ASSERT_X( false, "XmlLabelCreator::createObjectsNode", "Invalid object type." );
+				}
 			}
-			else if ( ModelLineObject* lineObject = dynamic_cast<ModelLineObject*>(object) )
+		}
+
+
+		void
+		XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const ModelBoxObject* object )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Object-box" );
+			parent.appendChild( node );
+
+			/* position attrs */
+			createPositionAttrs( node, object );
+
+			/* size attrs */
+			createSizeAttrs( node, object );
+
+			/* line attrs */
+			createLineAttrs( node, object );
+
+			/* fill attrs */
+			createFillAttrs( node, object );
+
+			/* affine attrs */
+			createAffineAttrs( node, object );
+
+			/* shadow attrs */
+			createShadowAttrs( node, object );
+		}
+
+
+		void
+		XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const ModelEllipseObject* object )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Object-ellipse" );
+			parent.appendChild( node );
+
+			/* position attrs */
+			createPositionAttrs( node, object );
+
+			/* size attrs */
+			createSizeAttrs( node, object );
+
+			/* line attrs */
+			createLineAttrs( node, object );
+
+			/* fill attrs */
+			createFillAttrs( node, object );
+
+			/* affine attrs */
+			createAffineAttrs( node, object );
+
+			/* shadow attrs */
+			createShadowAttrs( node, object );
+		}
+
+
+		void
+		XmlLabelCreator::createObjectLineNode( QDomElement &parent, const ModelLineObject* object )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Object-line" );
+			parent.appendChild( node );
+
+			/* position attrs */
+			createPositionAttrs( node, object );
+
+			/* size attrs of line */
+			XmlUtil::setLengthAttr( node, "dx", object->w() );
+			XmlUtil::setLengthAttr( node, "dy", object->h() );
+
+			/* line attrs */
+			createLineAttrs( node, object );
+
+			/* affine attrs */
+			createAffineAttrs( node, object );
+
+			/* shadow attrs */
+			createShadowAttrs( node, object );
+		}
+
+
+		void
+		XmlLabelCreator::createObjectImageNode( QDomElement &parent, const ModelImageObject* object )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Object-image" );
+			parent.appendChild( node );
+
+			/* position attrs */
+			createPositionAttrs( node, object );
+
+			/* size attrs */
+			createSizeAttrs( node, object );
+
+			/* file attrs */
+			if ( object->filenameNode().isField() )
 			{
-				createObjectLineNode( node, lineObject );
-			}
-			else if ( ModelImageObject* imageObject = dynamic_cast<ModelImageObject*>(object) )
-			{
-				createObjectImageNode( node, imageObject );
-			}
-			else if ( ModelBarcodeObject* barcodeObject = dynamic_cast<ModelBarcodeObject*>(object) )
-			{
-				createObjectBarcodeNode( node, barcodeObject );
-			}
-			else if ( ModelTextObject* textObject = dynamic_cast<ModelTextObject*>(object) )
-			{
-				createObjectTextNode( node, textObject );
+				XmlUtil::setStringAttr( node, "src_field", object->filenameNode().data() );
 			}
 			else
 			{
-				Q_ASSERT_X( false, "XmlLabelCreator::createObjectsNode", "Invalid object type." );
+				XmlUtil::setStringAttr( node, "src", object->filenameNode().data() );
+			}
+
+			/* affine attrs */
+			createAffineAttrs( node, object );
+
+			/* shadow attrs */
+			createShadowAttrs( node, object );
+		}
+
+
+		void
+		XmlLabelCreator::createObjectBarcodeNode( QDomElement &parent, const ModelBarcodeObject* object )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Object-barcode" );
+			parent.appendChild( node );
+
+			/* position attrs */
+			createPositionAttrs( node, object );
+
+			/* size attrs */
+			createSizeAttrs( node, object );
+
+			/* barcode attrs */
+			XmlUtil::setStringAttr( node, "backend", object->bcStyle().backendId() );
+			XmlUtil::setStringAttr( node, "style", object->bcStyle().id() );
+			XmlUtil::setBoolAttr( node, "text", object->bcTextFlag() );
+			XmlUtil::setBoolAttr( node, "checksum", object->bcChecksumFlag() );
+			if ( object->bcColorNode().isField() )
+			{
+				XmlUtil::setStringAttr( node, "color_field", object->bcColorNode().key() );
+			}
+			else
+			{
+				XmlUtil::setUIntAttr( node, "color", object->bcColorNode().rgba() );
+			}
+			XmlUtil::setStringAttr( node, "data", object->bcData() );
+
+			/* affine attrs */
+			createAffineAttrs( node, object );
+		}
+
+
+		void
+		XmlLabelCreator::createObjectTextNode( QDomElement &parent, const ModelTextObject* object )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Object-text" );
+			parent.appendChild( node );
+
+			/* position attrs */
+			createPositionAttrs( node, object );
+
+			/* size attrs */
+			createSizeAttrs( node, object );
+
+			/* color attr */
+			if ( object->textColorNode().isField() )
+			{
+				XmlUtil::setStringAttr( node, "color_field", object->textColorNode().key() );
+			}
+			else
+			{
+				XmlUtil::setUIntAttr( node, "color", object->textColorNode().rgba() );
+			}
+
+			/* font attrs */
+			XmlUtil::setStringAttr( node, "font_family", object->fontFamily() );
+			XmlUtil::setDoubleAttr( node, "font_size", object->fontSize() );
+			XmlUtil::setWeightAttr( node, "font_weight", object->fontWeight() );
+			XmlUtil::setBoolAttr( node, "font_italic", object->fontItalicFlag() );
+			XmlUtil::setBoolAttr( node, "font_underline", object->fontUnderlineFlag() );
+
+			/* text attrs */
+			XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
+			XmlUtil::setAlignmentAttr( node, "align", object->textHAlign() );
+			XmlUtil::setAlignmentAttr( node, "valign", object->textVAlign() );
+
+			/* affine attrs */
+			createAffineAttrs( node, object );
+
+			/* shadow attrs */
+			createShadowAttrs( node, object );
+
+			/* serialize text contents */
+			QTextDocument document( object->text() );
+			int nBlocks = document.blockCount();
+			for ( int iBlock = 0; iBlock < nBlocks; iBlock++ )
+			{
+				createPNode( node, document.findBlockByNumber(iBlock).text() );
 			}
 		}
-	}
 
 
-	void
-	XmlLabelCreator::createObjectBoxNode( QDomElement &parent, const ModelBoxObject* object )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Object-box" );
-		parent.appendChild( node );
-
-		/* position attrs */
-		createPositionAttrs( node, object );
-
-		/* size attrs */
-		createSizeAttrs( node, object );
-
-		/* line attrs */
-		createLineAttrs( node, object );
-
-		/* fill attrs */
-		createFillAttrs( node, object );
-
-		/* affine attrs */
-		createAffineAttrs( node, object );
-
-		/* shadow attrs */
-		createShadowAttrs( node, object );
-	}
-
-
-	void
-	XmlLabelCreator::createObjectEllipseNode( QDomElement &parent, const ModelEllipseObject* object )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Object-ellipse" );
-		parent.appendChild( node );
-
-		/* position attrs */
-		createPositionAttrs( node, object );
-
-		/* size attrs */
-		createSizeAttrs( node, object );
-
-		/* line attrs */
-		createLineAttrs( node, object );
-
-		/* fill attrs */
-		createFillAttrs( node, object );
-
-		/* affine attrs */
-		createAffineAttrs( node, object );
-
-		/* shadow attrs */
-		createShadowAttrs( node, object );
-	}
-
-
-	void
-	XmlLabelCreator::createObjectLineNode( QDomElement &parent, const ModelLineObject* object )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Object-line" );
-		parent.appendChild( node );
-
-		/* position attrs */
-		createPositionAttrs( node, object );
-
-		/* size attrs of line */
-		XmlUtil::setLengthAttr( node, "dx", object->w() );
-		XmlUtil::setLengthAttr( node, "dy", object->h() );
-
-		/* line attrs */
-		createLineAttrs( node, object );
-
-		/* affine attrs */
-		createAffineAttrs( node, object );
-
-		/* shadow attrs */
-		createShadowAttrs( node, object );
-	}
-
-
-	void
-	XmlLabelCreator::createObjectImageNode( QDomElement &parent, const ModelImageObject* object )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Object-image" );
-		parent.appendChild( node );
-
-		/* position attrs */
-		createPositionAttrs( node, object );
-
-		/* size attrs */
-		createSizeAttrs( node, object );
-
-		/* file attrs */
-		if ( object->filenameNode().isField() )
+		void
+		XmlLabelCreator::createPNode( QDomElement &parent, const QString& blockText )
 		{
-			XmlUtil::setStringAttr( node, "src_field", object->filenameNode().data() );
-		}
-		else
-		{
-			XmlUtil::setStringAttr( node, "src", object->filenameNode().data() );
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "p" );
+			parent.appendChild( node );
+
+			node.appendChild( doc.createTextNode( blockText ) );
 		}
 
-		/* affine attrs */
-		createAffineAttrs( node, object );
 
-		/* shadow attrs */
-		createShadowAttrs( node, object );
-	}
-
-
-	void
-	XmlLabelCreator::createObjectBarcodeNode( QDomElement &parent, const ModelBarcodeObject* object )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Object-barcode" );
-		parent.appendChild( node );
-
-		/* position attrs */
-		createPositionAttrs( node, object );
-
-		/* size attrs */
-		createSizeAttrs( node, object );
-
-		/* barcode attrs */
-		XmlUtil::setStringAttr( node, "backend", object->bcStyle().backendId() );
-		XmlUtil::setStringAttr( node, "style", object->bcStyle().id() );
-		XmlUtil::setBoolAttr( node, "text", object->bcTextFlag() );
-		XmlUtil::setBoolAttr( node, "checksum", object->bcChecksumFlag() );
-		if ( object->bcColorNode().isField() )
+		void
+		XmlLabelCreator::createPositionAttrs( QDomElement &node, const ModelObject* object )
 		{
-			XmlUtil::setStringAttr( node, "color_field", object->bcColorNode().key() );
+			XmlUtil::setLengthAttr( node, "x", object->x0() );
+			XmlUtil::setLengthAttr( node, "y", object->y0() );
 		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "color", object->bcColorNode().rgba() );
-		}
-		XmlUtil::setStringAttr( node, "data", object->bcData() );
-
-		/* affine attrs */
-		createAffineAttrs( node, object );
-	}
-
-
-	void
-	XmlLabelCreator::createObjectTextNode( QDomElement &parent, const ModelTextObject* object )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Object-text" );
-		parent.appendChild( node );
-
-		/* position attrs */
-		createPositionAttrs( node, object );
-
-		/* size attrs */
-		createSizeAttrs( node, object );
-
-		/* color attr */
-		if ( object->textColorNode().isField() )
-		{
-			XmlUtil::setStringAttr( node, "color_field", object->textColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "color", object->textColorNode().rgba() );
-		}
-
-		/* font attrs */
-		XmlUtil::setStringAttr( node, "font_family", object->fontFamily() );
-		XmlUtil::setDoubleAttr( node, "font_size", object->fontSize() );
-		XmlUtil::setWeightAttr( node, "font_weight", object->fontWeight() );
-		XmlUtil::setBoolAttr( node, "font_italic", object->fontItalicFlag() );
-		XmlUtil::setBoolAttr( node, "font_underline", object->fontUnderlineFlag() );
-
-		/* text attrs */
-		XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
-		XmlUtil::setAlignmentAttr( node, "align", object->textHAlign() );
-		XmlUtil::setAlignmentAttr( node, "valign", object->textVAlign() );
-
-		/* affine attrs */
-		createAffineAttrs( node, object );
-
-		/* shadow attrs */
-		createShadowAttrs( node, object );
-
-		/* serialize text contents */
-		QTextDocument document( object->text() );
-		int nBlocks = document.blockCount();
-		for ( int iBlock = 0; iBlock < nBlocks; iBlock++ )
-		{
-			createPNode( node, document.findBlockByNumber(iBlock).text() );
-		}
-	}
-
-
-	void
-	XmlLabelCreator::createPNode( QDomElement &parent, const QString& blockText )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "p" );
-		parent.appendChild( node );
-
-		node.appendChild( doc.createTextNode( blockText ) );
-	}
-
-
-	void
-	XmlLabelCreator::createPositionAttrs( QDomElement &node, const ModelObject* object )
-	{
-		XmlUtil::setLengthAttr( node, "x", object->x0() );
-		XmlUtil::setLengthAttr( node, "y", object->y0() );
-	}
 
 	
-	void
-	XmlLabelCreator::createSizeAttrs( QDomElement &node, const ModelObject* object )
-	{
-		XmlUtil::setLengthAttr( node, "w", object->w() );
-		XmlUtil::setLengthAttr( node, "h", object->h() );
-	}
+		void
+		XmlLabelCreator::createSizeAttrs( QDomElement &node, const ModelObject* object )
+		{
+			XmlUtil::setLengthAttr( node, "w", object->w() );
+			XmlUtil::setLengthAttr( node, "h", object->h() );
+		}
 
 	
-	void
-	XmlLabelCreator::createLineAttrs( QDomElement &node, const ModelObject* object )
-	{
-		XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
-		if ( object->lineColorNode().isField() )
+		void
+		XmlLabelCreator::createLineAttrs( QDomElement &node, const ModelObject* object )
 		{
-			XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
+			XmlUtil::setLengthAttr( node, "line_width", object->lineWidth() );
+			if ( object->lineColorNode().isField() )
+			{
+				XmlUtil::setStringAttr( node, "line_color_field", object->lineColorNode().key() );
+			}
+			else
+			{
+				XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
+			}
 		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "line_color", object->lineColorNode().rgba() );
-		}
-	}
 
 	
-	void
-	XmlLabelCreator::createFillAttrs( QDomElement &node, const ModelObject* object )
-	{
-		if ( object->fillColorNode().isField() )
+		void
+		XmlLabelCreator::createFillAttrs( QDomElement &node, const ModelObject* object )
 		{
-			XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
-		}
-		else
-		{
-			XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
-		}
-	}
-
-
-	void
-	XmlLabelCreator::createAffineAttrs( QDomElement &node, const ModelObject* object )
-	{
-		QMatrix a = object->matrix();
-	
-		XmlUtil::setDoubleAttr( node, "a0", a.m11() );
-		XmlUtil::setDoubleAttr( node, "a1", a.m12() );
-		XmlUtil::setDoubleAttr( node, "a2", a.m21() );
-		XmlUtil::setDoubleAttr( node, "a3", a.m22() );
-		XmlUtil::setDoubleAttr( node, "a4", a.dx() );
-		XmlUtil::setDoubleAttr( node, "a5", a.dy() );
-	}
-
-
-	void
-	XmlLabelCreator::createShadowAttrs( QDomElement &node, const ModelObject* object )
-	{
-		if ( object->shadow() )
-		{
-			XmlUtil::setBoolAttr( node, "shadow", object->shadow() );
-
-			XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
-			XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
-
 			if ( object->fillColorNode().isField() )
 			{
-				XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
+				XmlUtil::setStringAttr( node, "fill_color_field", object->fillColorNode().key() );
 			}
 			else
 			{
-				XmlUtil::setUIntAttr( node, "shadow_color", object->shadowColorNode().rgba() );
+				XmlUtil::setUIntAttr( node, "fill_color", object->fillColorNode().rgba() );
+			}
+		}
+
+
+		void
+		XmlLabelCreator::createAffineAttrs( QDomElement &node, const ModelObject* object )
+		{
+			QMatrix a = object->matrix();
+	
+			XmlUtil::setDoubleAttr( node, "a0", a.m11() );
+			XmlUtil::setDoubleAttr( node, "a1", a.m12() );
+			XmlUtil::setDoubleAttr( node, "a2", a.m21() );
+			XmlUtil::setDoubleAttr( node, "a3", a.m22() );
+			XmlUtil::setDoubleAttr( node, "a4", a.dx() );
+			XmlUtil::setDoubleAttr( node, "a5", a.dy() );
+		}
+
+
+		void
+		XmlLabelCreator::createShadowAttrs( QDomElement &node, const ModelObject* object )
+		{
+			if ( object->shadow() )
+			{
+				XmlUtil::setBoolAttr( node, "shadow", object->shadow() );
+
+				XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
+				XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
+
+				if ( object->fillColorNode().isField() )
+				{
+					XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
+				}
+				else
+				{
+					XmlUtil::setUIntAttr( node, "shadow_color", object->shadowColorNode().rgba() );
+				}
+
+				XmlUtil::setDoubleAttr( node, "shadow_opacity", object->shadowOpacity() );
+			}
+		}
+
+
+		void
+		XmlLabelCreator::createMergeNode( QDomElement &parent, const Model* label )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Merge" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "type", label->merge()->id() );
+			XmlUtil::setStringAttr( node, "src", label->merge()->source() );
+		}
+
+
+		void
+		XmlLabelCreator::createDataNode( QDomElement &parent, const QList<ModelObject*>& objects )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Data" );
+			parent.appendChild( node );
+
+			DataCache data( objects );
+
+			foreach ( QString name, data.imageNames() )
+			{
+				createPngFileNode( node, name, data.getImage( name ) );
 			}
 
-			XmlUtil::setDoubleAttr( node, "shadow_opacity", object->shadowOpacity() );
+			foreach ( QString name, data.svgNames() )
+			{
+				createSvgFileNode( node, name, data.getSvg( name ) );
+			}
 		}
-	}
 
 
-	void
-	XmlLabelCreator::createMergeNode( QDomElement &parent, const Model* label )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Merge" );
-		parent.appendChild( node );
-
-		XmlUtil::setStringAttr( node, "type", label->merge()->id() );
-		XmlUtil::setStringAttr( node, "src", label->merge()->source() );
-	}
-
-
-	void
-	XmlLabelCreator::createDataNode( QDomElement &parent, const QList<ModelObject*>& objects )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "Data" );
-		parent.appendChild( node );
-
-		DataCache data( objects );
-
-		foreach ( QString name, data.imageNames() )
+		void
+		XmlLabelCreator::createPngFileNode( QDomElement &parent, const QString& name, const QImage& image )
 		{
-			createPngFileNode( node, name, data.getImage( name ) );
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "File" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "name", name );
+			XmlUtil::setStringAttr( node, "mimetype", "image/png" );
+			XmlUtil::setStringAttr( node, "encoding", "base64" );
+
+			QByteArray ba;
+			QBuffer buffer(&ba);
+			buffer.open(QIODevice::WriteOnly);
+			image.save(&buffer, "PNG");
+			QByteArray ba64 = ba.toBase64();
+
+			node.appendChild( doc.createTextNode( QString( ba64 ) ) );
 		}
 
-		foreach ( QString name, data.svgNames() )
+
+		void
+		XmlLabelCreator::createSvgFileNode( QDomElement &parent, const QString& name, const QByteArray& svg )
 		{
-			createSvgFileNode( node, name, data.getSvg( name ) );
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "File" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "name", name );
+			XmlUtil::setStringAttr( node, "mimetype", "image/svg+xml" );
+			XmlUtil::setStringAttr( node, "encoding", "cdata" );
+
+			node.appendChild( doc.createCDATASection( QString( svg ) ) );
 		}
+
+
 	}
-
-
-	void
-	XmlLabelCreator::createPngFileNode( QDomElement &parent, const QString& name, const QImage& image )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "File" );
-		parent.appendChild( node );
-
-		XmlUtil::setStringAttr( node, "name", name );
-		XmlUtil::setStringAttr( node, "mimetype", "image/png" );
-		XmlUtil::setStringAttr( node, "encoding", "base64" );
-
-		QByteArray ba;
-		QBuffer buffer(&ba);
-		buffer.open(QIODevice::WriteOnly);
-		image.save(&buffer, "PNG");
-		QByteArray ba64 = ba.toBase64();
-
-		node.appendChild( doc.createTextNode( QString( ba64 ) ) );
-	}
-
-
-	void
-	XmlLabelCreator::createSvgFileNode( QDomElement &parent, const QString& name, const QByteArray& svg )
-	{
-		QDomDocument doc = parent.ownerDocument();
-		QDomElement node = doc.createElement( "File" );
-		parent.appendChild( node );
-
-		XmlUtil::setStringAttr( node, "name", name );
-		XmlUtil::setStringAttr( node, "mimetype", "image/svg+xml" );
-		XmlUtil::setStringAttr( node, "encoding", "cdata" );
-
-		node.appendChild( doc.createCDATASection( QString( svg ) ) );
-	}
-
-} // namespace glabels::model
+}

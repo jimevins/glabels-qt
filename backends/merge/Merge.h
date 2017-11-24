@@ -28,92 +28,95 @@
 #include <QList>
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	// Forward references
-	class Record;
-		
-	
-	///
-	/// Merge Object
-	///
-	struct Merge : QObject
+	namespace merge
 	{
-		Q_OBJECT
 
-
-		/////////////////////////////////
-		// Life Cycle
-		/////////////////////////////////
-	protected:
-		Merge();
-		Merge( const Merge* merge );
-	public:
-		~Merge() override;
-
-
-		/////////////////////////////////
-		// Object duplication
-		/////////////////////////////////
-		virtual Merge* clone() const = 0;
-
-
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		QString id() const;
-		QString source() const;
-		void setSource( const QString& source );
-
-		const QList<Record*>& recordList( void ) const;
-
-
-		/////////////////////////////////
-		// Selection methods
-		/////////////////////////////////
-	public:
-		void select( Record* record );
-		void unselect( Record* record );
-		void setSelected( int i, bool state = true );
-		void selectAll();
-		void unselectAll();
+		// Forward references
+		class Record;
+		
 	
-		int nSelectedRecords() const;
-		const QList<Record*> selectedRecords() const;
+		///
+		/// Merge Object
+		///
+		struct Merge : QObject
+		{
+			Q_OBJECT
 
 
-		/////////////////////////////////
-		// Virtual methods
-		/////////////////////////////////
-	public:
-		virtual QStringList keys() const = 0;
-		virtual QString primaryKey() const = 0;
-	protected:
-		virtual void open() = 0;
-		virtual void close() = 0;
-		virtual Record* readNextRecord() = 0;
+			/////////////////////////////////
+			// Life Cycle
+			/////////////////////////////////
+		protected:
+			Merge();
+			Merge( const Merge* merge );
+		public:
+			~Merge() override;
+
+
+			/////////////////////////////////
+			// Object duplication
+			/////////////////////////////////
+			virtual Merge* clone() const = 0;
+
+
+			/////////////////////////////////
+			// Properties
+			/////////////////////////////////
+		public:
+			QString id() const;
+			QString source() const;
+			void setSource( const QString& source );
+
+			const QList<Record*>& recordList( void ) const;
+
+
+			/////////////////////////////////
+			// Selection methods
+			/////////////////////////////////
+		public:
+			void select( Record* record );
+			void unselect( Record* record );
+			void setSelected( int i, bool state = true );
+			void selectAll();
+			void unselectAll();
+	
+			int nSelectedRecords() const;
+			const QList<Record*> selectedRecords() const;
+
+
+			/////////////////////////////////
+			// Virtual methods
+			/////////////////////////////////
+		public:
+			virtual QStringList keys() const = 0;
+			virtual QString primaryKey() const = 0;
+		protected:
+			virtual void open() = 0;
+			virtual void close() = 0;
+			virtual Record* readNextRecord() = 0;
 		
 
-		/////////////////////////////////
-		// Signals
-		/////////////////////////////////
-	signals:
-		void sourceChanged();
-		void selectionChanged();
+			/////////////////////////////////
+			// Signals
+			/////////////////////////////////
+		signals:
+			void sourceChanged();
+			void selectionChanged();
 		
 
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	protected:
-		QString             mId;
-	private:
-		QString             mSource;
-		QList<Record*>      mRecordList;
-	};
+			/////////////////////////////////
+			// Private data
+			/////////////////////////////////
+		protected:
+			QString             mId;
+		private:
+			QString             mSource;
+			QList<Record*>      mRecordList;
+		};
 
+	}
 }
 
 

@@ -27,129 +27,132 @@
 #include <QPainterPath>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Markup
+	namespace model
 	{
-	public:
-		virtual Markup* dup() const = 0;
 
-		const QPainterPath& path() const;
+		class Markup
+		{
+		public:
+			virtual Markup* dup() const = 0;
 
-	protected:
-		QPainterPath mPath;
-	};
+			const QPainterPath& path() const;
 
-
-	class MarkupMargin : public Markup
-	{
-	public:
-		MarkupMargin( const Frame*    frame,
-		              const Distance& size );
-
-		Distance size() const;
-
-		Markup* dup() const override;
-
-	private:
-		const Frame* mFrame;
-		Distance  mSize;
-	};
+		protected:
+			QPainterPath mPath;
+		};
 
 
-	class MarkupLine : public Markup
-	{
-	public:
-		MarkupLine( const Distance& x1,
-		            const Distance& y1,
-		            const Distance& x2,
-		            const Distance& y2 );
+		class MarkupMargin : public Markup
+		{
+		public:
+			MarkupMargin( const Frame*    frame,
+			              const Distance& size );
 
-		Distance x1() const;
-		Distance y1() const;
-		Distance x2() const;
-		Distance y2() const;
+			Distance size() const;
 
-		Markup* dup() const override;
+			Markup* dup() const override;
 
-	private:
-		Distance  mX1;
-		Distance  mY1;
-		Distance  mX2;
-		Distance  mY2;
-	};
+		private:
+			const Frame* mFrame;
+			Distance  mSize;
+		};
 
 
-	class MarkupRect : public Markup
-	{
-	public:
-		MarkupRect( const Distance& x1,
-		            const Distance& y1,
-		            const Distance& w,
-		            const Distance& h,
-		            const Distance& r );
+		class MarkupLine : public Markup
+		{
+		public:
+			MarkupLine( const Distance& x1,
+			            const Distance& y1,
+			            const Distance& x2,
+			            const Distance& y2 );
 
-		Distance x1() const;
-		Distance y1() const;
-		Distance w() const;
-		Distance h() const;
-		Distance r() const;
+			Distance x1() const;
+			Distance y1() const;
+			Distance x2() const;
+			Distance y2() const;
 
-		Markup* dup() const override;
+			Markup* dup() const override;
 
-	private:
-		Distance  mX1;
-		Distance  mY1;
-		Distance  mW;
-		Distance  mH;
-		Distance  mR;
-	};
+		private:
+			Distance  mX1;
+			Distance  mY1;
+			Distance  mX2;
+			Distance  mY2;
+		};
 
 
-	class MarkupEllipse : public Markup
-	{
-	public:
-		MarkupEllipse( const Distance& x1,
-		               const Distance& y1,
-		               const Distance& w,
-		               const Distance& h );
+		class MarkupRect : public Markup
+		{
+		public:
+			MarkupRect( const Distance& x1,
+			            const Distance& y1,
+			            const Distance& w,
+			            const Distance& h,
+			            const Distance& r );
 
-		Distance x1() const;
-		Distance y1() const;
-		Distance w() const;
-		Distance h() const;
+			Distance x1() const;
+			Distance y1() const;
+			Distance w() const;
+			Distance h() const;
+			Distance r() const;
 
-		Markup* dup() const override;
+			Markup* dup() const override;
 
-	private:
-		Distance  mX1;
-		Distance  mY1;
-		Distance  mW;
-		Distance  mH;
-	};
+		private:
+			Distance  mX1;
+			Distance  mY1;
+			Distance  mW;
+			Distance  mH;
+			Distance  mR;
+		};
 
 
-	class MarkupCircle : public Markup
-	{
-	public:
-		MarkupCircle( const Distance& x0,
-		              const Distance& y0,
-		              const Distance& r );
+		class MarkupEllipse : public Markup
+		{
+		public:
+			MarkupEllipse( const Distance& x1,
+			               const Distance& y1,
+			               const Distance& w,
+			               const Distance& h );
 
-		Distance x0() const;
-		Distance y0() const;
-		Distance r() const;
+			Distance x1() const;
+			Distance y1() const;
+			Distance w() const;
+			Distance h() const;
 
-		Markup* dup() const override;
+			Markup* dup() const override;
 
-	private:
-		Distance  mX0;
-		Distance  mY0;
-		Distance  mR;
-	};
+		private:
+			Distance  mX1;
+			Distance  mY1;
+			Distance  mW;
+			Distance  mH;
+		};
+
+
+		class MarkupCircle : public Markup
+		{
+		public:
+			MarkupCircle( const Distance& x0,
+			              const Distance& y0,
+			              const Distance& r );
+
+			Distance x0() const;
+			Distance y0() const;
+			Distance r() const;
+
+			Markup* dup() const override;
+
+		private:
+			Distance  mX0;
+			Distance  mY0;
+			Distance  mR;
+		};
 	
 
+	}
 }
 
 

@@ -29,137 +29,140 @@
 #include "glbarcode/Barcode.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Model Line Object
-	///
-	class ModelBarcodeObject : public ModelObject
+	namespace model
 	{
-		Q_OBJECT
 
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		ModelBarcodeObject();
+		///
+		/// Label Model Line Object
+		///
+		class ModelBarcodeObject : public ModelObject
+		{
+			Q_OBJECT
 
-		ModelBarcodeObject( const Distance&       x0,
-		                    const Distance&       y0,
-		                    const Distance&       w,
-		                    const Distance&       h,
-		                    const barcode::Style& bcStyle,
-		                    bool                  bcTextFlag,
-		                    bool                  bcChecksumFlag,
-		                    QString               bcData,
-		                    const ColorNode&      bcColorNode,
-		                    const QMatrix&        matrix = QMatrix() );
+			///////////////////////////////////////////////////////////////
+			// Lifecycle Methods
+			///////////////////////////////////////////////////////////////
+		public:
+			ModelBarcodeObject();
 
-		ModelBarcodeObject( const ModelBarcodeObject* object );
+			ModelBarcodeObject( const Distance&       x0,
+			                    const Distance&       y0,
+			                    const Distance&       w,
+			                    const Distance&       h,
+			                    const barcode::Style& bcStyle,
+			                    bool                  bcTextFlag,
+			                    bool                  bcChecksumFlag,
+			                    QString               bcData,
+			                    const ColorNode&      bcColorNode,
+			                    const QMatrix&        matrix = QMatrix() );
 
-		~ModelBarcodeObject() override;
+			ModelBarcodeObject( const ModelBarcodeObject* object );
+
+			~ModelBarcodeObject() override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Object duplication
-		///////////////////////////////////////////////////////////////
-		ModelBarcodeObject* clone() const override;
+			///////////////////////////////////////////////////////////////
+			// Object duplication
+			///////////////////////////////////////////////////////////////
+			ModelBarcodeObject* clone() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Property Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-                //
-                // Barcode Property: bcData
-                //
-		QString bcData() const override;
-                void setBcData( const QString &value ) override;
+			///////////////////////////////////////////////////////////////
+			// Property Implementations
+			///////////////////////////////////////////////////////////////
+		public:
+			//
+			// Barcode Property: bcData
+			//
+			QString bcData() const override;
+			void setBcData( const QString &value ) override;
                 
 
-                //
-                // Barcode Property: bcTextFlag
-                //
-                bool bcTextFlag() const override;
-                void setBcTextFlag( bool value ) override;
+			//
+			// Barcode Property: bcTextFlag
+			//
+			bool bcTextFlag() const override;
+			void setBcTextFlag( bool value ) override;
 
 
-                //
-                // Barcode Property: bcChecksumFlag
-                //
-                bool bcChecksumFlag() const override;
-                void setBcChecksumFlag( bool value ) override;
+			//
+			// Barcode Property: bcChecksumFlag
+			//
+			bool bcChecksumFlag() const override;
+			void setBcChecksumFlag( bool value ) override;
 
 
-                //
-                // Barcode Property: bcColorNode
-                //
-                ColorNode bcColorNode() const override;
-                void setBcColorNode( const ColorNode &value ) override;
+			//
+			// Barcode Property: bcColorNode
+			//
+			ColorNode bcColorNode() const override;
+			void setBcColorNode( const ColorNode &value ) override;
                 
 
-                //
-                // Barcode Property: bcStyle
-                //
-                barcode::Style bcStyle() const override;
-                void setBcStyle( const barcode::Style &value ) override;
+			//
+			// Barcode Property: bcStyle
+			//
+			barcode::Style bcStyle() const override;
+			void setBcStyle( const barcode::Style &value ) override;
                 
 
-                //
-                // Barcode Property: bcFormatDigits
-                //
-                int bcFormatDigits() const override;
-                void setBcFormatDigits( int value ) override;
+			//
+			// Barcode Property: bcFormatDigits
+			//
+			int bcFormatDigits() const override;
+			void setBcFormatDigits( int value ) override;
 
 
 
-		///////////////////////////////////////////////////////////////
-		// Capability Implementations
-		///////////////////////////////////////////////////////////////
-	public:
+			///////////////////////////////////////////////////////////////
+			// Capability Implementations
+			///////////////////////////////////////////////////////////////
+		public:
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		QPainterPath hoverPath( double scale ) const override;
+			///////////////////////////////////////////////////////////////
+			// Drawing operations
+			///////////////////////////////////////////////////////////////
+		protected:
+			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			QPainterPath hoverPath( double scale ) const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Private methods
-		///////////////////////////////////////////////////////////////
-	private:
-		void sizeUpdated() override;
-		void update();
+			///////////////////////////////////////////////////////////////
+			// Private methods
+			///////////////////////////////////////////////////////////////
+		private:
+			void sizeUpdated() override;
+			void update();
 
-		void drawBcInEditor( QPainter* painter, const QColor& color ) const;
-		void drawBc( QPainter* painter, const QColor& color, merge::Record* record ) const;
-		void drawPlaceHolder( QPainter* painter, const QColor& color, const QString& text ) const;
+			void drawBcInEditor( QPainter* painter, const QColor& color ) const;
+			void drawBc( QPainter* painter, const QColor& color, merge::Record* record ) const;
+			void drawPlaceHolder( QPainter* painter, const QColor& color, const QString& text ) const;
 
 	
 
-		///////////////////////////////////////////////////////////////
-		// Private Members
-		///////////////////////////////////////////////////////////////
-	private:
-		barcode::Style      mBcStyle;
-		bool                mBcTextFlag;
-		bool                mBcChecksumFlag;
-		int                 mBcFormatDigits;
-		RawText             mBcData;
-		ColorNode           mBcColorNode;
+			///////////////////////////////////////////////////////////////
+			// Private Members
+			///////////////////////////////////////////////////////////////
+		private:
+			barcode::Style      mBcStyle;
+			bool                mBcTextFlag;
+			bool                mBcChecksumFlag;
+			int                 mBcFormatDigits;
+			RawText             mBcData;
+			ColorNode           mBcColorNode;
 
-		glbarcode::Barcode* mEditorBarcode;
-		glbarcode::Barcode* mEditorDefaultBarcode;
+			glbarcode::Barcode* mEditorBarcode;
+			glbarcode::Barcode* mEditorDefaultBarcode;
 		
-		QPainterPath mHoverPath;
+			QPainterPath mHoverPath;
 
-	};
+		};
 
+	}
 }
 
 

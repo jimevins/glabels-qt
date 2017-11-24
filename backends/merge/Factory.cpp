@@ -31,189 +31,192 @@
 #include "TextSemicolonKeys.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	//
-	// Static data
-	//
-	QMap<QString,Factory::BackendEntry> Factory::mBackendIdMap;
-	QMap<QString,Factory::BackendEntry> Factory::mBackendNameMap;
-	QStringList Factory::mNameList;
-
-
-	///
-	/// Constructor
-	///
-	Factory::Factory()
+	namespace merge
 	{
-		registerBackend( None::id(),
-		                 tr("None"),
-		                 NONE,
-		                 &None::create );
+
+		//
+		// Static data
+		//
+		QMap<QString,Factory::BackendEntry> Factory::mBackendIdMap;
+		QMap<QString,Factory::BackendEntry> Factory::mBackendNameMap;
+		QStringList Factory::mNameList;
+
+
+		///
+		/// Constructor
+		///
+		Factory::Factory()
+		{
+			registerBackend( None::id(),
+			                 tr("None"),
+			                 NONE,
+			                 &None::create );
 	
-		registerBackend( TextCsv::id(),
-		                 tr("Text: Comma Separated Values (CSV)"),
-		                 FILE,
-		                 &TextCsv::create );
+			registerBackend( TextCsv::id(),
+			                 tr("Text: Comma Separated Values (CSV)"),
+			                 FILE,
+			                 &TextCsv::create );
 
-		registerBackend( TextCsvKeys::id(),
-		                 tr("Text: Comma Separated Values (CSV), keys on line 1"),
-		                 FILE,
-		                 &TextCsvKeys::create );
+			registerBackend( TextCsvKeys::id(),
+			                 tr("Text: Comma Separated Values (CSV), keys on line 1"),
+			                 FILE,
+			                 &TextCsvKeys::create );
 
-		registerBackend( TextTsv::id(),
-		                 tr("Text: Tab Separated Values (TSV)"),
-		                 FILE,
-		                 &TextTsv::create );
+			registerBackend( TextTsv::id(),
+			                 tr("Text: Tab Separated Values (TSV)"),
+			                 FILE,
+			                 &TextTsv::create );
 
-		registerBackend( TextTsvKeys::id(),
-		                 tr("Text: Tab Separated Values (TSV), keys on line 1"),
-		                 FILE,
-		                 &TextTsvKeys::create );
+			registerBackend( TextTsvKeys::id(),
+			                 tr("Text: Tab Separated Values (TSV), keys on line 1"),
+			                 FILE,
+			                 &TextTsvKeys::create );
 
-		registerBackend( TextColon::id(),
-		                 tr("Text: Colon Separated Values"),
-		                 FILE,
-		                 &TextColon::create );
+			registerBackend( TextColon::id(),
+			                 tr("Text: Colon Separated Values"),
+			                 FILE,
+			                 &TextColon::create );
 
-		registerBackend( TextColonKeys::id(),
-		                 tr("Text: Colon Separated Values, keys on line 1"),
-		                 FILE,
-		                 &TextColonKeys::create );
+			registerBackend( TextColonKeys::id(),
+			                 tr("Text: Colon Separated Values, keys on line 1"),
+			                 FILE,
+			                 &TextColonKeys::create );
 
-		registerBackend( TextSemicolon::id(),
-		                 tr("Text: Semicolon Separated Values"),
-		                 FILE,
-		                 &TextSemicolon::create );
+			registerBackend( TextSemicolon::id(),
+			                 tr("Text: Semicolon Separated Values"),
+			                 FILE,
+			                 &TextSemicolon::create );
 
-		registerBackend( TextSemicolonKeys::id(),
-		                 tr("Text: Semicolon Separated Values, keys on line 1"),
-		                 FILE,
-		                 &TextSemicolonKeys::create );
-	}
-
-
-	///
-	/// Initialize
-	///
-	void Factory::init()
-	{
-		static Factory* singletonInstance = nullptr;
-		if ( !singletonInstance )
-		{
-			singletonInstance = new Factory();
+			registerBackend( TextSemicolonKeys::id(),
+			                 tr("Text: Semicolon Separated Values, keys on line 1"),
+			                 FILE,
+			                 &TextSemicolonKeys::create );
 		}
-	}
 
 
-	///
-	/// Create Merge object
-	///
-	Merge* Factory::createMerge( const QString& id )
-	{
-		QMap<QString,BackendEntry>::iterator iBackend = mBackendIdMap.find( id );
-		if ( iBackend != mBackendIdMap.end() )
+		///
+		/// Initialize
+		///
+		void Factory::init()
 		{
-			return iBackend->create();
+			static Factory* singletonInstance = nullptr;
+			if ( !singletonInstance )
+			{
+				singletonInstance = new Factory();
+			}
 		}
+
+
+		///
+		/// Create Merge object
+		///
+		Merge* Factory::createMerge( const QString& id )
+		{
+			QMap<QString,BackendEntry>::iterator iBackend = mBackendIdMap.find( id );
+			if ( iBackend != mBackendIdMap.end() )
+			{
+				return iBackend->create();
+			}
 	
-		return None::create();
-	}
-
-
-	///
-	/// Get name list
-	///
-	QStringList Factory::nameList()
-	{
-		return mNameList;
-	}
-
-
-	///
-	/// Convert ID to name
-	///
-	QString Factory::idToName( const QString& id )
-	{
-		if ( mBackendIdMap.contains( id ) )
-		{
-			return mBackendIdMap[id].name;
+			return None::create();
 		}
-		else
-		{
-			return tr("None");
-		}
-	}
 
 
-	///
-	/// Convert name to ID
-	///
-	QString Factory::nameToId( const QString& name )
-	{
-		if ( mBackendNameMap.contains( name ) )
+		///
+		/// Get name list
+		///
+		QStringList Factory::nameList()
 		{
-			return mBackendNameMap[name].id;
+			return mNameList;
 		}
-		else
+
+
+		///
+		/// Convert ID to name
+		///
+		QString Factory::idToName( const QString& id )
 		{
+			if ( mBackendIdMap.contains( id ) )
+			{
+				return mBackendIdMap[id].name;
+			}
+			else
+			{
+				return tr("None");
+			}
+		}
+
+
+		///
+		/// Convert name to ID
+		///
+		QString Factory::nameToId( const QString& name )
+		{
+			if ( mBackendNameMap.contains( name ) )
+			{
+				return mBackendNameMap[name].id;
+			}
+			else
+			{
+				return "None";
+			}
+		}
+
+
+		///
+		/// Convert ID to type
+		///
+		Factory::SourceType Factory::idToType( const QString& id )
+		{
+			if ( mBackendIdMap.contains( id ) )
+			{
+				return mBackendIdMap[id].type;
+			}
+			else
+			{
+				return NONE;
+			}
+		}
+
+
+		///
+		/// Lookup ID from index
+		///
+		QString Factory::indexToId( int index )
+		{
+			if ( (index > 0) && (index < mNameList.size()) )
+			{
+				QString name = mNameList[index];
+			
+				return mBackendNameMap[ name ].id;
+			}
+
 			return "None";
 		}
-	}
 
 
-	///
-	/// Convert ID to type
-	///
-	Factory::SourceType Factory::idToType( const QString& id )
-	{
-		if ( mBackendIdMap.contains( id ) )
+		///
+		/// Register backend
+		///
+		void Factory::registerBackend( const QString& id,
+		                               const QString& name,
+		                               SourceType     type,
+		                               CreateFct      create )
 		{
-			return mBackendIdMap[id].type;
-		}
-		else
-		{
-			return NONE;
-		}
-	}
+			BackendEntry backend;
 
-
-	///
-	/// Lookup ID from index
-	///
-	QString Factory::indexToId( int index )
-	{
-		if ( (index > 0) && (index < mNameList.size()) )
-		{
-			QString name = mNameList[index];
-			
-			return mBackendNameMap[ name ].id;
-		}
-
-		return "None";
-	}
-
-
-	///
-	/// Register backend
-	///
-	void Factory::registerBackend( const QString& id,
-	                               const QString& name,
-	                               SourceType     type,
-	                               CreateFct      create )
-	{
-		BackendEntry backend;
-
-		backend.id     = id;
-		backend.name   = name;
-		backend.type   = type;
-		backend.create = create;
+			backend.id     = id;
+			backend.name   = name;
+			backend.type   = type;
+			backend.create = create;
 	
-		mBackendIdMap[ id ]     = backend;
-		mBackendNameMap[ name ] = backend;
+			mBackendIdMap[ id ]     = backend;
+			mBackendNameMap[ name ] = backend;
 
-		mNameList << name;
-	}
+			mNameList << name;
+		}
 
-} // namespace glabels::merge
+	} // namespace merge
+} // namespace glabels

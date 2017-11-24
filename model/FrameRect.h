@@ -25,53 +25,56 @@
 #include "Frame.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class FrameRect : public Frame
+	namespace model
 	{
-		Q_DECLARE_TR_FUNCTIONS(FrameRect)
 
-	public:
-		FrameRect( const Distance& w,
-			   const Distance& h,
-		           const Distance& r,
-			   const Distance& xWaste,
-		           const Distance& yWaste,
-		           const QString&  id = "0" );
+		class FrameRect : public Frame
+		{
+			Q_DECLARE_TR_FUNCTIONS(FrameRect)
 
-		FrameRect( const FrameRect& other );
+		public:
+			FrameRect( const Distance& w,
+			           const Distance& h,
+			           const Distance& r,
+			           const Distance& xWaste,
+			           const Distance& yWaste,
+			           const QString&  id = "0" );
 
-		Frame* dup() const override;
+			FrameRect( const FrameRect& other );
 
-		Distance r() const;
-		Distance xWaste() const;
-		Distance yWaste() const;
+			Frame* dup() const override;
 
-		Distance w() const override;
-		Distance h() const override;
+			Distance r() const;
+			Distance xWaste() const;
+			Distance yWaste() const;
 
-		QString sizeDescription( const Units& units ) const override;
+			Distance w() const override;
+			Distance h() const override;
 
-		bool isSimilarTo( Frame* other ) const override;
+			QString sizeDescription( const Units& units ) const override;
 
-		const QPainterPath& path() const override;
-		const QPainterPath& clipPath() const override;
-		QPainterPath marginPath( const Distance& size ) const override;
+			bool isSimilarTo( Frame* other ) const override;
+
+			const QPainterPath& path() const override;
+			const QPainterPath& clipPath() const override;
+			QPainterPath marginPath( const Distance& size ) const override;
 
 
-	private:
-		Distance mW;
-		Distance mH;
-		Distance mR;
-		Distance mXWaste;
-		Distance mYWaste;
+		private:
+			Distance mW;
+			Distance mH;
+			Distance mR;
+			Distance mXWaste;
+			Distance mYWaste;
 
-		QPainterPath mPath;
-		QPainterPath mClipPath;
+			QPainterPath mPath;
+			QPainterPath mClipPath;
 
-	};
+		};
 
+	}
 }
 
 

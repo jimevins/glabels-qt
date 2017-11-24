@@ -26,21 +26,24 @@
 #include <QDomElement>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class XmlPaperParser
+	namespace model
 	{
-	public:
-		XmlPaperParser() {}
 
-		bool readFile( const QString &fileName );
+		class XmlPaperParser
+		{
+		public:
+			XmlPaperParser() {}
 
-	private:
-		void parseRootNode( const QDomElement &node );
-		void parsePaperSizeNode( const QDomElement &node );
-	};
+			bool readFile( const QString &fileName );
 
+		private:
+			void parseRootNode( const QDomElement &node );
+			void parsePaperSizeNode( const QDomElement &node );
+		};
+
+	}
 }
 
 

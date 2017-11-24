@@ -27,57 +27,60 @@
 #include <QSizeF>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Size Type
-	///
-	class Size
+	namespace model
 	{
 
-		/////////////////////////////////
-		// Constructors
-		/////////////////////////////////
-	public:
-		Size();
-		Size( const Distance& w, const Distance& h );
+		///
+		/// Size Type
+		///
+		class Size
+		{
+
+			/////////////////////////////////
+			// Constructors
+			/////////////////////////////////
+		public:
+			Size();
+			Size( const Distance& w, const Distance& h );
 	
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		//
-		// w Property
-		//
-		Distance w() const;
-		void setW( const Distance& value );
+			/////////////////////////////////
+			// Properties
+			/////////////////////////////////
+		public:
+			//
+			// w Property
+			//
+			Distance w() const;
+			void setW( const Distance& value );
 
 
-		//
-		// H Property
-		//
-		Distance h() const;
-		void setH( const Distance& value );
+			//
+			// H Property
+			//
+			Distance h() const;
+			void setH( const Distance& value );
 
 
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
-	public:
-		QSizeF qSizeF() const;
+			/////////////////////////////////
+			// Methods
+			/////////////////////////////////
+		public:
+			QSizeF qSizeF() const;
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		Distance mW;
-		Distance mH;
+			/////////////////////////////////
+			// Private Data
+			/////////////////////////////////
+		private:
+			Distance mW;
+			Distance mH;
 
-	};
+		};
 
+	}
 }
 
 

@@ -22,17 +22,22 @@
 #define model_Version_h
 
 
-namespace glabels::model
+namespace glabels
 {
-	namespace Version
+	namespace model
 	{
-		const QString WEBSITE = "@Website@";
 
-		const int     MAJOR   = @Major_Version@;
-		const int     MINOR   = @Minor_Version@;
-		const int     MICRO   = @Micro_Version@;
+		namespace Version
+		{
+			const QString WEBSITE = "@Website@";
 
-		const QString STRING  = "@Full_Version@";
+			const int     MAJOR   = @Major_Version@;
+			const int     MINOR   = @Minor_Version@;
+			const int     MICRO   = @Micro_Version@;
+
+			const QString STRING  = "@Full_Version@";
+		}
+
 	}
 }
 

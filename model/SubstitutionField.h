@@ -28,49 +28,52 @@
 #include <QStringRef>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class SubstitutionField
+	namespace model
 	{
-	public:
-		SubstitutionField();
-		SubstitutionField( const QString& string );
 
-		QString evaluate( const merge::Record* record ) const;
+		class SubstitutionField
+		{
+		public:
+			SubstitutionField();
+			SubstitutionField( const QString& string );
+
+			QString evaluate( const merge::Record* record ) const;
 		
-		QString fieldName() const;
-		QString defaultValue() const;
-		QString format() const;
-		QChar   formatType() const;
-		bool    newLine() const;
+			QString fieldName() const;
+			QString defaultValue() const;
+			QString format() const;
+			QChar   formatType() const;
+			bool    newLine() const;
 
-		static bool parse( QStringRef& s, SubstitutionField& field );
+			static bool parse( QStringRef& s, SubstitutionField& field );
 
-	private:
-		static bool parseFieldName( QStringRef& s, SubstitutionField& field );
-		static bool parseModifier( QStringRef& s, SubstitutionField& field );
-		static bool parseDefaultValueModifier( QStringRef& s, SubstitutionField& field );
-		static bool parseFormatModifier( QStringRef& s, SubstitutionField& field );
-		static bool parseFormatFlags( QStringRef& s, SubstitutionField& field );
-		static bool parseFormatWidth( QStringRef& s, SubstitutionField& field );
-		static bool parseFormatPrecision( QStringRef& s, SubstitutionField& field );
-		static bool parseFormatType( QStringRef& s, SubstitutionField& field );
-		static bool parseNaturalInteger( QStringRef& s, SubstitutionField& field );
-		static bool parseNewLineModifier( QStringRef& s, SubstitutionField& field );
+		private:
+			static bool parseFieldName( QStringRef& s, SubstitutionField& field );
+			static bool parseModifier( QStringRef& s, SubstitutionField& field );
+			static bool parseDefaultValueModifier( QStringRef& s, SubstitutionField& field );
+			static bool parseFormatModifier( QStringRef& s, SubstitutionField& field );
+			static bool parseFormatFlags( QStringRef& s, SubstitutionField& field );
+			static bool parseFormatWidth( QStringRef& s, SubstitutionField& field );
+			static bool parseFormatPrecision( QStringRef& s, SubstitutionField& field );
+			static bool parseFormatType( QStringRef& s, SubstitutionField& field );
+			static bool parseNaturalInteger( QStringRef& s, SubstitutionField& field );
+			static bool parseNewLineModifier( QStringRef& s, SubstitutionField& field );
 
-		QString formatValue( const QString& value ) const;
+			QString formatValue( const QString& value ) const;
 
-		QString mFieldName;
+			QString mFieldName;
 
-		QString mDefaultValue;
+			QString mDefaultValue;
 
-		QString mFormat;
-		QChar   mFormatType;
+			QString mFormat;
+			QChar   mFormatType;
 
-		bool    mNewLine;
-	};
+			bool    mNewLine;
+		};
 
+	}
 }
 
 

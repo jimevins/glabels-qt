@@ -32,99 +32,102 @@
 #include <cstdint>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class XmlUtil
+	namespace model
 	{
-	private:
-		XmlUtil();
+
+		class XmlUtil
+		{
+		private:
+			XmlUtil();
 
 		
-	public:
+		public:
 
-		static void init();
+			static void init();
 
-		static Units units();
-		static void setUnits( const Units& units );
+			static Units units();
+			static void setUnits( const Units& units );
 
-		static QString  getStringAttr( const QDomElement& node,
-		                               const QString&     name,
-		                               const QString&     default_value );
+			static QString  getStringAttr( const QDomElement& node,
+			                               const QString&     name,
+			                               const QString&     default_value );
 
-		static double   getDoubleAttr( const QDomElement& node,
-		                               const QString&     name,
-		                               double             default_value );
+			static double   getDoubleAttr( const QDomElement& node,
+			                               const QString&     name,
+			                               double             default_value );
 
-		static bool     getBoolAttr( const QDomElement& node,
-		                             const QString&     name,
-		                             bool               default_value );
+			static bool     getBoolAttr( const QDomElement& node,
+			                             const QString&     name,
+			                             bool               default_value );
 
-		static int      getIntAttr( const QDomElement& node,
-		                            const QString&     name,
-		                            int                default_value );
+			static int      getIntAttr( const QDomElement& node,
+			                            const QString&     name,
+			                            int                default_value );
 
-		static uint32_t getUIntAttr( const QDomElement& node,
-		                             const QString&     name,
-		                             uint32_t           default_value );
+			static uint32_t getUIntAttr( const QDomElement& node,
+			                             const QString&     name,
+			                             uint32_t           default_value );
 
-		static QString  getI18nAttr( const QDomElement& node,
-		                             const QString&     name,
-		                             const QString&     default_value );
+			static QString  getI18nAttr( const QDomElement& node,
+			                             const QString&     name,
+			                             const QString&     default_value );
 
-		static Distance getLengthAttr( const QDomElement& node,
-		                               const QString&     name,
-		                               const Distance&    default_value );
+			static Distance getLengthAttr( const QDomElement& node,
+			                               const QString&     name,
+			                               const Distance&    default_value );
 
-		static QFont::Weight getWeightAttr( const QDomElement& node,
-		                                    const QString&     name,
-		                                    QFont::Weight      default_value );
+			static QFont::Weight getWeightAttr( const QDomElement& node,
+			                                    const QString&     name,
+			                                    QFont::Weight      default_value );
 
-		static Qt::Alignment getAlignmentAttr( const QDomElement& node,
-		                                       const QString&     name,
-		                                       Qt::Alignment      default_value );
+			static Qt::Alignment getAlignmentAttr( const QDomElement& node,
+			                                       const QString&     name,
+			                                       Qt::Alignment      default_value );
 
 
-		static void     setStringAttr( QDomElement&   node,
-		                               const QString& name,
-		                               const QString& value );
+			static void     setStringAttr( QDomElement&   node,
+			                               const QString& name,
+			                               const QString& value );
 
-		static void     setDoubleAttr( QDomElement&   node,
-		                               const QString& name,
-		                               double         value );
+			static void     setDoubleAttr( QDomElement&   node,
+			                               const QString& name,
+			                               double         value );
 
-		static void     setBoolAttr( QDomElement&   node,
-		                             const QString& name,
-		                             bool           value );
+			static void     setBoolAttr( QDomElement&   node,
+			                             const QString& name,
+			                             bool           value );
 
-		static void     setIntAttr( QDomElement&   node,
-		                            const QString& name,
-		                            int            value );
+			static void     setIntAttr( QDomElement&   node,
+			                            const QString& name,
+			                            int            value );
 
-		static void     setUIntAttr( QDomElement&   node,
-		                             const QString& name,
-		                             uint32_t       value );
+			static void     setUIntAttr( QDomElement&   node,
+			                             const QString& name,
+			                             uint32_t       value );
 
-		static void     setLengthAttr( QDomElement&    node,
-		                               const QString&  name,
-		                               const Distance& value );
+			static void     setLengthAttr( QDomElement&    node,
+			                               const QString&  name,
+			                               const Distance& value );
 
-		static void     setWeightAttr( QDomElement&    node,
-		                               const QString&  name,
-		                               QFont::Weight   value );
+			static void     setWeightAttr( QDomElement&    node,
+			                               const QString&  name,
+			                               QFont::Weight   value );
 
-		static void     setAlignmentAttr( QDomElement&    node,
-		                                  const QString&  name,
-		                                  Qt::Alignment   value );
+			static void     setAlignmentAttr( QDomElement&    node,
+			                                  const QString&  name,
+			                                  Qt::Alignment   value );
 
 		
-	private:
-		Units mUnits;
+		private:
+			Units mUnits;
 
-		static XmlUtil* mInstance;
+			static XmlUtil* mInstance;
 
-	};
+		};
 
+	}
 }
 
 

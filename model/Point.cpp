@@ -21,44 +21,47 @@
 #include "Point.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	Point::Point() : mX(Distance(0)), mY(Distance(0))
+	namespace model
 	{
-		// empty
-	}
+
+		Point::Point() : mX(Distance(0)), mY(Distance(0))
+		{
+			// empty
+		}
 
 
-	Point::Point( Distance x, Distance y ) : mX(x), mY(y)
-	{
-		// empty
-	}
+		Point::Point( Distance x, Distance y ) : mX(x), mY(y)
+		{
+			// empty
+		}
 
 
-	Distance Point::x() const
-	{
-		return mX;
-	}
+		Distance Point::x() const
+		{
+			return mX;
+		}
 
 	
-	Distance Point::y() const
-	{
-		return mY;
-	}
-
-
-	bool Point::operator<( const Point &other ) const
-	{
-		if ( mY < other.mY )
+		Distance Point::y() const
 		{
-			return true;
+			return mY;
 		}
-		else if ( mY == other.mY )
-		{
-			return mX < other.mX;
-		}
-		return false;
-	}
 
-} // namespace glabels::model
+
+		bool Point::operator<( const Point &other ) const
+		{
+			if ( mY < other.mY )
+			{
+				return true;
+			}
+			else if ( mY == other.mY )
+			{
+				return mX < other.mX;
+			}
+			return false;
+		}
+
+	}
+}

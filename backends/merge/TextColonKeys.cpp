@@ -21,61 +21,64 @@
 #include "TextColonKeys.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
+	namespace merge
+	{
 
-	static const QString ID = "Text/Colon/Line1Keys";
+		static const QString ID = "Text/Colon/Line1Keys";
 
 	
-	///
-	/// Constructor
-	///
-	TextColonKeys::TextColonKeys() : Text(':',true)
-	{
-		mId = ID;
-	}
+		///
+		/// Constructor
+		///
+		TextColonKeys::TextColonKeys() : Text(':',true)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Constructor
-	///
-	TextColonKeys::TextColonKeys( const TextColonKeys* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextColonKeys::TextColonKeys( const TextColonKeys* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextColonKeys::~TextColonKeys()
-	{
-	}
+		///
+		/// Destructor
+		///
+		TextColonKeys::~TextColonKeys()
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextColonKeys* TextColonKeys::clone() const
-	{
-		return new TextColonKeys( this );
-	}
+		///
+		/// Clone
+		///
+		TextColonKeys* TextColonKeys::clone() const
+		{
+			return new TextColonKeys( this );
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextColonKeys::id()
-	{
-		return ID;
-	}
+		///
+		/// Get ID
+		///
+		QString TextColonKeys::id()
+		{
+			return ID;
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextColonKeys::create()
-	{
-		return new TextColonKeys();
-	}
+		///
+		/// Create
+		///
+		Merge* TextColonKeys::create()
+		{
+			return new TextColonKeys();
+		}
 
-} // namespace glabels::merge
+	} // namespace merge
+} // namespace glabels

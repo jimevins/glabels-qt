@@ -21,61 +21,64 @@
 #include "TextTsvKeys.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	static const QString ID = "Text/Tab/Line1Keys";
-
-
-	///
-	/// Constructor
-	///
-	TextTsvKeys::TextTsvKeys() : Text('\t',true)
+	namespace merge
 	{
-		mId = ID;
-	}
+
+		static const QString ID = "Text/Tab/Line1Keys";
 
 
-	///
-	/// Constructor
-	///
-	TextTsvKeys::TextTsvKeys( const TextTsvKeys* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextTsvKeys::TextTsvKeys() : Text('\t',true)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextTsvKeys::~TextTsvKeys()
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextTsvKeys::TextTsvKeys( const TextTsvKeys* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextTsvKeys* TextTsvKeys::clone() const
-	{
-		return new TextTsvKeys( this );
-	}
+		///
+		/// Destructor
+		///
+		TextTsvKeys::~TextTsvKeys()
+		{
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextTsvKeys::id()
-	{
-		return ID;
-	}
+		///
+		/// Clone
+		///
+		TextTsvKeys* TextTsvKeys::clone() const
+		{
+			return new TextTsvKeys( this );
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextTsvKeys::create()
-	{
-		return new TextTsvKeys();
-	}
+		///
+		/// Get ID
+		///
+		QString TextTsvKeys::id()
+		{
+			return ID;
+		}
 
-} // namespace glabels::merge
+
+		///
+		/// Create
+		///
+		Merge* TextTsvKeys::create()
+		{
+			return new TextTsvKeys();
+		}
+
+	} // namespace merge
+} // namespace glabels

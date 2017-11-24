@@ -21,24 +21,27 @@
 #include "Vendor.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	Vendor::Vendor( const QString &name, const QString &url ) : mName(name), mUrl(url)
+	namespace model
 	{
-		// empty
-	}
+
+		Vendor::Vendor( const QString &name, const QString &url ) : mName(name), mUrl(url)
+		{
+			// empty
+		}
 
 
-	QString Vendor::name() const
-	{
-		return mName;
-	}
+		QString Vendor::name() const
+		{
+			return mName;
+		}
 
 	
-	QString Vendor::url() const
-	{
-		return mUrl;
-	}
+		QString Vendor::url() const
+		{
+			return mUrl;
+		}
 
-} // namespace glabels::model
+	}
+}

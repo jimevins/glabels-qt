@@ -21,50 +21,53 @@
 #include "Record.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	///
-	/// Constructor
-	///
-	Record::Record() : mSelected( true )
+	namespace merge
 	{
-	}
+
+		///
+		/// Constructor
+		///
+		Record::Record() : mSelected( true )
+		{
+		}
 
 
-	///
-	/// Constructor
-	///
-	Record::Record( const Record* record )
-		: QMap<QString,QString>(*record), mSelected(record->mSelected)
-	{
-	}
+		///
+		/// Constructor
+		///
+		Record::Record( const Record* record )
+			: QMap<QString,QString>(*record), mSelected(record->mSelected)
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	Record* Record::clone() const
-	{
-		return new Record( this );
-	}
+		///
+		/// Clone
+		///
+		Record* Record::clone() const
+		{
+			return new Record( this );
+		}
 
 
-	///
-	/// Is record selected?
-	///
-	bool Record::isSelected() const
-	{
-		return mSelected;
-	}
+		///
+		/// Is record selected?
+		///
+		bool Record::isSelected() const
+		{
+			return mSelected;
+		}
 
 
-	///
-	/// Set selected on not selected
-	///
-	void Record::setSelected( bool value )
-	{
-		mSelected = value;
-	}
+		///
+		/// Set selected on not selected
+		///
+		void Record::setSelected( bool value )
+		{
+			mSelected = value;
+		}
 
-} // namespace glabels::merge
+	} // namespace merge
+} // namespace glabels

@@ -26,20 +26,23 @@
 #include <QDir>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	namespace FileUtil
+	namespace model
 	{
 
-		QString addExtension( const QString& rawFilename, const QString& extension );
+		namespace FileUtil
+		{
 
-		QDir systemTemplatesDir();
-		QDir userTemplatesDir();
+			QString addExtension( const QString& rawFilename, const QString& extension );
 
-		QDir translationsDir();
+			QDir systemTemplatesDir();
+			QDir userTemplatesDir();
+
+			QDir translationsDir();
+		}
+
 	}
-
 }
 
 

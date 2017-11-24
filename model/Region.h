@@ -27,74 +27,77 @@
 #include <QRectF>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Region Type
-	///
-	struct Region
+	namespace model
 	{
 
-		/////////////////////////////////
-		// Constructors
-		/////////////////////////////////
-	public:
-		Region();
-		Region( const Distance& x1, const Distance& y1,
-		        const Distance& x2, const Distance& y2 );
+		///
+		/// Label Region Type
+		///
+		struct Region
+		{
+
+			/////////////////////////////////
+			// Constructors
+			/////////////////////////////////
+		public:
+			Region();
+			Region( const Distance& x1, const Distance& y1,
+			        const Distance& x2, const Distance& y2 );
 	
 
-		/////////////////////////////////
-		// Properties
-		/////////////////////////////////
-	public:
-		//
-		// X1 Property
-		//
-		Distance x1() const;
-		void setX1( const Distance& value );
+			/////////////////////////////////
+			// Properties
+			/////////////////////////////////
+		public:
+			//
+			// X1 Property
+			//
+			Distance x1() const;
+			void setX1( const Distance& value );
 
 
-		//
-		// Y1 Property
-		//
-		Distance y1() const;
-		void setY1( const Distance& value );
+			//
+			// Y1 Property
+			//
+			Distance y1() const;
+			void setY1( const Distance& value );
 
 
-		//
-		// X2 Property
-		//
-		Distance x2() const;
-		void setX2( const Distance& value );
+			//
+			// X2 Property
+			//
+			Distance x2() const;
+			void setX2( const Distance& value );
 
 
 
-		//
-		// Y2 Property
-		//
-		Distance y2() const;
-		void setY2( const Distance& value );
+			//
+			// Y2 Property
+			//
+			Distance y2() const;
+			void setY2( const Distance& value );
 
 
-		/////////////////////////////////
-		// Methods
-		/////////////////////////////////
-	public:
-		QRectF rect() const;
+			/////////////////////////////////
+			// Methods
+			/////////////////////////////////
+		public:
+			QRectF rect() const;
 
 
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		Distance mX1;
-		Distance mY1;
-		Distance mX2;
-		Distance mY2;
-	};
+			/////////////////////////////////
+			// Private Data
+			/////////////////////////////////
+		private:
+			Distance mX1;
+			Distance mY1;
+			Distance mX2;
+			Distance mY2;
+		};
 
+	}
 }
 
 

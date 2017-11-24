@@ -24,129 +24,132 @@
 #include "StrUtil.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	FrameRect::FrameRect( const Distance& w,
-			      const Distance& h,
-			      const Distance& r,
-			      const Distance& xWaste,
-			      const Distance& yWaste,
-			      const QString&  id )
-		: Frame(id), mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste)
+	namespace model
 	{
-		mPath.addRoundedRect( 0, 0, mW.pt(), mH.pt(), mR.pt(), mR.pt() );
-		
-		mClipPath.addRoundedRect( -mXWaste.pt(), -mYWaste.pt(),
-					  mW.pt() + 2*mXWaste.pt(), mH.pt() + 2*mYWaste.pt(),
-					  mR.pt(), mR.pt() );
-	}
 
-	
-	FrameRect::FrameRect( const FrameRect &other )
-		: Frame(other),
-		  mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
-		  mYWaste(other.mYWaste), mPath(other.mPath)
-	{
-		// empty
-	}
-
-	
-	Frame* FrameRect::dup() const
-	{
-		return new FrameRect( *this );
-	}
-
-
-	Distance FrameRect::w() const
-	{
-		return mW;
-	}
-
-	
-	Distance FrameRect::h() const
-	{
-		return mH;
-	}
-
-
-	Distance FrameRect::r() const
-	{
-		return mR;
-	}
-
-		
-	Distance FrameRect::xWaste() const
-	{
-		return mXWaste;
-	}
-
-		
-	Distance FrameRect::yWaste() const
-	{
-		return mYWaste;
-	}
-
-
-	QString FrameRect::sizeDescription( const Units& units ) const
-	{
-		if ( units.toEnum() == Units::IN )
+		FrameRect::FrameRect( const Distance& w,
+		                      const Distance& h,
+		                      const Distance& r,
+		                      const Distance& xWaste,
+		                      const Distance& yWaste,
+		                      const QString&  id )
+			: Frame(id), mW(w), mH(h), mR(r), mXWaste(xWaste), mYWaste(yWaste)
 		{
-			QString wStr = StrUtil::formatFraction( mW.in() );
-			QString hStr = StrUtil::formatFraction( mH.in() );
-
-			return QString().sprintf( "%s x %s %s",
-						  qPrintable(wStr),
-						  qPrintable(hStr),
-						  qPrintable(units.toTrName()) );
+			mPath.addRoundedRect( 0, 0, mW.pt(), mH.pt(), mR.pt(), mR.pt() );
+		
+			mClipPath.addRoundedRect( -mXWaste.pt(), -mYWaste.pt(),
+			                          mW.pt() + 2*mXWaste.pt(), mH.pt() + 2*mYWaste.pt(),
+			                          mR.pt(), mR.pt() );
 		}
-		else
+
+	
+		FrameRect::FrameRect( const FrameRect &other )
+			: Frame(other),
+			  mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
+			  mYWaste(other.mYWaste), mPath(other.mPath)
 		{
-			return QString().sprintf( "%.5g x %.5g %s",
-						  mW.inUnits(units),
-						  mH.inUnits(units),
-						  qPrintable(units.toTrName()) );
+			// empty
 		}
-	}
 
-
-	bool FrameRect::isSimilarTo( Frame* other ) const
-	{
-		if ( FrameRect *otherRect = dynamic_cast<FrameRect*>(other) )
+	
+		Frame* FrameRect::dup() const
 		{
-			if ( (fabs( mW - otherRect->mW ) <= EPSILON) &&
-			     (fabs( mH - otherRect->mH ) <= EPSILON) )
+			return new FrameRect( *this );
+		}
+
+
+		Distance FrameRect::w() const
+		{
+			return mW;
+		}
+
+	
+		Distance FrameRect::h() const
+		{
+			return mH;
+		}
+
+
+		Distance FrameRect::r() const
+		{
+			return mR;
+		}
+
+		
+		Distance FrameRect::xWaste() const
+		{
+			return mXWaste;
+		}
+
+		
+		Distance FrameRect::yWaste() const
+		{
+			return mYWaste;
+		}
+
+
+		QString FrameRect::sizeDescription( const Units& units ) const
+		{
+			if ( units.toEnum() == Units::IN )
 			{
-				return true;
+				QString wStr = StrUtil::formatFraction( mW.in() );
+				QString hStr = StrUtil::formatFraction( mH.in() );
+
+				return QString().sprintf( "%s x %s %s",
+				                          qPrintable(wStr),
+				                          qPrintable(hStr),
+				                          qPrintable(units.toTrName()) );
+			}
+			else
+			{
+				return QString().sprintf( "%.5g x %.5g %s",
+				                          mW.inUnits(units),
+				                          mH.inUnits(units),
+				                          qPrintable(units.toTrName()) );
 			}
 		}
-		return false;
+
+
+		bool FrameRect::isSimilarTo( Frame* other ) const
+		{
+			if ( FrameRect *otherRect = dynamic_cast<FrameRect*>(other) )
+			{
+				if ( (fabs( mW - otherRect->mW ) <= EPSILON) &&
+				     (fabs( mH - otherRect->mH ) <= EPSILON) )
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+
+		const QPainterPath& FrameRect::path() const
+		{
+			return mPath;
+		}
+
+
+		const QPainterPath& FrameRect::clipPath() const
+		{
+			return mClipPath;
+		}
+
+
+		QPainterPath FrameRect::marginPath( const Distance& size ) const
+		{
+			Distance w = mW - 2*size;
+			Distance h = mH - 2*size;
+			Distance r = std::max( mR - size, Distance(0.0) );
+
+			QPainterPath path;
+			path.addRoundedRect( size.pt(), size.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
+
+			return path;
+		}
+
+
 	}
-
-
-	const QPainterPath& FrameRect::path() const
-	{
-		return mPath;
-	}
-
-
-	const QPainterPath& FrameRect::clipPath() const
-	{
-		return mClipPath;
-	}
-
-
-	QPainterPath FrameRect::marginPath( const Distance& size ) const
-	{
-		Distance w = mW - 2*size;
-		Distance h = mH - 2*size;
-		Distance r = std::max( mR - size, Distance(0.0) );
-
-		QPainterPath path;
-		path.addRoundedRect( size.pt(), size.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
-
-		return path;
-	}
-
-
-} // namespace glabels::model
+}

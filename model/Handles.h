@@ -28,308 +28,311 @@
 #include <QPainterPath>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	// Forward References
-	class ModelObject;
-
-
-	///
-	/// Handle Base Class
-	///
-	class Handle
+	namespace model
 	{
-		////////////////////////////
-		// Location enumeration
-		////////////////////////////
-	public:
-		enum Location { NW, N, NE, E, SE, S, SW, W, P1, P2 };
-		
-		
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	protected:
-		Handle( ModelObject* owner, Location location );
-	public:
-		virtual ~Handle();
+
+		// Forward References
+		class ModelObject;
 
 
-		////////////////////////////
-		// Duplication
-		////////////////////////////
-		virtual Handle* clone( ModelObject* newOwner ) const = 0;
+		///
+		/// Handle Base Class
+		///
+		class Handle
+		{
+			////////////////////////////
+			// Location enumeration
+			////////////////////////////
+		public:
+			enum Location { NW, N, NE, E, SE, S, SW, W, P1, P2 };
+		
+		
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		protected:
+			Handle( ModelObject* owner, Location location );
+		public:
+			virtual ~Handle();
+
+
+			////////////////////////////
+			// Duplication
+			////////////////////////////
+			virtual Handle* clone( ModelObject* newOwner ) const = 0;
 	
 		
-		////////////////////////////
-		// Attribue Methods
-		////////////////////////////
-		ModelObject* owner() const;
-		Location location() const;
+			////////////////////////////
+			// Attribue Methods
+			////////////////////////////
+			ModelObject* owner() const;
+			Location location() const;
 		
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		virtual void  draw( QPainter* painter, double scale ) const = 0;
-		virtual QPainterPath path( double scale ) const = 0;
-	protected:
-		void drawAt( QPainter*       painter,
-		             double          scale,
-		             const Distance& x,
-		             const Distance& y,
-		             QColor          color ) const;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			virtual void  draw( QPainter* painter, double scale ) const = 0;
+			virtual QPainterPath path( double scale ) const = 0;
+		protected:
+			void drawAt( QPainter*       painter,
+			             double          scale,
+			             const Distance& x,
+			             const Distance& y,
+			             QColor          color ) const;
 		
-		QPainterPath pathAt( double          scale,
-		                     const Distance& x,
-		                     const Distance& y ) const;
+			QPainterPath pathAt( double          scale,
+			                     const Distance& x,
+			                     const Distance& y ) const;
 
 
-		////////////////////////////
-		// Protected Data
-		////////////////////////////
-	protected:
-		ModelObject* mOwner;
-		Location mLocation;
+			////////////////////////////
+			// Protected Data
+			////////////////////////////
+		protected:
+			ModelObject* mOwner;
+			Location mLocation;
 
-	};
-
-
-	///
-	/// HandleNorth Class
-	///
-	class HandleNorth : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleNorth( ModelObject* owner );
-		~HandleNorth() override;
-		HandleNorth* clone( ModelObject* newOwner ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleNorth Class
+		///
+		class HandleNorth : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleNorth( ModelObject* owner );
+			~HandleNorth() override;
+			HandleNorth* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleNorthEast Class
-	///
-	class HandleNorthEast : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleNorthEast( ModelObject* owner );
-		~HandleNorthEast() override;
-		HandleNorthEast* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleNorthEast Class
+		///
+		class HandleNorthEast : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleNorthEast( ModelObject* owner );
+			~HandleNorthEast() override;
+			HandleNorthEast* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleEast Class
-	///
-	class HandleEast : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleEast( ModelObject* owner );
-		~HandleEast() override;
-		HandleEast* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleEast Class
+		///
+		class HandleEast : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleEast( ModelObject* owner );
+			~HandleEast() override;
+			HandleEast* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleSouthEast Class
-	///
-	class HandleSouthEast : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleSouthEast( ModelObject* owner );
-		~HandleSouthEast() override;
-		HandleSouthEast* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleSouthEast Class
+		///
+		class HandleSouthEast : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleSouthEast( ModelObject* owner );
+			~HandleSouthEast() override;
+			HandleSouthEast* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleSouth Class
-	///
-	class HandleSouth : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleSouth( ModelObject* owner );
-		~HandleSouth() override;
-		HandleSouth* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleSouth Class
+		///
+		class HandleSouth : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleSouth( ModelObject* owner );
+			~HandleSouth() override;
+			HandleSouth* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleSouthWest Class
-	///
-	class HandleSouthWest : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleSouthWest( ModelObject* owner );
-		~HandleSouthWest() override;
-		HandleSouthWest* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleSouthWest Class
+		///
+		class HandleSouthWest : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleSouthWest( ModelObject* owner );
+			~HandleSouthWest() override;
+			HandleSouthWest* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleWest Class
-	///
-	class HandleWest : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleWest( ModelObject* owner );
-		~HandleWest() override;
-		HandleWest* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleWest Class
+		///
+		class HandleWest : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleWest( ModelObject* owner );
+			~HandleWest() override;
+			HandleWest* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleNorthWest Class
-	///
-	class HandleNorthWest : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleNorthWest( ModelObject* owner );
-		~HandleNorthWest() override;
-		HandleNorthWest* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleNorthWest Class
+		///
+		class HandleNorthWest : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleNorthWest( ModelObject* owner );
+			~HandleNorthWest() override;
+			HandleNorthWest* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleP1 Class
-	///
-	class HandleP1 : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleP1( ModelObject* owner );
-		~HandleP1() override;
-		HandleP1* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleP1 Class
+		///
+		class HandleP1 : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleP1( ModelObject* owner );
+			~HandleP1() override;
+			HandleP1* clone( ModelObject* newOwner ) const override;
 
 
-	///
-	/// HandleP2 Class
-	///
-	class HandleP2 : public Handle
-	{
-		////////////////////////////
-		// Lifecycle Methods
-		////////////////////////////
-	public:
-		HandleP2( ModelObject* owner );
-		~HandleP2() override;
-
-		////////////////////////////
-		// Duplication
-		////////////////////////////
-		HandleP2* clone( ModelObject* newOwner ) const override;
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
 
 
-		////////////////////////////
-		// Drawing Methods
-		////////////////////////////
-	public:
-		void  draw( QPainter* painter, double scale ) const override;
-		QPainterPath path( double scale ) const override;
-	};
+		///
+		/// HandleP2 Class
+		///
+		class HandleP2 : public Handle
+		{
+			////////////////////////////
+			// Lifecycle Methods
+			////////////////////////////
+		public:
+			HandleP2( ModelObject* owner );
+			~HandleP2() override;
 
+			////////////////////////////
+			// Duplication
+			////////////////////////////
+			HandleP2* clone( ModelObject* newOwner ) const override;
+
+
+			////////////////////////////
+			// Drawing Methods
+			////////////////////////////
+		public:
+			void  draw( QPainter* painter, double scale ) const override;
+			QPainterPath path( double scale ) const override;
+		};
+
+	}
 }
 
 

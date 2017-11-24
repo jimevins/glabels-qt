@@ -21,192 +21,195 @@
 #include "Markup.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	const QPainterPath& Markup::path() const
+	namespace model
 	{
-		return mPath;
-	}
+
+		const QPainterPath& Markup::path() const
+		{
+			return mPath;
+		}
 
 	
-	MarkupMargin::MarkupMargin( const Frame*    frame,
-				    const Distance& size )
-		: mFrame(frame), mSize(size)
-	{
-		mPath = frame->marginPath( size );
-	}
+		MarkupMargin::MarkupMargin( const Frame*    frame,
+		                            const Distance& size )
+			: mFrame(frame), mSize(size)
+		{
+			mPath = frame->marginPath( size );
+		}
 	
 
-	Markup* MarkupMargin::dup() const
-	{
-		return new MarkupMargin( mFrame, mSize );
-	}
+		Markup* MarkupMargin::dup() const
+		{
+			return new MarkupMargin( mFrame, mSize );
+		}
 
 
-	Distance MarkupMargin::size() const
-	{
-		return mSize;
-	}
+		Distance MarkupMargin::size() const
+		{
+			return mSize;
+		}
 
 
-	MarkupLine::MarkupLine( const Distance& x1,
-				const Distance& y1,
-				const Distance& x2,
-				const Distance& y2 )
-		: mX1(x1), mY1(y1), mX2(x2), mY2(y2)
-	{
-		mPath.moveTo( x1.pt(), y1.pt() );
-		mPath.lineTo( x2.pt(), y2.pt() );
-	}
+		MarkupLine::MarkupLine( const Distance& x1,
+		                        const Distance& y1,
+		                        const Distance& x2,
+		                        const Distance& y2 )
+			: mX1(x1), mY1(y1), mX2(x2), mY2(y2)
+		{
+			mPath.moveTo( x1.pt(), y1.pt() );
+			mPath.lineTo( x2.pt(), y2.pt() );
+		}
 
 
-	Markup* MarkupLine::dup() const
-	{
-		return new MarkupLine( mX1, mY1, mX2, mY2 );
-	}
-
-	
-	Distance MarkupLine::x1() const
-	{
-		return mX1;
-	}
+		Markup* MarkupLine::dup() const
+		{
+			return new MarkupLine( mX1, mY1, mX2, mY2 );
+		}
 
 	
-	Distance MarkupLine::y1() const
-	{
-		return mY1;
-	}
+		Distance MarkupLine::x1() const
+		{
+			return mX1;
+		}
 
 	
-	Distance MarkupLine::x2() const
-	{
-		return mX2;
-	}
+		Distance MarkupLine::y1() const
+		{
+			return mY1;
+		}
 
 	
-	Distance MarkupLine::y2() const
-	{
-		return mY2;
-	}
-
-
-	MarkupRect::MarkupRect( const Distance& x1,
-				const Distance& y1,
-				const Distance& w,
-				const Distance& h,
-				const Distance& r )
-		: mX1(x1), mY1(y1), mW(w), mH(h), mR(r)
-	{
-		mPath.addRoundedRect( x1.pt(), y1.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
-	}
-
-
-	Markup* MarkupRect::dup() const
-	{
-		return new MarkupRect( mX1, mY1, mW, mH, mR );
-	}
-	
-
-	Distance MarkupRect::x1() const
-	{
-		return mX1;
-	}
+		Distance MarkupLine::x2() const
+		{
+			return mX2;
+		}
 
 	
-	Distance MarkupRect::y1() const
-	{
-		return mY1;
-	}
+		Distance MarkupLine::y2() const
+		{
+			return mY2;
+		}
+
+
+		MarkupRect::MarkupRect( const Distance& x1,
+		                        const Distance& y1,
+		                        const Distance& w,
+		                        const Distance& h,
+		                        const Distance& r )
+			: mX1(x1), mY1(y1), mW(w), mH(h), mR(r)
+		{
+			mPath.addRoundedRect( x1.pt(), y1.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
+		}
+
+
+		Markup* MarkupRect::dup() const
+		{
+			return new MarkupRect( mX1, mY1, mW, mH, mR );
+		}
+	
+
+		Distance MarkupRect::x1() const
+		{
+			return mX1;
+		}
 
 	
-	Distance MarkupRect::w() const
-	{
-		return mW;
-	}
+		Distance MarkupRect::y1() const
+		{
+			return mY1;
+		}
 
 	
-	Distance MarkupRect::h() const
-	{
-		return mH;
-	}
+		Distance MarkupRect::w() const
+		{
+			return mW;
+		}
 
 	
-	Distance MarkupRect::r() const
-	{
-		return mR;
-	}
+		Distance MarkupRect::h() const
+		{
+			return mH;
+		}
 
 	
-	MarkupEllipse::MarkupEllipse( const Distance& x1,
-				      const Distance& y1,
-				      const Distance& w,
-				      const Distance& h )
-		: mX1(x1), mY1(y1), mW(w), mH(h)
-	{
-		mPath.addEllipse( x1.pt(), y1.pt(), w.pt(), h.pt() );
-	}
-
-
-	Markup* MarkupEllipse::dup() const
-	{
-		return new MarkupEllipse( mX1, mY1, mW, mH );
-	}
+		Distance MarkupRect::r() const
+		{
+			return mR;
+		}
 
 	
-	Distance MarkupEllipse::x1() const
-	{
-		return mX1;
-	}
+		MarkupEllipse::MarkupEllipse( const Distance& x1,
+		                              const Distance& y1,
+		                              const Distance& w,
+		                              const Distance& h )
+			: mX1(x1), mY1(y1), mW(w), mH(h)
+		{
+			mPath.addEllipse( x1.pt(), y1.pt(), w.pt(), h.pt() );
+		}
+
+
+		Markup* MarkupEllipse::dup() const
+		{
+			return new MarkupEllipse( mX1, mY1, mW, mH );
+		}
 
 	
-	Distance MarkupEllipse::y1() const
-	{
-		return mY1;
-	}
+		Distance MarkupEllipse::x1() const
+		{
+			return mX1;
+		}
 
 	
-	Distance MarkupEllipse::w() const
-	{
-		return mW;
-	}
+		Distance MarkupEllipse::y1() const
+		{
+			return mY1;
+		}
 
 	
-	Distance MarkupEllipse::h() const
-	{
-		return mH;
-	}
-
-
-	MarkupCircle::MarkupCircle( const Distance& x0,
-				    const Distance& y0,
-				    const Distance& r )
-		: mX0(x0), mY0(y0), mR(r)
-	{
-		mPath.addEllipse( (x0-r).pt(), (y0-r).pt(), 2*r.pt(), 2*r.pt() );
-	}
-
-	Markup* MarkupCircle::dup() const
-	{
-		return new MarkupCircle( mX0, mY0, mR );
-	}
-
-
-	Distance MarkupCircle::x0() const
-	{
-		return mX0;
-	}
+		Distance MarkupEllipse::w() const
+		{
+			return mW;
+		}
 
 	
-	Distance MarkupCircle::y0() const
-	{
-		return mY0;
-	}
+		Distance MarkupEllipse::h() const
+		{
+			return mH;
+		}
+
+
+		MarkupCircle::MarkupCircle( const Distance& x0,
+		                            const Distance& y0,
+		                            const Distance& r )
+			: mX0(x0), mY0(y0), mR(r)
+		{
+			mPath.addEllipse( (x0-r).pt(), (y0-r).pt(), 2*r.pt(), 2*r.pt() );
+		}
+
+		Markup* MarkupCircle::dup() const
+		{
+			return new MarkupCircle( mX0, mY0, mR );
+		}
+
+
+		Distance MarkupCircle::x0() const
+		{
+			return mX0;
+		}
 
 	
-	Distance MarkupCircle::r() const
-	{
-		return mR;
-	}
+		Distance MarkupCircle::y0() const
+		{
+			return mY0;
+		}
 
-} // namespace glabels::model
+	
+		Distance MarkupCircle::r() const
+		{
+			return mR;
+		}
+
+	}
+}

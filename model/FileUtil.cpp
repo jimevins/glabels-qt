@@ -25,63 +25,66 @@
 #include <QApplication>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	QString FileUtil::addExtension( const QString& rawFilename, const QString& extension )
+	namespace model
 	{
-		if ( rawFilename.endsWith( extension ) )
+
+		QString FileUtil::addExtension( const QString& rawFilename, const QString& extension )
 		{
-			return rawFilename;
+			if ( rawFilename.endsWith( extension ) )
+			{
+				return rawFilename;
+			}
+
+			return rawFilename + extension;
 		}
 
-		return rawFilename + extension;
+
+		QDir FileUtil::systemTemplatesDir()
+		{
+			QDir dir;
+
+			// First, try finding templates directory relative to application path
+			dir.cd( QApplication::applicationDirPath() );
+			if ( (dir.dirName() == "bin") &&
+			     dir.cdUp() && dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "templates" ) )
+			{
+				return dir;
+			}
+
+			// Next, try running out of the source directory.
+			if ( dir.cd( Config::PROJECT_SOURCE_DIR ) && dir.cd( "templates" ) )
+			{
+				return dir;
+			}
+
+			qFatal( "Cannot locate system template directory!" );
+			return QDir("/");
+		}
+
+
+		QDir FileUtil::translationsDir()
+		{
+			QDir dir;
+
+			// First, try finding translations directory relative to application path
+			dir.cd( QApplication::applicationDirPath() );
+			if ( (dir.dirName() == "bin") &&
+			     dir.cdUp() && dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "translations" ) )
+			{
+				return dir;
+			}
+
+			// Next, try running out of the source directory.
+			if ( dir.cd( Config::PROJECT_BUILD_DIR ) && dir.cd( "translations" ) )
+			{
+				return dir;
+			}
+
+			qFatal( "Cannot locate system template directory!" );
+			return QDir("/");
+		}
+
 	}
-
-
-	QDir FileUtil::systemTemplatesDir()
-	{
-		QDir dir;
-
-		// First, try finding templates directory relative to application path
-		dir.cd( QApplication::applicationDirPath() );
-		if ( (dir.dirName() == "bin") &&
-		     dir.cdUp() && dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "templates" ) )
-		{
-			return dir;
-		}
-
-		// Next, try running out of the source directory.
-		if ( dir.cd( Config::PROJECT_SOURCE_DIR ) && dir.cd( "templates" ) )
-		{
-			return dir;
-		}
-
-		qFatal( "Cannot locate system template directory!" );
-		return QDir("/");
-	}
-
-
-	QDir FileUtil::translationsDir()
-	{
-		QDir dir;
-
-		// First, try finding translations directory relative to application path
-		dir.cd( QApplication::applicationDirPath() );
-		if ( (dir.dirName() == "bin") &&
-		     dir.cdUp() && dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "translations" ) )
-		{
-			return dir;
-		}
-
-		// Next, try running out of the source directory.
-		if ( dir.cd( Config::PROJECT_BUILD_DIR ) && dir.cd( "translations" ) )
-		{
-			return dir;
-		}
-
-		qFatal( "Cannot locate system template directory!" );
-		return QDir("/");
-	}
-
-} // namespace glabels::model
+}

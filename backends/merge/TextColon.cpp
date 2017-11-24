@@ -21,61 +21,64 @@
 #include "TextColon.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	static const QString ID = "Text/Colon";
-
-
-	///
-	/// Constructor
-	///
-	TextColon::TextColon() : Text(':',false)
+	namespace merge
 	{
-		mId = ID;
-	}
+
+		static const QString ID = "Text/Colon";
 
 
-	///
-	/// Constructor
-	///
-	TextColon::TextColon( const TextColon* merge ) : Text( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextColon::TextColon() : Text(':',false)
+		{
+			mId = ID;
+		}
 
 
-	///
-	/// Destructor
-	///
-	TextColon::~TextColon()
-	{
-	}
+		///
+		/// Constructor
+		///
+		TextColon::TextColon( const TextColon* merge ) : Text( merge )
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	TextColon* TextColon::clone() const
-	{
-		return new TextColon( this );
-	}
+		///
+		/// Destructor
+		///
+		TextColon::~TextColon()
+		{
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString TextColon::id()
-	{
-		return ID;
-	}
+		///
+		/// Clone
+		///
+		TextColon* TextColon::clone() const
+		{
+			return new TextColon( this );
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* TextColon::create()
-	{
-		return new TextColon();
-	}
+		///
+		/// Get ID
+		///
+		QString TextColon::id()
+		{
+			return ID;
+		}
 
-} // namespace glabels::merge
+
+		///
+		/// Create
+		///
+		Merge* TextColon::create()
+		{
+			return new TextColon();
+		}
+
+	} // namespace merge
+} // namespace glabels

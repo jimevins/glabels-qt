@@ -27,41 +27,44 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Paper
+	namespace model
 	{
-	public:
-		Paper( const QString&  id,
-		       const QString&  name,
-		       const Distance& width,
-		       const Distance& height,
-		       const QString&  pwgSize );
 
-		QString id() const;
-		QString name() const;
+		class Paper
+		{
+		public:
+			Paper( const QString&  id,
+			       const QString&  name,
+			       const Distance& width,
+			       const Distance& height,
+			       const QString&  pwgSize );
 
-		/* Width */
-		Distance width() const;
+			QString id() const;
+			QString name() const;
 
-		/* Height */
-		Distance height() const;
+			/* Width */
+			Distance width() const;
 
-		/* PWG 5101.1-2002 size name */
-		QString pwgSize() const;
+			/* Height */
+			Distance height() const;
 
-		bool isSizeIso() const;
-		bool isSizeUs() const;
+			/* PWG 5101.1-2002 size name */
+			QString pwgSize() const;
 
-	private:
-		QString  mId;
-		QString  mName;
-		Distance mWidth;
-		Distance mHeight;
-		QString  mPwgSize;
-	};
+			bool isSizeIso() const;
+			bool isSizeUs() const;
 
+		private:
+			QString  mId;
+			QString  mName;
+			Distance mWidth;
+			Distance mHeight;
+			QString  mPwgSize;
+		};
+
+	}
 }
 
 

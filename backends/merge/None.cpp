@@ -21,102 +21,105 @@
 #include "None.h"
 
 
-namespace glabels::merge
+namespace glabels
 {
-
-	///
-	/// Constructor
-	///
-	None::None() : Merge()
+	namespace merge
 	{
-		mId = "None";
-	}
+
+		///
+		/// Constructor
+		///
+		None::None() : Merge()
+		{
+			mId = "None";
+		}
 
 
-	///
-	/// Constructor
-	///
-	None::None( const None* merge ) : Merge( merge )
-	{
-	}
+		///
+		/// Constructor
+		///
+		None::None( const None* merge ) : Merge( merge )
+		{
+		}
 
 
-	///
-	/// Destructor
-	///
-	None::~None()
-	{
-	}
+		///
+		/// Destructor
+		///
+		None::~None()
+		{
+		}
 
 
-	///
-	/// Clone
-	///
-	None* None::clone() const
-	{
-		return new None( this );
-	}
+		///
+		/// Clone
+		///
+		None* None::clone() const
+		{
+			return new None( this );
+		}
 
 
-	///
-	/// Get ID
-	///
-	QString None::id()
-	{
-		return "None";
-	}
+		///
+		/// Get ID
+		///
+		QString None::id()
+		{
+			return "None";
+		}
 
 
-	///
-	/// Create
-	///
-	Merge* None::create()
-	{
-		return new None();
-	}
+		///
+		/// Create
+		///
+		Merge* None::create()
+		{
+			return new None();
+		}
 
 
-	///
-	/// Get key list
-	///
-	QStringList None::keys() const
-	{
-		QStringList emptyList;
-		return emptyList;
-	}
+		///
+		/// Get key list
+		///
+		QStringList None::keys() const
+		{
+			QStringList emptyList;
+			return emptyList;
+		}
 
 
-	///
-	/// Get primary key
-	///
-	QString None::primaryKey() const
-	{
-		return "";
-	}
+		///
+		/// Get primary key
+		///
+		QString None::primaryKey() const
+		{
+			return "";
+		}
 
 
-	///
-	/// Open source
-	///
-	void None::open()
-	{
-	}
+		///
+		/// Open source
+		///
+		void None::open()
+		{
+		}
 
 
-	///
-	/// Close source
-	///
-	void None::close()
-	{
-	}
+		///
+		/// Close source
+		///
+		void None::close()
+		{
+		}
 
 
-	///
-	/// Read next record
-	///
-	Record* None::readNextRecord()
-	{
-		return nullptr;
-	}
+		///
+		/// Read next record
+		///
+		Record* None::readNextRecord()
+		{
+			return nullptr;
+		}
 
-} // namespace glabels::merge
+	} // namespace merge
+} // namespace glabels

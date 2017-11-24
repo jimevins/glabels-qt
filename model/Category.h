@@ -25,25 +25,28 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Category
+	namespace model
 	{
 
-	public:
-		Category( const QString& id, const QString& name );
+		class Category
+		{
 
-		QString id() const;
-		QString name() const;
+		public:
+			Category( const QString& id, const QString& name );
+
+			QString id() const;
+			QString name() const;
 
 
-	private:
-		QString mId;
-		QString mName;
+		private:
+			QString mId;
+			QString mName;
 
-	};
+		};
 
+	}
 }
 
 

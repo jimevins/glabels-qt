@@ -22,15 +22,18 @@
 #define model_Config_h
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	namespace Config
+	namespace model
 	{
-		const QString PROJECT_SOURCE_DIR    = "@glabels-qt_SOURCE_DIR@";
-		const QString PROJECT_BUILD_DIR     = "@glabels-qt_BINARY_DIR@";
-	}
 
+		namespace Config
+		{
+			const QString PROJECT_SOURCE_DIR    = "@glabels-qt_SOURCE_DIR@";
+			const QString PROJECT_BUILD_DIR     = "@glabels-qt_BINARY_DIR@";
+		}
+
+	}
 }
 
 

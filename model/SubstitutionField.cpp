@@ -23,269 +23,271 @@
 #include <QTextStream>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	SubstitutionField::SubstitutionField()
-		: mNewLine(false), mFormatType(0)
+	namespace model
 	{
-	}
 
-
-	SubstitutionField::SubstitutionField( const QString& string )
-		: mNewLine(false), mFormatType(0)
-	{
-		QStringRef s(&string);
-		parse( s, *this );
-	}
-
-
-	QString SubstitutionField::evaluate( const merge::Record* record ) const
-	{
-		QString value = mDefaultValue;
-
-		if ( record && record->contains(mFieldName) && !record->value(mFieldName).isEmpty() )
+		SubstitutionField::SubstitutionField()
+			: mNewLine(false), mFormatType(0)
 		{
-			value = record->value(mFieldName);
 		}
 
-		if ( !mFormatType.isNull() )
+
+		SubstitutionField::SubstitutionField( const QString& string )
+			: mNewLine(false), mFormatType(0)
 		{
-			value = formatValue( value );
+			QStringRef s(&string);
+			parse( s, *this );
 		}
 
-		if ( record && record->contains(mFieldName) && !record->value(mFieldName).isEmpty() && mNewLine )
+
+		QString SubstitutionField::evaluate( const merge::Record* record ) const
 		{
-			value = "\n" + value;
-		}
+			QString value = mDefaultValue;
 
-		return value;
-	}
-
-
-	QString SubstitutionField::fieldName() const
-	{
-		return mFieldName;
-	}
-
-
-	QString SubstitutionField::defaultValue() const
-	{
-		return mDefaultValue;
-	}
-
-
-	QString SubstitutionField::format() const
-	{
-		return mFormat;
-	}
-
-
-	QChar SubstitutionField::formatType() const
-	{
-		return mFormatType;
-	}
-
-
-	bool SubstitutionField::newLine() const
-	{
-		return mNewLine;
-	}
-
-
-	bool SubstitutionField::parse( QStringRef& s, SubstitutionField& field )
-	{
-		QStringRef sTmp = s;
-		
-		if ( sTmp.startsWith( "${" ) )
-		{
-			sTmp = sTmp.mid(2);
-
-			if ( parseFieldName( sTmp, field ) )
+			if ( record && record->contains(mFieldName) && !record->value(mFieldName).isEmpty() )
 			{
-				while ( sTmp.size() && sTmp[0] == ':' )
+				value = record->value(mFieldName);
+			}
+
+			if ( !mFormatType.isNull() )
+			{
+				value = formatValue( value );
+			}
+
+			if ( record && record->contains(mFieldName) && !record->value(mFieldName).isEmpty() && mNewLine )
+			{
+				value = "\n" + value;
+			}
+
+			return value;
+		}
+
+
+		QString SubstitutionField::fieldName() const
+		{
+			return mFieldName;
+		}
+
+
+		QString SubstitutionField::defaultValue() const
+		{
+			return mDefaultValue;
+		}
+
+
+		QString SubstitutionField::format() const
+		{
+			return mFormat;
+		}
+
+
+		QChar SubstitutionField::formatType() const
+		{
+			return mFormatType;
+		}
+
+
+		bool SubstitutionField::newLine() const
+		{
+			return mNewLine;
+		}
+
+
+		bool SubstitutionField::parse( QStringRef& s, SubstitutionField& field )
+		{
+			QStringRef sTmp = s;
+		
+			if ( sTmp.startsWith( "${" ) )
+			{
+				sTmp = sTmp.mid(2);
+
+				if ( parseFieldName( sTmp, field ) )
 				{
-					sTmp = sTmp.mid(1);
-					if ( !parseModifier( sTmp, field ) )
+					while ( sTmp.size() && sTmp[0] == ':' )
 					{
-						return false;
+						sTmp = sTmp.mid(1);
+						if ( !parseModifier( sTmp, field ) )
+						{
+							return false;
+						}
+					}
+
+					if ( sTmp.size() && sTmp[0] == '}' )
+					{
+						sTmp = sTmp.mid(1);
+
+						// Success.  Update s.
+						s = sTmp;
+						return true;
 					}
 				}
-
-				if ( sTmp.size() && sTmp[0] == '}' )
-				{
-					sTmp = sTmp.mid(1);
-
-					// Success.  Update s.
-					s = sTmp;
-					return true;
-				}
 			}
+
+			return false;
 		}
 
-		return false;
-	}
 
-
-	bool SubstitutionField::parseFieldName( QStringRef& s, SubstitutionField& field )
-	{
-		bool success = false;
+		bool SubstitutionField::parseFieldName( QStringRef& s, SubstitutionField& field )
+		{
+			bool success = false;
 		
-		while ( s.size() && (s[0].isDigit() || s[0].isLetter() || s[0] == '_' || s[0] == '-') )
-		{
-			field.mFieldName.append( s[0] );
-			s = s.mid(1);
-
-			success = true;
-		}
-
-		return success;
-	}
-
-	
-	bool SubstitutionField::parseModifier( QStringRef& s, SubstitutionField& field )
-	{
-		bool success = false;
-		
-		if ( s.size() && s[0] == '%' )
-		{
-			s = s.mid(1);
-			success = parseFormatModifier( s, field );
-		}
-		else if ( s.size() && s[0] == '=' )
-		{
-			s = s.mid(1);
-			success = parseDefaultValueModifier( s, field );
-		}
-		else if ( s.size() && s[0] == 'n' )
-		{
-			s = s.mid(1);
-			success = parseNewLineModifier( s, field );
-		}
-
-		return success;
-	}
-
-	
-	bool SubstitutionField::parseDefaultValueModifier( QStringRef& s, SubstitutionField& field )
-	{
-		field.mDefaultValue.clear();
-
-		while ( s.size() && !QString( ":}" ).contains( s[0] ) )
-		{
-			if ( s[0] == '\\' )
+			while ( s.size() && (s[0].isDigit() || s[0].isLetter() || s[0] == '_' || s[0] == '-') )
 			{
-				s = s.mid(1); // Skip escape
-				if ( s.size() )
+				field.mFieldName.append( s[0] );
+				s = s.mid(1);
+
+				success = true;
+			}
+
+			return success;
+		}
+
+	
+		bool SubstitutionField::parseModifier( QStringRef& s, SubstitutionField& field )
+		{
+			bool success = false;
+		
+			if ( s.size() && s[0] == '%' )
+			{
+				s = s.mid(1);
+				success = parseFormatModifier( s, field );
+			}
+			else if ( s.size() && s[0] == '=' )
+			{
+				s = s.mid(1);
+				success = parseDefaultValueModifier( s, field );
+			}
+			else if ( s.size() && s[0] == 'n' )
+			{
+				s = s.mid(1);
+				success = parseNewLineModifier( s, field );
+			}
+
+			return success;
+		}
+
+	
+		bool SubstitutionField::parseDefaultValueModifier( QStringRef& s, SubstitutionField& field )
+		{
+			field.mDefaultValue.clear();
+
+			while ( s.size() && !QString( ":}" ).contains( s[0] ) )
+			{
+				if ( s[0] == '\\' )
+				{
+					s = s.mid(1); // Skip escape
+					if ( s.size() )
+					{
+						field.mDefaultValue.append( s[0] );
+						s = s.mid(1);
+					}
+				}
+				else
 				{
 					field.mDefaultValue.append( s[0] );
 					s = s.mid(1);
 				}
 			}
-			else
+
+			return true;
+		}
+
+	
+		bool SubstitutionField::parseFormatModifier( QStringRef& s, SubstitutionField& field )
+		{
+			bool success = false;
+		
+			field.mFormat = "%";
+
+			parseFormatFlags( s, field );
+			parseFormatWidth( s, field );
+		
+			if ( s.size() && s[0] == '.' )
 			{
-				field.mDefaultValue.append( s[0] );
+				field.mFormat += ".";
 				s = s.mid(1);
+				parseFormatPrecision( s, field );
 			}
+
+			parseFormatType( s, field );
+
+			return true; // Don't let invalid formats kill entire SubstitutionField
 		}
 
-		return true;
-	}
-
 	
-	bool SubstitutionField::parseFormatModifier( QStringRef& s, SubstitutionField& field )
-	{
-		bool success = false;
-		
-		field.mFormat = "%";
-
-		parseFormatFlags( s, field );
-		parseFormatWidth( s, field );
-		
-		if ( s.size() && s[0] == '.' )
+		bool SubstitutionField::parseFormatFlags( QStringRef& s, SubstitutionField& field )
 		{
-			field.mFormat += ".";
-			s = s.mid(1);
-			parseFormatPrecision( s, field );
-		}
-
-		parseFormatType( s, field );
-
-		return true; // Don't let invalid formats kill entire SubstitutionField
-	}
-
-	
-	bool SubstitutionField::parseFormatFlags( QStringRef& s, SubstitutionField& field )
-	{
-		while ( s.size() && QString( "-+ 0" ).contains( s[0] ) )
-		{
-			field.mFormat += s[0];
-			s = s.mid(1);
-		}
-
-		return true;
-	}
-
-	
-	bool SubstitutionField::parseFormatWidth( QStringRef& s, SubstitutionField& field )
-	{
-		return parseNaturalInteger( s, field );
-	}
-
-
-	bool SubstitutionField::parseFormatPrecision( QStringRef& s, SubstitutionField& field )
-	{
-		return parseNaturalInteger( s, field );
-	}
-
-	
-	bool SubstitutionField::parseFormatType( QStringRef& s, SubstitutionField& field )
-	{
-		bool success = false;
-
-		if ( s.size() && QString( "diufFeEgGxXos" ).contains( s[0] ) )
-		{
-			field.mFormatType = s[0];
-			field.mFormat += s[0];
-			s = s.mid(1);
-			success = true;
-		}
-
-		return success;
-	}
-
-	
-	bool SubstitutionField::parseNaturalInteger( QStringRef& s, SubstitutionField& field )
-	{
-		bool success = false;
-
-		if ( s.size() && s[0] >= '1' && s[0] <= '9' )
-		{
-			field.mFormat += s[0];
-			s = s.mid(1);
-
-			while ( s.size() && s[0].isDigit() )
+			while ( s.size() && QString( "-+ 0" ).contains( s[0] ) )
 			{
 				field.mFormat += s[0];
 				s = s.mid(1);
 			}
 
-			success = true;
+			return true;
 		}
+
+	
+		bool SubstitutionField::parseFormatWidth( QStringRef& s, SubstitutionField& field )
+		{
+			return parseNaturalInteger( s, field );
+		}
+
+
+		bool SubstitutionField::parseFormatPrecision( QStringRef& s, SubstitutionField& field )
+		{
+			return parseNaturalInteger( s, field );
+		}
+
+	
+		bool SubstitutionField::parseFormatType( QStringRef& s, SubstitutionField& field )
+		{
+			bool success = false;
+
+			if ( s.size() && QString( "diufFeEgGxXos" ).contains( s[0] ) )
+			{
+				field.mFormatType = s[0];
+				field.mFormat += s[0];
+				s = s.mid(1);
+				success = true;
+			}
+
+			return success;
+		}
+
+	
+		bool SubstitutionField::parseNaturalInteger( QStringRef& s, SubstitutionField& field )
+		{
+			bool success = false;
+
+			if ( s.size() && s[0] >= '1' && s[0] <= '9' )
+			{
+				field.mFormat += s[0];
+				s = s.mid(1);
+
+				while ( s.size() && s[0].isDigit() )
+				{
+					field.mFormat += s[0];
+					s = s.mid(1);
+				}
+
+				success = true;
+			}
 		
-		return success;
-	}
+			return success;
+		}
 	
 
-	bool SubstitutionField::parseNewLineModifier( QStringRef& s, SubstitutionField& field )
-	{
-		field.mNewLine = true;
-		return true;
-	}
+		bool SubstitutionField::parseNewLineModifier( QStringRef& s, SubstitutionField& field )
+		{
+			field.mNewLine = true;
+			return true;
+		}
 
 	
-	QString SubstitutionField::formatValue( const QString& value ) const
-	{
+		QString SubstitutionField::formatValue( const QString& value ) const
+		{
 			switch (mFormatType.unicode())
 			{
 				
@@ -325,7 +327,8 @@ namespace glabels::model
 				break;
 
 			}
-	}
+		}
 	
 
-} // namespace glabels::model
+	}
+}

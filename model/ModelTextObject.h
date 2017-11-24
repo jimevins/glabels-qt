@@ -28,181 +28,184 @@
 #include <QTextLayout>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Model Line Object
-	///
-	class ModelTextObject : public ModelObject
+	namespace model
 	{
-		Q_OBJECT
 
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		ModelTextObject();
+		///
+		/// Label Model Line Object
+		///
+		class ModelTextObject : public ModelObject
+		{
+			Q_OBJECT
+
+			///////////////////////////////////////////////////////////////
+			// Lifecycle Methods
+			///////////////////////////////////////////////////////////////
+		public:
+			ModelTextObject();
 		
-		ModelTextObject( const Distance&  x0,
-		                 const Distance&  y0,
-		                 const Distance&  w,
-		                 const Distance&  h,
-		                 const QString&   text,
-		                 const QString&   fontFamily,
-		                 double           fontSize,
-		                 QFont::Weight    fontWeight,
-		                 bool             fontItalicFlag,
-		                 bool             fontUnderlineFlag,
-		                 ColorNode        textColorNode,
-		                 Qt::Alignment    textHAlign,
-		                 Qt::Alignment    textVAlign,
-		                 double           textLineSpacing,
-		                 const QMatrix&   matrix = QMatrix(),
-		                 bool             shadowState = false,
-		                 const Distance&  shadowX = 0,
-		                 const Distance&  shadowY = 0,
-		                 double           shadowOpacity = 1.0,
-		                 const ColorNode& shadowColorNode = ColorNode() );
+			ModelTextObject( const Distance&  x0,
+			                 const Distance&  y0,
+			                 const Distance&  w,
+			                 const Distance&  h,
+			                 const QString&   text,
+			                 const QString&   fontFamily,
+			                 double           fontSize,
+			                 QFont::Weight    fontWeight,
+			                 bool             fontItalicFlag,
+			                 bool             fontUnderlineFlag,
+			                 ColorNode        textColorNode,
+			                 Qt::Alignment    textHAlign,
+			                 Qt::Alignment    textVAlign,
+			                 double           textLineSpacing,
+			                 const QMatrix&   matrix = QMatrix(),
+			                 bool             shadowState = false,
+			                 const Distance&  shadowX = 0,
+			                 const Distance&  shadowY = 0,
+			                 double           shadowOpacity = 1.0,
+			                 const ColorNode& shadowColorNode = ColorNode() );
 
-		ModelTextObject( const ModelTextObject* object );
+			ModelTextObject( const ModelTextObject* object );
 		
-		~ModelTextObject() override;
+			~ModelTextObject() override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Object duplication
-		///////////////////////////////////////////////////////////////
-		ModelTextObject* clone() const override;
+			///////////////////////////////////////////////////////////////
+			// Object duplication
+			///////////////////////////////////////////////////////////////
+			ModelTextObject* clone() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Property Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		//
-		// Text Property: text
-		//
-		QString text() const override;
-		void setText( const QString &value ) override;
+			///////////////////////////////////////////////////////////////
+			// Property Implementations
+			///////////////////////////////////////////////////////////////
+		public:
+			//
+			// Text Property: text
+			//
+			QString text() const override;
+			void setText( const QString &value ) override;
 
 
-		//
-		// Text Property: fontFamily
-		//
-		QString fontFamily() const override;
-		void setFontFamily( const QString &value ) override;
+			//
+			// Text Property: fontFamily
+			//
+			QString fontFamily() const override;
+			void setFontFamily( const QString &value ) override;
 
 
-		//
-		// Text Property: fontSize
-		//
-		double fontSize() const override;
-		void setFontSize( double value ) override;
+			//
+			// Text Property: fontSize
+			//
+			double fontSize() const override;
+			void setFontSize( double value ) override;
 
 
-		//
-		// Text Property: fontWeight
-		//
-		QFont::Weight fontWeight() const override;
-		void setFontWeight( QFont::Weight value ) override;
+			//
+			// Text Property: fontWeight
+			//
+			QFont::Weight fontWeight() const override;
+			void setFontWeight( QFont::Weight value ) override;
 
 
-		//
-		// Text Property: fontItalicFlag
-		//
-		bool fontItalicFlag() const override;
-		void setFontItalicFlag( bool value ) override;
+			//
+			// Text Property: fontItalicFlag
+			//
+			bool fontItalicFlag() const override;
+			void setFontItalicFlag( bool value ) override;
 
 
-		//
-		// Text Property: fontUnderlineFlag
-		//
-		bool fontUnderlineFlag() const override;
-		void setFontUnderlineFlag( bool value ) override;
+			//
+			// Text Property: fontUnderlineFlag
+			//
+			bool fontUnderlineFlag() const override;
+			void setFontUnderlineFlag( bool value ) override;
 
 
-		//
-		// Text Property: textColorNode
-		//
-		ColorNode textColorNode() const override;
-		void setTextColorNode( const ColorNode &value ) override;
+			//
+			// Text Property: textColorNode
+			//
+			ColorNode textColorNode() const override;
+			void setTextColorNode( const ColorNode &value ) override;
 		
 
-		//
-		// Text Property: textHAlign
-		//
-		Qt::Alignment textHAlign() const override;
-		void setTextHAlign( Qt::Alignment value ) override;
+			//
+			// Text Property: textHAlign
+			//
+			Qt::Alignment textHAlign() const override;
+			void setTextHAlign( Qt::Alignment value ) override;
 
 
-		//
-		// Text Property: textVAlign
-		//
-		Qt::Alignment textVAlign() const override;
-		void setTextVAlign( Qt::Alignment value ) override;
+			//
+			// Text Property: textVAlign
+			//
+			Qt::Alignment textVAlign() const override;
+			void setTextVAlign( Qt::Alignment value ) override;
 
 
-		//
-		// Text Property: textLineSpacing
-		//
-		double textLineSpacing() const override;
-		void setTextLineSpacing( double value ) override;
+			//
+			// Text Property: textLineSpacing
+			//
+			double textLineSpacing() const override;
+			void setTextLineSpacing( double value ) override;
 
 
-		//
-		// Property: naturalSize
-		//
-		Size naturalSize() const override;
+			//
+			// Property: naturalSize
+			//
+			Size naturalSize() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Capability Implementations
-		///////////////////////////////////////////////////////////////
-	public:
-		virtual bool canText();
+			///////////////////////////////////////////////////////////////
+			// Capability Implementations
+			///////////////////////////////////////////////////////////////
+		public:
+			virtual bool canText();
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		QPainterPath hoverPath( double scale ) const override;
+			///////////////////////////////////////////////////////////////
+			// Drawing operations
+			///////////////////////////////////////////////////////////////
+		protected:
+			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			QPainterPath hoverPath( double scale ) const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Private methods
-		///////////////////////////////////////////////////////////////
-	private:
-		void sizeUpdated() override;
-		void update();
-		void drawTextInEditor( QPainter* painter, const QColor& color ) const;
-		void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;
-		QString expandText( QString text, merge::Record* record ) const;
+			///////////////////////////////////////////////////////////////
+			// Private methods
+			///////////////////////////////////////////////////////////////
+		private:
+			void sizeUpdated() override;
+			void update();
+			void drawTextInEditor( QPainter* painter, const QColor& color ) const;
+			void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;
+			QString expandText( QString text, merge::Record* record ) const;
 	
 
-		///////////////////////////////////////////////////////////////
-		// Private Members
-		///////////////////////////////////////////////////////////////
-	private:
-		RawText              mText;
-		QString              mFontFamily;
-		double               mFontSize;
-		QFont::Weight        mFontWeight;
-		bool                 mFontItalicFlag;
-		bool                 mFontUnderlineFlag;
-		ColorNode            mTextColorNode;
-		Qt::Alignment        mTextHAlign;
-		Qt::Alignment        mTextVAlign;
-		double               mTextLineSpacing;
+			///////////////////////////////////////////////////////////////
+			// Private Members
+			///////////////////////////////////////////////////////////////
+		private:
+			RawText              mText;
+			QString              mFontFamily;
+			double               mFontSize;
+			QFont::Weight        mFontWeight;
+			bool                 mFontItalicFlag;
+			bool                 mFontUnderlineFlag;
+			ColorNode            mTextColorNode;
+			Qt::Alignment        mTextHAlign;
+			Qt::Alignment        mTextVAlign;
+			double               mTextLineSpacing;
 
-		QList<QTextLayout*>  mEditorLayouts;
-		QPainterPath         mHoverPath;
+			QList<QTextLayout*>  mEditorLayouts;
+			QPainterPath         mHoverPath;
 
-	};
+		};
 
+	}
 }
 
 

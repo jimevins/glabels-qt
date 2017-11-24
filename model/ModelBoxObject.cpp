@@ -24,171 +24,174 @@
 #include <QPen>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	//
-	// Private
-	//
-	namespace
+	namespace model
 	{
-		const double slopPixels = 2;
-	}
 
-
-	///
-	/// Constructor
-	///
-	ModelBoxObject::ModelBoxObject()
-	{
-		// empty
-	}
-
-
-	///
-	/// Constructor
-	///
-	ModelBoxObject::ModelBoxObject( const Distance&  x0,
-	                                const Distance&  y0,
-	                                const Distance&  w,
-	                                const Distance&  h,
-	                                const Distance&  lineWidth,
-	                                const ColorNode& lineColorNode,
-	                                const ColorNode& fillColorNode,
-	                                const QMatrix&   matrix,
-	                                bool             shadowState,
-	                                const Distance&  shadowX,
-	                                const Distance&  shadowY,
-	                                double           shadowOpacity,
-	                                const ColorNode& shadowColorNode )
-	: ModelShapeObject( x0, y0, w, h,
-	                    lineWidth, lineColorNode, fillColorNode,
-	                    matrix,
-	                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
-	{
-		// empty
-	}
-
-
-	///
-	/// Copy constructor
-	///
-	ModelBoxObject::ModelBoxObject( const ModelBoxObject* object )
-		: ModelShapeObject( object )
-	{
-		// empty
-	}
-
-
-	///
-	/// Destructor
-	///
-	ModelBoxObject::~ModelBoxObject()
-	{
-		// empty
-	}
-
-
-	///
-	/// Clone
-	///
-	ModelBoxObject* ModelBoxObject::clone() const
-	{
-		return new ModelBoxObject( this );
-	}
-
-
-	///
-	/// Draw shadow of object
-	///
-	void ModelBoxObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
-	{
-		QColor lineColor = mLineColorNode.color( record );
-		QColor fillColor = mFillColorNode.color( record );
-		QColor shadowColor = mShadowColorNode.color( record );
-
-		shadowColor.setAlphaF( mShadowOpacity );
-
-		if ( fillColor.alpha() )
+		//
+		// Private
+		//
+		namespace
 		{
-			painter->setPen( Qt::NoPen );
-			painter->setBrush( shadowColor );
+			const double slopPixels = 2;
+		}
 
-			if ( lineColor.alpha() )
+
+		///
+		/// Constructor
+		///
+		ModelBoxObject::ModelBoxObject()
+		{
+			// empty
+		}
+
+
+		///
+		/// Constructor
+		///
+		ModelBoxObject::ModelBoxObject( const Distance&  x0,
+		                                const Distance&  y0,
+		                                const Distance&  w,
+		                                const Distance&  h,
+		                                const Distance&  lineWidth,
+		                                const ColorNode& lineColorNode,
+		                                const ColorNode& fillColorNode,
+		                                const QMatrix&   matrix,
+		                                bool             shadowState,
+		                                const Distance&  shadowX,
+		                                const Distance&  shadowY,
+		                                double           shadowOpacity,
+		                                const ColorNode& shadowColorNode )
+		: ModelShapeObject( x0, y0, w, h,
+		                    lineWidth, lineColorNode, fillColorNode,
+		                    matrix,
+		                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
+		{
+			// empty
+		}
+
+
+		///
+		/// Copy constructor
+		///
+		ModelBoxObject::ModelBoxObject( const ModelBoxObject* object )
+			: ModelShapeObject( object )
+		{
+			// empty
+		}
+
+
+		///
+		/// Destructor
+		///
+		ModelBoxObject::~ModelBoxObject()
+		{
+			// empty
+		}
+
+
+		///
+		/// Clone
+		///
+		ModelBoxObject* ModelBoxObject::clone() const
+		{
+			return new ModelBoxObject( this );
+		}
+
+
+		///
+		/// Draw shadow of object
+		///
+		void ModelBoxObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		{
+			QColor lineColor = mLineColorNode.color( record );
+			QColor fillColor = mFillColorNode.color( record );
+			QColor shadowColor = mShadowColorNode.color( record );
+
+			shadowColor.setAlphaF( mShadowOpacity );
+
+			if ( fillColor.alpha() )
 			{
-				/* Has FILL and OUTLINE: adjust size to account for line width. */
-				painter->drawRect( QRectF( -mLineWidth.pt()/2,
-				                           -mLineWidth.pt()/2,
-				                           (mW + mLineWidth).pt(),
-				                           (mH + mLineWidth).pt() ) );
+				painter->setPen( Qt::NoPen );
+				painter->setBrush( shadowColor );
+
+				if ( lineColor.alpha() )
+				{
+					/* Has FILL and OUTLINE: adjust size to account for line width. */
+					painter->drawRect( QRectF( -mLineWidth.pt()/2,
+					                           -mLineWidth.pt()/2,
+					                           (mW + mLineWidth).pt(),
+					                           (mH + mLineWidth).pt() ) );
+				}
+				else
+				{
+					/* Has FILL, but no OUTLINE. */
+					painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+				}
 			}
 			else
 			{
-				/* Has FILL, but no OUTLINE. */
-				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
-			}
-		}
-		else
-		{
-			if ( lineColor.alpha() )
-			{
-				/* Has only OUTLINE. */
-				painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
-				painter->setBrush( Qt::NoBrush );
+				if ( lineColor.alpha() )
+				{
+					/* Has only OUTLINE. */
+					painter->setPen( QPen( shadowColor, mLineWidth.pt() ) );
+					painter->setBrush( Qt::NoBrush );
 
-				painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+					painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+				}
 			}
-		}
 		
-	}
+		}
 
 	
-	///
-	/// Draw object itself
-	///
-	void ModelBoxObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
-	{
-		QColor lineColor = mLineColorNode.color( record );
-		QColor fillColor = mFillColorNode.color( record );
+		///
+		/// Draw object itself
+		///
+		void ModelBoxObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		{
+			QColor lineColor = mLineColorNode.color( record );
+			QColor fillColor = mFillColorNode.color( record );
 
-		painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
-		painter->setBrush( fillColor );
+			painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
+			painter->setBrush( fillColor );
 
-		painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			painter->drawRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+		}
+
+
+		///
+		/// Path to test for hover condition
+		///
+		QPainterPath ModelBoxObject::hoverPath( double scale ) const
+		{
+			double s = 1 / scale;
+
+			QPainterPath path;
+
+			if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
+			{
+				path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
+			}
+			else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
+			{
+				path.addRect( 0, 0, mW.pt(), mH.pt() );
+			}
+			else if ( mLineColorNode.color().alpha() )
+			{
+				path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
+				              (-mLineWidth.pt()/2) - s*slopPixels,
+				              (mW + mLineWidth).pt() + s*2*slopPixels,
+				              (mH + mLineWidth).pt() + s*2*slopPixels );
+				path.closeSubpath();
+				path.addRect( mLineWidth.pt()/2 + s*slopPixels,
+				              mLineWidth.pt()/2 + s*slopPixels,
+				              (mW - mLineWidth).pt() - s*2*slopPixels,
+				              (mH - mLineWidth).pt() - s*2*slopPixels );
+			}
+
+			return path;
+		}
+
 	}
-
-
-	///
-	/// Path to test for hover condition
-	///
-	QPainterPath ModelBoxObject::hoverPath( double scale ) const
-	{
-		double s = 1 / scale;
-
-		QPainterPath path;
-
-		if ( mFillColorNode.color().alpha() && mLineColorNode.color().alpha() )
-		{
-			path.addRect( -mLineWidth.pt()/2, -mLineWidth.pt()/2, (mW+mLineWidth).pt(), (mH+mLineWidth).pt() );
-		}
-		else if ( mFillColorNode.color().alpha() && !(mLineColorNode.color().alpha()) )
-		{
-			path.addRect( 0, 0, mW.pt(), mH.pt() );
-		}
-		else if ( mLineColorNode.color().alpha() )
-		{
-			path.addRect( (-mLineWidth.pt()/2) - s*slopPixels,
-			              (-mLineWidth.pt()/2) - s*slopPixels,
-			              (mW + mLineWidth).pt() + s*2*slopPixels,
-			              (mH + mLineWidth).pt() + s*2*slopPixels );
-			path.closeSubpath();
-			path.addRect( mLineWidth.pt()/2 + s*slopPixels,
-			              mLineWidth.pt()/2 + s*slopPixels,
-			              (mW - mLineWidth).pt() - s*2*slopPixels,
-			              (mH - mLineWidth).pt() - s*2*slopPixels );
-		}
-
-		return path;
-	}
-
-} // namespace glabels::model
+}

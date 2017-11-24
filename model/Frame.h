@@ -33,55 +33,58 @@
 #include <QVector>
 
 
-namespace glabels::model
+namespace glabels
 {
-	
-	// Forward references
-	class Markup;
-
-
-	class Frame
+	namespace model
 	{
-		Q_DECLARE_TR_FUNCTIONS(Frame)
-
-	protected:
-		Frame( const QString& id = "0" );
-		Frame( const Frame& other );
-
-	public:
-		virtual Frame* dup() const = 0;
-
-		QString id() const;
-		int nLabels() const;
-		QString layoutDescription() const;
-		const QList<Layout*>& layouts() const;
-		const QList<Markup*>& markups() const;
-
-		QVector<Point> getOrigins() const;
-
-		void addLayout( Layout* layout );
-		void addMarkup( Markup* markup );
-
-		virtual Distance w() const = 0;
-		virtual Distance h() const = 0;
-
-		virtual QString sizeDescription( const Units& units ) const = 0;
-		virtual bool isSimilarTo( Frame* other ) const = 0;
-
-		virtual const QPainterPath& path() const = 0;
-		virtual const QPainterPath& clipPath() const = 0;
-		virtual QPainterPath marginPath( const Distance& size ) const = 0;
+	
+		// Forward references
+		class Markup;
 
 
-	private:
-		QString mId;
-		int     mNLabels;
-		QString mLayoutDescription;
+		class Frame
+		{
+			Q_DECLARE_TR_FUNCTIONS(Frame)
 
-		QList<Layout*> mLayouts;
-		QList<Markup*> mMarkups;
-	};
+		protected:
+			Frame( const QString& id = "0" );
+			Frame( const Frame& other );
 
+		public:
+			virtual Frame* dup() const = 0;
+
+			QString id() const;
+			int nLabels() const;
+			QString layoutDescription() const;
+			const QList<Layout*>& layouts() const;
+			const QList<Markup*>& markups() const;
+
+			QVector<Point> getOrigins() const;
+
+			void addLayout( Layout* layout );
+			void addMarkup( Markup* markup );
+
+			virtual Distance w() const = 0;
+			virtual Distance h() const = 0;
+
+			virtual QString sizeDescription( const Units& units ) const = 0;
+			virtual bool isSimilarTo( Frame* other ) const = 0;
+
+			virtual const QPainterPath& path() const = 0;
+			virtual const QPainterPath& clipPath() const = 0;
+			virtual QPainterPath marginPath( const Distance& size ) const = 0;
+
+
+		private:
+			QString mId;
+			int     mNLabels;
+			QString mLayoutDescription;
+
+			QList<Layout*> mLayouts;
+			QList<Markup*> mMarkups;
+		};
+
+	}
 }
 
 

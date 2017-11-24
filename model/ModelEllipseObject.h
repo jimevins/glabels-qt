@@ -25,57 +25,60 @@
 #include "ModelShapeObject.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Model Ellipse Object
-	///
-	class ModelEllipseObject : public ModelShapeObject
+	namespace model
 	{
-		Q_OBJECT
 
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		ModelEllipseObject();
+		///
+		/// Label Model Ellipse Object
+		///
+		class ModelEllipseObject : public ModelShapeObject
+		{
+			Q_OBJECT
 
-		ModelEllipseObject( const Distance&  x0,
-		                    const Distance&  y0,
-		                    const Distance&  w,
-		                    const Distance&  h,
-		                    const Distance&  lineWidth,
-		                    const ColorNode& lineColorNode,
-		                    const ColorNode& fillColorNode,
-		                    const QMatrix&   matrix = QMatrix(),
-		                    bool             shadowState = false,
-		                    const Distance&  shadowX = 0,
-		                    const Distance&  shadowY = 0,
-		                    double           shadowOpacity = 1.0,
-		                    const ColorNode& shadowColorNode = ColorNode() );
+			///////////////////////////////////////////////////////////////
+			// Lifecycle Methods
+			///////////////////////////////////////////////////////////////
+		public:
+			ModelEllipseObject();
 
-		ModelEllipseObject( const ModelEllipseObject* object );
+			ModelEllipseObject( const Distance&  x0,
+			                    const Distance&  y0,
+			                    const Distance&  w,
+			                    const Distance&  h,
+			                    const Distance&  lineWidth,
+			                    const ColorNode& lineColorNode,
+			                    const ColorNode& fillColorNode,
+			                    const QMatrix&   matrix = QMatrix(),
+			                    bool             shadowState = false,
+			                    const Distance&  shadowX = 0,
+			                    const Distance&  shadowY = 0,
+			                    double           shadowOpacity = 1.0,
+			                    const ColorNode& shadowColorNode = ColorNode() );
 
-		~ModelEllipseObject() override;
+			ModelEllipseObject( const ModelEllipseObject* object );
+
+			~ModelEllipseObject() override;
 
 	
-		///////////////////////////////////////////////////////////////
-		// Object duplication
-		///////////////////////////////////////////////////////////////
-		ModelEllipseObject* clone() const override;
+			///////////////////////////////////////////////////////////////
+			// Object duplication
+			///////////////////////////////////////////////////////////////
+			ModelEllipseObject* clone() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		QPainterPath hoverPath( double scale ) const override;
+			///////////////////////////////////////////////////////////////
+			// Drawing operations
+			///////////////////////////////////////////////////////////////
+		protected:
+			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			QPainterPath hoverPath( double scale ) const override;
 
-	};
+		};
 
+	}
 }
 
 

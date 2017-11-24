@@ -30,79 +30,83 @@
 #include <QtDebug>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	bool XmlPaperParser::readFile( const QString &fileName )
+	namespace model
 	{
-		QFile file( fileName );
 
-		if ( !file.open( QFile::ReadOnly | QFile::Text ) )
+		bool XmlPaperParser::readFile( const QString &fileName )
 		{
-			qWarning() << "Error: Cannot read file " << fileName
-				   << ": " << file.errorString();
-			return false;
-		}
+			QFile file( fileName );
 
-
-		QDomDocument doc;
-		QString      errorString;
-		int          errorLine;
-		int          errorColumn;
-
-		if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
-		{
-			qWarning() << "Error: Parse error at line " << errorLine
-				   << "column " << errorColumn
-				   << ": " << errorString;
-			return false;
-		}
-
-		QDomElement root = doc.documentElement();
-		if ( root.tagName() != "Glabels-paper-sizes" )
-		{
-			qWarning() << "Error: Not a Glabels-paper-sizes file.";
-			return false;
-		}
-
-		parseRootNode( root );
-		return true;
-	}
-
-
-	void XmlPaperParser::parseRootNode( const QDomElement &node )
-	{
-		for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
-		{
-			if ( child.toElement().tagName() == "Paper-size" )
+			if ( !file.open( QFile::ReadOnly | QFile::Text ) )
 			{
-				parsePaperSizeNode( child.toElement() );
+				qWarning() << "Error: Cannot read file " << fileName
+				           << ": " << file.errorString();
+				return false;
 			}
-			else if ( !child.isComment() )
+
+
+			QDomDocument doc;
+			QString      errorString;
+			int          errorLine;
+			int          errorColumn;
+
+			if ( !doc.setContent( &file, false, &errorString, &errorLine, &errorColumn ) )
 			{
-				qWarning() << "Warning: bad element: "
-					   << child.toElement().tagName()
-					   << ", Ignored.";
+				qWarning() << "Error: Parse error at line " << errorLine
+				           << "column " << errorColumn
+				           << ": " << errorString;
+				return false;
+			}
+
+			QDomElement root = doc.documentElement();
+			if ( root.tagName() != "Glabels-paper-sizes" )
+			{
+				qWarning() << "Error: Not a Glabels-paper-sizes file.";
+				return false;
+			}
+
+			parseRootNode( root );
+			return true;
+		}
+
+
+		void XmlPaperParser::parseRootNode( const QDomElement &node )
+		{
+			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+			{
+				if ( child.toElement().tagName() == "Paper-size" )
+				{
+					parsePaperSizeNode( child.toElement() );
+				}
+				else if ( !child.isComment() )
+				{
+					qWarning() << "Warning: bad element: "
+					           << child.toElement().tagName()
+					           << ", Ignored.";
+				}
 			}
 		}
-	}
 
 
-	void XmlPaperParser::parsePaperSizeNode( const QDomElement &node )
-	{
-		QString id      = XmlUtil::getStringAttr( node, "id", "" );
-		QString name    = XmlUtil::getI18nAttr( node, "name", "" );
-
-		Distance width   = XmlUtil::getLengthAttr( node, "width", Distance(0) );
-		Distance height  = XmlUtil::getLengthAttr( node, "height", Distance(0) );
-
-		QString pwgSize = XmlUtil::getStringAttr( node, "pwg_size", "" );
-
-		Paper *paper = new Paper( id, name, width, height, pwgSize );
-		if ( paper != nullptr )
+		void XmlPaperParser::parsePaperSizeNode( const QDomElement &node )
 		{
-			Db::registerPaper( paper );
-		}
-	}
+			QString id      = XmlUtil::getStringAttr( node, "id", "" );
+			QString name    = XmlUtil::getI18nAttr( node, "name", "" );
 
-} // namespace glabels::model
+			Distance width   = XmlUtil::getLengthAttr( node, "width", Distance(0) );
+			Distance height  = XmlUtil::getLengthAttr( node, "height", Distance(0) );
+
+			QString pwgSize = XmlUtil::getStringAttr( node, "pwg_size", "" );
+
+			Paper *paper = new Paper( id, name, width, height, pwgSize );
+			if ( paper != nullptr )
+			{
+				Db::registerPaper( paper );
+			}
+		}
+
+
+	}
+}

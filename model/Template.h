@@ -32,85 +32,88 @@
 #include <QList>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Template
+	namespace model
 	{
-		Q_DECLARE_TR_FUNCTIONS(Template)
 
-	public:
+		class Template
+		{
+			Q_DECLARE_TR_FUNCTIONS(Template)
 
-		Template( const QString&  brand,
-			  const QString&  part,
-			  const QString&  description,
-			  const QString&  paperId,
-		          const Distance& pageWidth,
-		          const Distance& pageHeight );
+		public:
 
-		Template( const Template& other );
+			Template( const QString&  brand,
+			          const QString&  part,
+			          const QString&  description,
+			          const QString&  paperId,
+			          const Distance& pageWidth,
+			          const Distance& pageHeight );
 
-		Template* dup() const;
+			Template( const Template& other );
 
-		// Generic full page template
-		static Template* fullPage( const QString& paperId );
+			Template* dup() const;
 
-		// From equivalent part number
-		static Template* fromEquiv( const QString& brand,
-					    const QString& part,
-					    const QString& equivPart );
+			// Generic full page template
+			static Template* fullPage( const QString& paperId );
 
-
-		QString brand() const;
-		QString part() const;
-		QString description() const;
-
-		QString paperId() const;
-		Distance pageWidth() const;
-		Distance pageHeight() const;
-		bool isSizeIso() const;
-		bool isSizeUs() const;
-		bool isSizeOther() const;
-
-		QString equivPart() const;
-		void setEquivPart( const QString& value );
-
-		QString productUrl() const;
-		void setProductUrl( const QString& value );
-
-		QString name() const;
-
-		void addCategory( const QString& categoryId );
-		void addFrame( Frame* frame );
-
-		const QList<Frame*>& frames() const;
-
-		bool operator==( const Template& other ) const;
-
-		bool hasCategory( const QString& categoryId ) const;
-		bool isSimilarTo( const Template* other ) const;
+			// From equivalent part number
+			static Template* fromEquiv( const QString& brand,
+			                            const QString& part,
+			                            const QString& equivPart );
 
 
-	private:
-		QString mBrand;
-		QString mPart;
-		QString mDescription;
+			QString brand() const;
+			QString part() const;
+			QString description() const;
 
-		QString  mPaperId;
-		Distance mPageWidth;
-		Distance mPageHeight;
-		bool     mIsSizeIso;
-		bool     mIsSizeUs;
+			QString paperId() const;
+			Distance pageWidth() const;
+			Distance pageHeight() const;
+			bool isSizeIso() const;
+			bool isSizeUs() const;
+			bool isSizeOther() const;
 
-		QString mEquivPart;
-		QString mName;
+			QString equivPart() const;
+			void setEquivPart( const QString& value );
 
-		QString        mProductUrl;
-		QStringList    mCategoryIds;
+			QString productUrl() const;
+			void setProductUrl( const QString& value );
 
-		QList<Frame*>  mFrames;
-	};
+			QString name() const;
 
+			void addCategory( const QString& categoryId );
+			void addFrame( Frame* frame );
+
+			const QList<Frame*>& frames() const;
+
+			bool operator==( const Template& other ) const;
+
+			bool hasCategory( const QString& categoryId ) const;
+			bool isSimilarTo( const Template* other ) const;
+
+
+		private:
+			QString mBrand;
+			QString mPart;
+			QString mDescription;
+
+			QString  mPaperId;
+			Distance mPageWidth;
+			Distance mPageHeight;
+			bool     mIsSizeIso;
+			bool     mIsSizeUs;
+
+			QString mEquivPart;
+			QString mName;
+
+			QString        mProductUrl;
+			QStringList    mCategoryIds;
+
+			QList<Frame*>  mFrames;
+		};
+
+	}
 }
 
 

@@ -21,59 +21,62 @@
 #include "Paper.h"
 
 
-namespace glabels::model
+namespace glabels
 {
+	namespace model
+	{
 	
-	Paper::Paper( const QString&  id,
-		      const QString&  name,
-		      const Distance& width,
-		      const Distance& height,
-		      const QString&  pwgSize )
-		: mId(id), mName(name), mWidth(width), mHeight(height), mPwgSize(pwgSize)
-	{
-		// empty
-	}
+		Paper::Paper( const QString&  id,
+		              const QString&  name,
+		              const Distance& width,
+		              const Distance& height,
+		              const QString&  pwgSize )
+			: mId(id), mName(name), mWidth(width), mHeight(height), mPwgSize(pwgSize)
+		{
+			// empty
+		}
 
 
-	QString Paper::id() const
-	{
-		return mId;
-	}
-
-	
-	QString Paper::name() const
-	{
-		return mName;
-	}
+		QString Paper::id() const
+		{
+			return mId;
+		}
 
 	
-	Distance Paper::width() const
-	{
-		return mWidth;
-	}
+		QString Paper::name() const
+		{
+			return mName;
+		}
 
 	
-	Distance Paper::height() const
-	{
-		return mHeight;
-	}
+		Distance Paper::width() const
+		{
+			return mWidth;
+		}
 
 	
-	QString Paper::pwgSize() const
-	{
-		return mPwgSize;
-	}
-	
-
-	bool Paper::isSizeIso() const
-	{
-		return mPwgSize.startsWith( "iso_" );
-	}
+		Distance Paper::height() const
+		{
+			return mHeight;
+		}
 
 	
-	bool Paper::isSizeUs() const
-	{
-		return mPwgSize.startsWith( "na_" );
-	}
+		QString Paper::pwgSize() const
+		{
+			return mPwgSize;
+		}
+	
 
-} // namespace glabels::model
+		bool Paper::isSizeIso() const
+		{
+			return mPwgSize.startsWith( "iso_" );
+		}
+
+	
+		bool Paper::isSizeUs() const
+		{
+			return mPwgSize.startsWith( "na_" );
+		}
+
+	}
+}

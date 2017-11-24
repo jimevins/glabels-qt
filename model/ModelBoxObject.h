@@ -25,57 +25,60 @@
 #include "ModelShapeObject.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	///
-	/// Label Model Box Object
-	///
-	class ModelBoxObject : public ModelShapeObject
+	namespace model
 	{
-		Q_OBJECT
 
-		///////////////////////////////////////////////////////////////
-		// Lifecycle Methods
-		///////////////////////////////////////////////////////////////
-	public:
-		ModelBoxObject();
+		///
+		/// Label Model Box Object
+		///
+		class ModelBoxObject : public ModelShapeObject
+		{
+			Q_OBJECT
 
-		ModelBoxObject( const Distance&  x0,
-		                const Distance&  y0,
-		                const Distance&  w,
-		                const Distance&  h,
-		                const Distance&  lineWidth,
-		                const ColorNode& lineColorNode,
-		                const ColorNode& fillColorNode,
-		                const QMatrix&   matrix = QMatrix(),
-		                bool             shadowState = false,
-		                const Distance&  shadowX = 0,
-		                const Distance&  shadowY = 0,
-		                double           shadowOpacity = 1.0,
-		                const ColorNode& shadowColorNode = ColorNode() );
+			///////////////////////////////////////////////////////////////
+			// Lifecycle Methods
+			///////////////////////////////////////////////////////////////
+		public:
+			ModelBoxObject();
 
-		ModelBoxObject( const ModelBoxObject* object );
+			ModelBoxObject( const Distance&  x0,
+			                const Distance&  y0,
+			                const Distance&  w,
+			                const Distance&  h,
+			                const Distance&  lineWidth,
+			                const ColorNode& lineColorNode,
+			                const ColorNode& fillColorNode,
+			                const QMatrix&   matrix = QMatrix(),
+			                bool             shadowState = false,
+			                const Distance&  shadowX = 0,
+			                const Distance&  shadowY = 0,
+			                double           shadowOpacity = 1.0,
+			                const ColorNode& shadowColorNode = ColorNode() );
+
+			ModelBoxObject( const ModelBoxObject* object );
 		
-		~ModelBoxObject() override;
+			~ModelBoxObject() override;
 
 	
-		///////////////////////////////////////////////////////////////
-		// Object duplication
-		///////////////////////////////////////////////////////////////
-		ModelBoxObject* clone() const override;
+			///////////////////////////////////////////////////////////////
+			// Object duplication
+			///////////////////////////////////////////////////////////////
+			ModelBoxObject* clone() const override;
 
 
-		///////////////////////////////////////////////////////////////
-		// Drawing operations
-		///////////////////////////////////////////////////////////////
-	protected:
-		void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-		QPainterPath hoverPath( double scale ) const override;
+			///////////////////////////////////////////////////////////////
+			// Drawing operations
+			///////////////////////////////////////////////////////////////
+		protected:
+			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			QPainterPath hoverPath( double scale ) const override;
 
-	};
+		};
 
+	}
 }
 
 

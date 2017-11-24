@@ -25,22 +25,25 @@
 #include <QString>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	class Vendor
+	namespace model
 	{
-	public:
-		Vendor( const QString &name, const QString &url );
 
-		QString name() const;
-		QString url() const;
+		class Vendor
+		{
+		public:
+			Vendor( const QString &name, const QString &url );
 
-	private:
-		QString mName;
-		QString mUrl;
-	};
+			QString name() const;
+			QString url() const;
 
+		private:
+			QString mName;
+			QString mUrl;
+		};
+
+	}
 }
 
 

@@ -24,107 +24,111 @@
 #include "StrUtil.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	FrameEllipse::FrameEllipse( const Distance& w,
-				    const Distance& h,
-				    const Distance& waste,
-				    const QString&  id )
-		: Frame(id), mW(w), mH(h), mWaste(waste)
+	namespace model
 	{
-		mPath.addEllipse( 0, 0, mW.pt(), mH.pt() );
-		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(), (mW+2*mWaste).pt(), (mH+2*mWaste).pt() );
-	}
 
-	FrameEllipse::FrameEllipse( const FrameEllipse& other )
-		: Frame(other), mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath)
-	{
-		// empty
-	}
-
-	
-	Frame* FrameEllipse::dup() const
-	{
-		return new FrameEllipse( *this );
-	}
-
-
-	Distance FrameEllipse::w() const
-	{
-		return mW;
-	}
-
-	
-	Distance FrameEllipse::h() const
-	{
-		return mH;
-	}
-	
-
-	Distance FrameEllipse::waste() const
-	{
-		return mWaste;
-	}
-
-
-	QString FrameEllipse::sizeDescription( const Units& units ) const
-	{
-		if ( units.toEnum() == Units::IN )
+		FrameEllipse::FrameEllipse( const Distance& w,
+		                            const Distance& h,
+		                            const Distance& waste,
+		                            const QString&  id )
+			: Frame(id), mW(w), mH(h), mWaste(waste)
 		{
-			QString wStr = StrUtil::formatFraction( mW.in() );
-			QString hStr = StrUtil::formatFraction( mH.in() );
-
-			return QString().sprintf( "%s x %s %s",
-						  qPrintable(wStr),
-						  qPrintable(hStr),
-						  qPrintable(units.toTrName()) );
+			mPath.addEllipse( 0, 0, mW.pt(), mH.pt() );
+			mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(), (mW+2*mWaste).pt(), (mH+2*mWaste).pt() );
 		}
-		else
+
+
+		FrameEllipse::FrameEllipse( const FrameEllipse& other )
+			: Frame(other), mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath)
 		{
-			return QString().sprintf( "%.5g x %.5g %s",
-						  mW.inUnits(units),
-						  mH.inUnits(units),
-						  qPrintable(units.toTrName()) );
+			// empty
 		}
-	}
 
 
-	bool FrameEllipse::isSimilarTo( Frame* other ) const
-	{
-		if ( FrameEllipse* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
+		Frame* FrameEllipse::dup() const
 		{
-			if ( (fabs( mW - otherEllipse->mW ) <= EPSILON) &&
-			     (fabs( mH - otherEllipse->mH ) <= EPSILON) )
+			return new FrameEllipse( *this );
+		}
+
+
+		Distance FrameEllipse::w() const
+		{
+			return mW;
+		}
+
+	
+		Distance FrameEllipse::h() const
+		{
+			return mH;
+		}
+	
+
+		Distance FrameEllipse::waste() const
+		{
+			return mWaste;
+		}
+
+
+		QString FrameEllipse::sizeDescription( const Units& units ) const
+		{
+			if ( units.toEnum() == Units::IN )
 			{
-				return true;
+				QString wStr = StrUtil::formatFraction( mW.in() );
+				QString hStr = StrUtil::formatFraction( mH.in() );
+
+				return QString().sprintf( "%s x %s %s",
+				                          qPrintable(wStr),
+				                          qPrintable(hStr),
+				                          qPrintable(units.toTrName()) );
+			}
+			else
+			{
+				return QString().sprintf( "%.5g x %.5g %s",
+				                          mW.inUnits(units),
+				                          mH.inUnits(units),
+				                          qPrintable(units.toTrName()) );
 			}
 		}
-		return false;
-	}
 
 
-	const QPainterPath& FrameEllipse::path() const
-	{
-		return mPath;
-	}
+		bool FrameEllipse::isSimilarTo( Frame* other ) const
+		{
+			if ( FrameEllipse* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
+			{
+				if ( (fabs( mW - otherEllipse->mW ) <= EPSILON) &&
+				     (fabs( mH - otherEllipse->mH ) <= EPSILON) )
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+
+		const QPainterPath& FrameEllipse::path() const
+		{
+			return mPath;
+		}
 
 	
-	const QPainterPath& FrameEllipse::clipPath() const
-	{
-		return mClipPath;
-	}
+		const QPainterPath& FrameEllipse::clipPath() const
+		{
+			return mClipPath;
+		}
 
 	
-	QPainterPath FrameEllipse::marginPath( const Distance& size ) const
-	{
-		Distance w = mW - 2*size;
-		Distance h = mH - 2*size;
+		QPainterPath FrameEllipse::marginPath( const Distance& size ) const
+		{
+			Distance w = mW - 2*size;
+			Distance h = mH - 2*size;
 
-		QPainterPath path;
-		path.addEllipse( size.pt(), size.pt(), w.pt(), h.pt() );
+			QPainterPath path;
+			path.addEllipse( size.pt(), size.pt(), w.pt(), h.pt() );
 
-		return path;
+			return path;
+		}
+
 	}
-
-} // namespace glabels::model
+}

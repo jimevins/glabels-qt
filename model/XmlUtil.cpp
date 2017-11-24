@@ -25,383 +25,386 @@
 #include <QtDebug>
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	//
-	// Static data
-	//
-	XmlUtil* XmlUtil::mInstance = nullptr;
-
-
-	XmlUtil::XmlUtil()
+	namespace model
 	{
-		mUnits = Units(Units::PT);
-	}
+
+		//
+		// Static data
+		//
+		XmlUtil* XmlUtil::mInstance = nullptr;
 
 
-	void XmlUtil::init()
-	{
-		if ( mInstance == nullptr )
+		XmlUtil::XmlUtil()
 		{
-			mInstance = new XmlUtil();
-		}
-	}
-
-
-	Units XmlUtil::units()
-	{
-		init();
-
-		return mInstance->mUnits;
-	}
-
-
-	void XmlUtil::setUnits( const Units& units )
-	{
-		init();
-
-		mInstance->mUnits = units;
-	}
-
-
-	QString XmlUtil::getStringAttr( const QDomElement& node,
-					const QString&     name,
-					const QString&     default_value )
-	{
-		init();
-
-		return node.attribute( name, default_value );
-	}
-
-
-	double XmlUtil::getDoubleAttr( const QDomElement& node,
-				       const QString&     name,
-				       double             default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
-		{
-			bool ok;
-			double value = valueString.toDouble(& ok );
-
-			if ( !ok )
-			{
-				qWarning() << "Error: bad double value in attribute "
-					   << node.tagName() << ":" << name << "=" << valueString;
-				return default_value;
-			}
-
-			return value;
+			mUnits = Units(Units::PT);
 		}
 
-		return default_value;
-	}
 
-
-	bool XmlUtil::getBoolAttr( const QDomElement& node,
-				   const QString&     name,
-				   bool               default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
+		void XmlUtil::init()
 		{
-			int intValue = valueString.toInt();
-
-			if ( (valueString == "True") ||
-			     (valueString == "TRUE") ||
-			     (valueString == "true") ||
-			     (intValue == 1) )
+			if ( mInstance == nullptr )
 			{
-				return true;
+				mInstance = new XmlUtil();
 			}
-
-			if ( (valueString == "False") ||
-			     (valueString == "FALSE") ||
-			     (valueString == "false") ||
-			     (intValue == 0) )
-			{
-				return false;
-			}
-
-			qWarning() << "Error: bad boolean value in attribute "
-				   << node.tagName() << ":" << name << "=" << valueString;
-			return default_value;
 		}
 
-		return default_value;
-	}
 
-
-	int XmlUtil::getIntAttr( const QDomElement& node,
-				 const QString&     name,
-				 int                default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
+		Units XmlUtil::units()
 		{
-			bool ok;
-			int value = valueString.toInt(& ok );
+			init();
 
-			if ( !ok )
-			{
-				qWarning() << "Error: bad integer value in attribute "
-					   << node.tagName() << ":" << name << "=" << valueString;
-				return default_value;
-			}
-
-			return value;
+			return mInstance->mUnits;
 		}
 
-		return default_value;
-	}
 
-
-	uint32_t XmlUtil::getUIntAttr( const QDomElement& node,
-				       const QString&     name,
-				       uint32_t           default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
+		void XmlUtil::setUnits( const Units& units )
 		{
-			bool ok;
-			uint32_t value = valueString.toUInt(& ok, 0 );
+			init();
 
-			if ( !ok )
-			{
-				qWarning() << "Error: bad unsigned integer value in attribute "
-					   << node.tagName() << ":" << name << "=" << valueString;
-				return default_value;
-			}
-
-			return value;
+			mInstance->mUnits = units;
 		}
 
-		return default_value;
-	}
 
-
-	QString  XmlUtil::getI18nAttr( const QDomElement& node,
-				       const QString&     name,
-				       const QString&     default_value )
-	{
-		init();
-
-		QString i18nString = node.attribute( QString("_").append(name), "" );
-
-		if ( i18nString == "" )
+		QString XmlUtil::getStringAttr( const QDomElement& node,
+		                                const QString&     name,
+		                                const QString&     default_value )
 		{
+			init();
+
 			return node.attribute( name, default_value );
 		}
 
-		return QCoreApplication::translate( "XmlStrings", i18nString.toUtf8().constData() );
-	}
 
-
-	Distance XmlUtil::getLengthAttr( const QDomElement& node,
-					 const QString&     name,
-					 const Distance&    default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
+		double XmlUtil::getDoubleAttr( const QDomElement& node,
+		                               const QString&     name,
+		                               double             default_value )
 		{
-			double value;
-			QString unitsString;
-			QTextStream valueStream( &valueString, QIODevice::ReadOnly );
+			init();
 
-			valueStream >> value >> unitsString;
-
-			if ( !unitsString.isEmpty() && !Units::isIdValid( unitsString ) )
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
 			{
-				qWarning() << "Error: bad length value in attribute "
-					   << node.tagName() << ":" <<  name << "=" << valueString;
+				bool ok;
+				double value = valueString.toDouble(& ok );
+
+				if ( !ok )
+				{
+					qWarning() << "Error: bad double value in attribute "
+					           << node.tagName() << ":" << name << "=" << valueString;
+					return default_value;
+				}
+
+				return value;
 			}
 
-			return Distance( value, unitsString );
+			return default_value;
 		}
 
-		return default_value;
-	}
 
-
-	QFont::Weight XmlUtil::getWeightAttr( const QDomElement& node,
-	                                      const QString&     name,
-	                                      QFont::Weight      default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
+		bool XmlUtil::getBoolAttr( const QDomElement& node,
+		                           const QString&     name,
+		                           bool               default_value )
 		{
-			if ( valueString == "bold" )
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
 			{
-				return QFont::Bold;
+				int intValue = valueString.toInt();
+
+				if ( (valueString == "True") ||
+				     (valueString == "TRUE") ||
+				     (valueString == "true") ||
+				     (intValue == 1) )
+				{
+					return true;
+				}
+
+				if ( (valueString == "False") ||
+				     (valueString == "FALSE") ||
+				     (valueString == "false") ||
+				     (intValue == 0) )
+				{
+					return false;
+				}
+
+				qWarning() << "Error: bad boolean value in attribute "
+				           << node.tagName() << ":" << name << "=" << valueString;
+				return default_value;
 			}
-			else if ( valueString == "normal" )
+
+			return default_value;
+		}
+
+
+		int XmlUtil::getIntAttr( const QDomElement& node,
+		                         const QString&     name,
+		                         int                default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
 			{
-				return QFont::Normal;
+				bool ok;
+				int value = valueString.toInt(& ok );
+
+				if ( !ok )
+				{
+					qWarning() << "Error: bad integer value in attribute "
+					           << node.tagName() << ":" << name << "=" << valueString;
+					return default_value;
+				}
+
+				return value;
+			}
+
+			return default_value;
+		}
+
+
+		uint32_t XmlUtil::getUIntAttr( const QDomElement& node,
+		                               const QString&     name,
+		                               uint32_t           default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				bool ok;
+				uint32_t value = valueString.toUInt(& ok, 0 );
+
+				if ( !ok )
+				{
+					qWarning() << "Error: bad unsigned integer value in attribute "
+					           << node.tagName() << ":" << name << "=" << valueString;
+					return default_value;
+				}
+
+				return value;
+			}
+
+			return default_value;
+		}
+
+
+		QString  XmlUtil::getI18nAttr( const QDomElement& node,
+		                               const QString&     name,
+		                               const QString&     default_value )
+		{
+			init();
+
+			QString i18nString = node.attribute( QString("_").append(name), "" );
+
+			if ( i18nString == "" )
+			{
+				return node.attribute( name, default_value );
+			}
+
+			return QCoreApplication::translate( "XmlStrings", i18nString.toUtf8().constData() );
+		}
+
+
+		Distance XmlUtil::getLengthAttr( const QDomElement& node,
+		                                 const QString&     name,
+		                                 const Distance&    default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				double value;
+				QString unitsString;
+				QTextStream valueStream( &valueString, QIODevice::ReadOnly );
+
+				valueStream >> value >> unitsString;
+
+				if ( !unitsString.isEmpty() && !Units::isIdValid( unitsString ) )
+				{
+					qWarning() << "Error: bad length value in attribute "
+					           << node.tagName() << ":" <<  name << "=" << valueString;
+				}
+
+				return Distance( value, unitsString );
+			}
+
+			return default_value;
+		}
+
+
+		QFont::Weight XmlUtil::getWeightAttr( const QDomElement& node,
+		                                      const QString&     name,
+		                                      QFont::Weight      default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				if ( valueString == "bold" )
+				{
+					return QFont::Bold;
+				}
+				else if ( valueString == "normal" )
+				{
+					return QFont::Normal;
+				}
+			}
+
+			return default_value;
+		}
+
+
+		Qt::Alignment XmlUtil::getAlignmentAttr( const QDomElement& node,
+		                                         const QString&     name,
+		                                         Qt::Alignment      default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				if ( valueString == "right" )
+				{
+					return Qt::AlignRight;
+				}
+				else if ( valueString == "hcenter" )
+				{
+					return Qt::AlignHCenter;
+				}
+				else if ( valueString == "left" )
+				{
+					return Qt::AlignLeft;
+				}
+				else if ( valueString == "bottom" )
+				{
+					return Qt::AlignBottom;
+				}
+				else if ( valueString == "vcenter" )
+				{
+					return Qt::AlignVCenter;
+				}
+				else if ( valueString == "top" )
+				{
+					return Qt::AlignTop;
+				}
+			}
+
+			return default_value;
+		}
+
+
+		void XmlUtil::setStringAttr( QDomElement&   node,
+		                             const QString& name,
+		                             const QString& value )
+		{
+			init();
+
+			node.setAttribute( name, value );
+		}
+
+
+		void XmlUtil::setDoubleAttr( QDomElement&   node,
+		                             const QString& name,
+		                             double         value )
+		{
+			init();
+
+			node.setAttribute( name, QString::number(value) );
+		}
+
+
+		void XmlUtil::setBoolAttr( QDomElement&   node,
+		                           const QString& name,
+		                           bool           value )
+		{
+			init();
+
+			node.setAttribute( name, value ? "true" : "false" );
+		}
+
+
+		void XmlUtil::setIntAttr( QDomElement&   node,
+		                          const QString& name,
+		                          int            value )
+		{
+			init();
+
+			node.setAttribute( name, QString::number(value) );
+		}
+
+
+		void XmlUtil::setUIntAttr( QDomElement&   node,
+		                           const QString& name,
+		                           uint32_t       value )
+		{
+			init();
+
+			node.setAttribute( name, "0x" + QString::number(value, 16) );
+		}
+
+
+		void XmlUtil::setLengthAttr( QDomElement&    node,
+		                             const QString&  name,
+		                             const Distance& value )
+		{
+			init();
+
+			Units units = mInstance->mUnits;
+			node.setAttribute( name, QString::number(value.inUnits(units)) + units.toIdString() );
+		}
+
+
+		void XmlUtil::setWeightAttr( QDomElement&    node,
+		                             const QString&  name,
+		                             QFont::Weight   value )
+		{
+			switch (value)
+			{
+			case QFont::Bold:
+				node.setAttribute( name, "bold" );
+				break;
+			default:
+				node.setAttribute( name, "normal" );
+				break;
 			}
 		}
-
-		return default_value;
-	}
-
-
-	Qt::Alignment XmlUtil::getAlignmentAttr( const QDomElement& node,
-	                                         const QString&     name,
-	                                         Qt::Alignment      default_value )
-	{
-		init();
-
-		QString valueString = node.attribute( name, "" );
-		if ( valueString != "" )
-		{
-                        if ( valueString == "right" )
-                        {
-                                return Qt::AlignRight;
-                        }
-                        else if ( valueString == "hcenter" )
-                        {
-                                return Qt::AlignHCenter;
-                        }
-                        else if ( valueString == "left" )
-                        {
-                                return Qt::AlignLeft;
-                        }
-                        else if ( valueString == "bottom" )
-                        {
-                                return Qt::AlignBottom;
-                        }
-                        else if ( valueString == "vcenter" )
-                        {
-                                return Qt::AlignVCenter;
-                        }
-                        else if ( valueString == "top" )
-                        {
-                                return Qt::AlignTop;
-                        }
-		}
-
-		return default_value;
-	}
-
-
-	void XmlUtil::setStringAttr( QDomElement&   node,
-				     const QString& name,
-				     const QString& value )
-	{
-		init();
-
-		node.setAttribute( name, value );
-	}
-
-
-	void XmlUtil::setDoubleAttr( QDomElement&   node,
-				     const QString& name,
-				     double         value )
-	{
-		init();
-
-		node.setAttribute( name, QString::number(value) );
-	}
-
-
-	void XmlUtil::setBoolAttr( QDomElement&   node,
-				   const QString& name,
-				   bool           value )
-	{
-		init();
-
-		node.setAttribute( name, value ? "true" : "false" );
-	}
-
-
-	void XmlUtil::setIntAttr( QDomElement&   node,
-				  const QString& name,
-				  int            value )
-	{
-		init();
-
-		node.setAttribute( name, QString::number(value) );
-	}
-
-
-	void XmlUtil::setUIntAttr( QDomElement&   node,
-				   const QString& name,
-				   uint32_t       value )
-	{
-		init();
-
-		node.setAttribute( name, "0x" + QString::number(value, 16) );
-	}
-
-
-	void XmlUtil::setLengthAttr( QDomElement&    node,
-				     const QString&  name,
-				     const Distance& value )
-	{
-		init();
-
-		Units units = mInstance->mUnits;
-		node.setAttribute( name, QString::number(value.inUnits(units)) + units.toIdString() );
-	}
-
-
-	void XmlUtil::setWeightAttr( QDomElement&    node,
-	                             const QString&  name,
-	                             QFont::Weight   value )
-	{
-		switch (value)
-		{
-		case QFont::Bold:
-			node.setAttribute( name, "bold" );
-			break;
-		default:
-			node.setAttribute( name, "normal" );
-			break;
-		}
-	}
 	
 
-	void XmlUtil::setAlignmentAttr( QDomElement&    node,
-	                                const QString&  name,
-	                                Qt::Alignment   value )
-	{
-		switch (value)
+		void XmlUtil::setAlignmentAttr( QDomElement&    node,
+		                                const QString&  name,
+		                                Qt::Alignment   value )
 		{
-		case Qt::AlignRight:
-			node.setAttribute( name, "right" );
-			break;
-		case Qt::AlignHCenter:
-			node.setAttribute( name, "hcenter" );
-			break;
-		case Qt::AlignLeft:
-			node.setAttribute( name, "left" );
-			break;
-		case Qt::AlignBottom:
-			node.setAttribute( name, "bottom" );
-			break;
-		case Qt::AlignVCenter:
-			node.setAttribute( name, "vcenter" );
-			break;
-		case Qt::AlignTop:
-			node.setAttribute( name, "top" );
-			break;
-		default:
-			node.setAttribute( name, "left" );
-			break;
+			switch (value)
+			{
+			case Qt::AlignRight:
+				node.setAttribute( name, "right" );
+				break;
+			case Qt::AlignHCenter:
+				node.setAttribute( name, "hcenter" );
+				break;
+			case Qt::AlignLeft:
+				node.setAttribute( name, "left" );
+				break;
+			case Qt::AlignBottom:
+				node.setAttribute( name, "bottom" );
+				break;
+			case Qt::AlignVCenter:
+				node.setAttribute( name, "vcenter" );
+				break;
+			case Qt::AlignTop:
+				node.setAttribute( name, "top" );
+				break;
+			default:
+				node.setAttribute( name, "left" );
+				break;
+			}
 		}
-	}
 
 	
-} // namespace glabels::model
+	}
+}

@@ -24,111 +24,114 @@
 #include "StrUtil.h"
 
 
-namespace glabels::model
+namespace glabels
 {
-
-	FrameRound::FrameRound( const Distance& r,
-				const Distance& waste,
-				const QString&  id )
-		: Frame(id), mR(r), mWaste(waste)
+	namespace model
 	{
-		mPath.addEllipse( 0, 0, 2*mR.pt(), 2*mR.pt() );
-		mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(),
-		                      2*(mR+mWaste).pt(), 2*(mR+mWaste).pt() );
-	}
-	
 
-	FrameRound::FrameRound( const FrameRound& other )
-		: Frame(other), mR(other.mR), mWaste(other.mWaste), mPath(other.mPath)
-	{
-		// empty
-	}
-	
-
-	Frame* FrameRound::dup() const
-	{
-		return new FrameRound( *this );
-	}
-
-	
-	Distance FrameRound::w() const
-	{
-		return 2*mR;
-	}
-
-	
-	Distance FrameRound::h() const
-	{
-		return 2*mR;
-	}
-
-	
-	Distance FrameRound::r() const
-	{
-		return mR;
-	}
-
-
-	Distance FrameRound::waste() const
-	{
-		return mWaste;
-	}
-
-
-	QString FrameRound::sizeDescription( const Units& units ) const
-	{
-		if ( units.toEnum() == Units::IN )
+		FrameRound::FrameRound( const Distance& r,
+		                        const Distance& waste,
+		                        const QString&  id )
+			: Frame(id), mR(r), mWaste(waste)
 		{
-			QString dStr = StrUtil::formatFraction( 2 * mR.in() );
-
-			return QString().sprintf( "%s %s %s",
-						  qPrintable(dStr),
-						  qPrintable(units.toTrName()),
-						  qPrintable(tr("diameter")) );
+			mPath.addEllipse( 0, 0, 2*mR.pt(), 2*mR.pt() );
+			mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(),
+			                      2*(mR+mWaste).pt(), 2*(mR+mWaste).pt() );
 		}
-		else
+	
+
+		FrameRound::FrameRound( const FrameRound& other )
+			: Frame(other), mR(other.mR), mWaste(other.mWaste), mPath(other.mPath)
 		{
-			return QString().sprintf( "%.5g %s %s",
-						  2 * mR.inUnits(units),
-						  qPrintable(units.toTrName()),
-						  qPrintable(tr("diameter")) );
+			// empty
 		}
-	}
+	
 
-
-	bool FrameRound::isSimilarTo( Frame* other ) const
-	{
-		if ( FrameRound *otherRound = dynamic_cast<FrameRound*>(other) )
+		Frame* FrameRound::dup() const
 		{
-			if ( fabs( mR - otherRound->mR ) <= EPSILON )
+			return new FrameRound( *this );
+		}
+
+	
+		Distance FrameRound::w() const
+		{
+			return 2*mR;
+		}
+
+	
+		Distance FrameRound::h() const
+		{
+			return 2*mR;
+		}
+
+	
+		Distance FrameRound::r() const
+		{
+			return mR;
+		}
+
+
+		Distance FrameRound::waste() const
+		{
+			return mWaste;
+		}
+
+
+		QString FrameRound::sizeDescription( const Units& units ) const
+		{
+			if ( units.toEnum() == Units::IN )
 			{
-				return true;
+				QString dStr = StrUtil::formatFraction( 2 * mR.in() );
+
+				return QString().sprintf( "%s %s %s",
+				                          qPrintable(dStr),
+				                          qPrintable(units.toTrName()),
+				                          qPrintable(tr("diameter")) );
+			}
+			else
+			{
+				return QString().sprintf( "%.5g %s %s",
+				                          2 * mR.inUnits(units),
+				                          qPrintable(units.toTrName()),
+				                          qPrintable(tr("diameter")) );
 			}
 		}
-		return false;
+
+
+		bool FrameRound::isSimilarTo( Frame* other ) const
+		{
+			if ( FrameRound *otherRound = dynamic_cast<FrameRound*>(other) )
+			{
+				if ( fabs( mR - otherRound->mR ) <= EPSILON )
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+
+		const QPainterPath& FrameRound::path() const
+		{
+			return mPath;
+		}
+
+
+		const QPainterPath& FrameRound::clipPath() const
+		{
+			return mClipPath;
+		}
+
+
+		QPainterPath FrameRound::marginPath( const Distance& size ) const
+		{
+			Distance r = mR - size;
+
+			QPainterPath path;
+			path.addEllipse( size.pt(), size.pt(), 2*r.pt(), 2*r.pt() );
+
+			return path;
+		}
+
 	}
-
-
-	const QPainterPath& FrameRound::path() const
-	{
-		return mPath;
-	}
-
-
-	const QPainterPath& FrameRound::clipPath() const
-	{
-		return mClipPath;
-	}
-
-
-	QPainterPath FrameRound::marginPath( const Distance& size ) const
-	{
-		Distance r = mR - size;
-
-		QPainterPath path;
-		path.addEllipse( size.pt(), size.pt(), 2*r.pt(), 2*r.pt() );
-
-		return path;
-	}
-
-} // namespace glabels::model
+}
