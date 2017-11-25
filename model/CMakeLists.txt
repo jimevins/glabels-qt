@@ -1,6 +1,16 @@
 project (Model LANGUAGES CXX)
 
 #=======================================
+# Handle optional dependencies
+#=======================================
+if (${ZLIB_FOUND})
+  add_definitions (-DHAVE_ZLIB=1)
+  set (OPTIONAL_ZLIB ZLIB::ZLIB)
+else ()
+  set (OPTIONAL_ZLIB "")
+endif ()
+
+#=======================================
 # Sources
 #=======================================
 # Auto-generated files
@@ -96,7 +106,7 @@ target_link_libraries (Model
   Qt5::PrintSupport
   Qt5::Xml
   Qt5::Svg
-  ZLIB::ZLIB
+  ${OPTIONAL_ZLIB}
 )
 
 #=======================================

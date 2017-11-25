@@ -48,11 +48,11 @@ if (MINGW)
    set (QT_BIN_DIR ${QT_BASE_DIR}/bin)
 endif ()
 
-find_package (ZLIB 1.2 REQUIRED)
 
 #
 # Optional dependencies
 #
+find_package (ZLIB 1.2 QUIET)
 find_package (GnuBarcode 0.98 QUIET)
 find_package (LibQrencode 3.4 QUIET)
 find_package (LibZint 2.6 QUIET)
@@ -91,7 +91,12 @@ message (STATUS "Installation prefix ..... " ${CMAKE_INSTALL_PREFIX})
 message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
 message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAKE_CXX_COMPILER} " " ${CMAKE_CXX_COMPILER_VERSION})
 message (STATUS "Qt version .............. " ${Qt5Core_VERSION})
-message (STATUS "zlib version ............ " ${ZLIB_VERSION_STRING})
+
+if (ZLIB_FOUND)
+  message (STATUS "zlib (optional).......... " ${ZLIB_VERSION_STRING})
+else (ZLIB_FOUND)
+  message (STATUS "zlib (optional).......... No.")
+endif (ZLIB_FOUND)
 
 if (GNUBARCODE_FOUND)
   message (STATUS "GNU Barcode (optional)... " ${GNUBARCODE_VERSION_STRING})

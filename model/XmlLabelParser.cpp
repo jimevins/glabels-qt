@@ -41,8 +41,9 @@
 #include <QTextDocument>
 #include <QtDebug>
 
+#if HAVE_ZLIB
 #include <zlib.h>
-
+#endif
 
 namespace glabels
 {
@@ -70,10 +71,15 @@ namespace glabels
 			QByteArray rawData = file.readAll();
 			if ( ((rawData[0]&0xFF) == 0x1F) && ((rawData[1]&0xFF) == 0x8b) ) // gzip magic number 0x1F, 0x8B
 			{
+#if HAVE_ZLIB
 				// gzip compressed format
 				QByteArray unzippedData;
 				gunzip( rawData, unzippedData );
 				success = doc.setContent( unzippedData, false, &errorString, &errorLine, &errorColumn );
+#else
+				qWarning() << "Warning: Cannot read compressed glabels project file!  gLabels not build with ZLIB.";
+				return nullptr;
+#endif
 			}
 			else
 			{
@@ -175,6 +181,7 @@ namespace glabels
 		}
 
 
+#if HAVE_ZLIB
 		void
 		XmlLabelParser::gunzip( const QByteArray& data, QByteArray& result )
 		{
@@ -223,7 +230,8 @@ namespace glabels
 			// clean up
 			inflateEnd(&strm);
 		}
-
+#endif
+		
 
 		Model*
 		XmlLabelParser::parseRootNode( const QDomElement &node )
