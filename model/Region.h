@@ -35,7 +35,7 @@ namespace glabels
 		///
 		/// Label Region Type
 		///
-		struct Region
+		class Region
 		{
 
 			/////////////////////////////////

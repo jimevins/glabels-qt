@@ -24,6 +24,7 @@
 #include "DrawingPrimitives.h"
 
 #include <list>
+#include <algorithm>
 
 
 using namespace glbarcode::Constants;

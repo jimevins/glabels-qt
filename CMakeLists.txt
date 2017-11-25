@@ -61,12 +61,21 @@ find_package (Qt5Test 5.4 QUIET)
 
 
 #=======================================
+# Global compiler options
+#=======================================
+#
+# Uncomment to compile everything with aggressively pedantic options
+# (not recommended -- only for testing -- also not portable)
+#
+#add_compile_options("-Wall" "-Werror" "-Wpedantic")
+
+
+#=======================================
 # Unit Testing
 #=======================================
 if (Qt5Test_FOUND)
   enable_testing ()
 endif ()
-
 
 #=======================================
 # Subdirectories

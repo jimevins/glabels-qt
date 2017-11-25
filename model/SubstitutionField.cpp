@@ -29,13 +29,13 @@ namespace glabels
 	{
 
 		SubstitutionField::SubstitutionField()
-			: mNewLine(false), mFormatType(0)
+			: mFormatType(0), mNewLine(false)
 		{
 		}
 
 
 		SubstitutionField::SubstitutionField( const QString& string )
-			: mNewLine(false), mFormatType(0)
+			: mFormatType(0), mNewLine(false)
 		{
 			QStringRef s(&string);
 			parse( s, *this );
@@ -197,8 +197,6 @@ namespace glabels
 	
 		bool SubstitutionField::parseFormatModifier( QStringRef& s, SubstitutionField& field )
 		{
-			bool success = false;
-		
 			field.mFormat = "%";
 
 			parseFormatFlags( s, field );

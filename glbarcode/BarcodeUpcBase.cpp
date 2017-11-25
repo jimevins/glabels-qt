@@ -216,7 +216,7 @@ namespace glbarcode
 					double&            h )
 	{
 		/* determine width and establish horizontal scale */
-		int nModules     = 7*(cookedData.size()+1) + 11;
+		int nModules     = 7*int(cookedData.size()+1) + 11;
 
 		double scale;
 		if ( w == 0 )
@@ -256,7 +256,7 @@ namespace glbarcode
 
 
 		/* now traverse the code string and draw each bar */
-		int nBarsSpaces = codedData.size() - 1; /* coded data has dummy "0" on end. */
+		int nBarsSpaces = int( codedData.size() - 1 ); /* coded data has dummy "0" on end. */
 
 		double xModules = 0;
 		for ( int i = 0; i < nBarsSpaces; i += 2 )

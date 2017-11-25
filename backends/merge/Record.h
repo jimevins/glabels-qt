@@ -34,7 +34,7 @@ namespace glabels
 		///
 		/// Merge Record
 		///
-		struct Record : public QMap<QString,QString>
+		class Record : public QMap<QString,QString>
 		{
 
 			/////////////////////////////////

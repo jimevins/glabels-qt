@@ -142,12 +142,12 @@ namespace glbarcode
 		int sum = 0;
 		for ( unsigned int i=0; i < cookedData.size(); i++ )
 		{
-			int cValue = alphabet.find( toupper( cookedData[i] ) );
+			size_t cValue = alphabet.find( toupper( cookedData[i] ) );
 
 			code += symbols[cValue];
 			code += "i";
 
-			sum += cValue;
+			sum += int(cValue);
 		}
 
 		if ( checksum() )
@@ -190,7 +190,7 @@ namespace glbarcode
 	{
 
 		/* determine width and establish horizontal scale, based on original cooked data */
-		double dataSize = cookedData.size();
+		double dataSize = double( cookedData.size() );
 		double minL;
 		if ( !checksum() )
 		{

@@ -40,7 +40,7 @@ namespace glabels
 		///
 		/// Merge Object
 		///
-		struct Merge : QObject
+		class Merge : public QObject
 		{
 			Q_OBJECT
 

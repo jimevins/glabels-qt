@@ -35,7 +35,7 @@ namespace glabels
 	///
 	/// UndoRedoModel
 	///
-	struct UndoRedoModel : QObject
+	class UndoRedoModel : public QObject
 	{
 		Q_OBJECT
 

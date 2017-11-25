@@ -38,7 +38,7 @@ namespace glabels
 		///
 		/// Color Node Type
 		///
-		struct ColorNode
+		class ColorNode
 		{
 
 			/////////////////////////////////

@@ -294,7 +294,7 @@ namespace
 			}
 		}
 
-		return codewords.size();
+		return int( codewords.size() );
 	}
 
 
