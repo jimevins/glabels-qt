@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QStringList>
 #include <QFile>
 #include <QDomDocument>

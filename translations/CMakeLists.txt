@@ -35,35 +35,21 @@ add_dependencies (glabels-qt update_translations)
 
 
 #=======================================
-# Compilation
-#=======================================
-add_compile_options (-std=c++11 -g)
-if (NOT WIN32)
-   add_compile_options (-fPIC)
-endif ()
-
-
-#=======================================
 # XmlStrings utility
 #=======================================
-set (XmlStrings_sources
+add_executable (XmlStrings WIN32
   XmlStrings.cpp
 )
 
-add_executable (XmlStrings WIN32
-  ${XmlStrings_sources}
-)
+#target_compile_features (Model
+#  PUBLIC cxx_std_11
+#)
+set_property (TARGET XmlStrings PROPERTY CXX_STANDARD 11)
 
 target_link_libraries (XmlStrings
-  ${Qt5Xml_LIBRARIES}
-  ${Qt5Svg_LIBRARIES}
+  Qt5::Core
+  Qt5::Xml
 )
-
-include_directories (
-  ${Qt5Xml_INCLUDE_DIRS}
-  ${Qt5Svg_INCLUDE_DIRS}
-)
-
 
 #=======================================
 # Extract translatable strings from XML
