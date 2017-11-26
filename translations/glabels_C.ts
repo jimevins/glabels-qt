@@ -25,6 +25,189 @@
     </message>
 </context>
 <context>
+    <name>Color name</name>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="40"/>
+        <source>Light Scarlet Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="41"/>
+        <source>Light Orange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="42"/>
+        <source>Light Butter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="43"/>
+        <source>Light Chameleon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="44"/>
+        <source>Light Sky Blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="45"/>
+        <source>Light Plum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="46"/>
+        <source>Light Chocolate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="47"/>
+        <source>Light Aluminum 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="48"/>
+        <source>Light Aluminum 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="50"/>
+        <source>Scarlet Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="51"/>
+        <source>Orange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="52"/>
+        <source>Butter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="53"/>
+        <source>Chameleon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="54"/>
+        <source>Sky Blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="55"/>
+        <source>Plum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="56"/>
+        <source>Chocolate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="57"/>
+        <source>Aluminum 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="58"/>
+        <source>Aluminum 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="60"/>
+        <source>Dark Scarlet Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="61"/>
+        <source>Dark Orange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="62"/>
+        <source>Dark Butter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="63"/>
+        <source>Dark Chameleon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="64"/>
+        <source>Dark Sky Blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="65"/>
+        <source>Dark Plum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="66"/>
+        <source>Dark Chocolate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="67"/>
+        <source>Dark Aluminum 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="68"/>
+        <source>Dark Aluminum 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="70"/>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="71"/>
+        <source>Very Dark Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="72"/>
+        <source>Darker Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="73"/>
+        <source>Dark Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="74"/>
+        <source>Medium Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="75"/>
+        <source>Light Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="76"/>
+        <source>Lighter Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="77"/>
+        <source>Very Light Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ColorPaletteDialog.cpp" line="78"/>
+        <source>White</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MergeView</name>
     <message>
         <location filename="../glabels/ui/MergeView.ui" line="14"/>
@@ -627,222 +810,6 @@
 </context>
 <context>
     <name>glabels::ColorPaletteDialog</name>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="40"/>
-        <source>Light Scarlet Red</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="41"/>
-        <source>Light Orange</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="42"/>
-        <source>Light Butter</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="43"/>
-        <source>Light Chameleon</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="44"/>
-        <source>Light Sky Blue</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="45"/>
-        <source>Light Plum</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="46"/>
-        <source>Light Chocolate</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="47"/>
-        <source>Light Aluminum 1</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="48"/>
-        <source>Light Aluminum 2</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="50"/>
-        <source>Scarlet Red</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="51"/>
-        <source>Orange</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="52"/>
-        <source>Butter</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="53"/>
-        <source>Chameleon</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="54"/>
-        <source>Sky Blue</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="55"/>
-        <source>Plum</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="56"/>
-        <source>Chocolate</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="57"/>
-        <source>Aluminum 1</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="58"/>
-        <source>Aluminum 2</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="60"/>
-        <source>Dark Scarlet Red</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="61"/>
-        <source>Dark Orange</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="62"/>
-        <source>Dark Butter</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="63"/>
-        <source>Dark Chameleon</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="64"/>
-        <source>Dark Sky Blue</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="65"/>
-        <source>Dark Plum</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="66"/>
-        <source>Dark Chocolate</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="67"/>
-        <source>Dark Aluminum 1</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="68"/>
-        <source>Dark Aluminum 2</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="70"/>
-        <source>Black</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="71"/>
-        <source>Very Dark Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="72"/>
-        <source>Darker Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="73"/>
-        <source>Dark Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="74"/>
-        <source>Medium Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="75"/>
-        <source>Light Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="76"/>
-        <source>Lighter Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="77"/>
-        <source>Very Light Gray</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/ColorPaletteDialog.cpp" line="78"/>
-        <source>White</source>
-        <comment>Color name</comment>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../glabels/ColorPaletteDialog.cpp" line="152"/>
         <source>Custom color...</source>

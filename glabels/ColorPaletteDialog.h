@@ -103,7 +103,7 @@ namespace glabels
 
 		typedef struct {
 			QString colorSpec;
-			QString name;
+			const char* trname;
 		} ColorTableEntry;
 
 		static ColorTableEntry mColorTable[];
