@@ -42,12 +42,11 @@ find_package (Qt5Xml 5.4 REQUIRED)
 find_package (Qt5Svg 5.4 REQUIRED)
 find_package (Qt5LinguistTools)
 
-if (MINGW)
+if (WIN32)
    # Locate Qt directories
    execute_process (COMMAND qtpaths --install-prefix OUTPUT_VARIABLE QT_BASE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
    set (QT_BIN_DIR ${QT_BASE_DIR}/bin)
 endif ()
-
 
 #
 # Optional dependencies
@@ -130,6 +129,10 @@ if (Qt5Test_FOUND)
 else (Qt5Test_FOUND)
   message (STATUS "QtTest (optional)........ No.")
 endif (Qt5Test_FOUND)
+
+if (MSVC)
+   message (STATUS "MSVC Qt location ........ " ${QT_BASE_DIR})
+endif (MSVC)
 
 if (MINGW)
    message (STATUS "MinGW location .......... " ${MINGW_BASE_DIR})

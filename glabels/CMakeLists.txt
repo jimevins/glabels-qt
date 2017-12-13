@@ -132,19 +132,67 @@ install (FILES icons/16x16/mimetypes/x-glabels-project.svg    DESTINATION share/
 install (FILES icons/22x22/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/22x22/mimetypes)
 install (FILES icons/24x24/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/24x24/mimetypes)
 
-if (MINGW)
-   # Install Windows runtime DLLs in application bin
-   set (runtime_dlls
-     ${MINGW_BIN_DIR}/libgcc_s_dw2-1.dll
-     ${MINGW_BIN_DIR}/libstdc++-6.dll
-     ${MINGW_BIN_DIR}/zlib1.dll
-     ${QT_BIN_DIR}/libwinpthread-1.dll
-     ${QT_BIN_DIR}/Qt5Core.dll
-     ${QT_BIN_DIR}/Qt5Gui.dll
-     ${QT_BIN_DIR}/Qt5PrintSupport.dll
-     ${QT_BIN_DIR}/Qt5Widgets.dll
-     ${QT_BIN_DIR}/Qt5Svg.dll
-     ${QT_BIN_DIR}/Qt5Xml.dll
-   )
-   install (FILES ${runtime_dlls} DESTINATION bin)
-endif ()
+#
+# Windows Runtime
+#
+if (WIN32)
+
+    find_program (WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${QT_BIN_DIR}")
+
+    #
+    # Visual Studio toolchain
+    #
+    if (MSVC)
+        # Run windeployqt immediately after build
+        add_custom_command (TARGET glabels-qt POST_BUILD
+            COMMAND "${CMAKE_COMMAND}" -E
+                env PATH="${QT_BIN_DIR}" "${WINDEPLOYQT_EXECUTABLE}"
+                    --verbose 0
+                    --no-compiler-runtime
+                    --no-angle
+                    --no-opengl-sw
+                    \"$<TARGET_FILE:glabels-qt>\"
+        )
+
+      # Install files staged by windeployqt
+        install (DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/ DESTINATION bin
+                 FILES_MATCHING PATTERN *.dll PATTERN *.qm)
+
+        # Install necessary system libraries
+        set (CMAKE_INSTALL_UCRT_LIBRARIES TRUE)
+        include (InstallRequiredSystemLibraries)
+    endif (MSVC)
+
+    #
+    # MSYS/MINGW toolchain
+    #
+    if (MINGW)
+        # Run windeployqt immediately after build
+        add_custom_command (TARGET glabels-qt POST_BUILD
+            COMMAND "${CMAKE_COMMAND}" -E
+                env PATH="${QT_BIN_DIR}" "${WINDEPLOYQT_EXECUTABLE}"
+                    --verbose 0
+                    --release
+                    --no-compiler-runtime
+                    --no-angle
+                    --no-opengl-sw
+                    \"$<TARGET_FILE:glabels-qt>\"
+        )
+
+        # Install files staged by windeployqt
+        install (DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/ DESTINATION bin
+                 FILES_MATCHING PATTERN *.dll PATTERN *.qm)
+
+        # Install necessary system libraries
+        install (FILES
+            ${QT_BIN_DIR}/libgcc_s_dw2-1.dll
+            ${QT_BIN_DIR}/libstdc++-6.dll
+            ${QT_BIN_DIR}/libwinpthread-1.dll
+            DESTINATION bin
+        )
+        if (ZLIB_FOUND)
+          install (FILES ${MINGW_BIN_DIR}/zlib1.dll DESTINATION bin)
+        endif ()
+    endif (MINGW)
+
+endif (WIN32)
