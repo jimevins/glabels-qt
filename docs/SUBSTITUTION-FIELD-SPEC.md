@@ -23,7 +23,7 @@ Modifiers
 A format modifier is used to control the format of numerical and string values.  It is a subset of a single printf format placeholder.  Its syntax is
 
 ```ebnf
-format-modifier = "%" [ flags ] [ width ] [ ".", precision ] type ;
+format-modifier = "%" [ flags ] [ width ] [ "." precision ] type ;
 ```
 
 #### Flags
@@ -74,7 +74,7 @@ Escape sequence | actual character
 > :arrow_right: This modifier does not modify the value of a variable, it only uses this value if the variable is not defined.  For example, if the variable `${x}` is undefined, the string "`${x:=1} ${x:=2}`" would be printed as "`1 2`".  Otherwise, if `${x}` was defined as "`3`", it would be printed as "`3 3`".
 
 ### New-Line-Modifier ('n')
-This modifier is used to prepend a newline to the printed value, if the value is undefined or empty.  Its syntax is simply:
+This modifier is used to prepend a newline to the printed value, if the value is defined and non-empty.  Its syntax is simply:
 
 ```ebnf
 new-line-modifier = "n" ;
