@@ -47,14 +47,6 @@ namespace glabels
 
 
 		///
-		/// Destructor
-		///
-		TextSemicolon::~TextSemicolon()
-		{
-		}
-
-
-		///
 		/// Clone
 		///
 		TextSemicolon* TextSemicolon::clone() const

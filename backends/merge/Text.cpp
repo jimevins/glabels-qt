@@ -51,14 +51,6 @@ namespace glabels
 
 
 		///
-		/// Destructor
-		///
-		Text::~Text()
-		{
-		}
-
-
-		///
 		/// Get key list
 		///
 		QStringList Text::keys() const

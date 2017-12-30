@@ -30,11 +30,6 @@ namespace glbarcode
 	}
 
 
-	DrawingPrimitive::~DrawingPrimitive()
-	{
-	}
-
-
 	double DrawingPrimitive::x() const
 	{
 		return mX;

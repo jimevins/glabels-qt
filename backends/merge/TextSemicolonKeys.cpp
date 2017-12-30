@@ -47,14 +47,6 @@ namespace glabels
 
 
 		///
-		/// Destructor
-		///
-		TextSemicolonKeys::~TextSemicolonKeys()
-		{
-		}
-
-
-		///
 		/// Clone
 		///
 		TextSemicolonKeys* TextSemicolonKeys::clone() const

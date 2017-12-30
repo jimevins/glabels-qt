@@ -48,7 +48,7 @@ namespace glbarcode
 		/**
 		 * Destructor
 		 */
-		virtual ~DrawingPrimitive();
+		virtual ~DrawingPrimitive() = default;
 
 		/**
 		 * Get X coordinate of primitive's origin (points).

@@ -34,7 +34,7 @@ namespace glabels
 		class XmlPaperParser
 		{
 		public:
-			XmlPaperParser() {}
+			XmlPaperParser() = default;
 
 			bool readFile( const QString &fileName );
 

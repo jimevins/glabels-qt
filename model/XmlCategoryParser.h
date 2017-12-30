@@ -34,7 +34,7 @@ namespace glabels
 		class XmlCategoryParser
 		{
 		public:
-			XmlCategoryParser() {}
+			XmlCategoryParser() = default;
 
 			bool readFile( const QString &fileName );
 

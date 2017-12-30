@@ -47,14 +47,6 @@ namespace glabels
 
 
 		///
-		/// Destructor
-		///
-		TextCsv::~TextCsv()
-		{
-		}
-
-
-		///
 		/// Clone
 		///
 		TextCsv* TextCsv::clone() const

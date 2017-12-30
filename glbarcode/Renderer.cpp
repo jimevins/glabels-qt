@@ -23,11 +23,6 @@
 #include "DrawingPrimitives.h"
 
 
-glbarcode::Renderer::~Renderer()
-{
-}
-
-
 void glbarcode::Renderer::render( double w, double h, const std::list<DrawingPrimitive*>& primitives )
 {
 	drawBegin( w, h );

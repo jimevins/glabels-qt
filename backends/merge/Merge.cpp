@@ -31,14 +31,6 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		Merge::Merge()
-		{
-		}
-
-
-		///
-		/// Constructor
-		///
 		Merge::Merge( const Merge* merge ) : mSource(merge->mSource)
 		{
 			foreach ( Record* record, merge->mRecordList )

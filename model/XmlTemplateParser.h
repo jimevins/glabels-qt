@@ -36,7 +36,7 @@ namespace glabels
 		class XmlTemplateParser
 		{
 		public:
-			XmlTemplateParser() {}
+			XmlTemplateParser() = default;
 
 			bool readFile( const QString &fileName );
 			Template *parseTemplateNode( const QDomElement &node );

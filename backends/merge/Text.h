@@ -43,7 +43,7 @@ namespace glabels
 		protected:
 			Text( QChar delimiter, bool line1HasKeys );
 			Text( const Text* merge );
-			~Text() override;
+			~Text() override = default;
 
 
 			/////////////////////////////////

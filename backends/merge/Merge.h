@@ -49,7 +49,7 @@ namespace glabels
 			// Life Cycle
 			/////////////////////////////////
 		protected:
-			Merge();
+			Merge() = default;
 			Merge( const Merge* merge );
 		public:
 			~Merge() override;

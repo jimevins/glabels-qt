@@ -41,7 +41,7 @@ namespace glabels
 		public:
 			None();
 			None( const None* merge );
-			~None() override;
+			~None() override = default;
 
 
 			/////////////////////////////////

@@ -47,14 +47,6 @@ namespace glabels
 
 
 		///
-		/// Destructor
-		///
-		TextColon::~TextColon()
-		{
-		}
-
-
-		///
 		/// Clone
 		///
 		TextColon* TextColon::clone() const

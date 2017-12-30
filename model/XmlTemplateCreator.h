@@ -42,7 +42,7 @@ namespace glabels
 		class XmlTemplateCreator
 		{
 		public:
-			XmlTemplateCreator() {}
+			XmlTemplateCreator() = default;
 
 			bool writeTemplates( const QList<const Template*> tmplates, const QString& fileName );
 			bool writeTemplate( const Template* tmplate, const QString& fileName );

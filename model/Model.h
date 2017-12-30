@@ -57,7 +57,7 @@ namespace glabels
 			/////////////////////////////////
 		public:
 			Model();
-			~Model() override {}
+			~Model() override = default;
 
 	
 			/////////////////////////////////

@@ -44,14 +44,6 @@ namespace glabels
 
 
 		///
-		/// Destructor
-		///
-		None::~None()
-		{
-		}
-
-
-		///
 		/// Clone
 		///
 		None* None::clone() const

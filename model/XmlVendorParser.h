@@ -34,7 +34,7 @@ namespace glabels
 		class XmlVendorParser
 		{
 		public:
-			XmlVendorParser() {}
+			XmlVendorParser() = default;
 
 			bool readFile( const QString &fileName );
 

@@ -50,7 +50,7 @@ namespace glbarcode
 		/**
 		 * Destructor.
 		 */
-		virtual ~Renderer();
+		virtual ~Renderer() = default;
 
 
 		/**
