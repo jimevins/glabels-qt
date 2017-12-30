@@ -24,7 +24,7 @@
 
 #include "Barcode1dBase.h"
 
-#include <stdint.h>
+#include <cstdint>
 
 
 namespace glbarcode

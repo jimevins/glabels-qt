@@ -60,7 +60,7 @@ namespace glabels
 			bool QrCode::encode( const std::string& cookedData, glbarcode::Matrix<bool>& encodedData )
 			{
 				QRcode *qrcode = QRcode_encodeString( cookedData.c_str(), 0, QR_ECLEVEL_M, QR_MODE_8, 1 );
-				if ( qrcode == NULL )
+				if ( qrcode == nullptr )
 				{
 					return false;
 				}
