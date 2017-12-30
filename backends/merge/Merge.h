@@ -69,7 +69,7 @@ namespace glabels
 			QString source() const;
 			void setSource( const QString& source );
 
-			const QList<Record*>& recordList( void ) const;
+			const QList<Record*>& recordList( ) const;
 
 
 			/////////////////////////////////
