@@ -9,17 +9,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/AboutDialog.ui" line="46"/>
+        <location filename="../glabels/ui/AboutDialog.ui" line="92"/>
         <source>&amp;License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/AboutDialog.ui" line="53"/>
+        <location filename="../glabels/ui/AboutDialog.ui" line="99"/>
         <source>&amp;Website</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/AboutDialog.ui" line="73"/>
+        <location filename="../glabels/ui/AboutDialog.ui" line="119"/>
         <source>&amp;Close</source>
         <translation type="unfinished"></translation>
     </message>

@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.2)
 ###############################################################################
 # gLabels Label Designer Project
 ###############################################################################
-project (glabels-qt)
+project (glabels-qt VERSION "3.99.0")
 
 #
 # Path for locally defined cmake modules
@@ -12,15 +12,31 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/"
 
 
 #=======================================
-# Version Information
+# Packaging and Version Information
 #=======================================
-set (Website  "http://glabels.org")
+set (Website  "glabels.org")
+set (CPACK_PACKAGE_VENDOR ${Website})
 
-set (Major_Version   "3")
-set (Minor_Version   "99")
-set (Micro_Version   "0")
+set (CPACK_PACKAGE_NAME glabels)
 
-set (Full_Version "${Major_Version}.${Minor_Version}.${Micro_Version}")
+string (TIMESTAMP _date "%Y%m%d")
+set (CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+set (CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+set (CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+set (CPACK_PACKAGE_VERSION_TWEAK ${_date})
+
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "gLabels Label Designer")
+set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
+
+set (CPACK_PACKAGE_EXECUTABLES "glabels-qt;gLabels")
+set (CPACK_CREATE_DESKTOP_LINKS "glabels-qt")
+
+set (CPACK_NSIS_DISPLAY_NAME "gLabels")
+set (CPACK_NSIS_URL_INFO_ABOUT "http://${Website}")
+set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/glabels/windows-icon/glabels.ico")
+set (CPACK_NSIS_MODIFY_PATH "ON")
+
+include (CPack)
 
 
 #=======================================
