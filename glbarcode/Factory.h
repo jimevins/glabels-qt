@@ -48,7 +48,7 @@ namespace glbarcode
 		/**
 		 * Barcode creation function signature.
 		 */
-		typedef Barcode* (*BarcodeCreateFct)();
+		using BarcodeCreateFct = Barcode* (*)();
 
 
 	private:
@@ -113,7 +113,7 @@ namespace glbarcode
 		/**
 		 * Map barcode type strings to creation functions.
 		 */
-		typedef std::map<std::string,BarcodeCreateFct> BarcodeTypeMap;
+		using BarcodeTypeMap = std::map<std::string,BarcodeCreateFct>;
 		static BarcodeTypeMap mBarcodeTypeMap;
 
 

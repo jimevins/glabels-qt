@@ -51,7 +51,7 @@ namespace
 	/*
 	 * Encoding tables
 	 */
-	typedef enum
+	enum Char
 	{
 		CHAR_A = 0,
 		CHAR_B = 1,
@@ -63,15 +63,19 @@ namespace
 		CHAR_H = 7,
 		CHAR_I = 8,
 		CHAR_J = 9
-	} Char;
+	};
 
-	typedef struct { Char i; int mask; } Bar;
+	struct Bar
+	{
+		Char i;
+		int mask;
+	};
 
-	typedef struct
+	struct BarMapEntry
 	{
 		Bar descender;
 		Bar ascender;
-	} BarMapEntry;
+	};
 
 	const BarMapEntry barMap[] = {
 		/*  1 */ { { CHAR_H, 1<<2  }, { CHAR_E, 1<<3  } },

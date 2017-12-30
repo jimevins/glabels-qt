@@ -61,7 +61,7 @@ namespace
 	/*
 	 * Parity selection
 	 */
-	typedef enum { P_ODD, P_EVEN } Parity;
+	enum Parity { P_ODD, P_EVEN };
 
 	const Parity parity[10][6] = {
 		/*                Pos 1,  Pos 2,  Pos 3,  Pos 4,  Pos 5,  Pos 6 */

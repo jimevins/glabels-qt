@@ -101,10 +101,10 @@ namespace glabels
 		static const int PALETTE_COLS = ColorHistory::MAX_COLORS;
 		static const int PALETTE_ROWS = 4;
 
-		typedef struct {
+		struct ColorTableEntry {
 			QString colorSpec;
 			const char* trname;
-		} ColorTableEntry;
+		};
 
 		static ColorTableEntry mColorTable[];
 

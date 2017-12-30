@@ -77,7 +77,7 @@ namespace glabels
 			// private methods
 			/////////////////////////////////
 		private:
-			typedef Merge* (*CreateFct)();
+			using CreateFct = Merge* (*)();
 	
 			static void registerBackend( const QString& id,
 			                             const QString& name,
