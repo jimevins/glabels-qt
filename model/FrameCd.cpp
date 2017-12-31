@@ -161,7 +161,7 @@ namespace glabels
 
 		bool FrameCd::isSimilarTo( Frame* other ) const
 		{
-			if ( FrameCd *otherCd = dynamic_cast<FrameCd*>(other) )
+			if ( auto *otherCd = dynamic_cast<FrameCd*>(other) )
 			{
 				if ( (fabs( mW  - otherCd->mW )  <= EPSILON) &&
 				     (fabs( mH  - otherCd->mH )  <= EPSILON) &&

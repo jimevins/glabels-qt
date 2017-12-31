@@ -100,7 +100,7 @@ namespace glabels
 
 		bool FrameRound::isSimilarTo( Frame* other ) const
 		{
-			if ( FrameRound *otherRound = dynamic_cast<FrameRound*>(other) )
+			if ( auto *otherRound = dynamic_cast<FrameRound*>(other) )
 			{
 				if ( fabs( mR - otherRound->mR ) <= EPSILON )
 				{

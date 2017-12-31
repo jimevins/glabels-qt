@@ -95,11 +95,11 @@ namespace glabels
 		setStyleSheet( ".glabels--ColorPaletteDialog {background: white; border: 1px solid black}" );
 		setWindowFlags( Qt::Popup | Qt::FramelessWindowHint );
 
-		QVBoxLayout* vLayout = new QVBoxLayout();
+		auto* vLayout = new QVBoxLayout();
 		vLayout->setContentsMargins( 0, 0, 0, 0 );
 		vLayout->setSpacing( 0 );
 
-		ColorPaletteButtonItem* defaultButton = new ColorPaletteButtonItem( defaultLabel );
+		auto* defaultButton = new ColorPaletteButtonItem( defaultLabel );
 		connect( defaultButton, SIGNAL(activated()), this, SLOT(onDefaultItemActivated()) );
 		vLayout->addWidget( defaultButton );
 		
@@ -108,7 +108,7 @@ namespace glabels
 		hline1->setLineWidth( 1 );
 		vLayout->addWidget( hline1 );
 
-		QGridLayout* mainPaletteLayout = new QGridLayout();
+		auto* mainPaletteLayout = new QGridLayout();
 		mainPaletteLayout->setSpacing( 0 );
 		for ( int iRow = 0; iRow < PALETTE_ROWS; iRow++ )
 		{
@@ -131,7 +131,7 @@ namespace glabels
 		hline2->setLineWidth( 1 );
 		vLayout->addWidget( hline2 );
 
-		QHBoxLayout* customPaletteLayout = new QHBoxLayout();
+		auto* customPaletteLayout = new QHBoxLayout();
 		customPaletteLayout->setSpacing( 0 );
 		for ( int iCol = 0; iCol < PALETTE_COLS; iCol++ )
 		{
@@ -167,7 +167,7 @@ namespace glabels
 		vLayout->addWidget( mMergeFieldCombo );
 
 		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-		const QStandardItemModel* model = qobject_cast<const QStandardItemModel*>(mMergeFieldCombo->model());
+		const auto* model = qobject_cast<const QStandardItemModel*>(mMergeFieldCombo->model());
 		QStandardItem* item = model->item(0);
 		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
 	

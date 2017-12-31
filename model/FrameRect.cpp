@@ -114,7 +114,7 @@ namespace glabels
 
 		bool FrameRect::isSimilarTo( Frame* other ) const
 		{
-			if ( FrameRect *otherRect = dynamic_cast<FrameRect*>(other) )
+			if ( auto *otherRect = dynamic_cast<FrameRect*>(other) )
 			{
 				if ( (fabs( mW - otherRect->mW ) <= EPSILON) &&
 				     (fabs( mH - otherRect->mH ) <= EPSILON) )

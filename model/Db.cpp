@@ -87,7 +87,7 @@ namespace glabels
 	
 		Db* Db::instance()
 		{
-			static Db* db = new Db();
+			static auto* db = new Db();
 			return db;
 		}
 

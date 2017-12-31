@@ -65,7 +65,7 @@ namespace glabels
 		///
 		Model* Model::save() const
 		{
-			Model* savedModel = new Model;
+			auto* savedModel = new Model;
 			savedModel->restore( this );
 
 			return savedModel;
@@ -1344,7 +1344,7 @@ namespace glabels
 				QByteArray buffer;
 				XmlLabelCreator::serializeObjects( getSelection(), buffer );
 
-				QMimeData *mimeData = new QMimeData;
+				auto *mimeData = new QMimeData;
 				mimeData->setData( MIME_TYPE, buffer );
 
 				clipboard->setMimeData( mimeData );
@@ -1410,7 +1410,7 @@ namespace glabels
 			else if ( mimeData->hasImage() )
 			{
 				// Create object from clipboard image
-				ModelImageObject* object = new ModelImageObject();
+				auto* object = new ModelImageObject();
 				object->setImage( qvariant_cast<QImage>(mimeData->imageData()) );
 				object->setSize( object->naturalSize() );
 				object->setPosition( (w()-object->w())/2.0, (h()-object->h())/2.0 );
@@ -1421,7 +1421,7 @@ namespace glabels
 			else if ( mimeData->hasText() )
 			{
 				// Create object from clipboard text
-				ModelTextObject* object = new ModelTextObject();
+				auto* object = new ModelTextObject();
 				object->setText( mimeData->text() );
 				object->setSize( object->naturalSize() );
 				object->setPosition( (w()-object->w())/2.0, (h()-object->h())/2.0 );

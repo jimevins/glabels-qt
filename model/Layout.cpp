@@ -99,7 +99,7 @@ namespace glabels
 
 		Layout* Layout::dup() const
 		{
-			Layout *other = new Layout( *this );
+			auto *other = new Layout( *this );
 			return other;
 		}
 

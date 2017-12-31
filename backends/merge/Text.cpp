@@ -119,7 +119,7 @@ namespace glabels
 			QStringList values = parseLine();
 			if ( !values.isEmpty() )
 			{
-				Record* record = new Record();
+				auto* record = new Record();
 
 				int iField = 0;
 				foreach ( QString value, values )

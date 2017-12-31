@@ -132,7 +132,7 @@ namespace glabels
 	///
 	void Preview::drawPaper( const model::Distance& pw, const model::Distance& ph )
 	{
-		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+		auto *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
 		shadowEffect->setOffset( shadowOffsetPixels );
 		shadowEffect->setBlurRadius( shadowRadiusPixels );
@@ -142,7 +142,7 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( paperOutlineWidthPixels );
 
-		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
+		auto *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
 		pageItem->setBrush( brush );
 		pageItem->setPen( pen );
 		pageItem->setGraphicsEffect( shadowEffect );
@@ -176,7 +176,7 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( labelOutlineWidthPixels );
 
-		QGraphicsPathItem *labelOutlineItem  = new QGraphicsPathItem( path );
+		auto *labelOutlineItem  = new QGraphicsPathItem( path );
 		labelOutlineItem->setBrush( brush );
 		labelOutlineItem->setPen( pen );
 		labelOutlineItem->setPos( x.pt(), y.pt() );
@@ -192,7 +192,7 @@ namespace glabels
 	{
 		if ( mRenderer )
 		{
-			PreviewOverlayItem* overlayItem = new PreviewOverlayItem( mRenderer );
+			auto* overlayItem = new PreviewOverlayItem( mRenderer );
 			mScene->addItem( overlayItem );
 		}
 	}

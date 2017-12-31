@@ -66,7 +66,7 @@ namespace glabels
 			mRedoStack.clear();
 
 			/* Save state onto undo stack. */
-			State* stateNow = new State( mModel, description );
+			auto* stateNow = new State( mModel, description );
 			mUndoStack.push( stateNow );
 
 			/* Track consecutive checkpoints. */
@@ -84,7 +84,7 @@ namespace glabels
 	void UndoRedoModel::undo()
 	{
 		State* oldState = mUndoStack.pop();
-		State* stateNow = new State( mModel, oldState->description );
+		auto* stateNow = new State( mModel, oldState->description );
 
 		mRedoStack.push( stateNow );
 
@@ -103,7 +103,7 @@ namespace glabels
 	void UndoRedoModel::redo()
 	{
 		State* oldState = mRedoStack.pop();
-		State* stateNow = new State( mModel, oldState->description );
+		auto* stateNow = new State( mModel, oldState->description );
 
 		mUndoStack.push( stateNow );
 

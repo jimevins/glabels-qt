@@ -242,7 +242,7 @@ namespace glabels
 				qWarning() << "TODO: compatability mode.";
 			}
 
-			Model* label = new Model();
+			auto* label = new Model();
 
 			/* Pass 1, extract data nodes to pre-load cache. */
 			DataCache data;

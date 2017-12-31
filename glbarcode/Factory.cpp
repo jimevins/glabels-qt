@@ -86,7 +86,7 @@ namespace glbarcode
 	{
 		init();
 
-		BarcodeTypeMap::iterator i = mBarcodeTypeMap.find( typeId );
+		auto i = mBarcodeTypeMap.find( typeId );
 
 		return ( i != mBarcodeTypeMap.end() );
 	}
@@ -104,7 +104,7 @@ namespace glbarcode
 	{
 		init();
 
-		BarcodeTypeMap::iterator i = mBarcodeTypeMap.find( typeId );
+		auto i = mBarcodeTypeMap.find( typeId );
 
 		if( i != mBarcodeTypeMap.end() )
 		{

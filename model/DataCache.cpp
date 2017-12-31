@@ -38,7 +38,7 @@ namespace glabels
 		{
 			foreach( ModelObject* object, objects )
 			{
-				if ( ModelImageObject* imageObject = dynamic_cast<ModelImageObject*>(object) )
+				if ( auto* imageObject = dynamic_cast<ModelImageObject*>(object) )
 				{
 					TextNode filenameNode = imageObject->filenameNode();
 					if ( !filenameNode.isField()  )

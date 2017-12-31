@@ -190,7 +190,7 @@ namespace glbarcode
 	{
 
 		/* determine width and establish horizontal scale, based on original cooked data */
-		double dataSize = double( cookedData.size() );
+		auto dataSize = double( cookedData.size() );
 		double minL;
 		if ( !checksum() )
 		{

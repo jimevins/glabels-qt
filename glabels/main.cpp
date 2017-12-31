@@ -104,7 +104,7 @@ int main( int argc, char **argv )
 		if ( model )
 		{
 			model->setFileName( filename );
-			glabels::MainWindow *newWindow = new glabels::MainWindow();
+			auto *newWindow = new glabels::MainWindow();
 			newWindow->setModel( model );
 			newWindow->show();
 			openedFiles = true;
@@ -117,7 +117,7 @@ int main( int argc, char **argv )
 	//
 	if ( !openedFiles )
 	{
-		glabels::MainWindow *mainWindow = new glabels::MainWindow();
+		auto *mainWindow = new glabels::MainWindow();
 		mainWindow->show();
 	}
 

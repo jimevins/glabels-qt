@@ -256,7 +256,7 @@ namespace glbarcode
 
 
 		/* now traverse the code string and draw each bar */
-		int nBarsSpaces = int( codedData.size() - 1 ); /* coded data has dummy "0" on end. */
+		auto nBarsSpaces = int( codedData.size() - 1 ); /* coded data has dummy "0" on end. */
 
 		double xModules = 0;
 		for ( int i = 0; i < nBarsSpaces; i += 2 )

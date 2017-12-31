@@ -53,7 +53,7 @@ namespace glabels
 		const model::Template* tmplate = dialog.tmplate();
 		if ( tmplate )
 		{
-			model::Model* model = new model::Model();
+			auto* model = new model::Model();
 			model->setTmplate( tmplate );
 			model->clearModified();
 
@@ -68,7 +68,7 @@ namespace glabels
 			}
 			else
 			{
-				MainWindow *newWindow = new MainWindow();
+				auto *newWindow = new MainWindow();
 				newWindow->setModel( model );
 				newWindow->show();
 			}
@@ -118,7 +118,7 @@ namespace glabels
 				}
 				else
 				{
-					MainWindow *newWindow = new MainWindow();
+					auto *newWindow = new MainWindow();
 					newWindow->setModel( model );
 					newWindow->show();
 				}
@@ -237,7 +237,7 @@ namespace glabels
 	{
 		foreach ( QWidget* qwidget, QApplication::topLevelWidgets() )
 		{
-			if ( MainWindow* window = qobject_cast<MainWindow*>(qwidget) )
+			if ( auto* window = qobject_cast<MainWindow*>(qwidget) )
 			{
 				window->close();
 			}

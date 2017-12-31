@@ -39,7 +39,7 @@ namespace glabels
 		{
 			if ( bcStyle.backendId() == "" )
 			{
-				BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+				auto* bcMenuItem = new BarcodeMenuItem( bcStyle );
 				connect( bcMenuItem, SIGNAL(activated(const barcode::Style&)),
 				         this, SLOT(onMenuItemActivated(const barcode::Style&)) );
 
@@ -55,7 +55,7 @@ namespace glabels
 			{
 				if ( bcStyle.backendId() == backendId )
 				{
-					BarcodeMenuItem* bcMenuItem = new BarcodeMenuItem( bcStyle );
+					auto* bcMenuItem = new BarcodeMenuItem( bcStyle );
 					connect( bcMenuItem, SIGNAL(activated(const barcode::Style&)),
 					         this, SLOT(onMenuItemActivated(const barcode::Style&)) );
 

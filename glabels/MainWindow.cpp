@@ -113,7 +113,7 @@ namespace glabels
 
 		// Create central widget
 		QWidget *centralWidget = new QWidget();
-		QHBoxLayout *hLayout = new QHBoxLayout();
+		auto *hLayout = new QHBoxLayout();
 		hLayout->setContentsMargins( 0, 0, 0, 0 );
 		hLayout->addWidget( mContents );
 		hLayout->addWidget( mPages );
@@ -698,12 +698,12 @@ namespace glabels
 
 		mLabelEditorScrollArea->setWidget( mLabelEditor );
 
-		QVBoxLayout* editorVLayout = new QVBoxLayout;
+		auto* editorVLayout = new QVBoxLayout;
 		editorVLayout->setContentsMargins( 0, 0, 0, 0 );
 		editorVLayout->addWidget( editorToolBar );
 		editorVLayout->addWidget( mLabelEditorScrollArea );
 
-		QHBoxLayout* editorHLayout = new QHBoxLayout;
+		auto* editorHLayout = new QHBoxLayout;
 		editorHLayout->setContentsMargins( 0, 0, 0, 0 );
 		editorHLayout->addLayout( editorVLayout );
 		editorHLayout->addWidget( mObjectEditor );

@@ -68,8 +68,8 @@ namespace glabels
 					/* Simple integer. */
 					return QString().sprintf( "%.0f", x );
 				}
-				int n = (int)( x * denom[i] + 0.5 );
-				int d = (int)denom[i];
+				auto n = int( x * denom[i] + 0.5 );
+				auto d = int( denom[i] );
 				if ( n > d )
 				{
 					return QString::number(n/d) +

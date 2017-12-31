@@ -95,7 +95,7 @@ namespace glabels
 
 		bool FrameEllipse::isSimilarTo( Frame* other ) const
 		{
-			if ( FrameEllipse* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
+			if ( auto* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
 			{
 				if ( (fabs( mW - otherEllipse->mW ) <= EPSILON) &&
 				     (fabs( mH - otherEllipse->mH ) <= EPSILON) )

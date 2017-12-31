@@ -132,27 +132,27 @@ namespace glabels
 
 			foreach ( ModelObject* object, objects )
 			{
-				if ( ModelBoxObject* boxObject = dynamic_cast<ModelBoxObject*>(object) )
+				if ( auto* boxObject = dynamic_cast<ModelBoxObject*>(object) )
 				{
 					createObjectBoxNode( node, boxObject );
 				}
-				else if ( ModelEllipseObject* ellipseObject = dynamic_cast<ModelEllipseObject*>(object) )
+				else if ( auto* ellipseObject = dynamic_cast<ModelEllipseObject*>(object) )
 				{
 					createObjectEllipseNode( node, ellipseObject );
 				}
-				else if ( ModelLineObject* lineObject = dynamic_cast<ModelLineObject*>(object) )
+				else if ( auto* lineObject = dynamic_cast<ModelLineObject*>(object) )
 				{
 					createObjectLineNode( node, lineObject );
 				}
-				else if ( ModelImageObject* imageObject = dynamic_cast<ModelImageObject*>(object) )
+				else if ( auto* imageObject = dynamic_cast<ModelImageObject*>(object) )
 				{
 					createObjectImageNode( node, imageObject );
 				}
-				else if ( ModelBarcodeObject* barcodeObject = dynamic_cast<ModelBarcodeObject*>(object) )
+				else if ( auto* barcodeObject = dynamic_cast<ModelBarcodeObject*>(object) )
 				{
 					createObjectBarcodeNode( node, barcodeObject );
 				}
-				else if ( ModelTextObject* textObject = dynamic_cast<ModelTextObject*>(object) )
+				else if ( auto* textObject = dynamic_cast<ModelTextObject*>(object) )
 				{
 					createObjectTextNode( node, textObject );
 				}

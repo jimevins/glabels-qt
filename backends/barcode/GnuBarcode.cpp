@@ -213,7 +213,7 @@ namespace glabels
 				/* But it can be too small, in this case enlarge and center the area */
 				if ( bci->width < (int)(barlen * scalef) )
 				{
-					int wid = (int)( barlen * scalef + 1);
+					auto wid = int( barlen * scalef + 1);
 					bci->xoff -= (wid - bci->width)/2 ;
 					bci->width = wid;
 					/* Can't extend too far on the left */

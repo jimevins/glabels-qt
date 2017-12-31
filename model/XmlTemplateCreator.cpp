@@ -125,19 +125,19 @@ namespace glabels
 
 		void XmlTemplateCreator::createLabelNode( QDomElement &parent, const Frame* frame )
 		{
-			if ( const FrameRect* frameRect = dynamic_cast<const FrameRect*>(frame) )
+			if ( const auto* frameRect = dynamic_cast<const FrameRect*>(frame) )
 			{
 				createLabelRectangleNode( parent, frameRect );
 			}
-			else if ( const FrameEllipse* frameEllipse = dynamic_cast<const FrameEllipse*>(frame) )
+			else if ( const auto* frameEllipse = dynamic_cast<const FrameEllipse*>(frame) )
 			{
 				createLabelEllipseNode( parent, frameEllipse );
 			}
-			else if ( const FrameRound* frameRound = dynamic_cast<const FrameRound*>(frame) )
+			else if ( const auto* frameRound = dynamic_cast<const FrameRound*>(frame) )
 			{
 				createLabelRoundNode( parent, frameRound );
 			}
-			else if ( const FrameCd* frameCd = dynamic_cast<const FrameCd*>(frame) )
+			else if ( const auto* frameCd = dynamic_cast<const FrameCd*>(frame) )
 			{
 				createLabelCdNode( parent, frameCd );
 			}
@@ -221,23 +221,23 @@ namespace glabels
 		{
 			foreach ( Markup* markup, frame->markups() )
 			{
-				if ( MarkupMargin* markupMargin = dynamic_cast<MarkupMargin*>(markup) )
+				if ( auto* markupMargin = dynamic_cast<MarkupMargin*>(markup) )
 				{
 					createMarkupMarginNode( node, markupMargin );
 				}
-				else if ( MarkupLine* markupLine = dynamic_cast<MarkupLine*>(markup) )
+				else if ( auto* markupLine = dynamic_cast<MarkupLine*>(markup) )
 				{
 					createMarkupLineNode( node, markupLine );
 				}
-				else if ( MarkupCircle* markupCircle = dynamic_cast<MarkupCircle*>(markup) )
+				else if ( auto* markupCircle = dynamic_cast<MarkupCircle*>(markup) )
 				{
 					createMarkupCircleNode( node, markupCircle );
 				}
-				else if ( MarkupRect* markupRect = dynamic_cast<MarkupRect*>(markup) )
+				else if ( auto* markupRect = dynamic_cast<MarkupRect*>(markup) )
 				{
 					createMarkupRectNode( node, markupRect );
 				}
-				else if ( MarkupEllipse* markupEllipse = dynamic_cast<MarkupEllipse*>(markup) )
+				else if ( auto* markupEllipse = dynamic_cast<MarkupEllipse*>(markup) )
 				{
 					createMarkupEllipseNode( node, markupEllipse );
 				}

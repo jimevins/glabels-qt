@@ -551,10 +551,10 @@ namespace glabels
 			int b = color.blue();
 			int a = color.alpha();
 		
-			QImage* shadow = new QImage( *mImage );
+			auto* shadow = new QImage( *mImage );
 			for ( int iy = 0; iy < shadow->height(); iy++ )
 			{
-				QRgb* scanLine = (QRgb*)shadow->scanLine( iy );
+				auto* scanLine = (QRgb*)shadow->scanLine( iy );
 		
 				for ( int ix = 0; ix < shadow->width(); ix++ )
 				{

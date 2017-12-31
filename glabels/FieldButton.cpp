@@ -52,7 +52,7 @@ namespace glabels
 		}
 
 		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-		const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
+		const auto* itemModel = qobject_cast<const QStandardItemModel*>(model());
 		QStandardItem* item = itemModel->item(0);
 		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
 	}
@@ -65,7 +65,7 @@ namespace glabels
 		addItem( mName );
 
 		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-		const QStandardItemModel* itemModel = qobject_cast<const QStandardItemModel*>(model());
+		const auto* itemModel = qobject_cast<const QStandardItemModel*>(model());
 		QStandardItem* item = itemModel->item(0);
 		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
 	

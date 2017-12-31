@@ -44,7 +44,7 @@ namespace glabels
 		titleLabel->setText( QString( "<span style='font-size:18pt;'>%1</span>" ).arg( tr("Properties") ) );
 
 		// Hack to get orientationCombo item height to follow icon size plus padding 
-		QStyledItemDelegate* itemDelegate = new QStyledItemDelegate();
+		auto* itemDelegate = new QStyledItemDelegate();
 		orientationCombo->setItemDelegate( itemDelegate );
 		orientationCombo->setStyleSheet( "* QAbstractItemView::item { padding: 8px; }" );
 

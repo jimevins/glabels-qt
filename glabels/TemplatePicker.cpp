@@ -63,7 +63,7 @@ namespace glabels
 	{
 		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 		{
-			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
+			auto *tItem = dynamic_cast<TemplatePickerItem *>(item);
 
 			bool nameMask = tItem->tmplate()->name().contains( searchString, Qt::CaseInsensitive );
 		
@@ -107,7 +107,7 @@ namespace glabels
 	{
 		foreach ( QListWidgetItem *item, findItems( "*", Qt::MatchWildcard ) )
 		{
-			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem *>(item);
+			auto *tItem = dynamic_cast<TemplatePickerItem *>(item);
 
 			bool match = false;
 			foreach ( QString name, names )
@@ -144,7 +144,7 @@ namespace glabels
 		}
 		else
 		{
-			TemplatePickerItem *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
+			auto *tItem = dynamic_cast<TemplatePickerItem*>(items.first());
 			return tItem->tmplate();
 		}
 	}

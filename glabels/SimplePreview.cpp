@@ -143,7 +143,7 @@ namespace glabels
 	///
 	void SimplePreview::drawPaper( const model::Distance& pw, const model::Distance& ph )
 	{
-		QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+		auto *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
 		shadowEffect->setOffset( shadowOffsetPixels );
 		shadowEffect->setBlurRadius( shadowRadiusPixels );
@@ -153,7 +153,7 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( paperOutlineWidthPixels );
 
-		QGraphicsRectItem *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
+		auto *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
 		pageItem->setBrush( brush );
 		pageItem->setPen( pen );
 		pageItem->setGraphicsEffect( shadowEffect );
@@ -188,7 +188,7 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( labelOutlineWidthPixels );
 
-		QGraphicsPathItem *labelItem  = new QGraphicsPathItem( path );
+		auto *labelItem  = new QGraphicsPathItem( path );
 		labelItem->setBrush( brush );
 		labelItem->setPen( pen );
 		labelItem->setPos( x.pt(), y.pt() );
@@ -227,7 +227,7 @@ namespace glabels
 		path.lineTo( 0,                        -minWH.pt()*arrowScale   );
 		path.lineTo(  minWH.pt()*arrowScale/2, -minWH.pt()*arrowScale/2 );
 
-		QGraphicsPathItem *arrowItem = new QGraphicsPathItem( path );
+		auto *arrowItem = new QGraphicsPathItem( path );
 		arrowItem->setPen( pen );
 		arrowItem->setPos( (x0+w/2).pt(), (y0+h/2).pt() );
 		if ( mRotateFlag )
