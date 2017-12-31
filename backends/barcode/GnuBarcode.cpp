@@ -43,9 +43,9 @@ namespace glabels
 
 			bool Base::isAscii( const std::string& data ) const
 			{
-				for ( unsigned int i = 0; i < data.size(); i++ )
+				for (char c : data)
 				{
-					if ( (data[i] & 0x80) != 0 )
+					if ( (c & 0x80) != 0 )
 					{
 						return false;
 					}
@@ -61,9 +61,9 @@ namespace glabels
 			{
 				unsigned int n = 0;
 
-				for ( unsigned int i = 0; i < data.size(); i++ )
+				for (char c : data)
 				{
-					if ( isdigit(data[i]) )
+					if ( isdigit(c) )
 					{
 						n++;
 					}

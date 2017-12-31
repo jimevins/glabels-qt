@@ -91,13 +91,13 @@ namespace glbarcode
 	bool BarcodePostnet::validate( const std::string& rawData )
 	{
 		int nDigits = 0;
-		for ( unsigned int i = 0; i < rawData.size(); i++ )
+		for (char c : rawData)
 		{
-			if ( isdigit( rawData[i] ) )
+			if ( isdigit( c ) )
 			{
 				nDigits++;
 			}
-			else if ( (rawData[i] != '-') && (rawData[i] != ' ') )
+			else if ( (c != '-') && (c != ' ') )
 			{
 				/* Only allow digits, dashes, and spaces. */
 				return false;
@@ -120,12 +120,12 @@ namespace glbarcode
 
 		/* process each digit, adding approptiate symbol */
 		int sum = 0;
-		for ( unsigned int i = 0; i < cookedData.size(); i++ )
+		for (char c : cookedData)
 		{
-			if ( isdigit( cookedData[i] ) )
+			if ( isdigit( c ) )
 			{
 				/* Only translate the digits (0-9) */
-				int d = cookedData[i] - '0';
+				int d = c - '0';
 				code += symbols[d];
 				sum += d;
 			}
@@ -151,12 +151,12 @@ namespace glbarcode
 					double&            h )
 	{
 		double x = POSTNET_HORIZ_MARGIN;
-		for ( unsigned int i=0; i < codedData.size(); i++ )
+		for (char c : codedData)
 		{
 			double y = POSTNET_VERT_MARGIN;
 
 			double length = 0;
-			switch ( codedData[i] )
+			switch ( c )
 			{
 			case '0':
 				y += POSTNET_FULLBAR_HEIGHT - POSTNET_HALFBAR_HEIGHT;

@@ -99,13 +99,13 @@ namespace glbarcode
 	{
 		int nDigits = 0;
 
-		for ( unsigned int i = 0; i < rawData.size(); i++ )
+		for (char c : rawData)
 		{
-			if ( isdigit( rawData[i] ) )
+			if ( isdigit( c ) )
 			{
 				nDigits++;
 			}
-			else if ( rawData[i] != ' ')
+			else if ( c != ' ')
 			{
 				/* Only allow digits and spaces -- ignoring spaces. */
 				return false;
@@ -192,11 +192,11 @@ namespace glbarcode
 	{
 		std::string displayText;
 
-		for ( unsigned int i = 0; i < rawData.size(); i++ )
+		for (char c : rawData)
 		{
-			if ( isdigit( rawData[i] ) )
+			if ( isdigit( c ) )
 			{
-				displayText += rawData[i];
+				displayText += c;
 			}
 		}
 

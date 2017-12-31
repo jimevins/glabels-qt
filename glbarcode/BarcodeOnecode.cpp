@@ -300,9 +300,9 @@ namespace
 	public:
 		Int104( )
 		{
-			for ( int i = 0; i < 13; i++ )
+			for (unsigned char& c : mByteArray)
 			{
-				mByteArray[i] = 0;
+				c = 0;
 			}
 		}
 
@@ -334,11 +334,11 @@ namespace
 		uint32_t divUint( uint32_t y )
 		{
 			uint32_t carry = 0;
-			for ( int i = 0; i < 13; i++ )
+			for (unsigned char& c : mByteArray)
 			{
-				uint32_t temp = mByteArray[i] + (carry << 8);
+				uint32_t temp = c + (carry << 8);
 
-				mByteArray[i] = (uint8_t)(temp / y);
+				c = (uint8_t)(temp / y);
 				carry   = temp % y;
 			}
 			return carry;
@@ -375,9 +375,9 @@ namespace glbarcode
 			return false;
 		}
 
-		for ( unsigned int i = 0; i < rawData.size(); i++ )
+		for (char c : rawData)
 		{
-			if ( !isdigit( rawData[i] ) )
+			if ( !isdigit( c ) )
 			{
 				return false;
 			}
@@ -493,10 +493,10 @@ namespace glbarcode
 		/*-----------------------------------------------------------*/
 		std::string code;
 
-		for ( int i = 0; i < 65; i++ )
+		for (auto b : barMap)
 		{
-			int d = (character[ barMap[i].descender.i ] & barMap[i].descender.mask) != 0 ? 1 : 0;
-			int a = (character[ barMap[i].ascender.i ]  & barMap[i].ascender.mask)  != 0 ? 1 : 0;
+			int d = (character[ b.descender.i ] & b.descender.mask) != 0 ? 1 : 0;
+			int a = (character[ b.ascender.i ]  & b.ascender.mask)  != 0 ? 1 : 0;
 
 			code += tdafTable[ (a<<1) + d ];
 		}
@@ -516,12 +516,12 @@ namespace glbarcode
 					double&            h )
 	{
 		double x = ONECODE_HORIZ_MARGIN;
-		for ( unsigned int i = 0; i < codedData.size(); i++ )
+		for (char c : codedData)
 		{
 			double y = ONECODE_VERT_MARGIN;
 			double length = 0;
 
-			switch ( codedData[i] )
+			switch ( c )
 			{
 			case 'T':
 				y      += ONECODE_TRACKER_OFFSET;
