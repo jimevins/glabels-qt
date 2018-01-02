@@ -78,22 +78,23 @@ namespace glabels
 		///
 		void Text::open()
 		{
-			mFile.setFileName( source() );
-			mFile.open( QIODevice::ReadOnly|QIODevice::Text );
-
 			mKeys.clear();
 			mNFieldsMax = 0;
 
-			if ( mLine1HasKeys && mFile.isOpen() )
+			mFile.setFileName( source() );
+			if (mFile.open( QIODevice::ReadOnly|QIODevice::Text ))
 			{
-				mKeys = parseLine();
-				if ( (mKeys.size() == 1) && (mKeys[0] == "") )
+				if ( mLine1HasKeys )
 				{
-					mKeys.clear();
-				}
-				else
-				{
-					mNFieldsMax = mKeys.size();
+					mKeys = parseLine();
+					if ( (mKeys.size() == 1) && (mKeys[0] == "") )
+					{
+						mKeys.clear();
+					}
+					else
+					{
+						mNFieldsMax = mKeys.size();
+					}
 				}
 			}
 		}
