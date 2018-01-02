@@ -168,7 +168,7 @@ namespace glabels
 		///
 		/// Can Line Color Capability Implementation
 		///
-		bool ModelLineObject::canLineColor()
+		bool ModelLineObject::canLineColor() const
 		{
 			return true;
 		}
@@ -177,7 +177,7 @@ namespace glabels
 		///
 		/// Can Line Width Capability Implementation
 		///
-		bool ModelLineObject::canLineWidth()
+		bool ModelLineObject::canLineWidth() const
 		{
 			return true;
 		}

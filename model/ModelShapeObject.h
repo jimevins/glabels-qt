@@ -91,9 +91,9 @@ namespace glabels
 			// Capability Implementations
 			///////////////////////////////////////////////////////////////
 		public:
-			virtual bool canFill();
-			virtual bool canLineColor();
-			virtual bool canLineWidth();
+			bool canFill() const override;
+			bool canLineColor() const override;
+			bool canLineWidth() const override;
 
 
 			///////////////////////////////////////////////////////////////

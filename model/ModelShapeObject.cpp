@@ -183,7 +183,7 @@ namespace glabels
 		///
 		/// Can Fill Capability Implementation
 		///
-		bool ModelShapeObject::canFill()
+		bool ModelShapeObject::canFill() const
 		{
 			return true;
 		}
@@ -192,7 +192,7 @@ namespace glabels
 		///
 		/// Can Line Color Capability Implementation
 		///
-		bool ModelShapeObject::canLineColor()
+		bool ModelShapeObject::canLineColor() const
 		{
 			return true;
 		}
@@ -201,7 +201,7 @@ namespace glabels
 		///
 		/// Can Line Width Capability Implementation
 		///
-		bool ModelShapeObject::canLineWidth()
+		bool ModelShapeObject::canLineWidth() const
 		{
 			return true;
 		}

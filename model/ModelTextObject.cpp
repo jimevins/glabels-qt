@@ -453,7 +453,7 @@ namespace glabels
 		///
 		/// Can Text Capability Implementation
 		///
-		bool ModelTextObject::canText()
+		bool ModelTextObject::canText() const
 		{
 			return true;
 		}
