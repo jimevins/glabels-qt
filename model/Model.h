@@ -93,9 +93,6 @@ namespace glabels
 			const QString& fileName() const;
 			void setFileName( const QString &fileName );
 
-			int compressionLevel() const;
-			void setCompressionLevel( int compressionLevel );
-
 			const Template* tmplate() const;
 			const Frame* frame() const;
 			void setTmplate( const Template* tmplate );
@@ -225,7 +222,6 @@ namespace glabels
 			int                       mUntitledInstance;
 			bool                      mModified;
 			QString                   mFileName;
-			int                       mCompressionLevel;
 			const Template*           mTmplate;
 			const Frame*              mFrame;
 			bool                      mRotate;

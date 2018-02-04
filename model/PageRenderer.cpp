@@ -47,9 +47,9 @@ namespace glabels
 
 
 		PageRenderer::PageRenderer( const Model* model )
-			: mModel(nullptr), mNCopies(0), mStartLabel(0),
+			: mModel(nullptr), mMerge(nullptr), mNCopies(0), mStartLabel(0), mLastLabel(0),
 			  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
-			  mIPage(0), mIsMerge(false), mNPages(0)
+			  mIPage(0), mIsMerge(false), mNPages(0), mNLabelsPerPage(0)
 		{
 			if ( model )
 			{

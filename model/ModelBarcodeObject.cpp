@@ -111,6 +111,7 @@ namespace glabels
 			mBcStyle        = bcStyle;
 			mBcTextFlag     = bcTextFlag;
 			mBcChecksumFlag = bcChecksumFlag;
+			mBcFormatDigits = mBcStyle.preferedN();
 			mBcData         = bcData;
 			mBcColorNode    = bcColorNode;
 

@@ -41,7 +41,7 @@ namespace glabels
 
 
 	ColorButton::ColorButton( QWidget* parent )
-		: QPushButton( parent )
+		: QPushButton( parent ), mIsDefault(0), mDialog(nullptr)
 	{
 		// empty
 	}

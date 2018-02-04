@@ -878,16 +878,16 @@
 <context>
     <name>glabels::LabelEditor</name>
     <message>
-        <location filename="../glabels/LabelEditor.cpp" line="641"/>
-        <location filename="../glabels/LabelEditor.cpp" line="941"/>
-        <location filename="../glabels/LabelEditor.cpp" line="946"/>
-        <location filename="../glabels/LabelEditor.cpp" line="951"/>
-        <location filename="../glabels/LabelEditor.cpp" line="956"/>
+        <location filename="../glabels/LabelEditor.cpp" line="652"/>
+        <location filename="../glabels/LabelEditor.cpp" line="952"/>
+        <location filename="../glabels/LabelEditor.cpp" line="957"/>
+        <location filename="../glabels/LabelEditor.cpp" line="962"/>
+        <location filename="../glabels/LabelEditor.cpp" line="967"/>
         <source>Move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/LabelEditor.cpp" line="961"/>
+        <location filename="../glabels/LabelEditor.cpp" line="972"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>

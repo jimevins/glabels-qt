@@ -84,13 +84,24 @@ namespace glabels
 	LabelEditor::LabelEditor( QScrollArea* scrollArea, QWidget* parent )
 		: QWidget(parent), mScrollArea(scrollArea)
 	{
-		mState = IdleState;
-
 		mModel              = nullptr;
 		mUndoRedoModel      = nullptr;
+
+		mZoom               = 1;
+		mZoomToFitFlag      = false;
+		mScale              = 1;
 		mMarkupVisible      = true;
 		mGridVisible        = true;
 		mGridSpacing        = 18;
+
+		mState = IdleState;
+
+		mSelectRegionVisible = false;
+		mResizeObject        = nullptr;
+		mResizeHandle        = nullptr;
+		mResizeHonorAspect   = false;
+		mCreateObjectType    = Box;
+		mCreateObject        = nullptr;
 
 		setMouseTracking( true );
 		setFocusPolicy(Qt::StrongFocus);

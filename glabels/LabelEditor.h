@@ -176,6 +176,9 @@ namespace glabels
 
 		QScrollArea*         mScrollArea;
 
+		model::Model*        mModel;
+		UndoRedoModel*       mUndoRedoModel;
+
 		double               mZoom;
 		bool                 mZoomToFitFlag;
 		double               mScale;
@@ -187,9 +190,6 @@ namespace glabels
 
 		double               mGridSpacing;
 		model::Distance      mStepSize;
-
-		model::Model*        mModel;
-		UndoRedoModel*       mUndoRedoModel;
 
 		State                mState;
 

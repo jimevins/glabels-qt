@@ -54,7 +54,8 @@ namespace glabels
 		///
 		/// Default constructor.
 		///
-		Model::Model() : mUntitledInstance(0), mModified(true), mTmplate(nullptr), mRotate(false)
+		Model::Model()
+			: mUntitledInstance(0), mModified(true), mTmplate(nullptr), mFrame(nullptr), mRotate(false)
 		{
 			mMerge = new merge::None();
 		}
@@ -88,7 +89,6 @@ namespace glabels
 			mUntitledInstance = savedModel->mUntitledInstance;
 			mModified         = savedModel->mModified;
 			mFileName         = savedModel->mFileName;
-			mCompressionLevel = savedModel->mCompressionLevel;
 			mTmplate          = savedModel->mTmplate;
 			mFrame            = savedModel->mFrame;
 			mRotate           = savedModel->mRotate;
@@ -147,24 +147,6 @@ namespace glabels
 				mFileName = fileName;
 				emit nameChanged();
 			}
-		}
-
-
-		///
-		/// Get compression level
-		///
-		int Model::compressionLevel() const
-		{
-			return mCompressionLevel;
-		}
-
-
-		///
-		/// Set compression level
-		///
-		void Model::setCompressionLevel( int compressionLevel )
-		{
-			mCompressionLevel = compressionLevel;
 		}
 
 

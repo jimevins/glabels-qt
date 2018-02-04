@@ -37,7 +37,7 @@ namespace glabels
 	/// Constructor
 	///
 	PropertiesView::PropertiesView( QWidget *parent )
-		: QWidget(parent), mModel(nullptr)
+		: QWidget(parent), mModel(nullptr), mUndoRedoModel(nullptr)
 	{
 		setupUi( this );
 

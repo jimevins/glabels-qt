@@ -34,7 +34,7 @@ namespace glabels
 	/// Constructor
 	///
 	MergeView::MergeView( QWidget *parent )
-		: QWidget(parent), mModel(nullptr), mBlock(false)
+		: QWidget(parent), mModel(nullptr), mUndoRedoModel(nullptr), mBlock(false), mOldFormatComboIndex(0)
 	{
 		setupUi( this );
 
