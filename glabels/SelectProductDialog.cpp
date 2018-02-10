@@ -56,6 +56,7 @@ namespace glabels
 			check->setChecked( mCategoryIdList.contains( category->id() ) );
 			categoriesLayout->addWidget( check );
 
+			mCheckList.append( check );
 			mCheckToCategoryMap[check] = category->id();
 
 			connect( check, SIGNAL(clicked()), this, SLOT(onCategoryCheckClicked()) );
@@ -231,7 +232,7 @@ namespace glabels
 	{
 		mCategoryIdList.clear();
 
-		foreach( QCheckBox* check, mCheckToCategoryMap.keys() )
+		foreach( QCheckBox* check, mCheckList )
 		{
 			if ( check->isChecked() )
 			{

@@ -86,6 +86,7 @@ namespace glabels
 		QBasicTimer mTimer;
 
 		QMap<QCheckBox*,QString> mCheckToCategoryMap;
+		QList<QCheckBox*>        mCheckList;
 		QStringList              mCategoryIdList;
 
 		bool mCanceled;
