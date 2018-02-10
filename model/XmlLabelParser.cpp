@@ -748,12 +748,19 @@ namespace glabels
 
 			if ( mimetype == "image/png" )
 			{
-				QByteArray ba64 = node.text().toUtf8();
-				QByteArray ba = QByteArray::fromBase64( ba64 );
-				QImage image;
-				image.loadFromData( ba, "PNG" );
+				if ( encoding == "base64" )
+				{
+					QByteArray ba64 = node.text().toUtf8();
+					QByteArray ba = QByteArray::fromBase64( ba64 );
+					QImage image;
+					image.loadFromData( ba, "PNG" );
 
-				data.addImage( name, image );
+					data.addImage( name, image );
+				}
+				else
+				{
+					qWarning() << "Unexpected encoding:" << encoding << "node:" << node.tagName(); 
+				}
 			}
 			else if ( mimetype == "image/svg+xml" )
 			{
