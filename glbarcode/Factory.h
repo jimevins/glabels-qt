@@ -28,12 +28,6 @@
 #include "TypeIdList.h"
 
 
-/**
- * Barcode factory base for CAPI
- */
-extern "C" struct gbcFactory {};
-
-
 namespace glbarcode
 {
 	/**
@@ -41,7 +35,7 @@ namespace glbarcode
 	 *
 	 * Singleton Barcode factory class.
 	 */
-	class Factory : public gbcFactory
+	class Factory
 	{
 
 	public:
