@@ -133,7 +133,7 @@ int main( int argc, char **argv )
 	
 	if ( parser.positionalArguments().size() == 1 )
 	{
-		QString filename = parser.positionalArguments().first();
+		QString filename = parser.positionalArguments().constFirst();
 
 		glabels::model::Model *model = glabels::model::XmlLabelParser::readFile( filename );
 		if ( model )

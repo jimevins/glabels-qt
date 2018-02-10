@@ -216,7 +216,7 @@ namespace glabels
 
 		QBrush brush( upColor );
 
-		model::Point origin = frame->getOrigins().first();
+		model::Point origin = frame->getOrigins().constFirst();
 		model::Distance x0 = origin.x();
 		model::Distance y0 = origin.y();
 
