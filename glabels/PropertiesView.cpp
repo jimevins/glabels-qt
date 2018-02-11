@@ -109,8 +109,7 @@ namespace glabels
 		const model::Vendor* vendor = model::Db::lookupVendorFromName( tmplate->brand() );
 		if ( (vendor != nullptr) && (vendor->url() != nullptr) )
 		{
-			QString markup = QString( "<a href='%1'>%2</a>" )
-				.arg( vendor->url() ).arg( vendor->name() );
+			QString markup = QString( "<a href='%1'>%2</a>" ).arg( vendor->url(), vendor->name() );
 			vendorLabel->setText( markup );
 		}
 		else
@@ -120,8 +119,7 @@ namespace glabels
 
 		if ( tmplate->productUrl() != nullptr )
 		{
-			QString markup = QString( "<a href='%1'>%2</a>" )
-				.arg( tmplate->productUrl() ).arg( tmplate->part() );
+			QString markup = QString( "<a href='%1'>%2</a>" ).arg( tmplate->productUrl(), tmplate->part() );
 			partLabel->setText( markup );
 		}
 		else

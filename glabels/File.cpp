@@ -191,7 +191,7 @@ namespace glabels
 			QString fileName = model::FileUtil::addExtension( rawFileName, ".glabels" );
 			
 			
-			if ( QFileInfo(fileName).exists() )
+			if ( QFileInfo::exists(fileName) )
 			{
 				QMessageBox msgBox( window );
 				msgBox.setWindowTitle( tr("Save Label As") );

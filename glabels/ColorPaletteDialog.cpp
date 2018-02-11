@@ -307,7 +307,7 @@ namespace glabels
 		if ( index != 0 )
 		{
 			mColorNode.setField( true );
-			mColorNode.setColor( QColor("#eeeeec") );
+			mColorNode.setColor( QColor( 0xee, 0xee, 0xec ) );
 			mColorNode.setKey( mKeys[index-1] );
 
 			emit colorChanged( mColorNode, false );

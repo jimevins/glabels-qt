@@ -1709,12 +1709,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="193"/>
+        <location filename="../glabels/PropertiesView.cpp" line="191"/>
         <source>Product Rotate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="222"/>
+        <location filename="../glabels/PropertiesView.cpp" line="220"/>
         <source>Change Product</source>
         <translation type="unfinished"></translation>
     </message>
