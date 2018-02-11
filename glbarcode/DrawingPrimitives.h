@@ -50,6 +50,12 @@ namespace glbarcode
 		 */
 		virtual ~DrawingPrimitive() = default;
 
+		/*
+		 * Non-copyable
+		 */
+		DrawingPrimitive( const DrawingPrimitive & ) = delete;
+		void operator=( const DrawingPrimitive & ) = delete;
+
 		/**
 		 * Get X coordinate of primitive's origin (points).
 		 */

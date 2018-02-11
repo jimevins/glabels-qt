@@ -59,25 +59,9 @@ namespace glbarcode
 	}
 
 
-	QtRenderer::QtRenderer( const QtRenderer& from )
-	{
-		d = new QtRenderer::PrivateData;
-
-		*d = *from.d;
-	}
-
-
 	QtRenderer::~QtRenderer()
 	{
 		delete d;
-	}
-
-
-	QtRenderer& QtRenderer::operator=( const QtRenderer& from )
-	{
-		*d = *from.d;
-
-		return *this;
 	}
 
 

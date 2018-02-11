@@ -105,6 +105,15 @@ namespace glbarcode
 
 
 		/**
+		 * Copy assignment "=" operator
+		 */
+		inline Matrix & operator=( const Matrix & src )
+		{
+			return Matrix( src );
+		}
+
+
+		/**
 		 * Indirection "[]" operator
 		 */
 		inline T* operator[]( int i )

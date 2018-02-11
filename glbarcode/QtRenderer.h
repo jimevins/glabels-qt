@@ -49,22 +49,9 @@ namespace glbarcode
 		QtRenderer( QPainter* painter );
 
                 /**
-                 * Copy Constructor
-                 */
-		QtRenderer( const QtRenderer& from );
-
-                /**
                  * Destructor
                  */
 		~QtRenderer() override;
-
-                /** Assignment operator.
-                 *
-                 * @param[in] from The value to assign to this object.
-                 *
-                 * @return A reference to this object.
-                 */
-		QtRenderer& operator=( const QtRenderer& from );
 
                 /** Get "painter" parameter
                  *

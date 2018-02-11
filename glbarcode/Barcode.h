@@ -57,6 +57,11 @@ namespace glbarcode
 		 */
 		virtual ~Barcode();
 
+		/*
+		 * Non-copyable
+		 */
+		Barcode( const Barcode & ) = delete;
+		void operator=( const Barcode & ) = delete;
 
 		/**
 		 * Set accessor for "showText" property.

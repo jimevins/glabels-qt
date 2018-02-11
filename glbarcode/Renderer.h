@@ -40,12 +40,23 @@ namespace glbarcode
 	 */
 	class Renderer
 	{
+	protected:
+		/**
+		 * Default constructor.
+		 */
+		Renderer() = default;
+
 	public:
 		/**
 		 * Destructor.
 		 */
 		virtual ~Renderer() = default;
 
+		/*
+		 * Non-copyable
+		 */
+		Renderer( const Renderer & ) = delete;
+		void operator=( const Renderer & ) = delete;
 
 		/**
 		 * Render list of primitives.
