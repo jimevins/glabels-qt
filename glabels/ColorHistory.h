@@ -62,6 +62,7 @@ namespace glabels
 	public:
 		void   addColor( const QColor &color );
 		QList<QColor> getColors();
+		QColor getColor( int id );
 
 
 		/////////////////////////////////

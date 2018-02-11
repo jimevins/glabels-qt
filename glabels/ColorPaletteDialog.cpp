@@ -242,7 +242,7 @@ namespace glabels
 	void ColorPaletteDialog::onHistoryItemActivated( int id )
 	{
 		mColorNode.setField( false );
-		mColorNode.setColor( mColorHistory->getColors()[id] );
+		mColorNode.setColor( mColorHistory->getColor(id) );
 		mColorNode.setKey( "" );
 
 		emit colorChanged( mColorNode, false );

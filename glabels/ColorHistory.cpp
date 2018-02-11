@@ -74,6 +74,13 @@ namespace glabels
 	}
 
 
+	QColor ColorHistory::getColor( int id )
+	{
+		QList<QColor> colors = readColorList();
+		return colors[id];
+	}
+
+
 	QList<QColor> ColorHistory::readColorList()
 	{
 		QStringList defaultList;
