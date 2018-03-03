@@ -835,6 +835,10 @@ namespace glabels
 		objectsCenterMenu->setEnabled( enabled );
 		objectsCenterHorizAction->setEnabled( enabled );
 		objectsCenterVertAction->setEnabled( enabled );
+
+		contextOrderMenu->setEnabled( enabled );
+		contextXformMenu->setEnabled( enabled );
+		contextCenterMenu->setEnabled( enabled );
 	}
 
 
@@ -850,6 +854,8 @@ namespace glabels
 		objectsAlignTopAction->setEnabled( enabled );
 		objectsAlignBottomAction->setEnabled( enabled );
 		objectsAlignVCenterAction->setEnabled( enabled );
+
+		contextAlignMenu->setEnabled( enabled );
 	}
 
 
@@ -980,7 +986,7 @@ namespace glabels
 
 		setDocVerbsEnabled( isEditorPage );
 		setSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() );
-		setMultiSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionAtomic() );
+		setMultiSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
 		setPasteVerbsEnabled( isEditorPage && mModel->canPaste() );
 	}
 
@@ -1514,7 +1520,7 @@ namespace glabels
 	void MainWindow::onSelectionChanged()
 	{
 		setSelectionVerbsEnabled( !mModel->isSelectionEmpty() );
-		setMultiSelectionVerbsEnabled( !mModel->isSelectionAtomic() );
+		setMultiSelectionVerbsEnabled( !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
 	}
 
 
