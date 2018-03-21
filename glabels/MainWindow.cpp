@@ -246,7 +246,7 @@ namespace glabels
 		fileSaveAsAction->setStatusTip( tr("Save current gLabels project to a different name") );
 		connect( fileSaveAsAction, SIGNAL(triggered()), this, SLOT(fileSaveAs()) );
 
-		fileTemplateDesignerAction = new QAction( tr("Template &Designer..."), this );
+		fileTemplateDesignerAction = new QAction( tr("Product Template &Designer..."), this );
 		fileTemplateDesignerAction->setStatusTip( tr("Create custom templates") );
 		connect( fileTemplateDesignerAction, SIGNAL(triggered()), this, SLOT(fileTemplateDesigner()) );
 
@@ -1041,7 +1041,7 @@ namespace glabels
 	///
 	void MainWindow::fileTemplateDesigner()
 	{
-		qDebug() << "ACTION: file->Template Designer";
+		File::templateDesigner( this );
 	}
 
 

@@ -33,6 +33,7 @@ set (glabels_sources
   SelectProductDialog.cpp
   SimplePreview.cpp
   StartupView.cpp
+  TemplateDesigner.cpp
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   UndoRedoModel.cpp
@@ -61,6 +62,7 @@ set (glabels_qobject_headers
   SelectProductDialog.h
   SimplePreview.h
   StartupView.h
+  TemplateDesigner.h
   TemplatePicker.h
   UndoRedoModel.h
 )
@@ -74,6 +76,18 @@ set (glabels_forms
   ui/PropertiesView.ui
   ui/SelectProductDialog.ui
   ui/StartupView.ui
+  ui/TemplateDesignerIntroPage.ui
+  ui/TemplateDesignerNamePage.ui
+  ui/TemplateDesignerPageSizePage.ui
+  ui/TemplateDesignerShapePage.ui
+  ui/TemplateDesignerRectPage.ui
+  ui/TemplateDesignerRoundPage.ui
+  ui/TemplateDesignerEllipsePage.ui
+  ui/TemplateDesignerCdPage.ui
+  ui/TemplateDesignerNLayoutsPage.ui
+  ui/TemplateDesignerOneLayoutPage.ui
+  ui/TemplateDesignerTwoLayoutPage.ui
+  ui/TemplateDesignerApplyPage.ui
 )
 
 set (glabels_resource_files

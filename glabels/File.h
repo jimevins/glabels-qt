@@ -46,6 +46,7 @@ namespace glabels
 		static void open( MainWindow *window );
 		static bool save( MainWindow *window );
 		static bool saveAs( MainWindow *window );
+		static void templateDesigner( MainWindow *window );
 		static void close( MainWindow *window );
 		static void exit();
 

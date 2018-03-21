@@ -83,6 +83,7 @@ find_package (Qt5Test 5.4 QUIET)
 # (not recommended -- only for testing -- also not portable)
 #
 #add_compile_options("-Wall" "-Werror" "-Wpedantic")
+add_compile_options("-g")
 
 
 #=======================================

@@ -2,8 +2,19 @@
 
 <RCC version="1.0">
 <qresource>
+
 	<file>images/glabels-label-designer.png</file>
 	<file>images/glabels-logo.png</file>
+
 	<file>images/checkerboard.png</file>
+
+	<file>images/TemplateDesigner/wizard-banner.png</file>
+	<file>images/TemplateDesigner/ex-1layout.png</file>
+	<file>images/TemplateDesigner/ex-2layouts.png</file>
+	<file>images/TemplateDesigner/ex-cd-size.png</file>
+	<file>images/TemplateDesigner/ex-ellipse-size.png</file>
+	<file>images/TemplateDesigner/ex-rect-size.png</file>
+	<file>images/TemplateDesigner/ex-round-size.png</file>
+	
 </qresource>
 </RCC>
