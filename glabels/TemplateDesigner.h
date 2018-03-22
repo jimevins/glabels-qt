@@ -85,6 +85,7 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
+		void onNamePageChanged();
 		void onPageSizeComboChanged();
 
 

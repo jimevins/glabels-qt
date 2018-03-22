@@ -27,6 +27,7 @@
 
 namespace
 {
+	
 	enum PageId
 	{
 		IntroPageId,
@@ -43,12 +44,14 @@ namespace
 		ApplyPageId
 	};
 
+	
 	const QString defaultPageSize[] =
 	{
 		/* ISO */ "A4",
 		/* US  */ "US Letter"
 	};
 
+	
 	const double maxPageSize[] =
 	{
 		/* PT */ 5000,
@@ -57,6 +60,33 @@ namespace
 		/* CM */ 180,
 		/* PC */ 420
 	};
+
+	
+	//
+	// Simple wrapper around QWizardPage which requires an affirmative setComplete to enable "next".
+	//
+	class WizardPageWrapper : public QWizardPage
+	{
+	public:
+		WizardPageWrapper( QWidget* parent = nullptr ) : QWizardPage( parent )
+		{
+		}
+
+		bool isComplete() const override
+		{
+			return mCanContinue;
+		}
+
+		void setComplete( bool canContinue )
+		{
+			mCanContinue = canContinue;
+			emit completeChanged();
+		}
+
+	private:
+		bool mCanContinue = false;
+	};
+	
 }
 
 
@@ -66,7 +96,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	TemplateDesigner::TemplateDesigner( QWidget *parent )
+	TemplateDesigner::TemplateDesigner( QWidget* parent )
 		: QWizard(parent)
 	{
 		setWindowTitle( tr("Product Template Designer") );
@@ -183,12 +213,15 @@ namespace glabels
 	///
 	QWizardPage* TemplateDesigner::createNamePage()
 	{
-		QWizardPage* page = new QWizardPage;
+		WizardPageWrapper* page = new WizardPageWrapper;
 		page->setTitle( tr("Name and Description") );
 		page->setSubTitle( tr("Please enter the following identifying information about the product.") );
 
 		QWidget* widget = new QWidget;
 		mNamePage.setupUi( widget );
+
+		connect( mNamePage.brandEntry, &QLineEdit::textChanged, this, &TemplateDesigner::onNamePageChanged );
+		connect( mNamePage.partEntry, &QLineEdit::textChanged, this, &TemplateDesigner::onNamePageChanged );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
@@ -430,6 +463,17 @@ namespace glabels
 		                              mPageSizePage.pageSizeCombo->currentText(), // FIXME
 		                              mPageSizePage.wSpin->value(),
 		                              mPageSizePage.hSpin->value() );
+	}
+
+
+	///
+	/// Handle Changes on NamePage
+	///
+	void TemplateDesigner::onNamePageChanged()
+	{
+		bool canContinue = !mNamePage.brandEntry->text().isEmpty() && !mNamePage.partEntry->text().isEmpty();
+
+		static_cast<WizardPageWrapper*>(page(NamePageId))->setComplete( canContinue );
 	}
 
 
