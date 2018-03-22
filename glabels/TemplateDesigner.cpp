@@ -20,7 +20,8 @@
 
 #include "TemplateDesigner.h"
 
-#include <QLabel>
+#include "model/Db.h"
+
 #include <QVBoxLayout>
 #include <QtDebug>
 
@@ -40,6 +41,21 @@ namespace
 		OneLayoutPageId,
 		TwoLayoutPageId,
 		ApplyPageId
+	};
+
+	const QString defaultPageSize[] =
+	{
+		/* ISO */ "A4",
+		/* US  */ "US Letter"
+	};
+
+	const double maxPageSize[] =
+	{
+		/* PT */ 5000,
+		/* IN */ 70,
+		/* MM */ 1800,
+		/* CM */ 180,
+		/* PC */ 420
 	};
 }
 
@@ -193,6 +209,24 @@ namespace glabels
 
 		QWidget* widget = new QWidget;
 		mPageSizePage.setupUi( widget );
+
+		mPageSizePage.pageSizeCombo->insertItem( 0, tr("Other") );
+		mPageSizePage.pageSizeCombo->insertItems( 1, model::Db::paperNames() );
+		mPageSizePage.pageSizeCombo->setCurrentText( defaultPageSize[ model::Settings::preferedPageSizeFamily() ] );
+		
+		mPageSizePage.wSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		mPageSizePage.wSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		mPageSizePage.wSpin->setSingleStep( model::Settings::units().resolution() );
+		mPageSizePage.wSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
+		mPageSizePage.wSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
+		
+		mPageSizePage.hSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		mPageSizePage.hSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		mPageSizePage.hSpin->setSingleStep( model::Settings::units().resolution() );
+		mPageSizePage.hSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
+		mPageSizePage.hSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
+
+		connect( mPageSizePage.pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesigner::onPageSizeComboChanged );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
@@ -384,5 +418,29 @@ namespace glabels
 		return page;
 	}
 	
+
+	///
+	/// Build template from wizard pages
+	///
+	model::Template* TemplateDesigner::buildTemplate()
+	{
+		auto t = new model::Template( mNamePage.brandEntry->text(),
+		                              mNamePage.partEntry->text(),
+		                              mNamePage.descriptionEntry->text(),
+		                              mPageSizePage.pageSizeCombo->currentText(), // FIXME
+		                              mPageSizePage.wSpin->value(),
+		                              mPageSizePage.hSpin->value() );
+	}
+
+
+	///
+	/// Handle Page Size Combo Changed
+	///
+	void TemplateDesigner::onPageSizeComboChanged()
+	{
+		mPageSizePage.wSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
+		mPageSizePage.hSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
+	}
+
 
 } // namespace glabels

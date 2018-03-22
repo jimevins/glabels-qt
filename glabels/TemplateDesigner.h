@@ -35,6 +35,8 @@
 #include "ui_TemplateDesignerTwoLayoutPage.h"
 #include "ui_TemplateDesignerApplyPage.h"
 
+#include "model/Template.h"
+
 #include <QWizard>
 #include <QWizardPage>
 
@@ -76,11 +78,14 @@ namespace glabels
 		QWizardPage* createTwoLayoutPage();
 		QWizardPage* createApplyPage();
 
+		model::Template* buildTemplate();
+
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
+		void onPageSizeComboChanged();
 
 
 		/////////////////////////////////
