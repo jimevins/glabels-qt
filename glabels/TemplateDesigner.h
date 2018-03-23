@@ -43,6 +43,20 @@
 
 namespace glabels
 {
+	// Forward references
+	class TemplateDesignerIntroPage;
+	class TemplateDesignerNamePage;
+	class TemplateDesignerPageSizePage;
+	class TemplateDesignerShapePage;
+	class TemplateDesignerRectPage;
+	class TemplateDesignerRoundPage;
+	class TemplateDesignerEllipsePage;
+	class TemplateDesignerCdPage;
+	class TemplateDesignerNLayoutsPage;
+	class TemplateDesignerOneLayoutPage;
+	class TemplateDesignerTwoLayoutPage;
+	class TemplateDesignerApplyPage;
+	
 	
 	///
 	/// About Dialog Widget
@@ -65,19 +79,6 @@ namespace glabels
 	private:
 		int nextId() const override;
 		
-		QWizardPage* createIntroPage();
-		QWizardPage* createNamePage();
-		QWizardPage* createPageSizePage();
-		QWizardPage* createShapePage();
-		QWizardPage* createRectPage();
-		QWizardPage* createRoundPage();
-		QWizardPage* createEllipsePage();
-		QWizardPage* createCdPage();
-		QWizardPage* createNLayoutsPage();
-		QWizardPage* createOneLayoutPage();
-		QWizardPage* createTwoLayoutPage();
-		QWizardPage* createApplyPage();
-
 		model::Template* buildTemplate();
 
 
@@ -85,28 +86,171 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onNamePageChanged();
-		void onPageSizeComboChanged();
 
 
 		/////////////////////////////////
 		// Private data
 		/////////////////////////////////
 	private:
-		Ui::TemplateDesignerIntroPage     mIntroPage;
-		Ui::TemplateDesignerNamePage      mNamePage;
-		Ui::TemplateDesignerPageSizePage  mPageSizePage;
-		Ui::TemplateDesignerShapePage     mShapePage;
-		Ui::TemplateDesignerRectPage      mRectPage;
-		Ui::TemplateDesignerRoundPage     mRoundPage;
-		Ui::TemplateDesignerEllipsePage   mEllipsePage;
-		Ui::TemplateDesignerCdPage        mCdPage;
-		Ui::TemplateDesignerNLayoutsPage  mNLayoutsPage;
-		Ui::TemplateDesignerOneLayoutPage mOneLayoutPage;
-		Ui::TemplateDesignerTwoLayoutPage mTwoLayoutPage;
-		Ui::TemplateDesignerApplyPage     mApplyPage;
-		
+		TemplateDesignerIntroPage*     mIntroPage;
+		TemplateDesignerNamePage*      mNamePage;
+		TemplateDesignerPageSizePage*  mPageSizePage;
+		TemplateDesignerShapePage*     mShapePage;
+		TemplateDesignerRectPage*      mRectPage;
+		TemplateDesignerRoundPage*     mRoundPage;
+		TemplateDesignerEllipsePage*   mEllipsePage;
+		TemplateDesignerCdPage*        mCdPage;
+		TemplateDesignerNLayoutsPage*  mNLayoutsPage;
+		TemplateDesignerOneLayoutPage* mOneLayoutPage;
+		TemplateDesignerTwoLayoutPage* mTwoLayoutPage;
+		TemplateDesignerApplyPage*     mApplyPage;
+
 	};
+
+
+	//
+	// Intro Page
+	//
+	class TemplateDesignerIntroPage : public QWizardPage, public Ui::TemplateDesignerIntroPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerIntroPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// Name Page
+	//
+	class TemplateDesignerNamePage : public QWizardPage, public Ui::TemplateDesignerNamePage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerNamePage( QWidget* parent = nullptr );
+
+		bool isComplete() const override;
+
+	private slots:
+		void onChanged();
+
+	private:
+		bool mCanContinue = false;
+	};
+
+
+	//
+	// Page Size Page
+	//
+	class TemplateDesignerPageSizePage : public QWizardPage, public Ui::TemplateDesignerPageSizePage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerPageSizePage( QWidget* parent = nullptr );
+
+	private slots:
+		void onComboChanged();
+
+	};
+
+
+	//
+	// Shape Page
+	//
+	class TemplateDesignerShapePage : public QWizardPage, public Ui::TemplateDesignerShapePage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerShapePage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// Rect Page
+	//
+	class TemplateDesignerRectPage : public QWizardPage, public Ui::TemplateDesignerRectPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerRectPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// Round Page
+	//
+	class TemplateDesignerRoundPage : public QWizardPage, public Ui::TemplateDesignerRoundPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerRoundPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// Ellipse Page
+	//
+	class TemplateDesignerEllipsePage : public QWizardPage, public Ui::TemplateDesignerEllipsePage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerEllipsePage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// Cd Page
+	//
+	class TemplateDesignerCdPage : public QWizardPage, public Ui::TemplateDesignerCdPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerCdPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// NLayouts Page
+	//
+	class TemplateDesignerNLayoutsPage : public QWizardPage, public Ui::TemplateDesignerNLayoutsPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerNLayoutsPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// OneLayout Page
+	//
+	class TemplateDesignerOneLayoutPage : public QWizardPage, public Ui::TemplateDesignerOneLayoutPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerOneLayoutPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// TwoLayout Page
+	//
+	class TemplateDesignerTwoLayoutPage : public QWizardPage, public Ui::TemplateDesignerTwoLayoutPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerTwoLayoutPage( QWidget* parent = nullptr );
+	};
+
+
+	//
+	// Apply Page
+	//
+	class TemplateDesignerApplyPage : public QWizardPage, public Ui::TemplateDesignerApplyPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerApplyPage( QWidget* parent = nullptr );
+	};
+
 
 }
 

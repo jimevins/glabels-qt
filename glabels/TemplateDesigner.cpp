@@ -61,32 +61,6 @@ namespace
 		/* PC */ 420
 	};
 
-	
-	//
-	// Simple wrapper around QWizardPage which requires an affirmative setComplete to enable "next".
-	//
-	class WizardPageWrapper : public QWizardPage
-	{
-	public:
-		WizardPageWrapper( QWidget* parent = nullptr ) : QWizardPage( parent )
-		{
-		}
-
-		bool isComplete() const override
-		{
-			return mCanContinue;
-		}
-
-		void setComplete( bool canContinue )
-		{
-			mCanContinue = canContinue;
-			emit completeChanged();
-		}
-
-	private:
-		bool mCanContinue = false;
-	};
-	
 }
 
 
@@ -103,18 +77,18 @@ namespace glabels
 		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/scalable/apps/glabels.svg" ) );
 		setWizardStyle( QWizard::ModernStyle );
 
-		setPage( IntroPageId,     createIntroPage() );
-		setPage( NamePageId,      createNamePage() );
-		setPage( PageSizePageId,  createPageSizePage() );
-		setPage( ShapePageId,     createShapePage() );
-		setPage( RectPageId,      createRectPage() );
-		setPage( RoundPageId,     createRoundPage() );
-		setPage( EllipsePageId,   createEllipsePage() );
-		setPage( CdPageId,        createCdPage() );
-		setPage( NLayoutsPageId,  createNLayoutsPage() );
-		setPage( OneLayoutPageId, createOneLayoutPage() );
-		setPage( TwoLayoutPageId, createTwoLayoutPage() );
-		setPage( ApplyPageId,     createApplyPage() );
+		setPage( IntroPageId,     mIntroPage     = new TemplateDesignerIntroPage() );
+		setPage( NamePageId,      mNamePage      = new TemplateDesignerNamePage() );
+		setPage( PageSizePageId,  mPageSizePage  = new TemplateDesignerPageSizePage() );
+		setPage( ShapePageId,     mShapePage     = new TemplateDesignerShapePage() );
+		setPage( RectPageId,      mRectPage      = new TemplateDesignerRectPage() );
+		setPage( RoundPageId,     mRoundPage     = new TemplateDesignerRoundPage() );
+		setPage( EllipsePageId,   mEllipsePage   = new TemplateDesignerEllipsePage() );
+		setPage( CdPageId,        mCdPage        = new TemplateDesignerCdPage() );
+		setPage( NLayoutsPageId,  mNLayoutsPage  = new TemplateDesignerNLayoutsPage() );
+		setPage( OneLayoutPageId, mOneLayoutPage = new TemplateDesignerOneLayoutPage() );
+		setPage( TwoLayoutPageId, mTwoLayoutPage = new TemplateDesignerTwoLayoutPage() );
+		setPage( ApplyPageId,     mApplyPage     = new TemplateDesignerApplyPage() );
 	}
 
 
@@ -136,15 +110,15 @@ namespace glabels
 			return ShapePageId;
 			
 		case ShapePageId:
-			if ( mShapePage.rectRadio->isChecked() )
+			if ( mShapePage->rectRadio->isChecked() )
 			{
 				return RectPageId;
 			}
-			else if ( mShapePage.roundRadio->isChecked() )
+			else if ( mShapePage->roundRadio->isChecked() )
 			{
 				return RoundPageId;
 			}
-			else if ( mShapePage.ellipseRadio->isChecked() )
+			else if ( mShapePage->ellipseRadio->isChecked() )
 			{
 				return EllipsePageId;
 			}
@@ -166,7 +140,7 @@ namespace glabels
 			return NLayoutsPageId;
 			
 		case NLayoutsPageId:
-			if ( mNLayoutsPage.oneLayoutRadio->isChecked() )
+			if ( mNLayoutsPage->oneLayoutRadio->isChecked() )
 			{
 				return OneLayoutPageId;
 			}
@@ -188,303 +162,266 @@ namespace glabels
 
 
 	///
+	/// Build template from wizard pages
+	///
+	model::Template* TemplateDesigner::buildTemplate()
+	{
+		auto t = new model::Template( mNamePage->brandEntry->text(),
+		                              mNamePage->partEntry->text(),
+		                              mNamePage->descriptionEntry->text(),
+		                              mPageSizePage->pageSizeCombo->currentText(), // FIXME
+		                              mPageSizePage->wSpin->value(),
+		                              mPageSizePage->hSpin->value() );
+	}
+
+
+	///
 	/// Intro Page
 	///
-	QWizardPage* TemplateDesigner::createIntroPage()
+	TemplateDesignerIntroPage::TemplateDesignerIntroPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Welcome") );
-		page->setSubTitle( tr("Welcome to the gLabels Product Template Designer.") );
-		page->setPixmap( QWizard::WatermarkPixmap, QPixmap( ":images/TemplateDesigner/wizard-banner.png" ) );
+		setTitle( tr("Welcome") );
+		setSubTitle( tr("Welcome to the gLabels Product Template Designer.") );
+		setPixmap( QWizard::WatermarkPixmap, QPixmap( ":images/TemplateDesigner/wizard-banner.png" ) );
 
 		QWidget* widget = new QWidget;
-		mIntroPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 
 
 	///
 	/// Name and Description Page
 	///
-	QWizardPage* TemplateDesigner::createNamePage()
+	TemplateDesignerNamePage::TemplateDesignerNamePage( QWidget* parent ) : QWizardPage(parent)
 	{
-		WizardPageWrapper* page = new WizardPageWrapper;
-		page->setTitle( tr("Name and Description") );
-		page->setSubTitle( tr("Please enter the following identifying information about the product.") );
+		setTitle( tr("Name and Description") );
+		setSubTitle( tr("Please enter the following identifying information about the product.") );
 
 		QWidget* widget = new QWidget;
-		mNamePage.setupUi( widget );
+		setupUi( widget );
 
-		connect( mNamePage.brandEntry, &QLineEdit::textChanged, this, &TemplateDesigner::onNamePageChanged );
-		connect( mNamePage.partEntry, &QLineEdit::textChanged, this, &TemplateDesigner::onNamePageChanged );
+		connect( brandEntry, &QLineEdit::textChanged, this, &TemplateDesignerNamePage::onChanged );
+		connect( partEntry, &QLineEdit::textChanged, this, &TemplateDesignerNamePage::onChanged );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
+
+	bool TemplateDesignerNamePage::isComplete() const
+	{
+		return mCanContinue;
+	}
+
+
+	void TemplateDesignerNamePage::onChanged()
+	{
+		mCanContinue = !brandEntry->text().isEmpty() && !partEntry->text().isEmpty();
+		emit completeChanged();
+	}
+
 
 	///
 	/// Page Size Page
 	///
-	QWizardPage* TemplateDesigner::createPageSizePage()
+	TemplateDesignerPageSizePage::TemplateDesignerPageSizePage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Page Size") );
-		page->setSubTitle( tr("Please select the product page size.") );
+		setTitle( tr("Page Size") );
+		setSubTitle( tr("Please select the product page size.") );
 
 		QWidget* widget = new QWidget;
-		mPageSizePage.setupUi( widget );
+		setupUi( widget );
 
-		mPageSizePage.pageSizeCombo->insertItem( 0, tr("Other") );
-		mPageSizePage.pageSizeCombo->insertItems( 1, model::Db::paperNames() );
-		mPageSizePage.pageSizeCombo->setCurrentText( defaultPageSize[ model::Settings::preferedPageSizeFamily() ] );
+		pageSizeCombo->insertItem( 0, tr("Other") );
+		pageSizeCombo->insertItems( 1, model::Db::paperNames() );
+		pageSizeCombo->setCurrentText( defaultPageSize[ model::Settings::preferedPageSizeFamily() ] );
 		
-		mPageSizePage.wSpin->setSuffix( " " + model::Settings::units().toTrName() );
-		mPageSizePage.wSpin->setDecimals( model::Settings::units().resolutionDigits() );
-		mPageSizePage.wSpin->setSingleStep( model::Settings::units().resolution() );
-		mPageSizePage.wSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
-		mPageSizePage.wSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
+		wSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		wSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		wSpin->setSingleStep( model::Settings::units().resolution() );
+		wSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
+		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
 		
-		mPageSizePage.hSpin->setSuffix( " " + model::Settings::units().toTrName() );
-		mPageSizePage.hSpin->setDecimals( model::Settings::units().resolutionDigits() );
-		mPageSizePage.hSpin->setSingleStep( model::Settings::units().resolution() );
-		mPageSizePage.hSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
-		mPageSizePage.hSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
+		hSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		hSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		hSpin->setSingleStep( model::Settings::units().resolution() );
+		hSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
+		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
 
-		connect( mPageSizePage.pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesigner::onPageSizeComboChanged );
+		connect( pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesignerPageSizePage::onComboChanged );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
+
+	void TemplateDesignerPageSizePage::onComboChanged()
+	{
+		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+	}
+
 
 	///
 	/// Shape Page
 	///
-	QWizardPage* TemplateDesigner::createShapePage()
+	TemplateDesignerShapePage::TemplateDesignerShapePage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Product Shape") );
-		page->setSubTitle( tr("Please select the basic product shape.") );
+		setTitle( tr("Product Shape") );
+		setSubTitle( tr("Please select the basic product shape.") );
 
 		QWidget* widget = new QWidget;
-		mShapePage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// Rectangular Product Page
 	///
-	QWizardPage* TemplateDesigner::createRectPage()
+	TemplateDesignerRectPage::TemplateDesignerRectPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Product Size") );
-		page->setSubTitle( tr("Please adjust the size parameters of a single product item.") );
+		setTitle( tr("Product Size") );
+		setSubTitle( tr("Please adjust the size parameters of a single product item.") );
 
 		QWidget* widget = new QWidget;
-		mRectPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// Round Product Page
 	///
-	QWizardPage* TemplateDesigner::createRoundPage()
+	TemplateDesignerRoundPage::TemplateDesignerRoundPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Product Size") );
-		page->setSubTitle( tr("Please adjust the size parameters of a single product item.") );
+		setTitle( tr("Product Size") );
+		setSubTitle( tr("Please adjust the size parameters of a single product item.") );
 
 		QWidget* widget = new QWidget;
-		mRoundPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// Elliptical Product Page
 	///
-	QWizardPage* TemplateDesigner::createEllipsePage()
+	TemplateDesignerEllipsePage::TemplateDesignerEllipsePage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Product Size") );
-		page->setSubTitle( tr("Please adjust the size parameters of a single product item.") );
+		setTitle( tr("Product Size") );
+		setSubTitle( tr("Please adjust the size parameters of a single product item.") );
 
 		QWidget* widget = new QWidget;
-		mEllipsePage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// CD/DVD Product Page
 	///
-	QWizardPage* TemplateDesigner::createCdPage()
+	TemplateDesignerCdPage::TemplateDesignerCdPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Product Size") );
-		page->setSubTitle( tr("Please adjust the size parameters of a single product item.") );
+		setTitle( tr("Product Size") );
+		setSubTitle( tr("Please adjust the size parameters of a single product item.") );
 
 		QWidget* widget = new QWidget;
-		mCdPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// Number of Layouts Page
 	///
-	QWizardPage* TemplateDesigner::createNLayoutsPage()
+	TemplateDesignerNLayoutsPage::TemplateDesignerNLayoutsPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Number of Layouts") );
-		page->setSubTitle( tr("Please select the number of layouts required.") );
+		setTitle( tr("Number of Layouts") );
+		setSubTitle( tr("Please select the number of layouts required.") );
 
 		QWidget* widget = new QWidget;
-		mNLayoutsPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// One Layout Page
 	///
-	QWizardPage* TemplateDesigner::createOneLayoutPage()
+	TemplateDesignerOneLayoutPage::TemplateDesignerOneLayoutPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Layout") );
-		page->setSubTitle( tr("Please enter parameters for your single layout.") );
+		setTitle( tr("Layout") );
+		setSubTitle( tr("Please enter parameters for your single layout.") );
 
 		QWidget* widget = new QWidget;
-		mOneLayoutPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// Two Layout Page
 	///
-	QWizardPage* TemplateDesigner::createTwoLayoutPage()
+	TemplateDesignerTwoLayoutPage::TemplateDesignerTwoLayoutPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Layouts") );
-		page->setSubTitle( tr("Please enter parameters for your two layouts.") );
+		setTitle( tr("Layouts") );
+		setSubTitle( tr("Please enter parameters for your two layouts.") );
 
 		QWidget* widget = new QWidget;
-		mTwoLayoutPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
 
 	///
 	/// Apply Page
 	///
-	QWizardPage* TemplateDesigner::createApplyPage()
+	TemplateDesignerApplyPage::TemplateDesignerApplyPage( QWidget* parent ) : QWizardPage(parent)
 	{
-		QWizardPage* page = new QWizardPage;
-		page->setTitle( tr("Save Product Template") );
-		page->setSubTitle( tr("Click \"Save\" to save your custom product template!") );
+		setTitle( tr("Save Product Template") );
+		setSubTitle( tr("Click \"Save\" to save your custom product template!") );
 
-		page->setFinalPage( true );
-		page->setButtonText( QWizard::FinishButton, "Save" );
+		setFinalPage( true );
+		setButtonText( QWizard::FinishButton, "Save" );
 
 		QWidget* widget = new QWidget;
-		mApplyPage.setupUi( widget );
+		setupUi( widget );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
-		page->setLayout( layout );
-
-		return page;
+		setLayout( layout );
 	}
 	
-
-	///
-	/// Build template from wizard pages
-	///
-	model::Template* TemplateDesigner::buildTemplate()
-	{
-		auto t = new model::Template( mNamePage.brandEntry->text(),
-		                              mNamePage.partEntry->text(),
-		                              mNamePage.descriptionEntry->text(),
-		                              mPageSizePage.pageSizeCombo->currentText(), // FIXME
-		                              mPageSizePage.wSpin->value(),
-		                              mPageSizePage.hSpin->value() );
-	}
-
-
-	///
-	/// Handle Changes on NamePage
-	///
-	void TemplateDesigner::onNamePageChanged()
-	{
-		bool canContinue = !mNamePage.brandEntry->text().isEmpty() && !mNamePage.partEntry->text().isEmpty();
-
-		static_cast<WizardPageWrapper*>(page(NamePageId))->setComplete( canContinue );
-	}
-
-
-	///
-	/// Handle Page Size Combo Changed
-	///
-	void TemplateDesigner::onPageSizeComboChanged()
-	{
-		mPageSizePage.wSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
-		mPageSizePage.hSpin->setEnabled( mPageSizePage.pageSizeCombo->currentText() == tr("Other") );
-	}
-
 
 } // namespace glabels
