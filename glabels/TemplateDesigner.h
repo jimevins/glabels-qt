@@ -43,28 +43,27 @@
 
 namespace glabels
 {
-	// Forward references
-	class TemplateDesignerIntroPage;
-	class TemplateDesignerNamePage;
-	class TemplateDesignerPageSizePage;
-	class TemplateDesignerShapePage;
-	class TemplateDesignerRectPage;
-	class TemplateDesignerRoundPage;
-	class TemplateDesignerEllipsePage;
-	class TemplateDesignerCdPage;
-	class TemplateDesignerNLayoutsPage;
-	class TemplateDesignerOneLayoutPage;
-	class TemplateDesignerTwoLayoutPage;
-	class TemplateDesignerApplyPage;
-	
-	
 	///
 	/// About Dialog Widget
 	///
 	class TemplateDesigner : public QWizard
 	{
 		Q_OBJECT
-
+		
+		// My subpages are my friends :-)
+		friend class TemplateDesignerIntroPage;
+		friend class TemplateDesignerNamePage;
+		friend class TemplateDesignerPageSizePage;
+		friend class TemplateDesignerShapePage;
+		friend class TemplateDesignerRectPage;
+		friend class TemplateDesignerRoundPage;
+		friend class TemplateDesignerEllipsePage;
+		friend class TemplateDesignerCdPage;
+		friend class TemplateDesignerNLayoutsPage;
+		friend class TemplateDesignerOneLayoutPage;
+		friend class TemplateDesignerTwoLayoutPage;
+		friend class TemplateDesignerApplyPage;
+	
 
 		/////////////////////////////////
 		// Life Cycle
@@ -78,33 +77,12 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		int nextId() const override;
-		
+
+		double itemWidth();
+		double itemHeight();
+		double itemXWaste();
+		double itemYWaste();
 		model::Template* buildTemplate();
-
-
-		/////////////////////////////////
-		// Slots
-		/////////////////////////////////
-	private slots:
-
-
-		/////////////////////////////////
-		// Private data
-		/////////////////////////////////
-	private:
-		TemplateDesignerIntroPage*     mIntroPage;
-		TemplateDesignerNamePage*      mNamePage;
-		TemplateDesignerPageSizePage*  mPageSizePage;
-		TemplateDesignerShapePage*     mShapePage;
-		TemplateDesignerRectPage*      mRectPage;
-		TemplateDesignerRoundPage*     mRoundPage;
-		TemplateDesignerEllipsePage*   mEllipsePage;
-		TemplateDesignerCdPage*        mCdPage;
-		TemplateDesignerNLayoutsPage*  mNLayoutsPage;
-		TemplateDesignerOneLayoutPage* mOneLayoutPage;
-		TemplateDesignerTwoLayoutPage* mTwoLayoutPage;
-		TemplateDesignerApplyPage*     mApplyPage;
-
 	};
 
 
@@ -149,7 +127,6 @@ namespace glabels
 
 	private slots:
 		void onComboChanged();
-
 	};
 
 
@@ -235,6 +212,11 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerOneLayoutPage( QWidget* parent = nullptr );
+
+		void initializePage() override;
+
+	private slots:
+		void onChanged();
 	};
 
 
@@ -246,6 +228,11 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerTwoLayoutPage( QWidget* parent = nullptr );
+
+		void initializePage() override;
+
+	private slots:
+		void onChanged();
 	};
 
 

@@ -32,6 +32,9 @@
       <layout class="QGridLayout" name="gridLayout">
        <item row="2" column="1">
         <widget class="QDoubleSpinBox" name="xClipSpin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="suffix">
           <string notr="true">in</string>
          </property>
@@ -87,6 +90,9 @@
        </item>
        <item row="1" column="1">
         <widget class="QDoubleSpinBox" name="r2Spin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="suffix">
           <string notr="true">in</string>
          </property>
@@ -94,6 +100,9 @@
        </item>
        <item row="0" column="1">
         <widget class="QDoubleSpinBox" name="r1Spin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="suffix">
           <string notr="true">in</string>
          </property>
@@ -101,6 +110,9 @@
        </item>
        <item row="5" column="1">
         <widget class="QDoubleSpinBox" name="marginSpin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="suffix">
           <string notr="true">in</string>
          </property>
@@ -108,6 +120,9 @@
        </item>
        <item row="4" column="1">
         <widget class="QDoubleSpinBox" name="wasteSpin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="suffix">
           <string notr="true">in</string>
          </property>
@@ -115,6 +130,9 @@
        </item>
        <item row="3" column="1">
         <widget class="QDoubleSpinBox" name="yClipSpin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="suffix">
           <string notr="true">in</string>
          </property>

@@ -22,6 +22,12 @@
 
 #include "model/Db.h"
 #include "model/Distance.h"
+#include "model/FrameRect.h"
+#include "model/FrameRound.h"
+#include "model/FrameEllipse.h"
+#include "model/FrameCd.h"
+#include "model/Markup.h"
+#include "model/Settings.h"
 
 #include <QVBoxLayout>
 #include <QtDebug>
@@ -100,18 +106,18 @@ namespace glabels
 		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/scalable/apps/glabels.svg" ) );
 		setWizardStyle( QWizard::ModernStyle );
 
-		setPage( IntroPageId,     mIntroPage     = new TemplateDesignerIntroPage() );
-		setPage( NamePageId,      mNamePage      = new TemplateDesignerNamePage() );
-		setPage( PageSizePageId,  mPageSizePage  = new TemplateDesignerPageSizePage() );
-		setPage( ShapePageId,     mShapePage     = new TemplateDesignerShapePage() );
-		setPage( RectPageId,      mRectPage      = new TemplateDesignerRectPage() );
-		setPage( RoundPageId,     mRoundPage     = new TemplateDesignerRoundPage() );
-		setPage( EllipsePageId,   mEllipsePage   = new TemplateDesignerEllipsePage() );
-		setPage( CdPageId,        mCdPage        = new TemplateDesignerCdPage() );
-		setPage( NLayoutsPageId,  mNLayoutsPage  = new TemplateDesignerNLayoutsPage() );
-		setPage( OneLayoutPageId, mOneLayoutPage = new TemplateDesignerOneLayoutPage() );
-		setPage( TwoLayoutPageId, mTwoLayoutPage = new TemplateDesignerTwoLayoutPage() );
-		setPage( ApplyPageId,     mApplyPage     = new TemplateDesignerApplyPage() );
+		setPage( IntroPageId,     new TemplateDesignerIntroPage() );
+		setPage( NamePageId,      new TemplateDesignerNamePage() );
+		setPage( PageSizePageId,  new TemplateDesignerPageSizePage() );
+		setPage( ShapePageId,     new TemplateDesignerShapePage() );
+		setPage( RectPageId,      new TemplateDesignerRectPage() );
+		setPage( RoundPageId,     new TemplateDesignerRoundPage() );
+		setPage( EllipsePageId,   new TemplateDesignerEllipsePage() );
+		setPage( CdPageId,        new TemplateDesignerCdPage() );
+		setPage( NLayoutsPageId,  new TemplateDesignerNLayoutsPage() );
+		setPage( OneLayoutPageId, new TemplateDesignerOneLayoutPage() );
+		setPage( TwoLayoutPageId, new TemplateDesignerTwoLayoutPage() );
+		setPage( ApplyPageId,     new TemplateDesignerApplyPage() );
 	}
 
 
@@ -185,16 +191,213 @@ namespace glabels
 
 
 	///
+	/// Determine width of individual item
+	///
+	double TemplateDesigner::itemWidth()
+	{
+		// Note: all distance units are the same in wizard, so no conversions needed
+		if ( field( "shape.rect" ).toBool() )
+		{
+			return field( "rect.w" ).toDouble();
+		}
+		else if ( field( "shape.round" ).toBool() )
+		{
+			return 2 * field( "round.r" ).toDouble();
+		}
+		else if ( field( "shape.ellipse" ).toBool() )
+		{
+			return field( "ellipse.w" ).toDouble();
+		}
+		else
+		{
+			if ( field( "cd.xClip" ).toDouble() == 0 )
+			{
+				return 2 * field( "cd.r1" ).toDouble();
+			}
+			else
+			{
+				return field( "cd.xClip" ).toDouble();
+			}
+		}
+	}
+
+
+	///
+	/// Determine height of individual item
+	///
+	double TemplateDesigner::itemHeight()
+	{
+		// Note: all distance units are the same in wizard, so no conversions needed
+		if ( field( "shape.rect" ).toBool() )
+		{
+			return field( "rect.h" ).toDouble();
+		}
+		else if ( field( "shape.round" ).toBool() )
+		{
+			return 2 * field( "round.r" ).toDouble();
+		}
+		else if ( field( "shape.ellipse" ).toBool() )
+		{
+			return field( "ellipse.h" ).toDouble();
+		}
+		else
+		{
+			if ( field( "cd.xClip" ).toDouble() == 0 )
+			{
+				return 2 * field( "cd.r1" ).toDouble();
+			}
+			else
+			{
+				return field( "cd.yClip" ).toDouble();
+			}
+		}
+	}
+
+
+	///
+	/// Determine X Waste of individual item
+	///
+	double TemplateDesigner::itemXWaste()
+	{
+		// Note: all distance units are the same in wizard, so no conversions needed
+		if ( field( "shape.rect" ).toBool() )
+		{
+			return field( "rect.xWaste" ).toDouble();
+		}
+		else if ( field( "shape.round" ).toBool() )
+		{
+			return 2 * field( "round.waste" ).toDouble();
+		}
+		else if ( field( "shape.ellipse" ).toBool() )
+		{
+			return field( "ellipse.waste" ).toDouble();
+		}
+		else
+		{
+			return field( "cd.waste" ).toDouble();
+		}
+	}
+
+
+	///
+	/// Determine Y Waste of individual item
+	///
+	double TemplateDesigner::itemYWaste()
+	{
+		// Note: all distance units are the same in wizard, so no conversions needed
+		if ( field( "shape.rect" ).toBool() )
+		{
+			return field( "rect.yWaste" ).toDouble();
+		}
+		else if ( field( "shape.round" ).toBool() )
+		{
+			return 2 * field( "round.waste" ).toDouble();
+		}
+		else if ( field( "shape.ellipse" ).toBool() )
+		{
+			return field( "ellipse.waste" ).toDouble();
+		}
+		else
+		{
+			return field( "cd.waste" ).toDouble();
+		}
+	}
+
+
+	///
 	/// Build template from wizard pages
 	///
 	model::Template* TemplateDesigner::buildTemplate()
 	{
-		auto t = new model::Template( field( "name.brand" ).toString(),
-		                              field( "name.part" ).toString(),
-		                              field( "name.description" ).toString(),
-		                              field( "pageSize.pageSize" ).toString(), // FIXME Id
-		                              field( "pageSize.w" ).toDouble(), // FIXME Distance
-		                              field( "pageSize.h" ).toDouble() );
+		model::Units units = model::Settings::units();
+
+		QString brand = field( "name.brand" ).toString();
+		QString part = field( "name.part" ).toString();
+		QString description = field( "name.description" ).toString();
+		QString paperId = model::Db::lookupPaperIdFromName( field( "pageSize.pageSize" ).toString() );
+		model::Distance pageW( field( "pageSize.w" ).toDouble(), units );
+		model::Distance pageH( field( "pageSize.h" ).toDouble(), units );
+		
+		auto t = new model::Template( brand, part, description, paperId, pageW, pageH );
+
+		model::Frame* frame;
+		if ( field( "shape.rect" ).toBool() )
+		{
+			model::Distance w( field( "rect.w" ).toDouble(), units );
+			model::Distance h( field( "rect.h" ).toDouble(), units );
+			model::Distance r( field( "rect.r" ).toDouble(), units );
+			model::Distance xWaste( field( "rect.xWaste" ).toDouble(), units );
+			model::Distance yWaste( field( "rect.yWaste" ).toDouble(), units );
+			model::Distance margin( field( "rect.margin" ).toDouble(), units );
+
+			frame = new model::FrameRect( w, h, r, xWaste, yWaste );
+			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+		}
+		else if ( field( "shape.round" ).toBool() )
+		{
+			model::Distance r( field( "round.r" ).toDouble(), units );
+			model::Distance waste( field( "round.waste" ).toDouble(), units );
+			model::Distance margin( field( "round.margin" ).toDouble(), units );
+
+			frame = new model::FrameRound( r, waste );
+			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+		}
+		else if ( field( "shape.ellipse" ).toBool() )
+		{
+			model::Distance w( field( "ellipse.w" ).toDouble(), units );
+			model::Distance h( field( "ellipse.h" ).toDouble(), units );
+			model::Distance waste( field( "ellipse.waste" ).toDouble(), units );
+			model::Distance margin( field( "ellipse.margin" ).toDouble(), units );
+
+			frame = new model::FrameEllipse( w, h, waste );
+			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+		}
+		else
+		{
+			model::Distance r1( field( "cd.r1" ).toDouble(), units );
+			model::Distance r2( field( "cd.r2" ).toDouble(), units );
+			model::Distance xClip( field( "cd.xClip" ).toDouble(), units );
+			model::Distance yClip( field( "cd.yClip" ).toDouble(), units );
+			model::Distance waste( field( "cd.waste" ).toDouble(), units );
+			model::Distance margin( field( "cd.margin" ).toDouble(), units );
+
+			frame = new model::FrameCd( r1, r2, xClip, yClip, waste );
+			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+		}
+		t->addFrame( frame );
+
+		if ( field( "nLayouts.one" ).toBool() )
+		{
+			int nx = field( "oneLayout.nx" ).toInt();
+			int ny = field( "oneLayout.ny" ).toInt();
+			model::Distance x0( field( "oneLayout.x0" ).toDouble(), units );
+			model::Distance y0( field( "oneLayout.y0" ).toDouble(), units );
+			model::Distance dx( field( "oneLayout.dx" ).toDouble(), units );
+			model::Distance dy( field( "oneLayout.dy" ).toDouble(), units );
+
+			frame->addLayout( new model::Layout( nx, ny, x0, y0, dx, dy ) );
+		}
+		else
+		{
+			int nx1 = field( "twoLayout.nx1" ).toInt();
+			int ny1 = field( "twoLayout.ny1" ).toInt();
+			model::Distance x01( field( "twoLayout.x01" ).toDouble(), units );
+			model::Distance y01( field( "twoLayout.y01" ).toDouble(), units );
+			model::Distance dx1( field( "twoLayout.dx1" ).toDouble(), units );
+			model::Distance dy1( field( "twoLayout.dy1" ).toDouble(), units );
+
+			int nx2 = field( "twoLayout.nx2" ).toInt();
+			int ny2 = field( "twoLayout.ny2" ).toInt();
+			model::Distance x02( field( "twoLayout.x02" ).toDouble(), units );
+			model::Distance y02( field( "twoLayout.y02" ).toDouble(), units );
+			model::Distance dx2( field( "twoLayout.dx2" ).toDouble(), units );
+			model::Distance dy2( field( "twoLayout.dy2" ).toDouble(), units );
+
+			frame->addLayout( new model::Layout( nx1, ny1, x01, y01, dx1, dy1 ) );
+			frame->addLayout( new model::Layout( nx2, ny2, x02, y02, dx2, dy2 ) );
+		}
+
+		return t;
 	}
 
 
@@ -287,9 +490,9 @@ namespace glabels
 			hSpin->setValue( paper->height().inUnits( model::Settings::units() ) );
 		}
 
-		registerField( "pageSize.pageSize", pageSizeCombo );
-		registerField( "pageSize.w",        wSpin, "value" );
-		registerField( "pageSize.h",        hSpin, "value" );
+		registerField( "pageSize.pageSize", pageSizeCombo, "currentText" );
+		registerField( "pageSize.w",        wSpin,         "value" );
+		registerField( "pageSize.h",        hSpin,         "value" );
 
 		connect( pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesignerPageSizePage::onComboChanged );
 
@@ -556,8 +759,8 @@ namespace glabels
 		wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
 		marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
 
-		registerField( "cd.w",      r1Spin,     "value" );
-		registerField( "cd.h",      r2Spin,     "value" );
+		registerField( "cd.r1",     r1Spin,     "value" );
+		registerField( "cd.r2",     r2Spin,     "value" );
 		registerField( "cd.xClip",  xClipSpin,  "value" );
 		registerField( "cd.yClip",  yClipSpin,  "value" );
 		registerField( "cd.waste",  wasteSpin,  "value" );
@@ -615,12 +818,84 @@ namespace glabels
 		QWidget* widget = new QWidget;
 		setupUi( widget );
 
+		x0Spin->setSuffix( " " + model::Settings::units().toTrName() );
+		x0Spin->setDecimals( model::Settings::units().resolutionDigits() );
+		x0Spin->setSingleStep( model::Settings::units().resolution() );
+
+		y0Spin->setSuffix( " " + model::Settings::units().toTrName() );
+		y0Spin->setDecimals( model::Settings::units().resolutionDigits() );
+		y0Spin->setSingleStep( model::Settings::units().resolution() );
+
+		dxSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		dxSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		dxSpin->setSingleStep( model::Settings::units().resolution() );
+
+		dySpin->setSuffix( " " + model::Settings::units().toTrName() );
+		dySpin->setDecimals( model::Settings::units().resolutionDigits() );
+		dySpin->setSingleStep( model::Settings::units().resolution() );
+
+		// Set some realistic defaults
+		nxSpin->setValue( 1 );
+		nySpin->setValue( 1 );
+		x0Spin->setValue( 0 );
+		y0Spin->setValue( 0 );
+
+		registerField( "oneLayout.nx", nxSpin );
+		registerField( "oneLayout.ny", nySpin );
+		registerField( "oneLayout.x0", x0Spin, "value" );
+		registerField( "oneLayout.y0", y0Spin, "value" );
+		registerField( "oneLayout.dx", dxSpin, "value" );
+		registerField( "oneLayout.dy", dySpin, "value" );
+
+		connect( nxSpin, SIGNAL(valueChanged(int)), this, SLOT(onChanged()) );
+		connect( nySpin, SIGNAL(valueChanged(int)), this, SLOT(onChanged()) );
+		connect( x0Spin, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( y0Spin, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( dxSpin, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( dySpin, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
 		setLayout( layout );
 	}
 	
 
+	void TemplateDesignerOneLayoutPage::initializePage()
+	{
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			// set realistic limits based on previously chosen values
+			double pageW = field("pageSize.w").toDouble();
+			double pageH = field("pageSize.h").toDouble();
+			double w = td->itemWidth();
+			double h = td->itemHeight();
+			double xWaste = td->itemXWaste();
+			double yWaste = td->itemYWaste();
+
+			int nxMax = std::max( pageW/(w + 2*xWaste), 1.0 );
+			int nyMax = std::max( pageH/(h + 2*yWaste), 1.0 );
+
+			nxSpin->setMaximum( nxMax );
+			nySpin->setMaximum( nyMax );
+			x0Spin->setRange( xWaste, pageW-w-xWaste );
+			y0Spin->setRange( yWaste, pageH-h-yWaste );
+			dxSpin->setRange( w+2*xWaste, pageW-w-2*xWaste );
+			dySpin->setRange( h+2*yWaste, pageH-h-2*yWaste );
+
+			preview->setTemplate( td->buildTemplate() );
+		}
+	}
+
+
+	void TemplateDesignerOneLayoutPage::onChanged()
+	{
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			preview->setTemplate( td->buildTemplate() );
+		}
+	}
+
+	
 	///
 	/// Two Layout Page
 	///
@@ -632,12 +907,126 @@ namespace glabels
 		QWidget* widget = new QWidget;
 		setupUi( widget );
 
+		x0Spin1->setSuffix( " " + model::Settings::units().toTrName() );
+		x0Spin1->setDecimals( model::Settings::units().resolutionDigits() );
+		x0Spin1->setSingleStep( model::Settings::units().resolution() );
+
+		y0Spin1->setSuffix( " " + model::Settings::units().toTrName() );
+		y0Spin1->setDecimals( model::Settings::units().resolutionDigits() );
+		y0Spin1->setSingleStep( model::Settings::units().resolution() );
+
+		dxSpin1->setSuffix( " " + model::Settings::units().toTrName() );
+		dxSpin1->setDecimals( model::Settings::units().resolutionDigits() );
+		dxSpin1->setSingleStep( model::Settings::units().resolution() );
+
+		dySpin1->setSuffix( " " + model::Settings::units().toTrName() );
+		dySpin1->setDecimals( model::Settings::units().resolutionDigits() );
+		dySpin1->setSingleStep( model::Settings::units().resolution() );
+
+		x0Spin2->setSuffix( " " + model::Settings::units().toTrName() );
+		x0Spin2->setDecimals( model::Settings::units().resolutionDigits() );
+		x0Spin2->setSingleStep( model::Settings::units().resolution() );
+
+		y0Spin2->setSuffix( " " + model::Settings::units().toTrName() );
+		y0Spin2->setDecimals( model::Settings::units().resolutionDigits() );
+		y0Spin2->setSingleStep( model::Settings::units().resolution() );
+
+		dxSpin2->setSuffix( " " + model::Settings::units().toTrName() );
+		dxSpin2->setDecimals( model::Settings::units().resolutionDigits() );
+		dxSpin2->setSingleStep( model::Settings::units().resolution() );
+
+		dySpin2->setSuffix( " " + model::Settings::units().toTrName() );
+		dySpin2->setDecimals( model::Settings::units().resolutionDigits() );
+		dySpin2->setSingleStep( model::Settings::units().resolution() );
+
+		// Set some realistic defaults
+		nxSpin1->setValue( 1 );
+		nySpin1->setValue( 1 );
+		x0Spin1->setValue( 0 );
+		y0Spin1->setValue( 0 );
+
+		nxSpin2->setValue( 1 );
+		nySpin2->setValue( 1 );
+		x0Spin2->setValue( 0 );
+		y0Spin2->setValue( 0 );
+
+		registerField( "twoLayout.nx1", nxSpin1 );
+		registerField( "twoLayout.ny1", nySpin1 );
+		registerField( "twoLayout.x01", x0Spin1, "value" );
+		registerField( "twoLayout.y01", y0Spin1, "value" );
+		registerField( "twoLayout.dx1", dxSpin1, "value" );
+		registerField( "twoLayout.dy1", dySpin1, "value" );
+
+		registerField( "twoLayout.nx2", nxSpin2 );
+		registerField( "twoLayout.ny2", nySpin2 );
+		registerField( "twoLayout.x02", x0Spin2, "value" );
+		registerField( "twoLayout.y02", y0Spin2, "value" );
+		registerField( "twoLayout.dx2", dxSpin2, "value" );
+		registerField( "twoLayout.dy2", dySpin2, "value" );
+
+		connect( nxSpin1, SIGNAL(valueChanged(int)), this, SLOT(onChanged()) );
+		connect( nySpin1, SIGNAL(valueChanged(int)), this, SLOT(onChanged()) );
+		connect( x0Spin1, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( y0Spin1, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( dxSpin1, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( dySpin1, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+
+		connect( nxSpin2, SIGNAL(valueChanged(int)), this, SLOT(onChanged()) );
+		connect( nySpin2, SIGNAL(valueChanged(int)), this, SLOT(onChanged()) );
+		connect( x0Spin2, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( y0Spin2, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( dxSpin2, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+		connect( dySpin2, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
+
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
 		setLayout( layout );
 	}
 	
 
+	void TemplateDesignerTwoLayoutPage::initializePage()
+	{
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			// set realistic limits based on previously chosen values
+			double pageW = field("pageSize.w").toDouble();
+			double pageH = field("pageSize.h").toDouble();
+			double w = td->itemWidth();
+			double h = td->itemHeight();
+			double xWaste = td->itemXWaste();
+			double yWaste = td->itemYWaste();
+
+			int nxMax = std::max( pageW/(w + 2*xWaste), 1.0 );
+			int nyMax = std::max( pageH/(h + 2*yWaste), 1.0 );
+
+			nxSpin1->setMaximum( nxMax );
+			nySpin1->setMaximum( nyMax );
+			x0Spin1->setRange( xWaste, pageW-w-xWaste );
+			y0Spin1->setRange( yWaste, pageH-h-yWaste );
+			dxSpin1->setRange( w+2*xWaste, pageW-w-2*xWaste );
+			dySpin1->setRange( h+2*yWaste, pageH-h-2*yWaste );
+
+			nxSpin2->setMaximum( nxMax );
+			nySpin2->setMaximum( nyMax );
+			x0Spin2->setRange( xWaste, pageW-w-xWaste );
+			y0Spin2->setRange( yWaste, pageH-h-yWaste );
+			dxSpin2->setRange( w+2*xWaste, pageW-w-2*xWaste );
+			dySpin2->setRange( h+2*yWaste, pageH-h-2*yWaste );
+
+			preview->setTemplate( td->buildTemplate() );
+		}
+	}
+
+
+	void TemplateDesignerTwoLayoutPage::onChanged()
+	{
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			preview->setTemplate( td->buildTemplate() );
+		}
+	}
+
+	
 	///
 	/// Apply Page
 	///

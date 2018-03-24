@@ -44,6 +44,9 @@
      </item>
      <item row="1" column="1">
       <widget class="QDoubleSpinBox" name="wSpin">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -58,6 +61,9 @@
      </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="hSpin">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>

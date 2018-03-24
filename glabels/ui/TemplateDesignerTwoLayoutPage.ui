@@ -43,6 +43,9 @@
      </item>
      <item row="5" column="1">
       <widget class="QDoubleSpinBox" name="dySpin1">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -57,6 +60,9 @@
      </item>
      <item row="3" column="1">
       <widget class="QDoubleSpinBox" name="y0Spin1">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -71,6 +77,9 @@
      </item>
      <item row="4" column="1">
       <widget class="QDoubleSpinBox" name="dxSpin1">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -95,6 +104,9 @@
      </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="x0Spin1">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -115,6 +127,9 @@
      </item>
      <item row="2" column="2">
       <widget class="QDoubleSpinBox" name="x0Spin2">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -122,6 +137,9 @@
      </item>
      <item row="3" column="2">
       <widget class="QDoubleSpinBox" name="y0Spin2">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -129,6 +147,9 @@
      </item>
      <item row="4" column="2">
       <widget class="QDoubleSpinBox" name="dxSpin2">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -136,6 +157,9 @@
      </item>
      <item row="5" column="2">
       <widget class="QDoubleSpinBox" name="dySpin2">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -146,7 +170,7 @@
    <item row="0" column="1" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="glabels::Preview" name="preview"/>
+      <widget class="glabels::SimplePreview" name="preview"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -220,9 +244,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glabels::Preview</class>
+   <class>glabels::SimplePreview</class>
    <extends>QGraphicsView</extends>
-   <header>Preview.h</header>
+   <header>SimplePreview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -39,7 +39,11 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QSpinBox" name="nxSpin"/>
+      <widget class="QSpinBox" name="nxSpin">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -49,7 +53,11 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QSpinBox" name="nySpin"/>
+      <widget class="QSpinBox" name="nySpin">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
@@ -60,6 +68,9 @@
      </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="x0Spin">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -74,6 +85,9 @@
      </item>
      <item row="3" column="1">
       <widget class="QDoubleSpinBox" name="y0Spin">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -88,6 +102,9 @@
      </item>
      <item row="4" column="1">
       <widget class="QDoubleSpinBox" name="dxSpin">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -102,6 +119,9 @@
      </item>
      <item row="5" column="1">
       <widget class="QDoubleSpinBox" name="dySpin">
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
        <property name="suffix">
         <string notr="true">in</string>
        </property>
@@ -112,7 +132,7 @@
    <item row="0" column="1" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="glabels::Preview" name="preview"/>
+      <widget class="glabels::SimplePreview" name="preview"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -186,9 +206,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>glabels::Preview</class>
+   <class>glabels::SimplePreview</class>
    <extends>QGraphicsView</extends>
-   <header>Preview.h</header>
+   <header>SimplePreview.h</header>
   </customwidget>
  </customwidgets>
  <resources>
