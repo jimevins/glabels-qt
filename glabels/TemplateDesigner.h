@@ -172,6 +172,8 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerRectPage( QWidget* parent = nullptr );
+
+		void initializePage() override;
 	};
 
 
@@ -183,6 +185,8 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerRoundPage( QWidget* parent = nullptr );
+
+		void initializePage() override;
 	};
 
 
@@ -194,6 +198,8 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerEllipsePage( QWidget* parent = nullptr );
+
+		void initializePage() override;
 	};
 
 
@@ -205,6 +211,8 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerCdPage( QWidget* parent = nullptr );
+
+		void initializePage() override;
 	};
 
 

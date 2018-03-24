@@ -2101,7 +2101,7 @@
 <context>
     <name>glabels::TemplateDesigner</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="76"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="99"/>
         <source>Product Template Designer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2109,12 +2109,12 @@
 <context>
     <name>glabels::TemplateDesignerApplyPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="426"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="646"/>
         <source>Save Product Template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="427"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="647"/>
         <source>Click &quot;Save&quot; to save your custom product template!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2122,12 +2122,12 @@
 <context>
     <name>glabels::TemplateDesignerCdPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="358"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="521"/>
         <source>Product Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="359"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="522"/>
         <source>Please adjust the size parameters of a single product item.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2135,12 +2135,12 @@
 <context>
     <name>glabels::TemplateDesignerEllipsePage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="341"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="464"/>
         <source>Product Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="342"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="465"/>
         <source>Please adjust the size parameters of a single product item.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2148,12 +2148,12 @@
 <context>
     <name>glabels::TemplateDesignerIntroPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="183"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="206"/>
         <source>Welcome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="184"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="207"/>
         <source>Welcome to the gLabels Product Template Designer.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2161,12 +2161,12 @@
 <context>
     <name>glabels::TemplateDesignerNLayoutsPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="375"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="592"/>
         <source>Number of Layouts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="376"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="593"/>
         <source>Please select the number of layouts required.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2174,12 +2174,12 @@
 <context>
     <name>glabels::TemplateDesignerNamePage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="201"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="224"/>
         <source>Name and Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="202"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="225"/>
         <source>Please enter the following identifying information about the product.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2187,12 +2187,12 @@
 <context>
     <name>glabels::TemplateDesignerOneLayoutPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="392"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="612"/>
         <source>Layout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="393"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="613"/>
         <source>Please enter parameters for your single layout.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2200,23 +2200,23 @@
 <context>
     <name>glabels::TemplateDesignerPageSizePage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="234"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="261"/>
         <source>Page Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="235"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="262"/>
         <source>Please select the product page size.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="240"/>
-        <location filename="../glabels/TemplateDesigner.cpp" line="248"/>
-        <location filename="../glabels/TemplateDesigner.cpp" line="254"/>
-        <location filename="../glabels/TemplateDesigner.cpp" line="256"/>
-        <location filename="../glabels/TemplateDesigner.cpp" line="273"/>
-        <location filename="../glabels/TemplateDesigner.cpp" line="280"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="267"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="275"/>
         <location filename="../glabels/TemplateDesigner.cpp" line="281"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="283"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="304"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="311"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="312"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2224,12 +2224,12 @@
 <context>
     <name>glabels::TemplateDesignerRectPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="307"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="343"/>
         <source>Product Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="308"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="344"/>
         <source>Please adjust the size parameters of a single product item.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2237,12 +2237,12 @@
 <context>
     <name>glabels::TemplateDesignerRoundPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="324"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="414"/>
         <source>Product Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="325"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="415"/>
         <source>Please adjust the size parameters of a single product item.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2250,12 +2250,12 @@
 <context>
     <name>glabels::TemplateDesignerShapePage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="290"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="321"/>
         <source>Product Shape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="291"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="322"/>
         <source>Please select the basic product shape.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2263,12 +2263,12 @@
 <context>
     <name>glabels::TemplateDesignerTwoLayoutPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="409"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="629"/>
         <source>Layouts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="410"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="630"/>
         <source>Please enter parameters for your two layouts.</source>
         <translation type="unfinished"></translation>
     </message>
