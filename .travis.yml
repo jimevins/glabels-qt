@@ -31,13 +31,14 @@ after_success:
   - mv ./gLabels*.AppImage glabels-continuous-x86_64.AppImage
   - wget -c https://github.com/jimevins/uploadtool/raw/master/upload.sh
   - bash ./upload.sh glabels-continuous-x86_64.AppImage
-  
-branches:
-  only:
-    - master
-    
+
 branches:
   except:
     - /.*/
     - # Do not build tags that we create when we upload to GitHub Releases
     - /^(?i:continuous)$/
+
+branches:
+  only:
+    - master
+    
