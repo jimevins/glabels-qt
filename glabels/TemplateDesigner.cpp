@@ -253,6 +253,13 @@ namespace glabels
 		hSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
 		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
 
+		if ( pageSizeCombo->currentText() != tr("Other") )
+		{
+			const model::Paper* paper = model::Db::lookupPaperFromName( pageSizeCombo->currentText() );
+			wSpin->setValue( paper->width().inUnits( model::Settings::units() ) );
+			hSpin->setValue( paper->height().inUnits( model::Settings::units() ) );
+		}
+
 		connect( pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesignerPageSizePage::onComboChanged );
 
 		QVBoxLayout* layout = new QVBoxLayout;
@@ -263,6 +270,13 @@ namespace glabels
 
 	void TemplateDesignerPageSizePage::onComboChanged()
 	{
+		if ( pageSizeCombo->currentText() != tr("Other") )
+		{
+			const model::Paper* paper = model::Db::lookupPaperFromName( pageSizeCombo->currentText() );
+			wSpin->setValue( paper->width().inUnits( model::Settings::units() ) );
+			hSpin->setValue( paper->height().inUnits( model::Settings::units() ) );
+		}
+
 		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
 		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
 	}
