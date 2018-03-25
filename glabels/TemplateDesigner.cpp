@@ -467,6 +467,8 @@ namespace glabels
 		QWidget* widget = new QWidget;
 		setupUi( widget );
 
+		warningLabel->setText( "" );
+
 		registerField( "name.brand",       brandEntry );
 		registerField( "name.part",        partEntry );
 		registerField( "name.description", descriptionEntry );
@@ -488,7 +490,18 @@ namespace glabels
 
 	void TemplateDesignerNamePage::onChanged()
 	{
-		mCanContinue = !brandEntry->text().isEmpty() && !partEntry->text().isEmpty();
+		bool isDuplicate = model::Db::isTemplateKnown( brandEntry->text(), partEntry->text() );
+		if ( isDuplicate )
+		{
+			QString warningText = "Brand and part number match an existing template!";
+			warningLabel->setText( "<b style='color:red'>" + warningText + "</b>" );
+		}
+		else
+		{
+			warningLabel->setText( "" );
+		}
+		
+		mCanContinue = !brandEntry->text().isEmpty() && !partEntry->text().isEmpty() && !isDuplicate;
 		emit completeChanged();
 	}
 
