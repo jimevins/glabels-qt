@@ -22,13 +22,17 @@
 
 #include "model/Db.h"
 #include "model/Distance.h"
+#include "model/FrameCd.h"
+#include "model/FrameEllipse.h"
 #include "model/FrameRect.h"
 #include "model/FrameRound.h"
-#include "model/FrameEllipse.h"
-#include "model/FrameCd.h"
 #include "model/Markup.h"
+#include "model/Model.h"
+#include "model/PageRenderer.h"
 #include "model/Settings.h"
 
+#include <QPrintDialog>
+#include <QPrinter>
 #include <QVBoxLayout>
 #include <QtDebug>
 
@@ -400,6 +404,38 @@ namespace glabels
 		return t;
 	}
 
+
+	///
+	/// Print test sheet
+	///
+	void TemplateDesigner::printTestSheet()
+	{
+		auto sheet = new model::Model();
+		sheet->setTmplate( buildTemplate() );
+
+		model::PageRenderer renderer( sheet );
+		renderer.setNCopies( sheet->frame()->nLabels() );
+		renderer.setStartLabel( 0 );
+		renderer.setPrintOutlines( true );
+
+		QPrinter printer( QPrinter::HighResolution );
+
+		QPrintDialog printDialog( &printer, this );
+                printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
+                printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
+                printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
+                printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
+                printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
+                printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
+
+                if ( printDialog.exec() == QDialog::Accepted )
+                {
+                        renderer.print( &printer );
+                }
+
+                delete sheet;
+	}
+	
 
 	///
 	/// Intro Page
@@ -854,6 +890,8 @@ namespace glabels
 		connect( dxSpin, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
 		connect( dySpin, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
 
+		connect( printButton, SIGNAL(clicked()), this, SLOT(onPrintButtonClicked()) );
+		
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
 		setLayout( layout );
@@ -896,6 +934,15 @@ namespace glabels
 	}
 
 	
+	void TemplateDesignerOneLayoutPage::onPrintButtonClicked()
+	{
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			td->printTestSheet();
+		}
+	}
+
+
 	///
 	/// Two Layout Page
 	///
@@ -978,6 +1025,8 @@ namespace glabels
 		connect( dxSpin2, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
 		connect( dySpin2, SIGNAL(valueChanged(double)), this, SLOT(onChanged()) );
 
+		connect( printButton, SIGNAL(clicked()), this, SLOT(onPrintButtonClicked()) );
+
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
 		setLayout( layout );
@@ -1027,6 +1076,15 @@ namespace glabels
 	}
 
 	
+	void TemplateDesignerTwoLayoutPage::onPrintButtonClicked()
+	{
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			td->printTestSheet();
+		}
+	}
+
+
 	///
 	/// Apply Page
 	///

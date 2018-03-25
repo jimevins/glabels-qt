@@ -83,6 +83,7 @@ namespace glabels
 		double itemXWaste();
 		double itemYWaste();
 		model::Template* buildTemplate();
+		void printTestSheet();
 	};
 
 
@@ -217,6 +218,7 @@ namespace glabels
 
 	private slots:
 		void onChanged();
+		void onPrintButtonClicked();
 	};
 
 
@@ -233,6 +235,7 @@ namespace glabels
 
 	private slots:
 		void onChanged();
+		void onPrintButtonClicked();
 	};
 
 
