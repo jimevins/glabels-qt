@@ -109,6 +109,7 @@ namespace glabels
 		setWindowTitle( tr("Product Template Designer") );
 		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/scalable/apps/glabels.svg" ) );
 		setWizardStyle( QWizard::ModernStyle );
+		setOption( QWizard::IndependentPages, true );
 
 		setPage( IntroPageId,     new TemplateDesignerIntroPage() );
 		setPage( NamePageId,      new TemplateDesignerNamePage() );
