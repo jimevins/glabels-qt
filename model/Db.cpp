@@ -26,6 +26,7 @@
 #include "XmlCategoryParser.h"
 #include "XmlPaperParser.h"
 #include "XmlTemplateParser.h"
+#include "XmlTemplateCreator.h"
 #include "XmlVendorParser.h"
 
 #include <QtDebug>
@@ -497,6 +498,22 @@ namespace glabels
 		}
 
 
+		bool Db::isSystemTemplateKnown( const QString& brand, const QString& part )
+		{
+			foreach ( Template *tmplate, mTemplates )
+			{
+				if ( (tmplate->brand() == brand) &&
+				     (tmplate->part() == part)   &&
+				     !tmplate->isUserDefined() )
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+
 		QStringList Db::getNameListOfSimilarTemplates( const QString& name )
 		{
 			QStringList list;
@@ -523,21 +540,54 @@ namespace glabels
 		}
 
 
-		void Db::registerUserTemplate( Template *templat )
+		QString Db::userTemplateFilename( const QString& brand, const QString& part )
 		{
-			// TODO
+			QString filename = brand + "_" + part + ".template";
+			return FileUtil::userTemplatesDir().filePath( filename );
 		}
 
 
-		void Db::deleteUserTemplateByName( const QString& name )
+		void Db::registerUserTemplate( Template *tmplate )
 		{
-			// TODO
+			QString filename = userTemplateFilename( tmplate->brand(), tmplate->part() );
+
+			// Create user template directory if it doesn't already exist
+			QDir().mkpath( QFileInfo(filename).path() );
+			
+			// Write file
+			if ( XmlTemplateCreator().writeTemplate( tmplate, filename ) )
+			{
+				// Add template to list of registered templates
+				registerTemplate( tmplate );
+			}
+			else
+			{
+				qWarning() << "Problem writing user template" << filename;
+			}
 		}
 
 
 		void Db::deleteUserTemplateByBrandPart( const QString& brand, const QString& part )
 		{
-			// TODO
+			Template* tmplate;
+			foreach ( Template *candidate, mTemplates )
+			{
+				if ( candidate->isUserDefined() &&
+				     (candidate->brand() == brand) && (candidate->part() == part) )
+				{
+					tmplate = candidate;
+					break;
+				}
+			}
+
+			if ( tmplate )
+			{
+				mTemplates.removeOne( tmplate );
+				delete tmplate;
+
+				QString filename = userTemplateFilename( brand, part );
+				QFile( filename ).remove();
+			}
 		}
 
 
@@ -667,15 +717,14 @@ namespace glabels
 
 		void Db::readTemplates()
 		{
-			readTemplatesFromDir( FileUtil::systemTemplatesDir() );
-
-			// TODO: Read user directories
+			readTemplatesFromDir( FileUtil::systemTemplatesDir(), false );
+			readTemplatesFromDir( FileUtil::userTemplatesDir(), true );
 
 			std::stable_sort( mTemplates.begin(), mTemplates.end(), partNameLessThan );
 		}
 
 
-		void Db::readTemplatesFromDir( const QDir& dir )
+		void Db::readTemplatesFromDir( const QDir& dir, bool isUserDefined )
 		{
 			QStringList filters;
 			filters << "*-templates.xml" << "*.template";
@@ -684,7 +733,7 @@ namespace glabels
 
 			foreach ( QString fileName, dir.entryList( filters, QDir::Files ) )
 			{
-				parser.readFile( dir.absoluteFilePath( fileName ) );
+				parser.readFile( dir.absoluteFilePath( fileName ), isUserDefined );
 			}
 		}
 

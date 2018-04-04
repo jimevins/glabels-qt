@@ -247,6 +247,8 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerApplyPage( QWidget* parent = nullptr );
+
+		bool validatePage();
 	};
 
 

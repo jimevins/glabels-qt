@@ -23,6 +23,7 @@
 #include "Config.h"
 
 #include <QApplication>
+#include <QStandardPaths>
 
 
 namespace glabels
@@ -63,6 +64,14 @@ namespace glabels
 			return QDir("/");
 		}
 
+
+		QDir FileUtil::userTemplatesDir()
+		{
+			QDir dir( QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) );
+
+			return dir;
+		}
+		
 
 		QDir FileUtil::translationsDir()
 		{

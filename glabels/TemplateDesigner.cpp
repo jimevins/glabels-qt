@@ -31,6 +31,7 @@
 #include "model/PageRenderer.h"
 #include "model/Settings.h"
 
+#include <QMessageBox>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QVBoxLayout>
@@ -189,6 +190,7 @@ namespace glabels
 		case TwoLayoutPageId:
 			return ApplyPageId;
 			
+		case ApplyPageId:
 		default:
 			return -1;
 		}
@@ -323,7 +325,7 @@ namespace glabels
 		model::Distance pageW( field( "pageSize.w" ).toDouble(), units );
 		model::Distance pageH( field( "pageSize.h" ).toDouble(), units );
 		
-		auto t = new model::Template( brand, part, description, paperId, pageW, pageH );
+		auto t = new model::Template( brand, part, description, paperId, pageW, pageH, true );
 
 		model::Frame* frame;
 		if ( field( "shape.rect" ).toBool() )
@@ -490,7 +492,7 @@ namespace glabels
 
 	void TemplateDesignerNamePage::onChanged()
 	{
-		bool isDuplicate = model::Db::isTemplateKnown( brandEntry->text(), partEntry->text() );
+		bool isDuplicate = model::Db::isSystemTemplateKnown( brandEntry->text(), partEntry->text() );
 		if ( isDuplicate )
 		{
 			QString warningText = "Brand and part number match an existing template!";
@@ -1118,5 +1120,40 @@ namespace glabels
 		setLayout( layout );
 	}
 	
+
+	bool TemplateDesignerApplyPage::validatePage()
+	{
+		//
+		// Save button pressed
+		//
+		QString brand = field( "name.brand" ).toString();
+		QString part = field( "name.part" ).toString();
+		QString filename = model::Db::userTemplateFilename( brand, part );
+
+		if ( QFileInfo::exists(filename) )
+		{
+			QMessageBox msgBox( wizard() );
+			msgBox.setWindowTitle( tr("Save Product Template") );
+			msgBox.setIcon( QMessageBox::Warning );
+			msgBox.setText( tr("User product template (%1 %2) already exists.").arg(brand).arg(part) );
+			msgBox.setInformativeText( tr("Do you want to replace it?") );
+			msgBox.setStandardButtons( QMessageBox::Yes | QMessageBox::No );
+			msgBox.setDefaultButton( QMessageBox::No );
+
+			if ( msgBox.exec() == QMessageBox::No )
+			{
+				return false;
+			}
+
+			model::Db::deleteUserTemplateByBrandPart( brand, part );
+		}
+
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			model::Db::registerUserTemplate( td->buildTemplate() );
+		}
+		return true;
+	}
+
 
 } // namespace glabels

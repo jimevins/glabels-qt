@@ -38,11 +38,11 @@ namespace glabels
 		public:
 			XmlTemplateParser() = default;
 
-			bool readFile( const QString &fileName );
-			Template *parseTemplateNode( const QDomElement &node );
+			bool readFile( const QString &fileName, bool isUserDefined = false );
+			Template *parseTemplateNode( const QDomElement &node, bool isUserDefined = false );
 
 		private:
-			void parseRootNode( const QDomElement &node );
+			void parseRootNode( const QDomElement &node, bool isUserDefined );
 			void parseMetaNode( const QDomElement &node, Template *tmplate );
 			void parseLabelRectangleNode( const QDomElement &node, Template *tmplate );
 			void parseLabelEllipseNode( const QDomElement &node, Template *tmplate );
