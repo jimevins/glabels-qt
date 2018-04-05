@@ -2109,23 +2109,23 @@
 <context>
     <name>glabels::TemplateDesignerApplyPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="1109"/>
-        <location filename="../glabels/TemplateDesigner.cpp" line="1136"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="1131"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="1158"/>
         <source>Save Product Template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="1110"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="1132"/>
         <source>Click &quot;Save&quot; to save your custom product template!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="1138"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="1160"/>
         <source>User product template (%1 %2) already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="1139"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="1161"/>
         <source>Do you want to replace it?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2274,12 +2274,12 @@
 <context>
     <name>glabels::TemplateDesignerTwoLayoutPage</name>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="967"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="977"/>
         <source>Layouts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/TemplateDesigner.cpp" line="968"/>
+        <location filename="../glabels/TemplateDesigner.cpp" line="978"/>
         <source>Please enter parameters for your two layouts.</source>
         <translation type="unfinished"></translation>
     </message>

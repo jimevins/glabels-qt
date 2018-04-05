@@ -110,7 +110,7 @@ namespace glabels
 		setWindowTitle( tr("Product Template Designer") );
 		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/scalable/apps/glabels.svg" ) );
 		setWizardStyle( QWizard::ModernStyle );
-		setOption( QWizard::IndependentPages, true );
+		setOption( QWizard::IndependentPages, false );
 
 		setPage( IntroPageId,     new TemplateDesignerIntroPage() );
 		setPage( NamePageId,      new TemplateDesignerNamePage() );
@@ -886,12 +886,6 @@ namespace glabels
 		dySpin->setDecimals( model::Settings::units().resolutionDigits() );
 		dySpin->setSingleStep( model::Settings::units().resolution() );
 
-		// Set some realistic defaults
-		nxSpin->setValue( 1 );
-		nySpin->setValue( 1 );
-		x0Spin->setValue( 0 );
-		y0Spin->setValue( 0 );
-
 		registerField( "oneLayout.nx", nxSpin );
 		registerField( "oneLayout.ny", nySpin );
 		registerField( "oneLayout.x0", x0Spin, "value" );
@@ -926,15 +920,31 @@ namespace glabels
 			double xWaste = td->itemXWaste();
 			double yWaste = td->itemYWaste();
 
-			int nxMax = std::max( pageW/(w + 2*xWaste), 1.0 );
-			int nyMax = std::max( pageH/(h + 2*yWaste), 1.0 );
+			int    nxMax = std::max( pageW/(w + 2*xWaste), 1.0 );
+			int    nyMax = std::max( pageH/(h + 2*yWaste), 1.0 );
+			double x0Min = xWaste;
+			double x0Max = pageW - w - 2*xWaste;
+			double y0Min = yWaste;
+			double y0Max = pageH - h - 2*yWaste;
+			double dxMin = w + 2*xWaste;
+			double dxMax = pageW - w - 2*xWaste;
+			double dyMin = h + 2*yWaste;
+			double dyMax = pageH - h - 2*yWaste;
 
-			nxSpin->setMaximum( nxMax );
-			nySpin->setMaximum( nyMax );
-			x0Spin->setRange( xWaste, pageW-w-xWaste );
-			y0Spin->setRange( yWaste, pageH-h-yWaste );
-			dxSpin->setRange( w+2*xWaste, pageW-w-2*xWaste );
-			dySpin->setRange( h+2*yWaste, pageH-h-2*yWaste );
+			nxSpin->setRange( 1, nxMax );
+			nySpin->setRange( 1, nyMax );
+			x0Spin->setRange( x0Min, x0Max );
+			y0Spin->setRange( y0Min, y0Max );
+			dxSpin->setRange( dxMin, dxMax );
+			dySpin->setRange( dyMin, dxMax );
+
+			// Set some realistic defaults based on symetric sheet using previosly chosen values
+			nxSpin->setValue( nxMax );
+			nySpin->setValue( nyMax );
+			x0Spin->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
+			y0Spin->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 );
+			dxSpin->setValue( dxMin );
+			dySpin->setValue( dyMin );
 
 			preview->setTemplate( td->buildTemplate() );
 		}
@@ -1002,17 +1012,6 @@ namespace glabels
 		dySpin2->setDecimals( model::Settings::units().resolutionDigits() );
 		dySpin2->setSingleStep( model::Settings::units().resolution() );
 
-		// Set some realistic defaults
-		nxSpin1->setValue( 1 );
-		nySpin1->setValue( 1 );
-		x0Spin1->setValue( 0 );
-		y0Spin1->setValue( 0 );
-
-		nxSpin2->setValue( 1 );
-		nySpin2->setValue( 1 );
-		x0Spin2->setValue( 0 );
-		y0Spin2->setValue( 0 );
-
 		registerField( "twoLayout.nx1", nxSpin1 );
 		registerField( "twoLayout.ny1", nySpin1 );
 		registerField( "twoLayout.x01", x0Spin1, "value" );
@@ -1061,22 +1060,45 @@ namespace glabels
 			double xWaste = td->itemXWaste();
 			double yWaste = td->itemYWaste();
 
-			int nxMax = std::max( pageW/(w + 2*xWaste), 1.0 );
-			int nyMax = std::max( pageH/(h + 2*yWaste), 1.0 );
+			int    nxMax = std::max( pageW/(w + 2*xWaste), 1.0 );
+			int    nyMax = std::max( pageH/(h + 2*yWaste), 1.0 );
+			double x0Min = xWaste;
+			double x0Max = pageW - w - 2*xWaste;
+			double y0Min = yWaste;
+			double y0Max = pageH - h - 2*yWaste;
+			double dxMin = w + 2*xWaste;
+			double dxMax = pageW - w - 2*xWaste;
+			double dyMin = h + 2*yWaste;
+			double dyMax = pageH - h - 2*yWaste;
 
-			nxSpin1->setMaximum( nxMax );
-			nySpin1->setMaximum( nyMax );
-			x0Spin1->setRange( xWaste, pageW-w-xWaste );
-			y0Spin1->setRange( yWaste, pageH-h-yWaste );
-			dxSpin1->setRange( w+2*xWaste, pageW-w-2*xWaste );
-			dySpin1->setRange( h+2*yWaste, pageH-h-2*yWaste );
+			nxSpin1->setRange( 1, nxMax );
+			nySpin1->setRange( 1, nyMax );
+			x0Spin1->setRange( x0Min, x0Max );
+			y0Spin1->setRange( y0Min, y0Max );
+			dxSpin1->setRange( dxMin, dxMax );
+			dySpin1->setRange( dyMin, dyMax );
 
-			nxSpin2->setMaximum( nxMax );
-			nySpin2->setMaximum( nyMax );
-			x0Spin2->setRange( xWaste, pageW-w-xWaste );
-			y0Spin2->setRange( yWaste, pageH-h-yWaste );
-			dxSpin2->setRange( w+2*xWaste, pageW-w-2*xWaste );
-			dySpin2->setRange( h+2*yWaste, pageH-h-2*yWaste );
+			nxSpin2->setRange( 1, nxMax );
+			nySpin2->setRange( 1, nyMax );
+			x0Spin2->setRange( x0Min, x0Max );
+			y0Spin2->setRange( y0Min, y0Max );
+			dxSpin2->setRange( dxMin, dxMax );
+			dySpin2->setRange( dyMin, dyMax );
+
+			// Set some realistic defaults based on symetric sheet using previosly chosen values
+			nxSpin1->setValue( nxMax );
+			nySpin1->setValue( nyMax - nyMax/2 );
+			x0Spin1->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
+			y0Spin1->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 );
+			dxSpin1->setValue( dxMin );
+			dySpin1->setValue( 2*dyMin );
+
+			nxSpin2->setValue( nxMax );
+			nySpin2->setValue( nyMax/2 );
+			x0Spin2->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
+			y0Spin2->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 + dyMin );
+			dxSpin2->setValue( dxMin );
+			dySpin2->setValue( 2*dyMin );
 
 			preview->setTemplate( td->buildTemplate() );
 		}
