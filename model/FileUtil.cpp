@@ -65,9 +65,22 @@ namespace glabels
 		}
 
 
+		QDir FileUtil::manualUserTemplatesDir()
+		{
+			// Location for manually created user-defined templates
+			QDir dir( QStandardPaths::writableLocation(QStandardPaths::HomeLocation) );
+			dir.mkpath( ".glabels" );
+			dir.cd( ".glabels" );
+
+			return dir;
+		}
+		
+
 		QDir FileUtil::userTemplatesDir()
 		{
-			QDir dir( QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) );
+			// Location for user-defined templates created using TemplateDesigner
+			QDir dir( QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) );
+			dir.mkpath( "." );
 
 			return dir;
 		}

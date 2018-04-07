@@ -23,6 +23,7 @@
 #include "Config.h"
 #include "StrUtil.h"
 #include "FileUtil.h"
+#include "Settings.h"
 #include "XmlCategoryParser.h"
 #include "XmlPaperParser.h"
 #include "XmlTemplateParser.h"
@@ -551,14 +552,12 @@ namespace glabels
 		{
 			QString filename = userTemplateFilename( tmplate->brand(), tmplate->part() );
 
-			// Create user template directory if it doesn't already exist
-			QDir().mkpath( QFileInfo(filename).path() );
-			
 			// Write file
 			if ( XmlTemplateCreator().writeTemplate( tmplate, filename ) )
 			{
 				// Add template to list of registered templates
 				registerTemplate( tmplate );
+				Settings::addToRecentTemplateList( tmplate->name() );
 			}
 			else
 			{
@@ -718,6 +717,7 @@ namespace glabels
 		void Db::readTemplates()
 		{
 			readTemplatesFromDir( FileUtil::systemTemplatesDir(), false );
+			readTemplatesFromDir( FileUtil::manualUserTemplatesDir(), false );
 			readTemplatesFromDir( FileUtil::userTemplatesDir(), true );
 
 			std::stable_sort( mTemplates.begin(), mTemplates.end(), partNameLessThan );
