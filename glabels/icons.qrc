@@ -100,6 +100,8 @@
 
 	<file>icons/48x48/apps/glabels.svg</file>
 
+	<file>icons/128x128/apps/glabels.svg</file>
+	
 	<file>icons/scalable/apps/glabels.svg</file>
 
 </qresource>
