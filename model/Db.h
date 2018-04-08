@@ -90,10 +90,11 @@ namespace glabels
 			static const Template *lookupTemplateFromBrandPart( const QString& brand,
 			                                                    const QString& part );
 			static bool isTemplateKnown( const QString& brand, const QString& part );
+			static bool isSystemTemplateKnown( const QString& brand, const QString& part );
 			static QStringList getNameListOfSimilarTemplates( const QString& name );
 
+			static QString userTemplateFilename( const QString& brand, const QString& part );
 			static void registerUserTemplate( Template *tmplate );
-			static void deleteUserTemplateByName( const QString& name );
 			static void deleteUserTemplateByBrandPart( const QString& brand,
 			                                           const QString& part );
 
@@ -116,7 +117,7 @@ namespace glabels
 			static void readVendorsFromDir( const QDir& dir );
 
 			static void readTemplates();
-			static void readTemplatesFromDir( const QDir& dir );
+			static void readTemplatesFromDir( const QDir& dir, bool isUserDefined );
 
 
 		private:

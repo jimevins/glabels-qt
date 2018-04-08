@@ -41,7 +41,7 @@ namespace glabels
 			Q_OBJECT
 	
 		public:
-			enum class PageSizeFamilty { ISO, US, };
+			enum PageSizeFamily { ISO, US, };
 
 
 			/////////////////////////////////
@@ -68,6 +68,9 @@ namespace glabels
 		public:
 			static Units units();
 			static void setUnits( const Units& units );
+
+			static PageSizeFamily preferedPageSizeFamily();
+			static void setPreferedPageSizeFamily( PageSizeFamily preferedPageSizeFamily );
 
 			static bool searchIsoPaperSizes();
 			static void setSearchIsoPaperSizes( bool searchIsoPaperSizes );

@@ -41,7 +41,7 @@ namespace glabels
 	namespace model
 	{
 
-		bool XmlTemplateParser::readFile( const QString &fileName )
+		bool XmlTemplateParser::readFile( const QString &fileName, bool isUserDefined )
 		{
 			QFile file( fileName );
 
@@ -73,18 +73,18 @@ namespace glabels
 				return false;
 			}
 
-			parseRootNode( root );
+			parseRootNode( root, isUserDefined );
 			return true;
 		}
 
 
-		void XmlTemplateParser::parseRootNode( const QDomElement &node )
+		void XmlTemplateParser::parseRootNode( const QDomElement &node, bool isUserDefined )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
 				if ( child.toElement().tagName() == "Template" )
 				{
-					Template *tmplate = parseTemplateNode( child.toElement() );
+					Template *tmplate = parseTemplateNode( child.toElement(), isUserDefined );
 					if ( tmplate != nullptr )
 					{
 						Db::registerTemplate( tmplate );
@@ -104,7 +104,7 @@ namespace glabels
 		}
 
 
-		Template *XmlTemplateParser::parseTemplateNode( const QDomElement &node )
+		Template *XmlTemplateParser::parseTemplateNode( const QDomElement &node, bool isUserDefined )
 		{
 			QString brand = XmlUtil::getStringAttr( node, "brand", "" );
 			QString part  = XmlUtil::getStringAttr( node, "part", "" );
@@ -163,14 +163,14 @@ namespace glabels
 					}
 
 					tmplate = new Template( brand, part, description,
-					                        paper->id(), paper->width(), paper->height() );
+					                        paper->id(), paper->width(), paper->height(), isUserDefined );
 				}
 				else
 				{
 					Distance width  = XmlUtil::getLengthAttr( node, "width", Distance(0) );
 					Distance height = XmlUtil::getLengthAttr( node, "height", Distance(0) );
 
-					tmplate = new Template( brand, part, description, paperId, width, height );
+					tmplate = new Template( brand, part, description, paperId, width, height, isUserDefined );
 				}
 
 				for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )

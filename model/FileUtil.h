@@ -37,6 +37,7 @@ namespace glabels
 			QString addExtension( const QString& rawFilename, const QString& extension );
 
 			QDir systemTemplatesDir();
+			QDir manualUserTemplatesDir();
 			QDir userTemplatesDir();
 
 			QDir translationsDir();

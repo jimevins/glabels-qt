@@ -92,6 +92,40 @@ namespace glabels
 		}
 
 
+		Settings::PageSizeFamily Settings::preferedPageSizeFamily()
+		{
+			// Guess at a suitable default
+			QString defaultFamily;
+			switch (QLocale::system().country())
+			{
+			case QLocale::UnitedStates:
+			case QLocale::Canada:
+				defaultFamily = "us";
+				break;
+
+			default:
+				defaultFamily = "iso";
+				break;
+			}
+	
+			mInstance->beginGroup( "Locale" );
+			QString value = mInstance->value( "preferedPageSizeFamily", defaultFamily ).toString();
+			mInstance->endGroup();
+
+			return (value == "iso") ? ISO : US;
+		}
+
+
+		void Settings::setPreferedPageSizeFamily( PageSizeFamily preferedPageSizeFamily )
+		{
+			mInstance->beginGroup( "Locale" );
+			mInstance->setValue( "preferedPageSizeFamily", preferedPageSizeFamily == ISO ? "iso" : "us" );
+			mInstance->endGroup();
+
+			emit mInstance->changed();
+		}
+
+
 		bool Settings::searchIsoPaperSizes()
 		{
 			// Guess at a suitable default

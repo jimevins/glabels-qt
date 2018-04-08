@@ -22,6 +22,7 @@
 
 #include "MainWindow.h"
 #include "SelectProductDialog.h"
+#include "TemplateDesigner.h"
 
 #include "model/FileUtil.h"
 #include "model/Model.h"
@@ -218,6 +219,16 @@ namespace glabels
 		}
 
 		return false;
+	}
+
+
+	///
+	/// Template Designer
+	///
+	void File::templateDesigner( MainWindow *window )
+	{
+		TemplateDesigner dialog( window );
+		dialog.exec();
 	}
 
 

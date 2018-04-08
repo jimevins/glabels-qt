@@ -35,13 +35,15 @@ namespace glabels
 		                    const QString&  description,
 		                    const QString&  paperId,
 		                    const Distance& pageWidth,
-		                    const Distance& pageHeight )
+		                    const Distance& pageHeight,
+		                    bool            isUserDefined )
 			: mBrand(brand),
 			  mPart(part),
 			  mDescription(description),
 			  mPaperId(paperId),
 			  mPageWidth(pageWidth),
 			  mPageHeight(pageHeight),
+			  mIsUserDefined(isUserDefined),
 			  mIsSizeIso(false),
 			  mIsSizeUs(false),
 			  mName("")
@@ -176,6 +178,12 @@ namespace glabels
 		bool Template::isSizeOther() const
 		{
 			return !mIsSizeIso && !mIsSizeUs;
+		}
+	
+
+		bool Template::isUserDefined() const
+		{
+			return mIsUserDefined;
 		}
 	
 

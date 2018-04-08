@@ -25,10 +25,8 @@ gLabels-qt is the development version of the next major version of gLabels (4.0)
 gLabels-qt has been under off-and-on development for several years..
 It is still missing several features to bring it in parity with glabels-3.4.  These include
 
-- Batch mode
-- Compatability with older glabels files
-- Custom product templates designer
-- Online manual
+- Compatability with older glabels project files
+- An online manual
 
 
 ## Download

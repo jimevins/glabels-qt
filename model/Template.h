@@ -48,7 +48,8 @@ namespace glabels
 			          const QString&  description,
 			          const QString&  paperId,
 			          const Distance& pageWidth,
-			          const Distance& pageHeight );
+			          const Distance& pageHeight,
+			          bool            isUserDefined = false );
 
 			Template( const Template& other );
 
@@ -73,6 +74,8 @@ namespace glabels
 			bool isSizeIso() const;
 			bool isSizeUs() const;
 			bool isSizeOther() const;
+
+			bool isUserDefined() const;
 
 			QString equivPart() const;
 			void setEquivPart( const QString& value );
@@ -103,6 +106,8 @@ namespace glabels
 			Distance mPageHeight;
 			bool     mIsSizeIso;
 			bool     mIsSizeUs;
+
+			bool     mIsUserDefined;
 
 			QString mEquivPart;
 			QString mName;

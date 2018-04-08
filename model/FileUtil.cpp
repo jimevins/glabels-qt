@@ -23,6 +23,7 @@
 #include "Config.h"
 
 #include <QApplication>
+#include <QStandardPaths>
 
 
 namespace glabels
@@ -63,6 +64,27 @@ namespace glabels
 			return QDir("/");
 		}
 
+
+		QDir FileUtil::manualUserTemplatesDir()
+		{
+			// Location for manually created user-defined templates
+			QDir dir( QStandardPaths::writableLocation(QStandardPaths::HomeLocation) );
+			dir.mkpath( ".glabels" );
+			dir.cd( ".glabels" );
+
+			return dir;
+		}
+		
+
+		QDir FileUtil::userTemplatesDir()
+		{
+			// Location for user-defined templates created using TemplateDesigner
+			QDir dir( QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) );
+			dir.mkpath( "." );
+
+			return dir;
+		}
+		
 
 		QDir FileUtil::translationsDir()
 		{

@@ -6,11 +6,11 @@ This document is a reference for manually creating *gLabels* product templates.
 *gLabels* searches for templates in several locations as described here:</p>
 
 
-Location                                 | Description
------------------------------------------|-----------------------------------------
-${prefix}/share/libglabels-qt/templates/ | Predefined templates distributed with glabels.
-${XDG_CONFIG_HOME}/libglabels/templates  | User defined templates created with the gLabels Template Designer.
-${HOME}/.glabels                         | Manually created templates should be placed here.
+Location                                  | Description
+------------------------------------------|-----------------------------------------
+${prefix}/share/glabels-qt/templates/     | Predefined templates distributed with glabels.
+${XDG_CONFIG_HOME}/glabels.org/glabels-qt | User defined templates created with the gLabels Product Template Designer. **Do not place manually created templates here!**
+${HOME}/.glabels                          | Manually created templates should be placed here.
 
 
 
