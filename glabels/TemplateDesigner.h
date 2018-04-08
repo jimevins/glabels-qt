@@ -84,6 +84,15 @@ namespace glabels
 		double itemYWaste();
 		model::Template* buildTemplate();
 		void printTestSheet();
+		void loadFromTemplate( const model::Template* tmplate );
+		bool isBasedOnCopy();
+
+
+		/////////////////////////////////
+		// Private methods
+		/////////////////////////////////
+	private:
+		bool mIsBasedOnCopy;
 	};
 
 
@@ -93,8 +102,15 @@ namespace glabels
 	class TemplateDesignerIntroPage : public QWizardPage, public Ui::TemplateDesignerIntroPage
 	{
 		Q_OBJECT
+
 	public:
 		TemplateDesignerIntroPage( QWidget* parent = nullptr );
+
+		bool isComplete() const override;
+
+	private slots:
+		void onCopyButtonClicked();
+		void onNewButtonClicked();
 	};
 
 
@@ -126,6 +142,9 @@ namespace glabels
 	public:
 		TemplateDesignerPageSizePage( QWidget* parent = nullptr );
 
+		void initializePage() override;
+		void cleanupPage() override;
+
 	private slots:
 		void onComboChanged();
 	};
@@ -139,6 +158,9 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerShapePage( QWidget* parent = nullptr );
+
+		void initializePage() override;
+		void cleanupPage() override;
 	};
 
 
@@ -152,6 +174,7 @@ namespace glabels
 		TemplateDesignerRectPage( QWidget* parent = nullptr );
 
 		void initializePage() override;
+		void cleanupPage() override;
 	};
 
 
@@ -165,6 +188,7 @@ namespace glabels
 		TemplateDesignerRoundPage( QWidget* parent = nullptr );
 
 		void initializePage() override;
+		void cleanupPage() override;
 	};
 
 
@@ -178,6 +202,7 @@ namespace glabels
 		TemplateDesignerEllipsePage( QWidget* parent = nullptr );
 
 		void initializePage() override;
+		void cleanupPage() override;
 	};
 
 
@@ -191,6 +216,7 @@ namespace glabels
 		TemplateDesignerCdPage( QWidget* parent = nullptr );
 
 		void initializePage() override;
+		void cleanupPage() override;
 	};
 
 
@@ -202,6 +228,9 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerNLayoutsPage( QWidget* parent = nullptr );
+
+		void initializePage() override;
+		void cleanupPage() override;
 	};
 
 
@@ -215,6 +244,7 @@ namespace glabels
 		TemplateDesignerOneLayoutPage( QWidget* parent = nullptr );
 
 		void initializePage() override;
+		void cleanupPage() override;
 
 	private slots:
 		void onChanged();
@@ -232,6 +262,7 @@ namespace glabels
 		TemplateDesignerTwoLayoutPage( QWidget* parent = nullptr );
 
 		void initializePage() override;
+		void cleanupPage() override;
 
 	private slots:
 		void onChanged();

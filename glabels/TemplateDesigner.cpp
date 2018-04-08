@@ -20,6 +20,7 @@
 
 #include "TemplateDesigner.h"
 
+#include "SelectProductDialog.h"
 #include "model/Db.h"
 #include "model/Distance.h"
 #include "model/FrameCd.h"
@@ -105,12 +106,13 @@ namespace glabels
 	/// Constructor
 	///
 	TemplateDesigner::TemplateDesigner( QWidget* parent )
-		: QWizard(parent)
+		: mIsBasedOnCopy(false), QWizard(parent)
 	{
 		setWindowTitle( tr("Product Template Designer") );
 		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/scalable/apps/glabels.svg" ) );
 		setWizardStyle( QWizard::ModernStyle );
 		setOption( QWizard::IndependentPages, false );
+		setOption( QWizard::NoBackButtonOnStartPage, true );
 
 		setPage( IntroPageId,     new TemplateDesignerIntroPage() );
 		setPage( NamePageId,      new TemplateDesignerNamePage() );
@@ -441,6 +443,109 @@ namespace glabels
 	
 
 	///
+	/// Load wizard from template
+	///
+	void TemplateDesigner::loadFromTemplate( const model::Template* tmplate )
+	{
+		mIsBasedOnCopy = true;
+
+		model::Units units = model::Settings::units();
+
+		setField( "name.brand",       tmplate->brand() );
+		setField( "name.part",        tmplate->part() + QString(" (%1)").arg( tr("Copy") ) );
+		setField( "name.description", tmplate->description() );
+
+		setField( "pageSize.pageSize", model::Db::lookupPaperNameFromId( tmplate->paperId() ) );
+		setField( "pageSize.w",        tmplate->pageWidth().inUnits( units ) );
+		setField( "pageSize.h",        tmplate->pageHeight().inUnits( units ) );
+
+		const model::Frame* frame = tmplate->frames().first();
+		if ( auto frameRect = dynamic_cast<const model::FrameRect*>( frame ) )
+		{
+			setField( "shape.rect", true );
+
+			setField( "rect.w",      frameRect->w().inUnits( units ) );
+			setField( "rect.h",      frameRect->h().inUnits( units ) );
+			setField( "rect.r",      frameRect->r().inUnits( units ) );
+			setField( "rect.xWaste", frameRect->xWaste().inUnits( units ) );
+			setField( "rect.yWaste", frameRect->yWaste().inUnits( units ) );
+		}
+		else if ( auto frameRound = dynamic_cast<const model::FrameRound*>( frame ) )
+		{
+			setField( "shape.round", true );
+
+			setField( "round.r",     frameRound->r().inUnits( units ) );
+			setField( "round.waste", frameRound->waste().inUnits( units ) );
+		}
+		else if ( auto frameEllipse = dynamic_cast<const model::FrameEllipse*>( frame ) )
+		{
+			setField( "shape.ellipse", true );
+
+			setField( "ellipse.w",     frameEllipse->w().inUnits( units ) );
+			setField( "ellipse.h",     frameEllipse->h().inUnits( units ) );
+			setField( "ellipse.waste", frameEllipse->waste().inUnits( units ) );
+		}
+		else if ( auto frameCd = dynamic_cast<const model::FrameCd*>( frame ) )
+		{
+			setField( "shape.cd", true );
+
+			setField( "cd.r1",    frameCd->r1().inUnits( units ) );
+			setField( "cd.r2",    frameCd->r2().inUnits( units ) );
+			setField( "cd.xClip", frameCd->w().inUnits( units ) );
+			setField( "cd.yClip", frameCd->h().inUnits( units ) );
+			setField( "cd.waste", frameCd->waste().inUnits( units ) );
+		}
+
+		foreach( auto markup, frame->markups() )
+		{
+			if ( auto markupMargin = dynamic_cast<const model::MarkupMargin*>( markup ) )
+			{
+				setField( "rect.margin",    markupMargin->size().inUnits( units ) );
+				setField( "round.margin",   markupMargin->size().inUnits( units ) );
+				setField( "ellipse.margin", markupMargin->size().inUnits( units ) );
+				setField( "cd.margin",      markupMargin->size().inUnits( units ) );
+			}
+		}
+
+		QList<model::Layout*> layouts = frame->layouts();
+		if ( layouts.size() == 1 )
+		{
+			setField( "oneLayout.nx", layouts[0]->nx() );
+			setField( "oneLayout.ny", layouts[0]->ny() );
+			setField( "oneLayout.x0", layouts[0]->x0().inUnits( units ) );
+			setField( "oneLayout.y0", layouts[0]->y0().inUnits( units ) );
+			setField( "oneLayout.dx", layouts[0]->dx().inUnits( units ) );
+			setField( "oneLayout.dy", layouts[0]->dy().inUnits( units ) );
+		}
+		else if ( layouts.size() > 1 )
+		{
+			setField( "twoLayout.nx1", layouts[0]->nx() );
+			setField( "twoLayout.ny1", layouts[0]->ny() );
+			setField( "twoLayout.x01", layouts[0]->x0().inUnits( units ) );
+			setField( "twoLayout.y01", layouts[0]->y0().inUnits( units ) );
+			setField( "twoLayout.dx1", layouts[0]->dx().inUnits( units ) );
+			setField( "twoLayout.dy1", layouts[0]->dy().inUnits( units ) );
+
+			setField( "twoLayout.nx2", layouts[1]->nx() );
+			setField( "twoLayout.ny2", layouts[1]->ny() );
+			setField( "twoLayout.x02", layouts[1]->x0().inUnits( units ) );
+			setField( "twoLayout.y02", layouts[1]->y0().inUnits( units ) );
+			setField( "twoLayout.dx2", layouts[1]->dx().inUnits( units ) );
+			setField( "twoLayout.dy2", layouts[1]->dy().inUnits( units ) );
+		}
+	}
+	
+
+	///
+	/// Is the wizard based on a copy?
+	///
+	bool TemplateDesigner::isBasedOnCopy()
+	{
+		return mIsBasedOnCopy;
+	}
+
+
+	///
 	/// Intro Page
 	///
 	TemplateDesignerIntroPage::TemplateDesignerIntroPage( QWidget* parent ) : QWizardPage(parent)
@@ -452,9 +557,42 @@ namespace glabels
 		QWidget* widget = new QWidget;
 		setupUi( widget );
 
+		connect( copyButton, &QCommandLinkButton::clicked, this, &TemplateDesignerIntroPage::onCopyButtonClicked );
+		connect( newButton, &QCommandLinkButton::clicked, this, &TemplateDesignerIntroPage::onNewButtonClicked );
+
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
 		setLayout( layout );
+	}
+
+
+	bool TemplateDesignerIntroPage::isComplete() const
+	{
+		// Use CommandLinkButtons on intro page to advance
+		return false;
+	}
+
+
+	void TemplateDesignerIntroPage::onCopyButtonClicked()
+	{
+		SelectProductDialog dialog;
+		dialog.exec();
+
+		const model::Template* tmplate = dialog.tmplate();
+		if ( tmplate )
+		{
+			if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+			{
+				td->loadFromTemplate( tmplate );
+				td->next();
+			}
+		}
+	}
+
+
+	void TemplateDesignerIntroPage::onNewButtonClicked()
+	{
+		wizard()->next();
 	}
 
 
@@ -495,7 +633,7 @@ namespace glabels
 		bool isDuplicate = model::Db::isSystemTemplateKnown( brandEntry->text(), partEntry->text() );
 		if ( isDuplicate )
 		{
-			QString warningText = "Brand and part number match an existing template!";
+			QString warningText = tr("Brand and part number match an existing built-in product template!");
 			warningLabel->setText( "<b style='color:red'>" + warningText + "</b>" );
 		}
 		else
@@ -552,7 +690,18 @@ namespace glabels
 		layout->addWidget( widget );
 		setLayout( layout );
 	}
-	
+
+
+	void TemplateDesignerPageSizePage::initializePage()
+	{
+	}
+
+
+	void TemplateDesignerPageSizePage::cleanupPage()
+	{
+		// Leave current settings alone
+	}
+
 
 	void TemplateDesignerPageSizePage::onComboChanged()
 	{
@@ -590,6 +739,17 @@ namespace glabels
 	}
 	
 
+	void TemplateDesignerShapePage::initializePage()
+	{
+	}
+
+
+	void TemplateDesignerShapePage::cleanupPage()
+	{
+		// Leave current settings alone
+	}
+
+
 	///
 	/// Rectangular Product Page
 	///
@@ -625,14 +785,6 @@ namespace glabels
 		marginSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		marginSpin->setSingleStep( model::Settings::units().resolution() );
 
-		// Set some realistic defaults
-		wSpin->setValue( defaultRectW.inUnits( model::Settings::units() ) );
-		hSpin->setValue( defaultRectH.inUnits( model::Settings::units() ) );
-		rSpin->setValue( defaultRectR.inUnits( model::Settings::units() ) );
-		xWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-		yWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-		marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
-
 		registerField( "rect.w",      wSpin,      "value" );
 		registerField( "rect.h",      hSpin,      "value" );
 		registerField( "rect.r",      rSpin,      "value" );
@@ -648,16 +800,39 @@ namespace glabels
 
 	void TemplateDesignerRectPage::initializePage()
 	{
-		// set realistic limits based on previously chosen page size
-		double wMax = field("pageSize.w").toDouble();
-		double hMax = field("pageSize.h").toDouble();
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			// set realistic limits based on previously chosen page size
+			double wMax = field("pageSize.w").toDouble();
+			double hMax = field("pageSize.h").toDouble();
 
-		wSpin->setMaximum( wMax );
-		hSpin->setMaximum( hMax );
-		rSpin->setMaximum( std::min(wMax,hMax)/2.0 );
-		xWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		yWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			wSpin->setMaximum( wMax );
+			hSpin->setMaximum( hMax );
+			rSpin->setMaximum( std::min(wMax,hMax)/2.0 );
+			xWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			yWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+
+			static bool alreadyInitialized = false;
+			if ( !td->isBasedOnCopy() && !alreadyInitialized )
+			{
+				alreadyInitialized = true;
+
+				// Set some realistic defaults
+				wSpin->setValue( defaultRectW.inUnits( model::Settings::units() ) );
+				hSpin->setValue( defaultRectH.inUnits( model::Settings::units() ) );
+				rSpin->setValue( defaultRectR.inUnits( model::Settings::units() ) );
+				xWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
+				yWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
+				marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+			}
+		}
+	}
+
+
+	void TemplateDesignerRectPage::cleanupPage()
+	{
+		// Leave current settings alone
 	}
 
 
@@ -684,11 +859,6 @@ namespace glabels
 		marginSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		marginSpin->setSingleStep( model::Settings::units().resolution() );
 
-		// Set some realistic defaults
-		rSpin->setValue( defaultRoundR.inUnits( model::Settings::units() ) );
-		wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-		marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
-
 		registerField( "round.r",      rSpin,      "value" );
 		registerField( "round.waste",  wasteSpin,  "value" );
 		registerField( "round.margin", marginSpin, "value" );
@@ -701,13 +871,33 @@ namespace glabels
 
 	void TemplateDesignerRoundPage::initializePage()
 	{
-		// set realistic limits based on previously chosen page size
-		double wMax = field("pageSize.w").toDouble();
-		double hMax = field("pageSize.h").toDouble();
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			// set realistic limits based on previously chosen page size
+			double wMax = field("pageSize.w").toDouble();
+			double hMax = field("pageSize.h").toDouble();
 
-		rSpin->setMaximum( std::min(wMax,hMax)/2.0 );
-		wasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			rSpin->setMaximum( std::min(wMax,hMax)/2.0 );
+			wasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+
+			static bool alreadyInitialized = false;
+			if ( !td->isBasedOnCopy() && !alreadyInitialized )
+			{
+				alreadyInitialized = true;
+
+				// Set some realistic defaults
+				rSpin->setValue( defaultRoundR.inUnits( model::Settings::units() ) );
+				wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
+				marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+			}
+		}
+	}
+
+
+	void TemplateDesignerRoundPage::cleanupPage()
+	{
+		// Leave current settings alone
 	}
 
 
@@ -738,12 +928,6 @@ namespace glabels
 		marginSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		marginSpin->setSingleStep( model::Settings::units().resolution() );
 
-		// Set some realistic defaults
-		wSpin->setValue( defaultEllipseW.inUnits( model::Settings::units() ) );
-		hSpin->setValue( defaultEllipseH.inUnits( model::Settings::units() ) );
-		wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-		marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
-
 		registerField( "ellipse.w",      wSpin,      "value" );
 		registerField( "ellipse.h",      hSpin,      "value" );
 		registerField( "ellipse.waste",  wasteSpin,  "value" );
@@ -757,14 +941,35 @@ namespace glabels
 
 	void TemplateDesignerEllipsePage::initializePage()
 	{
-		// set realistic limits based on previously chosen page size
-		double wMax = field("pageSize.w").toDouble();
-		double hMax = field("pageSize.h").toDouble();
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			// set realistic limits based on previously chosen page size
+			double wMax = field("pageSize.w").toDouble();
+			double hMax = field("pageSize.h").toDouble();
 
-		wSpin->setMaximum( wMax );
-		hSpin->setMaximum( hMax );
-		wasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			wSpin->setMaximum( wMax );
+			hSpin->setMaximum( hMax );
+			wasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+
+			static bool alreadyInitialized = false;
+			if ( !td->isBasedOnCopy() && !alreadyInitialized )
+			{
+				alreadyInitialized = true;
+
+				// Set some realistic defaults
+				wSpin->setValue( defaultEllipseW.inUnits( model::Settings::units() ) );
+				hSpin->setValue( defaultEllipseH.inUnits( model::Settings::units() ) );
+				wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
+				marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+			}
+		}
+	}
+
+
+	void TemplateDesignerEllipsePage::cleanupPage()
+	{
+		// Leave current settings alone
 	}
 
 
@@ -803,14 +1008,6 @@ namespace glabels
 		marginSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		marginSpin->setSingleStep( model::Settings::units().resolution() );
 
-		// Set some realistic defaults
-		r1Spin->setValue( defaultCdR1.inUnits( model::Settings::units() ) );
-		r2Spin->setValue( defaultCdR2.inUnits( model::Settings::units() ) );
-		xClipSpin->setValue( defaultCdClip.inUnits( model::Settings::units() ) );
-		yClipSpin->setValue( defaultCdClip.inUnits( model::Settings::units() ) );
-		wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-		marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
-
 		registerField( "cd.r1",     r1Spin,     "value" );
 		registerField( "cd.r2",     r2Spin,     "value" );
 		registerField( "cd.xClip",  xClipSpin,  "value" );
@@ -826,16 +1023,39 @@ namespace glabels
 
 	void TemplateDesignerCdPage::initializePage()
 	{
-		// set realistic limits based on previously chosen page size
-		double wMax = field("pageSize.w").toDouble();
-		double hMax = field("pageSize.h").toDouble();
+		if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
+		{
+			// set realistic limits based on previously chosen page size
+			double wMax = field("pageSize.w").toDouble();
+			double hMax = field("pageSize.h").toDouble();
 
-		r1Spin->setMaximum( std::min(wMax,hMax)/2.0 );
-		r2Spin->setMaximum( std::min(wMax,hMax)/4.0 );
-		xClipSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		yClipSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		wasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-		marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			r1Spin->setMaximum( std::min(wMax,hMax)/2.0 );
+			r2Spin->setMaximum( std::min(wMax,hMax)/4.0 );
+			xClipSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			yClipSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			wasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+
+			static bool alreadyInitialized = false;
+			if ( !td->isBasedOnCopy() && !alreadyInitialized )
+			{
+				alreadyInitialized = true;
+
+				// Set some realistic defaults
+				r1Spin->setValue( defaultCdR1.inUnits( model::Settings::units() ) );
+				r2Spin->setValue( defaultCdR2.inUnits( model::Settings::units() ) );
+				xClipSpin->setValue( defaultCdClip.inUnits( model::Settings::units() ) );
+				yClipSpin->setValue( defaultCdClip.inUnits( model::Settings::units() ) );
+				wasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
+				marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+			}
+		}
+	}
+
+
+	void TemplateDesignerCdPage::cleanupPage()
+	{
+		// Leave current settings alone
 	}
 
 
@@ -858,6 +1078,17 @@ namespace glabels
 		setLayout( layout );
 	}
 	
+
+	void TemplateDesignerNLayoutsPage::initializePage()
+	{
+	}
+
+
+	void TemplateDesignerNLayoutsPage::cleanupPage()
+	{
+		// Leave current settings alone
+	}
+
 
 	///
 	/// One Layout Page
@@ -938,16 +1169,28 @@ namespace glabels
 			dxSpin->setRange( dxMin, dxMax );
 			dySpin->setRange( dyMin, dxMax );
 
-			// Set some realistic defaults based on symetric sheet using previosly chosen values
-			nxSpin->setValue( nxMax );
-			nySpin->setValue( nyMax );
-			x0Spin->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
-			y0Spin->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 );
-			dxSpin->setValue( dxMin );
-			dySpin->setValue( dyMin );
+			static bool alreadyInitialized = false;
+			if ( !td->isBasedOnCopy() && !alreadyInitialized )
+			{
+				alreadyInitialized = true;
+
+				// Set some realistic defaults based on symetric sheet using previosly chosen values
+				nxSpin->setValue( nxMax );
+				nySpin->setValue( nyMax );
+				x0Spin->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
+				y0Spin->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 );
+				dxSpin->setValue( dxMin );
+				dySpin->setValue( dyMin );
+			}
 
 			preview->setTemplate( td->buildTemplate() );
 		}
+	}
+
+
+	void TemplateDesignerOneLayoutPage::cleanupPage()
+	{
+		// Leave current settings alone
 	}
 
 
@@ -1085,23 +1328,35 @@ namespace glabels
 			dxSpin2->setRange( dxMin, dxMax );
 			dySpin2->setRange( dyMin, dyMax );
 
-			// Set some realistic defaults based on symetric sheet using previosly chosen values
-			nxSpin1->setValue( nxMax );
-			nySpin1->setValue( nyMax - nyMax/2 );
-			x0Spin1->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
-			y0Spin1->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 );
-			dxSpin1->setValue( dxMin );
-			dySpin1->setValue( 2*dyMin );
+			static bool alreadyInitialized = false;
+			if ( !td->isBasedOnCopy() && !alreadyInitialized )
+			{
+				alreadyInitialized = true;
 
-			nxSpin2->setValue( nxMax );
-			nySpin2->setValue( nyMax/2 );
-			x0Spin2->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
-			y0Spin2->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 + dyMin );
-			dxSpin2->setValue( dxMin );
-			dySpin2->setValue( 2*dyMin );
+				// Set some realistic defaults based on symetric sheet using previosly chosen values
+				nxSpin1->setValue( nxMax );
+				nySpin1->setValue( nyMax - nyMax/2 );
+				x0Spin1->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
+				y0Spin1->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 );
+				dxSpin1->setValue( dxMin );
+				dySpin1->setValue( 2*dyMin );
+
+				nxSpin2->setValue( nxMax );
+				nySpin2->setValue( nyMax/2 );
+				x0Spin2->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
+				y0Spin2->setValue( (pageH - (nyMax-1)*dyMin - h) / 2 + dyMin );
+				dxSpin2->setValue( dxMin );
+				dySpin2->setValue( 2*dyMin );
+			}
 
 			preview->setTemplate( td->buildTemplate() );
 		}
+	}
+
+
+	void TemplateDesignerTwoLayoutPage::cleanupPage()
+	{
+		// Leave current settings alone
 	}
 
 

@@ -26,14 +26,17 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="verticalSpacing">
+    <number>12</number>
+   </property>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>This dialog will help you create a custom product template.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This dialog will help you create a custom product template. Let's get started:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="3" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -45,6 +48,26 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCommandLinkButton" name="copyButton">
+     <property name="text">
+      <string>Copy/Edit Product</string>
+     </property>
+     <property name="description">
+      <string>Copy and edit an existing product template</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCommandLinkButton" name="newButton">
+     <property name="text">
+      <string>New Product</string>
+     </property>
+     <property name="description">
+      <string>Create a a new product template from scratch</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
