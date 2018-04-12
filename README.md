@@ -72,5 +72,5 @@ These include
 
 * Suggestions.
 
-* For code contributions, see [docs/HACKING.md](docs/HACKING.md).
+* For code contributions, see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
