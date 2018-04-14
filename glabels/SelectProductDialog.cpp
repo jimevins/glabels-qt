@@ -131,15 +131,6 @@ namespace glabels
 
 
 	///
-	/// Search Entry Text Changed Slot
-	///
-	void SelectProductDialog::onSearchClearButtonClicked()
-	{
-		searchEntry->setText( "" );
-	}
-
-
-	///
 	/// Page Size Check Clicked Slot
 	///
 	void SelectProductDialog::onPageSizeCheckClicked()

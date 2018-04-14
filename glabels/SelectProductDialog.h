@@ -57,7 +57,6 @@ namespace glabels
 	private slots:
 		void onModeTabChanged();
 		void onSearchEntryTextChanged();
-		void onSearchClearButtonClicked();
 		void onPageSizeCheckClicked();
 		void onCategoryRadioClicked();
 		void onCategoryCheckClicked();

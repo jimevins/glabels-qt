@@ -63,31 +63,14 @@
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>180</width>
+                   <width>220</width>
                    <height>0</height>
                   </size>
                  </property>
                  <property name="placeholderText">
                   <string>Search</string>
                  </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QToolButton" name="searchClearButton">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="../icons.qrc">
-                   <normaloff>:/icons/16x16/actions/edit-clear.svg</normaloff>:/icons/16x16/actions/edit-clear.svg</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>16</width>
-                   <height>16</height>
-                  </size>
-                 </property>
-                 <property name="autoRaise">
+                 <property name="clearButtonEnabled">
                   <bool>true</bool>
                  </property>
                 </widget>
@@ -383,22 +366,6 @@
     <hint type="destinationlabel">
      <x>689</x>
      <y>660</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>searchClearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>SelectProductDialog</receiver>
-   <slot>onSearchClearButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>231</x>
-     <y>103</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>190</x>
-     <y>7</y>
     </hint>
    </hints>
   </connection>
