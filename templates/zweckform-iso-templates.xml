@@ -217,7 +217,7 @@
 
 
   <!-- =============================================================== -->
-  <!-- Zweckform J8435: CD/DVD inlets Booklet part                     -->
+  <!-- Zweckform J8435: CD/DVD inserts Booklet part                    -->
   <!-- =============================================================== -->
   <Template brand="Zweckform" part="J8435A" size="A4" _description="CD/DVD booklet">
     <Meta category="media"/>
@@ -232,9 +232,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Zweckform J8435: CD/DVD inlets Inlet part                       -->
+  <!-- Zweckform J8435: CD/DVD inserts Insert part                     -->
   <!-- =============================================================== -->
-  <Template brand="Zweckform" part="J8435B" size="A4" _description="CD/DVD inlet">
+  <Template brand="Zweckform" part="J8435B" size="A4" _description="CD/DVD insert">
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="122mm" round="0">
       <Markup-margin size="2mm"/>

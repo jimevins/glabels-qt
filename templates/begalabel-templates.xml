@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Glabels-templates>
 
-  <Template brand="Begalabel" part="RC-50" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-50" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/1-1-2-x-1-Rounded-Corner-Label-p15.html"/>
@@ -10,7 +10,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-150" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-150" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/1-1-4-x-2-3-8-Address-Labels-Media-Labels-p17.html"/>
@@ -19,7 +19,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-200" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-200" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/1-3-4-x-1-1-4-Barcode-Labels-Media-Labels-p18.html"/>
@@ -28,7 +28,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-250" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-250" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/1-3-4-x-1-2-Return-Address-Labels-Mailing-Labels-p19.html"/>
@@ -37,7 +37,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-300" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-300" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/2-1-4-x-3-4-Address-Labels-Mailing-Labels-p20.html"/>
@@ -46,7 +46,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-350" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-350" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/2-5-8-x-1-Address-Labels-Mailing-Labels-p7.html"/>
@@ -55,7 +55,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-400" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-400" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/2-5-8-x-1-1-16-Rounded-Corner-Label-p21.html"/>
@@ -64,7 +64,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-450" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-450" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-1-2-x-5-Shipping-Labels-Address-Labels-p22.html"/>
@@ -73,7 +73,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-500" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-500" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-3-4-x-1-1-4-Address-Labels-Shipping-Labels-p23.html"/>
@@ -82,7 +82,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-550" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-550" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-3-4-x-2-Shipping-Labels-Address-Labels-p24.html"/>
@@ -91,7 +91,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-600" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-600" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-3-4-x-3-Shipping-Labels-Address-Labels-p25.html"/>
@@ -100,7 +100,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-650" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-650" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-3-4-x-4-3-4-Shipping-Labels-Address-Labels-p26.html"/>
@@ -109,7 +109,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-700" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-700" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-3-8-x-2-1-3-Name-Badge-Labels-Name-Tag-Labels-p27.html"/>
@@ -118,7 +118,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-750" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-750" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-7-16-x-15-16-Filing-Labels-File-Folder-Labels-p28.html"/>
@@ -127,7 +127,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-800" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-800" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-7-16-x-2-3-Filing-Labels-File-Folder-Labels-p29.html"/>
@@ -136,7 +136,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-850" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-850" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/-3-x-5-8-Filing-Labels-File-Folder-Labels-p30.html"/>
@@ -145,7 +145,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-900" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-900" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/3-4-x-2-Rounded-Corner-Label-p31.html"/>
@@ -154,7 +154,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-950" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-950" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-1-Shipping-Labels-Address-Labels-p9.html"/>
@@ -163,7 +163,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1000" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1000" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-1-1-2-Shipping-Labels-Address-Labels-p32.html"/>
@@ -172,7 +172,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1050" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1050" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-1-1-3-Shipping-Labels-Address-Labels-p33.html"/>
@@ -181,7 +181,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1100" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1100" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-2-Shipping-Labels-Address-Labels-p10.html"/>
@@ -190,7 +190,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1200" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1200" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-3-1-3-Shipping-Labels-Address-Labels-p35.html"/>
@@ -199,7 +199,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1225" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1225" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-3-9-16-Label-Rounded-Corner-Label-p72.html"/>
@@ -208,7 +208,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1240" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1240" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/4-x-5-Shipping-Labels-Mailing-Labels-p265.html"/>
@@ -217,7 +217,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Begalabel" part="RC-1250" size="US-Letter" _description="Rounded rectangular labels">
+  <Template brand="Begalabel" part="RC-1250" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.begalabel.com/8-1-8-x-5-Shipping-Labels-p36.html"/>

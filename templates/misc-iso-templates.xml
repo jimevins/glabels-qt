@@ -104,7 +104,7 @@
   <!-- =================================================================== -->
   <!-- Best Office Self-adhesive labels.                                   -->
   <!-- =================================================================== -->
-  <Template brand="Best Office" part="75753" size="A4" _description="Self-adhesive labels">
+  <Template brand="Best Office" part="75753" size="A4" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="70mm" height="36mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -258,7 +258,7 @@
   <!-- =================================================================== -->
   <!-- EPSON Photo Stickers, 17 x 24 mm, 16 per sheet                      -->
   <!-- =================================================================== -->
-  <Template brand="Epson" part="S041144" size="A6" _description="Photo stickers">
+  <Template brand="Epson" part="S041144" size="A6" _description="Photo labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="48" height="68" round="7">
       <Markup-margin size="5"/>

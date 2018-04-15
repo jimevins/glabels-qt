@@ -267,7 +267,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Online Labels" part="OL2319" size="US-Letter" _description="Reverse automobile window stickers">
+  <Template brand="Online Labels" part="OL2319" size="US-Letter" _description="Window stickers">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.onlinelabels.com/OL2319.htm"/>
@@ -794,7 +794,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Online Labels" part="OL9800" size="US-Letter" _description="Reverse automobile window stickers">
+  <Template brand="Online Labels" part="OL9800" size="US-Letter" _description="Window stickers">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.onlinelabels.com/OL9800.htm"/>
@@ -1041,7 +1041,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Online Labels" part="OL338" size="US-Letter" _description="Reverse addendum stickers">
+  <Template brand="Online Labels" part="OL338" size="US-Letter" _description="Window stickers">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.onlinelabels.com/OL338.htm"/>
@@ -1574,7 +1574,7 @@
     </Label-round>
   </Template>
 
-  <Template brand="Online Labels" part="OL320 (round)" size="US-Letter" _description="Round and rectangular labels">
+  <Template brand="Online Labels" part="OL320 (round)" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Meta product_url="http://www.onlinelabels.com/OL320.htm"/>
@@ -1583,7 +1583,7 @@
       <Layout nx="1" ny="1" x0="2.75in" y0="5.25in" dx="5.5in" dy="5.5in"/>
     </Label-round>
   </Template>
-  <Template brand="Online Labels" part="OL320 (rectangle)" size="US-Letter" _description="Round and rectangular labels">
+  <Template brand="Online Labels" part="OL320 (rectangle)" size="US-Letter" _description="Rectangular labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.onlinelabels.com/OL320.htm"/>

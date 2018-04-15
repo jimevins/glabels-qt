@@ -69,7 +69,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Self-adhesive film, 210mm x 297mm, 1 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="PE-8350" size="A4" _description="Self-adhesive film weatherproof">
+  <Template brand="PEARL" part="PE-8350" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-PE8350-2010.shtml"/>
@@ -84,7 +84,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Self-adhesive film, 210mm x 297mm, 1 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="PE-8351" size="A4" _description="Self-adhesive film transparent">
+  <Template brand="PEARL" part="PE-8351" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-PE8351-2200.shtml"/>
@@ -116,7 +116,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Self-adhesive window film, 210mm x 297mm, 1 per sheet        -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-5081" size="A4" _description="Self-adhesive window film">
+  <Template brand="PEARL" part="VM-5081" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM5081-2200.shtml"/>
@@ -146,7 +146,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Self-adhesive film, 210mm x 297mm, 1 per sheet               -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-5220" size="A4" _description="Self-adhesive film weatherproof">
+  <Template brand="PEARL" part="VM-5220" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM5220-2200.shtml"/>
@@ -298,7 +298,7 @@
   <!-- =================================================================== -->
   <!-- PEARL: Self-adhesive abels, 210mm x 297mm, 1 per sheet              -->
   <!-- =================================================================== -->
-  <Template brand="PEARL" part="VM-6252" size="A4" _description="Self-adhesive labels">
+  <Template brand="PEARL" part="VM-6252" size="A4" _description="Full-page labels">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Meta product_url="http://www.pearl.de/a-VM6252-2202.shtml"/>
@@ -339,10 +339,10 @@
   <Template brand="PEARL" part="VM-8015" equiv="VM-8005"/>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Inlet for DVD boxes, 182mm x 276mm, 1 per sheet              -->
+  <!-- PEARL: Insert for DVD boxes, 182mm x 276mm, 1 per sheet             -->
   <!-- =================================================================== -->
 
-  <Template brand="PEARL" part="VM-6630" size="A4" _description="DVD inlet">
+  <Template brand="PEARL" part="VM-6630" size="A4" _description="DVD insert">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM6630-2211.shtml"/>
@@ -356,10 +356,10 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Inlet for CD boxes (front), 120mm x 120mm, 1 per sheet       -->
+  <!-- PEARL: Insert for CD boxes (front), 120mm x 120mm, 1 per sheet      -->
   <!-- =================================================================== -->
 
-  <Template brand="PEARL" part="VM-5513-1" size="A4" _description="CD/DVD inlet (front)">
+  <Template brand="PEARL" part="VM-5513-1" size="A4" _description="CD/DVD insert (front)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM5513-2214.shtml"/>
@@ -370,10 +370,10 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- PEARL: Inlet for CD boxes (back), 150mm x 117.5mm, 1 per sheet      -->
+  <!-- PEARL: Insert for CD boxes (back), 150mm x 117.5mm, 1 per sheet     -->
   <!-- =================================================================== -->
 
-  <Template brand="PEARL" part="VM-5513-2" size="A4" _description="CD/DVD inlet (back)">
+  <Template brand="PEARL" part="VM-5513-2" size="A4" _description="CD/DVD insert (back)">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta product_url="http://www.pearl.de/a-VM5513-2214.shtml"/>

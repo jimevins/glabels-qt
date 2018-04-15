@@ -86,6 +86,19 @@
 
 
   <!-- =================================================================== -->
+  <!-- Avery L6043 family: CD/DVD Labels, 2 per sheet                      -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="L6043" size="A4" _description="CD/DVD labels">
+    <Meta category="label"/>
+    <Meta category="media"/>
+    <Label-cd id="0" radius="58.7mm" hole="20.6mm" waste="3.175mm">
+      <Markup-margin size="3.2mm"/>
+      <Layout nx="1" ny="2" x0="46mm" y0="21.8mm" dx="123.75mm" dy="137mm"/>
+    </Label-cd>
+  </Template>
+
+
+  <!-- =================================================================== -->
   <!-- Avery 6121 family: Multipurpose labels.                             -->
   <!-- =================================================================== -->
   <Template brand="Avery" part="6121" size="A4" _description="Multipurpose labels">
@@ -277,7 +290,7 @@
 
 
   <!-- =============================================================== -->
-  <!-- Avery J8435: CD/DVD inlets Booklet part                         -->
+  <!-- Avery J8435: CD/DVD inserts Booklet part                        -->
   <!-- =============================================================== -->
   <Template brand="Avery" part="8435A" size="A4" _description="CD/DVD booklet">
     <Meta category="media"/>
@@ -293,9 +306,9 @@
 
 
   <!-- =============================================================== -->
-  <!-- Avery J8435: CD/DVD inlets Inlet part                           -->
+  <!-- Avery J8435: CD/DVD inserts Insert part                         -->
   <!-- =============================================================== -->
-  <Template brand="Avery" part="8435B" size="A4" _description="CD/DVD inlet">
+  <Template brand="Avery" part="8435B" size="A4" _description="CD/DVD insert">
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="122mm" round="0">
       <Markup-margin size="2mm"/>

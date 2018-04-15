@@ -310,9 +310,9 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Ascom ABP-515: CD/DVD inlet, 2 per sheet		                   -->
+  <!-- Ascom ABP-515: CD/DVD insert, 2 per sheet                           -->
   <!-- =================================================================== -->
-  <Template brand="Ascom" part="ABP-515" size="A4" _description="CD/DVD inlet">
+  <Template brand="Ascom" part="ABP-515" size="A4" _description="CD/DVD insert">
     <Meta category="label"/>
     <Meta category="rectangle-label"/>
     <Label-rectangle id="0" width="34mm" height="114mm" round="0mm" x_waste="0mm" y_waste="0mm">

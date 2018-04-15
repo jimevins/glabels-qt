@@ -319,7 +319,7 @@
   <!-- =================================================================== -->
   <!-- Tough-Tags TTLW-2016 Microtube labels, 85 per sheet.                -->
   <!-- =================================================================== -->
-  <Template brand="Tough-Tags" part="TTLW-2016" size="US-Letter" _description="Microtube labels">
+  <Template brand="Tough-Tags" part="TTLW-2016" size="US-Letter" _description="Tube labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="92.16" height="36" round="5">
       <Markup-margin size="5"/>

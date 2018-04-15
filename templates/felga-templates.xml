@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Glabels-templates xmlns="http://glabels.org/xmlns/3.0/">
+
+  <!-- =================================================================== -->
+  <!-- Felga Etichette                                                     -->
+  <!-- Labels for laser printers                                           -->
+  <!-- http://www.felga.it                                                 -->
+  <!-- =================================================================== -->
+
+  <Template brand="Felga" part="EP1220" size="Other" width="210mm" height="261mm" description="Plant labels">
+    <Label-rectangle id="0" width="20mm" height="100mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="10" ny="2" x0="5mm" y0="5mm" dx="20mm" dy="130mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Felga" part="ES210" size="Other" width="595.276pt" height="793.701pt" description="Plant labels">
+    <Meta category="user-defined"/>
+    <Label-rectangle id="0" width="595.276pt" height="36pt" round="0pt" x_waste="0pt" y_waste="0pt">
+      <Markup-margin size="0pt"/>
+      <Layout nx="1" ny="22" x0="0pt" y0="0pt" dx="595.276pt" dy="36pt"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Felga" part="EY210" size="A4" description="Plant labels">
+    <Label-rectangle id="0" width="210mm" height="19mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="14" x0="0mm" y0="0mm" dx="210mm" dy="19mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Felga" part="PETFO-A5" size="A4" description="Plant labels">
+    <Label-rectangle id="0" width="210mm" height="148.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="2" x0="0mm" y0="0mm" dx="210mm" dy="148.5mm"/>
+    </Label-rectangle>
+  </Template>
+
+  <Template brand="Felga" part="R1074" size="A4" description="Plant labels">
+    <Label-rectangle id="0" width="105mm" height="74.25mm" round="2mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="2" ny="4" x0="0mm" y0="0mm" dx="105mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+
+</Glabels-templates>

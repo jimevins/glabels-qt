@@ -31,7 +31,7 @@
   <!-- =================================================================== -->
   <!-- Avery 3274.2 family: Small round stickers, 1_1/2'', 20 per sheet  x -->
   <!-- =================================================================== -->
-  <Template brand="Avery" part="3274.2" size="US-Letter" _description="Small round labels">
+  <Template brand="Avery" part="3274.2" size="US-Letter" _description="Round labels">
     <Meta category="label"/>
     <Meta category="round-label"/>
     <Label-round id="0" radius="0.75in">
@@ -882,6 +882,46 @@
       <Layout nx="1" ny="20" x0="0.5in" y0="0.5in" dx="4.38in" dy="0.5in"/>
     </Label-rectangle>
   </Template>
+
+
+  <!-- =================================================================== -->
+  <!-- Avery 89100 family: Binder Spine Inserts                            -->
+  <!-- =================================================================== -->
+  <Template brand="Avery" part="89101" size="US-Letter" description="Binder spine inserts">
+    <Label-rectangle id="0" width="0.5in" height="11in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="16" ny="1" x0="0.25in" y0="0in" dx="0.5in" dy="11in"/>
+    </Label-rectangle>
+  </Template>
+  <Template brand="Avery" part="89102" size="US-Letter" description="Binder spine inserts">
+    <Label-rectangle id="0" width="1in" height="11in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="8" ny="1" x0="0.25in" y0="0in" dx="1in" dy="11in"/>
+    </Label-rectangle>
+  </Template>
+  <Template brand="Avery" part="89103" equiv="89102"/>
+  <Template brand="Avery" part="89303" equiv="89102"/>
+  <Template brand="Avery" part="89104" size="US-Letter" description="Binder spine inserts">
+    <Label-rectangle id="0" width="1.5in" height="11in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="5" ny="1" x0="0.5in" y0="0in" dx="1.5in" dy="11in"/>
+    </Label-rectangle>
+  </Template>
+  <Template brand="Avery" part="89305" equiv="89104"/>
+  <Template brand="Avery" part="89106" size="US-Letter" description="Binder spine inserts">
+    <Label-rectangle id="0" width="2in" height="11in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="4" ny="1" x0="0.25in" y0="0in" dx="2in" dy="11in"/>
+    </Label-rectangle>
+  </Template>
+  <Template brand="Avery" part="89307" equiv="89106"/>
+  <Template brand="Avery" part="89109" size="US-Letter" description="Binder spine inserts">
+    <Label-rectangle id="0" width="2.5in" height="11in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="0.125in"/>
+      <Layout nx="3" ny="1" x0="0.5in" y0="0in" dx="2.5in" dy="11in"/>
+    </Label-rectangle>
+  </Template>
+
 
 </Glabels-templates>
 

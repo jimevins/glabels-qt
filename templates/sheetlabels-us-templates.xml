@@ -349,7 +349,7 @@
   <!-- =================================================================== -->
   <!-- SheetLabels: Elliptical labels, 10 per sheet                        -->
   <!-- =================================================================== -->  
-  <Template brand="SheetLabels" part="SL201" size="US-Letter" _description="Oval bottle/jar labels">
+  <Template brand="SheetLabels" part="SL201" size="US-Letter" _description="Bottle/jar labels">
     <Meta category="label"/>
     <Meta category="elliptical-label"/>
     <Meta product_url="http://www.sheet-labels.com/labels/SL201"/>

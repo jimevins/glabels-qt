@@ -117,7 +117,7 @@
   </Template>
 
   <!-- =================================================================== -->
-  <!-- Geha Z20.  CD/DVD labels and inlet.                             	   -->
+  <!-- Geha Z20.  CD/DVD labels and insert.                                -->
   <!-- =================================================================== -->
   <Template brand="Geha" part="Z20-1" size="A4" _description="CD/DVD labels">
     <Meta category="label"/>
@@ -131,7 +131,7 @@
 
   <Template brand="Geha" part="Z21-1" equiv="Z20-1"/>
 
-  <Template brand="Geha" part="Z20-2" size="A4" _description="CD/DVD inlet">
+  <Template brand="Geha" part="Z20-2" size="A4" _description="CD/DVD insert">
     <Meta category="label"/>
     <Meta category="media"/>
     <Meta category="rectangle-label"/>
@@ -160,9 +160,9 @@
   <Template brand="Geha" part="Z23" equiv="Z22"/>
 
   <!-- =================================================================== -->
-  <!-- Geha Z24.    DVD inlets.		                          	   -->
+  <!-- Geha Z24.    DVD inserts.                                           -->
   <!-- =================================================================== -->
-  <Template brand="Geha" part="Z24" size="A4" _description="DVD inlet">
+  <Template brand="Geha" part="Z24" size="A4" _description="DVD insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Meta product_url="http://www.geha.de/index.php?id=1047&amp;pid=30248"/>

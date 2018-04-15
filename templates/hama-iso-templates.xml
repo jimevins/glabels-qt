@@ -92,9 +92,9 @@
   <Template brand="Hama" part="50403" equiv="50402"/>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50430. CD/DVD inlets.				            -->
+  <!-- Hama 50430. CD/DVD inserts.				            -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50430" size="A4" _description="CD/DVD inlet">
+  <Template brand="Hama" part="50430" size="A4" _description="CD/DVD insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="119.5mm" height="119.5mm" round="0mm" x_waste="10mm" y_waste="0mm">
@@ -106,9 +106,9 @@
   <Template brand="Hama" part="50431" equiv="50430"/>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50432. CD/DVD inlets.				            -->
+  <!-- Hama 50432. CD/DVD inserts.				            -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50432-1" size="A4" _description="CD/DVD inlet (front)">
+  <Template brand="Hama" part="50432-1" size="A4" _description="CD/DVD insert (front)">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="151mm" height="121mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -118,7 +118,7 @@
     </Label-rectangle>
   </Template>
 
-  <Template brand="Hama" part="50432-2" size="A4" _description="CD/DVD inlet (back)">
+  <Template brand="Hama" part="50432-2" size="A4" _description="CD/DVD insert (back)">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="151mm" height="117.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -131,9 +131,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50434. Zip disc inlets.			                    -->
+  <!-- Hama 50434. Zip disc inserts.			                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50434" size="A4" _description="Zip disc inlet">
+  <Template brand="Hama" part="50434" size="A4" _description="Zip disc insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="100mm" height="200mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -148,9 +148,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50435. DVD inlets.				                    -->
+  <!-- Hama 50435. DVD inserts.				                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50435" size="A4" _description="DVD inlet">
+  <Template brand="Hama" part="50435" size="A4" _description="DVD insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="184mm" height="275mm" round="0mm" x_waste="5mm" y_waste="5mm">
@@ -162,9 +162,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50436. VHS-C inlets.			                    -->
+  <!-- Hama 50436. VHS-C inserts.			                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50436" size="A4" _description="VHS-C inlet">
+  <Template brand="Hama" part="50436" size="A4" _description="VHS-C insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="98.5mm" height="91.5mm" round="0mm" x_waste="20mm" y_waste="20mm">
@@ -176,9 +176,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50437. Video-8 inlets.			                    -->
+  <!-- Hama 50437. Video-8 inserts.			                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50437" size="A4" _description="Video-8 inlet">
+  <Template brand="Hama" part="50437" size="A4" _description="Video-8 insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="155mm" height="98.5mm" round="0mm" x_waste="0mm" y_waste="0mm">
@@ -191,9 +191,9 @@
   </Template>
 
   <!-- ==================================================================== -->
-  <!-- Hama 50438. VHS inlets.				                    -->
+  <!-- Hama 50438. VHS inserts.				                    -->
   <!-- ==================================================================== -->
-  <Template brand="Hama" part="50438" size="A4" _description="VHS inlet">
+  <Template brand="Hama" part="50438" size="A4" _description="VHS insert">
     <Meta category="card"/>
     <Meta category="media"/>
     <Label-rectangle id="0" width="189.5mm" height="256mm" round="0mm" x_waste="10.25mm" y_waste="20.5mm">

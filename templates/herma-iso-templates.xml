@@ -15,7 +15,7 @@
   <!-- =================================================================== -->
   <!-- Data Becker Etiketten Paket: Ordnerrucken, 6 per sheet              -->
   <!-- =================================================================== -->
-  <Template brand="Herma" part="4283" size="A4" _description="Small arch file labels">
+  <Template brand="Herma" part="4283" size="A4" _description="Arch file labels">
     <Meta category="label"/>
     <Label-rectangle id="0" width="544.252" height="110.551" round="5">
       <Markup-margin size="5"/>
@@ -402,6 +402,19 @@
   <Template brand="Herma" part="10802" equiv="4103"/>
 
 
+  <!-- =================================================================== -->
+  <!-- Herma 10001: Rectangular Labels 25.4mm x 10mm, 189 per sheet        -->
+  <!-- =================================================================== -->
+  <Template brand="Herma" part="10001" size="A4" description="Rectangular labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Label-rectangle id="0" width="25.4mm" height="10mm" round="3mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="2mm"/>
+      <Layout nx="7" ny="27" x0="8mm" y0="14.4mm" dx="28.2mm" dy="10mm"/>
+    </Label-rectangle>
+  </Template>
+
+  
 </Glabels-templates>
 
 

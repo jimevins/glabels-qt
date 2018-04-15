@@ -64,18 +64,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CD/DVD inlet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CD/DVD inlet (back)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CD/DVD inlet (front)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CD/DVD labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -89,10 +77,6 @@
     </message>
     <message>
         <source>CD/DVD labels (rectangles)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CD/DVD labels (spine labels)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -128,10 +112,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>DVD inlet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Digital media labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -141,10 +121,6 @@
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Divider labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -200,19 +176,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Index cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Large address labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Large round labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -241,10 +209,6 @@
     </message>
     <message>
         <source>Metal tin container labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Microtube labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -300,14 +264,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Photo stickers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Post cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Printable mousepad</source>
         <translation type="unfinished"></translation>
     </message>
@@ -320,23 +276,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reverse addendum stickers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reverse automobile window stickers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Round and rectangular labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Round labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rounded rectangular labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -348,27 +288,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Self-adhesive film transparent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Self-adhesive film weatherproof</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Self-adhesive labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Self-adhesive window film</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Shipping labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Small round labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -380,23 +300,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tent cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Trapezoid labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>VHS inlet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>VHS-C inlet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -409,14 +317,6 @@
     </message>
     <message>
         <source>Video tape spine labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Video-8 inlet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zip disc inlet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -444,10 +344,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Oval bottle/jar labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>VHS face labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -460,11 +356,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Small arch file labels</source>
+        <source>Tube labels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tube labels</source>
+        <source>CD/DVD insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CD/DVD insert (back)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CD/DVD insert (front)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CD/DVD labels (spine labels)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DVD insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Divider labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Index cards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Large round labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Post cards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tent cards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VHS insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VHS-C insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video-8 insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Window stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zip disc insert</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
