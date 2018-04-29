@@ -1,0 +1,19 @@
+############################################################
+#
+# gLabels Translation Files
+#
+############################################################
+set (GLABELS_TS_FILES
+  glabels_C.ts
+  glabels_de_DE.ts
+)
+
+############################################################
+#
+# Translation Files for Product Template Database
+#
+############################################################
+set (TEMPLATES_TS_FILES
+  templates_C.ts
+)
+

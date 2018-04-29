@@ -4,27 +4,15 @@
 # without this a "make clean" would delete the .ts files
 set_directory_properties (PROPERTIES CLEAN_NO_CUSTOM 1)
 
-#
-# gLabels Translation Files
-#
-set (glabels_ts_files
-  glabels_C.ts
-)
-
-#
-# Template Translation Files
-#
-set (templates_ts_files
-  templates_C.ts
-)
+include (TRANSLATION_FILES.txt)
 
 qt5_create_translation (glabels_qm_files
-  ${CMAKE_SOURCE_DIR}/glabels ${glabels_ts_files}
+  ${CMAKE_SOURCE_DIR}/glabels ${GLABELS_TS_FILES}
   OPTIONS -no-obsolete
 )
 
 qt5_create_translation (templates_qm_files
-  ${CMAKE_CURRENT_BINARY_DIR}/template-strings.h ${templates_ts_files}
+  ${CMAKE_CURRENT_BINARY_DIR}/template-strings.h ${TEMPLATES_TS_FILES}
   OPTIONS -no-obsolete -locations none
 )
 
