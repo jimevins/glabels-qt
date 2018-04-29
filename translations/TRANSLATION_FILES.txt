@@ -15,5 +15,6 @@ set (GLABELS_TS_FILES
 ############################################################
 set (TEMPLATES_TS_FILES
   templates_C.ts
+  templates_de_DE.ts
 )
 
