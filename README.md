@@ -1,5 +1,6 @@
-![logo](glabels/icons/48x48/apps/glabels.svg)
 ![gLabels Label Designer](glabels/images/glabels-label-designer.png)
+
+![Cover Image](docs/images/cover-image.png)
 
 [![Build Status](https://travis-ci.org/jimevins/glabels-qt.svg?branch=master)](https://travis-ci.org/jimevins/glabels-qt)
 
@@ -9,20 +10,18 @@
 
 gLabels-qt is the development version of the next major version of gLabels (4.0).
 
-![screenshot](docs/images/screenshot.png)
 
-
-## What's new in gLabels-qt?
+## What's new in gLabels 4?
 
 - Based on the Qt5 framework.
 - Updated UI based on typical workflows.
 - Intended to be a cross-platform application.
-    * So far, it has been built and tested under both Linux, Windows 7, and Windows 10. (Windows testing is still very intermittent.)
+    * So far, it has been built and tested under Linux, Windows 7, and Windows 10. (Windows testing is still very intermittent.)
 
 
 ## Status
 
-gLabels-qt has been under off-and-on development for several years..
+gLabels-qt has been under off-and-on development for several years.
 It is still missing several features to bring it in parity with glabels-3.4.  These include
 
 - Compatability with older glabels project files
@@ -33,7 +32,7 @@ It is still missing several features to bring it in parity with glabels-3.4.  Th
 
 ### Latest Release
 
-There are currently no official releases of gLabels-qt.
+There are currently no official releases of gLabels 4.
 
 ### Continuous Integration Snapshots
 
