@@ -92,6 +92,10 @@ namespace glabels
 		void fileOpen();
 		void fileSave();
 		void fileSaveAs();
+		void fileShowEditorPage();
+		void fileShowPropertiesPage();
+		void fileShowMergePage();
+		void fileShowPrintPage();
 		void fileTemplateDesigner();
 		void fileClose();
 		void fileExit();
@@ -235,6 +239,10 @@ namespace glabels
 		QAction*  fileOpenAction;
 		QAction*  fileSaveAction;
 		QAction*  fileSaveAsAction;
+		QAction*  fileShowEditorPageAction;
+		QAction*  fileShowPropertiesPageAction;
+		QAction*  fileShowMergePageAction;
+		QAction*  fileShowPrintPageAction;
 		QAction*  fileTemplateDesignerAction;
 		QAction*  fileCloseAction;
 		QAction*  fileExitAction;
