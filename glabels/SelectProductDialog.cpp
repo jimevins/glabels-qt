@@ -20,6 +20,7 @@
 
 #include "SelectProductDialog.h"
 
+#include "NotebookUtil.h"
 #include "TemplatePickerItem.h"
 
 #include "model/Db.h"
@@ -61,6 +62,8 @@ namespace glabels
 
 			connect( check, SIGNAL(clicked()), this, SLOT(onCategoryCheckClicked()) );
 		}
+
+		NotebookUtil::establishSize( modeNotebook );
 
 		QList<model::Template*> tmplates = model::Db::templates();
 		templatePicker->setTemplates( tmplates );
