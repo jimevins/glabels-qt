@@ -61,15 +61,15 @@ namespace glabels
 		textVAlignGroup->addButton( textVAlignMiddleToggle, Qt::AlignVCenter );
 		textVAlignGroup->addButton( textVAlignBottomToggle, Qt::AlignBottom );
 
-		lineColorButton->init( "No line", QColor(0,0,0,0), QColor(0,0,0,255) );
-		fillColorButton->init( "No fill", QColor(0,0,0,0), QColor(0,0,0,255) );
-		textColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
-		barcodeColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
-		shadowColorButton->init( "Default", QColor(0,0,0,255), QColor(0,0,0,255) );
+		lineColorButton->init( tr("No line"), QColor(0,0,0,0), QColor(0,0,0,255) );
+		fillColorButton->init( tr("No fill"), QColor(0,0,0,0), QColor(0,0,0,255) );
+		textColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
+		barcodeColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
+		shadowColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 
-		textInsertFieldCombo->setName( "Insert Field" );
-		barcodeInsertFieldCombo->setName( "Insert Field" );
-		imageFieldCombo->setName( "Key" );
+		textInsertFieldCombo->setName( tr("Insert Field") );
+		barcodeInsertFieldCombo->setName( tr("Insert Field") );
+		imageFieldCombo->setName( tr("Key") );
 
 		setEnabled( false );
 		hidePages();
@@ -351,9 +351,9 @@ namespace glabels
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-box.svg") );
 					titleLabel->setText( tr("Box object properties") );
 
-					notebook->addTab( lineFillPage, "line/fill" );
-					notebook->addTab( posSizePage, "position/size" );
-					notebook->addTab( shadowPage, "shadow" );
+					notebook->addTab( lineFillPage, tr("line/fill") );
+					notebook->addTab( posSizePage, tr("position/size") );
+					notebook->addTab( shadowPage, tr("shadow") );
 
 					fillFrame->setVisible( true );
 					sizeRectFrame->setVisible( true );
@@ -372,9 +372,9 @@ namespace glabels
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-ellipse.svg") );
 					titleLabel->setText( tr("Ellipse object properties") );
 
-					notebook->addTab( lineFillPage, "line/fill" );
-					notebook->addTab( posSizePage, "position/size" );
-					notebook->addTab( shadowPage, "shadow" );
+					notebook->addTab( lineFillPage, tr("line/fill") );
+					notebook->addTab( posSizePage, tr("position/size") );
+					notebook->addTab( shadowPage, tr("shadow") );
 
 					fillFrame->setVisible( true );
 					sizeRectFrame->setVisible( true );
@@ -393,9 +393,9 @@ namespace glabels
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-image.svg") );
 					titleLabel->setText( tr("Image object properties") );
 
-					notebook->addTab( imagePage, "image" );
-					notebook->addTab( posSizePage, "position/size" );
-					notebook->addTab( shadowPage, "shadow" );
+					notebook->addTab( imagePage, tr("image") );
+					notebook->addTab( posSizePage, tr("position/size") );
+					notebook->addTab( shadowPage, tr("shadow") );
 
 					sizeRectFrame->setVisible( true );
 					sizeOriginalSizeGroup->setVisible( true );
@@ -413,9 +413,9 @@ namespace glabels
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-line.svg") );
 					titleLabel->setText( tr("Line object properties") );
 
-					notebook->addTab( lineFillPage, "line/fill" );
-					notebook->addTab( posSizePage, "position/size" );
-					notebook->addTab( shadowPage, "shadow" );
+					notebook->addTab( lineFillPage, tr("line/fill") );
+					notebook->addTab( posSizePage, tr("position/size") );
+					notebook->addTab( shadowPage, tr("shadow") );
 
 					fillFrame->setVisible( false );
 					sizeRectFrame->setVisible( false );
@@ -434,9 +434,9 @@ namespace glabels
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-text.svg") );
 					titleLabel->setText( tr("Text object properties") );
 
-					notebook->addTab( textPage, "text" );
-					notebook->addTab( posSizePage, "position/size" );
-					notebook->addTab( shadowPage, "shadow" );
+					notebook->addTab( textPage, tr("text") );
+					notebook->addTab( posSizePage, tr("position/size") );
+					notebook->addTab( shadowPage, tr("shadow") );
 
 					sizeRectFrame->setVisible( true );
 					sizeOriginalSizeGroup->setVisible( false );
@@ -453,8 +453,8 @@ namespace glabels
 					titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-barcode.svg") );
 					titleLabel->setText( tr("Barcode object properties") );
 
-					notebook->addTab( barcodePage, "barcode" );
-					notebook->addTab( posSizePage, "position/size" );
+					notebook->addTab( barcodePage, tr("barcode") );
+					notebook->addTab( posSizePage, tr("position/size") );
 
 					sizeRectFrame->setVisible( true );
 					sizeOriginalSizeGroup->setVisible( false );
@@ -479,7 +479,7 @@ namespace glabels
 				mObject = nullptr;
 
 				titleImageLabel->setPixmap( QPixmap(":icons/24x24/actions/glabels-object-properties.svg") );
-				titleLabel->setText( "Object properties" );
+				titleLabel->setText( tr("Object properties") );
 				setEnabled( false );
 			}
 		}
