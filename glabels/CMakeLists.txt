@@ -24,6 +24,7 @@ set (glabels_sources
   MainWindow.cpp
   MergeView.cpp
   MiniPreviewPixmap.cpp
+  NotebookUtil.cpp
   ObjectEditor.cpp
   PreferencesDialog.cpp
   PrintView.cpp

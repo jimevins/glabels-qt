@@ -70,8 +70,6 @@ namespace glabels
 		mContents = new QListWidget();
 		mContents->setViewMode(QListView::ListMode);
 		mContents->setMovement(QListView::Static);
-		mContents->setMinimumWidth(96);
-		mContents->setMaximumWidth(96);
 		mContents->setSpacing(6);
 	
 		// Pages widget
@@ -86,26 +84,36 @@ namespace glabels
 		// Add "Editor" page
 		mPages->addWidget( editorPage );
 		mEditorButton = new QListWidgetItem(mContents);
-		mEditorButton->setText(tr("Home"));
+		mEditorButton->setText(tr("Edit"));
+		mEditorButton->setToolTip( tr("Select <b>Edit</b> mode") );
 		mEditorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 		// Add "Properties" page
 		mPages->addWidget( propertiesPage );
 		mPropertiesButton = new QListWidgetItem(mContents);
 		mPropertiesButton->setText(tr("Properties"));
+		mPropertiesButton->setToolTip( tr("Select <b>Properties</b> mode") );
 		mPropertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 		// Add "Merge" page
 		mPages->addWidget( mergePage );
 		mMergeButton = new QListWidgetItem(mContents);
 		mMergeButton->setText(tr("Merge"));
+		mMergeButton->setToolTip( tr("Select <b>Merge</b> mode") );
 		mMergeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 		// Add "Print" page
 		mPages->addWidget( printPage );
 		mPrintButton = new QListWidgetItem(mContents);
 		mPrintButton->setText(tr("Print"));
+		mPrintButton->setToolTip( tr("Select <b>Print</b> mode") );
 		mPrintButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		// Adjust width of list view based on its contents
+		mContents->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+		mContents->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+		mContents->setMinimumWidth( mContents->sizeHintForColumn(0) + 24 );
+		mContents->setMaximumWidth( mContents->sizeHintForColumn(0) + 24 );
 
 		// Set initial page selection
 		mWelcomeButton->setSelected( true );
@@ -245,6 +253,26 @@ namespace glabels
 		fileSaveAsAction->setShortcut( QKeySequence::SaveAs );
 		fileSaveAsAction->setStatusTip( tr("Save current gLabels project to a different name") );
 		connect( fileSaveAsAction, SIGNAL(triggered()), this, SLOT(fileSaveAs()) );
+
+		fileShowEditorPageAction = new QAction( tr("&Edit") , this );
+		fileShowEditorPageAction->setShortcut( QKeySequence( Qt::CTRL + Qt::Key_1 ) );
+		fileShowEditorPageAction->setStatusTip( tr("Select project Edit mode") );
+		connect( fileShowEditorPageAction, SIGNAL(triggered()), this, SLOT(fileShowEditorPage()) );
+
+		fileShowPropertiesPageAction = new QAction( tr("P&roperties") , this );
+		fileShowPropertiesPageAction->setShortcut( QKeySequence( Qt::CTRL + Qt::Key_2 ) );
+		fileShowPropertiesPageAction->setStatusTip( tr("Select project Properties mode") );
+		connect( fileShowPropertiesPageAction, SIGNAL(triggered()), this, SLOT(fileShowPropertiesPage()) );
+
+		fileShowMergePageAction = new QAction( tr("&Merge") , this );
+		fileShowMergePageAction->setShortcut( QKeySequence( Qt::CTRL + Qt::Key_3 ) );
+		fileShowMergePageAction->setStatusTip( tr("Select project Merge mode") );
+		connect( fileShowMergePageAction, SIGNAL(triggered()), this, SLOT(fileShowMergePage()) );
+
+		fileShowPrintPageAction = new QAction( tr("&Print") , this );
+		fileShowPrintPageAction->setShortcut( QKeySequence::Print );
+		fileShowPrintPageAction->setStatusTip( tr("Select project Print mode") );
+		connect( fileShowPrintPageAction, SIGNAL(triggered()), this, SLOT(fileShowPrintPage()) );
 
 		fileTemplateDesignerAction = new QAction( tr("Product Template &Designer..."), this );
 		fileTemplateDesignerAction->setStatusTip( tr("Create custom templates") );
@@ -516,6 +544,11 @@ namespace glabels
 		fileMenu->addAction( fileOpenAction );
 		fileMenu->addAction( fileSaveAction );
 		fileMenu->addAction( fileSaveAsAction );
+		fileMenu->addSeparator();
+		fileMenu->addAction( fileShowEditorPageAction );
+		fileMenu->addAction( fileShowPropertiesPageAction );
+		fileMenu->addAction( fileShowMergePageAction );
+		fileMenu->addAction( fileShowPrintPageAction );
 		fileMenu->addSeparator();
 		fileMenu->addAction( fileTemplateDesignerAction );
 		fileMenu->addSeparator();
@@ -988,6 +1021,12 @@ namespace glabels
 		setSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() );
 		setMultiSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
 		setPasteVerbsEnabled( isEditorPage && mModel->canPaste() );
+
+		bool isWelcome = ( current == mWelcomeButton );
+		fileShowEditorPageAction->setEnabled( !isWelcome && (current != mEditorButton) );
+		fileShowPropertiesPageAction->setEnabled( !isWelcome && (current != mPropertiesButton) );
+		fileShowMergePageAction->setEnabled( !isWelcome && (current != mMergeButton) );
+		fileShowPrintPageAction->setEnabled( !isWelcome && (current != mPrintButton) );
 	}
 
 
@@ -1033,6 +1072,42 @@ namespace glabels
 	void MainWindow::fileSaveAs()
 	{
 		File::saveAs( this );
+	}
+
+
+	///
+	/// File->Show Editor Page
+	///
+	void MainWindow::fileShowEditorPage()
+	{
+		mContents->setCurrentItem( mEditorButton );
+	}
+
+
+	///
+	/// File->Show Properties Page
+	///
+	void MainWindow::fileShowPropertiesPage()
+	{
+		mContents->setCurrentItem( mPropertiesButton );
+	}
+
+
+	///
+	/// File->Show Merge Page
+	///
+	void MainWindow::fileShowMergePage()
+	{
+		mContents->setCurrentItem( mMergeButton );
+	}
+
+
+	///
+	/// File->Show Print Page
+	///
+	void MainWindow::fileShowPrintPage()
+	{
+		mContents->setCurrentItem( mPrintButton );
 	}
 
 
