@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <!--
  ! This file is derived from the previous German translation in Gettext.
  ! Copyright (C) 2001-2018 Jim Evins <evins@snaught.com>
@@ -6,8 +8,6 @@
  ! Christian Neumair <christian-neumair@web.de>, 2002.
  ! Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2018.
   -->
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
 <TS version="2.1" language="de_DE" sourcelanguage="en_US">
 <context>
     <name>AboutDialog</name>
