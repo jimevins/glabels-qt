@@ -458,7 +458,7 @@ namespace glabels
 			bc->setChecksum(mBcChecksumFlag);
 			bc->setShowText(mBcTextFlag);
 
-			bc->build( mBcData.toStdString(), mW.pt(), mH.pt() );
+			bc->build( mBcData.expand( record ).toStdString(), mW.pt(), mH.pt() );
 
 			glbarcode::QtRenderer renderer(painter);
 			bc->render( renderer );
