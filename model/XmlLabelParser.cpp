@@ -629,9 +629,10 @@ namespace glabels
 			bool          fontUnderlineFlag = XmlUtil::getBoolAttr( node, "font_underline", false );
 
 			/* text attrs */
-			double textLineSpacing   = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
-			Qt::Alignment textHAlign = XmlUtil::getAlignmentAttr( node, "align", Qt::AlignLeft );
-			Qt::Alignment textVAlign = XmlUtil::getAlignmentAttr( node, "valign", Qt::AlignTop );
+			double textLineSpacing             = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
+			Qt::Alignment textHAlign           = XmlUtil::getAlignmentAttr( node, "align", Qt::AlignLeft );
+			Qt::Alignment textVAlign           = XmlUtil::getAlignmentAttr( node, "valign", Qt::AlignTop );
+			QTextOption::WrapMode textWrapMode = XmlUtil::getWrapModeAttr( node, "wrap", QTextOption::WordWrap );
 
 			/* affine attrs */
 			double a[6];
@@ -680,7 +681,7 @@ namespace glabels
 			return new ModelTextObject( x0, y0, w, h,
 			                            text,
 			                            fontFamily, fontSize, fontWeight, fontItalicFlag, fontUnderlineFlag,
-			                            textColorNode, textHAlign, textVAlign, textLineSpacing,
+			                            textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
 			                            QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 			                            shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}

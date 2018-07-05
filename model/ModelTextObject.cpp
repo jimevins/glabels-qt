@@ -69,6 +69,7 @@ namespace glabels
 			mTextColorNode     = ColorNode( QColor( 0, 0, 0 ) );
 			mTextHAlign        = Qt::AlignLeft;
 			mTextVAlign        = Qt::AlignTop;
+			mTextWrapMode      = QTextOption::WordWrap;
 			mTextLineSpacing   = 1;
 		}
 
@@ -76,26 +77,27 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelTextObject::ModelTextObject( const Distance&  x0,
-		                                  const Distance&  y0,
-		                                  const Distance&  w,
-		                                  const Distance&  h,
-		                                  const QString&   text,
-		                                  const QString&   fontFamily,
-		                                  double           fontSize,
-		                                  QFont::Weight    fontWeight,
-		                                  bool             fontItalicFlag,
-		                                  bool             fontUnderlineFlag,
-		                                  ColorNode        textColorNode,
-		                                  Qt::Alignment    textHAlign,
-		                                  Qt::Alignment    textVAlign,
-		                                  double           textLineSpacing,
-		                                  const QMatrix&   matrix,
-		                                  bool             shadowState,
-		                                  const Distance&  shadowX,
-		                                  const Distance&  shadowY,
-		                                  double           shadowOpacity,
-		                                  const ColorNode& shadowColorNode )
+		ModelTextObject::ModelTextObject( const Distance&       x0,
+		                                  const Distance&       y0,
+		                                  const Distance&       w,
+		                                  const Distance&       h,
+		                                  const QString&        text,
+		                                  const QString&        fontFamily,
+		                                  double                fontSize,
+		                                  QFont::Weight         fontWeight,
+		                                  bool                  fontItalicFlag,
+		                                  bool                  fontUnderlineFlag,
+		                                  ColorNode             textColorNode,
+		                                  Qt::Alignment         textHAlign,
+		                                  Qt::Alignment         textVAlign,
+		                                  QTextOption::WrapMode textWrapMode,
+		                                  double                textLineSpacing,
+		                                  const QMatrix&        matrix,
+		                                  bool                  shadowState,
+		                                  const Distance&       shadowX,
+		                                  const Distance&       shadowY,
+		                                  double                shadowOpacity,
+		                                  const ColorNode&      shadowColorNode )
 		: ModelObject( x0, y0, w, h,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
@@ -120,6 +122,7 @@ namespace glabels
 			mTextColorNode     = textColorNode;
 			mTextHAlign        = textHAlign;
 			mTextVAlign        = textVAlign;
+			mTextWrapMode      = textWrapMode;
 			mTextLineSpacing   = textLineSpacing;
 
 			update(); // Initialize cached editor layouts
@@ -141,6 +144,7 @@ namespace glabels
 			mTextColorNode     = object->mTextColorNode;
 			mTextHAlign        = object->mTextHAlign;
 			mTextVAlign        = object->mTextVAlign;
+			mTextWrapMode      = object->mTextWrapMode;
 			mTextLineSpacing   = object->mTextLineSpacing;
 
 			update(); // Initialize cached editor layouts
@@ -379,6 +383,29 @@ namespace glabels
 
 
 		///
+		/// Text Wrap Mode Property Getter
+		///
+		QTextOption::WrapMode ModelTextObject::textWrapMode() const
+		{
+			return mTextWrapMode;
+		}
+
+
+		///
+		/// Text Wrap Mode Property Setter
+		///
+		void ModelTextObject::setTextWrapMode( QTextOption::WrapMode value )
+		{
+			if ( mTextWrapMode != value )
+			{
+				mTextWrapMode = value;
+				update();
+				emit changed();
+			}
+		}
+
+
+		///
 		/// TextLineSpacing Property Getter
 		///
 		double ModelTextObject::textLineSpacing() const
@@ -415,7 +442,7 @@ namespace glabels
 
 			QTextOption textOption;
 			textOption.setAlignment( mTextHAlign );
-			textOption.setWrapMode( QTextOption::WordWrap );
+			textOption.setWrapMode( mTextWrapMode );
 
 			QFontMetricsF fontMetrics( font );
 			double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
@@ -537,7 +564,7 @@ namespace glabels
 
 			QTextOption textOption;
 			textOption.setAlignment( mTextHAlign );
-			textOption.setWrapMode( QTextOption::WordWrap );
+			textOption.setWrapMode( mTextWrapMode );
 
 			QFontMetricsF fontMetrics( font );
 			double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
@@ -612,6 +639,10 @@ namespace glabels
 		///
 		void ModelTextObject::drawTextInEditor( QPainter* painter, const QColor& color ) const
 		{
+			painter->save();
+
+			painter->setClipRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			
 			if ( mText.isEmpty() )
 			{
 				QColor mutedColor = color;
@@ -627,6 +658,8 @@ namespace glabels
 			{
 				layout->draw( painter, QPointF( 0, 0 ) );
 			}
+
+			painter->restore();
 		}
 
 
@@ -638,6 +671,10 @@ namespace glabels
 		                           const QColor&  color,
 		                           merge::Record* record ) const
 		{
+			painter->save();
+
+			painter->setClipRect( QRectF( 0, 0, mW.pt(), mH.pt() ) );
+			
 			QFont font;
 			font.setFamily( mFontFamily );
 			font.setPointSizeF( mFontSize );
@@ -647,7 +684,7 @@ namespace glabels
 
 			QTextOption textOption;
 			textOption.setAlignment( mTextHAlign );
-			textOption.setWrapMode( QTextOption::WordWrap );
+			textOption.setWrapMode( mTextWrapMode );
 
 			QFontMetricsF fontMetrics( font );
 			double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
@@ -684,7 +721,7 @@ namespace glabels
 			double h = boundingRect.height();
 
 
-			// Pass #2 -- adjust layout positions for vertical alignment and create hover path
+			// Pass #2 -- adjust layout positions for vertical alignment
 			x = marginPts;
 			switch ( mTextVAlign )
 			{
@@ -717,6 +754,8 @@ namespace glabels
 
 			// Cleanup
 			qDeleteAll( layouts );
+
+			painter->restore();
 		}
 
 	}

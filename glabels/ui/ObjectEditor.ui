@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>859</height>
+    <height>640</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,7 +35,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -47,18 +47,24 @@
          <property name="title">
           <string>Layout</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
+         <layout class="QFormLayout" name="formLayout_2">
           <item row="0" column="0">
-           <layout class="QFormLayout" name="formLayout_2">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>Alignment:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Alignment:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="rightMargin">
+               <number>3</number>
+              </property>
               <item>
                <widget class="QPushButton" name="textHAlignLeftToggle">
                 <property name="text">
@@ -133,15 +139,11 @@
               </item>
              </layout>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="leftMargin">
+               <number>3</number>
+              </property>
               <item>
                <widget class="QPushButton" name="textVAlignTopToggle">
                 <property name="text">
@@ -216,54 +218,84 @@
               </item>
              </layout>
             </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Line spacing:</string>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Line spacing:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QDoubleSpinBox" name="textLineSpacingSpin">
+              <property name="maximum">
+               <double>3.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.010000000000000</double>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_19">
-              <item>
-               <widget class="QDoubleSpinBox" name="textLineSpacingSpin">
-                <property name="maximum">
-                 <double>3.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.010000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_16">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
+            <item>
+             <spacer name="horizontalSpacer_16">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Wrap mode:</string>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_25">
+            <item>
+             <widget class="QComboBox" name="textWrapModeCombo">
+              <item>
+               <property name="text">
+                <string>Word</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Anywhere</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>None</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -473,7 +505,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>142</height>
+           <height>6</height>
           </size>
          </property>
         </spacer>
@@ -1128,7 +1160,16 @@
              <property name="spacing">
               <number>15</number>
              </property>
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
@@ -1541,8 +1582,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>220</y>
+     <x>119</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1557,8 +1598,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>220</y>
+     <x>159</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1573,8 +1614,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>197</x>
-     <y>220</y>
+     <x>199</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -1589,8 +1630,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>262</y>
+     <x>132</x>
+     <y>248</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1605,8 +1646,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>352</y>
+     <x>157</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1621,8 +1662,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>352</y>
+     <x>198</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1637,8 +1678,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>234</x>
-     <y>352</y>
+     <x>238</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -1653,8 +1694,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>398</y>
+     <x>284</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -1669,8 +1710,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>398</y>
+     <x>325</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1685,8 +1726,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>234</x>
-     <y>398</y>
+     <x>365</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -1701,8 +1742,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>195</x>
-     <y>438</y>
+     <x>184</x>
+     <y>407</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -1717,8 +1758,8 @@
    <slot>onLineControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>182</x>
-     <y>135</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>392</x>
@@ -1733,8 +1774,8 @@
    <slot>onLineControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>175</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -1749,8 +1790,8 @@
    <slot>onFillControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>128</x>
-     <y>260</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -1765,8 +1806,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>134</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1781,8 +1822,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>174</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>325</x>
@@ -1797,8 +1838,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>258</y>
+     <x>119</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1813,8 +1854,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>298</y>
+     <x>119</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>0</x>
@@ -1829,8 +1870,8 @@
    <slot>onResetImageSize()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>201</x>
-     <y>368</y>
+     <x>119</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1861,8 +1902,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>136</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1877,8 +1918,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>176</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>294</x>
@@ -1893,8 +1934,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>128</x>
-     <y>216</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1909,8 +1950,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>167</x>
-     <y>258</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1925,8 +1966,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>452</y>
+     <x>119</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1941,8 +1982,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>492</y>
+     <x>119</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -1957,8 +1998,8 @@
    <slot>onImageFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>125</x>
-     <y>172</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -1973,8 +2014,8 @@
    <slot>onImageKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>313</x>
-     <y>172</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -2005,8 +2046,8 @@
    <slot>onTextInsertFieldKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>240</x>
-     <y>699</y>
+     <x>239</x>
+     <y>599</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -2021,8 +2062,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>123</x>
-     <y>159</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -2037,8 +2078,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>187</y>
+     <x>105</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -2053,8 +2094,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>227</y>
+     <x>100</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -2069,8 +2110,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>255</x>
-     <y>405</y>
+     <x>119</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -2085,8 +2126,8 @@
    <slot>onBarcodeInsertFieldKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>203</x>
-     <y>486</y>
+     <x>119</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -2101,12 +2142,28 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>121</y>
+     <x>119</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
      <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textWrapModeCombo</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onTextControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>144</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>599</y>
     </hint>
    </hints>
   </connection>

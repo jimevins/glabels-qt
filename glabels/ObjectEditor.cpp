@@ -228,6 +228,14 @@ namespace glabels
 		{
 			mBlocked = true;
 
+			int wrapIndex = 0;
+			switch (mObject->textWrapMode())
+			{
+			case QTextOption::WordWrap:     wrapIndex = 0; break;
+			case QTextOption::WrapAnywhere: wrapIndex = 1; break;
+			default:                        wrapIndex = 2; break;
+			}
+
 			textFontFamilyCombo->setCurrentText( mObject->fontFamily() );
 			textFontSizeSpin->setValue( mObject->fontSize() );
 			textFontBoldToggle->setChecked( mObject->fontWeight() == QFont::Bold );
@@ -236,6 +244,7 @@ namespace glabels
 			textColorButton->setColorNode( mObject->textColorNode() );
 			textHAlignGroup->button( mObject->textHAlign() )->setChecked( true );
 			textVAlignGroup->button( mObject->textVAlign() )->setChecked( true );
+			textWrapModeCombo->setCurrentIndex( wrapIndex );
 			textLineSpacingSpin->setValue( mObject->textLineSpacing() );
 			textEdit->setText( mObject->text() );
 
@@ -690,6 +699,14 @@ namespace glabels
 			mBlocked = true;
 
 			mUndoRedoModel->checkpoint( tr("Text") );
+
+			QTextOption::WrapMode wrapMode;
+			switch (textWrapModeCombo->currentIndex())
+			{
+			case 0:  wrapMode = QTextOption::WordWrap;     break;
+			case 1:  wrapMode = QTextOption::WrapAnywhere; break;
+			default: wrapMode = QTextOption::NoWrap;       break;
+			}
 		
 			mObject->setFontFamily( textFontFamilyCombo->currentText() );
 			mObject->setFontSize( textFontSizeSpin->value() );
@@ -699,6 +716,7 @@ namespace glabels
 			mObject->setTextColorNode( textColorButton->colorNode() );
 			mObject->setTextHAlign( Qt::AlignmentFlag( textHAlignGroup->checkedId() ) );
 			mObject->setTextVAlign( Qt::AlignmentFlag( textVAlignGroup->checkedId() ) );
+			mObject->setTextWrapMode( wrapMode );
 			mObject->setTextLineSpacing( textLineSpacingSpin->value() );
 			mObject->setText( textEdit->toPlainText() );
 

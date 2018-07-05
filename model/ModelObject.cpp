@@ -595,6 +595,26 @@ namespace glabels
 
 
 		///
+		/// Virtual Text Wrap Mode Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		QTextOption::WrapMode ModelObject::textWrapMode() const
+		{
+			return QTextOption::WordWrap;
+		}
+
+
+		///
+		/// Virtual Text Wrap Mode Property Default Setter
+		/// (Overridden by concrete class)
+		///
+		void ModelObject::setTextWrapMode( QTextOption::WrapMode value )
+		{
+			// empty
+		}
+
+
+		///
 		/// Virtual Text Line Spacing Property Default Getter
 		/// (Overridden by concrete class)
 		///

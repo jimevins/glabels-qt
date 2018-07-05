@@ -298,6 +298,33 @@ namespace glabels
 		}
 
 
+		QTextOption::WrapMode XmlUtil::getWrapModeAttr( const QDomElement&    node,
+		                                                const QString&        name,
+		                                                QTextOption::WrapMode default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				if ( valueString == "word" )
+				{
+					return QTextOption::WordWrap;
+				}
+				else if ( valueString == "anywhere" )
+				{
+					return QTextOption::WrapAnywhere;
+				}
+				else if ( valueString == "none" )
+				{
+					return QTextOption::NoWrap;
+				}
+			}
+
+			return default_value;
+		}
+
+
 		void XmlUtil::setStringAttr( QDomElement&   node,
 		                             const QString& name,
 		                             const QString& value )
@@ -401,6 +428,29 @@ namespace glabels
 				break;
 			default:
 				node.setAttribute( name, "left" );
+				break;
+			}
+		}
+
+	
+		void XmlUtil::setWrapModeAttr( QDomElement&          node,
+		                               const QString&        name,
+		                               QTextOption::WrapMode value )
+		{
+			switch (value)
+			{
+			case QTextOption::WordWrap:
+				node.setAttribute( name, "word" );
+				break;
+			case QTextOption::WrapAnywhere:
+				node.setAttribute( name, "anywhere" );
+				break;
+			case QTextOption::NoWrap:
+			case QTextOption::ManualWrap:
+				node.setAttribute( name, "none" );
+				break;
+			default:
+				node.setAttribute( name, "word" );
 				break;
 			}
 		}

@@ -252,6 +252,13 @@ namespace glabels
 
 
 			//
+			// Virtual Text Property: textWrapMode
+			//
+			virtual QTextOption::WrapMode textWrapMode() const;
+			virtual void setTextWrapMode( QTextOption::WrapMode value );
+
+
+			//
 			// Virtual Text Property: textLineSpacing
 			//
 			virtual double textLineSpacing() const;

@@ -46,26 +46,27 @@ namespace glabels
 		public:
 			ModelTextObject();
 		
-			ModelTextObject( const Distance&  x0,
-			                 const Distance&  y0,
-			                 const Distance&  w,
-			                 const Distance&  h,
-			                 const QString&   text,
-			                 const QString&   fontFamily,
-			                 double           fontSize,
-			                 QFont::Weight    fontWeight,
-			                 bool             fontItalicFlag,
-			                 bool             fontUnderlineFlag,
-			                 ColorNode        textColorNode,
-			                 Qt::Alignment    textHAlign,
-			                 Qt::Alignment    textVAlign,
-			                 double           textLineSpacing,
-			                 const QMatrix&   matrix = QMatrix(),
-			                 bool             shadowState = false,
-			                 const Distance&  shadowX = 0,
-			                 const Distance&  shadowY = 0,
-			                 double           shadowOpacity = 1.0,
-			                 const ColorNode& shadowColorNode = ColorNode() );
+			ModelTextObject( const Distance&       x0,
+			                 const Distance&       y0,
+			                 const Distance&       w,
+			                 const Distance&       h,
+			                 const QString&        text,
+			                 const QString&        fontFamily,
+			                 double                fontSize,
+			                 QFont::Weight         fontWeight,
+			                 bool                  fontItalicFlag,
+			                 bool                  fontUnderlineFlag,
+			                 ColorNode             textColorNode,
+			                 Qt::Alignment         textHAlign,
+			                 Qt::Alignment         textVAlign,
+			                 QTextOption::WrapMode textWrapMode,
+			                 double                textLineSpacing,
+			                 const QMatrix&        matrix = QMatrix(),
+			                 bool                  shadowState = false,
+			                 const Distance&       shadowX = 0,
+			                 const Distance&       shadowY = 0,
+			                 double                shadowOpacity = 1.0,
+			                 const ColorNode&      shadowColorNode = ColorNode() );
 
 			ModelTextObject( const ModelTextObject* object );
 		
@@ -146,6 +147,13 @@ namespace glabels
 
 
 			//
+			// Text Property: textWrapMode
+			//
+			QTextOption::WrapMode textWrapMode() const override;
+			void setTextWrapMode( QTextOption::WrapMode value ) override;
+
+
+			//
 			// Text Property: textLineSpacing
 			//
 			double textLineSpacing() const override;
@@ -189,19 +197,20 @@ namespace glabels
 			// Private Members
 			///////////////////////////////////////////////////////////////
 		private:
-			RawText              mText;
-			QString              mFontFamily;
-			double               mFontSize;
-			QFont::Weight        mFontWeight;
-			bool                 mFontItalicFlag;
-			bool                 mFontUnderlineFlag;
-			ColorNode            mTextColorNode;
-			Qt::Alignment        mTextHAlign;
-			Qt::Alignment        mTextVAlign;
-			double               mTextLineSpacing;
+			RawText               mText;
+			QString               mFontFamily;
+			double                mFontSize;
+			QFont::Weight         mFontWeight;
+			bool                  mFontItalicFlag;
+			bool                  mFontUnderlineFlag;
+			ColorNode             mTextColorNode;
+			Qt::Alignment         mTextHAlign;
+			Qt::Alignment         mTextVAlign;
+			QTextOption::WrapMode mTextWrapMode;
+			double                mTextLineSpacing;
 
-			QList<QTextLayout*>  mEditorLayouts;
-			QPainterPath         mHoverPath;
+			QList<QTextLayout*>   mEditorLayouts;
+			QPainterPath          mHoverPath;
 
 		};
 

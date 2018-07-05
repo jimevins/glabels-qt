@@ -28,6 +28,7 @@
 #include <QFont>
 #include <QString>
 #include <Qt>
+#include <QTextOption>
 
 #include <cstdint>
 
@@ -86,6 +87,10 @@ namespace glabels
 			                                       const QString&     name,
 			                                       Qt::Alignment      default_value );
 
+			static QTextOption::WrapMode getWrapModeAttr( const QDomElement&    node,
+			                                              const QString&        name,
+			                                              QTextOption::WrapMode default_value );
+
 
 			static void     setStringAttr( QDomElement&   node,
 			                               const QString& name,
@@ -118,6 +123,10 @@ namespace glabels
 			static void     setAlignmentAttr( QDomElement&    node,
 			                                  const QString&  name,
 			                                  Qt::Alignment   value );
+
+			static void     setWrapModeAttr( QDomElement&          node,
+			                                 const QString&        name,
+			                                 QTextOption::WrapMode value );
 
 		
 		private:

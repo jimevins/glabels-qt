@@ -42,6 +42,7 @@
 <!-- Text related enumerations/types -->
 <!ENTITY % ALIGN_TYPE         "(left | right | center)">
 <!ENTITY % VALIGN_TYPE        "(top | bottom | center)">
+<!ENTITY % WRAP_MODE_TYPE     "(word | anywhere | none)">
 <!ENTITY % FONT_WEIGHT_TYPE   "(normal | bold)">
 
 <!-- Barcode related enumerations/types -->
@@ -356,6 +357,7 @@
                  line_spacing    %LENGTH_TYPE;           #IMPLIED
                  align           %ALIGN_TYPE;            #REQUIRED
                  valign          %VALIGN_TYPE;           #REQUIRED
+	         wrap            %WRAP_MODE_TYPE;        #IMPLIED
                  auto_shrink     %BOOLEAN_TYPE;          #IMPLIED
                  %affine_attrs;
                  %shadow_attrs;
