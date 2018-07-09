@@ -633,6 +633,7 @@ namespace glabels
 			Qt::Alignment textHAlign           = XmlUtil::getAlignmentAttr( node, "align", Qt::AlignLeft );
 			Qt::Alignment textVAlign           = XmlUtil::getAlignmentAttr( node, "valign", Qt::AlignTop );
 			QTextOption::WrapMode textWrapMode = XmlUtil::getWrapModeAttr( node, "wrap", QTextOption::WordWrap );
+			bool textAutoShrink                = XmlUtil::getBoolAttr( node, "auto_shrink", false );
 
 			/* affine attrs */
 			double a[6];
@@ -682,6 +683,7 @@ namespace glabels
 			                            text,
 			                            fontFamily, fontSize, fontWeight, fontItalicFlag, fontUnderlineFlag,
 			                            textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
+			                            textAutoShrink,
 			                            QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 			                            shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}

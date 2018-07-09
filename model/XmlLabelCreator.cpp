@@ -338,10 +338,11 @@ namespace glabels
 			XmlUtil::setBoolAttr( node, "font_underline", object->fontUnderlineFlag() );
 
 			/* text attrs */
-			XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
 			XmlUtil::setAlignmentAttr( node, "align", object->textHAlign() );
 			XmlUtil::setAlignmentAttr( node, "valign", object->textVAlign() );
 			XmlUtil::setWrapModeAttr( node, "wrap", object->textWrapMode() );
+			XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
+			XmlUtil::setBoolAttr( node, "auto_shrink", object->textAutoShrink() );
 
 			/* affine attrs */
 			createAffineAttrs( node, object );

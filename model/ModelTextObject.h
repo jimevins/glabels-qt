@@ -61,6 +61,7 @@ namespace glabels
 			                 Qt::Alignment         textVAlign,
 			                 QTextOption::WrapMode textWrapMode,
 			                 double                textLineSpacing,
+			                 bool                  textAutoShrink,
 			                 const QMatrix&        matrix = QMatrix(),
 			                 bool                  shadowState = false,
 			                 const Distance&       shadowX = 0,
@@ -161,6 +162,13 @@ namespace glabels
 
 
 			//
+			// Text Property: textAutoShrink
+			//
+			bool textAutoShrink() const override;
+			void setTextAutoShrink( bool value ) override;
+
+
+			//
 			// Property: naturalSize
 			//
 			Size naturalSize() const override;
@@ -191,6 +199,7 @@ namespace glabels
 			void drawTextInEditor( QPainter* painter, const QColor& color ) const;
 			void drawText( QPainter* painter, const QColor&color, merge::Record* record ) const;
 			QString expandText( QString text, merge::Record* record ) const;
+			double autoShrinkFontSize( merge::Record* record ) const;
 	
 
 			///////////////////////////////////////////////////////////////
@@ -208,6 +217,7 @@ namespace glabels
 			Qt::Alignment         mTextVAlign;
 			QTextOption::WrapMode mTextWrapMode;
 			double                mTextLineSpacing;
+			bool                  mTextAutoShrink;
 
 			QList<QTextLayout*>   mEditorLayouts;
 			QPainterPath          mHoverPath;

@@ -32,6 +32,41 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="titleImageLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>:/icons/24x24/actions/glabels-object-properties.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="titleLabel">
+       <property name="font">
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Object properties</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
@@ -297,6 +332,13 @@
             </item>
            </layout>
           </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="textAutoShrinkCheck">
+            <property name="text">
+             <string>Allow printing to shrink text to fit object</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -331,14 +373,14 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="label_5">
               <property name="text">
                <string>Style:</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
+            <item row="3" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
                <widget class="QPushButton" name="textFontBoldToggle">
@@ -418,7 +460,7 @@
               </item>
              </layout>
             </item>
-            <item row="3" column="0">
+            <item row="4" column="0">
              <widget class="QLabel" name="label_6">
               <property name="text">
                <string>Color:</string>
@@ -455,7 +497,7 @@
               </item>
              </layout>
             </item>
-            <item row="3" column="1">
+            <item row="4" column="1">
              <layout class="QHBoxLayout" name="horizontalLayout_23">
               <item>
                <widget class="glabels::ColorButton" name="textColorButton">
@@ -1476,41 +1518,6 @@
      </widget>
     </widget>
    </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
-     <item>
-      <widget class="QLabel" name="titleImageLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>:/icons/24x24/actions/glabels-object-properties.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="titleLabel">
-       <property name="font">
-        <font>
-         <family>Sans Serif</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Object properties</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -1631,7 +1638,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>132</x>
-     <y>248</y>
+     <y>247</y>
     </hint>
     <hint type="destinationlabel">
      <x>396</x>
@@ -1758,8 +1765,8 @@
    <slot>onLineControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>178</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
      <x>392</x>
@@ -1774,8 +1781,8 @@
    <slot>onLineControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>137</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -1790,8 +1797,8 @@
    <slot>onFillControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>136</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -1806,8 +1813,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>159</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1822,8 +1829,8 @@
    <slot>onPositionControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>159</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
      <x>325</x>
@@ -1838,8 +1845,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>111</y>
+     <x>159</x>
+     <y>265</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
@@ -1854,8 +1861,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>111</y>
+     <x>159</x>
+     <y>302</y>
     </hint>
     <hint type="destinationlabel">
      <x>0</x>
@@ -1870,8 +1877,8 @@
    <slot>onResetImageSize()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>111</y>
+     <x>210</x>
+     <y>372</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -1902,8 +1909,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>165</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1918,8 +1925,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>165</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
      <x>294</x>
@@ -1934,8 +1941,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>142</x>
+     <y>215</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1950,8 +1957,8 @@
    <slot>onShadowControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>159</x>
+     <y>252</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1966,8 +1973,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>116</y>
+     <x>174</x>
+     <y>456</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1982,8 +1989,8 @@
    <slot>onLineSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>116</y>
+     <x>174</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -1998,8 +2005,8 @@
    <slot>onImageFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>133</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -2014,8 +2021,8 @@
    <slot>onImageKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>302</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -2062,8 +2069,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>178</x>
+     <y>172</y>
     </hint>
     <hint type="destinationlabel">
      <x>4</x>
@@ -2078,8 +2085,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>105</x>
-     <y>106</y>
+     <x>164</x>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -2094,8 +2101,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>106</y>
+     <x>126</x>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -2110,8 +2117,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>112</y>
+     <x>132</x>
+     <y>325</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -2126,8 +2133,8 @@
    <slot>onBarcodeInsertFieldKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>112</y>
+     <x>239</x>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -2142,8 +2149,8 @@
    <slot>onBarcodeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>106</y>
+     <x>178</x>
+     <y>140</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -2164,6 +2171,22 @@
     <hint type="destinationlabel">
      <x>395</x>
      <y>599</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textAutoShrinkCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onTextControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>636</y>
     </hint>
    </hints>
   </connection>

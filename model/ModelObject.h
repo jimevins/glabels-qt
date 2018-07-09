@@ -265,6 +265,13 @@ namespace glabels
 			virtual void setTextLineSpacing( double value );
 
 
+			//
+			// Virtual Text Property: textAutoShrink
+			//
+			virtual bool textAutoShrink() const;
+			virtual void setTextAutoShrink( bool value );
+
+
 			///////////////////////////////////////////////////////////////
 			// Image Properties Virtual Interface
 			///////////////////////////////////////////////////////////////

@@ -635,6 +635,26 @@ namespace glabels
 
 
 		///
+		/// Virtual Text Auto Shrink Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		bool ModelObject::textAutoShrink() const
+		{
+			return false;
+		}
+
+
+		///
+		/// Virtual Text Auto Shrink Property Default Setter
+		/// (Overridden by concrete class)
+		///
+		void ModelObject::setTextAutoShrink( bool value )
+		{
+			// empty
+		}
+
+
+		///
 		/// Virtual Filename Node Property Default Getter
 		/// (Overridden by concrete class)
 		///

@@ -71,6 +71,7 @@ namespace glabels
 			mTextVAlign        = Qt::AlignTop;
 			mTextWrapMode      = QTextOption::WordWrap;
 			mTextLineSpacing   = 1;
+			mTextAutoShrink    = false;
 		}
 
 
@@ -92,6 +93,7 @@ namespace glabels
 		                                  Qt::Alignment         textVAlign,
 		                                  QTextOption::WrapMode textWrapMode,
 		                                  double                textLineSpacing,
+		                                  bool                  textAutoShrink,
 		                                  const QMatrix&        matrix,
 		                                  bool                  shadowState,
 		                                  const Distance&       shadowX,
@@ -124,6 +126,7 @@ namespace glabels
 			mTextVAlign        = textVAlign;
 			mTextWrapMode      = textWrapMode;
 			mTextLineSpacing   = textLineSpacing;
+			mTextAutoShrink    = textAutoShrink;
 
 			update(); // Initialize cached editor layouts
 		}
@@ -146,6 +149,7 @@ namespace glabels
 			mTextVAlign        = object->mTextVAlign;
 			mTextWrapMode      = object->mTextWrapMode;
 			mTextLineSpacing   = object->mTextLineSpacing;
+			mTextAutoShrink    = object->mTextAutoShrink;
 
 			update(); // Initialize cached editor layouts
 		}
@@ -429,6 +433,29 @@ namespace glabels
 
 
 		///
+		/// TextAutoShrink Property Getter
+		///
+		bool ModelTextObject::textAutoShrink() const
+		{
+			return mTextAutoShrink;
+		}
+
+
+		///
+		/// TextAutoShrink Property Setter
+		///
+		void ModelTextObject::setTextAutoShrink( bool value )
+		{
+			if ( mTextAutoShrink != value )
+			{
+				mTextAutoShrink = value;
+				update();
+				emit changed();
+			}
+		}
+
+
+		///
 		/// NaturalSize Property Getter
 		///
 		Size ModelTextObject::naturalSize() const
@@ -677,7 +704,7 @@ namespace glabels
 			
 			QFont font;
 			font.setFamily( mFontFamily );
-			font.setPointSizeF( mFontSize );
+			font.setPointSizeF( mTextAutoShrink ? autoShrinkFontSize( record ) : mFontSize );
 			font.setWeight( mFontWeight );
 			font.setItalic( mFontItalicFlag );
 			font.setUnderline( mFontUnderlineFlag );
@@ -757,6 +784,73 @@ namespace glabels
 
 			painter->restore();
 		}
+
+
+		///
+		/// Determine auto shrink font size
+		///
+		double
+		ModelTextObject::autoShrinkFontSize( merge::Record* record ) const
+		{
+			QFont font;
+			font.setFamily( mFontFamily );
+			font.setWeight( mFontWeight );
+			font.setItalic( mFontItalicFlag );
+			font.setUnderline( mFontUnderlineFlag );
+
+			QTextOption textOption;
+			textOption.setAlignment( mTextHAlign );
+			textOption.setWrapMode( mTextWrapMode );
+
+			QTextDocument document( mText.expand( record ) );
+
+			double candidateSize = mFontSize;
+			while ( candidateSize > 1.0 )
+			{
+				font.setPointSizeF( candidateSize );
+
+				// Line spacing is affected by font size
+				QFontMetricsF fontMetrics( font );
+				double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
+
+				// Do candidate layouts, letting text flow according to wrap mode
+				double x = 0;
+				double y = 0;
+				QRectF layoutsRect;
+				for ( int i = 0; i < document.blockCount(); i++ )
+				{
+					QTextLayout layout( document.findBlockByNumber(i).text() );
+		
+					layout.setFont( font );
+					layout.setTextOption( textOption );
+					layout.setCacheEnabled(true);
+
+					layout.beginLayout();
+					for ( QTextLine l = layout.createLine(); l.isValid(); l = layout.createLine() )
+					{
+						l.setLineWidth( mW.pt() - 2*marginPts );
+						l.setPosition( QPointF( x, y ) );
+						y += dy;
+					}
+					layout.endLayout();
+
+					layoutsRect = layout.boundingRect().united( layoutsRect );
+				}
+
+				// Did this candidate fit in our object's bounding box?
+				if ( ( (layoutsRect.width() + 2*marginPts) <= mW.pt() ) &&
+				     ( (layoutsRect.height() + 2*marginPts) <= mH.pt() ) )
+				{
+					break;
+				}
+
+				// If not, let's try a slightly smaller font size
+				candidateSize -= 0.5;
+			}
+
+			return candidateSize;
+		}
+
 
 	}
 }

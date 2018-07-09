@@ -246,6 +246,7 @@ namespace glabels
 			textVAlignGroup->button( mObject->textVAlign() )->setChecked( true );
 			textWrapModeCombo->setCurrentIndex( wrapIndex );
 			textLineSpacingSpin->setValue( mObject->textLineSpacing() );
+			textAutoShrinkCheck->setChecked( mObject->textAutoShrink() );
 			textEdit->setText( mObject->text() );
 
 			mBlocked = false;			
@@ -718,6 +719,7 @@ namespace glabels
 			mObject->setTextVAlign( Qt::AlignmentFlag( textVAlignGroup->checkedId() ) );
 			mObject->setTextWrapMode( wrapMode );
 			mObject->setTextLineSpacing( textLineSpacingSpin->value() );
+			mObject->setTextAutoShrink( textAutoShrinkCheck->isChecked() );
 			mObject->setText( textEdit->toPlainText() );
 
 			mBlocked = false;
