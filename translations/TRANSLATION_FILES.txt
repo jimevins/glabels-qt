@@ -4,8 +4,43 @@
 #
 ############################################################
 set (GLABELS_TS_FILES
+  glabels_ar.ts
+  glabels_bs.ts
+  glabels_ca.ts
+  glabels_ca@valencia.ts
+  glabels_cs.ts
   glabels_C.ts
+  glabels_da.ts
   glabels_de_DE.ts
+  glabels_el.ts
+  glabels_en_GB.ts
+  glabels_eo.ts
+  glabels_es.ts
+  glabels_fi.ts
+  glabels_fr.ts
+  glabels_gl.ts
+  glabels_hu.ts
+  glabels_id.ts
+  glabels_it.ts
+  glabels_ja.ts
+  glabels_ko.ts
+  glabels_lv.ts
+  glabels_nb.ts
+  glabels_nl.ts
+  glabels_oc.ts
+  glabels_pt_BR.ts
+  glabels_pt.ts
+  glabels_ro.ts
+  glabels_ru.ts
+  glabels_sk.ts
+  glabels_sl.ts
+  glabels_sr@latin.ts
+  glabels_sr.ts
+  glabels_sv.ts
+  glabels_tr.ts
+  glabels_zh_CN.ts
+  glabels_zh_HK.ts
+  glabels_zh_TW.ts
 )
 
 ############################################################
@@ -14,7 +49,43 @@ set (GLABELS_TS_FILES
 #
 ############################################################
 set (TEMPLATES_TS_FILES
+  template_ar.ts
+  template_bs.ts
+  template_ca.ts
+  template_ca@valencia.ts
+  template_cs.ts
+  template_da.ts
+  template_de_DE.ts
+  template_el.ts
+  template_en_GB.ts
+  template_eo.ts
+  template_es.ts
+  template_fi.ts
+  template_fr.ts
+  template_gl.ts
+  template_hu.ts
+  template_id.ts
+  template_it.ts
+  template_ja.ts
+  template_ko.ts
+  template_lv.ts
+  template_nb.ts
+  template_nl.ts
+  template_oc.ts
+  template_pt_BR.ts
+  template_pt.ts
+  template_ro.ts
+  template_ru.ts
   templates_C.ts
   templates_de_DE.ts
+  template_sk.ts
+  template_sl.ts
+  template_sr@latin.ts
+  template_sr.ts
+  template_sv.ts
+  template_tr.ts
+  template_zh_CN.ts
+  template_zh_HK.ts
+  template_zh_TW.ts
 )
 
