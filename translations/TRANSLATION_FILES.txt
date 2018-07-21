@@ -38,6 +38,7 @@ set (GLABELS_TS_FILES
   glabels_sr.ts
   glabels_sv.ts
   glabels_tr.ts
+  glabels_uk.ts
   glabels_zh_CN.ts
   glabels_zh_HK.ts
   glabels_zh_TW.ts
@@ -83,6 +84,7 @@ set (TEMPLATES_TS_FILES
   templates_sr.ts
   templates_sv.ts
   templates_tr.ts
+  templates_uk.ts
   templates_zh_CN.ts
   templates_zh_HK.ts
   templates_zh_TW.ts
