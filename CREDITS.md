@@ -14,7 +14,140 @@ gLabels includes contributions from
 
 Translations
 ------------
-* TBD.
+The following people have contributed translations to previous Glabels versions before 4.x:
+
+* Arabic:
+
+    red sea <a@a.com>
+
+* Bosnian:
+
+    Ademir Havic <ademir.havic@gmail.com>
+
+* Catalan and Catalan (Valencia):
+
+    David Planella <david.planella@gmail.com>, Pere Orga <pere@orga.cat>
+
+* Czech:
+
+    David Makovský (Yakeen) <yakeen@sannyas-on.net>, Zbynek Mrkvicka <zbynek@oachot.cz>, Marek Černocký <marek@manet.cz>
+
+* Danish:
+
+    Joe Hansen <joedalton2@yahoo.dk>
+
+* German:
+
+    Marcus Bauer <m@7n7.de>, Christian Neumair <christian-neumair@web.de>, Mario Blättermann <mario.blaettermann@gmail.com>
+
+* Greek:
+
+    Efstathios Iosifidis <diamond_gr@freemail.gr>, Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, Tom Tryfonidis <tomtryf@gmail.com>
+
+* British English:
+
+    Bruce Cowan <bruce@bcowan.me.uk>
+
+* Esperanto:
+
+    Antonio C. Codazzi "la Filozofo" <f_sophia@libero.it>, Kristjan Schmidt <kristjan.schmidt@googlemail.com>
+
+* Spanish:
+
+    Jorge González <jorgegonz@svn.gnome.org>, Daniel Mustieles <daniel.mustieles@gmail.com>
+
+* Finnish:
+
+    Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+
+* French:
+
+    Olivier Berger <oberger@gnu.org>, Florent Morel <florent@taket.org>, Claude Paroz <claude@2xlibre.net>, Bruno Brouard <annoa.b@gmail.com>, Gérard Baylard <Geodebay@gmail.com>,     Pierre Henry <pierrehenry73@yahoo.fr>, Mathieu Stumpf <psychoslave@culture-libre.org>
+
+* Galician:
+
+    Leandro Regueiro <leandro.regueiro@gmail.com>
+
+* Hungarian:
+
+    Balázs Úr <urbalazs@gmail.com>, Gabor Kelemen <kelemeng@ubuntu.com>, Meskó Balázs <mesko.balazs@fsf.hu>
+
+* Indonesian:
+
+    Andika Triwidada <andika@gmail.com>
+
+* Italian:
+
+    Andrea <mancio_and@yahoo.it>, Daniele Medri <daniele.medri@libero.it>
+
+* Japanese:
+
+    Takeshi Aihana <takeshi.aihana@gmail.com>, Jiro Matsuzawa <jmatsuzawa@gnome.org>
+
+* Korean:
+
+    YunSeok Choi <xein@naver.com>
+
+* Latvian:
+
+    Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
+
+* Norwegian bokmål:
+
+    Kjartan Maraas <kmaraas@gnome.org>
+
+* Dutch:
+
+    Mario Blättermann <mariobl@gnome.org>, Hannie Dumoleyn <hannie@ubuntu-nl.org>
+
+* Occitan:
+
+    Cédric Valmary <cvalmary@yahoo.fr>
+
+* Portuguese:
+
+    Filipe Roque <fliproque@gmail.com>, Tiago Santos <tiagofsantos81@sapo.pt>, Pedro Albuquerque <palbuquerque73o@gmail.com>
+
+* Brazilian Portuguese:
+
+    Paulo R. Ormenese <pormenese@uol.com.br>, Michel Recondo <michel@recondo.com.br>, Henrique P. Machado <hpmachado@gnome.org>, Antonio Fernandes C. Neto <fernandes@pelivre.org>, Enrico Nicoletto <liverig@gmail.com>, Rafael Fontenelle <rafaelff@gnome.org>
+
+* Romanian:
+
+    Daniel Șerbănescu <daniel@serbanescu.dk>
+
+* Russian:
+
+    Vitaly Lipatov <lav@altlinux.ru>, Александр Прокудин <alexandre.prokoudine@gmail.com>
+
+* Slovak:
+
+    Dušan Kazik <prescott66@gmail.com>
+
+* Slovenian:
+
+    Andrej Žnidaršič <andrej.znidarsic@gmail.com>, Matej Urbančič <mateju@svn.gnome.org>
+
+* Serbian (both cyrillic and latin):
+
+    Miroslav Nikolić <miroslavnikolic@rocketmail.com>
+
+* Swedish:
+
+    Daniel Nylander <po@danielnylander.se>, Åke Engelbrektson <eson57@gmail.com>, Josef Andersson <josef.andersson@fripost.org>, Anders Jonsson <anders.jonsson@norsjovallen.se>
+
+* Turkish:
+
+    Yusuf Bolu <yusufbolu@gmail.com>, Muhammet Kara <muhammetk@gmail.com>, Necdet Yücel <necdetyucel@gmail.com>, İşbaran Akçayır <isbaran@gmail.com>
+
+* Chinese (China):
+
+    Careon <zzbusagain@yahoo.com.cn>, Du Baodao <centerpoint@139.com>, YunQiang Su <wzssyqa@gmail.com>
+
+* Chinese (Hongkong and Taiwan):
+
+    Shell Hung <shell@debian.org>, Walter Cheuk <wwycheuk@gmail.com>
+
 
 
 Product Templates
