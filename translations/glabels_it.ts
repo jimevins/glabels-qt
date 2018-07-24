@@ -899,10 +899,6 @@
         <translation type="unfinished">Distanza dal bordo sinistro (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">
             </translation>
@@ -915,6 +911,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Stampa foglio di prova</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1026,10 +1026,6 @@
             </translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">
             </translation>
@@ -1047,6 +1043,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Stampa foglio di prova</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

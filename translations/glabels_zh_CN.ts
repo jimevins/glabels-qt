@@ -889,10 +889,6 @@
         <translation type="unfinished">到左边界的距离 (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">水平栅距 (dx):</translation>
     </message>
@@ -903,6 +899,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">打印测试页</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1012,10 +1012,6 @@
         <translation type="unfinished">数字向下 (ny):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">数字交叉 (nx):</translation>
     </message>
@@ -1030,6 +1026,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">打印测试页</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
