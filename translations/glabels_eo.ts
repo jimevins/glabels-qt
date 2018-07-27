@@ -894,10 +894,6 @@
         <translation type="unfinished">Distanco el maldekstra rando (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">Horizontala kvanto (dx):</translation>
     </message>
@@ -908,6 +904,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Presi paĝon de elprovo</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1018,10 +1018,6 @@
         <translation type="unfinished">Numero sube (ny):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">Numero transverse (nx):</translation>
     </message>
@@ -1036,6 +1032,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Presi paĝon de elprovo</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

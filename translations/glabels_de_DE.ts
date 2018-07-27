@@ -640,62 +640,62 @@
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="65"/>
+        <location filename="../glabels/ui/PrintView.ui" line="331"/>
         <source>Page</source>
         <translation>Seite</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="79"/>
+        <location filename="../glabels/ui/PrintView.ui" line="345"/>
         <source>of</source>
         <translation>von</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="86"/>
+        <location filename="../glabels/ui/PrintView.ui" line="352"/>
         <source>nn</source>
         <translation>nn</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="143"/>
+        <location filename="../glabels/ui/PrintView.ui" line="74"/>
         <source>Copies</source>
         <translation>Kopien</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="151"/>
+        <location filename="../glabels/ui/PrintView.ui" line="101"/>
         <source>Copies:</source>
         <translation>Kopien:</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="195"/>
+        <location filename="../glabels/ui/PrintView.ui" line="141"/>
         <source>Start on position:</source>
         <translation>Beginnen bei Position:</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="209"/>
+        <location filename="../glabels/ui/PrintView.ui" line="167"/>
         <source>on 1st page</source>
         <translation>auf der ersten Seite</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="255"/>
+        <location filename="../glabels/ui/PrintView.ui" line="210"/>
         <source>Print options</source>
         <translation>Druckoptionen</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="263"/>
+        <location filename="../glabels/ui/PrintView.ui" line="218"/>
         <source>print outlines</source>
         <translation>Begrenzungen drucken</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="270"/>
+        <location filename="../glabels/ui/PrintView.ui" line="225"/>
         <source>print crop marks</source>
         <translation>Schnittmarken drucken</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="277"/>
+        <location filename="../glabels/ui/PrintView.ui" line="232"/>
         <source>print in reverse (i.e. a mirror image)</source>
         <translation>Spiegelbildlich drucken</translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PrintView.ui" line="292"/>
+        <location filename="../glabels/ui/PrintView.ui" line="253"/>
         <source>Print</source>
         <translation>Drucken</translation>
     </message>
@@ -1111,8 +1111,8 @@
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerOneLayoutPage.ui" line="82"/>
-        <source>Distance from top edge (y0);</source>
-        <translation>Abstand vom oberen Rand (y0):</translation>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerOneLayoutPage.ui" line="99"/>
@@ -1261,8 +1261,8 @@
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerTwoLayoutPage.ui" line="74"/>
-        <source>Distance from top edge (y0);</source>
-        <translation>Abstand vom oberen Rand (y0):</translation>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerTwoLayoutPage.ui" line="94"/>

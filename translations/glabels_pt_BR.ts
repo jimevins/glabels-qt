@@ -888,10 +888,6 @@
         <translation type="unfinished">Distância da borda esquerda (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">Deslocamento horizontal (dx):</translation>
     </message>
@@ -902,6 +898,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Imprime folha de teste</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1011,10 +1011,6 @@
         <translation type="unfinished">Número de linhas (ny):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">Número de colunas (nx):</translation>
     </message>
@@ -1029,6 +1025,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Imprime folha de teste</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

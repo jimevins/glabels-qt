@@ -888,10 +888,6 @@
         <translation type="unfinished">Расстояние от левого угла (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">Интервал по горизонтали (dx):</translation>
     </message>
@@ -902,6 +898,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Напечатать тестовую страницу</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1011,10 +1011,6 @@
         <translation type="unfinished">По вертикали (ny):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">По горизонтали (nx):</translation>
     </message>
@@ -1029,6 +1025,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Напечатать тестовую страницу</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
