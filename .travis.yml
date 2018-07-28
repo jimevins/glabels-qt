@@ -8,7 +8,7 @@ before_install:
     - sudo apt-get update -qq
     
 install: 
-    - sudo apt-get -y install qt59base qt59svg qt59tools zlib1g-dev xvfb
+    - sudo apt-get -y install qt59base qt59svg qt59tools qt59translations zlib1g-dev xvfb
     - source /opt/qt5*/bin/qt5*-env.sh
 
 script:
