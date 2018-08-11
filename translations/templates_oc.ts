@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="oc" sourcelanguage="en_US">
+<TS version="2.1" language="oc_FR">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished">Etiquetas d&apos;adreças</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished">Tota carta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished">Tota etiqueta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Barcode labels</source>
-        <translation type="unfinished">Etiquetas carradas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Bookplate labels</source>
@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>Business card CD labels</source>
-        <translation type="unfinished">Etiquetas CD carta de visita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Business card size labels</source>
-        <translation type="unfinished">Etiquetas CD carta de visita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished">Cartas de visita</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>CD/DVD center hub labels</source>
-        <translation type="unfinished">Etiquetas de CD/DVD</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD insert</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished">Etiquetas de CD/DVD</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished">CD/DVD o autre supòrt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Candy labels</source>
-        <translation type="unfinished">Tota etiqueta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cassette labels</source>
@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Coffee and tea labels</source>
-        <translation type="unfinished">Etiquetas circularas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Correction labels</source>
@@ -149,15 +149,15 @@
     </message>
     <message>
         <source>Digital media labels</source>
-        <translation type="unfinished">Etiquetas de disqueta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Digital video labels</source>
-        <translation type="unfinished">Etiquetas de division</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished">Etiquetas de disqueta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,11 +165,11 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished">Etiquetas ellipticas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File folder labels</source>
-        <translation type="unfinished">Etiquetas de dorsièr d&apos;archius</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File labels</source>
@@ -177,27 +177,27 @@
     </message>
     <message>
         <source>Filing labels</source>
-        <translation type="unfinished">Etiquetas de classament</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished">Etiquetas per disquetas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished">Papièr flyer</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished">Cartas de visita plegablas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished">Cartas plegablas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
-        <translation type="unfinished">Etiquetas de CD/DVD</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full-page labels</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished">Cartas de salutacions</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hanging folder labels</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished">Etiquetas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,23 +249,23 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished">Etiquetas de publipostatge</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished">Produits per publipostatge o expedicion</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Medical chart labels</source>
-        <translation type="unfinished">Etiquetas rectangularas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished">Cartas de membre</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
-        <translation type="unfinished">Etiquetas microtub</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini CD/DVD labels</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished">Etiquetas per minidisques</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -297,68 +297,71 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished">Pòrtanom</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nutritional labels</source>
-        <translation type="unfinished">Començar per l&apos;etiqueta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Paper hole reinforcement labels</source>
-        <translation type="unfinished">
-            </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished">Etiquetas per fòtos passapòrt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished">Etiquetas per fòtos</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished">Produits fòtos</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished">Cartas postalas</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished">Tapís de mirga imprimible</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished">Etiquetas rectangularas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Return address labels</source>
-        <translation type="unfinished">Etiquetas d&apos;adreça de retorn</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished">Etiquetas circularas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished">Etiquetas per cartas SD</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Seal labels</source>
-        <translation type="unfinished">Etiquetas carradas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished">Etiquetas postalas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished">Etiquetas carradas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Target stickers</source>
-        <translation type="unfinished">Pegasolets magnetics</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tent cards</source>
@@ -366,11 +369,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished">Etiquetas trapèzi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished">Etiquetas triangularas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -418,7 +421,11 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished">Etiquetas per disques Zip</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continuous label tape</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -21,6 +21,7 @@
 #include "Preview.h"
 
 #include "PreviewOverlayItem.h"
+#include "RollTemplatePath.h"
 
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsRectItem>
@@ -35,7 +36,7 @@ namespace glabels
 	//
 	namespace
 	{
-		const QColor  paperColor( 255, 255, 255 );
+		const QColor  paperColor( 242, 242, 242 );
 		const QColor  paperOutlineColor( 0, 0, 0 );
 		const double  paperOutlineWidthPixels = 1;
 
@@ -44,7 +45,7 @@ namespace glabels
 		const double  shadowRadiusPixels = 12;
 
 		const QColor  labelColor( 255, 255, 255 );
-		const QColor  labelOutlineColor( 215, 215, 215 );
+		const QColor  labelOutlineColor( 192, 192, 192 );
 		const double  labelOutlineWidthPixels = 1;
 	}
 
@@ -85,20 +86,31 @@ namespace glabels
 	{
 		mModel = mRenderer->model();
 
-		clearScene();
+		mScene->clear();
 
 		if ( mModel != nullptr )
 		{
+			auto tmplate = mModel->tmplate();
+
+			// For "Roll" templates, allow extra room to draw continuation break lines.
+			model::Distance drawHeight = mModel->tmplate()->pageHeight();
+			model::Distance drawOffset = 0;
+			if ( tmplate->isRoll() )
+			{
+				drawHeight = 1.2 * tmplate->pageHeight();
+				drawOffset = 0.1 * tmplate->pageHeight();
+			}
+			
 			// Set scene up with a 5% margin around paper
-			model::Distance x = -0.05 * mModel->tmplate()->pageWidth();
-			model::Distance y = -0.05 * mModel->tmplate()->pageHeight();
-			model::Distance w = 1.10 * mModel->tmplate()->pageWidth();
-			model::Distance h = 1.10 * mModel->tmplate()->pageHeight();
+			model::Distance x = -0.05 * tmplate->pageWidth();
+			model::Distance y = -0.05 * drawHeight - drawOffset;
+			model::Distance w = 1.10 * tmplate->pageWidth();
+			model::Distance h = 1.10 * drawHeight;
 
 			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
 			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
 
-			drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
+			drawPaper();
 			drawLabels();
 			drawPreviewOverlay();
 		}
@@ -115,22 +127,9 @@ namespace glabels
 
 
 	///
-	/// Clear View
-	///
-	void Preview::clearScene()
-	{
-		foreach ( QGraphicsItem *item, mScene->items() )
-		{
-			mScene->removeItem( item );
-			delete item;
-		}
-	}
-
-
-	///
 	/// Draw Paper
 	///
-	void Preview::drawPaper( const model::Distance& pw, const model::Distance& ph )
+	void Preview::drawPaper()
 	{
 		auto *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
@@ -142,7 +141,16 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( paperOutlineWidthPixels );
 
-		auto *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
+		QAbstractGraphicsShapeItem* pageItem;
+		auto tmplate = mModel->tmplate();
+		if ( !tmplate->isRoll() )
+		{
+			pageItem = new QGraphicsRectItem( 0, 0, tmplate->pageWidth().pt(), tmplate->pageHeight().pt() );
+		}
+		else
+		{
+			pageItem = new QGraphicsPathItem( RollTemplatePath( tmplate ) );
+		}
 		pageItem->setBrush( brush );
 		pageItem->setPen( pen );
 		pageItem->setGraphicsEffect( shadowEffect );
@@ -170,9 +178,8 @@ namespace glabels
 	///
 	void Preview::drawLabel( const model::Distance& x, const model::Distance& y, const QPainterPath& path )
 	{
-		QBrush brush( Qt::NoBrush );
+		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
-		pen.setStyle( Qt::DotLine );
 		pen.setCosmetic( true );
 		pen.setWidthF( labelOutlineWidthPixels );
 

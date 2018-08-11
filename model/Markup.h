@@ -37,7 +37,7 @@ namespace glabels
 		public:
 			virtual Markup* dup() const = 0;
 
-			const QPainterPath& path() const;
+			virtual QPainterPath path( const Frame* frame ) const;
 
 		protected:
 			QPainterPath mPath;
@@ -47,16 +47,21 @@ namespace glabels
 		class MarkupMargin : public Markup
 		{
 		public:
-			MarkupMargin( const Frame*    frame,
-			              const Distance& size );
+			MarkupMargin( const Distance& size );
 
-			Distance size() const;
+			MarkupMargin( const Distance& xSize,
+			              const Distance& ySize );
+
+			QPainterPath path( const Frame* frame ) const override;
+
+			Distance xSize() const;
+			Distance ySize() const;
 
 			Markup* dup() const override;
 
 		private:
-			const Frame* mFrame;
-			Distance  mSize;
+			Distance  mXSize;
+			Distance  mYSize;
 		};
 
 

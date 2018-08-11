@@ -26,6 +26,7 @@
 
 #include <QDomElement>
 #include <QFont>
+#include <QPainterPath>
 #include <QString>
 #include <Qt>
 #include <QTextOption>
@@ -91,6 +92,14 @@ namespace glabels
 			                                              const QString&        name,
 			                                              QTextOption::WrapMode default_value );
 
+			static Units getUnitsAttr(  const QDomElement& node,
+			                            const QString&     name,
+			                            const Units&       default_value );
+
+			static QPainterPath getPathDataAttr( const QDomElement&    node,
+			                                     const QString&        name,
+			                                     const Units&          units );
+
 
 			static void     setStringAttr( QDomElement&   node,
 			                               const QString& name,
@@ -127,6 +136,16 @@ namespace glabels
 			static void     setWrapModeAttr( QDomElement&          node,
 			                                 const QString&        name,
 			                                 QTextOption::WrapMode value );
+
+			static void     setUnitsAttr(  QDomElement&   node,
+			                               const QString& name,
+			                               const Units&   value );
+
+			static void     setPathDataAttr( QDomElement&        node,
+			                                 const QString&      name,
+			                                 const QPainterPath& value,
+			                                 const Units&        units );
+
 
 		
 		private:

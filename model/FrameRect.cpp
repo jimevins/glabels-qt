@@ -44,16 +44,7 @@ namespace glabels
 			                          mR.pt(), mR.pt() );
 		}
 
-	
-		FrameRect::FrameRect( const FrameRect &other )
-			: Frame(other),
-			  mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
-			  mYWaste(other.mYWaste), mPath(other.mPath)
-		{
-			// empty
-		}
 
-	
 		Frame* FrameRect::dup() const
 		{
 			return new FrameRect( *this );
@@ -138,18 +129,38 @@ namespace glabels
 		}
 
 
-		QPainterPath FrameRect::marginPath( const Distance& size ) const
+		QPainterPath FrameRect::marginPath( const Distance& xSize,
+		                                    const Distance& ySize ) const
 		{
-			Distance w = mW - 2*size;
-			Distance h = mH - 2*size;
-			Distance r = std::max( mR - size, Distance(0.0) );
+			Distance w = mW - 2*xSize;
+			Distance h = mH - 2*ySize;
+			Distance r = std::max( mR - std::min(xSize, ySize), Distance(0.0) );
 
 			QPainterPath path;
-			path.addRoundedRect( size.pt(), size.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
+			path.addRoundedRect( xSize.pt(), ySize.pt(), w.pt(), h.pt(), r.pt(), r.pt() );
 
 			return path;
 		}
 
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRect& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameRect{ "
+	              << frame.id() << "," 
+	              << frame.w() << "," 
+	              << frame.h() << "," 
+	              << frame.r() << "," 
+	              << frame.xWaste() << "," 
+	              << frame.yWaste() << ","
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
+
+	return dbg;
 }

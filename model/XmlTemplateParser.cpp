@@ -25,6 +25,8 @@
 #include "FrameCd.h"
 #include "FrameRound.h"
 #include "FrameEllipse.h"
+#include "FramePath.h"
+#include "FrameContinuous.h"
 #include "Layout.h"
 #include "Markup.h"
 #include "Template.h"
@@ -153,7 +155,7 @@ namespace glabels
 				QString description = XmlUtil::getI18nAttr( node, "description", "" );
 				QString paperId     = XmlUtil::getStringAttr( node, "size", "" );
 
-				if ( !Db::isPaperIdOther( paperId ) )
+				if ( Db::isPaperIdKnown( paperId ) )
 				{
 					const Paper *paper = Db::lookupPaperFromId( paperId );
 					if ( paper == nullptr )
@@ -169,8 +171,9 @@ namespace glabels
 				{
 					Distance width  = XmlUtil::getLengthAttr( node, "width", Distance(0) );
 					Distance height = XmlUtil::getLengthAttr( node, "height", Distance(0) );
+					Distance rollWidth = XmlUtil::getLengthAttr( node, "roll_width", Distance(0) );
 
-					tmplate = new Template( brand, part, description, paperId, width, height, isUserDefined );
+					tmplate = new Template( brand, part, description, paperId, width, height, rollWidth, isUserDefined );
 				}
 
 				for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
@@ -194,6 +197,14 @@ namespace glabels
 					else if ( child.toElement().tagName() == "Label-cd" )
 					{
 						parseLabelCdNode( child.toElement(), tmplate );
+					}
+					else if ( child.toElement().tagName() == "Label-path" )
+					{
+						parseLabelPathNode( child.toElement(), tmplate );
+					}
+					else if ( child.toElement().tagName() == "Label-continuous" )
+					{
+						parseLabelContinuousNode( child.toElement(), tmplate );
 					}
 					else if ( !child.isComment() )
 					{
@@ -303,6 +314,57 @@ namespace glabels
 		}
 
 
+		void XmlTemplateParser::parseLabelPathNode( const QDomElement &node, Template *tmplate )
+		{
+			QString id    = XmlUtil::getStringAttr( node, "id", "0" );
+
+			Units        dUnits = XmlUtil::getUnitsAttr( node, "d_units", Units::pc() );
+			QPainterPath d      = XmlUtil::getPathDataAttr( node, "d", dUnits );
+
+			Distance xWaste, yWaste;
+
+			Distance waste = XmlUtil::getLengthAttr( node, "waste", Distance(-1) );
+			if ( waste >= Distance(0) )
+			{
+				xWaste = waste;
+				yWaste = waste;
+			}
+			else
+			{
+				xWaste = XmlUtil::getLengthAttr( node, "x_waste", Distance(0) );
+				yWaste = XmlUtil::getLengthAttr( node, "y_waste", Distance(0) );
+			}
+
+			Frame *frame = new FramePath( d, xWaste, yWaste, dUnits, id );
+
+			parseLabelNodeCommon( node, frame );
+
+			tmplate->addFrame( frame );
+		}
+
+
+		void XmlTemplateParser::parseLabelContinuousNode( const QDomElement &node, Template *tmplate )
+		{
+			QString id = XmlUtil::getStringAttr( node, "id", "0" );
+
+			Distance w        = XmlUtil::getLengthAttr( node, "width", Distance(0) );
+			Distance h        = XmlUtil::getLengthAttr( node, "height", Distance(0) );
+			Distance hMin     = XmlUtil::getLengthAttr( node, "min_height", Distance(0) );
+			Distance hMax     = XmlUtil::getLengthAttr( node, "max_height", Distance(0) );
+			Distance hDefault = XmlUtil::getLengthAttr( node, "default_height", Distance(0) );
+
+			Frame *frame = new FrameContinuous( w, hMin, hMax, hDefault, id );
+			if ( h > Distance(0) )
+			{
+				frame->setH( h );
+			}
+
+			parseLabelNodeCommon( node, frame );
+
+			tmplate->addFrame( frame );
+		}
+
+
 		void XmlTemplateParser::parseLabelNodeCommon( const QDomElement &node, Frame *frame )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
@@ -352,15 +414,24 @@ namespace glabels
 			Distance dX = XmlUtil::getLengthAttr( node, "dx", Distance(0) );
 			Distance dY = XmlUtil::getLengthAttr( node, "dy", Distance(0) );
 
-			frame->addLayout( new Layout( nX, nY, x0, y0, dX, dY ) );
+			frame->addLayout( Layout( nX, nY, x0, y0, dX, dY ) );
 		}
 
 
 		void XmlTemplateParser::parseMarkupMarginNode( const QDomElement &node, Frame *frame )
 		{
-			Distance size = XmlUtil::getLengthAttr( node, "size", Distance(0) );
+			Distance size  = XmlUtil::getLengthAttr( node, "size", Distance(0) );
+			Distance xSize = XmlUtil::getLengthAttr( node, "x_size", Distance(0) );
+			Distance ySize = XmlUtil::getLengthAttr( node, "y_size", Distance(0) );
 
-			frame->addMarkup( new MarkupMargin( frame, size ) );
+			if ( size > Distance(0) )
+			{
+				frame->addMarkup( new MarkupMargin( size ) );
+			}
+			else
+			{
+				frame->addMarkup( new MarkupMargin( xSize, ySize ) );
+			}
 		}
 
 

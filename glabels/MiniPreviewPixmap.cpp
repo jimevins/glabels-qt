@@ -20,6 +20,8 @@
 
 #include "MiniPreviewPixmap.h"
 
+
+#include "RollTemplatePath.h"
 #include "model/Template.h"
 
 
@@ -63,16 +65,25 @@ namespace glabels
 		painter.setBackgroundMode( Qt::TransparentMode );
 		painter.setRenderHint( QPainter::Antialiasing, true );
 
+		// For "Roll" templates, allow extra room for tape width and continuation break lines
+		model::Distance drawWidth  = tmplate->pageWidth();
+		model::Distance drawHeight = tmplate->pageHeight();
+		if ( tmplate->isRoll() )
+		{
+			drawWidth   = tmplate->rollWidth();
+			drawHeight *= 1.2;
+		}
+
 		double w = width - 1;
 		double h = height - 1;
 		double scale;
-		if ( (w/tmplate->pageWidth().pt()) > (h/tmplate->pageHeight().pt()) )
+		if ( (w/drawWidth.pt()) > (h/drawHeight.pt()) )
 		{
-			scale = h / tmplate->pageHeight().pt();
+			scale = h / drawHeight.pt();
 		}
 		else
 		{
-			scale = w / tmplate->pageWidth().pt();
+			scale = w / drawWidth.pt();
 		}
 		painter.scale( scale, scale );
 
@@ -95,7 +106,15 @@ namespace glabels
 
 		painter.setBrush( brush );
 		painter.setPen( pen );
-		painter.drawRect( 0, 0, tmplate->pageWidth().pt(), tmplate->pageHeight().pt() );
+
+		if ( !tmplate->isRoll() )
+		{
+			painter.drawRect( 0, 0, tmplate->pageWidth().pt(), tmplate->pageHeight().pt() );
+		}
+		else
+		{
+			painter.drawPath( RollTemplatePath( tmplate ) );
+		}
 
 		painter.restore();
 	}

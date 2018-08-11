@@ -208,3 +208,13 @@ namespace glabels
 
 	}
 }
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::Distance& distance )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << distance.pt() << "pt";
+
+	return dbg;
+}

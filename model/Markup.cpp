@@ -26,29 +26,48 @@ namespace glabels
 	namespace model
 	{
 
-		const QPainterPath& Markup::path() const
+		QPainterPath Markup::path( const Frame* frame ) const
 		{
+			// Use cached path -- default does not depend on frame size
 			return mPath;
 		}
 
 	
-		MarkupMargin::MarkupMargin( const Frame*    frame,
-		                            const Distance& size )
-			: mFrame(frame), mSize(size)
+		MarkupMargin::MarkupMargin( const Distance& size )
+			: mXSize(size), mYSize(size)
 		{
-			mPath = frame->marginPath( size );
 		}
 	
 
+		MarkupMargin::MarkupMargin( const Distance& xSize,
+		                            const Distance& ySize )
+			: mXSize(xSize), mYSize(ySize)
+		{
+		}
+	
+
+		QPainterPath MarkupMargin::path( const Frame* frame ) const
+		{
+			// Re-calculate path -- frame size may have changed
+			return frame->marginPath( mXSize, mYSize );
+		}
+
+	
 		Markup* MarkupMargin::dup() const
 		{
-			return new MarkupMargin( mFrame, mSize );
+			return new MarkupMargin( mXSize, mYSize );
 		}
 
 
-		Distance MarkupMargin::size() const
+		Distance MarkupMargin::xSize() const
 		{
-			return mSize;
+			return mXSize;
+		}
+
+
+		Distance MarkupMargin::ySize() const
+		{
+			return mYSize;
 		}
 
 

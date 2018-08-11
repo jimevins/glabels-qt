@@ -93,15 +93,6 @@ namespace glabels
 		}
 
 
-		FrameCd::FrameCd( const FrameCd& other )
-			: Frame(other),
-			  mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
-			  mPath(other.mPath)
-		{
-			// empty
-		}
-
-	
 		Frame* FrameCd::dup() const
 		{
 			return new FrameCd( *this );
@@ -187,8 +178,12 @@ namespace glabels
 		}
 	
 
-		QPainterPath FrameCd::marginPath( const Distance& size ) const
+		QPainterPath FrameCd::marginPath( const Distance& xSize,
+		                                  const Distance& ySize ) const
 		{
+			// Note: ignore ySize, assume xSize == ySize
+			Distance size = xSize;
+			
 			Distance wReal = (mW == 0) ? 2*mR1 : mW;
 			Distance hReal = (mH == 0) ? 2*mR1 : mH;
 
@@ -218,4 +213,23 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameCd& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameCd{ "
+	              << frame.id() << "," 
+	              << frame.r1() << "," 
+	              << frame.r2() << "," 
+	              << frame.waste() << "," 
+	              << frame.w() << "," 
+	              << frame.h() << ","
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
+
+	return dbg;
 }

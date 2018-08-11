@@ -26,7 +26,9 @@ set (Model_sources
   FileUtil.cpp
   Frame.cpp
   FrameCd.cpp
+  FrameContinuous.cpp
   FrameEllipse.cpp
+  FramePath.cpp
   FrameRect.cpp
   FrameRound.cpp
   Handles.cpp

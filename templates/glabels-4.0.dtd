@@ -51,7 +51,6 @@
                               "(built-in    |
                                 gnu-barcode |
 				zint        |
-				libiec16022 |
 				libqrencode")
                                -->
 <!ENTITY % BC_STYLE_TYPE      "CDATA">
@@ -181,7 +180,7 @@
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 <!-- Template Section                                                     -->
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-<!ENTITY % label_element  "Label-rectangle | Label-round | Label-ellipse | Label-cd">
+<!ENTITY % label_element  "Label-rectangle | Label-round | Label-ellipse | Label-cd | Label-continuous">
 <!ENTITY % markup_element "Markup-margin | Markup-line | Markup-circle | Markup-rect | Markup-ellipse">
 
 <!ELEMENT Template (Meta*, (%label_element;)*)>
@@ -193,6 +192,7 @@
                  size            %STRING_TYPE;           #IMPLIED
                  width           %LENGTH_TYPE;           #IMPLIED
                  height          %LENGTH_TYPE;           #IMPLIED
+	         roll_width      %LENGTH_TYPE;           #IMPLIED
                  description     %STRING_TYPE;           #IMPLIED
                  _description    %STRING_TYPE;           #IMPLIED
 >
@@ -240,9 +240,21 @@
                  waste           %LENGTH_TYPE;           #IMPLIED
 >
 
+<!ELEMENT Label-continuous ((%markup_element;)*, Layout+)>
+<!ATTLIST Label-continuous
+                 id              %STRING_TYPE;           #REQUIRED
+                 width           %LENGTH_TYPE;           #REQUIRED
+                 min_height      %LENGTH_TYPE;           #REQUIRED
+                 max_height      %LENGTH_TYPE;           #REQUIRED
+                 default_height  %LENGTH_TYPE;           #REQUIRED
+                 height          %LENGTH_TYPE;           #IMPLIED
+>
+
 <!ELEMENT Markup-margin EMPTY>
 <!ATTLIST Markup-margin
-                 size            %LENGTH_TYPE;           #REQUIRED
+                 size            %LENGTH_TYPE;           #IMPLIED
+                 x_size          %LENGTH_TYPE;           #IMPLIED
+                 y_size          %LENGTH_TYPE;           #IMPLIED
 >
 
 <!ELEMENT Markup-line EMPTY>

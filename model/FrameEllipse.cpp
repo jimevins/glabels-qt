@@ -40,13 +40,6 @@ namespace glabels
 		}
 
 
-		FrameEllipse::FrameEllipse( const FrameEllipse& other )
-			: Frame(other), mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath)
-		{
-			// empty
-		}
-
-
 		Frame* FrameEllipse::dup() const
 		{
 			return new FrameEllipse( *this );
@@ -119,8 +112,12 @@ namespace glabels
 		}
 
 	
-		QPainterPath FrameEllipse::marginPath( const Distance& size ) const
+		QPainterPath FrameEllipse::marginPath( const Distance& xSize,
+		                                       const Distance& ySize ) const
 		{
+			// Note: ignore ySize, assume xSize == ySize
+			Distance size = xSize;
+			
 			Distance w = mW - 2*size;
 			Distance h = mH - 2*size;
 
@@ -131,4 +128,21 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameEllipse{ "
+	              << frame.id() << "," 
+	              << frame.w() << "," 
+	              << frame.h() << "," 
+	              << frame.waste() << "," 
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
+
+	return dbg;
 }

@@ -31,6 +31,7 @@ set (glabels_sources
   PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  RollTemplatePath.cpp
   SelectProductDialog.cpp
   SimplePreview.cpp
   StartupView.cpp
@@ -85,6 +86,8 @@ set (glabels_forms
   ui/TemplateDesignerRoundPage.ui
   ui/TemplateDesignerEllipsePage.ui
   ui/TemplateDesignerCdPage.ui
+  ui/TemplateDesignerPathPage.ui
+  ui/TemplateDesignerContinuousPage.ui
   ui/TemplateDesignerNLayoutsPage.ui
   ui/TemplateDesignerOneLayoutPage.ui
   ui/TemplateDesignerTwoLayoutPage.ui

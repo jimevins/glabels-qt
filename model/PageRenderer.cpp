@@ -193,6 +193,10 @@ namespace glabels
 		void PageRenderer::print( QPrinter* printer ) const
 		{
 			QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
+			if ( mModel->tmplate()->pageWidth().pt() > mModel->tmplate()->pageHeight().pt() )
+			{
+				printer->setOrientation( QPrinter::Landscape );
+			}
 			printer->setPageSize( QPageSize(pageSize, QPageSize::Point) );
 			printer->setFullPage( true );
 			printer->setPageMargins( 0, 0, 0, 0, QPrinter::Point );
@@ -338,16 +342,16 @@ namespace glabels
 				Distance w = mModel->frame()->w();
 				Distance h = mModel->frame()->h();
 
-				foreach ( Layout* layout, mModel->frame()->layouts() )
+				foreach ( const Layout& layout, mModel->frame()->layouts() )
 				{
-					Distance xMin = layout->x0();
-					Distance yMin = layout->y0();
-					Distance xMax = layout->x0() + layout->dx()*(layout->nx()-1) + w;
-					Distance yMax = layout->y0() + layout->dy()*(layout->ny()-1) + h;
+					Distance xMin = layout.x0();
+					Distance yMin = layout.y0();
+					Distance xMax = layout.x0() + layout.dx()*(layout.nx()-1) + w;
+					Distance yMax = layout.y0() + layout.dy()*(layout.ny()-1) + h;
 
-					for ( int ix = 0; ix < layout->nx(); ix++ )
+					for ( int ix = 0; ix < layout.nx(); ix++ )
 					{
-						Distance x1 = xMin + ix*layout->dx();
+						Distance x1 = xMin + ix*layout.dx();
 						Distance x2 = x1 + w;
 
 						Distance y1 = max( yMin-tickOffset, Distance::pt(0) );
@@ -362,9 +366,9 @@ namespace glabels
 						painter->drawLine( x2.pt(), y3.pt(), x2.pt(), y4.pt() );
 					}
 
-					for ( int iy = 0; iy < layout->ny(); iy++ )
+					for ( int iy = 0; iy < layout.ny(); iy++ )
 					{
-						Distance y1 = yMin + iy*layout->dy();
+						Distance y1 = yMin + iy*layout.dy();
 						Distance y2 = y1 + h;
 
 						Distance x1 = max( xMin-tickOffset, Distance::pt(0) );

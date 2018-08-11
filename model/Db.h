@@ -71,7 +71,6 @@ namespace glabels
 			static QString lookupPaperIdFromName( const QString& name );
 			static QString lookupPaperNameFromId( const QString& id );
 			static bool isPaperIdKnown( const QString& id );
-			static bool isPaperIdOther( const QString& id );
 
 			static void registerCategory( Category *category );
 			static const Category *lookupCategoryFromName( const QString& name );
@@ -133,8 +132,6 @@ namespace glabels
 			static QStringList      mVendorNames;
 
 			static QList<Template*> mTemplates;
-
-			static QString          mPaperNameOther;
 
 		};
 
