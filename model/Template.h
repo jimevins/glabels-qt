@@ -49,6 +49,7 @@ namespace glabels
 			          const QString&  paperId,
 			          const Distance& pageWidth,
 			          const Distance& pageHeight,
+			          const Distance& rollWidth = 0,
 			          bool            isUserDefined = false );
 
 			Template( const Template& other );
@@ -71,9 +72,11 @@ namespace glabels
 			QString paperId() const;
 			Distance pageWidth() const;
 			Distance pageHeight() const;
+			Distance rollWidth() const;
 			bool isSizeIso() const;
 			bool isSizeUs() const;
 			bool isSizeOther() const;
+			bool isRoll() const;
 
 			bool isUserDefined() const;
 
@@ -104,8 +107,10 @@ namespace glabels
 			QString  mPaperId;
 			Distance mPageWidth;
 			Distance mPageHeight;
+			Distance mRollWidth;
 			bool     mIsSizeIso;
 			bool     mIsSizeUs;
+			bool     mIsRoll;
 
 			bool     mIsUserDefined;
 

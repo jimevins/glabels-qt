@@ -173,6 +173,10 @@
         <source>Other</source>
         <translation type="unfinished">직접지정</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -894,10 +898,6 @@
         <translation type="unfinished">왼쪽 가장자리 부터  (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">수평 pitch (dx):</translation>
     </message>
@@ -908,6 +908,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">용지 테스트 인쇄</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1017,10 +1021,6 @@
         <translation type="unfinished">세로 개수 (ny):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">가로 개수 (nx):</translation>
     </message>
@@ -1035,6 +1035,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">용지 테스트 인쇄</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

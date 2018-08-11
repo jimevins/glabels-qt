@@ -210,7 +210,12 @@
 <context>
     <name>Db</name>
     <message>
-        <location filename="../model/Db.cpp" line="75"/>
+        <location filename="../model/Db.cpp" line="227"/>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../model/Db.cpp" line="231"/>
         <source>Other</source>
         <translation>Andere</translation>
     </message>
@@ -1111,8 +1116,8 @@
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerOneLayoutPage.ui" line="82"/>
-        <source>Distance from top edge (y0);</source>
-        <translation>Abstand vom oberen Rand (y0):</translation>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerOneLayoutPage.ui" line="99"/>
@@ -1261,8 +1266,8 @@
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerTwoLayoutPage.ui" line="74"/>
-        <source>Distance from top edge (y0);</source>
-        <translation>Abstand vom oberen Rand (y0):</translation>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerTwoLayoutPage.ui" line="94"/>
@@ -2380,7 +2385,7 @@
 <context>
     <name>glabels::SimplePreview</name>
     <message>
-        <location filename="../glabels/SimplePreview.cpp" line="238"/>
+        <location filename="../glabels/SimplePreview.cpp" line="258"/>
         <source>Up</source>
         <translation>Nach oben</translation>
     </message>

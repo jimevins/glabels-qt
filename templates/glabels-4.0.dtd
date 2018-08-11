@@ -193,6 +193,7 @@
                  size            %STRING_TYPE;           #IMPLIED
                  width           %LENGTH_TYPE;           #IMPLIED
                  height          %LENGTH_TYPE;           #IMPLIED
+	         roll_width      %LENGTH_TYPE;           #IMPLIED
                  description     %STRING_TYPE;           #IMPLIED
                  _description    %STRING_TYPE;           #IMPLIED
 >

@@ -173,6 +173,10 @@
         <source>Other</source>
         <translation type="unfinished">Altele</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -890,10 +894,6 @@
         <translation type="unfinished">Distanța de la marginea stângă (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">Înălțimea orizontală (dx):</translation>
     </message>
@@ -904,6 +904,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Tipărește foaie de test</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1014,10 +1018,6 @@
             </translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">
             </translation>
@@ -1033,6 +1033,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Tipărește foaie de test</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

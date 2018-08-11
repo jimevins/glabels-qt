@@ -173,6 +173,10 @@
         <source>Other</source>
         <translation type="unfinished">Outro</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -898,10 +902,6 @@
             </translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">Diminúe o ton da voz.</translation>
     </message>
@@ -912,6 +912,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">I_mprimir páxina de proba</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1026,10 +1030,6 @@
         <translation type="unfinished">carta cara abaixo</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">Atopouse o número do punto de interrupción %s
 </translation>
@@ -1045,6 +1045,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">I_mprimir páxina de proba</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

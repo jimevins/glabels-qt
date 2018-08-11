@@ -31,6 +31,7 @@ set (glabels_sources
   PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  RollTemplatePath.cpp
   SelectProductDialog.cpp
   SimplePreview.cpp
   StartupView.cpp

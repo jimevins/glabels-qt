@@ -7,46 +7,57 @@
    *********************************************************************
    Labels for the Brother QL-500/550/650 PC Label Printers
       
-   These templates are based on the exact media sizes and measurements
-   in version 1.1 of the 'Brother-QL-500-ptouch.ppd' file.
-
    Currently only have templates for a few of the popular sizes.
+      
+   REFERENCES:
+      
+      Brother Industries, Ltd. (October 3, 2011), "Brother QL Series
+      Command Reference (QL-500/550/560/570/580N/650TD/700/1050/1060N)",
+      http://download.brother.com/welcome/docp000678/cv_qlseries_eng_raster_600.pdf
       
    *********************************************************************
    *********************************************************************
   -->
 
-  <Template brand="Brother" part="DK-1201" size="Other" width="82pt" height="255pt" _description="Address labels">
+  <!-- ********************************************************************* -->
+  <!-- Die-cut Labels                                                        -->
+  <!-- ********************************************************************* -->
+
+  <Template brand="Brother" part="DK-1201" _description="Address labels"
+	    size="roll" roll_width="32mm" width="28.96mm" height="89.83mm" >
     <Meta category="label"/>
     <Meta category="mail"/>
-    <Label-rectangle id="0" width="82pt" height="255pt" round="4pt" x_waste="0" y_waste="0">
-      <Markup-rect x1="4.25pt" y1="8.5pt" w="73.5pt" h="238pt" r="0" />
+    <Label-rectangle id="0" width="28.96mm" height="89.83mm" round="1.5mm" x_waste="0" y_waste="0">
+      <Markup-rect x1="1.5mm" y1="3.0mm" w="25.91mm" h="83.90mm" r="0" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>
 
-  <Template brand="Brother" part="DK-1202" size="Other" width="176pt" height="283pt" _description="Shipping labels">
+  <Template brand="Brother" part="DK-1202" _description="Shipping labels"
+	    size="roll" roll_width="67mm" width="61.98mm" height="99.82mm" >
     <Meta category="label"/>
     <Meta category="mail"/>
-    <Label-rectangle id="0" width="176pt" height="283pt" round="4pt" x_waste="0" y_waste="0">
-      <Markup-rect x1="4.25pt" y1="8.5pt" w="167.5pt" h="266pt" r="0" />
+    <Label-rectangle id="0" width="61.98mm" height="99.82mm" round="1.5mm" x_waste="0" y_waste="0">
+      <Markup-rect x1="1.5mm" y1="3.0mm" w="58.93mm" h="93.90mm" r="0" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>
 
-  <Template brand="Brother" part="DK-1204" size="Other" width="48pt" height="153pt" _description="Multipurpose labels">
+  <Template brand="Brother" part="DK-1204" _description="Multipurpose labels"
+	    size="roll" roll_width="20mm" width="17.02mm" height="53.85mm" >
     <Meta category="label"/>
-    <Label-rectangle id="0" width="48pt" height="153pt" round="4pt" x_waste="0" y_waste="0">
-      <Markup-rect x1="4.25pt" y1="8.5pt" w="39.5pt" h="136pt" r="0" />
+    <Label-rectangle id="0" width="17.02mm" height="53.85mm" round="1.5mm" x_waste="0" y_waste="0">
+      <Markup-rect x1="1.5mm" y1="3.0mm" w="13.97mm" h="47.92mm" r="0" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>
 
-  <Template brand="Brother" part="DK-1208" size="Other" width="108pt" height="255pt" _description="Address labels">
+  <Template brand="Brother" part="DK-1208" _description="Address labels"
+	    size="roll" roll_width="43mm" width="38.01mm" height="89.83mm" >
     <Meta category="label"/>
     <Meta category="mail"/>
-    <Label-rectangle id="0" width="108pt" height="255pt" round="4pt" x_waste="0" y_waste="0">
-      <Markup-rect x1="4.25pt" y1="8.5pt" w="99.5pt" h="238pt" r="0" />
+    <Label-rectangle id="0" width="38.01mm" height="89.83mm" round="1.5mm" x_waste="0" y_waste="0">
+      <Markup-rect x1="1.5mm" y1="3.0mm" w="34.97mm" h="83.90mm" r="0" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>

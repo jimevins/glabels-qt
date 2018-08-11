@@ -173,6 +173,10 @@
         <source>Other</source>
         <translation type="unfinished">Øvrige</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -903,10 +907,6 @@
             </translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">
             </translation>
@@ -919,6 +919,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Skriv ut testark</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1036,10 +1040,6 @@
             </translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">
             </translation>
@@ -1057,6 +1057,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Skriv ut testark</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

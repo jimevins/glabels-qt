@@ -153,7 +153,7 @@ namespace glabels
 				QString description = XmlUtil::getI18nAttr( node, "description", "" );
 				QString paperId     = XmlUtil::getStringAttr( node, "size", "" );
 
-				if ( !Db::isPaperIdOther( paperId ) )
+				if ( Db::isPaperIdKnown( paperId ) )
 				{
 					const Paper *paper = Db::lookupPaperFromId( paperId );
 					if ( paper == nullptr )
@@ -169,8 +169,9 @@ namespace glabels
 				{
 					Distance width  = XmlUtil::getLengthAttr( node, "width", Distance(0) );
 					Distance height = XmlUtil::getLengthAttr( node, "height", Distance(0) );
+					Distance rollWidth = XmlUtil::getLengthAttr( node, "roll_width", Distance(0) );
 
-					tmplate = new Template( brand, part, description, paperId, width, height, isUserDefined );
+					tmplate = new Template( brand, part, description, paperId, width, height, rollWidth, isUserDefined );
 				}
 
 				for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )

@@ -173,6 +173,10 @@
         <source>Other</source>
         <translation type="unfinished">Друга</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -888,10 +892,6 @@
         <translation type="unfinished">Одстојање од леве ивице (x0):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">Водоравни међуразмак (dx):</translation>
     </message>
@@ -902,6 +902,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Штампај пробни лист</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1011,10 +1015,6 @@
         <translation type="unfinished">Број по висини (ny):</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">Број по ширини (nx):</translation>
     </message>
@@ -1029,6 +1029,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">Штампај пробни лист</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

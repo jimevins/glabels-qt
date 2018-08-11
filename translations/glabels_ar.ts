@@ -174,6 +174,10 @@
         <translation type="unfinished">
             </translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -910,10 +914,6 @@
         <translation type="unfinished">هامش الورقة الأيسر:</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Horizontal pitch (dx):</source>
         <translation type="unfinished">المسافة بين الأعمدة:</translation>
     </message>
@@ -924,6 +924,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">طباعة ورقة اختبار</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1036,10 +1040,6 @@
         <translation type="unfinished">عدد الملصقات في العمود:</translation>
     </message>
     <message>
-        <source>Distance from top edge (y0);</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Number across (nx):</source>
         <translation type="unfinished">عدد الملصقات في الصف:</translation>
     </message>
@@ -1054,6 +1054,10 @@
     <message>
         <source>Print test sheet</source>
         <translation type="unfinished">طباعة ورقة اختبار</translation>
+    </message>
+    <message>
+        <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

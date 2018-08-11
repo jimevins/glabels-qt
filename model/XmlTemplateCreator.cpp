@@ -91,7 +91,10 @@ namespace glabels
 				XmlUtil::setLengthAttr( node, "width", tmplate->pageWidth() );
 				XmlUtil::setLengthAttr( node, "height", tmplate->pageHeight() );
 			}
-
+			if ( tmplate->isRoll() )
+			{
+				XmlUtil::setLengthAttr( node, "roll_width", tmplate->rollWidth() );
+			}
 
 			XmlUtil::setStringAttr( node, "description", tmplate->description() );
 

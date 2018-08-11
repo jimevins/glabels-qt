@@ -36,6 +36,7 @@ namespace glabels
 		                    const QString&  paperId,
 		                    const Distance& pageWidth,
 		                    const Distance& pageHeight,
+		                    const Distance& rollWidth,
 		                    bool            isUserDefined )
 			: mBrand(brand),
 			  mPart(part),
@@ -43,6 +44,7 @@ namespace glabels
 			  mPaperId(paperId),
 			  mPageWidth(pageWidth),
 			  mPageHeight(pageHeight),
+			  mRollWidth(rollWidth),
 			  mIsUserDefined(isUserDefined),
 			  mIsSizeIso(false),
 			  mIsSizeUs(false),
@@ -56,6 +58,8 @@ namespace glabels
 				mIsSizeIso = paper->isSizeIso();
 				mIsSizeUs  = paper->isSizeUs();
 			}
+
+			mIsRoll = (paperId == "roll");
 		}
 
 
@@ -67,6 +71,7 @@ namespace glabels
 			mPaperId     = other.mPaperId;
 			mPageWidth   = other.mPageWidth;
 			mPageHeight  = other.mPageHeight;
+			mRollWidth   = other.mRollWidth;
 			mIsSizeIso   = other.mIsSizeIso;
 			mIsSizeUs    = other.mIsSizeUs;
 			mEquivPart   = other.mEquivPart;
@@ -163,6 +168,12 @@ namespace glabels
 		}
 
 	
+		Distance Template::rollWidth() const
+		{
+			return mRollWidth;
+		}
+
+	
 		bool Template::isSizeIso() const
 		{
 			return mIsSizeIso;
@@ -178,6 +189,12 @@ namespace glabels
 		bool Template::isSizeOther() const
 		{
 			return !mIsSizeIso && !mIsSizeUs;
+		}
+	
+
+		bool Template::isRoll() const
+		{
+			return mIsRoll;
 		}
 	
 
