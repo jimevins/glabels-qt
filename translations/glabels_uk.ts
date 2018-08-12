@@ -2359,7 +2359,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PrintView.cpp" line="85"/>
+        <location filename="../glabels/PrintView.cpp" line="93"/>
         <source>(Will print a total of %1 items on %2 pages.)</source>
         <translation type="unfinished"></translation>
     </message>
