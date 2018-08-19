@@ -74,6 +74,7 @@ namespace glabels
 			mRollWidth   = other.mRollWidth;
 			mIsSizeIso   = other.mIsSizeIso;
 			mIsSizeUs    = other.mIsSizeUs;
+			mIsRoll      = other.mIsRoll;
 			mEquivPart   = other.mEquivPart;
 			mName        = other.mName;
 			mProductUrl  = other.mProductUrl;

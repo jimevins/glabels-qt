@@ -168,10 +168,6 @@
         <translation>Grußkarten</translation>
     </message>
     <message>
-        <source>Hanging folder labels</source>
-        <translation>Etiketten für Hängeordner</translation>
-    </message>
-    <message>
         <source>ID labels</source>
         <translation>Etiketten für Archivierungsordner</translation>
     </message>
@@ -418,6 +414,14 @@
     <message>
         <source>Zip disc insert</source>
         <translation>Zip-Disketteneinleger</translation>
+    </message>
+    <message>
+        <source>Hanging folder labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

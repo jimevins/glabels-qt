@@ -325,6 +325,149 @@ namespace glabels
 		}
 
 
+		Units XmlUtil::getUnitsAttr( const QDomElement&    node,
+		                             const QString&        name,
+		                             const Units&          default_value )
+		{
+			init();
+
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				return Units( valueString );
+			}
+
+			return default_value;
+		}
+
+
+		QPainterPath XmlUtil::getPathDataAttr( const QDomElement&    node,
+		                                       const QString&        name,
+		                                       const Units&          units )
+		{
+			init();
+
+			QPainterPath d;
+
+			//
+			// Simple path data parser
+			//
+			QStringList tokens = node.attribute( name, "" ).split( " ", QString::SkipEmptyParts );
+
+			enum { CMD, MX, MY, MDX, MDY, LX, LY, LDX, LDY, HX, HDX, VY, VDY } state = CMD;
+			Distance x  = 0;
+			Distance y  = 0;
+			Distance dx = 0;
+			Distance dy = 0;
+			QPointF  c;
+
+			for ( unsigned int i = 0; i < tokens.size(); i++ )
+			{
+				switch (state)
+				{
+				case CMD:
+					switch (tokens[i][0].unicode())
+					{
+					case 'M':
+						state = MX;
+						break;
+					case 'm':
+						state = MDX;
+						break;
+					case 'L':
+						state = LX;
+						break;
+					case 'l':
+						state = LDX;
+						break;
+					case 'H':
+						state = HX;
+						break;
+					case 'h':
+						state = HDX;
+						break;
+					case 'V':
+						state = VY;
+						break;
+					case 'v':
+						state = VDY;
+						break;
+					case 'Z':
+					case 'z':
+						d.closeSubpath();
+						state = CMD;
+						break;
+					}
+					break;
+				case MX:
+					x = Distance( tokens[i].toDouble(), units );
+					state = MY;
+					break;
+				case MY:
+					y = Distance( tokens[i].toDouble(), units );
+					d.moveTo( x.pt(), y.pt() );
+					state = CMD;
+					break;
+				case MDX:
+					dx = Distance( tokens[i].toDouble(), units );
+					state = MDY;
+					break;
+				case MDY:
+					dy = Distance( tokens[i].toDouble(), units );
+					c = d.currentPosition();
+					d.moveTo( c.x()+x.pt(), c.y()+y.pt() );
+					state = CMD;
+					break;
+				case LX:
+					x = Distance( tokens[i].toDouble(), units );
+					state = LY;
+					break;
+				case LY:
+					y = Distance( tokens[i].toDouble(), units );
+					d.lineTo( x.pt(), y.pt() );
+					state = CMD;
+					break;
+				case LDX:
+					dx = Distance( tokens[i].toDouble(), units );
+					state = LDY;
+					break;
+				case LDY:
+					dy = Distance( tokens[i].toDouble(), units );
+					c = d.currentPosition();
+					d.lineTo( c.x()+dx.pt(), c.y()+dy.pt() );
+					state = CMD;
+					break;
+				case HX:
+					x = Distance( tokens[i].toDouble(), units );
+					c = d.currentPosition();
+					d.lineTo( x.pt(), c.y() );
+					state = CMD;
+					break;
+				case HDX:
+					dx = Distance( tokens[i].toDouble(), units );
+					c = d.currentPosition();
+					d.lineTo( c.x()+dx.pt(), c.y() );
+					state = CMD;
+					break;
+				case VY:
+					y = Distance( tokens[i].toDouble(), units );
+					c = d.currentPosition();
+					d.lineTo( c.x(), y.pt() );
+					state = CMD;
+					break;
+				case VDY:
+					dy = Distance( tokens[i].toDouble(), units );
+					c = d.currentPosition();
+					d.lineTo( c.x(), c.y()+dy.pt() );
+					state = CMD;
+					break;
+				}
+			}
+
+			return d;
+		}
+
+
 		void XmlUtil::setStringAttr( QDomElement&   node,
 		                             const QString& name,
 		                             const QString& value )
@@ -453,6 +596,51 @@ namespace glabels
 				node.setAttribute( name, "word" );
 				break;
 			}
+		}
+
+	
+		void XmlUtil::setUnitsAttr( QDomElement&   node,
+		                            const QString& name,
+		                            const Units&   value )
+		{
+			node.setAttribute( name, value.toIdString() );
+		}
+
+	
+		void XmlUtil::setPathDataAttr( QDomElement&        node,
+		                               const QString&      name,
+		                               const QPainterPath& path,
+		                               const Units&        units )
+		{
+			QString pathString;
+			for ( int i = 0; i < path.elementCount(); i++ )
+			{
+				auto element = path.elementAt( i );
+
+				// QPainterPath is natively in pts
+				Distance x = Distance::pt( element.x );
+				Distance y = Distance::pt( element.y );
+
+				// Translate desired units for path data
+				double xValue = x.inUnits( units );
+				double yValue = y.inUnits( units );
+
+				if ( element.isMoveTo() )
+				{
+					pathString.append( QString( "M %1 %2" ).arg( xValue ).arg( yValue ) );
+				}
+				else if ( element.isLineTo() )
+				{
+					pathString.append( QString( "L %1 %2" ).arg( xValue ).arg( yValue ) );
+				}
+
+				if ( i < (path.elementCount() - 1) )
+				{
+					pathString.append( " " );
+				}
+			}
+
+			node.setAttribute( name, pathString );
 		}
 
 	

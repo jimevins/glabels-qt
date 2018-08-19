@@ -193,6 +193,10 @@ namespace glabels
 		void PageRenderer::print( QPrinter* printer ) const
 		{
 			QSizeF pageSize( mModel->tmplate()->pageWidth().pt(), mModel->tmplate()->pageHeight().pt() );
+			if ( mModel->tmplate()->pageWidth().pt() > mModel->tmplate()->pageHeight().pt() )
+			{
+				printer->setOrientation( QPrinter::Landscape );
+			}
 			printer->setPageSize( QPageSize(pageSize, QPageSize::Point) );
 			printer->setFullPage( true );
 			printer->setPageMargins( 0, 0, 0, 0, QPrinter::Point );

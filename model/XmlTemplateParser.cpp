@@ -25,6 +25,7 @@
 #include "FrameCd.h"
 #include "FrameRound.h"
 #include "FrameEllipse.h"
+#include "FramePath.h"
 #include "Layout.h"
 #include "Markup.h"
 #include "Template.h"
@@ -196,6 +197,10 @@ namespace glabels
 					{
 						parseLabelCdNode( child.toElement(), tmplate );
 					}
+					else if ( child.toElement().tagName() == "Label-path" )
+					{
+						parseLabelPathNode( child.toElement(), tmplate );
+					}
 					else if ( !child.isComment() )
 					{
 						qWarning() << "Warning: bad element: "
@@ -297,6 +302,35 @@ namespace glabels
 			Distance waste = XmlUtil::getLengthAttr( node, "waste", Distance(0) );
 
 			Frame *frame = new FrameCd( r1, r2, w, h, waste, id );
+
+			parseLabelNodeCommon( node, frame );
+
+			tmplate->addFrame( frame );
+		}
+
+
+		void XmlTemplateParser::parseLabelPathNode( const QDomElement &node, Template *tmplate )
+		{
+			QString id    = XmlUtil::getStringAttr( node, "id", "0" );
+
+			Units        dUnits = XmlUtil::getUnitsAttr( node, "d_units", Units::pc() );
+			QPainterPath d      = XmlUtil::getPathDataAttr( node, "d", dUnits );
+
+			Distance xWaste, yWaste;
+
+			Distance waste = XmlUtil::getLengthAttr( node, "waste", Distance(-1) );
+			if ( waste >= Distance(0) )
+			{
+				xWaste = waste;
+				yWaste = waste;
+			}
+			else
+			{
+				xWaste = XmlUtil::getLengthAttr( node, "x_waste", Distance(0) );
+				yWaste = XmlUtil::getLengthAttr( node, "y_waste", Distance(0) );
+			}
+
+			Frame *frame = new FramePath( d, xWaste, yWaste, dUnits, id );
 
 			parseLabelNodeCommon( node, frame );
 

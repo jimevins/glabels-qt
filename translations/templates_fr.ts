@@ -212,10 +212,6 @@
         <translation type="unfinished">Cartes de salutations</translation>
     </message>
     <message>
-        <source>Hanging folder labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ID labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -418,6 +414,14 @@
     <message>
         <source>Zip disc labels</source>
         <translation type="unfinished">Étiquettes pour disques Zip</translation>
+    </message>
+    <message>
+        <source>Hanging folder labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

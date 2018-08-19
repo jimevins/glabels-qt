@@ -212,10 +212,6 @@
         <translation type="unfinished">賀卡</translation>
     </message>
     <message>
-        <source>Hanging folder labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ID labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -418,6 +414,14 @@
     <message>
         <source>Zip disc labels</source>
         <translation type="unfinished">Zip 碟標籤</translation>
+    </message>
+    <message>
+        <source>Hanging folder labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

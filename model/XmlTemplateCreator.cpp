@@ -144,6 +144,10 @@ namespace glabels
 			{
 				createLabelCdNode( parent, frameCd );
 			}
+			else if ( const auto* framePath = dynamic_cast<const FramePath*>(frame) )
+			{
+				createLabelPathNode( parent, framePath );
+			}
 			else
 			{
 				Q_ASSERT_X( false, "XmlTemplateCreator::createLabelNode", "Invalid frame type." );
@@ -215,6 +219,22 @@ namespace glabels
 			{
 				XmlUtil::setLengthAttr( node, "height",  frame->h() );
 			}
+
+			createLabelNodeCommon( node, frame );
+		}
+
+
+		void XmlTemplateCreator::createLabelPathNode( QDomElement &parent, const FramePath* frame )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Label-path" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr(   node, "id",      frame->id() );
+			XmlUtil::setLengthAttr(   node, "x_waste", frame->xWaste() );
+			XmlUtil::setLengthAttr(   node, "y_waste", frame->yWaste() );
+			XmlUtil::setUnitsAttr(    node, "d_units", frame->originalUnits() );
+			XmlUtil::setPathDataAttr( node, "d",       frame->path(), frame->originalUnits() );
 
 			createLabelNodeCommon( node, frame );
 		}

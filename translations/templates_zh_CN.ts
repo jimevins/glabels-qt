@@ -213,10 +213,6 @@
         <translation type="unfinished">会员卡</translation>
     </message>
     <message>
-        <source>Hanging folder labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ID labels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -421,6 +417,14 @@
     <message>
         <source>Zip disc labels</source>
         <translation type="unfinished">软盘标签</translation>
+    </message>
+    <message>
+        <source>Hanging folder labels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
