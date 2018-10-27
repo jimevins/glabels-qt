@@ -8,10 +8,9 @@ set (GLABELS_TS_FILES
   glabels_ar.ts
   glabels_bs.ts
   glabels_ca.ts
-  glabels_ca@valencia.ts
   glabels_cs.ts
   glabels_da.ts
-  glabels_de_DE.ts
+  glabels_de.ts
   glabels_el.ts
   glabels_en_GB.ts
   glabels_eo.ts
@@ -54,10 +53,9 @@ set (TEMPLATES_TS_FILES
   templates_ar.ts
   templates_bs.ts
   templates_ca.ts
-  templates_ca@valencia.ts
   templates_cs.ts
   templates_da.ts
-  templates_de_DE.ts
+  templates_de.ts
   templates_el.ts
   templates_en_GB.ts
   templates_eo.ts
