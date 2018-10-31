@@ -33,7 +33,7 @@ How To Contribute to gLabels
 
 ### Would you like to provide translations?
 
-* Guidelines TBD
+* Please read [TRANSLATIONS.md](TRANSLATIONS.md) located in this directory.
 
 
 ### Would you like to write documentation?
