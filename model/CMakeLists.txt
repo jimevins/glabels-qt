@@ -58,6 +58,7 @@ set (Model_sources
   XmlCategoryParser.cpp
   XmlLabelCreator.cpp
   XmlLabelParser.cpp
+  XmlLabelParser_0_4.cpp
   XmlPaperParser.cpp
   XmlTemplateCreator.cpp
   XmlTemplateParser.cpp

@@ -99,6 +99,8 @@ namespace glabels
 	}
 }
 
+QDebug operator<<(QDebug dbg, const glabels::model::Distance &dist);
+Q_DECLARE_METATYPE(glabels::model::Distance);
 
 //
 // Inline methods
