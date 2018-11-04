@@ -43,14 +43,26 @@
 #include <QtDebug>
 
 
+namespace
+{
+	enum PageIndex
+	{
+		WELCOME_PAGE_INDEX    = 0,
+		EDITOR_PAGE_INDEX     = 1,
+		PROPERTIES_PAGE_INDEX = 2,
+		MERGE_PAGE_INDEX      = 3,
+		PRINT_PAGE_INDEX      = 4,
+	};
+}
+
+
 namespace glabels
 {
 
 	///
 	/// Constructor
 	///
-	MainWindow::MainWindow()
-		: mModel(nullptr)
+	MainWindow::MainWindow() : mModel(nullptr)
 	{
 		setWindowIcon( Icons::Glabels() );
 
@@ -67,57 +79,83 @@ namespace glabels
 		QWidget* printPage = createPrintPage();
 
 		// Table of contents widget
-		mContents = new QListWidget();
-		mContents->setViewMode(QListView::ListMode);
-		mContents->setMovement(QListView::Static);
-		mContents->setSpacing(6);
-	
+		mContents = new QToolBar();
+		mContents->setOrientation( Qt::Vertical );
+		mContents->setIconSize( QSize(48,48) );
+		mContents->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                          QSizePolicy::Preferred );
+		mContents->setStyleSheet( "* { background: #CCCCCC }" );
+
+		// Table of contents button group
+		auto group = new QButtonGroup( this );
+		group->setExclusive( true );
+
 		// Pages widget
 		mPages = new QStackedWidget();
 
 		// Add "Welcome" page
 		mPages->addWidget( welcomePage );
-		mWelcomeButton = new QListWidgetItem(mContents);
-		mWelcomeButton->setText(tr("Welcome"));
-		mWelcomeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
+		mWelcomeButton = new QToolButton( this );
+		mWelcomeButton->setIcon( Icons::Glabels() );
+		mWelcomeButton->setText( tr("Welcome") );
+		mWelcomeButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mWelcomeButton->setCheckable( true );
+		mWelcomeButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                               QSizePolicy::Preferred );
+		mWelcomeAction = mContents->addWidget( mWelcomeButton );
+		group->addButton( mWelcomeButton );
+		
 		// Add "Editor" page
 		mPages->addWidget( editorPage );
-		mEditorButton = new QListWidgetItem(mContents);
-		mEditorButton->setText(tr("Edit"));
-		mEditorButton->setToolTip( tr("Select <b>Edit</b> mode") );
-		mEditorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		mEditorButton = new QToolButton( this );
+		mEditorButton->setIcon( Icons::Edit() );
+		mEditorButton->setText( tr("Edit") );
+		mEditorButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mEditorButton->setCheckable( true );
+		mEditorButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                              QSizePolicy::Preferred );
+		mEditorAction = mContents->addWidget( mEditorButton );
+		group->addButton( mEditorButton );
 
 		// Add "Properties" page
 		mPages->addWidget( propertiesPage );
-		mPropertiesButton = new QListWidgetItem(mContents);
-		mPropertiesButton->setText(tr("Properties"));
-		mPropertiesButton->setToolTip( tr("Select <b>Properties</b> mode") );
-		mPropertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		mPropertiesButton = new QToolButton( this );
+		mPropertiesButton->setIcon( Icons::Properties() );
+		mPropertiesButton->setText( tr("Properties") );
+		mPropertiesButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mPropertiesButton->setCheckable( true );
+		mPropertiesButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                                  QSizePolicy::Preferred );
+		mPropertiesAction = mContents->addWidget( mPropertiesButton );
+		group->addButton( mPropertiesButton );
 
 		// Add "Merge" page
 		mPages->addWidget( mergePage );
-		mMergeButton = new QListWidgetItem(mContents);
-		mMergeButton->setText(tr("Merge"));
-		mMergeButton->setToolTip( tr("Select <b>Merge</b> mode") );
-		mMergeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		mMergeButton = new QToolButton( this );
+		mMergeButton->setIcon( Icons::Merge() );
+		mMergeButton->setText( tr("Merge") );
+		mMergeButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mMergeButton->setCheckable( true );
+		mMergeButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                             QSizePolicy::Preferred );
+		mMergeAction = mContents->addWidget( mMergeButton );
+		group->addButton( mMergeButton );
 
 		// Add "Print" page
 		mPages->addWidget( printPage );
-		mPrintButton = new QListWidgetItem(mContents);
-		mPrintButton->setText(tr("Print"));
-		mPrintButton->setToolTip( tr("Select <b>Print</b> mode") );
-		mPrintButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
-		// Adjust width of list view based on its contents
-		mContents->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-		mContents->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-		mContents->setMinimumWidth( mContents->sizeHintForColumn(0) + 24 );
-		mContents->setMaximumWidth( mContents->sizeHintForColumn(0) + 24 );
+		mPrintButton = new QToolButton( this );
+		mPrintButton->setIcon( Icons::FilePrint() );
+		mPrintButton->setText( tr("Print") );
+		mPrintButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mPrintButton->setCheckable( true );
+		mPrintButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                             QSizePolicy::Preferred );
+		mPrintAction = mContents->addWidget( mPrintButton );
+		group->addButton( mPrintButton );
 
 		// Set initial page selection
-		mWelcomeButton->setSelected( true );
-		mPages->setCurrentIndex(mContents->row(mWelcomeButton));
+		mWelcomeButton->setChecked( true );
+		mPages->setCurrentIndex( WELCOME_PAGE_INDEX );
 
 		// Create central widget
 		QWidget *centralWidget = new QWidget();
@@ -125,17 +163,22 @@ namespace glabels
 		hLayout->setContentsMargins( 0, 0, 0, 0 );
 		hLayout->addWidget( mContents );
 		hLayout->addWidget( mPages );
+		hLayout->setStretch( 0, 0 );
+		hLayout->setStretch( 1, 1 );
 		centralWidget->setLayout( hLayout );
 		setCentralWidget( centralWidget );
 
 		setDocVerbsEnabled( false );
+		setSelectionVerbsEnabled( false );
 		setPasteVerbsEnabled( false );
 		setWelcomeMode( true );
 		setTitle();
 
 		// Connect
-		connect( mContents, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
-		         this, SLOT(changePage(QListWidgetItem*,QListWidgetItem*)));
+		connect( mEditorButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mPropertiesButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mMergeButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mPrintButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
 		connect( QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(clipboardChanged()) );
 #if 0
@@ -180,8 +223,8 @@ namespace glabels
 		mMergeView->setModel( mModel , mUndoRedoModel );
 		mPrintView->setModel( mModel );
 
-		mContents->setCurrentItem( mEditorButton );
-		mPages->setCurrentIndex(mContents->row(mEditorButton));
+		mEditorButton->setChecked( true );
+		mPages->setCurrentIndex( EDITOR_PAGE_INDEX );
 	
 		setDocVerbsEnabled( true );
 		setSelectionVerbsEnabled( false );
@@ -774,11 +817,16 @@ namespace glabels
 	///
 	void MainWindow::setWelcomeMode( bool enabled )
 	{
-		mWelcomeButton->setHidden( !enabled );
-		mPropertiesButton->setHidden( enabled );
-		mEditorButton->setHidden( enabled );
-		mMergeButton->setHidden( enabled );
-		mPrintButton->setHidden( enabled );
+		mWelcomeAction->setVisible( enabled );
+		mEditorAction->setVisible( !enabled );
+		mPropertiesAction->setVisible( !enabled );
+		mMergeAction->setVisible( !enabled );
+		mPrintAction->setVisible( !enabled );
+
+		fileShowEditorPageAction->setEnabled( !enabled && !mEditorButton->isChecked() );
+		fileShowPropertiesPageAction->setEnabled( !enabled && !mPropertiesButton->isChecked() );
+		fileShowMergePageAction->setEnabled( !enabled && !mMergeButton->isChecked() );
+		fileShowPrintPageAction->setEnabled( !enabled && !mPrintButton->isChecked() );
 	}
 
 
@@ -1005,28 +1053,50 @@ namespace glabels
 	///
 	/// Change page
 	///
-	void MainWindow::changePage(QListWidgetItem *current, QListWidgetItem *previous)
+	void MainWindow::changePage( bool checked )
 	{
-		if (!current)
+		if ( checked )
 		{
-			current = previous;
+			setWelcomeMode( false );
+			
+			if ( mEditorButton->isChecked() )
+			{
+				mPages->setCurrentIndex( EDITOR_PAGE_INDEX );
+				
+				setDocVerbsEnabled( true );
+				setSelectionVerbsEnabled( !mModel->isSelectionEmpty() );
+				setMultiSelectionVerbsEnabled( !mModel->isSelectionEmpty() &&
+				                               !mModel->isSelectionAtomic() );
+				setPasteVerbsEnabled( mModel->canPaste() );
+			}
+			else if ( mPropertiesButton->isChecked() )
+			{
+				mPages->setCurrentIndex( PROPERTIES_PAGE_INDEX );
+
+				setDocVerbsEnabled( false );
+				setSelectionVerbsEnabled( false );
+				setMultiSelectionVerbsEnabled( false );
+				setPasteVerbsEnabled( false );
+			}
+			else if ( mMergeButton->isChecked() )
+			{
+				mPages->setCurrentIndex( MERGE_PAGE_INDEX );
+
+				setDocVerbsEnabled( false );
+				setSelectionVerbsEnabled( false );
+				setMultiSelectionVerbsEnabled( false );
+				setPasteVerbsEnabled( false );
+			}
+			else if ( mPrintButton->isChecked() )
+			{
+				mPages->setCurrentIndex( PRINT_PAGE_INDEX );
+
+				setDocVerbsEnabled( false );
+				setSelectionVerbsEnabled( false );
+				setMultiSelectionVerbsEnabled( false );
+				setPasteVerbsEnabled( false );
+			}
 		}
-
-		int row = mContents->row(current);
-    
-		mPages->setCurrentIndex(row);
-		bool isEditorPage = ( row == mContents->row(mEditorButton) );
-
-		setDocVerbsEnabled( isEditorPage );
-		setSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() );
-		setMultiSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
-		setPasteVerbsEnabled( isEditorPage && mModel->canPaste() );
-
-		bool isWelcome = ( current == mWelcomeButton );
-		fileShowEditorPageAction->setEnabled( !isWelcome && (current != mEditorButton) );
-		fileShowPropertiesPageAction->setEnabled( !isWelcome && (current != mPropertiesButton) );
-		fileShowMergePageAction->setEnabled( !isWelcome && (current != mMergeButton) );
-		fileShowPrintPageAction->setEnabled( !isWelcome && (current != mPrintButton) );
 	}
 
 
@@ -1080,7 +1150,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowEditorPage()
 	{
-		mContents->setCurrentItem( mEditorButton );
+		mEditorButton->setChecked( true );
 	}
 
 
@@ -1089,7 +1159,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowPropertiesPage()
 	{
-		mContents->setCurrentItem( mPropertiesButton );
+		mPropertiesButton->setChecked( true );
 	}
 
 
@@ -1098,7 +1168,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowMergePage()
 	{
-		mContents->setCurrentItem( mMergeButton );
+		mMergeButton->setChecked( true );
 	}
 
 
@@ -1107,7 +1177,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowPrintPage()
 	{
-		mContents->setCurrentItem( mPrintButton );
+		mPrintButton->setChecked( true );
 	}
 
 

@@ -244,7 +244,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/32x32/actions/select-product.svg</normaloff>:/icons/32x32/actions/select-product.svg</iconset>
+            <normaloff>:/icons/flat/32x32/glabels-select-product.svg</normaloff>:/icons/flat/32x32/glabels-select-product.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -294,7 +294,7 @@
              </property>
              <property name="icon">
               <iconset resource="../icons.qrc">
-               <normaloff>:/icons/32x32/actions/label-orientation-horiz.svg</normaloff>:/icons/32x32/actions/label-orientation-horiz.svg</iconset>
+               <normaloff>:/icons/flat/32x32/glabels-label-orientation-horiz.svg</normaloff>:/icons/flat/32x32/glabels-label-orientation-horiz.svg</iconset>
              </property>
             </item>
             <item>
@@ -303,7 +303,7 @@
              </property>
              <property name="icon">
               <iconset resource="../icons.qrc">
-               <normaloff>:/icons/32x32/actions/label-orientation-vert.svg</normaloff>:/icons/32x32/actions/label-orientation-vert.svg</iconset>
+               <normaloff>:/icons/flat/32x32/glabels-label-orientation-vert.svg</normaloff>:/icons/flat/32x32/glabels-label-orientation-vert.svg</iconset>
              </property>
             </item>
            </widget>

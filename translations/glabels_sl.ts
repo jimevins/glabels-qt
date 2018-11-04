@@ -1149,15 +1149,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select &lt;b&gt;Edit&lt;/b&gt; mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select &lt;b&gt;Properties&lt;/b&gt; mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1165,15 +1157,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select &lt;b&gt;Merge&lt;/b&gt; mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select &lt;b&gt;Print&lt;/b&gt; mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

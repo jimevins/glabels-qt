@@ -708,82 +708,82 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="70"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="71"/>
         <source>Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="84"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="85"/>
         <source>Vendor:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="97"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="123"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="149"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="175"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="201"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="227"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="98"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="124"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="150"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="176"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="202"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="228"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="110"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="111"/>
         <source>Part #:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="136"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="137"/>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="162"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="163"/>
         <source>Page size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="188"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="189"/>
         <source>Label size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="214"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="215"/>
         <source>Layout:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="236"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="237"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select another product for this gLabels project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="242"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="243"/>
         <source>Change product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="268"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="269"/>
         <source>Orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="282"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="283"/>
         <source>Select horizontal or vertical orientation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="292"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="293"/>
         <source>Horizontal orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="301"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="302"/>
         <source>Vertical orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="324"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="325"/>
         <source>Similar Products</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1423,693 +1423,673 @@
 <context>
     <name>glabels::MainWindow</name>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="81"/>
+        <location filename="../glabels/MainWindow.cpp" line="100"/>
         <source>Welcome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="94"/>
+        <location filename="../glabels/MainWindow.cpp" line="124"/>
         <source>Properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="101"/>
+        <location filename="../glabels/MainWindow.cpp" line="136"/>
         <source>Merge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="108"/>
+        <location filename="../glabels/MainWindow.cpp" line="148"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="233"/>
-        <source>&amp;New...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="236"/>
-        <source>Create a new gLabels project</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="239"/>
-        <source>&amp;Open...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="242"/>
-        <source>Open an existing gLabels project</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="245"/>
-        <source>&amp;Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="248"/>
-        <source>Save current gLabels project</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="251"/>
-        <source>Save &amp;As...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="254"/>
-        <source>Save current gLabels project to a different name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="259"/>
-        <source>Select project Edit mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="262"/>
-        <source>P&amp;roperties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="264"/>
-        <source>Select project Properties mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="267"/>
-        <source>&amp;Merge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="269"/>
-        <source>Select project Merge mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="272"/>
-        <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="274"/>
-        <source>Select project Print mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="277"/>
-        <source>Product Template &amp;Designer...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="278"/>
-        <source>Create custom templates</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="281"/>
-        <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="284"/>
-        <source>Close the current window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="287"/>
-        <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="290"/>
-        <source>Exit glabels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="295"/>
-        <location filename="../glabels/MainWindow.cpp" line="298"/>
-        <source>Undo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="301"/>
-        <location filename="../glabels/MainWindow.cpp" line="304"/>
-        <source>Redo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="307"/>
-        <location filename="../glabels/MainWindow.cpp" line="515"/>
-        <location filename="../glabels/MainWindow.cpp" line="1164"/>
-        <source>Cut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="310"/>
-        <location filename="../glabels/MainWindow.cpp" line="517"/>
-        <source>Cut the selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="313"/>
-        <location filename="../glabels/MainWindow.cpp" line="520"/>
-        <source>&amp;Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="316"/>
-        <location filename="../glabels/MainWindow.cpp" line="522"/>
-        <source>Copy the selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="319"/>
-        <location filename="../glabels/MainWindow.cpp" line="525"/>
-        <source>&amp;Paste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="322"/>
-        <location filename="../glabels/MainWindow.cpp" line="527"/>
-        <source>Paste the clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="325"/>
-        <location filename="../glabels/MainWindow.cpp" line="530"/>
-        <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="328"/>
-        <location filename="../glabels/MainWindow.cpp" line="532"/>
-        <source>Delete the selected objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="331"/>
-        <source>Select &amp;All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="334"/>
-        <source>Select all objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="337"/>
-        <source>Un-select All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="339"/>
-        <source>Remove all selections</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="342"/>
-        <source>Preferences</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="345"/>
-        <source>Configure the application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="350"/>
-        <source>File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="352"/>
-        <source>Change visibility of file toolbar in current window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="355"/>
-        <source>Editor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="357"/>
-        <source>Change visibility of editor toolbar in current window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="361"/>
-        <source>Grid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="363"/>
-        <source>Change visibility of the grid in current window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="366"/>
-        <source>Markup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="368"/>
-        <source>Change visibility of markup lines in current window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="371"/>
-        <source>Zoom &amp;In</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="374"/>
-        <source>Increase magnification</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="377"/>
-        <source>Zoom &amp;Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="380"/>
-        <source>Decrease magnification</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="383"/>
-        <source>Zoom &amp;1 to 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="385"/>
-        <source>Restore scale to 100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="388"/>
-        <source>Zoom to &amp;Fit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="390"/>
-        <source>Set scale to fit window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="395"/>
-        <source>Select Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="397"/>
-        <source>Select, move and modify objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="400"/>
-        <source>Text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="402"/>
-        <source>Create text object</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="405"/>
-        <source>Box</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="407"/>
-        <source>Create box object</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="410"/>
-        <source>Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="412"/>
-        <source>Create line object</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="415"/>
-        <source>Ellipse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="417"/>
-        <source>Create ellipse/circle object</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="420"/>
-        <source>Image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="422"/>
-        <source>Create image object</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="425"/>
-        <source>Barcode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="427"/>
-        <source>Create barcode object</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="430"/>
-        <location filename="../glabels/MainWindow.cpp" line="1373"/>
-        <source>Bring To Front</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="432"/>
-        <source>Raise selection to top</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="435"/>
-        <location filename="../glabels/MainWindow.cpp" line="1383"/>
-        <source>Send To Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="437"/>
-        <source>Lower selection to bottom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="440"/>
-        <location filename="../glabels/MainWindow.cpp" line="1393"/>
-        <source>Rotate Left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="442"/>
-        <source>Rotate object(s) 90 degrees counter-clockwise</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="445"/>
-        <location filename="../glabels/MainWindow.cpp" line="1403"/>
-        <source>Rotate Right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="447"/>
-        <source>Rotate object(s) 90 degrees clockwise</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="450"/>
-        <location filename="../glabels/MainWindow.cpp" line="1413"/>
-        <source>Flip Horizontally</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="452"/>
-        <source>Flip object(s) horizontally</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="455"/>
-        <location filename="../glabels/MainWindow.cpp" line="1423"/>
-        <source>Flip Vertically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="457"/>
-        <source>Flip object(s) vertically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="460"/>
-        <location filename="../glabels/MainWindow.cpp" line="1433"/>
-        <source>Align Left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="462"/>
-        <source>Align objects to left edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="465"/>
-        <location filename="../glabels/MainWindow.cpp" line="1443"/>
-        <source>Align Center</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="467"/>
-        <source>Align objects to horizontal centers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="470"/>
-        <location filename="../glabels/MainWindow.cpp" line="1453"/>
-        <source>Align Right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="472"/>
-        <source>Align objects to right edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="475"/>
-        <location filename="../glabels/MainWindow.cpp" line="1463"/>
-        <source>Align Top</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="477"/>
-        <source>Align objects to top edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="480"/>
-        <location filename="../glabels/MainWindow.cpp" line="1473"/>
-        <source>Align Middle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="482"/>
-        <source>Align objects to vertical centers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="485"/>
-        <location filename="../glabels/MainWindow.cpp" line="1483"/>
-        <source>Align Bottom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="487"/>
-        <source>Align objects to bottom edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="490"/>
-        <location filename="../glabels/MainWindow.cpp" line="1493"/>
-        <source>Center Horizontally</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="492"/>
-        <source>Horizontally center objects in label</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="495"/>
-        <location filename="../glabels/MainWindow.cpp" line="1503"/>
-        <source>Center Vertically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="497"/>
-        <source>Vertically center objects in label</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="502"/>
-        <source>&amp;Contents...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="505"/>
-        <source>Open gLabels manual</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="508"/>
-        <source>&amp;About...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="510"/>
-        <source>About gLabels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="542"/>
-        <location filename="../glabels/MainWindow.cpp" line="655"/>
-        <source>&amp;File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="257"/>
-        <location filename="../glabels/MainWindow.cpp" line="558"/>
-        <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="87"/>
+        <location filename="../glabels/MainWindow.cpp" line="112"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="88"/>
-        <source>Select &lt;b&gt;Edit&lt;/b&gt; mode</source>
+        <location filename="../glabels/MainWindow.cpp" line="276"/>
+        <source>&amp;New...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="95"/>
-        <source>Select &lt;b&gt;Properties&lt;/b&gt; mode</source>
+        <location filename="../glabels/MainWindow.cpp" line="279"/>
+        <source>Create a new gLabels project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="102"/>
-        <source>Select &lt;b&gt;Merge&lt;/b&gt; mode</source>
+        <location filename="../glabels/MainWindow.cpp" line="282"/>
+        <source>&amp;Open...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="109"/>
-        <source>Select &lt;b&gt;Print&lt;/b&gt; mode</source>
+        <location filename="../glabels/MainWindow.cpp" line="285"/>
+        <source>Open an existing gLabels project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="572"/>
-        <source>&amp;View</source>
+        <location filename="../glabels/MainWindow.cpp" line="288"/>
+        <source>&amp;Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../glabels/MainWindow.cpp" line="291"/>
+        <source>Save current gLabels project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="294"/>
+        <source>Save &amp;As...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="297"/>
+        <source>Save current gLabels project to a different name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="300"/>
+        <location filename="../glabels/MainWindow.cpp" line="601"/>
+        <source>&amp;Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="302"/>
+        <source>Select project Edit mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="305"/>
+        <source>P&amp;roperties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="307"/>
+        <source>Select project Properties mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="310"/>
+        <source>&amp;Merge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="312"/>
+        <source>Select project Merge mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="315"/>
+        <source>&amp;Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="317"/>
+        <source>Select project Print mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="320"/>
+        <source>Product Template &amp;Designer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="321"/>
+        <source>Create custom templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="324"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="327"/>
+        <source>Close the current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="330"/>
+        <source>E&amp;xit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="333"/>
+        <source>Exit glabels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="338"/>
+        <location filename="../glabels/MainWindow.cpp" line="341"/>
+        <source>Undo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="344"/>
+        <location filename="../glabels/MainWindow.cpp" line="347"/>
+        <source>Redo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="350"/>
+        <location filename="../glabels/MainWindow.cpp" line="558"/>
+        <location filename="../glabels/MainWindow.cpp" line="1234"/>
+        <source>Cut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="353"/>
+        <location filename="../glabels/MainWindow.cpp" line="560"/>
+        <source>Cut the selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="356"/>
+        <location filename="../glabels/MainWindow.cpp" line="563"/>
+        <source>&amp;Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="359"/>
+        <location filename="../glabels/MainWindow.cpp" line="565"/>
+        <source>Copy the selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="362"/>
+        <location filename="../glabels/MainWindow.cpp" line="568"/>
+        <source>&amp;Paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="365"/>
+        <location filename="../glabels/MainWindow.cpp" line="570"/>
+        <source>Paste the clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="368"/>
         <location filename="../glabels/MainWindow.cpp" line="573"/>
-        <source>Toolbars</source>
+        <source>&amp;Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="371"/>
+        <location filename="../glabels/MainWindow.cpp" line="575"/>
+        <source>Delete the selected objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="374"/>
+        <source>Select &amp;All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="377"/>
+        <source>Select all objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="380"/>
+        <source>Un-select All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="382"/>
+        <source>Remove all selections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="385"/>
+        <source>Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="388"/>
+        <source>Configure the application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="393"/>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="395"/>
+        <source>Change visibility of file toolbar in current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="398"/>
+        <source>Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="400"/>
+        <source>Change visibility of editor toolbar in current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="404"/>
+        <source>Grid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="406"/>
+        <source>Change visibility of the grid in current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="409"/>
+        <source>Markup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="411"/>
+        <source>Change visibility of markup lines in current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="414"/>
+        <source>Zoom &amp;In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="417"/>
+        <source>Increase magnification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="420"/>
+        <source>Zoom &amp;Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="423"/>
+        <source>Decrease magnification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="426"/>
+        <source>Zoom &amp;1 to 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="428"/>
+        <source>Restore scale to 100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="431"/>
+        <source>Zoom to &amp;Fit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="433"/>
+        <source>Set scale to fit window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="438"/>
+        <source>Select Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="440"/>
+        <source>Select, move and modify objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="443"/>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="445"/>
+        <source>Create text object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="448"/>
+        <source>Box</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="450"/>
+        <source>Create box object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="453"/>
+        <source>Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="455"/>
+        <source>Create line object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="458"/>
+        <source>Ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="460"/>
+        <source>Create ellipse/circle object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="463"/>
+        <source>Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="465"/>
+        <source>Create image object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="468"/>
+        <source>Barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="470"/>
+        <source>Create barcode object</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="473"/>
+        <location filename="../glabels/MainWindow.cpp" line="1443"/>
+        <source>Bring To Front</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="475"/>
+        <source>Raise selection to top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="478"/>
+        <location filename="../glabels/MainWindow.cpp" line="1453"/>
+        <source>Send To Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="480"/>
+        <source>Lower selection to bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="483"/>
+        <location filename="../glabels/MainWindow.cpp" line="1463"/>
+        <source>Rotate Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="485"/>
+        <source>Rotate object(s) 90 degrees counter-clockwise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="488"/>
+        <location filename="../glabels/MainWindow.cpp" line="1473"/>
+        <source>Rotate Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="490"/>
+        <source>Rotate object(s) 90 degrees clockwise</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="493"/>
+        <location filename="../glabels/MainWindow.cpp" line="1483"/>
+        <source>Flip Horizontally</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="495"/>
+        <source>Flip object(s) horizontally</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="498"/>
+        <location filename="../glabels/MainWindow.cpp" line="1493"/>
+        <source>Flip Vertically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="500"/>
+        <source>Flip object(s) vertically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="503"/>
+        <location filename="../glabels/MainWindow.cpp" line="1503"/>
+        <source>Align Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="505"/>
+        <source>Align objects to left edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="508"/>
+        <location filename="../glabels/MainWindow.cpp" line="1513"/>
+        <source>Align Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="510"/>
+        <source>Align objects to horizontal centers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="513"/>
+        <location filename="../glabels/MainWindow.cpp" line="1523"/>
+        <source>Align Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="515"/>
+        <source>Align objects to right edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="518"/>
+        <location filename="../glabels/MainWindow.cpp" line="1533"/>
+        <source>Align Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="520"/>
+        <source>Align objects to top edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="523"/>
+        <location filename="../glabels/MainWindow.cpp" line="1543"/>
+        <source>Align Middle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="525"/>
+        <source>Align objects to vertical centers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="528"/>
+        <location filename="../glabels/MainWindow.cpp" line="1553"/>
+        <source>Align Bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="530"/>
+        <source>Align objects to bottom edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="533"/>
+        <location filename="../glabels/MainWindow.cpp" line="1563"/>
+        <source>Center Horizontally</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="535"/>
+        <source>Horizontally center objects in label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="538"/>
+        <location filename="../glabels/MainWindow.cpp" line="1573"/>
+        <source>Center Vertically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="540"/>
+        <source>Vertically center objects in label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="545"/>
+        <source>&amp;Contents...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="548"/>
+        <source>Open gLabels manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="551"/>
+        <source>&amp;About...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="553"/>
+        <source>About gLabels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="585"/>
-        <source>&amp;Objects</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="587"/>
-        <source>&amp;Create</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="595"/>
-        <location filename="../glabels/MainWindow.cpp" line="620"/>
-        <source>&amp;Order</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="598"/>
-        <location filename="../glabels/MainWindow.cpp" line="623"/>
-        <source>&amp;Rotate/Flip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="603"/>
-        <location filename="../glabels/MainWindow.cpp" line="628"/>
-        <source>&amp;Alignment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../glabels/MainWindow.cpp" line="611"/>
-        <location filename="../glabels/MainWindow.cpp" line="636"/>
-        <source>Center</source>
+        <location filename="../glabels/MainWindow.cpp" line="698"/>
+        <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../glabels/MainWindow.cpp" line="615"/>
+        <source>&amp;View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="616"/>
+        <source>Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="628"/>
+        <source>&amp;Objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="630"/>
+        <source>&amp;Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="638"/>
+        <location filename="../glabels/MainWindow.cpp" line="663"/>
+        <source>&amp;Order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="641"/>
+        <location filename="../glabels/MainWindow.cpp" line="666"/>
+        <source>&amp;Rotate/Flip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="646"/>
+        <location filename="../glabels/MainWindow.cpp" line="671"/>
+        <source>&amp;Alignment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="654"/>
+        <location filename="../glabels/MainWindow.cpp" line="679"/>
+        <source>Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/MainWindow.cpp" line="658"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="664"/>
+        <location filename="../glabels/MainWindow.cpp" line="707"/>
         <source>&amp;Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="908"/>
+        <location filename="../glabels/MainWindow.cpp" line="956"/>
         <source>(modified)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="971"/>
+        <location filename="../glabels/MainWindow.cpp" line="1019"/>
         <source>Save changes to project &quot;%1&quot; before closing?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="972"/>
+        <location filename="../glabels/MainWindow.cpp" line="1020"/>
         <source>Your changes will be lost if you don&apos;t save them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="975"/>
+        <location filename="../glabels/MainWindow.cpp" line="1023"/>
         <source>Save project?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1184"/>
+        <location filename="../glabels/MainWindow.cpp" line="1254"/>
         <source>Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1194"/>
+        <location filename="../glabels/MainWindow.cpp" line="1264"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1313"/>
+        <location filename="../glabels/MainWindow.cpp" line="1383"/>
         <source>Create Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1323"/>
+        <location filename="../glabels/MainWindow.cpp" line="1393"/>
         <source>Create Box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1333"/>
+        <location filename="../glabels/MainWindow.cpp" line="1403"/>
         <source>Create Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1343"/>
+        <location filename="../glabels/MainWindow.cpp" line="1413"/>
         <source>Create Ellipse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1353"/>
+        <location filename="../glabels/MainWindow.cpp" line="1423"/>
         <source>Create Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/MainWindow.cpp" line="1363"/>
+        <location filename="../glabels/MainWindow.cpp" line="1433"/>
         <source>Create Barcode</source>
         <translation type="unfinished"></translation>
     </message>

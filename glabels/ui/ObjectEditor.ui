@@ -46,7 +46,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/icons/24x24/actions/glabels-object-properties.png</pixmap>
+        <pixmap>:/icons/flat/24x24/glabels-object-properties.png</pixmap>
        </property>
       </widget>
      </item>
@@ -107,7 +107,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-align-text-left.svg</normaloff>:/icons/22x22/actions/glabels-align-text-left.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-align-text-left.svg</normaloff>:/icons/flat/22x22/glabels-align-text-left.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -133,7 +133,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-align-text-center.svg</normaloff>:/icons/22x22/actions/glabels-align-text-center.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-align-text-center.svg</normaloff>:/icons/flat/22x22/glabels-align-text-center.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -156,7 +156,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-align-text-right.svg</normaloff>:/icons/22x22/actions/glabels-align-text-right.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-align-text-right.svg</normaloff>:/icons/flat/22x22/glabels-align-text-right.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -186,7 +186,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-valign-text-top.svg</normaloff>:/icons/22x22/actions/glabels-valign-text-top.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-valign-text-top.svg</normaloff>:/icons/flat/22x22/glabels-valign-text-top.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -212,7 +212,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-valign-text-middle.svg</normaloff>:/icons/22x22/actions/glabels-valign-text-middle.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-valign-text-middle.svg</normaloff>:/icons/flat/22x22/glabels-valign-text-middle.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -235,7 +235,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-valign-text-bottom.svg</normaloff>:/icons/22x22/actions/glabels-valign-text-bottom.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-valign-text-bottom.svg</normaloff>:/icons/flat/22x22/glabels-valign-text-bottom.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -389,7 +389,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-format-text-bold.svg</normaloff>:/icons/22x22/actions/glabels-format-text-bold.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-format-text-bold.svg</normaloff>:/icons/flat/22x22/glabels-format-text-bold.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -412,7 +412,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-format-text-italic.svg</normaloff>:/icons/22x22/actions/glabels-format-text-italic.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-format-text-italic.svg</normaloff>:/icons/flat/22x22/glabels-format-text-italic.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -432,7 +432,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/22x22/actions/glabels-format-text-underline.svg</normaloff>:/icons/22x22/actions/glabels-format-text-underline.svg</iconset>
+                  <normaloff>:/icons/flat/22x22/glabels-format-text-underline.svg</normaloff>:/icons/flat/22x22/glabels-format-text-underline.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
