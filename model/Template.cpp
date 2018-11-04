@@ -43,7 +43,6 @@ namespace glabels
 			  mPaperId(paperId),
 			  mPageWidth(pageWidth),
 			  mPageHeight(pageHeight),
-			  mIsUserDefined(isUserDefined),
 			  mIsSizeIso(false),
 			  mIsSizeUs(false),
 			  mName("")

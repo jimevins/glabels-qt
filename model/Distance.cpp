@@ -208,3 +208,9 @@ namespace glabels
 
 	}
 }
+QDebug operator<<(QDebug dbg, const glabels::model::Distance &dist)
+{
+    QDebugStateSaver saver(dbg);
+    dbg.nospace() << dist.toString(glabels::model::Units::Enum::MM);
+    return dbg.maybeSpace();
+}
