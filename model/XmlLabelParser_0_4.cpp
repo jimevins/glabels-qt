@@ -17,7 +17,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <arpa/inet.h>
 #include "XmlLabelParser_0_4.h"
 
 #include "Model.h"
