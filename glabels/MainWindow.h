@@ -173,12 +173,7 @@ namespace glabels
 		QWidget* createMergePage();
 		QWidget* createPrintPage();
 
-		void setWelcomeMode( bool );
-		void setDocVerbsEnabled( bool );
-		void setDocModifiedVerbsEnabled( bool );
-		void setPasteVerbsEnabled( bool );
-		void setSelectionVerbsEnabled( bool );
-		void setMultiSelectionVerbsEnabled( bool );
+		void manageActions();
 
 		void setTitle();
 

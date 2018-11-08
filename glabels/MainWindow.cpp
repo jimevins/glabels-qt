@@ -168,10 +168,7 @@ namespace glabels
 		centralWidget->setLayout( hLayout );
 		setCentralWidget( centralWidget );
 
-		setDocVerbsEnabled( false );
-		setSelectionVerbsEnabled( false );
-		setPasteVerbsEnabled( false );
-		setWelcomeMode( true );
+		manageActions();
 		setTitle();
 
 		// Connect
@@ -226,10 +223,7 @@ namespace glabels
 		mEditorButton->setChecked( true );
 		mPages->setCurrentIndex( EDITOR_PAGE_INDEX );
 	
-		setDocVerbsEnabled( true );
-		setSelectionVerbsEnabled( false );
-		setMultiSelectionVerbsEnabled( false );
-		setWelcomeMode( false );
+		manageActions();
 		setTitle();
 
 		connect( mLabelEditor, SIGNAL(contextMenuActivate()), this, SLOT(onContextMenuActivate()) );
@@ -813,130 +807,103 @@ namespace glabels
 
 
 	///
-	/// Set enabled state of TOC buttons based on Welcome mode
+	/// Manage enabled/visibility state of actions
 	///
-	void MainWindow::setWelcomeMode( bool enabled )
+	void MainWindow::manageActions()
 	{
-		mWelcomeAction->setVisible( enabled );
-		mEditorAction->setVisible( !enabled );
-		mPropertiesAction->setVisible( !enabled );
-		mMergeAction->setVisible( !enabled );
-		mPrintAction->setVisible( !enabled );
+		// Do we have a model?
+		bool hasModel      = mModel != nullptr;
 
-		fileShowEditorPageAction->setEnabled( !enabled && !mEditorButton->isChecked() );
-		fileShowPropertiesPageAction->setEnabled( !enabled && !mPropertiesButton->isChecked() );
-		fileShowMergePageAction->setEnabled( !enabled && !mMergeButton->isChecked() );
-		fileShowPrintPageAction->setEnabled( !enabled && !mPrintButton->isChecked() );
-	}
+		// Which page is currently active?
+		bool isWelcomePage    = mWelcomeButton->isChecked();
+		bool isEditorPage     = mEditorButton->isChecked();
+		bool isPropertiesPage = mPropertiesButton->isChecked();
+		bool isMergePage      = mMergeButton->isChecked();
+		bool isPrintPage      = mPrintButton->isChecked();
 
+		// What is the current selection state?
+		bool hasSelection = hasModel && !mModel->isSelectionEmpty();
+		bool hasMultiSelection = hasSelection && !mModel->isSelectionAtomic();
+		bool canPaste = hasModel && mModel->canPaste();
+		
+		// Toggle visibility of TOC buttons based on welcome mode
+		mWelcomeAction->setVisible( isWelcomePage );
+		mEditorAction->setVisible( !isWelcomePage );
+		mPropertiesAction->setVisible( !isWelcomePage );
+		mMergeAction->setVisible( !isWelcomePage );
+		mPrintAction->setVisible( !isWelcomePage );
 
-	///
-	/// Set enabled state of actions associated with a document.
-	///
-	void MainWindow::setDocVerbsEnabled( bool enabled )
-	{
-		fileSaveAction->setEnabled( mModel && mModel->isModified() );
-		fileSaveAsAction->setEnabled( mModel );
-		editUndoAction->setEnabled( enabled && mUndoRedoModel->canUndo() );
-		editRedoAction->setEnabled( enabled && mUndoRedoModel->canRedo() );
-		editDeleteAction->setEnabled( enabled );
-		editSelectAllAction->setEnabled( enabled );
-		editUnSelectAllAction->setEnabled( enabled );
-		viewZoomInAction->setEnabled( enabled );
-		viewZoomOutAction->setEnabled( enabled );
-		viewZoom1To1Action->setEnabled( enabled );
-		viewZoomToFitAction->setEnabled( enabled );
-		viewGridAction->setEnabled( enabled );
-		viewMarkupAction->setEnabled( enabled );
-		objectsArrowModeAction->setEnabled( enabled );
-		objectsCreateMenu->setEnabled( enabled );
-		objectsCreateTextAction->setEnabled( enabled );
-		objectsCreateLineAction->setEnabled( enabled );
-		objectsCreateBoxAction->setEnabled( enabled );
-		objectsCreateEllipseAction->setEnabled( enabled );
-		objectsCreateImageAction->setEnabled( enabled );
-		objectsCreateBarcodeAction->setEnabled( enabled );
-		objectsOrderMenu->setEnabled( enabled );
-		objectsOrderRaiseAction->setEnabled( enabled );
-		objectsOrderLowerAction->setEnabled( enabled );
-		objectsXformMenu->setEnabled( enabled );
-		objectsXformRotateLeftAction->setEnabled( enabled );
-		objectsXformRotateRightAction->setEnabled( enabled );
-		objectsXformFlipHorizAction->setEnabled( enabled );
-		objectsXformFlipVertAction->setEnabled( enabled );
-		objectsAlignMenu->setEnabled( enabled );
-		objectsAlignLeftAction->setEnabled( enabled );
-		objectsAlignRightAction->setEnabled( enabled );
-		objectsAlignHCenterAction->setEnabled( enabled );
-		objectsAlignTopAction->setEnabled( enabled );
-		objectsAlignBottomAction->setEnabled( enabled );
-		objectsAlignVCenterAction->setEnabled( enabled );
-		objectsCenterMenu->setEnabled( enabled );
-		objectsCenterHorizAction->setEnabled( enabled );
-		objectsCenterVertAction->setEnabled( enabled );
-	}
+		// File actions
+		fileNewAction->setEnabled( true );
+		fileOpenAction->setEnabled( true );
+		fileSaveAction->setEnabled( hasModel && mModel->isModified() );
+		fileSaveAsAction->setEnabled( hasModel );
+		fileShowEditorPageAction->setEnabled( !isWelcomePage && !isEditorPage );
+		fileShowPropertiesPageAction->setEnabled( !isWelcomePage && !isPropertiesPage );
+		fileShowMergePageAction->setEnabled( !isWelcomePage && !isMergePage );
+		fileShowPrintPageAction->setEnabled( !isWelcomePage && !isPrintPage );
+		fileTemplateDesignerAction->setEnabled( true );
+		fileCloseAction->setEnabled( true );
+		fileExitAction->setEnabled( true );
 
+		// Edit actions
+		editUndoAction->setEnabled( hasModel && mUndoRedoModel->canUndo() );
+		editRedoAction->setEnabled( hasModel && mUndoRedoModel->canRedo() );
+		editCutAction->setEnabled( isEditorPage && hasSelection );
+		editCopyAction->setEnabled( isEditorPage && hasSelection );
+		editPasteAction->setEnabled( isEditorPage && canPaste );
+		editDeleteAction->setEnabled( isEditorPage && hasSelection );
+		editSelectAllAction->setEnabled( isEditorPage );
+		editUnSelectAllAction->setEnabled( isEditorPage && hasSelection );
+		editPreferencesAction->setEnabled( true );
 
-	///
-	/// Set enabled state of actions associated with a document being modified since last save.
-	///
-	void MainWindow::setDocModifiedVerbsEnabled( bool enabled )
-	{
-		fileSaveAction->setEnabled( enabled );
-	}
+		// View actions
+		viewFileToolBarAction->setEnabled( true );
+		viewEditorToolBarAction->setEnabled( true );
+		viewGridAction->setEnabled( isEditorPage );
+		viewMarkupAction->setEnabled( isEditorPage );
+		viewZoomInAction->setEnabled( isEditorPage );
+		viewZoomOutAction->setEnabled( isEditorPage );
+		viewZoom1To1Action->setEnabled( isEditorPage );
+		viewZoomToFitAction->setEnabled( isEditorPage );
 
+		// Object actions
+		objectsArrowModeAction->setEnabled( isEditorPage );
+		objectsCreateMenu->setEnabled( isEditorPage );
+		objectsCreateTextAction->setEnabled( isEditorPage );
+		objectsCreateLineAction->setEnabled( isEditorPage );
+		objectsCreateBoxAction->setEnabled( isEditorPage );
+		objectsCreateEllipseAction->setEnabled( isEditorPage );
+		objectsCreateImageAction->setEnabled( isEditorPage );
+		objectsCreateBarcodeAction->setEnabled( isEditorPage );
+		objectsOrderMenu->setEnabled( isEditorPage && hasSelection );
+		objectsOrderRaiseAction->setEnabled( isEditorPage && hasSelection );
+		objectsOrderLowerAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformMenu->setEnabled( isEditorPage && hasSelection );
+		objectsXformRotateLeftAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformRotateRightAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformFlipHorizAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformFlipVertAction->setEnabled( isEditorPage && hasSelection );
+		objectsAlignMenu->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignLeftAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignRightAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignHCenterAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignTopAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignBottomAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignVCenterAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsCenterMenu->setEnabled( isEditorPage && hasSelection );
+		objectsCenterHorizAction->setEnabled( isEditorPage && hasSelection );
+		objectsCenterVertAction->setEnabled( isEditorPage && hasSelection );
 
-	///
-	/// Set enabled state of actions associated with data being available on clipboard.
-	///
-	void MainWindow::setPasteVerbsEnabled( bool enabled )
-	{
-		editPasteAction->setEnabled( enabled );
-		contextPasteAction->setEnabled( enabled );
-	}
+		// Help actions
+		helpContentsAction->setEnabled( true );
+		helpAboutAction->setEnabled( true );
 
-
-	///
-	/// Set enabled state of actions associated with a non-empty selection.
-	///
-	void MainWindow::setSelectionVerbsEnabled( bool enabled )
-	{
-		editCutAction->setEnabled( enabled );
-		editCopyAction->setEnabled( enabled );
-		editDeleteAction->setEnabled( enabled );
-		editUnSelectAllAction->setEnabled( enabled );
-		objectsOrderMenu->setEnabled( enabled );
-		objectsOrderRaiseAction->setEnabled( enabled );
-		objectsOrderLowerAction->setEnabled( enabled );
-		objectsXformMenu->setEnabled( enabled );
-		objectsXformRotateLeftAction->setEnabled( enabled );
-		objectsXformRotateRightAction->setEnabled( enabled );
-		objectsXformFlipHorizAction->setEnabled( enabled );
-		objectsXformFlipVertAction->setEnabled( enabled );
-		objectsCenterMenu->setEnabled( enabled );
-		objectsCenterHorizAction->setEnabled( enabled );
-		objectsCenterVertAction->setEnabled( enabled );
-
-		contextOrderMenu->setEnabled( enabled );
-		contextXformMenu->setEnabled( enabled );
-		contextCenterMenu->setEnabled( enabled );
-	}
-
-
-	///
-	/// Set enabled state of actions associated with a non-atomic selection.
-	///
-	void MainWindow::setMultiSelectionVerbsEnabled( bool enabled )
-	{
-		objectsAlignMenu->setEnabled( enabled );
-		objectsAlignLeftAction->setEnabled( enabled );
-		objectsAlignRightAction->setEnabled( enabled );
-		objectsAlignHCenterAction->setEnabled( enabled );
-		objectsAlignTopAction->setEnabled( enabled );
-		objectsAlignBottomAction->setEnabled( enabled );
-		objectsAlignVCenterAction->setEnabled( enabled );
-
-		contextAlignMenu->setEnabled( enabled );
+		// Special context actions
+		contextCutAction->setEnabled( isEditorPage && hasSelection );
+		contextCopyAction->setEnabled( isEditorPage && hasSelection );
+		contextPasteAction->setEnabled( isEditorPage && canPaste );
+		contextDeleteAction->setEnabled( isEditorPage && hasSelection );
 	}
 
 
@@ -1057,45 +1024,24 @@ namespace glabels
 	{
 		if ( checked )
 		{
-			setWelcomeMode( false );
-			
 			if ( mEditorButton->isChecked() )
 			{
 				mPages->setCurrentIndex( EDITOR_PAGE_INDEX );
-				
-				setDocVerbsEnabled( true );
-				setSelectionVerbsEnabled( !mModel->isSelectionEmpty() );
-				setMultiSelectionVerbsEnabled( !mModel->isSelectionEmpty() &&
-				                               !mModel->isSelectionAtomic() );
-				setPasteVerbsEnabled( mModel->canPaste() );
 			}
 			else if ( mPropertiesButton->isChecked() )
 			{
 				mPages->setCurrentIndex( PROPERTIES_PAGE_INDEX );
-
-				setDocVerbsEnabled( false );
-				setSelectionVerbsEnabled( false );
-				setMultiSelectionVerbsEnabled( false );
-				setPasteVerbsEnabled( false );
 			}
 			else if ( mMergeButton->isChecked() )
 			{
 				mPages->setCurrentIndex( MERGE_PAGE_INDEX );
-
-				setDocVerbsEnabled( false );
-				setSelectionVerbsEnabled( false );
-				setMultiSelectionVerbsEnabled( false );
-				setPasteVerbsEnabled( false );
 			}
 			else if ( mPrintButton->isChecked() )
 			{
 				mPages->setCurrentIndex( PRINT_PAGE_INDEX );
-
-				setDocVerbsEnabled( false );
-				setSelectionVerbsEnabled( false );
-				setMultiSelectionVerbsEnabled( false );
-				setPasteVerbsEnabled( false );
 			}
+
+			manageActions();
 		}
 	}
 
@@ -1105,7 +1051,7 @@ namespace glabels
 	///
 	void MainWindow::clipboardChanged()
 	{
-		setPasteVerbsEnabled( mModel->canPaste() );
+		manageActions();
 	}
 
 
@@ -1654,8 +1600,8 @@ namespace glabels
 	///
 	void MainWindow::onModifiedChanged()
 	{
+		manageActions();
 		setTitle();
-		setDocModifiedVerbsEnabled( mModel->isModified() );
 	}
 
 
@@ -1664,8 +1610,7 @@ namespace glabels
 	///
 	void MainWindow::onSelectionChanged()
 	{
-		setSelectionVerbsEnabled( !mModel->isSelectionEmpty() );
-		setMultiSelectionVerbsEnabled( !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
+		manageActions();
 	}
 
 
@@ -1683,8 +1628,7 @@ namespace glabels
 	///
 	void MainWindow::onUndoRedoChanged()
 	{
-		editUndoAction->setEnabled( mUndoRedoModel->canUndo() );
-		editRedoAction->setEnabled( mUndoRedoModel->canRedo() );
+		manageActions();
 	}
 
 } // namespace glabels
