@@ -54,3 +54,10 @@ How To Contribute to gLabels
 * Ideally, such builds can be integrated into the current CMake/CPack build system and automated using a CI service.
 
 
+### Would you like to donate money?
+
+I would prefer not to take donations at this time. Please donate to another worthwhile organization.
+
+gLabels is a personal project which I work on intermittently, when the itch drives me. I like to walk away occasionally
+for extended periods of time. Accepting donations would turn this into an obligation and it would no longer be fun -- at
+least that is how I would feel, even if it wasn't necessarily true.
