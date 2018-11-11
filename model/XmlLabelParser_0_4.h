@@ -22,14 +22,14 @@
 #define model_XmlLabelParser_0_4_h
 
 
-#include <QObject>
 #include <QDomElement>
 #include <QFont>
+#include <QObject>
 #include <QTextOption>
 
 namespace glabels
 {
-        namespace model
+	namespace model
 	{
 
 		// Forward references
@@ -43,20 +43,20 @@ namespace glabels
 		class ModelTextObject;
 		class DataCache;
 
-                const QString XmlNameSpace = "http://glabels.org/xmlns/3.0/";
+		const QString XmlNameSpace = "http://glabels.org/xmlns/3.0/";
 
 		///
 		/// XmlLabelParser
 		///
-                class XmlLabelParser_0_4
-                {
+		class XmlLabelParser_0_4
+		{
 
 		public:
 			static Model* parseRootNode( const QDomElement &node );
 
-                private:
+		private:
 
-                        static QList<ModelObject*> parseObjectsNode( const QDomElement &node, const DataCache& data );
+			static QList<ModelObject*> parseObjectsNode( const QDomElement &node, const DataCache& data );
 			static ModelBoxObject* parseObjectBoxNode( const QDomElement &node );
 			static ModelEllipseObject* parseObjectEllipseNode( const QDomElement &node );
 			static ModelLineObject* parseObjectLineNode( const QDomElement &node );
@@ -69,17 +69,19 @@ namespace glabels
 			static void parsePixdataNode( const QDomElement &node, DataCache& data );
 			static void parseFileNode( const QDomElement &node, DataCache& data );
 
-                        static Qt::Alignment getHAlignmentAttr( const QDomElement& node,
-                                         const QString&     name, Qt::Alignment      default_value );
-                        static Qt::Alignment getVAlignmentAttr( const QDomElement& node,
-                                         const QString&     name, Qt::Alignment      default_value );
-                        static QFont::Weight getWeightAttr( const QDomElement& node,
-                                         const QString&     name, QFont::Weight      default_value );
+			static Qt::Alignment getHAlignmentAttr( const QDomElement& node,
+					 const QString&     name, Qt::Alignment      default_value );
+			static Qt::Alignment getVAlignmentAttr( const QDomElement& node,
+					 const QString&     name, Qt::Alignment      default_value );
+			static QFont::Weight getWeightAttr( const QDomElement& node,
+					 const QString&     name, QFont::Weight      default_value );
 
-                };
+			static QMatrix parseAffineTransformation(const QDomElement &node);
 
-	}
-}
+		};
+
+	}  // namespace model
+}  // namespace glabels
 
 
 #endif // model_XmlLabelParser_0_4_h

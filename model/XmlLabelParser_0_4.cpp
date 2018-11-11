@@ -46,13 +46,13 @@
 
 namespace glabels
 {
-        namespace model
+	namespace model
 	{
 
 		Model*
-                XmlLabelParser_0_4::parseRootNode( const QDomElement &node )
+		XmlLabelParser_0_4::parseRootNode( const QDomElement &node )
 		{
-                        if(node.namespaceURI() != XmlNameSpace)
+			if(node.namespaceURI() != XmlNameSpace)
 			{
 				qWarning() << "TODO: compatability mode.";
 			}
@@ -114,7 +114,7 @@ namespace glabels
 
 
 		QList<ModelObject*>
-                XmlLabelParser_0_4::parseObjectsNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser_0_4::parseObjectsNode( const QDomElement &node, const DataCache& data )
 		{
 			QList<ModelObject*> list;
 
@@ -134,7 +134,7 @@ namespace glabels
 				{
 					list.append( parseObjectLineNode( child.toElement() ) );
 				}
-                                else if ( tagName == "Object-text" )
+				else if ( tagName == "Object-text" )
 				{
 					list.append( parseObjectTextNode( child.toElement() ) );
 				}
@@ -157,7 +157,7 @@ namespace glabels
 
 
 		ModelBoxObject*
-                XmlLabelParser_0_4::parseObjectBoxNode( const QDomElement &node )
+		XmlLabelParser_0_4::parseObjectBoxNode( const QDomElement &node )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -182,13 +182,7 @@ namespace glabels
 			ColorNode fillColorNode( field_flag, color, key );
         
 			/* affine attrs */
-			double a[6];
-			a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-			a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-			a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-			a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-			a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-			a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+			auto affineTransformation = parseAffineTransformation(node);
 
 			/* shadow attrs */
 			bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
@@ -204,13 +198,13 @@ namespace glabels
 			return new ModelBoxObject( x0, y0, w, h,
 			                           lineWidth, lineColorNode,
 			                           fillColorNode,
-			                           QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+						   affineTransformation,
 			                           shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 
 
 		ModelEllipseObject*
-                XmlLabelParser_0_4::parseObjectEllipseNode( const QDomElement &node )
+		XmlLabelParser_0_4::parseObjectEllipseNode( const QDomElement &node )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -235,13 +229,7 @@ namespace glabels
 			ColorNode fillColorNode( field_flag, color, key );
         
 			/* affine attrs */
-			double a[6];
-			a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-			a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-			a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-			a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-			a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-			a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+			auto affineTransformation = parseAffineTransformation(node);
 
 			/* shadow attrs */
 			bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
@@ -257,13 +245,13 @@ namespace glabels
 			return new ModelEllipseObject( x0, y0, w, h,
 			                               lineWidth, lineColorNode,
 			                               fillColorNode,
-			                               QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+						       affineTransformation,
 			                               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 
 
 		ModelLineObject*
-                XmlLabelParser_0_4::parseObjectLineNode( const QDomElement &node )
+		XmlLabelParser_0_4::parseObjectLineNode( const QDomElement &node )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -282,13 +270,7 @@ namespace glabels
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* affine attrs */
-			double a[6];
-			a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-			a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-			a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-			a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-			a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-			a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+			auto affineTransformation = parseAffineTransformation(node);
 
 			/* shadow attrs */
 			bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
@@ -303,13 +285,13 @@ namespace glabels
 
 			return new ModelLineObject( x0, y0, dx, dy,
 			                            lineWidth, lineColorNode,
-			                            QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+						    affineTransformation,
 			                            shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 
 
 		ModelImageObject*
-                XmlLabelParser_0_4::parseObjectImageNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser_0_4::parseObjectImageNode( const QDomElement &node, const DataCache& data )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -320,19 +302,13 @@ namespace glabels
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 			/* file attrs */
-                        QString key        = XmlUtil::getStringAttr( node, "field", "" );
+			QString key        = XmlUtil::getStringAttr( node, "field", "" );
 			bool    field_flag = !key.isEmpty();
 			QString filename   = XmlUtil::getStringAttr( node, "src", "" );
-                        TextNode filenameNode( field_flag, field_flag ? key : filename );
+			TextNode filenameNode( field_flag, field_flag ? key : filename );
 
 			/* affine attrs */
-			double a[6];
-			a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-			a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-			a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-			a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-			a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-			a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+			auto affineTransformation = parseAffineTransformation(node);
 
 			/* shadow attrs */
 			bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
@@ -349,39 +325,33 @@ namespace glabels
 			{
 				return new ModelImageObject( x0, y0, w, h,
 				                             filenameNode,
-				                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
+							     affineTransformation,
 				                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
-			else
+			if ( data.hasImage( filename ) )
 			{
-				if ( data.hasImage( filename ) )
-				{
-					return new ModelImageObject( x0, y0, w, h,
-					                             filename, data.getImage( filename ),
-					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
-					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
-				}
-				else if ( data.hasSvg( filename ) )
-				{
-					return new ModelImageObject( x0, y0, w, h,
-					                             filename, data.getSvg( filename ),
-					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
-					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
-				}
-				else
-				{
-					qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
-					return new ModelImageObject( x0, y0, w, h,
-					                             filenameNode,
-					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
-					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
-				}
+				return new ModelImageObject( x0, y0, w, h,
+							     filename, data.getImage( filename ),
+							     affineTransformation,
+							     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
+			if ( data.hasSvg( filename ) )
+			{
+				return new ModelImageObject( x0, y0, w, h,
+							     filename, data.getSvg( filename ),
+							     affineTransformation,
+							     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
+			}
+			qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
+			return new ModelImageObject( x0, y0, w, h,
+						     filenameNode,
+						     affineTransformation,
+						     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 
 
 		ModelBarcodeObject*
-                XmlLabelParser_0_4::parseObjectBarcodeNode( const QDomElement &node )
+		XmlLabelParser_0_4::parseObjectBarcodeNode( const QDomElement &node )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -403,28 +373,32 @@ namespace glabels
 			ColorNode bcColorNode( field_flag, color, key );
 
 			QString bcData = XmlUtil::getStringAttr( node, "data", "" );
-                        if(bcData.isEmpty())
-                        {
-                                bcData = XmlUtil::getStringAttr( node, "field", "" );
-                        }
+			if(bcData.isEmpty())
+			{
+				bcData = XmlUtil::getStringAttr( node, "field", "" );
+			}
 
 			/* affine attrs */
-			double a[6];
-			a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-			a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-			a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-			a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-			a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-			a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+			auto affineTransformation = parseAffineTransformation(node);
 
 			return new ModelBarcodeObject( x0, y0, w, h,
 			                               bcStyle, bcTextFlag, bcChecksumFlag, bcData, bcColorNode,
-			                               QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ) );
+						       affineTransformation );
 		}
 
+		QMatrix
+		XmlLabelParser_0_4::parseAffineTransformation(const QDomElement &node)
+		{
+			return {XmlUtil::getDoubleAttr( node, "a0", 1.0 ),
+				XmlUtil::getDoubleAttr( node, "a1", 0.0 ),
+				XmlUtil::getDoubleAttr( node, "a2", 0.0 ),
+				XmlUtil::getDoubleAttr( node, "a3", 1.0 ),
+				XmlUtil::getDoubleAttr( node, "a4", 0.0 ),
+				XmlUtil::getDoubleAttr( node, "a5", 0.0 )};
+		}
 
 		ModelTextObject*
-                XmlLabelParser_0_4::parseObjectTextNode( const QDomElement &node )
+		XmlLabelParser_0_4::parseObjectTextNode( const QDomElement &node )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -434,46 +408,42 @@ namespace glabels
 			Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
-                        /* justify attr */
-                        Qt::Alignment textHAlign           = getHAlignmentAttr( node, "justify", Qt::AlignLeft );
 
-                        /* valign attr */
-                        Qt::Alignment textVAlign           = getVAlignmentAttr( node, "valign", Qt::AlignTop );
 
-                        /* auto_shrink attr */
-                        bool textAutoShrink                = XmlUtil::getBoolAttr( node, "auto_shrink", false );
+			/* justify attr */
+			Qt::Alignment textHAlign           = getHAlignmentAttr( node, "justify", Qt::AlignLeft );
 
-                        /* affine attrs */
-                        double a[6];
-                        a[0] = XmlUtil::getDoubleAttr( node, "a0", 1.0 );
-                        a[1] = XmlUtil::getDoubleAttr( node, "a1", 0.0 );
-                        a[2] = XmlUtil::getDoubleAttr( node, "a2", 0.0 );
-                        a[3] = XmlUtil::getDoubleAttr( node, "a3", 1.0 );
-                        a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
-                        a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
+			/* valign attr */
+			Qt::Alignment textVAlign           = getVAlignmentAttr( node, "valign", Qt::AlignTop );
 
-                        /* shadow attrs */
-                        bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
-                        Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
-                        Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
-                        double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
+			/* auto_shrink attr */
+			bool textAutoShrink                = XmlUtil::getBoolAttr( node, "auto_shrink", false );
 
-                        QString key            = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
-                        bool field_flag        = !key.isEmpty();
-                        uint32_t color         = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
-                        ColorNode shadowColorNode( field_flag, color, key );
+			/* affine attrs */
+			auto affineTransformation = parseAffineTransformation(node);
 
-                        /* font attrs */
-                        QString       fontFamily = "Sans";
-                        double        fontSize = 10.;
-                        QFont::Weight fontWeight = QFont::Normal;
-                        bool          fontItalicFlag = false;
+			/* shadow attrs */
+			bool     shadowState   = XmlUtil::getBoolAttr( node, "shadow", false );
+			Distance shadowX       = XmlUtil::getLengthAttr( node, "shadow_x", 0.0 );
+			Distance shadowY       = XmlUtil::getLengthAttr( node, "shadow_y", 0.0 );
+			double   shadowOpacity = XmlUtil::getDoubleAttr( node, "shadow_opacity", 1.0 );
 
-                        /* text attrs */
-                        double textLineSpacing = 1.;
-                        QTextOption::WrapMode textWrapMode = QTextOption::WordWrap;
+			QString key            = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
+			bool field_flag        = !key.isEmpty();
+			uint32_t color         = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			ColorNode shadowColorNode( field_flag, color, key );
 
-                        ColorNode textColorNode;
+			/* font attrs */
+			QString       fontFamily = "Sans";
+			double        fontSize = 10.;
+			QFont::Weight fontWeight = QFont::Normal;
+			bool          fontItalicFlag = false;
+
+			/* text attrs */
+			double textLineSpacing = 1.;
+			QTextOption::WrapMode textWrapMode = QTextOption::WordWrap;
+
+			ColorNode textColorNode;
 
 			/* deserialize contents. */
 			QTextDocument document;
@@ -481,62 +451,62 @@ namespace glabels
 			bool firstBlock = true;
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
-                                QString tagName = child.toElement().tagName();
-		
-                                if(tagName == "Span")
-                                {
-                                        if ( !firstBlock )
-                                        {
-                                                cursor.insertBlock();
-                                        }
-                                        firstBlock = false;
-                                        auto t = child.toElement();
-                                        cursor.insertText( t.text() );
+				QString tagName = child.toElement().tagName();
 
-                                        /* font attrs */
-                                        fontFamily        = XmlUtil::getStringAttr( t, "font_family", "Sans" );
-                                        fontSize          = XmlUtil::getDoubleAttr( t, "font_size", 10 );
-                                        fontWeight        = getWeightAttr( t, "font_weight", QFont::Normal );
-                                        fontItalicFlag    = XmlUtil::getBoolAttr( t, "font_italic", false );
+				if(tagName == "Span")
+				{
+					if ( !firstBlock )
+					{
+						cursor.insertBlock();
+					}
+					firstBlock = false;
+					auto t = child.toElement();
+					cursor.insertText( t.text() );
 
-                                        /* color attr */
-                                        key        = XmlUtil::getStringAttr( node, "color_field", "" );
-                                        field_flag = !key.isEmpty();
-                                        color      = XmlUtil::getUIntAttr( node, "color", 0 );
-                                        textColorNode.setField(field_flag);
-                                        textColorNode.setColor(color);
-                                        textColorNode.setKey( key );
+					/* font attrs */
+					fontFamily        = XmlUtil::getStringAttr( t, "font_family", "Sans" );
+					fontSize          = XmlUtil::getDoubleAttr( t, "font_size", 10 );
+					fontWeight        = getWeightAttr( t, "font_weight", QFont::Normal );
+					fontItalicFlag    = XmlUtil::getBoolAttr( t, "font_italic", false );
 
-                                        /* text attrs */
-                                        textLineSpacing   = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
-                                        textWrapMode = QTextOption::WordWrap;
+					/* color attr */
+					key        = XmlUtil::getStringAttr( node, "color_field", "" );
+					field_flag = !key.isEmpty();
+					color      = XmlUtil::getUIntAttr( node, "color", 0 );
+					textColorNode.setField(field_flag);
+					textColorNode.setColor(color);
+					textColorNode.setKey( key );
 
-                                }
-                                else if ( !child.isComment() )
-                                {
-                                        qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
-                                }
+					/* text attrs */
+					textLineSpacing   = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
+					textWrapMode = QTextOption::WordWrap;
+
+				}
+				else if ( !child.isComment() )
+				{
+					qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
+				}
 			}
 			QString text = document.toPlainText();
 
-                        return new ModelTextObject( x0, y0, w, h, text,
-                                                fontFamily, fontSize, fontWeight, fontItalicFlag, false,
-                                                textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
-                                                textAutoShrink,
-                                                QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
-                                                shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
+			return new ModelTextObject( x0, y0, w, h, text,
+						fontFamily, fontSize, fontWeight, fontItalicFlag, false,
+						textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
+						textAutoShrink,
+						affineTransformation,
+						shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 
 
 		bool
-                XmlLabelParser_0_4::parseRotateAttr( const QDomElement &node )
+		XmlLabelParser_0_4::parseRotateAttr( const QDomElement &node )
 		{
 			return XmlUtil::getBoolAttr( node, "rotate", false );
 		}
 
-	
+
 		void
-                XmlLabelParser_0_4::parseMergeNode( const QDomElement &node, Model* label )
+		XmlLabelParser_0_4::parseMergeNode( const QDomElement &node, Model* label )
 		{
 			QString type = XmlUtil::getStringAttr( node, "type", "None" );
 			QString src  = XmlUtil::getStringAttr( node, "src", "" );
@@ -549,20 +519,20 @@ namespace glabels
 
 
 		void
-                XmlLabelParser_0_4::parseDataNode( const QDomElement &node, DataCache& data )
+		XmlLabelParser_0_4::parseDataNode( const QDomElement &node, DataCache& data )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
 				QString tagName = child.toElement().tagName();
-		
+
 				if ( tagName == "File" )
 				{
 					parseFileNode( child.toElement(), data );
 				}
-                                else if (tagName == "Pixdata")
-                                {
-                                    parsePixdataNode(child.toElement(), data);
-                                }
+				else if (tagName == "Pixdata")
+				{
+					parsePixdataNode(child.toElement(), data);
+				}
 				else if ( !child.isComment() )
 				{
 					qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
@@ -572,168 +542,168 @@ namespace glabels
 
 
 		void
-                XmlLabelParser_0_4::parsePixdataNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser_0_4::parsePixdataNode( const QDomElement& node, DataCache& data )
 		{
-                        QString name     = XmlUtil::getStringAttr( node, "name", "" );
-                        QString encoding = XmlUtil::getStringAttr( node, "encoding", "base64" );
+			QString name     = XmlUtil::getStringAttr( node, "name", "" );
+			QString encoding = XmlUtil::getStringAttr( node, "encoding", "base64" );
 
-                        /*
-                         * Struct of the GdkPixdata from the header file
-                         */
-                        struct _GdkPixdata
-                        {
-                                uint32_t magic;        /* GDK_PIXBUF_MAGIC_NUMBER */
-                                int32_t  length;       /* <1 to disable length checks, otherwise:
-                                                        * GDK_PIXDATA_HEADER_LENGTH + pixel_data length*/
-                                uint32_t pixdata_type; /* GdkPixdataType */
-                                uint32_t rowstride;
-                                uint32_t width;
-                                uint32_t height;
-                                //uint8_t *pixel_data;
-                        } mypixdata;
+			/*
+			 * Struct of the GdkPixdata from the header file
+			 */
+			struct _GdkPixdata
+			{
+				uint32_t magic;        /* GDK_PIXBUF_MAGIC_NUMBER */
+				int32_t  length;       /* <1 to disable length checks, otherwise:
+							* GDK_PIXDATA_HEADER_LENGTH + pixel_data length*/
+				uint32_t pixdata_type; /* GdkPixdataType */
+				uint32_t rowstride;
+				uint32_t width;
+				uint32_t height;
+				//uint8_t *pixel_data;
+			} mypixdata{};
 
-                        if ( encoding.toLower() == "base64" )
-                        {
-                                QByteArray ba64 = node.text().toUtf8();
-                                QByteArray ba = QByteArray::fromBase64( ba64 );
+			if ( encoding.toLower() == "base64" )
+			{
+				QByteArray ba64 = node.text().toUtf8();
+				QByteArray ba = QByteArray::fromBase64( ba64 );
 
-                                // Use the QDataStream to import the header cause it is in big endian
-                                QDataStream ds(ba);
-                                ds.setByteOrder(QDataStream::ByteOrder::BigEndian);
+				// Use the QDataStream to import the header cause it is in big endian
+				QDataStream ds(ba);
+				ds.setByteOrder(QDataStream::ByteOrder::BigEndian);
 
-                                ds >> mypixdata.magic
-                                   >> mypixdata.length
-                                   >> mypixdata.pixdata_type
-                                   >> mypixdata.rowstride
-                                   >> mypixdata.width
-                                   >> mypixdata.height;
+				ds >> mypixdata.magic
+				   >> mypixdata.length
+				   >> mypixdata.pixdata_type
+				   >> mypixdata.rowstride
+				   >> mypixdata.width
+				   >> mypixdata.height;
 
-                                // check if the data fits in a sigend int
-                                if(mypixdata.width > INT32_MAX || mypixdata.height > INT32_MAX || mypixdata.rowstride > INT32_MAX)
-                                {
-                                        qCritical() << "rowstride, width or height is to large";
-                                        return;
-                                }
+				// check if the data fits in a sigend int
+				if(mypixdata.width > INT32_MAX || mypixdata.height > INT32_MAX || mypixdata.rowstride > INT32_MAX)
+				{
+					qCritical() << "rowstride, width or height is to large";
+					return;
+				}
 
-                                const int32_t width = static_cast<int32_t>(mypixdata.width);
-                                const int32_t height = static_cast<int32_t>(mypixdata.height);
-                                const int32_t rowstride = static_cast<int32_t>(mypixdata.rowstride);
+				const auto width = static_cast<int32_t>(mypixdata.width);
+				const auto height = static_cast<int32_t>(mypixdata.height);
+				const auto rowstride = static_cast<int32_t>(mypixdata.rowstride);
 
-                                QImage image(width, height, QImage::Format_RGB888);
+				QImage image(width, height, QImage::Format_RGB888);
 
-                                const int32_t rawpadding = rowstride - (3 * width);
-                                if(rawpadding < 0){
-                                        qCritical() << "padding to is negativ";
-                                        return;
-                                }
-                                const int32_t padding = static_cast<int32_t>(rawpadding);
+				const int32_t rawpadding = rowstride - (3 * width);
+				if(rawpadding < 0){
+					qCritical() << "padding to is negativ";
+					return;
+				}
+				const auto padding = static_cast<int32_t>(rawpadding);
 
-                                int x = 0;
-                                int y = 0;
-                                uint8_t r,g,b;
-                                for(y = 0; y < height; y++)
-                                {
-                                            for(x = 0; x < width; x++)
-                                            {
-                                                        ds >> r >> g >> b;
-                                                        image.setPixelColor(x, y, QColor(r, g, b));
-                                            }
-                                            ds.skipRawData(padding);
-                                }
+				int x = 0;
+				int y = 0;
+				uint8_t r,g,b;
+				for(y = 0; y < height; y++)
+				{
+					for(x = 0; x < width; x++)
+					{
+						ds >> r >> g >> b;
+						image.setPixelColor(x, y, QColor(r, g, b));
+					}
+					ds.skipRawData(padding);
+				}
 
-                                data.addImage( name, image );
-                        }
-                        else
-                        {
-                                qWarning() << "Unexpected encoding:" << encoding << "node:" << node.tagName();
-                        }
+				data.addImage( name, image );
+			}
+			else
+			{
+				qWarning() << "Unexpected encoding:" << encoding << "node:" << node.tagName();
+			}
 		}
 
 
 		void
-                XmlLabelParser_0_4::parseFileNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser_0_4::parseFileNode( const QDomElement& node, DataCache& data )
 		{
 			QString name     = XmlUtil::getStringAttr( node, "name", "" );
-                        QString format = XmlUtil::getStringAttr( node, "format", "invalid" );
+			QString format = XmlUtil::getStringAttr( node, "format", "invalid" );
 
-                        if ( format == "SVG" )
-                        {
-                                data.addSvg( name, node.text().toUtf8() );
-                        }
-                        else
-                        {
-                                qCritical() << "Unknown embedded file format:" << format;
-                        }
+			if ( format == "SVG" )
+			{
+				data.addSvg( name, node.text().toUtf8() );
+			}
+			else
+			{
+				qCritical() << "Unknown embedded file format:" << format;
+			}
 		}
 
-                Qt::Alignment
-                XmlLabelParser_0_4::getHAlignmentAttr( const QDomElement& node, const QString&     name,
-                                                 Qt::Alignment      default_value )
-                {
+		Qt::Alignment
+		XmlLabelParser_0_4::getHAlignmentAttr( const QDomElement& node, const QString&     name,
+						 Qt::Alignment      default_value )
+		{
 
-                        QString valueString = node.attribute( name, "" );
-                        if ( !valueString.isEmpty())
-                        {
-                                if ( valueString == "Right" )
-                                {
-                                        return Qt::AlignRight;
-                                }
-                                else if ( valueString == "Center")
-                                {
-                                        return Qt::AlignHCenter;
-                                }
-                                else if ( valueString == "Left" )
-                                {
-                                        return Qt::AlignLeft;
-                                }
-                        }
-                        return default_value;
-                }
+			QString valueString = node.attribute( name, "" );
+			if ( !valueString.isEmpty())
+			{
+				if ( valueString == "Right" )
+				{
+					return Qt::AlignRight;
+				}
+				if ( valueString == "Center")
+				{
+					return Qt::AlignHCenter;
+				}
+				if ( valueString == "Left" )
+				{
+					return Qt::AlignLeft;
+				}
+			}
+			return default_value;
+		}
 
-                Qt::Alignment
-                XmlLabelParser_0_4::getVAlignmentAttr( const QDomElement& node, const QString&     name,
-                                                         Qt::Alignment      default_value )
-                {
+		Qt::Alignment
+		XmlLabelParser_0_4::getVAlignmentAttr( const QDomElement& node, const QString&     name,
+							 Qt::Alignment      default_value )
+		{
 
-                        QString valueString = node.attribute( name, "" );
-                        if ( ! valueString.isEmpty() )
-                        {
-                                if ( valueString == "Bottom" )
-                                {
-                                        return Qt::AlignBottom;
-                                }
-                                else if ( valueString == "Center" )
-                                {
-                                        return Qt::AlignVCenter;
-                                }
-                                else if ( valueString == "Top" )
-                                {
-                                        return Qt::AlignTop;
-                                }
-                        }
+			QString valueString = node.attribute( name, "" );
+			if ( ! valueString.isEmpty() )
+			{
+				if ( valueString == "Bottom" )
+				{
+					return Qt::AlignBottom;
+				}
+				if ( valueString == "Center" )
+				{
+					return Qt::AlignVCenter;
+				}
+				if ( valueString == "Top" )
+				{
+					return Qt::AlignTop;
+				}
+			}
 
-                        return default_value;
-                }
+			return default_value;
+		}
 
-                QFont::Weight
-                XmlLabelParser_0_4::getWeightAttr( const QDomElement& node, const QString&     name,
-                                             QFont::Weight      default_value )
-                {
-                        QString valueString = node.attribute( name, "" );
-                        if ( valueString != "" )
-                        {
-                                if ( valueString == "Bold" )
-                                {
-                                        return QFont::Bold;
-                                }
-                                else if ( valueString == "Regular" )
-                                {
-                                        return QFont::Normal;
-                                }
-                        }
+		QFont::Weight
+		XmlLabelParser_0_4::getWeightAttr( const QDomElement& node, const QString&     name,
+					     QFont::Weight      default_value )
+		{
+			QString valueString = node.attribute( name, "" );
+			if ( valueString != "" )
+			{
+				if ( valueString == "Bold" )
+				{
+					return QFont::Bold;
+				}
+				if ( valueString == "Regular" )
+				{
+					return QFont::Normal;
+				}
+			}
 
-                        return default_value;
-                }
+			return default_value;
+		}
 
-	}
-}
+	}  // namespace model
+}  // namespace glabels
