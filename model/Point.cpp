@@ -56,7 +56,7 @@ namespace glabels
 			{
 				return true;
 			}
-			else if ( mY == other.mY )
+			if ( mY == other.mY )
 			{
 				return mX < other.mX;
 			}
@@ -64,4 +64,12 @@ namespace glabels
 		}
 
 	}
+}
+
+QDebug operator<<(QDebug dbg, const glabels::model::Point &p)
+{
+	QDebugStateSaver saver(dbg);
+	dbg.nospace();
+	dbg << "Point" << '(' << p.x() << ',' << p.y()  << ')';
+	return dbg;
 }

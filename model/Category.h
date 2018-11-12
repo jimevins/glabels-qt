@@ -49,5 +49,6 @@ namespace glabels
 	}
 }
 
+QDebug operator<<(QDebug dbg, const glabels::model::Category &c);
 
 #endif // model_Category_h
