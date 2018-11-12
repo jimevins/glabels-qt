@@ -380,8 +380,16 @@ namespace glabels
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 			/* barcode attrs */
-			barcode::Style bcStyle = barcode::Backends::style( XmlUtil::getStringAttr( node, "backend", "" ),
-			                                                   XmlUtil::getStringAttr( node, "style", "") );
+			auto backend = XmlUtil::getStringAttr( node, "backend", "");
+			// one major difference between glabels-3.0.dtd and glabels-4.0.dtd
+			// is the lowercase of the style names
+			auto style = XmlUtil::getStringAttr( node, "style", "").toLower();
+			if(backend == "libiec16022" & style == "iec16022")
+			{
+				backend = "";
+				style = "datamatrix";
+			}
+			barcode::Style bcStyle = barcode::Backends::style( backend, style );
 			bool bcTextFlag = XmlUtil::getBoolAttr( node, "text", true );
 			bool bcChecksumFlag = XmlUtil::getBoolAttr( node, "checksum", true );
 
