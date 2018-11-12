@@ -514,15 +514,15 @@ namespace glabels
 					fontItalicFlag    = XmlUtil::getBoolAttr( element, "font_italic", false );
 
 					/* color attr */
-					key        = XmlUtil::getStringAttr( node, "color_field", "" );
+					key        = XmlUtil::getStringAttr( element, "color_field", "" );
 					field_flag = !key.isEmpty();
-					color      = XmlUtil::getUIntAttr( node, "color", 0 );
+					color      = XmlUtil::getUIntAttr( element, "color", 0 );
 					textColorNode.setField(field_flag);
 					textColorNode.setColor(color);
 					textColorNode.setKey( key );
 
 					/* text attrs */
-					textLineSpacing   = XmlUtil::getDoubleAttr( node, "line_spacing", 1 );
+					textLineSpacing   = XmlUtil::getDoubleAttr( element, "line_spacing", 1 );
 					textWrapMode = QTextOption::WordWrap;
 
 				}
