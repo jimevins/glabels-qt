@@ -32,7 +32,7 @@
 #include "XmlUtil.h"
 #include "DataCache.h"
 
-#include "XmlLabelParser_0_4.h"
+#include "XmlLabelParser_3.h"
 
 #include "barcode/Backends.h"
 #include "merge/Factory.h"
@@ -241,8 +241,8 @@ namespace glabels
 			QString version = XmlUtil::getStringAttr( node, "version", "" );
 			if ( version != "4.0" )
 			{
-                                XmlLabelParser_0_4 parser;
-                                return parser.parseRootNode(node);
+				XmlLabelParser_3 parser;
+				return parser.parseRootNode(node);
 			}
 
 			auto* label = new Model();

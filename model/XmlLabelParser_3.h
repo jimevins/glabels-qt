@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef model_XmlLabelParser_0_4_h
-#define model_XmlLabelParser_0_4_h
+#ifndef model_XmlLabelParser_3_h
+#define model_XmlLabelParser_3_h
 
 
 #include <QDomElement>
@@ -48,7 +48,7 @@ namespace glabels
 		///
 		/// XmlLabelParser
 		///
-		class XmlLabelParser_0_4
+		class XmlLabelParser_3
 		{
 
 		public:
@@ -84,4 +84,4 @@ namespace glabels
 }  // namespace glabels
 
 
-#endif // model_XmlLabelParser_0_4_h
+#endif // model_XmlLabelParser_3_h
