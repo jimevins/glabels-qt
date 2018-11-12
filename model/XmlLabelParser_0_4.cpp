@@ -473,19 +473,37 @@ namespace glabels
 
 				if(tagName == "Span")
 				{
+					QString text;
+					QDomElement element = child.toElement();
+					for(QDomNode n = element.firstChild(); !n.isNull(); n = n.nextSibling())
+					{
+						QDomText t = n.toText();
+						if (!t.isNull())
+						{
+							text += t.data();
+						}
+						else
+						{
+							if(n.toElement().tagName() == "NL")
+							{
+								text += "\n";
+							}
+						}
+					}
+
 					if ( !firstBlock )
 					{
 						cursor.insertBlock();
 					}
 					firstBlock = false;
-					auto t = child.toElement();
-					cursor.insertText( t.text() );
+
+					cursor.insertText( text );
 
 					/* font attrs */
-					fontFamily        = XmlUtil::getStringAttr( t, "font_family", "Sans" );
-					fontSize          = XmlUtil::getDoubleAttr( t, "font_size", 10 );
-					fontWeight        = getWeightAttr( t, "font_weight", QFont::Normal );
-					fontItalicFlag    = XmlUtil::getBoolAttr( t, "font_italic", false );
+					fontFamily        = XmlUtil::getStringAttr( element, "font_family", "Sans" );
+					fontSize          = XmlUtil::getDoubleAttr( element, "font_size", 10 ) * 0.75;
+					fontWeight        = getWeightAttr( element, "font_weight", QFont::Normal );
+					fontItalicFlag    = XmlUtil::getBoolAttr( element, "font_italic", false );
 
 					/* color attr */
 					key        = XmlUtil::getStringAttr( node, "color_field", "" );
