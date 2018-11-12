@@ -44,6 +44,24 @@
 #include <zlib.h>
 #endif
 
+#define GDK_PIXBUF_MAGIC_NUMBER (0x47646b50)
+
+typedef enum
+{
+  /* colorspace + alpha */
+  GDK_PIXDATA_COLOR_TYPE_RGB    = 0x01,
+  GDK_PIXDATA_COLOR_TYPE_RGBA   = 0x02,
+  GDK_PIXDATA_COLOR_TYPE_MASK   = 0xff,
+  /* width, support 8bits only currently */
+  GDK_PIXDATA_SAMPLE_WIDTH_8    = 0x01 << 16,
+  GDK_PIXDATA_SAMPLE_WIDTH_MASK = 0x0f << 16,
+  /* encoding */
+  GDK_PIXDATA_ENCODING_RAW      = 0x01 << 24,
+  GDK_PIXDATA_ENCODING_RLE      = 0x02 << 24,
+  GDK_PIXDATA_ENCODING_MASK     = 0x0f << 24
+} GdkPixdataType;
+
+
 namespace glabels
 {
 	namespace model
@@ -578,10 +596,18 @@ namespace glabels
 				   >> mypixdata.width
 				   >> mypixdata.height;
 
+				if(mypixdata.magic !=GDK_PIXBUF_MAGIC_NUMBER)
+				{
+					qCritical() << "GDK pixbuf magic is not correct. Abort reading of pixdata. "
+						    << "Node:" << node.tagName();
+					return;
+				}
+
 				// check if the data fits in a sigend int
 				if(mypixdata.width > INT32_MAX || mypixdata.height > INT32_MAX || mypixdata.rowstride > INT32_MAX)
 				{
-					qCritical() << "rowstride, width or height is to large";
+					qCritical() << "rowstride, width or height is to large. Abort reading of pixdata. "
+						    << "Node:" << node.tagName();;
 					return;
 				}
 
@@ -589,24 +615,53 @@ namespace glabels
 				const auto height = static_cast<int32_t>(mypixdata.height);
 				const auto rowstride = static_cast<int32_t>(mypixdata.rowstride);
 
-				QImage image(width, height, QImage::Format_RGB888);
-
-				const int32_t rawpadding = rowstride - (3 * width);
-				if(rawpadding < 0){
-					qCritical() << "padding to is negativ";
+				QImage::Format pixformat;
+				int32_t rawpadding;
+				if((mypixdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGB)
+				{
+					pixformat = QImage::Format_RGB888;
+					rawpadding = rowstride - (3 * width);
+				}
+				else if((mypixdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA)
+				{
+					pixformat = QImage::Format_RGBA8888;
+					rawpadding = rowstride - (4 * width);
+				}
+				else
+				{
+					qCritical() << "pixdata color type is unknown. Abort reading of pixdata. "
+						    << "Node:" << node.tagName();
 					return;
 				}
+
+				if(rawpadding < 0){
+					qCritical() << "padding to is negativ. Abort reading of pixdata. "
+						    << "Node:" << node.tagName();
+					return;
+				}
+
+				QImage image(width, height, pixformat);
+
 				const auto padding = static_cast<int32_t>(rawpadding);
 
 				int x = 0;
 				int y = 0;
-				uint8_t r,g,b;
+				uint8_t r,g,b,a;
 				for(y = 0; y < height; y++)
 				{
 					for(x = 0; x < width; x++)
 					{
-						ds >> r >> g >> b;
-						image.setPixelColor(x, y, QColor(r, g, b));
+						if(pixformat == QImage::Format_RGB888)
+						{
+							ds >> r >> g >> b;
+							image.setPixelColor(x, y, QColor(r, g, b));
+						}
+						else
+						{
+							ds >> r >> g >> b >> a;
+							image.setPixelColor(x, y, QColor(r, g, b, a));
+						}
+
 					}
 					ds.skipRawData(padding);
 				}
