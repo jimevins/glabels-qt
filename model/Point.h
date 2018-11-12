@@ -24,6 +24,8 @@
 
 #include "Distance.h"
 
+#include <QDebug>
+
 
 namespace glabels
 {
@@ -48,8 +50,9 @@ namespace glabels
 			Distance  mY;
 		};
 
-	}
-}
+	}  // namespace model
+}  // namespace glabels
 
+QDebug operator<<(QDebug dbg, const glabels::model::Point &p);
 
 #endif // model_Point_h

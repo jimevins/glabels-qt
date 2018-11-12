@@ -20,6 +20,8 @@
 
 #include "Category.h"
 
+#include <QDebug>
+
 
 namespace glabels
 {
@@ -45,4 +47,13 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<(QDebug dbg, const glabels::model::Category &c)
+{
+    QDebugStateSaver saver(dbg);
+    dbg.nospace();
+    dbg << "Category" << '(' << c.id() << ':' << c.name()  << ')';
+    return dbg;
 }
