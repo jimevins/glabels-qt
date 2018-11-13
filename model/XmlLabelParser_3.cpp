@@ -517,9 +517,8 @@ namespace glabels
 					key        = XmlUtil::getStringAttr( element, "color_field", "" );
 					field_flag = !key.isEmpty();
 					color      = XmlUtil::getUIntAttr( element, "color", 0 );
-					textColorNode.setField(field_flag);
-					textColorNode.setColor(color);
-					textColorNode.setKey( key );
+
+					textColorNode = ColorNode(field_flag, color, key );
 
 					/* text attrs */
 					textLineSpacing   = XmlUtil::getDoubleAttr( element, "line_spacing", 1 );
