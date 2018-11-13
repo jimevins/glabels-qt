@@ -51,9 +51,9 @@ namespace glabels
 
 			ColorNode( bool isField, uint32_t rgba, const QString& key );
 
-			ColorNode( const QColor& color );
+			explicit ColorNode( const QColor& color );
 
-			ColorNode( const QString& key );
+			explicit ColorNode( const QString& key );
 
 
 			/////////////////////////////////
