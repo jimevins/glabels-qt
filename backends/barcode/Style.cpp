@@ -171,7 +171,7 @@ namespace glabels
 
 
 		///
-		/// Prefered N Property Getter
+		/// Preferred N Property Getter
 		///
 		int Style::preferedN() const
 		{

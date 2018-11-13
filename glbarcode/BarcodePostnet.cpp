@@ -118,7 +118,7 @@ namespace glbarcode
 		/* Left frame bar */
 		code += frameSymbol;
 
-		/* process each digit, adding approptiate symbol */
+		/* process each digit, adding appropriate symbol */
 		int sum = 0;
 		for (char c : cookedData)
 		{

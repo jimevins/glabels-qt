@@ -217,7 +217,7 @@ namespace glabels
 							}
 							else
 							{
-								/* begining of a simple field. */
+								/* beginning of a simple field. */
 								field.append( c );
 								state = SIMPLE;
 							}
