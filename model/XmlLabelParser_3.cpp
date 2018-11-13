@@ -44,7 +44,8 @@
 #include <zlib.h>
 #endif
 
-#define GDK_PIXBUF_MAGIC_NUMBER (0x47646b50)
+const uint32_t GDK_PIXBUF_MAGIC_NUMBER {0x47646b50};
+const double FONT_SCALE_FACTOR {0.75};
 
 typedef enum
 {
@@ -509,7 +510,7 @@ namespace glabels
 
 					/* font attrs */
 					fontFamily        = XmlUtil::getStringAttr( element, "font_family", "Sans" );
-					fontSize          = XmlUtil::getDoubleAttr( element, "font_size", 10 ) * 0.75;
+					fontSize          = XmlUtil::getDoubleAttr( element, "font_size", 10 ) * FONT_SCALE_FACTOR;
 					fontWeight        = getWeightAttr( element, "font_weight", QFont::Normal );
 					fontItalicFlag    = XmlUtil::getBoolAttr( element, "font_italic", false );
 
