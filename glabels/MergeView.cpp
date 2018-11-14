@@ -245,7 +245,7 @@ namespace glabels
 		{
 			recordsTable->setColumnCount( mKeys.size() + 1 );  // Include extra column
 
-			// First column = primay Key
+			// First column = primary Key
 			auto* item = new QTableWidgetItem( mPrimaryKey );
 			item->setFlags( Qt::ItemIsEnabled );
 			recordsTable->setHorizontalHeaderItem( 0, item );
@@ -287,7 +287,7 @@ namespace glabels
 		int iRow = 0;
 		foreach ( merge::Record* record, records )
 		{
-			// First column for primay field
+			// First column for primary field
 			auto* item = new QTableWidgetItem();
 			if ( record->contains( mPrimaryKey ) )
 			{

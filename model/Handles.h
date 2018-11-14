@@ -65,7 +65,7 @@ namespace glabels
 	
 		
 			////////////////////////////
-			// Attribue Methods
+			// Attribute Methods
 			////////////////////////////
 			ModelObject* owner() const;
 			Location location() const;

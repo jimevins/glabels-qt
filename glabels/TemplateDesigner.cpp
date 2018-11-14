@@ -1174,7 +1174,7 @@ namespace glabels
 			{
 				alreadyInitialized = true;
 
-				// Set some realistic defaults based on symetric sheet using previosly chosen values
+				// Set some realistic defaults based on symmetric sheet using previously chosen values
 				nxSpin->setValue( nxMax );
 				nySpin->setValue( nyMax );
 				x0Spin->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
@@ -1333,7 +1333,7 @@ namespace glabels
 			{
 				alreadyInitialized = true;
 
-				// Set some realistic defaults based on symetric sheet using previosly chosen values
+				// Set some realistic defaults based on symmetric sheet using previously chosen values
 				nxSpin1->setValue( nxMax );
 				nySpin1->setValue( nyMax - nyMax/2 );
 				x0Spin1->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );

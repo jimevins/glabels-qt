@@ -239,7 +239,7 @@ namespace glabels
 			QString version = XmlUtil::getStringAttr( node, "version", "" );
 			if ( version != "4.0" )
 			{
-				qWarning() << "TODO: compatability mode.";
+				qWarning() << "TODO: compatibility mode.";
 			}
 
 			auto* label = new Model();
@@ -738,7 +738,7 @@ namespace glabels
 		void
 		XmlLabelParser::parsePixdataNode( const QDomElement& node, DataCache& data )
 		{
-			// TODO, compatability with glabels-3
+			// TODO, compatibility with glabels-3
 		}
 
 
