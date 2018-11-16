@@ -46,6 +46,10 @@ namespace glabels
 		const QColor  labelColor( 255, 255, 255 );
 		const QColor  labelOutlineColor( 215, 215, 215 );
 		const double  labelOutlineWidthPixels = 1;
+
+		const QColor  labelNumberColor( 192, 192, 255, 128 );
+		const QString labelNumberFontFamily( "Sans" );
+		const double  labelNumberScale = 0.5;
 	}
 
 
@@ -101,9 +105,43 @@ namespace glabels
 			drawPaper( mModel->tmplate()->pageWidth(), mModel->tmplate()->pageHeight() );
 			drawLabels();
 			drawPreviewOverlay();
+			drawLabelNumberOverlay();
 		}
 	}
 
+	void Preview::drawLabelNumberOverlaySingle(const model::Distance& x, const model::Distance& y, const QPainterPath& path, uint32_t labelInstance)
+	{
+		QBrush brush( labelNumberColor );
+
+		model::Frame *frame = mModel->tmplate()->frames().first();
+
+		model::Distance w = frame->w();
+		model::Distance h = frame->h();
+
+		model::Distance minWH = min( w, h );
+
+		auto labelText = QString::number(labelInstance);
+		QGraphicsSimpleTextItem *labelNumberItem = new QGraphicsSimpleTextItem( labelText );
+		labelNumberItem->setBrush( brush );
+		labelNumberItem->setFont( QFont( labelNumberFontFamily, minWH.pt()*labelNumberScale, QFont::Bold ) );
+		labelNumberItem->setPos( (x+w/2).pt(), (y+h/2).pt() );
+		QRectF rect = labelNumberItem->boundingRect();
+		labelNumberItem->setPos(labelNumberItem->x() - (rect.width() / 2), labelNumberItem->y() - (rect.height() / 2));
+
+		mScene->addItem( labelNumberItem );
+	}
+
+	void Preview::drawLabelNumberOverlay()
+	{
+		model::Frame *frame = mModel->tmplate()->frames().first();
+		auto i = 0;
+
+		foreach (model::Point origin, frame->getOrigins() )
+		{
+			i++;
+			drawLabelNumberOverlaySingle( origin.x(), origin.y(), frame->path(), i);
+		}
+	}
 
 	///
 	/// Resize Event Handler
