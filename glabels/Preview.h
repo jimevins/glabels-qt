@@ -75,6 +75,9 @@ namespace glabels
 		
 		void drawPreviewOverlay();
 
+		void drawLabelNumberOverlaySingle(const model::Distance& x, const model::Distance& y, const QPainterPath& path, uint32_t labelInstance);
+		void drawLabelNumberOverlay();
+
 
 		/////////////////////////////////
 		// Private Data
