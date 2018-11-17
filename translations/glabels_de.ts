@@ -1007,8 +1007,8 @@
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerIntroPage.ui" line="68"/>
-        <source>Create a a new product template from scratch</source>
-        <translation>Eine Vorlage von Grund auf neu erstellen</translation>
+        <source>Create a new product template from scratch</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2746,11 +2746,6 @@
         <translation>IEC18004 (QRCode)</translation>
     </message>
     <message>
-        <location filename="../backends/barcode/Backends.cpp" line="249"/>
-        <source>Austraila Post Standard</source>
-        <translation>Australische Post, Standard</translation>
-    </message>
-    <message>
         <location filename="../backends/barcode/Backends.cpp" line="252"/>
         <source>Australia Post Reply Paid</source>
         <translation>Australische Post, mit Rückantwort</translation>
@@ -2816,9 +2811,14 @@
         <translation>Code 49</translation>
     </message>
     <message>
+        <location filename="../backends/barcode/Backends.cpp" line="249"/>
+        <source>Australia Post Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../backends/barcode/Backends.cpp" line="306"/>
-        <source>Code 128 (Mode C supression)</source>
-        <translation>Code 128 (Modus C unterdrückt)</translation>
+        <source>Code 128 (Mode C suppression)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../backends/barcode/Backends.cpp" line="309"/>

@@ -1007,7 +1007,7 @@
     </message>
     <message>
         <location filename="../glabels/ui/TemplateDesignerIntroPage.ui" line="68"/>
-        <source>Create a a new product template from scratch</source>
+        <source>Create a new product template from scratch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2746,11 +2746,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../backends/barcode/Backends.cpp" line="249"/>
-        <source>Austraila Post Standard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../backends/barcode/Backends.cpp" line="252"/>
         <source>Australia Post Reply Paid</source>
         <translation type="unfinished"></translation>
@@ -2816,8 +2811,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../backends/barcode/Backends.cpp" line="249"/>
+        <source>Australia Post Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../backends/barcode/Backends.cpp" line="306"/>
-        <source>Code 128 (Mode C supression)</source>
+        <source>Code 128 (Mode C suppression)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

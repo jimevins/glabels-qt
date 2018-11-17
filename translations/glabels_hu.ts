@@ -803,7 +803,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Create a a new product template from scratch</source>
+        <source>Create a new product template from scratch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2158,10 +2158,6 @@
         <translation type="unfinished">IEC18004 (QR-kód)</translation>
     </message>
     <message>
-        <source>Austraila Post Standard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Australia Post Reply Paid</source>
         <translation type="unfinished">Ausztráliai fizetett postai válasz</translation>
     </message>
@@ -2212,10 +2208,6 @@
     <message>
         <source>Code 49</source>
         <translation type="unfinished">Code 49</translation>
-    </message>
-    <message>
-        <source>Code 128 (Mode C supression)</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>DAFT Code</source>
@@ -2380,6 +2372,14 @@
     <message>
         <source>UK Plessey</source>
         <translation type="unfinished">UK Plessey</translation>
+    </message>
+    <message>
+        <source>Australia Post Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 128 (Mode C suppression)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

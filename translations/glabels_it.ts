@@ -811,7 +811,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Create a a new product template from scratch</source>
+        <source>Create a new product template from scratch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2190,10 +2190,6 @@
             </translation>
     </message>
     <message>
-        <source>Austraila Post Standard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Australia Post Reply Paid</source>
         <translation type="unfinished">
             </translation>
@@ -2253,11 +2249,6 @@
     <message>
         <source>Code 49</source>
         <translation type="unfinished">Code 39</translation>
-    </message>
-    <message>
-        <source>Code 128 (Mode C supression)</source>
-        <translation type="unfinished">
-            </translation>
     </message>
     <message>
         <source>DAFT Code</source>
@@ -2454,6 +2445,14 @@
     <message>
         <source>UK Plessey</source>
         <translation type="unfinished">Plessey</translation>
+    </message>
+    <message>
+        <source>Australia Post Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 128 (Mode C suppression)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
