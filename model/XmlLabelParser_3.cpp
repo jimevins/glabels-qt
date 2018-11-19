@@ -387,11 +387,7 @@ namespace glabels
 			// one major difference between glabels-3.0.dtd and glabels-4.0.dtd
 			// is the lowercase of the style names
 			auto style = XmlUtil::getStringAttr( node, "style", "").toLower();
-			if(backend == "libiec16022" & style == "iec16022")
-			{
-				backend = "";
-				style = "datamatrix";
-			}
+
 			const barcode::Style bcStyle = barcode::Backends::style( backend, style );
 			const bool bcTextFlag = XmlUtil::getBoolAttr( node, "text", true );
 			const bool bcChecksumFlag = XmlUtil::getBoolAttr( node, "checksum", true );
