@@ -91,11 +91,12 @@ namespace glabels
 			/* Pass 2, now extract everything else. */
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
-				QString tagName = child.toElement().tagName();
+				const auto childElement = child.toElement();
+				const QString tagName = childElement.tagName();
 		
 				if ( tagName == "Template" )
 				{
-					Template* tmplate = XmlTemplateParser().parseTemplateNode( child.toElement() );
+					Template* tmplate = XmlTemplateParser().parseTemplateNode( childElement );
 					if ( tmplate == nullptr )
 					{
 						qWarning() << "Unable to parse template";
@@ -106,8 +107,8 @@ namespace glabels
 				}
 				else if ( tagName == "Objects" )
 				{
-					label->setRotate( parseRotateAttr( child.toElement() ) );
-					QList<ModelObject*> list = parseObjectsNode( child.toElement(), data );
+					label->setRotate( parseRotateAttr( childElement ) );
+					QList<ModelObject*> list = parseObjectsNode( childElement, data );
 					foreach ( ModelObject* object, list )
 					{
 						label->addObject( object );
@@ -115,7 +116,7 @@ namespace glabels
 				}
 				else if ( tagName == "Merge" )
 				{
-					parseMergeNode( child.toElement(), label );
+					parseMergeNode( childElement, label );
 				}
 				else if ( tagName == "Data" )
 				{
@@ -139,31 +140,32 @@ namespace glabels
 
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
-				QString tagName = child.toElement().tagName();
+				const auto childElement = child.toElement();
+				const QString tagName = childElement.tagName();
 		
 				if ( tagName == "Object-box" )
 				{
-					list.append( parseObjectBoxNode( child.toElement() ) );
+					list.append( parseObjectBoxNode( childElement ) );
 				}
 				else if ( tagName == "Object-ellipse" )
 				{
-					list.append( parseObjectEllipseNode( child.toElement() ) );
+					list.append( parseObjectEllipseNode( childElement ) );
 				}
 				else if ( tagName == "Object-line" )
 				{
-					list.append( parseObjectLineNode( child.toElement() ) );
+					list.append( parseObjectLineNode( childElement ) );
 				}
 				else if ( tagName == "Object-text" )
 				{
-					list.append( parseObjectTextNode( child.toElement() ) );
+					list.append( parseObjectTextNode( childElement ) );
 				}
 				else if ( tagName == "Object-image" )
 				{
-					list.append( parseObjectImageNode( child.toElement(), data ) );
+					list.append( parseObjectImageNode( childElement, data ) );
 				}
 				else if ( tagName == "Object-barcode" )
 				{
-					list.append( parseObjectBarcodeNode( child.toElement() ) );
+					list.append( parseObjectBarcodeNode( childElement ) );
 				}
 				else if ( !child.isComment() )
 				{
@@ -567,15 +569,16 @@ namespace glabels
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
-				QString tagName = child.toElement().tagName();
+				const auto childElement = child.toElement();
+				const QString tagName = childElement.tagName();
 
 				if ( tagName == "File" )
 				{
-					parseFileNode( child.toElement(), data );
+					parseFileNode( childElement, data );
 				}
 				else if (tagName == "Pixdata")
 				{
-					parsePixdataNode(child.toElement(), data);
+					parsePixdataNode( childElement, data);
 				}
 				else if ( !child.isComment() )
 				{
@@ -722,7 +725,7 @@ namespace glabels
 						 Qt::Alignment      default_value )
 		{
 
-			QString valueString = node.attribute( name, "" );
+			const QString valueString = node.attribute( name, "" );
 			if ( !valueString.isEmpty())
 			{
 				if ( valueString == "Right" )
@@ -742,11 +745,11 @@ namespace glabels
 		}
 
 		Qt::Alignment
-		XmlLabelParser_0_4::getVAlignmentAttr( const QDomElement& node, const QString&     name,
-							 Qt::Alignment      default_value )
+		XmlLabelParser_3::getVAlignmentAttr( const QDomElement& node, const QString& name,
+						     const Qt::Alignment default_value )
 		{
 
-			QString valueString = node.attribute( name, "" );
+			const QString valueString = node.attribute( name, "" );
 			if ( ! valueString.isEmpty() )
 			{
 				if ( valueString == "Bottom" )
@@ -767,10 +770,10 @@ namespace glabels
 		}
 
 		QFont::Weight
-		XmlLabelParser_0_4::getWeightAttr( const QDomElement& node, const QString&     name,
-					     QFont::Weight      default_value )
+		XmlLabelParser_3::getWeightAttr( const QDomElement& node, const QString&     name,
+						 const QFont::Weight default_value )
 		{
-			QString valueString = node.attribute( name, "" );
+			const QString valueString = node.attribute( name, "" );
 			if ( valueString != "" )
 			{
 				if ( valueString == "Bold" )

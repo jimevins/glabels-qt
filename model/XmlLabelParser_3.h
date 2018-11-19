@@ -70,11 +70,11 @@ namespace glabels
 			static void parseFileNode( const QDomElement &node, DataCache& data );
 
 			static Qt::Alignment getHAlignmentAttr( const QDomElement& node,
-					 const QString&     name, Qt::Alignment      default_value );
+					 const QString& name, const Qt::Alignment default_value );
 			static Qt::Alignment getVAlignmentAttr( const QDomElement& node,
-					 const QString&     name, Qt::Alignment      default_value );
+					 const QString& name, const Qt::Alignment default_value );
 			static QFont::Weight getWeightAttr( const QDomElement& node,
-					 const QString&     name, QFont::Weight      default_value );
+					 const QString& name, const QFont::Weight default_value );
 
 			static QMatrix parseAffineTransformation(const QDomElement &node);
 
