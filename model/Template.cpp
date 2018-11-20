@@ -43,9 +43,9 @@ namespace glabels
 			  mPaperId(paperId),
 			  mPageWidth(pageWidth),
 			  mPageHeight(pageHeight),
-			  mIsUserDefined(isUserDefined),
 			  mIsSizeIso(false),
 			  mIsSizeUs(false),
+			  mIsUserDefined(isUserDefined),
 			  mName("")
 		{
 			mName.append( brand ).append( " " ).append( part );
