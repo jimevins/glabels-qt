@@ -106,7 +106,7 @@ namespace glabels
 	/// Constructor
 	///
 	TemplateDesigner::TemplateDesigner( QWidget* parent )
-		: mIsBasedOnCopy(false), QWizard(parent)
+		: QWizard(parent), mIsBasedOnCopy(false)
 	{
 		setWindowTitle( tr("Product Template Designer") );
 		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/apps/48x48/glabels.svg" ) );
@@ -1160,7 +1160,8 @@ namespace glabels
 			double dxMin = w + 2*xWaste;
 			double dxMax = pageW - w - 2*xWaste;
 			double dyMin = h + 2*yWaste;
-			double dyMax = pageH - h - 2*yWaste;
+			// Is not used
+			// double dyMax = pageH - h - 2*yWaste;
 
 			nxSpin->setRange( 1, nxMax );
 			nySpin->setRange( 1, nyMax );
