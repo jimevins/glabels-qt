@@ -87,7 +87,7 @@ namespace glabels
 			if ( valueString != "" )
 			{
 				bool ok;
-				double value = valueString.toDouble(& ok );
+				double value = valueString.toDouble( &ok );
 
 				if ( !ok )
 				{
@@ -112,12 +112,13 @@ namespace glabels
 			QString valueString = node.attribute( name, "" );
 			if ( valueString != "" )
 			{
-				int intValue = valueString.toInt();
+				bool ok;
+				int intValue = valueString.toInt( &ok );
 
 				if ( (valueString == "True") ||
 				     (valueString == "TRUE") ||
 				     (valueString == "true") ||
-				     (intValue == 1) )
+				     (ok && (intValue == 1) ) )
 				{
 					return true;
 				}
@@ -125,7 +126,7 @@ namespace glabels
 				if ( (valueString == "False") ||
 				     (valueString == "FALSE") ||
 				     (valueString == "false") ||
-				     (intValue == 0) )
+				     (ok && (intValue == 0) ) )
 				{
 					return false;
 				}
@@ -149,7 +150,7 @@ namespace glabels
 			if ( valueString != "" )
 			{
 				bool ok;
-				int value = valueString.toInt(& ok );
+				int value = valueString.toInt( &ok );
 
 				if ( !ok )
 				{
@@ -175,7 +176,7 @@ namespace glabels
 			if ( valueString != "" )
 			{
 				bool ok;
-				uint32_t value = valueString.toUInt(& ok, 0 );
+				uint32_t value = valueString.toUInt( &ok, 0 );
 
 				if ( !ok )
 				{
@@ -227,6 +228,7 @@ namespace glabels
 				{
 					qWarning() << "Error: bad length value in attribute "
 					           << node.tagName() << ":" <<  name << "=" << valueString;
+					return default_value;
 				}
 
 				return Distance( value, unitsString );
@@ -252,6 +254,12 @@ namespace glabels
 				else if ( valueString == "normal" )
 				{
 					return QFont::Normal;
+				}
+				else
+				{
+					qWarning() << "Error: bad weight value in attribute "
+					           << node.tagName() << ":" <<  name << "=" << valueString;
+					return default_value;
 				}
 			}
 
@@ -292,6 +300,12 @@ namespace glabels
 				{
 					return Qt::AlignTop;
 				}
+				else
+				{
+					qWarning() << "Error: bad alignment value in attribute "
+					           << node.tagName() << ":" <<  name << "=" << valueString;
+					return default_value;
+				}
 			}
 
 			return default_value;
@@ -318,6 +332,12 @@ namespace glabels
 				else if ( valueString == "none" )
 				{
 					return QTextOption::NoWrap;
+				}
+				else
+				{
+					qWarning() << "Error: bad wrap mode value in attribute "
+					           << node.tagName() << ":" <<  name << "=" << valueString;
+					return default_value;
 				}
 			}
 
