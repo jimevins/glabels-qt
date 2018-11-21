@@ -1,4 +1,4 @@
-/*  XmlLabelParser.h
+/*  XmlLabelParser_3.h
  *
  *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *

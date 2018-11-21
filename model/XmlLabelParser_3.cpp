@@ -1,4 +1,4 @@
-/*  XmlLabelParser_0_4.cpp
+/*  XmlLabelParser_3.cpp
  *
  *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
  *
@@ -17,19 +17,19 @@
  *  You should have received a copy of the GNU General Public License
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "XmlLabelParser_0_4.h"
+#include "XmlLabelParser_3.h"
 
+#include "DataCache.h"
 #include "Model.h"
-#include "ModelObject.h"
 #include "ModelBarcodeObject.h"
 #include "ModelBoxObject.h"
 #include "ModelEllipseObject.h"
 #include "ModelImageObject.h"
 #include "ModelLineObject.h"
+#include "ModelObject.h"
 #include "ModelTextObject.h"
 #include "XmlTemplateParser.h"
 #include "XmlUtil.h"
-#include "DataCache.h"
 
 #include "barcode/Backends.h"
 #include "merge/Factory.h"
@@ -69,7 +69,7 @@ namespace glabels
 	{
 
 		Model*
-		XmlLabelParser_0_4::parseRootNode( const QDomElement &node )
+		XmlLabelParser_3::parseRootNode( const QDomElement &node )
 		{
 			if(node.namespaceURI() != XmlNameSpace)
 			{
@@ -82,9 +82,10 @@ namespace glabels
 			DataCache data;
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
-				if ( child.toElement().tagName() == "Data" )
+				auto element = child.toElement();
+				if (!element.isNull() && element.tagName() == "Data" )
 				{
-					parseDataNode( child.toElement(), data );
+					parseDataNode( element, data );
 				}
 			}
 
@@ -92,6 +93,11 @@ namespace glabels
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
 				const auto childElement = child.toElement();
+				if(childElement.isNull())
+				{
+					qCritical()<<"Can't convert the node to an element. Try to continue.";
+					continue;
+				}
 				const QString tagName = childElement.tagName();
 		
 				if ( tagName == "Template" )
@@ -134,13 +140,18 @@ namespace glabels
 
 
 		QList<ModelObject*>
-		XmlLabelParser_0_4::parseObjectsNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser_3::parseObjectsNode( const QDomElement &node, const DataCache& data )
 		{
 			QList<ModelObject*> list;
 
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
 				const auto childElement = child.toElement();
+				if(childElement.isNull())
+				{
+					qCritical()<<"Can't convert the node to an element. Try to continue.";
+					continue;
+				}
 				const QString tagName = childElement.tagName();
 		
 				if ( tagName == "Object-box" )
@@ -178,7 +189,7 @@ namespace glabels
 
 
 		ModelBoxObject*
-		XmlLabelParser_0_4::parseObjectBoxNode( const QDomElement &node )
+		XmlLabelParser_3::parseObjectBoxNode( const QDomElement &node )
 		{
 			/* position attrs */
 			const Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -201,7 +212,7 @@ namespace glabels
 			field_flag = !key.isEmpty();
 			color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
 			const ColorNode fillColorNode( field_flag, color, key );
-        
+
 			/* affine attrs */
 			const auto affineTransformation = parseAffineTransformation(node);
 
@@ -225,7 +236,7 @@ namespace glabels
 
 
 		ModelEllipseObject*
-		XmlLabelParser_0_4::parseObjectEllipseNode( const QDomElement &node )
+		XmlLabelParser_3::parseObjectEllipseNode( const QDomElement &node )
 		{
 			/* position attrs */
 			const Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -248,7 +259,7 @@ namespace glabels
 			field_flag = !key.isEmpty();
 			color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
 			const ColorNode fillColorNode( field_flag, color, key );
-        
+
 			/* affine attrs */
 			const auto affineTransformation = parseAffineTransformation(node);
 
@@ -272,7 +283,7 @@ namespace glabels
 
 
 		ModelLineObject*
-		XmlLabelParser_0_4::parseObjectLineNode( const QDomElement &node )
+		XmlLabelParser_3::parseObjectLineNode( const QDomElement &node )
 		{
 			/* position attrs */
 			const Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -312,7 +323,7 @@ namespace glabels
 
 
 		ModelImageObject*
-		XmlLabelParser_0_4::parseObjectImageNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser_3::parseObjectImageNode( const QDomElement &node, const DataCache& data )
 		{
 			/* position attrs */
 			const Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -372,7 +383,7 @@ namespace glabels
 
 
 		ModelBarcodeObject*
-		XmlLabelParser_0_4::parseObjectBarcodeNode( const QDomElement &node )
+		XmlLabelParser_3::parseObjectBarcodeNode( const QDomElement &node )
 		{
 			/* position attrs */
 			const Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -383,10 +394,10 @@ namespace glabels
 			const Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 			/* barcode attrs */
-			auto backend = XmlUtil::getStringAttr( node, "backend", "");
+			const auto backend = XmlUtil::getStringAttr( node, "backend", "");
 			// one major difference between glabels-3.0.dtd and glabels-4.0.dtd
 			// is the lowercase of the style names
-			auto style = XmlUtil::getStringAttr( node, "style", "").toLower();
+			const auto style = XmlUtil::getStringAttr( node, "style", "").toLower();
 
 			const barcode::Style bcStyle = barcode::Backends::style( backend, style );
 			const bool bcTextFlag = XmlUtil::getBoolAttr( node, "text", true );
@@ -412,7 +423,7 @@ namespace glabels
 		}
 
 		QMatrix
-		XmlLabelParser_0_4::parseAffineTransformation(const QDomElement &node)
+		XmlLabelParser_3::parseAffineTransformation(const QDomElement &node)
 		{
 			return {XmlUtil::getDoubleAttr( node, "a0", 1.0 ),
 				XmlUtil::getDoubleAttr( node, "a1", 0.0 ),
@@ -423,7 +434,7 @@ namespace glabels
 		}
 
 		ModelTextObject*
-		XmlLabelParser_0_4::parseObjectTextNode( const QDomElement &node )
+		XmlLabelParser_3::parseObjectTextNode( const QDomElement &node )
 		{
 			/* position attrs */
 			const Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -476,22 +487,28 @@ namespace glabels
 			bool firstBlock = true;
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
-				QString tagName = child.toElement().tagName();
+				const auto element = child.toElement();
+				if(element.isNull())
+				{
+					qCritical()<<"Can't convert the node to an element. Try to continue.";
+					continue;
+				}
 
-				if(tagName == "Span")
+				if(element.tagName() == "Span")
 				{
 					QString text;
-					const QDomElement element = child.toElement();
-					for(QDomNode n = element.firstChild(); !n.isNull(); n = n.nextSibling())
+					for(QDomNode textPartElement = element.firstChild()
+					    ; !textPartElement.isNull()
+					    ; textPartElement = textPartElement.nextSibling())
 					{
-						QDomText t = n.toText();
-						if (!t.isNull())
+						const QDomText textpart = textPartElement.toText();
+						if (!textpart.isNull())
 						{
-							text += t.data();
+							text += textpart.data();
 						}
 						else
 						{
-							if(n.toElement().tagName() == "NL")
+							if(textPartElement.toElement().tagName() == "NL")
 							{
 								text += "\n";
 							}
@@ -532,23 +549,23 @@ namespace glabels
 			const QString text = document.toPlainText();
 
 			return new ModelTextObject( x0, y0, w, h, text,
-						fontFamily, fontSize, fontWeight, fontItalicFlag, false,
-						textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
-						textAutoShrink,
-						affineTransformation,
-						shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
+						    fontFamily, fontSize, fontWeight, fontItalicFlag, false,
+						    textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
+						    textAutoShrink,
+						    affineTransformation,
+						    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 		}
 
 
 		bool
-		XmlLabelParser_0_4::parseRotateAttr( const QDomElement &node )
+		XmlLabelParser_3::parseRotateAttr( const QDomElement &node )
 		{
 			return XmlUtil::getBoolAttr( node, "rotate", false );
 		}
 
 
 		void
-		XmlLabelParser_0_4::parseMergeNode( const QDomElement &node, Model* label )
+		XmlLabelParser_3::parseMergeNode( const QDomElement &node, Model* label )
 		{
 			const QString type = XmlUtil::getStringAttr( node, "type", "None" );
 			const QString src  = XmlUtil::getStringAttr( node, "src", "" );
@@ -561,11 +578,16 @@ namespace glabels
 
 
 		void
-		XmlLabelParser_0_4::parseDataNode( const QDomElement &node, DataCache& data )
+		XmlLabelParser_3::parseDataNode( const QDomElement &node, DataCache& data )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
 				const auto childElement = child.toElement();
+				if(childElement.isNull())
+				{
+					qCritical()<<"Can't convert the node to an element. Try to continue.";
+					continue;
+				}
 				const QString tagName = childElement.tagName();
 
 				if ( tagName == "File" )
@@ -585,7 +607,7 @@ namespace glabels
 
 
 		void
-		XmlLabelParser_0_4::parsePixdataNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser_3::parsePixdataNode( const QDomElement& node, DataCache& data )
 		{
 			const QString name     = XmlUtil::getStringAttr( node, "name", "" );
 			const QString encoding = XmlUtil::getStringAttr( node, "encoding", "base64" );
@@ -701,7 +723,7 @@ namespace glabels
 
 
 		void
-		XmlLabelParser_0_4::parseFileNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser_3::parseFileNode( const QDomElement& node, DataCache& data )
 		{
 			const QString name     = XmlUtil::getStringAttr( node, "name", "" );
 			const QString format = XmlUtil::getStringAttr( node, "format", "invalid" );
