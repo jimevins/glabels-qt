@@ -422,6 +422,7 @@ namespace glabels
 						       affineTransformation );
 		}
 
+
 		QMatrix
 		XmlLabelParser_3::parseAffineTransformation(const QDomElement &node)
 		{
@@ -433,6 +434,7 @@ namespace glabels
 				XmlUtil::getDoubleAttr( node, "a5", 0.0 )};
 		}
 
+
 		ModelTextObject*
 		XmlLabelParser_3::parseObjectTextNode( const QDomElement &node )
 		{
@@ -443,8 +445,6 @@ namespace glabels
 			/* size attrs */
 			const Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			const Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
-
-
 
 			/* justify attr */
 			const Qt::Alignment textHAlign = getHAlignmentAttr( node, "justify", Qt::AlignLeft );
@@ -543,7 +543,7 @@ namespace glabels
 				}
 				else if ( !child.isComment() )
 				{
-					qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
+					qWarning() << "Unexpected" << node.tagName() << "child:" << node.tagName();
 				}
 			}
 			const QString text = document.toPlainText();
@@ -738,6 +738,7 @@ namespace glabels
 			}
 		}
 
+
 		Qt::Alignment
 		XmlLabelParser_3::getHAlignmentAttr( const QDomElement& node, const QString& name,
 						const Qt::Alignment default_value )
@@ -761,6 +762,7 @@ namespace glabels
 			}
 			return default_value;
 		}
+
 
 		Qt::Alignment
 		XmlLabelParser_3::getVAlignmentAttr( const QDomElement& node, const QString& name,
@@ -786,6 +788,7 @@ namespace glabels
 
 			return default_value;
 		}
+
 
 		QFont::Weight
 		XmlLabelParser_3::getWeightAttr( const QDomElement& node, const QString&     name,
