@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="bs" sourcelanguage="en_US">
+<TS version="2.1" language="bs_BA">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished">Adresne naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished">Bilo koja karta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished">Bilo koja oznaka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished">Vizit karta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished">CD/DVD naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished">CD/DVD ili drugi medij</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished">Dikseta naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished">Eliprična oznaka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File folder labels</source>
@@ -181,19 +181,19 @@
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished">Floppy disk naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished">Letak papir</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished">Sklopive vizit karte</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished">Sklopive karte</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
@@ -209,7 +209,11 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished">Čestitke</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hanging folder labels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ID labels</source>
@@ -221,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished">Oznake</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -245,11 +249,11 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished">Slanje naljepnica</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished">Slanje/Otpremanje proizvoda</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Medical chart labels</source>
@@ -257,7 +261,7 @@
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished">Članske kartice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
@@ -269,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished">Mini Disk naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -293,7 +297,7 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished">Ploče sa imenima</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nutritional labels</source>
@@ -305,27 +309,31 @@
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished">Naljepnice za sliku pasoša</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished">Foto naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished">Foto proizvodi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished">Poštanske karte</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished">Pogdloga za miša koja se može štampati</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished">Pravougaona oznaka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Return address labels</source>
@@ -333,11 +341,11 @@
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished">Okrugla oznaka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished">Naljepnice za SD kartice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Seal labels</source>
@@ -345,11 +353,11 @@
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished">Naljepnice za dostavu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished">Kvadratna oznaka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Target stickers</source>
@@ -361,11 +369,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished">Trapezoidni naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished">Trougaone naljepnice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -413,14 +421,6 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished">Zip disk naljepnice</translation>
-    </message>
-    <message>
-        <source>Hanging folder labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

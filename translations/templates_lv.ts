@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="lv" sourcelanguage="en_US">
+<TS version="2.1" language="lv_LV">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished">Adrešu etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished">Jebkura kartiņa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished">Jebkura etiķete</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Barcode labels</source>
-        <translation type="unfinished">Svītrkoda etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Bookplate labels</source>
@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>Business card CD labels</source>
-        <translation type="unfinished">Vizītkartes CD etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Business card size labels</source>
-        <translation type="unfinished">Vizītkartes izmēra etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished">Vizītkartes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>CD/DVD center hub labels</source>
-        <translation type="unfinished">CD/DVD centra rumbas etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD insert</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished">CD/DVD etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished">CD/DVD vai citi datu nesēji</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Candy labels</source>
-        <translation type="unfinished">Sveču etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cassette labels</source>
@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Coffee and tea labels</source>
-        <translation type="unfinished">Kafijas un tējas etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Correction labels</source>
@@ -149,15 +149,15 @@
     </message>
     <message>
         <source>Digital media labels</source>
-        <translation type="unfinished">Ciparu mediju etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Digital video labels</source>
-        <translation type="unfinished">Ciparu video etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished">Diskešu etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,11 +165,11 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished">Elipsveida etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File folder labels</source>
-        <translation type="unfinished">Lietu mapju etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File labels</source>
@@ -177,27 +177,27 @@
     </message>
     <message>
         <source>Filing labels</source>
-        <translation type="unfinished">Arhivēšanas etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished">Diskešu etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished">Skrejlapiņa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished">Lokāmas vizītkartes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished">Lokāmas kartiņas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
-        <translation type="unfinished">Visas priekšpuses CD/DVD etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full-page labels</source>
@@ -209,7 +209,11 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished">Apsveikuma kartiņa</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hanging folder labels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ID labels</source>
@@ -221,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished">Etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -245,23 +249,23 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished">Pasta etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished">Sūtījumu produkti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Medical chart labels</source>
-        <translation type="unfinished">Medicīnas grafiku etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished">Biedra kartes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
-        <translation type="unfinished">Metāla konservu kārbas etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini CD/DVD labels</source>
@@ -269,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished">Mini Disk etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -293,67 +297,71 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished">Vārdu plāksnes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nutritional labels</source>
-        <translation type="unfinished">Uztura satura etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Paper hole reinforcement labels</source>
-        <translation type="unfinished">Papīra cauruma stiprinājuma etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished">Pases foto etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished">Foto etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished">Foto produkti</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished">Pastkartītes</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished">Drukājami peļu paliktņi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished">Taisnstūrveida etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Return address labels</source>
-        <translation type="unfinished">Atpakaļadrešu etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished">Apaļas etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished">SD karšu etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Seal labels</source>
-        <translation type="unfinished">Zīmoga etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished">Nosūtījumu etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished">Kvadrāta etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Target stickers</source>
-        <translation type="unfinished">Mērķa uzlīmes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tent cards</source>
@@ -361,11 +369,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished">Trapecveidīgas etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished">Trijstūrveida etiķetes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -413,14 +421,6 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished">Zip disku etiķetes</translation>
-    </message>
-    <message>
-        <source>Hanging folder labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

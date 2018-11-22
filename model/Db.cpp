@@ -206,6 +206,15 @@ namespace glabels
 		{
 			if ( !name.isNull() && !name.isEmpty() )
 			{
+				if ( name == tr("Other") )
+				{
+					return "other";
+				}
+				else if ( name == tr("Roll") )
+				{
+					return "roll";
+				}
+
 				const Paper *paper = lookupPaperFromName( name );
 				if ( paper != nullptr )
 				{

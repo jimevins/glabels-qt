@@ -25,6 +25,7 @@
 #include "model/Distance.h"
 #include "model/FrameCd.h"
 #include "model/FrameEllipse.h"
+#include "model/FramePath.h"
 #include "model/FrameRect.h"
 #include "model/FrameRound.h"
 #include "model/Markup.h"
@@ -60,6 +61,7 @@ namespace glabels
 			RoundPageId,
 			EllipsePageId,
 			CdPageId,
+			PathPageId,
 			NLayoutsPageId,
 			OneLayoutPageId,
 			TwoLayoutPageId,
@@ -122,6 +124,7 @@ namespace glabels
 		setPage( RoundPageId,     new TemplateDesignerRoundPage() );
 		setPage( EllipsePageId,   new TemplateDesignerEllipsePage() );
 		setPage( CdPageId,        new TemplateDesignerCdPage() );
+		setPage( PathPageId,      new TemplateDesignerPathPage() );
 		setPage( NLayoutsPageId,  new TemplateDesignerNLayoutsPage() );
 		setPage( OneLayoutPageId, new TemplateDesignerOneLayoutPage() );
 		setPage( TwoLayoutPageId, new TemplateDesignerTwoLayoutPage() );
@@ -138,7 +141,14 @@ namespace glabels
 		{
 			
 		case IntroPageId:
-			return NamePageId;
+			if ( mIsTemplatePathBased )
+			{
+				return PathPageId;
+			}
+			else
+			{
+				return NamePageId;
+			}
 			
 		case NamePageId:
 			return PageSizePageId;
@@ -165,16 +175,47 @@ namespace glabels
 			}
 			
 		case RectPageId:
-			return NLayoutsPageId;
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
 			
 		case RoundPageId:
-			return NLayoutsPageId;
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
 			
 		case EllipsePageId:
-			return NLayoutsPageId;
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
 			
 		case CdPageId:
-			return NLayoutsPageId;
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
+			
+		case PathPageId:
+			return IntroPageId;
 			
 		case NLayoutsPageId:
 			if ( field( "nLayouts.one" ).toBool() )
@@ -326,8 +367,9 @@ namespace glabels
 		QString paperId = model::Db::lookupPaperIdFromName( field( "pageSize.pageSize" ).toString() );
 		model::Distance pageW( field( "pageSize.w" ).toDouble(), units );
 		model::Distance pageH( field( "pageSize.h" ).toDouble(), units );
+		model::Distance pageRollW( field( "pageSize.rollW" ).toDouble(), units );
 		
-		auto t = new model::Template( brand, part, description, paperId, pageW, pageH, true );
+		auto t = new model::Template( brand, part, description, paperId, pageW, pageH, pageRollW, true );
 
 		model::Frame* frame;
 		if ( field( "shape.rect" ).toBool() )
@@ -458,6 +500,7 @@ namespace glabels
 		setField( "pageSize.pageSize", model::Db::lookupPaperNameFromId( tmplate->paperId() ) );
 		setField( "pageSize.w",        tmplate->pageWidth().inUnits( units ) );
 		setField( "pageSize.h",        tmplate->pageHeight().inUnits( units ) );
+		setField( "pageSize.rollW",    tmplate->rollWidth().inUnits( units ) );
 
 		const model::Frame* frame = tmplate->frames().first();
 		if ( auto frameRect = dynamic_cast<const model::FrameRect*>( frame ) )
@@ -583,7 +626,15 @@ namespace glabels
 		{
 			if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
 			{
-				td->loadFromTemplate( tmplate );
+				if ( dynamic_cast<model::FramePath*>(tmplate->frames().constFirst()) )
+				{
+					td->mIsTemplatePathBased = true;
+				}
+				else
+				{
+					td->mIsTemplatePathBased = false;
+					td->loadFromTemplate( tmplate );
+				}
 				td->next();
 			}
 		}
@@ -658,20 +709,30 @@ namespace glabels
 		setupUi( widget );
 
 		pageSizeCombo->insertItem( 0, tr("Other") );
-		pageSizeCombo->insertItems( 1, model::Db::paperNames() );
+		pageSizeCombo->insertItem( 1, tr("Roll") );
+		pageSizeCombo->insertItems( 2, model::Db::paperNames() );
 		pageSizeCombo->setCurrentText( defaultPageSize[ model::Settings::preferedPageSizeFamily() ] );
 		
+		bool isOther = pageSizeCombo->currentText() == tr("Other");
+		bool isRoll  = pageSizeCombo->currentText() == tr("Roll");
+
 		wSpin->setSuffix( " " + model::Settings::units().toTrName() );
 		wSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		wSpin->setSingleStep( model::Settings::units().resolution() );
 		wSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
-		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		wSpin->setEnabled( isOther || isRoll );
 		
 		hSpin->setSuffix( " " + model::Settings::units().toTrName() );
 		hSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		hSpin->setSingleStep( model::Settings::units().resolution() );
 		hSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
-		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		hSpin->setEnabled( isOther || isRoll );
+
+		rollWSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		rollWSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		rollWSpin->setSingleStep( model::Settings::units().resolution() );
+		rollWSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
+		rollWSpin->setEnabled( isRoll );
 
 		if ( pageSizeCombo->currentText() != tr("Other") )
 		{
@@ -683,6 +744,7 @@ namespace glabels
 		registerField( "pageSize.pageSize", pageSizeCombo, "currentText" );
 		registerField( "pageSize.w",        wSpin,         "value" );
 		registerField( "pageSize.h",        hSpin,         "value" );
+		registerField( "pageSize.rollW",    rollWSpin,     "value" );
 
 		connect( pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesignerPageSizePage::onComboChanged );
 
@@ -705,15 +767,29 @@ namespace glabels
 
 	void TemplateDesignerPageSizePage::onComboChanged()
 	{
-		if ( pageSizeCombo->currentText() != tr("Other") )
+		bool isOther = pageSizeCombo->currentText() == tr("Other");
+		bool isRoll  = pageSizeCombo->currentText() == tr("Roll");
+
+		if ( !isOther && !isRoll )
 		{
 			const model::Paper* paper = model::Db::lookupPaperFromName( pageSizeCombo->currentText() );
 			wSpin->setValue( paper->width().inUnits( model::Settings::units() ) );
 			hSpin->setValue( paper->height().inUnits( model::Settings::units() ) );
 		}
 
-		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
-		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		if ( !isRoll )
+		{
+			rollWSpin->setValue( 0 );
+		}
+
+		wLabel->setEnabled( isOther || isRoll );
+		wSpin->setEnabled( isOther || isRoll );
+		
+		hLabel->setEnabled( isOther || isRoll );
+		hSpin->setEnabled( isOther || isRoll );
+
+		rollWLabel->setEnabled( isRoll );
+		rollWSpin->setEnabled( isRoll );
 	}
 
 
@@ -1056,6 +1132,30 @@ namespace glabels
 	void TemplateDesignerCdPage::cleanupPage()
 	{
 		// Leave current settings alone
+	}
+
+
+	///
+	/// Path Product Page
+	///
+	TemplateDesignerPathPage::TemplateDesignerPathPage( QWidget* parent ) : QWizardPage(parent)
+	{
+		setTitle( tr("Unsupported Product Style") );
+		setSubTitle( tr("Path based product templates are not currently supported by the Product Template Designer.") );
+
+		QWidget* widget = new QWidget;
+		setupUi( widget );
+
+		QVBoxLayout* layout = new QVBoxLayout;
+		layout->addWidget( widget );
+		setLayout( layout );
+	}
+	
+
+	bool TemplateDesignerPathPage::isComplete() const
+	{
+		// Must "Cancel" or "Back" from this page
+		return false;
 	}
 
 
