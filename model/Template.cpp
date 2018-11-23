@@ -21,6 +21,7 @@
 #include "Template.h"
 
 #include "Db.h"
+#include "FrameContinuous.h"
 
 #include <QtDebug>
 
@@ -165,7 +166,16 @@ namespace glabels
 	
 		Distance Template::pageHeight() const
 		{
-			return mPageHeight;
+			// Adjust height if continuous tape
+			const model::Frame* frame = mFrames.constFirst();
+			if ( const auto* frameContinuous = dynamic_cast<const model::FrameContinuous*>(frame) )
+			{
+				return frameContinuous->l();
+			}
+			else
+			{
+				return mPageHeight;
+			}
 		}
 
 	

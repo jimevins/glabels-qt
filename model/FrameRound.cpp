@@ -123,8 +123,12 @@ namespace glabels
 		}
 
 
-		QPainterPath FrameRound::marginPath( const Distance& size ) const
+		QPainterPath FrameRound::marginPath( const Distance& xSize,
+		                                     const Distance& ySize ) const
 		{
+			// Note: ignore ySize, assume xSize == ySize
+			Distance size = xSize;
+
 			Distance r = mR - size;
 
 			QPainterPath path;

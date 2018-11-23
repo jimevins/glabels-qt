@@ -72,7 +72,8 @@ namespace glabels
 
 			virtual const QPainterPath& path() const = 0;
 			virtual const QPainterPath& clipPath() const = 0;
-			virtual QPainterPath marginPath( const Distance& size ) const = 0;
+			virtual QPainterPath marginPath( const Distance& xSize,
+			                                 const Distance& ySize ) const = 0;
 
 
 		private:

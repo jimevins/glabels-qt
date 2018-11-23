@@ -148,6 +148,10 @@ namespace glabels
 			{
 				createLabelPathNode( parent, framePath );
 			}
+			else if ( const auto* frameContinuous = dynamic_cast<const FrameContinuous*>(frame) )
+			{
+				createLabelContinuousNode( parent, frameContinuous );
+			}
 			else
 			{
 				Q_ASSERT_X( false, "XmlTemplateCreator::createLabelNode", "Invalid frame type." );
@@ -240,6 +244,22 @@ namespace glabels
 		}
 
 
+		void XmlTemplateCreator::createLabelContinuousNode( QDomElement &parent, const FrameContinuous* frame )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Label-continuous" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "id",             frame->id() );
+			XmlUtil::setLengthAttr( node, "width",          frame->w() );
+			XmlUtil::setLengthAttr( node, "min_length",     frame->lMin() );
+			XmlUtil::setLengthAttr( node, "max_length",     frame->lMin() );
+			XmlUtil::setLengthAttr( node, "default_length", frame->lDefault() );
+
+			createLabelNodeCommon( node, frame );
+		}
+
+
 		void XmlTemplateCreator::createLabelNodeCommon( QDomElement &node, const Frame *frame )
 		{
 			foreach ( Markup* markup, frame->markups() )
@@ -300,7 +320,15 @@ namespace glabels
 			QDomElement node = doc.createElement( "Markup-margin" );
 			parent.appendChild( node );
 
-			XmlUtil::setLengthAttr( node, "size", markup->size() );
+			if ( markup->xSize() == markup->ySize() )
+			{
+				XmlUtil::setLengthAttr( node, "size", markup->xSize() );
+			}
+			else
+			{
+				XmlUtil::setLengthAttr( node, "x_size", markup->xSize() );
+				XmlUtil::setLengthAttr( node, "y_size", markup->ySize() );
+			}
 		}
 
 

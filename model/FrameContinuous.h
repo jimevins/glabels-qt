@@ -1,6 +1,6 @@
-/*  FrameRound.h
+/*  FrameContinuous.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2018  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef model_FrameRound_h
-#define model_FrameRound_h
+#ifndef model_FrameContinuous_h
+#define model_FrameContinuous_h
 
 
 #include "Frame.h"
@@ -30,26 +30,33 @@ namespace glabels
 	namespace model
 	{
 
-		class FrameRound : public Frame
+		class FrameContinuous : public Frame
 		{
-			Q_DECLARE_TR_FUNCTIONS(FrameRound)
+			Q_DECLARE_TR_FUNCTIONS(FrameContinuous)
 
 		public:
-			FrameRound( const Distance& r,
-			            const Distance& waste,
-			            const QString&  id = "0" );
+			FrameContinuous( const Distance& w,
+			                 const Distance& lMin,
+			                 const Distance& lMax,
+			                 const Distance& lDefault,
+			                 const QString&  id = "0" );
 
-			FrameRound( const FrameRound &other );
+			FrameContinuous( const FrameContinuous& other );
 
-			Frame *dup() const override;
+			Frame* dup() const override;
 
-			Distance r() const;
-			Distance waste() const;
+			void setLength( const Distance& l );
 
 			Distance w() const override;
 			Distance h() const override;
 
+			Distance lMin() const;
+			Distance lMax() const;
+			Distance lDefault() const;
+			Distance l() const;
+
 			QString sizeDescription( const Units& units ) const override;
+
 			bool isSimilarTo( Frame* other ) const override;
 
 			const QPainterPath& path() const override;
@@ -59,16 +66,17 @@ namespace glabels
 
 
 		private:
-			Distance mR;
-			Distance mWaste;
+			Distance mW;
+			Distance mLMin;
+			Distance mLMax;
+			Distance mLDefault;
+			Distance mL;
 
 			QPainterPath mPath;
-			QPainterPath mClipPath;
-
 		};
 
 	}
 }
 
 
-#endif // model_FrameRound_h
+#endif // model_FrameContinuous_h

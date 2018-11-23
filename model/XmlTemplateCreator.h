@@ -23,6 +23,7 @@
 
 
 #include "FrameCd.h"
+#include "FrameContinuous.h"
 #include "FrameEllipse.h"
 #include "FramePath.h"
 #include "FrameRect.h"
@@ -57,6 +58,7 @@ namespace glabels
 			void createLabelRoundNode( QDomElement& parent, const FrameRound* frame );
 			void createLabelCdNode( QDomElement& parent, const FrameCd* frame );
 			void createLabelPathNode( QDomElement& parent, const FramePath* frame );
+			void createLabelContinuousNode( QDomElement& parent, const FrameContinuous* frame );
 			void createLabelNodeCommon( QDomElement& node, const Frame* frame );
 			void createLayoutNode( QDomElement& parent, const Layout* layout );
 			void createMarkupMarginNode( QDomElement& parent, const MarkupMargin* markupMargin );

@@ -28,7 +28,7 @@
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="28.96mm" height="89.83mm" round="1.5mm" x_waste="0" y_waste="0">
-      <Markup-rect x1="1.5mm" y1="3.0mm" w="25.91mm" h="83.90mm" r="0" /> <!-- Print Area -->
+      <Markup-margin x_size="1.5mm" y_size="3.0mm" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>
@@ -38,7 +38,7 @@
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="61.98mm" height="99.82mm" round="1.5mm" x_waste="0" y_waste="0">
-      <Markup-rect x1="1.5mm" y1="3.0mm" w="58.93mm" h="93.90mm" r="0" /> <!-- Print Area -->
+      <Markup-margin x_size="1.5mm" y_size="3.0mm" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>
@@ -47,7 +47,7 @@
 	    size="roll" roll_width="20mm" width="17.02mm" height="53.85mm" >
     <Meta category="label"/>
     <Label-rectangle id="0" width="17.02mm" height="53.85mm" round="1.5mm" x_waste="0" y_waste="0">
-      <Markup-rect x1="1.5mm" y1="3.0mm" w="13.97mm" h="47.92mm" r="0" /> <!-- Print Area -->
+      <Markup-margin x_size="1.5mm" y_size="3.0mm" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
   </Template>
@@ -57,9 +57,24 @@
     <Meta category="label"/>
     <Meta category="mail"/>
     <Label-rectangle id="0" width="38.01mm" height="89.83mm" round="1.5mm" x_waste="0" y_waste="0">
-      <Markup-rect x1="1.5mm" y1="3.0mm" w="34.97mm" h="83.90mm" r="0" /> <!-- Print Area -->
+      <Markup-margin x_size="1.5mm" y_size="3.0mm" /> <!-- Print Area -->
       <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
     </Label-rectangle>
+  </Template>
+
+
+  <!-- ********************************************************************* -->
+  <!-- Continuous Label Tapes                                                -->
+  <!-- ********************************************************************* -->
+
+  <Template brand="Brother" part="DK-2205" _description="Continuous label tape"
+	    size="roll" roll_width="67mm" width="61.98mm" >
+    <Meta category="label"/>
+    <Meta category="mail"/>
+    <Label-continuous id="0" width="61.98mm" min_length="25mm" max_length="1000mm" default_length="100mm" >
+      <Markup-margin x_size="1.5mm" y_size="3.0mm" />
+      <Layout nx="1" ny="1" x0="0" y0="0" dx="0" dy="0"/>
+    </Label-continuous>
   </Template>
 
 

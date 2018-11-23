@@ -187,8 +187,12 @@ namespace glabels
 		}
 	
 
-		QPainterPath FrameCd::marginPath( const Distance& size ) const
+		QPainterPath FrameCd::marginPath( const Distance& xSize,
+		                                  const Distance& ySize ) const
 		{
+			// Note: ignore ySize, assume xSize == ySize
+			Distance size = xSize;
+			
 			Distance wReal = (mW == 0) ? 2*mR1 : mW;
 			Distance hReal = (mH == 0) ? 2*mR1 : mH;
 

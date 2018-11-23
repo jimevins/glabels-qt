@@ -87,6 +87,7 @@ set (glabels_forms
   ui/TemplateDesignerEllipsePage.ui
   ui/TemplateDesignerCdPage.ui
   ui/TemplateDesignerPathPage.ui
+  ui/TemplateDesignerContinuousPage.ui
   ui/TemplateDesignerNLayoutsPage.ui
   ui/TemplateDesignerOneLayoutPage.ui
   ui/TemplateDesignerTwoLayoutPage.ui

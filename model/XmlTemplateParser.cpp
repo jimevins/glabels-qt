@@ -26,6 +26,7 @@
 #include "FrameRound.h"
 #include "FrameEllipse.h"
 #include "FramePath.h"
+#include "FrameContinuous.h"
 #include "Layout.h"
 #include "Markup.h"
 #include "Template.h"
@@ -201,6 +202,10 @@ namespace glabels
 					{
 						parseLabelPathNode( child.toElement(), tmplate );
 					}
+					else if ( child.toElement().tagName() == "Label-continuous" )
+					{
+						parseLabelContinuousNode( child.toElement(), tmplate );
+					}
 					else if ( !child.isComment() )
 					{
 						qWarning() << "Warning: bad element: "
@@ -338,6 +343,23 @@ namespace glabels
 		}
 
 
+		void XmlTemplateParser::parseLabelContinuousNode( const QDomElement &node, Template *tmplate )
+		{
+			QString id = XmlUtil::getStringAttr( node, "id", "0" );
+
+			Distance w        = XmlUtil::getLengthAttr( node, "width", Distance(0) );
+			Distance lMin     = XmlUtil::getLengthAttr( node, "min_length", Distance(0) );
+			Distance lMax     = XmlUtil::getLengthAttr( node, "max_length", Distance(0) );
+			Distance lDefault = XmlUtil::getLengthAttr( node, "default_length", Distance(0) );
+
+			Frame *frame = new FrameContinuous( w, lMin, lMax, lDefault, id );
+
+			parseLabelNodeCommon( node, frame );
+
+			tmplate->addFrame( frame );
+		}
+
+
 		void XmlTemplateParser::parseLabelNodeCommon( const QDomElement &node, Frame *frame )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
@@ -393,9 +415,18 @@ namespace glabels
 
 		void XmlTemplateParser::parseMarkupMarginNode( const QDomElement &node, Frame *frame )
 		{
-			Distance size = XmlUtil::getLengthAttr( node, "size", Distance(0) );
+			Distance size  = XmlUtil::getLengthAttr( node, "size", Distance(0) );
+			Distance xSize = XmlUtil::getLengthAttr( node, "x_size", Distance(0) );
+			Distance ySize = XmlUtil::getLengthAttr( node, "y_size", Distance(0) );
 
-			frame->addMarkup( new MarkupMargin( frame, size ) );
+			if ( size > Distance(0) )
+			{
+				frame->addMarkup( new MarkupMargin( frame, size ) );
+			}
+			else
+			{
+				frame->addMarkup( new MarkupMargin( frame, xSize, ySize ) );
+			}
 		}
 
 

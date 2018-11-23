@@ -139,7 +139,8 @@ namespace glabels
 		}
 
 
-		QPainterPath FramePath::marginPath( const Distance& size ) const
+		QPainterPath FramePath::marginPath( const Distance& xSize,
+		                                    const Distance& ySize ) const
 		{
 			return mPath; // No margin
 		}

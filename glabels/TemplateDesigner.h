@@ -31,6 +31,7 @@
 #include "ui_TemplateDesignerEllipsePage.h"
 #include "ui_TemplateDesignerCdPage.h"
 #include "ui_TemplateDesignerPathPage.h"
+#include "ui_TemplateDesignerContinuousPage.h"
 #include "ui_TemplateDesignerNLayoutsPage.h"
 #include "ui_TemplateDesignerOneLayoutPage.h"
 #include "ui_TemplateDesignerTwoLayoutPage.h"
@@ -61,6 +62,7 @@ namespace glabels
 		friend class TemplateDesignerEllipsePage;
 		friend class TemplateDesignerCdPage;
 		friend class TemplateDesignerPathPage;
+		friend class TemplateDesignerContinuousPage;
 		friend class TemplateDesignerNLayoutsPage;
 		friend class TemplateDesignerOneLayoutPage;
 		friend class TemplateDesignerTwoLayoutPage;
@@ -96,6 +98,7 @@ namespace glabels
 	private:
 		bool mIsBasedOnCopy{false};
 		bool mIsTemplatePathBased{false};
+		bool mIsTemplateContinuousBased{false};
 	};
 
 
@@ -231,6 +234,19 @@ namespace glabels
 		Q_OBJECT
 	public:
 		TemplateDesignerPathPage( QWidget* parent = nullptr );
+
+		bool isComplete() const override;
+	};
+
+
+	//
+	// Continuous Page
+	//
+	class TemplateDesignerContinuousPage : public QWizardPage, public Ui::TemplateDesignerContinuousPage
+	{
+		Q_OBJECT
+	public:
+		TemplateDesignerContinuousPage( QWidget* parent = nullptr );
 
 		bool isComplete() const override;
 	};

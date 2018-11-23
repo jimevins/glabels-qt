@@ -50,13 +50,19 @@ namespace glabels
 			MarkupMargin( const Frame*    frame,
 			              const Distance& size );
 
-			Distance size() const;
+			MarkupMargin( const Frame*    frame,
+			              const Distance& xSize,
+			              const Distance& ySize );
+
+			Distance xSize() const;
+			Distance ySize() const;
 
 			Markup* dup() const override;
 
 		private:
 			const Frame* mFrame;
-			Distance  mSize;
+			Distance  mXSize;
+			Distance  mYSize;
 		};
 
 

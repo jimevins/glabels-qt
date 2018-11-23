@@ -54,7 +54,8 @@ namespace glabels
 
 			const QPainterPath& path() const override;
 			const QPainterPath& clipPath() const override;
-			QPainterPath marginPath( const Distance& size ) const override;
+			QPainterPath marginPath( const Distance& xSize,
+			                         const Distance& ySize ) const override;
 
 
 		private:

@@ -119,8 +119,12 @@ namespace glabels
 		}
 
 	
-		QPainterPath FrameEllipse::marginPath( const Distance& size ) const
+		QPainterPath FrameEllipse::marginPath( const Distance& xSize,
+		                                       const Distance& ySize ) const
 		{
+			// Note: ignore ySize, assume xSize == ySize
+			Distance size = xSize;
+			
 			Distance w = mW - 2*size;
 			Distance h = mH - 2*size;
 

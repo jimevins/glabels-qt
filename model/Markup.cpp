@@ -34,21 +34,36 @@ namespace glabels
 	
 		MarkupMargin::MarkupMargin( const Frame*    frame,
 		                            const Distance& size )
-			: mFrame(frame), mSize(size)
+			: mFrame(frame), mXSize(size), mYSize(size)
 		{
-			mPath = frame->marginPath( size );
+			mPath = frame->marginPath( size, size );
+		}
+	
+
+		MarkupMargin::MarkupMargin( const Frame*    frame,
+		                            const Distance& xSize,
+		                            const Distance& ySize )
+			: mFrame(frame), mXSize(xSize), mYSize(ySize)
+		{
+			mPath = frame->marginPath( xSize, ySize );
 		}
 	
 
 		Markup* MarkupMargin::dup() const
 		{
-			return new MarkupMargin( mFrame, mSize );
+			return new MarkupMargin( mFrame, mXSize, mYSize );
 		}
 
 
-		Distance MarkupMargin::size() const
+		Distance MarkupMargin::xSize() const
 		{
-			return mSize;
+			return mXSize;
+		}
+
+
+		Distance MarkupMargin::ySize() const
+		{
+			return mYSize;
 		}
 
 

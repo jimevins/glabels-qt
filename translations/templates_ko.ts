@@ -423,5 +423,9 @@
         <source>Zip disc labels</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Continuous label tape</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

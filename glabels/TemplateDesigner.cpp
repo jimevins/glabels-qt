@@ -24,6 +24,7 @@
 #include "model/Db.h"
 #include "model/Distance.h"
 #include "model/FrameCd.h"
+#include "model/FrameContinuous.h"
 #include "model/FrameEllipse.h"
 #include "model/FramePath.h"
 #include "model/FrameRect.h"
@@ -62,6 +63,7 @@ namespace glabels
 			EllipsePageId,
 			CdPageId,
 			PathPageId,
+			ContinuousPageId,
 			NLayoutsPageId,
 			OneLayoutPageId,
 			TwoLayoutPageId,
@@ -116,19 +118,20 @@ namespace glabels
 		setOption( QWizard::IndependentPages, false );
 		setOption( QWizard::NoBackButtonOnStartPage, true );
 
-		setPage( IntroPageId,     new TemplateDesignerIntroPage() );
-		setPage( NamePageId,      new TemplateDesignerNamePage() );
-		setPage( PageSizePageId,  new TemplateDesignerPageSizePage() );
-		setPage( ShapePageId,     new TemplateDesignerShapePage() );
-		setPage( RectPageId,      new TemplateDesignerRectPage() );
-		setPage( RoundPageId,     new TemplateDesignerRoundPage() );
-		setPage( EllipsePageId,   new TemplateDesignerEllipsePage() );
-		setPage( CdPageId,        new TemplateDesignerCdPage() );
-		setPage( PathPageId,      new TemplateDesignerPathPage() );
-		setPage( NLayoutsPageId,  new TemplateDesignerNLayoutsPage() );
-		setPage( OneLayoutPageId, new TemplateDesignerOneLayoutPage() );
-		setPage( TwoLayoutPageId, new TemplateDesignerTwoLayoutPage() );
-		setPage( ApplyPageId,     new TemplateDesignerApplyPage() );
+		setPage( IntroPageId,      new TemplateDesignerIntroPage() );
+		setPage( NamePageId,       new TemplateDesignerNamePage() );
+		setPage( PageSizePageId,   new TemplateDesignerPageSizePage() );
+		setPage( ShapePageId,      new TemplateDesignerShapePage() );
+		setPage( RectPageId,       new TemplateDesignerRectPage() );
+		setPage( RoundPageId,      new TemplateDesignerRoundPage() );
+		setPage( EllipsePageId,    new TemplateDesignerEllipsePage() );
+		setPage( CdPageId,         new TemplateDesignerCdPage() );
+		setPage( PathPageId,       new TemplateDesignerPathPage() );
+		setPage( ContinuousPageId, new TemplateDesignerContinuousPage() );
+		setPage( NLayoutsPageId,   new TemplateDesignerNLayoutsPage() );
+		setPage( OneLayoutPageId,  new TemplateDesignerOneLayoutPage() );
+		setPage( TwoLayoutPageId,  new TemplateDesignerTwoLayoutPage() );
+		setPage( ApplyPageId,      new TemplateDesignerApplyPage() );
 	}
 
 
@@ -139,23 +142,27 @@ namespace glabels
 	{
 		switch (currentId())
 		{
-			
+
 		case IntroPageId:
 			if ( mIsTemplatePathBased )
 			{
 				return PathPageId;
 			}
+			else if ( mIsTemplateContinuousBased )
+			{
+				return ContinuousPageId;
+			}
 			else
 			{
 				return NamePageId;
 			}
-			
+
 		case NamePageId:
 			return PageSizePageId;
-			
+
 		case PageSizePageId:
 			return ShapePageId;
-			
+
 		case ShapePageId:
 			if ( field( "shape.rect" ).toBool() )
 			{
@@ -173,7 +180,7 @@ namespace glabels
 			{
 				return CdPageId;
 			}
-			
+
 		case RectPageId:
 			if ( field( "pageSize.pageSize" ) != tr("Roll") )
 			{
@@ -183,7 +190,7 @@ namespace glabels
 			{
 				return OneLayoutPageId;
 			}
-			
+
 		case RoundPageId:
 			if ( field( "pageSize.pageSize" ) != tr("Roll") )
 			{
@@ -193,7 +200,7 @@ namespace glabels
 			{
 				return OneLayoutPageId;
 			}
-			
+
 		case EllipsePageId:
 			if ( field( "pageSize.pageSize" ) != tr("Roll") )
 			{
@@ -203,7 +210,7 @@ namespace glabels
 			{
 				return OneLayoutPageId;
 			}
-			
+
 		case CdPageId:
 			if ( field( "pageSize.pageSize" ) != tr("Roll") )
 			{
@@ -213,10 +220,13 @@ namespace glabels
 			{
 				return OneLayoutPageId;
 			}
-			
+
 		case PathPageId:
 			return IntroPageId;
-			
+
+		case ContinuousPageId:
+			return IntroPageId;
+
 		case NLayoutsPageId:
 			if ( field( "nLayouts.one" ).toBool() )
 			{
@@ -229,10 +239,10 @@ namespace glabels
 
 		case OneLayoutPageId:
 			return ApplyPageId;
-			
+
 		case TwoLayoutPageId:
 			return ApplyPageId;
-			
+
 		case ApplyPageId:
 		default:
 			return -1;
@@ -379,10 +389,11 @@ namespace glabels
 			model::Distance r( field( "rect.r" ).toDouble(), units );
 			model::Distance xWaste( field( "rect.xWaste" ).toDouble(), units );
 			model::Distance yWaste( field( "rect.yWaste" ).toDouble(), units );
-			model::Distance margin( field( "rect.margin" ).toDouble(), units );
+			model::Distance xMargin( field( "rect.xMargin" ).toDouble(), units );
+			model::Distance yMargin( field( "rect.yMargin" ).toDouble(), units );
 
 			frame = new model::FrameRect( w, h, r, xWaste, yWaste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( frame, xMargin, yMargin ) );
 		}
 		else if ( field( "shape.round" ).toBool() )
 		{
@@ -543,10 +554,11 @@ namespace glabels
 		{
 			if ( auto markupMargin = dynamic_cast<const model::MarkupMargin*>( markup ) )
 			{
-				setField( "rect.margin",    markupMargin->size().inUnits( units ) );
-				setField( "round.margin",   markupMargin->size().inUnits( units ) );
-				setField( "ellipse.margin", markupMargin->size().inUnits( units ) );
-				setField( "cd.margin",      markupMargin->size().inUnits( units ) );
+				setField( "rect.xMargin",   markupMargin->xSize().inUnits( units ) );
+				setField( "rect.yMargin",   markupMargin->ySize().inUnits( units ) );
+				setField( "round.margin",   markupMargin->xSize().inUnits( units ) );
+				setField( "ellipse.margin", markupMargin->xSize().inUnits( units ) );
+				setField( "cd.margin",      markupMargin->xSize().inUnits( units ) );
 			}
 		}
 
@@ -630,9 +642,14 @@ namespace glabels
 				{
 					td->mIsTemplatePathBased = true;
 				}
+				else if ( dynamic_cast<model::FrameContinuous*>(tmplate->frames().constFirst()) )
+				{
+					td->mIsTemplateContinuousBased = true;
+				}
 				else
 				{
 					td->mIsTemplatePathBased = false;
+					td->mIsTemplateContinuousBased = false;
 					td->loadFromTemplate( tmplate );
 				}
 				td->next();
@@ -857,16 +874,21 @@ namespace glabels
 		yWasteSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		yWasteSpin->setSingleStep( model::Settings::units().resolution() );
 
-		marginSpin->setSuffix( " " + model::Settings::units().toTrName() );
-		marginSpin->setDecimals( model::Settings::units().resolutionDigits() );
-		marginSpin->setSingleStep( model::Settings::units().resolution() );
+		xMarginSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		xMarginSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		xMarginSpin->setSingleStep( model::Settings::units().resolution() );
 
-		registerField( "rect.w",      wSpin,      "value" );
-		registerField( "rect.h",      hSpin,      "value" );
-		registerField( "rect.r",      rSpin,      "value" );
-		registerField( "rect.xWaste", xWasteSpin, "value" );
-		registerField( "rect.yWaste", yWasteSpin, "value" );
-		registerField( "rect.margin", marginSpin, "value" );
+		yMarginSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		yMarginSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		yMarginSpin->setSingleStep( model::Settings::units().resolution() );
+
+		registerField( "rect.w",       wSpin,      "value" );
+		registerField( "rect.h",       hSpin,      "value" );
+		registerField( "rect.r",       rSpin,      "value" );
+		registerField( "rect.xWaste",  xWasteSpin, "value" );
+		registerField( "rect.yWaste",  yWasteSpin, "value" );
+		registerField( "rect.xMargin", xMarginSpin, "value" );
+		registerField( "rect.yMargin", yMarginSpin, "value" );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
@@ -887,7 +909,8 @@ namespace glabels
 			rSpin->setMaximum( std::min(wMax,hMax)/2.0 );
 			xWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
 			yWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-			marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			xMarginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			yMarginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
 
 			static bool alreadyInitialized = false;
 			if ( !td->isBasedOnCopy() && !alreadyInitialized )
@@ -900,7 +923,8 @@ namespace glabels
 				rSpin->setValue( defaultRectR.inUnits( model::Settings::units() ) );
 				xWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
 				yWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-				marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+				xMarginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+				yMarginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
 			}
 		}
 	}
@@ -1153,6 +1177,30 @@ namespace glabels
 	
 
 	bool TemplateDesignerPathPage::isComplete() const
+	{
+		// Must "Cancel" or "Back" from this page
+		return false;
+	}
+
+
+	///
+	/// Continuous Product Page
+	///
+	TemplateDesignerContinuousPage::TemplateDesignerContinuousPage( QWidget* parent ) : QWizardPage(parent)
+	{
+		setTitle( tr("Unsupported Product Style") );
+		setSubTitle( tr("Continuous tape product templates are not currently supported by the Product Template Designer.") );
+
+		QWidget* widget = new QWidget;
+		setupUi( widget );
+
+		QVBoxLayout* layout = new QVBoxLayout;
+		layout->addWidget( widget );
+		setLayout( layout );
+	}
+	
+
+	bool TemplateDesignerContinuousPage::isComplete() const
 	{
 		// Must "Cancel" or "Back" from this page
 		return false;
