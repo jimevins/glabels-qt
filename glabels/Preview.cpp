@@ -45,8 +45,8 @@ namespace glabels
 		const double  shadowRadiusPixels = 12;
 
 		const QColor  labelColor( 255, 255, 255 );
-		const QColor  labelOutlineColor( 128, 128, 128 );
-		const double  labelOutlineWidthPixels = 2;
+		const QColor  labelOutlineColor( 192, 192, 192 );
+		const double  labelOutlineWidthPixels = 1;
 	}
 
 
@@ -193,7 +193,6 @@ namespace glabels
 	{
 		QBrush brush( labelColor );
 		QPen pen( labelOutlineColor );
-		pen.setStyle( Qt::DotLine );
 		pen.setCosmetic( true );
 		pen.setWidthF( labelOutlineWidthPixels );
 
