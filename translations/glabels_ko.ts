@@ -274,12 +274,12 @@
 <context>
     <name>Frame</name>
     <message>
-        <location filename="../model/Frame.cpp" line="124"/>
+        <location filename="../model/Frame.cpp" line="130"/>
         <source>%1 x %2 (%3 per sheet)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../model/Frame.cpp" line="130"/>
+        <location filename="../model/Frame.cpp" line="136"/>
         <source>%1 per sheet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -287,17 +287,26 @@
 <context>
     <name>FrameCd</name>
     <message>
-        <location filename="../model/FrameCd.cpp" line="150"/>
-        <location filename="../model/FrameCd.cpp" line="157"/>
+        <location filename="../model/FrameCd.cpp" line="141"/>
+        <location filename="../model/FrameCd.cpp" line="148"/>
         <source>diameter</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FrameContinuous</name>
+    <message>
+        <location filename="../model/FrameContinuous.cpp" line="96"/>
+        <location filename="../model/FrameContinuous.cpp" line="103"/>
+        <source>wide</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FrameRound</name>
     <message>
+        <location filename="../model/FrameRound.cpp" line="82"/>
         <location filename="../model/FrameRound.cpp" line="89"/>
-        <location filename="../model/FrameRound.cpp" line="96"/>
         <source>diameter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -715,82 +724,92 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="70"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="79"/>
         <source>Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="84"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="93"/>
         <source>Vendor:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="97"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="123"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="149"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="175"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="201"/>
-        <location filename="../glabels/ui/PropertiesView.ui" line="227"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="106"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="132"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="158"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="184"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="210"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="236"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="110"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="119"/>
         <source>Part #:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="136"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="145"/>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="162"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="171"/>
         <source>Page size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="188"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="197"/>
         <source>Label size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="214"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="223"/>
         <source>Layout:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="236"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="245"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select another product for this gLabels project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="242"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="251"/>
         <source>Change product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="268"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="271"/>
+        <source>Adjustable Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ui/PropertiesView.ui" line="293"/>
+        <source>Label length:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../glabels/ui/PropertiesView.ui" line="322"/>
         <source>Orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="282"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="336"/>
         <source>Select horizontal or vertical orientation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="292"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="346"/>
         <source>Horizontal orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="301"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="355"/>
         <source>Vertical orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/ui/PropertiesView.ui" line="324"/>
+        <location filename="../glabels/ui/PropertiesView.ui" line="378"/>
         <source>Similar Products</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1410,43 +1429,43 @@
 <context>
     <name>glabels::File</name>
     <message>
-        <location filename="../glabels/File.cpp" line="104"/>
+        <location filename="../glabels/File.cpp" line="108"/>
         <source>gLabels - Open Project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="106"/>
-        <location filename="../glabels/File.cpp" line="187"/>
+        <location filename="../glabels/File.cpp" line="110"/>
+        <location filename="../glabels/File.cpp" line="191"/>
         <source>glabels files (*.glabels);;All files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="133"/>
+        <location filename="../glabels/File.cpp" line="137"/>
         <source>Unable to open &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="133"/>
+        <location filename="../glabels/File.cpp" line="137"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="185"/>
+        <location filename="../glabels/File.cpp" line="189"/>
         <source>gLabels - Save Project As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="198"/>
+        <location filename="../glabels/File.cpp" line="202"/>
         <source>Save Label As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="200"/>
+        <location filename="../glabels/File.cpp" line="204"/>
         <source>%1 already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="201"/>
+        <location filename="../glabels/File.cpp" line="205"/>
         <source>Do you want to replace it?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2410,17 +2429,17 @@
 <context>
     <name>glabels::PropertiesView</name>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="44"/>
+        <location filename="../glabels/PropertiesView.cpp" line="45"/>
         <source>Properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="191"/>
+        <location filename="../glabels/PropertiesView.cpp" line="228"/>
         <source>Product Rotate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="220"/>
+        <location filename="../glabels/PropertiesView.cpp" line="257"/>
         <source>Change Product</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2428,7 +2447,7 @@
 <context>
     <name>glabels::SimplePreview</name>
     <message>
-        <location filename="../glabels/SimplePreview.cpp" line="258"/>
+        <location filename="../glabels/SimplePreview.cpp" line="245"/>
         <source>Up</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3135,7 +3154,7 @@
 <context>
     <name>glabels::model::Model</name>
     <message>
-        <location filename="../model/Model.cpp" line="260"/>
+        <location filename="../model/Model.cpp" line="295"/>
         <source>Untitled</source>
         <translation type="unfinished"></translation>
     </message>

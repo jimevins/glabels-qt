@@ -39,7 +39,7 @@ namespace glabels
 			            const Distance& waste,
 			            const QString&  id = "0" );
 
-			FrameRound( const FrameRound &other );
+			FrameRound( const FrameRound &other ) = default;
 
 			Frame *dup() const override;
 
@@ -69,6 +69,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRound& frame );
 
 
 #endif // model_FrameRound_h

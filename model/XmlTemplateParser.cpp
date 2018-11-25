@@ -348,11 +348,16 @@ namespace glabels
 			QString id = XmlUtil::getStringAttr( node, "id", "0" );
 
 			Distance w        = XmlUtil::getLengthAttr( node, "width", Distance(0) );
-			Distance lMin     = XmlUtil::getLengthAttr( node, "min_length", Distance(0) );
-			Distance lMax     = XmlUtil::getLengthAttr( node, "max_length", Distance(0) );
-			Distance lDefault = XmlUtil::getLengthAttr( node, "default_length", Distance(0) );
+			Distance h        = XmlUtil::getLengthAttr( node, "height", Distance(0) );
+			Distance hMin     = XmlUtil::getLengthAttr( node, "min_height", Distance(0) );
+			Distance hMax     = XmlUtil::getLengthAttr( node, "max_height", Distance(0) );
+			Distance hDefault = XmlUtil::getLengthAttr( node, "default_height", Distance(0) );
 
-			Frame *frame = new FrameContinuous( w, lMin, lMax, lDefault, id );
+			Frame *frame = new FrameContinuous( w, hMin, hMax, hDefault, id );
+			if ( h > Distance(0) )
+			{
+				frame->setH( h );
+			}
 
 			parseLabelNodeCommon( node, frame );
 
@@ -421,11 +426,11 @@ namespace glabels
 
 			if ( size > Distance(0) )
 			{
-				frame->addMarkup( new MarkupMargin( frame, size ) );
+				frame->addMarkup( new MarkupMargin( size ) );
 			}
 			else
 			{
-				frame->addMarkup( new MarkupMargin( frame, xSize, ySize ) );
+				frame->addMarkup( new MarkupMargin( xSize, ySize ) );
 			}
 		}
 

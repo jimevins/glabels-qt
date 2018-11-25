@@ -41,7 +41,7 @@ namespace glabels
 			           const Units&        originalUnits,
 			           const QString&      id = "0" );
 
-			FramePath( const FramePath& other );
+			FramePath( const FramePath& other ) = default;
 
 			Frame* dup() const override;
 
@@ -77,6 +77,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FramePath& frame );
 
 
 #endif // model_FramePath_h

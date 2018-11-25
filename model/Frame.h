@@ -27,6 +27,7 @@
 #include "Point.h"
 
 #include <QCoreApplication>
+#include <QDebug>
 #include <QList>
 #include <QPainterPath>
 #include <QString>
@@ -67,6 +68,8 @@ namespace glabels
 			virtual Distance w() const = 0;
 			virtual Distance h() const = 0;
 
+			virtual void setH( const Distance& h );
+
 			virtual QString sizeDescription( const Units& units ) const = 0;
 			virtual bool isSimilarTo( Frame* other ) const = 0;
 
@@ -87,6 +90,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Frame& frame );
 
 
 #endif // model_Frame_h

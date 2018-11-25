@@ -46,16 +46,6 @@ namespace glabels
 		}
 
 	
-		FramePath::FramePath( const FramePath &other )
-			: Frame(other),
-			  mXWaste(other.mXWaste), mYWaste(other.mYWaste),
-			  mPath(other.mPath), mClipPath(other.mClipPath),
-			  mOriginalUnits(other.mOriginalUnits)
-		{
-			// empty
-		}
-
-	
 		Frame* FramePath::dup() const
 		{
 			return new FramePath( *this );
@@ -147,4 +137,14 @@ namespace glabels
 
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FramePath& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FramePath{ }";
+
+	return dbg;
 }

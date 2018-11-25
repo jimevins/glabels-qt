@@ -108,7 +108,7 @@ namespace glabels
 	///
 	void SimplePreview::update()
 	{
-		clearScene();
+		mScene->clear();
 
 		if ( mTmplate != nullptr )
 		{
@@ -133,19 +133,6 @@ namespace glabels
 			drawPaper();
 			drawLabels();
 			drawArrow();
-		}
-	}
-
-
-	///
-	/// Clear View
-	///
-	void SimplePreview::clearScene()
-	{
-		foreach ( QGraphicsItem *item, mScene->items() )
-		{
-			mScene->removeItem( item );
-			delete item;
 		}
 	}
 

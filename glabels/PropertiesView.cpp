@@ -24,6 +24,7 @@
 #include "UndoRedoModel.h"
 
 #include "model/Db.h"
+#include "model/FrameContinuous.h"
 #include "model/Settings.h"
 
 #include <QStyledItemDelegate>
@@ -106,71 +107,107 @@ namespace glabels
 		preview->setTemplate( tmplate );
 		preview->setRotate( isRotated );
 
-		const model::Vendor* vendor = model::Db::lookupVendorFromName( tmplate->brand() );
-		if ( (vendor != nullptr) && (vendor->url() != nullptr) )
+		if ( !mBlocked )
 		{
-			QString markup = QString( "<a href='%1'>%2</a>" ).arg( vendor->url(), vendor->name() );
-			vendorLabel->setText( markup );
-		}
-		else
-		{
-			vendorLabel->setText( tmplate->brand() );
-		}
-
-		if ( tmplate->productUrl() != nullptr )
-		{
-			QString markup = QString( "<a href='%1'>%2</a>" ).arg( tmplate->productUrl(), tmplate->part() );
-			partLabel->setText( markup );
-		}
-		else
-		{
-			partLabel->setText( tmplate->part() );
-		}
-
-		descriptionLabel->setText( tmplate->description() );
-
-		QString pgSizeString = model::Db::lookupPaperNameFromId( tmplate->paperId() );
-		pageSizeLabel->setText( pgSizeString );
-
-		QString labelSizeString = frame->sizeDescription( mUnits );
-		labelSizeLabel->setText( labelSizeString );
-
-		QString layoutString = frame->layoutDescription();
-		layoutLabel->setText( layoutString );
-
-		QStringList list = model::Db::getNameListOfSimilarTemplates( tmplate->name() );
-		if ( list.isEmpty() )
-		{
-			similarProductsGroupBox->hide();
-			similarProductsNullBox->show();
-		}
-		else
-		{
-			similarProductsGroupBox->show();
-			similarProductsNullBox->hide();
-
-			QString similarListString;
-			foreach ( QString name, list )
+			mBlocked = true;
+		
+			const model::Vendor* vendor = model::Db::lookupVendorFromName( tmplate->brand() );
+			if ( (vendor != nullptr) && (vendor->url() != nullptr) )
 			{
-				similarListString += name + "\n";
+				QString markup = QString( "<a href='%1'>%2</a>" ).arg( vendor->url(), vendor->name() );
+				vendorLabel->setText( markup );
 			}
-			similarBrowser->setText( similarListString );
-		}
+			else
+			{
+				vendorLabel->setText( tmplate->brand() );
+			}
 
-		orientationCombo->setEnabled( frame->w() != frame->h() );
-		if ( frame->w() == frame->h() )
-		{
-			orientationCombo->setCurrentIndex(0);
+			if ( tmplate->productUrl() != nullptr )
+			{
+				QString markup = QString( "<a href='%1'>%2</a>" ).arg( tmplate->productUrl(), tmplate->part() );
+				partLabel->setText( markup );
+			}
+			else
+			{
+				partLabel->setText( tmplate->part() );
+			}
+
+			descriptionLabel->setText( tmplate->description() );
+
+			QString pgSizeString = model::Db::lookupPaperNameFromId( tmplate->paperId() );
+			pageSizeLabel->setText( pgSizeString );
+
+			QString labelSizeString = frame->sizeDescription( mUnits );
+			labelSizeLabel->setText( labelSizeString );
+
+			QString layoutString = frame->layoutDescription();
+			layoutLabel->setText( layoutString );
+
+			QStringList list = model::Db::getNameListOfSimilarTemplates( tmplate->name() );
+			if ( list.isEmpty() )
+			{
+				similarProductsGroupBox->hide();
+				similarProductsNullBox->show();
+			}
+			else
+			{
+				similarProductsGroupBox->show();
+				similarProductsNullBox->hide();
+
+				QString similarListString;
+				foreach ( QString name, list )
+				{
+					similarListString += name + "\n";
+				}
+				similarBrowser->setText( similarListString );
+			}
+
+			orientationCombo->setEnabled( frame->w() != frame->h() );
+			if ( frame->w() == frame->h() )
+			{
+				orientationCombo->setCurrentIndex(0);
+			}
+			else if ( frame->w() > frame->h() )
+			{
+				orientationCombo->setCurrentIndex( isRotated ? 1 : 0 );
+			}
+			else
+			{
+				orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
+			}
+			mOldOrientationIndex = orientationCombo->currentIndex();
+
+			if ( auto* continuousFrame = dynamic_cast<const model::FrameContinuous*>( frame ) )
+			{
+				parametersGroupBox->setVisible( true );
+				lengthSpin->setSuffix( " " + mUnits.toTrName() );
+				lengthSpin->setDecimals( mUnits.resolutionDigits() );
+				lengthSpin->setSingleStep( mUnits.resolution() );
+				lengthSpin->setMinimum( continuousFrame->hMin().inUnits( mUnits ) );
+				lengthSpin->setMaximum( continuousFrame->hMax().inUnits( mUnits ) );
+				lengthSpin->setValue( continuousFrame->h().inUnits( mUnits ) );
+			}
+			else
+			{
+				parametersGroupBox->setVisible( false );
+			}
+
+			mBlocked = false;
 		}
-		else if ( frame->w() > frame->h() )
+	}
+
+
+	///
+	/// Length spin changed handler
+	///
+	void PropertiesView::onLengthSpinChanged()
+	{
+		if ( !mBlocked )
 		{
-			orientationCombo->setCurrentIndex( isRotated ? 1 : 0 );
+			mBlocked = true;
+			mModel->setH( model::Distance( lengthSpin->value(), mUnits ) );
+			mBlocked = false;
 		}
-		else
-		{
-			orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
-		}
-		mOldOrientationIndex = orientationCombo->currentIndex();
 	}
 
 

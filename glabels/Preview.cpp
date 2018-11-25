@@ -86,7 +86,7 @@ namespace glabels
 	{
 		mModel = mRenderer->model();
 
-		clearScene();
+		mScene->clear();
 
 		if ( mModel != nullptr )
 		{
@@ -123,19 +123,6 @@ namespace glabels
 	void Preview::resizeEvent( QResizeEvent* event )
 	{
 		fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
-	}
-
-
-	///
-	/// Clear View
-	///
-	void Preview::clearScene()
-	{
-		foreach ( QGraphicsItem *item, mScene->items() )
-		{
-			mScene->removeItem( item );
-			delete item;
-		}
 	}
 
 

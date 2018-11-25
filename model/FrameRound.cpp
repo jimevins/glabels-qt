@@ -40,13 +40,6 @@ namespace glabels
 		}
 	
 
-		FrameRound::FrameRound( const FrameRound& other )
-			: Frame(other), mR(other.mR), mWaste(other.mWaste), mPath(other.mPath)
-		{
-			// empty
-		}
-	
-
 		Frame* FrameRound::dup() const
 		{
 			return new FrameRound( *this );
@@ -138,4 +131,14 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRound& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameRound{ }";
+
+	return dbg;
 }

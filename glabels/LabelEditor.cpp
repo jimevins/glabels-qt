@@ -1143,7 +1143,7 @@ namespace glabels
 
 			foreach( model::Markup* markup, mModel->frame()->markups() )
 			{
-				painter->drawPath( markup->path() );
+				painter->drawPath( markup->path( mModel->frame() ) );
 			}
 
 			painter->restore();

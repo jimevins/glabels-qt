@@ -43,6 +43,8 @@ namespace glabels
 
 		public:
 
+			Template() = default;
+
 			Template( const QString&  brand,
 			          const QString&  part,
 			          const QString&  description,
@@ -54,7 +56,9 @@ namespace glabels
 
 			Template( const Template& other );
 
-			Template* dup() const;
+			~Template();
+
+			Template& operator=( const Template& other );
 
 			// Generic full page template
 			static Template* fullPage( const QString& paperId );
@@ -124,7 +128,12 @@ namespace glabels
 		};
 
 	}
+
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Template& tmplate );
 
 
 #endif // model_Template_h

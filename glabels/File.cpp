@@ -56,11 +56,15 @@ namespace glabels
 		{
 			auto* model = new model::Model();
 			model->setTmplate( tmplate );
-			model->clearModified();
+			
+			qDebug() << "Before = " << *tmplate;
+			qDebug() << "After  = " << *model->tmplate();
 
 			// Intelligently decide to rotate label by default
 			const model::Frame* frame = tmplate->frames().first();
 			model->setRotate( frame->h() > frame->w() );
+
+			model->clearModified();
 
 			// Either apply to current window or open a new one
 			if ( window->isEmpty() )

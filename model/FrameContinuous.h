@@ -36,24 +36,23 @@ namespace glabels
 
 		public:
 			FrameContinuous( const Distance& w,
-			                 const Distance& lMin,
-			                 const Distance& lMax,
-			                 const Distance& lDefault,
+			                 const Distance& hMin,
+			                 const Distance& hMax,
+			                 const Distance& hDefault,
 			                 const QString&  id = "0" );
 
-			FrameContinuous( const FrameContinuous& other );
+			FrameContinuous( const FrameContinuous& other ) = default;
 
 			Frame* dup() const override;
-
-			void setLength( const Distance& l );
 
 			Distance w() const override;
 			Distance h() const override;
 
-			Distance lMin() const;
-			Distance lMax() const;
-			Distance lDefault() const;
-			Distance l() const;
+			Distance hMin() const;
+			Distance hMax() const;
+			Distance hDefault() const;
+
+			void setH( const Distance& h ) override;
 
 			QString sizeDescription( const Units& units ) const override;
 
@@ -67,16 +66,20 @@ namespace glabels
 
 		private:
 			Distance mW;
-			Distance mLMin;
-			Distance mLMax;
-			Distance mLDefault;
-			Distance mL;
+			Distance mHMin;
+			Distance mHMax;
+			Distance mHDefault;
+			Distance mH;
 
 			QPainterPath mPath;
 		};
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FrameContinuous& frame );
 
 
 #endif // model_FrameContinuous_h

@@ -93,15 +93,6 @@ namespace glabels
 		}
 
 
-		FrameCd::FrameCd( const FrameCd& other )
-			: Frame(other),
-			  mR1(other.mR1), mR2(other.mR2), mW(other.mW), mH(other.mH), mWaste(other.mWaste),
-			  mPath(other.mPath)
-		{
-			// empty
-		}
-
-	
 		Frame* FrameCd::dup() const
 		{
 			return new FrameCd( *this );
@@ -222,4 +213,14 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameCd& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameCd{ }";
+
+	return dbg;
 }

@@ -30,22 +30,13 @@ namespace glabels
 	{
 
 		FrameContinuous::FrameContinuous( const Distance& w,
-		                                  const Distance& lMin,
-		                                  const Distance& lMax,
-		                                  const Distance& lDefault,
+		                                  const Distance& hMin,
+		                                  const Distance& hMax,
+		                                  const Distance& hDefault,
 		                                  const QString&  id )
-			: Frame(id), mW(w), mLMin(lMin), mLMax(lMax), mLDefault(lDefault), mL(lDefault)
+			: Frame(id), mW(w), mHMin(hMin), mHMax(hMax), mHDefault(hDefault), mH(hDefault)
 		{
-			mPath.addRect( 0, 0, mW.pt(), mL.pt() );
-		}
-
-	
-		FrameContinuous::FrameContinuous( const FrameContinuous &other )
-			: Frame(other),
-			  mW(other.mW), mLMin(other.mLMin), mLMax(other.mLMax),
-			  mLDefault(other.mLDefault), mL(other.mL), mPath(other.mPath)
-		{
-			// empty
+			mPath.addRect( 0, 0, mW.pt(), mH.pt() );
 		}
 
 	
@@ -55,13 +46,6 @@ namespace glabels
 		}
 
 
-		void FrameContinuous::setLength( const Distance& l )
-		{
-			mL = l;
-			mPath.addRect( 0, 0, mW.pt(), mL.pt() );
-		}
-		
-
 		Distance FrameContinuous::w() const
 		{
 			return mW;
@@ -70,33 +54,35 @@ namespace glabels
 	
 		Distance FrameContinuous::h() const
 		{
-			return mL;
+			return mH;
 		}
 
 
-		Distance FrameContinuous::lMin() const
+		Distance FrameContinuous::hMin() const
 		{
-			return mLMin;
+			return mHMin;
 		}
 
 		
-		Distance FrameContinuous::lMax() const
+		Distance FrameContinuous::hMax() const
 		{
-			return mLMax;
+			return mHMax;
 		}
 
 		
-		Distance FrameContinuous::lDefault() const
+		Distance FrameContinuous::hDefault() const
 		{
-			return mLDefault;
+			return mHDefault;
 		}
 
 
-		Distance FrameContinuous::l() const
+		void FrameContinuous::setH( const Distance& h )
 		{
-			return mL;
+			mH = h;
+			mPath = QPainterPath(); // clear path
+			mPath.addRect( 0, 0, mW.pt(), mH.pt() );
 		}
-
+		
 
 		QString FrameContinuous::sizeDescription( const Units& units ) const
 		{
@@ -104,15 +90,17 @@ namespace glabels
 			{
 				QString wStr = StrUtil::formatFraction( mW.in() );
 
-				return QString().sprintf( "%s %s",
+				return QString().sprintf( "%s %s %s",
 				                          qPrintable(wStr),
-				                          qPrintable(units.toTrName()) );
+				                          qPrintable(units.toTrName()),
+				                          qPrintable(tr("wide")) );
 			}
 			else
 			{
-				return QString().sprintf( "%.5g %s",
+				return QString().sprintf( "%.3f %s %s",
 				                          mW.inUnits(units),
-				                          qPrintable(units.toTrName()) );
+				                          qPrintable(units.toTrName()),
+				                          qPrintable(tr("wide")) );
 			}
 		}
 
@@ -146,7 +134,7 @@ namespace glabels
 		                                          const Distance& ySize ) const
 		{
 			Distance w = mW - 2*xSize;
-			Distance h = mL - 2*ySize;
+			Distance h = mH - 2*ySize;
 
 			QPainterPath path;
 			path.addRect( xSize.pt(), ySize.pt(), w.pt(), h.pt() );
@@ -156,4 +144,14 @@ namespace glabels
 
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameContinuous& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameContinuous{ }";
+
+	return dbg;
 }

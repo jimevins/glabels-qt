@@ -82,7 +82,7 @@ namespace glabels
 
 			foreach ( Frame* frame, other.mFrames )
 			{
-				addFrame( frame );
+				addFrame( frame->dup() );
 			}
 
 			foreach ( QString categoryId, other.mCategoryIds )
@@ -92,9 +92,50 @@ namespace glabels
 		}
 
 
-		Template* Template::dup() const
+		Template::~Template()
 		{
-			return new Template( *this );
+			while ( !mFrames.isEmpty() )
+			{
+				delete mFrames.takeFirst();
+			}
+		}
+
+
+		Template& Template::operator=( const Template& other )
+		{
+			if ( this != &other )
+			{
+				mBrand       = other.mBrand;
+				mPart        = other.mPart;
+				mDescription = other.mDescription;
+				mPaperId     = other.mPaperId;
+				mPageWidth   = other.mPageWidth;
+				mPageHeight  = other.mPageHeight;
+				mRollWidth   = other.mRollWidth;
+				mIsSizeIso   = other.mIsSizeIso;
+				mIsSizeUs    = other.mIsSizeUs;
+				mIsRoll      = other.mIsRoll;
+				mEquivPart   = other.mEquivPart;
+				mName        = other.mName;
+				mProductUrl  = other.mProductUrl;
+
+				while ( !mFrames.isEmpty() )
+				{
+					delete mFrames.takeFirst();
+				}
+				foreach ( Frame* frame, other.mFrames )
+				{
+					addFrame( frame->dup() );
+				}
+
+				mCategoryIds.clear();
+				foreach ( QString categoryId, other.mCategoryIds )
+				{
+					addCategory( categoryId );
+				}
+			}
+
+			return *this;
 		}
 
 
@@ -114,7 +155,7 @@ namespace glabels
 			const Template* other = Db::lookupTemplateFromBrandPart( brand, equivPart );
 			if ( other != nullptr )
 			{
-				Template* tmplate = other->dup();
+				Template* tmplate = new Template( *other );
 
 				tmplate->mPart      = part;
 				tmplate->mEquivPart = equivPart;
@@ -170,7 +211,7 @@ namespace glabels
 			const model::Frame* frame = mFrames.constFirst();
 			if ( const auto* frameContinuous = dynamic_cast<const model::FrameContinuous*>(frame) )
 			{
-				return frameContinuous->l();
+				return frameContinuous->h();
 			}
 			else
 			{
@@ -324,4 +365,24 @@ namespace glabels
 
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::Template& tmplate )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "Template{ "
+	              << tmplate.brand() << "," << tmplate.part() << "," << tmplate.description() << ","
+	              << tmplate.paperId() << ","
+	              << tmplate.pageWidth().toString(glabels::model::Units::PT) << ","
+	              << tmplate.pageHeight().toString(glabels::model::Units::PT) << ","
+	              << tmplate.rollWidth().toString(glabels::model::Units::PT) << ","
+	              << tmplate.isSizeIso() << ","
+	              << tmplate.isSizeUs() << ","
+	              << tmplate.isSizeOther() << ","
+	              << tmplate.isRoll() << ","
+	              << *tmplate.frames().constFirst() << ","
+	              << " }";
+	return dbg;
 }

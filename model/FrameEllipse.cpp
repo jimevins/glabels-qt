@@ -40,13 +40,6 @@ namespace glabels
 		}
 
 
-		FrameEllipse::FrameEllipse( const FrameEllipse& other )
-			: Frame(other), mW(other.mW), mH(other.mH), mWaste(other.mWaste), mPath(other.mPath)
-		{
-			// empty
-		}
-
-
 		Frame* FrameEllipse::dup() const
 		{
 			return new FrameEllipse( *this );
@@ -135,4 +128,14 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameEllipse{ }";
+
+	return dbg;
 }

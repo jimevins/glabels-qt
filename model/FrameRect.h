@@ -42,7 +42,7 @@ namespace glabels
 			           const Distance& yWaste,
 			           const QString&  id = "0" );
 
-			FrameRect( const FrameRect& other );
+			FrameRect( const FrameRect& other ) = default;
 
 			Frame* dup() const override;
 
@@ -77,6 +77,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRect& frame );
 
 
 #endif // model_FrameRect_h

@@ -68,7 +68,6 @@ namespace glabels
 		// Internal Methods
 		/////////////////////////////////
 	private:
-		void clearScene();
 		void drawPaper();
 		void drawLabels();
 		void drawLabel( const model::Distance& x, const model::Distance& y, const QPainterPath& path );

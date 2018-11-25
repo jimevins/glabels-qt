@@ -252,9 +252,10 @@ namespace glabels
 
 			XmlUtil::setStringAttr( node, "id",             frame->id() );
 			XmlUtil::setLengthAttr( node, "width",          frame->w() );
-			XmlUtil::setLengthAttr( node, "min_length",     frame->lMin() );
-			XmlUtil::setLengthAttr( node, "max_length",     frame->lMin() );
-			XmlUtil::setLengthAttr( node, "default_length", frame->lDefault() );
+			XmlUtil::setLengthAttr( node, "height",         frame->h() );
+			XmlUtil::setLengthAttr( node, "min_height",     frame->hMin() );
+			XmlUtil::setLengthAttr( node, "max_height",     frame->hMin() );
+			XmlUtil::setLengthAttr( node, "default_height", frame->hDefault() );
 
 			createLabelNodeCommon( node, frame );
 		}

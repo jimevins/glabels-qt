@@ -40,7 +40,7 @@ namespace glabels
 			              const Distance& waste,
 			              const QString&  id = "0" );
 
-			FrameEllipse( const FrameEllipse& other );
+			FrameEllipse( const FrameEllipse& other ) = default;
 
 			Frame* dup() const override;
 
@@ -70,6 +70,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame );
 
 
 #endif // model_FrameEllipse_h

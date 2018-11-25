@@ -20,6 +20,12 @@
 
 #include "Frame.h"
 
+#include "FrameCd.h"
+#include "FrameContinuous.h"
+#include "FrameEllipse.h"
+#include "FramePath.h"
+#include "FrameRect.h"
+#include "FrameRound.h"
 #include "Markup.h"
 
 #include <algorithm>
@@ -42,12 +48,12 @@ namespace glabels
 			mId = other.mId;
 			mNLabels = 0;
 
-			foreach ( Layout *layout, mLayouts )
+			foreach ( Layout *layout, other.mLayouts )
 			{
 				addLayout( layout->dup() );
 			}
 		
-			foreach ( Markup *markup, mMarkups )
+			foreach ( Markup *markup, other.mMarkups )
 			{
 				addMarkup( markup->dup() );
 			}
@@ -137,5 +143,54 @@ namespace glabels
 			mMarkups << markup;
 		}
 
+
+		void Frame::setH( const Distance& h )
+		{
+			// Default implementation does nothing
+		}
+
+	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::Frame& frame )
+{
+	if ( auto* frameCd = dynamic_cast<const glabels::model::FrameCd*>(&frame) )
+	{
+		dbg << *frameCd;
+		return dbg;
+	}
+	else if ( auto* frameContinuous = dynamic_cast<const glabels::model::FrameContinuous*>(&frame) )
+	{
+		dbg << *frameContinuous;
+		return dbg;
+	}
+	else if ( auto* frameEllipse = dynamic_cast<const glabels::model::FrameEllipse*>(&frame) )
+	{
+		dbg << *frameEllipse;
+		return dbg;
+	}
+	else if ( auto* framePath = dynamic_cast<const glabels::model::FramePath*>(&frame) )
+	{
+		dbg << *framePath;
+		return dbg;
+	}
+	else if ( auto* frameRect = dynamic_cast<const glabels::model::FrameRect*>(&frame) )
+	{
+		dbg << *frameRect;
+		return dbg;
+	}
+	else if ( auto* frameRound = dynamic_cast<const glabels::model::FrameRound*>(&frame) )
+	{
+		dbg << *frameRound;
+		return dbg;
+	}
+	else
+	{
+		QDebugStateSaver saver(dbg);
+
+		dbg.nospace() << "UNKNOWN FRAME";
+
+		return dbg;
 	}
 }

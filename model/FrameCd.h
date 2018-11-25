@@ -42,7 +42,7 @@ namespace glabels
 			         const Distance& waste,
 			         const QString&  id = "0" );
 
-			FrameCd( const FrameCd &other );
+			FrameCd( const FrameCd &other ) = default;
 
 			Frame *dup() const override;
 
@@ -76,6 +76,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FrameCd& frame );
 
 
 #endif // model_FrameCd_h

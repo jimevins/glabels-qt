@@ -393,7 +393,7 @@ namespace glabels
 			model::Distance yMargin( field( "rect.yMargin" ).toDouble(), units );
 
 			frame = new model::FrameRect( w, h, r, xWaste, yWaste );
-			frame->addMarkup( new model::MarkupMargin( frame, xMargin, yMargin ) );
+			frame->addMarkup( new model::MarkupMargin( xMargin, yMargin ) );
 		}
 		else if ( field( "shape.round" ).toBool() )
 		{
@@ -402,7 +402,7 @@ namespace glabels
 			model::Distance margin( field( "round.margin" ).toDouble(), units );
 
 			frame = new model::FrameRound( r, waste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( margin ) );
 		}
 		else if ( field( "shape.ellipse" ).toBool() )
 		{
@@ -412,7 +412,7 @@ namespace glabels
 			model::Distance margin( field( "ellipse.margin" ).toDouble(), units );
 
 			frame = new model::FrameEllipse( w, h, waste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( margin ) );
 		}
 		else
 		{
@@ -424,7 +424,7 @@ namespace glabels
 			model::Distance margin( field( "cd.margin" ).toDouble(), units );
 
 			frame = new model::FrameCd( r1, r2, xClip, yClip, waste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( margin ) );
 		}
 		t->addFrame( frame );
 

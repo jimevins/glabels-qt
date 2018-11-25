@@ -244,10 +244,10 @@
 <!ATTLIST Label-continuous
                  id              %STRING_TYPE;           #REQUIRED
                  width           %LENGTH_TYPE;           #REQUIRED
-                 min_length      %LENGTH_TYPE;           #REQUIRED
-                 max_length      %LENGTH_TYPE;           #REQUIRED
-                 default_length  %LENGTH_TYPE;           #REQUIRED
-                 length          %LENGTH_TYPE;           #IMPLIED
+                 min_height      %LENGTH_TYPE;           #REQUIRED
+                 max_height      %LENGTH_TYPE;           #REQUIRED
+                 default_height  %LENGTH_TYPE;           #REQUIRED
+                 height          %LENGTH_TYPE;           #IMPLIED
 >
 
 <!ELEMENT Markup-margin EMPTY>

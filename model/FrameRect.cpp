@@ -44,16 +44,7 @@ namespace glabels
 			                          mR.pt(), mR.pt() );
 		}
 
-	
-		FrameRect::FrameRect( const FrameRect &other )
-			: Frame(other),
-			  mW(other.mW), mH(other.mH), mR(other.mR), mXWaste(other.mXWaste),
-			  mYWaste(other.mYWaste), mPath(other.mPath)
-		{
-			// empty
-		}
 
-	
 		Frame* FrameRect::dup() const
 		{
 			return new FrameRect( *this );
@@ -153,4 +144,23 @@ namespace glabels
 
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRect& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameRect{ "
+	              << frame.id() << "," 
+	              << frame.w().toString(glabels::model::Units::PT) << "," 
+	              << frame.h().toString(glabels::model::Units::PT) << "," 
+	              << frame.r().toString(glabels::model::Units::PT) << "," 
+	              << frame.xWaste().toString(glabels::model::Units::PT) << "," 
+	              << frame.yWaste().toString(glabels::model::Units::PT) << ","
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
+
+	return dbg;
 }

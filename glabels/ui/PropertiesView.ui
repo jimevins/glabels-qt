@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>806</width>
+    <width>886</width>
     <height>742</height>
    </rect>
   </property>
@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_5">
+  <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,0,0,1">
    <item row="0" column="4">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -42,7 +42,16 @@
    </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="margin">
+     <property name="leftMargin">
+      <number>12</number>
+     </property>
+     <property name="topMargin">
+      <number>12</number>
+     </property>
+     <property name="rightMargin">
+      <number>12</number>
+     </property>
+     <property name="bottomMargin">
       <number>12</number>
      </property>
      <item>
@@ -257,6 +266,51 @@
       </widget>
      </item>
      <item>
+      <widget class="QGroupBox" name="parametersGroupBox">
+       <property name="title">
+        <string>Adjustable Parameters</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="horizontalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="lengthSpin">
+          <property name="accelerated">
+           <bool>false</bool>
+          </property>
+          <property name="prefix">
+           <string notr="true"/>
+          </property>
+          <property name="suffix">
+           <string notr="true"> in</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Label length:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
       <widget class="QGroupBox" name="orientationGroupBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -385,8 +439,8 @@
    <slot>onChangeProductButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>309</x>
-     <y>239</y>
+     <x>342</x>
+     <y>291</y>
     </hint>
     <hint type="destinationlabel">
      <x>728</x>
@@ -401,8 +455,8 @@
    <slot>onOrientationActivated()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>308</x>
-     <y>334</y>
+     <x>342</x>
+     <y>467</y>
     </hint>
     <hint type="destinationlabel">
      <x>802</x>
@@ -410,9 +464,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>lengthSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>PropertiesView</receiver>
+   <slot>onLengthSpinChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>349</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>801</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onChangeProductButtonClicked()</slot>
   <slot>onOrientationActivated()</slot>
+  <slot>onLengthSpinChanged()</slot>
  </slots>
 </ui>

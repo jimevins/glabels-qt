@@ -55,9 +55,18 @@ namespace glabels
 		/// Default constructor.
 		///
 		Model::Model()
-			: mUntitledInstance(0), mModified(true), mTmplate(nullptr), mFrame(nullptr), mRotate(false)
+			: mUntitledInstance(0), mModified(true), mRotate(false)
 		{
 			mMerge = new merge::None();
+		}
+
+
+		///
+		/// Destructor.
+		///
+		Model::~Model()
+		{
+			delete mMerge;
 		}
 
 
@@ -90,7 +99,6 @@ namespace glabels
 			mModified         = savedModel->mModified;
 			mFileName         = savedModel->mFileName;
 			mTmplate          = savedModel->mTmplate;
-			mFrame            = savedModel->mFrame;
 			mRotate           = savedModel->mRotate;
 
 			foreach ( ModelObject* savedObject, savedModel->mObjectList )
@@ -155,7 +163,7 @@ namespace glabels
 		///
 		const Template* Model::tmplate() const
 		{
-			return mTmplate;
+			return &mTmplate;
 		}
 
 
@@ -164,7 +172,7 @@ namespace glabels
 		///
 		const Frame* Model::frame() const
 		{
-			return mFrame;
+			return mTmplate.frames().constFirst();
 		}
 
 
@@ -173,18 +181,14 @@ namespace glabels
 		///
 		void Model::setTmplate( const Template* tmplate )
 		{
-			if (mTmplate != tmplate)
-			{
-				mTmplate = tmplate;
-				mFrame = tmplate->frames().first();
+			mTmplate = *tmplate;
 
-				setModified();
+			setModified();
 		
-				emit changed();
-				emit sizeChanged();
+			emit changed();
+			emit sizeChanged();
 
-				Settings::addToRecentTemplateList( tmplate->name() );
-			}
+			Settings::addToRecentTemplateList( tmplate->name() );
 		}
 
 
@@ -219,7 +223,14 @@ namespace glabels
 		///
 		Distance Model::w() const
 		{
-			return mRotate ? mFrame->h() : mFrame->w();
+			if ( auto* frame = mTmplate.frames().constFirst() )
+			{
+				return mRotate ? frame->h() : frame->w();
+			}
+			else
+			{
+				return Distance::pt(0);
+			}
 		}
 
 
@@ -228,7 +239,31 @@ namespace glabels
 		///
 		Distance Model::h() const
 		{
-			return mRotate ? mFrame->w() : mFrame->h();
+			if ( auto* frame = mTmplate.frames().constFirst() )
+			{
+				return mRotate ? frame->w() : frame->h();
+			}
+			else
+			{
+				return Distance::pt(0);
+			}
+		}
+
+
+		///
+		/// Set height (if variable length)
+		///
+		void Model::setH( const Distance& h )
+		{
+			if ( auto* frame = mTmplate.frames().first() )
+			{
+				frame->setH( h );
+
+				setModified();
+
+				emit changed();
+				emit sizeChanged();
+			}
 		}
 
 
