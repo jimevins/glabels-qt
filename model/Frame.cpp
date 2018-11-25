@@ -48,9 +48,9 @@ namespace glabels
 			mId = other.mId;
 			mNLabels = 0;
 
-			foreach ( Layout *layout, other.mLayouts )
+			foreach ( const Layout& layout, other.mLayouts )
 			{
-				addLayout( layout->dup() );
+				addLayout( layout );
 			}
 		
 			foreach ( Markup *markup, other.mMarkups )
@@ -78,7 +78,7 @@ namespace glabels
 		}
 
 	
-		const QList<Layout*>& Frame::layouts() const
+		const QList<Layout>& Frame::layouts() const
 		{
 			return mLayouts;
 		}
@@ -95,13 +95,13 @@ namespace glabels
 			QVector<Point> origins( nLabels() );
 
 			int i = 0;
-			foreach ( Layout *layout, mLayouts )
+			foreach ( const Layout& layout, mLayouts )
 			{
-				for ( int iy = 0; iy < layout->ny(); iy++ )
+				for ( int iy = 0; iy < layout.ny(); iy++ )
 				{
-					for ( int ix = 0; ix < layout->nx(); ix++ )
+					for ( int ix = 0; ix < layout.nx(); ix++ )
 					{
-						origins[i++] = Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() );
+						origins[i++] = Point( ix*layout.dx() + layout.x0(), iy*layout.dy() + layout.y0() );
 					}
 				}
 			}
@@ -112,12 +112,12 @@ namespace glabels
 		}
 
 
-		void Frame::addLayout( Layout *layout )
+		void Frame::addLayout( const Layout& layout )
 		{
 			mLayouts << layout;
 
 			// Update total number of labels
-			mNLabels += layout->nx() * layout->ny();
+			mNLabels += layout.nx() * layout.ny();
 
 			// Update layout description
 			if ( mLayouts.size() == 1 )
@@ -128,7 +128,7 @@ namespace glabels
 				 *              %3 = total number of labels on a page (sheet).
 				 */
 				mLayoutDescription = QString( tr("%1 x %2 (%3 per sheet)") )
-					.arg(layout->nx()).arg(layout->ny()).arg(mNLabels);
+					.arg(layout.nx()).arg(layout.ny()).arg(mNLabels);
 			}
 			else
 			{

@@ -144,7 +144,14 @@ QDebug operator<<( QDebug dbg, const glabels::model::FramePath& frame )
 {
 	QDebugStateSaver saver(dbg);
 
-	dbg.nospace() << "FramePath{ }";
+	dbg.nospace() << "FramePath{ "
+	              << frame.id() << "," 
+	              << frame.path() << "," 
+	              << frame.xWaste() << "," 
+	              << frame.yWaste() << "," 
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
 
 	return dbg;
 }

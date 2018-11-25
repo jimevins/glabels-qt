@@ -151,7 +151,16 @@ QDebug operator<<( QDebug dbg, const glabels::model::FrameContinuous& frame )
 {
 	QDebugStateSaver saver(dbg);
 
-	dbg.nospace() << "FrameContinuous{ }";
+	dbg.nospace() << "FrameContinuous{ "
+	              << frame.id() << "," 
+	              << frame.w() << "," 
+	              << frame.h() << "," 
+	              << frame.hMin() << "," 
+	              << frame.hMax() << "," 
+	              << frame.hDefault() << ","
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
 
 	return dbg;
 }

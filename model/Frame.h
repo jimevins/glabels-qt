@@ -57,12 +57,12 @@ namespace glabels
 			QString id() const;
 			int nLabels() const;
 			QString layoutDescription() const;
-			const QList<Layout*>& layouts() const;
+			const QList<Layout>&  layouts() const;
 			const QList<Markup*>& markups() const;
 
 			QVector<Point> getOrigins() const;
 
-			void addLayout( Layout* layout );
+			void addLayout( const Layout& layout );
 			void addMarkup( Markup* markup );
 
 			virtual Distance w() const = 0;
@@ -84,7 +84,7 @@ namespace glabels
 			int     mNLabels;
 			QString mLayoutDescription;
 
-			QList<Layout*> mLayouts;
+			QList<Layout>  mLayouts;
 			QList<Markup*> mMarkups;
 		};
 

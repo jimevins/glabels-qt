@@ -60,7 +60,7 @@ namespace glabels
 			void createLabelPathNode( QDomElement& parent, const FramePath* frame );
 			void createLabelContinuousNode( QDomElement& parent, const FrameContinuous* frame );
 			void createLabelNodeCommon( QDomElement& node, const Frame* frame );
-			void createLayoutNode( QDomElement& parent, const Layout* layout );
+			void createLayoutNode( QDomElement& parent, const Layout& layout );
 			void createMarkupMarginNode( QDomElement& parent, const MarkupMargin* markupMargin );
 			void createMarkupLineNode( QDomElement& parent, const MarkupLine* markupLine );
 			void createMarkupCircleNode( QDomElement& parent, const MarkupCircle* markupCircle );

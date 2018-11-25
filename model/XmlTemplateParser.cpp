@@ -414,7 +414,7 @@ namespace glabels
 			Distance dX = XmlUtil::getLengthAttr( node, "dx", Distance(0) );
 			Distance dY = XmlUtil::getLengthAttr( node, "dy", Distance(0) );
 
-			frame->addLayout( new Layout( nX, nY, x0, y0, dX, dY ) );
+			frame->addLayout( Layout( nX, nY, x0, y0, dX, dY ) );
 		}
 
 

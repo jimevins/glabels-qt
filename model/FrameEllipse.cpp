@@ -135,7 +135,14 @@ QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame )
 {
 	QDebugStateSaver saver(dbg);
 
-	dbg.nospace() << "FrameEllipse{ }";
+	dbg.nospace() << "FrameEllipse{ "
+	              << frame.id() << "," 
+	              << frame.w() << "," 
+	              << frame.h() << "," 
+	              << frame.waste() << "," 
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
 
 	return dbg;
 }

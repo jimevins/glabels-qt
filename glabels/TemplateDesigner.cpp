@@ -437,7 +437,7 @@ namespace glabels
 			model::Distance dx( field( "oneLayout.dx" ).toDouble(), units );
 			model::Distance dy( field( "oneLayout.dy" ).toDouble(), units );
 
-			frame->addLayout( new model::Layout( nx, ny, x0, y0, dx, dy ) );
+			frame->addLayout( model::Layout( nx, ny, x0, y0, dx, dy ) );
 		}
 		else
 		{
@@ -455,8 +455,8 @@ namespace glabels
 			model::Distance dx2( field( "twoLayout.dx2" ).toDouble(), units );
 			model::Distance dy2( field( "twoLayout.dy2" ).toDouble(), units );
 
-			frame->addLayout( new model::Layout( nx1, ny1, x01, y01, dx1, dy1 ) );
-			frame->addLayout( new model::Layout( nx2, ny2, x02, y02, dx2, dy2 ) );
+			frame->addLayout( model::Layout( nx1, ny1, x01, y01, dx1, dy1 ) );
+			frame->addLayout( model::Layout( nx2, ny2, x02, y02, dx2, dy2 ) );
 		}
 
 		return t;
@@ -562,31 +562,31 @@ namespace glabels
 			}
 		}
 
-		QList<model::Layout*> layouts = frame->layouts();
+		auto layouts = frame->layouts();
 		if ( layouts.size() == 1 )
 		{
-			setField( "oneLayout.nx", layouts[0]->nx() );
-			setField( "oneLayout.ny", layouts[0]->ny() );
-			setField( "oneLayout.x0", layouts[0]->x0().inUnits( units ) );
-			setField( "oneLayout.y0", layouts[0]->y0().inUnits( units ) );
-			setField( "oneLayout.dx", layouts[0]->dx().inUnits( units ) );
-			setField( "oneLayout.dy", layouts[0]->dy().inUnits( units ) );
+			setField( "oneLayout.nx", layouts[0].nx() );
+			setField( "oneLayout.ny", layouts[0].ny() );
+			setField( "oneLayout.x0", layouts[0].x0().inUnits( units ) );
+			setField( "oneLayout.y0", layouts[0].y0().inUnits( units ) );
+			setField( "oneLayout.dx", layouts[0].dx().inUnits( units ) );
+			setField( "oneLayout.dy", layouts[0].dy().inUnits( units ) );
 		}
 		else if ( layouts.size() > 1 )
 		{
-			setField( "twoLayout.nx1", layouts[0]->nx() );
-			setField( "twoLayout.ny1", layouts[0]->ny() );
-			setField( "twoLayout.x01", layouts[0]->x0().inUnits( units ) );
-			setField( "twoLayout.y01", layouts[0]->y0().inUnits( units ) );
-			setField( "twoLayout.dx1", layouts[0]->dx().inUnits( units ) );
-			setField( "twoLayout.dy1", layouts[0]->dy().inUnits( units ) );
+			setField( "twoLayout.nx1", layouts[0].nx() );
+			setField( "twoLayout.ny1", layouts[0].ny() );
+			setField( "twoLayout.x01", layouts[0].x0().inUnits( units ) );
+			setField( "twoLayout.y01", layouts[0].y0().inUnits( units ) );
+			setField( "twoLayout.dx1", layouts[0].dx().inUnits( units ) );
+			setField( "twoLayout.dy1", layouts[0].dy().inUnits( units ) );
 
-			setField( "twoLayout.nx2", layouts[1]->nx() );
-			setField( "twoLayout.ny2", layouts[1]->ny() );
-			setField( "twoLayout.x02", layouts[1]->x0().inUnits( units ) );
-			setField( "twoLayout.y02", layouts[1]->y0().inUnits( units ) );
-			setField( "twoLayout.dx2", layouts[1]->dx().inUnits( units ) );
-			setField( "twoLayout.dy2", layouts[1]->dy().inUnits( units ) );
+			setField( "twoLayout.nx2", layouts[1].nx() );
+			setField( "twoLayout.ny2", layouts[1].ny() );
+			setField( "twoLayout.x02", layouts[1].x0().inUnits( units ) );
+			setField( "twoLayout.y02", layouts[1].y0().inUnits( units ) );
+			setField( "twoLayout.dx2", layouts[1].dx().inUnits( units ) );
+			setField( "twoLayout.dy2", layouts[1].dy().inUnits( units ) );
 		}
 	}
 	

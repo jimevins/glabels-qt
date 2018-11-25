@@ -343,12 +343,12 @@ namespace glabels
 			}
 
 			// Are they layed out similarly?
-			foreach ( Layout* layout1, frame1->layouts() )
+			foreach ( const Layout& layout1, frame1->layouts() )
 			{
 				bool matchFound = false;
-				foreach ( Layout* layout2, frame2->layouts() )
+				foreach ( const Layout& layout2, frame2->layouts() )
 				{
-					if ( layout1->isSimilarTo(layout2) )
+					if ( layout1.isSimilarTo( layout2 ) )
 					{
 						matchFound = true;
 						break;
@@ -375,9 +375,9 @@ QDebug operator<<( QDebug dbg, const glabels::model::Template& tmplate )
 	dbg.nospace() << "Template{ "
 	              << tmplate.brand() << "," << tmplate.part() << "," << tmplate.description() << ","
 	              << tmplate.paperId() << ","
-	              << tmplate.pageWidth().toString(glabels::model::Units::PT) << ","
-	              << tmplate.pageHeight().toString(glabels::model::Units::PT) << ","
-	              << tmplate.rollWidth().toString(glabels::model::Units::PT) << ","
+	              << tmplate.pageWidth() << ","
+	              << tmplate.pageHeight() << ","
+	              << tmplate.rollWidth() << ","
 	              << tmplate.isSizeIso() << ","
 	              << tmplate.isSizeUs() << ","
 	              << tmplate.isSizeOther() << ","

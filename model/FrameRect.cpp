@@ -153,11 +153,11 @@ QDebug operator<<( QDebug dbg, const glabels::model::FrameRect& frame )
 
 	dbg.nospace() << "FrameRect{ "
 	              << frame.id() << "," 
-	              << frame.w().toString(glabels::model::Units::PT) << "," 
-	              << frame.h().toString(glabels::model::Units::PT) << "," 
-	              << frame.r().toString(glabels::model::Units::PT) << "," 
-	              << frame.xWaste().toString(glabels::model::Units::PT) << "," 
-	              << frame.yWaste().toString(glabels::model::Units::PT) << ","
+	              << frame.w() << "," 
+	              << frame.h() << "," 
+	              << frame.r() << "," 
+	              << frame.xWaste() << "," 
+	              << frame.yWaste() << ","
 	              << frame.layouts() << ","
 	              << frame.markups()
 	              << " }";

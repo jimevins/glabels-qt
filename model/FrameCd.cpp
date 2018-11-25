@@ -220,7 +220,16 @@ QDebug operator<<( QDebug dbg, const glabels::model::FrameCd& frame )
 {
 	QDebugStateSaver saver(dbg);
 
-	dbg.nospace() << "FrameCd{ }";
+	dbg.nospace() << "FrameCd{ "
+	              << frame.id() << "," 
+	              << frame.r1() << "," 
+	              << frame.r2() << "," 
+	              << frame.waste() << "," 
+	              << frame.w() << "," 
+	              << frame.h() << ","
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
 
 	return dbg;
 }

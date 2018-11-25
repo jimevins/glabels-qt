@@ -138,7 +138,13 @@ QDebug operator<<( QDebug dbg, const glabels::model::FrameRound& frame )
 {
 	QDebugStateSaver saver(dbg);
 
-	dbg.nospace() << "FrameRound{ }";
+	dbg.nospace() << "FrameRound{ "
+	              << frame.id() << "," 
+	              << frame.r() << "," 
+	              << frame.waste() << "," 
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
 
 	return dbg;
 }

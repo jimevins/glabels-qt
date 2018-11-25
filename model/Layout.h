@@ -24,6 +24,8 @@
 
 #include "Distance.h"
 
+#include <QDebug>
+
 
 namespace glabels
 {
@@ -52,9 +54,7 @@ namespace glabels
 			Distance dx() const;
 			Distance dy() const;
 
-			bool isSimilarTo( const Layout *other );
-
-			Layout* dup() const;
+			bool isSimilarTo( const Layout& other ) const;
 
 
 		private:
@@ -69,6 +69,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Layout& layout );
 
 
 #endif // model_Layout_h

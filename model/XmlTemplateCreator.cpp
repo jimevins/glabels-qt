@@ -291,27 +291,27 @@ namespace glabels
 				}
 			}
 
-			foreach ( Layout* layout, frame->layouts() )
+			foreach ( const Layout& layout, frame->layouts() )
 			{
 				createLayoutNode( node, layout );
 			}
 		}
 
 
-		void XmlTemplateCreator::createLayoutNode( QDomElement& parent, const Layout* layout )
+		void XmlTemplateCreator::createLayoutNode( QDomElement& parent, const Layout& layout )
 		{
 			QDomDocument doc = parent.ownerDocument();
 			QDomElement node = doc.createElement( "Layout" );
 			parent.appendChild( node );
 
-			XmlUtil::setIntAttr( node, "nx", layout->nx() );
-			XmlUtil::setIntAttr( node, "ny", layout->ny() );
+			XmlUtil::setIntAttr( node, "nx", layout.nx() );
+			XmlUtil::setIntAttr( node, "ny", layout.ny() );
 
-			XmlUtil::setLengthAttr( node, "x0", layout->x0() );
-			XmlUtil::setLengthAttr( node, "y0", layout->y0() );
+			XmlUtil::setLengthAttr( node, "x0", layout.x0() );
+			XmlUtil::setLengthAttr( node, "y0", layout.y0() );
 
-			XmlUtil::setLengthAttr( node, "dx", layout->dx() );
-			XmlUtil::setLengthAttr( node, "dy", layout->dy() );
+			XmlUtil::setLengthAttr( node, "dx", layout.dx() );
+			XmlUtil::setLengthAttr( node, "dy", layout.dy() );
 		}
 
 

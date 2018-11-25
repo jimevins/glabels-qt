@@ -57,9 +57,6 @@ namespace glabels
 			auto* model = new model::Model();
 			model->setTmplate( tmplate );
 			
-			qDebug() << "Before = " << *tmplate;
-			qDebug() << "After  = " << *model->tmplate();
-
 			// Intelligently decide to rotate label by default
 			const model::Frame* frame = tmplate->frames().first();
 			model->setRotate( frame->h() > frame->w() );

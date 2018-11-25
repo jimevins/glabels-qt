@@ -86,22 +86,32 @@ namespace glabels
 		}
 
 
-		bool Layout::isSimilarTo( const Layout *other )
+		bool Layout::isSimilarTo( const Layout& other ) const
 		{
-			return ( (mNx == other->mNx)                &&
-			         (mNy == other->mNy)                &&
-			         (fabs(mX0 - other->mX0) < EPSILON) &&
-			         (fabs(mY0 - other->mY0) < EPSILON) &&
-			         (fabs(mDx - other->mDx) < EPSILON) &&
-			         (fabs(mDy - other->mDy) < EPSILON) );
-		}
-
-
-		Layout* Layout::dup() const
-		{
-			auto *other = new Layout( *this );
-			return other;
+			return ( (mNx == other.mNx)                &&
+			         (mNy == other.mNy)                &&
+			         (fabs(mX0 - other.mX0) < EPSILON) &&
+			         (fabs(mY0 - other.mY0) < EPSILON) &&
+			         (fabs(mDx - other.mDx) < EPSILON) &&
+			         (fabs(mDy - other.mDy) < EPSILON) );
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::Layout& layout )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "Layout{ "
+	              << layout.nx() << "," 
+	              << layout.ny() << "," 
+	              << layout.x0() << "," 
+	              << layout.y0() << "," 
+	              << layout.dx() << "," 
+	              << layout.dy()
+	              << " }";
+
+	return dbg;
 }

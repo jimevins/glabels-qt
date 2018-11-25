@@ -101,6 +101,10 @@ namespace glabels
 }
 
 
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Distance& distance );
+
+
 //
 // Inline methods
 //
