@@ -30,6 +30,7 @@
 #include "ModelTextObject.h"
 #include "XmlTemplateParser.h"
 #include "XmlUtil.h"
+#include "Size.h"
 
 #include "barcode/Backends.h"
 #include "merge/Factory.h"
@@ -411,7 +412,7 @@ namespace glabels
 			QString bcData = XmlUtil::getStringAttr( node, "data", "" );
 			if(bcData.isEmpty())
 			{
-				bcData = XmlUtil::getStringAttr( node, "field", "" );
+				bcData = "${" + XmlUtil::getStringAttr( node, "field", "" ) + "}";
 			}
 
 			/* affine attrs */
@@ -512,6 +513,10 @@ namespace glabels
 							{
 								text += "\n";
 							}
+							else if (textPartElement.toElement().tagName() == "Field")
+							{
+								text += "${" + XmlUtil::getStringAttr( textPartElement.toElement(), "name", "" ) + "}";
+							}
 						}
 					}
 
@@ -548,12 +553,18 @@ namespace glabels
 			}
 			const QString text = document.toPlainText();
 
-			return new ModelTextObject( x0, y0, w, h, text,
-						    fontFamily, fontSize, fontWeight, fontItalicFlag, false,
-						    textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
-						    textAutoShrink,
-						    affineTransformation,
-						    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
+			auto textNode = new ModelTextObject( x0, y0, w, h, text,
+							     fontFamily, fontSize, fontWeight, fontItalicFlag, false,
+							     textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
+							     textAutoShrink,
+							     affineTransformation,
+							     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
+
+			// The size of the textnode does not fit the qt world. So it's needed to
+			// recalculate the size depending on the data.
+			textNode->setSize(textNode->naturalSize());
+
+			return textNode;
 		}
 
 
