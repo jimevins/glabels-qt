@@ -72,7 +72,7 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		bool               mBlocked{ false };
+		bool               mInLengthSpinChanged{ false };
 
 		model::Model*      mModel;
 		UndoRedoModel*     mUndoRedoModel;

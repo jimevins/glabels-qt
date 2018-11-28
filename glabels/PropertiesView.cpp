@@ -107,79 +107,78 @@ namespace glabels
 		preview->setTemplate( tmplate );
 		preview->setRotate( isRotated );
 
-		if ( !mBlocked )
+		const model::Vendor* vendor = model::Db::lookupVendorFromName( tmplate->brand() );
+		if ( (vendor != nullptr) && (vendor->url() != nullptr) )
 		{
-			mBlocked = true;
-		
-			const model::Vendor* vendor = model::Db::lookupVendorFromName( tmplate->brand() );
-			if ( (vendor != nullptr) && (vendor->url() != nullptr) )
-			{
-				QString markup = QString( "<a href='%1'>%2</a>" ).arg( vendor->url(), vendor->name() );
-				vendorLabel->setText( markup );
-			}
-			else
-			{
-				vendorLabel->setText( tmplate->brand() );
-			}
+			QString markup = QString( "<a href='%1'>%2</a>" ).arg( vendor->url(), vendor->name() );
+			vendorLabel->setText( markup );
+		}
+		else
+		{
+			vendorLabel->setText( tmplate->brand() );
+		}
 
-			if ( tmplate->productUrl() != nullptr )
+		if ( tmplate->productUrl() != nullptr )
+		{
+			QString markup = QString( "<a href='%1'>%2</a>" ).arg( tmplate->productUrl(), tmplate->part() );
+			partLabel->setText( markup );
+		}
+		else
+		{
+			partLabel->setText( tmplate->part() );
+		}
+
+		descriptionLabel->setText( tmplate->description() );
+
+		QString pgSizeString = model::Db::lookupPaperNameFromId( tmplate->paperId() );
+		pageSizeLabel->setText( pgSizeString );
+
+		QString labelSizeString = frame->sizeDescription( mUnits );
+		labelSizeLabel->setText( labelSizeString );
+
+		QString layoutString = frame->layoutDescription();
+		layoutLabel->setText( layoutString );
+
+		QStringList list = model::Db::getNameListOfSimilarTemplates( tmplate->name() );
+		if ( list.isEmpty() )
+		{
+			similarProductsGroupBox->hide();
+			similarProductsNullBox->show();
+		}
+		else
+		{
+			similarProductsGroupBox->show();
+			similarProductsNullBox->hide();
+
+			QString similarListString;
+			foreach ( QString name, list )
 			{
-				QString markup = QString( "<a href='%1'>%2</a>" ).arg( tmplate->productUrl(), tmplate->part() );
-				partLabel->setText( markup );
+				similarListString += name + "\n";
 			}
-			else
+			similarBrowser->setText( similarListString );
+		}
+
+		orientationCombo->setEnabled( frame->w() != frame->h() );
+		if ( frame->w() == frame->h() )
+		{
+			orientationCombo->setCurrentIndex(0);
+		}
+		else if ( frame->w() > frame->h() )
+		{
+			orientationCombo->setCurrentIndex( isRotated ? 1 : 0 );
+		}
+		else
+		{
+			orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
+		}
+		mOldOrientationIndex = orientationCombo->currentIndex();
+
+		if ( auto* continuousFrame = dynamic_cast<const model::FrameContinuous*>( frame ) )
+		{
+			if (!mInLengthSpinChanged)
 			{
-				partLabel->setText( tmplate->part() );
-			}
+				const QSignalBlocker blocker( lengthSpin );
 
-			descriptionLabel->setText( tmplate->description() );
-
-			QString pgSizeString = model::Db::lookupPaperNameFromId( tmplate->paperId() );
-			pageSizeLabel->setText( pgSizeString );
-
-			QString labelSizeString = frame->sizeDescription( mUnits );
-			labelSizeLabel->setText( labelSizeString );
-
-			QString layoutString = frame->layoutDescription();
-			layoutLabel->setText( layoutString );
-
-			QStringList list = model::Db::getNameListOfSimilarTemplates( tmplate->name() );
-			if ( list.isEmpty() )
-			{
-				similarProductsGroupBox->hide();
-				similarProductsNullBox->show();
-			}
-			else
-			{
-				similarProductsGroupBox->show();
-				similarProductsNullBox->hide();
-
-				QString similarListString;
-				foreach ( QString name, list )
-				{
-					similarListString += name + "\n";
-				}
-				similarBrowser->setText( similarListString );
-			}
-
-			orientationCombo->setEnabled( frame->w() != frame->h() );
-			if ( frame->w() == frame->h() )
-			{
-				orientationCombo->setCurrentIndex(0);
-			}
-			else if ( frame->w() > frame->h() )
-			{
-				orientationCombo->setCurrentIndex( isRotated ? 1 : 0 );
-			}
-			else
-			{
-				orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
-			}
-			mOldOrientationIndex = orientationCombo->currentIndex();
-
-			if ( auto* continuousFrame = dynamic_cast<const model::FrameContinuous*>( frame ) )
-			{
-				parametersGroupBox->setVisible( true );
 				lengthSpin->setSuffix( " " + mUnits.toTrName() );
 				lengthSpin->setDecimals( mUnits.resolutionDigits() );
 				lengthSpin->setSingleStep( mUnits.resolution() );
@@ -187,12 +186,12 @@ namespace glabels
 				lengthSpin->setMaximum( continuousFrame->hMax().inUnits( mUnits ) );
 				lengthSpin->setValue( continuousFrame->h().inUnits( mUnits ) );
 			}
-			else
-			{
-				parametersGroupBox->setVisible( false );
-			}
 
-			mBlocked = false;
+			parametersGroupBox->setVisible( true );
+		}
+		else
+		{
+			parametersGroupBox->setVisible( false );
 		}
 	}
 
@@ -202,12 +201,9 @@ namespace glabels
 	///
 	void PropertiesView::onLengthSpinChanged()
 	{
-		if ( !mBlocked )
-		{
-			mBlocked = true;
-			mModel->setH( model::Distance( lengthSpin->value(), mUnits ) );
-			mBlocked = false;
-		}
+		mInLengthSpinChanged = true;
+		mModel->setH( model::Distance( lengthSpin->value(), mUnits ) );
+		mInLengthSpinChanged = false;
 	}
 
 

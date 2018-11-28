@@ -1429,43 +1429,43 @@
 <context>
     <name>glabels::File</name>
     <message>
-        <location filename="../glabels/File.cpp" line="108"/>
+        <location filename="../glabels/File.cpp" line="105"/>
         <source>gLabels - Open Project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="110"/>
-        <location filename="../glabels/File.cpp" line="191"/>
+        <location filename="../glabels/File.cpp" line="107"/>
+        <location filename="../glabels/File.cpp" line="188"/>
         <source>glabels files (*.glabels);;All files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="137"/>
+        <location filename="../glabels/File.cpp" line="134"/>
         <source>Unable to open &quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="137"/>
+        <location filename="../glabels/File.cpp" line="134"/>
         <source>&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="189"/>
+        <location filename="../glabels/File.cpp" line="186"/>
         <source>gLabels - Save Project As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="202"/>
+        <location filename="../glabels/File.cpp" line="199"/>
         <source>Save Label As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="204"/>
+        <location filename="../glabels/File.cpp" line="201"/>
         <source>%1 already exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/File.cpp" line="205"/>
+        <location filename="../glabels/File.cpp" line="202"/>
         <source>Do you want to replace it?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2434,12 +2434,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="228"/>
+        <location filename="../glabels/PropertiesView.cpp" line="224"/>
         <source>Product Rotate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../glabels/PropertiesView.cpp" line="257"/>
+        <location filename="../glabels/PropertiesView.cpp" line="253"/>
         <source>Change Product</source>
         <translation type="unfinished"></translation>
     </message>
