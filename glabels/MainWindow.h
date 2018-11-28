@@ -26,6 +26,7 @@
 #include <QAction>
 #include <QCloseEvent>
 #include <QLabel>
+#include <QList>
 #include <QListWidget>
 #include <QMainWindow>
 #include <QMenu>
@@ -72,6 +73,7 @@ namespace glabels
 		model::Model* model() const;
 		void setModel( model::Model* model );
 		bool isEmpty() const;
+		void adjustForCurrentFile(const QString& filePath);
 
 
 		/////////////////////////////////////
@@ -91,6 +93,7 @@ namespace glabels
 
 		void fileNew();
 		void fileOpen();
+		void fileOpenRecent();
 		void fileSave();
 		void fileSaveAs();
 		void fileShowEditorPage();
@@ -181,13 +184,14 @@ namespace glabels
 		void writeSettings();
 
 		bool isOkToClose();
-	
+		void updateRecentActionList();
 
 		/////////////////////////////////////
 		// Private Data
 		/////////////////////////////////////
 	private:
 		QMenu*    fileMenu;
+		QMenu*    recentFileMenu;
 		QMenu*    editMenu;
 		QMenu*    viewMenu;
 		QMenu*    viewToolBarsMenu;
@@ -198,6 +202,9 @@ namespace glabels
 		QMenu*    objectsAlignMenu;
 		QMenu*    objectsCenterMenu;
 		QMenu*    helpMenu;
+
+		QList<QAction*> recentFileActionList;
+		const int maxFileNo;
 
 		QMenu*    contextMenu;
 		QMenu*    contextOrderMenu;

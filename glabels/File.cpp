@@ -126,6 +126,7 @@ namespace glabels
 
 				// Save CWD
 				mCwd = QFileInfo( fileName ).absolutePath();
+				window->adjustForCurrentFile(fileName);
 			}
 			else
 			{

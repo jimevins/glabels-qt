@@ -34,6 +34,7 @@
 
 #include "model/Db.h"
 #include "model/Model.h"
+#include "model/XmlLabelParser.h"
 
 #include <QClipboard>
 #include <QFrame>
@@ -62,7 +63,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	MainWindow::MainWindow() : mModel(nullptr)
+	MainWindow::MainWindow() : mModel(nullptr), maxFileNo(5)
 	{
 		setWindowIcon( Icons::Glabels() );
 
@@ -278,6 +279,16 @@ namespace glabels
 		fileOpenAction->setShortcut( QKeySequence::Open );
 		fileOpenAction->setStatusTip( tr("Open an existing gLabels project") );
 		connect( fileOpenAction, SIGNAL(triggered()), this, SLOT(fileOpen()) );
+
+		QAction* recentFileAction = nullptr;
+		for(auto i {0}; i < maxFileNo; ++i)
+		{
+			recentFileAction = new QAction(this);
+			recentFileAction->setVisible(false);
+			connect(recentFileAction, SIGNAL(triggered()),
+				this, SLOT(fileOpenRecent()));
+			recentFileActionList.append(recentFileAction);
+		}
 
 		fileSaveAction = new QAction( tr("&Save"), this );
 		fileSaveAction->setIcon( Icons::FileSave() );
@@ -581,6 +592,15 @@ namespace glabels
 		fileMenu->addAction( fileOpenAction );
 		fileMenu->addAction( fileSaveAction );
 		fileMenu->addAction( fileSaveAsAction );
+		fileMenu->addSeparator();
+
+		recentFileMenu = fileMenu->addMenu(tr("Open Recent"));
+		for(auto i {0}; i < maxFileNo; ++i)
+		{
+			recentFileMenu->addAction(recentFileActionList.at(i));
+		}
+		updateRecentActionList();
+
 		fileMenu->addSeparator();
 		fileMenu->addAction( fileShowEditorPageAction );
 		fileMenu->addAction( fileShowPropertiesPageAction );
@@ -1070,6 +1090,44 @@ namespace glabels
 	void MainWindow::fileOpen()
 	{
 		File::open( this );
+	}
+
+	void MainWindow::fileOpenRecent()
+	{
+		QAction *action = qobject_cast<QAction *>(sender());
+		if (action)
+		{
+			QString fileName = action->data().toString();
+			if ( !fileName.isEmpty() )
+			{
+				model::Model *model = model::XmlLabelParser::readFile( fileName );
+				if ( model )
+				{
+					model->setFileName( fileName );
+
+					// Either apply to current window or open a new one
+					if ( isEmpty() )
+					{
+						setModel( model );
+					}
+					else
+					{
+						auto *newWindow = new MainWindow();
+						newWindow->setModel( model );
+						newWindow->show();
+					}
+					adjustForCurrentFile(fileName);
+				}
+				else
+				{
+					QMessageBox msgBox;
+					msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
+					msgBox.setStandardButtons( QMessageBox::Ok );
+					msgBox.setDefaultButton( QMessageBox::Ok );
+					msgBox.exec();
+				}
+			}
+		}
 	}
 
 
@@ -1630,5 +1688,50 @@ namespace glabels
 	{
 		manageActions();
 	}
+
+	void MainWindow::adjustForCurrentFile(const QString &filePath){
+		QSettings settings;
+		QStringList recentFilePaths = settings.value("recentFiles").toStringList();
+
+		recentFilePaths.removeAll(filePath);
+		recentFilePaths.prepend(filePath);
+		while (recentFilePaths.size() > maxFileNo)
+		{
+			recentFilePaths.removeLast();
+		}
+		settings.setValue("recentFiles", recentFilePaths);
+
+		// see note
+		updateRecentActionList();
+	}
+
+	void MainWindow::updateRecentActionList(){
+		QSettings settings;
+		QStringList recentFilePaths = settings.value("recentFiles").toStringList();
+
+		auto itEnd {0};
+		if(recentFilePaths.size() <= maxFileNo)
+		{
+			itEnd = recentFilePaths.size();
+		}
+		else
+		{
+			itEnd = maxFileNo;
+		}
+
+		for (auto i {0}; i < itEnd; ++i)
+		{
+			QString strippedName = QFileInfo(recentFilePaths.at(i)).fileName();
+			recentFileActionList.at(i)->setText(strippedName);
+			recentFileActionList.at(i)->setData(recentFilePaths.at(i));
+			recentFileActionList.at(i)->setVisible(true);
+		}
+
+		for (auto i {itEnd}; i < maxFileNo; ++i)
+		{
+			recentFileActionList.at(i)->setVisible(false);
+		}
+	}
+
 
 } // namespace glabels
