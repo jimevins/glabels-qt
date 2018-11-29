@@ -1709,7 +1709,7 @@ namespace glabels
 		QSettings settings;
 		QStringList recentFilePaths = settings.value("recentFiles").toStringList();
 
-		auto itEnd {0};
+		auto itEnd = 0;
 		if(recentFilePaths.size() <= maxFileNo)
 		{
 			itEnd = recentFilePaths.size();
@@ -1727,7 +1727,7 @@ namespace glabels
 			recentFileActionList.at(i)->setVisible(true);
 		}
 
-		for (auto i {itEnd}; i < maxFileNo; ++i)
+		for (auto i = itEnd; i < maxFileNo; ++i)
 		{
 			recentFileActionList.at(i)->setVisible(false);
 		}
