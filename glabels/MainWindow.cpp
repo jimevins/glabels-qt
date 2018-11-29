@@ -281,7 +281,7 @@ namespace glabels
 		connect( fileOpenAction, SIGNAL(triggered()), this, SLOT(fileOpen()) );
 
 		QAction* recentFileAction = nullptr;
-		for(auto i {0}; i < maxFileNo; ++i)
+		for(auto i = 0; i < maxFileNo; ++i)
 		{
 			recentFileAction = new QAction(this);
 			recentFileAction->setVisible(false);
@@ -595,7 +595,7 @@ namespace glabels
 		fileMenu->addSeparator();
 
 		recentFileMenu = fileMenu->addMenu(tr("Open Recent"));
-		for(auto i {0}; i < maxFileNo; ++i)
+		for(auto i = 0 ; i < maxFileNo; ++i)
 		{
 			recentFileMenu->addAction(recentFileActionList.at(i));
 		}
@@ -1719,7 +1719,7 @@ namespace glabels
 			itEnd = maxFileNo;
 		}
 
-		for (auto i {0}; i < itEnd; ++i)
+		for (auto i = 0; i < itEnd; ++i)
 		{
 			QString strippedName = QFileInfo(recentFilePaths.at(i)).fileName();
 			recentFileActionList.at(i)->setText(strippedName);
