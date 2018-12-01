@@ -40,6 +40,14 @@ namespace glabels
 		preview->setRenderer( &mRenderer );
 		mPrinter = new QPrinter( QPrinter::HighResolution );
 		mPrinter->setColorMode( QPrinter::Color );
+
+		mPrintDialog = new QPrintDialog( mPrinter, this );
+		mPrintDialog->setOption( QAbstractPrintDialog::PrintToFile,        true );
+		mPrintDialog->setOption( QAbstractPrintDialog::PrintSelection,     false );
+		mPrintDialog->setOption( QAbstractPrintDialog::PrintPageRange,     false );
+		mPrintDialog->setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
+		mPrintDialog->setOption( QAbstractPrintDialog::PrintCollateCopies, false );
+		mPrintDialog->setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
 	}
 
 
@@ -120,16 +128,7 @@ namespace glabels
 	///
 	void PrintView::onPrintButtonClicked()
 	{
-		QPrintDialog printDialog( mPrinter, this );
-
-		printDialog.setOption( QAbstractPrintDialog::PrintToFile,        true );
-		printDialog.setOption( QAbstractPrintDialog::PrintSelection,     false );
-		printDialog.setOption( QAbstractPrintDialog::PrintPageRange,     false );
-		printDialog.setOption( QAbstractPrintDialog::PrintShowPageSize,  true );
-		printDialog.setOption( QAbstractPrintDialog::PrintCollateCopies, false );
-		printDialog.setOption( QAbstractPrintDialog::PrintCurrentPage,   false );
-
-		if ( printDialog.exec() == QDialog::Accepted )
+		if ( mPrintDialog->exec() == QDialog::Accepted )
 		{
 			mRenderer.print( mPrinter );
 		}

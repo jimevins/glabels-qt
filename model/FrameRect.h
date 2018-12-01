@@ -42,7 +42,7 @@ namespace glabels
 			           const Distance& yWaste,
 			           const QString&  id = "0" );
 
-			FrameRect( const FrameRect& other );
+			FrameRect( const FrameRect& other ) = default;
 
 			Frame* dup() const override;
 
@@ -59,7 +59,8 @@ namespace glabels
 
 			const QPainterPath& path() const override;
 			const QPainterPath& clipPath() const override;
-			QPainterPath marginPath( const Distance& size ) const override;
+			QPainterPath marginPath( const Distance& xSize,
+			                         const Distance& ySize ) const override;
 
 
 		private:
@@ -76,6 +77,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRect& frame );
 
 
 #endif // model_FrameRect_h

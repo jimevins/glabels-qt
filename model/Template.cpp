@@ -21,6 +21,7 @@
 #include "Template.h"
 
 #include "Db.h"
+#include "FrameContinuous.h"
 
 #include <QtDebug>
 
@@ -36,6 +37,7 @@ namespace glabels
 		                    const QString&  paperId,
 		                    const Distance& pageWidth,
 		                    const Distance& pageHeight,
+		                    const Distance& rollWidth,
 		                    bool            isUserDefined )
 			: mBrand(brand),
 			  mPart(part),
@@ -43,6 +45,7 @@ namespace glabels
 			  mPaperId(paperId),
 			  mPageWidth(pageWidth),
 			  mPageHeight(pageHeight),
+			  mRollWidth(rollWidth),
 			  mIsUserDefined(isUserDefined),
 			  mIsSizeIso(false),
 			  mIsSizeUs(false),
@@ -56,6 +59,8 @@ namespace glabels
 				mIsSizeIso = paper->isSizeIso();
 				mIsSizeUs  = paper->isSizeUs();
 			}
+
+			mIsRoll = (paperId == "roll");
 		}
 
 
@@ -67,15 +72,17 @@ namespace glabels
 			mPaperId     = other.mPaperId;
 			mPageWidth   = other.mPageWidth;
 			mPageHeight  = other.mPageHeight;
+			mRollWidth   = other.mRollWidth;
 			mIsSizeIso   = other.mIsSizeIso;
 			mIsSizeUs    = other.mIsSizeUs;
+			mIsRoll      = other.mIsRoll;
 			mEquivPart   = other.mEquivPart;
 			mName        = other.mName;
 			mProductUrl  = other.mProductUrl;
 
 			foreach ( Frame* frame, other.mFrames )
 			{
-				addFrame( frame );
+				addFrame( frame->dup() );
 			}
 
 			foreach ( QString categoryId, other.mCategoryIds )
@@ -85,9 +92,50 @@ namespace glabels
 		}
 
 
-		Template* Template::dup() const
+		Template::~Template()
 		{
-			return new Template( *this );
+			while ( !mFrames.isEmpty() )
+			{
+				delete mFrames.takeFirst();
+			}
+		}
+
+
+		Template& Template::operator=( const Template& other )
+		{
+			if ( this != &other )
+			{
+				mBrand       = other.mBrand;
+				mPart        = other.mPart;
+				mDescription = other.mDescription;
+				mPaperId     = other.mPaperId;
+				mPageWidth   = other.mPageWidth;
+				mPageHeight  = other.mPageHeight;
+				mRollWidth   = other.mRollWidth;
+				mIsSizeIso   = other.mIsSizeIso;
+				mIsSizeUs    = other.mIsSizeUs;
+				mIsRoll      = other.mIsRoll;
+				mEquivPart   = other.mEquivPart;
+				mName        = other.mName;
+				mProductUrl  = other.mProductUrl;
+
+				while ( !mFrames.isEmpty() )
+				{
+					delete mFrames.takeFirst();
+				}
+				foreach ( Frame* frame, other.mFrames )
+				{
+					addFrame( frame->dup() );
+				}
+
+				mCategoryIds.clear();
+				foreach ( QString categoryId, other.mCategoryIds )
+				{
+					addCategory( categoryId );
+				}
+			}
+
+			return *this;
 		}
 
 
@@ -107,7 +155,7 @@ namespace glabels
 			const Template* other = Db::lookupTemplateFromBrandPart( brand, equivPart );
 			if ( other != nullptr )
 			{
-				Template* tmplate = other->dup();
+				Template* tmplate = new Template( *other );
 
 				tmplate->mPart      = part;
 				tmplate->mEquivPart = equivPart;
@@ -159,7 +207,22 @@ namespace glabels
 	
 		Distance Template::pageHeight() const
 		{
-			return mPageHeight;
+			// Adjust height if continuous tape
+			const model::Frame* frame = mFrames.constFirst();
+			if ( const auto* frameContinuous = dynamic_cast<const model::FrameContinuous*>(frame) )
+			{
+				return frameContinuous->h();
+			}
+			else
+			{
+				return mPageHeight;
+			}
+		}
+
+	
+		Distance Template::rollWidth() const
+		{
+			return mRollWidth;
 		}
 
 	
@@ -178,6 +241,12 @@ namespace glabels
 		bool Template::isSizeOther() const
 		{
 			return !mIsSizeIso && !mIsSizeUs;
+		}
+	
+
+		bool Template::isRoll() const
+		{
+			return mIsRoll;
 		}
 	
 
@@ -274,12 +343,12 @@ namespace glabels
 			}
 
 			// Are they layed out similarly?
-			foreach ( Layout* layout1, frame1->layouts() )
+			foreach ( const Layout& layout1, frame1->layouts() )
 			{
 				bool matchFound = false;
-				foreach ( Layout* layout2, frame2->layouts() )
+				foreach ( const Layout& layout2, frame2->layouts() )
 				{
-					if ( layout1->isSimilarTo(layout2) )
+					if ( layout1.isSimilarTo( layout2 ) )
 					{
 						matchFound = true;
 						break;
@@ -296,4 +365,24 @@ namespace glabels
 
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::Template& tmplate )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "Template{ "
+	              << tmplate.brand() << "," << tmplate.part() << "," << tmplate.description() << ","
+	              << tmplate.paperId() << ","
+	              << tmplate.pageWidth() << ","
+	              << tmplate.pageHeight() << ","
+	              << tmplate.rollWidth() << ","
+	              << tmplate.isSizeIso() << ","
+	              << tmplate.isSizeUs() << ","
+	              << tmplate.isSizeOther() << ","
+	              << tmplate.isRoll() << ","
+	              << *tmplate.frames().constFirst() << ","
+	              << " }";
+	return dbg;
 }

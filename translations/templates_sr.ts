@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sr" sourcelanguage="en_US">
+<TS version="2.1" language="sr_RS">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished">Налепнице за адресе</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished">Било која картица</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished">Било која налепница</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Barcode labels</source>
-        <translation type="unfinished">Налепнице за бар-кȏд</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Bookplate labels</source>
@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>Business card CD labels</source>
-        <translation type="unfinished">ЦД налепнице пословне картице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Business card size labels</source>
-        <translation type="unfinished">Налепнице за пословне картице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished">Пословна картица</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>CD/DVD center hub labels</source>
-        <translation type="unfinished">Налепнице за ЦД/ДВД са средишњом главом</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD insert</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished">ЦД/ДВД налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished">ЦД/ДВД или други медиј</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Candy labels</source>
-        <translation type="unfinished">Налепнице за слаткише</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cassette labels</source>
@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Coffee and tea labels</source>
-        <translation type="unfinished">Налепнице за кафу и чај</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Correction labels</source>
@@ -149,15 +149,15 @@
     </message>
     <message>
         <source>Digital media labels</source>
-        <translation type="unfinished">Налепнице за дигиталне носаче</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Digital video labels</source>
-        <translation type="unfinished">Налепнице за дигиталне снимке</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished">Налепнице за дискете</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,11 +165,11 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished">Елипсоидне налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File folder labels</source>
-        <translation type="unfinished">Налепнице за фасцикле докумената</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File labels</source>
@@ -177,27 +177,27 @@
     </message>
     <message>
         <source>Filing labels</source>
-        <translation type="unfinished">Налепнице за одлагање докумената</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished">Налепнице за флопи дискове</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished">Папир за пресавијање</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished">Пресавитљиве пословне картице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished">Склопиве картице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
-        <translation type="unfinished">Обостране налепнице за ЦД/ДВД дискове</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Full-page labels</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished">Честитке</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hanging folder labels</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished">Налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,23 +249,23 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished">Поштанске налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished">Поштански/доставни производи</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Medical chart labels</source>
-        <translation type="unfinished">Налепнице за медицинске графиконе</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished">Чланске картице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
-        <translation type="unfinished">Налепнице за металне конзерве</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini CD/DVD labels</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished">Налепнице мини дискова</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -297,67 +297,71 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished">Плочице са именима</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nutritional labels</source>
-        <translation type="unfinished">Налепнице за хранљиве састојке</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Paper hole reinforcement labels</source>
-        <translation type="unfinished">Налепнице за ојачање рупа у папиру</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished">Фотографске налепнице за пасош</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished">Фотографске налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished">Фотографски производи</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished">Разгледнице</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished">Подметак за миша</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished">Правоугаоне налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Return address labels</source>
-        <translation type="unfinished">Налепнице повратних адреса</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished">Заобљене налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished">Налепнице за СД картице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Seal labels</source>
-        <translation type="unfinished">Налепнице за печат</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished">Налепнице за доставу</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished">Четвртасте налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Target stickers</source>
-        <translation type="unfinished">Налепнице за мете</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tent cards</source>
@@ -365,11 +369,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished">Трапезоидне налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished">Троугаоне налепнице</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -417,7 +421,11 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished">Налепнице зип дискова</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continuous label tape</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

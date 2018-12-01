@@ -25,54 +25,19 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Page size:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Width:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QDoubleSpinBox" name="wSpin">
-       <property name="accelerated">
-        <bool>true</bool>
-       </property>
-       <property name="suffix">
-        <string notr="true">in</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Height:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QDoubleSpinBox" name="hSpin">
-       <property name="accelerated">
-        <bool>true</bool>
-       </property>
-       <property name="suffix">
-        <string notr="true">in</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="pageSizeCombo"/>
-     </item>
-    </layout>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="1" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>173</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="0" column="1">
     <spacer name="horizontalSpacer">
@@ -87,18 +52,80 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>12</number>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>173</height>
-      </size>
-     </property>
-    </spacer>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="1">
+        <widget class="QDoubleSpinBox" name="hSpin">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="suffix">
+          <string notr="true">in</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="rollWLabel">
+         <property name="text">
+          <string>Roll width:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="hLabel">
+         <property name="text">
+          <string>Height:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="pageSizeCombo"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="wLabel">
+         <property name="text">
+          <string>Width:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="rollWSpin">
+         <property name="suffix">
+          <string notr="true">in</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDoubleSpinBox" name="wSpin">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="suffix">
+          <string notr="true">in</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Page size:</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

@@ -48,6 +48,8 @@ namespace glabels
 			void parseLabelEllipseNode( const QDomElement &node, Template *tmplate );
 			void parseLabelRoundNode( const QDomElement &node, Template *tmplate );
 			void parseLabelCdNode( const QDomElement &node, Template *tmplate );
+			void parseLabelPathNode( const QDomElement &node, Template *tmplate );
+			void parseLabelContinuousNode( const QDomElement &node, Template *tmplate );
 			void parseLabelNodeCommon( const QDomElement &node, Frame *frame );
 			void parseLayoutNode( const QDomElement &node, Frame *frame );
 			void parseMarkupMarginNode( const QDomElement &node, Frame *frame );

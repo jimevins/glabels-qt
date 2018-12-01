@@ -1,6 +1,6 @@
-/*  FrameEllipse.h
+/*  FramePath.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2018  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef model_FrameEllipse_h
-#define model_FrameEllipse_h
+#ifndef model_FramePath_h
+#define model_FramePath_h
 
 
 #include "Frame.h"
@@ -30,26 +30,31 @@ namespace glabels
 	namespace model
 	{
 
-		class FrameEllipse : public Frame
+		class FramePath : public Frame
 		{
-			Q_DECLARE_TR_FUNCTIONS(FrameEllipse)
-		
-		public:
-			FrameEllipse( const Distance& w,
-			              const Distance& h,
-			              const Distance& waste,
-			              const QString&  id = "0" );
+			Q_DECLARE_TR_FUNCTIONS(FramePath)
 
-			FrameEllipse( const FrameEllipse& other ) = default;
+		public:
+			FramePath( const QPainterPath& path,
+			           const Distance&     xWaste,
+			           const Distance&     yWaste,
+			           const Units&        originalUnits,
+			           const QString&      id = "0" );
+
+			FramePath( const FramePath& other ) = default;
 
 			Frame* dup() const override;
 
-			Distance waste() const;
+			Distance xWaste() const;
+			Distance yWaste() const;
+
+			Units        originalUnits() const;
 
 			Distance w() const override;
 			Distance h() const override;
 
 			QString sizeDescription( const Units& units ) const override;
+
 			bool isSimilarTo( Frame* other ) const override;
 
 			const QPainterPath& path() const override;
@@ -61,11 +66,13 @@ namespace glabels
 		private:
 			Distance mW;
 			Distance mH;
-			Distance mWaste;
+			Distance mXWaste;
+			Distance mYWaste;
 
 			QPainterPath mPath;
 			QPainterPath mClipPath;
 
+			Units mOriginalUnits;
 		};
 
 	}
@@ -73,7 +80,7 @@ namespace glabels
 
 
 // Debugging support
-QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame );
+QDebug operator<<( QDebug dbg, const glabels::model::FramePath& frame );
 
 
-#endif // model_FrameEllipse_h
+#endif // model_FramePath_h

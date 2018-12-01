@@ -24,6 +24,7 @@
 #include "UndoRedoModel.h"
 
 #include "model/Db.h"
+#include "model/FrameContinuous.h"
 #include "model/Settings.h"
 
 #include <QStyledItemDelegate>
@@ -171,6 +172,38 @@ namespace glabels
 			orientationCombo->setCurrentIndex( isRotated ? 0 : 1 );
 		}
 		mOldOrientationIndex = orientationCombo->currentIndex();
+
+		if ( auto* continuousFrame = dynamic_cast<const model::FrameContinuous*>( frame ) )
+		{
+			if (!mInLengthSpinChanged)
+			{
+				const QSignalBlocker blocker( lengthSpin );
+
+				lengthSpin->setSuffix( " " + mUnits.toTrName() );
+				lengthSpin->setDecimals( mUnits.resolutionDigits() );
+				lengthSpin->setSingleStep( mUnits.resolution() );
+				lengthSpin->setMinimum( continuousFrame->hMin().inUnits( mUnits ) );
+				lengthSpin->setMaximum( continuousFrame->hMax().inUnits( mUnits ) );
+				lengthSpin->setValue( continuousFrame->h().inUnits( mUnits ) );
+			}
+
+			parametersGroupBox->setVisible( true );
+		}
+		else
+		{
+			parametersGroupBox->setVisible( false );
+		}
+	}
+
+
+	///
+	/// Length spin changed handler
+	///
+	void PropertiesView::onLengthSpinChanged()
+	{
+		mInLengthSpinChanged = true;
+		mModel->setH( model::Distance( lengthSpin->value(), mUnits ) );
+		mInLengthSpinChanged = false;
 	}
 
 

@@ -27,6 +27,7 @@
 #include "Point.h"
 
 #include <QCoreApplication>
+#include <QDebug>
 #include <QList>
 #include <QPainterPath>
 #include <QString>
@@ -56,23 +57,26 @@ namespace glabels
 			QString id() const;
 			int nLabels() const;
 			QString layoutDescription() const;
-			const QList<Layout*>& layouts() const;
+			const QList<Layout>&  layouts() const;
 			const QList<Markup*>& markups() const;
 
 			QVector<Point> getOrigins() const;
 
-			void addLayout( Layout* layout );
+			void addLayout( const Layout& layout );
 			void addMarkup( Markup* markup );
 
 			virtual Distance w() const = 0;
 			virtual Distance h() const = 0;
+
+			virtual void setH( const Distance& h );
 
 			virtual QString sizeDescription( const Units& units ) const = 0;
 			virtual bool isSimilarTo( Frame* other ) const = 0;
 
 			virtual const QPainterPath& path() const = 0;
 			virtual const QPainterPath& clipPath() const = 0;
-			virtual QPainterPath marginPath( const Distance& size ) const = 0;
+			virtual QPainterPath marginPath( const Distance& xSize,
+			                                 const Distance& ySize ) const = 0;
 
 
 		private:
@@ -80,12 +84,16 @@ namespace glabels
 			int     mNLabels;
 			QString mLayoutDescription;
 
-			QList<Layout*> mLayouts;
+			QList<Layout>  mLayouts;
 			QList<Markup*> mMarkups;
 		};
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Frame& frame );
 
 
 #endif // model_Frame_h

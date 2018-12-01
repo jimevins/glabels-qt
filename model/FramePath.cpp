@@ -1,6 +1,6 @@
-/*  FrameEllipse.cpp
+/*  FramePath.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2018  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,7 +18,7 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "FrameEllipse.h"
+#include "FramePath.h"
 
 #include "Constants.h"
 #include "StrUtil.h"
@@ -29,42 +29,60 @@ namespace glabels
 	namespace model
 	{
 
-		FrameEllipse::FrameEllipse( const Distance& w,
-		                            const Distance& h,
-		                            const Distance& waste,
-		                            const QString&  id )
-			: Frame(id), mW(w), mH(h), mWaste(waste)
+		FramePath::FramePath( const QPainterPath& path,
+		                      const Distance&     xWaste,
+		                      const Distance&     yWaste,
+		                      const Units&        originalUnits,
+		                      const QString&      id )
+			: Frame(id), mXWaste(xWaste), mYWaste(yWaste), mPath(path), mOriginalUnits(originalUnits)
 		{
-			mPath.addEllipse( 0, 0, mW.pt(), mH.pt() );
-			mClipPath.addEllipse( -mWaste.pt(), -mWaste.pt(), (mW+2*mWaste).pt(), (mH+2*mWaste).pt() );
+			QRectF r = path.boundingRect();
+			
+			mW = Distance::pt( r.width() );
+			mH = Distance::pt( r.height() );
+
+			mClipPath.addRect( r.x()-mXWaste.pt(), r.y()-mYWaste.pt(),
+			                   r.width() + 2*mXWaste.pt(), r.height() + 2*mYWaste.pt() );
+		}
+
+	
+		Frame* FramePath::dup() const
+		{
+			return new FramePath( *this );
 		}
 
 
-		Frame* FrameEllipse::dup() const
-		{
-			return new FrameEllipse( *this );
-		}
-
-
-		Distance FrameEllipse::w() const
+		Distance FramePath::w() const
 		{
 			return mW;
 		}
 
 	
-		Distance FrameEllipse::h() const
+		Distance FramePath::h() const
 		{
 			return mH;
 		}
-	
 
-		Distance FrameEllipse::waste() const
+
+		Distance FramePath::xWaste() const
 		{
-			return mWaste;
+			return mXWaste;
+		}
+
+		
+		Distance FramePath::yWaste() const
+		{
+			return mYWaste;
 		}
 
 
-		QString FrameEllipse::sizeDescription( const Units& units ) const
+		Units FramePath::originalUnits() const
+		{
+			return mOriginalUnits;
+		}
+
+
+		QString FramePath::sizeDescription( const Units& units ) const
 		{
 			if ( units.toEnum() == Units::IN )
 			{
@@ -86,12 +104,11 @@ namespace glabels
 		}
 
 
-		bool FrameEllipse::isSimilarTo( Frame* other ) const
+		bool FramePath::isSimilarTo( Frame* other ) const
 		{
-			if ( auto* otherEllipse = dynamic_cast<FrameEllipse*>(other) )
+			if ( auto *otherPath = dynamic_cast<FramePath*>(other) )
 			{
-				if ( (fabs( mW - otherEllipse->mW ) <= EPSILON) &&
-				     (fabs( mH - otherEllipse->mH ) <= EPSILON) )
+				if ( mPath == otherPath->mPath )
 				{
 					return true;
 				}
@@ -100,46 +117,38 @@ namespace glabels
 		}
 
 
-		const QPainterPath& FrameEllipse::path() const
+		const QPainterPath& FramePath::path() const
 		{
 			return mPath;
 		}
 
-	
-		const QPainterPath& FrameEllipse::clipPath() const
+
+		const QPainterPath& FramePath::clipPath() const
 		{
 			return mClipPath;
 		}
 
-	
-		QPainterPath FrameEllipse::marginPath( const Distance& xSize,
-		                                       const Distance& ySize ) const
+
+		QPainterPath FramePath::marginPath( const Distance& xSize,
+		                                    const Distance& ySize ) const
 		{
-			// Note: ignore ySize, assume xSize == ySize
-			Distance size = xSize;
-			
-			Distance w = mW - 2*size;
-			Distance h = mH - 2*size;
-
-			QPainterPath path;
-			path.addEllipse( size.pt(), size.pt(), w.pt(), h.pt() );
-
-			return path;
+			return mPath; // No margin
 		}
+
 
 	}
 }
 
 
-QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame )
+QDebug operator<<( QDebug dbg, const glabels::model::FramePath& frame )
 {
 	QDebugStateSaver saver(dbg);
 
-	dbg.nospace() << "FrameEllipse{ "
+	dbg.nospace() << "FramePath{ "
 	              << frame.id() << "," 
-	              << frame.w() << "," 
-	              << frame.h() << "," 
-	              << frame.waste() << "," 
+	              << frame.path() << "," 
+	              << frame.xWaste() << "," 
+	              << frame.yWaste() << "," 
 	              << frame.layouts() << ","
 	              << frame.markups()
 	              << " }";

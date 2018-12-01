@@ -67,13 +67,10 @@ namespace glabels
 		QList<Vendor*>   Db::mVendors;
 		QStringList      Db::mVendorNames;
 		QList<Template*> Db::mTemplates;
-		QString          Db::mPaperNameOther;
 
 	
 		Db::Db()
 		{
-			mPaperNameOther = tr("Other");
-
 			readPapers();
 			readCategories();
 			readVendors();
@@ -209,6 +206,15 @@ namespace glabels
 		{
 			if ( !name.isNull() && !name.isEmpty() )
 			{
+				if ( name == tr("Other") )
+				{
+					return "other";
+				}
+				else if ( name == tr("Roll") )
+				{
+					return "roll";
+				}
+
 				const Paper *paper = lookupPaperFromName( name );
 				if ( paper != nullptr )
 				{
@@ -225,9 +231,13 @@ namespace glabels
 		{
 			if ( !id.isNull() && !id.isEmpty() )
 			{
-				if ( isPaperIdOther( id ) )
+				if ( id == "roll" )
 				{
-					return mPaperNameOther;
+					return tr("Roll");
+				}
+				else
+				{
+					return tr("Other");
 				}
 
 				const Paper *paper = lookupPaperFromId( id );
@@ -253,12 +263,6 @@ namespace glabels
 			}
 
 			return false;
-		}
-
-
-		bool Db::isPaperIdOther( const QString& id )
-		{
-			return ( id == "Other" );
 		}
 
 

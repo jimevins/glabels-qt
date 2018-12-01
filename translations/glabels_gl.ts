@@ -173,6 +173,10 @@
         <source>Other</source>
         <translation type="unfinished">Outro</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -232,6 +236,13 @@
         <source>diameter</source>
         <translation type="unfinished">
             </translation>
+    </message>
+</context>
+<context>
+    <name>FrameContinuous</name>
+    <message>
+        <source>wide</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -631,6 +642,14 @@
         <source>Similar Products</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Adjustable Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label length:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SelectProductDialog</name>
@@ -762,6 +781,17 @@
     </message>
     <message>
         <source>5. Waste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDesignerContinuousPage</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -932,6 +962,21 @@
         <source>Height:</source>
         <translation type="unfinished">Altura:</translation>
     </message>
+    <message>
+        <source>Roll width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDesignerPathPage</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TemplateDesignerRectPage</name>
@@ -956,11 +1001,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>6. Margin:</source>
+        <source>5. Vertical waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>5. Vertical waste:</source>
+        <source>6. Margin (X):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>7. Margin (Y):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>in</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1895,6 +1948,10 @@
         <source>Copy</source>
         <translation type="unfinished">Copiar</translation>
     </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>glabels::TemplateDesignerApplyPage</name>
@@ -1923,6 +1980,17 @@
     </message>
     <message>
         <source>Please adjust the size parameters of a single product item.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>glabels::TemplateDesignerContinuousPage</name>
+    <message>
+        <source>Unsupported Product Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continuous tape product templates are not currently supported by the Product Template Designer.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1998,6 +2066,21 @@
     <message>
         <source>Other</source>
         <translation type="unfinished">Outro</translation>
+    </message>
+    <message>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>glabels::TemplateDesignerPathPage</name>
+    <message>
+        <source>Unsupported Product Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Path based product templates are not currently supported by the Product Template Designer.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

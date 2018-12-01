@@ -40,13 +40,6 @@ namespace glabels
 		}
 	
 
-		FrameRound::FrameRound( const FrameRound& other )
-			: Frame(other), mR(other.mR), mWaste(other.mWaste), mPath(other.mPath)
-		{
-			// empty
-		}
-	
-
 		Frame* FrameRound::dup() const
 		{
 			return new FrameRound( *this );
@@ -123,8 +116,12 @@ namespace glabels
 		}
 
 
-		QPainterPath FrameRound::marginPath( const Distance& size ) const
+		QPainterPath FrameRound::marginPath( const Distance& xSize,
+		                                     const Distance& ySize ) const
 		{
+			// Note: ignore ySize, assume xSize == ySize
+			Distance size = xSize;
+
 			Distance r = mR - size;
 
 			QPainterPath path;
@@ -134,4 +131,20 @@ namespace glabels
 		}
 
 	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::FrameRound& frame )
+{
+	QDebugStateSaver saver(dbg);
+
+	dbg.nospace() << "FrameRound{ "
+	              << frame.id() << "," 
+	              << frame.r() << "," 
+	              << frame.waste() << "," 
+	              << frame.layouts() << ","
+	              << frame.markups()
+	              << " }";
+
+	return dbg;
 }

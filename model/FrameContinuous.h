@@ -1,6 +1,6 @@
-/*  FrameEllipse.h
+/*  FrameContinuous.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2018  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,8 +18,8 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef model_FrameEllipse_h
-#define model_FrameEllipse_h
+#ifndef model_FrameContinuous_h
+#define model_FrameContinuous_h
 
 
 #include "Frame.h"
@@ -30,26 +30,32 @@ namespace glabels
 	namespace model
 	{
 
-		class FrameEllipse : public Frame
+		class FrameContinuous : public Frame
 		{
-			Q_DECLARE_TR_FUNCTIONS(FrameEllipse)
-		
-		public:
-			FrameEllipse( const Distance& w,
-			              const Distance& h,
-			              const Distance& waste,
-			              const QString&  id = "0" );
+			Q_DECLARE_TR_FUNCTIONS(FrameContinuous)
 
-			FrameEllipse( const FrameEllipse& other ) = default;
+		public:
+			FrameContinuous( const Distance& w,
+			                 const Distance& hMin,
+			                 const Distance& hMax,
+			                 const Distance& hDefault,
+			                 const QString&  id = "0" );
+
+			FrameContinuous( const FrameContinuous& other ) = default;
 
 			Frame* dup() const override;
-
-			Distance waste() const;
 
 			Distance w() const override;
 			Distance h() const override;
 
+			Distance hMin() const;
+			Distance hMax() const;
+			Distance hDefault() const;
+
+			void setH( const Distance& h ) override;
+
 			QString sizeDescription( const Units& units ) const override;
+
 			bool isSimilarTo( Frame* other ) const override;
 
 			const QPainterPath& path() const override;
@@ -60,12 +66,12 @@ namespace glabels
 
 		private:
 			Distance mW;
+			Distance mHMin;
+			Distance mHMax;
+			Distance mHDefault;
 			Distance mH;
-			Distance mWaste;
 
 			QPainterPath mPath;
-			QPainterPath mClipPath;
-
 		};
 
 	}
@@ -73,7 +79,7 @@ namespace glabels
 
 
 // Debugging support
-QDebug operator<<( QDebug dbg, const glabels::model::FrameEllipse& frame );
+QDebug operator<<( QDebug dbg, const glabels::model::FrameContinuous& frame );
 
 
-#endif // model_FrameEllipse_h
+#endif // model_FrameContinuous_h
