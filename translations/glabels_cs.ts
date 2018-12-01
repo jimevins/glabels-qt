@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs" sourcelanguage="en_US">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -64,7 +64,7 @@
     </message>
     <message>
         <source>Orange</source>
-        <translation type="unfinished">Oranžová</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Butter</source>
@@ -132,7 +132,7 @@
     </message>
     <message>
         <source>Black</source>
-        <translation type="unfinished">Černá</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Very Dark Gray</source>
@@ -164,14 +164,14 @@
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished">Bílá</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Db</name>
     <message>
         <source>Other</source>
-        <translation type="unfinished">Jiný</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Roll</source>
@@ -182,11 +182,11 @@
     <name>Factory</name>
     <message>
         <source>None</source>
-        <translation type="unfinished">Žádný</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text: Comma Separated Values (CSV)</source>
-        <translation type="unfinished">Text: Čárkou oddělené hodnoty (CSV)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text: Comma Separated Values (CSV), keys on line 1</source>
@@ -194,7 +194,7 @@
     </message>
     <message>
         <source>Text: Tab Separated Values (TSV)</source>
-        <translation type="unfinished">Text: Tabulátorem oddělené hodnoty (TSV)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text: Tab Separated Values (TSV), keys on line 1</source>
@@ -232,7 +232,7 @@
     <name>FrameCd</name>
     <message>
         <source>diameter</source>
-        <translation type="unfinished">průměr</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -246,7 +246,7 @@
     <name>FrameRound</name>
     <message>
         <source>diameter</source>
-        <translation type="unfinished">průměr</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -257,7 +257,7 @@
     </message>
     <message>
         <source>Source</source>
-        <translation type="unfinished">Zdroj</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location</source>
@@ -265,11 +265,11 @@
     </message>
     <message>
         <source>Format:</source>
-        <translation type="unfinished">Formát:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location:</source>
-        <translation type="unfinished">Umístění:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Records</source>
@@ -277,11 +277,11 @@
     </message>
     <message>
         <source>Select all</source>
-        <translation type="unfinished">Vybrat vše</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unselect all</source>
-        <translation type="unfinished">Zrušit výběr</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -292,11 +292,11 @@
     </message>
     <message>
         <source>Object properties</source>
-        <translation type="unfinished">Vlastnosti objektu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text</source>
-        <translation type="unfinished">Text</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Layout</source>
@@ -304,7 +304,7 @@
     </message>
     <message>
         <source>Alignment:</source>
-        <translation type="unfinished">Zarovnání:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line spacing:</source>
@@ -324,7 +324,7 @@
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished">Žádný</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Allow printing to shrink text to fit object</source>
@@ -336,19 +336,19 @@
     </message>
     <message>
         <source>Family:</source>
-        <translation type="unfinished">Rodina:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Size:</source>
-        <translation type="unfinished">Velikost:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Style:</source>
-        <translation type="unfinished">Styl:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Color:</source>
-        <translation type="unfinished">Barva:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Editor</source>
@@ -356,11 +356,11 @@
     </message>
     <message>
         <source>Barcode</source>
-        <translation type="unfinished">Čárový kód</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished">Styl</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Type:</source>
@@ -372,15 +372,15 @@
     </message>
     <message>
         <source>Checksum</source>
-        <translation type="unfinished">Kontrolní součet</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Barcode data</source>
-        <translation type="unfinished">Data pro čárový kód</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="unfinished">Obrázek</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File</source>
@@ -404,15 +404,15 @@
     </message>
     <message>
         <source>Line</source>
-        <translation type="unfinished">Čára</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Width:</source>
-        <translation type="unfinished">Šířka:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fill</source>
-        <translation type="unfinished">Výplň</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Position/Size</source>
@@ -420,27 +420,27 @@
     </message>
     <message>
         <source>Position</source>
-        <translation type="unfinished">Pozice</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>X:</source>
-        <translation type="unfinished">X:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Y:</source>
-        <translation type="unfinished">Y:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished">Velikost</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Length:</source>
-        <translation type="unfinished">Délka:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Angle:</source>
-        <translation type="unfinished">Úhel:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Original size:</source>
@@ -456,11 +456,11 @@
     </message>
     <message>
         <source>Height:</source>
-        <translation type="unfinished">Výška:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Shadow</source>
-        <translation type="unfinished">Stín</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>X offset:</source>
@@ -472,7 +472,7 @@
     </message>
     <message>
         <source>Opacity:</source>
-        <translation type="unfinished">Krytí:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -483,19 +483,19 @@
     </message>
     <message>
         <source>Locale</source>
-        <translation type="unfinished">Národní prostředí</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select locale specific behavior.</source>
-        <translation type="unfinished">Vyberte specifické chování pro národní prostředí.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Units</source>
-        <translation type="unfinished">Jednotky</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Points</source>
-        <translation type="unfinished">Body</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Centimeters</source>
@@ -503,11 +503,11 @@
     </message>
     <message>
         <source>Millimeters</source>
-        <translation type="unfinished">Milimetry</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Inches</source>
-        <translation type="unfinished">Palce</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Picas</source>
@@ -521,24 +521,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>of</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>nn</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copies</source>
-        <translation type="unfinished">Kopie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Copies:</source>
-        <translation type="unfinished">Kopie:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Start on position:</source>
@@ -558,14 +546,26 @@
     </message>
     <message>
         <source>print crop marks</source>
-        <translation type="unfinished">tisknout značky pro ořez</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>print in reverse (i.e. a mirror image)</source>
-        <translation type="unfinished">obrácený tisk (např. zrcadlený obrázek)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nn</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -581,7 +581,7 @@
     </message>
     <message>
         <source>Vendor:</source>
-        <translation type="unfinished">Výrobce:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -589,23 +589,23 @@
     </message>
     <message>
         <source>Part #:</source>
-        <translation type="unfinished">Produktové číslo:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Description:</source>
-        <translation type="unfinished">Popis:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Page size:</source>
-        <translation type="unfinished">Rozměr papíru:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Label size:</source>
-        <translation type="unfinished">Velikost etikety:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Layout:</source>
-        <translation type="unfinished">Rozvržení:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select another product for this gLabels project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -613,6 +613,14 @@
     </message>
     <message>
         <source>Change product</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adjustable Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label length:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -635,14 +643,6 @@
         <source>Similar Products</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Adjustable Parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Label length:</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SelectProductDialog</name>
@@ -652,7 +652,7 @@
     </message>
     <message>
         <source>Search all</source>
-        <translation type="unfinished">Prohledat vše</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search</source>
@@ -672,7 +672,7 @@
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished">Jiný</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Filter by category</source>
@@ -692,7 +692,7 @@
     </message>
     <message>
         <source>Recent</source>
-        <translation type="unfinished">Nedávné</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select from recently used products.</source>
@@ -757,19 +757,19 @@
     </message>
     <message>
         <source>1. Outer radius:</source>
-        <translation type="unfinished">1. Vnější poloměr:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>4. Clipping height:</source>
-        <translation type="unfinished">4. Výška oříznutí:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>2. Inner radius:</source>
-        <translation type="unfinished">2. Vnitřní poloměr:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>3. Clipping width:</source>
-        <translation type="unfinished">3. Šířka oříznutí:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>5. Waste:</source>
@@ -795,11 +795,11 @@
     </message>
     <message>
         <source>2. Height:</source>
-        <translation type="unfinished">2. Výška:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>1. Width:</source>
-        <translation type="unfinished">1. Šířka:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>3. Waste:</source>
@@ -880,15 +880,15 @@
     </message>
     <message>
         <source>Brand:</source>
-        <translation type="unfinished">Značka:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Part #:</source>
-        <translation type="unfinished">Produktové číslo:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Description:</source>
-        <translation type="unfinished">Popis:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>(e.g. 8163A)</source>
@@ -907,30 +907,30 @@
     </message>
     <message>
         <source>Number across (nx):</source>
-        <translation type="unfinished">Počet napříč (nx):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Number down (ny):</source>
-        <translation type="unfinished">Počet svisle (ny):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Distance from left edge (x0):</source>
-        <translation type="unfinished">Vzdálenost od levého okraje (x0):</translation>
-    </message>
-    <message>
-        <source>Horizontal pitch (dx):</source>
-        <translation type="unfinished">Vodorovná rozteč (dx):</translation>
-    </message>
-    <message>
-        <source>Vertical pitch (dy):</source>
-        <translation type="unfinished">Svislá rozteč (dy):</translation>
-    </message>
-    <message>
-        <source>Print test sheet</source>
-        <translation type="unfinished">Vytisknout testovací stránku</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Horizontal pitch (dx):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vertical pitch (dy):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print test sheet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -941,19 +941,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Page size:</source>
-        <translation type="unfinished">Rozměr papíru:</translation>
-    </message>
-    <message>
-        <source>Width:</source>
-        <translation type="unfinished">Šířka:</translation>
+        <source>Roll width:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Height:</source>
-        <translation type="unfinished">Výška:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Roll width:</source>
+        <source>Width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Page size:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -975,14 +975,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>2. Height:</source>
-        <translation type="unfinished">2. Výška:</translation>
-    </message>
-    <message>
-        <source>1. Width:</source>
-        <translation type="unfinished">1. Šířka:</translation>
-    </message>
-    <message>
         <source>4. Horizontal waste:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -991,7 +983,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>1. Width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>5. Vertical waste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2. Height:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1015,11 +1015,11 @@
     </message>
     <message>
         <source>3. Margin</source>
-        <translation type="unfinished">3. Okraj</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>1. Radius:</source>
-        <translation type="unfinished">1. Poloměr:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>2. Waste:</source>
@@ -1034,19 +1034,19 @@
     </message>
     <message>
         <source>Rectangular or square (can have rounded corners)</source>
-        <translation type="unfinished">Obdélníkový nebo čtvercový (může mít zaoblené rohy)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Round</source>
-        <translation type="unfinished">Kulatý</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Elliptical</source>
-        <translation type="unfinished">Oválný</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CD/DVD (including credit card CDs)</source>
-        <translation type="unfinished">CD/DVD (včetně vizitkových CD)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1057,30 +1057,30 @@
     </message>
     <message>
         <source>Distance from left edge (x0):</source>
-        <translation type="unfinished">Vzdálenost od levého okraje (x0):</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Number down (ny):</source>
-        <translation type="unfinished">Počet svisle (ny):</translation>
-    </message>
-    <message>
-        <source>Number across (nx):</source>
-        <translation type="unfinished">Počet napříč (nx):</translation>
-    </message>
-    <message>
-        <source>Horizontal pitch (dx):</source>
-        <translation type="unfinished">Vodorovná rozteč (dx):</translation>
-    </message>
-    <message>
-        <source>Vertical pitch (dy):</source>
-        <translation type="unfinished">Svislá rozteč (dy):</translation>
-    </message>
-    <message>
-        <source>Print test sheet</source>
-        <translation type="unfinished">Vytisknout testovací stránku</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Distance from top edge (y0):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number across (nx):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Horizontal pitch (dx):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vertical pitch (dy):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print test sheet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1088,23 +1088,23 @@
     <name>Units</name>
     <message>
         <source>points</source>
-        <translation type="unfinished">body</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>inches</source>
-        <translation type="unfinished">palce</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>mm</source>
-        <translation type="unfinished">mm</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>cm</source>
-        <translation type="unfinished">cm</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>picas</source>
-        <translation type="unfinished">pica</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1138,7 +1138,7 @@
     </message>
     <message>
         <source>Custom Color</source>
-        <translation type="unfinished">Vlastní barva</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom color #%1</source>
@@ -1184,18 +1184,18 @@
     <name>glabels::LabelEditor</name>
     <message>
         <source>Move</source>
-        <translation type="unfinished">Přesunout</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">Smazat</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>glabels::MainWindow</name>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished">Vítejte</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit</source>
@@ -1303,19 +1303,19 @@
     </message>
     <message>
         <source>Undo</source>
-        <translation type="unfinished">Zpět</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Redo</source>
-        <translation type="unfinished">Znovu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cut</source>
-        <translation type="unfinished">Vyjmout</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cut the selection</source>
-        <translation type="unfinished">Vyjmout výběr</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -1323,7 +1323,7 @@
     </message>
     <message>
         <source>Copy the selection</source>
-        <translation type="unfinished">Kopírovat výběr</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Paste</source>
@@ -1331,7 +1331,7 @@
     </message>
     <message>
         <source>Paste the clipboard</source>
-        <translation type="unfinished">Vložit ze schránky</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Delete</source>
@@ -1339,7 +1339,7 @@
     </message>
     <message>
         <source>Delete the selected objects</source>
-        <translation type="unfinished">Smazat vybrané objekty</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select &amp;All</source>
@@ -1347,23 +1347,23 @@
     </message>
     <message>
         <source>Select all objects</source>
-        <translation type="unfinished">Vybrat všechny objekty</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Un-select All</source>
-        <translation type="unfinished">Zrušit výběr</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Remove all selections</source>
-        <translation type="unfinished">Zrušit výběr všecho</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Preferences</source>
-        <translation type="unfinished">Předvolby</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Configure the application</source>
-        <translation type="unfinished">Nastavit aplikaci</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>File</source>
@@ -1383,7 +1383,7 @@
     </message>
     <message>
         <source>Grid</source>
-        <translation type="unfinished">Mřížka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Change visibility of the grid in current window</source>
@@ -1391,7 +1391,7 @@
     </message>
     <message>
         <source>Markup</source>
-        <translation type="unfinished">Ohraničení</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Change visibility of markup lines in current window</source>
@@ -1403,7 +1403,7 @@
     </message>
     <message>
         <source>Increase magnification</source>
-        <translation type="unfinished">Zvětšit přiblížení</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Zoom &amp;Out</source>
@@ -1411,7 +1411,7 @@
     </message>
     <message>
         <source>Decrease magnification</source>
-        <translation type="unfinished">Zmenšit přiblížení</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Zoom &amp;1 to 1</source>
@@ -1419,7 +1419,7 @@
     </message>
     <message>
         <source>Restore scale to 100%</source>
-        <translation type="unfinished">Obnovit měřítko na 100%</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Zoom to &amp;Fit</source>
@@ -1427,63 +1427,63 @@
     </message>
     <message>
         <source>Set scale to fit window</source>
-        <translation type="unfinished">Přizpůsobit měřítko velikosti okna</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select Mode</source>
-        <translation type="unfinished">Režim výběru</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select, move and modify objects</source>
-        <translation type="unfinished">Výběr, přesun a úpravy objektů</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text</source>
-        <translation type="unfinished">Text</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create text object</source>
-        <translation type="unfinished">Vytvořit textový objekt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Box</source>
-        <translation type="unfinished">Obdélník</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create box object</source>
-        <translation type="unfinished">Vytvořit obdelník</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line</source>
-        <translation type="unfinished">Čára</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create line object</source>
-        <translation type="unfinished">Vytvořit čáru</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Ellipse</source>
-        <translation type="unfinished">Elipsa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create ellipse/circle object</source>
-        <translation type="unfinished">Vytvořit elipsu/kruh</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="unfinished">Obrázek</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create image object</source>
-        <translation type="unfinished">Vytvořit objekt s obrázkem</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Barcode</source>
-        <translation type="unfinished">Čárový kód</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create barcode object</source>
-        <translation type="unfinished">Vytvořit objekt s čárovým kódem</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Bring To Front</source>
@@ -1539,7 +1539,7 @@
     </message>
     <message>
         <source>Align objects to left edges</source>
-        <translation type="unfinished">Zarovnat objekty levou hranou</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Align Center</source>
@@ -1547,7 +1547,7 @@
     </message>
     <message>
         <source>Align objects to horizontal centers</source>
-        <translation type="unfinished">Zarovnat objekty vodorovně na střed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Align Right</source>
@@ -1555,7 +1555,7 @@
     </message>
     <message>
         <source>Align objects to right edges</source>
-        <translation type="unfinished">Zarovnat objekty pravou hranou</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Align Top</source>
@@ -1563,7 +1563,7 @@
     </message>
     <message>
         <source>Align objects to top edges</source>
-        <translation type="unfinished">Zarovnat objekty horní hranou</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Align Middle</source>
@@ -1571,7 +1571,7 @@
     </message>
     <message>
         <source>Align objects to vertical centers</source>
-        <translation type="unfinished">Zarovnat objekty svisle na střed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Align Bottom</source>
@@ -1579,7 +1579,7 @@
     </message>
     <message>
         <source>Align objects to bottom edges</source>
-        <translation type="unfinished">Zarovnat objekty dolní hranou</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Center Horizontally</source>
@@ -1659,7 +1659,7 @@
     </message>
     <message>
         <source>(modified)</source>
-        <translation type="unfinished">(změněno)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Save changes to project &quot;%1&quot; before closing?</source>
@@ -1667,7 +1667,7 @@
     </message>
     <message>
         <source>Your changes will be lost if you don&apos;t save them.</source>
-        <translation type="unfinished">Vaše změny budou ztraceny, pokud je neuložíte.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Save project?</source>
@@ -1675,11 +1675,11 @@
     </message>
     <message>
         <source>Paste</source>
-        <translation type="unfinished">Vložit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished">Smazat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create Text</source>
@@ -1733,7 +1733,7 @@
     </message>
     <message>
         <source>Default</source>
-        <translation type="unfinished">Výchozí</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Insert Field</source>
@@ -1749,7 +1749,7 @@
     </message>
     <message>
         <source>Box object properties</source>
-        <translation type="unfinished">Vlastnosti obdélníku</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>line/fill</source>
@@ -1765,11 +1765,11 @@
     </message>
     <message>
         <source>Ellipse object properties</source>
-        <translation type="unfinished">Vlastnosti elipsy</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Image object properties</source>
-        <translation type="unfinished">Vlastnosti obrázku</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>image</source>
@@ -1777,11 +1777,11 @@
     </message>
     <message>
         <source>Line object properties</source>
-        <translation type="unfinished">Vlastnosti čáry</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text object properties</source>
-        <translation type="unfinished">Vlastnosti textu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>text</source>
@@ -1789,7 +1789,7 @@
     </message>
     <message>
         <source>Barcode object properties</source>
-        <translation type="unfinished">Vlastnosti čárového kódu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>barcode</source>
@@ -1797,15 +1797,15 @@
     </message>
     <message>
         <source>Object properties</source>
-        <translation type="unfinished">Vlastnosti objektu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Line</source>
-        <translation type="unfinished">Čára</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fill</source>
-        <translation type="unfinished">Výplň</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Image files (*.png *.jpg *.jpeg *.gif *.bmp *.pbm *.pgm *.ppm *.xbm *.xpm *.svg)</source>
@@ -1861,23 +1861,23 @@
     </message>
     <message>
         <source>Set image</source>
-        <translation type="unfinished">Nastavit obrázek</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move</source>
-        <translation type="unfinished">Přesunout</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished">Velikost</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text</source>
-        <translation type="unfinished">Text</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Shadow</source>
-        <translation type="unfinished">Stín</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1910,7 +1910,7 @@
     <name>glabels::SimplePreview</name>
     <message>
         <source>Up</source>
-        <translation type="unfinished">Nahoru</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1920,11 +1920,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy</source>
-        <translation type="unfinished">Kopírovat</translation>
+        <source>Roll</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Roll</source>
+        <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1984,7 +1984,7 @@
     <name>glabels::TemplateDesignerIntroPage</name>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished">Vítejte</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Welcome to the gLabels Product Template Designer.</source>
@@ -1995,7 +1995,7 @@
     <name>glabels::TemplateDesignerNLayoutsPage</name>
     <message>
         <source>Number of Layouts</source>
-        <translation type="unfinished">Počet rozvržení</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Please select the number of layouts required.</source>
@@ -2006,7 +2006,7 @@
     <name>glabels::TemplateDesignerNamePage</name>
     <message>
         <source>Name and Description</source>
-        <translation type="unfinished">Název a popis</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Please enter the following identifying information about the product.</source>
@@ -2032,7 +2032,7 @@
     <name>glabels::TemplateDesignerPageSizePage</name>
     <message>
         <source>Page Size</source>
-        <translation type="unfinished">Rozměr papíru</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Please select the product page size.</source>
@@ -2040,7 +2040,7 @@
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished">Jiný</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Roll</source>
@@ -2106,39 +2106,39 @@
     <name>glabels::barcode::Backends</name>
     <message>
         <source>Code 39</source>
-        <translation type="unfinished">Code 39</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Code 39 Extended</source>
-        <translation type="unfinished">Code 39 rozšířený</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>UPC-A</source>
-        <translation type="unfinished">UPC-A</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>EAN-13</source>
-        <translation type="unfinished">EAN-13</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>POSTNET (any)</source>
-        <translation type="unfinished">POSTNET (jakýkoli)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>POSTNET-5 (ZIP only)</source>
-        <translation type="unfinished">POSTNET-5 (pouze PSČ)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>POSTNET-9 (ZIP+4)</source>
-        <translation type="unfinished">POSTNET-9 (PSČ+4)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>POSTNET-11 (DPBC)</source>
-        <translation type="unfinished">POSTNET-11 (DPBC)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>CEPNET</source>
-        <translation type="unfinished">CEPNET</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>USPS Intelligent Mail</source>
@@ -2146,15 +2146,15 @@
     </message>
     <message>
         <source>IEC16022 (DataMatrix)</source>
-        <translation type="unfinished">IEC16022 (DataMatrix)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>EAN (any)</source>
-        <translation type="unfinished">EAN (jakýkoli)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>EAN-8</source>
-        <translation type="unfinished">EAN-8</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>EAN-8+2</source>
@@ -2174,294 +2174,294 @@
     </message>
     <message>
         <source>UPC (UPC-A or UPC-E)</source>
-        <translation type="unfinished">UPC (UPC-A nebo UPC-E)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>UPC-A +2</source>
-        <translation type="unfinished">UPC-A +2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>UPC-A +5</source>
-        <translation type="unfinished">UPC-A +5</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>UPC-E</source>
-        <translation type="unfinished">UPC-E</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>UPC-E +2</source>
-        <translation type="unfinished">UPC-E +2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>UPC-E +5</source>
-        <translation type="unfinished">UPC-E +5</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ISBN</source>
-        <translation type="unfinished">ISBN</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ISBN +5</source>
-        <translation type="unfinished">ISBN +5</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Code 128</source>
-        <translation type="unfinished">Code 128</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Code 128C</source>
-        <translation type="unfinished">Code 128C</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Code 128B</source>
-        <translation type="unfinished">Code 128B</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Interleaved 2 of 5</source>
-        <translation type="unfinished">Prokládaný 2 z 5</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Codabar</source>
-        <translation type="unfinished">Codabar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>MSI</source>
-        <translation type="unfinished">MSI</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Plessey</source>
-        <translation type="unfinished">Plessey</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Code 93</source>
-        <translation type="unfinished">Code 93</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>IEC18004 (QRCode)</source>
-        <translation type="unfinished">IEC18004 (QRCode)</translation>
-    </message>
-    <message>
-        <source>Australia Post Reply Paid</source>
-        <translation type="unfinished">Australský poštovní odpovědní</translation>
-    </message>
-    <message>
-        <source>Australia Post Route Code</source>
-        <translation type="unfinished">Australský poštovní směrový kód</translation>
-    </message>
-    <message>
-        <source>Australia Post Redirect</source>
-        <translation type="unfinished">Australský poštovní přesměrovávací</translation>
-    </message>
-    <message>
-        <source>Aztec Code</source>
-        <translation type="unfinished">Aztec Code</translation>
-    </message>
-    <message>
-        <source>Aztec Rune</source>
-        <translation type="unfinished">Aztec Rune</translation>
-    </message>
-    <message>
-        <source>Code One</source>
-        <translation type="unfinished">Code One</translation>
-    </message>
-    <message>
-        <source>Code 11</source>
-        <translation type="unfinished">Code 11</translation>
-    </message>
-    <message>
-        <source>Code 16K</source>
-        <translation type="unfinished">Code 16K</translation>
-    </message>
-    <message>
-        <source>Code 2 of 5 Matrix</source>
-        <translation type="unfinished">Kód 2 z 5 Matrix</translation>
-    </message>
-    <message>
-        <source>Code 2 of 5 IATA</source>
-        <translation type="unfinished">Kód 2 z 5 IATA</translation>
-    </message>
-    <message>
-        <source>Code 2 of 5 Data Logic</source>
-        <translation type="unfinished">Kód 2 z 5 Data Logic</translation>
-    </message>
-    <message>
-        <source>Code 32 (Italian Pharmacode)</source>
-        <translation type="unfinished">Code 32 (italský farmaceutický)</translation>
-    </message>
-    <message>
-        <source>Code 49</source>
-        <translation type="unfinished">Code 49</translation>
-    </message>
-    <message>
-        <source>DAFT Code</source>
-        <translation type="unfinished">DAFT Code</translation>
-    </message>
-    <message>
-        <source>Data Matrix</source>
-        <translation type="unfinished">Data Matrix</translation>
-    </message>
-    <message>
-        <source>Deutsche Post Leitcode</source>
-        <translation type="unfinished">Německý poštovní Leitcode</translation>
-    </message>
-    <message>
-        <source>Deutsche Post Identcode</source>
-        <translation type="unfinished">Německý poštovní Identcode</translation>
-    </message>
-    <message>
-        <source>Dutch Post KIX Code</source>
-        <translation type="unfinished">Nizozemský poštovní KIX Code</translation>
-    </message>
-    <message>
-        <source>EAN</source>
-        <translation type="unfinished">EAN</translation>
-    </message>
-    <message>
-        <source>Grid Matrix</source>
-        <translation type="unfinished">Grid Matrix</translation>
-    </message>
-    <message>
-        <source>GS1-128</source>
-        <translation type="unfinished">GS1-128</translation>
-    </message>
-    <message>
-        <source>GS1 DataBar-14</source>
-        <translation type="unfinished">GS1 DataBar-14</translation>
-    </message>
-    <message>
-        <source>GS1 DataBar-14 Stacked</source>
-        <translation type="unfinished">GS1 DataBar-14 vrstvený</translation>
-    </message>
-    <message>
-        <source>GS1 DataBar-14 Stacked Omni.</source>
-        <translation type="unfinished">GS1 DataBar-14 vrstvený nesměrový</translation>
-    </message>
-    <message>
-        <source>GS1 DataBar Extended Stacked</source>
-        <translation type="unfinished">GS1 DataBar rozšířený vrstvený</translation>
-    </message>
-    <message>
-        <source>HIBC Code 128</source>
-        <translation type="unfinished">HIBC Code 128</translation>
-    </message>
-    <message>
-        <source>HIBC Code 39</source>
-        <translation type="unfinished">HIBC Code 39</translation>
-    </message>
-    <message>
-        <source>HIBC Data Matrix</source>
-        <translation type="unfinished">HIBC Data Matrix</translation>
-    </message>
-    <message>
-        <source>HIBC QR Code</source>
-        <translation type="unfinished">HIBC QR Code</translation>
-    </message>
-    <message>
-        <source>HIBC PDF417</source>
-        <translation type="unfinished">HIBC PDF417</translation>
-    </message>
-    <message>
-        <source>HIBC Micro PDF417</source>
-        <translation type="unfinished">HIBC Micro PDF417</translation>
-    </message>
-    <message>
-        <source>HIBC Aztec Code</source>
-        <translation type="unfinished">HIBC Aztec Code</translation>
-    </message>
-    <message>
-        <source>ITF-14</source>
-        <translation type="unfinished">ITF-14</translation>
-    </message>
-    <message>
-        <source>Japanese Postal</source>
-        <translation type="unfinished">Japonský poštovní</translation>
-    </message>
-    <message>
-        <source>Korean Postal</source>
-        <translation type="unfinished">Korejský poštovní</translation>
-    </message>
-    <message>
-        <source>LOGMARS</source>
-        <translation type="unfinished">LOGMARS</translation>
-    </message>
-    <message>
-        <source>Maxicode</source>
-        <translation type="unfinished">Maxicode</translation>
-    </message>
-    <message>
-        <source>Micro PDF417</source>
-        <translation type="unfinished">Micro PDF417</translation>
-    </message>
-    <message>
-        <source>Micro QR Code</source>
-        <translation type="unfinished">Micro QR Code</translation>
-    </message>
-    <message>
-        <source>MSI Plessey</source>
-        <translation type="unfinished">MSI Plessey</translation>
-    </message>
-    <message>
-        <source>NVE-18</source>
-        <translation type="unfinished">NVE-18</translation>
-    </message>
-    <message>
-        <source>PDF417</source>
-        <translation type="unfinished">PDF417</translation>
-    </message>
-    <message>
-        <source>PDF417 Truncated</source>
-        <translation type="unfinished">PDF417 zkrácený</translation>
-    </message>
-    <message>
-        <source>PLANET</source>
-        <translation type="unfinished">PLANET</translation>
-    </message>
-    <message>
-        <source>PostNet</source>
-        <translation type="unfinished">PostNet</translation>
-    </message>
-    <message>
-        <source>Pharmacode</source>
-        <translation type="unfinished">Pharmacode</translation>
-    </message>
-    <message>
-        <source>Pharmacode 2-track</source>
-        <translation type="unfinished">Pharmacode binární</translation>
-    </message>
-    <message>
-        <source>Pharmazentral Nummer (PZN)</source>
-        <translation type="unfinished">Pharmazentral Nummer (PZN)</translation>
-    </message>
-    <message>
-        <source>QR Code</source>
-        <translation type="unfinished">QR Code</translation>
-    </message>
-    <message>
-        <source>Royal Mail 4-State</source>
-        <translation type="unfinished">Royal Mail 4stavový</translation>
-    </message>
-    <message>
-        <source>Telepen</source>
-        <translation type="unfinished">Telepen</translation>
-    </message>
-    <message>
-        <source>Telepen Numeric</source>
-        <translation type="unfinished">Telepen číselný</translation>
-    </message>
-    <message>
-        <source>USPS One Code</source>
-        <translation type="unfinished">USPS One Code</translation>
-    </message>
-    <message>
-        <source>UK Plessey</source>
-        <translation type="unfinished">UK Plessey</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Australia Post Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Australia Post Reply Paid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Australia Post Route Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Australia Post Redirect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aztec Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aztec Rune</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code One</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 16K</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 2 of 5 Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 2 of 5 IATA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 2 of 5 Data Logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 32 (Italian Pharmacode)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code 49</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Code 128 (Mode C suppression)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DAFT Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deutsche Post Leitcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deutsche Post Identcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dutch Post KIX Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grid Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GS1-128</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GS1 DataBar-14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GS1 DataBar-14 Stacked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GS1 DataBar-14 Stacked Omni.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GS1 DataBar Extended Stacked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC Code 128</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC Code 39</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC Data Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC QR Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC PDF417</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC Micro PDF417</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HIBC Aztec Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ITF-14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Japanese Postal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Korean Postal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LOGMARS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maxicode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Micro PDF417</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Micro QR Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MSI Plessey</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NVE-18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PDF417</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PDF417 Truncated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PLANET</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PostNet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pharmacode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pharmacode 2-track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pharmazentral Nummer (PZN)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QR Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Royal Mail 4-State</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telepen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telepen Numeric</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>USPS One Code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UK Plessey</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2469,7 +2469,7 @@
     <name>glabels::model::Model</name>
     <message>
         <source>Untitled</source>
-        <translation type="unfinished">Nepojmenovaný</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2480,14 +2480,14 @@
     </message>
     <message>
         <source>Invalid barcode data</source>
-        <translation type="unfinished">Data pro čárový kód jsou neplatná</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>glabels::model::ModelTextObject</name>
     <message>
         <source>Text</source>
-        <translation type="unfinished">Text</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
