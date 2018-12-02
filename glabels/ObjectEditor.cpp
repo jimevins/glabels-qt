@@ -455,6 +455,7 @@ namespace glabels
 					loadTextPage();
 					loadPositionPage();
 					loadShadowPage();
+                                        loadRectSizePage();
 				
 					setEnabled( true );
 				}
