@@ -20,7 +20,7 @@ Assumptions/caveats
 A sheet contains only one size of label or card (if a sheet contains more than one size of item,
 it can be split into multiple templates for multiple pass printing).
 
-Distances can be expressed in units of *pt*, *in1*, *mm*, *cm*, or *pc*.  For example:
+Distances can be expressed in units of *pt*, *in*, *mm*, *cm*, or *pc*.  For example:
 `"1.0in"` or `"2.54cm"`.  If no units are specified, computer points (*pt*) will
 be assumed (1 *pt* = 1/72 *in* = 0.352778 *mm*).
 
@@ -67,11 +67,11 @@ Property       | Description
 ---------------|------------
 *brand*        | Brand or manufacturer of stationery product. E.g. "Avery".
 *part*         | Part number or name of stationery product. E.g. "8160".
-*size*         | Paper size.  Must match an ID defined in *paper-sizes.xml* or "Other".  E.g. "A4".
+*size*         | Paper size.  Must match an ID defined in *paper-sizes.xml*, "roll" or "other".  E.g. "A4".
 *description*  | Description of stationery product.  E.g, "Mailing Labels".
 *_description* | Translatable description of stationery product. Used in predefined labels instead of description.
-*width*        | Page width. Only valid if `size="Other"`.
-*height*       | Page height. Only valid if `size="Other"`.
+*width*        | Page width. Only valid if `size="other"` or `size="roll"`.
+*height*       | Page height. Only valid if `size="other"`.  Value is ignored if `size="roll"`.
 *equiv*        | Equivalent part number.  If this property is present, the template is a clone of another template of the same brand.  The template will inherit all properties, except brand and name from the other template. This equiv property must refer to a previously defined template - *gLabels* does not currently support forward references.
 
 ### Guidelines for Creating Product Descriptions
@@ -160,6 +160,33 @@ Property      | Description
 
 ![Label-cd properties](images/glabels-template-cd-label.png)
 
+*Label-continuous* Node
+-----------------------
+
+A *Label-continuous* node describes the dimensions of a single section of a continuous label tape.
+
+Property      | Description
+--------------|------------
+*id*          | Reserved for future use.  Should always be 0.
+*width*       | Width of label or card. E.g. `width="29mm"`
+*min_height*  | Minimum user defined height or length of label.
+*max_height*  | Maximum user defined height or length of label.
+*derault_height* | Default user defined height or length of label.
+
+
+*Label-path* Node
+-----------------
+
+A *Label-path* node describes the dimensions of a label with an outline defined by an arbitrary path.
+
+Property      | Description
+--------------|------------
+*id*          | Reserved for future use.  Should always be 0.
+*d_units*     | Units used in path definition. (default = `"pt"`)
+*d*           | Path definition.  This is a subset of of the SVG path "d" attribute.  Commands include "M/m", "L/l", "H/h", "V/v", and "Z/z".  Commands and data must be delimited by white space."
+*x_waste*     | Amount of horizontal waste (over-print) to allow.  This is useful for minimizing alignment problems when using non-white backgrounds (e.g. images).
+*y_waste*     | Amount of vertical waste (over-print) to allow.
+
 
 *Markup* Nodes
 --------------
@@ -177,6 +204,8 @@ A *Markup-margin* describes a margin along all edges of a label.
 Property      | Description
 --------------|------------
 *size*        | Size of the margin.  I.e. the distance of the margin line from the edge of the card/label.
+*x_size*      | Size of the margin in x dimension.  I.e. the distance of the margin line from the edge of the card/label.
+*y_size*      | Size of the margin in y dimension.  I.e. the distance of the margin line from the edge of the card/label.
 
 
 ### *Markup-line* Node
