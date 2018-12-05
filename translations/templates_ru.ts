@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="ru" sourcelanguage="en_US">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Адресные наклейки</translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Любые карточки</translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Любые этикетки</translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Визитные карточки</translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки для CD/DVD</translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD и прочие носители</translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Наклейки на дискеты</translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Овальные этикетки</translation>
     </message>
     <message>
         <source>File folder labels</source>
@@ -181,19 +181,19 @@
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки на дискеты</translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Бумага для флаеров</translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Складывающиеся визитные карточки</translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Складывающиеся карточки</translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Поздравительные открытки</translation>
     </message>
     <message>
         <source>Hanging folder labels</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки</translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,11 +249,11 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Почтовые наклейки</translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Корреспонденция</translation>
     </message>
     <message>
         <source>Medical chart labels</source>
@@ -261,7 +261,7 @@
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Членские карточки</translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки для мини-CD</translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Именные таблички</translation>
     </message>
     <message>
         <source>Nutritional labels</source>
@@ -309,31 +309,27 @@
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикети (34 x 45 мм)</translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки для фото</translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Фотонаклейки</translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Почтовые открытки</translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Коврик для мыши</translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Прямоугольные этикетки</translation>
     </message>
     <message>
         <source>Return address labels</source>
@@ -341,11 +337,11 @@
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Круглые этикетки</translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки для карточек SD</translation>
     </message>
     <message>
         <source>Seal labels</source>
@@ -353,11 +349,11 @@
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ценники</translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Квадратные этикетки</translation>
     </message>
     <message>
         <source>Target stickers</source>
@@ -369,11 +365,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Трапециевидные этикетки</translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Треугольные этикетки</translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -421,11 +417,7 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continuous label tape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этикетки на zip-диски</translation>
     </message>
 </context>
 </TS>

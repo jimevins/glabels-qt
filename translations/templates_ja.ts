@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ja_JP">
+<TS version="2.1" language="ja" sourcelanguage="en_US">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">宛名のラベル</translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全てのカード</translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">全てのラベル</translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名刺</translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD のラベル</translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD またはその他のメディア</translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フロッピーのラベル</translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">楕円形のラベル</translation>
     </message>
     <message>
         <source>File folder labels</source>
@@ -181,19 +181,19 @@
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">フロッピー・ディスクのラベル</translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">チラシ</translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">折りたためる名刺</translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">折りたたみ可能なカード</translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">挨拶状</translation>
     </message>
     <message>
         <source>Hanging folder labels</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ラベル</translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,11 +249,11 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">封筒のラベル</translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">郵送/出荷する製品</translation>
     </message>
     <message>
         <source>Medical chart labels</source>
@@ -261,7 +261,7 @@
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">会員カード</translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ミニ・ディスクのラベル</translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">名前プレート</translation>
     </message>
     <message>
         <source>Nutritional labels</source>
@@ -309,31 +309,27 @@
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">パスポートの写真用ラベル</translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">写真のラベル</translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">写真関連</translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">はがき</translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">印刷可能なマウスパッド</translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">長方形のラベル</translation>
     </message>
     <message>
         <source>Return address labels</source>
@@ -341,11 +337,11 @@
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">丸いラベル</translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SD カードのラベル</translation>
     </message>
     <message>
         <source>Seal labels</source>
@@ -353,11 +349,11 @@
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">出荷ラベル</translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">正方形のラベル</translation>
     </message>
     <message>
         <source>Target stickers</source>
@@ -369,11 +365,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">汎用的なラベル</translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">長方形のラベル</translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -421,11 +417,7 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continuous label tape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zip ディスクのインレット</translation>
     </message>
 </context>
 </TS>

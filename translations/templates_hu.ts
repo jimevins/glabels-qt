@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hu_HU">
+<TS version="2.1" language="hu" sourcelanguage="en_US">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Címzési címkék</translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bármely kártya</translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bármely címke</translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Barcode labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vonalkód címkék</translation>
     </message>
     <message>
         <source>Bookplate labels</source>
@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>Business card CD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Névjegykártya CD címkék</translation>
     </message>
     <message>
         <source>Business card size labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Névjegykártya méretű címkék</translation>
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Névjegyek</translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>CD/DVD center hub labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD belső címkék</translation>
     </message>
     <message>
         <source>CD/DVD insert</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD címkék</translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD vagy más média</translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Candy labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Édesség címkék</translation>
     </message>
     <message>
         <source>Cassette labels</source>
@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Coffee and tea labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kávé és tea címkék</translation>
     </message>
     <message>
         <source>Correction labels</source>
@@ -149,15 +149,15 @@
     </message>
     <message>
         <source>Digital media labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Digitális média címkék</translation>
     </message>
     <message>
         <source>Digital video labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Digitális videó címkék</translation>
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kislemez címkék</translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,11 +165,11 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Elliptikus címkék</translation>
     </message>
     <message>
         <source>File folder labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iktatómappa címkék</translation>
     </message>
     <message>
         <source>File labels</source>
@@ -177,27 +177,27 @@
     </message>
     <message>
         <source>Filing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iktató címkék</translation>
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kislemez címkék (csak előlap)</translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Szórólappapír</translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Összehajtható névjegyek</translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Összehajtható névjegyek</translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teljes arcos CD/DVD címkék</translation>
     </message>
     <message>
         <source>Full-page labels</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Üdvözlőkártyák</translation>
     </message>
     <message>
         <source>Hanging folder labels</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Címkék</translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,23 +249,23 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Levelezőcímkék</translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Levelezési/csomagküldési termékek</translation>
     </message>
     <message>
         <source>Medical chart labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Egészségügyi címkék</translation>
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tagsági kártyák</translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fém tároló címkék</translation>
     </message>
     <message>
         <source>Mini CD/DVD labels</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mini Disc címkék</translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -297,71 +297,67 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Névtáblák</translation>
     </message>
     <message>
         <source>Nutritional labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Táplálkozási címkék</translation>
     </message>
     <message>
         <source>Paper hole reinforcement labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Papír lyuk megerősítő címkék</translation>
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Igazolványkép fotócímkék</translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fotócímkék</translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fényképtermékek</translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Levelezőlapok</translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nyomtatható egérpad</translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Négyszögletű címkék</translation>
     </message>
     <message>
         <source>Return address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Visszaküldési cím címkék</translation>
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kerek címkék</translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SD kártya címkék</translation>
     </message>
     <message>
         <source>Seal labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pecsét címkék</translation>
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Szállítási címkék</translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Négyzetes címkék</translation>
     </message>
     <message>
         <source>Target stickers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Céltábla matricák</translation>
     </message>
     <message>
         <source>Tent cards</source>
@@ -369,11 +365,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trapéz alakú címkék</translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Háromszög alakú címkék</translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -421,11 +417,7 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continuous label tape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zip lemez címkék</translation>
     </message>
 </context>
 </TS>

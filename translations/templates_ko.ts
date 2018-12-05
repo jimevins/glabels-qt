@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ko_KR">
+<TS version="2.1" language="ko" sourcelanguage="en_US">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">주소 라벨</translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            </translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">라벨 열기</translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -45,7 +46,7 @@
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">명함</translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -109,7 +110,8 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            </translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -157,7 +159,7 @@
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">디스크 라벨</translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -181,7 +183,7 @@
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">디스크 라벨</translation>
     </message>
     <message>
         <source>Flyer paper</source>
@@ -189,7 +191,7 @@
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">명함</translation>
     </message>
     <message>
         <source>Foldable cards</source>
@@ -225,7 +227,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">라벨</translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,11 +251,12 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">봉투 라벨</translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            </translation>
     </message>
     <message>
         <source>Medical chart labels</source>
@@ -261,7 +264,8 @@
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            </translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
@@ -297,7 +301,8 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            </translation>
     </message>
     <message>
         <source>Nutritional labels</source>
@@ -313,7 +318,7 @@
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">gLabels에 대해</translation>
     </message>
     <message>
         <source>Photo products</source>
@@ -321,11 +326,8 @@
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+            </translation>
     </message>
     <message>
         <source>Printable mousepad</source>
@@ -333,7 +335,7 @@
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">직사각형 라벨</translation>
     </message>
     <message>
         <source>Return address labels</source>
@@ -341,11 +343,11 @@
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Allround 라벨</translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">구형 라벨</translation>
     </message>
     <message>
         <source>Seal labels</source>
@@ -353,11 +355,11 @@
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">출하 라벨</translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">구형 라벨</translation>
     </message>
     <message>
         <source>Target stickers</source>
@@ -421,10 +423,6 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continuous label tape</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

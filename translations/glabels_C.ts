@@ -291,10 +291,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Object properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -316,14 +312,6 @@
     </message>
     <message>
         <source>Word</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Anywhere</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -384,6 +372,14 @@
     </message>
     <message>
         <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anywhere</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -474,6 +470,10 @@
         <source>Opacity:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Object properties</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -521,6 +521,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Copies</source>
         <translation type="unfinished"></translation>
     </message>
@@ -554,18 +566,6 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>of</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>nn</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -616,14 +616,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Adjustable Parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Label length:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Orientation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -641,6 +633,14 @@
     </message>
     <message>
         <source>Similar Products</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adjustable Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label length:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -752,14 +752,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>6. Margin:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>1. Outer radius:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>4. Clipping height:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -768,11 +760,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>3. Clipping width:</source>
+        <source>1. Outer radius:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>5. Waste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3. Clipping width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6. Margin:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -794,15 +794,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>3. Waste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>2. Height:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>1. Width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3. Waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -875,11 +875,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
+        <source>Brand:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Brand:</source>
+        <source>(e.g. Avery, Acme, ...)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -887,15 +887,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Description:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>(e.g. 8163A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(e.g. Avery, Acme, ...)</source>
+        <source>Description:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -941,11 +941,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Roll width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Height:</source>
+        <source>Page size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -953,7 +949,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Page size:</source>
+        <source>Height:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Roll width:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -975,7 +975,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>4. Horizontal waste:</source>
+        <source>1. Width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2. Height:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -983,15 +987,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>1. Width:</source>
+        <source>4. Horizontal waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>5. Vertical waste:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>2. Height:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1014,7 +1014,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>3. Margin</source>
+        <source>2. Waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1022,7 +1022,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>2. Waste:</source>
+        <source>3. Margin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1198,10 +1198,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1211,6 +1207,10 @@
     </message>
     <message>
         <source>Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1920,11 +1920,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Roll</source>
+        <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy</source>
+        <source>Roll</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2241,10 +2241,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Australia Post Standard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Australia Post Reply Paid</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2294,6 +2290,10 @@
     </message>
     <message>
         <source>Code 49</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Australia Post Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

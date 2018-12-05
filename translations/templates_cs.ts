@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.1" language="cs" sourcelanguage="en_US">
 <context>
     <name>XmlStrings</name>
     <message>
         <source>Address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adresní etikety</translation>
     </message>
     <message>
         <source>Any card</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Libovolná karta</translation>
     </message>
     <message>
         <source>Any label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Libovolná etiketa</translation>
     </message>
     <message>
         <source>Arch file inserts</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Barcode labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety pro čárové kódy</translation>
     </message>
     <message>
         <source>Bookplate labels</source>
@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>Business card CD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na vizitkové CD</translation>
     </message>
     <message>
         <source>Business card size labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na vizitkové CD</translation>
     </message>
     <message>
         <source>Business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vizitky</translation>
     </message>
     <message>
         <source>CD/DVD booklet</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>CD/DVD center hub labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na střed CD/DVD</translation>
     </message>
     <message>
         <source>CD/DVD insert</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>CD/DVD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na CD/DVD</translation>
     </message>
     <message>
         <source>CD/DVD labels (disc labels)</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>CD/DVD or other media</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CD/DVD nebo jiná média</translation>
     </message>
     <message>
         <source>CD/DVD tray</source>
@@ -121,7 +121,7 @@
     </message>
     <message>
         <source>Candy labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na cukrovinky</translation>
     </message>
     <message>
         <source>Cassette labels</source>
@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Coffee and tea labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na kávy a čaje</translation>
     </message>
     <message>
         <source>Correction labels</source>
@@ -149,15 +149,15 @@
     </message>
     <message>
         <source>Digital media labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na digitální média</translation>
     </message>
     <message>
         <source>Digital video labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety pro digitální video</translation>
     </message>
     <message>
         <source>Diskette labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na diskety</translation>
     </message>
     <message>
         <source>Divider labels</source>
@@ -165,11 +165,11 @@
     </message>
     <message>
         <source>Elliptical labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Oválné etikety</translation>
     </message>
     <message>
         <source>File folder labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na složky</translation>
     </message>
     <message>
         <source>File labels</source>
@@ -177,27 +177,27 @@
     </message>
     <message>
         <source>Filing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na kartotéky</translation>
     </message>
     <message>
         <source>Floppy disk labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na diskety</translation>
     </message>
     <message>
         <source>Flyer paper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Letákový papír</translation>
     </message>
     <message>
         <source>Foldable business cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Skládací vizitky</translation>
     </message>
     <message>
         <source>Foldable cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přání</translation>
     </message>
     <message>
         <source>Full face CD/DVD labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na celé CD/DVD</translation>
     </message>
     <message>
         <source>Full-page labels</source>
@@ -209,7 +209,7 @@
     </message>
     <message>
         <source>Greeting cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pohlednice</translation>
     </message>
     <message>
         <source>Hanging folder labels</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety</translation>
     </message>
     <message>
         <source>Large address labels</source>
@@ -249,23 +249,23 @@
     </message>
     <message>
         <source>Mailing labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poštovní etikety</translation>
     </message>
     <message>
         <source>Mailing/shipping products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Poštovní/přepravní produkty</translation>
     </message>
     <message>
         <source>Medical chart labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na lékařské záznamy</translation>
     </message>
     <message>
         <source>Membership cards</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Členské karty</translation>
     </message>
     <message>
         <source>Metal tin container labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na plechové krabičky</translation>
     </message>
     <message>
         <source>Mini CD/DVD labels</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Mini Disc labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na Mini disky</translation>
     </message>
     <message>
         <source>Mini address labels</source>
@@ -297,71 +297,67 @@
     </message>
     <message>
         <source>Name plates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cedule</translation>
     </message>
     <message>
         <source>Nutritional labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na složení potravin</translation>
     </message>
     <message>
         <source>Paper hole reinforcement labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zpevnění pořadačových děr v papíru</translation>
     </message>
     <message>
         <source>Passport photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fotografické etikety na průkazy</translation>
     </message>
     <message>
         <source>Photo labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fotografické etikety</translation>
     </message>
     <message>
         <source>Photo products</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fotografické produkty</translation>
     </message>
     <message>
         <source>Post cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pohlednice</translation>
     </message>
     <message>
         <source>Printable mousepad</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Potisknutelná podložka pod myš</translation>
     </message>
     <message>
         <source>Rectangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Obdélníkové etikety</translation>
     </message>
     <message>
         <source>Return address labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety pro zpáteční adresu</translation>
     </message>
     <message>
         <source>Round labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kulaté etikety</translation>
     </message>
     <message>
         <source>SD card labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na karty SD</translation>
     </message>
     <message>
         <source>Seal labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bezpečnostní etikety</translation>
     </message>
     <message>
         <source>Shipping labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přepravní etikety</translation>
     </message>
     <message>
         <source>Square labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Čtvercové etikety</translation>
     </message>
     <message>
         <source>Target stickers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Samolepky na terče</translation>
     </message>
     <message>
         <source>Tent cards</source>
@@ -369,11 +365,11 @@
     </message>
     <message>
         <source>Trapezoid labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lichoběžníkové etikety</translation>
     </message>
     <message>
         <source>Triangular labels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Trojúhelníkové etikety</translation>
     </message>
     <message>
         <source>Tube labels</source>
@@ -421,11 +417,7 @@
     </message>
     <message>
         <source>Zip disc labels</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continuous label tape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Etikety na diskety ZIP</translation>
     </message>
 </context>
 </TS>
