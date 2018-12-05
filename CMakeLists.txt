@@ -12,18 +12,48 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/"
 
 
 #=======================================
-# Packaging and Version Information
+# Version Information
 #=======================================
-set (Website  "glabels.org")
-set (CPACK_PACKAGE_VENDOR ${Website})
+set (WEBSITE  "glabels.org")
+
+execute_process(
+  COMMAND git log -1 --format=%h
+  RESULT_VARIABLE COMMIT_HASH_VALID
+  OUTPUT_VARIABLE COMMIT_HASH
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+if (NOT ${COMMIT_HASH_VALID} STREQUAL "0")
+  set (COMMIT_HASH "exported")
+endif ()
+  
+execute_process(
+  COMMAND git log -1 --format=%cd --date=short
+  RESULT_VARIABLE COMMIT_DATE_VALID
+  OUTPUT_VARIABLE COMMIT_DATE
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+if (NOT ${COMMIT_DATE_VALID} STREQUAL "0")
+  string (TIMESTAMP COMMIT_DATE %Y-%m-%d)
+endif ()
+
+# Uncomment for snapshots, comment for releases
+set(VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}-snapshot (${COMMIT_HASH} ${COMMIT_DATE})")
+
+# Uncomment for releases, comment for snapshots
+#set(VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+
+
+#=======================================
+# Packaging Information
+#=======================================
+set (CPACK_PACKAGE_VENDOR ${WEBSITE})
 
 set (CPACK_PACKAGE_NAME glabels)
 
-string (TIMESTAMP _date "%Y%m%d")
 set (CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
 set (CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
 set (CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
-set (CPACK_PACKAGE_VERSION_TWEAK ${_date})
+set (CPACK_PACKAGE_VERSION_TWEAK ${COMMIT_HASH})
 
 set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "gLabels Label Designer")
 set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
@@ -32,7 +62,7 @@ set (CPACK_PACKAGE_EXECUTABLES "glabels-qt;gLabels")
 set (CPACK_CREATE_DESKTOP_LINKS "glabels-qt")
 
 set (CPACK_NSIS_DISPLAY_NAME "gLabels")
-set (CPACK_NSIS_URL_INFO_ABOUT "http://${Website}")
+set (CPACK_NSIS_URL_INFO_ABOUT "http://${WEBSITE}")
 set (CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/glabels/windows-icon/glabels.ico")
 set (CPACK_NSIS_MODIFY_PATH "ON")
 
@@ -111,7 +141,7 @@ add_subdirectory (data)
 #=======================================
 message (STATUS "")
 message (STATUS "Project name ............ " ${CMAKE_PROJECT_NAME})
-message (STATUS "Project version ......... " ${Full_Version})
+message (STATUS "Project version ......... " ${VERSION_STRING})
 message (STATUS "Installation prefix ..... " ${CMAKE_INSTALL_PREFIX})
 message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
 message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAKE_CXX_COMPILER} " " ${CMAKE_CXX_COMPILER_VERSION})

@@ -29,13 +29,13 @@ namespace glabels
 
 		namespace Version
 		{
-			const QString WEBSITE = "http://@Website@";
+			const QString WEBSITE = "http://@WEBSITE@";
 
 			const int     MAJOR   = @glabels-qt_VERSION_MAJOR@;
 			const int     MINOR   = @glabels-qt_VERSION_MINOR@;
 			const int     MICRO   = @glabels-qt_VERSION_PATCH@;
 
-			const QString STRING  = "@glabels-qt_VERSION@";
+			const QString STRING  = "@VERSION_STRING@";
 		}
 
 	}
