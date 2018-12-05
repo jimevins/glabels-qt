@@ -4,7 +4,6 @@
 #
 ############################################################
 set (GLABELS_TS_FILES
-  glabels_C.ts
   glabels_ar.ts
   glabels_bs.ts
   glabels_ca.ts
@@ -49,7 +48,6 @@ set (GLABELS_TS_FILES
 #
 ############################################################
 set (TEMPLATES_TS_FILES
-  templates_C.ts
   templates_ar.ts
   templates_bs.ts
   templates_ca.ts

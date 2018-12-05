@@ -73,3 +73,35 @@ These include
 
 * For code contributions, see [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
+
+## License
+
+gLabels-qt is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+gLabels-qt is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+See [LICENSE](LICENSE) in this directory.
+
+The following sub-components are also made available under less
+restrictive licensing:
+
+### Glbarcode
+
+   gLabels-qt currently includes a version of the glbarcode++ library, located in
+   the "glbarcode/" subdirectory.  It is licensed under the GNU LESSER GENERAL
+   PUBLIC LICENSE (LGPL); either version 3 of the License, or (at your option)
+   any later version -- see the [glbarcode/LICENSE](glbarcode/LICENSE).
+
+### Template Database
+
+   The XML files in the "templates/" subdirectory constitute the glabels
+   label database.  No copyright is claimed on the facts contained within
+   the database and can be used for any purpose.  However, to clear up any
+   ambiguity, the DTD file that defines the format of these files is
+   licensed using the MIT/X license, see [templates/LICENSE](templates/LICENSE).

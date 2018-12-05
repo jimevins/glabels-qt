@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="uk_UA">
+<TS version="2.1" language="uk" sourcelanguage="en_US">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -173,10 +173,6 @@
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Factory</name>
@@ -236,13 +232,6 @@
     </message>
 </context>
 <context>
-    <name>FrameContinuous</name>
-    <message>
-        <source>wide</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FrameRound</name>
     <message>
         <source>diameter</source>
@@ -291,10 +280,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Object properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -316,14 +301,6 @@
     </message>
     <message>
         <source>Word</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Anywhere</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -384,6 +361,14 @@
     </message>
     <message>
         <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anywhere</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -474,6 +459,10 @@
         <source>Opacity:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Object properties</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -521,6 +510,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Copies</source>
         <translation type="unfinished"></translation>
     </message>
@@ -554,18 +555,6 @@
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>of</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>nn</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -613,14 +602,6 @@
     </message>
     <message>
         <source>Change product</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Adjustable Parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Label length:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -752,14 +733,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>6. Margin:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>1. Outer radius:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>4. Clipping height:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -768,22 +741,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>3. Clipping width:</source>
+        <source>1. Outer radius:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>5. Waste:</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>TemplateDesignerContinuousPage</name>
     <message>
-        <source>Form</source>
+        <source>3. Clipping width:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>6. Margin:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -794,15 +764,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>3. Waste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>2. Height:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>1. Width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3. Waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -875,11 +845,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
+        <source>Brand:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Brand:</source>
+        <source>(e.g. Avery, Acme, ...)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -887,15 +857,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Description:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>(e.g. 8163A)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(e.g. Avery, Acme, ...)</source>
+        <source>Description:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -941,11 +911,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Roll width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Height:</source>
+        <source>Page size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -953,18 +919,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Page size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TemplateDesignerPathPage</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>Height:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -975,19 +930,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>4. Horizontal waste:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3. Corner radius</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>1. Width:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>5. Vertical waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -995,15 +938,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>6. Margin (X):</source>
+        <source>3. Corner radius</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>7. Margin (Y):</source>
+        <source>4. Horizontal waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>in</source>
+        <source>5. Vertical waste:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6. Margin:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1014,7 +961,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>3. Margin</source>
+        <source>2. Waste:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1022,7 +969,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>2. Waste:</source>
+        <source>3. Margin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1198,10 +1145,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1211,6 +1154,10 @@
     </message>
     <message>
         <source>Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1920,10 +1867,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1955,17 +1898,6 @@
     </message>
     <message>
         <source>Please adjust the size parameters of a single product item.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>glabels::TemplateDesignerContinuousPage</name>
-    <message>
-        <source>Unsupported Product Style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Continuous tape product templates are not currently supported by the Product Template Designer.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2040,21 +1972,6 @@
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Roll</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>glabels::TemplateDesignerPathPage</name>
-    <message>
-        <source>Unsupported Product Style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Path based product templates are not currently supported by the Product Template Designer.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2241,10 +2158,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Australia Post Standard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Australia Post Reply Paid</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2294,6 +2207,10 @@
     </message>
     <message>
         <source>Code 49</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Australia Post Standard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
