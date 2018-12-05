@@ -11,7 +11,7 @@ qt5_create_translation (glabels_qm_files
   ${CMAKE_SOURCE_DIR}/model
   ${CMAKE_SOURCE_DIR}/backends
   ${GLABELS_TS_FILES}
-  OPTIONS -no-obsolete
+  OPTIONS -no-obsolete -locations none
 )
 
 qt5_create_translation (templates_qm_files

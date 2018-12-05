@@ -28,6 +28,7 @@
 #include "model/PageRenderer.h"
 
 #include <QPrinter>
+#include <QPrintDialog>
 
 
 namespace glabels
@@ -73,7 +74,9 @@ namespace glabels
 		QPrinter*           mPrinter;
 		model::PageRenderer mRenderer;
 
-		bool         mBlocked;
+		QPrintDialog*       mPrintDialog;
+		
+		bool                mBlocked;
 
 	};
 

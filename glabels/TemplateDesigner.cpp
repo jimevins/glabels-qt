@@ -24,7 +24,9 @@
 #include "model/Db.h"
 #include "model/Distance.h"
 #include "model/FrameCd.h"
+#include "model/FrameContinuous.h"
 #include "model/FrameEllipse.h"
+#include "model/FramePath.h"
 #include "model/FrameRect.h"
 #include "model/FrameRound.h"
 #include "model/Markup.h"
@@ -60,6 +62,8 @@ namespace glabels
 			RoundPageId,
 			EllipsePageId,
 			CdPageId,
+			PathPageId,
+			ContinuousPageId,
 			NLayoutsPageId,
 			OneLayoutPageId,
 			TwoLayoutPageId,
@@ -109,23 +113,25 @@ namespace glabels
 		: mIsBasedOnCopy(false), QWizard(parent)
 	{
 		setWindowTitle( tr("Product Template Designer") );
-		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/48x48/apps/glabels.svg" ) );
+		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/apps/48x48/glabels.svg" ) );
 		setWizardStyle( QWizard::ModernStyle );
 		setOption( QWizard::IndependentPages, false );
 		setOption( QWizard::NoBackButtonOnStartPage, true );
 
-		setPage( IntroPageId,     new TemplateDesignerIntroPage() );
-		setPage( NamePageId,      new TemplateDesignerNamePage() );
-		setPage( PageSizePageId,  new TemplateDesignerPageSizePage() );
-		setPage( ShapePageId,     new TemplateDesignerShapePage() );
-		setPage( RectPageId,      new TemplateDesignerRectPage() );
-		setPage( RoundPageId,     new TemplateDesignerRoundPage() );
-		setPage( EllipsePageId,   new TemplateDesignerEllipsePage() );
-		setPage( CdPageId,        new TemplateDesignerCdPage() );
-		setPage( NLayoutsPageId,  new TemplateDesignerNLayoutsPage() );
-		setPage( OneLayoutPageId, new TemplateDesignerOneLayoutPage() );
-		setPage( TwoLayoutPageId, new TemplateDesignerTwoLayoutPage() );
-		setPage( ApplyPageId,     new TemplateDesignerApplyPage() );
+		setPage( IntroPageId,      new TemplateDesignerIntroPage() );
+		setPage( NamePageId,       new TemplateDesignerNamePage() );
+		setPage( PageSizePageId,   new TemplateDesignerPageSizePage() );
+		setPage( ShapePageId,      new TemplateDesignerShapePage() );
+		setPage( RectPageId,       new TemplateDesignerRectPage() );
+		setPage( RoundPageId,      new TemplateDesignerRoundPage() );
+		setPage( EllipsePageId,    new TemplateDesignerEllipsePage() );
+		setPage( CdPageId,         new TemplateDesignerCdPage() );
+		setPage( PathPageId,       new TemplateDesignerPathPage() );
+		setPage( ContinuousPageId, new TemplateDesignerContinuousPage() );
+		setPage( NLayoutsPageId,   new TemplateDesignerNLayoutsPage() );
+		setPage( OneLayoutPageId,  new TemplateDesignerOneLayoutPage() );
+		setPage( TwoLayoutPageId,  new TemplateDesignerTwoLayoutPage() );
+		setPage( ApplyPageId,      new TemplateDesignerApplyPage() );
 	}
 
 
@@ -136,16 +142,27 @@ namespace glabels
 	{
 		switch (currentId())
 		{
-			
+
 		case IntroPageId:
-			return NamePageId;
-			
+			if ( mIsTemplatePathBased )
+			{
+				return PathPageId;
+			}
+			else if ( mIsTemplateContinuousBased )
+			{
+				return ContinuousPageId;
+			}
+			else
+			{
+				return NamePageId;
+			}
+
 		case NamePageId:
 			return PageSizePageId;
-			
+
 		case PageSizePageId:
 			return ShapePageId;
-			
+
 		case ShapePageId:
 			if ( field( "shape.rect" ).toBool() )
 			{
@@ -163,19 +180,53 @@ namespace glabels
 			{
 				return CdPageId;
 			}
-			
+
 		case RectPageId:
-			return NLayoutsPageId;
-			
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
+
 		case RoundPageId:
-			return NLayoutsPageId;
-			
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
+
 		case EllipsePageId:
-			return NLayoutsPageId;
-			
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
+
 		case CdPageId:
-			return NLayoutsPageId;
-			
+			if ( field( "pageSize.pageSize" ) != tr("Roll") )
+			{
+				return NLayoutsPageId;
+			}
+			else
+			{
+				return OneLayoutPageId;
+			}
+
+		case PathPageId:
+			return IntroPageId;
+
+		case ContinuousPageId:
+			return IntroPageId;
+
 		case NLayoutsPageId:
 			if ( field( "nLayouts.one" ).toBool() )
 			{
@@ -188,10 +239,10 @@ namespace glabels
 
 		case OneLayoutPageId:
 			return ApplyPageId;
-			
+
 		case TwoLayoutPageId:
 			return ApplyPageId;
-			
+
 		case ApplyPageId:
 		default:
 			return -1;
@@ -326,8 +377,9 @@ namespace glabels
 		QString paperId = model::Db::lookupPaperIdFromName( field( "pageSize.pageSize" ).toString() );
 		model::Distance pageW( field( "pageSize.w" ).toDouble(), units );
 		model::Distance pageH( field( "pageSize.h" ).toDouble(), units );
+		model::Distance pageRollW( field( "pageSize.rollW" ).toDouble(), units );
 		
-		auto t = new model::Template( brand, part, description, paperId, pageW, pageH, true );
+		auto t = new model::Template( brand, part, description, paperId, pageW, pageH, pageRollW, true );
 
 		model::Frame* frame;
 		if ( field( "shape.rect" ).toBool() )
@@ -337,10 +389,11 @@ namespace glabels
 			model::Distance r( field( "rect.r" ).toDouble(), units );
 			model::Distance xWaste( field( "rect.xWaste" ).toDouble(), units );
 			model::Distance yWaste( field( "rect.yWaste" ).toDouble(), units );
-			model::Distance margin( field( "rect.margin" ).toDouble(), units );
+			model::Distance xMargin( field( "rect.xMargin" ).toDouble(), units );
+			model::Distance yMargin( field( "rect.yMargin" ).toDouble(), units );
 
 			frame = new model::FrameRect( w, h, r, xWaste, yWaste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( xMargin, yMargin ) );
 		}
 		else if ( field( "shape.round" ).toBool() )
 		{
@@ -349,7 +402,7 @@ namespace glabels
 			model::Distance margin( field( "round.margin" ).toDouble(), units );
 
 			frame = new model::FrameRound( r, waste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( margin ) );
 		}
 		else if ( field( "shape.ellipse" ).toBool() )
 		{
@@ -359,7 +412,7 @@ namespace glabels
 			model::Distance margin( field( "ellipse.margin" ).toDouble(), units );
 
 			frame = new model::FrameEllipse( w, h, waste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( margin ) );
 		}
 		else
 		{
@@ -371,7 +424,7 @@ namespace glabels
 			model::Distance margin( field( "cd.margin" ).toDouble(), units );
 
 			frame = new model::FrameCd( r1, r2, xClip, yClip, waste );
-			frame->addMarkup( new model::MarkupMargin( frame, margin ) );
+			frame->addMarkup( new model::MarkupMargin( margin ) );
 		}
 		t->addFrame( frame );
 
@@ -384,7 +437,7 @@ namespace glabels
 			model::Distance dx( field( "oneLayout.dx" ).toDouble(), units );
 			model::Distance dy( field( "oneLayout.dy" ).toDouble(), units );
 
-			frame->addLayout( new model::Layout( nx, ny, x0, y0, dx, dy ) );
+			frame->addLayout( model::Layout( nx, ny, x0, y0, dx, dy ) );
 		}
 		else
 		{
@@ -402,8 +455,8 @@ namespace glabels
 			model::Distance dx2( field( "twoLayout.dx2" ).toDouble(), units );
 			model::Distance dy2( field( "twoLayout.dy2" ).toDouble(), units );
 
-			frame->addLayout( new model::Layout( nx1, ny1, x01, y01, dx1, dy1 ) );
-			frame->addLayout( new model::Layout( nx2, ny2, x02, y02, dx2, dy2 ) );
+			frame->addLayout( model::Layout( nx1, ny1, x01, y01, dx1, dy1 ) );
+			frame->addLayout( model::Layout( nx2, ny2, x02, y02, dx2, dy2 ) );
 		}
 
 		return t;
@@ -458,6 +511,7 @@ namespace glabels
 		setField( "pageSize.pageSize", model::Db::lookupPaperNameFromId( tmplate->paperId() ) );
 		setField( "pageSize.w",        tmplate->pageWidth().inUnits( units ) );
 		setField( "pageSize.h",        tmplate->pageHeight().inUnits( units ) );
+		setField( "pageSize.rollW",    tmplate->rollWidth().inUnits( units ) );
 
 		const model::Frame* frame = tmplate->frames().first();
 		if ( auto frameRect = dynamic_cast<const model::FrameRect*>( frame ) )
@@ -500,38 +554,39 @@ namespace glabels
 		{
 			if ( auto markupMargin = dynamic_cast<const model::MarkupMargin*>( markup ) )
 			{
-				setField( "rect.margin",    markupMargin->size().inUnits( units ) );
-				setField( "round.margin",   markupMargin->size().inUnits( units ) );
-				setField( "ellipse.margin", markupMargin->size().inUnits( units ) );
-				setField( "cd.margin",      markupMargin->size().inUnits( units ) );
+				setField( "rect.xMargin",   markupMargin->xSize().inUnits( units ) );
+				setField( "rect.yMargin",   markupMargin->ySize().inUnits( units ) );
+				setField( "round.margin",   markupMargin->xSize().inUnits( units ) );
+				setField( "ellipse.margin", markupMargin->xSize().inUnits( units ) );
+				setField( "cd.margin",      markupMargin->xSize().inUnits( units ) );
 			}
 		}
 
-		QList<model::Layout*> layouts = frame->layouts();
+		auto layouts = frame->layouts();
 		if ( layouts.size() == 1 )
 		{
-			setField( "oneLayout.nx", layouts[0]->nx() );
-			setField( "oneLayout.ny", layouts[0]->ny() );
-			setField( "oneLayout.x0", layouts[0]->x0().inUnits( units ) );
-			setField( "oneLayout.y0", layouts[0]->y0().inUnits( units ) );
-			setField( "oneLayout.dx", layouts[0]->dx().inUnits( units ) );
-			setField( "oneLayout.dy", layouts[0]->dy().inUnits( units ) );
+			setField( "oneLayout.nx", layouts[0].nx() );
+			setField( "oneLayout.ny", layouts[0].ny() );
+			setField( "oneLayout.x0", layouts[0].x0().inUnits( units ) );
+			setField( "oneLayout.y0", layouts[0].y0().inUnits( units ) );
+			setField( "oneLayout.dx", layouts[0].dx().inUnits( units ) );
+			setField( "oneLayout.dy", layouts[0].dy().inUnits( units ) );
 		}
 		else if ( layouts.size() > 1 )
 		{
-			setField( "twoLayout.nx1", layouts[0]->nx() );
-			setField( "twoLayout.ny1", layouts[0]->ny() );
-			setField( "twoLayout.x01", layouts[0]->x0().inUnits( units ) );
-			setField( "twoLayout.y01", layouts[0]->y0().inUnits( units ) );
-			setField( "twoLayout.dx1", layouts[0]->dx().inUnits( units ) );
-			setField( "twoLayout.dy1", layouts[0]->dy().inUnits( units ) );
+			setField( "twoLayout.nx1", layouts[0].nx() );
+			setField( "twoLayout.ny1", layouts[0].ny() );
+			setField( "twoLayout.x01", layouts[0].x0().inUnits( units ) );
+			setField( "twoLayout.y01", layouts[0].y0().inUnits( units ) );
+			setField( "twoLayout.dx1", layouts[0].dx().inUnits( units ) );
+			setField( "twoLayout.dy1", layouts[0].dy().inUnits( units ) );
 
-			setField( "twoLayout.nx2", layouts[1]->nx() );
-			setField( "twoLayout.ny2", layouts[1]->ny() );
-			setField( "twoLayout.x02", layouts[1]->x0().inUnits( units ) );
-			setField( "twoLayout.y02", layouts[1]->y0().inUnits( units ) );
-			setField( "twoLayout.dx2", layouts[1]->dx().inUnits( units ) );
-			setField( "twoLayout.dy2", layouts[1]->dy().inUnits( units ) );
+			setField( "twoLayout.nx2", layouts[1].nx() );
+			setField( "twoLayout.ny2", layouts[1].ny() );
+			setField( "twoLayout.x02", layouts[1].x0().inUnits( units ) );
+			setField( "twoLayout.y02", layouts[1].y0().inUnits( units ) );
+			setField( "twoLayout.dx2", layouts[1].dx().inUnits( units ) );
+			setField( "twoLayout.dy2", layouts[1].dy().inUnits( units ) );
 		}
 	}
 	
@@ -583,7 +638,20 @@ namespace glabels
 		{
 			if ( auto td = dynamic_cast<TemplateDesigner*>( wizard() ) )
 			{
-				td->loadFromTemplate( tmplate );
+				if ( dynamic_cast<model::FramePath*>(tmplate->frames().constFirst()) )
+				{
+					td->mIsTemplatePathBased = true;
+				}
+				else if ( dynamic_cast<model::FrameContinuous*>(tmplate->frames().constFirst()) )
+				{
+					td->mIsTemplateContinuousBased = true;
+				}
+				else
+				{
+					td->mIsTemplatePathBased = false;
+					td->mIsTemplateContinuousBased = false;
+					td->loadFromTemplate( tmplate );
+				}
 				td->next();
 			}
 		}
@@ -658,20 +726,30 @@ namespace glabels
 		setupUi( widget );
 
 		pageSizeCombo->insertItem( 0, tr("Other") );
-		pageSizeCombo->insertItems( 1, model::Db::paperNames() );
+		pageSizeCombo->insertItem( 1, tr("Roll") );
+		pageSizeCombo->insertItems( 2, model::Db::paperNames() );
 		pageSizeCombo->setCurrentText( defaultPageSize[ model::Settings::preferedPageSizeFamily() ] );
 		
+		bool isOther = pageSizeCombo->currentText() == tr("Other");
+		bool isRoll  = pageSizeCombo->currentText() == tr("Roll");
+
 		wSpin->setSuffix( " " + model::Settings::units().toTrName() );
 		wSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		wSpin->setSingleStep( model::Settings::units().resolution() );
 		wSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
-		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		wSpin->setEnabled( isOther || isRoll );
 		
 		hSpin->setSuffix( " " + model::Settings::units().toTrName() );
 		hSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		hSpin->setSingleStep( model::Settings::units().resolution() );
 		hSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
-		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		hSpin->setEnabled( isOther || isRoll );
+
+		rollWSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		rollWSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		rollWSpin->setSingleStep( model::Settings::units().resolution() );
+		rollWSpin->setMaximum( maxPageSize[ model::Settings::units().toEnum() ] );
+		rollWSpin->setEnabled( isRoll );
 
 		if ( pageSizeCombo->currentText() != tr("Other") )
 		{
@@ -683,6 +761,7 @@ namespace glabels
 		registerField( "pageSize.pageSize", pageSizeCombo, "currentText" );
 		registerField( "pageSize.w",        wSpin,         "value" );
 		registerField( "pageSize.h",        hSpin,         "value" );
+		registerField( "pageSize.rollW",    rollWSpin,     "value" );
 
 		connect( pageSizeCombo, &QComboBox::currentTextChanged, this, &TemplateDesignerPageSizePage::onComboChanged );
 
@@ -705,15 +784,29 @@ namespace glabels
 
 	void TemplateDesignerPageSizePage::onComboChanged()
 	{
-		if ( pageSizeCombo->currentText() != tr("Other") )
+		bool isOther = pageSizeCombo->currentText() == tr("Other");
+		bool isRoll  = pageSizeCombo->currentText() == tr("Roll");
+
+		if ( !isOther && !isRoll )
 		{
 			const model::Paper* paper = model::Db::lookupPaperFromName( pageSizeCombo->currentText() );
 			wSpin->setValue( paper->width().inUnits( model::Settings::units() ) );
 			hSpin->setValue( paper->height().inUnits( model::Settings::units() ) );
 		}
 
-		wSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
-		hSpin->setEnabled( pageSizeCombo->currentText() == tr("Other") );
+		if ( !isRoll )
+		{
+			rollWSpin->setValue( 0 );
+		}
+
+		wLabel->setEnabled( isOther || isRoll );
+		wSpin->setEnabled( isOther || isRoll );
+		
+		hLabel->setEnabled( isOther || isRoll );
+		hSpin->setEnabled( isOther || isRoll );
+
+		rollWLabel->setEnabled( isRoll );
+		rollWSpin->setEnabled( isRoll );
 	}
 
 
@@ -781,16 +874,21 @@ namespace glabels
 		yWasteSpin->setDecimals( model::Settings::units().resolutionDigits() );
 		yWasteSpin->setSingleStep( model::Settings::units().resolution() );
 
-		marginSpin->setSuffix( " " + model::Settings::units().toTrName() );
-		marginSpin->setDecimals( model::Settings::units().resolutionDigits() );
-		marginSpin->setSingleStep( model::Settings::units().resolution() );
+		xMarginSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		xMarginSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		xMarginSpin->setSingleStep( model::Settings::units().resolution() );
 
-		registerField( "rect.w",      wSpin,      "value" );
-		registerField( "rect.h",      hSpin,      "value" );
-		registerField( "rect.r",      rSpin,      "value" );
-		registerField( "rect.xWaste", xWasteSpin, "value" );
-		registerField( "rect.yWaste", yWasteSpin, "value" );
-		registerField( "rect.margin", marginSpin, "value" );
+		yMarginSpin->setSuffix( " " + model::Settings::units().toTrName() );
+		yMarginSpin->setDecimals( model::Settings::units().resolutionDigits() );
+		yMarginSpin->setSingleStep( model::Settings::units().resolution() );
+
+		registerField( "rect.w",       wSpin,      "value" );
+		registerField( "rect.h",       hSpin,      "value" );
+		registerField( "rect.r",       rSpin,      "value" );
+		registerField( "rect.xWaste",  xWasteSpin, "value" );
+		registerField( "rect.yWaste",  yWasteSpin, "value" );
+		registerField( "rect.xMargin", xMarginSpin, "value" );
+		registerField( "rect.yMargin", yMarginSpin, "value" );
 
 		QVBoxLayout* layout = new QVBoxLayout;
 		layout->addWidget( widget );
@@ -811,7 +909,8 @@ namespace glabels
 			rSpin->setMaximum( std::min(wMax,hMax)/2.0 );
 			xWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
 			yWasteSpin->setMaximum( std::min(wMax,hMax)/4.0 );
-			marginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			xMarginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
+			yMarginSpin->setMaximum( std::min(wMax,hMax)/4.0 );
 
 			static bool alreadyInitialized = false;
 			if ( !td->isBasedOnCopy() && !alreadyInitialized )
@@ -824,7 +923,8 @@ namespace glabels
 				rSpin->setValue( defaultRectR.inUnits( model::Settings::units() ) );
 				xWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
 				yWasteSpin->setValue( defaultWaste.inUnits( model::Settings::units() ) );
-				marginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+				xMarginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
+				yMarginSpin->setValue( defaultMargin.inUnits( model::Settings::units() ) );
 			}
 		}
 	}
@@ -1060,6 +1160,54 @@ namespace glabels
 
 
 	///
+	/// Path Product Page
+	///
+	TemplateDesignerPathPage::TemplateDesignerPathPage( QWidget* parent ) : QWizardPage(parent)
+	{
+		setTitle( tr("Unsupported Product Style") );
+		setSubTitle( tr("Path based product templates are not currently supported by the Product Template Designer.") );
+
+		QWidget* widget = new QWidget;
+		setupUi( widget );
+
+		QVBoxLayout* layout = new QVBoxLayout;
+		layout->addWidget( widget );
+		setLayout( layout );
+	}
+	
+
+	bool TemplateDesignerPathPage::isComplete() const
+	{
+		// Must "Cancel" or "Back" from this page
+		return false;
+	}
+
+
+	///
+	/// Continuous Product Page
+	///
+	TemplateDesignerContinuousPage::TemplateDesignerContinuousPage( QWidget* parent ) : QWizardPage(parent)
+	{
+		setTitle( tr("Unsupported Product Style") );
+		setSubTitle( tr("Continuous tape product templates are not currently supported by the Product Template Designer.") );
+
+		QWidget* widget = new QWidget;
+		setupUi( widget );
+
+		QVBoxLayout* layout = new QVBoxLayout;
+		layout->addWidget( widget );
+		setLayout( layout );
+	}
+	
+
+	bool TemplateDesignerContinuousPage::isComplete() const
+	{
+		// Must "Cancel" or "Back" from this page
+		return false;
+	}
+
+
+	///
 	/// Number of Layouts Page
 	///
 	TemplateDesignerNLayoutsPage::TemplateDesignerNLayoutsPage( QWidget* parent ) : QWizardPage(parent)
@@ -1174,7 +1322,7 @@ namespace glabels
 			{
 				alreadyInitialized = true;
 
-				// Set some realistic defaults based on symetric sheet using previosly chosen values
+				// Set some realistic defaults based on symmetric sheet using previously chosen values
 				nxSpin->setValue( nxMax );
 				nySpin->setValue( nyMax );
 				x0Spin->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );
@@ -1333,7 +1481,7 @@ namespace glabels
 			{
 				alreadyInitialized = true;
 
-				// Set some realistic defaults based on symetric sheet using previosly chosen values
+				// Set some realistic defaults based on symmetric sheet using previously chosen values
 				nxSpin1->setValue( nxMax );
 				nySpin1->setValue( nyMax - nyMax/2 );
 				x0Spin1->setValue( (pageW - (nxMax-1)*dxMin - w) / 2 );

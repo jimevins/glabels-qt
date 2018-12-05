@@ -24,7 +24,7 @@ gLabels-qt is the development version of the next major version of gLabels (4.0)
 gLabels-qt has been under off-and-on development for several years.
 It is still missing several features to bring it in parity with glabels-3.4.  These include
 
-- Compatability with older glabels project files
+- Compatibility with older glabels project files
 - An online manual
 
 
@@ -37,8 +37,8 @@ There are currently no official releases of gLabels 4.
 ### Continuous Integration Snapshots
 
 Continuous integration snapshots are not official releases.  These snapshots represent the latest
-bleading-edge development (unstable) code.  Please, DO NOT use it in a production environment.  Do not
-expect compatability or consistency of features between snapshots.
+bleeding-edge development (unstable) code.  Please, DO NOT use it in a production environment.  Do not
+expect compatibility or consistency of features between snapshots.
 
 | Platform | Files |
 |:---------|:------|

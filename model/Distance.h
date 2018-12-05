@@ -69,6 +69,7 @@ namespace glabels
 
 			Distance& operator+=( const Distance& d );
 			Distance& operator-=( const Distance& d );
+			Distance& operator*=( double f );
 			Distance operator-();
 
 			friend inline Distance operator+( const Distance& d1, const Distance& d2 );
@@ -98,6 +99,10 @@ namespace glabels
 
 	}
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Distance& distance );
 
 
 //
@@ -196,6 +201,13 @@ namespace glabels
 		inline Distance& Distance::operator-=( const Distance& d )
 		{
 			mDPts -= d.mDPts;
+			return *this;
+		}
+
+	
+		inline Distance& Distance::operator*=( double f )
+		{
+			mDPts *= f;
 			return *this;
 		}
 

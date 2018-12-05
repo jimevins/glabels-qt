@@ -57,7 +57,7 @@ namespace glabels
 			/////////////////////////////////
 		public:
 			Model();
-			~Model() override = default;
+			~Model();
 
 	
 			/////////////////////////////////
@@ -102,6 +102,8 @@ namespace glabels
 
 			Distance w() const;
 			Distance h() const;
+
+			void setH( const Distance& h );
 
 			const QList<ModelObject*>& objectList() const;
 
@@ -222,11 +224,10 @@ namespace glabels
 			int                       mUntitledInstance;
 			bool                      mModified;
 			QString                   mFileName;
-			const Template*           mTmplate;
-			const Frame*              mFrame;
+			Template                  mTmplate;
 			bool                      mRotate;
 
-			QList<ModelObject*>  mObjectList;
+			QList<ModelObject*>       mObjectList;
 
 			merge::Merge*             mMerge;
 		};

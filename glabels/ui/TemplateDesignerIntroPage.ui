@@ -65,7 +65,7 @@
       <string>New Product</string>
      </property>
      <property name="description">
-      <string>Create a a new product template from scratch</string>
+      <string>Create a new product template from scratch</string>
      </property>
     </widget>
    </item>

@@ -63,6 +63,7 @@ namespace glabels
 	private slots:
 		void onSettingsChanged();
 		void onLabelSizeChanged();
+		void onLengthSpinChanged();
 		void onOrientationActivated();
 		void onChangeProductButtonClicked();
 
@@ -71,6 +72,8 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
+		bool               mInLengthSpinChanged{ false };
+
 		model::Model*      mModel;
 		UndoRedoModel*     mUndoRedoModel;
 		model::Units       mUnits;

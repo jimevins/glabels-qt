@@ -43,14 +43,26 @@
 #include <QtDebug>
 
 
+namespace
+{
+	enum PageIndex
+	{
+		WELCOME_PAGE_INDEX    = 0,
+		EDITOR_PAGE_INDEX     = 1,
+		PROPERTIES_PAGE_INDEX = 2,
+		MERGE_PAGE_INDEX      = 3,
+		PRINT_PAGE_INDEX      = 4,
+	};
+}
+
+
 namespace glabels
 {
 
 	///
 	/// Constructor
 	///
-	MainWindow::MainWindow()
-		: mModel(nullptr)
+	MainWindow::MainWindow() : mModel(nullptr)
 	{
 		setWindowIcon( Icons::Glabels() );
 
@@ -67,57 +79,83 @@ namespace glabels
 		QWidget* printPage = createPrintPage();
 
 		// Table of contents widget
-		mContents = new QListWidget();
-		mContents->setViewMode(QListView::ListMode);
-		mContents->setMovement(QListView::Static);
-		mContents->setSpacing(6);
-	
+		mContents = new QToolBar();
+		mContents->setOrientation( Qt::Vertical );
+		mContents->setIconSize( QSize(48,48) );
+		mContents->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                          QSizePolicy::Preferred );
+		mContents->setStyleSheet( "* { background: #CCCCCC }" );
+
+		// Table of contents button group
+		auto group = new QButtonGroup( this );
+		group->setExclusive( true );
+
 		// Pages widget
 		mPages = new QStackedWidget();
 
 		// Add "Welcome" page
 		mPages->addWidget( welcomePage );
-		mWelcomeButton = new QListWidgetItem(mContents);
-		mWelcomeButton->setText(tr("Welcome"));
-		mWelcomeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
+		mWelcomeButton = new QToolButton( this );
+		mWelcomeButton->setIcon( Icons::Glabels() );
+		mWelcomeButton->setText( tr("Welcome") );
+		mWelcomeButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mWelcomeButton->setCheckable( true );
+		mWelcomeButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                               QSizePolicy::Preferred );
+		mWelcomeAction = mContents->addWidget( mWelcomeButton );
+		group->addButton( mWelcomeButton );
+		
 		// Add "Editor" page
 		mPages->addWidget( editorPage );
-		mEditorButton = new QListWidgetItem(mContents);
-		mEditorButton->setText(tr("Edit"));
-		mEditorButton->setToolTip( tr("Select <b>Edit</b> mode") );
-		mEditorButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		mEditorButton = new QToolButton( this );
+		mEditorButton->setIcon( Icons::Edit() );
+		mEditorButton->setText( tr("Edit") );
+		mEditorButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mEditorButton->setCheckable( true );
+		mEditorButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                              QSizePolicy::Preferred );
+		mEditorAction = mContents->addWidget( mEditorButton );
+		group->addButton( mEditorButton );
 
 		// Add "Properties" page
 		mPages->addWidget( propertiesPage );
-		mPropertiesButton = new QListWidgetItem(mContents);
-		mPropertiesButton->setText(tr("Properties"));
-		mPropertiesButton->setToolTip( tr("Select <b>Properties</b> mode") );
-		mPropertiesButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		mPropertiesButton = new QToolButton( this );
+		mPropertiesButton->setIcon( Icons::Properties() );
+		mPropertiesButton->setText( tr("Properties") );
+		mPropertiesButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mPropertiesButton->setCheckable( true );
+		mPropertiesButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                                  QSizePolicy::Preferred );
+		mPropertiesAction = mContents->addWidget( mPropertiesButton );
+		group->addButton( mPropertiesButton );
 
 		// Add "Merge" page
 		mPages->addWidget( mergePage );
-		mMergeButton = new QListWidgetItem(mContents);
-		mMergeButton->setText(tr("Merge"));
-		mMergeButton->setToolTip( tr("Select <b>Merge</b> mode") );
-		mMergeButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		mMergeButton = new QToolButton( this );
+		mMergeButton->setIcon( Icons::Merge() );
+		mMergeButton->setText( tr("Merge") );
+		mMergeButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mMergeButton->setCheckable( true );
+		mMergeButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                             QSizePolicy::Preferred );
+		mMergeAction = mContents->addWidget( mMergeButton );
+		group->addButton( mMergeButton );
 
 		// Add "Print" page
 		mPages->addWidget( printPage );
-		mPrintButton = new QListWidgetItem(mContents);
-		mPrintButton->setText(tr("Print"));
-		mPrintButton->setToolTip( tr("Select <b>Print</b> mode") );
-		mPrintButton->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
-		// Adjust width of list view based on its contents
-		mContents->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-		mContents->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
-		mContents->setMinimumWidth( mContents->sizeHintForColumn(0) + 24 );
-		mContents->setMaximumWidth( mContents->sizeHintForColumn(0) + 24 );
+		mPrintButton = new QToolButton( this );
+		mPrintButton->setIcon( Icons::FilePrint() );
+		mPrintButton->setText( tr("Print") );
+		mPrintButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mPrintButton->setCheckable( true );
+		mPrintButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                             QSizePolicy::Preferred );
+		mPrintAction = mContents->addWidget( mPrintButton );
+		group->addButton( mPrintButton );
 
 		// Set initial page selection
-		mWelcomeButton->setSelected( true );
-		mPages->setCurrentIndex(mContents->row(mWelcomeButton));
+		mWelcomeButton->setChecked( true );
+		mPages->setCurrentIndex( WELCOME_PAGE_INDEX );
 
 		// Create central widget
 		QWidget *centralWidget = new QWidget();
@@ -125,17 +163,19 @@ namespace glabels
 		hLayout->setContentsMargins( 0, 0, 0, 0 );
 		hLayout->addWidget( mContents );
 		hLayout->addWidget( mPages );
+		hLayout->setStretch( 0, 0 );
+		hLayout->setStretch( 1, 1 );
 		centralWidget->setLayout( hLayout );
 		setCentralWidget( centralWidget );
 
-		setDocVerbsEnabled( false );
-		setPasteVerbsEnabled( false );
-		setWelcomeMode( true );
+		manageActions();
 		setTitle();
 
 		// Connect
-		connect( mContents, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
-		         this, SLOT(changePage(QListWidgetItem*,QListWidgetItem*)));
+		connect( mEditorButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mPropertiesButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mMergeButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mPrintButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
 		connect( QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(clipboardChanged()) );
 #if 0
@@ -180,13 +220,10 @@ namespace glabels
 		mMergeView->setModel( mModel , mUndoRedoModel );
 		mPrintView->setModel( mModel );
 
-		mContents->setCurrentItem( mEditorButton );
-		mPages->setCurrentIndex(mContents->row(mEditorButton));
+		mEditorButton->setChecked( true );
+		mPages->setCurrentIndex( EDITOR_PAGE_INDEX );
 	
-		setDocVerbsEnabled( true );
-		setSelectionVerbsEnabled( false );
-		setMultiSelectionVerbsEnabled( false );
-		setWelcomeMode( false );
+		manageActions();
 		setTitle();
 
 		connect( mLabelEditor, SIGNAL(contextMenuActivate()), this, SLOT(onContextMenuActivate()) );
@@ -770,125 +807,103 @@ namespace glabels
 
 
 	///
-	/// Set enabled state of TOC buttons based on Welcome mode
+	/// Manage enabled/visibility state of actions
 	///
-	void MainWindow::setWelcomeMode( bool enabled )
+	void MainWindow::manageActions()
 	{
-		mWelcomeButton->setHidden( !enabled );
-		mPropertiesButton->setHidden( enabled );
-		mEditorButton->setHidden( enabled );
-		mMergeButton->setHidden( enabled );
-		mPrintButton->setHidden( enabled );
-	}
+		// Do we have a model?
+		bool hasModel      = mModel != nullptr;
 
+		// Which page is currently active?
+		bool isWelcomePage    = mWelcomeButton->isChecked();
+		bool isEditorPage     = mEditorButton->isChecked();
+		bool isPropertiesPage = mPropertiesButton->isChecked();
+		bool isMergePage      = mMergeButton->isChecked();
+		bool isPrintPage      = mPrintButton->isChecked();
 
-	///
-	/// Set enabled state of actions associated with a document.
-	///
-	void MainWindow::setDocVerbsEnabled( bool enabled )
-	{
-		fileSaveAction->setEnabled( mModel && mModel->isModified() );
-		fileSaveAsAction->setEnabled( mModel );
-		editUndoAction->setEnabled( enabled && mUndoRedoModel->canUndo() );
-		editRedoAction->setEnabled( enabled && mUndoRedoModel->canRedo() );
-		editDeleteAction->setEnabled( enabled );
-		editSelectAllAction->setEnabled( enabled );
-		editUnSelectAllAction->setEnabled( enabled );
-		viewZoomInAction->setEnabled( enabled );
-		viewZoomOutAction->setEnabled( enabled );
-		viewZoom1To1Action->setEnabled( enabled );
-		viewZoomToFitAction->setEnabled( enabled );
-		viewGridAction->setEnabled( enabled );
-		viewMarkupAction->setEnabled( enabled );
-		objectsArrowModeAction->setEnabled( enabled );
-		objectsCreateMenu->setEnabled( enabled );
-		objectsCreateTextAction->setEnabled( enabled );
-		objectsCreateLineAction->setEnabled( enabled );
-		objectsCreateBoxAction->setEnabled( enabled );
-		objectsCreateEllipseAction->setEnabled( enabled );
-		objectsCreateImageAction->setEnabled( enabled );
-		objectsCreateBarcodeAction->setEnabled( enabled );
-		objectsOrderMenu->setEnabled( enabled );
-		objectsOrderRaiseAction->setEnabled( enabled );
-		objectsOrderLowerAction->setEnabled( enabled );
-		objectsXformMenu->setEnabled( enabled );
-		objectsXformRotateLeftAction->setEnabled( enabled );
-		objectsXformRotateRightAction->setEnabled( enabled );
-		objectsXformFlipHorizAction->setEnabled( enabled );
-		objectsXformFlipVertAction->setEnabled( enabled );
-		objectsAlignMenu->setEnabled( enabled );
-		objectsAlignLeftAction->setEnabled( enabled );
-		objectsAlignRightAction->setEnabled( enabled );
-		objectsAlignHCenterAction->setEnabled( enabled );
-		objectsAlignTopAction->setEnabled( enabled );
-		objectsAlignBottomAction->setEnabled( enabled );
-		objectsAlignVCenterAction->setEnabled( enabled );
-		objectsCenterMenu->setEnabled( enabled );
-		objectsCenterHorizAction->setEnabled( enabled );
-		objectsCenterVertAction->setEnabled( enabled );
-	}
+		// What is the current selection state?
+		bool hasSelection = hasModel && !mModel->isSelectionEmpty();
+		bool hasMultiSelection = hasSelection && !mModel->isSelectionAtomic();
+		bool canPaste = hasModel && mModel->canPaste();
+		
+		// Toggle visibility of TOC buttons based on welcome mode
+		mWelcomeAction->setVisible( isWelcomePage );
+		mEditorAction->setVisible( !isWelcomePage );
+		mPropertiesAction->setVisible( !isWelcomePage );
+		mMergeAction->setVisible( !isWelcomePage );
+		mPrintAction->setVisible( !isWelcomePage );
 
+		// File actions
+		fileNewAction->setEnabled( true );
+		fileOpenAction->setEnabled( true );
+		fileSaveAction->setEnabled( hasModel && mModel->isModified() );
+		fileSaveAsAction->setEnabled( hasModel );
+		fileShowEditorPageAction->setEnabled( !isWelcomePage && !isEditorPage );
+		fileShowPropertiesPageAction->setEnabled( !isWelcomePage && !isPropertiesPage );
+		fileShowMergePageAction->setEnabled( !isWelcomePage && !isMergePage );
+		fileShowPrintPageAction->setEnabled( !isWelcomePage && !isPrintPage );
+		fileTemplateDesignerAction->setEnabled( true );
+		fileCloseAction->setEnabled( true );
+		fileExitAction->setEnabled( true );
 
-	///
-	/// Set enabled state of actions associated with a document being modified since last save.
-	///
-	void MainWindow::setDocModifiedVerbsEnabled( bool enabled )
-	{
-		fileSaveAction->setEnabled( enabled );
-	}
+		// Edit actions
+		editUndoAction->setEnabled( hasModel && mUndoRedoModel->canUndo() );
+		editRedoAction->setEnabled( hasModel && mUndoRedoModel->canRedo() );
+		editCutAction->setEnabled( isEditorPage && hasSelection );
+		editCopyAction->setEnabled( isEditorPage && hasSelection );
+		editPasteAction->setEnabled( isEditorPage && canPaste );
+		editDeleteAction->setEnabled( isEditorPage && hasSelection );
+		editSelectAllAction->setEnabled( isEditorPage );
+		editUnSelectAllAction->setEnabled( isEditorPage && hasSelection );
+		editPreferencesAction->setEnabled( true );
 
+		// View actions
+		viewFileToolBarAction->setEnabled( true );
+		viewEditorToolBarAction->setEnabled( true );
+		viewGridAction->setEnabled( isEditorPage );
+		viewMarkupAction->setEnabled( isEditorPage );
+		viewZoomInAction->setEnabled( isEditorPage );
+		viewZoomOutAction->setEnabled( isEditorPage );
+		viewZoom1To1Action->setEnabled( isEditorPage );
+		viewZoomToFitAction->setEnabled( isEditorPage );
 
-	///
-	/// Set enabled state of actions associated with data being available on clipboard.
-	///
-	void MainWindow::setPasteVerbsEnabled( bool enabled )
-	{
-		editPasteAction->setEnabled( enabled );
-		contextPasteAction->setEnabled( enabled );
-	}
+		// Object actions
+		objectsArrowModeAction->setEnabled( isEditorPage );
+		objectsCreateMenu->setEnabled( isEditorPage );
+		objectsCreateTextAction->setEnabled( isEditorPage );
+		objectsCreateLineAction->setEnabled( isEditorPage );
+		objectsCreateBoxAction->setEnabled( isEditorPage );
+		objectsCreateEllipseAction->setEnabled( isEditorPage );
+		objectsCreateImageAction->setEnabled( isEditorPage );
+		objectsCreateBarcodeAction->setEnabled( isEditorPage );
+		objectsOrderMenu->setEnabled( isEditorPage && hasSelection );
+		objectsOrderRaiseAction->setEnabled( isEditorPage && hasSelection );
+		objectsOrderLowerAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformMenu->setEnabled( isEditorPage && hasSelection );
+		objectsXformRotateLeftAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformRotateRightAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformFlipHorizAction->setEnabled( isEditorPage && hasSelection );
+		objectsXformFlipVertAction->setEnabled( isEditorPage && hasSelection );
+		objectsAlignMenu->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignLeftAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignRightAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignHCenterAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignTopAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignBottomAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsAlignVCenterAction->setEnabled( isEditorPage && hasMultiSelection );
+		objectsCenterMenu->setEnabled( isEditorPage && hasSelection );
+		objectsCenterHorizAction->setEnabled( isEditorPage && hasSelection );
+		objectsCenterVertAction->setEnabled( isEditorPage && hasSelection );
 
+		// Help actions
+		helpContentsAction->setEnabled( true );
+		helpAboutAction->setEnabled( true );
 
-	///
-	/// Set enabled state of actions associated with a non-empty selection.
-	///
-	void MainWindow::setSelectionVerbsEnabled( bool enabled )
-	{
-		editCutAction->setEnabled( enabled );
-		editCopyAction->setEnabled( enabled );
-		editDeleteAction->setEnabled( enabled );
-		editUnSelectAllAction->setEnabled( enabled );
-		objectsOrderMenu->setEnabled( enabled );
-		objectsOrderRaiseAction->setEnabled( enabled );
-		objectsOrderLowerAction->setEnabled( enabled );
-		objectsXformMenu->setEnabled( enabled );
-		objectsXformRotateLeftAction->setEnabled( enabled );
-		objectsXformRotateRightAction->setEnabled( enabled );
-		objectsXformFlipHorizAction->setEnabled( enabled );
-		objectsXformFlipVertAction->setEnabled( enabled );
-		objectsCenterMenu->setEnabled( enabled );
-		objectsCenterHorizAction->setEnabled( enabled );
-		objectsCenterVertAction->setEnabled( enabled );
-
-		contextOrderMenu->setEnabled( enabled );
-		contextXformMenu->setEnabled( enabled );
-		contextCenterMenu->setEnabled( enabled );
-	}
-
-
-	///
-	/// Set enabled state of actions associated with a non-atomic selection.
-	///
-	void MainWindow::setMultiSelectionVerbsEnabled( bool enabled )
-	{
-		objectsAlignMenu->setEnabled( enabled );
-		objectsAlignLeftAction->setEnabled( enabled );
-		objectsAlignRightAction->setEnabled( enabled );
-		objectsAlignHCenterAction->setEnabled( enabled );
-		objectsAlignTopAction->setEnabled( enabled );
-		objectsAlignBottomAction->setEnabled( enabled );
-		objectsAlignVCenterAction->setEnabled( enabled );
-
-		contextAlignMenu->setEnabled( enabled );
+		// Special context actions
+		contextCutAction->setEnabled( isEditorPage && hasSelection );
+		contextCopyAction->setEnabled( isEditorPage && hasSelection );
+		contextPasteAction->setEnabled( isEditorPage && canPaste );
+		contextDeleteAction->setEnabled( isEditorPage && hasSelection );
 	}
 
 
@@ -1005,28 +1020,29 @@ namespace glabels
 	///
 	/// Change page
 	///
-	void MainWindow::changePage(QListWidgetItem *current, QListWidgetItem *previous)
+	void MainWindow::changePage( bool checked )
 	{
-		if (!current)
+		if ( checked )
 		{
-			current = previous;
+			if ( mEditorButton->isChecked() )
+			{
+				mPages->setCurrentIndex( EDITOR_PAGE_INDEX );
+			}
+			else if ( mPropertiesButton->isChecked() )
+			{
+				mPages->setCurrentIndex( PROPERTIES_PAGE_INDEX );
+			}
+			else if ( mMergeButton->isChecked() )
+			{
+				mPages->setCurrentIndex( MERGE_PAGE_INDEX );
+			}
+			else if ( mPrintButton->isChecked() )
+			{
+				mPages->setCurrentIndex( PRINT_PAGE_INDEX );
+			}
+
+			manageActions();
 		}
-
-		int row = mContents->row(current);
-    
-		mPages->setCurrentIndex(row);
-		bool isEditorPage = ( row == mContents->row(mEditorButton) );
-
-		setDocVerbsEnabled( isEditorPage );
-		setSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() );
-		setMultiSelectionVerbsEnabled( isEditorPage && !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
-		setPasteVerbsEnabled( isEditorPage && mModel->canPaste() );
-
-		bool isWelcome = ( current == mWelcomeButton );
-		fileShowEditorPageAction->setEnabled( !isWelcome && (current != mEditorButton) );
-		fileShowPropertiesPageAction->setEnabled( !isWelcome && (current != mPropertiesButton) );
-		fileShowMergePageAction->setEnabled( !isWelcome && (current != mMergeButton) );
-		fileShowPrintPageAction->setEnabled( !isWelcome && (current != mPrintButton) );
 	}
 
 
@@ -1035,7 +1051,7 @@ namespace glabels
 	///
 	void MainWindow::clipboardChanged()
 	{
-		setPasteVerbsEnabled( mModel->canPaste() );
+		manageActions();
 	}
 
 
@@ -1080,7 +1096,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowEditorPage()
 	{
-		mContents->setCurrentItem( mEditorButton );
+		mEditorButton->setChecked( true );
 	}
 
 
@@ -1089,7 +1105,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowPropertiesPage()
 	{
-		mContents->setCurrentItem( mPropertiesButton );
+		mPropertiesButton->setChecked( true );
 	}
 
 
@@ -1098,7 +1114,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowMergePage()
 	{
-		mContents->setCurrentItem( mMergeButton );
+		mMergeButton->setChecked( true );
 	}
 
 
@@ -1107,7 +1123,7 @@ namespace glabels
 	///
 	void MainWindow::fileShowPrintPage()
 	{
-		mContents->setCurrentItem( mPrintButton );
+		mPrintButton->setChecked( true );
 	}
 
 
@@ -1584,8 +1600,8 @@ namespace glabels
 	///
 	void MainWindow::onModifiedChanged()
 	{
+		manageActions();
 		setTitle();
-		setDocModifiedVerbsEnabled( mModel->isModified() );
 	}
 
 
@@ -1594,8 +1610,7 @@ namespace glabels
 	///
 	void MainWindow::onSelectionChanged()
 	{
-		setSelectionVerbsEnabled( !mModel->isSelectionEmpty() );
-		setMultiSelectionVerbsEnabled( !mModel->isSelectionEmpty() && !mModel->isSelectionAtomic() );
+		manageActions();
 	}
 
 
@@ -1613,8 +1628,7 @@ namespace glabels
 	///
 	void MainWindow::onUndoRedoChanged()
 	{
-		editUndoAction->setEnabled( mUndoRedoModel->canUndo() );
-		editRedoAction->setEnabled( mUndoRedoModel->canRedo() );
+		manageActions();
 	}
 
 } // namespace glabels

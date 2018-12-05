@@ -33,6 +33,7 @@
 #include <QScrollArea>
 #include <QStackedWidget>
 #include <QToolBar>
+#include <QToolButton>
 
 
 namespace glabels
@@ -84,7 +85,7 @@ namespace glabels
 		// Slots
 		/////////////////////////////////////
 	private slots:
-		void changePage(QListWidgetItem *current, QListWidgetItem *previous);
+		void changePage( bool checked );
 
 		void clipboardChanged();
 
@@ -167,17 +168,12 @@ namespace glabels
 		void createStatusBar();
 
 		QWidget* createWelcomePage();
-		QWidget* createPropertiesPage();
 		QWidget* createEditorPage();
+		QWidget* createPropertiesPage();
 		QWidget* createMergePage();
 		QWidget* createPrintPage();
 
-		void setWelcomeMode( bool );
-		void setDocVerbsEnabled( bool );
-		void setDocModifiedVerbsEnabled( bool );
-		void setPasteVerbsEnabled( bool );
-		void setSelectionVerbsEnabled( bool );
-		void setMultiSelectionVerbsEnabled( bool );
+		void manageActions();
 
 		void setTitle();
 
@@ -216,19 +212,25 @@ namespace glabels
 		model::Model*        mModel;
 		UndoRedoModel*       mUndoRedoModel;
 
-		QListWidget*         mContents;
-		QListWidgetItem*     mWelcomeButton;
-		QListWidgetItem*     mPropertiesButton;
-		QListWidgetItem*     mEditorButton;
-		QListWidgetItem*     mMergeButton;
-		QListWidgetItem*     mPrintButton;
+		QToolBar*            mContents;
+		QToolButton*         mWelcomeButton;
+		QToolButton*         mEditorButton;
+		QToolButton*         mPropertiesButton;
+		QToolButton*         mMergeButton;
+		QToolButton*         mPrintButton;
+
+		QAction*             mWelcomeAction;
+		QAction*             mEditorAction;
+		QAction*             mPropertiesAction;
+		QAction*             mMergeAction;
+		QAction*             mPrintAction;
 
 		QStackedWidget*      mPages;
 		StartupView*         mWelcomeView;
-		PropertiesView*      mPropertiesView;
 		QScrollArea*         mLabelEditorScrollArea;
 		LabelEditor*         mLabelEditor;
 		ObjectEditor*        mObjectEditor;
+		PropertiesView*      mPropertiesView;
 		MergeView*           mMergeView;
 		PrintView*           mPrintView;
 

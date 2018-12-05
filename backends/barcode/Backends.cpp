@@ -246,7 +246,7 @@ namespace glabels
 			glbarcode::Factory::registerType( "zint::usps",      Zint::Usps::create );
 			glbarcode::Factory::registerType( "zint::pls",       Zint::Pls::create );
 
-			registerStyle( "ausp", "zint", tr("Austraila Post Standard"),
+			registerStyle( "ausp", "zint", tr("Australia Post Standard"),
 			               false, false, true, false, "12345678901234567890123", true, 23 );
 
 			registerStyle( "ausrp", "zint", tr("Australia Post Reply Paid"),
@@ -303,7 +303,7 @@ namespace glabels
 			registerStyle( "code128", "zint", tr("Code 128"),
 			               true, true, true, false, "0000000000", true, 10 );
           
-			registerStyle( "code128b", "zint", tr("Code 128 (Mode C supression)"),
+			registerStyle( "code128b", "zint", tr("Code 128 (Mode C suppression)"),
 			               true, true, true, false, "0000000000", true, 10 );
           
 			registerStyle( "daft", "zint", tr("DAFT Code"),

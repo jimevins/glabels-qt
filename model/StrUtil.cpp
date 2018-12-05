@@ -61,7 +61,7 @@ namespace glabels
 				if ( denom[i] == 0.0 )
 				{
 					/* None of our denominators work. */
-					return QString().sprintf( "%.5g", x );
+					return QString().sprintf( "%.3f", x );
 				}
 				if ( denom[i] == 1.0 )
 				{

@@ -23,7 +23,9 @@
 
 
 #include "FrameCd.h"
+#include "FrameContinuous.h"
 #include "FrameEllipse.h"
+#include "FramePath.h"
 #include "FrameRect.h"
 #include "FrameRound.h"
 #include "Layout.h"
@@ -55,8 +57,10 @@ namespace glabels
 			void createLabelEllipseNode( QDomElement& parent, const FrameEllipse* frame );
 			void createLabelRoundNode( QDomElement& parent, const FrameRound* frame );
 			void createLabelCdNode( QDomElement& parent, const FrameCd* frame );
+			void createLabelPathNode( QDomElement& parent, const FramePath* frame );
+			void createLabelContinuousNode( QDomElement& parent, const FrameContinuous* frame );
 			void createLabelNodeCommon( QDomElement& node, const Frame* frame );
-			void createLayoutNode( QDomElement& parent, const Layout* layout );
+			void createLayoutNode( QDomElement& parent, const Layout& layout );
 			void createMarkupMarginNode( QDomElement& parent, const MarkupMargin* markupMargin );
 			void createMarkupLineNode( QDomElement& parent, const MarkupLine* markupLine );
 			void createMarkupCircleNode( QDomElement& parent, const MarkupCircle* markupCircle );

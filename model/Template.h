@@ -43,17 +43,22 @@ namespace glabels
 
 		public:
 
+			Template() = default;
+
 			Template( const QString&  brand,
 			          const QString&  part,
 			          const QString&  description,
 			          const QString&  paperId,
 			          const Distance& pageWidth,
 			          const Distance& pageHeight,
+			          const Distance& rollWidth = 0,
 			          bool            isUserDefined = false );
 
 			Template( const Template& other );
 
-			Template* dup() const;
+			~Template();
+
+			Template& operator=( const Template& other );
 
 			// Generic full page template
 			static Template* fullPage( const QString& paperId );
@@ -71,9 +76,11 @@ namespace glabels
 			QString paperId() const;
 			Distance pageWidth() const;
 			Distance pageHeight() const;
+			Distance rollWidth() const;
 			bool isSizeIso() const;
 			bool isSizeUs() const;
 			bool isSizeOther() const;
+			bool isRoll() const;
 
 			bool isUserDefined() const;
 
@@ -104,8 +111,10 @@ namespace glabels
 			QString  mPaperId;
 			Distance mPageWidth;
 			Distance mPageHeight;
+			Distance mRollWidth;
 			bool     mIsSizeIso;
 			bool     mIsSizeUs;
+			bool     mIsRoll;
 
 			bool     mIsUserDefined;
 
@@ -119,7 +128,12 @@ namespace glabels
 		};
 
 	}
+
 }
+
+
+// Debugging support
+QDebug operator<<( QDebug dbg, const glabels::model::Template& tmplate );
 
 
 #endif // model_Template_h

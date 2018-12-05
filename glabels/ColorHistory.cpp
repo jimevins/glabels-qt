@@ -50,7 +50,7 @@ namespace glabels
 	{
 		QList<QColor> colorList = readColorList();
 
-		// Remove any occurances of this color already in list
+		// Remove any occurrences of this color already in list
 		colorList.removeAll( color );
 
 		// Now add to list

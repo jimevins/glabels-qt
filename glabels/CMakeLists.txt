@@ -31,6 +31,7 @@ set (glabels_sources
   PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  RollTemplatePath.cpp
   SelectProductDialog.cpp
   SimplePreview.cpp
   StartupView.cpp
@@ -85,6 +86,8 @@ set (glabels_forms
   ui/TemplateDesignerRoundPage.ui
   ui/TemplateDesignerEllipsePage.ui
   ui/TemplateDesignerCdPage.ui
+  ui/TemplateDesignerPathPage.ui
+  ui/TemplateDesignerContinuousPage.ui
   ui/TemplateDesignerNLayoutsPage.ui
   ui/TemplateDesignerOneLayoutPage.ui
   ui/TemplateDesignerTwoLayoutPage.ui
@@ -136,16 +139,16 @@ target_link_libraries (glabels-qt
 #=======================================
 install (TARGETS glabels-qt RUNTIME DESTINATION bin)
 
-install (FILES icons/scalable/apps/glabels.svg DESTINATION share/icons/hicolor/scalable/apps)
-install (FILES icons/16x16/apps/glabels.svg    DESTINATION share/icons/hicolor/16x16/apps)
-install (FILES icons/22x22/apps/glabels.svg    DESTINATION share/icons/hicolor/22x22/apps)
-install (FILES icons/32x32/apps/glabels.svg    DESTINATION share/icons/hicolor/32x32/apps)
-install (FILES icons/48x48/apps/glabels.svg    DESTINATION share/icons/hicolor/48x48/apps)
+install (FILES icons/apps/scalable/glabels.svg DESTINATION share/icons/hicolor/scalable/apps)
+install (FILES icons/apps/16x16/glabels.svg    DESTINATION share/icons/hicolor/16x16/apps)
+install (FILES icons/apps/22x22/glabels.svg    DESTINATION share/icons/hicolor/22x22/apps)
+install (FILES icons/apps/32x32/glabels.svg    DESTINATION share/icons/hicolor/32x32/apps)
+install (FILES icons/apps/48x48/glabels.svg    DESTINATION share/icons/hicolor/48x48/apps)
 
-install (FILES icons/scalable/mimetypes/x-glabels-project.svg DESTINATION share/icons/hicolor/scalable/mimetypes)
-install (FILES icons/16x16/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/16x16/mimetypes)
-install (FILES icons/22x22/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/22x22/mimetypes)
-install (FILES icons/24x24/mimetypes/x-glabels-project.svg    DESTINATION share/icons/hicolor/24x24/mimetypes)
+install (FILES icons/mimetypes/scalable/x-glabels-project.svg DESTINATION share/icons/hicolor/scalable/mimetypes)
+install (FILES icons/mimetypes/16x16/x-glabels-project.svg    DESTINATION share/icons/hicolor/16x16/mimetypes)
+install (FILES icons/mimetypes/22x22/x-glabels-project.svg    DESTINATION share/icons/hicolor/22x22/mimetypes)
+install (FILES icons/mimetypes/24x24/x-glabels-project.svg    DESTINATION share/icons/hicolor/24x24/mimetypes)
 
 #
 # Windows Runtime

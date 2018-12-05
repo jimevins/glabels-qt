@@ -39,9 +39,9 @@ namespace glabels
 		public:
 			Arrow()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-arrow.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-arrow.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-arrow.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-arrow.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-arrow.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-arrow.svg" ) );
 			}
 		};
 
@@ -51,9 +51,9 @@ namespace glabels
 		public:
 			Barcode()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-barcode.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-barcode.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-barcode.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-barcode.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-barcode.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-barcode.svg" ) );
 			}
 		};
 
@@ -63,9 +63,9 @@ namespace glabels
 		public:
 			Box()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-box.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-box.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-box.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-box.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-box.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-box.svg" ) );
 			}
 		};
 
@@ -75,9 +75,9 @@ namespace glabels
 		public:
 			Ellipse()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-ellipse.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-ellipse.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-ellipse.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-ellipse.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-ellipse.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-ellipse.svg" ) );
 			}
 		};
 
@@ -87,9 +87,9 @@ namespace glabels
 		public:
 			Image()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-image.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-image.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-image.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-image.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-image.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-image.svg" ) );
 			}
 		};
 
@@ -99,9 +99,9 @@ namespace glabels
 		public:
 			Line()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-line.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-line.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-line.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-line.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-line.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-line.svg" ) );
 			}
 		};
 
@@ -111,9 +111,9 @@ namespace glabels
 		public:
 			Text()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-text.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-text.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-text.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-text.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-text.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-text.svg" ) );
 			}
 		};
 
@@ -123,7 +123,7 @@ namespace glabels
 		public:
 			ObjectProperties()
 			{
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-object-properties.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-object-properties.svg" ) );
 			}
 		};
 
@@ -133,7 +133,7 @@ namespace glabels
 		public:
 			AlignLeft()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-left.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-align-left.svg" ) );
 			}
 		};
 
@@ -143,7 +143,7 @@ namespace glabels
 		public:
 			AlignHCenter()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-hcenter.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-align-hcenter.svg" ) );
 			}
 		};
 
@@ -153,7 +153,7 @@ namespace glabels
 		public:
 			AlignRight()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-right.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-align-right.svg" ) );
 			}
 		};
 
@@ -163,7 +163,7 @@ namespace glabels
 		public:
 			AlignBottom()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-bottom.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-align-bottom.svg" ) );
 			}
 		};
 
@@ -173,7 +173,7 @@ namespace glabels
 		public:
 			AlignVCenter()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-vcenter.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-align-vcenter.svg" ) );
 			}
 		};
 
@@ -183,7 +183,7 @@ namespace glabels
 		public:
 			AlignTop()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-align-top.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-align-top.svg" ) );
 			}
 		};
 
@@ -193,7 +193,7 @@ namespace glabels
 		public:
 			CenterHoriz()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-center-horiz.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-center-horiz.svg" ) );
 			}
 		};
 
@@ -203,7 +203,7 @@ namespace glabels
 		public:
 			CenterVert()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-center-vert.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-center-vert.svg" ) );
 			}
 		};
 
@@ -213,7 +213,7 @@ namespace glabels
 		public:
 			FlipHoriz()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-flip-horiz.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-flip-horiz.svg" ) );
 			}
 		};
 
@@ -223,7 +223,7 @@ namespace glabels
 		public:
 			FlipVert()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-flip-vert.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-flip-vert.svg" ) );
 			}
 		};
 
@@ -233,7 +233,7 @@ namespace glabels
 		public:
 			RotateLeft()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-rotate-left.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-rotate-left.svg" ) );
 			}
 		};
 
@@ -243,7 +243,7 @@ namespace glabels
 		public:
 			RotateRight()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-rotate-right.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-rotate-right.svg" ) );
 			}
 		};
 
@@ -253,7 +253,7 @@ namespace glabels
 		public:
 			OrderBottom()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-order-bottom.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-order-bottom.svg" ) );
 			}
 		};
 
@@ -263,7 +263,7 @@ namespace glabels
 		public:
 			OrderTop()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-order-top.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-order-top.svg" ) );
 			}
 		};
 
@@ -273,8 +273,8 @@ namespace glabels
 		public:
 			AlignTextLeft()
 			{
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-text-left.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-text-left.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-align-text-left.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-align-text-left.svg" ) );
 			}
 		};
 
@@ -284,8 +284,8 @@ namespace glabels
 		public:
 			AlignTextCenter()
 			{
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-text-center.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-text-center.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-align-text-center.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-align-text-center.svg" ) );
 			}
 		};
 
@@ -295,8 +295,8 @@ namespace glabels
 		public:
 			AlignTextRight()
 			{
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-align-text-right.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-align-text-right.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-align-text-right.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-align-text-right.svg" ) );
 			}
 		};
 
@@ -306,8 +306,8 @@ namespace glabels
 		public:
 			AlignTextBottom()
 			{
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-valign-text-bottom.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-valign-text-bottom.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-valign-text-bottom.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-valign-text-bottom.svg" ) );
 			}
 		};
 
@@ -317,8 +317,8 @@ namespace glabels
 		public:
 			AlignTextMiddle()
 			{
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-valign-text-middle.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-valign-text-middle.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-valign-text-middle.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-valign-text-middle.svg" ) );
 			}
 		};
 
@@ -328,8 +328,8 @@ namespace glabels
 		public:
 			AlignTextTop()
 			{
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-valign-text-top.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/glabels-valign-text-top.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-valign-text-top.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-valign-text-top.svg" ) );
 			}
 		};
 
@@ -339,11 +339,21 @@ namespace glabels
 		public:
 			Glabels()
 			{
-				addFile( ":icons/16x16/apps/glabels.svg" );
-				addFile( ":icons/22x22/apps/glabels.svg" );
-				addFile( ":icons/32x32/apps/glabels.svg" );
-				addFile( ":icons/48x48/apps/glabels.svg" );
-				addFile( ":icons/scalable/apps/glabels.svg" );
+				addFile( ":icons/apps/16x16/glabels.svg" );
+				addFile( ":icons/apps/22x22/glabels.svg" );
+				addFile( ":icons/apps/32x32/glabels.svg" );
+				addFile( ":icons/apps/48x48/glabels.svg" );
+				addFile( ":icons/apps/scalable/glabels.svg" );
+			}
+		};
+
+
+		class Edit : public QIcon
+		{
+		public:
+			Edit()
+			{
+				addPixmap( QPixmap( ":icons/flat/48x48/glabels-edit.svg" ) );
 			}
 		};
 
@@ -353,9 +363,9 @@ namespace glabels
 		public:
 			EditCopy()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/edit-copy.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/edit-copy.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/edit-copy.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-edit-copy.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-edit-copy.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-edit-copy.svg" ) );
 			}
 		};
 
@@ -365,9 +375,9 @@ namespace glabels
 		public:
 			EditCut()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/edit-cut.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/edit-cut.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/edit-cut.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-edit-cut.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-edit-cut.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-edit-cut.svg" ) );
 			}
 		};
 
@@ -377,9 +387,9 @@ namespace glabels
 		public:
 			EditPaste()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/edit-paste.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/edit-paste.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/edit-paste.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-edit-paste.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-edit-paste.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-edit-paste.svg" ) );
 			}
 		};
 
@@ -389,9 +399,9 @@ namespace glabels
 		public:
 			FileNew()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/file-new.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/file-new.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/file-new.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-file-new.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-file-new.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-file-new.svg" ) );
 			}
 		};
 
@@ -401,9 +411,9 @@ namespace glabels
 		public:
 			FileOpen()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/file-open.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/file-open.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/file-open.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-file-open.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-file-open.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-file-open.svg" ) );
 			}
 		};
 
@@ -413,7 +423,8 @@ namespace glabels
 		public:
 			FilePrint()
 			{
-				addPixmap( QPixmap( ":icons/32x32/actions/print.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/32x32/glabels-print.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/48x48/glabels-print.svg" ) );
 			}
 		};
 
@@ -423,9 +434,9 @@ namespace glabels
 		public:
 			FileSave()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/file-save.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/file-save.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/file-save.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-file-save.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-file-save.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-file-save.svg" ) );
 			}
 		};
 
@@ -435,9 +446,29 @@ namespace glabels
 		public:
 			FileSaveAs()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/file-save-as.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/file-save-as.svg" ) );
-				addPixmap( QPixmap( ":icons/24x24/actions/file-save-as.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-file-save-as.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-file-save-as.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/24x24/glabels-file-save-as.svg" ) );
+			}
+		};
+
+
+		class Merge : public QIcon
+		{
+		public:
+			Merge()
+			{
+				addPixmap( QPixmap( ":icons/flat/48x48/glabels-merge.svg" ) );
+			}
+		};
+
+
+		class Properties : public QIcon
+		{
+		public:
+			Properties()
+			{
+				addPixmap( QPixmap( ":icons/flat/48x48/glabels-properties.svg" ) );
 			}
 		};
 
@@ -447,8 +478,8 @@ namespace glabels
 		public:
 			ZoomBestFit()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-to-fit.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-to-fit.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-zoom-to-fit.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-zoom-to-fit.svg" ) );
 			}
 		};
 
@@ -458,8 +489,8 @@ namespace glabels
 		public:
 			ZoomIn()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-in.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-in.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-zoom-in.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-zoom-in.svg" ) );
 			}
 		};
 
@@ -469,8 +500,8 @@ namespace glabels
 		public:
 			ZoomOriginal()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-one-to-one.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-one-to-one.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-zoom-one-to-one.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-zoom-one-to-one.svg" ) );
 			}
 		};
 
@@ -480,8 +511,8 @@ namespace glabels
 		public:
 			ZoomOut()
 			{
-				addPixmap( QPixmap( ":icons/16x16/actions/glabels-zoom-out.svg" ) );
-				addPixmap( QPixmap( ":icons/22x22/actions/glabels-zoom-out.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/16x16/glabels-zoom-out.svg" ) );
+				addPixmap( QPixmap( ":icons/flat/22x22/glabels-zoom-out.svg" ) );
 			}
 		};
 

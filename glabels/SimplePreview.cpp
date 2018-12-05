@@ -20,6 +20,9 @@
 
 #include "SimplePreview.h"
 
+#include "RollTemplatePath.h"
+
+#include <QGraphicsPathItem>
 #include <QGraphicsRectItem>
 #include <QGraphicsDropShadowEffect>
 #include <QtDebug>
@@ -33,7 +36,7 @@ namespace glabels
 	//
 	namespace
 	{
-		const QColor  paperColor( 255, 255, 255 );
+		const QColor  paperColor( 242, 242, 242 );
 		const QColor  paperOutlineColor( 0, 0, 0 );
 		const double  paperOutlineWidthPixels = 1;
 
@@ -105,20 +108,29 @@ namespace glabels
 	///
 	void SimplePreview::update()
 	{
-		clearScene();
+		mScene->clear();
 
 		if ( mTmplate != nullptr )
 		{
+			// For "Roll" templates, allow extra room to draw continuation break lines.
+			model::Distance drawHeight = mTmplate->pageHeight();
+			model::Distance drawOffset = 0;
+			if ( mTmplate->isRoll() )
+			{
+				drawHeight = 1.2 * mTmplate->pageHeight();
+				drawOffset = 0.1 * mTmplate->pageHeight();
+			}
+			
 			// Set scene up with a 5% margin around paper
 			model::Distance x = -0.05 * mTmplate->pageWidth();
-			model::Distance y = -0.05 * mTmplate->pageHeight();
+			model::Distance y = -0.05 * drawHeight - drawOffset;
 			model::Distance w = 1.10 * mTmplate->pageWidth();
-			model::Distance h = 1.10 * mTmplate->pageHeight();
+			model::Distance h = 1.10 * drawHeight;
 
 			mScene->setSceneRect( x.pt(), y.pt(), w.pt(), h.pt() );
 			fitInView( mScene->sceneRect(), Qt::KeepAspectRatio );
 
-			drawPaper( mTmplate->pageWidth(), mTmplate->pageHeight() );
+			drawPaper();
 			drawLabels();
 			drawArrow();
 		}
@@ -126,22 +138,9 @@ namespace glabels
 
 
 	///
-	/// Clear View
-	///
-	void SimplePreview::clearScene()
-	{
-		foreach ( QGraphicsItem *item, mScene->items() )
-		{
-			mScene->removeItem( item );
-			delete item;
-		}
-	}
-
-
-	///
 	/// Draw Paper
 	///
-	void SimplePreview::drawPaper( const model::Distance& pw, const model::Distance& ph )
+	void SimplePreview::drawPaper()
 	{
 		auto *shadowEffect = new QGraphicsDropShadowEffect();
 		shadowEffect->setColor( shadowColor );
@@ -153,7 +152,15 @@ namespace glabels
 		pen.setCosmetic( true );
 		pen.setWidthF( paperOutlineWidthPixels );
 
-		auto *pageItem = new QGraphicsRectItem( 0, 0, pw.pt(), ph.pt() );
+		QAbstractGraphicsShapeItem* pageItem;
+		if ( !mTmplate->isRoll() )
+		{
+			pageItem = new QGraphicsRectItem( 0, 0, mTmplate->pageWidth().pt(), mTmplate->pageHeight().pt() );
+		}
+		else
+		{
+			pageItem = new QGraphicsPathItem( RollTemplatePath( mTmplate ) );
+		}
 		pageItem->setBrush( brush );
 		pageItem->setPen( pen );
 		pageItem->setGraphicsEffect( shadowEffect );

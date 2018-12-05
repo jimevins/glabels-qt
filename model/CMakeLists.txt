@@ -26,7 +26,9 @@ set (Model_sources
   FileUtil.cpp
   Frame.cpp
   FrameCd.cpp
+  FrameContinuous.cpp
   FrameEllipse.cpp
+  FramePath.cpp
   FrameRect.cpp
   FrameRound.cpp
   Handles.cpp
@@ -58,6 +60,7 @@ set (Model_sources
   XmlCategoryParser.cpp
   XmlLabelCreator.cpp
   XmlLabelParser.cpp
+  XmlLabelParser_3.cpp
   XmlPaperParser.cpp
   XmlTemplateCreator.cpp
   XmlTemplateParser.cpp

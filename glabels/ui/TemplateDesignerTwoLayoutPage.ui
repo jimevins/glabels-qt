@@ -200,7 +200,7 @@
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/32x32/actions/print.svg</normaloff>:/icons/32x32/actions/print.svg</iconset>
+           <normaloff>:/icons/flat/32x32/glabels-print.svg</normaloff>:/icons/flat/32x32/glabels-print.svg</iconset>
          </property>
          <property name="iconSize">
           <size>

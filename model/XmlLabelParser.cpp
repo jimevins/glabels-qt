@@ -32,6 +32,8 @@
 #include "XmlUtil.h"
 #include "DataCache.h"
 
+#include "XmlLabelParser_3.h"
+
 #include "barcode/Backends.h"
 #include "merge/Factory.h"
 
@@ -77,7 +79,7 @@ namespace glabels
 				gunzip( rawData, unzippedData );
 				success = doc.setContent( unzippedData, false, &errorString, &errorLine, &errorColumn );
 #else
-				qWarning() << "Warning: Cannot read compressed glabels project file!  gLabels not build with ZLIB.";
+				qWarning() << "Warning: Cannot read compressed glabels project file!  gLabels not built with ZLIB.";
 				return nullptr;
 #endif
 			}
@@ -239,7 +241,8 @@ namespace glabels
 			QString version = XmlUtil::getStringAttr( node, "version", "" );
 			if ( version != "4.0" )
 			{
-				qWarning() << "TODO: compatability mode.";
+				// Attempt to import as version 3.0 format (glabels 2.0 - glabels 3.4)
+				return XmlLabelParser_3::parseRootNode(node);
 			}
 
 			auto* label = new Model();
@@ -738,7 +741,7 @@ namespace glabels
 		void
 		XmlLabelParser::parsePixdataNode( const QDomElement& node, DataCache& data )
 		{
-			// TODO, compatability with glabels-3
+			// TODO, compatibility with glabels-3
 		}
 
 

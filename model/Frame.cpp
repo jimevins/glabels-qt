@@ -20,6 +20,12 @@
 
 #include "Frame.h"
 
+#include "FrameCd.h"
+#include "FrameContinuous.h"
+#include "FrameEllipse.h"
+#include "FramePath.h"
+#include "FrameRect.h"
+#include "FrameRound.h"
 #include "Markup.h"
 
 #include <algorithm>
@@ -42,12 +48,12 @@ namespace glabels
 			mId = other.mId;
 			mNLabels = 0;
 
-			foreach ( Layout *layout, mLayouts )
+			foreach ( const Layout& layout, other.mLayouts )
 			{
-				addLayout( layout->dup() );
+				addLayout( layout );
 			}
 		
-			foreach ( Markup *markup, mMarkups )
+			foreach ( Markup *markup, other.mMarkups )
 			{
 				addMarkup( markup->dup() );
 			}
@@ -72,7 +78,7 @@ namespace glabels
 		}
 
 	
-		const QList<Layout*>& Frame::layouts() const
+		const QList<Layout>& Frame::layouts() const
 		{
 			return mLayouts;
 		}
@@ -89,13 +95,13 @@ namespace glabels
 			QVector<Point> origins( nLabels() );
 
 			int i = 0;
-			foreach ( Layout *layout, mLayouts )
+			foreach ( const Layout& layout, mLayouts )
 			{
-				for ( int iy = 0; iy < layout->ny(); iy++ )
+				for ( int iy = 0; iy < layout.ny(); iy++ )
 				{
-					for ( int ix = 0; ix < layout->nx(); ix++ )
+					for ( int ix = 0; ix < layout.nx(); ix++ )
 					{
-						origins[i++] = Point( ix*layout->dx() + layout->x0(), iy*layout->dy() + layout->y0() );
+						origins[i++] = Point( ix*layout.dx() + layout.x0(), iy*layout.dy() + layout.y0() );
 					}
 				}
 			}
@@ -106,12 +112,12 @@ namespace glabels
 		}
 
 
-		void Frame::addLayout( Layout *layout )
+		void Frame::addLayout( const Layout& layout )
 		{
 			mLayouts << layout;
 
 			// Update total number of labels
-			mNLabels += layout->nx() * layout->ny();
+			mNLabels += layout.nx() * layout.ny();
 
 			// Update layout description
 			if ( mLayouts.size() == 1 )
@@ -122,7 +128,7 @@ namespace glabels
 				 *              %3 = total number of labels on a page (sheet).
 				 */
 				mLayoutDescription = QString( tr("%1 x %2 (%3 per sheet)") )
-					.arg(layout->nx()).arg(layout->ny()).arg(mNLabels);
+					.arg(layout.nx()).arg(layout.ny()).arg(mNLabels);
 			}
 			else
 			{
@@ -137,5 +143,54 @@ namespace glabels
 			mMarkups << markup;
 		}
 
+
+		void Frame::setH( const Distance& h )
+		{
+			// Default implementation does nothing
+		}
+
+	}
+}
+
+
+QDebug operator<<( QDebug dbg, const glabels::model::Frame& frame )
+{
+	if ( auto* frameCd = dynamic_cast<const glabels::model::FrameCd*>(&frame) )
+	{
+		dbg << *frameCd;
+		return dbg;
+	}
+	else if ( auto* frameContinuous = dynamic_cast<const glabels::model::FrameContinuous*>(&frame) )
+	{
+		dbg << *frameContinuous;
+		return dbg;
+	}
+	else if ( auto* frameEllipse = dynamic_cast<const glabels::model::FrameEllipse*>(&frame) )
+	{
+		dbg << *frameEllipse;
+		return dbg;
+	}
+	else if ( auto* framePath = dynamic_cast<const glabels::model::FramePath*>(&frame) )
+	{
+		dbg << *framePath;
+		return dbg;
+	}
+	else if ( auto* frameRect = dynamic_cast<const glabels::model::FrameRect*>(&frame) )
+	{
+		dbg << *frameRect;
+		return dbg;
+	}
+	else if ( auto* frameRound = dynamic_cast<const glabels::model::FrameRound*>(&frame) )
+	{
+		dbg << *frameRound;
+		return dbg;
+	}
+	else
+	{
+		QDebugStateSaver saver(dbg);
+
+		dbg.nospace() << "UNKNOWN FRAME";
+
+		return dbg;
 	}
 }

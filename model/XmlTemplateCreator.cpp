@@ -91,7 +91,10 @@ namespace glabels
 				XmlUtil::setLengthAttr( node, "width", tmplate->pageWidth() );
 				XmlUtil::setLengthAttr( node, "height", tmplate->pageHeight() );
 			}
-
+			if ( tmplate->isRoll() )
+			{
+				XmlUtil::setLengthAttr( node, "roll_width", tmplate->rollWidth() );
+			}
 
 			XmlUtil::setStringAttr( node, "description", tmplate->description() );
 
@@ -140,6 +143,14 @@ namespace glabels
 			else if ( const auto* frameCd = dynamic_cast<const FrameCd*>(frame) )
 			{
 				createLabelCdNode( parent, frameCd );
+			}
+			else if ( const auto* framePath = dynamic_cast<const FramePath*>(frame) )
+			{
+				createLabelPathNode( parent, framePath );
+			}
+			else if ( const auto* frameContinuous = dynamic_cast<const FrameContinuous*>(frame) )
+			{
+				createLabelContinuousNode( parent, frameContinuous );
 			}
 			else
 			{
@@ -217,6 +228,39 @@ namespace glabels
 		}
 
 
+		void XmlTemplateCreator::createLabelPathNode( QDomElement &parent, const FramePath* frame )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Label-path" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr(   node, "id",      frame->id() );
+			XmlUtil::setLengthAttr(   node, "x_waste", frame->xWaste() );
+			XmlUtil::setLengthAttr(   node, "y_waste", frame->yWaste() );
+			XmlUtil::setUnitsAttr(    node, "d_units", frame->originalUnits() );
+			XmlUtil::setPathDataAttr( node, "d",       frame->path(), frame->originalUnits() );
+
+			createLabelNodeCommon( node, frame );
+		}
+
+
+		void XmlTemplateCreator::createLabelContinuousNode( QDomElement &parent, const FrameContinuous* frame )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Label-continuous" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "id",             frame->id() );
+			XmlUtil::setLengthAttr( node, "width",          frame->w() );
+			XmlUtil::setLengthAttr( node, "height",         frame->h() );
+			XmlUtil::setLengthAttr( node, "min_height",     frame->hMin() );
+			XmlUtil::setLengthAttr( node, "max_height",     frame->hMin() );
+			XmlUtil::setLengthAttr( node, "default_height", frame->hDefault() );
+
+			createLabelNodeCommon( node, frame );
+		}
+
+
 		void XmlTemplateCreator::createLabelNodeCommon( QDomElement &node, const Frame *frame )
 		{
 			foreach ( Markup* markup, frame->markups() )
@@ -247,27 +291,27 @@ namespace glabels
 				}
 			}
 
-			foreach ( Layout* layout, frame->layouts() )
+			foreach ( const Layout& layout, frame->layouts() )
 			{
 				createLayoutNode( node, layout );
 			}
 		}
 
 
-		void XmlTemplateCreator::createLayoutNode( QDomElement& parent, const Layout* layout )
+		void XmlTemplateCreator::createLayoutNode( QDomElement& parent, const Layout& layout )
 		{
 			QDomDocument doc = parent.ownerDocument();
 			QDomElement node = doc.createElement( "Layout" );
 			parent.appendChild( node );
 
-			XmlUtil::setIntAttr( node, "nx", layout->nx() );
-			XmlUtil::setIntAttr( node, "ny", layout->ny() );
+			XmlUtil::setIntAttr( node, "nx", layout.nx() );
+			XmlUtil::setIntAttr( node, "ny", layout.ny() );
 
-			XmlUtil::setLengthAttr( node, "x0", layout->x0() );
-			XmlUtil::setLengthAttr( node, "y0", layout->y0() );
+			XmlUtil::setLengthAttr( node, "x0", layout.x0() );
+			XmlUtil::setLengthAttr( node, "y0", layout.y0() );
 
-			XmlUtil::setLengthAttr( node, "dx", layout->dx() );
-			XmlUtil::setLengthAttr( node, "dy", layout->dy() );
+			XmlUtil::setLengthAttr( node, "dx", layout.dx() );
+			XmlUtil::setLengthAttr( node, "dy", layout.dy() );
 		}
 
 
@@ -277,7 +321,15 @@ namespace glabels
 			QDomElement node = doc.createElement( "Markup-margin" );
 			parent.appendChild( node );
 
-			XmlUtil::setLengthAttr( node, "size", markup->size() );
+			if ( markup->xSize() == markup->ySize() )
+			{
+				XmlUtil::setLengthAttr( node, "size", markup->xSize() );
+			}
+			else
+			{
+				XmlUtil::setLengthAttr( node, "x_size", markup->xSize() );
+				XmlUtil::setLengthAttr( node, "y_size", markup->ySize() );
+			}
 		}
 
 
