@@ -91,14 +91,14 @@ See [LICENSE](LICENSE) in this directory.
 The following sub-components are also made available under less
 restrictive licensing:
 
-### GLBARCODE
+### Glbarcode
 
    gLabels-qt currently includes a version of the glbarcode++ library, located in
    the "glbarcode/" subdirectory.  It is licensed under the GNU LESSER GENERAL
    PUBLIC LICENSE (LGPL); either version 3 of the License, or (at your option)
    any later version -- see the [glbarcode/LICENSE](glbarcode/LICENSE).
 
-### TEMPLATE DATABASE
+### Template Database
 
    The XML files in the "templates/" subdirectory constitute the glabels
    label database.  No copyright is claimed on the facts contained within
