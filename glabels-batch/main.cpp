@@ -39,6 +39,20 @@
 #include <QtDebug>
 
 
+namespace
+{
+	
+#if defined(Q_OS_WIN)
+	const QString STDOUT_FILENAME = "CON:";
+#elif defined(Q_OS_LINUX)
+	const QString STDOUT_FILENAME = "/dev/stdout";
+#else
+	const QString STDOUT_FILENAME = "/dev/stdout";
+#endif
+
+}
+
+
 int main( int argc, char **argv )
 {
 	QGuiApplication app( argc, argv );
@@ -84,7 +98,7 @@ int main( int argc, char **argv )
 		 QPrinterInfo::defaultPrinterName() },
 		
 		{{"o","output"},
-		 QCoreApplication::translate( "main", "Set output filename to <filename>. (Default=\"output.pdf\")" ),
+		 QCoreApplication::translate( "main", "Set output filename to <filename>. Set to \"-\" for stdout. (Default=\"output.pdf\")" ),
 		 QCoreApplication::translate( "main", "filename" ),
 		 "output.pdf" },
 		
@@ -147,8 +161,13 @@ int main( int argc, char **argv )
 			}
 			else if ( parser.isSet("output") )
 			{
-				qDebug() << "Batch mode.  output =" << parser.value("output");
-				printer.setOutputFileName( parser.value("output") );
+				QString outputFilename = parser.value("output");
+				if ( outputFilename == "-" )
+				{
+					outputFilename = STDOUT_FILENAME;
+				}
+				qDebug() << "Batch mode.  output =" << outputFilename;
+				printer.setOutputFileName( outputFilename );
 			}
 			else
 			{
