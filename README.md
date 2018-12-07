@@ -45,7 +45,7 @@ expect compatibility or consistency of features between snapshots.
 | Linux x86_64 [AppImage](http:appimage.org): *Download, make it executable, and run!* | [glabels-continuous-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-continuous-x86_64.AppImage) |
 | Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
 | Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
-| Archlinux          | [Arch Linux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) |
+| Archlinux          | [Archlinux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) |
 
 
 ## Build Instructions
