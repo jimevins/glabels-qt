@@ -24,7 +24,7 @@ gLabels-qt is the development version of the next major version of gLabels (4.0)
 gLabels-qt has been under off-and-on development for several years.
 It is still missing several features to bring it in parity with glabels-3.4.  These include
 
-- Compatibility with older glabels project files
+- Optional Evolution and VCard backends.
 - An online manual
 
 
@@ -45,6 +45,7 @@ expect compatibility or consistency of features between snapshots.
 | Linux x86_64 [AppImage](http:appimage.org): *Download, make it executable, and run!* | [glabels-continuous-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-continuous-x86_64.AppImage) |
 | Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
 | Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
+| Archlinux          | [Archlinux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) |
 
 
 ## Build Instructions
