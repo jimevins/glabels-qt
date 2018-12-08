@@ -47,6 +47,7 @@ namespace glabels
 	class PropertiesView;
 	class StartupView;
 	class UndoRedoModel;
+	class VariablesView;
 
 
 	///
@@ -96,6 +97,7 @@ namespace glabels
 		void fileShowEditorPage();
 		void fileShowPropertiesPage();
 		void fileShowMergePage();
+		void fileShowVariablesPage();
 		void fileShowPrintPage();
 		void fileTemplateDesigner();
 		void fileClose();
@@ -171,6 +173,7 @@ namespace glabels
 		QWidget* createEditorPage();
 		QWidget* createPropertiesPage();
 		QWidget* createMergePage();
+		QWidget* createVariablesPage();
 		QWidget* createPrintPage();
 
 		void manageActions();
@@ -217,12 +220,14 @@ namespace glabels
 		QToolButton*         mEditorButton;
 		QToolButton*         mPropertiesButton;
 		QToolButton*         mMergeButton;
+		QToolButton*         mVariablesButton;
 		QToolButton*         mPrintButton;
 
 		QAction*             mWelcomeAction;
 		QAction*             mEditorAction;
 		QAction*             mPropertiesAction;
 		QAction*             mMergeAction;
+		QAction*             mVariablesAction;
 		QAction*             mPrintAction;
 
 		QStackedWidget*      mPages;
@@ -232,6 +237,7 @@ namespace glabels
 		ObjectEditor*        mObjectEditor;
 		PropertiesView*      mPropertiesView;
 		MergeView*           mMergeView;
+		VariablesView*       mVariablesView;
 		PrintView*           mPrintView;
 
 		QLabel*   zoomInfoLabel;
@@ -244,6 +250,7 @@ namespace glabels
 		QAction*  fileShowEditorPageAction;
 		QAction*  fileShowPropertiesPageAction;
 		QAction*  fileShowMergePageAction;
+		QAction*  fileShowVariablesPageAction;
 		QAction*  fileShowPrintPageAction;
 		QAction*  fileTemplateDesignerAction;
 		QAction*  fileCloseAction;

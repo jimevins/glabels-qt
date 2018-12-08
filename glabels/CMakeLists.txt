@@ -39,6 +39,7 @@ set (glabels_sources
   TemplatePicker.cpp
   TemplatePickerItem.cpp
   UndoRedoModel.cpp
+  VariablesView.cpp
 )
 
 set (glabels_qobject_headers
@@ -67,6 +68,7 @@ set (glabels_qobject_headers
   TemplateDesigner.h
   TemplatePicker.h
   UndoRedoModel.h
+  VariablesView.h
 )
 
 set (glabels_forms
@@ -92,6 +94,7 @@ set (glabels_forms
   ui/TemplateDesignerOneLayoutPage.ui
   ui/TemplateDesignerTwoLayoutPage.ui
   ui/TemplateDesignerApplyPage.ui
+  ui/VariablesView.ui
 )
 
 set (glabels_resource_files
