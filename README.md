@@ -46,7 +46,7 @@ expect compatibility or consistency of features between snapshots.
 | Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
 | Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
 | Archlinux          | [Archlinux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) | Maintained by [Mario Blättermann](https://github.com/mariobl) |
-| Ubuntu             | [PPA Page](https://code.launchpad.net/~krisives/+archive/ubuntu/glabels-qt) | Maintained by [Kristopher Ives](https://github.com/krisives).  https://github.com/krisives/glabels-qt-packaging |
+| Ubuntu             | [PPA Page](https://code.launchpad.net/~krisives/+archive/ubuntu/glabels-qt) | Maintained by [Kristopher Ives](https://github.com/krisives).<br>https://github.com/krisives/glabels-qt-packaging |
 
 
 ## Build Instructions
