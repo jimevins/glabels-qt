@@ -40,12 +40,13 @@ Continuous integration snapshots are not official releases.  These snapshots rep
 bleeding-edge development (unstable) code.  Please, DO NOT use it in a production environment.  Do not
 expect compatibility or consistency of features between snapshots.
 
-| Platform | Files |
-|:---------|:------|
-| Linux x86_64 [AppImage](http:appimage.org): *Download, make it executable, and run!* | [glabels-continuous-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-continuous-x86_64.AppImage) |
-| Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
-| Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) |
-| Archlinux          | [Archlinux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) |
+| Platform | Files | Notes |
+|:---------|:------|:------|
+| Linux x86_64 [AppImage](http:appimage.org) | [glabels-continuous-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-continuous-x86_64.AppImage) | Download, make it executable, and run! |
+| Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
+| Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
+| Archlinux          | [Archlinux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) | Maintained by [Mario Blättermann](https://github.com/mariobl) |
+| Ubuntu             | [PPA Page](https://code.launchpad.net/~krisives/+archive/ubuntu/glabels-qt) | Maintained by [Kristopher Ives](https://github.com/krisives).  https://github.com/krisives/glabels-qt-packaging |
 
 
 ## Build Instructions
