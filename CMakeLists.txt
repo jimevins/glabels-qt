@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.2)
+cmake_minimum_required (VERSION 3.9)
 
 ###############################################################################
 # gLabels Label Designer Project
@@ -108,12 +108,16 @@ find_package (Qt5Test 5.4 QUIET)
 #=======================================
 # Global compiler options
 #=======================================
-#
-# Uncomment to compile everything with aggressively pedantic options
-# (not recommended -- only for testing -- also not portable)
-#
-#add_compile_options("-Wall" "-Werror" "-Wpedantic")
-add_compile_options("-g")
+if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+   #
+   # Uncomment to compile everything with aggressively pedantic options
+   # (not recommended -- only for testing -- also not portable)
+   #
+   #add_compile_options("-Wall" "-Werror" "-Wpedantic")
+
+   # Uncomment to always compile with debug symbols
+   add_compile_options("-g")
+endif ()
 
 
 #=======================================
@@ -144,6 +148,7 @@ message (STATUS "Project name ............ " ${CMAKE_PROJECT_NAME})
 message (STATUS "Project version ......... " ${VERSION_STRING})
 message (STATUS "Installation prefix ..... " ${CMAKE_INSTALL_PREFIX})
 message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
+message (STATUS "CMake version ........... " ${CMAKE_VERSION})
 message (STATUS "C++ Compiler ............ " ${CMAKE_CXX_COMPILER_ID} " " ${CMAKE_CXX_COMPILER} " " ${CMAKE_CXX_COMPILER_VERSION})
 message (STATUS "Qt version .............. " ${Qt5Core_VERSION})
 

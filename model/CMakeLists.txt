@@ -92,10 +92,9 @@ add_library (Model STATIC
   ${Model_moc_sources}
 )
 
-#target_compile_features (Model
-#  PUBLIC cxx_std_11
-#)
-set_property (TARGET Model PROPERTY CXX_STANDARD 11)
+target_compile_features (Model
+  PUBLIC cxx_std_11
+)
 
 target_include_directories (Model
   PUBLIC .. ${CMAKE_CURRENT_BINARY_DIR}/..

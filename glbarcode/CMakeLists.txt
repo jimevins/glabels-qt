@@ -33,10 +33,9 @@ add_library (glbarcode STATIC
   ${GLBARCODE_SOURCES}
 )
 
-#target_compile_features (glbarcode
-#  PUBLIC cxx_std_11
-#)
-set_property (TARGET glbarcode PROPERTY CXX_STANDARD 11)
+target_compile_features (glbarcode
+  PUBLIC cxx_std_11
+)
 
 target_include_directories (glbarcode
   PUBLIC ..
