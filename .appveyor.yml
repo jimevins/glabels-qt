@@ -1,3 +1,9 @@
+# Build glabels windows installer.
+#
+# Currently, only builds snapshots and is truggered by the travis CI AppImage build, which
+# moves the "continuous" release/tag to head.  This script deploys into this moved release.
+
+
 version: 3.99.0.{build}
 
 branches:
@@ -9,7 +15,7 @@ branches:
   only:
     - master
 
-skip_tags: true
+skip_non_tags: true
   
 image: Visual Studio 2017
 
@@ -34,7 +40,7 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: windows-continuous
+    release: continuous
     artifact: windows-installer
     auth_token:
       secure: mPNNgwWP58gu4eA2wVwGkGWNTzJigKj1g/XjsZ9vk03rLMmf5fxC/XNr15fPBCi8
