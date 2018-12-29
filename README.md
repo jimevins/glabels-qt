@@ -2,7 +2,8 @@
 
 ![Cover Image](docs/images/cover-image.png)
 
-[![Build Status](https://travis-ci.org/jimevins/glabels-qt.svg?branch=master)](https://travis-ci.org/jimevins/glabels-qt)
+[![Travis Build Status](https://travis-ci.org/jimevins/glabels-qt.svg?branch=master)](https://travis-ci.org/jimevins/glabels-qt)
+[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/jimevins/glabels-qt?branch=master&svg=true)](https://ci.appveyor.com/project/jimevins/glabels-qt)
 
 *******************************************************************************
 
@@ -43,10 +44,11 @@ expect compatibility or consistency of features between snapshots.
 | Platform | Files | Notes |
 |:---------|:------|:------|
 | Linux x86_64 [AppImage](http:appimage.org) | [glabels-continuous-x86_64.AppImage](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-continuous-x86_64.AppImage) | Download, make it executable, and run! |
-| Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
-| Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
 | Archlinux          | [Archlinux User Repository Page](https://aur.archlinux.org/packages/glabels-qt-git/) | Maintained by [Mario Blättermann](https://github.com/mariobl) |
 | Ubuntu             | [PPA Page](https://code.launchpad.net/~krisives/+archive/ubuntu/glabels-qt) | Maintained by [Kristopher Ives](https://github.com/krisives).<br>https://github.com/krisives/glabels-qt-packaging |
+| Windows x86_64     | [glabels-3.99.0-win64.exe](https://github.com/jimevins/glabels-qt/releases/download/continuous/glabels-3.99.0-win64.exe) | Windows installer |
+| Source Code TAR.GZ | [continuous.tar.gz](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
+| Source Code ZIP    | [continuous.zip](https://github.com/jimevins/glabels-qt/archive/continuous.tar.gz) | |
 
 
 ## Build Instructions
