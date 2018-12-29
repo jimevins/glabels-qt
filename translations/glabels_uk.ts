@@ -175,7 +175,7 @@
     </message>
     <message>
         <source>Roll</source>
-        <translation type="unfinished">Roll</translation>
+        <translation>Рулон</translation>
     </message>
 </context>
 <context>
@@ -239,7 +239,7 @@
     <name>FrameContinuous</name>
     <message>
         <source>wide</source>
-        <translation type="unfinished">wide</translation>
+        <translation>широкий</translation>
     </message>
 </context>
 <context>
@@ -291,10 +291,6 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>Object properties</source>
-        <translation>Властивості об&apos;єкта</translation>
-    </message>
-    <message>
         <source>Text</source>
         <translation>Текст</translation>
     </message>
@@ -317,14 +313,6 @@
     <message>
         <source>Word</source>
         <translation>Слово</translation>
-    </message>
-    <message>
-        <source>Anywhere</source>
-        <translation>Будь-де</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation>Немає</translation>
     </message>
     <message>
         <source>Allow printing to shrink text to fit object</source>
@@ -385,6 +373,14 @@
     <message>
         <source>File</source>
         <translation>Файл</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Немає</translation>
+    </message>
+    <message>
+        <source>Anywhere</source>
+        <translation>Будь-де</translation>
     </message>
     <message>
         <source>Select File...</source>
@@ -474,6 +470,10 @@
         <source>Opacity:</source>
         <translation>Непрозорість:</translation>
     </message>
+    <message>
+        <source>Object properties</source>
+        <translation>Властивості об&apos;єкта</translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -521,6 +521,18 @@
         <translation>Форма</translation>
     </message>
     <message>
+        <source>Page</source>
+        <translation>Сторінка</translation>
+    </message>
+    <message>
+        <source>of</source>
+        <translation>з</translation>
+    </message>
+    <message>
+        <source>nn</source>
+        <translation>nn</translation>
+    </message>
+    <message>
         <source>Copies</source>
         <translation>Копії</translation>
     </message>
@@ -555,18 +567,6 @@
     <message>
         <source>Print</source>
         <translation>Друк</translation>
-    </message>
-    <message>
-        <source>Page</source>
-        <translation>Сторінка</translation>
-    </message>
-    <message>
-        <source>of</source>
-        <translation>з</translation>
-    </message>
-    <message>
-        <source>nn</source>
-        <translation>nn</translation>
     </message>
 </context>
 <context>
@@ -616,14 +616,6 @@
         <translation>Змінити продукт</translation>
     </message>
     <message>
-        <source>Adjustable Parameters</source>
-        <translation type="unfinished">Adjustable Parameters</translation>
-    </message>
-    <message>
-        <source>Label length:</source>
-        <translation type="unfinished">Label length:</translation>
-    </message>
-    <message>
         <source>Orientation</source>
         <translation>Орієнтація</translation>
     </message>
@@ -642,6 +634,14 @@
     <message>
         <source>Similar Products</source>
         <translation>Подібні продукти</translation>
+    </message>
+    <message>
+        <source>Adjustable Parameters</source>
+        <translation>Кориговані параметри</translation>
+    </message>
+    <message>
+        <source>Label length:</source>
+        <translation>Довжина наліпки:</translation>
     </message>
 </context>
 <context>
@@ -752,14 +752,6 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>6. Margin:</source>
-        <translation>6. Поле:</translation>
-    </message>
-    <message>
-        <source>1. Outer radius:</source>
-        <translation>1. Зовнішній радіус:</translation>
-    </message>
-    <message>
         <source>4. Clipping height:</source>
         <translation>4. Висота обрізання:</translation>
     </message>
@@ -768,23 +760,31 @@
         <translation>2. Внутрішній радіус:</translation>
     </message>
     <message>
-        <source>3. Clipping width:</source>
-        <translation>3. Ширина обрізання:</translation>
+        <source>1. Outer radius:</source>
+        <translation>1. Зовнішній радіус:</translation>
     </message>
     <message>
         <source>5. Waste:</source>
         <translation>5. Обрізки:</translation>
+    </message>
+    <message>
+        <source>3. Clipping width:</source>
+        <translation>3. Ширина обрізання:</translation>
+    </message>
+    <message>
+        <source>6. Margin:</source>
+        <translation>6. Поле:</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerContinuousPage</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <source>&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation type="unfinished">&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></translation>
+        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Натисніть &amp;quot;Скасувати&amp;quot;, щоб скасувати, або натисніть &amp;quot;Назад&amp;quot;, щоб розпочати роботу із іншим продуктом.&lt;/p>&lt;/body>&lt;/html></translation>
     </message>
 </context>
 <context>
@@ -794,16 +794,16 @@
         <translation>Форма</translation>
     </message>
     <message>
+        <source>3. Waste:</source>
+        <translation>3. Обрізки:</translation>
+    </message>
+    <message>
         <source>2. Height:</source>
         <translation>2. Висота:</translation>
     </message>
     <message>
         <source>1. Width:</source>
         <translation>1. Ширина:</translation>
-    </message>
-    <message>
-        <source>3. Waste:</source>
-        <translation>3. Обрізки:</translation>
     </message>
     <message>
         <source>4. Margin:</source>
@@ -834,7 +834,7 @@
     </message>
     <message>
         <source>Create a new product template from scratch</source>
-        <translation type="unfinished">Create a new product template from scratch</translation>
+        <translation>Створити шаблон нового продукту з нуля</translation>
     </message>
 </context>
 <context>
@@ -875,28 +875,28 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
-        <translation>(наприклад, «Поштові наклейки», «Візитівки», ...)</translation>
-    </message>
-    <message>
         <source>Brand:</source>
         <translation>Фірма:</translation>
+    </message>
+    <message>
+        <source>(e.g. Avery, Acme, ...)</source>
+        <translation>(наприклад, Avery, Acme, ...)</translation>
     </message>
     <message>
         <source>Part #:</source>
         <translation>№ частини:</translation>
     </message>
     <message>
-        <source>Description:</source>
-        <translation>Опис:</translation>
-    </message>
-    <message>
         <source>(e.g. 8163A)</source>
         <translation>(наприклад, 8163A)</translation>
     </message>
     <message>
-        <source>(e.g. Avery, Acme, ...)</source>
-        <translation>(наприклад, Avery, Acme, ...)</translation>
+        <source>Description:</source>
+        <translation>Опис:</translation>
+    </message>
+    <message>
+        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
+        <translation>(наприклад, «Поштові наклейки», «Візитівки», ...)</translation>
     </message>
 </context>
 <context>
@@ -941,31 +941,31 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>Roll width:</source>
-        <translation type="unfinished">Roll width:</translation>
-    </message>
-    <message>
-        <source>Height:</source>
-        <translation>Висота:</translation>
+        <source>Page size:</source>
+        <translation>Розмір сторінки:</translation>
     </message>
     <message>
         <source>Width:</source>
         <translation>Ширина:</translation>
     </message>
     <message>
-        <source>Page size:</source>
-        <translation>Розмір сторінки:</translation>
+        <source>Height:</source>
+        <translation>Висота:</translation>
+    </message>
+    <message>
+        <source>Roll width:</source>
+        <translation>Ширина рулону:</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerPathPage</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <source>&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation type="unfinished">&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></translation>
+        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Натисніть &amp;quot;Скасувати&amp;quot;, щоб скасувати, або натисніть &amp;quot;Назад&amp;quot;, щоб розпочати роботу із іншим продуктом.&lt;/p>&lt;/body>&lt;/html></translation>
     </message>
 </context>
 <context>
@@ -975,36 +975,36 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>4. Horizontal waste:</source>
-        <translation>4. Горизонтальні обрізки:</translation>
-    </message>
-    <message>
-        <source>3. Corner radius</source>
-        <translation>3. Радіус кутового скруглення</translation>
-    </message>
-    <message>
         <source>1. Width:</source>
         <translation>1. Ширина:</translation>
-    </message>
-    <message>
-        <source>5. Vertical waste:</source>
-        <translation>5. Вертикальні обрізки:</translation>
     </message>
     <message>
         <source>2. Height:</source>
         <translation>2. Висота:</translation>
     </message>
     <message>
+        <source>3. Corner radius</source>
+        <translation>3. Радіус кутового скруглення</translation>
+    </message>
+    <message>
+        <source>4. Horizontal waste:</source>
+        <translation>4. Горизонтальні обрізки:</translation>
+    </message>
+    <message>
+        <source>5. Vertical waste:</source>
+        <translation>5. Вертикальні обрізки:</translation>
+    </message>
+    <message>
         <source>6. Margin (X):</source>
-        <translation type="unfinished">6. Margin (X):</translation>
+        <translation>6. Поле (X):</translation>
     </message>
     <message>
         <source>7. Margin (Y):</source>
-        <translation type="unfinished">7. Margin (Y):</translation>
+        <translation>7. Поле (Y):</translation>
     </message>
     <message>
         <source>in</source>
-        <translation type="unfinished">in</translation>
+        <translation>дюймів</translation>
     </message>
 </context>
 <context>
@@ -1014,16 +1014,16 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>3. Margin</source>
-        <translation>3. Поле</translation>
+        <source>2. Waste:</source>
+        <translation>2. Обрізки:</translation>
     </message>
     <message>
         <source>1. Radius:</source>
         <translation>1. Радіус:</translation>
     </message>
     <message>
-        <source>2. Waste:</source>
-        <translation>2. Обрізки:</translation>
+        <source>3. Margin</source>
+        <translation>3. Поле</translation>
     </message>
 </context>
 <context>
@@ -1205,10 +1205,6 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Вітаємо</translation>
     </message>
     <message>
-        <source>Edit</source>
-        <translation>Змінити</translation>
-    </message>
-    <message>
         <source>Properties</source>
         <translation>Властивості</translation>
     </message>
@@ -1219,6 +1215,10 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     <message>
         <source>Print</source>
         <translation>Надрукувати</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Змінити</translation>
     </message>
     <message>
         <source>&amp;New...</source>
@@ -1927,12 +1927,12 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Дизайнер шаблонів продуктів</translation>
     </message>
     <message>
-        <source>Roll</source>
-        <translation type="unfinished">Roll</translation>
-    </message>
-    <message>
         <source>Copy</source>
         <translation>Копіювати</translation>
+    </message>
+    <message>
+        <source>Roll</source>
+        <translation>Рулон</translation>
     </message>
 </context>
 <context>
@@ -1969,11 +1969,11 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     <name>glabels::TemplateDesignerContinuousPage</name>
     <message>
         <source>Unsupported Product Style</source>
-        <translation type="unfinished">Unsupported Product Style</translation>
+        <translation>Непідтримуваний стиль продукту</translation>
     </message>
     <message>
         <source>Continuous tape product templates are not currently supported by the Product Template Designer.</source>
-        <translation type="unfinished">Continuous tape product templates are not currently supported by the Product Template Designer.</translation>
+        <translation>У поточній версії дизайнера шаблонів продуктів не передбачено підтримки шаблонів неперервної стрічки.</translation>
     </message>
 </context>
 <context>
@@ -2051,18 +2051,18 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Roll</source>
-        <translation type="unfinished">Roll</translation>
+        <translation>Рулон</translation>
     </message>
 </context>
 <context>
     <name>glabels::TemplateDesignerPathPage</name>
     <message>
         <source>Unsupported Product Style</source>
-        <translation type="unfinished">Unsupported Product Style</translation>
+        <translation>Непідтримуваний стиль продукту</translation>
     </message>
     <message>
         <source>Path based product templates are not currently supported by the Product Template Designer.</source>
-        <translation type="unfinished">Path based product templates are not currently supported by the Product Template Designer.</translation>
+        <translation>У поточній версії дизайнера шаблонів продуктів не передбачено підтримки шаблонів на основі контуру.</translation>
     </message>
 </context>
 <context>
@@ -2248,10 +2248,6 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>IEC18004 (QRCode)</translation>
     </message>
     <message>
-        <source>Australia Post Standard</source>
-        <translation type="unfinished">Australia Post Standard</translation>
-    </message>
-    <message>
         <source>Australia Post Reply Paid</source>
         <translation>Австралійська пошта, із оплатою відповіді</translation>
     </message>
@@ -2304,8 +2300,12 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Код 49</translation>
     </message>
     <message>
+        <source>Australia Post Standard</source>
+        <translation>Австралійська пошта, стандартний</translation>
+    </message>
+    <message>
         <source>Code 128 (Mode C suppression)</source>
-        <translation type="unfinished">Code 128 (Mode C suppression)</translation>
+        <translation>Код 128 (із придушенням режиму C)</translation>
     </message>
     <message>
         <source>DAFT Code</source>
