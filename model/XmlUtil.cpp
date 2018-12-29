@@ -381,7 +381,7 @@ namespace glabels
 			Distance dy = 0;
 			QPointF  c;
 
-			for ( unsigned int i = 0; i < tokens.size(); i++ )
+			for ( int i = 0; i < tokens.size(); i++ )
 			{
 				switch (state)
 				{

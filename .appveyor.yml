@@ -1,0 +1,51 @@
+# Build glabels windows installer.
+#
+# Currently, only builds snapshots and is truggered by the travis CI AppImage build, which
+# moves the "continuous" release/tag to head.  This script deploys into this moved release.
+
+
+version: 3.99.0.{build}
+
+branches:
+  # blacklist
+  except:
+    - /.*/
+
+  # whitelist
+  only:
+    - master
+
+skip_non_tags: true
+  
+image: Visual Studio 2017
+
+init:
+  - git config --global core.autocrlf true
+
+install:
+  - set QTDIR=c:\Qt\5.11\msvc2017_64
+  - set PATH=%PATH%;%QTDIR%/bin
+  
+build_script:
+  - mkdir build
+  - cd build
+  - cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_PREFIX_PATH=%QTDIR% ..
+  - cmake --build . --config Release
+  - ctest -C Release
+  - cpack -C Release -G NSIS64
+
+artifacts:
+  - path: build\glabels-3.99.0-win64.exe
+    name: windows-installer
+
+deploy:
+  - provider: GitHub
+    release: continuous
+    artifact: windows-installer
+    auth_token:
+      secure: mPNNgwWP58gu4eA2wVwGkGWNTzJigKj1g/XjsZ9vk03rLMmf5fxC/XNr15fPBCi8
+    draft: false
+    prerelease: true
+    force_update: true
+    on:
+      branch: master

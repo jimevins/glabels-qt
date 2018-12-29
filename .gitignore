@@ -15,6 +15,9 @@
 *.la
 *.a
 
+# Sphinx-build artifacts
+/user-docs/_build/doctrees
+
 #
 # Ignore artifacts from editors, patching, etc.
 #

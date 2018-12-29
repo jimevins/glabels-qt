@@ -3,8 +3,60 @@ gLabels Windows Build Instructions
 
 gLabels for Windows can be built using one of the following toolchains:
 
-- [MSYS/MINGW](#msysmingw)
 - [Visual Studio](#visual-studio)
+- [MSYS/MINGW](#msysmingw)
+
+
+Visual Studio
+-------------
+
+### Prerequisites
+
+- Visual Studio (these instructions are for _Visual Studio 15 2017 Win64_)
+- CMake 3.2+
+- Qt5 5.9+ for your version of Visual Studio
+- NSIS 3.03+ (optional -- for creating an installer)
+
+Make sure that CMake and the Qt tools are in your executable search path.  For example, you may need to add something like the following to your PATH environment variable:
+
+```
+c:\Program Files\CMake\bin
+c:\Qt\5.9.3\msvc2017_64\bin
+```
+
+The exact paths will depend on the version of Qt and CMake you have installed.
+
+### Compile
+
+From a Windows Power Shell, use CMake to create and build a Visual Studio Solution:
+
+<pre>
+&gt; cd <i>glabels_source_directory</i>
+&gt; mkdir build
+&gt; cd build
+&gt; cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_PREFIX_PATH="c:\qt\5.9.3\msvc2017_64" ..
+&gt; cmake --build . --config Release 
+</pre>
+
+### Install
+
+To install, run a Windows Power Shell `as administrator`, and type the following commands:
+
+<pre>
+&gt; cd <i>glabels_source_directory</i>/build
+&gt; cmake --build . --config Release --target INSTALL
+</pre>
+
+### Create installer
+
+To create a Windows installer, run the following commands:
+
+<pre>
+&gt; cd <i>glabels_source_directory</i>/build
+&gt; cpack -C Release -G NSIS
+</pre>
+
+
 
 
 MSYS/MINGW
@@ -45,44 +97,5 @@ To install glabels, run an MSYS shell `as administrator`, and type the following
 <pre>
 $ cd <i>glabels_source_directory</i>/build
 $ make install
-</pre>
-
-
-
-Visual Studio
--------------
-
-### Prerequisites
-
-- Visual Studio (these instructions are for _Visual Studio 15 2017 Win64_)
-- CMake 3.2+
-- Qt5 5.9+ for your version of Visual Studio
-
-Make sure that CMake and the Qt tools are in your executable search path.  For example, you may need to add something like the following to your PATH environment variable:
-
-```
-c:\Program Files\CMake\bin
-c:\Qt\5.9.3\msvc2017_64\bin
-```
-
-The exact paths will depend on the version of Qt and CMake you have installed.
-
-### Compile and Install
-
-From a Windows Power Shell, use CMake to create and build a Visual Studio Solution:
-
-<pre>
-&gt; cd <i>glabels_source_directory</i>
-&gt; mkdir build
-&gt; cd build
-&gt; cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_PREFIX_PATH="c:\qt\5.9.3\msvc2017_64" ..
-&gt; cmake --build . --config Release 
-</pre>
-
-To install, run a Windows Power Shell `as administrator`, and type the following commands:
-
-<pre>
-&gt; cd <i>glabels_source_directory</i>/build
-&gt; cmake --build . --config Release --target INSTALL
 </pre>
 

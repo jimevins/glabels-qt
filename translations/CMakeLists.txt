@@ -45,10 +45,9 @@ add_executable (XmlStrings WIN32
   XmlStrings.cpp
 )
 
-#target_compile_features (Model
-#  PUBLIC cxx_std_11
-#)
-set_property (TARGET XmlStrings PROPERTY CXX_STANDARD 11)
+target_compile_features (Model
+  PUBLIC cxx_std_11
+)
 
 target_link_libraries (XmlStrings
   Qt5::Core
