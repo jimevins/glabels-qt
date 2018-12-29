@@ -136,6 +136,7 @@ add_subdirectory (model)
 add_subdirectory (glabels)
 add_subdirectory (glabels-batch)
 add_subdirectory (templates)
+add_subdirectory (user-docs)
 add_subdirectory (translations)
 add_subdirectory (data)
 
