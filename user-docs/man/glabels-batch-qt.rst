@@ -79,6 +79,18 @@ FILES
 	      
               Directory for manually created product templates.
 
+BUGS
+----
+
+To report a bug or make a suggestion regarding this application or this manual
+page, you can use the issues section at Github:
+
+<https://github.com/jimevins/glabels-qt/issues>
+
+It is needed to register/sign in before. In case of you use another locale than
+**en** on your system, it would be very helpful for developers if you set the
+locale back to American English with the command ``export LC_ALL=C`` before
+launching `glabels-qt`.
 
 SEE ALSO
 --------
