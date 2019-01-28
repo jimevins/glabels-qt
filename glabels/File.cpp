@@ -26,6 +26,7 @@
 
 #include "model/FileUtil.h"
 #include "model/Model.h"
+#include "model/Settings.h"
 #include "model/XmlLabelParser.h"
 #include "model/XmlLabelCreator.h"
 
@@ -124,6 +125,47 @@ namespace glabels
 					newWindow->setModel( model );
 					newWindow->show();
 				}
+				model::Settings::addToRecentFileList( fileName );
+
+				// Save CWD
+				mCwd = QFileInfo( fileName ).absolutePath();
+			}
+			else
+			{
+				QMessageBox msgBox;
+				msgBox.setText( tr("Unable to open \"") + fileName + tr("\".") );
+				msgBox.setStandardButtons( QMessageBox::Ok );
+				msgBox.setDefaultButton( QMessageBox::Ok );
+				msgBox.exec();
+			}
+		}
+	}
+
+
+	///
+	/// Open file
+	///
+	void File::open( const QString& fileName, MainWindow *window )
+	{
+		if ( !fileName.isEmpty() )
+		{
+			model::Model *model = model::XmlLabelParser::readFile( fileName );
+			if ( model )
+			{
+				model->setFileName( fileName );
+				
+				// Either apply to current window or open a new one
+				if ( window->isEmpty() )
+				{
+					window->setModel( model );
+				}
+				else
+				{
+					auto *newWindow = new MainWindow();
+					newWindow->setModel( model );
+					newWindow->show();
+				}
+				model::Settings::addToRecentFileList( fileName );
 
 				// Save CWD
 				mCwd = QFileInfo( fileName ).absolutePath();
@@ -157,6 +199,7 @@ namespace glabels
 
 		model::XmlLabelCreator::writeFile( window->model(), window->model()->fileName() );
 		window->model()->clearModified();
+		model::Settings::addToRecentFileList( window->model()->fileName() );
 
 		// Save CWD
 		mCwd = QFileInfo( window->model()->fileName() ).absolutePath();
@@ -212,6 +255,7 @@ namespace glabels
 			model::XmlLabelCreator::writeFile( window->model(), fileName );
 			window->model()->setFileName( fileName );
 			window->model()->clearModified();
+			model::Settings::addToRecentFileList( fileName );
 		
 			// Save CWD
 			mCwd = QFileInfo( fileName ).absolutePath();

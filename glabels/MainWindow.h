@@ -91,6 +91,7 @@ namespace glabels
 
 		void fileNew();
 		void fileOpen();
+		void fileOpenRecent();
 		void fileSave();
 		void fileSaveAs();
 		void fileShowEditorPage();
@@ -158,6 +159,8 @@ namespace glabels
 		void onLabelChanged();
 		void onUndoRedoChanged();
 
+		void onSettingsChanged();
+
 
 		/////////////////////////////////////
 		// Internal Private Methods
@@ -182,13 +185,14 @@ namespace glabels
 		void writeSettings();
 
 		bool isOkToClose();
-	
+
 
 		/////////////////////////////////////
 		// Private Data
 		/////////////////////////////////////
 	private:
 		QMenu*    fileMenu;
+		QMenu*    fileRecentMenu;
 		QMenu*    editMenu;
 		QMenu*    viewMenu;
 		QMenu*    viewToolBarsMenu;
@@ -249,6 +253,8 @@ namespace glabels
 		QAction*  fileTemplateDesignerAction;
 		QAction*  fileCloseAction;
 		QAction*  fileExitAction;
+
+		QList<QAction*>  fileRecentActionList;
 
 		QAction*  editUndoAction;
 		QAction*  editRedoAction;

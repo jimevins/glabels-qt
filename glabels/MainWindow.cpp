@@ -177,6 +177,7 @@ namespace glabels
 		connect( mMergeButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mPrintButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
+		connect( model::Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
 		connect( QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(clipboardChanged()) );
 #if 0
 		connect( mLabelEditor, SIGNAL(pointerMoved(double, double)),
@@ -278,6 +279,14 @@ namespace glabels
 		fileOpenAction->setShortcut( QKeySequence::Open );
 		fileOpenAction->setStatusTip( tr("Open an existing gLabels project") );
 		connect( fileOpenAction, SIGNAL(triggered()), this, SLOT(fileOpen()) );
+
+		for ( int i = 0; i < model::Settings::maxRecentFiles(); i++ )
+		{
+			auto* action = new QAction( this );
+			action->setVisible( false );
+			fileRecentActionList.append( action );
+			connect( action, SIGNAL(triggered()), this, SLOT(fileOpenRecent()) );
+		}
 
 		fileSaveAction = new QAction( tr("&Save"), this );
 		fileSaveAction->setIcon( Icons::FileSave() );
@@ -583,6 +592,11 @@ namespace glabels
 		fileMenu = menuBar()->addMenu( tr("&File") );
 		fileMenu->addAction( fileNewAction );
 		fileMenu->addAction( fileOpenAction );
+		fileRecentMenu = fileMenu->addMenu( tr("Open Recent") );
+		for ( auto* action : fileRecentActionList )
+		{
+			fileRecentMenu->addAction( action );
+		}
 		fileMenu->addAction( fileSaveAction );
 		fileMenu->addAction( fileSaveAsAction );
 		fileMenu->addSeparator();
@@ -838,9 +852,24 @@ namespace glabels
 		mMergeAction->setVisible( !isWelcomePage );
 		mPrintAction->setVisible( !isWelcomePage );
 
+		// Recent file actions
+		QStringList recentFileList = model::Settings::recentFileList();
+		for ( int i = 0; i < recentFileList.size(); i++ )
+		{
+			QString baseName = QFileInfo( recentFileList.at(i) ).completeBaseName();
+			fileRecentActionList.at(i)->setText(baseName);
+			fileRecentActionList.at(i)->setData(recentFileList.at(i));
+			fileRecentActionList.at(i)->setVisible( true );
+		}
+		for ( int i = recentFileList.size(); i < model::Settings::maxRecentFiles(); i++ )
+		{
+			fileRecentActionList.at(i)->setVisible( false );
+		}
+
 		// File actions
 		fileNewAction->setEnabled( true );
 		fileOpenAction->setEnabled( true );
+		fileRecentMenu->setEnabled( !recentFileList.isEmpty() );
 		fileSaveAction->setEnabled( hasModel && mModel->isModified() );
 		fileSaveAsAction->setEnabled( hasModel );
 		fileShowEditorPageAction->setEnabled( !isWelcomePage && !isEditorPage );
@@ -1076,6 +1105,20 @@ namespace glabels
 	void MainWindow::fileOpen()
 	{
 		File::open( this );
+	}
+
+
+	///
+	/// File->OpenRecent Action
+	///
+	void MainWindow::fileOpenRecent()
+	{
+		QAction* action = qobject_cast<QAction*>( sender() );
+		if ( action )
+		{
+			QString fileName = action->data().toString();
+			File::open( fileName, this );
+		}
 	}
 
 
@@ -1642,6 +1685,15 @@ namespace glabels
 	/// Undo/Redo changed handler
 	///
 	void MainWindow::onUndoRedoChanged()
+	{
+		manageActions();
+	}
+
+
+	///
+	/// Settings changed handler
+	///
+	void MainWindow::onSettingsChanged()
 	{
 		manageActions();
 	}
