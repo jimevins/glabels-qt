@@ -384,14 +384,14 @@ namespace glabels
 
 
 		/* View actions */
-		viewFileToolBarAction = new QAction( tr("File"), this );
+		viewFileToolBarAction = new QAction( tr("Quick Access"), this );
 		viewFileToolBarAction->setCheckable( true );
-		viewFileToolBarAction->setStatusTip( tr("Change visibility of file toolbar in current window") );
+		viewFileToolBarAction->setStatusTip( tr("Change visibility of the \"Quick Access\" toolbar in current window") );
 		connect( viewFileToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewFileToolBar(bool)) );
 
 		viewEditorToolBarAction = new QAction( tr("Editor"), this );
 		viewEditorToolBarAction->setCheckable( true );
-		viewEditorToolBarAction->setStatusTip( tr("Change visibility of editor toolbar in current window") );
+		viewEditorToolBarAction->setStatusTip( tr("Change visibility of the \"Editor\" toolbar in current window") );
 		connect( viewEditorToolBarAction, SIGNAL(toggled(bool)), this, SLOT(viewEditorToolBar(bool)) );
 
 
@@ -536,11 +536,15 @@ namespace glabels
 
 
 		/* Help actions */
-		helpContentsAction = new QAction( tr("&Contents..."), this );
+		helpContentsAction = new QAction( tr("&User Manual..."), this );
 		helpContentsAction->setIcon( QIcon::fromTheme( "help-contents" ) );
 		helpContentsAction->setShortcut( QKeySequence::HelpContents );
 		helpContentsAction->setStatusTip( tr("Open gLabels manual") );
 		connect( helpContentsAction, SIGNAL(triggered()), this, SLOT(helpContents()) );
+
+		helpReportBugAction = new QAction( tr("&Report Bug..."), this );
+		helpReportBugAction->setStatusTip( tr("Report a bug to the developers") );
+		connect( helpReportBugAction, SIGNAL(triggered()), this, SLOT(helpReportBug()) );
 
 		helpAboutAction = new QAction( tr("&About..."), this );
 		helpAboutAction->setIcon( QIcon::fromTheme( "help-about" ) );
@@ -651,6 +655,7 @@ namespace glabels
 
 		helpMenu = menuBar()->addMenu( tr("&Help") );
 		helpMenu->addAction( helpContentsAction );
+		helpMenu->addAction( helpReportBugAction );
 		helpMenu->addAction( helpAboutAction );
 
 		contextMenu = new QMenu();
@@ -897,6 +902,7 @@ namespace glabels
 
 		// Help actions
 		helpContentsAction->setEnabled( true );
+		helpReportBugAction->setEnabled( true );
 		helpAboutAction->setEnabled( true );
 
 		// Special context actions
@@ -1527,6 +1533,15 @@ namespace glabels
 	void MainWindow::helpContents()
 	{
 		Help::displayContents( this );
+	}
+
+
+	///
+	/// Help->Report Bug Action
+	///
+	void MainWindow::helpReportBug()
+	{
+		Help::displayReportBug( this );
 	}
 
 

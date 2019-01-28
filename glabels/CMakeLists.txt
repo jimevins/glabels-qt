@@ -31,6 +31,7 @@ set (glabels_sources
   PropertiesView.cpp
   Preview.cpp
   PreviewOverlayItem.cpp
+  ReportBugDialog.cpp
   RollTemplatePath.cpp
   SelectProductDialog.cpp
   SimplePreview.cpp
@@ -61,6 +62,7 @@ set (glabels_qobject_headers
   PrintView.h
   PropertiesView.h
   Preview.h
+  ReportBugDialog.h
   SelectProductDialog.h
   SimplePreview.h
   StartupView.h
@@ -76,6 +78,7 @@ set (glabels_forms
   ui/PreferencesDialog.ui
   ui/PrintView.ui
   ui/PropertiesView.ui
+  ui/ReportBugDialog.ui
   ui/SelectProductDialog.ui
   ui/StartupView.ui
   ui/TemplateDesignerIntroPage.ui

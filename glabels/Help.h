@@ -35,6 +35,7 @@ namespace glabels
 	{
 
 		void displayContents( QWidget *parent );
+		void displayReportBug( QWidget *parent );
 		void displayAbout( QWidget *parent );
 
 	}

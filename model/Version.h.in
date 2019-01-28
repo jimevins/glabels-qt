@@ -30,6 +30,7 @@ namespace glabels
 		namespace Version
 		{
 			const QString WEBSITE = "http://@WEBSITE@";
+			const QString BUG_WEBSITE = "@BUG_WEBSITE@";
 
 			const int     MAJOR   = @glabels-qt_VERSION_MAJOR@;
 			const int     MINOR   = @glabels-qt_VERSION_MINOR@;

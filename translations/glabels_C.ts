@@ -645,6 +645,25 @@
     </message>
 </context>
 <context>
+    <name>ReportBugDialog</name>
+    <message>
+        <source>gLabels - Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Launch Bug Report Webpage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SelectProductDialog</name>
     <message>
         <source>gLabels - Select Product</source>
@@ -1366,19 +1385,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Change visibility of file toolbar in current window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Change visibility of editor toolbar in current window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1598,10 +1605,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Contents...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open gLabels manual</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1703,6 +1706,30 @@
     </message>
     <message>
         <source>Create Barcode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quick Access</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Report Bug...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report a bug to the developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Quick Access&quot; toolbar in current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Editor&quot; toolbar in current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;User Manual...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1903,6 +1930,25 @@
     </message>
     <message>
         <source>Change Product</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>glabels::ReportBugDialog</name>
+    <message>
+        <source>How to Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To submit a bug report, click on the button below.  This will open a web browser to the gLabels github issue tracking page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Be sure to include a detailed description of the problem and how to recreate it.  Attach any screenshots and/or example glabels project files that may illustrate the problem.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Before submitting a report, look through the existing issues for similar or related bugs.  If the issue has already been reported, please consider contributing to its report instead.  Otherwise, create a new issue report. Please paste the following information into the issue description.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

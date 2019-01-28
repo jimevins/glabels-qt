@@ -143,6 +143,7 @@ namespace glabels
 		void objectsCenterVert();
 
 		void helpContents();
+		void helpReportBug();
 		void helpAbout();
 
 		void onContextMenuActivate();
@@ -291,6 +292,7 @@ namespace glabels
 		QAction*  objectsCenterVertAction;
 
 		QAction*  helpContentsAction;
+		QAction*  helpReportBugAction;
 		QAction*  helpAboutAction;
 
 		QAction*  contextCutAction;
