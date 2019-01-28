@@ -1,6 +1,6 @@
-/*  Help.cpp
+/*  ReportBugDialog.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2019  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,43 +18,41 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Help.h"
+#ifndef ReportBugDialog_h
+#define ReportBugDialog_h
 
-#include "AboutDialog.h"
-#include "ReportBugDialog.h"
 
-#include <QtDebug>
+#include "ui_ReportBugDialog.h"
 
 
 namespace glabels
 {
-
+	
 	///
-	/// Display Help Contents
+	/// "Report Bug" Dialog Widget
 	///
-	void Help::displayContents( QWidget *parent )
+	class ReportBugDialog : public QDialog, public Ui_ReportBugDialog
 	{
-		qDebug() << "TODO: Help::displayContents";
-	}
+		Q_OBJECT
 
 
-	///
-	/// Display Help->"Report Bug" Dialog
-	///
-	void Help::displayReportBug( QWidget *parent )
-	{
-		ReportBugDialog dialog( parent );
-		dialog.exec();
-	}
+		/////////////////////////////////
+		// Life Cycle
+		/////////////////////////////////
+	public:
+		ReportBugDialog( QWidget *parent = nullptr );
 
 
-	///
-	/// Display Help->About Dialog
-	///
-	void Help::displayAbout( QWidget *parent )
-	{
-		AboutDialog dialog( parent );
-		dialog.exec();
-	}
+		/////////////////////////////////
+		// Slots
+		/////////////////////////////////
+	private slots:
+		void onCopyButtonClicked();
+		void onWebsiteButtonClicked();
 
-} // namespace glabels
+	};
+
+}
+
+
+#endif // ReportBugDialog_h
