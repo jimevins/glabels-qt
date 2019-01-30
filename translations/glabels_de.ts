@@ -291,10 +291,6 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>Object properties</source>
-        <translation>Objekteigenschaften</translation>
-    </message>
-    <message>
         <source>Text</source>
         <translation>Text</translation>
     </message>
@@ -317,14 +313,6 @@
     <message>
         <source>Word</source>
         <translation>Wort</translation>
-    </message>
-    <message>
-        <source>Anywhere</source>
-        <translation>Beliebig</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation>Keine</translation>
     </message>
     <message>
         <source>Allow printing to shrink text to fit object</source>
@@ -385,6 +373,14 @@
     <message>
         <source>File</source>
         <translation>Datei</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Keine</translation>
+    </message>
+    <message>
+        <source>Anywhere</source>
+        <translation>Beliebig</translation>
     </message>
     <message>
         <source>Select File...</source>
@@ -474,6 +470,10 @@
         <source>Opacity:</source>
         <translation>Deckkraft:</translation>
     </message>
+    <message>
+        <source>Object properties</source>
+        <translation>Objekteigenschaften</translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -521,6 +521,18 @@
         <translation>Form</translation>
     </message>
     <message>
+        <source>Page</source>
+        <translation>Seite</translation>
+    </message>
+    <message>
+        <source>of</source>
+        <translation>von</translation>
+    </message>
+    <message>
+        <source>nn</source>
+        <translation>nn</translation>
+    </message>
+    <message>
         <source>Copies</source>
         <translation>Kopien</translation>
     </message>
@@ -555,18 +567,6 @@
     <message>
         <source>Print</source>
         <translation>Drucken</translation>
-    </message>
-    <message>
-        <source>Page</source>
-        <translation>Seite</translation>
-    </message>
-    <message>
-        <source>of</source>
-        <translation>von</translation>
-    </message>
-    <message>
-        <source>nn</source>
-        <translation>nn</translation>
     </message>
 </context>
 <context>
@@ -616,14 +616,6 @@
         <translation>Produkt ändern</translation>
     </message>
     <message>
-        <source>Adjustable Parameters</source>
-        <translation>Anpassbare Parameter</translation>
-    </message>
-    <message>
-        <source>Label length:</source>
-        <translation>Etikettenlänge:</translation>
-    </message>
-    <message>
         <source>Orientation</source>
         <translation>Ausrichtung</translation>
     </message>
@@ -642,6 +634,33 @@
     <message>
         <source>Similar Products</source>
         <translation>Ähnliche Produkte</translation>
+    </message>
+    <message>
+        <source>Adjustable Parameters</source>
+        <translation>Anpassbare Parameter</translation>
+    </message>
+    <message>
+        <source>Label length:</source>
+        <translation>Etikettenlänge:</translation>
+    </message>
+</context>
+<context>
+    <name>ReportBugDialog</name>
+    <message>
+        <source>gLabels - Report a Bug</source>
+        <translation>gLabels - Einen Fehler melden</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopieren</translation>
+    </message>
+    <message>
+        <source>Ctrl+C</source>
+        <translation>Strg+C</translation>
+    </message>
+    <message>
+        <source>&amp;Launch Issue Tracker</source>
+        <translation>&amp;Fehler melden</translation>
     </message>
 </context>
 <context>
@@ -752,14 +771,6 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>6. Margin:</source>
-        <translation>6. Rand:</translation>
-    </message>
-    <message>
-        <source>1. Outer radius:</source>
-        <translation>1. Äußerer Radius:</translation>
-    </message>
-    <message>
         <source>4. Clipping height:</source>
         <translation>4. Innere Höhe:</translation>
     </message>
@@ -768,12 +779,20 @@
         <translation>2.Innerer Radius:</translation>
     </message>
     <message>
-        <source>3. Clipping width:</source>
-        <translation>4. Innere Breite:</translation>
+        <source>1. Outer radius:</source>
+        <translation>1. Äußerer Radius:</translation>
     </message>
     <message>
         <source>5. Waste:</source>
         <translation>5. Überstand:</translation>
+    </message>
+    <message>
+        <source>3. Clipping width:</source>
+        <translation>4. Innere Breite:</translation>
+    </message>
+    <message>
+        <source>6. Margin:</source>
+        <translation>6. Rand:</translation>
     </message>
 </context>
 <context>
@@ -794,16 +813,16 @@
         <translation>Form</translation>
     </message>
     <message>
+        <source>3. Waste:</source>
+        <translation>3. Überstand:</translation>
+    </message>
+    <message>
         <source>2. Height:</source>
         <translation>2. Höhe:</translation>
     </message>
     <message>
         <source>1. Width:</source>
         <translation>1. Breite:</translation>
-    </message>
-    <message>
-        <source>3. Waste:</source>
-        <translation>3. Überstand:</translation>
     </message>
     <message>
         <source>4. Margin:</source>
@@ -875,28 +894,28 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
-        <translation>(z.B. »Adressaufkleber«, »Visitenkarten« …)</translation>
-    </message>
-    <message>
         <source>Brand:</source>
         <translation>Marke:</translation>
+    </message>
+    <message>
+        <source>(e.g. Avery, Acme, ...)</source>
+        <translation>(z.B.. Avery, Acme, …)</translation>
     </message>
     <message>
         <source>Part #:</source>
         <translation>Bestellnummer:</translation>
     </message>
     <message>
-        <source>Description:</source>
-        <translation>Beschreibung:</translation>
-    </message>
-    <message>
         <source>(e.g. 8163A)</source>
         <translation>(z.B. 8163A)</translation>
     </message>
     <message>
-        <source>(e.g. Avery, Acme, ...)</source>
-        <translation>(z.B.. Avery, Acme, …)</translation>
+        <source>Description:</source>
+        <translation>Beschreibung:</translation>
+    </message>
+    <message>
+        <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
+        <translation>(z.B. »Adressaufkleber«, »Visitenkarten« …)</translation>
     </message>
 </context>
 <context>
@@ -941,20 +960,20 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>Roll width:</source>
-        <translation>Rollenbreite:</translation>
-    </message>
-    <message>
-        <source>Height:</source>
-        <translation>Höhe:</translation>
+        <source>Page size:</source>
+        <translation>Seitengröße:</translation>
     </message>
     <message>
         <source>Width:</source>
         <translation>Breite:</translation>
     </message>
     <message>
-        <source>Page size:</source>
-        <translation>Seitengröße:</translation>
+        <source>Height:</source>
+        <translation>Höhe:</translation>
+    </message>
+    <message>
+        <source>Roll width:</source>
+        <translation>Rollenbreite:</translation>
     </message>
 </context>
 <context>
@@ -975,24 +994,24 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>4. Horizontal waste:</source>
-        <translation>4. Horizontaler Überstand:</translation>
+        <source>1. Width:</source>
+        <translation>1. Breite:</translation>
+    </message>
+    <message>
+        <source>2. Height:</source>
+        <translation>2. Höhe:</translation>
     </message>
     <message>
         <source>3. Corner radius</source>
         <translation>3. Radius der Ecken</translation>
     </message>
     <message>
-        <source>1. Width:</source>
-        <translation>1. Breite:</translation>
+        <source>4. Horizontal waste:</source>
+        <translation>4. Horizontaler Überstand:</translation>
     </message>
     <message>
         <source>5. Vertical waste:</source>
         <translation>4. Vertikaler Überstand:</translation>
-    </message>
-    <message>
-        <source>2. Height:</source>
-        <translation>2. Höhe:</translation>
     </message>
     <message>
         <source>6. Margin (X):</source>
@@ -1014,16 +1033,16 @@
         <translation>Form</translation>
     </message>
     <message>
-        <source>3. Margin</source>
-        <translation>3. Rand</translation>
+        <source>2. Waste:</source>
+        <translation>2. Überstand:</translation>
     </message>
     <message>
         <source>1. Radius:</source>
         <translation>1. Radius:</translation>
     </message>
     <message>
-        <source>2. Waste:</source>
-        <translation>2. Überstand:</translation>
+        <source>3. Margin</source>
+        <translation>3. Rand</translation>
     </message>
 </context>
 <context>
@@ -1198,10 +1217,6 @@
         <translation>Willkommen</translation>
     </message>
     <message>
-        <source>Edit</source>
-        <translation>Bearbeiten</translation>
-    </message>
-    <message>
         <source>Properties</source>
         <translation>Eigenschaften</translation>
     </message>
@@ -1212,6 +1227,10 @@
     <message>
         <source>Print</source>
         <translation>Drucken</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <source>&amp;New...</source>
@@ -1366,20 +1385,8 @@
         <translation>Die Anwendung einrichten</translation>
     </message>
     <message>
-        <source>File</source>
-        <translation>Datei</translation>
-    </message>
-    <message>
-        <source>Change visibility of file toolbar in current window</source>
-        <translation>Die Sichtbarkeit der Werkzeugleiste im aktuellen Fenster ändern</translation>
-    </message>
-    <message>
         <source>Editor</source>
         <translation>Editor</translation>
-    </message>
-    <message>
-        <source>Change visibility of editor toolbar in current window</source>
-        <translation>Die Sichtbarkeit des Editors im aktuellen Fenster ändern</translation>
     </message>
     <message>
         <source>Grid</source>
@@ -1598,10 +1605,6 @@
         <translation>Objekte auf dem Etikett vertikal zentrieren</translation>
     </message>
     <message>
-        <source>&amp;Contents...</source>
-        <translation>&amp;Inhalt …</translation>
-    </message>
-    <message>
         <source>Open gLabels manual</source>
         <translation>Das gLabels-Handbuch öffnen</translation>
     </message>
@@ -1704,6 +1707,34 @@
     <message>
         <source>Create Barcode</source>
         <translation>Strichcode erzeugen</translation>
+    </message>
+    <message>
+        <source>Quick Access</source>
+        <translation>Schnellzugriff</translation>
+    </message>
+    <message>
+        <source>&amp;Report Bug...</source>
+        <translation>Fehler &amp;melden …</translation>
+    </message>
+    <message>
+        <source>Report a bug to the developers</source>
+        <translation>Einen Fehler an die Entwickler melden</translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Quick Access&quot; toolbar in current window</source>
+        <translation>Sichtbarkeit der »Schnellzugriff«-Werkzeugleiste im aktuellen Fenster umschalten</translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Editor&quot; toolbar in current window</source>
+        <translation>Sichtbarkeit der »Editor«-Werkzeugleiste im aktuellen Fenster umschalten</translation>
+    </message>
+    <message>
+        <source>&amp;User Manual...</source>
+        <translation>Ben&amp;utzerhandbuch …</translation>
+    </message>
+    <message>
+        <source>Open Recent</source>
+        <translation>Zuletzt geöffnet</translation>
     </message>
 </context>
 <context>
@@ -1907,6 +1938,25 @@
     </message>
 </context>
 <context>
+    <name>glabels::ReportBugDialog</name>
+    <message>
+        <source>How to Report a Bug</source>
+        <translation>Wie melde ich einen Fehler?</translation>
+    </message>
+    <message>
+        <source>To submit a bug report, click on the button below.  This will open a web browser to the gLabels github issue tracking page.</source>
+        <translation>Um einen Fehlerbericht zu erstellen, klicken Sie auf den untenstehenden Knopf. Dadurch wird ein Webbrowser mit der Github-Seite der Fehlermeldungen für gLabels geöffnet. </translation>
+    </message>
+    <message>
+        <source>Be sure to include a detailed description of the problem and how to recreate it.  Attach any screenshots and/or example glabels project files that may illustrate the problem.</source>
+        <translation>Beschreiben Sie das Problem detailliert und wie der Fehler reproduziert werden kann. Fügen Sie bei Bedarf Bildschirmfotos und Beispiele für gLabels-Projektdateien hinzu, die das Problem illustrieren können. </translation>
+    </message>
+    <message>
+        <source>Before submitting a report, look through the existing issues for similar or related bugs.  If the issue has already been reported, please consider contributing to its report instead.  Otherwise, create a new issue report. Please paste the following information into the issue description.</source>
+        <translation>Schauen Sie vor dem Melden des Fehlers nach vorhandenen Meldungen für ähnliche Fehler. Wenn der Fehler bereits gemeldet wurde, sollten Sie besser dort einen Kommentar hinterlassen. Anderenfalls erstellen Sie einen neuen Fehlerbericht. Bitte fügen Sie die folgenden Informationen in die Beschreibung ein.</translation>
+    </message>
+</context>
+<context>
     <name>glabels::SimplePreview</name>
     <message>
         <source>Up</source>
@@ -1920,12 +1970,12 @@
         <translation>Vorlagendesigner</translation>
     </message>
     <message>
-        <source>Roll</source>
-        <translation>Rolle</translation>
-    </message>
-    <message>
         <source>Copy</source>
         <translation>Kopieren</translation>
+    </message>
+    <message>
+        <source>Roll</source>
+        <translation>Rolle</translation>
     </message>
 </context>
 <context>
@@ -2241,10 +2291,6 @@
         <translation>IEC18004 (QRCode)</translation>
     </message>
     <message>
-        <source>Australia Post Standard</source>
-        <translation>Australische Post, Standard</translation>
-    </message>
-    <message>
         <source>Australia Post Reply Paid</source>
         <translation>Australische Post, mit Rückantwort</translation>
     </message>
@@ -2295,6 +2341,10 @@
     <message>
         <source>Code 49</source>
         <translation>Code 49</translation>
+    </message>
+    <message>
+        <source>Australia Post Standard</source>
+        <translation>Australische Post, Standard</translation>
     </message>
     <message>
         <source>Code 128 (Mode C suppression)</source>
