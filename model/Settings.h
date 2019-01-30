@@ -90,9 +90,14 @@ namespace glabels
 			static QStringList recentTemplateList();
 			static void addToRecentTemplateList( const QString& name );
 
+			static int maxRecentFiles();
+			static QStringList recentFileList();
+			static void addToRecentFileList( const QString& filePath );
+
 
 		private:
 			static Settings* mInstance;
+			static const int mMaxRecentFiles{5};
 
 		};
 

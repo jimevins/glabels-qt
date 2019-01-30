@@ -655,11 +655,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Launch Bug Report Webpage</source>
+        <source>Ctrl+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+C</source>
+        <source>&amp;Launch Issue Tracker</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1730,6 +1730,10 @@
     </message>
     <message>
         <source>&amp;User Manual...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Recent</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -294,5 +294,44 @@ namespace glabels
 			emit mInstance->changed();
 		}
 
+
+		int Settings::maxRecentFiles()
+		{
+			return mMaxRecentFiles;
+		}
+
+
+		QStringList Settings::recentFileList()
+		{
+			QStringList defaultList;
+	
+			mInstance->beginGroup( "Recent" );
+			QStringList returnList = mInstance->value( "files", defaultList ).toStringList();
+			mInstance->endGroup();
+
+			return returnList;
+		}
+
+
+		void Settings::addToRecentFileList( const QString& filePath )
+		{
+			mInstance->beginGroup( "Recent" );
+
+			QStringList list = mInstance->value( "files" ).toStringList();
+
+			list.removeAll( filePath );
+			list.prepend( filePath );
+			while ( list.count() > mMaxRecentFiles )
+			{
+				list.removeLast();
+			}
+
+			mInstance->setValue( "files", list );
+
+			mInstance->endGroup();
+
+			emit mInstance->changed();
+		}
+
 	}
 }

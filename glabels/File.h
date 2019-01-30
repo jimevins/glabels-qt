@@ -44,6 +44,7 @@ namespace glabels
 	public:
 		static bool newLabel( MainWindow *window = nullptr );
 		static void open( MainWindow *window );
+		static void open( const QString& fileName, MainWindow *window );
 		static bool save( MainWindow *window );
 		static bool saveAs( MainWindow *window );
 		static void templateDesigner( MainWindow *window );
