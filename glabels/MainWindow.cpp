@@ -708,7 +708,8 @@ namespace glabels
 	///
 	void MainWindow::createToolBars()
 	{
-		fileToolBar = addToolBar( tr("&File") );
+		fileToolBar = addToolBar( tr("Quick Access") );
+		connect( fileToolBar, SIGNAL(visibilityChanged(bool)), viewFileToolBarAction, SLOT(setChecked(bool)) );
 		fileToolBar->addAction( fileNewAction );
 		fileToolBar->addAction( fileOpenAction );
 		fileToolBar->addAction( fileSaveAction );
