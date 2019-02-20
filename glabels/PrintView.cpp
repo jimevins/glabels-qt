@@ -90,8 +90,23 @@ namespace glabels
 	{
 		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
 
-		copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
-		                                 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
+		if ( mRenderer.nPages() == 1 )
+		{
+			if ( mRenderer.nItems() == 1 )
+			{
+				copiesDescriptionLabel->setText( tr("(Will print a total of 1 item on 1 page.)") );
+			}
+			else
+			{
+				copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on 1 page.)")
+				                                 .arg(mRenderer.nItems()) );
+			}
+		}
+		else
+		{
+			copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
+			                                 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
+		}
 
 		pageSpin->setRange( 1, mRenderer.nPages() );
 		nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
