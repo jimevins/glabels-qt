@@ -1736,6 +1736,10 @@
         <source>Open Recent</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Quick Access Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>glabels::MergeView</name>
