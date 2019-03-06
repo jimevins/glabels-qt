@@ -20,6 +20,8 @@
 
 #include "VariablesView.h"
 
+#include "EditVariableDialog.h"
+
 #include <QtDebug>
 
 
@@ -55,7 +57,67 @@ namespace glabels
 		mModel = model;
 		mUndoRedoModel = undoRedoModel;
 
+		updateControls();
+		
 		//connect( mModel, SIGNAL(variablesChanged()), this, SLOT(onVariablesChanged()) );
+	}
+
+
+	///
+	/// table Selection Changed
+	///
+	void VariablesView::onTableSelectionChanged()
+	{
+		updateControls();
+	}
+
+
+	///
+	/// addButton Clicked
+	///
+	void VariablesView::onAddButtonClicked()
+	{
+		EditVariableDialog dialog( this );
+
+		model::Variable v( model::Variable::TYPE_NUMERIC,
+		                   "x",
+		                   "0",
+		                   model::Variable::INCREMENT_NEVER,
+		                   "0" );
+		dialog.setVariable( v );
+
+		if ( dialog.exec() == QDialog::Accepted )
+		{
+			qDebug() << "Add OK.";
+		}
+	}
+
+
+	///
+	/// editButton Clicked
+	///
+	void VariablesView::onEditButtonClicked()
+	{
+	}
+
+
+	///
+	/// deleteButton Clicked
+	///
+	void VariablesView::onDeleteButtonClicked()
+	{
+	}
+
+
+	///
+	/// update controls
+	///
+	void VariablesView::updateControls()
+	{
+		bool hasSelection = !table->selectedItems().isEmpty();
+
+		editButton->setEnabled( hasSelection );
+		deleteButton->setEnabled( hasSelection );
 	}
 
 

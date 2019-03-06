@@ -1,6 +1,6 @@
-/*  VariablesView.h
+/*  EditVariableDialog.h
  *
- *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2019  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,71 +18,56 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef VariablesView_h
-#define VariablesView_h
+#ifndef EditVariableDialog_h
+#define EditVariableDialog_h
 
 
-#include "ui_VariablesView.h"
-
-#include "model/Model.h"
+#include "ui_EditVariableDialog.h"
+#include "model/Variable.h"
 
 
 namespace glabels
 {
 
-	// Forward references
-	class UndoRedoModel;
-	
-
 	///
-	/// Variables Property Editor Widget
+	/// New Label Dialog Widget
 	///
-	class VariablesView : public QWidget, public Ui_VariablesView
+	class EditVariableDialog : public QDialog, public Ui_EditVariableDialog
 	{
 		Q_OBJECT
-
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		VariablesView( QWidget *parent = nullptr );
-		~VariablesView() override;
+		EditVariableDialog( QWidget *parent = nullptr );
 
 
 		/////////////////////////////////
 		// Public methods
 		/////////////////////////////////
-		void setModel( model::Model* model, UndoRedoModel* undoRedoModel );
-
+		void setVariable( const model::Variable& variable );
+		model::Variable variable() const;
+		
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onTableSelectionChanged();
-		void onAddButtonClicked();
-		void onEditButtonClicked();
-		void onDeleteButtonClicked();
+		void onTypeComboChanged();
+		void onValueEditChanged();
+		void onIncrementComboChanged();
+		void onStepSizeEditChanged();
 
-
+		
 		/////////////////////////////////
 		// Private methods
 		/////////////////////////////////
-	private:
 		void updateControls();
-
-
-		/////////////////////////////////
-		// Private Data
-		/////////////////////////////////
-	private:
-		model::Model*  mModel;
-		UndoRedoModel* mUndoRedoModel;
 
 	};
 
 }
 
 
-#endif // VariablesView_h
+#endif // EditVariableDialog_h
