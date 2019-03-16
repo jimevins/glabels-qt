@@ -41,10 +41,10 @@ namespace glabels
 	///
 	void EditVariableDialog::setVariable( const model::Variable& variable )
 	{
-		typeCombo->setCurrentIndex( variable.type() );
+		typeCombo->setCurrentIndex( static_cast<int>(variable.type()) );
 		nameEdit->setText( variable.name() );
 		valueEdit->setText( variable.value() );
-		incrementCombo->setCurrentIndex( variable.incrementPolicy() );
+		incrementCombo->setCurrentIndex( static_cast<int>(variable.increment()) );
 		stepSizeEdit->setText( variable.stepSize() );
 
 		updateControls();
@@ -59,7 +59,7 @@ namespace glabels
 		return model::Variable( static_cast<model::Variable::Type>(typeCombo->currentIndex()),
 		                        nameEdit->text(),
 		                        valueEdit->text(),
-		                        static_cast<model::Variable::IncrementPolicy>(incrementCombo->currentIndex()),
+		                        static_cast<model::Variable::Increment>(incrementCombo->currentIndex()),
 		                        stepSizeEdit->text() );
 	}
 
@@ -104,24 +104,24 @@ namespace glabels
 	void EditVariableDialog::updateControls()
 	{
 		model::Variable::Type type = static_cast<model::Variable::Type>(typeCombo->currentIndex());
-		model::Variable::IncrementPolicy incrementPolicy = static_cast<model::Variable::IncrementPolicy>(incrementCombo->currentIndex());
+		model::Variable::Increment increment = static_cast<model::Variable::Increment>(incrementCombo->currentIndex());
 
-		if ( type != model::Variable::TYPE_NUMERIC )
+		if ( type != model::Variable::Type::NUMERIC )
 		{
-			incrementCombo->setCurrentIndex( model::Variable::INCREMENT_NEVER );
+			incrementCombo->setCurrentIndex( static_cast<int>(model::Variable::Increment::NEVER) );
 		}
 
-		if ( incrementPolicy == model::Variable::INCREMENT_NEVER )
+		if ( increment == model::Variable::Increment::NEVER )
 		{
 			stepSizeEdit->setText( "0" );
 		}
 		
-		incrementLabel->setEnabled( type == model::Variable::TYPE_NUMERIC );
-		incrementCombo->setEnabled( type == model::Variable::TYPE_NUMERIC );
-		stepSizeLabel->setEnabled( (type == model::Variable::TYPE_NUMERIC) &&
-		                           (incrementPolicy != model::Variable::INCREMENT_NEVER) );
-		stepSizeEdit->setEnabled( (type == model::Variable::TYPE_NUMERIC) &&
-		                          (incrementPolicy != model::Variable::INCREMENT_NEVER) );
+		incrementLabel->setEnabled( type == model::Variable::Type::NUMERIC );
+		incrementCombo->setEnabled( type == model::Variable::Type::NUMERIC );
+		stepSizeLabel->setEnabled( (type == model::Variable::Type::NUMERIC) &&
+		                           (increment != model::Variable::Increment::NEVER) );
+		stepSizeEdit->setEnabled( (type == model::Variable::Type::NUMERIC) &&
+		                          (increment != model::Variable::Increment::NEVER) );
 	}
 	
 

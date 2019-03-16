@@ -26,15 +26,15 @@ namespace glabels
 	namespace model
 	{
 
-		Variable::Variable( Variable::Type            type,
-		                    const QString&            name,
-		                    const QString&            value,
-		                    Variable::IncrementPolicy incrementPolicy,
-		                    const QString&            stepSize )
+		Variable::Variable( Variable::Type      type,
+		                    const QString&      name,
+		                    const QString&      value,
+		                    Variable::Increment increment,
+		                    const QString&      stepSize )
 			: mType(type),
 			  mName(name),
 			  mValue(value),
-			  mIncrementPolicy(incrementPolicy),
+			  mIncrement(increment),
 			  mStepSize(stepSize)
 		{
 			// empty
@@ -59,9 +59,9 @@ namespace glabels
 		}
 
 
-		Variable::IncrementPolicy Variable::incrementPolicy() const
+		Variable::Increment Variable::increment() const
 		{
-			return mIncrementPolicy;
+			return mIncrement;
 		}
 
 
@@ -69,6 +69,63 @@ namespace glabels
 		{
 			return mStepSize;
 		}
+
+
+		QString Variable::typeToI18nString( Type type )
+		{
+			switch (type)
+			{
+			case Type::NUMERIC:
+				return tr("Numeric");
+			case Type::STRING:
+				return tr("String");
+			}
+		}
+
+
+		QString Variable::typeToIdString( Type type )
+		{
+			switch (type)
+			{
+			case Type::NUMERIC:
+				return "numeric";
+			case Type::STRING:
+				return "string";
+			}
+		}
+		
+
+		QString Variable::incrementToI18nString( Increment increment )
+		{
+			switch (increment)
+			{
+			case Increment::NEVER:
+				return tr("Never");
+			case Increment::PER_COPY:
+				return tr("Per copy");
+			case Increment::PER_MERGE_RECORD:
+				return tr("Per merge record");
+			case Increment::PER_PAGE:
+				return tr("Per page");
+			}
+		}
+
+		
+		QString Variable::incrementToIdString( Increment increment )
+		{
+			switch (increment)
+			{
+			case Increment::NEVER:
+				return "never";
+			case Increment::PER_COPY:
+				return "per_copy";
+			case Increment::PER_MERGE_RECORD:
+				return "per_merge_record";
+			case Increment::PER_PAGE:
+				return "per_page";
+			}
+		}
+		
 
 	}
 }

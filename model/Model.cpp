@@ -57,7 +57,10 @@ namespace glabels
 		Model::Model()
 			: mUntitledInstance(0), mModified(true), mRotate(false)
 		{
+			mVariables = new Variables();
 			mMerge = new merge::None();
+
+			connect( mVariables, SIGNAL(changed()), this, SLOT(onVariablesChanged()) );
 		}
 
 
@@ -66,6 +69,7 @@ namespace glabels
 		///
 		Model::~Model()
 		{
+			delete mVariables;
 			delete mMerge;
 		}
 
@@ -303,6 +307,15 @@ namespace glabels
 
 
 		///
+		/// Get variables object
+		///
+		Variables* Model::variables() const
+		{
+			return mVariables;
+		}
+
+
+		///
 		/// Get merge object
 		///
 		merge::Merge* Model::merge() const
@@ -448,6 +461,17 @@ namespace glabels
 		{
 			setModified();
 			emit changed();
+		}
+
+
+		///
+		/// Variables Changed Slot
+		///
+		void Model::onVariablesChanged()
+		{
+			setModified();
+			emit changed();
+			emit variablesChanged();
 		}
 
 

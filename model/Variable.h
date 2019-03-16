@@ -22,6 +22,7 @@
 #define model_Variable_h
 
 
+#include <QCoreApplication>
 #include <QString>
 
 
@@ -32,19 +33,21 @@ namespace glabels
 
 		class Variable
 		{
+			Q_DECLARE_TR_FUNCTIONS(Variable)
+			
 		public:
-			enum Type
+			enum class Type
 			{
-				TYPE_NUMERIC,
-				TYPE_STRING
+				NUMERIC,
+				STRING
 			};
 
-			enum IncrementPolicy
+			enum class Increment
 			{
-				INCREMENT_NEVER,
-				INCREMENT_PER_COPY,
-				INCREMENT_PER_MERGE_RECORD,
-				INCREMENT_PER_PAGE
+				NEVER,
+				PER_COPY,
+				PER_MERGE_RECORD,
+				PER_PAGE
 			};
 			
 				
@@ -54,26 +57,32 @@ namespace glabels
 			Variable( Type            type,
 			          const QString&  name,
 			          const QString&  value,
-			          IncrementPolicy incrementPolicy = INCREMENT_NEVER,
+			          Increment       increment = Increment::NEVER,
 			          const QString&  stepSize = "0" );
 
 			virtual ~Variable() = default;
 
 
-			Type            type() const;
-			QString         name() const;
-			QString         value() const;
-			IncrementPolicy incrementPolicy() const;
-			QString         stepSize() const;
-			
+			Type      type() const;
+			QString   name() const;
+			QString   value() const;
+			Increment increment() const;
+			QString   stepSize() const;
+
+
+			static QString typeToI18nString( Type type );
+			static QString typeToIdString( Type type );
+
+			static QString incrementToI18nString( Increment increment );
+			static QString incrementToIdString( Increment increment );
 
 
 		private:
-			Type            mType;
-			QString         mName;
-			QString         mValue;
-			IncrementPolicy mIncrementPolicy;
-			QString         mStepSize;
+			Type      mType;
+			QString   mName;
+			QString   mValue;
+			Increment mIncrement;
+			QString   mStepSize;
 
 		};
 

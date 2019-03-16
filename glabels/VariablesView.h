@@ -64,6 +64,7 @@ namespace glabels
 		void onAddButtonClicked();
 		void onEditButtonClicked();
 		void onDeleteButtonClicked();
+		void onVariablesChanged();
 
 
 		/////////////////////////////////
@@ -71,6 +72,8 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		void updateControls();
+		void loadTable();
+		void selectVariable( const QString& name );
 
 
 		/////////////////////////////////

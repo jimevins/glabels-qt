@@ -22,7 +22,20 @@
 
 #include "EditVariableDialog.h"
 
+#include <QTableWidgetItem>
 #include <QtDebug>
+
+
+namespace
+{
+	enum ICol {
+		I_COL_NAME      = 0,
+		I_COL_TYPE      = 1,
+		I_COL_VALUE     = 2,
+		I_COL_INCREMENT = 3,
+		I_COL_STEP_SIZE = 4
+	};
+}
 
 
 namespace glabels
@@ -58,8 +71,9 @@ namespace glabels
 		mUndoRedoModel = undoRedoModel;
 
 		updateControls();
+		loadTable();
 		
-		//connect( mModel, SIGNAL(variablesChanged()), this, SLOT(onVariablesChanged()) );
+		connect( mModel, SIGNAL(variablesChanged()), this, SLOT(onVariablesChanged()) );
 	}
 
 
@@ -79,16 +93,17 @@ namespace glabels
 	{
 		EditVariableDialog dialog( this );
 
-		model::Variable v( model::Variable::TYPE_NUMERIC,
+		model::Variable v( model::Variable::Type::NUMERIC,
 		                   "x",
 		                   "0",
-		                   model::Variable::INCREMENT_NEVER,
+		                   model::Variable::Increment::NEVER,
 		                   "0" );
 		dialog.setVariable( v );
 
 		if ( dialog.exec() == QDialog::Accepted )
 		{
-			qDebug() << "Add OK.";
+			mModel->variables()->addVariable( dialog.variable() );
+			selectVariable( dialog.variable().name() );
 		}
 	}
 
@@ -98,6 +113,22 @@ namespace glabels
 	///
 	void VariablesView::onEditButtonClicked()
 	{
+		int iRow = table->selectedItems()[0]->row();
+		QString name = table->item( iRow, I_COL_NAME )->text();
+		
+		if ( mModel->variables()->hasVariable( name ) )
+		{
+			model::Variable v = mModel->variables()->value( name );
+		
+			EditVariableDialog dialog( this );
+			dialog.setVariable( v );
+
+			if ( dialog.exec() == QDialog::Accepted )
+			{
+				mModel->variables()->replaceVariable( name, dialog.variable() );
+				selectVariable( dialog.variable().name() );
+			}
+		}
 	}
 
 
@@ -106,6 +137,20 @@ namespace glabels
 	///
 	void VariablesView::onDeleteButtonClicked()
 	{
+		int iRow = table->selectedItems()[0]->row();
+		
+		QString name = table->item( iRow, I_COL_NAME )->text();
+		mModel->variables()->deleteVariable( name );
+	}
+
+
+	///
+	/// Variables Changed
+	///
+	void VariablesView::onVariablesChanged()
+	{
+		// Reload table from variables
+		loadTable();
 	}
 
 
@@ -118,6 +163,61 @@ namespace glabels
 
 		editButton->setEnabled( hasSelection );
 		deleteButton->setEnabled( hasSelection );
+	}
+
+
+	///
+	/// load table from variables
+	///
+	void VariablesView::loadTable()
+	{
+		table->clearContents();
+		table->setRowCount( mModel->variables()->size() );
+
+		int iRow = 0;
+		for( const auto& v : *mModel->variables() )
+		{
+			auto* typeItem = new QTableWidgetItem( model::Variable::typeToI18nString(v.type()) );
+			typeItem->setFlags( typeItem->flags() ^ Qt::ItemIsEditable );
+			table->setItem( iRow, I_COL_TYPE, typeItem );
+			
+			auto* nameItem = new QTableWidgetItem( v.name() );
+			nameItem->setFlags( nameItem->flags() ^ Qt::ItemIsEditable );
+			table->setItem( iRow, I_COL_NAME, nameItem );
+			
+			auto* valueItem = new QTableWidgetItem( v.value() );
+			valueItem->setFlags( valueItem->flags() ^ Qt::ItemIsEditable );
+			table->setItem( iRow, I_COL_VALUE, valueItem );
+			
+			auto* incrementItem = new QTableWidgetItem( model::Variable::incrementToI18nString(v.increment()) );
+			incrementItem->setFlags( incrementItem->flags() ^ Qt::ItemIsEditable );
+			table->setItem( iRow, I_COL_INCREMENT, incrementItem );
+			
+			auto* stepSizeItem = new QTableWidgetItem( v.stepSize() );
+			stepSizeItem->setFlags( stepSizeItem->flags() ^ Qt::ItemIsEditable );
+			table->setItem( iRow, I_COL_STEP_SIZE, stepSizeItem );
+
+			table->showRow( iRow );
+			iRow++;
+		}
+	}
+
+
+	void VariablesView::selectVariable( const QString& name )
+	{
+		int iRow = 0;
+		for( const auto& v : *mModel->variables() )
+		{
+			if ( v.name() == name )
+			{
+				qDebug() << "Selecting row " << iRow;
+				table->setCurrentCell( iRow, 0,
+				                       (QItemSelectionModel::Select|QItemSelectionModel::Rows) );
+				break;
+			}
+
+			iRow++;
+		}
 	}
 
 

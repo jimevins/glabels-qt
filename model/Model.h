@@ -24,6 +24,7 @@
 
 #include "Settings.h"
 #include "Template.h"
+#include "Variables.h"
 
 #include "merge/Merge.h"
 #include "merge/Record.h"
@@ -76,6 +77,7 @@ namespace glabels
 			void sizeChanged();
 			void selectionChanged();
 			void modifiedChanged();
+			void variablesChanged();
 			void mergeChanged();
 			void mergeSourceChanged();
 			void mergeSelectionChanged();
@@ -106,6 +108,8 @@ namespace glabels
 			void setH( const Distance& h );
 
 			const QList<ModelObject*>& objectList() const;
+
+			Variables* variables() const;
 
 			merge::Merge* merge() const;
 			void setMerge( merge::Merge* merge );
@@ -213,6 +217,7 @@ namespace glabels
 		private slots:
 			void onObjectChanged();
 			void onObjectMoved();
+			void onVariablesChanged();
 			void onMergeSourceChanged();
 			void onMergeSelectionChanged();
 
@@ -229,6 +234,7 @@ namespace glabels
 
 			QList<ModelObject*>       mObjectList;
 
+			Variables*                mVariables;
 			merge::Merge*             mMerge;
 		};
 

@@ -1083,6 +1083,33 @@
     </message>
 </context>
 <context>
+    <name>Variable</name>
+    <message>
+        <source>Numeric</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>String</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per merge record</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per page</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>VariablesView</name>
     <message>
         <source>Name</source>
