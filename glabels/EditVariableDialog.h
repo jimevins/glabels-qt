@@ -54,6 +54,7 @@ namespace glabels
 		// Slots
 		/////////////////////////////////
 	private slots:
+		void onNameEditChanged();
 		void onTypeComboChanged();
 		void onValueEditChanged();
 		void onIncrementComboChanged();
@@ -64,6 +65,7 @@ namespace glabels
 		// Private methods
 		/////////////////////////////////
 		void updateControls();
+		void validateCurrentInputs();
 
 	};
 

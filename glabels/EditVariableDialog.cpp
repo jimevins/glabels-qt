@@ -22,6 +22,26 @@
 
 #include "model/Settings.h"
 
+#include <QPushButton>
+
+
+namespace
+{
+	// All variable types. (must be in sorted order)
+	const QVector<glabels::model::Variable::Type> allTypes = {
+		glabels::model::Variable::Type::NUMERIC,
+		glabels::model::Variable::Type::STRING
+	};
+
+	// All variable increments. (must be in sorted order)
+	const QVector<glabels::model::Variable::Increment> allIncrements = {
+		glabels::model::Variable::Increment::NEVER,
+		glabels::model::Variable::Increment::PER_COPY,
+		glabels::model::Variable::Increment::PER_MERGE_RECORD,
+		glabels::model::Variable::Increment::PER_PAGE
+	};
+}
+
 
 namespace glabels
 {
@@ -33,6 +53,19 @@ namespace glabels
 		: QDialog(parent)
 	{
 		setupUi( this );
+
+		QRegularExpression reIdentifier( "[a-zA-Z_][a-zA-Z_0-9]*" );
+		nameEdit->setValidator( new QRegularExpressionValidator( reIdentifier ) );
+
+		for ( auto type : allTypes )
+		{
+			typeCombo->addItem( model::Variable::typeToI18nString( type ) );
+		}
+
+		for ( auto type : allIncrements )
+		{
+			incrementCombo->addItem( model::Variable::incrementToI18nString( type ) );
+		}
 	}
 
 
@@ -65,6 +98,15 @@ namespace glabels
 
 
 	///
+	/// nameEdit Changed
+	///
+	void EditVariableDialog::onNameEditChanged()
+	{
+		validateCurrentInputs();
+	}
+
+	
+	///
 	/// typeCombo Changed
 	///
 	void EditVariableDialog::onTypeComboChanged()
@@ -78,6 +120,7 @@ namespace glabels
 	///
 	void EditVariableDialog::onValueEditChanged()
 	{
+		validateCurrentInputs();
 	}
 
 	
@@ -95,6 +138,7 @@ namespace glabels
 	///
 	void EditVariableDialog::onStepSizeEditChanged()
 	{
+		validateCurrentInputs();
 	}
 
 
@@ -103,25 +147,49 @@ namespace glabels
 	///
 	void EditVariableDialog::updateControls()
 	{
-		model::Variable::Type type = static_cast<model::Variable::Type>(typeCombo->currentIndex());
-		model::Variable::Increment increment = static_cast<model::Variable::Increment>(incrementCombo->currentIndex());
+		auto type      = static_cast<model::Variable::Type>(typeCombo->currentIndex());
+		auto increment = static_cast<model::Variable::Increment>(incrementCombo->currentIndex());
 
-		if ( type != model::Variable::Type::NUMERIC )
+		if ( type == model::Variable::Type::NUMERIC )
 		{
+			valueEdit->setValidator( new QDoubleValidator() );
+			stepSizeEdit->setValidator( new QDoubleValidator() );
+
+			if ( increment == model::Variable::Increment::NEVER )
+			{
+				stepSizeEdit->setText( "0" );
+			}
+		}
+		else
+		{
+			valueEdit->setValidator( nullptr );
+			stepSizeEdit->setValidator( nullptr );
 			incrementCombo->setCurrentIndex( static_cast<int>(model::Variable::Increment::NEVER) );
+			stepSizeEdit->setText( "" );
 		}
 
-		if ( increment == model::Variable::Increment::NEVER )
-		{
-			stepSizeEdit->setText( "0" );
-		}
-		
 		incrementLabel->setEnabled( type == model::Variable::Type::NUMERIC );
 		incrementCombo->setEnabled( type == model::Variable::Type::NUMERIC );
 		stepSizeLabel->setEnabled( (type == model::Variable::Type::NUMERIC) &&
 		                           (increment != model::Variable::Increment::NEVER) );
 		stepSizeEdit->setEnabled( (type == model::Variable::Type::NUMERIC) &&
 		                          (increment != model::Variable::Increment::NEVER) );
+
+		validateCurrentInputs();
+	}
+
+
+	///
+	/// validate current inputs
+	///
+	void EditVariableDialog::validateCurrentInputs()
+	{
+		bool hasValidIdentifier = nameEdit->hasAcceptableInput();
+		bool hasValidValue      = valueEdit->hasAcceptableInput();
+		bool hasValidStepSize   = stepSizeEdit->hasAcceptableInput();
+
+		bool isValid = hasValidIdentifier && hasValidValue && hasValidStepSize;
+		buttonBox->button(QDialogButtonBox::Ok)->setEnabled( isValid );
 	}
 	
 

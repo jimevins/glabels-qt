@@ -189,14 +189,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Numeric</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>String</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -206,22 +198,6 @@
     </message>
     <message>
         <source>Increment:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Never</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Per Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Per Merge Record</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Per Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

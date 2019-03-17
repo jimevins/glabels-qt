@@ -210,7 +210,6 @@ namespace glabels
 		{
 			if ( v.name() == name )
 			{
-				qDebug() << "Selecting row " << iRow;
 				table->setCurrentCell( iRow, 0,
 				                       (QItemSelectionModel::Select|QItemSelectionModel::Rows) );
 				break;
