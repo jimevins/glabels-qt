@@ -99,6 +99,7 @@ namespace glabels
 		                   model::Variable::Increment::NEVER,
 		                   "0" );
 		dialog.setVariable( v );
+		dialog.setWindowTitle( tr("Add Variable") );
 
 		if ( dialog.exec() == QDialog::Accepted )
 		{
@@ -122,6 +123,7 @@ namespace glabels
 		
 			EditVariableDialog dialog( this );
 			dialog.setVariable( v );
+			dialog.setWindowTitle( tr("Edit Variable") );
 
 			if ( dialog.exec() == QDialog::Accepted )
 			{

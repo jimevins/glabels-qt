@@ -2145,6 +2145,14 @@
         <source>Variables</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>glabels::barcode::Backends</name>
