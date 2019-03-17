@@ -29,3 +29,15 @@ Add support for "Continuous Roll" labels
 
 Write help documentation
 ------------------------
+
+
+To Do List for gLabels 4.1 -- 2019-03-17
+========================================
+
+Create a "built-in" merge source
+--------------------------------
+As an alternative to external merge sources, let the user edit the merge source
+in situ.  The user can add fields.  The user can add records using those fields.
+The user created database will become part of the glabels project file.
+For simple databases, such as a small address list, this would be much easier
+to deal with than creating it externally.
