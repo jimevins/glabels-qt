@@ -68,8 +68,9 @@ namespace glabels
 			static QString parsePNode( const QDomElement &node );
 			static bool parseRotateAttr( const QDomElement &node );
 			static void parseMergeNode( const QDomElement &node, Model* label );
+			static void parseVariablesNode( const QDomElement &node, Model* label );
+			static void parseVariableNode( const QDomElement &node, Model* label );
 			static void parseDataNode( const QDomElement &node, DataCache& data );
-			static void parsePixdataNode( const QDomElement &node, DataCache& data );
 			static void parseFileNode( const QDomElement &node, DataCache& data );
 
 		};

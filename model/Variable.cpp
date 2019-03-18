@@ -95,6 +95,23 @@ namespace glabels
 		}
 		
 
+		Variable::Type Variable::idStringToType( const QString& string )
+		{
+			if ( string == "numeric" )
+			{
+				return Type::NUMERIC;
+			}
+			else if ( string == "string" )
+			{
+				return Type::STRING;
+			}
+			else
+			{
+				return Type::STRING; // Default
+			}
+		}
+		
+
 		QString Variable::incrementToI18nString( Increment increment )
 		{
 			switch (increment)
@@ -123,6 +140,31 @@ namespace glabels
 				return "per_merge_record";
 			case Increment::PER_PAGE:
 				return "per_page";
+			}
+		}
+		
+
+		Variable::Increment Variable::idStringToIncrement( const QString& string )
+		{
+			if ( string == "never" )
+			{
+				return Increment::NEVER;
+			}
+			else if ( string == "per_copy" )
+			{
+				return Increment::PER_COPY;
+			}
+			else if ( string == "per_merge_record" )
+			{
+				return Increment::PER_MERGE_RECORD;
+			}
+			else if ( string == "per_page" )
+			{
+				return Increment::PER_PAGE;
+			}
+			else
+			{
+				return Increment::NEVER; // Default
 			}
 		}
 		

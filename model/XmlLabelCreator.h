@@ -40,6 +40,7 @@ namespace glabels
 		class ModelImageObject;
 		class ModelBarcodeObject;
 		class ModelTextObject;
+		class Variable;
 
 
 		///
@@ -72,6 +73,8 @@ namespace glabels
 			static void createAffineAttrs( QDomElement &node, const ModelObject* object );
 			static void createShadowAttrs( QDomElement &node, const ModelObject* object );
 			static void createMergeNode( QDomElement &parent, const Model* label );
+			static void createVariablesNode( QDomElement &parent, const Model* label );
+			static void createVariableNode( QDomElement &parent, const Variable& v );
 			static void createDataNode( QDomElement &parent, const QList<ModelObject*>& objects );
 			static void createPngFileNode( QDomElement &parent, const QString& name, const QImage& image );
 			static void createSvgFileNode( QDomElement &parent, const QString& name, const QByteArray& svg );

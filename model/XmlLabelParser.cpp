@@ -286,6 +286,10 @@ namespace glabels
 				{
 					parseMergeNode( child.toElement(), label );
 				}
+				else if ( tagName == "Variables" )
+				{
+					parseVariablesNode( child.toElement(), label );
+				}
 				else if ( tagName == "Data" )
 				{
 					/* Handled in pass 1. */
@@ -720,6 +724,42 @@ namespace glabels
 
 
 		void
+		XmlLabelParser::parseVariablesNode( const QDomElement &node, Model* label )
+		{
+			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+			{
+				QString tagName = child.toElement().tagName();
+		
+				if ( tagName == "Variable" )
+				{
+					parseVariableNode( child.toElement(), label );
+				}
+				else if ( !child.isComment() )
+				{
+					qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
+				}
+			}
+		}
+
+
+		void
+		XmlLabelParser::parseVariableNode( const QDomElement &node, Model* label )
+		{
+			QString typeString      = XmlUtil::getStringAttr( node, "type", "string" );
+			QString name            = XmlUtil::getStringAttr( node, "name", "unknown" );
+			QString value           = XmlUtil::getStringAttr( node, "value", "0" );
+			QString incrementString = XmlUtil::getStringAttr( node, "increment", "never" );
+			QString stepSize        = XmlUtil::getStringAttr( node, "stepSize", "0" );
+
+			auto type      = Variable::idStringToType( typeString );
+			auto increment = Variable::idStringToIncrement( incrementString );
+
+			Variable v( type, name, value, increment, stepSize );
+			label->variables()->addVariable( v );
+		}
+
+
+		void
 		XmlLabelParser::parseDataNode( const QDomElement &node, DataCache& data )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
@@ -735,13 +775,6 @@ namespace glabels
 					qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
 				}
 			}
-		}
-
-
-		void
-		XmlLabelParser::parsePixdataNode( const QDomElement& node, DataCache& data )
-		{
-			// TODO, compatibility with glabels-3
 		}
 
 

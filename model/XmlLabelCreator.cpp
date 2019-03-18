@@ -29,6 +29,7 @@
 #include "ModelImageObject.h"
 #include "ModelTextObject.h"
 #include "DataCache.h"
+#include "Variables.h"
 #include "XmlTemplateCreator.h"
 #include "XmlUtil.h"
 
@@ -114,6 +115,11 @@ namespace glabels
 			if ( label->merge() && !dynamic_cast<merge::None*>(label->merge()) )
 			{
 				createMergeNode( root, label );
+			}
+
+			if ( label->variables()->size() != 0 )
+			{
+				createVariablesNode( root, label );
 			}
 
 			createDataNode( root, label->objectList() );
@@ -463,6 +469,35 @@ namespace glabels
 
 			XmlUtil::setStringAttr( node, "type", label->merge()->id() );
 			XmlUtil::setStringAttr( node, "src", label->merge()->source() );
+		}
+
+
+		void
+		XmlLabelCreator::createVariablesNode( QDomElement &parent, const Model* label )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Variables" );
+			parent.appendChild( node );
+
+			for ( const auto& v : *label->variables() )
+			{
+				createVariableNode( node, v );
+			}
+		}
+
+
+		void
+		XmlLabelCreator::createVariableNode( QDomElement &parent, const Variable& v )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Variable" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "type", Variable::typeToIdString( v.type() ) );
+			XmlUtil::setStringAttr( node, "name", v.name() );
+			XmlUtil::setStringAttr( node, "value", v.value() );
+			XmlUtil::setStringAttr( node, "increment", Variable::incrementToIdString( v.increment() ) );
+			XmlUtil::setStringAttr( node, "stepSize", v.stepSize() );
 		}
 
 

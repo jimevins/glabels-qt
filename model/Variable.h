@@ -70,11 +70,13 @@ namespace glabels
 			QString   stepSize() const;
 
 
-			static QString typeToI18nString( Type type );
-			static QString typeToIdString( Type type );
+			static QString   typeToI18nString( Type type );
+			static QString   typeToIdString( Type type );
+			static Type      idStringToType( const QString& string );
 
-			static QString incrementToI18nString( Increment increment );
-			static QString incrementToIdString( Increment increment );
+			static QString   incrementToI18nString( Increment increment );
+			static QString   incrementToIdString( Increment increment );
+			static Increment idStringToIncrement( const QString& string );
 
 
 		private:
