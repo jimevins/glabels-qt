@@ -1088,26 +1088,6 @@
 <context>
     <name>VariablesView</name>
     <message>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Increment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Step Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2151,6 +2131,26 @@
     </message>
     <message>
         <source>Edit Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step Size</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

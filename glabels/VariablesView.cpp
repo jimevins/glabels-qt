@@ -29,11 +29,13 @@
 namespace
 {
 	enum ICol {
-		I_COL_NAME      = 0,
-		I_COL_TYPE      = 1,
-		I_COL_VALUE     = 2,
-		I_COL_INCREMENT = 3,
-		I_COL_STEP_SIZE = 4
+		I_COL_NAME,
+		I_COL_TYPE,
+		I_COL_VALUE,
+		I_COL_INCREMENT,
+		I_COL_STEP_SIZE,
+		I_COL_DUMMY,
+		N_COLS
 	};
 }
 
@@ -50,6 +52,33 @@ namespace glabels
 		setupUi( this );
 
 		titleLabel->setText( QString( "<span style='font-size:18pt;'>%1</span>" ).arg( tr("Variables") ) );
+
+		table->setColumnCount( N_COLS );
+
+		auto* nameHeaderItem = new QTableWidgetItem( tr("Name") );
+		nameHeaderItem->setFlags( nameHeaderItem->flags() ^ Qt::ItemIsEditable );
+		table->setHorizontalHeaderItem( I_COL_NAME, nameHeaderItem );
+
+		auto* typeHeaderItem = new QTableWidgetItem( tr("Type") );
+		typeHeaderItem->setFlags( typeHeaderItem->flags() ^ Qt::ItemIsEditable );
+		table->setHorizontalHeaderItem( I_COL_TYPE, typeHeaderItem );
+
+		auto* valueHeaderItem = new QTableWidgetItem( tr("Value") );
+		valueHeaderItem->setFlags( valueHeaderItem->flags() ^ Qt::ItemIsEditable );
+		table->setHorizontalHeaderItem( I_COL_VALUE, valueHeaderItem );
+
+		auto* incrementHeaderItem = new QTableWidgetItem( tr("Increment") );
+		incrementHeaderItem->setFlags( incrementHeaderItem->flags() ^ Qt::ItemIsEditable );
+		table->setHorizontalHeaderItem( I_COL_INCREMENT, incrementHeaderItem );
+
+		auto* stepSizeHeaderItem = new QTableWidgetItem( tr("Step Size") );
+		stepSizeHeaderItem->setFlags( stepSizeHeaderItem->flags() ^ Qt::ItemIsEditable );
+		table->setHorizontalHeaderItem( I_COL_STEP_SIZE, stepSizeHeaderItem );
+
+		auto* dummyHeaderItem = new QTableWidgetItem();
+		dummyHeaderItem->setFlags( Qt::NoItemFlags );
+		table->setHorizontalHeaderItem( I_COL_DUMMY, dummyHeaderItem );
+		table->horizontalHeader()->setStretchLastSection( true );
 	}
 
 

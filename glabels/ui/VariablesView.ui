@@ -39,7 +39,7 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="columnCount">
-      <number>5</number>
+      <number>0</number>
      </property>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
@@ -47,31 +47,6 @@
      <attribute name="verticalHeaderHighlightSections">
       <bool>true</bool>
      </attribute>
-     <column>
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Type</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Value</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Increment</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Step Size</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item row="2" column="0">
