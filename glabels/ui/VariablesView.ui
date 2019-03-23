@@ -29,6 +29,9 @@
    </item>
    <item row="1" column="0">
     <widget class="QTableWidget" name="table">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
      </property>
@@ -40,6 +43,9 @@
      </property>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>true</bool>
      </attribute>
      <column>
       <property name="text">
