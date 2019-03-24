@@ -1736,6 +1736,10 @@
         <source>Open Recent</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Quick Access Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>glabels::MergeView</name>
@@ -1919,6 +1923,14 @@
     </message>
     <message>
         <source>(Will print a total of %1 items on %2 pages.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Will print a total of 1 item on 1 page.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Will print a total of %1 items on 1 page.)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
