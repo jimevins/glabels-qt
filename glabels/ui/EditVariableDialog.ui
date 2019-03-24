@@ -19,7 +19,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Variable Type:</string>
+        <string>Variable type:</string>
        </property>
       </widget>
      </item>
@@ -39,7 +39,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Value:</string>
+        <string>Initial value:</string>
        </property>
       </widget>
      </item>
@@ -61,7 +61,7 @@
        <item>
         <widget class="QLabel" name="stepSizeLabel">
          <property name="text">
-          <string>Step Size:</string>
+          <string>Step size:</string>
          </property>
         </widget>
        </item>

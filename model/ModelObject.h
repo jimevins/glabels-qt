@@ -27,6 +27,7 @@
 #include "Handles.h"
 #include "Outline.h"
 #include "TextNode.h"
+#include "Variables.h"
 
 #include "barcode/Style.h"
 #include "merge/Record.h"
@@ -403,12 +404,24 @@ namespace glabels
 			// Drawing operations
 			///////////////////////////////////////////////////////////////
 		public:
-			void draw( QPainter* painter, bool inEditor, merge::Record* record ) const;
+			void draw( QPainter*      painter,
+			           bool           inEditor,
+			           merge::Record* record,
+			           Variables* variables ) const;
+			
 			void drawSelectionHighlight( QPainter* painter, double scale ) const;
 
 		protected:
-			virtual void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
-			virtual void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const = 0;
+			virtual void drawShadow( QPainter*      painter,
+			                         bool           inEditor,
+			                         merge::Record* record,
+			                         Variables*     variables ) const = 0;
+			
+			virtual void drawObject( QPainter*      painter,
+			                         bool           inEditor,
+			                         merge::Record* record,
+			                         Variables*     variables ) const = 0;
+			
 			virtual QPainterPath hoverPath( double scale ) const = 0;
 
 			virtual void sizeUpdated();

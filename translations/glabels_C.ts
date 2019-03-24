@@ -185,15 +185,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Variable Type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Value:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -201,7 +193,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Step Size:</source>
+        <source>Variable type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initial value:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Step size:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1061,10 +1061,6 @@
 <context>
     <name>Variable</name>
     <message>
-        <source>Numeric</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>String</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1082,6 +1078,14 @@
     </message>
     <message>
         <source>Per page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Integer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Floating Point</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2142,15 +2146,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Increment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Step Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initial Value</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -103,7 +103,10 @@ namespace glabels
 		///
 		/// Draw shadow of object
 		///
-		void ModelBoxObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelBoxObject::drawShadow( QPainter*      painter,
+		                                 bool           inEditor,
+		                                 merge::Record* record,
+		                                 Variables*     variables ) const
 		{
 			QColor lineColor = mLineColorNode.color( record );
 			QColor fillColor = mFillColorNode.color( record );
@@ -148,7 +151,10 @@ namespace glabels
 		///
 		/// Draw object itself
 		///
-		void ModelBoxObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelBoxObject::drawObject( QPainter*      painter,
+		                                 bool           inEditor,
+		                                 merge::Record* record,
+		                                 Variables*     variables ) const
 		{
 			QColor lineColor = mLineColorNode.color( record );
 			QColor fillColor = mFillColorNode.color( record );

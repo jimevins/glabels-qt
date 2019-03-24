@@ -47,7 +47,7 @@ namespace glabels
 
 
 		PageRenderer::PageRenderer( const Model* model )
-			: mModel(nullptr), mMerge(nullptr), mNCopies(0), mStartLabel(0), mLastLabel(0),
+			: mModel(nullptr), mMerge(nullptr), mVariables(nullptr), mNCopies(0), mStartLabel(0), mLastLabel(0),
 			  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
 			  mIPage(0), mIsMerge(false), mNPages(0), mNLabelsPerPage(0)
 		{
@@ -65,6 +65,7 @@ namespace glabels
 			connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
 	
 			onModelChanged();
+			mVariables = mModel->variables();
 		}
 
 	
@@ -249,37 +250,44 @@ namespace glabels
 
 		void PageRenderer::printSimplePage( QPainter* painter, int iPage ) const
 		{
-			int iStart = 0;
-			int iEnd = mNLabelsPerPage;
-
-			if ( iPage == 0 )
-			{
-				iStart = mStartLabel;
-			}
-
-			if ( (mLastLabel / mNLabelsPerPage) == iPage )
-			{
-				iEnd = mLastLabel % mNLabelsPerPage;
-			}
-
 			printCropMarks( painter );
 
-			for ( int i = iStart; i < iEnd; i++ )
+			int iCopy = 0;
+			int iLabel = mStartLabel;
+			int iCurrentPage = 0;
+			mVariables->resetVariables();
+
+			while ( (iCopy < mNCopies) && (iCurrentPage <= iPage) )
 			{
-				painter->save();
+				if ( iCurrentPage == iPage )
+				{
+					int i = iLabel % mNLabelsPerPage;
+					
+					painter->save();
 
-				painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
+					painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
 			
-				painter->save();
+					painter->save();
 
-				clipLabel( painter );
-				printLabel( painter, nullptr );
+					clipLabel( painter );
+					printLabel( painter, nullptr, mVariables );
 
-				painter->restore();  // From before clip
+					painter->restore();  // From before clip
 
-				printOutline( painter );
+					printOutline( painter );
 			
-				painter->restore();  // From before translation
+					painter->restore();  // From before translation
+				}
+
+				iCopy++;
+				iLabel++;
+				iCurrentPage = iLabel / mNLabelsPerPage;
+
+				mVariables->incrementVariablesOnCopy();
+				if ( (iLabel % mNLabelsPerPage) == 0 /* starting a new page */ )
+				{
+					mVariables->incrementVariablesOnPage();
+				}
 			}
 		}
 
@@ -317,7 +325,7 @@ namespace glabels
 				painter->save();
 
 				clipLabel( painter );
-				printLabel( painter, records[iRecord] );
+				printLabel( painter, records[iRecord], mVariables );
 
 				painter->restore();  // From before clip
 
@@ -411,7 +419,9 @@ namespace glabels
 		}
 
 	
-		void PageRenderer::printLabel( QPainter* painter, merge::Record* record ) const
+		void PageRenderer::printLabel( QPainter*      painter,
+		                               merge::Record* record,
+		                               Variables*     variables ) const
 		{
 			painter->save();
 
@@ -427,7 +437,7 @@ namespace glabels
 				painter->scale( -1, 1 );
 			}
 
-			mModel->draw( painter, false, record );
+			mModel->draw( painter, false, record, variables );
 
 			painter->restore();
 		}

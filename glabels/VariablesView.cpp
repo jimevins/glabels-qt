@@ -63,7 +63,7 @@ namespace glabels
 		typeHeaderItem->setFlags( typeHeaderItem->flags() ^ Qt::ItemIsEditable );
 		table->setHorizontalHeaderItem( I_COL_TYPE, typeHeaderItem );
 
-		auto* valueHeaderItem = new QTableWidgetItem( tr("Value") );
+		auto* valueHeaderItem = new QTableWidgetItem( tr("Initial Value") );
 		valueHeaderItem->setFlags( valueHeaderItem->flags() ^ Qt::ItemIsEditable );
 		table->setHorizontalHeaderItem( I_COL_VALUE, valueHeaderItem );
 
@@ -122,7 +122,7 @@ namespace glabels
 	{
 		EditVariableDialog dialog( this );
 
-		model::Variable v( model::Variable::Type::NUMERIC,
+		model::Variable v( model::Variable::Type::INTEGER,
 		                   "x",
 		                   "0",
 		                   model::Variable::Increment::NEVER,
@@ -216,7 +216,7 @@ namespace glabels
 			nameItem->setFlags( nameItem->flags() ^ Qt::ItemIsEditable );
 			table->setItem( iRow, I_COL_NAME, nameItem );
 			
-			auto* valueItem = new QTableWidgetItem( v.value() );
+			auto* valueItem = new QTableWidgetItem( v.initialValue() );
 			valueItem->setFlags( valueItem->flags() ^ Qt::ItemIsEditable );
 			table->setItem( iRow, I_COL_VALUE, valueItem );
 			

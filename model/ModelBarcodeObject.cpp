@@ -311,7 +311,8 @@ namespace glabels
 		///
 		void ModelBarcodeObject::drawShadow( QPainter*      painter,
 		                                     bool           inEditor,
-		                                     merge::Record* record ) const
+		                                     merge::Record* record,
+		                                     Variables*     variables ) const
 		{
 			// Barcodes don't support shadows.
 		}
@@ -322,7 +323,8 @@ namespace glabels
 		///
 		void ModelBarcodeObject::drawObject( QPainter*      painter,
 		                                     bool           inEditor,
-		                                     merge::Record* record ) const
+		                                     merge::Record* record,
+		                                     Variables*     variables ) const
 		{
 			QColor bcColor = mBcColorNode.color( record );
 
@@ -332,7 +334,7 @@ namespace glabels
 			}
 			else
 			{
-				drawBc( painter, bcColor, record );
+				drawBc( painter, bcColor, record, variables );
 			}
 		}
 
@@ -450,7 +452,8 @@ namespace glabels
 		void
 		ModelBarcodeObject::drawBc( QPainter*      painter,
 		                            const QColor&  color,
-		                            merge::Record* record ) const
+		                            merge::Record* record,
+		                            Variables*     variables ) const
 		{
 			painter->setPen( QPen( color ) );
 
@@ -458,7 +461,7 @@ namespace glabels
 			bc->setChecksum(mBcChecksumFlag);
 			bc->setShowText(mBcTextFlag);
 
-			bc->build( mBcData.expand( record ).toStdString(), mW.pt(), mH.pt() );
+			bc->build( mBcData.expand( record, variables ).toStdString(), mW.pt(), mH.pt() );
 
 			glbarcode::QtRenderer renderer(painter);
 			bc->render( renderer );

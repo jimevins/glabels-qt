@@ -1476,11 +1476,11 @@ namespace glabels
 		///
 		/// Draw label objects
 		///
-		void Model::draw( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void Model::draw( QPainter* painter, bool inEditor, merge::Record* record, Variables* variables ) const
 		{
 			foreach ( ModelObject* object, mObjectList )
 			{
-				object->draw( painter, inEditor, record );
+				object->draw( painter, inEditor, record, variables );
 			}
 		}
 

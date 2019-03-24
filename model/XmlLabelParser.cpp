@@ -747,14 +747,14 @@ namespace glabels
 		{
 			QString typeString      = XmlUtil::getStringAttr( node, "type", "string" );
 			QString name            = XmlUtil::getStringAttr( node, "name", "unknown" );
-			QString value           = XmlUtil::getStringAttr( node, "value", "0" );
+			QString initialValue    = XmlUtil::getStringAttr( node, "initialValue", "0" );
 			QString incrementString = XmlUtil::getStringAttr( node, "increment", "never" );
 			QString stepSize        = XmlUtil::getStringAttr( node, "stepSize", "0" );
 
 			auto type      = Variable::idStringToType( typeString );
 			auto increment = Variable::idStringToIncrement( incrementString );
 
-			Variable v( type, name, value, increment, stepSize );
+			Variable v( type, name, initialValue, increment, stepSize );
 			label->variables()->addVariable( v );
 		}
 

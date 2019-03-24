@@ -1157,7 +1157,7 @@ namespace glabels
 	void
 	LabelEditor::drawObjectsLayer( QPainter* painter )
 	{
-		mModel->draw( painter );
+		mModel->draw( painter, true, nullptr, nullptr );
 	}
 
 

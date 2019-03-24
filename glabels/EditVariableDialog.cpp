@@ -29,8 +29,9 @@ namespace
 {
 	// All variable types. (must be in sorted order)
 	const QVector<glabels::model::Variable::Type> allTypes = {
-		glabels::model::Variable::Type::NUMERIC,
-		glabels::model::Variable::Type::STRING
+		glabels::model::Variable::Type::STRING,
+		glabels::model::Variable::Type::INTEGER,
+		glabels::model::Variable::Type::FLOATING_POINT
 	};
 
 	// All variable increments. (must be in sorted order)
@@ -76,7 +77,7 @@ namespace glabels
 	{
 		typeCombo->setCurrentIndex( static_cast<int>(variable.type()) );
 		nameEdit->setText( variable.name() );
-		valueEdit->setText( variable.value() );
+		valueEdit->setText( variable.initialValue() );
 		incrementCombo->setCurrentIndex( static_cast<int>(variable.increment()) );
 		stepSizeEdit->setText( variable.stepSize() );
 
@@ -150,8 +151,20 @@ namespace glabels
 		auto type      = static_cast<model::Variable::Type>(typeCombo->currentIndex());
 		auto increment = static_cast<model::Variable::Increment>(incrementCombo->currentIndex());
 
-		if ( type == model::Variable::Type::NUMERIC )
+		switch (type)
 		{
+			
+		case model::Variable::Type::INTEGER:
+			valueEdit->setValidator( new QIntValidator() );
+			stepSizeEdit->setValidator( new QIntValidator() );
+
+			if ( increment == model::Variable::Increment::NEVER )
+			{
+				stepSizeEdit->setText( "0" );
+			}
+			break;
+
+		case model::Variable::Type::FLOATING_POINT:
 			valueEdit->setValidator( new QDoubleValidator() );
 			stepSizeEdit->setValidator( new QDoubleValidator() );
 
@@ -159,21 +172,24 @@ namespace glabels
 			{
 				stepSizeEdit->setText( "0" );
 			}
-		}
-		else
-		{
+			break;
+
+		default:
 			valueEdit->setValidator( nullptr );
 			stepSizeEdit->setValidator( nullptr );
 			incrementCombo->setCurrentIndex( static_cast<int>(model::Variable::Increment::NEVER) );
 			stepSizeEdit->setText( "" );
+			break;
+			
 		}
 
-		incrementLabel->setEnabled( type == model::Variable::Type::NUMERIC );
-		incrementCombo->setEnabled( type == model::Variable::Type::NUMERIC );
-		stepSizeLabel->setEnabled( (type == model::Variable::Type::NUMERIC) &&
-		                           (increment != model::Variable::Increment::NEVER) );
-		stepSizeEdit->setEnabled( (type == model::Variable::Type::NUMERIC) &&
-		                          (increment != model::Variable::Increment::NEVER) );
+		bool isNumeric = ( type == model::Variable::Type::INTEGER ) ||
+		                 ( type == model::Variable::Type::FLOATING_POINT );
+		
+		incrementLabel->setEnabled( isNumeric );
+		incrementCombo->setEnabled( isNumeric );
+		stepSizeLabel->setEnabled( isNumeric && (increment != model::Variable::Increment::NEVER) );
+		stepSizeEdit->setEnabled( isNumeric && (increment != model::Variable::Increment::NEVER) );
 
 		validateCurrentInputs();
 	}

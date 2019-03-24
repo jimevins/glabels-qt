@@ -21,6 +21,7 @@
 #ifndef model_SubstitutionField_h
 #define model_SubstitutionField_h
 
+#include "Variables.h"
 
 #include "merge/Record.h"
 
@@ -39,7 +40,7 @@ namespace glabels
 			SubstitutionField();
 			SubstitutionField( const QString& string );
 
-			QString evaluate( const merge::Record* record ) const;
+			QString evaluate( const merge::Record* record, const Variables* variables ) const;
 		
 			QString fieldName() const;
 			QString defaultValue() const;

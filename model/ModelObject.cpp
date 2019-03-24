@@ -1200,7 +1200,10 @@ namespace glabels
 		///
 		/// Draw object + shadow
 		///
-		void ModelObject::draw( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelObject::draw( QPainter*      painter,
+		                        bool           inEditor,
+		                        merge::Record* record,
+		                        Variables*     variables ) const
 		{
 			painter->save();
 			painter->translate( mX0.pt(), mY0.pt() );
@@ -1210,12 +1213,12 @@ namespace glabels
 				painter->save();
 				painter->translate( mShadowX.pt(), mShadowY.pt() );
 				painter->setMatrix( mMatrix, true );
-				drawShadow( painter, inEditor, record );
+				drawShadow( painter, inEditor, record, variables );
 				painter->restore();
 			}
 
 			painter->setMatrix( mMatrix, true );
-			drawObject( painter, inEditor, record );
+			drawObject( painter, inEditor, record, variables );
 
 			painter->restore();
 		}

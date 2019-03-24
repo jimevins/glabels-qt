@@ -85,6 +85,54 @@ namespace glabels
 		}
 
 
+		///
+		/// Reset variables to their initial values
+		///
+		void Variables::resetVariables()
+		{
+			for ( auto& v : *this )
+			{
+				v.resetValue();
+			}
+		}
+
+		
+		///
+		/// Increment variables on copy
+		///
+		void Variables::incrementVariablesOnCopy()
+		{
+			for ( auto& v : *this )
+			{
+				v.incrementValueOnCopy();
+			}
+		}
+
+		
+		///
+		/// Increment variables on merge record
+		///
+		void Variables::incrementVariablesOnMerge()
+		{
+			for ( auto& v : *this )
+			{
+				v.incrementValueOnMerge();
+			}
+		}
+
+		
+		///
+		/// Increment variables on page
+		///
+		void Variables::incrementVariablesOnPage()
+		{
+			for ( auto& v : *this )
+			{
+				v.incrementValueOnPage();
+			}
+		}
+
+
 	} // namespace model
 
 } // namespace glabels

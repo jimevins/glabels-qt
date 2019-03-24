@@ -23,6 +23,7 @@
 
 
 #include "Point.h"
+#include "Variables.h"
 
 #include "merge/Merge.h"
 #include "merge/Record.h"
@@ -100,7 +101,7 @@ namespace glabels
 			void printCropMarks( QPainter* painter ) const;
 			void printOutline( QPainter* painter ) const;
 			void clipLabel( QPainter* painter ) const;
-			void printLabel( QPainter* painter, merge::Record* record ) const;
+			void printLabel( QPainter* painter, merge::Record* record, Variables* variables ) const;
 
 
 			/////////////////////////////////
@@ -109,6 +110,7 @@ namespace glabels
 		private:
 			const Model*        mModel;
 			const merge::Merge* mMerge;
+			Variables*          mVariables;
 	
 			int               mNCopies;
 			int               mStartLabel;

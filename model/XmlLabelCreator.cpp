@@ -495,7 +495,7 @@ namespace glabels
 
 			XmlUtil::setStringAttr( node, "type", Variable::typeToIdString( v.type() ) );
 			XmlUtil::setStringAttr( node, "name", v.name() );
-			XmlUtil::setStringAttr( node, "value", v.value() );
+			XmlUtil::setStringAttr( node, "initialValue", v.initialValue() );
 			XmlUtil::setStringAttr( node, "increment", Variable::incrementToIdString( v.increment() ) );
 			XmlUtil::setStringAttr( node, "stepSize", v.stepSize() );
 		}

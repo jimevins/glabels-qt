@@ -28,12 +28,12 @@ namespace glabels
 
 		Variable::Variable( Variable::Type      type,
 		                    const QString&      name,
-		                    const QString&      value,
+		                    const QString&      initialValue,
 		                    Variable::Increment increment,
 		                    const QString&      stepSize )
 			: mType(type),
 			  mName(name),
-			  mValue(value),
+			  mInitialValue(initialValue),
 			  mIncrement(increment),
 			  mStepSize(stepSize)
 		{
@@ -53,9 +53,9 @@ namespace glabels
 		}
 
 
-		QString Variable::value() const
+		QString Variable::initialValue() const
 		{
-			return mValue;
+			return mInitialValue;
 		}
 
 
@@ -70,15 +70,110 @@ namespace glabels
 			return mStepSize;
 		}
 
+		
+		void    Variable::resetValue()
+		{
+			switch (mType)
+			{
+			case Type::STRING:
+				// do nothing
+				break;
+			case Type::INTEGER:
+				mIntegerValue = mInitialValue.toLongLong();
+				mIntegerStep  = mStepSize.toLongLong();
+				break;
+			case Type::FLOATING_POINT:
+				mFloatingPointValue = mInitialValue.toDouble();
+				mFloatingPointStep  = mStepSize.toDouble();
+				break;
+			}
+		}
 
+		
+		void    Variable::incrementValueOnCopy()
+		{
+			if ( mIncrement == Increment::PER_COPY )
+			{
+				switch (mType)
+				{
+				case Type::STRING:
+					// do nothing
+					break;
+				case Type::INTEGER:
+					mIntegerValue += mIntegerStep;
+					break;
+				case Type::FLOATING_POINT:
+					mFloatingPointValue += mFloatingPointStep;
+					break;
+				}
+			}
+		}
+
+		
+		void    Variable::incrementValueOnMerge()
+		{
+			if ( mIncrement == Increment::PER_MERGE_RECORD )
+			{
+				switch (mType)
+				{
+				case Type::STRING:
+					// do nothing
+					break;
+				case Type::INTEGER:
+					mIntegerValue += mIntegerStep;
+					break;
+				case Type::FLOATING_POINT:
+					mFloatingPointValue += mFloatingPointStep;
+					break;
+				}
+			}
+		}
+
+		
+		void    Variable::incrementValueOnPage()
+		{
+			if ( mIncrement == Increment::PER_PAGE )
+			{
+				switch (mType)
+				{
+				case Type::STRING:
+					// do nothing
+					break;
+				case Type::INTEGER:
+					mIntegerValue += mIntegerStep;
+					break;
+				case Type::FLOATING_POINT:
+					mFloatingPointValue += mFloatingPointStep;
+					break;
+				}
+			}
+		}
+
+		
+		QString Variable::value() const
+		{
+			switch (mType)
+			{
+				case Type::STRING:
+					return mInitialValue;
+				case Type::INTEGER:
+					return QString::number( mIntegerValue );
+				case Type::FLOATING_POINT:
+					return QString::number( mFloatingPointValue, 'g', 15 );
+			}
+		}
+
+		
 		QString Variable::typeToI18nString( Type type )
 		{
 			switch (type)
 			{
-			case Type::NUMERIC:
-				return tr("Numeric");
 			case Type::STRING:
 				return tr("String");
+			case Type::INTEGER:
+				return tr("Integer");
+			case Type::FLOATING_POINT:
+				return tr("Floating Point");
 			}
 		}
 
@@ -87,23 +182,29 @@ namespace glabels
 		{
 			switch (type)
 			{
-			case Type::NUMERIC:
-				return "numeric";
 			case Type::STRING:
 				return "string";
+			case Type::INTEGER:
+				return "integer";
+			case Type::FLOATING_POINT:
+				return "float";
 			}
 		}
 		
 
-		Variable::Type Variable::idStringToType( const QString& string )
+		Variable::Type Variable::idStringToType( const QString& id )
 		{
-			if ( string == "numeric" )
-			{
-				return Type::NUMERIC;
-			}
-			else if ( string == "string" )
+			if ( id == "string" )
 			{
 				return Type::STRING;
+			}
+			else if ( id == "integer" )
+			{
+				return Type::INTEGER;
+			}
+			else if ( id == "float" )
+			{
+				return Type::FLOATING_POINT;
 			}
 			else
 			{
@@ -144,21 +245,21 @@ namespace glabels
 		}
 		
 
-		Variable::Increment Variable::idStringToIncrement( const QString& string )
+		Variable::Increment Variable::idStringToIncrement( const QString& id )
 		{
-			if ( string == "never" )
+			if ( id == "never" )
 			{
 				return Increment::NEVER;
 			}
-			else if ( string == "per_copy" )
+			else if ( id == "per_copy" )
 			{
 				return Increment::PER_COPY;
 			}
-			else if ( string == "per_merge_record" )
+			else if ( id == "per_merge_record" )
 			{
 				return Increment::PER_MERGE_RECORD;
 			}
-			else if ( string == "per_page" )
+			else if ( id == "per_page" )
 			{
 				return Increment::PER_PAGE;
 			}

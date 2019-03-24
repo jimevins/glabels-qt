@@ -38,8 +38,9 @@ namespace glabels
 		public:
 			enum class Type
 			{
-				NUMERIC,
-				STRING
+				STRING,
+				INTEGER,
+				FLOATING_POINT
 			};
 
 			enum class Increment
@@ -56,7 +57,7 @@ namespace glabels
 
 			Variable( Type            type,
 			          const QString&  name,
-			          const QString&  value,
+			          const QString&  initialValue,
 			          Increment       increment = Increment::NEVER,
 			          const QString&  stepSize = "0" );
 
@@ -65,10 +66,15 @@ namespace glabels
 
 			Type      type() const;
 			QString   name() const;
-			QString   value() const;
+			QString   initialValue() const;
 			Increment increment() const;
 			QString   stepSize() const;
 
+			void    resetValue();
+			void    incrementValueOnCopy();
+			void    incrementValueOnMerge();
+			void    incrementValueOnPage();
+			QString value() const;
 
 			static QString   typeToI18nString( Type type );
 			static QString   typeToIdString( Type type );
@@ -82,9 +88,14 @@ namespace glabels
 		private:
 			Type      mType;
 			QString   mName;
-			QString   mValue;
+			QString   mInitialValue;
 			Increment mIncrement;
 			QString   mStepSize;
+
+			long long mIntegerValue;
+			long long mIntegerStep;
+			double    mFloatingPointValue;
+			double    mFloatingPointStep;
 
 		};
 
