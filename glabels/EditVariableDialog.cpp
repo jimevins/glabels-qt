@@ -37,8 +37,8 @@ namespace
 	// All variable increments. (must be in sorted order)
 	const QVector<glabels::model::Variable::Increment> allIncrements = {
 		glabels::model::Variable::Increment::NEVER,
+		glabels::model::Variable::Increment::PER_ITEM,
 		glabels::model::Variable::Increment::PER_COPY,
-		glabels::model::Variable::Increment::PER_MERGE_RECORD,
 		glabels::model::Variable::Increment::PER_PAGE
 	};
 }

@@ -64,8 +64,8 @@ namespace glabels
 			void replaceVariable( const QString& name, const Variable& variable );
 
 			void resetVariables();
+			void incrementVariablesOnItem();
 			void incrementVariablesOnCopy();
-			void incrementVariablesOnMerge();
 			void incrementVariablesOnPage();
 
 

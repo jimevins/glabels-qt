@@ -1073,10 +1073,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Per merge record</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Per page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1086,6 +1082,10 @@
     </message>
     <message>
         <source>Floating Point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

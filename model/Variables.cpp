@@ -98,6 +98,18 @@ namespace glabels
 
 		
 		///
+		/// Increment variables on item
+		///
+		void Variables::incrementVariablesOnItem()
+		{
+			for ( auto& v : *this )
+			{
+				v.incrementValueOnItem();
+			}
+		}
+
+		
+		///
 		/// Increment variables on copy
 		///
 		void Variables::incrementVariablesOnCopy()
@@ -105,18 +117,6 @@ namespace glabels
 			for ( auto& v : *this )
 			{
 				v.incrementValueOnCopy();
-			}
-		}
-
-		
-		///
-		/// Increment variables on merge record
-		///
-		void Variables::incrementVariablesOnMerge()
-		{
-			for ( auto& v : *this )
-			{
-				v.incrementValueOnMerge();
 			}
 		}
 

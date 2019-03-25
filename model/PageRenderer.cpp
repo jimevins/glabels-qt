@@ -283,6 +283,7 @@ namespace glabels
 				iLabel++;
 				iCurrentPage = iLabel / mNLabelsPerPage;
 
+				mVariables->incrementVariablesOnItem();
 				mVariables->incrementVariablesOnCopy();
 				if ( (iLabel % mNLabelsPerPage) == 0 /* starting a new page */ )
 				{
@@ -341,7 +342,7 @@ namespace glabels
 				iLabel++;
 				iCurrentPage = iLabel / mNLabelsPerPage;
 
-				mVariables->incrementVariablesOnMerge();
+				mVariables->incrementVariablesOnItem();
 				if ( iRecord == 0 )
 				{
 					mVariables->incrementVariablesOnCopy();

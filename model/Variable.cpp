@@ -90,9 +90,9 @@ namespace glabels
 		}
 
 		
-		void    Variable::incrementValueOnCopy()
+		void    Variable::incrementValueOnItem()
 		{
-			if ( mIncrement == Increment::PER_COPY )
+			if ( mIncrement == Increment::PER_ITEM )
 			{
 				switch (mType)
 				{
@@ -110,9 +110,9 @@ namespace glabels
 		}
 
 		
-		void    Variable::incrementValueOnMerge()
+		void    Variable::incrementValueOnCopy()
 		{
-			if ( mIncrement == Increment::PER_MERGE_RECORD )
+			if ( mIncrement == Increment::PER_COPY )
 			{
 				switch (mType)
 				{
@@ -219,10 +219,10 @@ namespace glabels
 			{
 			case Increment::NEVER:
 				return tr("Never");
+			case Increment::PER_ITEM:
+				return tr("Per item");
 			case Increment::PER_COPY:
 				return tr("Per copy");
-			case Increment::PER_MERGE_RECORD:
-				return tr("Per merge record");
 			case Increment::PER_PAGE:
 				return tr("Per page");
 			}
@@ -235,10 +235,10 @@ namespace glabels
 			{
 			case Increment::NEVER:
 				return "never";
+			case Increment::PER_ITEM:
+				return "per_item";
 			case Increment::PER_COPY:
 				return "per_copy";
-			case Increment::PER_MERGE_RECORD:
-				return "per_merge_record";
 			case Increment::PER_PAGE:
 				return "per_page";
 			}
@@ -251,13 +251,13 @@ namespace glabels
 			{
 				return Increment::NEVER;
 			}
+			else if ( id == "per_item" )
+			{
+				return Increment::PER_ITEM;
+			}
 			else if ( id == "per_copy" )
 			{
 				return Increment::PER_COPY;
-			}
-			else if ( id == "per_merge_record" )
-			{
-				return Increment::PER_MERGE_RECORD;
 			}
 			else if ( id == "per_page" )
 			{

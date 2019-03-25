@@ -46,8 +46,8 @@ namespace glabels
 			enum class Increment
 			{
 				NEVER,
+				PER_ITEM,
 				PER_COPY,
-				PER_MERGE_RECORD,
 				PER_PAGE
 			};
 			
@@ -71,8 +71,8 @@ namespace glabels
 			QString   stepSize() const;
 
 			void    resetValue();
+			void    incrementValueOnItem();
 			void    incrementValueOnCopy();
-			void    incrementValueOnMerge();
 			void    incrementValueOnPage();
 			QString value() const;
 
