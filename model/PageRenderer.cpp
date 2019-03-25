@@ -294,46 +294,62 @@ namespace glabels
 	
 		void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
 		{
-			int iRecord = 0;
-			int iStart = 0;
-			int iEnd = mNLabelsPerPage;
-
-			if ( iPage == 0 )
-			{
-				iStart = mStartLabel;
-			}
-
-			if ( (mLastLabel / mNLabelsPerPage) == iPage )
-			{
-				iEnd = mLastLabel % mNLabelsPerPage;
-			}
-
-			const QList<merge::Record*> records = mMerge->selectedRecords();
-			if ( records.size() )
-			{
-				iRecord = (iPage*mNLabelsPerPage + iStart - mStartLabel) % records.size();
-			}
-
 			printCropMarks( painter );
 
-			for ( int i = iStart; i < iEnd; i++ )
+			int iCopy = 0;
+			int iLabel = mStartLabel;
+			int iCurrentPage = 0;
+
+			const QList<merge::Record*> records = mMerge->selectedRecords();
+			int iRecord = 0;
+			int nRecords = records.size();
+
+			if ( nRecords == 0 )
 			{
-				painter->save();
-
-				painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
+				return;
+			}
 			
-				painter->save();
+			mVariables->resetVariables();
 
-				clipLabel( painter );
-				printLabel( painter, records[iRecord], mVariables );
+			while ( (iCopy < mNCopies) && (iCurrentPage <= iPage) )
+			{
+				if ( iCurrentPage == iPage )
+				{
+					int i = iLabel % mNLabelsPerPage;
+					
+					painter->save();
 
-				painter->restore();  // From before clip
-
-				printOutline( painter );
+					painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
 			
-				painter->restore();  // From before translation
+					painter->save();
 
-				iRecord = (iRecord + 1) % records.size();
+					clipLabel( painter );
+					printLabel( painter, records[iRecord], mVariables );
+
+					painter->restore();  // From before clip
+
+					printOutline( painter );
+			
+					painter->restore();  // From before translation
+				}
+
+				iRecord = (iRecord + 1) % nRecords;
+				if ( iRecord == 0 )
+				{
+					iCopy++;
+				}
+				iLabel++;
+				iCurrentPage = iLabel / mNLabelsPerPage;
+
+				mVariables->incrementVariablesOnMerge();
+				if ( iRecord == 0 )
+				{
+					mVariables->incrementVariablesOnCopy();
+				}
+				if ( (iLabel % mNLabelsPerPage) == 0 /* starting a new page */ )
+				{
+					mVariables->incrementVariablesOnPage();
+				}
 			}
 		}
 	
