@@ -139,7 +139,10 @@ namespace glabels
 	///
 	void FieldCombo::onIndexChanged( int index )
 	{
-		emit selectionChanged();
+		if ( index >= 0 )
+		{
+			emit selectionChanged();
+		}
 	}
 
 	
