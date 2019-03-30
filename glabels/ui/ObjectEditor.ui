@@ -31,7 +31,7 @@
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_5">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
@@ -763,77 +763,74 @@
          <property name="title">
           <string>File</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_12">
-          <item row="0" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout_5">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="glabels::FieldCombo" name="imageFieldCombo">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <item>
-             <widget class="QLineEdit" name="imageFilenameLineEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>231</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="placeholderText">
-               <string>None</string>
-              </property>
-             </widget>
+             <property name="text">
+              <string notr="true">Selected File...</string>
+             </property>
             </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="1,0,1">
-              <item>
-               <widget class="QPushButton" name="imageFileButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Select File...</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>or</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="glabels::FieldButton" name="imageFieldCombo">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Select Merge Field...</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="imageFileSelectionBox" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_27">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="imageFilenameLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>231</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>None</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="imageBrowseButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Browse...</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -1545,6 +1542,14 @@
     <signal>selectionChanged()</signal>
    </slots>
   </customwidget>
+  <customwidget>
+   <class>glabels::FieldCombo</class>
+   <extends>QComboBox</extends>
+   <header>FieldCombo.h</header>
+   <slots>
+    <signal>selectionChanged()</signal>
+   </slots>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../icons.qrc"/>
@@ -1999,34 +2004,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>imageFileButton</sender>
+   <sender>imageBrowseButton</sender>
    <signal>clicked()</signal>
    <receiver>ObjectEditor</receiver>
    <slot>onImageFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>133</x>
+     <x>365</x>
      <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
      <y>81</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>imageFieldCombo</sender>
-   <signal>keySelected(QString)</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onImageKeySelected(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>302</x>
-     <y>175</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>397</x>
-     <y>32</y>
     </hint>
    </hints>
   </connection>
@@ -2190,6 +2179,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>imageFieldCombo</sender>
+   <signal>selectionChanged()</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onImageComboChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>283</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>18</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onChanged()</slot>
@@ -2206,5 +2211,6 @@
   <slot>onTextInsertFieldKeySelected(QString)</slot>
   <slot>onBarcodeControlsChanged()</slot>
   <slot>onBarcodeInsertFieldKeySelected(QString)</slot>
+  <slot>onImageComboChanged()</slot>
  </slots>
 </ui>

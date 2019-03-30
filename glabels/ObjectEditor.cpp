@@ -69,7 +69,7 @@ namespace glabels
 
 		textInsertFieldCombo->setName( tr("Insert Field") );
 		barcodeInsertFieldCombo->setName( tr("Insert Field") );
-		imageFieldCombo->setName( tr("Key") );
+		imageFieldCombo->setSpecialSelectionText( tr("Selected File...") );
 
 		setEnabled( false );
 		hidePages();
@@ -120,13 +120,14 @@ namespace glabels
 
 			model::TextNode filenameNode = mObject->filenameNode();
 
+			imageFileSelectionBox->setVisible( !filenameNode.isField() );
 			if ( filenameNode.isField() )
 			{
-				QString field = QString("${%1}").arg( filenameNode.data() );
-				imageFilenameLineEdit->setText( field );
+				imageFieldCombo->setCurrentSelection( filenameNode.data() );
 			}
 			else
 			{
+				imageFieldCombo->setCurrentSelectionToSpecial();
 				imageFilenameLineEdit->setText( filenameNode.data() );
 			}
 
@@ -506,7 +507,7 @@ namespace glabels
 			fillColorButton->setKeys( keys );
 			textInsertFieldCombo->setKeys( keys );
 			barcodeInsertFieldCombo->setKeys( keys );
-			imageFieldCombo->setKeys( keys );
+			imageFieldCombo->setFieldSelections( mModel->merge(), mModel->variables() );
 			shadowColorButton->setKeys( keys );
 		}
 	}
@@ -616,10 +617,22 @@ namespace glabels
 	}
 
 
-	void ObjectEditor::onImageKeySelected( QString key )
+	void ObjectEditor::onImageComboChanged()
 	{
-		mUndoRedoModel->checkpoint( tr("Set image") );
-		mObject->setFilenameNode( model::TextNode( true, key ) );
+		imageFileSelectionBox->setVisible( imageFieldCombo->isCurrentSelectionSpecial() );
+
+		if ( mObject )
+		{
+			mUndoRedoModel->checkpoint( tr("Set image") );
+			if ( imageFieldCombo->isCurrentSelectionSpecial() )
+			{
+				mObject->setFilenameNode( model::TextNode( false, imageFilenameLineEdit->text() ) );
+			}
+			else
+			{
+				mObject->setFilenameNode( model::TextNode( true, imageFieldCombo->currentSelection() ) );
+			}
+		}
 	}
 
 

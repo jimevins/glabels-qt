@@ -18,6 +18,7 @@ set (glabels_sources
   Cursors.cpp
   EditVariableDialog.cpp
   FieldButton.cpp
+  FieldCombo.cpp
   File.cpp
   Help.cpp
   Icons.cpp
@@ -55,6 +56,7 @@ set (glabels_qobject_headers
   ColorPaletteButtonItem.h
   EditVariableDialog.h
   FieldButton.h
+  FieldCombo.h
   File.h
   LabelEditor.h
   MainWindow.h

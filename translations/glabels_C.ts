@@ -406,18 +406,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select File...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>or</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select Merge Field...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Line/Fill</source>
         <translation type="unfinished"></translation>
     </message>
@@ -491,6 +479,10 @@
     </message>
     <message>
         <source>Opacity:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1761,10 +1753,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Original size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1898,6 +1886,10 @@
     </message>
     <message>
         <source>Shadow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected File...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
