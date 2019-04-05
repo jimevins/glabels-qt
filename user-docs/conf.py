@@ -149,8 +149,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('man/glabels-qt', 'glabels-qt', 'gLabels Documentation', [author], 1),
-    ('man/glabels-batch-qt', 'glabels-batch-qt', 'gLabels Documentation', [author], 1)
+    ('man/glabels-qt', 'glabels-qt', 'create labels and business cards', [author], 1),
+    ('man/glabels-batch-qt', 'glabels-batch-qt', 'batch creation of labels and business cards', [author], 1)
 ]
 
 
