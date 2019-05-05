@@ -60,7 +60,7 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationName( "glabels.org" );
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-batch-qt" );
-	QCoreApplication::setApplicationVersion( glabels::model::Version::STRING );
+	QCoreApplication::setApplicationVersion( glabels::model::Version::LONG_STRING );
 
 	//
 	// Setup translators

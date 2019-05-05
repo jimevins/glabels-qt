@@ -18,6 +18,26 @@ set (WEBSITE  "glabels.org")
 set (BUG_WEBSITE  "https://github.com/jimevins/glabels-qt/issues")
 
 execute_process(
+  COMMAND git rev-parse --abbrev-ref HEAD
+  RESULT_VARIABLE BRANCH_VALID
+  OUTPUT_VARIABLE BRANCH
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+if (NOT ${BRANCH_VALID} STREQUAL "0")
+  set (BRANCH "Unkonwn")
+endif ()
+  
+execute_process(
+  COMMAND git rev-list --count ${BRANCH}
+  RESULT_VARIABLE COMMIT_COUNT_VALID
+  OUTPUT_VARIABLE COMMIT_COUNT
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+if (NOT ${COMMIT_COUNT_VALID} STREQUAL "0")
+  set (COMMIT_COUNT "?")
+endif ()
+  
+execute_process(
   COMMAND git log -1 --format=%h
   RESULT_VARIABLE COMMIT_HASH_VALID
   OUTPUT_VARIABLE COMMIT_HASH
@@ -38,10 +58,15 @@ if (NOT ${COMMIT_DATE_VALID} STREQUAL "0")
 endif ()
 
 # Uncomment for snapshots, comment for releases
-set(VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}-snapshot (${COMMIT_HASH} ${COMMIT_DATE})")
+set(VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}-${BRANCH}${COMMIT_COUNT}")
 
 # Uncomment for releases, comment for snapshots
 #set(VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+
+set(LONG_VERSION_STRING "${VERSION_STRING} (${COMMIT_HASH} ${COMMIT_DATE})")
+
+# Auto-generate version file
+configure_file (.version.in VERSION @ONLY)
 
 
 #=======================================
@@ -147,7 +172,7 @@ add_subdirectory (data)
 #=======================================
 message (STATUS "")
 message (STATUS "Project name ............ " ${CMAKE_PROJECT_NAME})
-message (STATUS "Project version ......... " ${VERSION_STRING})
+message (STATUS "Project version ......... " ${LONG_VERSION_STRING})
 message (STATUS "Installation prefix ..... " ${CMAKE_INSTALL_PREFIX})
 message (STATUS "Source code location .... " ${glabels_SOURCE_DIR})
 message (STATUS "CMake version ........... " ${CMAKE_VERSION})
