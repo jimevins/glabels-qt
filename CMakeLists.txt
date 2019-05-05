@@ -18,7 +18,7 @@ set (WEBSITE  "glabels.org")
 set (BUG_WEBSITE  "https://github.com/jimevins/glabels-qt/issues")
 
 execute_process(
-  COMMAND git rev-parse --abbrev-ref HEAD
+  COMMAND git symbolic-ref --short HEAD
   RESULT_VARIABLE BRANCH_VALID
   OUTPUT_VARIABLE BRANCH
   OUTPUT_STRIP_TRAILING_WHITESPACE
