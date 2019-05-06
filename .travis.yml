@@ -13,6 +13,7 @@ install:
     - source /opt/qt5*/bin/qt5*-env.sh
 
 script:
+  - git checkout master # re-attach to master to satisfy auto version tooling
   - mkdir build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
