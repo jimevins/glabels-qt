@@ -70,6 +70,9 @@ namespace glabels
 
 		connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
 
+		copiesSpin->setRange( 1, 100*mModel->frame()->nLabels() );
+		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
+
 		onFormChanged();
 	}
 
@@ -79,6 +82,9 @@ namespace glabels
 	///
 	void PrintView::onModelChanged()
 	{
+		copiesSpin->setRange( 1, 100*mModel->frame()->nLabels() );
+		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
+
 		updateView();
 	}
 
@@ -88,8 +94,6 @@ namespace glabels
 	///
 	void PrintView::updateView()
 	{
-		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
-
 		if ( mRenderer.nPages() == 1 )
 		{
 			if ( mRenderer.nItems() == 1 )
