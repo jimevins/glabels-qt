@@ -38,7 +38,7 @@ namespace glabels
 	{
 		setupUi( this );
 
-		QString version = tr("Version") + " " + model::Version::STRING;
+		QString version = tr("Version") + " " + model::Version::LONG_STRING;
 	
 		QString description = tr("A program to create labels and business cards.");
 	
