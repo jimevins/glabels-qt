@@ -332,6 +332,16 @@
     </Label-rectangle>
   </Template>
 
+  <Template brand="Online Labels" part="OL1649" size="US-Letter" _description="Floppy disk labels">
+    <Meta category="label"/>
+    <Meta category="rectangle-label"/>
+    <Meta category="media"/>
+    <Meta product_url="https://www.onlinelabels.com/products/ol1649"/>
+    <Label-rectangle id="0" width="1.000in" height="5.000in" round="0.000in" x_waste="0.00in" y_waste="0.00in">
+      <Layout nx="7" ny="2" x0="0.375in" y0="0.475in" dx="1.125in" dy="5.125in"/>
+    </Label-rectangle>
+  </Template>
+  
   <Template brand="Online Labels" part="OL225 (main)" size="US-Letter" _description="Floppy disk labels">
     <Meta category="label"/>
     <Meta category="square-label"/>
