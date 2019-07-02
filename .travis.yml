@@ -10,6 +10,7 @@ before_install:
 install: 
     - sudo apt-get -y install qt59base qt59svg qt59tools qt59translations zlib1g-dev xvfb
     - sudo apt-get -y install barcode libqrencode-dev
+    - wget https://downloads.sourceforge.net/project/zint/zint/2.6.3/zint-2.6.3_final.tar.gz && tar xzf zint-2.6.3_final.tar.gz && cd zint-2.6.3.src && mkdir build && cd build && cmake .. && make && sudo make install && cd ../..
     - source /opt/qt5*/bin/qt5*-env.sh
 
 script:
