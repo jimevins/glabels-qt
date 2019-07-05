@@ -454,8 +454,8 @@ namespace glabels
 
 					loadTextPage();
 					loadPositionPage();
+					loadRectSizePage();
 					loadShadowPage();
-                                        loadRectSizePage();
 				
 					setEnabled( true );
 				}
@@ -473,6 +473,7 @@ namespace glabels
 
 					loadBarcodePage();
 					loadPositionPage();
+					loadRectSizePage();
 				
 					setEnabled( true );
 				}
