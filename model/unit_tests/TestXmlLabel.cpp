@@ -71,7 +71,7 @@ void TestXmlLabel::serializeDeserialize()
 	//
 	bool lock = true, noLock = false, shadow = true, noShadow = false;
 	ColorNode black( Qt::black ), white( Qt::white ), red( Qt::red ), green( Qt::green ), blue( Qt::blue );
-	QMatrix tMatrix(1, 0, 0, 1, 50.0, 50.0), sMatrix( 0.5, 0, 0, 1.0, 0, 0 ); 
+	QMatrix tMatrix( 1, 0, 0, 1, 50.0, 50.0 ), sMatrix( 0.5, 0, 0, 1.0, 0, 0 );
 	QImage png( QFINDTESTDATA( "../../../glabels/images/glabels-logo.png" ) );
 	QByteArray svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"16\" height=\"16\" ><path d=\"M 3,4 l 5.5,11 -4,-2 v 5 h -3 v -5 l -4,2 Z\" /></svg>";
 	Style bcStyle = Backends::defaultStyle();

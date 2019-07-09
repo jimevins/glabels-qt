@@ -64,7 +64,7 @@ namespace glabels
 			             const Distance&  y0,
 			             const Distance&  w,
 			             const Distance&  h,
-						 bool             lockAspectRatio = false,
+			             bool             lockAspectRatio = false,
 			             const QMatrix&   matrix = QMatrix(),
 			             bool             shadowState = false,
 			             const Distance&  shadowX = 0,
