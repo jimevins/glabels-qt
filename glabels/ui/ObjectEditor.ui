@@ -1202,16 +1202,7 @@
              <property name="spacing">
               <number>15</number>
              </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
+             <property name="margin">
               <number>0</number>
              </property>
              <item>
@@ -2187,6 +2178,22 @@
     <hint type="destinationlabel">
      <x>359</x>
      <y>636</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sizeAspectCheck</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onRectSizeControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>319</y>
     </hint>
    </hints>
   </connection>

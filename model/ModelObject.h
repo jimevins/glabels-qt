@@ -64,6 +64,7 @@ namespace glabels
 			             const Distance&  y0,
 			             const Distance&  w,
 			             const Distance&  h,
+						 bool             lockAspectRatio = false,
 			             const QMatrix&   matrix = QMatrix(),
 			             bool             shadowState = false,
 			             const Distance&  shadowX = 0,
@@ -134,6 +135,13 @@ namespace glabels
 			//
 			Distance h() const;
 			void setH( const Distance& value );
+
+
+			//
+			// Lock Aspect Ratio Property
+			//
+			bool lockAspectRatio() const;
+			void setLockAspectRatio( bool value );
 
 
 			//
@@ -424,6 +432,7 @@ namespace glabels
 			Distance          mY0;
 			Distance          mW;
 			Distance          mH;
+			bool              mLockAspectRatio;
 
 			bool              mShadowState;
 			Distance          mShadowX;

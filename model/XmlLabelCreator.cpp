@@ -384,6 +384,7 @@ namespace glabels
 		{
 			XmlUtil::setLengthAttr( node, "w", object->w() );
 			XmlUtil::setLengthAttr( node, "h", object->h() );
+			XmlUtil::setBoolAttr( node, "lock_aspect_ratio", object->lockAspectRatio() );
 		}
 
 	
@@ -433,24 +434,21 @@ namespace glabels
 		void
 		XmlLabelCreator::createShadowAttrs( QDomElement &node, const ModelObject* object )
 		{
-			if ( object->shadow() )
+			XmlUtil::setBoolAttr( node, "shadow", object->shadow() );
+
+			XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
+			XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
+
+			if ( object->fillColorNode().isField() )
 			{
-				XmlUtil::setBoolAttr( node, "shadow", object->shadow() );
-
-				XmlUtil::setLengthAttr( node, "shadow_x", object->shadowX() );
-				XmlUtil::setLengthAttr( node, "shadow_y", object->shadowY() );
-
-				if ( object->fillColorNode().isField() )
-				{
-					XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
-				}
-				else
-				{
-					XmlUtil::setUIntAttr( node, "shadow_color", object->shadowColorNode().rgba() );
-				}
-
-				XmlUtil::setDoubleAttr( node, "shadow_opacity", object->shadowOpacity() );
+				XmlUtil::setStringAttr( node, "shadow_color_field", object->shadowColorNode().key() );
 			}
+			else
+			{
+				XmlUtil::setUIntAttr( node, "shadow_color", object->shadowColorNode().rgba() );
+			}
+
+			XmlUtil::setDoubleAttr( node, "shadow_opacity", object->shadowOpacity() );
 		}
 
 

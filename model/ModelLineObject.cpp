@@ -68,7 +68,7 @@ namespace glabels
 		                                  const Distance&  shadowY,
 		                                  double           shadowOpacity,
 		                                  const ColorNode& shadowColorNode )
-		: ModelObject( x0, y0, dx, dy,
+		: ModelObject( x0, y0, dx, dy, false /*lockAspectRatio*/,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
 		{

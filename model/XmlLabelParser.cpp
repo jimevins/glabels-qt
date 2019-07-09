@@ -354,6 +354,7 @@ namespace glabels
 			/* size attrs */
 			Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
+			bool lockAspectRatio = XmlUtil::getBoolAttr( node, "lock_aspect_ratio", false );
 
 			/* line attrs */
 			Distance lineWidth = XmlUtil::getLengthAttr( node, "line_width", 1.0 );
@@ -389,7 +390,7 @@ namespace glabels
 			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
 			ColorNode shadowColorNode( field_flag, color, key );
 
-			return new ModelBoxObject( x0, y0, w, h,
+			return new ModelBoxObject( x0, y0, w, h, lockAspectRatio,
 			                           lineWidth, lineColorNode,
 			                           fillColorNode,
 			                           QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
@@ -407,6 +408,7 @@ namespace glabels
 			/* size attrs */
 			Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
+			bool lockAspectRatio = XmlUtil::getBoolAttr( node, "lock_aspect_ratio", false );
 
 			/* line attrs */
 			Distance lineWidth = XmlUtil::getLengthAttr( node, "line_width", 1.0 );
@@ -442,7 +444,7 @@ namespace glabels
 			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
 			ColorNode shadowColorNode( field_flag, color, key );
 
-			return new ModelEllipseObject( x0, y0, w, h,
+			return new ModelEllipseObject( x0, y0, w, h, lockAspectRatio,
 			                               lineWidth, lineColorNode,
 			                               fillColorNode,
 			                               QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
@@ -506,6 +508,7 @@ namespace glabels
 			/* size attrs */
 			Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
+			bool lockAspectRatio = XmlUtil::getBoolAttr( node, "lock_aspect_ratio", false );
 
 			/* file attrs */
 			QString key        = XmlUtil::getStringAttr( node, "src_field", "" );
@@ -535,7 +538,7 @@ namespace glabels
 
 			if ( filenameNode.isField() )
 			{
-				return new ModelImageObject( x0, y0, w, h,
+				return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
 				                             filenameNode,
 				                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 				                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
@@ -544,22 +547,25 @@ namespace glabels
 			{
 				if ( data.hasImage( filename ) )
 				{
-					return new ModelImageObject( x0, y0, w, h,
+					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
 					                             filename, data.getImage( filename ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
 				else if ( data.hasSvg( filename ) )
 				{
-					return new ModelImageObject( x0, y0, w, h,
+					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
 					                             filename, data.getSvg( filename ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
 				else
 				{
-					qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
-					return new ModelImageObject( x0, y0, w, h,
+					if ( !filename.isEmpty() )
+					{
+						qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
+					}
+					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
 					                             filenameNode,
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
@@ -578,6 +584,7 @@ namespace glabels
 			/* size attrs */
 			Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
+			bool lockAspectRatio = XmlUtil::getBoolAttr( node, "lock_aspect_ratio", false );
 
 			/* barcode attrs */
 			barcode::Style bcStyle = barcode::Backends::style( XmlUtil::getStringAttr( node, "backend", "" ),
@@ -601,7 +608,7 @@ namespace glabels
 			a[4] = XmlUtil::getDoubleAttr( node, "a4", 0.0 );
 			a[5] = XmlUtil::getDoubleAttr( node, "a5", 0.0 );
 
-			return new ModelBarcodeObject( x0, y0, w, h,
+			return new ModelBarcodeObject( x0, y0, w, h, lockAspectRatio,
 			                               bcStyle, bcTextFlag, bcChecksumFlag, bcData, bcColorNode,
 			                               QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ) );
 		}
@@ -617,6 +624,7 @@ namespace glabels
 			/* size attrs */
 			Distance w = XmlUtil::getLengthAttr( node, "w", 0 );
 			Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
+			bool lockAspectRatio = XmlUtil::getBoolAttr( node, "lock_aspect_ratio", false );
 
 			/* color attr */
 			QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
@@ -682,7 +690,7 @@ namespace glabels
 			}
 			QString text = document.toPlainText();
 
-			return new ModelTextObject( x0, y0, w, h,
+			return new ModelTextObject( x0, y0, w, h, lockAspectRatio,
 			                            text,
 			                            fontFamily, fontSize, fontWeight, fontItalicFlag, fontUnderlineFlag,
 			                            textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,

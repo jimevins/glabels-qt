@@ -188,6 +188,7 @@ namespace glabels
 
 			sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 			sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
+			sizeAspectCheck->setChecked( mObject->lockAspectRatio() );
 
 			model::Size originalSize = mObject->naturalSize();
 			QString originalSizeString = QString( "%1:  %2 x %3 %4" )
@@ -655,6 +656,7 @@ namespace glabels
 				
 			if ( sizeAspectCheck->isChecked() )
 			{
+				mObject->setLockAspectRatio( true );
 				if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
 				{
 					mObject->setWHonorAspect( spinW );
@@ -668,6 +670,7 @@ namespace glabels
 			}
 			else
 			{
+				mObject->setLockAspectRatio( false );
 				mObject->setSize( spinW, spinH );
 			}
 			

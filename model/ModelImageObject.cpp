@@ -70,6 +70,7 @@ namespace glabels
 		                                    const Distance&  y0,
 		                                    const Distance&  w,
 		                                    const Distance&  h,
+		                                    bool             lockAspectRatio,
 		                                    const TextNode&  filenameNode,
 		                                    const QMatrix&   matrix,
 		                                    bool             shadowState,
@@ -77,7 +78,7 @@ namespace glabels
 		                                    const Distance&  shadowY,
 		                                    double           shadowOpacity,
 		                                    const ColorNode& shadowColorNode )
-		: ModelObject( x0, y0, w, h,
+		: ModelObject( x0, y0, w, h, lockAspectRatio,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
 		{
@@ -111,6 +112,7 @@ namespace glabels
 		                                    const Distance&  y0,
 		                                    const Distance&  w,
 		                                    const Distance&  h,
+		                                    bool             lockAspectRatio,
 		                                    const QString&   filename,
 		                                    const QImage&    image,
 		                                    const QMatrix&   matrix,
@@ -119,7 +121,7 @@ namespace glabels
 		                                    const Distance&  shadowY,
 		                                    double           shadowOpacity,
 		                                    const ColorNode& shadowColorNode )
-		: ModelObject( x0, y0, w, h,
+		: ModelObject( x0, y0, w, h, lockAspectRatio,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
 		{
@@ -152,6 +154,7 @@ namespace glabels
 		                                    const Distance&   y0,
 		                                    const Distance&   w,
 		                                    const Distance&   h,
+		                                    bool              lockAspectRatio,
 		                                    const QString&    filename,
 		                                    const QByteArray& svg,
 		                                    const QMatrix&    matrix,
@@ -160,7 +163,7 @@ namespace glabels
 		                                    const Distance&   shadowY,
 		                                    double            shadowOpacity,
 		                                    const ColorNode&  shadowColorNode )
-		: ModelObject( x0, y0, w, h,
+		: ModelObject( x0, y0, w, h, lockAspectRatio,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
 		{
