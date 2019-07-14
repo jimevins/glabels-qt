@@ -51,6 +51,7 @@ namespace glabels
 			                    const Distance&       y0,
 			                    const Distance&       w,
 			                    const Distance&       h,
+			                    bool                  lockAspectRatio,
 			                    const barcode::Style& bcStyle,
 			                    bool                  bcTextFlag,
 			                    bool                  bcChecksumFlag,

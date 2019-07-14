@@ -47,6 +47,7 @@ namespace glabels
 			                const Distance&  y0,
 			                const Distance&  w,
 			                const Distance&  h,
+			                bool             lockAspectRatio,
 			                const Distance&  lineWidth,
 			                const ColorNode& lineColorNode,
 			                const ColorNode& fillColorNode,

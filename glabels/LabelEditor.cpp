@@ -469,6 +469,10 @@ namespace glabels
 						mResizeObject = handle->owner();
 						mResizeHandle = handle;
 						mResizeHonorAspect = event->modifiers() & Qt::ControlModifier;
+						if ( mResizeObject->lockAspectRatio() )
+						{
+							mResizeHonorAspect = !mResizeHonorAspect;
+						}
 
 						mState = ArrowResize;
 					}

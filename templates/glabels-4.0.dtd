@@ -323,8 +323,9 @@
 >
 
 <!ENTITY % size_attrs
-                 "w              %LENGTH_TYPE;           #REQUIRED
-                  h              %LENGTH_TYPE;           #REQUIRED"
+                 "w                 %LENGTH_TYPE;        #REQUIRED
+                  h                 %LENGTH_TYPE;        #REQUIRED
+                  lock_aspect_ratio %BOOLEAN_TYPE;       #IMPLIED"
 >
 
 <!ENTITY % line_attrs

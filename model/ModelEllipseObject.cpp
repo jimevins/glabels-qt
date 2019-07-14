@@ -54,6 +54,7 @@ namespace glabels
 		                                        const Distance&  y0,
 		                                        const Distance&  w,
 		                                        const Distance&  h,
+		                                        bool             lockAspectRatio,
 		                                        const Distance&  lineWidth,
 		                                        const ColorNode& lineColorNode,
 		                                        const ColorNode& fillColorNode,
@@ -63,7 +64,7 @@ namespace glabels
 		                                        const Distance&  shadowY,
 		                                        double           shadowOpacity,
 		                                        const ColorNode& shadowColorNode )
-		: ModelShapeObject( x0, y0, w, h,
+		: ModelShapeObject( x0, y0, w, h, lockAspectRatio,
 		                    lineWidth, lineColorNode, fillColorNode,
 		                    matrix,
 		                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )

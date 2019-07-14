@@ -82,6 +82,7 @@ namespace glabels
 		                                  const Distance&       y0,
 		                                  const Distance&       w,
 		                                  const Distance&       h,
+		                                  bool                  lockAspectRatio,
 		                                  const QString&        text,
 		                                  const QString&        fontFamily,
 		                                  double                fontSize,
@@ -100,7 +101,7 @@ namespace glabels
 		                                  const Distance&       shadowY,
 		                                  double                shadowOpacity,
 		                                  const ColorNode&      shadowColorNode )
-		: ModelObject( x0, y0, w, h,
+		: ModelObject( x0, y0, w, h, lockAspectRatio,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
 		{

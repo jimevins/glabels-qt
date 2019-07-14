@@ -51,6 +51,7 @@ namespace glabels
 			mY0 = 0;
 			mW  = 0;
 			mH  = 0;
+			mLockAspectRatio = false;
 			mMatrix = QMatrix();
 
 			mShadowState     = false;
@@ -72,6 +73,7 @@ namespace glabels
 		                          const Distance&  y0,
 		                          const Distance&  w,
 		                          const Distance&  h,
+		                          bool             lockAspectRatio,
 		                          const QMatrix&   matrix,
 		                          bool             shadowState,
 		                          const Distance&  shadowX,
@@ -85,6 +87,7 @@ namespace glabels
 			mY0 = y0;
 			mW  = w;
 			mH  = h;
+			mLockAspectRatio = lockAspectRatio;
 			mMatrix = matrix;
 
 			mShadowState     = shadowState;
@@ -112,6 +115,7 @@ namespace glabels
 			mY0              = object->mY0;
 			mW               = object->mW;
 			mH               = object->mH;
+			mLockAspectRatio = object->mLockAspectRatio;
 
 			mShadowState     = object->mShadowState;
 			mShadowX         = object->mShadowX;
@@ -267,6 +271,28 @@ namespace glabels
 			{
 				mH = value;
 				sizeUpdated();
+				emit changed();
+			}
+		}
+
+
+		///
+		/// Lock Aspect Ratio Property Getter
+		///
+		bool ModelObject::lockAspectRatio() const
+		{
+			return mLockAspectRatio;
+		}
+
+
+		///
+		/// Lock Aspect Ratio Property Setter
+		///
+		void ModelObject::setLockAspectRatio( bool value )
+		{
+			if ( mLockAspectRatio != value )
+			{
+				mLockAspectRatio = value;
 				emit changed();
 			}
 		}
