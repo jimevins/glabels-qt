@@ -1,7 +1,8 @@
 gLabels Linux Build Instructions
 ================================
 
-## Prerequisites
+## General
+### Prerequisites
 
 - g++
 - CMake 2.8.12+
@@ -12,7 +13,7 @@ gLabels Linux Build Instructions
 > may also need to be installed.  Development packages are usually named something like
 > libraryName-dev or libraryName-devel.
 
-## Compile and Install
+### Compile and Install
 
 gLabels uses the CMake meta build system.  Use the following commands to build and install gLabels:
 
@@ -24,3 +25,33 @@ $ cmake ..
 $ make
 $ sudo make install
 </pre>
+
+## Example: Ubuntu 19.04
+
+### Installing Prerequisites
+```
+sudo apt install cmake
+sudo apt install qtbase5-dev libqt5svg5-dev qttools5-dev zlib1g-dev
+```
+_QREncode (Optional)_
+```
+sudo apt install pkgconf libqrencode-dev
+```
+_Zint (Optional)_
+```
+wget https://downloads.sourceforge.net/project/zint/zint/2.6.3/zint-2.6.3_final.tar.gz
+tar xzf zint-2.6.3_final.tar.gz
+cd zint-2.6.3.src
+mkdir build && cd build && cmake .. && make
+sudo make install
+```
+### Compile and Install gLabels
+
+```
+$ cd glabels-qt
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+```
