@@ -62,7 +62,7 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	MainWindow::MainWindow() : mModel(nullptr)
+	MainWindow::MainWindow() : mModel(nullptr), mUndoRedoModel(nullptr)
 	{
 		setWindowIcon( Icons::Glabels() );
 
@@ -194,7 +194,15 @@ namespace glabels
 	///
 	MainWindow::~MainWindow()
 	{
-		// empty
+		if ( mUndoRedoModel )
+		{
+			delete mUndoRedoModel;
+		}
+		if ( mModel )
+		{
+			delete mModel->merge(); // Ownership of final Merge instance is ours
+			delete mModel;
+		}
 	}
 
 
@@ -212,7 +220,7 @@ namespace glabels
 	///
 	void MainWindow::setModel( model::Model* model )
 	{
-		mModel = model;
+		mModel = model; // Ownership passes to us
 		mUndoRedoModel = new UndoRedoModel( mModel );
 	
 		mPropertiesView->setModel( mModel, mUndoRedoModel );
@@ -882,8 +890,38 @@ namespace glabels
 		fileExitAction->setEnabled( true );
 
 		// Edit actions
-		editUndoAction->setEnabled( hasModel && mUndoRedoModel->canUndo() );
-		editRedoAction->setEnabled( hasModel && mUndoRedoModel->canRedo() );
+		if ( hasModel )
+		{
+			if ( mUndoRedoModel->canUndo() )
+			{
+				editUndoAction->setEnabled( true );
+				/* Translators: %1 is the action description to undo. */
+				editUndoAction->setText( QString( tr("Undo %1") ).arg( mUndoRedoModel->undoDescription() ) );
+			}
+			else
+			{
+				editUndoAction->setEnabled( false );
+				editUndoAction->setText( tr("Undo") );
+			}
+			if ( mUndoRedoModel->canRedo() )
+			{
+				editRedoAction->setEnabled( true );
+				/* Translators: %1 is the action description to redo. */
+				editRedoAction->setText( QString( tr("Redo %1") ).arg( mUndoRedoModel->redoDescription() ) );
+			}
+			else
+			{
+				editRedoAction->setEnabled( false );
+				editRedoAction->setText( tr("Redo") );
+			}
+		}
+		else
+		{
+			editUndoAction->setEnabled( false );
+			editUndoAction->setText( tr("Undo") );
+			editRedoAction->setEnabled( false );
+			editRedoAction->setText( tr("Redo") );
+		}
 		editCutAction->setEnabled( isEditorPage && hasSelection );
 		editCopyAction->setEnabled( isEditorPage && hasSelection );
 		editPasteAction->setEnabled( isEditorPage && canPaste );

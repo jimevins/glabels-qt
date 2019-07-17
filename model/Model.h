@@ -57,6 +57,7 @@ namespace glabels
 			/////////////////////////////////
 		public:
 			Model();
+			Model( merge::Merge* merge );
 			~Model();
 
 	
