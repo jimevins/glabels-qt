@@ -45,7 +45,7 @@ namespace glabels
 		Text::Text( const Text* merge )
 			: Merge( merge ),
 			  mDelimeter(merge->mDelimeter), mLine1HasKeys(merge->mLine1HasKeys),
-			  mNFieldsMax(merge->mNFieldsMax)
+			  mKeys(merge->mKeys), mNFieldsMax(merge->mNFieldsMax)
 		{
 		}
 

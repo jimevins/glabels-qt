@@ -631,7 +631,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			mUndoRedoModel->checkpoint( tr("Move") );
+			mUndoRedoModel->checkpoint( tr("Position") );
 		
 			model::Distance x = model::Distance(posXSpin->value(), mUnits);
 			model::Distance y = model::Distance(posYSpin->value(), mUnits);
@@ -744,6 +744,8 @@ namespace glabels
 		{
 			mBlocked = true;
 
+			mUndoRedoModel->checkpoint( tr("Barcode") );
+
 			barcode::Style bcStyle = barcodeStyleButton->bcStyle();
 
 			barcodeShowTextCheck->setEnabled( bcStyle.textOptional() );
@@ -778,6 +780,8 @@ namespace glabels
 
 	void ObjectEditor::onResetImageSize()
 	{
+		mUndoRedoModel->checkpoint( tr("Reset") );
+
 		mObject->setSize( mObject->naturalSize() );
 	}
 

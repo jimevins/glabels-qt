@@ -661,6 +661,7 @@ namespace glabels
 				break;
 
 			case ArrowResize:
+				mUndoRedoModel->checkpoint( tr("Resize") );
 				handleResizeMotion( xWorld, yWorld );
 				break;
 

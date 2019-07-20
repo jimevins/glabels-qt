@@ -61,12 +61,19 @@ namespace glabels
 		}
 
 
+		Model::Model( merge::Merge* merge )
+			: mUntitledInstance(0), mModified(true), mRotate(false)
+		{
+			mMerge = merge; // Shared
+		}
+
+
 		///
 		/// Destructor.
 		///
 		Model::~Model()
 		{
-			delete mMerge;
+			// Final instance of mMerge to be deleted by Model owner
 		}
 
 
@@ -75,7 +82,13 @@ namespace glabels
 		///
 		Model* Model::save() const
 		{
-			auto* savedModel = new Model;
+			auto* savedModel = new Model( mMerge ); // mMerge shared between models
+
+			if ( mFileName.isEmpty() && mUntitledInstance == 0 )
+			{
+				qDebug() << "Model::save: Warning: called before mUntitledInstance has been initialized: untitled names will differ";
+			}
+
 			savedModel->restore( this );
 
 			return savedModel;
@@ -112,18 +125,12 @@ namespace glabels
 				connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 			}
 
-			delete mMerge;
-			mMerge = savedModel->mMerge->clone();
-
 			// Emit signals based on potential changes
 			emit changed();
 			emit selectionChanged();
 			emit modifiedChanged();
 			emit nameChanged();
 			emit sizeChanged();
-			emit mergeChanged();
-			emit mergeSourceChanged();
-			emit mergeSelectionChanged();
 		}
 
 
