@@ -2551,6 +2551,13 @@
     </message>
 </context>
 <context>
+    <name>glabels::model::ModelImageObject</name>
+    <message>
+        <source>No image</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>glabels::model::ModelTextObject</name>
     <message>
         <source>Text</source>

@@ -40,6 +40,17 @@ namespace glabels
 		QImage* ModelImageObject::smDefaultImage = nullptr;
 
 
+		//
+		// Private
+		//
+		namespace
+		{
+			const QColor fillColor  = QColor( 224, 224, 224, 255 );
+			const QColor labelColor = QColor( 102, 102, 102, 255 );
+			const Distance pad = Distance::pt(2);
+		}
+
+
 		///
 		/// Constructor
 		///
@@ -436,10 +447,61 @@ namespace glabels
 	
 			if ( inEditor && (mFilenameNode.isField() || (!mImage && !mSvgRenderer) ) )
 			{
+				//
+				// Render default place holder image
+				//
 				painter->save();
 				painter->setRenderHint( QPainter::SmoothPixmapTransform, false );
 				painter->drawImage( destRect, *smDefaultImage );
 				painter->restore();
+
+				//
+				// Print label on top of place holder image, if we have room
+				//
+				if ( (mW > 6*pad) && (mH > 4*pad) )
+				{
+					QString labelText = tr("No image");
+					if ( mFilenameNode.isField() )
+					{
+						labelText = QString( "${%1}" ).arg( mFilenameNode.data() );
+					}
+
+					// Determine font size for labelText
+					QFont font( "Sans" );
+					font.setPointSizeF( 6 );
+
+					QFontMetricsF fm( font );
+					QRectF textRect = fm.boundingRect( labelText );
+
+					double wPts = (mW - 2*pad).pt();
+					double hPts = (mH - 2*pad).pt();
+					if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
+					{
+						double scaleX = wPts / textRect.width();
+						double scaleY = hPts / textRect.height();
+						font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+					}
+
+					// Render hole for text (font size may have changed above)
+					fm = QFontMetricsF( font );
+					textRect = fm.boundingRect( labelText );
+		
+					QRectF holeRect( (mW.pt() - textRect.width())/2 - pad.pt(),
+					                 (mH.pt() - textRect.height())/2 - pad.pt(),
+					                 textRect.width() + 2*pad.pt(),
+					                 textRect.height() + 2*pad.pt() );
+
+					painter->setPen( Qt::NoPen );
+					painter->setBrush( QBrush( fillColor ) );
+					painter->drawRect( holeRect );
+
+					// Render text
+					painter->setFont( font );
+					painter->setPen( QPen( labelColor ) );
+					painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
+					                   Qt::AlignCenter,
+					                   labelText );
+				}
 			}
 			else if ( mImage )
 			{
