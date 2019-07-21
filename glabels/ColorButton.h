@@ -63,8 +63,9 @@ namespace glabels
 		void   setColor( QColor color );
 		void   setToDefault();
 		model::ColorNode colorNode();
-		void   setKeys( const QList<QString> keyList );
-		void   clearKeys();
+
+		void setKeys( const merge::Merge*     merge,
+		              const model::Variables* variables );
 
 
 		/////////////////////////////////

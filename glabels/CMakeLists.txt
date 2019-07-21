@@ -13,7 +13,6 @@ set (glabels_sources
   ColorHistory.cpp
   ColorPaletteDialog.cpp
   ColorPaletteItem.cpp
-  ColorPaletteButtonItem.cpp
   ColorSwatch.cpp
   Cursors.cpp
   EditVariableDialog.cpp
@@ -52,7 +51,6 @@ set (glabels_qobject_headers
   ColorHistory.h
   ColorPaletteDialog.h
   ColorPaletteItem.h
-  ColorPaletteButtonItem.h
   EditVariableDialog.h
   FieldButton.h
   File.h

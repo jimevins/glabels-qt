@@ -124,15 +124,10 @@ namespace glabels
 	}
 
 
-	void ColorButton::setKeys( const QList<QString> keyList )
+	void ColorButton::setKeys( const merge::Merge*     merge,
+	                           const model::Variables* variables )
 	{
-		mDialog->setKeys( keyList );
-	}
-
-
-	void ColorButton::clearKeys()
-	{
-		mDialog->clearKeys();
+		mDialog->setKeys( merge, variables );
 	}
 
 

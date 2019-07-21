@@ -18,14 +18,16 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 #include "ColorPaletteDialog.h"
 
 #include <QColorDialog>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QFrame>
 #include <QGridLayout>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QPushButton>
 #include <QStandardItemModel>
+#include <QVBoxLayout>
 #include <QtDebug>
 
 
@@ -99,14 +101,12 @@ namespace glabels
 		vLayout->setContentsMargins( 0, 0, 0, 0 );
 		vLayout->setSpacing( 0 );
 
-		auto* defaultButton = new ColorPaletteButtonItem( defaultLabel );
-		connect( defaultButton, SIGNAL(activated()), this, SLOT(onDefaultItemActivated()) );
-		vLayout->addWidget( defaultButton );
-		
-		QFrame* hline1 = new QFrame;
-		hline1->setFrameStyle( QFrame::HLine | QFrame::Plain );
-		hline1->setLineWidth( 1 );
-		vLayout->addWidget( hline1 );
+		//
+		// Construct Standard Colors Grid
+		//
+		auto* standardColorsGroup = new QGroupBox( tr("Standard Colors") );
+		standardColorsGroup->setAlignment( Qt::AlignHCenter );
+		vLayout->addWidget( standardColorsGroup );
 
 		auto* mainPaletteLayout = new QGridLayout();
 		mainPaletteLayout->setSpacing( 0 );
@@ -119,17 +119,20 @@ namespace glabels
 				ColorPaletteItem* item = new ColorPaletteItem( i,
 				                                               QColor( mColorTable[i].colorSpec ),
 				                                               tr(mColorTable[i].trname) );
-				connect( item, SIGNAL(activated(int)), this, SLOT(onPaletteItemActivated(int)) );
+				connect( item, SIGNAL(activated(int)),
+				         this, SLOT(onPaletteItemActivated(int)) );
 
 				mainPaletteLayout->addWidget( item, iRow, iCol );
 			}
 		}
-		vLayout->addLayout( mainPaletteLayout );
+		standardColorsGroup->setLayout( mainPaletteLayout );
 
-		QFrame* hline2 = new QFrame;
-		hline2->setFrameStyle( QFrame::HLine | QFrame::Plain );
-		hline2->setLineWidth( 1 );
-		vLayout->addWidget( hline2 );
+		//
+		// Construct Recent Colors Grid
+		//
+		auto* recentColorsGroup = new QGroupBox( tr("Recent Colors") );
+		recentColorsGroup->setAlignment( Qt::AlignHCenter );
+		vLayout->addWidget( recentColorsGroup );
 
 		auto* customPaletteLayout = new QHBoxLayout();
 		customPaletteLayout->setSpacing( 0 );
@@ -137,40 +140,42 @@ namespace glabels
 		{
 			mHistoryItem[iCol] = new ColorPaletteItem( iCol, QColor(0,0,0,0), "" );
 			mHistoryItem[iCol]->setEnabled( false );
-			connect( mHistoryItem[iCol], SIGNAL(activated(int)), this, SLOT(onHistoryItemActivated(int)) );
+			connect( mHistoryItem[iCol], SIGNAL(activated(int)),
+			         this, SLOT(onHistoryItemActivated(int)) );
 
 			customPaletteLayout->addWidget( mHistoryItem[iCol] );
 		}
-		vLayout->addLayout( customPaletteLayout );
+		recentColorsGroup->setLayout( customPaletteLayout );
 
 
-		QFrame* hline3 = new QFrame;
-		hline3->setFrameStyle( QFrame::HLine | QFrame::Plain );
-		hline3->setLineWidth( 1 );
-		vLayout->addWidget( hline3 );
-
-		ColorPaletteButtonItem* customColorButton = new ColorPaletteButtonItem( tr("Custom color...") );
-		connect( customColorButton, SIGNAL(activated()), this, SLOT(onCustomColorItemActivated()) );
+		//
+		// Construct Default (e.g. "No Fill") Button
+		//
+		auto* defaultColorButton = new QPushButton( defaultLabel );
+		defaultColorButton->setAutoDefault( false );
+		defaultColorButton->setDefault( false );
+		connect( defaultColorButton, SIGNAL(clicked()), this, SLOT(onDefaultButtonClicked()) );
+		vLayout->addWidget( defaultColorButton );
+		
+		//
+		// Construct Custom Color Button
+		//
+		auto* customColorButton = new QPushButton( tr("Custom color...") );
+		customColorButton->setAutoDefault( false );
+		customColorButton->setDefault( false );
+		connect( customColorButton, SIGNAL(clicked()), this, SLOT(onCustomColorButtonClicked()) );
 		vLayout->addWidget( customColorButton );
 
-		QFrame* hline4 = new QFrame;
-		hline4->setFrameStyle( QFrame::HLine | QFrame::Plain );
-		hline4->setLineWidth( 1 );
-		vLayout->addWidget( hline4 );
+		//
+		// Construct "Use key" Button
+		//
+		mFieldButton = new FieldButton();
+		mFieldButton->setText( tr("Use key") );
+		mFieldButton->setAutoDefault( false );
+		mFieldButton->setDefault( false );
+		connect( mFieldButton, SIGNAL(keySelected(QString)), this, SLOT(onKeySelected(QString)) );
+		vLayout->addWidget( mFieldButton );
 
-		mMergeFieldCombo = new QComboBox();
-		mMergeFieldCombo->addItem( tr("Merge key...") );
-		mMergeFieldCombo->setMinimumSize( 34, 34 );
-		mMergeFieldCombo->setFrame( false );
-		mMergeFieldCombo->setEnabled( false );
-		connect( mMergeFieldCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboIndexChanged(int)) );
-		vLayout->addWidget( mMergeFieldCombo );
-
-		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-		const auto* model = qobject_cast<const QStandardItemModel*>(mMergeFieldCombo->model());
-		QStandardItem* item = model->item(0);
-		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
-	
 		setLayout( vLayout );
 
 		loadCustomColorHistory();
@@ -183,59 +188,29 @@ namespace glabels
 	}
 
 
-	void ColorPaletteDialog::setKeys( const QStringList& keyList )
+	void ColorPaletteDialog::setKeys( const merge::Merge*     merge,
+	                                  const model::Variables* variables )
 	{
-		mKeys = keyList;
-	
-		// Clear old keys, (all entries, except item 0)
-		for ( int index = mMergeFieldCombo->count()-1; index > 0; index-- )
-		{
-			mMergeFieldCombo->removeItem( index );
-		}
-
-		// Add new keys
-		if ( keyList.size() > 0 )
-		{
-			mMergeFieldCombo->addItems( keyList );
-			mMergeFieldCombo->setEnabled( true );
-		}
-		else
-		{
-			mMergeFieldCombo->setEnabled( false );
-		}
-	}
-
-
-	void ColorPaletteDialog::clearKeys()
-	{
-	
-		for ( int index = mMergeFieldCombo->count()-1; index > 0; index-- )
-		{
-			mMergeFieldCombo->removeItem( index );
-		}
-		mMergeFieldCombo->setEnabled( false );
-	}
-
-
-	void ColorPaletteDialog::onDefaultItemActivated()
-	{
-		mColorNode.setField( false );
-		mColorNode.setColor( mDefaultColor );
-		mColorNode.setKey( "" );
-
-		emit colorChanged( mColorNode, true );
-		accept();
+		mFieldButton->setKeys( merge, variables );
 	}
 
 
 	void ColorPaletteDialog::onPaletteItemActivated( int id )
 	{
-		mColorNode.setField( false );
-		mColorNode.setColor( QColor( mColorTable[id].colorSpec ) );
-		mColorNode.setKey( "" );
+		model::ColorNode newColorNode;
+		newColorNode.setField( false );
+		newColorNode.setColor( QColor( mColorTable[id].colorSpec ) );
+		newColorNode.setKey( "" );
 
-		emit colorChanged( mColorNode, false );
-		accept();
+		if ( newColorNode != mColorNode )
+		{
+			mColorNode = newColorNode;
+			
+			mColorHistory->addColor( mColorNode.color() );
+
+			emit colorChanged( mColorNode, false );
+			accept();
+		}
 	}
 
 
@@ -250,7 +225,18 @@ namespace glabels
 	}
 
 
-	void ColorPaletteDialog::onCustomColorItemActivated()
+	void ColorPaletteDialog::onDefaultButtonClicked()
+	{
+		mColorNode.setField( false );
+		mColorNode.setColor( mDefaultColor );
+		mColorNode.setKey( "" );
+
+		emit colorChanged( mColorNode, true );
+		accept();
+	}
+
+
+	void ColorPaletteDialog::onCustomColorButtonClicked()
 	{
 		QColorDialog dlg( mColorNode.color(), this );
 		dlg.setWindowTitle( tr("Custom Color") );
@@ -302,25 +288,14 @@ namespace glabels
 	}
 
 
-	void ColorPaletteDialog::onComboIndexChanged( int index )
+	void ColorPaletteDialog::onKeySelected( QString key )
 	{
-		if ( index != 0 )
-		{
-			mColorNode.setField( true );
-			mColorNode.setColor( QColor( 0xee, 0xee, 0xec ) );
-			mColorNode.setKey( mKeys[index-1] );
+		mColorNode.setField( true );
+		mColorNode.setColor( QColor( 0xee, 0xee, 0xec ) );
+		mColorNode.setKey( key );
 
-			emit colorChanged( mColorNode, false );
-			accept();
-		}
-	}
-
-
-	void ColorPaletteDialog::showEvent( QShowEvent* event )
-	{
-		mMergeFieldCombo->setCurrentIndex( 0 );
-
-		QDialog::showEvent( event );
+		emit colorChanged( mColorNode, false );
+		accept();
 	}
 
 } // namespace glabels

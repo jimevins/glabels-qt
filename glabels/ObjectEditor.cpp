@@ -503,13 +503,12 @@ namespace glabels
 	{
 		if ( !mBlocked )
 		{
-			QStringList keys = mModel->merge()->keys();
-			lineColorButton->setKeys( keys );
-			fillColorButton->setKeys( keys );
+			lineColorButton->setKeys( mModel->merge(), mModel->variables() );
+			fillColorButton->setKeys( mModel->merge(), mModel->variables() );
 			textInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
 			barcodeInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
 			imageFieldButton->setKeys( mModel->merge(), mModel->variables() );
-			shadowColorButton->setKeys( keys );
+			shadowColorButton->setKeys( mModel->merge(), mModel->variables() );
 		}
 	}
 

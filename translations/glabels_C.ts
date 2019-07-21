@@ -1134,15 +1134,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Merge key...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Custom Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom color #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recent Colors</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
