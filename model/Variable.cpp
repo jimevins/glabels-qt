@@ -154,12 +154,14 @@ namespace glabels
 		{
 			switch (mType)
 			{
-				case Type::STRING:
-					return mInitialValue;
-				case Type::INTEGER:
-					return QString::number( mIntegerValue );
-				case Type::FLOATING_POINT:
-					return QString::number( mFloatingPointValue, 'g', 15 );
+			case Type::STRING:
+				return mInitialValue;
+			case Type::INTEGER:
+				return QString::number( mIntegerValue );
+			case Type::FLOATING_POINT:
+				return QString::number( mFloatingPointValue, 'g', 15 );
+			default:
+				return mInitialValue;
 			}
 		}
 
@@ -174,6 +176,8 @@ namespace glabels
 				return tr("Integer");
 			case Type::FLOATING_POINT:
 				return tr("Floating Point");
+			default:
+				return tr("String");
 			}
 		}
 
@@ -188,6 +192,8 @@ namespace glabels
 				return "integer";
 			case Type::FLOATING_POINT:
 				return "float";
+			default:
+				return "string";
 			}
 		}
 		
@@ -225,6 +231,8 @@ namespace glabels
 				return tr("Per copy");
 			case Increment::PER_PAGE:
 				return tr("Per page");
+			default:
+				return tr("Never");
 			}
 		}
 
@@ -241,6 +249,8 @@ namespace glabels
 				return "per_copy";
 			case Increment::PER_PAGE:
 				return "per_page";
+			default:
+				return "never";
 			}
 		}
 		
