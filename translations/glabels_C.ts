@@ -1147,6 +1147,17 @@
     </message>
 </context>
 <context>
+    <name>glabels::FieldButton</name>
+    <message>
+        <source>Merge fields</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Variables</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>glabels::File</name>
     <message>
         <source>gLabels - Open Project</source>
@@ -1890,6 +1901,14 @@
     </message>
     <message>
         <source>Selected File...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected file...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

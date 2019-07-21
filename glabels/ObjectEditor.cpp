@@ -67,9 +67,9 @@ namespace glabels
 		barcodeColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 		shadowColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 
-		textInsertFieldCombo->setName( tr("Insert Field") );
-		barcodeInsertFieldCombo->setName( tr("Insert Field") );
-		imageFieldCombo->setSpecialSelectionText( tr("Selected File...") );
+		textInsertFieldButton->setText( tr("Insert field") );
+		barcodeInsertFieldButton->setText( tr("Insert field") );
+		imageFieldCombo->setSpecialSelectionText( tr("Selected file...") );
 
 		setEnabled( false );
 		hidePages();
@@ -93,11 +93,14 @@ namespace glabels
 		         this, SLOT(onSelectionChanged()) );
 		
 		connect( mModel, SIGNAL(mergeSourceChanged()),
-		         this, SLOT(onMergeSourceChanged()) );
+		         this, SLOT(onFieldsAvailableChanged()) );
+
+		connect( mModel, SIGNAL(variablesChanged()),
+		         this, SLOT(onFieldsAvailableChanged()) );
 
 		onLabelSizeChanged();
 		onSelectionChanged();
-		onMergeSourceChanged();
+		onFieldsAvailableChanged();
 	}
 
 	
@@ -498,15 +501,15 @@ namespace glabels
 	}
 
 	
-	void ObjectEditor::onMergeSourceChanged()
+	void ObjectEditor::onFieldsAvailableChanged()
 	{
 		if ( !mBlocked )
 		{
 			QStringList keys = mModel->merge()->keys();
 			lineColorButton->setKeys( keys );
 			fillColorButton->setKeys( keys );
-			textInsertFieldCombo->setKeys( keys );
-			barcodeInsertFieldCombo->setKeys( keys );
+			textInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
+			barcodeInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
 			imageFieldCombo->setFieldSelections( mModel->merge(), mModel->variables() );
 			shadowColorButton->setKeys( keys );
 		}

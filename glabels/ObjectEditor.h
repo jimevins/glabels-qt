@@ -80,7 +80,7 @@ namespace glabels
 		void onSettingsChanged();
 		void onLabelSizeChanged();
 		void onSelectionChanged();
-		void onMergeSourceChanged();
+		void onFieldsAvailableChanged();
 		void onObjectChanged();
 		void onObjectMoved();
 		void onObjectDestroyed();
