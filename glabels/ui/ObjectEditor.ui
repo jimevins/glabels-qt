@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTabWidget" name="notebook">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="textPage">
       <attribute name="title">
@@ -766,83 +766,6 @@
        <string>Image</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_13">
-       <item row="0" column="0">
-        <widget class="QGroupBox" name="groupBox_9">
-         <property name="title">
-          <string>File</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="glabels::FieldCombo" name="imageFieldCombo">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <item>
-             <property name="text">
-              <string notr="true">Selected File...</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="imageFileSelectionBox" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_27">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QLineEdit" name="imageFilenameLineEdit">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>231</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="readOnly">
-                <bool>true</bool>
-               </property>
-               <property name="placeholderText">
-                <string>None</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="imageBrowseButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>Browse...</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="2" column="0">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
@@ -855,6 +778,57 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBox_9">
+         <property name="title">
+          <string>File</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="imageFilenameLineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>231</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>None</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="imageBrowseButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Browse...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="glabels::FieldButton" name="imageFieldButton">
+            <property name="text">
+             <string notr="true">Use field</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1543,14 +1517,6 @@
    </slots>
   </customwidget>
   <customwidget>
-   <class>glabels::FieldCombo</class>
-   <extends>QComboBox</extends>
-   <header>FieldCombo.h</header>
-   <slots>
-    <signal>selectionChanged()</signal>
-   </slots>
-  </customwidget>
-  <customwidget>
    <class>glabels::FieldButton</class>
    <extends>QPushButton</extends>
    <header>FieldButton.h</header>
@@ -2019,7 +1985,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>367</x>
-     <y>168</y>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -2156,22 +2122,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>imageFieldCombo</sender>
-   <signal>selectionChanged()</signal>
-   <receiver>ObjectEditor</receiver>
-   <slot>onImageComboChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>283</x>
-     <y>118</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>398</x>
-     <y>18</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>textInsertFieldButton</sender>
    <signal>keySelected(QString)</signal>
    <receiver>ObjectEditor</receiver>
@@ -2200,6 +2150,22 @@
     <hint type="destinationlabel">
      <x>205</x>
      <y>649</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageFieldButton</sender>
+   <signal>keySelected(QString)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onImageKeySelected(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>-12</y>
     </hint>
    </hints>
   </connection>

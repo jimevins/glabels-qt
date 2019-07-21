@@ -1908,7 +1908,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Selected file...</source>
+        <source>Use field</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -87,7 +87,7 @@ namespace glabels
 		void onLineControlsChanged();
 		void onFillControlsChanged();
 		void onImageFileButtonClicked();
-		void onImageComboChanged();
+		void onImageKeySelected( QString key );
 		void onPositionControlsChanged();
 		void onRectSizeControlsChanged();
 		void onLineSizeControlsChanged();
