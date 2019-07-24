@@ -185,19 +185,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Increment:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Variable type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Initial value:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -406,6 +406,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Browse...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Line/Fill</source>
         <translation type="unfinished"></translation>
     </message>
@@ -479,10 +483,6 @@
     </message>
     <message>
         <source>Opacity:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1057,18 +1057,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Never</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Per copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Per page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Integer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1077,7 +1065,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Per item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Per page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1130,15 +1130,15 @@
 <context>
     <name>glabels::ColorPaletteDialog</name>
     <message>
+        <source>Standard Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recent Colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Custom color...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Custom Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Custom color #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1146,11 +1146,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Standard Colors</source>
+        <source>Custom Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Recent Colors</source>
+        <source>Custom Color %1</source>
+        <extracomment>%1 = color specification in hex. String must not contain a colon (:).</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1768,7 +1769,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Insert Field</source>
+        <source>Insert field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use field</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1905,18 +1910,6 @@
     </message>
     <message>
         <source>Shadow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Selected File...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Insert field</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use field</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2149,19 +2142,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add Variable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Variable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Initial Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2173,7 +2162,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Initial Value</source>
+        <source>Add Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Variable</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

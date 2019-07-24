@@ -206,7 +206,7 @@ namespace glabels
 		{
 			mColorNode = newColorNode;
 			
-			mColorHistory->addColor( mColorNode.color() );
+			mColorHistory->addColor( mColorNode.color(), mColorTable[id].trname );
 
 			emit colorChanged( mColorNode, false );
 			accept();
@@ -217,7 +217,7 @@ namespace glabels
 	void ColorPaletteDialog::onHistoryItemActivated( int id )
 	{
 		mColorNode.setField( false );
-		mColorNode.setColor( mColorHistory->getColor(id) );
+		mColorNode.setColor( mColorHistory->getColors()[id] );
 		mColorNode.setKey( "" );
 
 		emit colorChanged( mColorNode, false );
@@ -253,7 +253,10 @@ namespace glabels
 			{
 				mColorNode = newColorNode;
 			
-				mColorHistory->addColor( mColorNode.color() );
+				// TRANSLATORS
+				//: %1 = color specification in hex. String must not contain a colon (:).
+				mColorHistory->addColor( mColorNode.color(),
+				                         QString(tr("Custom Color %1")).arg(mColorNode.color().name()) );
 
 				emit colorChanged( mColorNode, false );
 				accept();
@@ -270,12 +273,13 @@ namespace glabels
 
 	void ColorPaletteDialog::loadCustomColorHistory()
 	{
+		QStringList nameList = mColorHistory->getNames();
 		QList<QColor> colorList = mColorHistory->getColors();
 	
 		int id = 0;
 		foreach ( QColor color, colorList )
 		{
-			mHistoryItem[id]->setColor( id, color, QString(tr("Custom color #%1").arg(id+1) ) );
+			mHistoryItem[id]->setColor( id, color, nameList[id] );
 			mHistoryItem[id]->setEnabled( true );
 			id++;
 		}
