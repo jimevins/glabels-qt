@@ -326,7 +326,7 @@ namespace glabels
 		                                     merge::Record* record,
 		                                     Variables*     variables ) const
 		{
-			QColor bcColor = mBcColorNode.color( record );
+			QColor bcColor = mBcColorNode.color( record, variables );
 
 			if ( inEditor )
 			{

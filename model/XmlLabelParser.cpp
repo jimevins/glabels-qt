@@ -364,13 +364,13 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0xFF );
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* fill attrs */
 			key        = XmlUtil::getStringAttr( node, "fill_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "fill_color", 0xFF );
 			ColorNode fillColorNode( field_flag, color, key );
         
 			/* affine attrs */
@@ -390,7 +390,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			return new ModelBoxObject( x0, y0, w, h,
@@ -417,13 +417,13 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0xFF );
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* fill attrs */
 			key        = XmlUtil::getStringAttr( node, "fill_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "fill_color", 0xFF );
 			ColorNode fillColorNode( field_flag, color, key );
         
 			/* affine attrs */
@@ -443,7 +443,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			return new ModelEllipseObject( x0, y0, w, h,
@@ -470,7 +470,7 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0xFF );
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* affine attrs */
@@ -490,7 +490,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			return new ModelLineObject( x0, y0, dx, dy,
@@ -534,7 +534,7 @@ namespace glabels
 
 			key            = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag     = !key.isEmpty();
-			uint32_t color = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			uint32_t color = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			if ( filenameNode.isField() )
@@ -591,7 +591,7 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0xFF );
 			ColorNode bcColorNode( field_flag, color, key );
 
 			QString bcData = XmlUtil::getStringAttr( node, "data", "" );
@@ -625,7 +625,7 @@ namespace glabels
 			/* color attr */
 			QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0xFF );
 			ColorNode textColorNode( field_flag, color, key );
 
 			/* font attrs */
@@ -659,7 +659,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			/* deserialize contents. */

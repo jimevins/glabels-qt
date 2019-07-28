@@ -105,48 +105,34 @@ namespace glabels
 		///
 		/// Get text, expand if necessary
 		///
-		QString TextNode::text( merge::Record* record ) const
+		QString TextNode::text( const merge::Record* record,
+		                        const Variables*     variables ) const
 		{
-			if ( mIsField )
+			QString value("");
+			
+			bool haveRecordField = mIsField && record &&
+				record->contains(mData) &&
+				!record->value(mData).isEmpty();
+			bool haveVariable = mIsField && variables &&
+				variables->contains(mData) &&
+				!(*variables)[mData].value().isEmpty();
+
+			if ( haveRecordField )
 			{
-				if ( !record )
-				{
-					return QString("${%1}").arg( mData );
-				}
-				else
-				{
-					if ( record->contains( mData ) )
-					{
-						return (*record)[ mData ];
-					}
-					else
-					{
-						return "";
-					}
-				}
+				value = record->value(mData);
 			}
-			else
+			else if ( haveVariable )
 			{
-				return mData;
+				value = (*variables)[mData].value();
 			}
+			else if ( !mIsField )
+			{
+				value = mData;
+			}
+
+			return value;
 		}
 
-
-		///
-		/// Is it an empty field
-		///
-		bool TextNode::isEmptyField( merge::Record* record ) const
-		{
-			if ( record && mIsField )
-			{
-				if ( record->contains( mData ) )
-				{
-					return (*record)[mData].isEmpty();
-				}
-			}
-
-			return false;
-		}
 
 	}
 }

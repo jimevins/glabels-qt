@@ -413,7 +413,7 @@ namespace glabels
 		{
 			QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 			shadowColor.setAlphaF( mShadowOpacity );
 
 			if ( mImage && mImage->hasAlphaChannel() && (mImage->depth() == 32) )

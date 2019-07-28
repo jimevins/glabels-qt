@@ -108,9 +108,9 @@ namespace glabels
 		                                 merge::Record* record,
 		                                 Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor fillColor = mFillColorNode.color( record );
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor fillColor = mFillColorNode.color( record, variables );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 
 			shadowColor.setAlphaF( mShadowOpacity );
 
@@ -156,8 +156,8 @@ namespace glabels
 		                                 merge::Record* record,
 		                                 Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor fillColor = mFillColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor fillColor = mFillColorNode.color( record, variables );
 
 			painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
 			painter->setBrush( fillColor );

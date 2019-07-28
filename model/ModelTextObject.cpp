@@ -521,11 +521,11 @@ namespace glabels
 		                                  merge::Record* record,
 		                                  Variables*     variables ) const
 		{
-			QColor textColor = mTextColorNode.color( record );
+			QColor textColor = mTextColorNode.color( record, variables );
 
 			if ( textColor.alpha() )
 			{
-				QColor shadowColor = mShadowColorNode.color( record );
+				QColor shadowColor = mShadowColorNode.color( record, variables );
 				shadowColor.setAlphaF( mShadowOpacity );
 
 				if ( inEditor )
@@ -548,7 +548,7 @@ namespace glabels
 		                                  merge::Record* record,
 		                                  Variables*     variables ) const
 		{
-			QColor textColor = mTextColorNode.color( record );
+			QColor textColor = mTextColorNode.color( record, variables );
 
 			if ( inEditor )
 			{
