@@ -418,19 +418,34 @@ namespace glabels
 
 			if ( mImage && mImage->hasAlphaChannel() && (mImage->depth() == 32) )
 			{
-				QImage* shadowImage = createShadowImage( shadowColor );
+				QImage* shadowImage = createShadowImage( *mImage, shadowColor );
 				painter->drawImage( destRect, *shadowImage );
 				delete shadowImage;
 			}
+			else if ( mImage || inEditor )
+			{
+				painter->setBrush( shadowColor );
+				painter->setPen( QPen( Qt::NoPen ) );
+
+				painter->drawRect( destRect );
+			}
 			else
 			{
-				if ( mImage || inEditor )
+				auto* image = new QImage( mFilenameNode.text( record, variables ) );
+				if ( !image->isNull() && image->hasAlphaChannel() && (image->depth() == 32) )
+				{
+					QImage* shadowImage = createShadowImage( *image, shadowColor );
+					painter->drawImage( destRect, *shadowImage );
+					delete shadowImage;
+				}
+				else if ( !image->isNull() )
 				{
 					painter->setBrush( shadowColor );
 					painter->setPen( QPen( Qt::NoPen ) );
 
 					painter->drawRect( destRect );
 				}
+				delete image;
 			}
 		}
 
@@ -513,7 +528,12 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				// TODO
+				auto* image = new QImage( mFilenameNode.text( record, variables ) );
+				if ( !image->isNull() )
+				{
+					painter->drawImage( destRect, *image );
+				}
+				delete image;
 			}
 		}
 
@@ -612,14 +632,15 @@ namespace glabels
 		///
 		/// Create shadow image
 		///
-		QImage* ModelImageObject::createShadowImage( const QColor& color ) const
+		QImage* ModelImageObject::createShadowImage( const QImage& image,
+		                                             const QColor& color ) const
 		{
 			int r = color.red();
 			int g = color.green();
 			int b = color.blue();
 			int a = color.alpha();
 		
-			auto* shadow = new QImage( *mImage );
+			auto* shadow = new QImage( image );
 			for ( int iy = 0; iy < shadow->height(); iy++ )
 			{
 				auto* scanLine = (QRgb*)shadow->scanLine( iy );

@@ -149,7 +149,9 @@ namespace glabels
 			// Private
 			///////////////////////////////////////////////////////////////
 			void loadImage();
-			QImage* createShadowImage( const QColor& color ) const;
+			
+			QImage* createShadowImage( const QImage& image,
+			                           const QColor& color ) const;
 	
 
 			///////////////////////////////////////////////////////////////
