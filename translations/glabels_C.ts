@@ -185,23 +185,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Variable type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Initial value:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Increment:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Step size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Value:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

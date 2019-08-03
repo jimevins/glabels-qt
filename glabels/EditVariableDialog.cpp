@@ -67,6 +67,8 @@ namespace glabels
 		{
 			incrementCombo->addItem( model::Variable::incrementToI18nString( type ) );
 		}
+
+		stepSizeEdit->setText( "1" );
 	}
 
 
@@ -157,28 +159,16 @@ namespace glabels
 		case model::Variable::Type::INTEGER:
 			valueEdit->setValidator( new QIntValidator() );
 			stepSizeEdit->setValidator( new QIntValidator() );
-
-			if ( increment == model::Variable::Increment::NEVER )
-			{
-				stepSizeEdit->setText( "0" );
-			}
 			break;
 
 		case model::Variable::Type::FLOATING_POINT:
 			valueEdit->setValidator( new QDoubleValidator() );
 			stepSizeEdit->setValidator( new QDoubleValidator() );
-
-			if ( increment == model::Variable::Increment::NEVER )
-			{
-				stepSizeEdit->setText( "0" );
-			}
 			break;
 
 		default:
 			valueEdit->setValidator( nullptr );
 			stepSizeEdit->setValidator( nullptr );
-			incrementCombo->setCurrentIndex( static_cast<int>(model::Variable::Increment::NEVER) );
-			stepSizeEdit->setText( "" );
 			break;
 			
 		}
@@ -186,8 +176,7 @@ namespace glabels
 		bool isNumeric = ( type == model::Variable::Type::INTEGER ) ||
 		                 ( type == model::Variable::Type::FLOATING_POINT );
 		
-		incrementLabel->setEnabled( isNumeric );
-		incrementCombo->setEnabled( isNumeric );
+		incrementGroup->setVisible( isNumeric );
 		stepSizeLabel->setEnabled( isNumeric && (increment != model::Variable::Increment::NEVER) );
 		stepSizeEdit->setEnabled( isNumeric && (increment != model::Variable::Increment::NEVER) );
 

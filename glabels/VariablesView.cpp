@@ -126,7 +126,7 @@ namespace glabels
 		                   "x",
 		                   "0",
 		                   model::Variable::Increment::NEVER,
-		                   "0" );
+		                   "1" );
 		dialog.setVariable( v );
 		dialog.setWindowTitle( tr("Add Variable") );
 
