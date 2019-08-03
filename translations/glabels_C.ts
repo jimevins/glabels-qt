@@ -1128,6 +1128,13 @@
     </message>
 </context>
 <context>
+    <name>glabels::ColorHistory</name>
+    <message>
+        <source>color %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>glabels::ColorPaletteDialog</name>
     <message>
         <source>Standard Colors</source>
@@ -1152,6 +1159,10 @@
     <message>
         <source>Custom Color %1</source>
         <extracomment>%1 = color specification in hex. String must not contain a colon (:).</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom color #%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1910,6 +1921,14 @@
     </message>
     <message>
         <source>Shadow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert Field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected File...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

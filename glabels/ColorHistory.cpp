@@ -77,7 +77,20 @@ namespace glabels
 		for ( QString& nameColor : readNameColorList() )
 		{
 			QStringList v = nameColor.split( ':' );
-			colorList << QColor( v[1] );
+			if ( v.size() == 2 )
+			{
+				colorList << QColor( v[1] );
+			}
+			else if ( v.size() == 1 )
+			{
+				// Old-style, no name
+				colorList << QColor( v[0] );
+			}
+			else
+			{
+				// Should not happen
+				qWarning() << "Invalid color history.";
+			}
 		}
 
 		return colorList;
@@ -91,7 +104,20 @@ namespace glabels
 		for ( QString& nameColor : readNameColorList() )
 		{
 			QStringList v = nameColor.split( ':' );
-			nameList << v[0];
+			if ( v.size() == 2 )
+			{
+				nameList << v[0];
+			}
+			else if ( v.size() == 1 )
+			{
+				 // Old-style, no name
+				nameList << QString(tr("color %1")).arg( v[0] );
+			}
+			else
+			{
+				// Should not happen
+				qWarning() << "Invalid color history.";
+			}
 		}
 
 		return nameList;
