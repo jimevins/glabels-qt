@@ -86,6 +86,9 @@ namespace glabels
 				mFloatingPointValue = mInitialValue.toDouble();
 				mFloatingPointStep  = mStepSize.toDouble();
 				break;
+			case Type::COLOR:
+				// do nothing
+				break;
 			}
 		}
 
@@ -104,6 +107,9 @@ namespace glabels
 					break;
 				case Type::FLOATING_POINT:
 					mFloatingPointValue += mFloatingPointStep;
+					break;
+				case Type::COLOR:
+					// do nothing
 					break;
 				}
 			}
@@ -125,6 +131,9 @@ namespace glabels
 				case Type::FLOATING_POINT:
 					mFloatingPointValue += mFloatingPointStep;
 					break;
+				case Type::COLOR:
+					// do nothing
+					break;
 				}
 			}
 		}
@@ -145,6 +154,9 @@ namespace glabels
 				case Type::FLOATING_POINT:
 					mFloatingPointValue += mFloatingPointStep;
 					break;
+				case Type::COLOR:
+					// do nothing
+					break;
 				}
 			}
 		}
@@ -160,6 +172,8 @@ namespace glabels
 				return QString::number( mIntegerValue );
 			case Type::FLOATING_POINT:
 				return QString::number( mFloatingPointValue, 'g', 15 );
+			case Type::COLOR:
+				return mInitialValue;
 			default:
 				return mInitialValue;
 			}
@@ -176,6 +190,8 @@ namespace glabels
 				return tr("Integer");
 			case Type::FLOATING_POINT:
 				return tr("Floating Point");
+			case Type::COLOR:
+				return tr("Color");
 			default:
 				return tr("String");
 			}
@@ -192,6 +208,8 @@ namespace glabels
 				return "integer";
 			case Type::FLOATING_POINT:
 				return "float";
+			case Type::COLOR:
+				return "color";
 			default:
 				return "string";
 			}
@@ -211,6 +229,10 @@ namespace glabels
 			else if ( id == "float" )
 			{
 				return Type::FLOATING_POINT;
+			}
+			if ( id == "color" )
+			{
+				return Type::COLOR;
 			}
 			else
 			{

@@ -40,7 +40,8 @@ namespace glabels
 			{
 				STRING,
 				INTEGER,
-				FLOATING_POINT
+				FLOATING_POINT,
+				COLOR
 			};
 
 			enum class Increment

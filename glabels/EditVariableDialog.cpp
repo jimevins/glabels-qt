@@ -31,7 +31,8 @@ namespace
 	const QVector<glabels::model::Variable::Type> allTypes = {
 		glabels::model::Variable::Type::STRING,
 		glabels::model::Variable::Type::INTEGER,
-		glabels::model::Variable::Type::FLOATING_POINT
+		glabels::model::Variable::Type::FLOATING_POINT,
+		glabels::model::Variable::Type::COLOR
 	};
 
 	// All variable increments. (must be in sorted order)
@@ -58,6 +59,11 @@ namespace glabels
 		QRegularExpression reIdentifier( "[a-zA-Z_][a-zA-Z_0-9]*" );
 		nameEdit->setValidator( new QRegularExpressionValidator( reIdentifier ) );
 
+		colorValueButton->init( tr("Default"),
+		                        QColor(0,0,0,255),
+		                        QColor(0,0,0,255),
+		                        false );
+		
 		for ( auto type : allTypes )
 		{
 			typeCombo->addItem( model::Variable::typeToI18nString( type ) );
@@ -80,6 +86,7 @@ namespace glabels
 		typeCombo->setCurrentIndex( static_cast<int>(variable.type()) );
 		nameEdit->setText( variable.name() );
 		valueEdit->setText( variable.initialValue() );
+		colorValueButton->setColor( QColor( variable.initialValue() ) );
 		incrementCombo->setCurrentIndex( static_cast<int>(variable.increment()) );
 		stepSizeEdit->setText( variable.stepSize() );
 
@@ -123,6 +130,16 @@ namespace glabels
 	///
 	void EditVariableDialog::onValueEditChanged()
 	{
+		validateCurrentInputs();
+	}
+
+	
+	///
+	/// colorValueButton Changed
+	///
+	void EditVariableDialog::onColorValueButtonChanged()
+	{
+		valueEdit->setText( colorValueButton->colorNode().color().name() );
 		validateCurrentInputs();
 	}
 
@@ -172,6 +189,8 @@ namespace glabels
 			break;
 			
 		}
+
+		colorValueButton->setVisible( type == model::Variable::Type::COLOR );
 
 		bool isNumeric = ( type == model::Variable::Type::INTEGER ) ||
 		                 ( type == model::Variable::Type::FLOATING_POINT );

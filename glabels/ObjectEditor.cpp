@@ -67,9 +67,9 @@ namespace glabels
 		barcodeColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 		shadowColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 
-		textInsertFieldButton->setText( tr("Insert field") );
-		barcodeInsertFieldButton->setText( tr("Insert field") );
-		imageFieldButton->setText( tr("Use field") );
+		textInsertFieldButton->setText( tr("Insert substitution field") );
+		barcodeInsertFieldButton->setText( tr("Insert subsitution field") );
+		imageFieldButton->setText( tr("Use substitution field") );
 
 		setEnabled( false );
 		hidePages();

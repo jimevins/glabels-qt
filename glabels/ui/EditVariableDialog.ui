@@ -67,16 +67,6 @@
         <item row="1" column="1">
          <widget class="QLineEdit" name="nameEdit"/>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Type:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="valueEdit"/>
-        </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
@@ -93,6 +83,27 @@
         </item>
         <item row="0" column="1">
          <widget class="QComboBox" name="typeCombo"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Type:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLineEdit" name="valueEdit"/>
+          </item>
+          <item>
+           <widget class="glabels::ColorButton" name="colorValueButton">
+            <property name="text">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
@@ -111,6 +122,16 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>glabels::ColorButton</class>
+   <extends>QPushButton</extends>
+   <header>ColorButton.h</header>
+   <slots>
+    <signal>colorChanged()</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -120,8 +141,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>227</x>
-     <y>214</y>
+     <x>236</x>
+     <y>287</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -136,8 +157,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>220</y>
+     <x>304</x>
+     <y>287</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -152,28 +173,12 @@
    <slot>onTypeComboChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>179</x>
-     <y>30</y>
+     <x>252</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
      <x>33</x>
      <y>161</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>valueEdit</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>EditVariableDialog</receiver>
-   <slot>onValueEditChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>212</x>
-     <y>86</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>63</x>
-     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -184,8 +189,8 @@
    <slot>onIncrementComboChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>123</y>
+     <x>100</x>
+     <y>223</y>
     </hint>
     <hint type="destinationlabel">
      <x>97</x>
@@ -200,8 +205,8 @@
    <slot>onStepSizeEditChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>344</x>
-     <y>125</y>
+     <x>440</x>
+     <y>223</y>
     </hint>
     <hint type="destinationlabel">
      <x>333</x>
@@ -216,12 +221,44 @@
    <slot>onNameEditChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>371</x>
-     <y>62</y>
+     <x>440</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
      <y>165</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>valueEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>EditVariableDialog</receiver>
+   <slot>onValueEditChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>459</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colorValueButton</sender>
+   <signal>colorChanged()</signal>
+   <receiver>EditVariableDialog</receiver>
+   <slot>onColorValueButtonChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>458</x>
+     <y>122</y>
     </hint>
    </hints>
   </connection>
@@ -232,5 +269,6 @@
   <slot>onIncrementComboChanged()</slot>
   <slot>onStepSizeEditChanged()</slot>
   <slot>onNameEditChanged()</slot>
+  <slot>onColorValueButtonChanged()</slot>
  </slots>
 </ui>

@@ -1084,6 +1084,10 @@
         <source>Per page</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VariablesView</name>
@@ -1167,6 +1171,17 @@
     </message>
     <message>
         <source>Custom color #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>glabels::EditVariableDialog</name>
+    <message>
+        <source>Default</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1784,14 +1799,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Insert field</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use field</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Original size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1933,6 +1940,18 @@
     </message>
     <message>
         <source>Selected File...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert substitution field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert subsitution field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2173,10 +2192,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Initial Value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Increment</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2190,6 +2205,10 @@
     </message>
     <message>
         <source>Edit Variable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

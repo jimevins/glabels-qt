@@ -85,6 +85,7 @@ namespace glabels
 	ColorPaletteDialog::ColorPaletteDialog( const QString& defaultLabel,
 	                                        const QColor&  defaultColor,
 	                                        const QColor&  color,
+	                                        bool           showUseFieldButton,
 	                                        QWidget*       parent )
 		: QDialog( parent )
 	{
@@ -167,14 +168,21 @@ namespace glabels
 		vLayout->addWidget( customColorButton );
 
 		//
-		// Construct "Use key" Button
+		// Construct "Use field" Button
 		//
-		mFieldButton = new FieldButton();
-		mFieldButton->setText( tr("Use key") );
-		mFieldButton->setAutoDefault( false );
-		mFieldButton->setDefault( false );
-		connect( mFieldButton, SIGNAL(keySelected(QString)), this, SLOT(onKeySelected(QString)) );
-		vLayout->addWidget( mFieldButton );
+		if ( showUseFieldButton )
+		{
+			mFieldButton = new FieldButton();
+			mFieldButton->setText( tr("Use substitution field") );
+			mFieldButton->setAutoDefault( false );
+			mFieldButton->setDefault( false );
+			connect( mFieldButton, SIGNAL(keySelected(QString)), this, SLOT(onKeySelected(QString)) );
+			vLayout->addWidget( mFieldButton );
+		}
+		else
+		{
+			mFieldButton = nullptr;
+		}
 
 		setLayout( vLayout );
 
@@ -191,7 +199,10 @@ namespace glabels
 	void ColorPaletteDialog::setKeys( const merge::Merge*     merge,
 	                                  const model::Variables* variables )
 	{
-		mFieldButton->setKeys( merge, variables );
+		if (mFieldButton)
+		{
+			mFieldButton->setKeys( merge, variables );
+		}
 	}
 
 

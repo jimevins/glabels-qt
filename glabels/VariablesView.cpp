@@ -63,7 +63,7 @@ namespace glabels
 		typeHeaderItem->setFlags( typeHeaderItem->flags() ^ Qt::ItemIsEditable );
 		table->setHorizontalHeaderItem( I_COL_TYPE, typeHeaderItem );
 
-		auto* valueHeaderItem = new QTableWidgetItem( tr("Initial Value") );
+		auto* valueHeaderItem = new QTableWidgetItem( tr("Value") );
 		valueHeaderItem->setFlags( valueHeaderItem->flags() ^ Qt::ItemIsEditable );
 		table->setHorizontalHeaderItem( I_COL_VALUE, valueHeaderItem );
 

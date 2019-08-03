@@ -49,6 +49,7 @@ namespace glabels
 		ColorPaletteDialog( const QString& defaultLabel,
 		                    const QColor&  defaultColor,
 		                    const QColor&  color,
+		                    bool           showUseFieldButton = true,
 		                    QWidget*       parent = nullptr );
 
 

@@ -57,6 +57,7 @@ namespace glabels
 		void onNameEditChanged();
 		void onTypeComboChanged();
 		void onValueEditChanged();
+		void onColorValueButtonChanged();
 		void onIncrementComboChanged();
 		void onStepSizeEditChanged();
 
