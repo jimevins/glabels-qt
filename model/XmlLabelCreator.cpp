@@ -496,8 +496,18 @@ namespace glabels
 			XmlUtil::setStringAttr( node, "type", Variable::typeToIdString( v.type() ) );
 			XmlUtil::setStringAttr( node, "name", v.name() );
 			XmlUtil::setStringAttr( node, "initialValue", v.initialValue() );
-			XmlUtil::setStringAttr( node, "increment", Variable::incrementToIdString( v.increment() ) );
-			XmlUtil::setStringAttr( node, "stepSize", v.stepSize() );
+			
+			if ( (v.type() == Variable::Type::INTEGER) ||
+			     (v.type() == Variable::Type::FLOATING_POINT) )
+			{
+				XmlUtil::setStringAttr( node, "increment",
+				                        Variable::incrementToIdString( v.increment() ) );
+				
+				if ( v.increment() != Variable::Increment::NEVER )
+				{
+					XmlUtil::setStringAttr( node, "stepSize", v.stepSize() );
+				}
+			}
 		}
 
 

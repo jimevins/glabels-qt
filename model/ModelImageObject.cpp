@@ -20,9 +20,11 @@
 
 #include "ModelImageObject.h"
 
+#include "Model.h"
 #include "Size.h"
 
 #include <QBrush>
+#include <QDir>
 #include <QFileInfo>
 #include <QImage>
 #include <QPen>
@@ -431,7 +433,12 @@ namespace glabels
 			}
 			else
 			{
-				auto* image = new QImage( mFilenameNode.text( record, variables ) );
+				// Look for image file relative to project file 1st then CWD 2nd
+				auto* model = dynamic_cast<Model*>( parent() );
+				QDir::setSearchPaths( "images", {model->dir(), QDir::currentPath()} );
+				QString filename = QString("images:") + mFilenameNode.text( record, variables );
+
+				auto* image = new QImage( filename );
 				if ( !image->isNull() && image->hasAlphaChannel() && (image->depth() == 32) )
 				{
 					QImage* shadowImage = createShadowImage( *image, shadowColor );
@@ -528,7 +535,12 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				auto* image = new QImage( mFilenameNode.text( record, variables ) );
+				// Look for image file relative to project file 1st then CWD 2nd
+				auto* model = dynamic_cast<Model*>( parent() );
+				QDir::setSearchPaths( "images", {model->dir(), QDir::currentPath()} );
+				QString filename = QString("images:") + mFilenameNode.text( record, variables );
+
+				auto* image = new QImage( filename );
 				if ( !image->isNull() )
 				{
 					painter->drawImage( destRect, *image );

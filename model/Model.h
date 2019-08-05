@@ -91,6 +91,7 @@ namespace glabels
 			void setModified();
 			void clearModified();
 
+			QString dir() const;
 			QString shortName();
 			const QString& fileName() const;
 			void setFileName( const QString &fileName );

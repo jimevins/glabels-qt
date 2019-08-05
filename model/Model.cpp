@@ -32,6 +32,7 @@
 
 #include <QApplication>
 #include <QClipboard>
+#include <QDir>
 #include <QFileInfo>
 #include <QMimeData>
 #include <QtDebug>
@@ -280,6 +281,22 @@ namespace glabels
 		}
 
 
+		///
+		/// Get directory.
+		///
+		QString Model::dir() const
+		{
+			if ( mFileName.isEmpty() )
+			{
+				return QDir::currentPath();
+			}
+			else
+			{
+				return QFileInfo( mFileName ).absolutePath();
+			}
+		}
+
+		
 		///
 		/// Get short name.
 		///

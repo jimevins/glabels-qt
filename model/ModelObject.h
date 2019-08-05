@@ -407,7 +407,7 @@ namespace glabels
 			void draw( QPainter*      painter,
 			           bool           inEditor,
 			           merge::Record* record,
-			           Variables* variables ) const;
+			           Variables*     variables ) const;
 			
 			void drawSelectionHighlight( QPainter* painter, double scale ) const;
 
