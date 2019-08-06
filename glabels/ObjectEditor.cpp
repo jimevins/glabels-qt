@@ -505,10 +505,13 @@ namespace glabels
 		{
 			lineColorButton->setKeys( mModel->merge(), mModel->variables() );
 			fillColorButton->setKeys( mModel->merge(), mModel->variables() );
+			textColorButton->setKeys( mModel->merge(), mModel->variables() );
+			barcodeColorButton->setKeys( mModel->merge(), mModel->variables() );
+			shadowColorButton->setKeys( mModel->merge(), mModel->variables() );
+
 			textInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
 			barcodeInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
 			imageFieldButton->setKeys( mModel->merge(), mModel->variables() );
-			shadowColorButton->setKeys( mModel->merge(), mModel->variables() );
 		}
 	}
 
