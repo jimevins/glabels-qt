@@ -36,6 +36,7 @@
 #include "merge/Merge.h"
 
 #include <QFileDialog>
+#include <QDir>
 #include <QtMath>
 #include <QtDebug>
 
@@ -129,7 +130,8 @@ namespace glabels
 			}
 			else
 			{
-				imageFilenameLineEdit->setText( filenameNode.data() );
+				QString fn = QDir(mModel->dir()).relativeFilePath( filenameNode.data() );
+				imageFilenameLineEdit->setText( fn );
 			}
 
 			mBlocked = false;			

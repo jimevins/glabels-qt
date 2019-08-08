@@ -1157,20 +1157,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Custom Color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Custom Color %1</source>
         <extracomment>%1 = color specification in hex. String must not contain a colon (:).</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Custom color #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1932,14 +1924,6 @@
     </message>
     <message>
         <source>Shadow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Insert Field</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Selected File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
