@@ -25,6 +25,8 @@
 
 #include "glbarcode/Barcode1dBase.h"
 
+struct zint_symbol; /* Forward reference. */
+
 
 namespace glabels
 {
@@ -41,9 +43,13 @@ namespace glabels
 			class Base : public glbarcode::Barcode1dBase
 			{
 			protected:
+				struct zint_symbol* symbol;
 				int symbology;
+				int option_2;
 			
 			
+				Base();
+
 				bool validate( const std::string& rawData ) override;
 
 				void vectorize( const std::string& encodedData,
@@ -895,6 +901,7 @@ namespace glabels
 				static Barcode* create();
 			
 			protected:
+				bool validate( const std::string& rawData ) override;
 				std::string encode( const std::string& cookedData ) override;
 			};
 

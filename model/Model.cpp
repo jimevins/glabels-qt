@@ -73,6 +73,7 @@ namespace glabels
 		///
 		Model::~Model()
 		{
+			qDeleteAll( mObjectList );
 			// Final instance of mMerge to be deleted by Model owner
 		}
 
@@ -116,13 +117,15 @@ namespace glabels
 
 			foreach ( ModelObject* savedObject, savedModel->mObjectList )
 			{
-				ModelObject* object = savedObject->clone();
+				ModelObject* object = savedObject->clone( this );
 		
-				object->setParent( this );
 				mObjectList << object;
 
 				connect( object, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
 				connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
+
+				connect( this, SIGNAL(mergeSourceChanged()), object, SLOT(onMergeChanged()) );
+				connect( this, SIGNAL(mergeSelectionChanged()), object, SLOT(onMergeChanged()) );
 			}
 
 			// Emit signals based on potential changes
@@ -371,6 +374,9 @@ namespace glabels
 			connect( object, SIGNAL(changed()), this, SLOT(onObjectChanged()) );
 			connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 
+			connect( this, SIGNAL(mergeSourceChanged()), object, SLOT(onMergeChanged()) );
+			connect( this, SIGNAL(mergeSelectionChanged()), object, SLOT(onMergeChanged()) );
+
 			setModified();
 
 			emit changed();
@@ -386,6 +392,7 @@ namespace glabels
 			mObjectList.removeOne( object );
 
 			disconnect( object, nullptr, this, nullptr );
+			disconnect( this, nullptr, object, nullptr );
 
 			setModified();
 

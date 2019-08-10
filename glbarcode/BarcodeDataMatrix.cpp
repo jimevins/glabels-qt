@@ -580,7 +580,16 @@ namespace glbarcode
 	 */
 	bool BarcodeDataMatrix::validate( const std::string& rawData )
 	{
-		return true;
+		return Barcode::isISO8859_1( rawData );
+	}
+
+
+	/*
+	 * DataMatrix Pre-process data before encoding, implements Barcode2dBase::preprocess()
+	 */
+	std::string BarcodeDataMatrix::preprocess( const std::string& rawData )
+	{
+		return Barcode::toISO8859_1( rawData );
 	}
 
 

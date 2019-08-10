@@ -35,11 +35,20 @@ namespace glabels
 	///
 	BarcodeMenu::BarcodeMenu()
 	{
+		mGroup = new QActionGroup( this );
+		mBackendGroup = new QActionGroup( this );
+
+		// Use dummy action for non-backend menu items to get exclusive checking with submenu items
+		mDummyBackendAction = new QAction( this );
+		mDummyBackendAction->setCheckable(true);
+		mBackendGroup->addAction( mDummyBackendAction );
+
 		foreach ( const barcode::Style& bcStyle, barcode::Backends::styleList() )
 		{
 			if ( bcStyle.backendId() == "" )
 			{
-				auto* bcMenuItem = new BarcodeMenuItem( bcStyle );
+				auto* bcMenuItem = new BarcodeMenuItem( bcStyle, this );
+				mGroup->addAction( bcMenuItem );
 				connect( bcMenuItem, SIGNAL(activated(const barcode::Style&)),
 				         this, SLOT(onMenuItemActivated(const barcode::Style&)) );
 
@@ -50,12 +59,16 @@ namespace glabels
 		foreach ( const QString& backendId, barcode::Backends::backendList() )
 		{
 			QMenu* subMenu = addMenu( barcode::Backends::backendName( backendId ) );
-			
+			subMenu->setObjectName( backendId );
+			subMenu->menuAction()->setCheckable( true );
+			mBackendGroup->addAction( subMenu->menuAction() );
+
 			foreach ( const barcode::Style& bcStyle, barcode::Backends::styleList() )
 			{
 				if ( bcStyle.backendId() == backendId )
 				{
-					auto* bcMenuItem = new BarcodeMenuItem( bcStyle );
+					auto* bcMenuItem = new BarcodeMenuItem( bcStyle, subMenu );
+					mGroup->addAction( bcMenuItem );
 					connect( bcMenuItem, SIGNAL(activated(const barcode::Style&)),
 					         this, SLOT(onMenuItemActivated(const barcode::Style&)) );
 
@@ -63,6 +76,18 @@ namespace glabels
 				}
 			}
 		}
+	}
+
+
+	///
+	/// Destructor
+	///
+	BarcodeMenu::~BarcodeMenu()
+	{
+		qDeleteAll( mGroup->actions() ); // addAction(QAction*) does not pass ownership so manually delete menu items
+		delete mGroup;
+		delete mBackendGroup; // addMenu() does pass ownership so no need to delete submenus
+		delete mDummyBackendAction;
 	}
 
 
@@ -76,11 +101,39 @@ namespace glabels
 
 
 	///
+	/// bcStyle setter
+	///
+	void BarcodeMenu::setBcStyle( const barcode::Style& bcStyle )
+	{
+		mBcStyle = bcStyle;
+
+		BarcodeMenuItem* menuItem = findChild<BarcodeMenuItem*>( mBcStyle.fullId() );
+		if ( menuItem && !menuItem->isChecked() ) // Only need to check on initial setting
+		{
+			menuItem->setChecked( true );
+		}
+
+		if ( mBcStyle.backendId().isEmpty() )
+		{
+			mDummyBackendAction->setChecked( true );
+		}
+		else
+		{
+			QMenu* subMenu = findChild<QMenu*>( mBcStyle.backendId() );
+			if ( subMenu )
+			{
+				subMenu->menuAction()->setChecked( true );
+			}
+		}
+	}
+
+
+	///
 	/// onMenuItemActivated slot
 	///
 	void BarcodeMenu::onMenuItemActivated( const barcode::Style& bcStyle )
 	{
-		mBcStyle = bcStyle;
+		setBcStyle( bcStyle );
 
 		emit selectionChanged();
 	}

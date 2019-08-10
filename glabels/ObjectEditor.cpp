@@ -188,7 +188,25 @@ namespace glabels
 
 			sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 			sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
-			sizeAspectCheck->setChecked( mObject->lockAspectRatio() );
+
+			if ( mObject->fixedAspectRatio() )
+			{
+				sizeAspectCheck->setChecked( true );
+				sizeAspectCheck->setEnabled( false );
+			}
+			else
+			{
+				sizeAspectCheck->setChecked( mObject->lockAspectRatio() );
+				sizeAspectCheck->setEnabled( true );
+			}
+
+			sizeWSpin->setEnabled( !mObject->fixedSize() );
+			sizeHSpin->setEnabled( !mObject->fixedSize() );
+
+			// If barcode, turn off keyboard tracking so that changes only apply when field loses focus, otherwise editing attempts can be immediately undone by size restrictions
+			bool keyboardTracking = dynamic_cast<model::ModelBarcodeObject*>(mObject) ? false : true;
+			sizeWSpin->setKeyboardTracking( keyboardTracking );
+			sizeHSpin->setKeyboardTracking( keyboardTracking );
 
 			model::Size originalSize = mObject->naturalSize();
 			QString originalSizeString = QString( "%1:  %2 x %3 %4" )
@@ -277,6 +295,7 @@ namespace glabels
 			mObject->setBcChecksumFlag( csFlag );
 
 			barcodeStyleButton->setBcStyle( bcStyle );
+			barcodeStyleButton->setMenuItemActive();
 			barcodeShowTextCheck->setChecked( textFlag );
 			barcodeChecksumCheck->setChecked( csFlag );
 			barcodeColorButton->setColorNode( mObject->bcColorNode() );
@@ -654,26 +673,35 @@ namespace glabels
 			model::Distance spinW = model::Distance(sizeWSpin->value(), mUnits);
 			model::Distance spinH = model::Distance(sizeHSpin->value(), mUnits);
 				
+			if ( !mObject->fixedAspectRatio() )
+			{
+				mObject->setLockAspectRatio( sizeAspectCheck->isChecked() );
+			}
 			if ( sizeAspectCheck->isChecked() )
 			{
-				mObject->setLockAspectRatio( true );
 				if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
 				{
 					mObject->setWHonorAspect( spinW );
-					sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
 				}
 				else
 				{
 					mObject->setHHonorAspect( spinH );
-					sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 				}
 			}
 			else
 			{
-				mObject->setLockAspectRatio( false );
 				mObject->setSize( spinW, spinH );
 			}
-			
+
+			if ( spinW != mObject->w() )
+			{
+				sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
+			}
+			if ( spinH != mObject->h() )
+			{
+				sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
+			}
+
 			mBlocked = false;
 		}
 	}
@@ -766,6 +794,32 @@ namespace glabels
 			mObject->setBcChecksumFlag( csFlag );
 			mObject->setBcColorNode( barcodeColorButton->colorNode() );
 			mObject->setBcData( barcodeDataEdit->toPlainText() );
+
+			if ( mObject->fixedAspectRatio() )
+			{
+				sizeAspectCheck->setChecked( true );
+				sizeAspectCheck->setEnabled( false );
+			}
+			else
+			{
+				sizeAspectCheck->setChecked( mObject->lockAspectRatio() );
+				sizeAspectCheck->setEnabled( true );
+			}
+
+			sizeWSpin->setEnabled( !mObject->fixedSize() );
+			sizeHSpin->setEnabled( !mObject->fixedSize() );
+
+			// May need to adjust size spinners, if size changed due to text change
+			model::Distance spinW = model::Distance(sizeWSpin->value(), mUnits);
+			model::Distance spinH = model::Distance(sizeHSpin->value(), mUnits);
+			if ( spinW != mObject->w() )
+			{
+				sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
+			}
+			if ( spinH != mObject->h() )
+			{
+				sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
+			}
 
 			mBlocked = false;
 		}

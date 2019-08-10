@@ -71,6 +71,8 @@ namespace glabels
 
 			const QList<Record*>& recordList( ) const;
 
+			Record* sampleRecord() const;
+
 
 			/////////////////////////////////
 			// Selection methods

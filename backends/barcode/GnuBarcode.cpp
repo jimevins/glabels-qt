@@ -41,102 +41,20 @@ namespace glabels
 		namespace GnuBarcode
 		{
 
-			bool Base::isAscii( const std::string& data ) const
+			Base::Base()
 			{
-				for (char c : data)
-				{
-					if ( (c & 0x80) != 0 )
-					{
-						return false;
-					}
-				}
-
-				return true;			
+				bci = nullptr;
 			}
-		
-			
-			bool Base::isNumericLengthValid( const std::string& data,
-			                                 unsigned int       nMin,
-			                                 unsigned int       nMax ) const
+
+
+			//
+			// GNU Barcode data validation method
+			//
+			bool Base::validate( const std::string& rawData )
 			{
-				unsigned int n = 0;
+				bci = Barcode_Create( (char*)rawData.c_str() );
 
-				for (char c : data)
-				{
-					if ( isdigit(c) )
-					{
-						n++;
-					}
-				}
-
-				return (n >= nMin) && (n <= nMax);
-			}
-		
-
-			bool Base::isNumericLength1Valid( const std::string& data,
-			                                  unsigned int       nMin,
-			                                  unsigned int       nMax ) const
-			{
-				unsigned int n = 0;
-
-				for ( unsigned int i = 0; !isspace(data[i]) && (i < data.size()); i++ )
-				{
-					if ( isdigit(data[i]) )
-					{
-						n++;
-					}
-					else if ( !isspace(data[i]) )
-					{
-						return false;
-					}
-				}
-
-				return (n >= nMin) && (n <= nMax);
-			}
-		
-
-			bool Base::isNumericLength2Valid( const std::string& data,
-			                                  unsigned int       nMin,
-			                                  unsigned int       nMax ) const
-			{
-				unsigned int i;
-				unsigned int n = 0;
-
-				for ( i = 0; !isspace(data[i]) && (i < data.size()); i++ )
-				{
-					/* Skip over 1st string */
-				}
-
-				for ( i++ /* skip space */ ; i < data.size(); i++ )
-				{
-					if ( isdigit(data[i]) )
-					{
-						n++;
-					}
-					else
-					{
-						return false;
-					}
-				}
-
-				return (n >= nMin) && (n <= nMax);
-			}
-		
-			
-			void Base::vectorize( const std::string& encodedData,
-			                      const std::string& displayText,
-			                      const std::string& cookedData,
-			                      double&            w,
-			                      double&            h )
-			{
-				/*
-				 * First encode using GNU Barcode library.
-				 */
-				Barcode_Item* bci = Barcode_Create( (char*)cookedData.c_str() );
-
-				bci->scalef = 0;
-				bci->width  = (int)w;
-				bci->height = (int)h;
+				(void)encode( rawData ); // Set flags
 
 				bci->flags = flags;
 				if ( !showText() )
@@ -153,9 +71,33 @@ namespace glabels
 				if ( (bci->partial == nullptr) || (bci->textinfo == nullptr) )
 				{
 					Barcode_Delete( bci );
+					bci = nullptr;
+					return false;
+				}
+
+				return true;
+			}
+		
+			
+			void Base::vectorize( const std::string& encodedData,
+			                      const std::string& displayText,
+			                      const std::string& cookedData,
+			                      double&            w,
+			                      double&            h )
+			{
+				/*
+				 * Already encoded in validate.
+				 */
+				if ( !bci )
+				{
+					// Should never happen
 					setIsDataValid( false );
 					return;
 				}
+
+				bci->scalef = 0;
+				bci->width  = (int)w;
+				bci->height = (int)h;
 
 
 				/*
@@ -201,14 +143,14 @@ namespace glabels
 						bci->width = barlen; /* default */
 					}
 					scalef = bci->scalef = (double)bci->width / (double)barlen;
-					if ( scalef < 0.5 )
+					if ( scalef < 0.1 )
 					{
-						scalef = 0.5;
+						scalef = 0.1;
 					}
 				}
 
 				/* The width defaults to "just enough" */
-				bci->width = (int)( barlen * scalef + 1 );
+				bci->width = (int)( barlen * scalef );
 
 				/* But it can be too small, in this case enlarge and center the area */
 				if ( bci->width < (int)(barlen * scalef) )
@@ -230,7 +172,7 @@ namespace glabels
 					bci->height = (int)( 80 * scalef );
 				}
 
-				/* If too small (5 + text), reduce the scale factor and center */
+				/* If too small (5 + text), resize */
 				int i = 5 + 10 * ( ((bci->flags & BARCODE_NO_ASCII)==0) ? 1 : 0 );
 				if ( bci->height < (int)(i * scalef) )
 				{
@@ -339,6 +281,7 @@ namespace glabels
 
 				/* Cleanup */
 				Barcode_Delete( bci );
+				bci = nullptr;
 			}
 
 
@@ -348,17 +291,6 @@ namespace glabels
 			glbarcode::Barcode* Ean::create()
 			{
 				return new Ean();
-			}
-
-		
-			bool Ean::validate( const std::string& rawData )
-			{
-				return (      isNumericLengthValid(  rawData,  7,  8 )
-				              ||   isNumericLengthValid(  rawData, 12, 13 )
-				              || ( isNumericLength1Valid( rawData,  7,  8 ) && isNumericLength2Valid( rawData, 2, 2 ) )
-				              || ( isNumericLength1Valid( rawData,  7,  8 ) && isNumericLength2Valid( rawData, 5, 5 ) )
-				              || ( isNumericLength1Valid( rawData, 12, 13 ) && isNumericLength2Valid( rawData, 2, 2 ) )
-				              || ( isNumericLength1Valid( rawData, 12, 13 ) && isNumericLength2Valid( rawData, 5, 5 ) ) );
 			}
 
 		
@@ -378,12 +310,6 @@ namespace glabels
 			}
 
 		
-			bool Ean8::validate( const std::string& rawData )
-			{
-				return isNumericLengthValid(  rawData,  7,  8 );
-			}
-
-		
 			std::string Ean8::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_EAN;
@@ -397,12 +323,6 @@ namespace glabels
 			glbarcode::Barcode* Ean8_2::create()
 			{
 				return new Ean8_2();
-			}
-
-		
-			bool Ean8_2::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData,  7,  8 ) && isNumericLength2Valid( rawData, 2, 2 );
 			}
 
 		
@@ -422,12 +342,6 @@ namespace glabels
 			}
 
 		
-			bool Ean8_5::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData,  7,  8 ) && isNumericLength2Valid( rawData, 5, 5 );
-			}
-
-		
 			std::string Ean8_5::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_EAN;
@@ -441,12 +355,6 @@ namespace glabels
 			glbarcode::Barcode* Ean13::create()
 			{
 				return new Ean13();
-			}
-
-		
-			bool Ean13::validate( const std::string& rawData )
-			{
-				return isNumericLengthValid(  rawData, 12, 13 );
 			}
 
 		
@@ -466,12 +374,6 @@ namespace glabels
 			}
 
 		
-			bool Ean13_2::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 12, 13 ) && isNumericLength2Valid( rawData, 2, 2 );
-			}
-
-		
 			std::string Ean13_2::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_EAN;
@@ -485,12 +387,6 @@ namespace glabels
 			glbarcode::Barcode* Ean13_5::create()
 			{
 				return new Ean13_5();
-			}
-
-		
-			bool Ean13_5::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 12, 13 ) && isNumericLength2Valid( rawData, 5, 5 );
 			}
 
 		
@@ -510,17 +406,6 @@ namespace glabels
 			}
 
 		
-			bool Upc::validate( const std::string& rawData )
-			{
-				return      isNumericLengthValid( rawData, 6, 8 )
-					||  isNumericLengthValid( rawData, 11, 12 )
-					|| (isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 2, 2 ))
-					|| (isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 5, 5 ))
-					|| (isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 2, 2 ))
-					|| (isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 5, 5 ));
-			}
-
-		
 			std::string Upc::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_UPC;
@@ -534,12 +419,6 @@ namespace glabels
 			glbarcode::Barcode* UpcA::create()
 			{
 				return new UpcA();
-			}
-
-		
-			bool UpcA::validate( const std::string& rawData )
-			{
-				return isNumericLengthValid( rawData, 11, 12 );
 			}
 
 		
@@ -559,12 +438,6 @@ namespace glabels
 			}
 
 		
-			bool UpcA_2::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 2, 2 );
-			}
-
-		
 			std::string UpcA_2::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_UPC;
@@ -578,12 +451,6 @@ namespace glabels
 			glbarcode::Barcode* UpcA_5::create()
 			{
 				return new UpcA_5();
-			}
-
-		
-			bool UpcA_5::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 11, 12 ) && isNumericLength2Valid( rawData, 5, 5 );
 			}
 
 		
@@ -603,12 +470,6 @@ namespace glabels
 			}
 
 		
-			bool UpcE::validate( const std::string& rawData )
-			{
-				return isNumericLengthValid( rawData, 6, 8 );
-			}
-
-		
 			std::string UpcE::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_UPC;
@@ -622,12 +483,6 @@ namespace glabels
 			glbarcode::Barcode* UpcE_2::create()
 			{
 				return new UpcE_2();
-			}
-
-		
-			bool UpcE_2::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 2, 2 );
 			}
 
 		
@@ -647,12 +502,6 @@ namespace glabels
 			}
 
 		
-			bool UpcE_5::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 6, 8 ) && isNumericLength2Valid( rawData, 5, 5 );
-			}
-
-		
 			std::string UpcE_5::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_UPC;
@@ -666,12 +515,6 @@ namespace glabels
 			glbarcode::Barcode* Isbn::create()
 			{
 				return new Isbn();
-			}
-
-		
-			bool Isbn::validate( const std::string& rawData )
-			{
-				return isNumericLengthValid( rawData, 9, 10 );
 			}
 
 		
@@ -691,12 +534,6 @@ namespace glabels
 			}
 
 		
-			bool Isbn_5::validate( const std::string& rawData )
-			{
-				return isNumericLength1Valid( rawData, 9, 10 ) && isNumericLength2Valid( rawData, 5, 5 );
-			}
-
-		
 			std::string Isbn_5::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_ISBN;
@@ -710,12 +547,6 @@ namespace glabels
 			glbarcode::Barcode* Code39::create()
 			{
 				return new Code39();
-			}
-
-		
-			bool Code39::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
 			}
 
 		
@@ -735,12 +566,6 @@ namespace glabels
 			}
 
 		
-			bool Code128::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
-			}
-
-		
 			std::string Code128::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_128;
@@ -754,12 +579,6 @@ namespace glabels
 			glbarcode::Barcode* Code128C::create()
 			{
 				return new Code128C();
-			}
-
-		
-			bool Code128C::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
 			}
 
 		
@@ -779,12 +598,6 @@ namespace glabels
 			}
 
 		
-			bool Code128B::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
-			}
-
-		
 			std::string Code128B::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_128B;
@@ -798,12 +611,6 @@ namespace glabels
 			glbarcode::Barcode* I25::create()
 			{
 				return new I25();
-			}
-
-		
-			bool I25::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
 			}
 
 		
@@ -823,12 +630,6 @@ namespace glabels
 			}
 
 		
-			bool Cbr::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
-			}
-
-		
 			std::string Cbr::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_CBR;
@@ -842,12 +643,6 @@ namespace glabels
 			glbarcode::Barcode* Msi::create()
 			{
 				return new Msi();
-			}
-
-		
-			bool Msi::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
 			}
 
 		
@@ -867,12 +662,6 @@ namespace glabels
 			}
 
 		
-			bool Pls::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
-			}
-
-		
 			std::string Pls::encode( const std::string& cookedData )
 			{
 				flags = BARCODE_PLS;
@@ -886,12 +675,6 @@ namespace glabels
 			glbarcode::Barcode* Code93::create()
 			{
 				return new Code93();
-			}
-
-		
-			bool Code93::validate( const std::string& rawData )
-			{
-				return isAscii( rawData );
 			}
 
 		

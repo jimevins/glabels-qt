@@ -44,6 +44,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		BarcodeMenuButton( QWidget* parent = nullptr );
+		~BarcodeMenuButton() override;
 
 
 		/////////////////////////////////
@@ -59,6 +60,7 @@ namespace glabels
 	public:
 		barcode::Style bcStyle() const;
 		void setBcStyle( const barcode::Style& bcStyle );
+		void setMenuItemActive();
 
 
 		/////////////////////////////////

@@ -41,7 +41,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelBoxObject::ModelBoxObject()
+		ModelBoxObject::ModelBoxObject( QObject* parent ) : ModelShapeObject(parent)
 		{
 			// empty
 		}
@@ -76,8 +76,8 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelBoxObject::ModelBoxObject( const ModelBoxObject* object )
-			: ModelShapeObject( object )
+		ModelBoxObject::ModelBoxObject( const ModelBoxObject* object, QObject* parent )
+			: ModelShapeObject( object, parent )
 		{
 			// empty
 		}
@@ -95,9 +95,9 @@ namespace glabels
 		///
 		/// Clone
 		///
-		ModelBoxObject* ModelBoxObject::clone() const
+		ModelBoxObject* ModelBoxObject::clone( QObject* parent ) const
 		{
-			return new ModelBoxObject( this );
+			return new ModelBoxObject( this, parent );
 		}
 
 

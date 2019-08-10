@@ -51,7 +51,9 @@ namespace glabels
 			        bool           checksumOptional,
 			        const QString& defaultDigits,
 			        bool           canFreeform,
-			        int            preferedN );
+			        int            preferedN,
+			        bool           fixedAspectRatio = false,
+			        bool           fixedSize = false );
 
 
 			/////////////////////////////////
@@ -78,6 +80,10 @@ namespace glabels
 			bool canFreeform() const;
 
 			int preferedN() const;
+
+			bool fixedAspectRatio() const;
+
+			bool fixedSize() const;
 
 
 			/////////////////////////////////
@@ -108,6 +114,8 @@ namespace glabels
 			QString mDefaultDigits;
 			bool    mCanFreeform;
 			int     mPreferedN;
+			bool    mFixedAspectRatio;
+			bool    mFixedSize;
 
 		};
 

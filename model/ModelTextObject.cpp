@@ -47,7 +47,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelTextObject::ModelTextObject()
+		ModelTextObject::ModelTextObject( QObject* parent ) : ModelObject(parent)
 		{
 			mOutline = new Outline( this );
 
@@ -136,8 +136,8 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelTextObject::ModelTextObject( const ModelTextObject* object )
-			: ModelObject(object)
+		ModelTextObject::ModelTextObject( const ModelTextObject* object, QObject* parent )
+			: ModelObject(object, parent)
 		{
 			mText              = object->mText;
 			mFontFamily        = object->mFontFamily;
@@ -174,9 +174,9 @@ namespace glabels
 		///
 		/// Clone
 		///
-		ModelTextObject* ModelTextObject::clone() const
+		ModelTextObject* ModelTextObject::clone( QObject* parent ) const
 		{
-			return new ModelTextObject( this );
+			return new ModelTextObject( this, parent );
 		}
 
 

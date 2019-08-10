@@ -41,7 +41,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelEllipseObject::ModelEllipseObject()
+		ModelEllipseObject::ModelEllipseObject( QObject* parent ) : ModelShapeObject(parent)
 		{
 			// empty
 		}
@@ -76,8 +76,8 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelEllipseObject::ModelEllipseObject( const ModelEllipseObject* object )
-			: ModelShapeObject( object )
+		ModelEllipseObject::ModelEllipseObject( const ModelEllipseObject* object, QObject* parent )
+			: ModelShapeObject( object, parent )
 		{
 			// empty
 		}
@@ -95,9 +95,9 @@ namespace glabels
 		///
 		/// Clone
 		///
-		ModelEllipseObject* ModelEllipseObject::clone() const
+		ModelEllipseObject* ModelEllipseObject::clone( QObject* parent ) const
 		{
-			return new ModelEllipseObject( this );
+			return new ModelEllipseObject( this, parent );
 		}
 
 

@@ -39,7 +39,9 @@ namespace glabels
 			  mChecksumOptional( false ),
 			  mDefaultDigits( "" ),
 			  mCanFreeform( false ),
-			  mPreferedN( 0 )
+			  mPreferedN( 0 ),
+			  mFixedAspectRatio( false ),
+			  mFixedSize( false )
 		{
 			// empty
 		}
@@ -57,7 +59,9 @@ namespace glabels
 		               bool           checksumOptional,
 		               const QString& defaultDigits,
 		               bool           canFreeform,
-		               int            preferedN )
+		               int            preferedN,
+		               bool           fixedAspectRatio,
+		               bool           fixedSize )
 			: mId( id ),
 			  mBackendId( backendId ),
 			  mName( name ),
@@ -67,7 +71,9 @@ namespace glabels
 			mChecksumOptional( checksumOptional ),
 			mDefaultDigits( defaultDigits ),
 			mCanFreeform( canFreeform ),
-			mPreferedN( preferedN )
+			mPreferedN( preferedN ),
+			mFixedAspectRatio( fixedAspectRatio ),
+			mFixedSize ( fixedSize )
 		{
 			// empty
 		}
@@ -180,6 +186,24 @@ namespace glabels
 
 
 		///
+		/// Fixed Aspect Ratio Property Getter
+		///
+		bool Style::fixedAspectRatio() const
+		{
+			return mFixedAspectRatio;
+		}
+
+
+		///
+		/// Fixed Size Property Getter
+		///
+		bool Style::fixedSize() const
+		{
+			return mFixedSize;
+		}
+
+
+		///
 		/// Generate Example Digits
 		///
 		QString Style::exampleDigits( int n ) const
@@ -200,7 +224,7 @@ namespace glabels
 		///
 		bool Style::operator!=( const Style& other ) const
 		{
-			return mId != other.mId;
+			return mId != other.mId || mBackendId != other.mBackendId;
 		}
 	
 	} // namespace barcode

@@ -23,6 +23,7 @@
 #include "Size.h"
 
 #include "barcode/Backends.h"
+#include "model/Model.h"
 
 #include "glbarcode/Factory.h"
 #include "glbarcode/QtRenderer.h"
@@ -31,7 +32,6 @@
 #include <QPen>
 #include <QTextDocument>
 #include <QTextBlock>
-#include <QRegularExpression>
 #include <QtDebug>
 
 
@@ -47,15 +47,15 @@ namespace glabels
 		{
 			const QColor fillColor = QColor( 224, 224, 224, 255 );
 			const Distance pad = Distance::pt(4);
-			const Distance minW = Distance::pt(18);
-			const Distance minH = Distance::pt(18);
+			const Distance minW = Distance::pt(10); // Must be > 2*pad
+			const Distance minH = Distance::pt(10);
 		}
 
 
 		///
 		/// Constructor
 		///
-		ModelBarcodeObject::ModelBarcodeObject()
+		ModelBarcodeObject::ModelBarcodeObject( QObject* parent ) : ModelObject(parent)
 		{
 			mOutline = new Outline( this );
 
@@ -126,8 +126,8 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelBarcodeObject::ModelBarcodeObject( const ModelBarcodeObject* object )
-			: ModelObject(object)
+		ModelBarcodeObject::ModelBarcodeObject( const ModelBarcodeObject* object, QObject* parent )
+			: ModelObject(object, parent)
 		{
 			mBcStyle        = object->mBcStyle;
 			mBcTextFlag     = object->mBcTextFlag;
@@ -155,17 +155,17 @@ namespace glabels
 				delete handle;
 			}
 			mHandles.clear();
-
 			delete mEditorBarcode;
+			delete mEditorDefaultBarcode;
 		}
 
 
 		///
 		/// Clone
 		///
-		ModelBarcodeObject* ModelBarcodeObject::clone() const
+		ModelBarcodeObject* ModelBarcodeObject::clone( QObject* parent ) const
 		{
-			return new ModelBarcodeObject( this );
+			return new ModelBarcodeObject( this, parent );
 		}
 
 
@@ -308,6 +308,26 @@ namespace glabels
 
 
 		///
+		/// Virtual Fixed Aspect Ratio Capability Read-Only Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		bool ModelBarcodeObject::fixedAspectRatio() const
+		{
+			return mBcStyle.fixedAspectRatio();
+		}
+
+
+		///
+		/// Virtual Fixed Size Capability Read-Only Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		bool ModelBarcodeObject::fixedSize() const
+		{
+			return mBcStyle.fixedSize();
+		}
+
+
+		///
 		/// Draw shadow of object
 		///
 		void ModelBarcodeObject::drawShadow( QPainter*      painter,
@@ -344,6 +364,19 @@ namespace glabels
 		QPainterPath ModelBarcodeObject::hoverPath( double scale ) const
 		{
 			return mHoverPath;
+		}
+
+
+		///
+		/// Merge changed slot
+		///
+		void ModelBarcodeObject::onMergeChanged()
+		{
+			if ( mBcData.hasPlaceHolders() )
+			{
+				update();
+				emit changed();
+			}
 		}
 
 
@@ -397,12 +430,28 @@ namespace glabels
 			mEditorDefaultBarcode->setChecksum(mBcChecksumFlag);
 			mEditorDefaultBarcode->setShowText(mBcTextFlag);
 
-			mEditorDefaultBarcode->build( mBcStyle.defaultDigits().toStdString(), mW.pt(), mH.pt() );
+			if ( mBcData.hasPlaceHolders() )
+			{
+				Model* model = dynamic_cast<Model*>(parent());
+				merge::Record* sampleRecord = model ? model->merge()->sampleRecord() : nullptr;
+				QString defaultDigits = mBcData.expandSample( mBcStyle.defaultDigits(), sampleRecord );
+				delete sampleRecord;
+
+				mEditorDefaultBarcode->build( defaultDigits.toStdString(), mW.pt(), mH.pt() );
+				if ( !mEditorDefaultBarcode->isDataValid() )
+				{
+					mEditorDefaultBarcode->build( mBcStyle.defaultDigits().toStdString(), mW.pt(), mH.pt() );
+				}
+			}
+			else
+			{
+				mEditorDefaultBarcode->build( mBcStyle.defaultDigits().toStdString(), mW.pt(), mH.pt() );
+			}
 
 			//
 			// Adjust size
 			//
-			if ( mEditorBarcode->isDataValid() )
+			if ( mEditorBarcode->isDataValid() && !mBcData.hasPlaceHolders() )
 			{
 				mW = Distance::pt( mEditorBarcode->width() );
 				mH = Distance::pt( mEditorBarcode->height() );
@@ -499,13 +548,13 @@ namespace glabels
 			QFontMetricsF fm( font );
 			QRectF textRect = fm.boundingRect( shortText );
 
-			double wPts = (mW - 2*pad).pt();
-			double hPts = (mH - 2*pad).pt();
+			double wPts = (max( mW, minW ) - 2*pad).pt(); // Use at least minW/minH to ensure positive values
+			double hPts = (max( mH, minH ) - 2*pad).pt();
 			if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
 			{
 				double scaleX = wPts / textRect.width();
 				double scaleY = hPts / textRect.height();
-				font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+				font.setPointSizeF( std::max( 6 * std::min( scaleX, scaleY ), MIN_POINT_SIZE ) );
 			}
 
 			//

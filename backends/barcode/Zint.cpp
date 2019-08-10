@@ -43,11 +43,45 @@ namespace glabels
 
 
 			//
+			// Base constructor
+			//
+			Base::Base()
+			{
+				symbol = nullptr;
+				option_2 = -1;
+			}
+
+
+			//
 			// Zint barcode data validation method
 			//
 			bool Base::validate( const std::string& rawData )
 			{
-				return rawData.size() != 0;
+				symbol = ZBarcode_Create();
+				if ( !symbol )
+				{
+					return false;
+				}
+
+				(void)encode( rawData ); // Set symbology and option
+
+				symbol->symbology = symbology;
+				symbol->input_mode = UNICODE_MODE;
+
+				if ( option_2 != -1 )
+				{
+					symbol->option_2 = option_2;
+				}
+
+				int encode_ret = ZBarcode_Encode( symbol, (unsigned char*)(rawData.c_str()), rawData.size() );
+				if ( encode_ret != 0 && encode_ret != ZINT_WARN_USES_ECI )
+				{
+					ZBarcode_Delete( symbol );
+					symbol = nullptr;
+					return false;
+				}
+
+				return true;
 			}
 
 		
@@ -61,8 +95,15 @@ namespace glabels
 			                      double&            h )
 			{
 				/*
-				 * First encode using Zint barcode library.
+				 * Already encoded in validate.
 				 */
+				if ( !symbol )
+				{
+					// Should never happen
+					setIsDataValid( false );
+					return;
+				}
+
 				if ( w == 0 )
 				{
 					w = W_PTS_DEFAULT;
@@ -72,34 +113,24 @@ namespace glabels
 					h = H_PTS_DEFAULT;
 				}
 
-				zint_symbol* symbol = ZBarcode_Create();;
-
-				symbol->symbology = symbology;
-
-				if ( ZBarcode_Encode( symbol, (unsigned char*)(cookedData.c_str()), 0 ) != 0 )
-				{
-					qDebug() << "Zint::ZBarcode_Encode: " << QString(symbol->errtxt);
-					setIsDataValid( false );
-					return;
-				}
-
 				symbol->show_hrt = showText();
 
-				if ( ZBarcode_Render( symbol, (float)w, (float)h ) == 0 )
+				if ( ZBarcode_Render( symbol, (float)w, (float)h ) != 1 )
 				{
 					qDebug() << "Zint::ZBarcode_Render: " << QString(symbol->errtxt);
+					ZBarcode_Delete( symbol );
+					symbol = nullptr;
 					setIsDataValid( false );
 					return;
 				}
-
 
 				/*
 				 * Now do the actual vectorization.
 				 */
 				zint_render *render = symbol->rendered;
 
-				setWidth( render->width );
-				setHeight( render->height );
+				w = render->width;
+				h = render->height;
 
 				for ( zint_render_line *zline = render->lines; zline != nullptr; zline = zline->next )
 				{
@@ -126,6 +157,7 @@ namespace glabels
 				}
 
 				ZBarcode_Delete( symbol );
+				symbol = nullptr;
 			}
 
 
@@ -365,6 +397,7 @@ namespace glabels
 			std::string Code39::encode( const std::string& cookedData )
 			{
 				symbology = BARCODE_CODE39;
+				option_2 = checksum() ? 1 : 0;
 				return ""; // Actual encoding is done in vectorize
 			}
 		
@@ -381,6 +414,7 @@ namespace glabels
 			std::string Code39e::encode( const std::string& cookedData )
 			{
 				symbology = BARCODE_EXCODE39;
+				option_2 = checksum() ? 1 : 0;
 				return ""; // Actual encoding is done in vectorize
 			}
 		
@@ -1162,6 +1196,17 @@ namespace glabels
 			}
 
 		
+			bool UpcE::validate( const std::string& rawData )
+			{
+				// Get around buffer overflow bug in upce() in Zint 2.6.3
+				if ( rawData.size() > 7 )
+				{
+					return false;
+				}
+				return Base::validate( rawData );
+			}
+
+
 			std::string UpcE::encode( const std::string& cookedData )
 			{
 				symbology = BARCODE_UPCE;

@@ -78,7 +78,9 @@ namespace glabels
 			                           bool           checksumOptional,
 			                           const QString& defaultDigits,
 			                           bool           canFreeForm,
-			                           int            preferedN );
+			                           int            preferedN,
+			                           bool           fixedAspectRatio = false,
+			                           bool           fixedSize = false );
 
 
 			/////////////////////////////////

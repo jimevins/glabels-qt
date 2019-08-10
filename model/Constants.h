@@ -34,6 +34,8 @@ namespace glabels
 		const double PTS_PER_PICA  =  12.0;
 
 		const Distance EPSILON( 0.5, Units::PT );
+
+		const double MIN_POINT_SIZE = 0.4; // Less than ~0.37 causes issues for QFontMetricsF
 	}
 }
 

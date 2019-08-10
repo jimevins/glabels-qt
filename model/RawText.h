@@ -53,6 +53,7 @@ namespace glabels
 			QString toString() const;
 			std::string toStdString() const;
 			QString expand( merge::Record* record ) const;
+			QString expandSample( const QString& sample, merge::Record* record = nullptr ) const;
 			bool hasPlaceHolders() const;
 			bool isEmpty() const;
 

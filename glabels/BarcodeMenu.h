@@ -42,6 +42,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		BarcodeMenu();
+		~BarcodeMenu() override;
 
 
 		/////////////////////////////////
@@ -56,6 +57,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		barcode::Style bcStyle() const;
+		void setBcStyle( const barcode::Style& bcStyle );
 
 
 		/////////////////////////////////
@@ -70,6 +72,9 @@ namespace glabels
 		/////////////////////////////////
 	private:
 		barcode::Style mBcStyle;
+		QActionGroup*  mGroup;
+		QActionGroup*  mBackendGroup;
+		QAction*       mDummyBackendAction;
 
 	};
 

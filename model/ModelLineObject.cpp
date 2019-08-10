@@ -41,7 +41,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelLineObject::ModelLineObject()
+		ModelLineObject::ModelLineObject( QObject* parent ) : ModelObject(parent)
 		{
 			mOutline = nullptr;
 
@@ -91,8 +91,8 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelLineObject::ModelLineObject( const ModelLineObject* object )
-			: ModelObject(object)
+		ModelLineObject::ModelLineObject( const ModelLineObject* object, QObject* parent )
+			: ModelObject(object, parent)
 		{
 			mLineWidth       = object->mLineWidth;
 			mLineColorNode   = object->mLineColorNode;
@@ -104,6 +104,8 @@ namespace glabels
 		///
 		ModelLineObject::~ModelLineObject()
 		{
+			delete mOutline;
+
 			foreach( Handle* handle, mHandles )
 			{
 				delete handle;
@@ -115,9 +117,9 @@ namespace glabels
 		///
 		/// Clone
 		///
-		ModelLineObject* ModelLineObject::clone() const
+		ModelLineObject* ModelLineObject::clone( QObject* parent ) const
 		{
-			return new ModelLineObject( this );
+			return new ModelLineObject( this, parent );
 		}
 
 

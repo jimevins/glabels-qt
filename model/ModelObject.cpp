@@ -43,7 +43,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelObject::ModelObject() : QObject(nullptr)
+		ModelObject::ModelObject( QObject* parent ) : QObject(parent)
 		{
 			mId = msNextId++;
 
@@ -105,7 +105,7 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelObject::ModelObject( const ModelObject* object )
+		ModelObject::ModelObject( const ModelObject* object, QObject* parent ) : QObject(parent)
 		{
 			mId = msNextId++;
 
@@ -971,6 +971,26 @@ namespace glabels
 
 
 		///
+		/// Virtual Fixed Aspect Ratio Capability Read-Only Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		bool ModelObject::fixedAspectRatio() const
+		{
+			return false;
+		}
+
+
+		///
+		/// Virtual Fixed Size Capability Read-Only Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		bool ModelObject::fixedSize() const
+		{
+			return false;
+		}
+
+
+		///
 		/// Set Absolute Position
 		///
 		void ModelObject::setPosition( const Distance& x0,
@@ -1044,17 +1064,20 @@ namespace glabels
 		void ModelObject::setSizeHonorAspect( const Distance& w,
 		                                      const Distance& h )
 		{
-			double aspectRatio = mH / mW;
+			double aspectRatio = mW != 0 ? mH / mW : 0;
 			Distance wNew = w;
 			Distance hNew = h;
 		
-			if ( h > (w*aspectRatio) )
+			if ( aspectRatio )
 			{
-				hNew = w*aspectRatio;
-			}
-			else
-			{
-				wNew = h/aspectRatio;
+				if ( h > (w*aspectRatio) )
+				{
+					hNew = w*aspectRatio;
+				}
+				else
+				{
+					wNew = h/aspectRatio;
+				}
 			}
 
 			setSize( wNew, hNew );
@@ -1066,8 +1089,8 @@ namespace glabels
 		///
 		void ModelObject::setWHonorAspect( const Distance& w )
 		{
-			double aspectRatio = mH / mW;
-			Distance h = w * aspectRatio;
+			double aspectRatio = mW != 0 ? mH / mW : 0;
+			Distance h = aspectRatio ? w * aspectRatio : mH;
 
 			if ( ( mW != w ) || ( mH != h ) )
 			{
@@ -1085,8 +1108,8 @@ namespace glabels
 		///
 		void ModelObject::setHHonorAspect( const Distance& h )
 		{
-			double aspectRatio = mH / mW;
-			Distance w = h / aspectRatio;
+			double aspectRatio = mW != 0 ? mH / mW : 0;
+			Distance w = aspectRatio ? h / aspectRatio : mW;
 
 			if ( ( mW != w ) || ( mH != h ) )
 			{
@@ -1275,6 +1298,15 @@ namespace glabels
 		/// Default sizeUpdated implementation.
 		///
 		void ModelObject::sizeUpdated()
+		{
+			// empty
+		}
+
+
+		///
+		/// Default onMergeChanged implementation.
+		///
+		void ModelObject::onMergeChanged()
 		{
 			// empty
 		}

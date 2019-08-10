@@ -56,25 +56,25 @@ namespace glabels
 			               true, false, true, false, "123456789012", false, 12 );
 
 			registerStyle( "postnet", "", tr("POSTNET (any)"),
-			               false, false, true, false, "12345-6789-12", false, 11 );
+			               false, false, true, false, "12345-6789-12", false, 11, true, true );
 
 			registerStyle( "postnet-5", "", tr("POSTNET-5 (ZIP only)"),
-			               false, false, true, false, "12345", false, 5 );
+			               false, false, true, false, "12345", false, 5, true, true );
 
 			registerStyle( "postnet-9", "", tr("POSTNET-9 (ZIP+4)"),
-			               false, false, true, false, "12345-6789", false, 9 );
+			               false, false, true, false, "12345-6789", false, 9, true, true );
 
 			registerStyle( "postnet-11", "", tr("POSTNET-11 (DPBC)"),
-			               false, false, true, false, "12345-6789-12", false, 11 );
+			               false, false, true, false, "12345-6789-12", false, 11, true, true );
 
 			registerStyle( "cepnet", "", tr("CEPNET"),
-			               false, false, true, false, "12345-678", false, 8 );
+			               false, false, true, false, "12345-678", false, 8, true, true );
 
 			registerStyle( "onecode", "", tr("USPS Intelligent Mail"),
-			               false, false, true, false, "12345678901234567890", false, 20 );
+			               false, false, true, false, "12345678901234567890", false, 20, true, true );
 
-			registerStyle( "datamatrix", "", tr("IEC16022 (DataMatrix)"),
-			               false, false, true, false, "1234567890AB", false, 12 );
+			registerStyle( "datamatrix", "", tr("Data Matrix (IEC16022)"),
+			               false, false, true, false, "123456ABCD", true, 10, true ); // Default 14x14 symbol size, 8 data (3 for packed digits + 3/4 for letters)
 
 #if HAVE_GNU_BARCODE
 			//
@@ -137,27 +137,27 @@ namespace glabels
 			registerStyle( "upc-e+5", "gnu-barcode", tr("UPC-E +5"),
 			               true, true, true, false, "000000 00000", false, 11 );
 			registerStyle( "isbn", "gnu-barcode", tr("ISBN"),
-			               true, true, true, true, "0-00000-000-0", false, 10 );
+			               true, true, true, false, "0-00000-000-0", false, 10 );
 			registerStyle( "isbn+5", "gnu-barcode", tr("ISBN +5"),
-			               true, true, true, true, "0-00000-000-0 00000", false, 15 );
+			               true, true, true, false, "0-00000-000-0 00000", false, 15 );
 			registerStyle( "code39", "gnu-barcode", tr("Code 39"),
 			               true, true, true, true, "0000000000", true, 10 );
 			registerStyle( "code128", "gnu-barcode", tr("Code 128"),
-			               true, true, true, true, "0000000000", true, 10 );
+			               true, true, true, false, "0000000000", true, 10 );
 			registerStyle( "code128c", "gnu-barcode", tr("Code 128C"),
 			               true, true, true, false, "0000000000", true, 10 );
 			registerStyle( "code128b", "gnu-barcode", tr("Code 128B"),
-			               true, true, true, true, "0000000000", true, 10 );
+			               true, true, true, false, "0000000000", true, 10 );
 			registerStyle( "i25", "gnu-barcode", tr("Interleaved 2 of 5"),
 			               true, true, true, true, "0000000000", true, 10 );
 			registerStyle( "cbr", "gnu-barcode", tr("Codabar"),
-			               true, true, true, true, "0000000000", true, 10 );
+			               true, true, true, true, "A00000000B", true, 10 );
 			registerStyle( "msi", "gnu-barcode", tr("MSI"),
 			               true, true, true, true, "0000000000", true, 10 );
 			registerStyle( "pls", "gnu-barcode", tr("Plessey"),
-			               true, true, true, true, "0000000000", true, 10 );
-			registerStyle( "code93", "gnu-barcode", tr("Code 93"),
 			               true, true, true, false, "0000000000", true, 10 );
+			registerStyle( "code93", "gnu-barcode", tr("Code 93"),
+			               true, true, true, true, "0000000000", true, 10 );
 #endif // HAVE_GNU_BARCODE
 
 #if HAVE_QRENCODE
@@ -168,8 +168,8 @@ namespace glabels
 		
 			glbarcode::Factory::registerType( "qrencode::qrcode", QrEncode::QrCode::create );
 
-			registerStyle( "qrcode", "qrencode", tr("IEC18004 (QRCode)"),
-			               false, false, true, false, "1234567890AB", false, 12 );
+			registerStyle( "qrcode", "qrencode", tr("QR Code (IEC18004)"),
+			               false, false, true, false, "1234567890AB", true, 12, true );
 #endif // HAVE_QRENCODE
 
 #if HAVE_ZINT
@@ -247,55 +247,55 @@ namespace glabels
 			glbarcode::Factory::registerType( "zint::pls",       Zint::Pls::create );
 
 			registerStyle( "ausp", "zint", tr("Australia Post Standard"),
-			               false, false, true, false, "12345678901234567890123", true, 23 );
+			               false, false, true, false, "12345678901234567890123", false, 23, true, true );
 
 			registerStyle( "ausrp", "zint", tr("Australia Post Reply Paid"),
-			               false, false, true, false, "12345678", true, 8 );
+			               false, false, true, false, "12345678", true, 8, true, true );
 
 			registerStyle( "ausrt", "zint", tr("Australia Post Route Code"),
-			               false, false, true, false, "12345678", true, 8 );
+			               false, false, true, false, "12345678", true, 8, true, true );
 
 			registerStyle( "ausrd", "zint", tr("Australia Post Redirect"),
-			               false, false, true, false, "12345678", true, 8 );
+			               false, false, true, false, "12345678", true, 8, true, true );
 
 			registerStyle( "aztec", "zint", tr("Aztec Code"),
-			               false, false, true, false, "1234567890", true, 10 );
+			               false, false, true, false, "1234567890AB", true, 12, true );
           
 			registerStyle( "azrun", "zint", tr("Aztec Rune"),
-			               false, false, true, false, "255", true, 3 );
+			               false, false, true, false, "255", true, 3, true );
 
 			registerStyle( "cbr", "zint", tr("Codabar"),
-			               true, true, true, false, "ABCDABCDAB", true, 10 );
+			               true, true, false, false, "A00000000B", true, 10 );
 
 			registerStyle( "code1", "zint", tr("Code One"), 
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "code11", "zint", tr("Code 11"),
 			               true, true, true, false, "0000000000", true, 10 );
           
 			registerStyle( "c16k", "zint", tr("Code 16K"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
           
 			registerStyle( "c25m", "zint", tr("Code 2 of 5 Matrix"), 
-			               true, true, true, false, "0000000000", true, 10 );
+			               true, true, false, false, "0000000000", true, 10 );
           
 			registerStyle( "c25i", "zint", tr("Code 2 of 5 IATA"), 
-			               true, true, true, false, "0000000000", true, 10 );
+			               true, true, false, false, "0000000000", true, 10 );
           
 			registerStyle( "c25dl", "zint", tr("Code 2 of 5 Data Logic"), 
-			               true, true, true, false, "0000000000", true, 10 );
+			               true, true, false, false, "0000000000", true, 10 );
 
 			registerStyle( "code32", "zint", tr("Code 32 (Italian Pharmacode)"), 
 			               true, true, true, false, "12345678", true, 8 );
 
 			registerStyle( "code39", "zint", tr("Code 39"),
-			               true, true, false, false, "0000000000", true, 10 );
+			               true, true, true, true, "0000000000", true, 10 );
           
 			registerStyle( "code39e", "zint", tr("Code 39 Extended"), 
-			               true, true, true, false, "0000000000", true, 10 );
+			               true, true, true, true, "0000000000", true, 10 );
 
 			registerStyle( "code49", "zint", tr("Code 49"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "code93", "zint", tr("Code 93"),
 			               true, true, true, false, "0000000000", true, 10 );
@@ -307,10 +307,10 @@ namespace glabels
 			               true, true, true, false, "0000000000", true, 10 );
           
 			registerStyle( "daft", "zint", tr("DAFT Code"),
-			               false, false, false, false, "DAFTDAFTDAFTDAFT", true, 16 );
+			               false, false, false, false, "DAFTDAFTDAFTDAFT", true, 16, true );
 
 			registerStyle( "dmtx", "zint", tr("Data Matrix"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "123456ABCD", true, 10, true ); // Default 14x14 symbol size, 8 data (3 for packed digits + 3/4 for letters)
 
 			registerStyle( "dpl", "zint", tr("Deutsche Post Leitcode"),
 			               true, true, true, false, "1234567890123", true, 13 );
@@ -319,15 +319,15 @@ namespace glabels
 			               true, true, true, false, "12345678901", true, 11 );
           
 			registerStyle( "kix", "zint", tr("Dutch Post KIX Code"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, false, false, "123456ABCDE", false, 11, true, true );
 
 			registerStyle( "ean", "zint", tr("EAN"),
-			               true, true, true, false, "1234567890123", false, 13 );
+			               true, true, true, false, "123456789012", false, 12 );
 
 			registerStyle( "gmtx", "zint", tr("Grid Matrix"), 
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
-			registerStyle( "gs1-128", "zint", tr("GS1-128"),
+			registerStyle( "gs1128", "zint", tr("GS1-128"),
 			               true, true, true, false, "[01]12345678901234", false, 18 );
 
 			registerStyle( "rss14", "zint", tr("GS1 DataBar-14"),
@@ -340,13 +340,13 @@ namespace glabels
 			               true, true, true, false, "[01]12345678901234", false, 18 );
           
 			registerStyle( "rsss", "zint", tr("GS1 DataBar-14 Stacked"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000000", true, 13, true );
 
 			registerStyle( "rssso", "zint", tr("GS1 DataBar-14 Stacked Omni."),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000000", true, 13, true );
 
 			registerStyle( "rssse", "zint", tr("GS1 DataBar Extended Stacked"),
-			               false, false, true, false, "[01]12345678901234", false, 18 );
+			               false, false, true, false, "[01]12345678901234", false, 18, true );
 
 			registerStyle( "hibc128", "zint", tr("HIBC Code 128"),
 			               true, true, true, false, "0000000000", true, 10 );
@@ -355,31 +355,31 @@ namespace glabels
 			               true, true, true, false, "0000000000", true, 10 );
 
 			registerStyle( "hibcdm", "zint", tr("HIBC Data Matrix"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "123456ABCD", true, 10, true ); // Default 14x14 symbol size, 8 data (3 for packed digits + 3/4 for letters)
 
 			registerStyle( "hibcqr", "zint", tr("HIBC QR Code"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "1234567890AB", true, 12, true );
 
 			registerStyle( "hibcpdf", "zint", tr("HIBC PDF417"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "hibcmpdf", "zint", tr("HIBC Micro PDF417"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "hibcaz", "zint", tr("HIBC Aztec Code"),
-			               true, true, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "1234567890AB", true, 12, true );
 
 			registerStyle( "i25", "zint", tr("Interleaved 2 of 5"),
-			               true, true, true, false, "0000000000", true, 10 );
+			               true, true, false, false, "0000000000", true, 10 );
 
 			registerStyle( "isbn", "zint", tr("ISBN"),
-			               true, true, true, false, "123456789", false, 9 );
+			               true, true, true, false, "123456789", false, 9, true );
 
 			registerStyle( "itf14", "zint", tr("ITF-14"),
 			               true, true, true, false, "0000000000", true, 10 );
 
 			registerStyle( "japan", "zint", tr("Japanese Postal"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "korea", "zint", tr("Korean Postal"),
 			               true, true, true, false, "123456", false, 6 );
@@ -388,13 +388,13 @@ namespace glabels
 			               true, true, true, false, "0000000000", true, 10 );
 
 			registerStyle( "maxi", "zint", tr("Maxicode"),
-			               false, false, false, false, "0000000000", true, 10 );
+			               false, false, false, false, "0000000000", true, 10, true, true );
 
 			registerStyle( "mpdf", "zint", tr("Micro PDF417"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "mqr", "zint", tr("Micro QR Code"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "msi", "zint", tr("MSI Plessey"),
 			               true, true, true, false, "0000000000", true, 10 );
@@ -403,16 +403,16 @@ namespace glabels
 			               true, true, true, false, "12345678901234567", false, 17 );
 
 			registerStyle( "pdf", "zint", tr("PDF417"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "pdft", "zint", tr("PDF417 Truncated"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true );
 
 			registerStyle( "plan", "zint", tr("PLANET"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "00000000000", true, 11, true, true );
 
 			registerStyle( "postnet", "zint", tr("PostNet"),
-			               true, true, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "00000000000", true, 11, true, true );
 
 			registerStyle( "pharma", "zint", tr("Pharmacode"),
 			               false, false, true, false, "123456", false, 6 );
@@ -424,10 +424,10 @@ namespace glabels
 			               true, true, true, false, "123456", false, 6 );
 
 			registerStyle( "qr", "zint", tr("QR Code"),
-			               true, true, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "1234567890AB", true, 12, true );
 
 			registerStyle( "rm4", "zint", tr("Royal Mail 4-State"),
-			               false, false, true, false, "0000000000", true, 10 );
+			               false, false, true, false, "0000000000", true, 10, true, true );
 
 			registerStyle( "tele", "zint", tr("Telepen"),
 			               true, true, true, false, "0000000000", true, 10 );
@@ -436,13 +436,13 @@ namespace glabels
 			               true, true, true, false, "0000000000", true, 10 );
 
 			registerStyle( "upc-a", "zint", tr("UPC-A"), 
-			               true, true, true, false, "12345678901", false, 11 );
+			               true, true, true, false, "12345678901", false, 11, true );
           
 			registerStyle( "upc-e", "zint", tr("UPC-E"), 
-			               true, true, true, false, "1234567", false, 7 );
+			               true, true, true, false, "1234567", false, 7, true );
           
 			registerStyle( "usps", "zint", tr("USPS One Code"),
-			               false, false, true, false, "12345678901234567890", true, 20 );
+			               false, false, true, false, "12345678901234567890", true, 20, true );
 
 			registerStyle( "pls", "zint", tr("UK Plessey"),
 			               true, true, true, false, "0000000000", true, 10 );
@@ -516,13 +516,16 @@ namespace glabels
 		                              bool           checksumOptional,
 		                              const QString& defaultDigits,
 		                              bool           canFreeForm,
-		                              int            preferedN )
+		                              int            preferedN,
+		                              bool           fixedAspectRatio,
+		                              bool           fixedSize )
 		{
 			Style style( id, backendId, name,
 			             canText, textOptional,
 			             canChecksum, checksumOptional,
 			             defaultDigits,
-			             canFreeForm, preferedN );
+			             canFreeForm, preferedN,
+			             fixedAspectRatio, fixedSize );
 
 			mStyleList.append( style );
 		}

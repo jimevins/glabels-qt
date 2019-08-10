@@ -41,7 +41,7 @@ namespace glabels
 			// Lifecycle Methods
 			///////////////////////////////////////////////////////////////
 		protected:
-			ModelShapeObject();
+			ModelShapeObject( QObject* parent = nullptr );
 
 			ModelShapeObject( const Distance&  x0,
 			                  const Distance&  y0,
@@ -58,7 +58,7 @@ namespace glabels
 			                  double           shadowOpacity,
 			                  const ColorNode& shadowColorNode );
 
-			ModelShapeObject( const ModelShapeObject* object );
+			ModelShapeObject( const ModelShapeObject* object, QObject* parent = nullptr );
 		public:
 			~ModelShapeObject() override;
 

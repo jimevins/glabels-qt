@@ -343,6 +343,7 @@ void TestModel::saveRestore()
 	QVERIFY( model->isModified() );
 	QCOMPARE( model->objectList().size(), 1 );
 	QCOMPARE( model->objectList().first(), object1 );
+	QCOMPARE( model->objectList().first()->parent(), model );
 
 	model->clearModified();
 	QVERIFY( !model->isModified() );
@@ -352,6 +353,7 @@ void TestModel::saveRestore()
 	QVERIFY( model->isModified() );
 	QCOMPARE( model->objectList().size(), 2 );
 	QCOMPARE( model->objectList().last(), object2 );
+	QCOMPARE( model->objectList().last()->parent(), model );
 
 	QString modelShortName = model->shortName(); // If no fileName set then model expects to have have this called before being saved/restored (otherwise get differing untitled names)
 
@@ -369,6 +371,10 @@ void TestModel::saveRestore()
 	QCOMPARE( saved->objectList().size(), model->objectList().size() );
 	QVERIFY( saved->objectList().at(0) != object1 ); // Objects copied
 	QVERIFY( saved->objectList().at(1) != object2 ); // Objects copied
+	QCOMPARE( saved->objectList().at(0)->parent(), saved );
+	QCOMPARE( saved->objectList().at(1)->parent(), saved );
+	QVERIFY( saved->objectList().at(0)->parent() != model->objectList().at(0)->parent() );
+	QVERIFY( saved->objectList().at(1)->parent() != model->objectList().at(1)->parent() );
 	QCOMPARE( saved->objectList().at(0)->x0(), model->objectList().at(0)->x0() );
 	QCOMPARE( saved->objectList().at(0)->y0(), model->objectList().at(0)->y0() );
 	QCOMPARE( saved->objectList().at(1)->x0(), model->objectList().at(1)->x0() );
@@ -419,8 +425,10 @@ void TestModel::saveRestore()
 	QVERIFY( model->w() != saved->w() );
 	QVERIFY( model->h() != saved->h() );
 	QVERIFY( model->objectList().size() != saved->objectList().size() );
+	QVERIFY( model->objectList().at(0)->parent() != saved->objectList().at(0)->parent() );
 	QVERIFY( model->objectList().at(0)->x0() != saved->objectList().at(0)->x0() );
 	QVERIFY( model->objectList().at(0)->y0() != saved->objectList().at(0)->y0() );
+	QVERIFY( model->objectList().at(0)->parent() != saved->objectList().at(1)->parent() );
 	QCOMPARE( model->objectList().at(0)->x0(), saved->objectList().at(1)->x0() ); // Unchanged
 	QVERIFY( model->objectList().at(0)->y0() != saved->objectList().at(1)->y0() );
 
@@ -435,6 +443,8 @@ void TestModel::saveRestore()
 	QCOMPARE( model->h(), saved->h() );
 	QCOMPARE( model->objectList().size(), saved->objectList().size() );
 	QCOMPARE( model->objectList().size(), 2 );
+	QCOMPARE( model->objectList().at(0)->parent(), model );
+	QCOMPARE( model->objectList().at(1)->parent(), model );
 	QCOMPARE( model->objectList().at(0)->x0(), saved->objectList().at(0)->x0() );
 	QCOMPARE( model->objectList().at(0)->y0(), saved->objectList().at(0)->y0() );
 	QCOMPARE( model->objectList().at(1)->x0(), saved->objectList().at(1)->x0() );
@@ -454,6 +464,8 @@ void TestModel::saveRestore()
 	QVERIFY( model->h() != saved->h() );
 	QCOMPARE( model->objectList().size(), 1 );
 	QVERIFY( model->objectList().size() != saved->objectList().size() );
+	QCOMPARE( model->objectList().at(0)->parent(), model );
+	QVERIFY( model->objectList().at(0)->parent() != saved->objectList().at(0)->parent() );
 	QVERIFY( model->objectList().at(0)->x0() != saved->objectList().at(0)->x0() );
 	QVERIFY( model->objectList().at(0)->y0() != saved->objectList().at(0)->y0() );
 	QCOMPARE( model->merge(), merge2 ); // Same

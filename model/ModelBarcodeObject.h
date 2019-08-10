@@ -45,7 +45,7 @@ namespace glabels
 			// Lifecycle Methods
 			///////////////////////////////////////////////////////////////
 		public:
-			ModelBarcodeObject();
+			ModelBarcodeObject( QObject* parent = nullptr );
 
 			ModelBarcodeObject( const Distance&       x0,
 			                    const Distance&       y0,
@@ -59,7 +59,7 @@ namespace glabels
 			                    const ColorNode&      bcColorNode,
 			                    const QMatrix&        matrix = QMatrix() );
 
-			ModelBarcodeObject( const ModelBarcodeObject* object );
+			ModelBarcodeObject( const ModelBarcodeObject* object, QObject* parent = nullptr );
 
 			~ModelBarcodeObject() override;
 
@@ -67,7 +67,7 @@ namespace glabels
 			///////////////////////////////////////////////////////////////
 			// Object duplication
 			///////////////////////////////////////////////////////////////
-			ModelBarcodeObject* clone() const override;
+			ModelBarcodeObject* clone( QObject* parent = nullptr ) const override;
 
 
 			///////////////////////////////////////////////////////////////
@@ -121,6 +121,8 @@ namespace glabels
 			// Capability Implementations
 			///////////////////////////////////////////////////////////////
 		public:
+			bool fixedAspectRatio() const override;
+			bool fixedSize() const override;
 
 
 			///////////////////////////////////////////////////////////////
@@ -130,6 +132,13 @@ namespace glabels
 			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
 			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
 			QPainterPath hoverPath( double scale ) const override;
+
+
+			///////////////////////////////////////////////////////////////
+			// Slots
+			///////////////////////////////////////////////////////////////
+		public slots:
+			virtual void onMergeChanged();
 
 
 			///////////////////////////////////////////////////////////////

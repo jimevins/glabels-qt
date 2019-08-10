@@ -91,4 +91,18 @@ void TestRawText::rawText()
 	rawText = "${key2}${key3}${key1}";
 	QVERIFY( rawText.hasPlaceHolders() );
 	QCOMPARE( rawText.expand( &record ), QString( "val2val1" ) );
+
+	///
+	/// Sample Record
+	///
+	record["key3"] = "val3";
+
+	rawText = "${key0}";
+	QCOMPARE( rawText.expandSample( "1234567890", &record ), QString( "1234567890" ) );
+
+	rawText = "${key0}${key1}${key3}asdf${key4}${key2}${key3}";
+	QCOMPARE( rawText.expandSample( "1234567890", &record ), QString( "1234567890val1val3asdf1234567890val2val3" ) );
+
+	rawText = "asdf";
+	QCOMPARE( rawText.expandSample( "1234567890", &record ), QString( "asdf" ) );
 }

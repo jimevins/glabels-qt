@@ -58,7 +58,7 @@ namespace glabels
 			// Lifecycle Methods
 			///////////////////////////////////////////////////////////////
 		protected:
-			ModelObject();
+			ModelObject( QObject* parent = nullptr );
 		
 			ModelObject( const Distance&  x0,
 			             const Distance&  y0,
@@ -72,7 +72,7 @@ namespace glabels
 			             double           shadowOpacity = 1.0,
 			             const ColorNode& shadowColorNode = ColorNode() );
 		
-			ModelObject( const ModelObject* object );
+			ModelObject( const ModelObject* object, QObject* parent = nullptr );
 		
 		public:
 			~ModelObject() override;
@@ -81,7 +81,7 @@ namespace glabels
 			///////////////////////////////////////////////////////////////
 			// Object duplication
 			///////////////////////////////////////////////////////////////
-			virtual ModelObject* clone() const = 0;
+			virtual ModelObject* clone( QObject* parent = nullptr ) const = 0;
 
 	
 			///////////////////////////////////////////////////////////////
@@ -386,6 +386,9 @@ namespace glabels
 			virtual bool canLineColor() const;
 			virtual bool canLineWidth() const;
 
+			virtual bool fixedAspectRatio() const;
+			virtual bool fixedSize() const;
+
 
 			///////////////////////////////////////////////////////////////
 			// Position and Size methods
@@ -442,6 +445,13 @@ namespace glabels
 
 			QList<Handle*>    mHandles;
 			Outline*          mOutline;
+
+
+			/////////////////////////////////
+			// Slots
+			/////////////////////////////////
+		public slots:
+			virtual void onMergeChanged();
 
 
 			///////////////////////////////////////////////////////////////

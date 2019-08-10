@@ -33,6 +33,8 @@ namespace glabels
 		: QAction(parent), mBcStyle(bcStyle)
 	{
 		setText( bcStyle.name() );
+		setObjectName( bcStyle.fullId() );
+		setCheckable( true );
 
 		connect( this, SIGNAL(triggered()), this, SLOT(onTriggered()) );
 	}

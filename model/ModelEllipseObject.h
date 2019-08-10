@@ -41,7 +41,7 @@ namespace glabels
 			// Lifecycle Methods
 			///////////////////////////////////////////////////////////////
 		public:
-			ModelEllipseObject();
+			ModelEllipseObject( QObject* parent = nullptr );
 
 			ModelEllipseObject( const Distance&  x0,
 			                    const Distance&  y0,
@@ -58,7 +58,7 @@ namespace glabels
 			                    double           shadowOpacity = 1.0,
 			                    const ColorNode& shadowColorNode = ColorNode() );
 
-			ModelEllipseObject( const ModelEllipseObject* object );
+			ModelEllipseObject( const ModelEllipseObject* object, QObject* parent = nullptr );
 
 			~ModelEllipseObject() override;
 
@@ -66,7 +66,7 @@ namespace glabels
 			///////////////////////////////////////////////////////////////
 			// Object duplication
 			///////////////////////////////////////////////////////////////
-			ModelEllipseObject* clone() const override;
+			ModelEllipseObject* clone( QObject* parent = nullptr ) const override;
 
 
 			///////////////////////////////////////////////////////////////

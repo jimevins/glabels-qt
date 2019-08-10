@@ -1146,6 +1146,13 @@
     </message>
 </context>
 <context>
+    <name>glabels::BarcodeMenuButton</name>
+    <message>
+        <source>%1 - %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>glabels::ColorPaletteDialog</name>
     <message>
         <source>Custom color...</source>
@@ -2227,10 +2234,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>IEC16022 (DataMatrix)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>EAN (any)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2316,10 +2319,6 @@
     </message>
     <message>
         <source>Code 93</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IEC18004 (QRCode)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2544,6 +2543,14 @@
     </message>
     <message>
         <source>UK Plessey</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data Matrix (IEC16022)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QR Code (IEC18004)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

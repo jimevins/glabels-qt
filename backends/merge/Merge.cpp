@@ -22,6 +22,8 @@
 
 #include "Record.h"
 
+#include <QRegularExpression>
+
 
 namespace glabels
 {
@@ -102,6 +104,46 @@ namespace glabels
 		const QList<Record*>& Merge::recordList( ) const
 		{
 			return mRecordList;
+		}
+
+
+		///
+		/// Get sample record
+		///
+		Record* Merge::sampleRecord() const
+		{
+			if ( mRecordList.isEmpty() )
+			{
+				return nullptr;
+			}
+
+			const QList<Record*> selected = selectedRecords();
+
+			Record* sampleRecord = new Record;
+
+			foreach ( Record* record, selected.isEmpty() ? mRecordList : selected )
+			{
+				QList<QString> keys = record->keys();
+				foreach ( QString key, keys )
+				{
+					if ( !sampleRecord->contains( key ) || (*sampleRecord)[key].size() < (*record)[key].size() )
+					{
+						(*sampleRecord)[key] = (*record)[key];
+					}
+				}
+			}
+
+			QRegularExpression numerics( "[0-9]" );
+			QRegularExpression uppers( "\\p{Lu}" );
+			QRegularExpression lowers( "\\p{Ll}" );
+
+			QList<QString> keys = sampleRecord->keys();
+			foreach ( QString key, keys )
+			{
+				(*sampleRecord)[key] = (*sampleRecord)[key].replace( numerics, "0" ).replace( uppers, "A" ).replace( lowers, "a" );
+			}
+
+			return sampleRecord;
 		}
 
 

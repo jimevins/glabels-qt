@@ -43,7 +43,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelImageObject::ModelImageObject() : mImage(nullptr), mSvgRenderer(nullptr)
+		ModelImageObject::ModelImageObject( QObject* parent ) : ModelObject(parent), mImage(nullptr), mSvgRenderer(nullptr)
 		{
 			mOutline = new Outline( this );
 
@@ -193,7 +193,7 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelImageObject::ModelImageObject( const ModelImageObject* object ) : ModelObject(object)
+		ModelImageObject::ModelImageObject( const ModelImageObject* object, QObject* parent ) : ModelObject(object, parent)
 		{
 			mFilenameNode = object->mFilenameNode;
 			if ( object->mImage )
@@ -243,9 +243,9 @@ namespace glabels
 		///
 		/// Clone
 		///
-		ModelImageObject* ModelImageObject::clone() const
+		ModelImageObject* ModelImageObject::clone( QObject* parent ) const
 		{
-			return new ModelImageObject( this );
+			return new ModelImageObject( this, parent );
 		}
 
 

@@ -149,7 +149,7 @@ void TestMerge::text()
 	file.putChar( delim );
 	file.write( "\"\"\"val 12\"\"\"" ); // 2DQUOTE at beginning and end of DQUOTE entry
 	file.putChar( delim );
-	file.write( "  \"val 13\"\n" ); // Leading spaces before DQUOTE entry, end line with LF only
+	file.write( "  \"V\u00E1l 13\"\n" ); // Leading spaces before DQUOTE entry, U+00E1 (á), end line with LF only
 
 	file.write( "\"  val21\"\"\"" ); // Leading spaces within DQUOTE entry, 2DQUOTE at end
 	file.putChar( delim );
@@ -173,7 +173,7 @@ void TestMerge::text()
 
 	file.write( "\"val \"\"61\"" ); // 2DQUOTE in middle of DQUOTE entry
 	file.putChar( delim );
-	file.write( "\"val\"\"" ); file.putChar( delim ); file.write( "\r\n\\\"\u2019\\\\52\"" ); // 2DQUOTE delim CRLF backslashed-DQUOTE U+2019 backslashed-backslash
+	file.write( "\"val\"\"" ); file.putChar( delim ); file.write( "\r\n\\\"\u00D3\u2019\\\\62\"" ); // 2DQUOTE delim CRLF backslashed-DQUOTE U+00D3 (Ó) U+2019 (’) backslashed-backslash
 	file.putChar( delim );
 	file.write( "\"val63\"" ); // End without CRLF
 	file.close();
@@ -196,14 +196,16 @@ void TestMerge::text()
 	const Record* record;
 
 	record = recordList[0];
+	QCOMPARE( record->size(), 3 );
 	QVERIFY( record->contains( h1 ) );
 	QCOMPARE( record->value( h1 ), QString( "  val11" ) );
 	QVERIFY( record->contains( h2 ) );
 	QCOMPARE( record->value( h2 ), QString( "\"val 12\"" ) );
 	QVERIFY( record->contains( h3 ) );
-	QCOMPARE( record->value( h3 ), QString( "  \"val 13\"" ) ); // NOTE: Treats as unquoted due to leading spaces
+	QCOMPARE( record->value( h3 ), QString( "  \"V\u00E1l 13\"" ) ); // NOTE: Treats as unquoted due to leading spaces
 
 	record = recordList[1];
+	QCOMPARE( record->size(), 3 );
 	QVERIFY( record->contains( h1 ) );
 	QCOMPARE( record->value( h1 ), QString( "  val21\"" ) );
 	QVERIFY( record->contains( h2 ) );
@@ -212,6 +214,7 @@ void TestMerge::text()
 	QCOMPARE( record->value( h3 ), QString( "" ) );
 
 	record = recordList[2];
+	QCOMPARE( record->size(), 3 );
 	QVERIFY( record->contains( h1 ) );
 	QCOMPARE( record->value( h1 ), QString( "\"\"" ) );
 	QVERIFY( record->contains( h2 ) );
@@ -220,6 +223,7 @@ void TestMerge::text()
 	QCOMPARE( record->value( h3 ), QString( "val \"\"33" ) );
 
 	record = recordList[3];
+	QCOMPARE( record->size(), 3 );
 	QVERIFY( record->contains( h1 ) );
 	QCOMPARE( record->value( h1 ), QString( "" ) );
 	QVERIFY( record->contains( h2 ) );
@@ -228,6 +232,7 @@ void TestMerge::text()
 	QCOMPARE( record->value( h3 ), QString( "" ) );
 
 	record = recordList[4];
+	QCOMPARE( record->size(), 2 );
 	QVERIFY( record->contains( h1 ) );
 	QCOMPARE( record->value( h1 ), QString( "val\n \t r \\ x51" ) );
 	QVERIFY( record->contains( h2 ) );
@@ -235,10 +240,11 @@ void TestMerge::text()
 	QVERIFY( !record->contains( h3 ) );
 
 	record = recordList[5];
+	QCOMPARE( record->size(), 3 );
 	QVERIFY( record->contains( h1 ) );
 	QCOMPARE( record->value( h1 ), QString( "val \"61" ) );
 	QVERIFY( record->contains( h2 ) );
-	QCOMPARE( record->value( h2 ), QString( "val\"" ).append( delim ).append( "\n\"\u2019\\52" ) ); // NOTE: CR missing (QIODevice::Text strips all CRs from stream)
+	QCOMPARE( record->value( h2 ), QString( "val\"" ).append( delim ).append( "\n\"\u00D3\u2019\\62" ) ); // NOTE: CR missing (QIODevice::Text strips all CRs from stream)
 	QVERIFY( record->contains( h3 ) );
 	QCOMPARE( record->value( h3 ), QString( "val63" ) );
 
@@ -303,6 +309,70 @@ void TestMerge::text()
 	QCOMPARE( cloneMerge->keys(), merge->keys() );
 	QCOMPARE( cloneMerge->primaryKey(), merge->primaryKey() );
 	delete cloneMerge;
+
+	//
+	// Sample record
+	//
+	merge->selectAll();
+	QCOMPARE( merge->nSelectedRecords(), 6 );
+
+	Record* sample = merge->sampleRecord();
+	QVERIFY( sample );
+	QCOMPARE( sample->size(), 3 );
+	QVERIFY( sample->contains( h1 ) );
+	QCOMPARE( (*sample)[h1], QString( "aaa\n \t a \\ a00" ) ); // 51
+	QVERIFY( sample->contains( h2 ) );
+	QCOMPARE( (*sample)[h2], QString( "aaa\n \t a \\ a00" ) ); // 52
+	QVERIFY( sample->contains( h3 ) );
+	QCOMPARE( (*sample)[h3], QString( "  \"Aaa 00\"" ) ); // 13
+	delete sample;
+
+	merge->unselectAll();
+	merge->setSelected( 0 );
+	merge->setSelected( 3 );
+	merge->setSelected( 5 );
+	QCOMPARE( merge->nSelectedRecords(), 3 );
+
+	sample = merge->sampleRecord();
+	QVERIFY( sample );
+	QCOMPARE( sample->size(), 3 );
+	QVERIFY( sample->contains( h1 ) );
+	QCOMPARE( (*sample)[h1], QString( "  aaa00" ) ); // 11
+	QVERIFY( sample->contains( h2 ) );
+	QCOMPARE( (*sample)[h2], QString( "aaa\"" ).append( delim ).append( "\n\"A\u2019\\00" ) ); // 62
+	QVERIFY( sample->contains( h3 ) );
+	QCOMPARE( (*sample)[h3], QString( "  \"Aaa 00\"" ) ); // 13
+	delete sample;
+
+	merge->setSelected( 0, false );
+	merge->setSelected( 5, false );
+	QCOMPARE( merge->nSelectedRecords(), 1 );
+
+	sample = merge->sampleRecord();
+	QVERIFY( sample );
+	QCOMPARE( sample->size(), 3 );
+	QVERIFY( sample->contains( h1 ) );
+	QCOMPARE( (*sample)[h1], QString( "" ) );
+	QVERIFY( sample->contains( h2 ) );
+	QCOMPARE( (*sample)[h2], QString( "" ) );
+	QVERIFY( sample->contains( h3 ) );
+	QCOMPARE( (*sample)[h3], QString( "" ) );
+	delete sample;
+
+	merge->unselectAll();
+	QCOMPARE( merge->nSelectedRecords(), 0 );
+
+	sample = merge->sampleRecord(); // Will use all records if none selected
+	QVERIFY( sample );
+	QCOMPARE( sample->size(), 3 );
+	QVERIFY( sample->contains( h1 ) );
+	QCOMPARE( (*sample)[h1], QString( "aaa\n \t a \\ a00" ) ); // 51
+	QVERIFY( sample->contains( h2 ) );
+	QCOMPARE( (*sample)[h2], QString( "aaa\n \t a \\ a00" ) ); // 52
+	QVERIFY( sample->contains( h3 ) );
+	QCOMPARE( (*sample)[h3], QString( "  \"Aaa 00\"" ) ); // 13
+	delete sample;
+
 	delete merge;
 }
 

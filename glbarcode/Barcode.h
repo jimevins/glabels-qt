@@ -300,6 +300,13 @@ namespace glbarcode
 		void setHeight( double h );
 
 
+		static uint32_t decodeUTF8( uint32_t* state, uint32_t* codep, unsigned char byte );
+
+		static bool isISO8859_1( const std::string& rawData );
+
+		static std::string toISO8859_1( const std::string& rawData );
+
+
 	private:
 		/**
 		 * Barcode Private data

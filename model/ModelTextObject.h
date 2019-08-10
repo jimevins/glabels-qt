@@ -44,7 +44,7 @@ namespace glabels
 			// Lifecycle Methods
 			///////////////////////////////////////////////////////////////
 		public:
-			ModelTextObject();
+			ModelTextObject( QObject* parent = nullptr );
 		
 			ModelTextObject( const Distance&       x0,
 			                 const Distance&       y0,
@@ -70,7 +70,7 @@ namespace glabels
 			                 double                shadowOpacity = 1.0,
 			                 const ColorNode&      shadowColorNode = ColorNode() );
 
-			ModelTextObject( const ModelTextObject* object );
+			ModelTextObject( const ModelTextObject* object, QObject* parent = nullptr );
 		
 			~ModelTextObject() override;
 
@@ -78,7 +78,7 @@ namespace glabels
 			///////////////////////////////////////////////////////////////
 			// Object duplication
 			///////////////////////////////////////////////////////////////
-			ModelTextObject* clone() const override;
+			ModelTextObject* clone( QObject* parent = nullptr ) const override;
 
 
 			///////////////////////////////////////////////////////////////

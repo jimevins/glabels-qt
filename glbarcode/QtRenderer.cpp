@@ -30,6 +30,7 @@
 namespace
 {
 	const double FONT_SCALE = 0.75;
+	const double MIN_POINT_SIZE = 0.4; // Less than ~0.37 causes issues for QFontMetricsF
 }
 
 
@@ -131,7 +132,7 @@ namespace glbarcode
 			QFont font;
 			font.setStyleHint( QFont::Monospace );
 			font.setFamily( "monospace" );
-			font.setPointSizeF( FONT_SCALE*size );
+			font.setPointSizeF( std::max( FONT_SCALE*size, MIN_POINT_SIZE ) );
 
 			QFontMetricsF fm( font );
 			double xCorner = x - fm.width( QString::fromStdString(text) )/2.0;

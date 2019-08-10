@@ -41,7 +41,7 @@ namespace glabels
 			// Lifecycle Methods
 			///////////////////////////////////////////////////////////////
 		public:
-			ModelLineObject();
+			ModelLineObject( QObject* parent = nullptr );
 
 			ModelLineObject( const Distance&  x0,
 			                 const Distance&  y0,
@@ -56,7 +56,7 @@ namespace glabels
 			                 double           shadowOpacity = 1.0,
 			                 const ColorNode& shadowColorNode = ColorNode() );
 
-			ModelLineObject( const ModelLineObject* object );
+			ModelLineObject( const ModelLineObject* object, QObject* parent = nullptr );
 		
 			~ModelLineObject() override;
 
@@ -64,7 +64,7 @@ namespace glabels
 			///////////////////////////////////////////////////////////////
 			// Object duplication
 			///////////////////////////////////////////////////////////////
-			ModelLineObject* clone() const override;
+			ModelLineObject* clone( QObject* parent = nullptr ) const override;
 
 
 			///////////////////////////////////////////////////////////////

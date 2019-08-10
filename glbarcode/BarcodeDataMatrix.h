@@ -50,6 +50,8 @@ namespace glbarcode
 	private:
 		bool validate( const std::string& rawData ) override;
 
+		std::string preprocess( const std::string& rawData ) override;
+
 		bool encode( const std::string& cookedData,
 		             Matrix<bool>&      encodedData ) override;
 

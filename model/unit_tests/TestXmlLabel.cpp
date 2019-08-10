@@ -19,6 +19,7 @@
  */
 
 #include "TestXmlLabel.h"
+#include "Test_Constants.h"
 
 #include "model/XmlLabelCreator.h"
 #include "model/XmlLabelParser.h"
@@ -72,8 +73,9 @@ void TestXmlLabel::serializeDeserialize()
 	bool lock = true, noLock = false, shadow = true, noShadow = false;
 	ColorNode black( Qt::black ), white( Qt::white ), red( Qt::red ), green( Qt::green ), blue( Qt::blue );
 	QMatrix tMatrix( 1, 0, 0, 1, 50.0, 50.0 ), sMatrix( 0.5, 0, 0, 1.0, 0, 0 );
-	QImage png( QFINDTESTDATA( "../../../glabels/images/glabels-logo.png" ) );
-	QByteArray svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"16\" height=\"16\" ><path d=\"M 3,4 l 5.5,11 -4,-2 v 5 h -3 v -5 l -4,2 Z\" /></svg>";
+	QImage png;
+	QVERIFY( png.loadFromData( QByteArray::fromBase64( glabels::test::blue_8x8_png ), "PNG" ) );
+	QByteArray svg = glabels::test::red_8x8_svg;
 	Style bcStyle = Backends::defaultStyle();
 
 	objects << new ModelBoxObject( 0, 1, 10, 20, lock, 2, red, green, tMatrix, shadow, 1, 2, 0.7, black );

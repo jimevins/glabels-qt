@@ -87,6 +87,33 @@ namespace glabels
 
 
 		///
+		/// Expand all place holders using sample string if not in record
+		///
+		QString RawText::expandSample( const QString& sample, merge::Record* record ) const
+		{
+			merge::Record emptyRecord;
+
+			if ( !record )
+			{
+				record = &emptyRecord;
+			}
+
+			foreach ( const Token& token, mTokens )
+			{
+				if ( token.isField )
+				{
+					if ( !record->contains( token.field.fieldName() ) )
+					{
+						(*record)[token.field.fieldName()] = sample;
+					}
+				}
+			}
+
+			return expand( record );
+		}
+
+
+		///
 		/// Does raw text contain place holders?
 		///
 		bool RawText::hasPlaceHolders() const

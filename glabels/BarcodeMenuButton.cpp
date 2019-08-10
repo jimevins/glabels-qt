@@ -47,6 +47,15 @@ namespace glabels
 
 
 	///
+	/// Destructor
+	///
+	BarcodeMenuButton::~BarcodeMenuButton()
+	{
+		delete mMenu;
+	}
+
+
+	///
 	/// bcStyle getter
 	///
 	barcode::Style BarcodeMenuButton::bcStyle() const
@@ -61,7 +70,27 @@ namespace glabels
 	void BarcodeMenuButton::setBcStyle( const barcode::Style& bcStyle )
 	{
 		mBcStyle = bcStyle;
-		setText( mBcStyle.name() );
+		if ( mBcStyle.backendId().isEmpty() )
+		{
+			setText( mBcStyle.name() );
+		}
+		else
+		{
+			/*
+			 * Translators: %1 = name of barcode package ("GNU Barcode", "QREncode", or "Zint")
+			 *              %2 = name of barcode ("Code 39", "EAN-13", "Data Matrix", "QR Code" etc)
+			 */
+			setText( tr("%1 - %2").arg( barcode::Backends::backendName( mBcStyle.backendId() ), mBcStyle.name() ) );
+		}
+	}
+
+
+	///
+	/// Set menu item active
+	///
+	void BarcodeMenuButton::setMenuItemActive()
+	{
+		mMenu->setBcStyle( mBcStyle );
 	}
 
 
@@ -70,8 +99,7 @@ namespace glabels
 	///
 	void BarcodeMenuButton::onMenuSelectionChanged()
 	{
-		mBcStyle = mMenu->bcStyle();
-		setText( mBcStyle.name() );
+		setBcStyle( mMenu->bcStyle() );
 
 		emit selectionChanged();
 	}

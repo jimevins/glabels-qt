@@ -32,7 +32,7 @@ namespace glabels
 		///
 		/// Constructor
 		///
-		ModelShapeObject::ModelShapeObject()
+		ModelShapeObject::ModelShapeObject( QObject* parent ) : ModelObject(parent)
 		{
 			mOutline = new Outline( this );
 
@@ -92,7 +92,7 @@ namespace glabels
 		///
 		/// Copy constructor
 		///
-		ModelShapeObject::ModelShapeObject( const ModelShapeObject* object ) : ModelObject(object)
+		ModelShapeObject::ModelShapeObject( const ModelShapeObject* object, QObject* parent ) : ModelObject(object, parent)
 		{
 			mLineWidth       = object->mLineWidth;
 			mLineColorNode   = object->mLineColorNode;
