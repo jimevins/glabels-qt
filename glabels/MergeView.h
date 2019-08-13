@@ -67,7 +67,7 @@ namespace glabels
 		void onMergeSelectionChanged();
 
 		void onFormatComboActivated();
-		void onLocationButtonClicked();
+		void onLocationBrowseButtonClicked();
 		void onSelectAllButtonClicked();
 		void onUnselectAllButtonClicked();
 		void onCellChanged( int iRow, int iCol );

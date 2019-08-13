@@ -287,10 +287,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Format:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -308,6 +304,10 @@
     </message>
     <message>
         <source>Unselect all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
