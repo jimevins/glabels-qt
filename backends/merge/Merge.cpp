@@ -25,6 +25,12 @@
 #include <QRegularExpression>
 
 
+namespace
+{
+	const unsigned int maxSampleSize = 50; // Number of records to sample
+}
+
+
 namespace glabels
 {
 	namespace merge
@@ -121,6 +127,7 @@ namespace glabels
 
 			Record* sampleRecord = new Record;
 
+			unsigned int count = 0;
 			foreach ( Record* record, selected.isEmpty() ? mRecordList : selected )
 			{
 				QList<QString> keys = record->keys();
@@ -130,6 +137,10 @@ namespace glabels
 					{
 						(*sampleRecord)[key] = (*record)[key];
 					}
+				}
+				if ( ++count > maxSampleSize )
+				{
+					break;
 				}
 			}
 
