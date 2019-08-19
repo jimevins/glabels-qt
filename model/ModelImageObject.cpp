@@ -435,7 +435,7 @@ namespace glabels
 			{
 				// Look for image file relative to project file 1st then CWD 2nd
 				auto* model = dynamic_cast<Model*>( parent() );
-				QDir::setSearchPaths( "images", {model->dir(), QDir::currentPath()} );
+				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
 				QString filename = QString("images:") + mFilenameNode.text( record, variables );
 
 				auto* image = new QImage( filename );
@@ -537,7 +537,7 @@ namespace glabels
 			{
 				// Look for image file relative to project file 1st then CWD 2nd
 				auto* model = dynamic_cast<Model*>( parent() );
-				QDir::setSearchPaths( "images", {model->dir(), QDir::currentPath()} );
+				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
 				QString filename = QString("images:") + mFilenameNode.text( record, variables );
 
 				auto* image = new QImage( filename );

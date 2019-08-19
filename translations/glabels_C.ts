@@ -1169,6 +1169,14 @@
         <source>Use substitution field</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Use key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom color #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>glabels::EditVariableDialog</name>
@@ -1936,6 +1944,14 @@
     </message>
     <message>
         <source>Use substitution field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert Field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected File...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

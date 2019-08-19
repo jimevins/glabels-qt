@@ -32,7 +32,6 @@
 
 #include <QApplication>
 #include <QClipboard>
-#include <QDir>
 #include <QFileInfo>
 #include <QMimeData>
 #include <QtDebug>
@@ -282,9 +281,25 @@ namespace glabels
 
 
 		///
-		/// Get directory.
+		/// Get directory as a QDir.
 		///
-		QString Model::dir() const
+		QDir Model::dir() const
+		{
+			if ( mFileName.isEmpty() )
+			{
+				return QDir::current();
+			}
+			else
+			{
+				return QFileInfo( mFileName ).absoluteDir();
+			}
+		}
+
+		
+		///
+		/// Get directory as a path.
+		///
+		QString Model::dirPath() const
 		{
 			if ( mFileName.isEmpty() )
 			{
@@ -1400,7 +1415,7 @@ namespace glabels
 				QClipboard *clipboard = QApplication::clipboard();
 		
 				QByteArray buffer;
-				XmlLabelCreator::serializeObjects( getSelection(), buffer );
+				XmlLabelCreator::serializeObjects( getSelection(), this, buffer );
 
 				auto *mimeData = new QMimeData;
 				mimeData->setData( MIME_TYPE, buffer );
@@ -1456,7 +1471,7 @@ namespace glabels
 			{
 				// Native objects
 				QByteArray buffer = mimeData->data( MIME_TYPE );
-				QList <ModelObject*> objects = XmlLabelParser::deserializeObjects( buffer );
+				QList <ModelObject*> objects = XmlLabelParser::deserializeObjects( buffer, this );
 
 				unselectAll();
 				foreach ( ModelObject* object, objects )

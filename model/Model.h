@@ -29,6 +29,7 @@
 #include "merge/Merge.h"
 #include "merge/Record.h"
 
+#include <QDir>
 #include <QList>
 #include <QObject>
 #include <QPainter>
@@ -91,7 +92,8 @@ namespace glabels
 			void setModified();
 			void clearModified();
 
-			QString dir() const;
+			QDir dir() const;
+			QString dirPath() const;
 			QString shortName();
 			const QString& fileName() const;
 			void setFileName( const QString &fileName );

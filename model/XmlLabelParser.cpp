@@ -105,7 +105,7 @@ namespace glabels
 				return nullptr;
 			}
 
-			return parseRootNode( root );
+			return parseRootNode( root, fileName );
 		}
 
 
@@ -132,12 +132,12 @@ namespace glabels
 				return nullptr;
 			}
 
-			return parseRootNode( root );
+			return parseRootNode( root, QString() );
 		}
 
 
 		QList<ModelObject*>
-		XmlLabelParser::deserializeObjects( const QByteArray& buffer )
+		XmlLabelParser::deserializeObjects( const QByteArray& buffer, const Model* model )
 		{
 			QList<ModelObject*> list;
 	
@@ -167,7 +167,7 @@ namespace glabels
 			{
 				if ( child.toElement().tagName() == "Data" )
 				{
-					parseDataNode( child.toElement(), data );
+					parseDataNode( child.toElement(), model, data );
 				}
 			}
 
@@ -176,9 +176,10 @@ namespace glabels
 			{
 				if ( child.toElement().tagName() == "Objects" )
 				{
-					list = parseObjectsNode( child.toElement(), data );
+					list = parseObjectsNode( child.toElement(), model, data );
 				}
 			}
+
 			return list;
 		}
 
@@ -236,7 +237,7 @@ namespace glabels
 		
 
 		Model*
-		XmlLabelParser::parseRootNode( const QDomElement &node )
+		XmlLabelParser::parseRootNode( const QDomElement &node, const QString& fileName )
 		{
 			QString version = XmlUtil::getStringAttr( node, "version", "" );
 			if ( version != "4.0" )
@@ -245,7 +246,8 @@ namespace glabels
 				return XmlLabelParser_3::parseRootNode(node);
 			}
 
-			auto* label = new Model();
+			auto* model = new Model();
+			model->setFileName( fileName );
 
 			/* Pass 1, extract data nodes to pre-load cache. */
 			DataCache data;
@@ -253,7 +255,7 @@ namespace glabels
 			{
 				if ( child.toElement().tagName() == "Data" )
 				{
-					parseDataNode( child.toElement(), data );
+					parseDataNode( child.toElement(), model, data );
 				}
 			}
 
@@ -268,27 +270,27 @@ namespace glabels
 					if ( tmplate == nullptr )
 					{
 						qWarning() << "Unable to parse template";
-						delete label;
+						delete model;
 						return nullptr;
 					}
-					label->setTmplate( tmplate );
+					model->setTmplate( tmplate );
 				}
 				else if ( tagName == "Objects" )
 				{
-					label->setRotate( parseRotateAttr( child.toElement() ) );
-					QList<ModelObject*> list = parseObjectsNode( child.toElement(), data );
+					model->setRotate( parseRotateAttr( child.toElement() ) );
+					auto list = parseObjectsNode( child.toElement(), model, data );
 					foreach ( ModelObject* object, list )
 					{
-						label->addObject( object );
+						model->addObject( object );
 					}
 				}
 				else if ( tagName == "Merge" )
 				{
-					parseMergeNode( child.toElement(), label );
+					parseMergeNode( child.toElement(), model );
 				}
 				else if ( tagName == "Variables" )
 				{
-					parseVariablesNode( child.toElement(), label );
+					parseVariablesNode( child.toElement(), model );
 				}
 				else if ( tagName == "Data" )
 				{
@@ -300,13 +302,15 @@ namespace glabels
 				}
 			}
 
-			label->clearModified();
-			return label;
+			model->clearModified();
+			return model;
 		}
 
 
 		QList<ModelObject*>
-		XmlLabelParser::parseObjectsNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser::parseObjectsNode( const QDomElement& node,
+		                                  const Model*       model,
+		                                  const DataCache&   data )
 		{
 			QList<ModelObject*> list;
 
@@ -332,7 +336,7 @@ namespace glabels
 				}
 				else if ( tagName == "Object-image" )
 				{
-					list.append( parseObjectImageNode( child.toElement(), data ) );
+					list.append( parseObjectImageNode( child.toElement(), model, data ) );
 				}
 				else if ( tagName == "Object-barcode" )
 				{
@@ -501,7 +505,9 @@ namespace glabels
 
 
 		ModelImageObject*
-		XmlLabelParser::parseObjectImageNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser::parseObjectImageNode( const QDomElement& node,
+		                                      const Model*       model,
+		                                      const DataCache&   data )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -546,23 +552,25 @@ namespace glabels
 			}
 			else
 			{
-				if ( data.hasImage( filename ) )
+				QString fn = QDir::cleanPath( model->dir().absoluteFilePath( filename ) );
+
+				if ( data.hasImage( fn ) )
 				{
 					return new ModelImageObject( x0, y0, w, h,
-					                             filename, data.getImage( filename ),
+					                             fn, data.getImage( fn ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
-				else if ( data.hasSvg( filename ) )
+				else if ( data.hasSvg( fn ) )
 				{
 					return new ModelImageObject( x0, y0, w, h,
-					                             filename, data.getSvg( filename ),
+					                             fn, data.getSvg( fn ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
 				else
 				{
-					qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
+					qWarning() << "Embedded file" << fn << "missing. Trying actual file.";
 					return new ModelImageObject( x0, y0, w, h,
 					                             filenameNode,
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
@@ -711,20 +719,37 @@ namespace glabels
 
 	
 		void
-		XmlLabelParser::parseMergeNode( const QDomElement &node, Model* label )
+		XmlLabelParser::parseMergeNode( const QDomElement &node, Model* model )
 		{
-			QString type = XmlUtil::getStringAttr( node, "type", "None" );
-			QString src  = XmlUtil::getStringAttr( node, "src", "" );
+			QString id  = XmlUtil::getStringAttr( node, "type", "None" );
+			QString src = XmlUtil::getStringAttr( node, "src", "" );
 
-			merge::Merge* merge = merge::Factory::createMerge( type );
-			merge->setSource( src );
+			merge::Merge* merge = merge::Factory::createMerge( id );
 
-			label->setMerge( merge );
+			switch ( merge::Factory::idToType( id ) )
+			{
+			case merge::Factory::NONE:
+			case merge::Factory::FIXED:
+				break;
+
+			case merge::Factory::FILE:
+				{
+					QString fn = QDir::cleanPath( model->dir().absoluteFilePath( src ) );
+					merge->setSource( fn );
+				}
+				break;
+
+			default:
+				qWarning() << "XmlLabelCreator::createMergeNode(): Should not be reached!";
+				break;
+			}
+
+			model->setMerge( merge );
 		}
 
 
 		void
-		XmlLabelParser::parseVariablesNode( const QDomElement &node, Model* label )
+		XmlLabelParser::parseVariablesNode( const QDomElement &node, Model* model )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
@@ -732,7 +757,7 @@ namespace glabels
 		
 				if ( tagName == "Variable" )
 				{
-					parseVariableNode( child.toElement(), label );
+					parseVariableNode( child.toElement(), model );
 				}
 				else if ( !child.isComment() )
 				{
@@ -743,7 +768,7 @@ namespace glabels
 
 
 		void
-		XmlLabelParser::parseVariableNode( const QDomElement &node, Model* label )
+		XmlLabelParser::parseVariableNode( const QDomElement &node, Model* model )
 		{
 			QString typeString      = XmlUtil::getStringAttr( node, "type", "string" );
 			QString name            = XmlUtil::getStringAttr( node, "name", "unknown" );
@@ -755,12 +780,14 @@ namespace glabels
 			auto increment = Variable::idStringToIncrement( incrementString );
 
 			Variable v( type, name, initialValue, increment, stepSize );
-			label->variables()->addVariable( v );
+			model->variables()->addVariable( v );
 		}
 
 
 		void
-		XmlLabelParser::parseDataNode( const QDomElement &node, DataCache& data )
+		XmlLabelParser::parseDataNode( const QDomElement &node,
+		                               const Model*       model,
+		                               DataCache&         data )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
@@ -768,7 +795,7 @@ namespace glabels
 		
 				if ( tagName == "File" )
 				{
-					parseFileNode( child.toElement(), data );
+					parseFileNode( child.toElement(), model, data );
 				}
 				else if ( !child.isComment() )
 				{
@@ -779,11 +806,16 @@ namespace glabels
 
 
 		void
-		XmlLabelParser::parseFileNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser::parseFileNode( const QDomElement& node,
+		                               const Model*       model,
+		                               DataCache&         data )
 		{
 			QString name     = XmlUtil::getStringAttr( node, "name", "" );
 			QString mimetype = XmlUtil::getStringAttr( node, "mimetype", "image/png" );
 			QString encoding = XmlUtil::getStringAttr( node, "encoding", "base64" );
+
+			// Rewrite name as absolute file path
+			QString fn = QDir::cleanPath( model->dir().absoluteFilePath( name ) );
 
 			if ( mimetype == "image/png" )
 			{
@@ -794,7 +826,7 @@ namespace glabels
 					QImage image;
 					image.loadFromData( ba, "PNG" );
 
-					data.addImage( name, image );
+					data.addImage( fn, image );
 				}
 				else
 				{
@@ -803,7 +835,7 @@ namespace glabels
 			}
 			else if ( mimetype == "image/svg+xml" )
 			{
-				data.addSvg( name, node.text().toUtf8() );
+				data.addSvg( fn, node.text().toUtf8() );
 			}
 		}
 

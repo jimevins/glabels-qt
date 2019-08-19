@@ -63,7 +63,7 @@ namespace glabels
 		mUndoRedoModel = undoRedoModel;
 
 		// Initialize CWD
-		mCwd = mModel->dir();
+		mCwd = mModel->dirPath();
 
 		onMergeChanged();
 		connect( mModel, SIGNAL(mergeChanged()), this, SLOT(onMergeChanged()) );
@@ -93,7 +93,7 @@ namespace glabels
 
 		case merge::Factory::FILE:
 			locationLabel->setEnabled( true );
-			fn = QDir(mModel->dir()).relativeFilePath( mModel->merge()->source() );
+			fn = mModel->dir().relativeFilePath( mModel->merge()->source() );
 			locationLineEdit->setText( fn );
 			locationBrowseButton->setVisible( true );
 			break;
@@ -124,7 +124,7 @@ namespace glabels
 	///
 	void MergeView::onMergeSourceChanged()
 	{
-		QString fn = QDir(mModel->dir()).relativeFilePath( mModel->merge()->source() );
+		QString fn = mModel->dir().relativeFilePath( mModel->merge()->source() );
 		locationLineEdit->setText( fn );
 
 		recordsTable->clear();

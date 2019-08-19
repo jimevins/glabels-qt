@@ -130,7 +130,7 @@ namespace glabels
 			}
 			else
 			{
-				QString fn = QDir(mModel->dir()).relativeFilePath( filenameNode.data() );
+				QString fn = mModel->dir().relativeFilePath( filenameNode.data() );
 				imageFilenameLineEdit->setText( fn );
 			}
 
