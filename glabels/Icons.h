@@ -473,6 +473,16 @@ namespace glabels
 		};
 
 
+		class Variables : public QIcon
+		{
+		public:
+			Variables()
+			{
+				addPixmap( QPixmap( ":icons/flat/48x48/glabels-variables.svg" ) );
+			}
+		};
+
+
 		class ZoomBestFit : public QIcon
 		{
 		public:

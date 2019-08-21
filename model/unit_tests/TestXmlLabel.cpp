@@ -25,6 +25,7 @@
 
 #include "barcode/Backends.h"
 #include "model/ColorNode.h"
+#include "model/Model.h"
 #include "model/Size.h"
 
 #include "model/ModelBarcodeObject.h"
@@ -55,15 +56,16 @@ void TestXmlLabel::serializeDeserialize()
 	//
 	// Empty object list
 	//
+	Model* model = new Model();
 	QList<ModelObject*> objects, outObjects;
 	QByteArray buffer, outBuffer;
 
 	QCOMPARE( objects.count(), 0 );
-	XmlLabelCreator::serializeObjects( objects, buffer );
-	outObjects = XmlLabelParser::deserializeObjects( buffer );
+	XmlLabelCreator::serializeObjects( objects, model, buffer );
+	outObjects = XmlLabelParser::deserializeObjects( buffer, model );
 	QCOMPARE( objects.count(), outObjects.count() );
 	QCOMPARE( objects, outObjects );
-	XmlLabelCreator::serializeObjects( outObjects, outBuffer );
+	XmlLabelCreator::serializeObjects( outObjects, model, outBuffer );
 	QCOMPARE( buffer, outBuffer );
 
 	//
@@ -90,9 +92,12 @@ void TestXmlLabel::serializeDeserialize()
 	QCOMPARE( objects.count(), 10 );
 
 	buffer.clear();
-	XmlLabelCreator::serializeObjects( objects, buffer );
-	outObjects = XmlLabelParser::deserializeObjects( buffer );
+	XmlLabelCreator::serializeObjects( objects, model, buffer );
+	outObjects = XmlLabelParser::deserializeObjects( buffer, model );
 	QCOMPARE( objects.count(), outObjects.count() );
+
+	QString currentPath = QDir::currentPath();
+	currentPath.append( QDir::separator() );
 
 	for ( int i = 0; i < objects.count(); i++ )
 	{
@@ -128,7 +133,18 @@ void TestXmlLabel::serializeDeserialize()
 		QCOMPARE( objects.at(i)->textLineSpacing(), outObjects.at(i)->textLineSpacing() );
 		QCOMPARE( objects.at(i)->textAutoShrink(), outObjects.at(i)->textAutoShrink() );
 
-		QVERIFY( objects.at(i)->filenameNode() == outObjects.at(i)->filenameNode() );
+		QCOMPARE( objects.at(i)->filenameNode().isField(), outObjects.at(i)->filenameNode().isField() );
+		QCOMPARE( objects.at(i)->filenameNode().data().isEmpty(), outObjects.at(i)->filenameNode().data().isEmpty() );
+		if ( objects.at(i)->filenameNode().data().isEmpty() || objects.at(i)->filenameNode().isField() || (!objects.at(i)->image() && objects.at(i)->svg().isEmpty()) )
+		{
+			QVERIFY( objects.at(i)->filenameNode() == outObjects.at(i)->filenameNode() );
+		}
+		else
+		{
+			QVERIFY( objects.at(i)->filenameNode() != outObjects.at(i)->filenameNode() );
+			QCOMPARE( currentPath + objects.at(i)->filenameNode().data(), outObjects.at(i)->filenameNode().data() );
+		}
+
 		if ( objects.at(i)->image() )
 		{
 			QCOMPARE( *(objects.at(i)->image()), *(outObjects.at(i)->image()) );
@@ -157,6 +173,6 @@ void TestXmlLabel::serializeDeserialize()
 	}
 
 	outBuffer.clear();
-	XmlLabelCreator::serializeObjects( outObjects, outBuffer );
+	XmlLabelCreator::serializeObjects( outObjects, model, outBuffer );
 	QCOMPARE( buffer, outBuffer );
 }

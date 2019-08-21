@@ -24,10 +24,12 @@
 
 #include "Settings.h"
 #include "Template.h"
+#include "Variables.h"
 
 #include "merge/Merge.h"
 #include "merge/Record.h"
 
+#include <QDir>
 #include <QList>
 #include <QObject>
 #include <QPainter>
@@ -57,7 +59,7 @@ namespace glabels
 			/////////////////////////////////
 		public:
 			Model();
-			Model( merge::Merge* merge );
+			Model( merge::Merge* merge, Variables* variables );
 			~Model();
 
 	
@@ -77,6 +79,7 @@ namespace glabels
 			void sizeChanged();
 			void selectionChanged();
 			void modifiedChanged();
+			void variablesChanged();
 			void mergeChanged();
 			void mergeSourceChanged();
 			void mergeSelectionChanged();
@@ -90,6 +93,8 @@ namespace glabels
 			void setModified();
 			void clearModified();
 
+			QDir dir() const;
+			QString dirPath() const;
 			QString shortName();
 			const QString& fileName() const;
 			void setFileName( const QString &fileName );
@@ -107,6 +112,8 @@ namespace glabels
 			void setH( const Distance& h );
 
 			const QList<ModelObject*>& objectList() const;
+
+			Variables* variables() const;
 
 			merge::Merge* merge() const;
 			void setMerge( merge::Merge* merge );
@@ -205,7 +212,10 @@ namespace glabels
 			// Drawing operations
 			/////////////////////////////////
 		public:
-			void draw( QPainter* painter, bool inEditor = true, merge::Record* record = nullptr ) const;
+			void draw( QPainter*      painter,
+			           bool           inEditor,
+			           merge::Record* record,
+			           Variables*     variables ) const;
 
 		
 			/////////////////////////////////
@@ -214,6 +224,7 @@ namespace glabels
 		private slots:
 			void onObjectChanged();
 			void onObjectMoved();
+			void onVariablesChanged();
 			void onMergeSourceChanged();
 			void onMergeSelectionChanged();
 
@@ -230,6 +241,7 @@ namespace glabels
 
 			QList<ModelObject*>       mObjectList;
 
+			Variables*                mVariables;
 			merge::Merge*             mMerge;
 		};
 

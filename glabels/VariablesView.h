@@ -1,6 +1,6 @@
-/*  FieldButton.h
+/*  VariablesView.h
  *
- *  Copyright (C) 2019  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,67 +18,74 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FieldButton_h
-#define FieldButton_h
+#ifndef VariablesView_h
+#define VariablesView_h
 
 
-#include "model/Variables.h"
-#include "merge/Merge.h"
+#include "ui_VariablesView.h"
 
-#include <QAction>
-#include <QPushButton>
-#include <QMenu>
-#include <QStringList>
+#include "model/Model.h"
 
 
 namespace glabels
 {
 
+	// Forward references
+	class UndoRedoModel;
+	
+
 	///
-	/// Field Button
+	/// Variables Property Editor Widget
 	///
-	class FieldButton : public QPushButton
+	class VariablesView : public QWidget, public Ui_VariablesView
 	{
 		Q_OBJECT
+
 
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		FieldButton( QWidget* parent = nullptr );
+		VariablesView( QWidget *parent = nullptr );
+		~VariablesView() override;
 
 
 		/////////////////////////////////
-		// Signals
+		// Public methods
 		/////////////////////////////////
-	signals:
-		void keySelected( QString key );
-
-
-		/////////////////////////////////
-		// Public Methods
-		/////////////////////////////////
-	public:
-		void setKeys( const merge::Merge*     merge,
-		              const model::Variables* variables );
+		void setModel( model::Model* model, UndoRedoModel* undoRedoModel );
 
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onMenuActionTriggered( QAction* action );
+		void onTableSelectionChanged();
+		void onAddButtonClicked();
+		void onEditButtonClicked();
+		void onDeleteButtonClicked();
+		void onVariablesChanged();
+
+
+		/////////////////////////////////
+		// Private methods
+		/////////////////////////////////
+	private:
+		void updateControls();
+		void loadTable();
+		void selectVariable( const QString& name );
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		QMenu mMenu;
+		model::Model*  mModel;
+		UndoRedoModel* mUndoRedoModel;
 
 	};
 
 }
 
 
-#endif // FieldButton_h
+#endif // VariablesView_h

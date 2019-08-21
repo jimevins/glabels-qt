@@ -519,13 +519,14 @@ namespace glabels
 		///
 		void ModelTextObject::drawShadow( QPainter*      painter,
 		                                  bool           inEditor,
-		                                  merge::Record* record ) const
+		                                  merge::Record* record,
+		                                  Variables*     variables ) const
 		{
-			QColor textColor = mTextColorNode.color( record );
+			QColor textColor = mTextColorNode.color( record, variables );
 
 			if ( textColor.alpha() )
 			{
-				QColor shadowColor = mShadowColorNode.color( record );
+				QColor shadowColor = mShadowColorNode.color( record, variables );
 				shadowColor.setAlphaF( mShadowOpacity );
 
 				if ( inEditor )
@@ -534,7 +535,7 @@ namespace glabels
 				}
 				else
 				{
-					drawText( painter, shadowColor, record );
+					drawText( painter, shadowColor, record, variables );
 				}
 			}
 		}
@@ -545,9 +546,10 @@ namespace glabels
 		///
 		void ModelTextObject::drawObject( QPainter*      painter,
 		                                  bool           inEditor,
-		                                  merge::Record* record ) const
+		                                  merge::Record* record,
+		                                  Variables*     variables ) const
 		{
-			QColor textColor = mTextColorNode.color( record );
+			QColor textColor = mTextColorNode.color( record, variables );
 
 			if ( inEditor )
 			{
@@ -555,7 +557,7 @@ namespace glabels
 			}
 			else
 			{
-				drawText( painter, textColor, record );
+				drawText( painter, textColor, record, variables );
 			}
 		}
 
@@ -697,7 +699,8 @@ namespace glabels
 		void
 		ModelTextObject::drawText( QPainter*      painter,
 		                           const QColor&  color,
-		                           merge::Record* record ) const
+		                           merge::Record* record,
+		                           Variables*     variables ) const
 		{
 			painter->save();
 
@@ -705,7 +708,7 @@ namespace glabels
 			
 			QFont font;
 			font.setFamily( mFontFamily );
-			font.setPointSizeF( mTextAutoShrink ? autoShrinkFontSize( record ) : mFontSize );
+			font.setPointSizeF( mTextAutoShrink ? autoShrinkFontSize( record, variables ) : mFontSize );
 			font.setWeight( mFontWeight );
 			font.setItalic( mFontItalicFlag );
 			font.setUnderline( mFontUnderlineFlag );
@@ -717,7 +720,7 @@ namespace glabels
 			QFontMetricsF fontMetrics( font );
 			double dy = fontMetrics.lineSpacing() * mTextLineSpacing;
 
-			QTextDocument document( mText.expand( record ) );
+			QTextDocument document( mText.expand( record, variables ) );
 
 			QList<QTextLayout*> layouts;
 
@@ -791,7 +794,7 @@ namespace glabels
 		/// Determine auto shrink font size
 		///
 		double
-		ModelTextObject::autoShrinkFontSize( merge::Record* record ) const
+		ModelTextObject::autoShrinkFontSize( merge::Record* record, Variables* variables ) const
 		{
 			QFont font;
 			font.setFamily( mFontFamily );
@@ -803,7 +806,7 @@ namespace glabels
 			textOption.setAlignment( mTextHAlign );
 			textOption.setWrapMode( mTextWrapMode );
 
-			QTextDocument document( mText.expand( record ) );
+			QTextDocument document( mText.expand( record, variables ) );
 
 			double candidateSize = mFontSize;
 			while ( candidateSize > 1.0 )

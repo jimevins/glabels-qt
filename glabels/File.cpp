@@ -112,8 +112,6 @@ namespace glabels
 			model::Model *model = model::XmlLabelParser::readFile( fileName );
 			if ( model )
 			{
-				model->setFileName( fileName );
-				
 				// Either apply to current window or open a new one
 				if ( window->isEmpty() )
 				{
@@ -152,8 +150,6 @@ namespace glabels
 			model::Model *model = model::XmlLabelParser::readFile( fileName );
 			if ( model )
 			{
-				model->setFileName( fileName );
-				
 				// Either apply to current window or open a new one
 				if ( window->isEmpty() )
 				{
@@ -213,7 +209,8 @@ namespace glabels
 	///
 	bool File::saveAs( MainWindow *window )
 	{
-		// Either use the saved CWD from a previous open/save or grab it from the path of the current file
+		// Either use the saved CWD from a previous open/save or grab it from the path
+		// of the current file.
 		QString cwd = mCwd;
 		if ( window->model() && !window->model()->fileName().isEmpty() )
 		{

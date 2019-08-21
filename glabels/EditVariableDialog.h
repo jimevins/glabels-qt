@@ -1,6 +1,6 @@
-/*  ColorPaletteButtonItem.h
+/*  EditVariableDialog.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2019  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,21 +18,21 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ColorPaletteButtonItem_h
-#define ColorPaletteButtonItem_h
+#ifndef EditVariableDialog_h
+#define EditVariableDialog_h
 
 
-#include <QColor>
-#include <QWidget>
+#include "ui_EditVariableDialog.h"
+#include "model/Variable.h"
 
 
 namespace glabels
 {
 
 	///
-	/// Color Palette Item
+	/// New Label Dialog Widget
 	///
-	class ColorPaletteButtonItem : public QWidget
+	class EditVariableDialog : public QDialog, public Ui_EditVariableDialog
 	{
 		Q_OBJECT
 
@@ -40,36 +40,37 @@ namespace glabels
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		ColorPaletteButtonItem( const QString& text, QWidget* parent = nullptr );
+		EditVariableDialog( QWidget *parent = nullptr );
 
 
 		/////////////////////////////////
-		// Signals
+		// Public methods
 		/////////////////////////////////
-	signals:
-		void activated();
-
-
-		/////////////////////////////////
-		// Event handlers
-		/////////////////////////////////
-	protected:
-		void paintEvent( QPaintEvent* event ) override;
-		void enterEvent( QEvent* event ) override;
-		void leaveEvent( QEvent* event ) override;
-		void mousePressEvent( QMouseEvent* event ) override;
-
+		void setVariable( const model::Variable& variable );
+		model::Variable variable() const;
+		
 
 		/////////////////////////////////
-		// Private Data
+		// Slots
 		/////////////////////////////////
-	private:
-		QString mText;
+	private slots:
+		void onNameEditChanged();
+		void onTypeComboChanged();
+		void onValueEditChanged();
+		void onColorValueButtonChanged();
+		void onIncrementComboChanged();
+		void onStepSizeEditChanged();
 
-		bool        mHover;
+		
+		/////////////////////////////////
+		// Private methods
+		/////////////////////////////////
+		void updateControls();
+		void validateCurrentInputs();
+
 	};
 
 }
 
 
-#endif // ColorPaletteButtonItem_h
+#endif // EditVariableDialog_h

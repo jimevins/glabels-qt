@@ -20,9 +20,11 @@
 
 #include "ModelImageObject.h"
 
+#include "Model.h"
 #include "Size.h"
 
 #include <QBrush>
+#include <QDir>
 #include <QFileInfo>
 #include <QImage>
 #include <QPen>
@@ -38,6 +40,17 @@ namespace glabels
 		/// Static data
 		///
 		QImage* ModelImageObject::smDefaultImage = nullptr;
+
+
+		//
+		// Private
+		//
+		namespace
+		{
+			const QColor fillColor  = QColor( 224, 224, 224, 255 );
+			const QColor labelColor = QColor( 102, 102, 102, 255 );
+			const Distance pad = Distance::pt(2);
+		}
 
 
 		///
@@ -398,28 +411,51 @@ namespace glabels
 		///
 		/// Draw shadow of object
 		///
-		void ModelImageObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelImageObject::drawShadow( QPainter*      painter,
+		                                   bool           inEditor,
+		                                   merge::Record* record,
+		                                   Variables*     variables ) const
 		{
 			QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 			shadowColor.setAlphaF( mShadowOpacity );
 
 			if ( mImage && mImage->hasAlphaChannel() && (mImage->depth() == 32) )
 			{
-				QImage* shadowImage = createShadowImage( shadowColor );
+				QImage* shadowImage = createShadowImage( *mImage, shadowColor );
 				painter->drawImage( destRect, *shadowImage );
 				delete shadowImage;
 			}
+			else if ( mImage || inEditor )
+			{
+				painter->setBrush( shadowColor );
+				painter->setPen( QPen( Qt::NoPen ) );
+
+				painter->drawRect( destRect );
+			}
 			else
 			{
-				if ( mImage || inEditor )
+				// Look for image file relative to project file 1st then CWD 2nd
+				auto* model = dynamic_cast<Model*>( parent() );
+				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
+				QString filename = QString("images:") + mFilenameNode.text( record, variables );
+
+				auto* image = new QImage( filename );
+				if ( !image->isNull() && image->hasAlphaChannel() && (image->depth() == 32) )
+				{
+					QImage* shadowImage = createShadowImage( *image, shadowColor );
+					painter->drawImage( destRect, *shadowImage );
+					delete shadowImage;
+				}
+				else if ( !image->isNull() )
 				{
 					painter->setBrush( shadowColor );
 					painter->setPen( QPen( Qt::NoPen ) );
 
 					painter->drawRect( destRect );
 				}
+				delete image;
 			}
 		}
 
@@ -427,16 +463,70 @@ namespace glabels
 		///
 		/// Draw object itself
 		///
-		void ModelImageObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelImageObject::drawObject( QPainter*      painter,
+		                                   bool           inEditor,
+		                                   merge::Record* record,
+		                                   Variables*     variables ) const
 		{
 			QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
 			if ( inEditor && (mFilenameNode.isField() || (!mImage && !mSvgRenderer) ) )
 			{
+				//
+				// Render default place holder image
+				//
 				painter->save();
 				painter->setRenderHint( QPainter::SmoothPixmapTransform, false );
 				painter->drawImage( destRect, *smDefaultImage );
 				painter->restore();
+
+				//
+				// Print label on top of place holder image, if we have room
+				//
+				if ( (mW > 6*pad) && (mH > 4*pad) )
+				{
+					QString labelText = tr("No image");
+					if ( mFilenameNode.isField() )
+					{
+						labelText = QString( "${%1}" ).arg( mFilenameNode.data() );
+					}
+
+					// Determine font size for labelText
+					QFont font( "Sans" );
+					font.setPointSizeF( 6 );
+
+					QFontMetricsF fm( font );
+					QRectF textRect = fm.boundingRect( labelText );
+
+					double wPts = (mW - 2*pad).pt();
+					double hPts = (mH - 2*pad).pt();
+					if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
+					{
+						double scaleX = wPts / textRect.width();
+						double scaleY = hPts / textRect.height();
+						font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+					}
+
+					// Render hole for text (font size may have changed above)
+					fm = QFontMetricsF( font );
+					textRect = fm.boundingRect( labelText );
+		
+					QRectF holeRect( (mW.pt() - textRect.width())/2 - pad.pt(),
+					                 (mH.pt() - textRect.height())/2 - pad.pt(),
+					                 textRect.width() + 2*pad.pt(),
+					                 textRect.height() + 2*pad.pt() );
+
+					painter->setPen( Qt::NoPen );
+					painter->setBrush( QBrush( fillColor ) );
+					painter->drawRect( holeRect );
+
+					// Render text
+					painter->setFont( font );
+					painter->setPen( QPen( labelColor ) );
+					painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
+					                   Qt::AlignCenter,
+					                   labelText );
+				}
 			}
 			else if ( mImage )
 			{
@@ -448,7 +538,17 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				// TODO
+				// Look for image file relative to project file 1st then CWD 2nd
+				auto* model = dynamic_cast<Model*>( parent() );
+				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
+				QString filename = QString("images:") + mFilenameNode.text( record, variables );
+
+				auto* image = new QImage( filename );
+				if ( !image->isNull() )
+				{
+					painter->drawImage( destRect, *image );
+				}
+				delete image;
 			}
 		}
 
@@ -547,14 +647,15 @@ namespace glabels
 		///
 		/// Create shadow image
 		///
-		QImage* ModelImageObject::createShadowImage( const QColor& color ) const
+		QImage* ModelImageObject::createShadowImage( const QImage& image,
+		                                             const QColor& color ) const
 		{
 			int r = color.red();
 			int g = color.green();
 			int b = color.blue();
 			int a = color.alpha();
 		
-			auto* shadow = new QImage( *mImage );
+			auto* shadow = new QImage( image );
 			for ( int iy = 0; iy < shadow->height(); iy++ )
 			{
 				auto* scanLine = (QRgb*)shadow->scanLine( iy );

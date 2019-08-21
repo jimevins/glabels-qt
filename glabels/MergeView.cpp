@@ -63,14 +63,7 @@ namespace glabels
 		mUndoRedoModel = undoRedoModel;
 
 		// Initialize CWD
-		if ( model->fileName().isEmpty() )
-		{
-			mCwd = ".";
-		}
-		else
-		{
-			mCwd = QFileInfo( model->fileName() ).absolutePath();
-		}
+		mCwd = mModel->dirPath();
 
 		onMergeChanged();
 		connect( mModel, SIGNAL(mergeChanged()), this, SLOT(onMergeChanged()) );
@@ -87,26 +80,22 @@ namespace glabels
 		mOldFormatComboIndex = index;
 		formatCombo->setCurrentIndex( index );
 
+		QString fn;
+		
 		switch ( merge::Factory::idToType( mModel->merge()->id() ) )
 		{
 		case merge::Factory::NONE:
 		case merge::Factory::FIXED:
 			locationLabel->setEnabled( false );
-			locationButton->setEnabled( false );
-			locationButton->setText( "" );
+			locationLineEdit->setText( "" );
+			locationBrowseButton->setVisible( false );
 			break;
 
 		case merge::Factory::FILE:
 			locationLabel->setEnabled( true );
-			locationButton->setEnabled( true );
-			if ( mModel->merge()->source().isEmpty() )
-			{
-				locationButton->setText( "Select file..." );
-			}
-			else
-			{
-				locationButton->setText( mModel->merge()->source() );
-			}
+			fn = mModel->dir().relativeFilePath( mModel->merge()->source() );
+			locationLineEdit->setText( fn );
+			locationBrowseButton->setVisible( true );
 			break;
 
 		default:
@@ -135,7 +124,8 @@ namespace glabels
 	///
 	void MergeView::onMergeSourceChanged()
 	{
-		locationButton->setText( mModel->merge()->source() );
+		QString fn = mModel->dir().relativeFilePath( mModel->merge()->source() );
+		locationLineEdit->setText( fn );
 
 		recordsTable->clear();
 		recordsTable->setColumnCount( 0 );
@@ -185,7 +175,7 @@ namespace glabels
 	///
 	/// Location button clicked handler
 	///
-	void MergeView::onLocationButtonClicked()
+	void MergeView::onLocationBrowseButtonClicked()
 	{
 		QString fileName =
 			QFileDialog::getOpenFileName( this,

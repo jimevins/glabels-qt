@@ -66,7 +66,7 @@ namespace glabels
 		///
 		/// Expand all place holders
 		///
-		QString RawText::expand( merge::Record* record ) const
+		QString RawText::expand( merge::Record* record, Variables* variables ) const
 		{
 			QString text;
 		
@@ -74,7 +74,7 @@ namespace glabels
 			{
 				if ( token.isField )
 				{
-					text += token.field.evaluate( record );
+					text += token.field.evaluate( record, variables );
 				}
 				else
 				{

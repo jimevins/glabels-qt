@@ -104,11 +104,14 @@ namespace glabels
 		///
 		/// Draw shadow of object
 		///
-		void ModelEllipseObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelEllipseObject::drawShadow( QPainter*      painter,
+		                                     bool           inEditor,
+		                                     merge::Record* record,
+		                                     Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor fillColor = mFillColorNode.color( record );
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor fillColor = mFillColorNode.color( record, variables );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 
 			shadowColor.setAlphaF( mShadowOpacity );
 
@@ -149,10 +152,13 @@ namespace glabels
 		///
 		/// Draw object itself
 		///
-		void ModelEllipseObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelEllipseObject::drawObject( QPainter*      painter,
+		                                     bool           inEditor,
+		                                     merge::Record* record,
+		                                     Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor fillColor = mFillColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor fillColor = mFillColorNode.color( record, variables );
 
 			painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
 			painter->setBrush( fillColor );

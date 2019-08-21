@@ -22,6 +22,7 @@
 #define model_TextNode_h
 
 
+#include "Variables.h"
 #include "merge/Record.h"
 
 #include <QString>
@@ -76,8 +77,8 @@ namespace glabels
 			/////////////////////////////////
 			// Misc. Methods
 			/////////////////////////////////
-			QString text( merge::Record* record ) const;
-			bool isEmptyField( merge::Record* record ) const;
+			QString text( const merge::Record* record,
+			              const Variables*     variables ) const;
 
 
 			/////////////////////////////////

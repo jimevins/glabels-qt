@@ -42,32 +42,24 @@ void TestTextNode::textNode()
 	QCOMPARE( textNode.data(), QString( "" ) );
 	QVERIFY( textNode == TextNode() );
 	QVERIFY( !(textNode != TextNode()) );
-	QCOMPARE( textNode.text( nullptr ), QString( "" ) );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	textNode.setField( true );
 	QVERIFY( textNode.isField() );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	textNode.setField( false );
 	QVERIFY( !textNode.isField() );
 
 	textNode.setData( QString( "data1" ) );
 	QCOMPARE( textNode.data(), QString( "data1" ) );
-	QCOMPARE( textNode.text( nullptr ), QString( "data1" ) );
-	QCOMPARE( textNode.text( &record ), QString( "data1" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "data1" ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "data1" ) );
 
 	textNode.setField( true );
-	QCOMPARE( textNode.text( nullptr ), QString( "${data1}" ) );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	///
 	/// Constructors
@@ -89,17 +81,11 @@ void TestTextNode::textNode()
 	/// Record
 	///
 	record["key1"] = "";
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	textNode.setData( QString( "key1" ) );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	record["key1"] = "val1";
-	QCOMPARE( textNode.text( &record ), QString( "val1" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "val1" ) );
 }

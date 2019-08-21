@@ -1,6 +1,6 @@
-/*  RawText.h
+/*  Variables.h
  *
- *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -18,12 +18,14 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef model_RawText_h
-#define model_RawText_h
+#ifndef model_Variables_h
+#define model_Variables_h
 
 
-#include "SubstitutionField.h"
+#include "Variable.h"
 
+#include <QMap>
+#include <QObject>
 #include <QString>
 
 
@@ -33,50 +35,51 @@ namespace glabels
 	{
 
 		///
-		/// Raw Text Type
+		/// Variables Collection
 		///
-		struct RawText
+		class Variables : public QObject, public QMap<QString,Variable>
 		{
+			Q_OBJECT
 
 			/////////////////////////////////
 			// Life Cycle
 			/////////////////////////////////
 		public:
-			RawText() = default;
-			RawText( const QString& string );
-			RawText( const char* cString );
+			Variables() = default;
+			Variables( const Variables* variables );
 
 
 			/////////////////////////////////
-			// Misc. Methods
+			// Object duplication
 			/////////////////////////////////
-			QString toString() const;
-			std::string toStdString() const;
-			QString expand( merge::Record* record, Variables* variables ) const;
-			bool hasPlaceHolders() const;
-			bool isEmpty() const;
+			Variables* clone() const;
 
-		
+
 			/////////////////////////////////
-			// Private Methods
+			// Methods
+			/////////////////////////////////
+			bool hasVariable( const QString& name ) const;
+			void addVariable( const Variable& variable );
+			void deleteVariable( const QString& name );
+			void replaceVariable( const QString& name, const Variable& variable );
+
+			void resetVariables();
+			void incrementVariablesOnItem();
+			void incrementVariablesOnCopy();
+			void incrementVariablesOnPage();
+
+
+			/////////////////////////////////
+			// Signals
+			/////////////////////////////////
+		signals:
+			void changed();
+			
+
+			/////////////////////////////////
+			// Private data
 			/////////////////////////////////
 		private:
-			void tokenize();
-		
-			/////////////////////////////////
-			// Private Data
-			/////////////////////////////////
-		private:
-			QString mString;
-
-			struct Token
-			{
-				bool              isField;
-				QString           text;
-				SubstitutionField field;
-			};
-		
-			QList<Token> mTokens;
 
 		};
 
@@ -84,4 +87,4 @@ namespace glabels
 }
 
 
-#endif // model_RawText_h
+#endif // model_Variables_h
