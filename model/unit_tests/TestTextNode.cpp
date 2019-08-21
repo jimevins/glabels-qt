@@ -22,8 +22,6 @@
 
 #include "model/TextNode.h"
 
-#include "merge/Record.h"
-
 #include <QtDebug>
 
 
@@ -36,6 +34,7 @@ using namespace glabels::merge;
 void TestTextNode::textNode()
 {
 	Record record;
+	Variables vars;
 
 	TextNode textNode;
 	QVERIFY( !textNode.isField() );
@@ -44,6 +43,8 @@ void TestTextNode::textNode()
 	QVERIFY( !(textNode != TextNode()) );
 	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "" ) );
 	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, &vars ), QString( "" ) );
 
 	textNode.setField( true );
 	QVERIFY( textNode.isField() );
@@ -56,10 +57,14 @@ void TestTextNode::textNode()
 	QCOMPARE( textNode.data(), QString( "data1" ) );
 	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "data1" ) );
 	QCOMPARE( textNode.text( &record, nullptr ), QString( "data1" ) );
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "data1" ) );
+	QCOMPARE( textNode.text( &record, &vars ), QString( "data1" ) );
 
 	textNode.setField( true );
 	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "" ) );
 	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, &vars ), QString( "" ) );
 
 	///
 	/// Constructors
@@ -88,4 +93,32 @@ void TestTextNode::textNode()
 
 	record["key1"] = "val1";
 	QCOMPARE( textNode.text( &record, nullptr ), QString( "val1" ) );
+
+	///
+	/// Variable
+	///
+	{
+		Variable key1( Variable::Type::STRING, "key1", "", Variable::Increment::PER_ITEM );
+		vars.addVariable( key1 );
+	}
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "" ) );
+
+	{
+		Variable key1( Variable::Type::STRING, "key1", "val1", Variable::Increment::PER_ITEM );
+		vars.addVariable( key1 );
+	}
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "val1" ) );
+
+	{
+		Variable key1( Variable::Type::INTEGER, "key1", "1", Variable::Increment::PER_ITEM, "1" );
+		vars.addVariable( key1 );
+	}
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "1" ) );
+	vars.incrementVariablesOnItem();
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "2" ) );
+
+	///
+	/// Record beats variable
+	///
+	QCOMPARE( textNode.text( &record, &vars ), QString( "val1" ) );
 }

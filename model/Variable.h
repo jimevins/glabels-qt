@@ -54,7 +54,7 @@ namespace glabels
 			
 				
 		public:
-			Variable() = default;
+			Variable();
 
 			Variable( Type            type,
 			          const QString&  name,

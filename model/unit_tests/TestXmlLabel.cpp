@@ -19,12 +19,14 @@
  */
 
 #include "TestXmlLabel.h"
+#include "Test_Constants.h"
 
 #include "model/XmlLabelCreator.h"
 #include "model/XmlLabelParser.h"
 
 #include "barcode/Backends.h"
 #include "model/ColorNode.h"
+#include "model/FrameRect.h"
 #include "model/Model.h"
 #include "model/Size.h"
 
@@ -40,19 +42,19 @@
 
 QTEST_MAIN(TestXmlLabel)
 
+using namespace glabels::model;
+using namespace glabels::barcode;
+
 
 void TestXmlLabel::initTestCase()
 {
-	using namespace glabels::barcode;
 	Backends::init();
+	Settings::init();
 }
 
 
 void TestXmlLabel::serializeDeserialize()
 {
-	using namespace glabels::model;
-	using namespace glabels::barcode;
-
 	//
 	// Empty object list
 	//
@@ -74,8 +76,9 @@ void TestXmlLabel::serializeDeserialize()
 	bool lock = true, noLock = false, shadow = true, noShadow = false;
 	ColorNode black( Qt::black ), white( Qt::white ), red( Qt::red ), green( Qt::green ), blue( Qt::blue );
 	QMatrix tMatrix( 1, 0, 0, 1, 50.0, 50.0 ), sMatrix( 0.5, 0, 0, 1.0, 0, 0 );
-	QImage png( QFINDTESTDATA( "../../../glabels/images/glabels-logo.png" ) );
-	QByteArray svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"16\" height=\"16\" ><path d=\"M 3,4 l 5.5,11 -4,-2 v 5 h -3 v -5 l -4,2 Z\" /></svg>";
+	QImage png;
+	QVERIFY( png.loadFromData( QByteArray::fromBase64( glabels::test::blue_8x8_png ), "PNG" ) );
+	QByteArray svg = glabels::test::red_8x8_svg;
 	Style bcStyle = Backends::defaultStyle();
 
 	objects << new ModelBoxObject( 0, 1, 10, 20, lock, 2, red, green, tMatrix, shadow, 1, 2, 0.7, black );
@@ -84,6 +87,7 @@ void TestXmlLabel::serializeDeserialize()
 	objects << new ModelImageObject( 3, 4, 60, 70, noLock, "image2.png", png, sMatrix, shadow, 6, 4, 0.9, black );
 	objects << new ModelImageObject( 4, 5, 70, 80, lock, "image3.svg", svg );
 	objects << new ModelImageObject( 5, 6, 80, 90, noLock, TextNode( true, "${key}" ), tMatrix, shadow );
+	QTest::ignoreMessage( QtWarningMsg, QRegularExpression( "^Embedded file \"[^\"]+image5.jpg\" missing\\. Trying actual file\\.$" ) );
 	objects << new ModelImageObject( 6, 7, 90, 100, lock, TextNode( false, "image5.jpg" ) ); // Gives warning that embedded file missing
 	objects << new ModelLineObject( 7, 8, 100, 110, 4, green, sMatrix, shadow, 5, 5, 0.5, red );
 	objects << new ModelTextObject( 8, 9, 110, 120, lock, "text", "Serif", 12, QFont::Bold, true, true, red,
@@ -175,4 +179,64 @@ void TestXmlLabel::serializeDeserialize()
 	outBuffer.clear();
 	XmlLabelCreator::serializeObjects( outObjects, model, outBuffer );
 	QCOMPARE( buffer, outBuffer );
+
+	///
+	/// Write to file and read
+	///
+	QString glabelsTemplate = QDir::tempPath().append( QDir::separator() ).append( "TestXmlLabel_XXXXXX.glabels" );
+	QTemporaryFile glabels( glabelsTemplate );
+	glabels.open(); glabels.close();
+
+	// Add template
+	Template tmplate( "Test Brand", "part", "desc", "testPaperId", 110, 410 );
+	FrameRect* frame = new FrameRect( 120, 220, 5, 0, 0, "rect1" );
+	tmplate.addFrame( frame );
+	model->setTmplate( &tmplate ); // Copies
+
+	// Add variables
+	Variables vars;
+	Variable s( Variable::Type::STRING, "s", "initial", Variable::Increment::NEVER );
+	Variable c( Variable::Type::COLOR, "c", "red", Variable::Increment::PER_COPY );
+	Variable i( Variable::Type::INTEGER, "i", "123", Variable::Increment::PER_ITEM, "1" );
+	model->variables()->addVariable( s );
+	model->variables()->addVariable( c );
+	model->variables()->addVariable( i );
+	QCOMPARE( model->variables()->size(), 3 );
+
+	model->setRotate( true );
+	QVERIFY( model->rotate() );
+
+	XmlLabelCreator::writeFile( model, glabels.fileName() );
+
+	QCOMPARE( model->dir(), QFileInfo( glabels.fileName() ).dir() );
+
+	Model* readModel = XmlLabelParser::readFile( glabels.fileName() );
+	QVERIFY( readModel );
+	QCOMPARE( readModel->dir(), model->dir() );
+	QCOMPARE( readModel->fileName(), model->fileName() );
+	QCOMPARE( readModel->tmplate()->brand(), model->tmplate()->brand() );
+	QCOMPARE( readModel->tmplate()->part(), model->tmplate()->part() );
+	QCOMPARE( readModel->tmplate()->description(), model->tmplate()->description() );
+	QCOMPARE( readModel->tmplate()->paperId(), model->tmplate()->paperId() );
+	QCOMPARE( readModel->tmplate()->pageWidth().pt(), model->tmplate()->pageWidth().pt() );
+	QCOMPARE( readModel->tmplate()->pageHeight().pt(), model->tmplate()->pageHeight().pt() );
+	QCOMPARE( readModel->frame()->id(), model->frame()->id() );
+	QCOMPARE( readModel->frame()->w().pt(), model->frame()->w().pt() );
+	QCOMPARE( readModel->frame()->h().pt(), model->frame()->h().pt() );
+	QCOMPARE( readModel->rotate(), model->rotate() );
+	QCOMPARE( readModel->w(), model->w() );
+	QCOMPARE( readModel->h(), model->h() );
+	QCOMPARE( readModel->objectList(), model->objectList() );
+	QCOMPARE( readModel->variables()->size(), model->variables()->size() );
+	QCOMPARE( readModel->merge()->id(), model->merge()->id() );
+	QCOMPARE( readModel->merge()->source(), model->merge()->source() );
+	QCOMPARE( readModel->merge()->recordList(), model->merge()->recordList() );
+
+	delete readModel->merge();
+	delete readModel->variables();
+	delete readModel;
+
+	delete model->merge();
+	delete model->variables();
+	delete model;
 }

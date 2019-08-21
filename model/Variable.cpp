@@ -26,6 +26,19 @@ namespace glabels
 	namespace model
 	{
 
+		Variable::Variable()
+			: mType(Type::STRING),
+			  mIncrement(Increment::NEVER),
+			  mStepSize("0"),
+			  mIntegerValue(0),
+			  mIntegerStep(0),
+			  mFloatingPointValue(0),
+			  mFloatingPointStep(0)
+		{
+			// empty
+		}
+
+
 		Variable::Variable( Variable::Type      type,
 		                    const QString&      name,
 		                    const QString&      initialValue,
@@ -35,9 +48,13 @@ namespace glabels
 			  mName(name),
 			  mInitialValue(initialValue),
 			  mIncrement(increment),
-			  mStepSize(stepSize)
+			  mStepSize(stepSize),
+			  mIntegerValue(0),
+			  mIntegerStep(0),
+			  mFloatingPointValue(0),
+			  mFloatingPointStep(0)
 		{
-			// empty
+			resetValue();
 		}
 
 

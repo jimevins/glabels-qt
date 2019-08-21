@@ -538,17 +538,26 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				// Look for image file relative to project file 1st then CWD 2nd
+				// Look for image file relative to project file 1st then CWD 2nd then absolute 3rd
 				auto* model = dynamic_cast<Model*>( parent() );
-				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
+				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath(), QDir::rootPath()} );
 				QString filename = QString("images:") + mFilenameNode.text( record, variables );
 
-				auto* image = new QImage( filename );
-				if ( !image->isNull() )
+				QImage* image;
+				QSvgRenderer* svgRenderer;
+				if ( readImageFile( filename, image, svgRenderer ) )
 				{
-					painter->drawImage( destRect, *image );
+					if ( image )
+					{
+						painter->drawImage( destRect, *image );
+						delete image;
+					}
+					else
+					{
+						svgRenderer->render( painter, destRect );
+						delete svgRenderer;
+					}
 				}
-				delete image;
 			}
 		}
 
@@ -584,63 +593,80 @@ namespace glabels
 			if ( !mFilenameNode.isField() )
 			{
 				QString filename = mFilenameNode.data();
-				QFileInfo fileInfo( filename );
+				if ( readImageFile( filename, mImage, mSvgRenderer ) )
+				{
+					double aspectRatio = 0;
+					if ( mSvgRenderer )
+					{
+						// Adjust size based on aspect ratio of SVG image
+						QRectF rect = mSvgRenderer->viewBoxF();
+						aspectRatio = rect.width() ? rect.height() / rect.width() : 0;
+					}
+					else
+					{
+						// Adjust size based on aspect ratio of image
+						double imageW = mImage->width();
+						double imageH = mImage->height();
+						aspectRatio = imageW ? imageH / imageW : 0;
+					}
 
+					if ( aspectRatio )
+					{
+						if ( mH > mW*aspectRatio )
+						{
+							mH = mW*aspectRatio;
+						}
+						else
+						{
+							mW = mH/aspectRatio;
+						}
+					}
+				}
+			}
+		}
+
+
+		///
+		/// Read an image or svg file
+		///
+		bool ModelImageObject::readImageFile( const QString& fileName, QImage*& image, QSvgRenderer*& svgRenderer ) const
+		{
+			image = nullptr;
+			svgRenderer = nullptr;
+
+			if ( !fileName.isEmpty() )
+			{
+				QFileInfo fileInfo( fileName );
 				if ( fileInfo.isReadable() )
 				{
-					if ( (fileInfo.suffix() == "svg") || (fileInfo.suffix() == "SVG") )
+					if ( fileInfo.suffix().toLower() == "svg" )
 					{
-						QFile file( filename );
+						QFile file( fileName );
 						if ( file.open( QFile::ReadOnly ) )
 						{
-							mSvg = file.readAll();
+							QByteArray svg = file.readAll();
 							file.close();
-							mSvgRenderer = new QSvgRenderer( mSvg );
-							if ( !mSvgRenderer->isValid() )
+							svgRenderer = new QSvgRenderer( svg );
+							if ( !svgRenderer->isValid() )
 							{
-								mSvgRenderer = nullptr;
-							}
-							else
-							{
-								// Adjust size based on aspect ratio of SVG image
-								QRectF rect = mSvgRenderer->viewBoxF();
-								double aspectRatio = rect.height() / rect.width();
-								if ( mH > mW*aspectRatio )
-								{
-									mH = mW*aspectRatio;
-								}
-								else
-								{
-									mW = mH/aspectRatio;
-								}
+								delete svgRenderer;
+								svgRenderer = nullptr;
 							}
 						}
 					}
 					else
 					{
-						mImage = new QImage( filename );
-						if ( mImage->isNull() )
+						image = new QImage( fileName );
+						if ( image->isNull() )
 						{
-							mImage = nullptr;
-						}
-						else
-						{
-							// Adjust size based on aspect ratio of image
-							double imageW = mImage->width();
-							double imageH = mImage->height();
-							double aspectRatio = imageH / imageW;
-							if ( mH > mW*aspectRatio )
-							{
-								mH = mW*aspectRatio;
-							}
-							else
-							{
-								mW = mH/aspectRatio;
-							}
+							delete image;
+							image = nullptr;
 						}
 					}
 				}
 			}
+
+			return image != nullptr || svgRenderer != nullptr;
 		}
 
 
