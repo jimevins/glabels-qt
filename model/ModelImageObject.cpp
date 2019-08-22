@@ -538,10 +538,15 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				// Look for image file relative to project file 1st then CWD 2nd then absolute 3rd
-				auto* model = dynamic_cast<Model*>( parent() );
-				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath(), QDir::rootPath()} );
-				QString filename = QString("images:") + mFilenameNode.text( record, variables );
+				QString filename = mFilenameNode.text( record, variables );
+				QFileInfo fileInfo( filename );
+				if ( fileInfo.isRelative() )
+				{
+					// Look for image file relative to project file 1st then CWD 2nd
+					auto* model = dynamic_cast<Model*>( parent() );
+					QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
+					filename = QString("images:") + filename;
+				}
 
 				QImage* image;
 				QSvgRenderer* svgRenderer;
