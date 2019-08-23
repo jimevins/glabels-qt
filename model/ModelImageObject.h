@@ -153,7 +153,10 @@ namespace glabels
 			///////////////////////////////////////////////////////////////
 			void loadImage();
 
-			bool readImageFile( const QString& fileName, QImage*& image, QSvgRenderer*& svgRenderer ) const;
+			bool readImageFile( const QString& fileName,
+			                    QImage*&       image,
+			                    QSvgRenderer*& svgRenderer,
+			                    QByteArray&    svg ) const;
 
 			QImage* createShadowImage( const QImage& image,
 			                           const QColor& color ) const;

@@ -111,7 +111,8 @@ namespace glabels
 						delete label;
 						return nullptr;
 					}
-					label->setTmplate( tmplate );
+					label->setTmplate( tmplate ); // Copies arg
+					delete tmplate;
 				}
 				else if ( tagName == "Objects" )
 				{

@@ -273,7 +273,8 @@ namespace glabels
 						delete model;
 						return nullptr;
 					}
-					model->setTmplate( tmplate );
+					model->setTmplate( tmplate ); // Copies arg
+					delete tmplate;
 				}
 				else if ( tagName == "Objects" )
 				{
@@ -576,6 +577,7 @@ namespace glabels
 					if ( !filename.isEmpty() )
 					{
 						qWarning() << "Embedded file" << fn << "missing. Trying actual file.";
+						filenameNode.setData( fn );
 					}
 					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
 					                             filenameNode,

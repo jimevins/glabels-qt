@@ -139,7 +139,7 @@ void TestXmlLabel::serializeDeserialize()
 
 		QCOMPARE( objects.at(i)->filenameNode().isField(), outObjects.at(i)->filenameNode().isField() );
 		QCOMPARE( objects.at(i)->filenameNode().data().isEmpty(), outObjects.at(i)->filenameNode().data().isEmpty() );
-		if ( objects.at(i)->filenameNode().data().isEmpty() || objects.at(i)->filenameNode().isField() || (!objects.at(i)->image() && objects.at(i)->svg().isEmpty()) )
+		if ( objects.at(i)->filenameNode().data().isEmpty() || objects.at(i)->filenameNode().isField() )
 		{
 			QVERIFY( objects.at(i)->filenameNode() == outObjects.at(i)->filenameNode() );
 		}

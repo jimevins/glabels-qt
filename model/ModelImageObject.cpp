@@ -115,6 +115,8 @@ namespace glabels
 
 			mImage = nullptr;
 			mSvgRenderer = nullptr;
+
+			loadImage();
 		}
 
 	
@@ -427,7 +429,7 @@ namespace glabels
 				painter->drawImage( destRect, *shadowImage );
 				delete shadowImage;
 			}
-			else if ( mImage || inEditor )
+			else if ( mImage || mSvgRenderer || inEditor )
 			{
 				painter->setBrush( shadowColor );
 				painter->setPen( QPen( Qt::NoPen ) );
@@ -436,26 +438,28 @@ namespace glabels
 			}
 			else
 			{
-				// Look for image file relative to project file 1st then CWD 2nd
-				auto* model = dynamic_cast<Model*>( parent() );
-				QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
-				QString filename = QString("images:") + mFilenameNode.text( record, variables );
-
-				auto* image = new QImage( filename );
-				if ( !image->isNull() && image->hasAlphaChannel() && (image->depth() == 32) )
+				QString filename = mFilenameNode.text( record, variables );
+				QImage* image;
+				QSvgRenderer* svgRenderer;
+				QByteArray svg;
+				if ( readImageFile( filename, image, svgRenderer, svg ) )
 				{
-					QImage* shadowImage = createShadowImage( *image, shadowColor );
-					painter->drawImage( destRect, *shadowImage );
-					delete shadowImage;
-				}
-				else if ( !image->isNull() )
-				{
-					painter->setBrush( shadowColor );
-					painter->setPen( QPen( Qt::NoPen ) );
+					if ( image && image->hasAlphaChannel() && (image->depth() == 32) )
+					{
+						QImage* shadowImage = createShadowImage( *image, shadowColor );
+						painter->drawImage( destRect, *shadowImage );
+						delete shadowImage;
+					}
+					else
+					{
+						painter->setBrush( shadowColor );
+						painter->setPen( QPen( Qt::NoPen ) );
 
-					painter->drawRect( destRect );
+						painter->drawRect( destRect );
+					}
+					delete image;
+					delete svgRenderer;
 				}
-				delete image;
 			}
 		}
 
@@ -539,18 +543,10 @@ namespace glabels
 			else if ( mFilenameNode.isField() )
 			{
 				QString filename = mFilenameNode.text( record, variables );
-				QFileInfo fileInfo( filename );
-				if ( fileInfo.isRelative() )
-				{
-					// Look for image file relative to project file 1st then CWD 2nd
-					auto* model = dynamic_cast<Model*>( parent() );
-					QDir::setSearchPaths( "images", {model->dirPath(), QDir::currentPath()} );
-					filename = QString("images:") + filename;
-				}
-
 				QImage* image;
 				QSvgRenderer* svgRenderer;
-				if ( readImageFile( filename, image, svgRenderer ) )
+				QByteArray svg;
+				if ( readImageFile( filename, image, svgRenderer, svg ) )
 				{
 					if ( image )
 					{
@@ -598,7 +594,7 @@ namespace glabels
 			if ( !mFilenameNode.isField() )
 			{
 				QString filename = mFilenameNode.data();
-				if ( readImageFile( filename, mImage, mSvgRenderer ) )
+				if ( readImageFile( filename, mImage, mSvgRenderer, mSvg ) )
 				{
 					double aspectRatio = 0;
 					if ( mSvgRenderer )
@@ -634,34 +630,47 @@ namespace glabels
 		///
 		/// Read an image or svg file
 		///
-		bool ModelImageObject::readImageFile( const QString& fileName, QImage*& image, QSvgRenderer*& svgRenderer ) const
+		bool ModelImageObject::readImageFile( const QString& fileName,
+		                                      QImage*&       image,
+		                                      QSvgRenderer*& svgRenderer,
+		                                      QByteArray&    svg ) const
 		{
 			image = nullptr;
 			svgRenderer = nullptr;
+			svg.clear();
 
 			if ( !fileName.isEmpty() )
 			{
 				QFileInfo fileInfo( fileName );
+				if ( fileInfo.isRelative() )
+				{
+					// Look for image file relative to project file 1st then CWD 2nd
+					auto* model = dynamic_cast<Model*>( parent() );
+					QDir::setSearchPaths( "images", {model ? model->dirPath() : "", QDir::currentPath()} );
+					fileInfo.setFile( QString("images:") + fileName );
+				}
+
 				if ( fileInfo.isReadable() )
 				{
 					if ( fileInfo.suffix().toLower() == "svg" )
 					{
-						QFile file( fileName );
+						QFile file( fileInfo.filePath() );
 						if ( file.open( QFile::ReadOnly ) )
 						{
-							QByteArray svg = file.readAll();
+							svg = file.readAll();
 							file.close();
 							svgRenderer = new QSvgRenderer( svg );
 							if ( !svgRenderer->isValid() )
 							{
 								delete svgRenderer;
 								svgRenderer = nullptr;
+								svg.clear();
 							}
 						}
 					}
 					else
 					{
-						image = new QImage( fileName );
+						image = new QImage( fileInfo.filePath() );
 						if ( image->isNull() )
 						{
 							delete image;
