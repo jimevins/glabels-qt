@@ -30,6 +30,7 @@
 #include "model/ModelImageObject.h"
 #include "model/ModelLineObject.h"
 #include "model/ModelTextObject.h"
+#include "model/FileUtil.h"
 #include "model/Settings.h"
 #include "model/Size.h"
 
@@ -130,7 +131,7 @@ namespace glabels
 			}
 			else
 			{
-				QString fn = mModel->dir().relativeFilePath( filenameNode.data() );
+				QString fn = model::FileUtil::makeRelativeIfInDir( mModel->dir(), filenameNode.data() );
 				imageFilenameLineEdit->setText( fn );
 			}
 

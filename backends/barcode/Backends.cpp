@@ -205,7 +205,7 @@ namespace glabels
 			glbarcode::Factory::registerType( "zint::kix",       Zint::Kix::create );
 			glbarcode::Factory::registerType( "zint::ean",       Zint::Ean::create );
 			glbarcode::Factory::registerType( "zint::gmtx",      Zint::Gmtx::create );
-			glbarcode::Factory::registerType( "zint::gs1128",    Zint::Gs1128::create );
+			glbarcode::Factory::registerType( "zint::gs1-128",   Zint::Gs1128::create );
 			glbarcode::Factory::registerType( "zint::rss14",     Zint::Rss14::create );
 			glbarcode::Factory::registerType( "zint::rssltd",    Zint::Rssltd::create );
 			glbarcode::Factory::registerType( "zint::rssexp",    Zint::Rssexp::create );

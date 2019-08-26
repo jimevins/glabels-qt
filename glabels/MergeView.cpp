@@ -22,6 +22,8 @@
 
 #include "merge/Factory.h"
 
+#include "model/FileUtil.h"
+
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QtDebug>
@@ -93,7 +95,7 @@ namespace glabels
 
 		case merge::Factory::FILE:
 			locationLabel->setEnabled( true );
-			fn = mModel->dir().relativeFilePath( mModel->merge()->source() );
+			fn = model::FileUtil::makeRelativeIfInDir( mModel->dir(), mModel->merge()->source() );
 			locationLineEdit->setText( fn );
 			locationBrowseButton->setVisible( true );
 			break;
@@ -124,7 +126,7 @@ namespace glabels
 	///
 	void MergeView::onMergeSourceChanged()
 	{
-		QString fn = mModel->dir().relativeFilePath( mModel->merge()->source() );
+		QString fn = model::FileUtil::makeRelativeIfInDir( mModel->dir(), mModel->merge()->source() );
 		locationLineEdit->setText( fn );
 
 		recordsTable->clear();

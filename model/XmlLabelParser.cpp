@@ -243,7 +243,12 @@ namespace glabels
 			if ( version != "4.0" )
 			{
 				// Attempt to import as version 3.0 format (glabels 2.0 - glabels 3.4)
-				return XmlLabelParser_3::parseRootNode(node);
+				auto* model = XmlLabelParser_3::parseRootNode( node );
+				if ( model )
+				{
+					model->setFileName( fileName );
+				}
+				return model;
 			}
 
 			auto* model = new Model();
@@ -561,14 +566,14 @@ namespace glabels
 				if ( data.hasImage( fn ) )
 				{
 					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
-					                             fn, data.getImage( fn ),
+					                             filename, data.getImage( fn ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
 				else if ( data.hasSvg( fn ) )
 				{
 					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
-					                             fn, data.getSvg( fn ),
+					                             filename, data.getSvg( fn ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
@@ -750,7 +755,7 @@ namespace glabels
 				break;
 
 			default:
-				qWarning() << "XmlLabelCreator::createMergeNode(): Should not be reached!";
+				qWarning() << "XmlLabelParser::parseMergeNode(): Should not be reached!";
 				break;
 			}
 

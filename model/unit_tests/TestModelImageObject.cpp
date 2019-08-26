@@ -48,13 +48,12 @@ void TestModelImageObject::readImageFile()
 {
 	QByteArray pngArray;
 	QImage png;
-	QByteArray svg;
-	QString svgTemplate = QDir::tempPath().append( QDir::separator() ).append( "TestModelImageObject_XXXXXX.svg" );
+	QString svgTemplate = QDir::tempPath().append( "/TestModelImageObject_XXXXXX.svg" ); // Note: directory separators canonicalized to slash by Qt path methods
 
 	Model model;
 
 	// Needed for relative file names to work
-	QString modelFileName = QDir::tempPath().append( QDir::separator() ).append( "TestModelImageObject.glabels" );
+	QString modelFileName = QDir::tempPath().append( "/TestModelImageObject.glabels" );
 	model.setFileName( modelFileName );
 
 	ModelImageObject object;
@@ -100,8 +99,7 @@ void TestModelImageObject::readImageFile()
 	object.setFilenameNode( TextNode( true, "var2" ) );
 
 	// Magenta 8x8 square svg
-	svg = glabels::test::magenta_8x8_svg;
-	QTemporaryFile svgMagenta( svgTemplate ); svgMagenta.open(); svgMagenta.write( svg ); svgMagenta.close();
+	QTemporaryFile svgMagenta( svgTemplate ); svgMagenta.open(); svgMagenta.write( glabels::test::magenta_8x8_svg ); svgMagenta.close();
 	QFileInfo svgMagentaFileInfo( svgMagenta.fileName() );
 
 	Variable var2( Variable::Type::STRING, "var2", svgMagentaFileInfo.fileName(), Variable::Increment::PER_ITEM ); // Absolute path
@@ -141,8 +139,7 @@ void TestModelImageObject::readImageFile()
 	object.setShadowOpacity( 1 );
 
 	// Cyan 8x8 square svg
-	svg = glabels::test::cyan_8x8_svg;
-	QTemporaryFile svgCyanFile( svgTemplate ); svgCyanFile.open(); svgCyanFile.write( svg ); svgCyanFile.close();
+	QTemporaryFile svgCyanFile( svgTemplate ); svgCyanFile.open(); svgCyanFile.write( glabels::test::cyan_8x8_svg ); svgCyanFile.close();
 
 	QFileInfo svgCyanFileInfo( svgCyanFile.fileName() );
 	object.setFilenameNode( TextNode( false, svgCyanFileInfo.filePath() ) ); // Absolute path
@@ -160,9 +157,8 @@ void TestModelImageObject::readImageFile()
 	QTemporaryFile png2; png2.open(); png2.close(); png.save( png2.fileName(), "PNG" );
 
 	// Red 8x8 square svg
-	svg = glabels::test::red_8x8_svg;
-	QTemporaryFile svg1( svgTemplate ); svg1.open(); svg1.write( svg ); svg1.close();
-	QTemporaryFile svg2( svgTemplate ); svg2.open(); svg2.write( svg ); svg2.close();
+	QTemporaryFile svg1( svgTemplate ); svg1.open(); svg1.write( glabels::test::red_8x8_svg ); svg1.close();
+	QTemporaryFile svg2( svgTemplate ); svg2.open(); svg2.write( glabels::test::red_8x8_svg ); svg2.close();
 
 	QFileInfo png1FileInfo( png1.fileName() );
 	QFileInfo png2FileInfo( png2.fileName() );

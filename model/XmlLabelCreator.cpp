@@ -29,6 +29,7 @@
 #include "ModelImageObject.h"
 #include "ModelTextObject.h"
 #include "DataCache.h"
+#include "FileUtil.h"
 #include "Variables.h"
 #include "XmlTemplateCreator.h"
 #include "XmlUtil.h"
@@ -278,7 +279,7 @@ namespace glabels
 			}
 			else
 			{
-				QString fn = model->dir().relativeFilePath( object->filenameNode().data() ); 
+				QString fn = FileUtil::makeRelativeIfInDir( model->dir(), object->filenameNode().data() );
 				XmlUtil::setStringAttr( node, "src", fn );
 			}
 
@@ -488,7 +489,7 @@ namespace glabels
 
 			case merge::Factory::FILE:
 				{
-					QString fn = model->dir().relativeFilePath( src ); 
+					QString fn = FileUtil::makeRelativeIfInDir( model->dir(), src );
 					XmlUtil::setStringAttr( node, "src", fn );
 				}
 				break;
@@ -552,13 +553,13 @@ namespace glabels
 
 			foreach ( QString name, data.imageNames() )
 			{
-				QString fn = model->dir().relativeFilePath( name ); 
+				QString fn = FileUtil::makeRelativeIfInDir( model->dir(), name );
 				createPngFileNode( node, fn, data.getImage( name ) );
 			}
 
 			foreach ( QString name, data.svgNames() )
 			{
-				QString fn = model->dir().relativeFilePath( name ); 
+				QString fn = FileUtil::makeRelativeIfInDir( model->dir(), name );
 				createSvgFileNode( node, fn, data.getSvg( name ) );
 			}
 		}
@@ -598,7 +599,5 @@ namespace glabels
 
 			node.appendChild( doc.createCDATASection( QString( svg ) ) );
 		}
-
-
 	}
 }

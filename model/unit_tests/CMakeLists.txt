@@ -33,6 +33,14 @@ if (Qt5Test_FOUND)
   add_test (NAME ColorNode COMMAND TestColorNode)
 
   #=======================================
+  # Test FileUtil class
+  #=======================================
+  qt5_wrap_cpp (TestFileUtil_moc_sources TestFileUtil.h)
+  add_executable (TestFileUtil TestFileUtil.cpp ${TestFileUtil_moc_sources})
+  target_link_libraries (TestFileUtil Model Qt5::Test)
+  add_test (NAME FileUtil COMMAND TestFileUtil)
+
+  #=======================================
   # Test Merge classes
   #=======================================
   qt5_wrap_cpp (TestMerge_moc_sources TestMerge.h)
