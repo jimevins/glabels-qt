@@ -108,5 +108,17 @@ namespace glabels
 			return QDir("/");
 		}
 
+
+		QString FileUtil::makeRelativeIfInDir( const QDir&    dir,
+		                                       const QString& filename )
+		{
+			QString relativeFilePath = dir.relativeFilePath( filename ); // Note: directory separators canonicalized to slash by Qt path methods
+			if ( !relativeFilePath.startsWith( "../" ) )
+			{
+				return relativeFilePath;
+			}
+			return filename;
+		}
+
 	}
 }

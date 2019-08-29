@@ -29,9 +29,12 @@
 #include "ModelImageObject.h"
 #include "ModelTextObject.h"
 #include "DataCache.h"
+#include "FileUtil.h"
+#include "Variables.h"
 #include "XmlTemplateCreator.h"
 #include "XmlUtil.h"
 
+#include "merge/Factory.h"
 #include "merge/None.h"
 
 #include <QByteArray>
@@ -48,38 +51,41 @@ namespace glabels
 	{
 
 		void
-		XmlLabelCreator::writeFile( const Model* label, const QString& fileName )
+		XmlLabelCreator::writeFile( Model* model, const QString& fileName )
 		{
-			QDomDocument doc;
-
-			createDoc( doc, label );
-			QByteArray buffer = doc.toByteArray( 2 );
-
 			QFile file( fileName );
-
 			if ( !file.open( QFile::WriteOnly | QFile::Text) )
 			{
 				qWarning() << "Error: Cannot write file " << fileName
 				           << ": " << file.errorString();
+				return;
 			}
 
+			model->setFileName( fileName );
+			model->clearModified();
+			
+			QDomDocument doc;
+			createDoc( doc, model );
+
+			QByteArray buffer = doc.toByteArray( 2 );
 			file.write( buffer.data(), buffer.size() );
 		}
 
 
 		void
-		XmlLabelCreator::writeBuffer( const Model* label, QByteArray& buffer )
+		XmlLabelCreator::writeBuffer( const Model* model, QByteArray& buffer )
 		{
 			QDomDocument doc;
 
-			createDoc( doc, label );
+			createDoc( doc, model );
 			buffer = doc.toByteArray( 2 );
 		}
 
 
 		void
 		XmlLabelCreator::serializeObjects( const QList<ModelObject*>& objects,
-		                                   QByteArray&                     buffer )
+		                                   const Model*               model,
+		                                   QByteArray&                buffer )
 		{
 			QDomDocument doc;
 
@@ -90,15 +96,15 @@ namespace glabels
 			doc.appendChild( root );
 			XmlUtil::setStringAttr( root, "version", "4.0" );
 
-			createDataNode( root, objects );
-			createObjectsNode( root, objects, false );
+			createDataNode( root, model, objects );
+			createObjectsNode( root, model, objects, false );
 
 			buffer = doc.toByteArray( 2 );
 		}
 
 
 		void
-		XmlLabelCreator::createDoc( QDomDocument& doc, const Model* label )
+		XmlLabelCreator::createDoc( QDomDocument& doc, const Model* model )
 		{
 			QDomNode xmlNode( doc.createProcessingInstruction( "xml", "version=\"1.0\"" ) );
 			doc.appendChild( xmlNode );
@@ -107,21 +113,29 @@ namespace glabels
 			doc.appendChild( root );
 			XmlUtil::setStringAttr( root, "version", "4.0" );
 
-			XmlTemplateCreator().createTemplateNode( root, label->tmplate() );
+			XmlTemplateCreator().createTemplateNode( root, model->tmplate() );
 
-			createObjectsNode( root, label->objectList(), label->rotate() );
+			createObjectsNode( root, model, model->objectList(), model->rotate() );
 
-			if ( label->merge() && !dynamic_cast<merge::None*>(label->merge()) )
+			if ( model->merge() && !dynamic_cast<merge::None*>(model->merge()) )
 			{
-				createMergeNode( root, label );
+				createMergeNode( root, model );
 			}
 
-			createDataNode( root, label->objectList() );
+			if ( model->variables()->size() != 0 )
+			{
+				createVariablesNode( root, model );
+			}
+
+			createDataNode( root, model, model->objectList() );
 		}
 
 
 		void
-		XmlLabelCreator::createObjectsNode( QDomElement &parent, const QList<ModelObject*>& objects, bool rotate )
+		XmlLabelCreator::createObjectsNode( QDomElement&               parent,
+		                                    const Model*               model,
+		                                    const QList<ModelObject*>& objects,
+		                                    bool                       rotate )
 		{
 			QDomDocument doc = parent.ownerDocument();
 			QDomElement node = doc.createElement( "Objects" );
@@ -146,7 +160,7 @@ namespace glabels
 				}
 				else if ( auto* imageObject = dynamic_cast<ModelImageObject*>(object) )
 				{
-					createObjectImageNode( node, imageObject );
+					createObjectImageNode( node, model, imageObject );
 				}
 				else if ( auto* barcodeObject = dynamic_cast<ModelBarcodeObject*>(object) )
 				{
@@ -244,7 +258,9 @@ namespace glabels
 
 
 		void
-		XmlLabelCreator::createObjectImageNode( QDomElement &parent, const ModelImageObject* object )
+		XmlLabelCreator::createObjectImageNode( QDomElement&            parent,
+		                                        const Model*            model,
+		                                        const ModelImageObject* object )
 		{
 			QDomDocument doc = parent.ownerDocument();
 			QDomElement node = doc.createElement( "Object-image" );
@@ -263,7 +279,8 @@ namespace glabels
 			}
 			else
 			{
-				XmlUtil::setStringAttr( node, "src", object->filenameNode().data() );
+				QString fn = FileUtil::makeRelativeIfInDir( model->dir(), object->filenameNode().data() );
+				XmlUtil::setStringAttr( node, "src", fn );
 			}
 
 			/* affine attrs */
@@ -453,19 +470,80 @@ namespace glabels
 
 
 		void
-		XmlLabelCreator::createMergeNode( QDomElement &parent, const Model* label )
+		XmlLabelCreator::createMergeNode( QDomElement &parent, const Model* model )
 		{
 			QDomDocument doc = parent.ownerDocument();
 			QDomElement node = doc.createElement( "Merge" );
 			parent.appendChild( node );
 
-			XmlUtil::setStringAttr( node, "type", label->merge()->id() );
-			XmlUtil::setStringAttr( node, "src", label->merge()->source() );
+			QString id = model->merge()->id();
+			QString src = model->merge()->source();
+			
+			XmlUtil::setStringAttr( node, "type", id );
+
+			switch ( merge::Factory::idToType( id ) )
+			{
+			case merge::Factory::NONE:
+			case merge::Factory::FIXED:
+				break;
+
+			case merge::Factory::FILE:
+				{
+					QString fn = FileUtil::makeRelativeIfInDir( model->dir(), src );
+					XmlUtil::setStringAttr( node, "src", fn );
+				}
+				break;
+
+			default:
+				qWarning() << "XmlLabelCreator::createMergeNode(): Should not be reached!";
+				break;
+			}
 		}
 
 
 		void
-		XmlLabelCreator::createDataNode( QDomElement &parent, const QList<ModelObject*>& objects )
+		XmlLabelCreator::createVariablesNode( QDomElement &parent, const Model* model )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Variables" );
+			parent.appendChild( node );
+
+			for ( const auto& v : *model->variables() )
+			{
+				createVariableNode( node, v );
+			}
+		}
+
+
+		void
+		XmlLabelCreator::createVariableNode( QDomElement &parent, const Variable& v )
+		{
+			QDomDocument doc = parent.ownerDocument();
+			QDomElement node = doc.createElement( "Variable" );
+			parent.appendChild( node );
+
+			XmlUtil::setStringAttr( node, "type", Variable::typeToIdString( v.type() ) );
+			XmlUtil::setStringAttr( node, "name", v.name() );
+			XmlUtil::setStringAttr( node, "initialValue", v.initialValue() );
+			
+			if ( (v.type() == Variable::Type::INTEGER) ||
+			     (v.type() == Variable::Type::FLOATING_POINT) )
+			{
+				XmlUtil::setStringAttr( node, "increment",
+				                        Variable::incrementToIdString( v.increment() ) );
+				
+				if ( v.increment() != Variable::Increment::NEVER )
+				{
+					XmlUtil::setStringAttr( node, "stepSize", v.stepSize() );
+				}
+			}
+		}
+
+
+		void
+		XmlLabelCreator::createDataNode( QDomElement&               parent,
+		                                 const Model*               model,
+		                                 const QList<ModelObject*>& objects )
 		{
 			QDomDocument doc = parent.ownerDocument();
 			QDomElement node = doc.createElement( "Data" );
@@ -475,12 +553,14 @@ namespace glabels
 
 			foreach ( QString name, data.imageNames() )
 			{
-				createPngFileNode( node, name, data.getImage( name ) );
+				QString fn = FileUtil::makeRelativeIfInDir( model->dir(), name );
+				createPngFileNode( node, fn, data.getImage( name ) );
 			}
 
 			foreach ( QString name, data.svgNames() )
 			{
-				createSvgFileNode( node, name, data.getSvg( name ) );
+				QString fn = FileUtil::makeRelativeIfInDir( model->dir(), name );
+				createSvgFileNode( node, fn, data.getSvg( name ) );
 			}
 		}
 
@@ -519,7 +599,5 @@ namespace glabels
 
 			node.appendChild( doc.createCDATASection( QString( svg ) ) );
 		}
-
-
 	}
 }

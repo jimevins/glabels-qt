@@ -11,12 +11,21 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="margin">
+     <property name="leftMargin">
+      <number>12</number>
+     </property>
+     <property name="topMargin">
+      <number>12</number>
+     </property>
+     <property name="rightMargin">
+      <number>12</number>
+     </property>
+     <property name="bottomMargin">
       <number>12</number>
      </property>
      <item>
@@ -37,22 +46,36 @@
        <property name="title">
         <string>Source</string>
        </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1">
+        <item>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="1" column="1">
-           <widget class="QPushButton" name="locationButton">
-            <property name="text">
-             <string>Location</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label">
             <property name="text">
              <string>Format:</string>
             </property>
            </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="formatCombo"/>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLineEdit" name="locationLineEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="locationBrowseButton">
+              <property name="text">
+               <string>Browse...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="locationLabel">
@@ -61,23 +84,7 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="formatCombo"/>
-          </item>
          </layout>
-        </item>
-        <item row="0" column="1">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>360</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>
@@ -89,7 +96,11 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="QTableWidget" name="recordsTable"/>
+         <widget class="QTableWidget" name="recordsTable">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout">
@@ -138,8 +149,8 @@
    <slot>onSelectAllButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>63</x>
-     <y>571</y>
+     <x>97</x>
+     <y>570</y>
     </hint>
     <hint type="destinationlabel">
      <x>69</x>
@@ -164,30 +175,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>locationButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MergeView</receiver>
-   <slot>onLocationButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>174</x>
-     <y>93</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>570</x>
-     <y>75</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>formatCombo</sender>
    <signal>activated(int)</signal>
    <receiver>MergeView</receiver>
    <slot>onFormatComboActivated()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>162</x>
-     <y>48</y>
+     <x>257</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>563</x>
@@ -195,11 +190,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>locationBrowseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MergeView</receiver>
+   <slot>onLocationBrowseButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>565</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onSelectAllButtonClicked()</slot>
   <slot>onUnselectAllButtonClicked()</slot>
-  <slot>onLocationButtonClicked()</slot>
   <slot>onFormatComboActivated()</slot>
+  <slot>onLocationBrowseButtonClicked()</slot>
  </slots>
 </ui>

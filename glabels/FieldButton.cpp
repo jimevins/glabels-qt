@@ -1,6 +1,6 @@
 /*  FieldButton.cpp
  *
- *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2019  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -30,79 +30,61 @@ namespace glabels
 	///
 	/// Constructor
 	///
-	FieldButton::FieldButton( QWidget* parent )
-		: QComboBox(parent)
+	FieldButton::FieldButton( QWidget* parent ) : QPushButton(parent)
 	{
 		setEnabled( false );
-
-		connect( this, SIGNAL(currentIndexChanged(int)), this, SLOT(onIndexChanged(int)) );
+		setMenu( &mMenu );
+		
+		connect( &mMenu, SIGNAL(triggered(QAction*)),
+		         this, SLOT(onMenuActionTriggered(QAction*)) );
 	}
 
 
-	void FieldButton::setName( const QString& name )
-	{
-		mName = name;
-		if ( count() == 0 )
-		{
-			addItem( mName );
-		}
-		else
-		{
-			setItemText( 0, mName );
-		}
-
-		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-		const auto* itemModel = qobject_cast<const QStandardItemModel*>(model());
-		QStandardItem* item = itemModel->item(0);
-		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
-	}
-
-
-	void FieldButton::setKeys( const QStringList& keyList )
+	///
+	/// Set Keys
+	///
+	void FieldButton::setKeys( const merge::Merge*     merge,
+	                           const model::Variables* variables )
 	{
 		// Clear old keys
-		clear();
-		addItem( mName );
+		mMenu.clear();
+		
+		// Add merge keys, if any
+		mMenu.addSection( tr("Merge fields") );
+		for ( auto& key : merge->keys() )
+		{
+			auto* action = mMenu.addAction( QString( "${%1}" ).arg( key ) );
+			action->setData( key );
+		}
+		if ( merge->keys().empty() )
+		{
+			auto* action = mMenu.addAction( "None" );
+			action->setEnabled( false );
+		}
 
-		// Item 0 is the ComboBox title, not an item intended for selection. So disable it.
-		const auto* itemModel = qobject_cast<const QStandardItemModel*>(model());
-		QStandardItem* item = itemModel->item(0);
-		item->setFlags( item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled) );
-	
-		// Add new keys
-		if ( keyList.size() > 0 )
+		// Add variable keys, if any
+		mMenu.addSection( tr("Variables") );
+		for ( auto& key : variables->keys() )
 		{
-			addItems( keyList );
-			setEnabled( true );
+			auto* action = mMenu.addAction( QString( "${%1}" ).arg( key ) );
+			action->setData( key );
 		}
-		else
+		if ( variables->keys().empty() )
 		{
-			setEnabled( false );
+			auto* action = mMenu.addAction( "None" );
+			action->setEnabled( false );
 		}
+
+		setEnabled( !merge->keys().empty() || !variables->keys().empty() );
 	}
 
 
-	void FieldButton::clearKeys()
-	{
-		clear();
-		addItem( mName );
-	
-		setEnabled( false );
-	}
-
-
-
 	///
-	/// onMenuKeySelected slot
+	/// onMenuActionTriggered slot
 	///
-	void FieldButton::onIndexChanged( int index )
+	void FieldButton::onMenuActionTriggered( QAction* action )
 	{
-		if ( index > 0 )
-		{
-			emit keySelected( itemText(index) );
-
-			setCurrentIndex( 0 );
-		}
+		emit keySelected( action->data().toString() );
 	}
 
 } // namespace glabels

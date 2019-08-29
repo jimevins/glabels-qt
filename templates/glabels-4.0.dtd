@@ -87,6 +87,10 @@
                                 iec16022)"
                                -->
 
+<!-- Variable related enumerations/types -->
+<!ENTITY % VARIABLE_TYPE_TYPE "(numeric | string)">
+<!ENTITY % VARIABLE_INC_TYPE "(never | per_copy | per_merge_record | per_page )">
+
 <!-- Data encoding method -->
 <!ENTITY % DATA_ENCODING_TYPE "(cdata | base64)">
 
@@ -139,7 +143,7 @@
 <!-- Top-level glabels document                                           -->
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-<!ELEMENT Glabels-document (Template, Objects+, Merge?, Data*)>
+<!ELEMENT Glabels-document (Template, Objects+, Merge?, Variables?, Data*)>
 <!ATTLIST Glabels-document
                  xmlns           %STRING_TYPE;           #IMPLIED
                  version         %STRING_TYPE;           #IMPLIED	  
@@ -439,6 +443,20 @@
 <!ATTLIST Merge
                  type            %STRING_TYPE;           #REQUIRED
                  src             %STRING_TYPE;           #IMPLIED
+>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!-- Variables Section                                                    -->
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+<!ELEMENT Variables (Variable*)>
+
+<!ELEMENT Variable EMPTY>
+<!ATTLIST Variable
+                 type             %VARIABLE_TYPE_TYPE;    #REQUIRED
+                 name             %STRING_TYPE;           #REQUIRED
+                 value            %STRING_TYPE;           #REQUIRED
+                 increment        %VARIABLE_INC_TYPE;     #REQUIRED
+                 stepSize         %STRING_TYPE;           #REQUIRED
 >
 
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->

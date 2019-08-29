@@ -20,9 +20,11 @@
 
 #include "ModelImageObject.h"
 
+#include "Model.h"
 #include "Size.h"
 
 #include <QBrush>
+#include <QDir>
 #include <QFileInfo>
 #include <QImage>
 #include <QPen>
@@ -38,6 +40,17 @@ namespace glabels
 		/// Static data
 		///
 		QImage* ModelImageObject::smDefaultImage = nullptr;
+
+
+		//
+		// Private
+		//
+		namespace
+		{
+			const QColor fillColor  = QColor( 224, 224, 224, 255 );
+			const QColor labelColor = QColor( 102, 102, 102, 255 );
+			const Distance pad = Distance::pt(2);
+		}
 
 
 		///
@@ -102,6 +115,8 @@ namespace glabels
 
 			mImage = nullptr;
 			mSvgRenderer = nullptr;
+
+			loadImage();
 		}
 
 	
@@ -398,27 +413,58 @@ namespace glabels
 		///
 		/// Draw shadow of object
 		///
-		void ModelImageObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelImageObject::drawShadow( QPainter*      painter,
+		                                   bool           inEditor,
+		                                   merge::Record* record,
+		                                   Variables*     variables ) const
 		{
 			QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 			shadowColor.setAlphaF( mShadowOpacity );
 
 			if ( mImage && mImage->hasAlphaChannel() && (mImage->depth() == 32) )
 			{
-				QImage* shadowImage = createShadowImage( shadowColor );
+				QImage* shadowImage = createShadowImage( *mImage, shadowColor );
 				painter->drawImage( destRect, *shadowImage );
 				delete shadowImage;
 			}
+			else if ( mImage || mSvgRenderer || inEditor )
+			{
+				painter->setBrush( shadowColor );
+				painter->setPen( QPen( Qt::NoPen ) );
+
+				painter->drawRect( destRect );
+			}
 			else
 			{
-				if ( mImage || inEditor )
+				QString filename = mFilenameNode.text( record, variables );
+				QImage* image;
+				QSvgRenderer* svgRenderer;
+				QByteArray svg;
+				if ( readImageFile( filename, image, svgRenderer, svg ) )
 				{
-					painter->setBrush( shadowColor );
-					painter->setPen( QPen( Qt::NoPen ) );
+					if ( image && image->hasAlphaChannel() && (image->depth() == 32) )
+					{
+						QImage* shadowImage = createShadowImage( *image, shadowColor );
+						painter->drawImage( destRect, *shadowImage );
+						delete shadowImage;
+					}
+					else
+					{
+						painter->setBrush( shadowColor );
+						painter->setPen( QPen( Qt::NoPen ) );
 
-					painter->drawRect( destRect );
+						painter->drawRect( destRect );
+					}
+					if ( image )
+					{
+						delete image;
+					}
+					else
+					{
+						delete svgRenderer;
+					}
 				}
 			}
 		}
@@ -427,16 +473,70 @@ namespace glabels
 		///
 		/// Draw object itself
 		///
-		void ModelImageObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelImageObject::drawObject( QPainter*      painter,
+		                                   bool           inEditor,
+		                                   merge::Record* record,
+		                                   Variables*     variables ) const
 		{
 			QRectF destRect( 0, 0, mW.pt(), mH.pt() );
 	
 			if ( inEditor && (mFilenameNode.isField() || (!mImage && !mSvgRenderer) ) )
 			{
+				//
+				// Render default place holder image
+				//
 				painter->save();
 				painter->setRenderHint( QPainter::SmoothPixmapTransform, false );
 				painter->drawImage( destRect, *smDefaultImage );
 				painter->restore();
+
+				//
+				// Print label on top of place holder image, if we have room
+				//
+				if ( (mW > 6*pad) && (mH > 4*pad) )
+				{
+					QString labelText = tr("No image");
+					if ( mFilenameNode.isField() )
+					{
+						labelText = QString( "${%1}" ).arg( mFilenameNode.data() );
+					}
+
+					// Determine font size for labelText
+					QFont font( "Sans" );
+					font.setPointSizeF( 6 );
+
+					QFontMetricsF fm( font );
+					QRectF textRect = fm.boundingRect( labelText );
+
+					double wPts = (mW - 2*pad).pt();
+					double hPts = (mH - 2*pad).pt();
+					if ( (wPts < textRect.width()) || (hPts < textRect.height()) )
+					{
+						double scaleX = wPts / textRect.width();
+						double scaleY = hPts / textRect.height();
+						font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+					}
+
+					// Render hole for text (font size may have changed above)
+					fm = QFontMetricsF( font );
+					textRect = fm.boundingRect( labelText );
+		
+					QRectF holeRect( (mW.pt() - textRect.width())/2 - pad.pt(),
+					                 (mH.pt() - textRect.height())/2 - pad.pt(),
+					                 textRect.width() + 2*pad.pt(),
+					                 textRect.height() + 2*pad.pt() );
+
+					painter->setPen( Qt::NoPen );
+					painter->setBrush( QBrush( fillColor ) );
+					painter->drawRect( holeRect );
+
+					// Render text
+					painter->setFont( font );
+					painter->setPen( QPen( labelColor ) );
+					painter->drawText( QRectF( 0, 0, mW.pt(), mH.pt() ),
+					                   Qt::AlignCenter,
+					                   labelText );
+				}
 			}
 			else if ( mImage )
 			{
@@ -448,7 +548,23 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				// TODO
+				QString filename = mFilenameNode.text( record, variables );
+				QImage* image;
+				QSvgRenderer* svgRenderer;
+				QByteArray svg;
+				if ( readImageFile( filename, image, svgRenderer, svg ) )
+				{
+					if ( image )
+					{
+						painter->drawImage( destRect, *image );
+						delete image;
+					}
+					else
+					{
+						svgRenderer->render( painter, destRect );
+						delete svgRenderer;
+					}
+				}
 			}
 		}
 
@@ -484,59 +600,32 @@ namespace glabels
 			if ( !mFilenameNode.isField() )
 			{
 				QString filename = mFilenameNode.data();
-				QFileInfo fileInfo( filename );
-
-				if ( fileInfo.isReadable() )
+				if ( readImageFile( filename, mImage, mSvgRenderer, mSvg ) )
 				{
-					if ( (fileInfo.suffix() == "svg") || (fileInfo.suffix() == "SVG") )
+					double aspectRatio = 0;
+					if ( mSvgRenderer )
 					{
-						QFile file( filename );
-						if ( file.open( QFile::ReadOnly ) )
-						{
-							mSvg = file.readAll();
-							file.close();
-							mSvgRenderer = new QSvgRenderer( mSvg );
-							if ( !mSvgRenderer->isValid() )
-							{
-								mSvgRenderer = nullptr;
-							}
-							else
-							{
-								// Adjust size based on aspect ratio of SVG image
-								QRectF rect = mSvgRenderer->viewBoxF();
-								double aspectRatio = rect.height() / rect.width();
-								if ( mH > mW*aspectRatio )
-								{
-									mH = mW*aspectRatio;
-								}
-								else
-								{
-									mW = mH/aspectRatio;
-								}
-							}
-						}
+						// Adjust size based on aspect ratio of SVG image
+						QRectF rect = mSvgRenderer->viewBoxF();
+						aspectRatio = rect.width() ? rect.height() / rect.width() : 0;
 					}
 					else
 					{
-						mImage = new QImage( filename );
-						if ( mImage->isNull() )
+						// Adjust size based on aspect ratio of image
+						double imageW = mImage->width();
+						double imageH = mImage->height();
+						aspectRatio = imageW ? imageH / imageW : 0;
+					}
+
+					if ( aspectRatio )
+					{
+						if ( mH > mW*aspectRatio )
 						{
-							mImage = nullptr;
+							mH = mW*aspectRatio;
 						}
 						else
 						{
-							// Adjust size based on aspect ratio of image
-							double imageW = mImage->width();
-							double imageH = mImage->height();
-							double aspectRatio = imageH / imageW;
-							if ( mH > mW*aspectRatio )
-							{
-								mH = mW*aspectRatio;
-							}
-							else
-							{
-								mW = mH/aspectRatio;
-							}
+							mW = mH/aspectRatio;
 						}
 					}
 				}
@@ -545,16 +634,74 @@ namespace glabels
 
 
 		///
+		/// Read an image or svg file
+		///
+		bool ModelImageObject::readImageFile( const QString& fileName,
+		                                      QImage*&       image,
+		                                      QSvgRenderer*& svgRenderer,
+		                                      QByteArray&    svg ) const
+		{
+			image = nullptr;
+			svgRenderer = nullptr;
+			svg.clear();
+
+			if ( !fileName.isEmpty() )
+			{
+				QFileInfo fileInfo( fileName );
+				if ( fileInfo.isRelative() )
+				{
+					// Look for image file relative to project file 1st then CWD 2nd
+					auto* model = dynamic_cast<Model*>( parent() );
+					QDir::setSearchPaths( "images", {model ? model->dirPath() : "", QDir::currentPath()} );
+					fileInfo.setFile( QString("images:") + fileName );
+				}
+
+				if ( fileInfo.isReadable() )
+				{
+					if ( fileInfo.suffix().toLower() == "svg" )
+					{
+						QFile file( fileInfo.filePath() );
+						if ( file.open( QFile::ReadOnly ) )
+						{
+							svg = file.readAll();
+							file.close();
+							svgRenderer = new QSvgRenderer( svg );
+							if ( !svgRenderer->isValid() )
+							{
+								delete svgRenderer;
+								svgRenderer = nullptr;
+								svg.clear();
+							}
+						}
+					}
+					else
+					{
+						image = new QImage( fileInfo.filePath() );
+						if ( image->isNull() )
+						{
+							delete image;
+							image = nullptr;
+						}
+					}
+				}
+			}
+
+			return image != nullptr || svgRenderer != nullptr;
+		}
+
+
+		///
 		/// Create shadow image
 		///
-		QImage* ModelImageObject::createShadowImage( const QColor& color ) const
+		QImage* ModelImageObject::createShadowImage( const QImage& image,
+		                                             const QColor& color ) const
 		{
 			int r = color.red();
 			int g = color.green();
 			int b = color.blue();
 			int a = color.alpha();
 		
-			auto* shadow = new QImage( *mImage );
+			auto* shadow = new QImage( image );
 			for ( int iy = 0; iy < shadow->height(); iy++ )
 			{
 				auto* scanLine = (QRgb*)shadow->scanLine( iy );

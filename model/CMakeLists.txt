@@ -56,6 +56,8 @@ set (Model_sources
   Template.cpp
   TextNode.cpp
   Units.cpp
+  Variable.cpp
+  Variables.cpp
   Vendor.cpp
   XmlCategoryParser.cpp
   XmlLabelCreator.cpp
@@ -80,6 +82,7 @@ set (Model_qobject_headers
   ModelTextObject.h
   PageRenderer.h
   Settings.h
+  Variables.h
 )
 
 qt5_wrap_cpp (Model_moc_sources ${Model_qobject_headers})

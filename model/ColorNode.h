@@ -22,6 +22,7 @@
 #define model_ColorNode_h
 
 
+#include "Variables.h"
 #include "merge/Record.h"
 
 #include <QString>
@@ -95,7 +96,8 @@ namespace glabels
 			/////////////////////////////////
 		public:
 			uint32_t rgba() const;
-			QColor color( merge::Record* record ) const;
+			QColor color( const merge::Record* record,
+			              const Variables*     variables ) const;
 
 
 			/////////////////////////////////

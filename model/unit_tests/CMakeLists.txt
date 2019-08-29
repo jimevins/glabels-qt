@@ -33,6 +33,14 @@ if (Qt5Test_FOUND)
   add_test (NAME ColorNode COMMAND TestColorNode)
 
   #=======================================
+  # Test FileUtil class
+  #=======================================
+  qt5_wrap_cpp (TestFileUtil_moc_sources TestFileUtil.h)
+  add_executable (TestFileUtil TestFileUtil.cpp ${TestFileUtil_moc_sources})
+  target_link_libraries (TestFileUtil Model Qt5::Test)
+  add_test (NAME FileUtil COMMAND TestFileUtil)
+
+  #=======================================
   # Test Merge classes
   #=======================================
   qt5_wrap_cpp (TestMerge_moc_sources TestMerge.h)
@@ -49,6 +57,14 @@ if (Qt5Test_FOUND)
   add_test (NAME Model COMMAND TestModel)
 
   #=======================================
+  # Test ModelImageObject class
+  #=======================================
+  qt5_wrap_cpp (TestModelImageObject_moc_sources TestModelImageObject.h)
+  add_executable (TestModelImageObject TestModelImageObject.cpp ${TestModelImageObject_moc_sources})
+  target_link_libraries (TestModelImageObject Model Qt5::Test)
+  add_test (NAME ModelImageObject COMMAND TestModelImageObject)
+
+  #=======================================
   # Test RawText class
   #=======================================
   qt5_wrap_cpp (TestRawText_moc_sources TestRawText.h)
@@ -63,5 +79,21 @@ if (Qt5Test_FOUND)
   add_executable (TestTextNode TestTextNode.cpp ${TestTextNode_moc_sources})
   target_link_libraries (TestTextNode Model Qt5::Test)
   add_test (NAME TextNode COMMAND TestTextNode)
+
+  #=======================================
+  # Test Variable class
+  #=======================================
+  qt5_wrap_cpp (TestVariable_moc_sources TestVariable.h)
+  add_executable (TestVariable TestVariable.cpp ${TestVariable_moc_sources})
+  target_link_libraries (TestVariable Model Qt5::Test)
+  add_test (NAME Variable COMMAND TestVariable)
+
+  #=======================================
+  # Test Variables class
+  #=======================================
+  qt5_wrap_cpp (TestVariables_moc_sources TestVariables.h)
+  add_executable (TestVariables TestVariables.cpp ${TestVariables_moc_sources})
+  target_link_libraries (TestVariables Model Qt5::Test)
+  add_test (NAME Variables COMMAND TestVariables)
 
 endif (Qt5Test_FOUND)

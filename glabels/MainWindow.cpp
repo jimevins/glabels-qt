@@ -31,6 +31,7 @@
 #include "PropertiesView.h"
 #include "StartupView.h"
 #include "UndoRedoModel.h"
+#include "VariablesView.h"
 
 #include "model/Db.h"
 #include "model/Model.h"
@@ -51,7 +52,8 @@ namespace
 		EDITOR_PAGE_INDEX     = 1,
 		PROPERTIES_PAGE_INDEX = 2,
 		MERGE_PAGE_INDEX      = 3,
-		PRINT_PAGE_INDEX      = 4,
+		VARIABLES_PAGE_INDEX  = 4,
+		PRINT_PAGE_INDEX      = 5,
 	};
 }
 
@@ -76,6 +78,7 @@ namespace glabels
 		QWidget* editorPage = createEditorPage();
 		QWidget* propertiesPage = createPropertiesPage();
 		QWidget* mergePage = createMergePage();
+		QWidget* variablesPage = createVariablesPage();
 		QWidget* printPage = createPrintPage();
 
 		// Table of contents widget
@@ -141,6 +144,18 @@ namespace glabels
 		mMergeAction = mContents->addWidget( mMergeButton );
 		group->addButton( mMergeButton );
 
+		// Add "Variables" page
+		mPages->addWidget( variablesPage );
+		mVariablesButton = new QToolButton( this );
+		mVariablesButton->setIcon( Icons::Variables() );
+		mVariablesButton->setText( tr("Variables") );
+		mVariablesButton->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
+		mVariablesButton->setCheckable( true );
+		mVariablesButton->setSizePolicy( QSizePolicy::MinimumExpanding,
+		                             QSizePolicy::Preferred );
+		mVariablesAction = mContents->addWidget( mVariablesButton );
+		group->addButton( mVariablesButton );
+
 		// Add "Print" page
 		mPages->addWidget( printPage );
 		mPrintButton = new QToolButton( this );
@@ -175,6 +190,7 @@ namespace glabels
 		connect( mEditorButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mPropertiesButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mMergeButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
+		connect( mVariablesButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mPrintButton, SIGNAL(toggled(bool)), this, SLOT(changePage(bool)));
 		connect( mLabelEditor, SIGNAL(zoomChanged()), this, SLOT(onZoomChanged()) );
 		connect( model::Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
@@ -201,6 +217,7 @@ namespace glabels
 		if ( mModel )
 		{
 			delete mModel->merge(); // Ownership of final Merge instance is ours
+			delete mModel->variables(); // Ownership of Variables instance is ours
 			delete mModel;
 		}
 	}
@@ -226,7 +243,8 @@ namespace glabels
 		mPropertiesView->setModel( mModel, mUndoRedoModel );
 		mLabelEditor->setModel( mModel, mUndoRedoModel );
 		mObjectEditor->setModel( mModel, mUndoRedoModel );
-		mMergeView->setModel( mModel , mUndoRedoModel );
+		mMergeView->setModel( mModel, mUndoRedoModel );
+		mVariablesView->setModel( mModel, mUndoRedoModel );
 		mPrintView->setModel( mModel );
 
 		mEditorButton->setChecked( true );
@@ -322,6 +340,11 @@ namespace glabels
 		fileShowMergePageAction->setShortcut( QKeySequence( Qt::CTRL + Qt::Key_3 ) );
 		fileShowMergePageAction->setStatusTip( tr("Select project Merge mode") );
 		connect( fileShowMergePageAction, SIGNAL(triggered()), this, SLOT(fileShowMergePage()) );
+
+		fileShowVariablesPageAction = new QAction( tr("&Variables") , this );
+		fileShowVariablesPageAction->setShortcut( QKeySequence( Qt::CTRL + Qt::Key_4 ) );
+		fileShowVariablesPageAction->setStatusTip( tr("Select project Variables mode") );
+		connect( fileShowVariablesPageAction, SIGNAL(triggered()), this, SLOT(fileShowVariablesPage()) );
 
 		fileShowPrintPageAction = new QAction( tr("&Print") , this );
 		fileShowPrintPageAction->setShortcut( QKeySequence::Print );
@@ -611,6 +634,7 @@ namespace glabels
 		fileMenu->addAction( fileShowEditorPageAction );
 		fileMenu->addAction( fileShowPropertiesPageAction );
 		fileMenu->addAction( fileShowMergePageAction );
+		fileMenu->addAction( fileShowVariablesPageAction );
 		fileMenu->addAction( fileShowPrintPageAction );
 		fileMenu->addSeparator();
 		fileMenu->addAction( fileTemplateDesignerAction );
@@ -824,6 +848,17 @@ namespace glabels
 
 
 	///
+	/// Create Variables Page
+	///
+	QWidget* MainWindow::createVariablesPage()
+	{
+		mVariablesView = new VariablesView();
+
+		return mVariablesView;
+	}
+
+
+	///
 	/// Create Print Page
 	///
 	QWidget* MainWindow::createPrintPage()
@@ -847,6 +882,7 @@ namespace glabels
 		bool isEditorPage     = mEditorButton->isChecked();
 		bool isPropertiesPage = mPropertiesButton->isChecked();
 		bool isMergePage      = mMergeButton->isChecked();
+		bool isVariablesPage  = mVariablesButton->isChecked();
 		bool isPrintPage      = mPrintButton->isChecked();
 
 		// What is the current selection state?
@@ -859,6 +895,7 @@ namespace glabels
 		mEditorAction->setVisible( !isWelcomePage );
 		mPropertiesAction->setVisible( !isWelcomePage );
 		mMergeAction->setVisible( !isWelcomePage );
+		mVariablesAction->setVisible( !isWelcomePage );
 		mPrintAction->setVisible( !isWelcomePage );
 
 		// Recent file actions
@@ -884,6 +921,7 @@ namespace glabels
 		fileShowEditorPageAction->setEnabled( !isWelcomePage && !isEditorPage );
 		fileShowPropertiesPageAction->setEnabled( !isWelcomePage && !isPropertiesPage );
 		fileShowMergePageAction->setEnabled( !isWelcomePage && !isMergePage );
+		fileShowVariablesPageAction->setEnabled( !isWelcomePage && !isVariablesPage );
 		fileShowPrintPageAction->setEnabled( !isWelcomePage && !isPrintPage );
 		fileTemplateDesignerAction->setEnabled( true );
 		fileCloseAction->setEnabled( true );
@@ -1110,6 +1148,10 @@ namespace glabels
 			{
 				mPages->setCurrentIndex( MERGE_PAGE_INDEX );
 			}
+			else if ( mVariablesButton->isChecked() )
+			{
+				mPages->setCurrentIndex( VARIABLES_PAGE_INDEX );
+			}
 			else if ( mPrintButton->isChecked() )
 			{
 				mPages->setCurrentIndex( PRINT_PAGE_INDEX );
@@ -1203,6 +1245,15 @@ namespace glabels
 	void MainWindow::fileShowMergePage()
 	{
 		mMergeButton->setChecked( true );
+	}
+
+
+	///
+	/// File->Show Variables Page
+	///
+	void MainWindow::fileShowVariablesPage()
+	{
+		mVariablesButton->setChecked( true );
 	}
 
 

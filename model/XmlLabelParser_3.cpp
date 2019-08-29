@@ -111,7 +111,8 @@ namespace glabels
 						delete label;
 						return nullptr;
 					}
-					label->setTmplate( tmplate );
+					label->setTmplate( tmplate ); // Copies arg
+					delete tmplate;
 				}
 				else if ( tagName == "Objects" )
 				{
@@ -396,10 +397,34 @@ namespace glabels
 			const Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 			/* barcode attrs */
-			const auto backend = XmlUtil::getStringAttr( node, "backend", "");
+			auto backend = XmlUtil::getStringAttr( node, "backend", "" );
 			// one major difference between glabels-3.0.dtd and glabels-4.0.dtd
 			// is the lowercase of the style names
-			const auto style = XmlUtil::getStringAttr( node, "style", "").toLower();
+			auto style = XmlUtil::getStringAttr( node, "style", "" ).toLower();
+
+			if ( backend == "built-in" )
+			{
+				backend = "";
+			}
+			else if ( backend == "libiec16022" )
+			{
+				backend = "";
+				style = "datamatrix";
+			}
+			else if ( backend == "libqrencode" )
+			{
+				if ( barcode::Backends::style( "qrencode", "qrcode" ) != barcode::Backends::defaultStyle() )
+				{
+					backend = "qrencode";
+					style = "qrcode";
+				}
+				else
+				{
+					// Will use defaultStyle if Zint not available
+					backend = "zint";
+					style = "qr";
+				}
+			}
 
 			const barcode::Style bcStyle = barcode::Backends::style( backend, style );
 			const bool bcTextFlag = XmlUtil::getBoolAttr( node, "text", true );

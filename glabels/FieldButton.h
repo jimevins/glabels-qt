@@ -1,6 +1,6 @@
 /*  FieldButton.h
  *
- *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2019  Jim Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -22,8 +22,13 @@
 #define FieldButton_h
 
 
-#include <QComboBox>
-#include <QString>
+#include "model/Variables.h"
+#include "merge/Merge.h"
+
+#include <QAction>
+#include <QPushButton>
+#include <QMenu>
+#include <QStringList>
 
 
 namespace glabels
@@ -32,7 +37,7 @@ namespace glabels
 	///
 	/// Field Button
 	///
-	class FieldButton : public QComboBox
+	class FieldButton : public QPushButton
 	{
 		Q_OBJECT
 
@@ -54,23 +59,22 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
-		void setName( const QString& name = "" );
-		void setKeys( const QStringList& keyList );
-		void clearKeys();
+		void setKeys( const merge::Merge*     merge,
+		              const model::Variables* variables );
 
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onIndexChanged( int index );
+		void onMenuActionTriggered( QAction* action );
 
 
 		/////////////////////////////////
 		// Private Data
 		/////////////////////////////////
 	private:
-		QString mName;
+		QMenu mMenu;
 
 	};
 

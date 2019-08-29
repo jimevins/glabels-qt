@@ -48,8 +48,9 @@ namespace glabels
 
 
 	void ColorButton::init( const QString& defaultLabel,
-	                        const QColor& defaultColor,
-	                        const QColor&  color )
+	                        const QColor&  defaultColor,
+	                        const QColor&  color,
+	                        bool           showUseFieldButton )
 	{
 		mDefaultColor = defaultColor;
 		mColorNode = model::ColorNode( color );
@@ -61,7 +62,10 @@ namespace glabels
 		setText( "" );
 		setCheckable( true );
 
-		mDialog = new ColorPaletteDialog( defaultLabel, defaultColor, color );
+		mDialog = new ColorPaletteDialog( defaultLabel,
+		                                  defaultColor,
+		                                  color,
+		                                  showUseFieldButton );
 
 		connect( this, SIGNAL(toggled(bool)), this, SLOT(onButtonToggled(bool)) );
 		connect( mDialog, SIGNAL(colorChanged(model::ColorNode,bool)),
@@ -124,15 +128,10 @@ namespace glabels
 	}
 
 
-	void ColorButton::setKeys( const QList<QString> keyList )
+	void ColorButton::setKeys( const merge::Merge*     merge,
+	                           const model::Variables* variables )
 	{
-		mDialog->setKeys( keyList );
-	}
-
-
-	void ColorButton::clearKeys()
-	{
-		mDialog->clearKeys();
+		mDialog->setKeys( merge, variables );
 	}
 
 

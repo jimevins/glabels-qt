@@ -28,6 +28,9 @@ class TestXmlLabel : public QObject
 private slots:
 	void initTestCase();
 	void serializeDeserialize();
+	void writeReadFile();
+	void parser_3ReadFile();
+	void parser_3Barcode();
 };
 
 

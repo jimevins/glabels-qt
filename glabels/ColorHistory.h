@@ -60,17 +60,17 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
-		void   addColor( const QColor &color );
+		void addColor( const QColor& color, const QString& name );
 		QList<QColor> getColors();
-		QColor getColor( int id );
+		QStringList getNames();
 
 
 		/////////////////////////////////
 		// Private Methods
 		/////////////////////////////////
 	private:
-		QList<QColor> readColorList();
-		void writeColorList( const QList<QColor>& colorList );
+		QStringList readNameColorList();
+		void writeNameColorList( const QStringList& nameColorList );
 
 
 		/////////////////////////////////

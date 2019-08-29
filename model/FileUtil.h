@@ -41,6 +41,9 @@ namespace glabels
 			QDir userTemplatesDir();
 
 			QDir translationsDir();
+
+			QString makeRelativeIfInDir( const QDir&    dir,
+			                             const QString& filename );
 		}
 
 	}

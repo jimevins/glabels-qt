@@ -105,7 +105,7 @@ namespace glabels
 				return nullptr;
 			}
 
-			return parseRootNode( root );
+			return parseRootNode( root, fileName );
 		}
 
 
@@ -132,12 +132,12 @@ namespace glabels
 				return nullptr;
 			}
 
-			return parseRootNode( root );
+			return parseRootNode( root, QString() );
 		}
 
 
 		QList<ModelObject*>
-		XmlLabelParser::deserializeObjects( const QByteArray& buffer )
+		XmlLabelParser::deserializeObjects( const QByteArray& buffer, const Model* model )
 		{
 			QList<ModelObject*> list;
 	
@@ -167,7 +167,7 @@ namespace glabels
 			{
 				if ( child.toElement().tagName() == "Data" )
 				{
-					parseDataNode( child.toElement(), data );
+					parseDataNode( child.toElement(), model, data );
 				}
 			}
 
@@ -176,9 +176,10 @@ namespace glabels
 			{
 				if ( child.toElement().tagName() == "Objects" )
 				{
-					list = parseObjectsNode( child.toElement(), data );
+					list = parseObjectsNode( child.toElement(), model, data );
 				}
 			}
+
 			return list;
 		}
 
@@ -236,16 +237,22 @@ namespace glabels
 		
 
 		Model*
-		XmlLabelParser::parseRootNode( const QDomElement &node )
+		XmlLabelParser::parseRootNode( const QDomElement &node, const QString& fileName )
 		{
 			QString version = XmlUtil::getStringAttr( node, "version", "" );
 			if ( version != "4.0" )
 			{
 				// Attempt to import as version 3.0 format (glabels 2.0 - glabels 3.4)
-				return XmlLabelParser_3::parseRootNode(node);
+				auto* model = XmlLabelParser_3::parseRootNode( node );
+				if ( model )
+				{
+					model->setFileName( fileName );
+				}
+				return model;
 			}
 
-			auto* label = new Model();
+			auto* model = new Model();
+			model->setFileName( fileName );
 
 			/* Pass 1, extract data nodes to pre-load cache. */
 			DataCache data;
@@ -253,7 +260,7 @@ namespace glabels
 			{
 				if ( child.toElement().tagName() == "Data" )
 				{
-					parseDataNode( child.toElement(), data );
+					parseDataNode( child.toElement(), model, data );
 				}
 			}
 
@@ -268,23 +275,28 @@ namespace glabels
 					if ( tmplate == nullptr )
 					{
 						qWarning() << "Unable to parse template";
-						delete label;
+						delete model;
 						return nullptr;
 					}
-					label->setTmplate( tmplate );
+					model->setTmplate( tmplate ); // Copies arg
+					delete tmplate;
 				}
 				else if ( tagName == "Objects" )
 				{
-					label->setRotate( parseRotateAttr( child.toElement() ) );
-					QList<ModelObject*> list = parseObjectsNode( child.toElement(), data );
+					model->setRotate( parseRotateAttr( child.toElement() ) );
+					auto list = parseObjectsNode( child.toElement(), model, data );
 					foreach ( ModelObject* object, list )
 					{
-						label->addObject( object );
+						model->addObject( object );
 					}
 				}
 				else if ( tagName == "Merge" )
 				{
-					parseMergeNode( child.toElement(), label );
+					parseMergeNode( child.toElement(), model );
+				}
+				else if ( tagName == "Variables" )
+				{
+					parseVariablesNode( child.toElement(), model );
 				}
 				else if ( tagName == "Data" )
 				{
@@ -296,13 +308,15 @@ namespace glabels
 				}
 			}
 
-			label->clearModified();
-			return label;
+			model->clearModified();
+			return model;
 		}
 
 
 		QList<ModelObject*>
-		XmlLabelParser::parseObjectsNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser::parseObjectsNode( const QDomElement& node,
+		                                  const Model*       model,
+		                                  const DataCache&   data )
 		{
 			QList<ModelObject*> list;
 
@@ -328,7 +342,7 @@ namespace glabels
 				}
 				else if ( tagName == "Object-image" )
 				{
-					list.append( parseObjectImageNode( child.toElement(), data ) );
+					list.append( parseObjectImageNode( child.toElement(), model, data ) );
 				}
 				else if ( tagName == "Object-barcode" )
 				{
@@ -361,13 +375,13 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0xFF );
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* fill attrs */
 			key        = XmlUtil::getStringAttr( node, "fill_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "fill_color", 0xFF );
 			ColorNode fillColorNode( field_flag, color, key );
         
 			/* affine attrs */
@@ -387,7 +401,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			return new ModelBoxObject( x0, y0, w, h, lockAspectRatio,
@@ -415,13 +429,13 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0xFF );
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* fill attrs */
 			key        = XmlUtil::getStringAttr( node, "fill_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "fill_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "fill_color", 0xFF );
 			ColorNode fillColorNode( field_flag, color, key );
         
 			/* affine attrs */
@@ -441,7 +455,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			return new ModelEllipseObject( x0, y0, w, h, lockAspectRatio,
@@ -468,7 +482,7 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "line_color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "line_color", 0xFF );
 			ColorNode lineColorNode( field_flag, color, key );
 
 			/* affine attrs */
@@ -488,7 +502,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			return new ModelLineObject( x0, y0, dx, dy,
@@ -499,7 +513,9 @@ namespace glabels
 
 
 		ModelImageObject*
-		XmlLabelParser::parseObjectImageNode( const QDomElement &node, const DataCache& data )
+		XmlLabelParser::parseObjectImageNode( const QDomElement& node,
+		                                      const Model*       model,
+		                                      const DataCache&   data )
 		{
 			/* position attrs */
 			Distance x0 = XmlUtil::getLengthAttr( node, "x", 0.0 );
@@ -533,7 +549,7 @@ namespace glabels
 
 			key            = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag     = !key.isEmpty();
-			uint32_t color = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			uint32_t color = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			if ( filenameNode.isField() )
@@ -545,17 +561,19 @@ namespace glabels
 			}
 			else
 			{
-				if ( data.hasImage( filename ) )
+				QString fn = QDir::cleanPath( model->dir().absoluteFilePath( filename ) );
+
+				if ( data.hasImage( fn ) )
 				{
 					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
-					                             filename, data.getImage( filename ),
+					                             filename, data.getImage( fn ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
-				else if ( data.hasSvg( filename ) )
+				else if ( data.hasSvg( fn ) )
 				{
 					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
-					                             filename, data.getSvg( filename ),
+					                             filename, data.getSvg( fn ),
 					                             QMatrix( a[0], a[1], a[2], a[3], a[4], a[5] ),
 					                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 				}
@@ -563,7 +581,8 @@ namespace glabels
 				{
 					if ( !filename.isEmpty() )
 					{
-						qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
+						qWarning() << "Embedded file" << fn << "missing. Trying actual file.";
+						filenameNode.setData( fn );
 					}
 					return new ModelImageObject( x0, y0, w, h, lockAspectRatio,
 					                             filenameNode,
@@ -594,7 +613,7 @@ namespace glabels
 
 			QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0xFF );
 			ColorNode bcColorNode( field_flag, color, key );
 
 			QString bcData = XmlUtil::getStringAttr( node, "data", "" );
@@ -629,7 +648,7 @@ namespace glabels
 			/* color attr */
 			QString  key        = XmlUtil::getStringAttr( node, "color_field", "" );
 			bool     field_flag = !key.isEmpty();
-			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0 );
+			uint32_t color      = XmlUtil::getUIntAttr( node, "color", 0xFF );
 			ColorNode textColorNode( field_flag, color, key );
 
 			/* font attrs */
@@ -663,7 +682,7 @@ namespace glabels
 
 			key        = XmlUtil::getStringAttr( node, "shadow_color_field", "" );
 			field_flag = !key.isEmpty();
-			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
+			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0xFF );
 			ColorNode shadowColorNode( field_flag, color, key );
 
 			/* deserialize contents. */
@@ -715,28 +734,45 @@ namespace glabels
 
 	
 		void
-		XmlLabelParser::parseMergeNode( const QDomElement &node, Model* label )
+		XmlLabelParser::parseMergeNode( const QDomElement &node, Model* model )
 		{
-			QString type = XmlUtil::getStringAttr( node, "type", "None" );
-			QString src  = XmlUtil::getStringAttr( node, "src", "" );
+			QString id  = XmlUtil::getStringAttr( node, "type", "None" );
+			QString src = XmlUtil::getStringAttr( node, "src", "" );
 
-			merge::Merge* merge = merge::Factory::createMerge( type );
-			merge->setSource( src );
+			merge::Merge* merge = merge::Factory::createMerge( id );
 
-			label->setMerge( merge );
+			switch ( merge::Factory::idToType( id ) )
+			{
+			case merge::Factory::NONE:
+			case merge::Factory::FIXED:
+				break;
+
+			case merge::Factory::FILE:
+				{
+					QString fn = QDir::cleanPath( model->dir().absoluteFilePath( src ) );
+					merge->setSource( fn );
+				}
+				break;
+
+			default:
+				qWarning() << "XmlLabelParser::parseMergeNode(): Should not be reached!";
+				break;
+			}
+
+			model->setMerge( merge );
 		}
 
 
 		void
-		XmlLabelParser::parseDataNode( const QDomElement &node, DataCache& data )
+		XmlLabelParser::parseVariablesNode( const QDomElement &node, Model* model )
 		{
 			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
 			{
 				QString tagName = child.toElement().tagName();
 		
-				if ( tagName == "File" )
+				if ( tagName == "Variable" )
 				{
-					parseFileNode( child.toElement(), data );
+					parseVariableNode( child.toElement(), model );
 				}
 				else if ( !child.isComment() )
 				{
@@ -747,18 +783,54 @@ namespace glabels
 
 
 		void
-		XmlLabelParser::parsePixdataNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser::parseVariableNode( const QDomElement &node, Model* model )
 		{
-			// TODO, compatibility with glabels-3
+			QString typeString      = XmlUtil::getStringAttr( node, "type", "string" );
+			QString name            = XmlUtil::getStringAttr( node, "name", "unknown" );
+			QString initialValue    = XmlUtil::getStringAttr( node, "initialValue", "0" );
+			QString incrementString = XmlUtil::getStringAttr( node, "increment", "never" );
+			QString stepSize        = XmlUtil::getStringAttr( node, "stepSize", "0" );
+
+			auto type      = Variable::idStringToType( typeString );
+			auto increment = Variable::idStringToIncrement( incrementString );
+
+			Variable v( type, name, initialValue, increment, stepSize );
+			model->variables()->addVariable( v );
 		}
 
 
 		void
-		XmlLabelParser::parseFileNode( const QDomElement& node, DataCache& data )
+		XmlLabelParser::parseDataNode( const QDomElement &node,
+		                               const Model*       model,
+		                               DataCache&         data )
+		{
+			for ( QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling() )
+			{
+				QString tagName = child.toElement().tagName();
+
+				if ( tagName == "File" )
+				{
+					parseFileNode( child.toElement(), model, data );
+				}
+				else if ( !child.isComment() )
+				{
+					qWarning() << "Unexpected" << node.tagName() << "child:" << tagName;
+				}
+			}
+		}
+
+
+		void
+		XmlLabelParser::parseFileNode( const QDomElement& node,
+		                               const Model*       model,
+		                               DataCache&         data )
 		{
 			QString name     = XmlUtil::getStringAttr( node, "name", "" );
 			QString mimetype = XmlUtil::getStringAttr( node, "mimetype", "image/png" );
 			QString encoding = XmlUtil::getStringAttr( node, "encoding", "base64" );
+
+			// Rewrite name as absolute file path
+			QString fn = QDir::cleanPath( model->dir().absoluteFilePath( name ) );
 
 			if ( mimetype == "image/png" )
 			{
@@ -769,7 +841,7 @@ namespace glabels
 					QImage image;
 					image.loadFromData( ba, "PNG" );
 
-					data.addImage( name, image );
+					data.addImage( fn, image );
 				}
 				else
 				{
@@ -778,7 +850,7 @@ namespace glabels
 			}
 			else if ( mimetype == "image/svg+xml" )
 			{
-				data.addSvg( name, node.text().toUtf8() );
+				data.addSvg( fn, node.text().toUtf8() );
 			}
 		}
 

@@ -175,30 +175,32 @@ namespace glabels
 		///
 		/// Get color, expand if necessary
 		///
-		QColor ColorNode::color( merge::Record* record ) const
+		QColor ColorNode::color( const merge::Record* record,
+		                         const Variables*     variables ) const
 		{
-			if ( mIsField )
+			QColor value = QColor( 192, 192, 192, 128 );
+			
+			bool haveRecordField = mIsField && record &&
+				record->contains(mKey) &&
+				!record->value(mKey).isEmpty();
+			bool haveVariable = mIsField && variables &&
+				variables->contains(mKey) &&
+				!(*variables)[mKey].value().isEmpty();
+
+			if ( haveRecordField )
 			{
-				if ( record == nullptr )
-				{
-					return mColor;
-				}
-				else
-				{
-					if ( record->contains( mKey ) )
-					{
-						return QColor( (*record)[ mKey ] );
-					}
-					else
-					{
-						return mColor;
-					}
-				}
+				value = QColor( record->value(mKey) );
 			}
-			else
+			else if ( haveVariable )
 			{
-				return mColor;
+				value = QColor( (*variables)[mKey].value() );
 			}
+			else if ( !mIsField )
+			{
+				value = mColor;
+			}
+
+			return value;
 		}
 
 	}

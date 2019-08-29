@@ -22,8 +22,6 @@
 
 #include "model/TextNode.h"
 
-#include "merge/Record.h"
-
 #include <QtDebug>
 
 
@@ -36,38 +34,37 @@ using namespace glabels::merge;
 void TestTextNode::textNode()
 {
 	Record record;
+	Variables vars;
 
 	TextNode textNode;
 	QVERIFY( !textNode.isField() );
 	QCOMPARE( textNode.data(), QString( "" ) );
 	QVERIFY( textNode == TextNode() );
 	QVERIFY( !(textNode != TextNode()) );
-	QCOMPARE( textNode.text( nullptr ), QString( "" ) );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, &vars ), QString( "" ) );
 
 	textNode.setField( true );
 	QVERIFY( textNode.isField() );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	textNode.setField( false );
 	QVERIFY( !textNode.isField() );
 
 	textNode.setData( QString( "data1" ) );
 	QCOMPARE( textNode.data(), QString( "data1" ) );
-	QCOMPARE( textNode.text( nullptr ), QString( "data1" ) );
-	QCOMPARE( textNode.text( &record ), QString( "data1" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "data1" ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "data1" ) );
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "data1" ) );
+	QCOMPARE( textNode.text( &record, &vars ), QString( "data1" ) );
 
 	textNode.setField( true );
-	QCOMPARE( textNode.text( nullptr ), QString( "${data1}" ) );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( nullptr, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "" ) );
+	QCOMPARE( textNode.text( &record, &vars ), QString( "" ) );
 
 	///
 	/// Constructors
@@ -89,17 +86,39 @@ void TestTextNode::textNode()
 	/// Record
 	///
 	record["key1"] = "";
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	textNode.setData( QString( "key1" ) );
-	QCOMPARE( textNode.text( &record ), QString( "" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "" ) );
 
 	record["key1"] = "val1";
-	QCOMPARE( textNode.text( &record ), QString( "val1" ) );
-	QVERIFY( !textNode.isEmptyField( nullptr ) );
-	QVERIFY( !textNode.isEmptyField( &record ) );
+	QCOMPARE( textNode.text( &record, nullptr ), QString( "val1" ) );
+
+	///
+	/// Variable
+	///
+	{
+		Variable key1( Variable::Type::STRING, "key1", "", Variable::Increment::PER_ITEM );
+		vars.addVariable( key1 );
+	}
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "" ) );
+
+	{
+		Variable key1( Variable::Type::STRING, "key1", "val1", Variable::Increment::PER_ITEM );
+		vars.addVariable( key1 );
+	}
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "val1" ) );
+
+	{
+		Variable key1( Variable::Type::INTEGER, "key1", "1", Variable::Increment::PER_ITEM, "1" );
+		vars.addVariable( key1 );
+	}
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "1" ) );
+	vars.incrementVariablesOnItem();
+	QCOMPARE( textNode.text( nullptr, &vars ), QString( "2" ) );
+
+	///
+	/// Record beats variable
+	///
+	QCOMPARE( textNode.text( &record, &vars ), QString( "val1" ) );
 }
