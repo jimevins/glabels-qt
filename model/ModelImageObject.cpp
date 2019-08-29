@@ -457,8 +457,14 @@ namespace glabels
 
 						painter->drawRect( destRect );
 					}
-					delete image;
-					delete svgRenderer;
+					if ( image )
+					{
+						delete image;
+					}
+					else
+					{
+						delete svgRenderer;
+					}
 				}
 			}
 		}

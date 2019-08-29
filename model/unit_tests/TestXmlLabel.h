@@ -29,8 +29,6 @@ private slots:
 	void initTestCase();
 	void serializeDeserialize();
 	void writeReadFile();
-	void readPrintPage_data();
-	void readPrintPage();
 	void parser_3ReadFile();
 	void parser_3Barcode();
 };
