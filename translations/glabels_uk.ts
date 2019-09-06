@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE TS []>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="uk" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -175,7 +173,38 @@
     </message>
     <message>
         <source>Roll</source>
-        <translation type="unfinished">Roll</translation>
+        <translation>Рулон</translation>
+    </message>
+</context>
+<context>
+    <name>EditVariableDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Вікно</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation>Назва:</translation>
+    </message>
+    <message>
+        <source>Step size:</source>
+        <translation>Розмір кроку:</translation>
+    </message>
+    <message>
+        <source>Increment</source>
+        <translation>Приріст</translation>
+    </message>
+    <message>
+        <source>Variable</source>
+        <translation>Змінна</translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation>Тип:</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation>Значення:</translation>
     </message>
 </context>
 <context>
@@ -239,7 +268,7 @@
     <name>FrameContinuous</name>
     <message>
         <source>wide</source>
-        <translation type="unfinished">wide</translation>
+        <translation>широкий</translation>
     </message>
 </context>
 <context>
@@ -252,16 +281,8 @@
 <context>
     <name>MergeView</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>Source</source>
         <translation>Джерело</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Розташування</translation>
     </message>
     <message>
         <source>Format:</source>
@@ -283,13 +304,13 @@
         <source>Unselect all</source>
         <translation>Зняти позначення з усього</translation>
     </message>
+    <message>
+        <source>Browse...</source>
+        <translation>Вибрати…</translation>
+    </message>
 </context>
 <context>
     <name>ObjectEditor</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>Object properties</source>
         <translation>Властивості об&apos;єкта</translation>
@@ -387,16 +408,8 @@
         <translation>Файл</translation>
     </message>
     <message>
-        <source>Select File...</source>
-        <translation>Вибрати файл…</translation>
-    </message>
-    <message>
-        <source>or</source>
-        <translation>або</translation>
-    </message>
-    <message>
-        <source>Select Merge Field...</source>
-        <translation>Вибрати поле для об&apos;єднання…</translation>
+        <source>Browse...</source>
+        <translation>Вибрати…</translation>
     </message>
     <message>
         <source>Line/Fill</source>
@@ -517,10 +530,6 @@
 <context>
     <name>PrintView</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>Copies</source>
         <translation>Копії</translation>
     </message>
@@ -572,10 +581,6 @@
 <context>
     <name>PropertiesView</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>Product</source>
         <translation>Продукт</translation>
     </message>
@@ -608,8 +613,8 @@
         <translation>Компонування:</translation>
     </message>
     <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>Select another product for this gLabels project.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Виберіть інший продукт для цього проекту gLabels.&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select another product for this gLabels project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Виберіть інший продукт для цього проєкту gLabels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Change product</source>
@@ -617,11 +622,11 @@
     </message>
     <message>
         <source>Adjustable Parameters</source>
-        <translation type="unfinished">Adjustable Parameters</translation>
+        <translation>Кориговані параметри</translation>
     </message>
     <message>
         <source>Label length:</source>
-        <translation type="unfinished">Label length:</translation>
+        <translation>Довжина наліпки:</translation>
     </message>
     <message>
         <source>Orientation</source>
@@ -642,6 +647,25 @@
     <message>
         <source>Similar Products</source>
         <translation>Подібні продукти</translation>
+    </message>
+</context>
+<context>
+    <name>ReportBugDialog</name>
+    <message>
+        <source>gLabels - Report a Bug</source>
+        <translation>gLabels — Звітування щодо вади</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Копіювати</translation>
+    </message>
+    <message>
+        <source>Ctrl+C</source>
+        <translation>Ctrl+C</translation>
+    </message>
+    <message>
+        <source>&amp;Launch Issue Tracker</source>
+        <translation>&amp;Розпочати звітування щодо вади</translation>
     </message>
 </context>
 <context>
@@ -706,36 +730,28 @@
 <context>
     <name>StartupView</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>Welcome to gLabels.  Let&apos;s get started:</source>
         <translation>Вітаємо gLabels. Почнімо роботу:</translation>
     </message>
     <message>
         <source>New Project</source>
-        <translation>Новий проект</translation>
+        <translation>Новий проєкт</translation>
     </message>
     <message>
         <source>Create a new blank gLabels project</source>
-        <translation>Створити порожній проект gLabels</translation>
+        <translation>Створити порожній проєкт gLabels</translation>
     </message>
     <message>
         <source>Open Project</source>
-        <translation>Відкрити проект</translation>
+        <translation>Відкрити проєкт</translation>
     </message>
     <message>
         <source>Open an existing gLabels project</source>
-        <translation>Відкрити наявний проект gLabels</translation>
+        <translation>Відкрити наявний проєкт gLabels</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerApplyPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>You have completed the gLabels Product Template Designer.  If you wish to accept and save your product template, click &quot;Save.&quot;</source>
         <translation>Вами визначено параметри шаблона продукту Дизайнера gLabels. Якщо хочете підтвердити їх і зберегти ваш шаблон продукту, натисніть кнопку «Зберегти».</translation>
@@ -747,10 +763,6 @@
 </context>
 <context>
     <name>TemplateDesignerCdPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>6. Margin:</source>
         <translation>6. Поле:</translation>
@@ -779,20 +791,12 @@
 <context>
     <name>TemplateDesignerContinuousPage</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished">Form</translation>
-    </message>
-    <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation type="unfinished">&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Натисніть &amp;quot;Скасувати&amp;quot;, щоб скасувати, або натисніть &amp;quot;Назад&amp;quot;, щоб розпочати роботу із іншим продуктом.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerEllipsePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>2. Height:</source>
         <translation>2. Висота:</translation>
@@ -813,12 +817,8 @@
 <context>
     <name>TemplateDesignerIntroPage</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>This dialog will help you create a custom product template. Let&apos;s get started:&lt;/p>&lt;/body>&lt;/html></source>
-        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>За допомогою цього вікна ви зможете створити нетиповий шаблон продукту. Почнімо:&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This dialog will help you create a custom product template. Let&apos;s get started:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;За допомогою цього вікна ви зможете створити нетиповий шаблон продукту. Почнімо:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Copy/Edit Product</source>
@@ -834,15 +834,11 @@
     </message>
     <message>
         <source>Create a new product template from scratch</source>
-        <translation type="unfinished">Create a new product template from scratch</translation>
+        <translation>Створити шаблон нового продукту з нуля</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerNLayoutsPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>A layout is a set of labels or cards that can be arranged in a simple grid.  Most products only need one layout, as in the first example below.  The second example illustrates when two layouts are needed.</source>
         <translation>Компонування — набір етикеток або карток, які можна упорядкувати у просту таблицю. Для більшості продуктів достатньо одного компонування, як у першому прикладі нижче. У другому прикладі проілюстровано можливість використання двох компонувань.</translation>
@@ -871,10 +867,6 @@
 <context>
     <name>TemplateDesignerNamePage</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
         <translation>(наприклад, «Поштові наклейки», «Візитівки», ...)</translation>
     </message>
@@ -901,10 +893,6 @@
 </context>
 <context>
     <name>TemplateDesignerOneLayoutPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>Number across (nx):</source>
         <translation>Кількість у ряді (nx):</translation>
@@ -937,12 +925,8 @@
 <context>
     <name>TemplateDesignerPageSizePage</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>Roll width:</source>
-        <translation type="unfinished">Roll width:</translation>
+        <translation>Ширина рулону:</translation>
     </message>
     <message>
         <source>Height:</source>
@@ -960,20 +944,12 @@
 <context>
     <name>TemplateDesignerPathPage</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished">Form</translation>
-    </message>
-    <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation type="unfinished">&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Натисніть &amp;quot;Скасувати&amp;quot;, щоб скасувати, або натисніть &amp;quot;Назад&amp;quot;, щоб розпочати роботу із іншим продуктом.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerRectPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>4. Horizontal waste:</source>
         <translation>4. Горизонтальні обрізки:</translation>
@@ -996,23 +972,19 @@
     </message>
     <message>
         <source>6. Margin (X):</source>
-        <translation type="unfinished">6. Margin (X):</translation>
+        <translation>6. Поле (X):</translation>
     </message>
     <message>
         <source>7. Margin (Y):</source>
-        <translation type="unfinished">7. Margin (Y):</translation>
+        <translation>7. Поле (Y):</translation>
     </message>
     <message>
         <source>in</source>
-        <translation type="unfinished">in</translation>
+        <translation>дюймів</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerRoundPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>3. Margin</source>
         <translation>3. Поле</translation>
@@ -1028,10 +1000,6 @@
 </context>
 <context>
     <name>TemplateDesignerShapePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>Rectangular or square (can have rounded corners)</source>
         <translation>Прямокутна або квадратна (можуть бути скруглені кути)</translation>
@@ -1051,10 +1019,6 @@
 </context>
 <context>
     <name>TemplateDesignerTwoLayoutPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
     <message>
         <source>Distance from left edge (x0):</source>
         <translation>Відстань від лівого краю (x0):</translation>
@@ -1108,6 +1072,68 @@
     </message>
 </context>
 <context>
+    <name>Variable</name>
+    <message>
+        <source>String</source>
+        <translation>Рядок</translation>
+    </message>
+    <message>
+        <source>Integer</source>
+        <translation>Ціле</translation>
+    </message>
+    <message>
+        <source>Floating Point</source>
+        <translation>З плаваючою комою</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>Ніколи</translation>
+    </message>
+    <message>
+        <source>Per item</source>
+        <translation>На запис</translation>
+    </message>
+    <message>
+        <source>Per copy</source>
+        <translation>На копію</translation>
+    </message>
+    <message>
+        <source>Per page</source>
+        <translation>На сторінку</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation>Колір</translation>
+    </message>
+</context>
+<context>
+    <name>VariablesView</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Додати змінну&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>Додати</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Edit selected variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Редагування вибраної змінної&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Змінити</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete selected variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вилучити вибрану змінну&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Вилучити</translation>
+    </message>
+</context>
+<context>
     <name>glabels::AboutDialog</name>
     <message>
         <source>Version</source>
@@ -1134,29 +1160,63 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
 </context>
 <context>
+    <name>glabels::ColorHistory</name>
+    <message>
+        <source>color %1</source>
+        <translation>колір %1</translation>
+    </message>
+</context>
+<context>
     <name>glabels::ColorPaletteDialog</name>
+    <message>
+        <source>Standard Colors</source>
+        <translation>Стандартні кольори</translation>
+    </message>
+    <message>
+        <source>Recent Colors</source>
+        <translation>Недавні кольори</translation>
+    </message>
     <message>
         <source>Custom color...</source>
         <translation>Нетиповий колір…</translation>
-    </message>
-    <message>
-        <source>Merge key...</source>
-        <translation>Об&apos;єднання…</translation>
     </message>
     <message>
         <source>Custom Color</source>
         <translation>Нетиповий колір</translation>
     </message>
     <message>
-        <source>Custom color #%1</source>
+        <source>Custom Color %1</source>
+        <extracomment>%1 = color specification in hex. String must not contain a colon (:).</extracomment>
         <translation>Нетиповий колір %1</translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
+        <translation>Використовувати поле заміни</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::EditVariableDialog</name>
+    <message>
+        <source>Default</source>
+        <translation>Типовий</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::FieldButton</name>
+    <message>
+        <source>Merge fields</source>
+        <translation>Об&apos;єднати поля</translation>
+    </message>
+    <message>
+        <source>Variables</source>
+        <translation>Змінні</translation>
     </message>
 </context>
 <context>
     <name>glabels::File</name>
     <message>
         <source>gLabels - Open Project</source>
-        <translation>gLabels — відкриття проекту</translation>
+        <translation>gLabels — відкриття проєкту</translation>
     </message>
     <message>
         <source>glabels files (*.glabels);;All files (*)</source>
@@ -1172,7 +1232,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>gLabels - Save Project As</source>
-        <translation>gLabels — збереження проекту із новою назвою</translation>
+        <translation>gLabels — збереження проєкту із новою назвою</translation>
     </message>
     <message>
         <source>Save Label As</source>
@@ -1197,6 +1257,10 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <source>Delete</source>
         <translation>Вилучити</translation>
     </message>
+    <message>
+        <source>Resize</source>
+        <translation>Змінити розмір</translation>
+    </message>
 </context>
 <context>
     <name>glabels::MainWindow</name>
@@ -1217,6 +1281,10 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Об&apos;єднати</translation>
     </message>
     <message>
+        <source>Variables</source>
+        <translation>Змінні</translation>
+    </message>
+    <message>
         <source>Print</source>
         <translation>Надрукувати</translation>
     </message>
@@ -1226,7 +1294,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Create a new gLabels project</source>
-        <translation>Створити проект gLabels</translation>
+        <translation>Створити проєкт gLabels</translation>
     </message>
     <message>
         <source>&amp;Open...</source>
@@ -1234,7 +1302,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Open an existing gLabels project</source>
-        <translation>Відкрити наявний проект gLabels</translation>
+        <translation>Відкрити наявний проєкт gLabels</translation>
     </message>
     <message>
         <source>&amp;Save</source>
@@ -1242,7 +1310,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Save current gLabels project</source>
-        <translation>Зберегти поточний проект gLabels</translation>
+        <translation>Зберегти поточний проєкт gLabels</translation>
     </message>
     <message>
         <source>Save &amp;As...</source>
@@ -1250,7 +1318,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Save current gLabels project to a different name</source>
-        <translation>Зберегти поточний проект gLabels до файла із іншою назвою</translation>
+        <translation>Зберегти поточний проєкт gLabels до файла із іншою назвою</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
@@ -1258,7 +1326,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Select project Edit mode</source>
-        <translation>Вибрати режим редагування проекту</translation>
+        <translation>Вибрати режим редагування проєкту</translation>
     </message>
     <message>
         <source>P&amp;roperties</source>
@@ -1266,7 +1334,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Select project Properties mode</source>
-        <translation>Вибрати режим властивостей проекту</translation>
+        <translation>Вибрати режим властивостей проєкту</translation>
     </message>
     <message>
         <source>&amp;Merge</source>
@@ -1274,7 +1342,15 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Select project Merge mode</source>
-        <translation>Вибрати режим об&apos;єднання проекту</translation>
+        <translation>Вибрати режим об&apos;єднання проєкту</translation>
+    </message>
+    <message>
+        <source>&amp;Variables</source>
+        <translation>&amp;Змінні</translation>
+    </message>
+    <message>
+        <source>Select project Variables mode</source>
+        <translation>Вибрати режим «Змінні» проєкту</translation>
     </message>
     <message>
         <source>&amp;Print</source>
@@ -1282,7 +1358,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Select project Print mode</source>
-        <translation>Вибрати режим друку проекту</translation>
+        <translation>Вибрати режим друку проєкту</translation>
     </message>
     <message>
         <source>Product Template &amp;Designer...</source>
@@ -1373,20 +1449,8 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Налаштувати програму</translation>
     </message>
     <message>
-        <source>File</source>
-        <translation>Файл</translation>
-    </message>
-    <message>
-        <source>Change visibility of file toolbar in current window</source>
-        <translation>Перемкнути видимість панелі інструментів файлів у поточному вікні</translation>
-    </message>
-    <message>
         <source>Editor</source>
         <translation>Редактор</translation>
-    </message>
-    <message>
-        <source>Change visibility of editor toolbar in current window</source>
-        <translation>Перемкнути видимість панелі інструментів редактора у поточному вікні</translation>
     </message>
     <message>
         <source>Grid</source>
@@ -1605,10 +1669,6 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Вертикально центрувати об&apos;єкти на етикетці</translation>
     </message>
     <message>
-        <source>&amp;Contents...</source>
-        <translation>В&amp;міст…</translation>
-    </message>
-    <message>
         <source>Open gLabels manual</source>
         <translation>Відкрити підручник з gLabels</translation>
     </message>
@@ -1670,7 +1730,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Save changes to project &quot;%1&quot; before closing?</source>
-        <translation>Зберегти зміни до проекту «%1» перед завершенням роботи програми?</translation>
+        <translation>Зберегти зміни до проєкту «%1» перед завершенням роботи програми?</translation>
     </message>
     <message>
         <source>Your changes will be lost if you don&apos;t save them.</source>
@@ -1678,7 +1738,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Save project?</source>
-        <translation>Зберегти проект?</translation>
+        <translation>Зберегти проєкт?</translation>
     </message>
     <message>
         <source>Paste</source>
@@ -1712,6 +1772,46 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <source>Create Barcode</source>
         <translation>Створити штрихкод</translation>
     </message>
+    <message>
+        <source>Quick Access</source>
+        <translation>Швидкий доступ</translation>
+    </message>
+    <message>
+        <source>&amp;Report Bug...</source>
+        <translation>П&amp;овідомити про ваду…</translation>
+    </message>
+    <message>
+        <source>Report a bug to the developers</source>
+        <translation>Повідомити розробникам про ваду</translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Quick Access&quot; toolbar in current window</source>
+        <translation>Перемкнути видимість панелі інструментів «Швидкий доступ» у поточному вікні</translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Editor&quot; toolbar in current window</source>
+        <translation>Перемкнути видимість панелі інструментів «Редактор» у поточному вікні</translation>
+    </message>
+    <message>
+        <source>&amp;User Manual...</source>
+        <translation>Пі&amp;дручник користувача…</translation>
+    </message>
+    <message>
+        <source>Open Recent</source>
+        <translation>Відкрити нещодавні</translation>
+    </message>
+    <message>
+        <source>Quick Access Toolbar</source>
+        <translation>Панель швидкого доступу</translation>
+    </message>
+    <message>
+        <source>Undo %1</source>
+        <translation>Скасувати %1</translation>
+    </message>
+    <message>
+        <source>Redo %1</source>
+        <translation>Повторити %1</translation>
+    </message>
 </context>
 <context>
     <name>glabels::MergeView</name>
@@ -1741,14 +1841,6 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     <message>
         <source>Default</source>
         <translation>Типовий</translation>
-    </message>
-    <message>
-        <source>Insert Field</source>
-        <translation>Вставити поле</translation>
-    </message>
-    <message>
-        <source>Key</source>
-        <translation>Ключ</translation>
     </message>
     <message>
         <source>Original size</source>
@@ -1871,10 +1963,6 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <translation>Встановити зображення</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation>Пересунути</translation>
-    </message>
-    <message>
         <source>Size</source>
         <translation>Розмір</translation>
     </message>
@@ -1886,6 +1974,26 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
         <source>Shadow</source>
         <translation>Тінь</translation>
     </message>
+    <message>
+        <source>Position</source>
+        <translation>Розташування</translation>
+    </message>
+    <message>
+        <source>Barcode</source>
+        <translation>Штрихкод</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Скинути</translation>
+    </message>
+    <message>
+        <source>Insert substitution field</source>
+        <translation>Вставити поле заміни</translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
+        <translation>Використовувати поле заміни</translation>
+    </message>
 </context>
 <context>
     <name>glabels::PrintView</name>
@@ -1896,6 +2004,14 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     <message>
         <source>(Will print a total of %1 items on %2 pages.)</source>
         <translation>(Буде надруковано %1 елементів на %2 сторінках.)</translation>
+    </message>
+    <message>
+        <source>(Will print a total of 1 item on 1 page.)</source>
+        <translation>(Буде надруковано 1 елемент на 1 сторінці.)</translation>
+    </message>
+    <message>
+        <source>(Will print a total of %1 items on 1 page.)</source>
+        <translation>(Буде надруковано %1 елементів на 1 сторінці.)</translation>
     </message>
 </context>
 <context>
@@ -1914,6 +2030,25 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
 </context>
 <context>
+    <name>glabels::ReportBugDialog</name>
+    <message>
+        <source>How to Report a Bug</source>
+        <translation>Як повідомити про ваду</translation>
+    </message>
+    <message>
+        <source>To submit a bug report, click on the button below.  This will open a web browser to the gLabels github issue tracking page.</source>
+        <translation>Щоб повідомити про ваду, натисніть розташовану нижче кнопку. У відповідь буде відкрито програму для перегляду інтернету на сторінці системи стеження за вадами у gLabels на github. </translation>
+    </message>
+    <message>
+        <source>Be sure to include a detailed description of the problem and how to recreate it.  Attach any screenshots and/or example glabels project files that may illustrate the problem.</source>
+        <translation>Надайте докладний опис проблеми і повідомте про спосіб, у який її можна відтворити. Долучіть знімки вікон і/або приклад проєкту glabels, які можуть слугувати ілюстрацією проблеми.</translation>
+    </message>
+    <message>
+        <source>Before submitting a report, look through the existing issues for similar or related bugs.  If the issue has already been reported, please consider contributing to its report instead.  Otherwise, create a new issue report. Please paste the following information into the issue description.</source>
+        <translation>Перш ніж надсилати звіт, пошукайте наявні звіти щодо подібної або пов&apos;язаної проблеми. Якщо звіт про ваду вже кимось складено, будь ласка, ознайомтеся із ним і спробуйте його удосконалити. Якщо звітів про подібні вади ще не складено, створіть новий звіт. Будь ласка, вкажіть у описів вади зазначені нижче дані.</translation>
+    </message>
+</context>
+<context>
     <name>glabels::SimplePreview</name>
     <message>
         <source>Up</source>
@@ -1928,7 +2063,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Roll</source>
-        <translation type="unfinished">Roll</translation>
+        <translation>Рулон</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -1969,11 +2104,11 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     <name>glabels::TemplateDesignerContinuousPage</name>
     <message>
         <source>Unsupported Product Style</source>
-        <translation type="unfinished">Unsupported Product Style</translation>
+        <translation>Непідтримуваний стиль продукту</translation>
     </message>
     <message>
         <source>Continuous tape product templates are not currently supported by the Product Template Designer.</source>
-        <translation type="unfinished">Continuous tape product templates are not currently supported by the Product Template Designer.</translation>
+        <translation>У поточній версії дизайнера шаблонів продуктів не передбачено підтримки шаблонів неперервної стрічки.</translation>
     </message>
 </context>
 <context>
@@ -2051,18 +2186,18 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Roll</source>
-        <translation type="unfinished">Roll</translation>
+        <translation>Рулон</translation>
     </message>
 </context>
 <context>
     <name>glabels::TemplateDesignerPathPage</name>
     <message>
         <source>Unsupported Product Style</source>
-        <translation type="unfinished">Unsupported Product Style</translation>
+        <translation>Непідтримуваний стиль продукту</translation>
     </message>
     <message>
         <source>Path based product templates are not currently supported by the Product Template Designer.</source>
-        <translation type="unfinished">Path based product templates are not currently supported by the Product Template Designer.</translation>
+        <translation>У поточній версії дизайнера шаблонів продуктів не передбачено підтримки шаблонів на основі контуру.</translation>
     </message>
 </context>
 <context>
@@ -2107,6 +2242,41 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     <message>
         <source>Please enter parameters for your two layouts.</source>
         <translation>Будь ласка, вкажіть параметри ваших двох компонувань.</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::VariablesView</name>
+    <message>
+        <source>Variables</source>
+        <translation>Змінні</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Назва</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Тип</translation>
+    </message>
+    <message>
+        <source>Increment</source>
+        <translation>Приріст</translation>
+    </message>
+    <message>
+        <source>Step Size</source>
+        <translation>Розмір кроку</translation>
+    </message>
+    <message>
+        <source>Add Variable</source>
+        <translation>Додати змінну</translation>
+    </message>
+    <message>
+        <source>Edit Variable</source>
+        <translation>Редагувати змінну</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Значення</translation>
     </message>
 </context>
 <context>
@@ -2249,7 +2419,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Australia Post Standard</source>
-        <translation type="unfinished">Australia Post Standard</translation>
+        <translation>Австралійська пошта, стандартний</translation>
     </message>
     <message>
         <source>Australia Post Reply Paid</source>
@@ -2305,7 +2475,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>Code 128 (Mode C suppression)</source>
-        <translation type="unfinished">Code 128 (Mode C suppression)</translation>
+        <translation>Код 128 (із придушенням режиму C)</translation>
     </message>
     <message>
         <source>DAFT Code</source>
@@ -2491,6 +2661,13 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
 </context>
 <context>
+    <name>glabels::model::ModelImageObject</name>
+    <message>
+        <source>No image</source>
+        <translation>Немає зображення</translation>
+    </message>
+</context>
+<context>
     <name>glabels::model::ModelTextObject</name>
     <message>
         <source>Text</source>
@@ -2505,7 +2682,7 @@ Foundation тексту цієї ліцензії версії 3 або (якщ�
     </message>
     <message>
         <source>gLabels project files to open, optionally.</source>
-        <translation>Файли проекту gLabels, які слід відкрити, необов&apos;язковий параметр.</translation>
+        <translation>Файли проєкту gLabels, які слід відкрити, необов&apos;язковий параметр.</translation>
     </message>
 </context>
 </TS>

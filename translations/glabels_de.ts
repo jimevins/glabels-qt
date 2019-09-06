@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE TS []>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -179,6 +177,37 @@
     </message>
 </context>
 <context>
+    <name>EditVariableDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <source>Name:</source>
+        <translation>Name:</translation>
+    </message>
+    <message>
+        <source>Step size:</source>
+        <translation>Schrittweite:</translation>
+    </message>
+    <message>
+        <source>Increment</source>
+        <translation>Erhöhung</translation>
+    </message>
+    <message>
+        <source>Variable</source>
+        <translation>Variable</translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation>Typ:</translation>
+    </message>
+    <message>
+        <source>Value:</source>
+        <translation>Wert:</translation>
+    </message>
+</context>
+<context>
     <name>Factory</name>
     <message>
         <source>None</source>
@@ -252,16 +281,8 @@
 <context>
     <name>MergeView</name>
     <message>
-        <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
         <source>Source</source>
         <translation>Quelle</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Ort</translation>
     </message>
     <message>
         <source>Format:</source>
@@ -283,13 +304,13 @@
         <source>Unselect all</source>
         <translation>Alles abwählen</translation>
     </message>
+    <message>
+        <source>Browse...</source>
+        <translation>Durchsuchen …</translation>
+    </message>
 </context>
 <context>
     <name>ObjectEditor</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Object properties</source>
         <translation>Objekteigenschaften</translation>
@@ -387,16 +408,8 @@
         <translation>Datei</translation>
     </message>
     <message>
-        <source>Select File...</source>
-        <translation>Datei auswählen …</translation>
-    </message>
-    <message>
-        <source>or</source>
-        <translation>oder</translation>
-    </message>
-    <message>
-        <source>Select Merge Field...</source>
-        <translation>Datenfeld auswählen …</translation>
+        <source>Browse...</source>
+        <translation>Durchsuchen …</translation>
     </message>
     <message>
         <source>Line/Fill</source>
@@ -517,10 +530,6 @@
 <context>
     <name>PrintView</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Copies</source>
         <translation>Kopien</translation>
     </message>
@@ -572,10 +581,6 @@
 <context>
     <name>PropertiesView</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Product</source>
         <translation>Produkt</translation>
     </message>
@@ -608,8 +613,8 @@
         <translation>Anordnung:</translation>
     </message>
     <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>Select another product for this gLabels project.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Wählen Sie ein anderes Produkt für dieses gLabels-Projekt.&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select another product for this gLabels project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wählen Sie ein anderes Produkt für dieses gLabels-Projekt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Change product</source>
@@ -642,6 +647,25 @@
     <message>
         <source>Similar Products</source>
         <translation>Ähnliche Produkte</translation>
+    </message>
+</context>
+<context>
+    <name>ReportBugDialog</name>
+    <message>
+        <source>gLabels - Report a Bug</source>
+        <translation>gLabels - Einen Fehler melden</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation>Kopieren</translation>
+    </message>
+    <message>
+        <source>Ctrl+C</source>
+        <translation>Strg+C</translation>
+    </message>
+    <message>
+        <source>&amp;Launch Issue Tracker</source>
+        <translation>&amp;Fehler melden</translation>
     </message>
 </context>
 <context>
@@ -706,10 +730,6 @@
 <context>
     <name>StartupView</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Welcome to gLabels.  Let&apos;s get started:</source>
         <translation>Willkommen zu gLabels. Lassen Sie uns beginnen:</translation>
     </message>
@@ -733,10 +753,6 @@
 <context>
     <name>TemplateDesignerApplyPage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>You have completed the gLabels Product Template Designer.  If you wish to accept and save your product template, click &quot;Save.&quot;</source>
         <translation>Das Erzeugen der Vorlage ist abgeschlossen. Falls Sie diese Vorlage akzeptieren und speichern wollen, klicken Sie auf »Speichern«</translation>
     </message>
@@ -747,10 +763,6 @@
 </context>
 <context>
     <name>TemplateDesignerCdPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>6. Margin:</source>
         <translation>6. Rand:</translation>
@@ -779,20 +791,12 @@
 <context>
     <name>TemplateDesignerContinuousPage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Klicken Sie auf &amp;quot;Abbrechen&amp;quot; zum Beenden oder auf &amp;quot;Zurück&amp;quot;, um mit einem anderen Produkt zu beginnen.&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Klicken Sie auf &amp;quot;Abbrechen&amp;quot; zum Beenden oder auf &amp;quot;Zurück&amp;quot;, um mit einem anderen Produkt zu beginnen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerEllipsePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>2. Height:</source>
         <translation>2. Höhe:</translation>
@@ -813,12 +817,8 @@
 <context>
     <name>TemplateDesignerIntroPage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>This dialog will help you create a custom product template. Let&apos;s get started:&lt;/p>&lt;/body>&lt;/html></source>
-        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Dieser Dialog hilft Ihnen beim Erstellen einer benutzerdefinierten Produktvorlage. Lassen Sie uns beginnen:&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This dialog will help you create a custom product template. Let&apos;s get started:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieser Dialog hilft Ihnen beim Erstellen einer benutzerdefinierten Produktvorlage. Lassen Sie uns beginnen:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Copy/Edit Product</source>
@@ -839,10 +839,6 @@
 </context>
 <context>
     <name>TemplateDesignerNLayoutsPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>A layout is a set of labels or cards that can be arranged in a simple grid.  Most products only need one layout, as in the first example below.  The second example illustrates when two layouts are needed.</source>
         <translation>Ein Layout ist ein Satz von Etiketten oder Karten, die in einem einfachen Raster angeordnet sind. Die meisten Vorlagen verwenden nur ein Layout, wie im ersten Beispiel. Das zweite Beispiel zeigt die Verwendung zweier Layouts.</translation>
@@ -871,10 +867,6 @@
 <context>
     <name>TemplateDesignerNamePage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>(e.g. &quot;Mailing Labels,&quot; &quot;Business Cards,&quot; ...)</source>
         <translation>(z.B. »Adressaufkleber«, »Visitenkarten« …)</translation>
     </message>
@@ -901,10 +893,6 @@
 </context>
 <context>
     <name>TemplateDesignerOneLayoutPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Number across (nx):</source>
         <translation>Anzahl horizontal (nx):</translation>
@@ -937,10 +925,6 @@
 <context>
     <name>TemplateDesignerPageSizePage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Roll width:</source>
         <translation>Rollenbreite:</translation>
     </message>
@@ -960,20 +944,12 @@
 <context>
     <name>TemplateDesignerPathPage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <source>&lt;html>&lt;head/>&lt;body>&lt;p>Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p>&lt;/body>&lt;/html></source>
-        <translation>&lt;html>&lt;head/>&lt;body>&lt;p>Klicken Sie auf &amp;quot;Abbrechen&amp;quot; zum Beenden oder auf &amp;quot;Zurück&amp;quot;, um mit einem anderen Produkt zu beginnen.&lt;/p>&lt;/body>&lt;/html></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click &amp;quot;Cancel&amp;quot; to quit, or click &amp;quot;Back&amp;quot; to begin with a different product.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Klicken Sie auf &amp;quot;Abbrechen&amp;quot; zum Beenden oder auf &amp;quot;Zurück&amp;quot;, um mit einem anderen Produkt zu beginnen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>TemplateDesignerRectPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>4. Horizontal waste:</source>
         <translation>4. Horizontaler Überstand:</translation>
@@ -1010,10 +986,6 @@
 <context>
     <name>TemplateDesignerRoundPage</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>3. Margin</source>
         <translation>3. Rand</translation>
     </message>
@@ -1028,10 +1000,6 @@
 </context>
 <context>
     <name>TemplateDesignerShapePage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Rectangular or square (can have rounded corners)</source>
         <translation>Rechteckig oder quadratisch (auch mit abgerundeten Ecken)</translation>
@@ -1051,10 +1019,6 @@
 </context>
 <context>
     <name>TemplateDesignerTwoLayoutPage</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Distance from left edge (x0):</source>
         <translation>Abstand vom linken Rand (x0):</translation>
@@ -1108,6 +1072,68 @@
     </message>
 </context>
 <context>
+    <name>Variable</name>
+    <message>
+        <source>String</source>
+        <translation>Zeichenkette</translation>
+    </message>
+    <message>
+        <source>Integer</source>
+        <translation>Ganzzahl</translation>
+    </message>
+    <message>
+        <source>Floating Point</source>
+        <translation>Fließkommazahl</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>Nie</translation>
+    </message>
+    <message>
+        <source>Per item</source>
+        <translation>Pro Objekt</translation>
+    </message>
+    <message>
+        <source>Per copy</source>
+        <translation>Pro Kopie</translation>
+    </message>
+    <message>
+        <source>Per page</source>
+        <translation>Pro Seite</translation>
+    </message>
+    <message>
+        <source>Color</source>
+        <translation>Farbe</translation>
+    </message>
+</context>
+<context>
+    <name>VariablesView</name>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Variable hinzufügen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Edit selected variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gewählte Variable bearbeiten&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete selected variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gewählte Variable löschen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+</context>
+<context>
     <name>glabels::AboutDialog</name>
     <message>
         <source>Version</source>
@@ -1127,22 +1153,56 @@
     </message>
 </context>
 <context>
+    <name>glabels::ColorHistory</name>
+    <message>
+        <source>color %1</source>
+        <translation>Farbe %1</translation>
+    </message>
+</context>
+<context>
     <name>glabels::ColorPaletteDialog</name>
+    <message>
+        <source>Standard Colors</source>
+        <translation>Standardfarben</translation>
+    </message>
+    <message>
+        <source>Recent Colors</source>
+        <translation>Kürzlich verwendete Farben</translation>
+    </message>
     <message>
         <source>Custom color...</source>
         <translation>Benutzerdefinierte Farbe …</translation>
-    </message>
-    <message>
-        <source>Merge key...</source>
-        <translation>Datenfeld auswählen …</translation>
     </message>
     <message>
         <source>Custom Color</source>
         <translation>Benutzerdefinierte Farbe</translation>
     </message>
     <message>
-        <source>Custom color #%1</source>
-        <translation>Benutzerdefinierte Farbe Nr. %1</translation>
+        <source>Custom Color %1</source>
+        <extracomment>%1 = color specification in hex. String must not contain a colon (:).</extracomment>
+        <translation>Eigene Farbe %1</translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
+        <translation>Ersetzungsfeld verwenden</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::EditVariableDialog</name>
+    <message>
+        <source>Default</source>
+        <translation>Vorgabe</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::FieldButton</name>
+    <message>
+        <source>Merge fields</source>
+        <translation>Felder zusammenführen</translation>
+    </message>
+    <message>
+        <source>Variables</source>
+        <translation>Variablen</translation>
     </message>
 </context>
 <context>
@@ -1190,6 +1250,10 @@
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
+    <message>
+        <source>Resize</source>
+        <translation>Größe ändern</translation>
+    </message>
 </context>
 <context>
     <name>glabels::MainWindow</name>
@@ -1208,6 +1272,10 @@
     <message>
         <source>Merge</source>
         <translation>Seriendokument</translation>
+    </message>
+    <message>
+        <source>Variables</source>
+        <translation>Variablen</translation>
     </message>
     <message>
         <source>Print</source>
@@ -1268,6 +1336,14 @@
     <message>
         <source>Select project Merge mode</source>
         <translation>Mischeinstellungsmodus wählen</translation>
+    </message>
+    <message>
+        <source>&amp;Variables</source>
+        <translation>&amp;Variablen</translation>
+    </message>
+    <message>
+        <source>Select project Variables mode</source>
+        <translation>Projekt-Variablenmodus wählen</translation>
     </message>
     <message>
         <source>&amp;Print</source>
@@ -1366,20 +1442,8 @@
         <translation>Die Anwendung einrichten</translation>
     </message>
     <message>
-        <source>File</source>
-        <translation>Datei</translation>
-    </message>
-    <message>
-        <source>Change visibility of file toolbar in current window</source>
-        <translation>Die Sichtbarkeit der Werkzeugleiste im aktuellen Fenster ändern</translation>
-    </message>
-    <message>
         <source>Editor</source>
         <translation>Editor</translation>
-    </message>
-    <message>
-        <source>Change visibility of editor toolbar in current window</source>
-        <translation>Die Sichtbarkeit des Editors im aktuellen Fenster ändern</translation>
     </message>
     <message>
         <source>Grid</source>
@@ -1598,10 +1662,6 @@
         <translation>Objekte auf dem Etikett vertikal zentrieren</translation>
     </message>
     <message>
-        <source>&amp;Contents...</source>
-        <translation>&amp;Inhalt …</translation>
-    </message>
-    <message>
         <source>Open gLabels manual</source>
         <translation>Das gLabels-Handbuch öffnen</translation>
     </message>
@@ -1705,6 +1765,46 @@
         <source>Create Barcode</source>
         <translation>Strichcode erzeugen</translation>
     </message>
+    <message>
+        <source>Quick Access</source>
+        <translation>Schnellzugriff</translation>
+    </message>
+    <message>
+        <source>&amp;Report Bug...</source>
+        <translation>Fehler &amp;melden …</translation>
+    </message>
+    <message>
+        <source>Report a bug to the developers</source>
+        <translation>Einen Fehler an die Entwickler melden</translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Quick Access&quot; toolbar in current window</source>
+        <translation>Sichtbarkeit der »Schnellzugriff«-Werkzeugleiste im aktuellen Fenster umschalten</translation>
+    </message>
+    <message>
+        <source>Change visibility of the &quot;Editor&quot; toolbar in current window</source>
+        <translation>Sichtbarkeit der »Editor«-Werkzeugleiste im aktuellen Fenster umschalten</translation>
+    </message>
+    <message>
+        <source>&amp;User Manual...</source>
+        <translation>Ben&amp;utzerhandbuch …</translation>
+    </message>
+    <message>
+        <source>Open Recent</source>
+        <translation>Zuletzt geöffnet</translation>
+    </message>
+    <message>
+        <source>Quick Access Toolbar</source>
+        <translation>Schnellzugriff-Werkzeugleiste</translation>
+    </message>
+    <message>
+        <source>Undo %1</source>
+        <translation>%1 rückgängig machen</translation>
+    </message>
+    <message>
+        <source>Redo %1</source>
+        <translation>%1 wiederholen</translation>
+    </message>
 </context>
 <context>
     <name>glabels::MergeView</name>
@@ -1734,14 +1834,6 @@
     <message>
         <source>Default</source>
         <translation>Vorgabe</translation>
-    </message>
-    <message>
-        <source>Insert Field</source>
-        <translation>Feld einfügen</translation>
-    </message>
-    <message>
-        <source>Key</source>
-        <translation>Schlüssel</translation>
     </message>
     <message>
         <source>Original size</source>
@@ -1864,10 +1956,6 @@
         <translation>Bild festlegen</translation>
     </message>
     <message>
-        <source>Move</source>
-        <translation>Verschieben</translation>
-    </message>
-    <message>
         <source>Size</source>
         <translation>Größe</translation>
     </message>
@@ -1879,6 +1967,26 @@
         <source>Shadow</source>
         <translation>Schattierung</translation>
     </message>
+    <message>
+        <source>Position</source>
+        <translation>Position</translation>
+    </message>
+    <message>
+        <source>Barcode</source>
+        <translation>Barcode</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Zurücksetzen</translation>
+    </message>
+    <message>
+        <source>Insert substitution field</source>
+        <translation>Ersetzungsfeld einfügen</translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
+        <translation>Ersetzungsfeld verwenden</translation>
+    </message>
 </context>
 <context>
     <name>glabels::PrintView</name>
@@ -1889,6 +1997,14 @@
     <message>
         <source>(Will print a total of %1 items on %2 pages.)</source>
         <translation>(Es werden insgesamt %1 Exemplare auf %2 Seiten gedruckt.)</translation>
+    </message>
+    <message>
+        <source>(Will print a total of 1 item on 1 page.)</source>
+        <translation>(1 Objekt auf 1 Seite wird gedruckt)</translation>
+    </message>
+    <message>
+        <source>(Will print a total of %1 items on 1 page.)</source>
+        <translation>(%1 Objekt auf 1 Seite werden gedruckt)</translation>
     </message>
 </context>
 <context>
@@ -1904,6 +2020,25 @@
     <message>
         <source>Change Product</source>
         <translation>Produkt wechseln</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::ReportBugDialog</name>
+    <message>
+        <source>How to Report a Bug</source>
+        <translation>Wie melde ich einen Fehler?</translation>
+    </message>
+    <message>
+        <source>To submit a bug report, click on the button below.  This will open a web browser to the gLabels github issue tracking page.</source>
+        <translation>Um einen Fehlerbericht zu erstellen, klicken Sie auf den untenstehenden Knopf. Dadurch wird ein Webbrowser mit der Github-Seite der Fehlermeldungen für gLabels geöffnet. </translation>
+    </message>
+    <message>
+        <source>Be sure to include a detailed description of the problem and how to recreate it.  Attach any screenshots and/or example glabels project files that may illustrate the problem.</source>
+        <translation>Beschreiben Sie das Problem detailliert und wie der Fehler reproduziert werden kann. Fügen Sie bei Bedarf Bildschirmfotos und Beispiele für gLabels-Projektdateien hinzu, die das Problem illustrieren können. </translation>
+    </message>
+    <message>
+        <source>Before submitting a report, look through the existing issues for similar or related bugs.  If the issue has already been reported, please consider contributing to its report instead.  Otherwise, create a new issue report. Please paste the following information into the issue description.</source>
+        <translation>Schauen Sie vor dem Melden des Fehlers nach vorhandenen Meldungen für ähnliche Fehler. Wenn der Fehler bereits gemeldet wurde, sollten Sie besser dort einen Kommentar hinterlassen. Anderenfalls erstellen Sie einen neuen Fehlerbericht. Bitte fügen Sie die folgenden Informationen in die Beschreibung ein.</translation>
     </message>
 </context>
 <context>
@@ -2100,6 +2235,41 @@
     <message>
         <source>Please enter parameters for your two layouts.</source>
         <translation>Bitte geben Sie die Größenwerte für zwei Layouts an.</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::VariablesView</name>
+    <message>
+        <source>Variables</source>
+        <translation>Variablen</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Increment</source>
+        <translation>Erhöhung</translation>
+    </message>
+    <message>
+        <source>Step Size</source>
+        <translation>Schrittweite</translation>
+    </message>
+    <message>
+        <source>Add Variable</source>
+        <translation>Variable hinzufügen</translation>
+    </message>
+    <message>
+        <source>Edit Variable</source>
+        <translation>Variable bearbeiten</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Wert</translation>
     </message>
 </context>
 <context>
@@ -2481,6 +2651,13 @@
     <message>
         <source>Invalid barcode data</source>
         <translation>Ungültige Barcode-Daten</translation>
+    </message>
+</context>
+<context>
+    <name>glabels::model::ModelImageObject</name>
+    <message>
+        <source>No image</source>
+        <translation>Kein Bild</translation>
     </message>
 </context>
 <context>
