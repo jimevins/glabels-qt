@@ -80,7 +80,6 @@ namespace glabels
 
 
 				QRcode_free( qrcode );
-				QRcode_clearCache();
 
 				return true;
 			}

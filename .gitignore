@@ -34,3 +34,6 @@ core
 *.sav*
 .directory
 TEST-DATA
+SAV*
+OLD*
+

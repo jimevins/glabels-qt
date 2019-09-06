@@ -24,11 +24,10 @@
 
 #include "ColorHistory.h"
 #include "ColorPaletteItem.h"
-#include "ColorPaletteButtonItem.h"
+#include "FieldButton.h"
 
 #include "model/ColorNode.h"
 
-#include <QComboBox>
 #include <QDialog>
 
 
@@ -50,6 +49,7 @@ namespace glabels
 		ColorPaletteDialog( const QString& defaultLabel,
 		                    const QColor&  defaultColor,
 		                    const QColor&  color,
+		                    bool           showUseFieldButton = true,
 		                    QWidget*       parent = nullptr );
 
 
@@ -64,25 +64,23 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
-		void   setColorNode( const model::ColorNode& colorNode );
-		void   setKeys( const QStringList& keyList );
-		void   clearKeys();
+		void setColorNode( const model::ColorNode& colorNode );
+		
+		void setKeys( const merge::Merge*     merge,
+		              const model::Variables* variables );
 
 
 		/////////////////////////////////
 		// Slots
 		/////////////////////////////////
 	private slots:
-		void onDefaultItemActivated();
 		void onPaletteItemActivated( int id );
 		void onHistoryItemActivated( int id );
-		void onCustomColorItemActivated();
+		void onDefaultButtonClicked();
+		void onCustomColorButtonClicked();
+		void onKeySelected( QString key );
 		void onColorHistoryChanged();
-		void onComboIndexChanged( int index );
 
-	protected:
-		void showEvent( QShowEvent* event ) override;
-	
 
 		/////////////////////////////////
 		// Private Methods
@@ -111,8 +109,7 @@ namespace glabels
 		ColorHistory* mColorHistory;
 		ColorPaletteItem* mHistoryItem[PALETTE_COLS];
 
-		QComboBox* mMergeFieldCombo;
-		QStringList mKeys;
+		FieldButton* mFieldButton;
 
 	};
 

@@ -469,6 +469,10 @@ namespace glabels
 						mResizeObject = handle->owner();
 						mResizeHandle = handle;
 						mResizeHonorAspect = event->modifiers() & Qt::ControlModifier;
+						if ( mResizeObject->lockAspectRatio() )
+						{
+							mResizeHonorAspect = !mResizeHonorAspect;
+						}
 
 						mState = ArrowResize;
 					}
@@ -657,6 +661,7 @@ namespace glabels
 				break;
 
 			case ArrowResize:
+				mUndoRedoModel->checkpoint( tr("Resize") );
 				handleResizeMotion( xWorld, yWorld );
 				break;
 
@@ -1157,7 +1162,7 @@ namespace glabels
 	void
 	LabelEditor::drawObjectsLayer( QPainter* painter )
 	{
-		mModel->draw( painter );
+		mModel->draw( painter, true, nullptr, nullptr );
 	}
 
 

@@ -51,6 +51,7 @@ namespace glabels
 			                    const Distance&       y0,
 			                    const Distance&       w,
 			                    const Distance&       h,
+			                    bool                  lockAspectRatio,
 			                    const barcode::Style& bcStyle,
 			                    bool                  bcTextFlag,
 			                    bool                  bcChecksumFlag,
@@ -126,8 +127,16 @@ namespace glabels
 			// Drawing operations
 			///////////////////////////////////////////////////////////////
 		protected:
-			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawShadow( QPainter*      painter,
+			                 bool           inEditor,
+			                 merge::Record* record,
+			                 Variables*     variables ) const override;
+			
+			void drawObject( QPainter*      painter,
+			                 bool           inEditor,
+			                 merge::Record* record,
+			                 Variables*     variables ) const override;
+			
 			QPainterPath hoverPath( double scale ) const override;
 
 
@@ -139,7 +148,12 @@ namespace glabels
 			void update();
 
 			void drawBcInEditor( QPainter* painter, const QColor& color ) const;
-			void drawBc( QPainter* painter, const QColor& color, merge::Record* record ) const;
+
+			void drawBc( QPainter*      painter,
+			             const QColor&  color,
+			             merge::Record* record,
+			             Variables*     variables ) const;
+
 			void drawPlaceHolder( QPainter* painter, const QColor& color, const QString& text ) const;
 
 	

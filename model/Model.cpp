@@ -57,7 +57,18 @@ namespace glabels
 		Model::Model()
 			: mUntitledInstance(0), mModified(true), mRotate(false)
 		{
+			mVariables = new Variables();
 			mMerge = new merge::None();
+
+			connect( mVariables, SIGNAL(changed()), this, SLOT(onVariablesChanged()) );
+		}
+
+
+		Model::Model( merge::Merge* merge, Variables* variables )
+			: mUntitledInstance(0), mModified(true), mRotate(false)
+		{
+			mVariables = variables; // Shared
+			mMerge = merge; // Shared
 		}
 
 
@@ -66,7 +77,8 @@ namespace glabels
 		///
 		Model::~Model()
 		{
-			delete mMerge;
+			qDeleteAll( mObjectList );
+			// Final instance of mMerge and mVariables to be deleted by Model owner
 		}
 
 
@@ -75,7 +87,13 @@ namespace glabels
 		///
 		Model* Model::save() const
 		{
-			auto* savedModel = new Model;
+			auto* savedModel = new Model( mMerge, mVariables ); // mMerge and mVariables shared between models
+
+			if ( mFileName.isEmpty() && mUntitledInstance == 0 )
+			{
+				qDebug() << "Model::save: Warning: called before mUntitledInstance has been initialized: untitled names will differ";
+			}
+
 			savedModel->restore( this );
 
 			return savedModel;
@@ -112,18 +130,12 @@ namespace glabels
 				connect( object, SIGNAL(moved()), this, SLOT(onObjectMoved()) );
 			}
 
-			delete mMerge;
-			mMerge = savedModel->mMerge->clone();
-
 			// Emit signals based on potential changes
 			emit changed();
 			emit selectionChanged();
 			emit modifiedChanged();
 			emit nameChanged();
 			emit sizeChanged();
-			emit mergeChanged();
-			emit mergeSourceChanged();
-			emit mergeSelectionChanged();
 		}
 
 
@@ -277,6 +289,38 @@ namespace glabels
 
 
 		///
+		/// Get directory as a QDir.
+		///
+		QDir Model::dir() const
+		{
+			if ( mFileName.isEmpty() )
+			{
+				return QDir::current();
+			}
+			else
+			{
+				return QFileInfo( mFileName ).absoluteDir();
+			}
+		}
+
+
+		///
+		/// Get directory as a path.
+		///
+		QString Model::dirPath() const
+		{
+			if ( mFileName.isEmpty() )
+			{
+				return QDir::currentPath();
+			}
+			else
+			{
+				return QFileInfo( mFileName ).absolutePath();
+			}
+		}
+
+
+		///
 		/// Get short name.
 		///
 		QString Model::shortName()
@@ -299,6 +343,15 @@ namespace glabels
 				QFileInfo fileInfo( mFileName );
 				return fileInfo.baseName();
 			}
+		}
+
+
+		///
+		/// Get variables object
+		///
+		Variables* Model::variables() const
+		{
+			return mVariables;
 		}
 
 
@@ -448,6 +501,17 @@ namespace glabels
 		{
 			setModified();
 			emit changed();
+		}
+
+
+		///
+		/// Variables Changed Slot
+		///
+		void Model::onVariablesChanged()
+		{
+			setModified();
+			emit changed();
+			emit variablesChanged();
 		}
 
 
@@ -1359,7 +1423,7 @@ namespace glabels
 				QClipboard *clipboard = QApplication::clipboard();
 		
 				QByteArray buffer;
-				XmlLabelCreator::serializeObjects( getSelection(), buffer );
+				XmlLabelCreator::serializeObjects( getSelection(), this, buffer );
 
 				auto *mimeData = new QMimeData;
 				mimeData->setData( MIME_TYPE, buffer );
@@ -1415,7 +1479,7 @@ namespace glabels
 			{
 				// Native objects
 				QByteArray buffer = mimeData->data( MIME_TYPE );
-				QList <ModelObject*> objects = XmlLabelParser::deserializeObjects( buffer );
+				QList <ModelObject*> objects = XmlLabelParser::deserializeObjects( buffer, this );
 
 				unselectAll();
 				foreach ( ModelObject* object, objects )
@@ -1452,11 +1516,11 @@ namespace glabels
 		///
 		/// Draw label objects
 		///
-		void Model::draw( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void Model::draw( QPainter* painter, bool inEditor, merge::Record* record, Variables* variables ) const
 		{
 			foreach ( ModelObject* object, mObjectList )
 			{
-				object->draw( painter, inEditor, record );
+				object->draw( painter, inEditor, record, variables );
 			}
 		}
 

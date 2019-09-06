@@ -427,5 +427,9 @@
         <source>Postage stamp labels</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>CD/DVD spine labels</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

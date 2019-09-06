@@ -10,9 +10,12 @@ before_install:
 install: 
     - sudo apt-get -y install qt59base qt59svg qt59tools qt59translations zlib1g-dev xvfb
     - sudo apt-get -y install barcode libqrencode-dev
+    - wget https://downloads.sourceforge.net/project/zint/zint/2.6.3/zint-2.6.3_final.tar.gz && tar xzf zint-2.6.3_final.tar.gz && cd zint-2.6.3.src && mkdir build && cd build && cmake .. && make && sudo make install && cd ../..
     - source /opt/qt5*/bin/qt5*-env.sh
 
 script:
+  - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
+  - git checkout master   # re-attach to master to satisfy auto versioning
   - mkdir build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
@@ -24,7 +27,7 @@ after_success:
   - wget -c "https://github.com/jimevins/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - export LD_LIBRARY_PATH=/opt/qt*/lib/:$LD_LIBRARY_PATH
+  - export LD_LIBRARY_PATH=/opt/qt*/lib/:/usr/local/lib:$LD_LIBRARY_PATH
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq

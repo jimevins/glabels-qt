@@ -37,6 +37,7 @@ namespace glabels
 			const int     MICRO   = @glabels-qt_VERSION_PATCH@;
 
 			const QString STRING  = "@VERSION_STRING@";
+			const QString LONG_STRING  = "@LONG_VERSION_STRING@";
 		}
 
 	}

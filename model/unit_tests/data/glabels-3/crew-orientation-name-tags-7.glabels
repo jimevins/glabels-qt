@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Glabels-document xmlns="http://glabels.org/xmlns/2.3/">
+  <Template brand="Avery" part="5395" size="US-Letter" description="Name Badge Labels">
+    <Label-rectangle id="0" width="3.375in" height="2.33333in" round="0.1875in" x_waste="0.0625in" y_waste="0.0625in">
+      <Markup-margin size="0.0625in"/>
+      <Layout nx="2" ny="4" x0="0.6875in" y0="0.583333in" dx="3.75in" dy="2.5in"/>
+    </Label-rectangle>
+  </Template>
+  <Objects id="0" rotate="False">
+    <Object-text x="0.150603in" y="0.2625in" w="0in" h="0in" justify="Left" auto_shrink="False" a0="1" a1="0" a2="0" a3="1" a4="0" a5="0">
+      <Span color="0x3366ffff" font_family="Sans" font_size="16" font_weight="Bold" font_italic="False" line_spacing="1">Hello, my name is</Span>
+    </Object-text>
+    <Object-text x="0.150603in" y="0.645in" w="3.1125in" h="0.361111in" justify="Left" auto_shrink="False" a0="1" a1="0" a2="0" a3="1" a4="0" a5="0">
+      <Span color="0x000000ff" font_family="Sans" font_size="20" font_weight="Regular" font_italic="False" line_spacing="1">
+        <Field name="Name"/>
+      </Span>
+    </Object-text>
+    <Object-text x="0.150603in" y="1.14in" w="0in" h="0in" justify="Left" auto_shrink="False" a0="1" a1="0" a2="0" a3="1" a4="0" a5="0">
+      <Span color="0x000000ff" font_family="Sans" font_size="11" font_weight="Regular" font_italic="False" line_spacing="1">Department: <Field name="Department"/></Span>
+    </Object-text>
+    <Object-barcode x="0.150603in" y="1.395in" w="3.06944in" h="0.847222in" backend="built-in" style="Code39" text="True" checksum="True" color="0x000000ff" field="SN" format="10" a0="1" a1="0" a2="0" a3="1" a4="0" a5="0"/>
+  </Objects>
+  <Merge type="Text/Comma/Line1Keys" src="../../../model/unit_tests/data/glabels-3/crew-orientation-list.csv" comment="Hacked to work relatively in unit tests only, should be absolute"/>
+  <Data/>
+</Glabels-document>

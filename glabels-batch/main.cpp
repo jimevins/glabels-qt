@@ -60,7 +60,7 @@ int main( int argc, char **argv )
 	QCoreApplication::setOrganizationName( "glabels.org" );
 	QCoreApplication::setOrganizationDomain( "glabels.org" );
 	QCoreApplication::setApplicationName( "glabels-batch-qt" );
-	QCoreApplication::setApplicationVersion( glabels::model::Version::STRING );
+	QCoreApplication::setApplicationVersion( glabels::model::Version::LONG_STRING );
 
 	//
 	// Setup translators
@@ -175,7 +175,7 @@ int main( int argc, char **argv )
 			}
 
 			glabels::model::PageRenderer renderer( model );
-			renderer.setNCopies( 1 );
+			renderer.setNCopies( parser.value( "copies" ).toInt() );
 			renderer.setStartLabel( parser.value( "first" ).toInt() - 1 );
 			renderer.setPrintOutlines( parser.isSet( "outlines" ) );
 			renderer.setPrintCropMarks( parser.isSet( "crop-marks" ) );

@@ -17,6 +17,28 @@ modifiers          = modifier [ ":" modifiers ] ;
 modifier           = format-modifier | default-value-modifier | new-line-modifier;
 ```
 
+
+Field Names
+-----------
+Field names can refer to either [Document Merge Fields](#document-merge-fields) or [User Variables](#user-variables).  If a document merge field and a user variable share the same name, the document merge field takes precidence.  Its syntax is simply:
+
+```ebnf
+field-name = merge-field-name | user-variable-name ;
+```
+
+### Document Merge Fields
+Document merge fields are the primary source of substitution fields.  A document merge field represents a field from an external data source, such as a CSV file.  The valid syntax for a document merge field name is determined by the merge source, with the following exception.  Merge field names cannot contain either a colon (":") or closing curly bracket ("}").
+
+### User Variables
+Substitution fields can also refer to user variables.  The syntax for valid user variable names is
+
+```ebnf
+letter = "a" | "b" | ... | "z" | "A" | ... | "Z";
+digit = "0" | "1" | "2" | ... | "9";
+user-variable-name = ( letter | "_" ) , { letter | digit | "_" } ;
+```
+
+
 Modifiers
 ---------
 ### Format-Modifier (`%`)
@@ -88,21 +110,4 @@ ${CITY} ${STATE} ${ZIP}
 ```
 `${ADDR2}` would be printed on its own line, only if it is set and non-empty.
 
-
-Document Merge Fields
----------------------
-Document merge fields are the primary source of substitution fields.  A document merge field represents a field from an external data source, such as a CSV file.
-
-User Defined Variables
-----------------------
-Alternatively, merge fields can refer to user defined variables.
-
-Built-In Variables
-------------------
-Potentially, merge fields may also refer to built-in variables.  Candidates include:
- - LABEL_NUMBER
- - PAGE_NUMBER
- - DATE
- - TIME
- - FILE_NAME
 

@@ -49,6 +49,7 @@ namespace glabels
 			                  const Distance&  y0,
 			                  const Distance&  w,
 			                  const Distance&  h,
+			                  bool             lockAspectRatio,
 			                  const TextNode&  filenameNode,
 			                  const QMatrix&   matrix = QMatrix(),
 			                  bool             shadowState = false,
@@ -61,6 +62,7 @@ namespace glabels
 			                  const Distance&  y0,
 			                  const Distance&  w,
 			                  const Distance&  h,
+			                  bool             lockAspectRatio,
 			                  const QString&   filename,
 			                  const QImage&    image,
 			                  const QMatrix&   matrix = QMatrix(),
@@ -74,6 +76,7 @@ namespace glabels
 			                  const Distance&   y0,
 			                  const Distance&   w,
 			                  const Distance&   h,
+			                  bool              lockAspectRatio,
 			                  const QString&    filename,
 			                  const QByteArray& svg,
 			                  const QMatrix&    matrix = QMatrix(),
@@ -132,8 +135,16 @@ namespace glabels
 			// Drawing operations
 			///////////////////////////////////////////////////////////////
 		protected:
-			void drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const override;
-			void drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const override;
+			void drawShadow( QPainter*      painter,
+			                 bool           inEditor,
+			                 merge::Record* record,
+			                 Variables*     variables ) const override;
+			
+			void drawObject( QPainter*      painter,
+			                 bool           inEditor,
+			                 merge::Record* record,
+			                 Variables*     variables ) const override;
+			
 			QPainterPath hoverPath( double scale ) const override;
 
 
@@ -141,7 +152,14 @@ namespace glabels
 			// Private
 			///////////////////////////////////////////////////////////////
 			void loadImage();
-			QImage* createShadowImage( const QColor& color ) const;
+
+			bool readImageFile( const QString& fileName,
+			                    QImage*&       image,
+			                    QSvgRenderer*& svgRenderer,
+			                    QByteArray&    svg ) const;
+
+			QImage* createShadowImage( const QImage& image,
+			                           const QColor& color ) const;
 	
 
 			///////////////////////////////////////////////////////////////

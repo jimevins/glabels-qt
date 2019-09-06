@@ -54,6 +54,7 @@ namespace glabels
 		                                        const Distance&  y0,
 		                                        const Distance&  w,
 		                                        const Distance&  h,
+		                                        bool             lockAspectRatio,
 		                                        const Distance&  lineWidth,
 		                                        const ColorNode& lineColorNode,
 		                                        const ColorNode& fillColorNode,
@@ -63,7 +64,7 @@ namespace glabels
 		                                        const Distance&  shadowY,
 		                                        double           shadowOpacity,
 		                                        const ColorNode& shadowColorNode )
-		: ModelShapeObject( x0, y0, w, h,
+		: ModelShapeObject( x0, y0, w, h, lockAspectRatio,
 		                    lineWidth, lineColorNode, fillColorNode,
 		                    matrix,
 		                    shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
@@ -103,11 +104,14 @@ namespace glabels
 		///
 		/// Draw shadow of object
 		///
-		void ModelEllipseObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelEllipseObject::drawShadow( QPainter*      painter,
+		                                     bool           inEditor,
+		                                     merge::Record* record,
+		                                     Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor fillColor = mFillColorNode.color( record );
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor fillColor = mFillColorNode.color( record, variables );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 
 			shadowColor.setAlphaF( mShadowOpacity );
 
@@ -148,10 +152,13 @@ namespace glabels
 		///
 		/// Draw object itself
 		///
-		void ModelEllipseObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelEllipseObject::drawObject( QPainter*      painter,
+		                                     bool           inEditor,
+		                                     merge::Record* record,
+		                                     Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor fillColor = mFillColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor fillColor = mFillColorNode.color( record, variables );
 
 			painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
 			painter->setBrush( fillColor );

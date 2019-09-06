@@ -111,7 +111,8 @@ namespace glabels
 						delete label;
 						return nullptr;
 					}
-					label->setTmplate( tmplate );
+					label->setTmplate( tmplate ); // Copies arg
+					delete tmplate;
 				}
 				else if ( tagName == "Objects" )
 				{
@@ -229,7 +230,7 @@ namespace glabels
 			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
 			const ColorNode shadowColorNode( field_flag, color, key );
 
-			return new ModelBoxObject( x0, y0, w, h,
+			return new ModelBoxObject( x0, y0, w, h, false /*lockAspectRatio*/,
 			                           lineWidth, lineColorNode,
 			                           fillColorNode,
 						   affineTransformation,
@@ -276,7 +277,7 @@ namespace glabels
 			color      = XmlUtil::getUIntAttr( node, "shadow_color", 0 );
 			const ColorNode shadowColorNode( field_flag, color, key );
 
-			return new ModelEllipseObject( x0, y0, w, h,
+			return new ModelEllipseObject( x0, y0, w, h, false /*lockAspectRatio*/,
 			                               lineWidth, lineColorNode,
 			                               fillColorNode,
 						       affineTransformation,
@@ -357,27 +358,27 @@ namespace glabels
 
 			if ( filenameNode.isField() )
 			{
-				return new ModelImageObject( x0, y0, w, h,
+				return new ModelImageObject( x0, y0, w, h, false /*lockAspectRatio*/,
 				                             filenameNode,
 							     affineTransformation,
 				                             shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
 			if ( data.hasImage( filename ) )
 			{
-				return new ModelImageObject( x0, y0, w, h,
+				return new ModelImageObject( x0, y0, w, h, false /*lockAspectRatio*/,
 							     filename, data.getImage( filename ),
 							     affineTransformation,
 							     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
 			if ( data.hasSvg( filename ) )
 			{
-				return new ModelImageObject( x0, y0, w, h,
+				return new ModelImageObject( x0, y0, w, h, false /*lockAspectRatio*/,
 							     filename, data.getSvg( filename ),
 							     affineTransformation,
 							     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
 			}
 			qWarning() << "Embedded file" << filename << "missing. Trying actual file.";
-			return new ModelImageObject( x0, y0, w, h,
+			return new ModelImageObject( x0, y0, w, h, false /*lockAspectRatio*/,
 						     filenameNode,
 						     affineTransformation,
 						     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );
@@ -396,10 +397,34 @@ namespace glabels
 			const Distance h = XmlUtil::getLengthAttr( node, "h", 0 );
 
 			/* barcode attrs */
-			const auto backend = XmlUtil::getStringAttr( node, "backend", "");
+			auto backend = XmlUtil::getStringAttr( node, "backend", "" );
 			// one major difference between glabels-3.0.dtd and glabels-4.0.dtd
 			// is the lowercase of the style names
-			const auto style = XmlUtil::getStringAttr( node, "style", "").toLower();
+			auto style = XmlUtil::getStringAttr( node, "style", "" ).toLower();
+
+			if ( backend == "built-in" )
+			{
+				backend = "";
+			}
+			else if ( backend == "libiec16022" )
+			{
+				backend = "";
+				style = "datamatrix";
+			}
+			else if ( backend == "libqrencode" )
+			{
+				if ( barcode::Backends::style( "qrencode", "qrcode" ) != barcode::Backends::defaultStyle() )
+				{
+					backend = "qrencode";
+					style = "qrcode";
+				}
+				else
+				{
+					// Will use defaultStyle if Zint not available
+					backend = "zint";
+					style = "qr";
+				}
+			}
 
 			const barcode::Style bcStyle = barcode::Backends::style( backend, style );
 			const bool bcTextFlag = XmlUtil::getBoolAttr( node, "text", true );
@@ -419,7 +444,7 @@ namespace glabels
 			/* affine attrs */
 			const auto affineTransformation = parseAffineTransformation(node);
 
-			return new ModelBarcodeObject( x0, y0, w, h,
+			return new ModelBarcodeObject( x0, y0, w, h, false /*lockAspectRatio*/,
 			                               bcStyle, bcTextFlag, bcChecksumFlag, bcData, bcColorNode,
 						       affineTransformation );
 		}
@@ -554,7 +579,7 @@ namespace glabels
 			}
 			const QString text = document.toPlainText();
 
-			auto textNode = new ModelTextObject( x0, y0, w, h, text,
+			auto textNode = new ModelTextObject( x0, y0, w, h, false /*lockAspectRatio*/, text,
 							     fontFamily, fontSize, fontWeight, fontItalicFlag, false,
 							     textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
 							     textAutoShrink,

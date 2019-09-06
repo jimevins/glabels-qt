@@ -68,7 +68,7 @@ namespace glabels
 		                                  const Distance&  shadowY,
 		                                  double           shadowOpacity,
 		                                  const ColorNode& shadowColorNode )
-		: ModelObject( x0, y0, dx, dy,
+		: ModelObject( x0, y0, dx, dy, false /*lockAspectRatio*/,
 		               matrix,
 		               shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode )
 		{
@@ -186,10 +186,13 @@ namespace glabels
 		///
 		/// Draw shadow of object
 		///
-		void ModelLineObject::drawShadow( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelLineObject::drawShadow( QPainter*      painter,
+		                                  bool           inEditor,
+		                                  merge::Record* record,
+		                                  Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
-			QColor shadowColor = mShadowColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
+			QColor shadowColor = mShadowColorNode.color( record, variables );
 
 			shadowColor.setAlphaF( mShadowOpacity );
 
@@ -204,9 +207,12 @@ namespace glabels
 		///
 		/// Draw object itself
 		///
-		void ModelLineObject::drawObject( QPainter* painter, bool inEditor, merge::Record* record ) const
+		void ModelLineObject::drawObject( QPainter*      painter,
+		                                  bool           inEditor,
+		                                  merge::Record* record,
+		                                  Variables*     variables ) const
 		{
-			QColor lineColor = mLineColorNode.color( record );
+			QColor lineColor = mLineColorNode.color( record, variables );
 
 			painter->setPen( QPen( lineColor, mLineWidth.pt() ) );
 			painter->drawLine( 0, 0, mW.pt(), mH.pt() );

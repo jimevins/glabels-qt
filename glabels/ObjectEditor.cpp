@@ -30,12 +30,14 @@
 #include "model/ModelImageObject.h"
 #include "model/ModelLineObject.h"
 #include "model/ModelTextObject.h"
+#include "model/FileUtil.h"
 #include "model/Settings.h"
 #include "model/Size.h"
 
 #include "merge/Merge.h"
 
 #include <QFileDialog>
+#include <QDir>
 #include <QtMath>
 #include <QtDebug>
 
@@ -67,9 +69,9 @@ namespace glabels
 		barcodeColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 		shadowColorButton->init( tr("Default"), QColor(0,0,0,255), QColor(0,0,0,255) );
 
-		textInsertFieldCombo->setName( tr("Insert Field") );
-		barcodeInsertFieldCombo->setName( tr("Insert Field") );
-		imageFieldCombo->setName( tr("Key") );
+		textInsertFieldButton->setText( tr("Insert substitution field") );
+		barcodeInsertFieldButton->setText( tr("Insert substitution field") );
+		imageFieldButton->setText( tr("Use substitution field") );
 
 		setEnabled( false );
 		hidePages();
@@ -93,11 +95,14 @@ namespace glabels
 		         this, SLOT(onSelectionChanged()) );
 		
 		connect( mModel, SIGNAL(mergeSourceChanged()),
-		         this, SLOT(onMergeSourceChanged()) );
+		         this, SLOT(onFieldsAvailableChanged()) );
+
+		connect( mModel, SIGNAL(variablesChanged()),
+		         this, SLOT(onFieldsAvailableChanged()) );
 
 		onLabelSizeChanged();
 		onSelectionChanged();
-		onMergeSourceChanged();
+		onFieldsAvailableChanged();
 	}
 
 	
@@ -122,12 +127,12 @@ namespace glabels
 
 			if ( filenameNode.isField() )
 			{
-				QString field = QString("${%1}").arg( filenameNode.data() );
-				imageFilenameLineEdit->setText( field );
+				imageFilenameLineEdit->setText( QString("${%1}").arg(filenameNode.data()) );
 			}
 			else
 			{
-				imageFilenameLineEdit->setText( filenameNode.data() );
+				QString fn = model::FileUtil::makeRelativeIfInDir( mModel->dir(), filenameNode.data() );
+				imageFilenameLineEdit->setText( fn );
 			}
 
 			mBlocked = false;			
@@ -188,6 +193,7 @@ namespace glabels
 
 			sizeWSpin->setValue( mObject->w().inUnits(mUnits) );
 			sizeHSpin->setValue( mObject->h().inUnits(mUnits) );
+			sizeAspectCheck->setChecked( mObject->lockAspectRatio() );
 
 			model::Size originalSize = mObject->naturalSize();
 			QString originalSizeString = QString( "%1:  %2 x %3 %4" )
@@ -454,8 +460,8 @@ namespace glabels
 
 					loadTextPage();
 					loadPositionPage();
+					loadRectSizePage();
 					loadShadowPage();
-                                        loadRectSizePage();
 				
 					setEnabled( true );
 				}
@@ -473,6 +479,7 @@ namespace glabels
 
 					loadBarcodePage();
 					loadPositionPage();
+					loadRectSizePage();
 				
 					setEnabled( true );
 				}
@@ -497,17 +504,19 @@ namespace glabels
 	}
 
 	
-	void ObjectEditor::onMergeSourceChanged()
+	void ObjectEditor::onFieldsAvailableChanged()
 	{
 		if ( !mBlocked )
 		{
-			QStringList keys = mModel->merge()->keys();
-			lineColorButton->setKeys( keys );
-			fillColorButton->setKeys( keys );
-			textInsertFieldCombo->setKeys( keys );
-			barcodeInsertFieldCombo->setKeys( keys );
-			imageFieldCombo->setKeys( keys );
-			shadowColorButton->setKeys( keys );
+			lineColorButton->setKeys( mModel->merge(), mModel->variables() );
+			fillColorButton->setKeys( mModel->merge(), mModel->variables() );
+			textColorButton->setKeys( mModel->merge(), mModel->variables() );
+			barcodeColorButton->setKeys( mModel->merge(), mModel->variables() );
+			shadowColorButton->setKeys( mModel->merge(), mModel->variables() );
+
+			textInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
+			barcodeInsertFieldButton->setKeys( mModel->merge(), mModel->variables() );
+			imageFieldButton->setKeys( mModel->merge(), mModel->variables() );
 		}
 	}
 
@@ -618,8 +627,11 @@ namespace glabels
 
 	void ObjectEditor::onImageKeySelected( QString key )
 	{
-		mUndoRedoModel->checkpoint( tr("Set image") );
-		mObject->setFilenameNode( model::TextNode( true, key ) );
+		if ( mObject )
+		{
+			mUndoRedoModel->checkpoint( tr("Set image") );
+			mObject->setFilenameNode( model::TextNode( true, key ) );
+		}
 	}
 
 
@@ -629,7 +641,7 @@ namespace glabels
 		{
 			mBlocked = true;
 
-			mUndoRedoModel->checkpoint( tr("Move") );
+			mUndoRedoModel->checkpoint( tr("Position") );
 		
 			model::Distance x = model::Distance(posXSpin->value(), mUnits);
 			model::Distance y = model::Distance(posYSpin->value(), mUnits);
@@ -654,6 +666,7 @@ namespace glabels
 				
 			if ( sizeAspectCheck->isChecked() )
 			{
+				mObject->setLockAspectRatio( true );
 				if ( fabs(spinW - mObject->w()) > fabs(spinH - mObject->h()) )
 				{
 					mObject->setWHonorAspect( spinW );
@@ -667,6 +680,7 @@ namespace glabels
 			}
 			else
 			{
+				mObject->setLockAspectRatio( false );
 				mObject->setSize( spinW, spinH );
 			}
 			
@@ -740,6 +754,8 @@ namespace glabels
 		{
 			mBlocked = true;
 
+			mUndoRedoModel->checkpoint( tr("Barcode") );
+
 			barcode::Style bcStyle = barcodeStyleButton->bcStyle();
 
 			barcodeShowTextCheck->setEnabled( bcStyle.textOptional() );
@@ -774,6 +790,8 @@ namespace glabels
 
 	void ObjectEditor::onResetImageSize()
 	{
+		mUndoRedoModel->checkpoint( tr("Reset") );
+
 		mObject->setSize( mObject->naturalSize() );
 	}
 

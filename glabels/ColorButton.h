@@ -58,13 +58,18 @@ namespace glabels
 		// Public Methods
 		/////////////////////////////////
 	public:
-		void   init( const QString& defaultLabel, const QColor& defaultColor, const QColor& color );
+		void   init( const QString& defaultLabel,
+		             const QColor&  defaultColor,
+		             const QColor&  color,
+		             bool           showUseFieldButton = true );
+		
 		void   setColorNode( model::ColorNode colorNode );
 		void   setColor( QColor color );
 		void   setToDefault();
 		model::ColorNode colorNode();
-		void   setKeys( const QList<QString> keyList );
-		void   clearKeys();
+
+		void setKeys( const merge::Merge*     merge,
+		              const model::Variables* variables );
 
 
 		/////////////////////////////////
