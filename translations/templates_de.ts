@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE TS []>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>XmlStrings</name>
     <message>
@@ -26,14 +24,6 @@
     <message>
         <source>Barcode labels</source>
         <translation>Strichcode-Etiketten</translation>
-    </message>
-    <message>
-        <source>Bookplate labels</source>
-        <translation>Exlibris-Aufkleber</translation>
-    </message>
-    <message>
-        <source>Bottle/jar labels</source>
-        <translation>Flaschen-/Gefäßetiketten</translation>
     </message>
     <message>
         <source>Business card CD labels</source>
@@ -72,18 +62,6 @@
         <translation>CD/DVD-Etiketten, verkleinert</translation>
     </message>
     <message>
-        <source>CD/DVD insert</source>
-        <translation>CD/DVD-Einleger</translation>
-    </message>
-    <message>
-        <source>CD/DVD insert (back)</source>
-        <translation>CD/DVD-Einleger (hinten)</translation>
-    </message>
-    <message>
-        <source>CD/DVD insert (front)</source>
-        <translation>CD/DVD-Einleger (vorn)</translation>
-    </message>
-    <message>
         <source>CD/DVD labels</source>
         <translation>CD/DVD-Etiketten</translation>
     </message>
@@ -100,10 +78,6 @@
         <translation>CD/DVD-Etiketten (Disk-rechteckig)</translation>
     </message>
     <message>
-        <source>CD/DVD labels (spine labels)</source>
-        <translation>CD/DVD-Etiketten (Box-Schmalseite)</translation>
-    </message>
-    <message>
         <source>CD/DVD labels (spine only)</source>
         <translation>CD/DVD-Etiketten (nur Box-Schmalseite)</translation>
     </message>
@@ -116,20 +90,12 @@
         <translation>CD/DVD-Einleger</translation>
     </message>
     <message>
-        <source>Candle labels</source>
-        <translation>Kerzenetiketten</translation>
-    </message>
-    <message>
         <source>Candy labels</source>
         <translation>Etiketten für Süßigkeiten</translation>
     </message>
     <message>
         <source>Cassette labels</source>
         <translation>Kassettenaufkleber</translation>
-    </message>
-    <message>
-        <source>Classification labels</source>
-        <translation>Klassifizierungsetiketten</translation>
     </message>
     <message>
         <source>Coffee and tea labels</source>
@@ -144,10 +110,6 @@
         <translation>DLT Etiketten</translation>
     </message>
     <message>
-        <source>DVD insert</source>
-        <translation>DVD-Einleger</translation>
-    </message>
-    <message>
         <source>Digital media labels</source>
         <translation>Etiketten für digitale Medien</translation>
     </message>
@@ -160,20 +122,12 @@
         <translation>Diskettenaufkleber</translation>
     </message>
     <message>
-        <source>Divider labels</source>
-        <translation>Etiketten für Trennblätter</translation>
-    </message>
-    <message>
         <source>Elliptical labels</source>
         <translation>Elliptische Etiketten</translation>
     </message>
     <message>
         <source>File folder labels</source>
         <translation>Aktenordner-Etiketten</translation>
-    </message>
-    <message>
-        <source>File labels</source>
-        <translation>Etiketten für Ordner</translation>
     </message>
     <message>
         <source>Filing labels</source>
@@ -220,24 +174,12 @@
         <translation>Etiketten für Archivierungsordner</translation>
     </message>
     <message>
-        <source>Index cards</source>
-        <translation>Indexkarten</translation>
-    </message>
-    <message>
         <source>Labels</source>
         <translation>Etiketten</translation>
     </message>
     <message>
         <source>Large address labels</source>
         <translation>Große Adressaufkleber</translation>
-    </message>
-    <message>
-        <source>Large arch file labels</source>
-        <translation>Große Etiketten für Archivierungsordner</translation>
-    </message>
-    <message>
-        <source>Large round labels</source>
-        <translation>Große runde Eitiketten</translation>
     </message>
     <message>
         <source>Lever arch file labels</source>
@@ -320,14 +262,6 @@
         <translation>Fotoprodukte</translation>
     </message>
     <message>
-        <source>Post cards</source>
-        <translation>Postkarten</translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation>Etiketten für Briefmarken</translation>
-    </message>
-    <message>
         <source>Printable mousepad</source>
         <translation>Bedruckbares Mauspad</translation>
     </message>
@@ -364,36 +298,12 @@
         <translation>Zielscheiben</translation>
     </message>
     <message>
-        <source>Tent cards</source>
-        <translation>Klappkarten</translation>
-    </message>
-    <message>
         <source>Trapezoid labels</source>
         <translation>Trapezförmige Etiketten</translation>
     </message>
     <message>
         <source>Triangular labels</source>
         <translation>Dreieckige Etiketten</translation>
-    </message>
-    <message>
-        <source>Tube labels</source>
-        <translation>Tubenetiketten</translation>
-    </message>
-    <message>
-        <source>VHS face labels</source>
-        <translation>VHS-Etiketten, Vorderseite</translation>
-    </message>
-    <message>
-        <source>VHS insert</source>
-        <translation>VHS-Einleger</translation>
-    </message>
-    <message>
-        <source>VHS labels</source>
-        <translation>VHS-Etiketten</translation>
-    </message>
-    <message>
-        <source>VHS-C insert</source>
-        <translation>VHS-C-Einleger</translation>
     </message>
     <message>
         <source>Video labels (face only)</source>
@@ -408,6 +318,94 @@
         <translation>Etiketten für Videokassetten (Schmalseite)</translation>
     </message>
     <message>
+        <source>Zip disc labels</source>
+        <translation>Zip-Diskettenaufkleber</translation>
+    </message>
+    <message>
+        <source>Bookplate labels</source>
+        <translation>Exlibris-Aufkleber</translation>
+    </message>
+    <message>
+        <source>Bottle/jar labels</source>
+        <translation>Flaschen-/Gefäßetiketten</translation>
+    </message>
+    <message>
+        <source>Candle labels</source>
+        <translation>Kerzenetiketten</translation>
+    </message>
+    <message>
+        <source>Classification labels</source>
+        <translation>Klassifizierungsetiketten</translation>
+    </message>
+    <message>
+        <source>File labels</source>
+        <translation>Etiketten für Ordner</translation>
+    </message>
+    <message>
+        <source>VHS face labels</source>
+        <translation>VHS-Etiketten, Vorderseite</translation>
+    </message>
+    <message>
+        <source>VHS labels</source>
+        <translation>VHS-Etiketten</translation>
+    </message>
+    <message>
+        <source>Large arch file labels</source>
+        <translation>Große Etiketten für Archivierungsordner</translation>
+    </message>
+    <message>
+        <source>Tube labels</source>
+        <translation>Tubenetiketten</translation>
+    </message>
+    <message>
+        <source>CD/DVD insert</source>
+        <translation>CD/DVD-Einleger</translation>
+    </message>
+    <message>
+        <source>CD/DVD insert (back)</source>
+        <translation>CD/DVD-Einleger (hinten)</translation>
+    </message>
+    <message>
+        <source>CD/DVD insert (front)</source>
+        <translation>CD/DVD-Einleger (vorn)</translation>
+    </message>
+    <message>
+        <source>CD/DVD labels (spine labels)</source>
+        <translation>CD/DVD-Etiketten (Box-Schmalseite)</translation>
+    </message>
+    <message>
+        <source>DVD insert</source>
+        <translation>DVD-Einleger</translation>
+    </message>
+    <message>
+        <source>Divider labels</source>
+        <translation>Etiketten für Trennblätter</translation>
+    </message>
+    <message>
+        <source>Index cards</source>
+        <translation>Indexkarten</translation>
+    </message>
+    <message>
+        <source>Large round labels</source>
+        <translation>Große runde Eitiketten</translation>
+    </message>
+    <message>
+        <source>Post cards</source>
+        <translation>Postkarten</translation>
+    </message>
+    <message>
+        <source>Tent cards</source>
+        <translation>Klappkarten</translation>
+    </message>
+    <message>
+        <source>VHS insert</source>
+        <translation>VHS-Einleger</translation>
+    </message>
+    <message>
+        <source>VHS-C insert</source>
+        <translation>VHS-C-Einleger</translation>
+    </message>
+    <message>
         <source>Video-8 insert</source>
         <translation>Video8-Einleger</translation>
     </message>
@@ -420,12 +418,16 @@
         <translation>Zip-Disketteneinleger</translation>
     </message>
     <message>
-        <source>Zip disc labels</source>
-        <translation>Zip-Diskettenaufkleber</translation>
-    </message>
-    <message>
         <source>Continuous label tape</source>
         <translation>Endlosetikettenrolle</translation>
+    </message>
+    <message>
+        <source>Postage stamp labels</source>
+        <translation>Etiketten für Briefmarken</translation>
+    </message>
+    <message>
+        <source>CD/DVD spine labels</source>
+        <translation>CD/DVD-Etiketten (Box-Schmalseite)</translation>
     </message>
 </context>
 </TS>

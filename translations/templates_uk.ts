@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE TS []>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="uk" version="2.1">
 <context>
     <name>XmlStrings</name>
     <message>
@@ -26,14 +24,6 @@
     <message>
         <source>Barcode labels</source>
         <translation>Наліпки із штрихкодами</translation>
-    </message>
-    <message>
-        <source>Bookplate labels</source>
-        <translation>Етикетки до книжкових полиць</translation>
-    </message>
-    <message>
-        <source>Bottle/jar labels</source>
-        <translation>Етикетки до пляшок і банок</translation>
     </message>
     <message>
         <source>Business card CD labels</source>
@@ -72,18 +62,6 @@
         <translation>Етикетки до центральної частини CD/DVD</translation>
     </message>
     <message>
-        <source>CD/DVD insert</source>
-        <translation>Вставка CD/DVD</translation>
-    </message>
-    <message>
-        <source>CD/DVD insert (back)</source>
-        <translation>Вставка CD/DVD (задня)</translation>
-    </message>
-    <message>
-        <source>CD/DVD insert (front)</source>
-        <translation>Вставка CD/DVD (передня)</translation>
-    </message>
-    <message>
         <source>CD/DVD labels</source>
         <translation>Етикетки до CD/DVD</translation>
     </message>
@@ -100,10 +78,6 @@
         <translation>Етикетки до CD/DVD (прямокутні)</translation>
     </message>
     <message>
-        <source>CD/DVD labels (spine labels)</source>
-        <translation>Етикетки CD/DVD (етикетки-корінці)</translation>
-    </message>
-    <message>
         <source>CD/DVD labels (spine only)</source>
         <translation>Етикетки до CD/DVD (лише корінець)</translation>
     </message>
@@ -116,20 +90,12 @@
         <translation>Лоток CD/DVD</translation>
     </message>
     <message>
-        <source>Candle labels</source>
-        <translation>Етикетки до варення</translation>
-    </message>
-    <message>
         <source>Candy labels</source>
         <translation>Етикетки до варення</translation>
     </message>
     <message>
         <source>Cassette labels</source>
         <translation>Етикетки до касет</translation>
-    </message>
-    <message>
-        <source>Classification labels</source>
-        <translation>Класифікаційні етикетки</translation>
     </message>
     <message>
         <source>Coffee and tea labels</source>
@@ -144,10 +110,6 @@
         <translation>Етикетки до DLT</translation>
     </message>
     <message>
-        <source>DVD insert</source>
-        <translation>Вставка DVD</translation>
-    </message>
-    <message>
         <source>Digital media labels</source>
         <translation>Етикетки до цифрових носіїв даних</translation>
     </message>
@@ -160,20 +122,12 @@
         <translation>Етикетки до дискет</translation>
     </message>
     <message>
-        <source>Divider labels</source>
-        <translation>Етикетки-роздільники</translation>
-    </message>
-    <message>
         <source>Elliptical labels</source>
         <translation>Еліптичні етикетки</translation>
     </message>
     <message>
         <source>File folder labels</source>
         <translation>Етикетки до тек файлів</translation>
-    </message>
-    <message>
-        <source>File labels</source>
-        <translation>Етикетки до файлів</translation>
     </message>
     <message>
         <source>Filing labels</source>
@@ -220,24 +174,12 @@
         <translation>Ідентифікаційні етикетки</translation>
     </message>
     <message>
-        <source>Index cards</source>
-        <translation>Картки покажчика</translation>
-    </message>
-    <message>
         <source>Labels</source>
         <translation>Етикетки</translation>
     </message>
     <message>
         <source>Large address labels</source>
         <translation>Великі наліпки з адресами</translation>
-    </message>
-    <message>
-        <source>Large arch file labels</source>
-        <translation>Етикетки до великих архівних файлів</translation>
-    </message>
-    <message>
-        <source>Large round labels</source>
-        <translation>Великі круглі етикетки</translation>
     </message>
     <message>
         <source>Lever arch file labels</source>
@@ -320,14 +262,6 @@
         <translation>Фотопродукти</translation>
     </message>
     <message>
-        <source>Post cards</source>
-        <translation>Поштові картки</translation>
-    </message>
-    <message>
-        <source>Postage stamp labels</source>
-        <translation type="unfinished">Postage stamp labels</translation>
-    </message>
-    <message>
         <source>Printable mousepad</source>
         <translation>Друкований килимок для миші</translation>
     </message>
@@ -364,36 +298,12 @@
         <translation>Наліпки призначення</translation>
     </message>
     <message>
-        <source>Tent cards</source>
-        <translation>Картки-розкладачки</translation>
-    </message>
-    <message>
         <source>Trapezoid labels</source>
         <translation>Етикетки-трапеції</translation>
     </message>
     <message>
         <source>Triangular labels</source>
         <translation>Трикутні етикетки</translation>
-    </message>
-    <message>
-        <source>Tube labels</source>
-        <translation>Етикетка до труби</translation>
-    </message>
-    <message>
-        <source>VHS face labels</source>
-        <translation>Етикетки до лицевої частини VHS</translation>
-    </message>
-    <message>
-        <source>VHS insert</source>
-        <translation>Вставка VHS</translation>
-    </message>
-    <message>
-        <source>VHS labels</source>
-        <translation>Етикетки до VHS</translation>
-    </message>
-    <message>
-        <source>VHS-C insert</source>
-        <translation>Вставка VHS-C</translation>
     </message>
     <message>
         <source>Video labels (face only)</source>
@@ -408,6 +318,94 @@
         <translation>Етикетки до зворотного боку відеоплівки</translation>
     </message>
     <message>
+        <source>Zip disc labels</source>
+        <translation>Етикетки до Zip-дисків</translation>
+    </message>
+    <message>
+        <source>Bookplate labels</source>
+        <translation>Етикетки до книжкових полиць</translation>
+    </message>
+    <message>
+        <source>Bottle/jar labels</source>
+        <translation>Етикетки до пляшок і банок</translation>
+    </message>
+    <message>
+        <source>Candle labels</source>
+        <translation>Етикетки до варення</translation>
+    </message>
+    <message>
+        <source>Classification labels</source>
+        <translation>Класифікаційні етикетки</translation>
+    </message>
+    <message>
+        <source>File labels</source>
+        <translation>Етикетки до файлів</translation>
+    </message>
+    <message>
+        <source>VHS face labels</source>
+        <translation>Етикетки до лицевої частини VHS</translation>
+    </message>
+    <message>
+        <source>VHS labels</source>
+        <translation>Етикетки до VHS</translation>
+    </message>
+    <message>
+        <source>Large arch file labels</source>
+        <translation>Етикетки до великих архівних файлів</translation>
+    </message>
+    <message>
+        <source>Tube labels</source>
+        <translation>Етикетка до труби</translation>
+    </message>
+    <message>
+        <source>CD/DVD insert</source>
+        <translation>Вставка CD/DVD</translation>
+    </message>
+    <message>
+        <source>CD/DVD insert (back)</source>
+        <translation>Вставка CD/DVD (задня)</translation>
+    </message>
+    <message>
+        <source>CD/DVD insert (front)</source>
+        <translation>Вставка CD/DVD (передня)</translation>
+    </message>
+    <message>
+        <source>CD/DVD labels (spine labels)</source>
+        <translation>Етикетки CD/DVD (етикетки-корінці)</translation>
+    </message>
+    <message>
+        <source>DVD insert</source>
+        <translation>Вставка DVD</translation>
+    </message>
+    <message>
+        <source>Divider labels</source>
+        <translation>Етикетки-роздільники</translation>
+    </message>
+    <message>
+        <source>Index cards</source>
+        <translation>Картки покажчика</translation>
+    </message>
+    <message>
+        <source>Large round labels</source>
+        <translation>Великі круглі етикетки</translation>
+    </message>
+    <message>
+        <source>Post cards</source>
+        <translation>Поштові картки</translation>
+    </message>
+    <message>
+        <source>Tent cards</source>
+        <translation>Картки-розкладачки</translation>
+    </message>
+    <message>
+        <source>VHS insert</source>
+        <translation>Вставка VHS</translation>
+    </message>
+    <message>
+        <source>VHS-C insert</source>
+        <translation>Вставка VHS-C</translation>
+    </message>
+    <message>
         <source>Video-8 insert</source>
         <translation>Вставка Video-8</translation>
     </message>
@@ -420,12 +418,16 @@
         <translation>Вкладка Zip-диска</translation>
     </message>
     <message>
-        <source>Zip disc labels</source>
-        <translation>Етикетки до Zip-дисків</translation>
+        <source>Continuous label tape</source>
+        <translation>Неперервна стрічка із наліпками</translation>
     </message>
     <message>
-        <source>Continuous label tape</source>
-        <translation type="unfinished">Continuous label tape</translation>
+        <source>Postage stamp labels</source>
+        <translation>Наліпки — поштові штампи</translation>
+    </message>
+    <message>
+        <source>CD/DVD spine labels</source>
+        <translation>Бічні наліпки CD/DVD</translation>
     </message>
 </context>
 </TS>
