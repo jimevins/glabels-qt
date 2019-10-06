@@ -1,48 +1,125 @@
 language: cpp
-compiler: gcc
-sudo: require
-dist: trusty
 
-before_install:
-    - sudo add-apt-repository ppa:beineri/opt-qt591-trusty -y
-    - sudo apt-get update -qq
-    
-install: 
-    - sudo apt-get -y install qt59base qt59svg qt59tools qt59translations zlib1g-dev xvfb
-    - sudo apt-get -y install barcode libqrencode-dev
-    - wget https://downloads.sourceforge.net/project/zint/zint/2.6.3/zint-2.6.3_final.tar.gz && tar xzf zint-2.6.3_final.tar.gz && cd zint-2.6.3.src && mkdir build && cd build && cmake .. && make && sudo make install && cd ../..
-    - source /opt/qt5*/bin/qt5*-env.sh
-
-script:
-  - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
-  - git checkout master   # re-attach to master to satisfy auto versioning
-  - mkdir build
-  - cd build
-  - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  - make -j4
-  - xvfb-run make test
-  - sudo make DESTDIR=appdir install ; sudo chown -R $USER appdir ; find appdir/
-
-after_success:
-  - wget -c "https://github.com/jimevins/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
-  - chmod a+x linuxdeployqt*.AppImage
-  - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - export LD_LIBRARY_PATH=/opt/qt*/lib/:/usr/local/lib:$LD_LIBRARY_PATH
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
-  - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
-  - ls -lh ./gLabels*.AppImage
-  - mv ./gLabels*.AppImage glabels-continuous-x86_64.AppImage
-  - wget -c https://github.com/jimevins/uploadtool/raw/master/upload.sh
-  - bash ./upload.sh glabels-continuous-x86_64.AppImage
-
+# blocklist
 branches:
   except:
-    - /.*/
-    - # Do not build tags that we create when we upload to GitHub Releases
-    - /^(?i:continuous)$/
+    - /.*/ # Everything
 
+# safelist
 branches:
   only:
     - master
+
+matrix:
+  include:
+
+  #####################
+  #
+  # Linux build
+  #
+  #####################
+  - name: "Linux"
+    os: linux
+    dist: bionic
+    sudo: require
+    env:
+      - QMAKE_PATH=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
     
+    install:
+      - sudo apt-get -y install qtbase5-dev libqt5svg5-dev qttools5-dev
+      - sudo apt-get -y install xvfb
+      - sudo apt-get -y install pkgconf libqrencode-dev
+      - sudo apt-get -y install barcode
+      # Install zint from source
+      - wget https://downloads.sourceforge.net/project/zint/zint/2.6.5/zint-2.6.5.tar.gz && tar xzf zint-2.6.5.tar.gz && ( cd zint-2.6.5 && mkdir build && cd build && cmake .. && make && sudo make install )
+      - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+    before_script:
+      - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
+      - git checkout master   # re-attach to master to satisfy auto versioning
+
+    script:
+      - mkdir build
+      - cd build
+      - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+      - make -j4
+      - xvfb-run ctest
+      - VERSION=$(cat VERSION)
+
+    after_success:
+      # Download AppImage QT deployment tool (local snapshot -- original at github/probono)
+      - wget -c "https://github.com/jimevins/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
+      - chmod a+x linuxdeployqt*.AppImage
+      #
+      # Create AppImage
+      #
+      - make DESTDIR=appdir install
+      - unset QTDIR; unset QT_PLUGIN_PATH
+      - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -qmake=${QMAKE_PATH} -bundle-non-qt-libs
+      - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -qmake=${QMAKE_PATH} -appimage
+      - mv ./gLabels*.AppImage glabels-${VERSION}-x86_64.AppImage
+
+    before_deploy:
+      - git config --local user.name "Jim Evins (Travis CI)"
+      - git config --local user.email evins@snaught.com
+      - git tag -f -a glabels-${VERSION} -m "glabels-${VERSION} CI"
+
+    deploy:
+      provider: releases
+      api_key: ${GITHUB_TOKEN}
+      file:
+        - glabels-${VERSION}-x86_64.AppImage
+      draft: false
+      prerelease: true
+      skip_cleanup: true
+
+
+  #####################
+  #
+  # MacOS build
+  #
+  #####################
+  - name: "MacOS"
+    os: osx
+
+    install:
+      - brew install qt
+
+    before_script:
+      - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
+      - git checkout master   # re-attach to master to satisfy auto versioning
+
+    script:
+      - mkdir build
+      - cd build
+      - cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
+      - make -j4
+      #- ctest --verbose
+      - VERSION=$(cat VERSION)
+
+
+#  #####################
+#  #
+#  # Windows build
+#  #
+#  #####################
+#  - name: "Windows"
+#    os: windows
+#
+#    before_script:
+#      - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
+#      - git checkout master   # re-attach to master to satisfy auto versioning
+#
+#    script:
+#      - mkdir build
+#      - cd build
+#      #- cmake .. -G "Visual Studio 15 2017 Win64"
+#      #- cmake --build . --config Release
+#      #- ctest -C Release
+#      #- VERSION=$(cat VERSION)
+#
+#    after_success:
+#      #
+#      # Create Windows Installer
+#      #
+#      #- cpack -C Release -G NSIS64
