@@ -88,6 +88,12 @@ namespace glabels
 		}
 
 		
+		void Variable::setInitialValue( const QString& value )
+		{
+			mInitialValue = value;
+		}
+
+
 		void    Variable::resetValue()
 		{
 			switch (mType)

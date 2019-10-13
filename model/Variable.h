@@ -71,6 +71,8 @@ namespace glabels
 			Increment increment() const;
 			QString   stepSize() const;
 
+			void setInitialValue( const QString& value );
+
 			void    resetValue();
 			void    incrementValueOnItem();
 			void    incrementValueOnCopy();

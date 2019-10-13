@@ -63,6 +63,8 @@ namespace glabels
 			void deleteVariable( const QString& name );
 			void replaceVariable( const QString& name, const Variable& variable );
 
+			void setVariables( const QMap<QString,QString>& definitions );
+
 			void resetVariables();
 			void incrementVariablesOnItem();
 			void incrementVariablesOnCopy();

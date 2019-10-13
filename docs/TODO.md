@@ -1,5 +1,10 @@
-To Do List for gLabels 4.0 -- 2018-10-06
+To Do List for gLabels 4.0 -- 2019-10-07
 ========================================
+
+Expose user variables to glabels-batch
+--------------------------------------
+There should be a way to set initial values of user variables from the glabels-batch
+command line.  Possibly even create them on the fly.
 
 Add programmable margin to text objects
 ---------------------------------------

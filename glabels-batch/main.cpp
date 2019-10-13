@@ -121,7 +121,11 @@ int main( int argc, char **argv )
 		 QCoreApplication::translate( "main", "Print crop marks." ) },
 		
 		{{"r","reverse"},
-		 QCoreApplication::translate( "main", "Print in reverse (mirror image)." ) }
+		 QCoreApplication::translate( "main", "Print in reverse (mirror image)." ) },
+
+		{{"D","define"},
+		 QCoreApplication::translate( "main", "Set user variable <var> to <value>" ),
+		 QCoreApplication::translate( "main", "var>=<value" ) }
 	};
 
 
@@ -134,7 +138,23 @@ int main( int argc, char **argv )
 	                              QCoreApplication::translate( "main", "gLabels project file to print." ),
 	                              "file" );
 	parser.process( app );
+
+	//
+	// Parse variable definitions from command line, if any
+	//
+	QMap<QString,QString> variableDefinitions;
 	
+	for ( QString definition : parser.values("define") )
+	{
+		QStringList parts = definition.split( '=' );
+		if ( parts.size() != 2 )
+		{
+			qWarning() << "Error: bad variable definition: " << definition;
+			return -1;
+		}
+
+		variableDefinitions[ parts[0] ] = parts[1];
+	}
 
 	//
 	// Initialize subsystems
@@ -152,6 +172,8 @@ int main( int argc, char **argv )
 		glabels::model::Model *model = glabels::model::XmlLabelParser::readFile( filename );
 		if ( model )
 		{
+			model->variables()->setVariables( variableDefinitions );
+
 			QPrinter printer( QPrinter::HighResolution );
 			printer.setColorMode( QPrinter::Color );
 			if ( parser.isSet("printer") )
