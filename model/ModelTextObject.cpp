@@ -35,15 +35,6 @@ namespace glabels
 	namespace model
 	{
 
-		//
-		// Private
-		//
-		namespace
-		{
-			const double marginPts = 3;
-		}
-
-
 		///
 		/// Constructor
 		///
@@ -71,6 +62,7 @@ namespace glabels
 			mTextVAlign        = Qt::AlignTop;
 			mTextWrapMode      = QTextOption::WordWrap;
 			mTextLineSpacing   = 1;
+			mTextMargin        = Distance::pt(3);
 			mTextAutoShrink    = false;
 		}
 
@@ -94,6 +86,7 @@ namespace glabels
 		                                  Qt::Alignment         textVAlign,
 		                                  QTextOption::WrapMode textWrapMode,
 		                                  double                textLineSpacing,
+		                                  const Distance&       textMargin,
 		                                  bool                  textAutoShrink,
 		                                  const QMatrix&        matrix,
 		                                  bool                  shadowState,
@@ -127,6 +120,7 @@ namespace glabels
 			mTextVAlign        = textVAlign;
 			mTextWrapMode      = textWrapMode;
 			mTextLineSpacing   = textLineSpacing;
+			mTextMargin        = textMargin;
 			mTextAutoShrink    = textAutoShrink;
 
 			update(); // Initialize cached editor layouts
@@ -150,6 +144,7 @@ namespace glabels
 			mTextVAlign        = object->mTextVAlign;
 			mTextWrapMode      = object->mTextWrapMode;
 			mTextLineSpacing   = object->mTextLineSpacing;
+			mTextMargin        = object->mTextMargin;
 			mTextAutoShrink    = object->mTextAutoShrink;
 
 			update(); // Initialize cached editor layouts
@@ -434,6 +429,29 @@ namespace glabels
 
 
 		///
+		/// TextMargin Property Getter
+		///
+		Distance ModelTextObject::textMargin() const
+		{
+			return mTextMargin;
+		}
+
+
+		///
+		/// TextMargin Property Setter
+		///
+		void ModelTextObject::setTextMargin( const Distance& value )
+		{
+			if ( mTextMargin != value )
+			{
+				mTextMargin = value;
+				update();
+				emit changed();
+			}
+		}
+
+
+		///
 		/// TextAutoShrink Property Getter
 		///
 		bool ModelTextObject::textAutoShrink() const
@@ -501,7 +519,8 @@ namespace glabels
 				boundingRect = layout->boundingRect().united( boundingRect );
 			}
 
-			return Size( boundingRect.width() + 2*marginPts, boundingRect.height() + 2*marginPts );
+			return Size( boundingRect.width() + 2*mTextMargin.pt(),
+			             boundingRect.height() + 2*mTextMargin.pt() );
 		}
 
 
@@ -620,7 +639,7 @@ namespace glabels
 				layout->beginLayout();
 				for ( QTextLine l = layout->createLine(); l.isValid(); l = layout->createLine() )
 				{
-					l.setLineWidth( mW.pt() - 2*marginPts );
+					l.setLineWidth( mW.pt() - 2*mTextMargin.pt() );
 					l.setPosition( QPointF( x, y ) );
 					y += dy;
 				}
@@ -634,17 +653,17 @@ namespace glabels
 
 
 			// Pass #2 -- adjust layout positions for vertical alignment and create hover path
-			x = marginPts;
+			x = mTextMargin.pt();
 			switch ( mTextVAlign )
 			{
 			case Qt::AlignVCenter:
 				y = mH.pt()/2 - h/2;
 				break;
 			case Qt::AlignBottom:
-				y = mH.pt() - h - marginPts;
+				y = mH.pt() - h - mTextMargin.pt();
 				break;
 			default:
-				y = marginPts;
+				y = mTextMargin.pt();
 				break;
 			}
 			QPainterPath hoverPath; // new empty hover path
@@ -739,7 +758,7 @@ namespace glabels
 				layout->beginLayout();
 				for ( QTextLine l = layout->createLine(); l.isValid(); l = layout->createLine() )
 				{
-					l.setLineWidth( mW.pt() - 2*marginPts );
+					l.setLineWidth( mW.pt() - 2*mTextMargin.pt() );
 					l.setPosition( QPointF( x, y ) );
 					y += dy;
 				}
@@ -753,17 +772,17 @@ namespace glabels
 
 
 			// Pass #2 -- adjust layout positions for vertical alignment
-			x = marginPts;
+			x = mTextMargin.pt();
 			switch ( mTextVAlign )
 			{
 			case Qt::AlignVCenter:
 				y = mH.pt()/2 - h/2;
 				break;
 			case Qt::AlignBottom:
-				y = mH.pt() - h - marginPts;
+				y = mH.pt() - h - mTextMargin.pt();
 				break;
 			default:
-				y = marginPts;
+				y = mTextMargin.pt();
 				break;
 			}
 			foreach ( QTextLayout* layout, layouts )
@@ -832,7 +851,7 @@ namespace glabels
 					layout.beginLayout();
 					for ( QTextLine l = layout.createLine(); l.isValid(); l = layout.createLine() )
 					{
-						l.setLineWidth( mW.pt() - 2*marginPts );
+						l.setLineWidth( mW.pt() - 2*mTextMargin.pt() );
 						l.setPosition( QPointF( x, y ) );
 						y += dy;
 					}
@@ -842,8 +861,8 @@ namespace glabels
 				}
 
 				// Did this candidate fit in our object's bounding box?
-				if ( ( (layoutsRect.width() + 2*marginPts) <= mW.pt() ) &&
-				     ( (layoutsRect.height() + 2*marginPts) <= mH.pt() ) )
+				if ( ( (layoutsRect.width() + 2*mTextMargin.pt()) <= mW.pt() ) &&
+				     ( (layoutsRect.height() + 2*mTextMargin.pt()) <= mH.pt() ) )
 				{
 					break;
 				}

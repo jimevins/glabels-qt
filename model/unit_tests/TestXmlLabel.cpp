@@ -110,7 +110,7 @@ void TestXmlLabel::serializeDeserialize()
 	objects << new ModelImageObject( 6, 7, 90, 100, lock, TextNode( false, "image6.jpg" ) ); // Will give warning on parse that embedded file missing
 	objects << new ModelLineObject( 7, 8, 100, 110, 4, green, sMatrix, shadow, 5, 5, 0.5, red );
 	objects << new ModelTextObject( 8, 9, 110, 120, lock, "text", "Serif", 12, QFont::Bold, true, true, red,
-									Qt::AlignHCenter, Qt::AlignBottom, QTextOption::NoWrap, 1.3, false, sMatrix, shadow, 5, 5, 0.5, red );
+	                                Qt::AlignHCenter, Qt::AlignBottom, QTextOption::NoWrap, 1.3, Distance::pt(3), false, sMatrix, shadow, 5, 5, 0.5, red );
 	objects << new ModelBarcodeObject( 9, 10, 50, 50, noLock, bcStyle, true, true, QString("1234"), black, tMatrix );
 	objects << new ModelImageObject( 10, 11, 8, 8, lock, TextNode( false, svgRelative.fileName() ) );
 
@@ -159,6 +159,7 @@ void TestXmlLabel::serializeDeserialize()
 		QCOMPARE( objects.at(i)->textVAlign(), outObjects.at(i)->textVAlign() );
 		QCOMPARE( objects.at(i)->textWrapMode(), outObjects.at(i)->textWrapMode() );
 		QCOMPARE( objects.at(i)->textLineSpacing(), outObjects.at(i)->textLineSpacing() );
+		QCOMPARE( objects.at(i)->textMargin(), outObjects.at(i)->textMargin() );
 		QCOMPARE( objects.at(i)->textAutoShrink(), outObjects.at(i)->textAutoShrink() );
 
 		QCOMPARE( objects.at(i)->filenameNode().isField(), outObjects.at(i)->filenameNode().isField() );
@@ -266,7 +267,7 @@ void TestXmlLabel::writeReadFile()
 	model->addObject( new ModelImageObject( 5, 6, 80, 90, lock, TextNode( true, "${key}" ), tMatrix, shadow ) );
 	model->addObject( new ModelImageObject( 6, 7, 90, 100, noLock, TextNode( false, "image6.jpg" ) ) ); // Will give warning on parse that embedded file missing
 	model->addObject( new ModelTextObject( 7, 8, 110, 120, lock, "text", "Serif", 12, QFont::Bold, true, true, red,
-											Qt::AlignHCenter, Qt::AlignBottom, QTextOption::NoWrap, 1.3, false, sMatrix, shadow, 5, 5, 0.5, red ) );
+	                                       Qt::AlignHCenter, Qt::AlignBottom, QTextOption::NoWrap, 1.3, Distance::pt(3), false, sMatrix, shadow, 5, 5, 0.5, red ) );
 	model->addObject( new ModelLineObject( 8, 9, 100, 110, 4, green, sMatrix, shadow, 5, 5, 0.5, red ) );
 	model->addObject( new ModelBarcodeObject( 9, 10, 50, 50, lock, bcStyle, true, true, QString("1234"), black, tMatrix ) );
 	model->addObject( new ModelImageObject( 10, 11, 8, 8, noLock, TextNode( false, pngAbsolute.fileName() ) ) );
@@ -403,6 +404,7 @@ void TestXmlLabel::writeReadFile()
 		QCOMPARE( readObjects.at(i)->textVAlign(), modelObjects.at(i)->textVAlign() );
 		QCOMPARE( readObjects.at(i)->textWrapMode(), modelObjects.at(i)->textWrapMode() );
 		QCOMPARE( readObjects.at(i)->textLineSpacing(), modelObjects.at(i)->textLineSpacing() );
+		QCOMPARE( readObjects.at(i)->textMargin(), modelObjects.at(i)->textMargin() );
 		QCOMPARE( readObjects.at(i)->textAutoShrink(), modelObjects.at(i)->textAutoShrink() );
 
 		QCOMPARE( readObjects.at(i)->filenameNode().isField(), modelObjects.at(i)->filenameNode().isField() );

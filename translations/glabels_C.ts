@@ -489,6 +489,10 @@
         <source>Opacity:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Margin:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PreferencesDialog</name>
@@ -1966,11 +1970,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shadow</source>
+        <source>Position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Position</source>
+        <source>Insert substitution field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use substitution field</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1982,11 +1990,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Insert substitution field</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use substitution field</source>
+        <source>Shadow</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

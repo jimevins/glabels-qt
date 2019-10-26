@@ -275,6 +275,13 @@ namespace glabels
 
 
 			//
+			// Virtual Text Property: textMargin
+			//
+			virtual Distance textMargin() const;
+			virtual void setTextMargin( const Distance& value );
+
+			
+			//
 			// Virtual Text Property: textAutoShrink
 			//
 			virtual bool textAutoShrink() const;

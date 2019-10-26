@@ -248,11 +248,18 @@ namespace glabels
 			textFontItalicToggle->setChecked( mObject->fontItalicFlag() );
 			textFontUnderlineToggle->setChecked( mObject->fontUnderlineFlag() );
 			textColorButton->setColorNode( mObject->textColorNode() );
+
 			textHAlignGroup->button( mObject->textHAlign() )->setChecked( true );
 			textVAlignGroup->button( mObject->textVAlign() )->setChecked( true );
 			textWrapModeCombo->setCurrentIndex( wrapIndex );
+			textMarginSpin->setDecimals( mSpinDigits );
+			textMarginSpin->setSingleStep( mSpinStep );
+			textMarginSpin->setSuffix( " " + mUnits.toIdString() );
+			textMarginSpin->setMaximum( ( (mObject->w() + mObject->h()) / 2.0 ).inUnits(mUnits) );
+			textMarginSpin->setValue( mObject->textMargin().inUnits(mUnits) );
 			textLineSpacingSpin->setValue( mObject->textLineSpacing() );
 			textAutoShrinkCheck->setChecked( mObject->textAutoShrink() );
+
 			textEdit->setText( mObject->text() );
 
 			mBlocked = false;			
@@ -734,6 +741,7 @@ namespace glabels
 			mObject->setTextVAlign( Qt::AlignmentFlag( textVAlignGroup->checkedId() ) );
 			mObject->setTextWrapMode( wrapMode );
 			mObject->setTextLineSpacing( textLineSpacingSpin->value() );
+			mObject->setTextMargin( model::Distance( textMarginSpin->value(), mUnits ) );
 			mObject->setTextAutoShrink( textAutoShrinkCheck->isChecked() );
 			mObject->setText( textEdit->toPlainText() );
 

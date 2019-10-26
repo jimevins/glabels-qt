@@ -581,7 +581,7 @@ namespace glabels
 
 			auto textNode = new ModelTextObject( x0, y0, w, h, false /*lockAspectRatio*/, text,
 							     fontFamily, fontSize, fontWeight, fontItalicFlag, false,
-							     textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing,
+			                                     textColorNode, textHAlign, textVAlign, textWrapMode, textLineSpacing, Distance::pt(3),
 							     textAutoShrink,
 							     affineTransformation,
 							     shadowState, shadowX, shadowY, shadowOpacity, shadowColorNode );

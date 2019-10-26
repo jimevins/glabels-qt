@@ -62,6 +62,7 @@ namespace glabels
 			                 Qt::Alignment         textVAlign,
 			                 QTextOption::WrapMode textWrapMode,
 			                 double                textLineSpacing,
+			                 const Distance&       textMargin,
 			                 bool                  textAutoShrink,
 			                 const QMatrix&        matrix = QMatrix(),
 			                 bool                  shadowState = false,
@@ -163,6 +164,12 @@ namespace glabels
 
 
 			//
+			// Text Property: textMargin
+			Distance textMargin() const override;
+			void setTextMargin( const Distance& value ) override;
+
+			
+			//
 			// Text Property: textAutoShrink
 			//
 			bool textAutoShrink() const override;
@@ -233,6 +240,7 @@ namespace glabels
 			Qt::Alignment         mTextVAlign;
 			QTextOption::WrapMode mTextWrapMode;
 			double                mTextLineSpacing;
+			Distance              mTextMargin;
 			bool                  mTextAutoShrink;
 
 			QList<QTextLayout*>   mEditorLayouts;

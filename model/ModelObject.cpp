@@ -661,6 +661,26 @@ namespace glabels
 
 
 		///
+		/// Virtual Text Margin Property Default Getter
+		/// (Overridden by concrete class)
+		///
+		Distance ModelObject::textMargin() const
+		{
+			return 0;
+		}
+
+
+		///
+		/// Virtual Text Margin Property Default Setter
+		/// (Overridden by concrete class)
+		///
+		void ModelObject::setTextMargin( const Distance& value )
+		{
+			// empty
+		}
+
+
+		///
 		/// Virtual Text Auto Shrink Property Default Getter
 		/// (Overridden by concrete class)
 		///

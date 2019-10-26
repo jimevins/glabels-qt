@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>648</height>
+    <height>678</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -255,14 +255,14 @@
             </item>
            </layout>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>Line spacing:</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_19">
             <item>
              <widget class="QDoubleSpinBox" name="textLineSpacingSpin">
@@ -332,12 +332,43 @@
             </item>
            </layout>
           </item>
-          <item row="3" column="0" colspan="2">
+          <item row="5" column="0" colspan="2">
            <widget class="QCheckBox" name="textAutoShrinkCheck">
             <property name="text">
              <string>Allow printing to shrink text to fit object</string>
             </property>
            </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Margin:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_28">
+            <item>
+             <widget class="QDoubleSpinBox" name="textMarginSpin">
+              <property name="suffix">
+               <string notr="true"> pt</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_26">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -1202,7 +1233,16 @@
              <property name="spacing">
               <number>15</number>
              </property>
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
@@ -1741,7 +1781,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>189</x>
-     <y>404</y>
+     <y>440</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -1996,8 +2036,8 @@
    <slot>onImageFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>367</x>
-     <y>135</y>
+     <x>366</x>
+     <y>136</y>
     </hint>
     <hint type="destinationlabel">
      <x>394</x>
@@ -2124,8 +2164,8 @@
    <slot>onTextControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>130</x>
-     <y>431</y>
+     <x>153</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
      <x>359</x>
@@ -2140,8 +2180,8 @@
    <slot>onRectSizeControlsChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>231</x>
-     <y>289</y>
+     <x>312</x>
+     <y>327</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -2156,8 +2196,8 @@
    <slot>onTextInsertFieldKeySelected(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>589</y>
+     <x>239</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>227</x>
@@ -2193,7 +2233,23 @@
     </hint>
     <hint type="destinationlabel">
      <x>331</x>
-     <y>-12</y>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>textMarginSpin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>ObjectEditor</receiver>
+   <slot>onTextControlsChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>128</x>
+     <y>397</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>538</y>
     </hint>
    </hints>
   </connection>

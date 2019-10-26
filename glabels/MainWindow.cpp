@@ -40,7 +40,6 @@
 #include <QFrame>
 #include <QMessageBox>
 #include <QSettings>
-#include <QStatusBar>
 #include <QtDebug>
 
 
@@ -71,7 +70,6 @@ namespace glabels
 		createActions();
 		createMenus();
 		createToolBars();
-		createStatusBar();
 
 		// Build pages
 		QWidget* welcomePage = createWelcomePage();
@@ -774,15 +772,6 @@ namespace glabels
 
 
 	///
-	/// Create Status Bar
-	///
-	void MainWindow::createStatusBar()
-	{
-		statusBar();
-	}
-
-
-	///
 	/// Create Welcome Page
 	///
 	QWidget* MainWindow::createWelcomePage()
@@ -821,7 +810,7 @@ namespace glabels
 		mLabelEditorScrollArea->setWidget( mLabelEditor );
 
 		auto* editorVLayout = new QVBoxLayout;
-		editorVLayout->setContentsMargins( 0, 0, 0, 0 );
+		editorVLayout->setContentsMargins( 0, 0, 0, 10 );
 		editorVLayout->addWidget( editorToolBar );
 		editorVLayout->addWidget( mLabelEditorScrollArea );
 

@@ -137,7 +137,7 @@ void TestModel::model()
 	ModelObject* ellipse = new ModelEllipseObject( 1, 0, 100, 100, false, 1, black, black );
 	ModelObject* box = new ModelBoxObject( 1, 100, 100, 100, false, 1, black, black );
 	ModelObject* line = new ModelLineObject( 1, 200, 99 /*dx*/, 1 /*dy*/, 1.0, black );
-	ModelObject* text = new ModelTextObject( 1, 201, 100, 30, false, "", "Sans", 10, QFont::Normal, false, false, black, Qt::AlignLeft, Qt::AlignTop, QTextOption::WordWrap, 1, false );
+	ModelObject* text = new ModelTextObject( 1, 201, 100, 30, false, "", "Sans", 10, QFont::Normal, false, false, black, Qt::AlignLeft, Qt::AlignTop, QTextOption::WordWrap, 1, Distance::pt(3), false );
 
 	model.clearModified();
 	QVERIFY( !model.isModified() );
@@ -360,7 +360,7 @@ void TestModel::saveRestore()
 	model->clearModified();
 	QVERIFY( !model->isModified() );
 
-	ModelObject* object2 = new ModelTextObject( 2, 2, 70, 30, false, "", "Sans", 10, QFont::Normal, false, false, black, Qt::AlignLeft, Qt::AlignTop, QTextOption::WordWrap, 1, false );
+	ModelObject* object2 = new ModelTextObject( 2, 2, 70, 30, false, "", "Sans", 10, QFont::Normal, false, false, black, Qt::AlignLeft, Qt::AlignTop, QTextOption::WordWrap, 1, Distance::pt(3), false );
 	model->addObject( object2 );
 	QVERIFY( model->isModified() );
 	QCOMPARE( model->objectList().size(), 2 );

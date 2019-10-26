@@ -359,6 +359,7 @@ namespace glabels
 			XmlUtil::setAlignmentAttr( node, "valign", object->textVAlign() );
 			XmlUtil::setWrapModeAttr( node, "wrap", object->textWrapMode() );
 			XmlUtil::setDoubleAttr( node, "line_spacing", object->textLineSpacing() );
+			XmlUtil::setLengthAttr( node, "margin", object->textMargin() );
 			XmlUtil::setBoolAttr( node, "auto_shrink", object->textAutoShrink() );
 
 			/* affine attrs */
