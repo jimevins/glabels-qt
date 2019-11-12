@@ -438,7 +438,7 @@ namespace glabels
 			}
 			else
 			{
-				QString filename = mFilenameNode.text( record, variables );
+				QString filename = mFilenameNode.text( record, variables ).trimmed();
 				QImage* image;
 				QSvgRenderer* svgRenderer;
 				QByteArray svg;
@@ -548,7 +548,7 @@ namespace glabels
 			}
 			else if ( mFilenameNode.isField() )
 			{
-				QString filename = mFilenameNode.text( record, variables );
+				QString filename = mFilenameNode.text( record, variables ).trimmed();
 				QImage* image;
 				QSvgRenderer* svgRenderer;
 				QByteArray svg;
