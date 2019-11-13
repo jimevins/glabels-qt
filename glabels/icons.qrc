@@ -21,6 +21,7 @@
 	<file>icons/flat/16x16/glabels-ellipse.svg</file>
 	<file>icons/flat/16x16/glabels-file-new.svg</file>
 	<file>icons/flat/16x16/glabels-file-open.svg</file>
+	<file>icons/flat/16x16/glabels-file-recent.svg</file>
 	<file>icons/flat/16x16/glabels-file-save.svg</file>
 	<file>icons/flat/16x16/glabels-file-save-as.svg</file>
 	<file>icons/flat/16x16/glabels-flip-horiz.svg</file>
@@ -50,6 +51,7 @@
 	<file>icons/flat/22x22/glabels-ellipse.svg</file>
 	<file>icons/flat/22x22/glabels-file-new.svg</file>
 	<file>icons/flat/22x22/glabels-file-open.svg</file>
+	<file>icons/flat/22x22/glabels-file-recent.svg</file>
 	<file>icons/flat/22x22/glabels-file-save.svg</file>
 	<file>icons/flat/22x22/glabels-file-save-as.svg</file>
 	<file>icons/flat/22x22/glabels-format-text-bold.svg</file>
@@ -79,6 +81,7 @@
 	<file>icons/flat/24x24/glabels-ellipse.svg</file>
 	<file>icons/flat/24x24/glabels-file-new.svg</file>
 	<file>icons/flat/24x24/glabels-file-open.svg</file>
+	<file>icons/flat/24x24/glabels-file-recent.svg</file>
 	<file>icons/flat/24x24/glabels-file-save.svg</file>
 	<file>icons/flat/24x24/glabels-file-save-as.svg</file>
 	<file>icons/flat/24x24/glabels-format-text-bold.svg</file>
@@ -92,6 +95,9 @@
 	<file>icons/flat/24x24/glabels-valign-text-middle.svg</file>
 	<file>icons/flat/24x24/glabels-valign-text-top.svg</file>
 
+	<file>icons/flat/32x32/glabels-file-new.svg</file>
+	<file>icons/flat/32x32/glabels-file-open.svg</file>
+	<file>icons/flat/32x32/glabels-file-recent.svg</file>
 	<file>icons/flat/32x32/glabels-label-orientation-horiz.svg</file>
 	<file>icons/flat/32x32/glabels-label-orientation-vert.svg</file>
 	<file>icons/flat/32x32/glabels-print.svg</file>

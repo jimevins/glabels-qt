@@ -53,6 +53,7 @@ namespace glabels
 	private slots:
 		void onNewProjectButtonClicked();
 		void onOpenProjectButtonClicked();
+		void onOpenRecentAction();
 
 	
 		/////////////////////////////////

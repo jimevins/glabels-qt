@@ -23,6 +23,11 @@
 #include "File.h"
 #include "MainWindow.h"
 
+#include "model/Settings.h"
+
+#include <QAction>
+#include <QFileInfo>
+#include <QMenu>
 #include <QtDebug>
 
 
@@ -39,6 +44,20 @@ namespace glabels
 
 		QString titleImage = ":images/glabels-label-designer.png";
 		titleLabel->setPixmap( QPixmap( titleImage ) );
+
+		recentProjectButton->setEnabled( model::Settings::recentFileList().size() > 0 );
+
+		auto* recentMenu = new QMenu();
+		for ( auto& filename : model::Settings::recentFileList() )
+		{
+			QString basename = QFileInfo( filename ).completeBaseName();
+			auto* action = new QAction( basename, this );
+			action->setData( filename );
+			connect( action, SIGNAL(triggered()), this, SLOT(onOpenRecentAction()) );
+			recentMenu->addAction( action );
+		}
+		recentMenu->setMinimumWidth( recentProjectButton->minimumWidth() );
+		recentProjectButton->setMenu( recentMenu );
 	}
 
 
@@ -57,6 +76,19 @@ namespace glabels
 	void StartupView::onOpenProjectButtonClicked()
 	{
 		File::open( mWindow );
+	}
+
+
+	///
+	/// "Open Recent" Action Activated Slot
+	///
+	void StartupView::onOpenRecentAction()
+	{
+		QAction* action = qobject_cast<QAction*>( sender() );
+		if ( action )
+		{
+			File::open( action->data().toString(), mWindow );
+		}
 	}
 
 } // namespace glabels

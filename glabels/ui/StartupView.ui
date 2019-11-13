@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>397</height>
+    <height>418</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -136,16 +136,16 @@
            </size>
           </property>
           <property name="text">
-           <string>New Project</string>
+           <string>New...</string>
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/flat/24x24/glabels-file-new.svg</normaloff>:/icons/flat/24x24/glabels-file-new.svg</iconset>
+            <normaloff>:/icons/flat/32x32/glabels-file-new.svg</normaloff>:/icons/flat/32x32/glabels-file-new.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="description">
@@ -168,20 +168,46 @@
            </size>
           </property>
           <property name="text">
-           <string>Open Project</string>
+           <string>Browse...</string>
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/flat/24x24/glabels-file-open.svg</normaloff>:/icons/flat/24x24/glabels-file-open.svg</iconset>
+            <normaloff>:/icons/flat/32x32/glabels-file-open.svg</normaloff>:/icons/flat/32x32/glabels-file-open.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="description">
            <string>Open an existing gLabels project</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCommandLinkButton" name="recentProjectButton">
+          <property name="minimumSize">
+           <size>
+            <width>319</width>
+            <height>59</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Recent</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../icons.qrc">
+            <normaloff>:/icons/flat/32x32/glabels-file-recent.svg</normaloff>:/icons/flat/32x32/glabels-file-recent.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="description">
+           <string>Open a recent gLabels project</string>
           </property>
          </widget>
         </item>

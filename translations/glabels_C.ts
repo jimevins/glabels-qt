@@ -736,15 +736,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New Project</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Create a new blank gLabels project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open Project</source>
+        <source>Open a recent gLabels project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

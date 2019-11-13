@@ -623,7 +623,7 @@ namespace glabels
 		fileMenu = menuBar()->addMenu( tr("&File") );
 		fileMenu->addAction( fileNewAction );
 		fileMenu->addAction( fileOpenAction );
-		fileRecentMenu = fileMenu->addMenu( tr("Open Recent") );
+		fileRecentMenu = fileMenu->addMenu( Icons::FileRecent(), tr("Open Recent") );
 		for ( auto* action : fileRecentActionList )
 		{
 			fileRecentMenu->addAction( action );

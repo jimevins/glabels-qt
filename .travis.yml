@@ -74,28 +74,28 @@ matrix:
       skip_cleanup: true
 
 
-  #####################
-  #
-  # MacOS build
-  #
-  #####################
-  - name: "MacOS"
-    os: osx
-
-    install:
-      - brew install qt
-
-    before_script:
-      - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
-      - git checkout master   # re-attach to master to satisfy auto versioning
-
-    script:
-      - mkdir build
-      - cd build
-      - cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
-      - make -j4
-      #- ctest --verbose
-      - VERSION=$(cat VERSION)
+#  #####################
+#  #
+#  # MacOS build
+#  #
+#  #####################
+#  - name: "MacOS"
+#    os: osx
+#
+#    install:
+#      - brew install qt
+#
+#    before_script:
+#      - git fetch --unshallow # restore repository depth to properly count commits in auto versioning
+#      - git checkout master   # re-attach to master to satisfy auto versioning
+#
+#    script:
+#      - mkdir build
+#      - cd build
+#      - cmake .. -DCMAKE_PREFIX_PATH=/usr/local/opt/qt
+#      - make -j4
+#      #- ctest --verbose
+#      - VERSION=$(cat VERSION)
 
 
 #  #####################
