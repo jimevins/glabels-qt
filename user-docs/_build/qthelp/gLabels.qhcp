@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<QHelpCollectionProject version="1.0">
+    <assistant>
+        <title>gLabels  documentation</title>
+        <homePage>qthelp://org.sphinx.glabels/doc/index.html</homePage>
+        <startPage>qthelp://org.sphinx.glabels/doc/index.html</startPage>
+    </assistant>
+    <docFiles>
+        <generate>
+            <file>
+                <input>gLabels.qhp</input>
+                <output>gLabels.qch</output>
+            </file>
+        </generate>
+        <register>
+            <file>gLabels.qch</file>
+        </register>
+    </docFiles>
+</QHelpCollectionProject>

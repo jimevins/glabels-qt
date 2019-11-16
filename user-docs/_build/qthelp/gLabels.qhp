@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<QtHelpProject version="1.0">
+    <namespace>org.sphinx.glabels</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <customFilter name="gLabels ">
+        <filterAttribute>gLabels</filterAttribute>
+        <filterAttribute></filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>gLabels</filterAttribute>
+        <filterAttribute></filterAttribute>
+        <toc>
+            <section title="gLabels  documentation" ref="index.html">
+                <section title="Basic Usage" ref="manual/basicusage.html">
+                    <section title="Starting gLabels" ref="manual/starting.html"/>
+                    <section title="User Interface Overview" ref="manual/interface.html"/>
+                    <section title="Creating a New gLabels Project" ref="manual/createnew.html"/>
+                    <section title="Saving Your gLabels Project" ref="manual/saving.html"/>
+                    <section title="Opening an Existing gLabels Project" ref="manual/opening.html"/>
+                    <section title="Editing a Label or Card Design" ref="manual/editing.html">
+                        <section title="Creating Objects" ref="manual/creating_objects.html"/>
+                        <section title="Selecting Objects" ref="manual/selecting_objects.html"/>
+                        <section title="Editing Object Properties" ref="manual/editing_object_properties.html"/>
+                        <section title="Manipulating Objects" ref="manual/manipulating_objects.html"/>
+                        <section title="Using Substitution Fields" ref="manual/using_substitution_fields.html"/>
+                    </section>
+                    <section title="Changing Basic Project Properties" ref="manual/changingproperties.html"/>
+                    <section title="Performing a Document Merge" ref="manual/documentmerge.html"/>
+                    <section title="Creating User-Defined Variables" ref="manual/user_defined_variables.html"/>
+                    <section title="Printing Your gLabels Project" ref="manual/printing.html"/>
+                </section>
+                <section title="Tutorials" ref="manual/tutorials.html">
+                    <section title="Editing a Label or Card Design" ref="manual/simple_project.html"/>
+                    <section title="Mailing List Project" ref="manual/mailing_list_project.html"/>
+                </section>
+                <section title="Advanced Usage" ref="manual/advanced.html">
+                    <section title="Product Template Designer" ref="manual/template_designer.html"/>
+                    <section title="Manually Creating Product Templates" ref="manual/mancreate.html"/>
+                    <section title="Customizing gLabels" ref="manual/customizing.html"/>
+                </section>
+                <section title="Reference" ref="manual/reference.html">
+                    <section title="gLabels Manpages" ref="man/index.html">
+                        <section title="glabels-qt" ref="man/glabels-qt.html">
+                            <section title="SYNOPSIS" ref="man/glabels-qt.html#synopsis"/>
+                            <section title="DESCRIPTION" ref="man/glabels-qt.html#description"/>
+                            <section title="OPTIONS" ref="man/glabels-qt.html#options"/>
+                            <section title="FILES" ref="man/glabels-qt.html#files"/>
+                            <section title="BUGS" ref="man/glabels-qt.html#bugs"/>
+                            <section title="SEE ALSO" ref="man/glabels-qt.html#see-also"/>
+                        </section>
+                        <section title="glabels-batch-qt" ref="man/glabels-batch-qt.html">
+                            <section title="SYNOPSIS" ref="man/glabels-batch-qt.html#synopsis"/>
+                            <section title="DESCRIPTION" ref="man/glabels-batch-qt.html#description"/>
+                            <section title="OPTIONS" ref="man/glabels-batch-qt.html#options"/>
+                            <section title="FILES" ref="man/glabels-batch-qt.html#files"/>
+                            <section title="BUGS" ref="man/glabels-batch-qt.html#bugs"/>
+                            <section title="SEE ALSO" ref="man/glabels-batch-qt.html#see-also"/>
+                        </section>
+                    </section>
+                    <section title="gLabels Substitution Field Specification" ref="manual/subst_spec.html"/>
+                    <section title="License" ref="manual/license.html"/>
+                </section>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-c"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-m"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-f"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-h"/>
+            <keyword name="glabels-qt command line option" ref="man/glabels-qt.html#cmdoption-glabels-qt-h"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-l"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-o"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-p"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-r"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-s"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-v"/>
+            <keyword name="glabels-qt command line option" ref="man/glabels-qt.html#cmdoption-glabels-qt-v"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-c"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-f"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-h"/>
+            <keyword name="glabels-qt command line option" ref="man/glabels-qt.html#cmdoption-glabels-qt-h"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-l"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-m"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-o"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-p"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-r"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-s"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-v"/>
+            <keyword name="glabels-qt command line option" ref="man/glabels-qt.html#cmdoption-glabels-qt-v"/>
+            <keyword name="--copies &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-c"/>
+            <keyword name="--crop-marks" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-m"/>
+            <keyword name="--first &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-f"/>
+            <keyword name="--help" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-h"/>
+            <keyword name="--outlines" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-l"/>
+            <keyword name="--output &lt;filename&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-o"/>
+            <keyword name="--printer &lt;printer&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-p"/>
+            <keyword name="--reverse" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-r"/>
+            <keyword name="--sheets &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-s"/>
+            <keyword name="--version" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-v"/>
+            <keyword name="-c &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-c"/>
+            <keyword name="-f &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-f"/>
+            <keyword name="-h" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-h"/>
+            <keyword name="-l" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-l"/>
+            <keyword name="-m" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-m"/>
+            <keyword name="-o &lt;filename&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-o"/>
+            <keyword name="-p &lt;printer&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-p"/>
+            <keyword name="-r" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-r"/>
+            <keyword name="-s &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-s"/>
+            <keyword name="-v" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-v"/>
+            <keyword name="--help" ref="man/glabels-qt.html#cmdoption-glabels-qt-h"/>
+            <keyword name="--version" ref="man/glabels-qt.html#cmdoption-glabels-qt-v"/>
+            <keyword name="-h" ref="man/glabels-qt.html#cmdoption-glabels-qt-h"/>
+            <keyword name="-v" ref="man/glabels-qt.html#cmdoption-glabels-qt-v"/>
+        </keywords>
+        <files>
+            <file>genindex.html</file>
+            <file>index.html</file>
+            <file>man/glabels-batch-qt.html</file>
+            <file>man/glabels-qt.html</file>
+            <file>man/index.html</file>
+            <file>manual/advanced.html</file>
+            <file>manual/basicusage.html</file>
+            <file>manual/changingproperties.html</file>
+            <file>manual/createnew.html</file>
+            <file>manual/creating_objects.html</file>
+            <file>manual/customizing.html</file>
+            <file>manual/documentmerge.html</file>
+            <file>manual/editing.html</file>
+            <file>manual/editing_object_properties.html</file>
+            <file>manual/interface.html</file>
+            <file>manual/license.html</file>
+            <file>manual/mailing_list_project.html</file>
+            <file>manual/mancreate.html</file>
+            <file>manual/manipulating_objects.html</file>
+            <file>manual/opening.html</file>
+            <file>manual/printing.html</file>
+            <file>manual/reference.html</file>
+            <file>manual/saving.html</file>
+            <file>manual/selecting_objects.html</file>
+            <file>manual/simple_project.html</file>
+            <file>manual/starting.html</file>
+            <file>manual/subst_spec.html</file>
+            <file>manual/template_designer.html</file>
+            <file>manual/tutorials.html</file>
+            <file>manual/user_defined_variables.html</file>
+            <file>manual/using_substitution_fields.html</file>
+            <file>_images/introduction-glabels-main-window.png</file>
+            <file>_static/basic.css</file>
+            <file>_static/file.png</file>
+            <file>_static/minus.png</file>
+            <file>_static/nonav.css</file>
+            <file>_static/plus.png</file>
+            <file>_static/pygments.css</file>
+        </files>
+    </filterSection>
+</QtHelpProject>
