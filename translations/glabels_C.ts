@@ -21,6 +21,17 @@
     </message>
 </context>
 <context>
+    <name>Assistant</name>
+    <message>
+        <source>Unable to launch Qt Assistant (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>gLabels</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Color name</name>
     <message>
         <source>Light Scarlet Red</source>

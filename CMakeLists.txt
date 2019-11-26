@@ -129,6 +129,8 @@ find_package (LibQrencode 3.4 QUIET)
 find_package (LibZint 2.6 QUIET)
 # Unit testing support
 find_package (Qt5Test 5.4 QUIET)
+# User documentation generation
+find_package (Sphinx QUIET)
 
 
 #=======================================
@@ -208,6 +210,12 @@ if (Qt5Test_FOUND)
 else (Qt5Test_FOUND)
   message (STATUS "QtTest (optional)........ No.")
 endif (Qt5Test_FOUND)
+
+if (Sphinx_FOUND)
+  message (STATUS "Sphinx (optional)........ " ${SPHINX_EXECUTABLE})
+else (Sphinx_FOUND)
+  message (STATUS "Sphinx (optional)........ No.")
+endif (Sphinx_FOUND)
 
 if (MSVC)
    message (STATUS "MSVC Qt location ........ " ${QT_BASE_DIR})

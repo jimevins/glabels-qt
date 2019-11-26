@@ -6,6 +6,7 @@ project (glabels LANGUAGES CXX)
 set (glabels_sources
   main.cpp
   AboutDialog.cpp
+  Assistant.cpp
   BarcodeMenu.cpp
   BarcodeMenuButton.cpp
   BarcodeMenuItem.cpp
@@ -45,6 +46,7 @@ set (glabels_sources
 
 set (glabels_qobject_headers
   AboutDialog.h
+  Assistant.h
   BarcodeMenu.h
   BarcodeMenuButton.h
   BarcodeMenuItem.h

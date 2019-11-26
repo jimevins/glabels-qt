@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'gLabels'
-copyright = '2018, Jim Evins <evins@snaught.com>'
+copyright = '2019, Jim Evins <evins@snaught.com>'
 author = 'Jim Evins'
 
 # The version info for the project you're documenting, acts as replacement for

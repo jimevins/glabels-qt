@@ -40,6 +40,7 @@ namespace glabels
 {
 
 	// Forward References
+	class Assistant;
 	class LabelEditor;
 	class MergeView;
 	class ObjectEditor;
@@ -244,6 +245,8 @@ namespace glabels
 		MergeView*           mMergeView;
 		VariablesView*       mVariablesView;
 		PrintView*           mPrintView;
+
+		Assistant*           mAssistant;
 
 		QLabel*   zoomInfoLabel;
 		QLabel*   cursorInfoLabel;

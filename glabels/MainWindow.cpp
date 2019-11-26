@@ -20,6 +20,7 @@
 
 #include "MainWindow.h"
 
+#include "Assistant.h"
 #include "File.h"
 #include "Help.h"
 #include "Icons.h"
@@ -67,6 +68,8 @@ namespace glabels
 	MainWindow::MainWindow() : mModel(nullptr), mUndoRedoModel(nullptr)
 	{
 		setWindowIcon( Icons::Glabels() );
+
+		mAssistant = new Assistant();
 
 		createActions();
 		createMenus();
@@ -220,6 +223,8 @@ namespace glabels
 			delete mModel->variables(); // Ownership of Variables instance is ours
 			delete mModel;
 		}
+
+		delete mAssistant;
 	}
 
 
@@ -1665,7 +1670,7 @@ namespace glabels
 	///
 	void MainWindow::helpContents()
 	{
-		Help::displayContents( this );
+		mAssistant->showDocumentation( "index.html" );
 	}
 
 

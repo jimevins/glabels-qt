@@ -30,15 +30,6 @@ namespace glabels
 {
 
 	///
-	/// Display Help Contents
-	///
-	void Help::displayContents( QWidget *parent )
-	{
-		qDebug() << "TODO: Help::displayContents";
-	}
-
-
-	///
 	/// Display Help->"Report Bug" Dialog
 	///
 	void Help::displayReportBug( QWidget *parent )

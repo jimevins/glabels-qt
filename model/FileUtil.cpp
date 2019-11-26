@@ -24,6 +24,7 @@
 
 #include <QApplication>
 #include <QStandardPaths>
+#include <QDebug>
 
 
 namespace glabels
@@ -105,6 +106,30 @@ namespace glabels
 			}
 
 			qFatal( "Cannot locate system template directory!" );
+			return QDir("/");
+		}
+
+
+		QDir FileUtil::docDir()
+		{
+			QDir dir;
+
+			// First, try finding translations directory relative to application path
+			dir.cd( QApplication::applicationDirPath() );
+			if ( (dir.dirName() == "bin") && dir.cdUp() &&
+			     dir.cd( "share" ) && dir.cd( "glabels-qt" ) && dir.cd( "doc" ))
+			{
+				return dir;
+			}
+
+			// Next, try running out of the source directory.
+			if ( dir.cd( Config::PROJECT_SOURCE_DIR ) &&
+			     dir.cd( "user-docs" ) && dir.cd( "_build" ) && dir.cd( "qthelp" ) )
+			{
+				return dir;
+			}
+
+			qWarning( "Cannot locate system doc directory!" );
 			return QDir("/");
 		}
 
