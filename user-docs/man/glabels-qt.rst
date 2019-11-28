@@ -43,8 +43,8 @@ FILES
 	      
               Directory for manually created product templates.
 
-BUGS
-----
+REPORTING BUGS
+--------------
 
 Bugs and feature requests can be reported via the gLabels issue tracking system at GitHub (<https://github.com/jimevins/glabels-qt/issues>).  You will need a GitHub account to submit new issues or to comment on existing issues.
 

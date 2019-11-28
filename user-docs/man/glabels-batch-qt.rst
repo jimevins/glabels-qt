@@ -27,13 +27,11 @@ OPTIONS
 	     
              Displays version information and exits.
 
-.. program:: glabels-batch-qt
-	     
 .. option:: -p <printer>, --printer <printer>
 	    
 	    Send output to <printer>.
 
-.. option::  -o <filename>, --output <filename>
+.. option::  -o [<filename>], --output [<filename>]
 	     
 	     Set output filename to <filename>. Set to "-" for stdout.
 	     (Default="output.pdf")
@@ -62,6 +60,10 @@ OPTIONS
 	     
              Print in reverse (mirror image).
 
+.. option::  -D <var>=<value>, --define <var>=<value>
+
+	     Set initial value of user variable <var> to <value>.
+
 FILES
 -----
 
@@ -81,6 +83,16 @@ FILES
 
 BUGS
 ----
+
+On GNU/Linux platforms, :program:`glabels-batch-qt` must be run from within a windowing environment, such as X or Wayland.  This is because Qt requires a suitable platform to obtain system font information.  A work-around is to run :program:`glabels-batch-qt` using a virtual X server environment:
+
+.. code:: shell
+	  
+	  xvfb-run glabels-batch-qt -o output.pdf myProject.glabels
+
+	  
+REPORTING BUGS
+--------------
 
 Bugs and feature requests can be reported via the gLabels issue tracking system at GitHub (<https://github.com/jimevins/glabels-qt/issues>).  You will need a GitHub account to submit new issues or to comment on existing issues.
 
