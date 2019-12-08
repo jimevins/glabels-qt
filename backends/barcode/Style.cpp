@@ -20,6 +20,8 @@
 
 #include "Style.h"
 
+#include "Backends.h"
+
 
 namespace glabels
 {
@@ -113,6 +115,22 @@ namespace glabels
 		const QString& Style::name() const
 		{
 			return mName;
+		}
+
+
+		///
+		/// Full Name Property Getter
+		///
+		QString Style::fullName() const
+		{
+			if ( mBackendId == "" )
+			{
+				return mName;
+			}
+			else
+			{
+				return Backends::backendName(mBackendId) + " / " + mName;
+			}
 		}
 
 
