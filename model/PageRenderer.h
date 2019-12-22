@@ -64,7 +64,9 @@ namespace glabels
 			void setModel( const Model* model );
 			const Model* model() const;
 			void setNCopies( int nCopies );
-			void setStartLabel( int startLabel );
+			void setStartItem( int startItem );
+			void setIsCollated( bool isCollated );
+			void setAreGroupsContiguous( bool areGroupscontiguous );
 			void setPrintOutlines( bool printOutlinesFlag );
 			void setPrintCropMarks( bool printCropMarksFlag );
 			void setPrintReverse( bool printReverseFlag );
@@ -97,7 +99,8 @@ namespace glabels
 		private:
 			void updateNPages();
 			void printSimplePage( QPainter* painter, int iPage ) const;
-			void printMergePage( QPainter* painter, int iPage ) const;
+			void printCollatedMergePage( QPainter* painter, int iPage ) const;
+			void printUnCollatedMergePage( QPainter* painter, int iPage ) const;
 			void printCropMarks( QPainter* painter ) const;
 			void printOutline( QPainter* painter ) const;
 			void clipLabel( QPainter* painter ) const;
@@ -113,16 +116,24 @@ namespace glabels
 			Variables*          mVariables;
 	
 			int               mNCopies;
-			int               mStartLabel;
-			int               mLastLabel;
-			bool              mPrintOutlines;
-			bool              mPrintCropMarks;
-			bool              mPrintReverse;
+			int               mStartItem;
+			int               mLastItem;
+			int               mNGroups;
+			int               mNItemsPerGroup;
+			int               mNPagesPerGroup;
 			int               mIPage;
 
 			bool              mIsMerge;
+
+			int               mNItems;
 			int               mNPages;
-			int               mNLabelsPerPage;
+			int               mNItemsPerPage;
+
+			bool              mIsCollated;
+			bool              mAreGroupsContiguous;
+			bool              mPrintOutlines;
+			bool              mPrintCropMarks;
+			bool              mPrintReverse;
 
 			QVector<Point>    mOrigins;
 		};

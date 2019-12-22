@@ -43,13 +43,18 @@ namespace glabels
 			const double labelOutlineWidth = 0.25;
 			const double tickOffset = 2.25;
 			const double tickLength = 18;
+
+			int iDivCeil( int i, int n )
+			{
+				return (i + n - 1)/n;
+			}
 		}
 
 
 		PageRenderer::PageRenderer( const Model* model )
-			: mModel(nullptr), mMerge(nullptr), mVariables(nullptr), mNCopies(0), mStartLabel(0), mLastLabel(0),
+			: mModel(nullptr), mMerge(nullptr), mVariables(nullptr), mNCopies(0), mStartItem(0), mLastItem(0),
 			  mPrintOutlines(false), mPrintCropMarks(false), mPrintReverse(false),
-			  mIPage(0), mIsMerge(false), mNPages(0), mNLabelsPerPage(0)
+			  mIPage(0), mIsMerge(false), mNPages(0), mNItemsPerPage(0)
 		{
 			if ( model )
 			{
@@ -79,7 +84,7 @@ namespace glabels
 		{
 			mMerge = mModel->merge();
 			mOrigins = mModel->frame()->getOrigins();
-			mNLabelsPerPage = mModel->frame()->nLabels();
+			mNItemsPerPage = mModel->frame()->nLabels();
 			mIsMerge = ( dynamic_cast<const merge::None*>(mMerge) == nullptr );
 			updateNPages();
 
@@ -96,15 +101,27 @@ namespace glabels
 		}
 
 
-		void PageRenderer::setStartLabel( int startLabel )
+		void PageRenderer::setStartItem( int startItem )
 		{
-			mStartLabel = startLabel;
+			mStartItem = startItem;
 			updateNPages();
 
 			emit changed();
 		}
 
 	
+		void PageRenderer::setIsCollated( bool isCollated )
+		{
+			mIsCollated = isCollated;
+		}
+		
+
+		void PageRenderer::setAreGroupsContiguous( bool areGroupsContiguous )
+		{
+			mAreGroupsContiguous = areGroupsContiguous;
+		}
+		
+
 		void PageRenderer::setPrintOutlines( bool printOutlinesFlag )
 		{
 			mPrintOutlines = printOutlinesFlag;
@@ -139,7 +156,7 @@ namespace glabels
 	
 		int PageRenderer::nItems() const
 		{
-			return mLastLabel - mStartLabel;
+			return mNItems;
 		}
 			
 	
@@ -166,25 +183,49 @@ namespace glabels
 		{
 			if ( mModel )
 			{
-				if ( mIsMerge )
+				if ( !mIsMerge )
 				{
-					mLastLabel = mStartLabel + mNCopies*mMerge->nSelectedRecords();
+					// Simple project
+					mLastItem = mStartItem + mNCopies - 1;
+					mNItems = mNCopies;
+					mNGroups = 1;
+					mNItemsPerGroup = mNItems;
 				}
 				else
 				{
-					mLastLabel = mStartLabel + mNCopies;
-				}
-		
-				mNPages = mLastLabel / mNLabelsPerPage;
-				if ( mLastLabel % mNLabelsPerPage )
-				{
-					mNPages++;
+					// Merge project
+					if ( mIsCollated )
+					{
+						// Collated Merge project
+						mNItemsPerGroup = mMerge->nSelectedRecords();
+						mNGroups = mNCopies;
+					}
+					else
+					{
+						// Un-Collated Merge project
+						mNItemsPerGroup = mNCopies;
+						mNGroups = mMerge->nSelectedRecords();
+					}
+					if ( mAreGroupsContiguous )
+					{
+						// Merge groups are contiguous
+						mLastItem = mStartItem + mNGroups*mNItemsPerGroup;
+					}
+					else
+					{
+						// Merge groups start on new page
+						mNPagesPerGroup = iDivCeil( (mStartItem + mNItemsPerGroup), mNItemsPerPage );
+						mLastItem = (mNGroups-1)*mNPagesPerGroup*mNItemsPerPage + mStartItem + mNItemsPerGroup;
+					}
+					mNItems = mNGroups*mNItemsPerGroup;
 				}
 			}
 			else
 			{
 				mNPages = 0;
 			}
+
+			mNPages = iDivCeil( mLastItem, mNItemsPerPage );
 		}
 
 	
@@ -233,13 +274,20 @@ namespace glabels
 		{
 			if ( mModel )
 			{
-				if ( mIsMerge )
+				if ( !mIsMerge )
 				{
-					printMergePage( painter, iPage );
+					printSimplePage( painter, iPage );
 				}
 				else
 				{
-					printSimplePage( painter, iPage );
+					if ( mIsCollated )
+					{
+						printCollatedMergePage( painter, iPage );
+					}
+					else
+					{
+						printUnCollatedMergePage( painter, iPage );
+					}
 				}
 			}
 		}
@@ -250,7 +298,7 @@ namespace glabels
 			printCropMarks( painter );
 
 			int iCopy = 0;
-			int iLabel = mStartLabel;
+			int iItem = mStartItem;
 			int iCurrentPage = 0;
 			mVariables->resetVariables();
 
@@ -258,7 +306,7 @@ namespace glabels
 			{
 				if ( iCurrentPage == iPage )
 				{
-					int i = iLabel % mNLabelsPerPage;
+					int i = iItem % mNItemsPerPage;
 					
 					painter->save();
 
@@ -276,13 +324,15 @@ namespace glabels
 					painter->restore();  // From before translation
 				}
 
+				// Next copy
 				iCopy++;
-				iLabel++;
-				iCurrentPage = iLabel / mNLabelsPerPage;
+				iItem++;
+				iCurrentPage = iItem / mNItemsPerPage;
 
+				// User variable book keeping
 				mVariables->incrementVariablesOnItem();
 				mVariables->incrementVariablesOnCopy();
-				if ( (iLabel % mNLabelsPerPage) == 0 /* starting a new page */ )
+				if ( (iItem % mNItemsPerPage) == 0 /* starting a new page */ )
 				{
 					mVariables->incrementVariablesOnPage();
 				}
@@ -290,12 +340,12 @@ namespace glabels
 		}
 
 	
-		void PageRenderer::printMergePage( QPainter* painter, int iPage ) const
+		void PageRenderer::printCollatedMergePage( QPainter* painter, int iPage ) const
 		{
 			printCropMarks( painter );
 
 			int iCopy = 0;
-			int iLabel = mStartLabel;
+			int iItem = mStartItem;
 			int iCurrentPage = 0;
 
 			const QList<merge::Record*> records = mMerge->selectedRecords();
@@ -313,7 +363,7 @@ namespace glabels
 			{
 				if ( iCurrentPage == iPage )
 				{
-					int i = iLabel % mNLabelsPerPage;
+					int i = iItem % mNItemsPerPage;
 					
 					painter->save();
 
@@ -331,20 +381,109 @@ namespace glabels
 					painter->restore();  // From before translation
 				}
 
+				// Next record
 				iRecord = (iRecord + 1) % nRecords;
 				if ( iRecord == 0 )
 				{
 					iCopy++;
+					if ( mAreGroupsContiguous )
+					{
+						iItem++;
+					}
+					else
+					{
+						iItem = iCopy*mNPagesPerGroup*mNItemsPerPage + mStartItem;
+					}
 				}
-				iLabel++;
-				iCurrentPage = iLabel / mNLabelsPerPage;
+				else
+				{
+					iItem++;
+				}
+				iCurrentPage = iItem / mNItemsPerPage;
 
+				// User variable book keeping
 				mVariables->incrementVariablesOnItem();
 				if ( iRecord == 0 )
 				{
 					mVariables->incrementVariablesOnCopy();
 				}
-				if ( (iLabel % mNLabelsPerPage) == 0 /* starting a new page */ )
+				if ( (iItem % mNItemsPerPage) == 0 /* starting a new page */ )
+				{
+					mVariables->incrementVariablesOnPage();
+				}
+			}
+		}
+	
+	
+		void PageRenderer::printUnCollatedMergePage( QPainter* painter, int iPage ) const
+		{
+			printCropMarks( painter );
+
+			int iCopy = 0;
+			int iItem = mStartItem;
+			int iCurrentPage = 0;
+
+			const QList<merge::Record*> records = mMerge->selectedRecords();
+			int iRecord = 0;
+			int nRecords = records.size();
+
+			if ( nRecords == 0 )
+			{
+				return;
+			}
+			
+			mVariables->resetVariables();
+
+			while ( (iRecord < nRecords) && (iCurrentPage <= iPage) )
+			{
+				if ( iCurrentPage == iPage )
+				{
+					int i = iItem % mNItemsPerPage;
+					
+					painter->save();
+
+					painter->translate( mOrigins[i].x().pt(), mOrigins[i].y().pt() );
+			
+					painter->save();
+
+					clipLabel( painter );
+					printLabel( painter, records[iRecord], mVariables );
+
+					painter->restore();  // From before clip
+
+					printOutline( painter );
+			
+					painter->restore();  // From before translation
+				}
+
+				// Next copy
+				iCopy = (iCopy + 1) % mNCopies;
+				if ( iCopy == 0 )
+				{
+					iRecord++;
+					if ( mAreGroupsContiguous )
+					{
+						iItem++;
+					}
+					else
+					{
+						iItem = iRecord*mNPagesPerGroup*mNItemsPerPage + mStartItem;
+					}
+				}
+				else
+				{
+					iItem++;
+				}
+				iCurrentPage = iItem / mNItemsPerPage;
+
+				// User variable book keeping
+				mVariables->incrementVariablesOnItem();
+				mVariables->incrementVariablesOnCopy();
+				if ( iCopy == 0 )
+				{
+					mVariables->resetOnCopyVariables();
+				}
+				if ( (iItem % mNItemsPerPage) == 0 /* starting a new page */ )
 				{
 					mVariables->incrementVariablesOnPage();
 				}

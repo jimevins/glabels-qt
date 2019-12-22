@@ -473,7 +473,7 @@ namespace glabels
 
 		model::PageRenderer renderer( sheet );
 		renderer.setNCopies( sheet->frame()->nLabels() );
-		renderer.setStartLabel( 0 );
+		renderer.setStartItem( 0 );
 		renderer.setPrintOutlines( true );
 
 		QPrinter printer( QPrinter::HighResolution );

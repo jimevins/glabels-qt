@@ -66,6 +66,7 @@ namespace glabels
 			void setVariables( const QMap<QString,QString>& definitions );
 
 			void resetVariables();
+			void resetOnCopyVariables();
 			void incrementVariablesOnItem();
 			void incrementVariablesOnCopy();
 			void incrementVariablesOnPage();

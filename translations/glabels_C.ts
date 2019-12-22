@@ -536,10 +536,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>on 1st page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>print outlines</source>
         <translation type="unfinished"></translation>
     </message>
@@ -588,10 +584,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Start at position:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Uncollated (e.g.  1,1,1   2,2,2   3,3,3)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -609,6 +601,10 @@
     </message>
     <message>
         <source>Print...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start groups at position:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

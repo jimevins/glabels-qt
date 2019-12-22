@@ -85,6 +85,7 @@ namespace glabels
 
 		printRangeBox->setVisible( mModel->merge()->keys().empty() );
 		mergeBox->setVisible( !mModel->merge()->keys().empty() );
+		mergeOnlyOptions->setVisible( !mModel->merge()->keys().empty() );
 
 		onFormChanged();
 	}
@@ -132,6 +133,7 @@ namespace glabels
 				// Simple project (no merge)
 				if ( printRangePagesRadio->isChecked() )
 				{
+					// Print full sheets of labels
 					int nItemsPerPage = mModel->frame()->nLabels();
 
 					printRangePagesSpin->setEnabled( true );
@@ -146,10 +148,11 @@ namespace glabels
 					printRangeLastPositionSpin->setValue( nItemsPerPage );
 
 					mRenderer.setNCopies( printRangePagesSpin->value()*nItemsPerPage );
-					mRenderer.setStartLabel( 0 );
+					mRenderer.setStartItem( 0 );
 				}
 				else
 				{
+					// Print a partial sheet of labels
 					int iStart = printRangeStartPositionSpin->value();
 					int iLast  = printRangeLastPositionSpin->value();
 
@@ -162,7 +165,7 @@ namespace glabels
 					printRangeLastPositionSpin->setMinimum( iStart );
 
 					mRenderer.setNCopies( iLast - iStart + 1 );
-					mRenderer.setStartLabel( iStart - 1 );
+					mRenderer.setStartItem( iStart - 1 );
 				}
 			}
 			else
@@ -174,6 +177,9 @@ namespace glabels
 				mergeGroupCombo->setEnabled ( isMultipleCopies );
 				
 				mRenderer.setNCopies( mergeCopiesSpin->value() );
+				mRenderer.setIsCollated( mergeCollateCombo->currentIndex() == 1 );
+				mRenderer.setAreGroupsContiguous( mergeGroupCombo->currentIndex() == 0 );
+				mRenderer.setStartItem( mergeStartPositionSpin->value() - 1 );
 			}
 
 			mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
