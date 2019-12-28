@@ -110,8 +110,14 @@ int main( int argc, char **argv )
 		 QCoreApplication::translate( "main", "Set number of copies to <n>. (Default=1)" ),
 		 "n", "1" },
 		
+		{{"a","collate"},
+		 QCoreApplication::translate( "main", "Collate merge copies." ) },
+		
+		{{"g","group"},
+		 QCoreApplication::translate( "main", "Start each merge group on a new page." ) },
+		
 		{{"f","first"},
-		 QCoreApplication::translate( "main", "Set starting label on 1st page to <n>. (Default=1)" ),
+		 QCoreApplication::translate( "main", "Set starting position to <n>. (Default=1)" ),
 		 "n", "1" },
 
 		{{"l","outlines"},
@@ -197,11 +203,40 @@ int main( int argc, char **argv )
 			}
 
 			glabels::model::PageRenderer renderer( model );
-			renderer.setNCopies( parser.value( "copies" ).toInt() );
-			renderer.setStartItem( parser.value( "first" ).toInt() - 1 );
+			if ( model->merge()->keys().empty() )
+			{
+				// Simple project (no merge)
+				if ( parser.isSet( "sheets" ) )
+				{
+					// Full sheets of simple items
+					renderer.setNCopies( parser.value( "sheets" ).toInt() * model->frame()->nLabels() );
+					renderer.setStartItem( 0 );
+				}
+				else if ( parser.isSet( "copies" ) )
+				{
+					// Partial sheet(s) of simple items
+					renderer.setNCopies( parser.value( "copies" ).toInt() );
+					renderer.setStartItem( parser.value( "first" ).toInt() - 1 );
+				}
+				else
+				{
+					// One full sheet of simple items
+					renderer.setNCopies( model->frame()->nLabels() );
+					renderer.setStartItem( 0 );
+				}
+			}
+			else
+			{
+				// Project with merge
+				renderer.setNCopies( parser.value( "copies" ).toInt() );
+				renderer.setStartItem( parser.value( "first" ).toInt() - 1 );
+				renderer.setIsCollated( parser.isSet( "collated" ) );
+				renderer.setAreGroupsContiguous( parser.isSet( "group" ) );
+			}
 			renderer.setPrintOutlines( parser.isSet( "outlines" ) );
 			renderer.setPrintCropMarks( parser.isSet( "crop-marks" ) );
 			renderer.setPrintReverse( parser.isSet( "reverse" ) );
+
 			renderer.print( &printer );
 		}
 	}
