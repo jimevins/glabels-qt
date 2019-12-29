@@ -17,30 +17,30 @@ OPTIONS
 -------
 
 .. program:: glabels-qt
-	     
+
 .. option::  -h, --help
-	     
+
 	     Displays usage information and exits.
-	     
+
 .. option::  -v, --version
-	     
+
              Displays version information and exits.
 
 FILES
 -----
 
 .. describe:: ${prefix}/share/glabels-qt/templates/
-	      
+
 	      Directory containing predefined product templates distributed with glabels.
-	  
+
 .. describe:: ${XDG_CONFIG_HOME}/glabels.org/glabels-qt/
-	      
+
 	      Directory containing user defined product templates created with the
 	      gLabels Product Template Designer.  **Do not place manually created
 	      templates here!**
-	  
+
 .. describe:: ${HOME}/.glabels/
-	      
+
               Directory for manually created product templates.
 
 REPORTING BUGS
@@ -53,5 +53,5 @@ SEE ALSO
 --------
 
 :manpage:`glabels-batch-qt(1)`
-	 
+
 The gLabels homepage at <http://glabels.org/>.
