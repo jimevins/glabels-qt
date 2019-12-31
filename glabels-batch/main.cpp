@@ -31,12 +31,12 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QDebug>
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QPrinter>
 #include <QPrinterInfo>
 #include <QTranslator>
-#include <QtDebug>
 
 
 namespace
@@ -230,13 +230,31 @@ int main( int argc, char **argv )
 				// Project with merge
 				renderer.setNCopies( parser.value( "copies" ).toInt() );
 				renderer.setStartItem( parser.value( "first" ).toInt() - 1 );
-				renderer.setIsCollated( parser.isSet( "collated" ) );
-				renderer.setAreGroupsContiguous( parser.isSet( "group" ) );
+				renderer.setIsCollated( parser.isSet( "collate" ) );
+				renderer.setAreGroupsContiguous( !parser.isSet( "group" ) );
 			}
 			renderer.setPrintOutlines( parser.isSet( "outlines" ) );
 			renderer.setPrintCropMarks( parser.isSet( "crop-marks" ) );
 			renderer.setPrintReverse( parser.isSet( "reverse" ) );
 
+			// Item and page count summary
+			if ( renderer.nPages() == 1 )
+			{
+				if ( renderer.nItems() == 1 )
+				{
+					qDebug() <<  "Printing 1 item on 1 page.";
+				}
+				else
+				{
+					qDebug() <<  "Printing" << renderer.nItems() << "items on 1 page.";
+				}
+			}
+			else
+			{
+				qDebug() << "Printing" << renderer.nItems() << "items on" << renderer.nPages() << "pages.";
+			}
+
+			// Do it!
 			renderer.print( &printer );
 		}
 	}

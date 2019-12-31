@@ -113,12 +113,18 @@ namespace glabels
 		void PageRenderer::setIsCollated( bool isCollated )
 		{
 			mIsCollated = isCollated;
+			updateNPages();
+
+			emit changed();
 		}
 		
 
 		void PageRenderer::setAreGroupsContiguous( bool areGroupsContiguous )
 		{
 			mAreGroupsContiguous = areGroupsContiguous;
+			updateNPages();
+
+			emit changed();
 		}
 		
 
