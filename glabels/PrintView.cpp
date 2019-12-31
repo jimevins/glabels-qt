@@ -116,6 +116,8 @@ namespace glabels
 
 		pageSpin->setRange( 1, mRenderer.nPages() );
 		nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
+
+		mRenderer.setIPage( pageSpin->value() - 1 ); // Update preview
 	}
 
 
@@ -185,8 +187,6 @@ namespace glabels
 			mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
 			mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
 			mRenderer.setPrintReverse( printReverseCheck->isChecked() );
-
-			mRenderer.setIPage( pageSpin->value() - 1 );
 
 			updateView();
 		
