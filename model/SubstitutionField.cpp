@@ -145,7 +145,7 @@ namespace glabels
 		{
 			bool success = false;
 		
-			while ( s.size() && (s[0].isDigit() || s[0].isLetter() || s[0] == '_' || s[0] == '-') )
+			while ( s.size() && (s[0].isPrint() && s[0] != ':' && s[0] != '}') )
 			{
 				field.mFieldName.append( s[0] );
 				s = s.mid(1);

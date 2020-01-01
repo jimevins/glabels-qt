@@ -33,7 +33,7 @@ void TestSubstitutionField::parseValid()
 	//
 	// Valid substitution fields (concatenated in single input string)
 	//
-	QString input = "${1234}${abc:=ABC}${x:%08.2f}${y:%08.2f:=12.34}${ADDR2:n}";
+	QString input = "${1234}${abc:=ABC}${x:%08.2f}${y:%08.2f:=12.34}${ADDR2:n}${FüññýßútLæg@lÑªmê}${Also_a legal-name}";
 	QStringRef s = &input;
 	
 	model::SubstitutionField f1;
@@ -66,6 +66,16 @@ void TestSubstitutionField::parseValid()
 	QCOMPARE( model::SubstitutionField::parse( s, f5 ), true );
 	QCOMPARE( f5.fieldName(),    QString( "ADDR2" ) );
 	QCOMPARE( f5.newLine(),      true );
+
+	model::SubstitutionField f6;
+	QCOMPARE( model::SubstitutionField::parse( s, f6 ), true );
+	QCOMPARE( f6.fieldName(),    QString( "FüññýßútLæg@lÑªmê" ) );
+	QCOMPARE( f6.newLine(),      false );
+
+	model::SubstitutionField f7;
+	QCOMPARE( model::SubstitutionField::parse( s, f7 ), true );
+	QCOMPARE( f7.fieldName(),    QString( "Also_a legal-name" ) );
+	QCOMPARE( f7.newLine(),      false );
 }
 
 
@@ -108,6 +118,18 @@ void TestSubstitutionField::parseInvalid()
 	QStringRef s9 = &input9;
 	model::SubstitutionField f9;
 	QCOMPARE( model::SubstitutionField::parse( s9, f9 ), true );
+
+	QString input10 = "${embedded\nnew-line}";
+	QStringRef s10 = &input10;
+	model::SubstitutionField f10;
+	QCOMPARE( model::SubstitutionField::parse( s10, f10 ), false );
+	QCOMPARE( s10, QStringRef( &input10 ) ); // Should not advance string reference
+
+	QString input11 = "${how-about-a\ttab}";
+	QStringRef s11 = &input11;
+	model::SubstitutionField f11;
+	QCOMPARE( model::SubstitutionField::parse( s11, f11 ), false );
+	QCOMPARE( s11, QStringRef( &input11 ) ); // Should not advance string reference
 }
 
 
