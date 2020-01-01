@@ -119,6 +119,21 @@ namespace glabels
 
 		
 		///
+		/// Reset "on copy" variables to their initial values
+		///
+		void Variables::resetOnCopyVariables()
+		{
+			for ( auto& v : *this )
+			{
+				if ( v.increment() == Variable::Increment::PER_COPY )
+				{
+					v.resetValue();
+				}
+			}
+		}
+
+		
+		///
 		/// Increment variables on item
 		///
 		void Variables::incrementVariablesOnItem()

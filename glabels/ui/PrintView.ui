@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>852</width>
-    <height>792</height>
+    <height>796</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,6 +22,9 @@
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,1">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>9</number>
+     </property>
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
@@ -51,7 +54,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="copiesBox">
+      <widget class="QGroupBox" name="printRangeBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -71,26 +74,29 @@
         </size>
        </property>
        <property name="title">
-        <string>Copies</string>
+        <string>Print range</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>9</number>
+          </property>
           <item>
-           <widget class="QLabel" name="label_4">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="QRadioButton" name="printRangePagesRadio">
             <property name="text">
-             <string>Copies:</string>
+             <string>Pages</string>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">buttonGroup</string>
+            </attribute>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="copiesSpin">
+           <widget class="QSpinBox" name="printRangePagesSpin">
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::UpDownArrows</enum>
             </property>
@@ -101,7 +107,7 @@
              <number>1</number>
             </property>
             <property name="maximum">
-             <number>9999</number>
+             <number>250</number>
             </property>
            </widget>
           </item>
@@ -121,27 +127,33 @@
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLabel" name="label_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="QRadioButton" name="printRangePositionsRadio">
             <property name="text">
-             <string>Start on position:</string>
+             <string>Positions</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">buttonGroup</string>
+            </attribute>
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="copiesStartSpin">
+           <widget class="QSpinBox" name="printRangeStartPositionSpin">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
             <property name="minimum">
              <number>1</number>
@@ -149,20 +161,33 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>on 1st page</string>
+             <string>to</string>
             </property>
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_2">
+           <widget class="QSpinBox" name="printRangeLastPositionSpin">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -176,28 +201,113 @@
           </item>
          </layout>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="mergeBox">
+       <property name="title">
+        <string>Merge control</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>9</number>
+          </property>
           <item>
-           <widget class="QLabel" name="copiesDescriptionLabel">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>330</width>
-              <height>0</height>
-             </size>
-            </property>
+           <widget class="QLabel" name="label">
             <property name="text">
-             <string notr="true">(Will print a total of xxxx items on nnn pages.)        </string>
+             <string>Copies:</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QSpinBox" name="mergeCopiesSpin">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>9999</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="mergeCollateCombo">
+          <property name="styleSheet">
+           <string notr="true">text-align:left; padding:3px;</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <item>
+           <property name="text">
+            <string>Uncollated (e.g.  1,1,1   2,2,2   3,3,3)</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons.qrc">
+             <normaloff>:/icons/flat/32x32/glabels-uncollated.svg</normaloff>:/icons/flat/32x32/glabels-uncollated.svg</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Collated   (e.g.  1,2,3   1,2,3   1,2,3)</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons.qrc">
+             <normaloff>:/icons/flat/32x32/glabels-collated.svg</normaloff>:/icons/flat/32x32/glabels-collated.svg</iconset>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QComboBox" name="mergeGroupCombo">
+          <property name="styleSheet">
+           <string notr="true">text-align:left; padding:3px;</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <item>
+           <property name="text">
+            <string>Merge groups are contiguous</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons.qrc">
+             <normaloff>:/icons/flat/32x32/glabels-merge-group-contiguous.svg</normaloff>:/icons/flat/32x32/glabels-merge-group-contiguous.svg</iconset>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Merge groups start on a new page</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../icons.qrc">
+             <normaloff>:/icons/flat/32x32/glabels-merge-group-page.svg</normaloff>:/icons/flat/32x32/glabels-merge-group-page.svg</iconset>
+           </property>
+          </item>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -223,10 +333,10 @@
         </size>
        </property>
        <property name="title">
-        <string>Print options</string>
+        <string>Options</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
+        <item row="1" column="0">
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <widget class="QCheckBox" name="printOutlinesCheck">
@@ -249,10 +359,83 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QWidget" name="mergeOnlyOptions" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Start groups at position:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="mergeStartPositionSpin">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
       </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>12</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QPushButton" name="printButton">
@@ -266,7 +449,7 @@
         <string notr="true">text-align:left; padding:3px;</string>
        </property>
        <property name="text">
-        <string>Print</string>
+        <string>Print...</string>
        </property>
        <property name="icon">
         <iconset resource="../icons.qrc">
@@ -278,7 +461,62 @@
          <height>32</height>
         </size>
        </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>2</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="printDescriptionLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>330</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(Will print a total of xxxx items on nnn pages.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>2</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </item>
      <item>
       <spacer name="verticalSpacer">
@@ -401,30 +639,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>copiesStartSpin</sender>
+   <sender>printRangePagesSpin</sender>
    <signal>valueChanged(int)</signal>
    <receiver>PrintView</receiver>
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>221</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>4</x>
-     <y>309</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copiesSpin</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>PrintView</receiver>
-   <slot>onFormChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>161</x>
-     <y>84</y>
+     <x>175</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
@@ -439,8 +661,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>220</y>
+     <x>182</x>
+     <y>444</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
@@ -455,8 +677,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>248</y>
+     <x>152</x>
+     <y>475</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -471,8 +693,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>88</x>
-     <y>276</y>
+     <x>156</x>
+     <y>506</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -487,8 +709,8 @@
    <slot>onFormChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>645</x>
-     <y>745</y>
+     <x>641</x>
+     <y>760</y>
     </hint>
     <hint type="destinationlabel">
      <x>1</x>
@@ -503,12 +725,124 @@
    <slot>onPrintButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>249</x>
-     <y>325</y>
+     <x>291</x>
+     <y>589</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
      <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mergeCopiesSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>printRangePagesRadio</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>printRangeStartPositionSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>printRangeLastPositionSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mergeCollateCombo</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>52</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mergeGroupCombo</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mergeStartPositionSpin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PrintView</receiver>
+   <slot>onFormChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>362</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>309</y>
     </hint>
    </hints>
   </connection>
@@ -518,4 +852,7 @@
   <slot>onFormChanged()</slot>
   <slot>onPrinterPropertiesButtonClicked()</slot>
  </slots>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>

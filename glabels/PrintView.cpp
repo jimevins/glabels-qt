@@ -70,10 +70,7 @@ namespace glabels
 
 		connect( mModel, SIGNAL(changed()), this, SLOT(onModelChanged()) );
 
-		copiesSpin->setRange( 1, 100*mModel->frame()->nLabels() );
-		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
-
-		onFormChanged();
+		onModelChanged();
 	}
 
 
@@ -82,10 +79,15 @@ namespace glabels
 	///
 	void PrintView::onModelChanged()
 	{
-		copiesSpin->setRange( 1, 100*mModel->frame()->nLabels() );
-		copiesStartSpin->setRange( 1, mModel->frame()->nLabels() );
+		printRangeStartPositionSpin->setRange( 1, mModel->frame()->nLabels() );
+		printRangeLastPositionSpin->setRange( 1, mModel->frame()->nLabels() );
+		mergeStartPositionSpin->setRange( 1, mModel->frame()->nLabels() );
 
-		updateView();
+		printRangeBox->setVisible( mModel->merge()->keys().empty() );
+		mergeBox->setVisible( !mModel->merge()->keys().empty() );
+		mergeOnlyOptions->setVisible( !mModel->merge()->keys().empty() );
+
+		onFormChanged();
 	}
 
 
@@ -98,22 +100,24 @@ namespace glabels
 		{
 			if ( mRenderer.nItems() == 1 )
 			{
-				copiesDescriptionLabel->setText( tr("(Will print a total of 1 item on 1 page.)") );
+				printDescriptionLabel->setText( tr("(Will print a total of 1 item on 1 page.)") );
 			}
 			else
 			{
-				copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on 1 page.)")
-				                                 .arg(mRenderer.nItems()) );
+				printDescriptionLabel->setText( tr("(Will print a total of %1 items on 1 page.)")
+				                                .arg(mRenderer.nItems()) );
 			}
 		}
 		else
 		{
-			copiesDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
-			                                 .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
+			printDescriptionLabel->setText( tr("(Will print a total of %1 items on %2 pages.)")
+			                                .arg(mRenderer.nItems()).arg(mRenderer.nPages()) );
 		}
 
 		pageSpin->setRange( 1, mRenderer.nPages() );
 		nPagesLabel->setText( QString::number( mRenderer.nPages() ) );
+
+		mRenderer.setIPage( pageSpin->value() - 1 ); // Update preview
 	}
 
 
@@ -126,14 +130,63 @@ namespace glabels
 		{
 			mBlocked = true;
 			
-			mRenderer.setNCopies( copiesSpin->value() );
-			mRenderer.setStartLabel( copiesStartSpin->value() - 1 );
+			if ( mModel->merge()->keys().empty() )
+			{
+				// Simple project (no merge)
+				if ( printRangePagesRadio->isChecked() )
+				{
+					// Print full sheets of labels
+					int nItemsPerPage = mModel->frame()->nLabels();
+
+					printRangePagesSpin->setEnabled( true );
+
+					printRangeStartPositionSpin->setEnabled( false );
+					printRangeLastPositionSpin->setEnabled( false );
+
+					printRangeStartPositionSpin->setMaximum( nItemsPerPage );
+					printRangeLastPositionSpin->setMinimum( 1 );
+
+					printRangeStartPositionSpin->setValue( 1 );
+					printRangeLastPositionSpin->setValue( nItemsPerPage );
+
+					mRenderer.setNCopies( printRangePagesSpin->value()*nItemsPerPage );
+					mRenderer.setStartItem( 0 );
+				}
+				else
+				{
+					// Print a partial sheet of labels
+					int iStart = printRangeStartPositionSpin->value();
+					int iLast  = printRangeLastPositionSpin->value();
+
+					printRangePagesSpin->setEnabled( false );
+
+					printRangeStartPositionSpin->setEnabled( true );
+					printRangeLastPositionSpin->setEnabled( true );
+
+					printRangeStartPositionSpin->setMaximum( iLast );
+					printRangeLastPositionSpin->setMinimum( iStart );
+
+					mRenderer.setNCopies( iLast - iStart + 1 );
+					mRenderer.setStartItem( iStart - 1 );
+				}
+			}
+			else
+			{
+				// Project with merge
+				bool isMultipleCopies = mergeCopiesSpin->value() > 1;
+
+				mergeCollateCombo->setEnabled ( isMultipleCopies );
+				mergeGroupCombo->setEnabled ( isMultipleCopies );
+				
+				mRenderer.setNCopies( mergeCopiesSpin->value() );
+				mRenderer.setIsCollated( mergeCollateCombo->currentIndex() == 1 );
+				mRenderer.setAreGroupsContiguous( mergeGroupCombo->currentIndex() == 0 );
+				mRenderer.setStartItem( mergeStartPositionSpin->value() - 1 );
+			}
 
 			mRenderer.setPrintOutlines( printOutlinesCheck->isChecked() );
 			mRenderer.setPrintCropMarks( printCropMarksCheck->isChecked() );
 			mRenderer.setPrintReverse( printReverseCheck->isChecked() );
-
-			mRenderer.setIPage( pageSpin->value() - 1 );
 
 			updateView();
 		
