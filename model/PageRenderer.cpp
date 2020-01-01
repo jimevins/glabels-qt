@@ -43,11 +43,6 @@ namespace glabels
 			const double labelOutlineWidth = 0.25;
 			const double tickOffset = 2.25;
 			const double tickLength = 18;
-
-			int iDivCeil( int i, int n )
-			{
-				return (i + n - 1)/n;
-			}
 		}
 
 
@@ -215,13 +210,13 @@ namespace glabels
 					if ( mAreGroupsContiguous )
 					{
 						// Merge groups are contiguous
-						mLastItem = mStartItem + mNGroups*mNItemsPerGroup;
+						mLastItem = mStartItem + mNGroups*mNItemsPerGroup - 1;
 					}
 					else
 					{
 						// Merge groups start on new page
-						mNPagesPerGroup = iDivCeil( (mStartItem + mNItemsPerGroup), mNItemsPerPage );
-						mLastItem = (mNGroups-1)*mNPagesPerGroup*mNItemsPerPage + mStartItem + mNItemsPerGroup;
+						mNPagesPerGroup = (mStartItem + mNItemsPerGroup - 1)/mNItemsPerPage + 1;
+						mLastItem = (mNGroups-1)*mNPagesPerGroup*mNItemsPerPage + mStartItem + mNItemsPerGroup - 1;
 					}
 					mNItems = mNGroups*mNItemsPerGroup;
 				}
@@ -231,7 +226,7 @@ namespace glabels
 				mNPages = 0;
 			}
 
-			mNPages = iDivCeil( mLastItem, mNItemsPerPage );
+			mNPages = mLastItem/mNItemsPerPage + 1;
 		}
 
 	
