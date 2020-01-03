@@ -100,16 +100,6 @@ On GNU/Linux platforms, :program:`glabels-batch-qt` must be run from within a wi
 REPORTING BUGS
 --------------
 
-On GNU/Linux platforms, :program:`glabels-batch-qt` must be run from within a windowing environment, such as X or Wayland.  This is because Qt requires a suitable platform to obtain system font information.  A work-around is to run :program:`glabels-batch-qt` using a virtual X server environment:
-
-.. code:: shell
-	  
-	  xvfb-run glabels-batch-qt -o output.pdf myProject.glabels
-
-	  
-REPORTING BUGS
---------------
-
 Bugs and feature requests can be reported via the gLabels issue tracking system at GitHub (<https://github.com/jimevins/glabels-qt/issues>).  You will need a GitHub account to submit new issues or to comment on existing issues.
 
 SEE ALSO
