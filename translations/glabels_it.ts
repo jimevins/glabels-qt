@@ -182,8 +182,7 @@
     </message>
     <message>
         <source>Text: Comma Separated Values (CSV)</source>
-        <translation<Testo: valori separati da virgola (CSV)>
-            </translation>
+        <translation<Testo: valori separati da virgola (CSV)</translation>
     </message>
     <message>
         <source>Text: Comma Separated Values (CSV), keys on line 1</source>
@@ -191,8 +190,7 @@
     </message>
     <message>
         <source>Text: Tab Separated Values (TSV)</source>
-        <translation>Testo: Valori Separati da Tabulazione (TSV)>
-            </translation>
+        <translation>Testo: Valori Separati da Tabulazione (TSV)></translation>
     </message>
     <message>
         <source>Text: Tab Separated Values (TSV), keys on line 1</source>
@@ -451,8 +449,7 @@
     </message>
     <message>
         <source>Shadow</source>
-        <translation<Ombra>
-            </translation>
+        <translation<Ombra</translation>
     </message>
     <message>
         <source>X offset:</source>
@@ -464,8 +461,7 @@
     </message>
     <message>
         <source>Opacity:</source>
-        <translation<Opacità>
-            </translation>
+        <translation<Opacità</translation>
     </message>
 </context>
 <context>
@@ -480,8 +476,7 @@
     </message>
     <message>
         <source>Select locale specific behavior.</source>
-        <translation<Seleziona il comportamento specifico locale.>
-            </translation>
+        <translation<Seleziona il comportamento specifico locale.</translation>
     </message>
     <message>
         <source>Units</source>
@@ -747,8 +742,7 @@
     </message>
     <message>
         <source>4. Clipping height:</source>
-        <translation<4. Altezza di ritaglio:>
-            </translation>
+        <translation<4. Altezza di ritaglio:</translation>
     </message>
     <message>
         <source>2. Inner radius:</source>
@@ -756,8 +750,7 @@
     </message>
     <message>
         <source>3. Clipping width:</source>
-        <translation<3. Larghezza del ritaglio:>
-            </translation>
+        <translation<3. Larghezza del ritaglio:</translation>
     </message>
     <message>
         <source>5. Waste:</source>
@@ -857,8 +850,7 @@
     </message>
     <message>
         <source>Brand:</source>
-        <translation<Marca>
-            </translation>
+        <translation<Marca</translation>
     </message>
     <message>
         <source>Part #:</source>
@@ -885,13 +877,11 @@
     </message>
     <message>
         <source>Number across (nx):</source>
-        <translation<Numero attraverso (nx):>
-            </translation>
+        <translation<Numero attraverso (nx):</translation>
     </message>
     <message>
         <source>Number down (ny):</source>
-        <translation<Numero giù (ny):>
-            </translation>
+        <translation<Numero giù (ny):</translation>
     </message>
     <message>
         <source>Distance from left edge (x0):</source>
@@ -899,13 +889,11 @@
     </message>
     <message>
         <source>Horizontal pitch (dx):</source>
-        <translation<Passo orizzontale (dx):>
-            </translation>
+        <translation<Passo orizzontale (dx):</translation>
     </message>
     <message>
       <source>Vertical pitch (dy)::</source>
-        <translation<Passo verticale (dy):>
-            </translation>
+        <translation<Passo verticale (dy):</translation>
     </message>
     <message>
         <source>Print test sheet</source>
@@ -993,8 +981,7 @@
     </message>
     <message>
         <source>Rectangular or square (can have rounded corners)</source>
-        <translation<Rettangolare o quadrato (può avere angoli arrotondati)>
-            </translation>
+        <translation<Rettangolare o quadrato (può avere angoli arrotondati)</translation>
     </message>
     <message>
         <source>Round</source>
@@ -1021,23 +1008,19 @@
     </message>
     <message>
         <source>Number down (ny):</source>
-        <translation<Numero giù (ny):>
-            </translation>
+        <translation<Numero giù (ny):</translation>
     </message>
     <message>
         <source>Number across (nx):</source>
-        <translation<Numero attraverso (nx):>
-            </translation>
+        <translation<Numero attraverso (nx):</translation>
     </message>
     <message>
         <source>Horizontal pitch (dx):</source>
-        <translation<Passo orizzontale (dx):>
-            </translation>
+        <translation<Passo orizzontale (dx):</translation>
     </message>
     <message>
         <source>Vertical pitch (dy):</source>
-        <translation<Passo verticale (dy):>
-            </translation>
+        <translation<Passo verticale (dy):</translation>
     </message>
     <message>
         <source>Print test sheet</source>
@@ -1064,13 +1047,11 @@
     </message>
     <message>
         <source>cm</source>
-        <translation<cm>
-            </translation>
+        <translation<cm</translation>
     </message>
     <message>
         <source>picas</source>
-        <translation type="unfinished">
-            </translation>
+        <translation type="unfinished"</translation>
     </message>
 </context>
 <context>
@@ -1150,8 +1131,7 @@
     <name>glabels::LabelEditor</name>
     <message>
         <source>Move</source>
-        <translation<Sposta>
-            </translation>
+        <translation<Sposta</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -1162,8 +1142,7 @@
     <name>glabels::MainWindow</name>
     <message>
         <source>Welcome</source>
-        <translation<Benvenuto>
-            </translation>
+        <translation<Benvenuto</translation>
     </message>
     <message>
         <source>Edit</source>
@@ -1391,7 +1370,7 @@
     </message>
     <message>
         <source>Zoom to &amp;Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Adatta &amp;Zoom</translation>
     </message>
     <message>
         <source>Set scale to fit window</source>
@@ -1399,169 +1378,167 @@
     </message>
     <message>
         <source>Select Mode</source>
-        <translation type="unfinished">Modalità di _selezione</translation>
+        <translation>Seleziona Modalità</translation>
     </message>
     <message>
         <source>Select, move and modify objects</source>
-        <translation type="unfinished">Seleziona, muovi e modifica oggetti</translation>
+        <translation>Seleziona, muovi e modifica oggetti</translation>
     </message>
     <message>
         <source>Text</source>
-        <translation type="unfinished">Testo</translation>
+        <translation>Testo</translation>
     </message>
     <message>
         <source>Create text object</source>
-        <translation type="unfinished">Crea oggeto testo</translation>
+        <translation>Crea oggeto testo</translation>
     </message>
     <message>
         <source>Box</source>
-        <translation type="unfinished">_Area</translation>
+        <translation>_Area</translation>
     </message>
     <message>
         <source>Create box object</source>
-        <translation type="unfinished">Crea oggeto testo</translation>
+        <translation>Crea oggeto testo</translation>
     </message>
     <message>
         <source>Line</source>
-        <translation type="unfinished">Linea</translation>
+        <translation>Linea</translation>
     </message>
     <message>
         <source>Create line object</source>
-        <translation type="unfinished">Crea oggetto linea</translation>
+        <translation>Crea oggetto linea</translation>
     </message>
     <message>
         <source>Ellipse</source>
-        <translation type="unfinished">_Ellisse</translation>
+        <translation>Ellisse</translation>
     </message>
     <message>
         <source>Create ellipse/circle object</source>
-        <translation type="unfinished">Crea oggetto ellisse/cerchio</translation>
+        <translation>Crea oggetto ellisse/cerchio</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="unfinished">Immagine</translation>
+        <translation>Immagine</translation>
     </message>
     <message>
         <source>Create image object</source>
-        <translation type="unfinished">Crea oggetto immagine</translation>
+        <translation>Crea oggetto immagine</translation>
     </message>
     <message>
         <source>Barcode</source>
-        <translation type="unfinished">_Codice a barre</translation>
+        <translation>Codice a barre</translation>
     </message>
     <message>
         <source>Create barcode object</source>
-        <translation type="unfinished">Crea oggetto codice a barre</translation>
+        <translation>Crea oggetto codice a barre</translation>
     </message>
     <message>
         <source>Bring To Front</source>
-        <translation type="unfinished"></translation>
+        <translation>Portare in primo piano</translation>
     </message>
     <message>
         <source>Raise selection to top</source>
-        <translation type="unfinished"></translation>
+        <translation>Aumenta la selezione verso l'alto</translation>
     </message>
     <message>
         <source>Send To Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Manda indietro</translation>
     </message>
     <message>
         <source>Lower selection to bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbassa la selezione verso il basso</translation>
     </message>
     <message>
         <source>Rotate Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota a Sinistra</translation>
     </message>
     <message>
         <source>Rotate object(s) 90 degrees counter-clockwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota gli oggetti di 90 gradi in senso antiorario</translation>
     </message>
     <message>
         <source>Rotate Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota a Destra</translation>
     </message>
     <message>
         <source>Rotate object(s) 90 degrees clockwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota gli oggetti di 90 gradi in senso orario</translation>
     </message>
     <message>
         <source>Flip Horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>Capovolgi orizzontalmente</translation>
     </message>
     <message>
         <source>Flip object(s) horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>Capovolgi gli oggetti in orizzontale</translation>
     </message>
     <message>
         <source>Flip Vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>Capovolgi verticalmente</translation>
     </message>
     <message>
         <source>Flip object(s) vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>Capovolgi gli oggetti in verticale</translation>
     </message>
     <message>
         <source>Align Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea a sinistra</translation>
     </message>
     <message>
         <source>Align objects to left edges</source>
-        <translation type="unfinished">
-            </translation>
+        <translation>Allinea gli oggetti ai bordi di sinistra</translation>
     </message>
     <message>
         <source>Align Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea al Centro</translation>
     </message>
     <message>
         <source>Align objects to horizontal centers</source>
-        <translation type="unfinished">Allinea gli oggetti nel centro orizzontale</translation>
+        <translation>Allinea gli oggetti nel centro orizzontale</translation>
     </message>
     <message>
         <source>Align Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea a destra</translation>
     </message>
     <message>
         <source>Align objects to right edges</source>
-        <translation type="unfinished">
-            </translation>
+        <translation>Allinea gli oggetti ai bordi giusti</translation>
     </message>
     <message>
         <source>Align Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea in Alto</translation>
     </message>
     <message>
         <source>Align objects to top edges</source>
-        <translation type="unfinished">Allinea gli oggetti in basso</translation>
+        <translation>Allinea gli oggetti ai bordi superiori</translation>
     </message>
     <message>
         <source>Align Middle</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea al centro</translation>
     </message>
     <message>
         <source>Align objects to vertical centers</source>
-        <translation type="unfinished">Allinea gli oggetti al centro verticale</translation>
+        <translation>Allinea gli oggetti ai centri verticali</translation>
     </message>
     <message>
         <source>Align Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea in basso</translation>
     </message>
     <message>
         <source>Align objects to bottom edges</source>
-        <translation type="unfinished">Allinea gli oggetti in basso</translation>
+        <translation>Allinea gli oggetti ai bordi inferiori</translation>
     </message>
     <message>
         <source>Center Horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>Centra orizzontalmente</translation>
     </message>
     <message>
         <source>Horizontally center objects in label</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrare orizzontalmente gli oggetti nell'etichetta</translation>
     </message>
     <message>
         <source>Center Vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>Centra verticalmente</translation>
     </message>
     <message>
         <source>Vertically center objects in label</source>
@@ -1835,8 +1812,7 @@
     </message>
     <message>
         <source>Move</source>
-        <translation type="unfinished">
-            </translation>
+        <translation type="unfinished"</translation>
     </message>
     <message>
         <source>Size</source>
@@ -1848,8 +1824,7 @@
     </message>
     <message>
         <source>Shadow</source>
-        <translation type="unfinished">
-            </translation>
+        <translation type="unfinished"</translation>
     </message>
 </context>
 <context>
@@ -1882,8 +1857,7 @@
     <name>glabels::SimplePreview</name>
     <message>
         <source>Up</source>
-        <translation type="unfinished">
-            </translation>
+        <translation type="unfinished"</translation>
     </message>
 </context>
 <context>
@@ -1894,7 +1868,7 @@
     </message>
     <message>
         <source>Copy</source>
-        <translation type="unfinished">Copia</translation>
+        <translation>Copia</translation>
     </message>
 </context>
 <context>
