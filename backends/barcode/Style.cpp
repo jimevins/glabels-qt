@@ -218,7 +218,7 @@ namespace glabels
 		///
 		bool Style::operator!=( const Style& other ) const
 		{
-			return mId != other.mId;
+			return (mBackendId != other.mBackendId) || (mId != other.mId);
 		}
 	
 	} // namespace barcode
