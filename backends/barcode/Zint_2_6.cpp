@@ -18,9 +18,9 @@
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if HAVE_ZINT
+#if HAVE_ZINT_2_6
 
-#include "Zint.h"
+#include "Zint_2_6.h"
 
 #include <QtDebug>
 #include <zint.h>
@@ -31,7 +31,6 @@ namespace
 	const double FONT_SCALE = 0.9;
 	const int W_PTS_DEFAULT = 144;
 	const int H_PTS_DEFAULT = 72;
-	const double PTS_PER_MM = 2.83464566929;
 }
 
 
@@ -39,7 +38,7 @@ namespace glabels
 {
 	namespace barcode
 	{
-		namespace Zint
+		namespace Zint_2_6
 		{
 
 
@@ -66,20 +65,16 @@ namespace glabels
 				 */
 				if ( w == 0 )
 				{
-					w = W_PTS_DEFAULT/PTS_PER_MM;
+					w = W_PTS_DEFAULT;
 				}
 				if ( h == 0 )
 				{
-					h = H_PTS_DEFAULT/PTS_PER_MM;
+					h = H_PTS_DEFAULT;
 				}
 
 				zint_symbol* symbol = ZBarcode_Create();;
 
 				symbol->symbology = symbology;
-				symbol->width     = w/PTS_PER_MM;
-				symbol->height    = h/PTS_PER_MM;
-				symbol->show_hrt  = showText();
-
 
 				if ( ZBarcode_Encode( symbol, (unsigned char*)(cookedData.c_str()), 0 ) != 0 )
 				{
@@ -88,9 +83,11 @@ namespace glabels
 					return;
 				}
 
-				if ( ZBarcode_Buffer_Vector( symbol, 0 ) != 0 )
+				symbol->show_hrt = showText();
+
+				if ( ZBarcode_Render( symbol, (float)w, (float)h ) == 0 )
 				{
-					qDebug() << "Zint::ZBarcode_Buffer_Vector: " << QString(symbol->errtxt);
+					qDebug() << "Zint::ZBarcode_Render: " << QString(symbol->errtxt);
 					setIsDataValid( false );
 					return;
 				}
@@ -99,43 +96,32 @@ namespace glabels
 				/*
 				 * Now do the actual vectorization.
 				 */
-				zint_vector *vector = symbol->vector;
+				zint_render *render = symbol->rendered;
 
-				setWidth( vector->width*PTS_PER_MM );
-				setHeight( vector->height*PTS_PER_MM );
+				setWidth( render->width );
+				setHeight( render->height );
 
-				for ( zint_vector_rect *zrect = vector->rectangles; zrect != nullptr; zrect = zrect->next )
+				for ( zint_render_line *zline = render->lines; zline != nullptr; zline = zline->next )
 				{
-					addBox( zrect->x*PTS_PER_MM,
-					        zrect->y*PTS_PER_MM,
-					        zrect->width*PTS_PER_MM,
-					        zrect->height*PTS_PER_MM );
+					addBox( zline->x, zline->y, zline->width, zline->length );
 				}
 
-				for ( zint_vector_circle *zcircle = vector->circles; zcircle != nullptr; zcircle = zcircle->next )
+				for ( zint_render_ring *zring = render->rings; zring != nullptr; zring = zring->next )
 				{
-					addRing( zcircle->x*PTS_PER_MM,
-					         zcircle->y*PTS_PER_MM,
-					         zcircle->diameter*PTS_PER_MM/2,
-					         /*line_width*/ 1 );
+					addRing( zring->x, zring->y, zring->radius, zring->line_width );
 				}
 
-				for ( zint_vector_hexagon *zhexagon = vector->hexagons; zhexagon != nullptr; zhexagon = zhexagon->next )
+				for ( zint_render_hexagon *zhexagon = render->hexagons; zhexagon != nullptr; zhexagon = zhexagon->next )
 				{
-					addHexagon( zhexagon->x*PTS_PER_MM,
-					            zhexagon->y*PTS_PER_MM,
-					            2.89 );
+					addHexagon( zhexagon->x, zhexagon->y, 2.89 );
 				}
 
 				if( showText() )
 				{
-					for ( zint_vector_string *zstring = vector->strings; zstring != nullptr; zstring = zstring->next )
+					for ( zint_render_string *zstring = render->strings; zstring != nullptr; zstring = zstring->next )
 					{
 						double fsize = FONT_SCALE*zstring->fsize;
-						addText( zstring->x*PTS_PER_MM,
-						         (zstring->y+0.75*fsize)*PTS_PER_MM,
-						         fsize,
-						         QString((char*)(zstring->text)).toStdString() );
+						addText( zstring->x, zstring->y+0.75*fsize, fsize, QString((char*)(zstring->text)).toStdString() );
 					}
 				}
 
@@ -1220,4 +1206,4 @@ namespace glabels
 }
 
 
-#endif // HAVE_ZINT
+#endif // HAVE_ZINT_2_6

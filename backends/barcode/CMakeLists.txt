@@ -18,7 +18,11 @@ else ()
 endif ()
 
 if (${LIBZINT_FOUND})
-  add_definitions (-DHAVE_ZINT=1)
+  if (${LIBZINT_VERSION_STRING} MATCHES "^2\.6\.")
+    add_definitions (-DHAVE_ZINT_2_6=1)
+  else ()
+    add_definitions (-DHAVE_ZINT=1)
+  endif ()
   set (OPTIONAL_ZINT ZINT::ZINT)
 else ()
   set (OPTIONAL_ZINT "")
@@ -32,6 +36,7 @@ set (barcode_sources
   Style.cpp
   GnuBarcode.cpp
   QrEncode.cpp
+  Zint_2_6.cpp
   Zint.cpp
 )
 
