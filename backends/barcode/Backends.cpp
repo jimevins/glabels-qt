@@ -50,10 +50,10 @@ namespace glabels
 			               true, true, true, true, "1234567890", true, 10 );
 
 			registerStyle( "upc-a", "", tr("UPC-A"),
-			               true, false, true, false, "12345678901", false, 11 );
+			               true, true, true, false, "12345678901", false, 11 );
 
 			registerStyle( "ean-13", "", tr("EAN-13"),
-			               true, false, true, false, "123456789012", false, 12 );
+			               true, true, true, false, "123456789012", false, 12 );
 
 			registerStyle( "postnet", "", tr("POSTNET (any)"),
 			               false, false, true, false, "12345-6789-12", false, 11 );

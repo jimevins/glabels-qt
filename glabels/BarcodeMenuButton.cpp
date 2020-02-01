@@ -40,7 +40,7 @@ namespace glabels
 		setMenu( mMenu );
 
 		mBcStyle = barcode::Backends::defaultStyle();
-		setText( mBcStyle.name() );
+		setText( mBcStyle.fullName() );
 
 		connect( mMenu, SIGNAL(selectionChanged()), this, SLOT(onMenuSelectionChanged()) );
 	}
@@ -61,7 +61,7 @@ namespace glabels
 	void BarcodeMenuButton::setBcStyle( const barcode::Style& bcStyle )
 	{
 		mBcStyle = bcStyle;
-		setText( mBcStyle.name() );
+		setText( mBcStyle.fullName() );
 	}
 
 
@@ -71,7 +71,7 @@ namespace glabels
 	void BarcodeMenuButton::onMenuSelectionChanged()
 	{
 		mBcStyle = mMenu->bcStyle();
-		setText( mBcStyle.name() );
+		setText( mBcStyle.fullName() );
 
 		emit selectionChanged();
 	}

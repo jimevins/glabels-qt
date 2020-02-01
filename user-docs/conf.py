@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'gLabels'
-copyright = '2019, Jim Evins <evins@snaught.com>'
+copyright = '2020, Jim Evins <evins@snaught.com>'
 author = 'Jim Evins'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -149,8 +149,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('man/glabels-qt', 'glabels-qt', 'create labels and business cards', [author], 1),
-    ('man/glabels-batch-qt', 'glabels-batch-qt', 'batch creation of labels and business cards', [author], 1)
+    ('man/glabels-qt', 'glabels-qt', 'create labels and business cards', [], 1),
+    ('man/glabels-batch-qt', 'glabels-batch-qt', 'batch creation of labels and business cards', [], 1)
 ]
 
 

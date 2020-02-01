@@ -192,15 +192,18 @@ namespace glbarcode
 	{
 		std::string displayText;
 
-		for (char c : rawData)
+		if ( showText() )
 		{
-			if ( isdigit( c ) )
+			for (char c : rawData)
 			{
-				displayText += c;
+				if ( isdigit( c ) )
+				{
+					displayText += c;
+				}
 			}
-		}
 
-		displayText += (mCheckDigitVal + '0');
+			displayText += (mCheckDigitVal + '0');
+		}
 
 		return displayText;
 	}
@@ -238,22 +241,9 @@ namespace glbarcode
 		double xQuiet     = mscale * QUIET_MODULES;
 
 		/* determine bar height */
-		double hTextArea   = scale * BASE_TEXT_AREA_HEIGHT;
+		double hTextArea   = showText() ? scale * BASE_TEXT_AREA_HEIGHT : 0;
 		double hBar1       = std::max( (h - hTextArea), width/2 );
 		double hBar2       = hBar1 + hTextArea/2;
-
-		/* determine text parameters */
-		double textSize1   = scale * BASE_FONT_SIZE;
-		double textSize2   = 0.75*textSize1;
-
-		double textX1Left  = xQuiet + mscale*(0.25*nModules + 0.5*mEndBarsModules - 0.75);
-		double textX1Right = xQuiet + mscale*(0.75*nModules - 0.5*mEndBarsModules + 0.75);
-		double textX2Left  = 0.5*xQuiet;
-		double textX2Right = 1.5*xQuiet + mscale*nModules;
-
-		double textY1      = hBar2 + textSize1/4;
-		double textY2      = hBar2 + textSize2/4;
-
 
 		/* now traverse the code string and draw each bar */
 		auto nBarsSpaces = int( codedData.size() - 1 ); /* coded data has dummy "0" on end. */
@@ -283,11 +273,29 @@ namespace glbarcode
 			xModules += wSpace;
 		}
 
-		/* draw text (call implementation from concrete class) */
-		vectorizeText( displayText,
-			       textSize1, textSize2,
-			       textX1Left, textX1Right, textY1,
-			       textX2Left, textX2Right, textY2 );
+
+		/* draw text */
+		if ( showText() )
+		{
+			/* determine text parameters */
+			double textSize1   = scale * BASE_FONT_SIZE;
+			double textSize2   = 0.75*textSize1;
+
+			double textX1Left  = xQuiet + mscale*(0.25*nModules + 0.5*mEndBarsModules - 0.75);
+			double textX1Right = xQuiet + mscale*(0.75*nModules - 0.5*mEndBarsModules + 0.75);
+			double textX2Left  = 0.5*xQuiet;
+			double textX2Right = 1.5*xQuiet + mscale*nModules;
+
+			double textY1      = hBar2 + textSize1/4;
+			double textY2      = hBar2 + textSize2/4;
+
+			/* draw text (call implementation from concrete class) */
+			vectorizeText( displayText,
+			               textSize1, textSize2,
+			               textX1Left, textX1Right, textY1,
+			               textX2Left, textX2Right, textY2 );
+		}
+		
 
 		/* Overwrite requested size with actual size. */
 		w = width;

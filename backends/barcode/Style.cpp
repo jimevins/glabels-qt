@@ -20,6 +20,8 @@
 
 #include "Style.h"
 
+#include "Backends.h"
+
 
 namespace glabels
 {
@@ -117,6 +119,22 @@ namespace glabels
 
 
 		///
+		/// Full Name Property Getter
+		///
+		QString Style::fullName() const
+		{
+			if ( mBackendId == "" )
+			{
+				return mName;
+			}
+			else
+			{
+				return Backends::backendName(mBackendId) + " / " + mName;
+			}
+		}
+
+
+		///
 		/// Can Text Property Getter
 		///
 		bool Style::canText() const
@@ -200,7 +218,7 @@ namespace glabels
 		///
 		bool Style::operator!=( const Style& other ) const
 		{
-			return mId != other.mId;
+			return (mBackendId != other.mBackendId) || (mId != other.mId);
 		}
 	
 	} // namespace barcode

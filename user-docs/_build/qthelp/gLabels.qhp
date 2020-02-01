@@ -45,7 +45,7 @@
                             <section title="DESCRIPTION" ref="man/glabels-qt.html#description"/>
                             <section title="OPTIONS" ref="man/glabels-qt.html#options"/>
                             <section title="FILES" ref="man/glabels-qt.html#files"/>
-                            <section title="BUGS" ref="man/glabels-qt.html#bugs"/>
+                            <section title="REPORTING BUGS" ref="man/glabels-qt.html#reporting-bugs"/>
                             <section title="SEE ALSO" ref="man/glabels-qt.html#see-also"/>
                         </section>
                         <section title="glabels-batch-qt" ref="man/glabels-batch-qt.html">
@@ -53,7 +53,8 @@
                             <section title="DESCRIPTION" ref="man/glabels-batch-qt.html#description"/>
                             <section title="OPTIONS" ref="man/glabels-batch-qt.html#options"/>
                             <section title="FILES" ref="man/glabels-batch-qt.html#files"/>
-                            <section title="BUGS" ref="man/glabels-batch-qt.html#bugs"/>
+                            <section title="KNOWN ISSUES" ref="man/glabels-batch-qt.html#known-issues"/>
+                            <section title="REPORTING BUGS" ref="man/glabels-batch-qt.html#reporting-bugs"/>
                             <section title="SEE ALSO" ref="man/glabels-batch-qt.html#see-also"/>
                         </section>
                     </section>
@@ -63,8 +64,11 @@
             </section>
         </toc>
         <keywords>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-a"/>
             <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-c"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-d"/>
             <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-f"/>
+            <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-g"/>
             <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-h"/>
             <keyword name="glabels-qt command line option" ref="man/glabels-qt.html#cmdoption-glabels-qt-h"/>
             <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-l"/>
@@ -75,12 +79,15 @@
             <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-s"/>
             <keyword name="glabels-batch-qt command line option" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-v"/>
             <keyword name="glabels-qt command line option" ref="man/glabels-qt.html#cmdoption-glabels-qt-v"/>
+            <keyword name="-D &lt;var&gt;=&lt;value&gt;, --define &lt;var&gt;=&lt;value&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-d"/>
+            <keyword name="-a, --collate" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-a"/>
             <keyword name="-c &lt;n&gt;, --copies &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-c"/>
             <keyword name="-f &lt;n&gt;, --first &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-f"/>
+            <keyword name="-g, --group" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-g"/>
             <keyword name="-h, --help" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-h"/>
             <keyword name="-l, --outlines" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-l"/>
             <keyword name="-m, --crop-marks" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-m"/>
-            <keyword name="-o &lt;filename&gt;, --output &lt;filename&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-o"/>
+            <keyword name="-o [&lt;filename&gt;], --output [&lt;filename&gt;]" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-o"/>
             <keyword name="-p &lt;printer&gt;, --printer &lt;printer&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-p"/>
             <keyword name="-r, --reverse" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-r"/>
             <keyword name="-s &lt;n&gt;, --sheets &lt;n&gt;" ref="man/glabels-batch-qt.html#cmdoption-glabels-batch-qt-s"/>

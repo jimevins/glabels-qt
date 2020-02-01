@@ -543,23 +543,7 @@
 <context>
     <name>PrintView</name>
     <message>
-        <source>Copies</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copies:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Start on position:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>on 1st page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Print options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -575,10 +559,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -588,6 +568,54 @@
     </message>
     <message>
         <source>nn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Positions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Merge control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uncollated (e.g.  1,1,1   2,2,2   3,3,3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collated   (e.g.  1,2,3   1,2,3   1,2,3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Merge groups are contiguous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Merge groups start on a new page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start groups at position:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

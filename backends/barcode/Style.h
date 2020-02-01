@@ -65,6 +65,8 @@ namespace glabels
 
 			const QString& name() const;
 
+			QString fullName() const;
+
 			bool canText() const;
 
 			bool textOptional() const;

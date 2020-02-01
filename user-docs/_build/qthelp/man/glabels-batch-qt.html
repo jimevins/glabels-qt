@@ -22,9 +22,8 @@
 </div>
 <div class="section" id="description">
 <h2>DESCRIPTION</h2>
-<p><strong class="program">glabels-batch-qt</strong> is a utility for printing files previously
-prepared with <strong class="program">glabels-qt</strong> from the command line.  It is suitable
-for use with scripts.</p>
+<p><strong class="program">glabels-batch-qt</strong> is a utility for printing a glabels project file
+from the command line.  It is suitable for use with scripts.</p>
 </div>
 <div class="section" id="options">
 <h2>OPTIONS</h2>
@@ -48,15 +47,15 @@ for use with scripts.</p>
 
 <dl class="option">
 <dt id="cmdoption-glabels-batch-qt-o">
-<code class="descname">-o</code><code class="descclassname"> &lt;filename&gt;</code><code class="descclassname">, </code><code class="descname">--output</code><code class="descclassname"> &lt;filename&gt;</code></dt>
-<dd><p>Set output filename to &lt;filename&gt;. Set to &quot;-&quot; for stdout.
+<code class="descname">-o</code><code class="descclassname"> [&lt;filename&gt;]</code><code class="descclassname">, </code><code class="descname">--output</code><code class="descclassname"> [&lt;filename&gt;]</code></dt>
+<dd><p>Set output filename to &lt;filename&gt;. If filename is &quot;-&quot;, write to standard output.
 (Default=&quot;output.pdf&quot;)</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-glabels-batch-qt-s">
 <code class="descname">-s</code><code class="descclassname"> &lt;n&gt;</code><code class="descclassname">, </code><code class="descname">--sheets</code><code class="descclassname"> &lt;n&gt;</code></dt>
-<dd><p>Set number of sheets to &lt;n&gt;. (Default=1)</p>
+<dd><p>For simple projects, sets number of full sheets to &lt;n&gt;. (Default=1)</p>
 </dd></dl>
 
 <dl class="option">
@@ -66,9 +65,21 @@ for use with scripts.</p>
 </dd></dl>
 
 <dl class="option">
+<dt id="cmdoption-glabels-batch-qt-a">
+<code class="descname">-a</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--collate</code><code class="descclassname"></code></dt>
+<dd><p>Collate merge copies.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-glabels-batch-qt-g">
+<code class="descname">-g</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--group</code><code class="descclassname"></code></dt>
+<dd><p>Start each merge group on a new page.</p>
+</dd></dl>
+
+<dl class="option">
 <dt id="cmdoption-glabels-batch-qt-f">
 <code class="descname">-f</code><code class="descclassname"> &lt;n&gt;</code><code class="descclassname">, </code><code class="descname">--first</code><code class="descclassname"> &lt;n&gt;</code></dt>
-<dd><p>Set starting label on 1st page to &lt;n&gt;. (Default=1)</p>
+<dd><p>Set starting position to &lt;n&gt;. (Default=1)</p>
 </dd></dl>
 
 <dl class="option">
@@ -87,6 +98,12 @@ for use with scripts.</p>
 <dt id="cmdoption-glabels-batch-qt-r">
 <code class="descname">-r</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--reverse</code><code class="descclassname"></code></dt>
 <dd><p>Print in reverse (mirror image).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-glabels-batch-qt-d">
+<code class="descname">-D</code><code class="descclassname"> &lt;var&gt;=&lt;value&gt;</code><code class="descclassname">, </code><code class="descname">--define</code><code class="descclassname"> &lt;var&gt;=&lt;value&gt;</code></dt>
+<dd><p>Set initial value of user variable &lt;var&gt; to &lt;value&gt;.</p>
 </dd></dl>
 
 </div>
@@ -113,8 +130,15 @@ templates here!</strong></p>
 </dd></dl>
 
 </div>
-<div class="section" id="bugs">
-<h2>BUGS</h2>
+<div class="section" id="known-issues">
+<h2>KNOWN ISSUES</h2>
+<p>On GNU/Linux platforms, <strong class="program">glabels-batch-qt</strong> must be run from within a windowing environment, such as X or Wayland.  This is because Qt requires a suitable platform to obtain system font information.  A work-around is to run <strong class="program">glabels-batch-qt</strong> using a virtual X server environment:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xvfb</span><span class="o">-</span><span class="n">run</span> <span class="n">glabels</span><span class="o">-</span><span class="n">batch</span><span class="o">-</span><span class="n">qt</span> <span class="o">-</span><span class="n">o</span> <span class="n">output</span><span class="o">.</span><span class="n">pdf</span> <span class="n">myProject</span><span class="o">.</span><span class="n">glabels</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reporting-bugs">
+<h2>REPORTING BUGS</h2>
 <p>Bugs and feature requests can be reported via the gLabels issue tracking system at GitHub (&lt;<a class="reference external" href="https://github.com/jimevins/glabels-qt/issues">https://github.com/jimevins/glabels-qt/issues</a>&gt;).  You will need a GitHub account to submit new issues or to comment on existing issues.</p>
 </div>
 <div class="section" id="see-also">
