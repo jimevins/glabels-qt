@@ -124,7 +124,11 @@
             <file>manual/tutorials.html</file>
             <file>manual/user_defined_variables.html</file>
             <file>manual/using_substitution_fields.html</file>
+            <file>_images/intro-cover-image.png</file>
+            <file>_images/intro-glabels-label-designer.png</file>
             <file>_images/introduction-glabels-main-window.png</file>
+            <file>_images/starting-examples.png</file>
+            <file>_images/starting-startup-screen.png</file>
             <file>man/glabels-batch-qt.html</file>
             <file>man/glabels-qt.html</file>
             <file>man/index.html</file>

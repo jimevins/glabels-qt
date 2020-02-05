@@ -1,5 +1,5 @@
 Editing a Label or Card Design
-******************************
+------------------------------
 
 .. toctree::
    :maxdepth: 2
