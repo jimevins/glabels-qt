@@ -3,19 +3,52 @@ Starting gLabels
 
 You can start gLabels Label Designer from the command line or from a window manager.
 
-To start the gLabels from the command line, simply type: ``glabels-qt``.  To see a full list of command line options, simply type: ``glabels-qt --help``.
 
-As gLabels runs on many different platforms with many different window managers, the exact process to start gLabels will differ.  Generally, you will be looking for a menu item or icon to click on, as illustrated below:
+From the Command Line
+^^^^^^^^^^^^^^^^^^^^^
+
+To start gLabels from the command line, simply type:
+
+.. code-block:: console
+  
+  $ glabels-qt
+
+To start gLabels with an existing gLabels project file, simply type the filename after ``glabels-qt`` as in this example:
+
+.. code-block:: console
+  
+  $ glabels-qt my-project.glabels
+
+To see a full list of command line options, simply type:
+
+.. code-block:: console
+  
+  $ glabels-qt --help
+
+
+From a Window Manager
+^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: As gLabels runs on many different platforms with many different window managers, the exact process to start gLabels will differ.
+
+Generally, you will be looking for a *Start* or *Applications* menu item or icon to click on, as illustrated below:
 
 .. figure::  figures/starting-examples.png
    :align:   center
 
    Starting gLabels from various window managers
 
-Once started, gLabels will present the following startup (or "Welcome") screen.  From this screen, you can create a new project or open an existing one.
+You may also be able to start gLabels with an existing gLabels project file, by navigating to that file in your file manager and clicking it, double-clicking on it, or activating an ``Open with ...`` context menu item.
+
+
+Welcome Window
+^^^^^^^^^^^^^^
+
+When started without a project file, gLabels will present the following simplified startup (or "Welcome") window.  In the center of this window are shortcut buttons that allow you to :ref:`create a new project <create-new>` or :ref:`open an existing one <opening>`.
 
 .. figure::  figures/starting-startup-screen.png
    :align:   center
 
    gLabels startup screen
 
+Once a project is created or opened, this window will be reconfigured to include the full :ref:`gLabels interface <interface>`.

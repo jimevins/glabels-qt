@@ -12,7 +12,11 @@
         <toc>
             <section title="gLabels  documentation" ref="index.html">
                 <section title="Basic Usage" ref="manual/basicusage.html">
-                    <section title="Starting gLabels" ref="manual/starting.html"/>
+                    <section title="Starting gLabels" ref="manual/starting.html">
+                        <section title="From the Command Line" ref="manual/starting.html#from-the-command-line"/>
+                        <section title="From a Window Manager" ref="manual/starting.html#from-a-window-manager"/>
+                        <section title="Welcome Window" ref="manual/starting.html#welcome-window"/>
+                    </section>
                     <section title="User Interface Overview" ref="manual/interface.html"/>
                     <section title="Creating a New gLabels Project" ref="manual/createnew.html"/>
                     <section title="Saving Your gLabels Project" ref="manual/saving.html"/>
@@ -124,6 +128,10 @@
             <file>manual/tutorials.html</file>
             <file>manual/user_defined_variables.html</file>
             <file>manual/using_substitution_fields.html</file>
+            <file>_images/interface-activity-selection-tool-bar.png</file>
+            <file>_images/interface-main-window.png</file>
+            <file>_images/interface-menu-bar.png</file>
+            <file>_images/interface-quick-access-tool-bar.png</file>
             <file>_images/intro-cover-image.png</file>
             <file>_images/intro-glabels-label-designer.png</file>
             <file>_images/introduction-glabels-main-window.png</file>
