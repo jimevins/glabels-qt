@@ -85,14 +85,14 @@ namespace
 	const std::string frameSymbol = "NwNnWnWnN";
 
 	/* Vectorization constants */
-	const double MIN_X       = ( 0.01 *  PTS_PER_INCH );
+	const double MIN_X       = ( 0.0075 *  PTS_PER_INCH );
 	const double N           = 2.5;
 	const double MIN_I       = MIN_X;
-	const double MIN_HEIGHT  = ( 0.25 *  PTS_PER_INCH );
-	const double MIN_QUIET   = ( 0.10 *  PTS_PER_INCH );
+	const double MIN_HEIGHT  = ( 0.19685 *  PTS_PER_INCH );
+	const double MIN_QUIET   = ( 10 * MIN_X );
 
-	const double MIN_TEXT_AREA_HEIGHT = 14.0;
-	const double MIN_TEXT_SIZE        = 10.0;
+	const double MIN_TEXT_AREA_HEIGHT = 12.0;
+	const double MIN_TEXT_SIZE        = 8.0;
 
 }
 
