@@ -1,6 +1,6 @@
 ## Translation management
 
-We manage all translations within a [Zanata Project](https://translate.zanata.org/project/view/Glabels). Please don't send your files via Github, use only Zanata.
+We manage all translations within a [transifex](https://www.transifex.com/glabels/public/). Please don't send your files via Github, use only transifex.
 
 Sign in to change your translation file. You can find some instructions in the [Translator Guide](http://docs.zanata.org/en/release/user-guide/translator-guide/). If you can't find your desired language, please contact Mario Blättermann <mario.blaettermann@gmail.com>.
 
