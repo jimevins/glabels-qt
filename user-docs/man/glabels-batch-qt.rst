@@ -4,13 +4,14 @@ glabels-batch-qt
 SYNOPSIS
 --------
 
-**glabels-batch-qt** [*options*] [*filename*]
+**glabels-batch-qt** [*options*] *FILE*
 
 DESCRIPTION
 -----------
 
 :program:`glabels-batch-qt` is a utility for printing a glabels project file
-from the command line.  It is suitable for use with scripts.
+from the command line.  This command takes exactly one project file, FILE.  If FILE
+is "-", it expects an XML glabels project to be provided on standard input.
 
 
 OPTIONS

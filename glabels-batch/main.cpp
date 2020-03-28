@@ -44,10 +44,13 @@ namespace
 	
 #if defined(Q_OS_WIN)
 	const QString STDOUT_FILENAME = "CON:";
+	const QString STDIN_FILENAME  = "CON:";
 #elif defined(Q_OS_LINUX)
 	const QString STDOUT_FILENAME = "/dev/stdout";
+	const QString STDIN_FILENAME  = "/dev/stdin";
 #else
 	const QString STDOUT_FILENAME = "/dev/stdout";
+	const QString STDIN_FILENAME  = "/dev/stdin";
 #endif
 
 }
@@ -173,7 +176,14 @@ int main( int argc, char **argv )
 	
 	if ( parser.positionalArguments().size() == 1 )
 	{
+		qDebug() << "Batch mode.";
+
 		QString filename = parser.positionalArguments().constFirst();
+		if ( filename == "-" )
+		{
+			filename = STDIN_FILENAME;
+		}
+		qDebug() << "Project file =" << filename;
 
 		glabels::model::Model *model = glabels::model::XmlLabelParser::readFile( filename );
 		if ( model )
@@ -184,7 +194,7 @@ int main( int argc, char **argv )
 			printer.setColorMode( QPrinter::Color );
 			if ( parser.isSet("printer") )
 			{
-				qDebug() << "Batch mode.  printer =" << parser.value("printer");
+				qDebug() << "Printer =" << parser.value("printer");
 				printer.setPrinterName( parser.value("printer") );
 			}
 			else if ( parser.isSet("output") )
@@ -194,7 +204,7 @@ int main( int argc, char **argv )
 				{
 					outputFilename = STDOUT_FILENAME;
 				}
-				qDebug() << "Batch mode.  output =" << outputFilename;
+				qDebug() << "Output =" << outputFilename;
 				printer.setOutputFileName( outputFilename );
 			}
 			else

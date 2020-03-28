@@ -150,7 +150,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('man/glabels-qt', 'glabels-qt', 'create labels and business cards', [], 1),
-    ('man/glabels-batch-qt', 'glabels-batch-qt', 'batch creation of labels and business cards', [], 1)
+    ('man/glabels-batch-qt', 'glabels-batch-qt', 'print glabels project from command line', [], 1)
 ]
 
 

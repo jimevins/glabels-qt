@@ -1,8 +1,8 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "GLABELS-BATCH-QT" "1" "Jan 02, 2020" "" "gLabels"
+.TH "GLABELS-BATCH-QT" "1" "Mar 28, 2020" "" "gLabels"
 .SH NAME
-glabels-batch-qt \- batch creation of labels and business cards
+glabels-batch-qt \- print glabels project from command line
 .
 .nr rst2man-indent-level 0
 .
@@ -32,11 +32,12 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 ..
 .SH SYNOPSIS
 .sp
-\fBglabels\-batch\-qt\fP [\fIoptions\fP] [\fIfilename\fP]
+\fBglabels\-batch\-qt\fP [\fIoptions\fP] \fIFILE\fP
 .SH DESCRIPTION
 .sp
 \fBglabels\-batch\-qt\fP is a utility for printing a glabels project file
-from the command line.  It is suitable for use with scripts.
+from the command line.  This command takes exactly one project file, FILE.  If FILE
+is "\-", it expects an XML glabels project to be provided on standard input.
 .SH OPTIONS
 .INDENT 0.0
 .TP
