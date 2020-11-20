@@ -426,6 +426,18 @@
     </Label-rectangle>
   </Template>
 
+
+  <!-- =================================================================== -->
+  <!-- Herma 5028: Business Cards 83.8mm x 50.8mm, 10 per sheet            -->
+  <!-- =================================================================== -->
+  <Template brand="Herma" part="5028" size="A4" description="Business Cards">
+    <Meta category="label"/>
+    <Meta category="business-card"/>
+    <Label-rectangle id="0" width="83.8mm" height="50.8mm" round="2mm" x_waste="2.7mm" y_waste="0mm">
+      <Markup-margin size="1mm"/>
+      <Layout nx="2" ny="5" x0="18.6mm" y0="22mm" dx="89.2mm" dy="50.8mm"/>
+    </Label-rectangle>
+  </Template>
   
 </Glabels-templates>
 
