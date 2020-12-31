@@ -301,8 +301,7 @@ namespace glabels
 				{
 					if ( record->contains( key ) )
 					{
-						QString text = (*record)[key];
-						text.replace('\n', NEWLINE_CHAR);
+						auto text = printableTextForView( (*record)[key] );
 						auto* item = new QTableWidgetItem( text );
 						item->setFlags( Qt::ItemIsEnabled );
 						recordsTable->setItem( iRow, iCol, item );
@@ -324,4 +323,18 @@ namespace glabels
 		mBlock = false;
 	}
 
+
+	///
+	/// modify text to be printable e.g. replace newlines
+	///
+	QString MergeView::printableTextForView( QString text )
+	{
+		// Replace windows style newlines
+		text.replace("\r\n", NEWLINE_CHAR);
+
+		// Replace unix style newlines
+		text.replace("\n", NEWLINE_CHAR);
+
+		return text;
+	}
 } // namespace glabels
