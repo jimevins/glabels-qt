@@ -284,8 +284,7 @@ namespace glabels
 			auto* item = new QTableWidgetItem();
 			if ( record->contains( mPrimaryKey ) )
 			{
-				QString text = (*record)[mPrimaryKey];
-				text.replace('\n', NEWLINE_CHAR);
+				auto text = printableTextForView( (*record)[mPrimaryKey] );
 				item->setText( text );
 			}
 			item->setFlags( Qt::ItemIsEnabled | Qt::ItemIsUserCheckable );
