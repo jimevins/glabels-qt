@@ -107,11 +107,11 @@ if (MINGW)
    set (CMAKE_PREFIX_PATH ${MINGW_BASE_DIR} )
 endif ()
 
-find_package (Qt5Core 5.4 REQUIRED)
-find_package (Qt5Widgets 5.4 REQUIRED)
-find_package (Qt5PrintSupport 5.4 REQUIRED)
-find_package (Qt5Xml 5.4 REQUIRED)
-find_package (Qt5Svg 5.4 REQUIRED)
+find_package (Qt5Core 5.6 REQUIRED)
+find_package (Qt5Widgets 5.6 REQUIRED)
+find_package (Qt5PrintSupport 5.6 REQUIRED)
+find_package (Qt5Xml 5.6 REQUIRED)
+find_package (Qt5Svg 5.6 REQUIRED)
 find_package (Qt5LinguistTools)
 
 if (WIN32)
@@ -128,7 +128,7 @@ find_package (GnuBarcode 0.98 QUIET)
 find_package (LibQrencode 3.4 QUIET)
 find_package (LibZint 2.6 EXACT QUIET)
 # Unit testing support
-find_package (Qt5Test 5.4 QUIET)
+find_package (Qt5Test 5.6 QUIET)
 
 
 #=======================================

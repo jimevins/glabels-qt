@@ -6,7 +6,7 @@ gLabels Linux Build Instructions
 
 - g++
 - CMake 2.8.12+
-- Qt5 5.4+ Development Packages ( Qt5Core, Qt5Widgets, Qt5PrintSupport, Qt5Xml, Qt5Svg )
+- Qt5 5.6+ Development Packages ( Qt5Core, Qt5Widgets, Qt5PrintSupport, Qt5Xml, Qt5Svg )
 - zlib 1.2+ Development Package
 
 > Even if the above library packages are installed, their corresponding development packages
