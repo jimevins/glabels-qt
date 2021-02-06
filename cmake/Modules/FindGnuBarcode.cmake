@@ -35,7 +35,7 @@ endif ()
 
 if (GNUBARCODE_INCLUDE_DIR AND EXISTS "${GNUBARCODE_INCLUDE_DIR}/barcode.h")
   file (STRINGS "${GNUBARCODE_INCLUDE_DIR}/barcode.h" BARCODE_H REGEX "^#define BARCODE_VERSION *\"[^\"]*\"")
-  string (REGEX REPLACE "^.*VERSION *\"([^\"]*)\"" "\\1" GNUBARCODE_VERSION_STRING ${BARCODE_H})
+  string (REGEX REPLACE "^.*VERSION *\"([^\"]*)\"" "\\1" GNUBARCODE_VERSION_STRING "${BARCODE_H}")
 endif()
 
 # handle the QUIETLY and REQUIRED arguments and set GNUBARCODE_FOUND to TRUE if
