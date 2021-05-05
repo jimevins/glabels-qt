@@ -37,3 +37,7 @@ TEST-DATA
 SAV*
 OLD*
 
+#
+# Ignore nix related stuff
+#
+result**
