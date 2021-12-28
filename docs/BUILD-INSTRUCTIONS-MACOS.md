@@ -9,7 +9,7 @@ brew install cmake
 brew install qt
 ```
 
-For Apple Silcon Macs
+For Apple Silicon Macs
 ```
 brew install gcc
 brew install cmake
@@ -28,7 +28,7 @@ cd build
 # For Intel Macs
 cmake -D CMAKE_PREFIX_PATH=/usr/local/opt/qt  ..
 
-# For Apple Silcon Macs
+# For Apple Silicon Macs
 cmake -D CMAKE_PREFIX_PATH="/opt/homebrew/opt/qt5" -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-11 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-11  ..
 
 make
