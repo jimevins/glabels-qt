@@ -29,7 +29,7 @@ cd build
 cmake -D CMAKE_PREFIX_PATH=/usr/local/opt/qt  ..
 
 # For Apple Silicon Macs
-cmake -D CMAKE_PREFIX_PATH="/opt/homebrew/opt/qt5" -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-11 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-11  ..
+cmake -D CMAKE_PREFIX_PATH="/opt/homebrew/opt/qt5" -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-12 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-12  ..
 
 make
 sudo make install
